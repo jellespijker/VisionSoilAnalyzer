@@ -10,7 +10,8 @@ using namespace std;
 
 void DisplayHelp()
 {
-	cout << "You pressed help" << endl;
+	cout << "--float         Test floating type stats" << endl;
+	cout << "--uchar         Test uchar type stats" << endl;
 }
 
 bool checkArray(uint32_t *a, uint32_t *b)
@@ -104,6 +105,8 @@ void TestFloatStat()
 
 int main(int argc, char *argv[])
 {
+	if (argc < 1) DisplayHelp();
+
 	string arg = argv[1];
 
 	if (argc > 0 || arg != "--help")
