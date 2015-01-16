@@ -2,12 +2,9 @@
 #Note: VisualGDB will automatically update this file when you add new sources to the project.
 
 cmake_minimum_required(VERSION 2.7)
-project(SoilMath)
-set (SoilMath_VERSION_MAJOR 1)
-set (SoilMath_VERSION_MINOR 0)
-
+project(Soil)
 set(LIBRARIES_FROM_REFERENCES "")
-add_library(SoilMath SoilMath.cpp Sort.cpp)
-target_link_libraries(SoilMath  "${LIBRARIES_FROM_REFERENCES}")
+add_executable(Soil)
+target_link_libraries(Soil "${LIBRARIES_FROM_REFERENCES}")
 set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -std=c++11")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -std=c++11")

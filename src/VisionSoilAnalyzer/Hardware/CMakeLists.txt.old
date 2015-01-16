@@ -4,7 +4,7 @@
 cmake_minimum_required(VERSION 2.7)
 project(Hardware)
 set(LIBRARIES_FROM_REFERENCES "")
-add_library(Hardware ADC.cpp BBB.cpp EC12P.cpp eqep.cpp GPIO.cpp Microscope.cpp Pin.cpp PWM.cpp Resolution.cpp SoilCape.cpp USB.cpp)
+add_library(Hardware ADC.cpp BBB.cpp EC12P.cpp eqep.cpp GPIO.cpp Microscope.cpp PWM.cpp Resolution.cpp SoilCape.cpp USB.cpp)
 target_link_libraries(Hardware "${LIBRARIES_FROM_REFERENCES}")
 set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -std=c++11 -ggdb -ffunction-sections -O0")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -std=c++11 -ggdb -ffunction-sections -O0")
