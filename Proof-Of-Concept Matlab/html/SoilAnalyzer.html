@@ -1,0 +1,375 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>SoilAnalyzer</title><meta name="generator" content="MATLAB 8.4"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2014-11-02"><meta name="DC.source" content="SoilAnalyzer.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><pre class="codeinput"><span class="keyword">function</span> varargout = SoilAnalyzer(varargin)
+<span class="comment">% SOILANALYZER MATLAB code for SoilAnalyzer.fig</span>
+<span class="comment">%      SOILANALYZER, by itself, creates a new SOILANALYZER or raises the existing</span>
+<span class="comment">%      singleton*.</span>
+<span class="comment">%</span>
+<span class="comment">%      H = SOILANALYZER returns the handle to a new SOILANALYZER or the handle to</span>
+<span class="comment">%      the existing singleton*.</span>
+<span class="comment">%</span>
+<span class="comment">%      SOILANALYZER('CALLBACK',hObject,eventData,handles,...) calls the local</span>
+<span class="comment">%      function named CALLBACK in SOILANALYZER.M with the given input arguments.</span>
+<span class="comment">%</span>
+<span class="comment">%      SOILANALYZER('Property','Value',...) creates a new SOILANALYZER or raises the</span>
+<span class="comment">%      existing singleton*.  Starting from the left, property value pairs are</span>
+<span class="comment">%      applied to the GUI before SoilAnalyzer_OpeningFcn gets called.  An</span>
+<span class="comment">%      unrecognized property name or invalid value makes property application</span>
+<span class="comment">%      stop.  All inputs are passed to SoilAnalyzer_OpeningFcn via varargin.</span>
+<span class="comment">%</span>
+<span class="comment">%      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one</span>
+<span class="comment">%      instance to run (singleton)".</span>
+<span class="comment">%</span>
+<span class="comment">% See also: GUIDE, GUIDATA, GUIHANDLES</span>
+
+<span class="comment">% Edit the above text to modify the response to help SoilAnalyzer</span>
+
+<span class="comment">% Last Modified by GUIDE v2.5 15-Oct-2014 21:36:26</span>
+
+<span class="comment">% Begin initialization code - DO NOT EDIT</span>
+gui_Singleton = 1;
+gui_State = struct(<span class="string">'gui_Name'</span>,       mfilename, <span class="keyword">...</span>
+                   <span class="string">'gui_Singleton'</span>,  gui_Singleton, <span class="keyword">...</span>
+                   <span class="string">'gui_OpeningFcn'</span>, @SoilAnalyzer_OpeningFcn, <span class="keyword">...</span>
+                   <span class="string">'gui_OutputFcn'</span>,  @SoilAnalyzer_OutputFcn, <span class="keyword">...</span>
+                   <span class="string">'gui_LayoutFcn'</span>,  [] , <span class="keyword">...</span>
+                   <span class="string">'gui_Callback'</span>,   []);
+<span class="keyword">if</span> nargin &amp;&amp; ischar(varargin{1})
+    gui_State.gui_Callback = str2func(varargin{1});
+<span class="keyword">end</span>
+
+<span class="keyword">if</span> nargout
+    [varargout{1:nargout}] = gui_mainfcn(gui_State, varargin{:});
+<span class="keyword">else</span>
+    gui_mainfcn(gui_State, varargin{:});
+<span class="keyword">end</span>
+
+<span class="comment">% End initialization code - DO NOT EDIT</span>
+
+<span class="comment">% --- Executes just before SoilAnalyzer is made visible.</span>
+<span class="keyword">function</span> SoilAnalyzer_OpeningFcn(hObject, eventdata, handles, varargin)
+<span class="comment">% This function has no output args, see OutputFcn.</span>
+<span class="comment">% hObject    handle to figure</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+<span class="comment">% varargin   command line arguments to SoilAnalyzer (see VARARGIN)</span>
+
+<span class="comment">% Choose default command line output for SoilAnalyzer</span>
+handles.output = hObject;
+
+<span class="comment">% Init Beaglebone connection</span>
+<span class="keyword">global</span> bbb;
+bbb = beaglebone_black(<span class="string">'192.168.178.20'</span>, <span class="string">'root'</span>, <span class="string">'open'</span>);
+system(bbb, <span class="string">'./pwm_vision_matlab'</span>);
+
+<span class="comment">% Init the CAM</span>
+border = 0;
+<span class="keyword">global</span> cam src;
+cam = videoinput(<span class="string">'winvideo'</span>, 1, <span class="string">'MJPG_2048x1536'</span>);
+cam.FramesPerTrigger = 1;
+hImage = image(zeros(1536, 2048, 3), <span class="string">'Parent'</span>, handles.axes_Image);
+preview(cam, hImage);
+cam.ROIPosition = [ border border 2048-border 1536-border ];
+<span class="comment">%cam.PowerLineFrequency = 50;</span>
+
+
+
+<span class="comment">% Update handles structure</span>
+guidata(hObject, handles);
+
+<span class="comment">% UIWAIT makes SoilAnalyzer wait for user response (see UIRESUME)</span>
+<span class="comment">% uiwait(handles.figure1);</span>
+
+<span class="comment">% --- Outputs from this function are returned to the command line.</span>
+<span class="keyword">function</span> varargout = SoilAnalyzer_OutputFcn(hObject, eventdata, handles)
+<span class="comment">% varargout  cell array for returning output args (see VARARGOUT);</span>
+<span class="comment">% hObject    handle to figure</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+
+<span class="comment">% Get default command line output from handles structure</span>
+varargout{1} = handles.output;
+
+<span class="comment">% --- Executes on button press in pushbuttonSnap.</span>
+<span class="keyword">function</span> pushbuttonSnap_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to pushbuttonSnap (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+<span class="keyword">global</span> bbb cam I L Dis labI;
+system(bbb, <span class="string">'echo 1 &gt; /sys/class/gpio/gpio51/value &amp;&amp; echo 1 &gt; /sys/class/gpio/gpio50/value &amp;&amp; echo 1 &gt; /sys/class/gpio/gpio60/value'</span>);
+start(cam)
+I = getdata(cam);
+system(bbb, <span class="string">'echo 0 &gt; /sys/class/gpio/gpio51/value &amp;&amp; echo 0 &gt; /sys/class/gpio/gpio50/value &amp;&amp; echo 0 &gt; /sys/class/gpio/gpio60/value'</span>);
+L = GetLabeledImage(I);
+[Dis labI] = CIELabSoilColorDistribution(L, I);
+
+axes(handles.axes_Image);
+aImage = I;
+image(aImage);
+
+<span class="comment">% Update handles structure</span>
+guidata(hObject, handles);
+
+<span class="comment">% --- Executes on button press in pushbuttonAS.</span>
+<span class="keyword">function</span> pushbuttonAS_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to pushbuttonAS (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+
+<span class="keyword">global</span> L dis I P;
+<span class="comment">% Get CIElab scatterplot</span>
+L = GetLabeledImage(I);
+dis = CIELabSoilColorDistribution(L,I);
+axes(handles.axes_CIE);
+ma = mean(dis(:,1));
+mb = mean(dis(:,2));
+handels.axes_CIE = scatter(dis(:,1),dis(:,2),<span class="string">'.'</span>);
+hold <span class="string">on</span>
+plot([ma, ma],ylim,<span class="string">'r--'</span>,<span class="string">'LineWidth'</span>,1);
+plot(xlim, [mb, mb],<span class="string">'r--'</span>,<span class="string">'LineWidth'</span>,1);
+hold <span class="string">off</span>
+
+<span class="comment">% Get RI Histogram</span>
+RI = RISoilColorDistribution(L, I);
+axes(handles.axes_RI);
+mri = mean(RI);
+handels.axes_RI = hist(RI);
+hold <span class="string">on</span>
+plot([mri, mri],ylim,<span class="string">'r--'</span>,<span class="string">'LineWidth'</span>,1);
+hold <span class="string">off</span>
+
+<span class="comment">% Get PSD CDF plot</span>
+P = PSD(L);
+axes(handles.axes_PSD);
+handels.axes_PSD = cdfplot(P);
+
+<span class="comment">% Get the textuur histogram</span>
+
+
+<span class="comment">% --- Executes on button press in pushbutton3.</span>
+<span class="keyword">function</span> pushbutton3_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to pushbutton3 (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+</pre><img vspace="5" hspace="5" src="SoilAnalyzer_01.png" alt=""> <p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2014b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+function varargout = SoilAnalyzer(varargin)
+% SOILANALYZER MATLAB code for SoilAnalyzer.fig
+%      SOILANALYZER, by itself, creates a new SOILANALYZER or raises the existing
+%      singleton*.
+%
+%      H = SOILANALYZER returns the handle to a new SOILANALYZER or the handle to
+%      the existing singleton*.
+%
+%      SOILANALYZER('CALLBACK',hObject,eventData,handles,...) calls the local
+%      function named CALLBACK in SOILANALYZER.M with the given input arguments.
+%
+%      SOILANALYZER('Property','Value',...) creates a new SOILANALYZER or raises the
+%      existing singleton*.  Starting from the left, property value pairs are
+%      applied to the GUI before SoilAnalyzer_OpeningFcn gets called.  An
+%      unrecognized property name or invalid value makes property application
+%      stop.  All inputs are passed to SoilAnalyzer_OpeningFcn via varargin.
+%
+%      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
+%      instance to run (singleton)".
+%
+% See also: GUIDE, GUIDATA, GUIHANDLES
+
+% Edit the above text to modify the response to help SoilAnalyzer
+
+% Last Modified by GUIDE v2.5 15-Oct-2014 21:36:26
+
+% Begin initialization code - DO NOT EDIT
+gui_Singleton = 1;
+gui_State = struct('gui_Name',       mfilename, ...
+                   'gui_Singleton',  gui_Singleton, ...
+                   'gui_OpeningFcn', @SoilAnalyzer_OpeningFcn, ...
+                   'gui_OutputFcn',  @SoilAnalyzer_OutputFcn, ...
+                   'gui_LayoutFcn',  [] , ...
+                   'gui_Callback',   []);
+if nargin && ischar(varargin{1})
+    gui_State.gui_Callback = str2func(varargin{1});
+end
+
+if nargout
+    [varargout{1:nargout}] = gui_mainfcn(gui_State, varargin{:});
+else
+    gui_mainfcn(gui_State, varargin{:});
+end
+
+% End initialization code - DO NOT EDIT
+
+% REPLACE_WITH_DASH_DASH- Executes just before SoilAnalyzer is made visible.
+function SoilAnalyzer_OpeningFcn(hObject, eventdata, handles, varargin)
+% This function has no output args, see OutputFcn.
+% hObject    handle to figure
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+% varargin   command line arguments to SoilAnalyzer (see VARARGIN)
+
+% Choose default command line output for SoilAnalyzer
+handles.output = hObject;
+
+% Init Beaglebone connection
+global bbb;
+bbb = beaglebone_black('192.168.178.20', 'root', 'open');
+system(bbb, './pwm_vision_matlab');
+
+% Init the CAM
+border = 0;
+global cam src;
+cam = videoinput('winvideo', 1, 'MJPG_2048x1536');
+cam.FramesPerTrigger = 1;
+hImage = image(zeros(1536, 2048, 3), 'Parent', handles.axes_Image);
+preview(cam, hImage);
+cam.ROIPosition = [ border border 2048-border 1536-border ];
+%cam.PowerLineFrequency = 50;
+
+
+
+% Update handles structure
+guidata(hObject, handles);
+
+% UIWAIT makes SoilAnalyzer wait for user response (see UIRESUME)
+% uiwait(handles.figure1);
+
+% REPLACE_WITH_DASH_DASH- Outputs from this function are returned to the command line.
+function varargout = SoilAnalyzer_OutputFcn(hObject, eventdata, handles) 
+% varargout  cell array for returning output args (see VARARGOUT);
+% hObject    handle to figure
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Get default command line output from handles structure
+varargout{1} = handles.output;
+
+% REPLACE_WITH_DASH_DASH- Executes on button press in pushbuttonSnap.
+function pushbuttonSnap_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbuttonSnap (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+global bbb cam I L Dis labI;
+system(bbb, 'echo 1 > /sys/class/gpio/gpio51/value && echo 1 > /sys/class/gpio/gpio50/value && echo 1 > /sys/class/gpio/gpio60/value');
+start(cam)
+I = getdata(cam);
+system(bbb, 'echo 0 > /sys/class/gpio/gpio51/value && echo 0 > /sys/class/gpio/gpio50/value && echo 0 > /sys/class/gpio/gpio60/value');
+L = GetLabeledImage(I);
+[Dis labI] = CIELabSoilColorDistribution(L, I);
+
+axes(handles.axes_Image);
+aImage = I;
+image(aImage);
+
+% Update handles structure
+guidata(hObject, handles);
+
+% REPLACE_WITH_DASH_DASH- Executes on button press in pushbuttonAS.
+function pushbuttonAS_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbuttonAS (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+global L dis I P;
+% Get CIElab scatterplot
+L = GetLabeledImage(I);
+dis = CIELabSoilColorDistribution(L,I);
+axes(handles.axes_CIE);
+ma = mean(dis(:,1));
+mb = mean(dis(:,2));
+handels.axes_CIE = scatter(dis(:,1),dis(:,2),'.');
+hold on
+plot([ma, ma],ylim,'rREPLACE_WITH_DASH_DASH','LineWidth',1);
+plot(xlim, [mb, mb],'rREPLACE_WITH_DASH_DASH','LineWidth',1);
+hold off
+
+% Get RI Histogram
+RI = RISoilColorDistribution(L, I);
+axes(handles.axes_RI);
+mri = mean(RI);
+handels.axes_RI = hist(RI);
+hold on
+plot([mri, mri],ylim,'rREPLACE_WITH_DASH_DASH','LineWidth',1);
+hold off
+
+% Get PSD CDF plot
+P = PSD(L);
+axes(handles.axes_PSD);
+handels.axes_PSD = cdfplot(P);
+
+% Get the textuur histogram
+
+
+% REPLACE_WITH_DASH_DASH- Executes on button press in pushbutton3.
+function pushbutton3_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton3 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+##### SOURCE END #####
+--></body></html>

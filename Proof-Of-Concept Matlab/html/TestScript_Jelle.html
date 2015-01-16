@@ -1,0 +1,355 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>TestScript_Jelle</title><meta name="generator" content="MATLAB 8.4"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2014-11-02"><meta name="DC.source" content="TestScript_Jelle.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#1">Init Beaglebone connection</a></li><li><a href="#2">Init the CAM</a></li><li><a href="#3">Get Images</a></li><li><a href="#4">Convert RGB to Intensity</a></li><li><a href="#5">Convert to BW</a></li><li><a href="#6">Remove border blobs</a></li><li><a href="#7">Calulate Area</a></li><li><a href="#8">Get color matrix of foreground</a></li><li><a href="#9">Calc CIE La*b*</a></li><li><a href="#10">Calc RI</a></li></ul></div><h2>Init Beaglebone connection<a name="1"></a></h2><pre class="codeinput">tic;
+clear;
+
+bbb = beaglebone_black(<span class="string">'192.168.178.20'</span>, <span class="string">'root'</span>, <span class="string">'open'</span>);
+system(bbb, <span class="string">'./pwm_vision_matlab'</span>);
+
+formatSpec = <span class="string">'Setting up de Beaglebone %d [sec].'</span>;
+str = sprintf(formatSpec,toc);
+disp(str);
+</pre><pre class="codeoutput">Setting up de Beaglebone 4.105980e+00 [sec].
+</pre><h2>Init the CAM<a name="2"></a></h2><pre class="codeinput">tic;
+
+cam = videoinput(<span class="string">'winvideo'</span>, 1, <span class="string">'MJPG_2048x1536'</span>);
+cam.FramesPerTrigger = 1;
+border = 750;
+cam.ROIPosition = [ border border 2048-border 1536-border ];
+
+src = getselectedsource(cam);
+src.BacklightCompensation = <span class="string">'off'</span>;
+src.Sharpness = 2;
+src.Contrast = 40;
+
+formatSpec = <span class="string">'Setting up de cam %d [sec].'</span>;
+str = sprintf(formatSpec,toc);
+disp(str);
+</pre><pre class="codeoutput">Setting up de cam 2.202551e+00 [sec].
+</pre><h2>Get Images<a name="3"></a></h2><pre class="codeinput">tic;
+
+system(bbb, <span class="string">'echo 1 &gt; /sys/class/gpio/gpio51/value &amp;&amp; echo 1 &gt; /sys/class/gpio/gpio50/value &amp;&amp; echo 1 &gt; /sys/class/gpio/gpio60/value'</span>);
+start(cam)
+I = getdata(cam);
+system(bbb, <span class="string">'echo 0 &gt; /sys/class/gpio/gpio51/value &amp;&amp; echo 0 &gt; /sys/class/gpio/gpio50/value &amp;&amp; echo 0 &gt; /sys/class/gpio/gpio60/value'</span>);
+
+imshow(I)
+
+formatSpec = <span class="string">'Getting a image %d [sec].'</span>;
+str = sprintf(formatSpec,toc);
+disp(str);
+</pre><pre class="codeoutput">Getting a image 6.296281e+00 [sec].
+</pre><img vspace="5" hspace="5" src="TestScript_Jelle_01.png" alt=""> <h2>Convert RGB to Intensity<a name="4"></a></h2><pre class="codeinput">tic;
+
+hcsc = vision.ColorSpaceConverter(<span class="string">'Conversion'</span>, <span class="string">'RGB to intensity'</span>);
+Int = step(hcsc, I);
+
+imshow(Int)
+
+formatSpec = <span class="string">'Convert RGB to Intensity %d [sec].'</span>;
+str = sprintf(formatSpec,toc);
+disp(str);
+</pre><pre class="codeoutput">Convert RGB to Intensity 1.571493e-01 [sec].
+</pre><img vspace="5" hspace="5" src="TestScript_Jelle_02.png" alt=""> <h2>Convert to BW<a name="5"></a></h2><pre class="codeinput">tic;
+
+H = vision.Autothresholder;
+BW = step(H, Int);
+BW = imfill(~BW,<span class="string">'holes'</span>);
+
+imshow(BW)
+
+formatSpec = <span class="string">'Convert to BW %d [sec].'</span>;
+str = sprintf(formatSpec,toc);
+disp(str);
+</pre><pre class="codeoutput">Convert to BW 2.440793e-01 [sec].
+</pre><img vspace="5" hspace="5" src="TestScript_Jelle_03.png" alt=""> <h2>Remove border blobs<a name="6"></a></h2><pre class="codeinput">tic;
+
+[r c] = size(BW);
+
+BW(1, :) = 1;
+BW(:, 1) = 1;
+BW(r, :) = 1;
+BW(:, c) = 1;
+BWl = bwlabel(BW,8);
+BWl(BWl == BWl(1,1)) = 0;
+BWl(BWl &gt; 0) = 1;
+BWl = logical(BWl);
+
+imshow(BWl)
+
+formatSpec = <span class="string">'Remove border blobs %d [sec].'</span>;
+str = sprintf(formatSpec,toc);
+disp(str);
+</pre><pre class="codeoutput">Remove border blobs 1.178870e-01 [sec].
+</pre><img vspace="5" hspace="5" src="TestScript_Jelle_04.png" alt=""> <h2>Calulate Area<a name="7"></a></h2><pre class="codeinput">tic;
+
+L = bwlabel(BWl,8);
+s  = regionprops(L,<span class="string">'Area'</span>);
+area = cat(1, s.Area);
+<span class="comment">%area = (area.^(3/2))./(6*sqrt(pi));</span>
+hist(area);
+
+formatSpec = <span class="string">'Calulate Area %d [sec].'</span>;
+str = sprintf(formatSpec,toc);
+disp(str);
+</pre><pre class="codeoutput">Calulate Area 6.882696e-02 [sec].
+</pre><img vspace="5" hspace="5" src="TestScript_Jelle_05.png" alt=""> <h2>Get color matrix of foreground<a name="8"></a></h2><pre class="codeinput">tic;
+
+[m n ~] = size(I);
+Ic(m, n, 3)=0;
+Ic(:,:,1) = I(:,:,1).*uint8(BW);
+Ic(:,:,2) = I(:,:,2).*uint8(BW);
+Ic(:,:,3) = I(:,:,3).*uint8(BW);
+Ic = uint8(Ic);
+
+formatSpec = <span class="string">'Get Color Matrix %d [sec].'</span>;
+str = sprintf(formatSpec,toc);
+disp(str);
+</pre><pre class="codeoutput">Get Color Matrix 6.355854e-02 [sec].
+</pre><h2>Calc CIE La*b*<a name="9"></a></h2><pre class="codeinput">tic;
+
+hcscLAB = vision.ColorSpaceConverter;
+hcscLAB.Conversion = <span class="string">'sRGB to L*a*b*'</span>;
+LAB2 = step(hcscLAB, double(Ic));
+
+L2 = LAB2(:,:,1);
+a2 = LAB2(:,:,2);
+b2 = LAB2(:,:,3);
+a2(L2 == 0) = NaN;
+b2(L2 == 0) = NaN;
+
+scatterhist(a2(:),b2(:))
+
+formatSpec = <span class="string">'Calc CIE La*b* alternative 2 %d [sec].'</span>;
+str = sprintf(formatSpec,toc);
+disp(str);
+</pre><pre class="codeoutput">Calc CIE La*b* alternative 2 2.521006e+00 [sec].
+</pre><img vspace="5" hspace="5" src="TestScript_Jelle_06.png" alt=""> <h2>Calc RI<a name="10"></a></h2><pre class="codeinput">tic;
+
+RI(m, n) = 0;
+<span class="keyword">parfor</span> i = 1:m
+     <span class="keyword">for</span> j = 1:n
+         RI(i,j) = ((a2(i,j)*(a2(i,j)^2 + b2(i,j)^2)^(1/2))*10^(8.2))/(b2(i,j)*L2(i,j)^6);
+     <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+RI(L == 0) = NaN;
+
+formatSpec = <span class="string">'Calc RI %d [sec].'</span>;
+str = sprintf(formatSpec,toc);
+disp(str);
+</pre><pre class="codeoutput">Calc RI 2.851456e+00 [sec].
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2014b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Init Beaglebone connection
+tic;
+clear;
+
+bbb = beaglebone_black('192.168.178.20', 'root', 'open');
+system(bbb, './pwm_vision_matlab');
+
+formatSpec = 'Setting up de Beaglebone %d [sec].';
+str = sprintf(formatSpec,toc);
+disp(str);
+%% Init the CAM
+tic;
+
+cam = videoinput('winvideo', 1, 'MJPG_2048x1536');
+cam.FramesPerTrigger = 1;
+border = 750;
+cam.ROIPosition = [ border border 2048-border 1536-border ];
+
+src = getselectedsource(cam);
+src.BacklightCompensation = 'off';
+src.Sharpness = 2;
+src.Contrast = 40;
+
+formatSpec = 'Setting up de cam %d [sec].';
+str = sprintf(formatSpec,toc);
+disp(str);
+%% Get Images
+tic;
+
+system(bbb, 'echo 1 > /sys/class/gpio/gpio51/value && echo 1 > /sys/class/gpio/gpio50/value && echo 1 > /sys/class/gpio/gpio60/value');
+start(cam)
+I = getdata(cam);
+system(bbb, 'echo 0 > /sys/class/gpio/gpio51/value && echo 0 > /sys/class/gpio/gpio50/value && echo 0 > /sys/class/gpio/gpio60/value');
+
+imshow(I)
+
+formatSpec = 'Getting a image %d [sec].';
+str = sprintf(formatSpec,toc);
+disp(str);
+%% Convert RGB to Intensity
+tic;
+
+hcsc = vision.ColorSpaceConverter('Conversion', 'RGB to intensity');
+Int = step(hcsc, I);
+
+imshow(Int)
+
+formatSpec = 'Convert RGB to Intensity %d [sec].';
+str = sprintf(formatSpec,toc);
+disp(str);
+%% Convert to BW
+tic;
+
+H = vision.Autothresholder;
+BW = step(H, Int);
+BW = imfill(~BW,'holes');
+
+imshow(BW)
+
+formatSpec = 'Convert to BW %d [sec].';
+str = sprintf(formatSpec,toc);
+disp(str);
+
+%% Remove border blobs
+tic;
+
+[r c] = size(BW);
+
+BW(1, :) = 1;
+BW(:, 1) = 1;
+BW(r, :) = 1;
+BW(:, c) = 1;
+BWl = bwlabel(BW,8);
+BWl(BWl == BWl(1,1)) = 0;
+BWl(BWl > 0) = 1;
+BWl = logical(BWl);
+
+imshow(BWl)
+
+formatSpec = 'Remove border blobs %d [sec].';
+str = sprintf(formatSpec,toc);
+disp(str);
+%% Calulate Area
+tic;
+
+L = bwlabel(BWl,8);
+s  = regionprops(L,'Area');
+area = cat(1, s.Area);
+%area = (area.^(3/2))./(6*sqrt(pi));
+hist(area);
+
+formatSpec = 'Calulate Area %d [sec].';
+str = sprintf(formatSpec,toc);
+disp(str);
+%% Get color matrix of foreground
+tic;
+
+[m n ~] = size(I);
+Ic(m, n, 3)=0;
+Ic(:,:,1) = I(:,:,1).*uint8(BW);
+Ic(:,:,2) = I(:,:,2).*uint8(BW);
+Ic(:,:,3) = I(:,:,3).*uint8(BW);
+Ic = uint8(Ic);
+
+formatSpec = 'Get Color Matrix %d [sec].';
+str = sprintf(formatSpec,toc);
+disp(str);
+
+%%  Calc CIE La*b* 
+tic;
+
+hcscLAB = vision.ColorSpaceConverter;
+hcscLAB.Conversion = 'sRGB to L*a*b*';
+LAB2 = step(hcscLAB, double(Ic));
+
+L2 = LAB2(:,:,1);
+a2 = LAB2(:,:,2);
+b2 = LAB2(:,:,3);
+a2(L2 == 0) = NaN;
+b2(L2 == 0) = NaN;
+
+scatterhist(a2(:),b2(:))
+
+formatSpec = 'Calc CIE La*b* alternative 2 %d [sec].';
+str = sprintf(formatSpec,toc);
+disp(str);
+
+%% Calc RI
+tic;
+
+RI(m, n) = 0;
+parfor i = 1:m
+     for j = 1:n
+         RI(i,j) = ((a2(i,j)*(a2(i,j)^2 + b2(i,j)^2)^(1/2))*10^(8.2))/(b2(i,j)*L2(i,j)^6);
+     end
+end
+
+RI(L == 0) = NaN;
+
+formatSpec = 'Calc RI %d [sec].';
+str = sprintf(formatSpec,toc);
+disp(str);
+
+
+##### SOURCE END #####
+--></body></html>

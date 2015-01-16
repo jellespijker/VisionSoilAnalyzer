@@ -1,0 +1,266 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>GetLabeledImage</title><meta name="generator" content="MATLAB 8.4"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2014-10-31"><meta name="DC.source" content="GetLabeledImage.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><pre class="codeinput"><span class="keyword">function</span> [ L n ] = GetLabeledImage( I )
+<span class="comment">%GETLABELEDIMAGE ( I) Convert the color image to a black and white logical image</span>
+<span class="comment">%</span>
+<span class="comment">%   Copyright (c) 2014 Jelle Spijker</span>
+<span class="comment">%</span>
+<span class="comment">%  Permission is hereby granted, free of charge, to any person</span>
+<span class="comment">%  obtaining a copy of this software and associated documentation</span>
+<span class="comment">%  files (the "Software"), to deal in the Software without</span>
+<span class="comment">%  restriction, including without limitation the rights to use,</span>
+<span class="comment">%  copy, modify, merge, publish, distribute, sublicense, and/or sell</span>
+<span class="comment">%  copies of the Software, and to permit persons to whom the</span>
+<span class="comment">%  Software is furnished to do so, subject to the following</span>
+<span class="comment">%  conditions:</span>
+<span class="comment">%</span>
+<span class="comment">%  The above copyright notice and this permission notice shall be</span>
+<span class="comment">%  included in all copies or substantial portions of the Software.</span>
+<span class="comment">%</span>
+<span class="comment">%  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,</span>
+<span class="comment">%  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES</span>
+<span class="comment">%  OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND</span>
+<span class="comment">%  NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT</span>
+<span class="comment">%  HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,</span>
+<span class="comment">%  WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING</span>
+<span class="comment">%  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR</span>
+<span class="comment">%  OTHER DEALINGS IN THE SOFTWARE.</span>
+
+hcsc = vision.ColorSpaceConverter(<span class="string">'Conversion'</span>, <span class="string">'RGB to intensity'</span>);
+Int = step(hcsc, I);
+[m, n] = size(Int);
+
+L = zeros(m, n);
+H = fspecial(<span class="string">'gaussian'</span>,[5 5],0.6);
+
+<span class="comment">% calculate the treshold and convert to BW</span>
+Tr = uint8(mean(Int(:)) - (1/2)*std(double(Int(:))));
+BW = zeros(size(Int));
+BW(Int &lt; Tr) = 1;
+
+<span class="comment">% Close the image (remove small holes and openings)</span>
+SE = strel(<span class="string">'disk'</span>, 20,0);
+BWROI = imclose(BW, SE);
+
+<span class="comment">% Determine Tresshold more closely for each region and build new picture</span>
+hblob = vision.BlobAnalysis;
+hblob.AreaOutputPort = true;
+hblob.BoundingBoxOutputPort = true;
+hblob.MaximumCount = 1000;
+
+[Area, Centroid, Blobs] = step(hblob, logical(BWROI));
+[noblobs, ~] = size(Blobs);
+
+<span class="keyword">for</span> i = 1:noblobs
+    <span class="comment">% Extract ROI + border from source intensity picture an determine new thresshold</span>
+    boxROI = [Blobs(i,2) Blobs(i,2)+Blobs(i,4)-1 Blobs(i,1) Blobs(i,1)+Blobs(i,3)-1];
+    expansionBorder = 10;
+    <span class="keyword">if</span> boxROI(1) &lt;= expansionBorder
+        boxROI(1) = 1;
+    <span class="keyword">else</span>
+        boxROI(1) = boxROI(1) - expansionBorder;
+    <span class="keyword">end</span>
+    <span class="keyword">if</span> boxROI(2) &gt; (m - expansionBorder)
+        boxROI(2) = m;
+    <span class="keyword">else</span>
+        boxROI(2) = boxROI(2) + expansionBorder;
+    <span class="keyword">end</span>
+    <span class="keyword">if</span> boxROI(3) &lt;= expansionBorder
+        boxROI(3) = 1;
+    <span class="keyword">else</span>
+        boxROI(3) = boxROI(3) - expansionBorder;
+    <span class="keyword">end</span>
+    <span class="keyword">if</span> boxROI(4) &gt;= (n - expansionBorder)
+        boxROI(4) = n;
+    <span class="keyword">else</span>
+        boxROI(4) = boxROI(4) + expansionBorder;
+    <span class="keyword">end</span>
+    ROI = Int(boxROI(1):boxROI(2),boxROI(3):boxROI(4));
+
+    ROI = imfilter(ROI,H,<span class="string">'symetric'</span>);
+    level = graythresh(ROI) + ((1/3)*std(double(ROI(:))))/255;
+    BWROI = im2bw(ROI,level);
+    BWROI = ~BWROI;
+
+    <span class="comment">% Erode the new region of interrest with a disk of 2.5%</span>
+    total = sqrt(double(bwarea(BWROI)));
+    se = strel(<span class="string">'disk'</span>,round(total*0.025));
+    erodedI = imerode(BWROI,se);
+
+    BWROI = imfill(erodedI, <span class="string">'holes'</span>);
+    BWROI = RemoveBorderBlobs(BWROI);
+    L(boxROI(1):boxROI(2),boxROI(3):boxROI(4)) = BWROI;
+<span class="keyword">end</span>
+
+L = logical(L);
+
+<span class="keyword">end</span>
+</pre><pre class="codeoutput error">Error using GetLabeledImage (line 28)
+Not enough input arguments.
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2014b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+function [ L n ] = GetLabeledImage( I )
+%GETLABELEDIMAGE ( I) Convert the color image to a black and white logical image
+%
+%   Copyright (c) 2014 Jelle Spijker
+% 
+%  Permission is hereby granted, free of charge, to any person
+%  obtaining a copy of this software and associated documentation
+%  files (the "Software"), to deal in the Software without
+%  restriction, including without limitation the rights to use,
+%  copy, modify, merge, publish, distribute, sublicense, and/or sell
+%  copies of the Software, and to permit persons to whom the
+%  Software is furnished to do so, subject to the following
+%  conditions:
+% 
+%  The above copyright notice and this permission notice shall be
+%  included in all copies or substantial portions of the Software.
+% 
+%  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+%  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+%  OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+%  NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+%  HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+%  WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+%  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+%  OTHER DEALINGS IN THE SOFTWARE.
+
+hcsc = vision.ColorSpaceConverter('Conversion', 'RGB to intensity');
+Int = step(hcsc, I);
+[m, n] = size(Int);
+
+L = zeros(m, n);
+H = fspecial('gaussian',[5 5],0.6);
+
+% calculate the treshold and convert to BW
+Tr = uint8(mean(Int(:)) - (1/2)*std(double(Int(:))));
+BW = zeros(size(Int));
+BW(Int < Tr) = 1;
+
+% Close the image (remove small holes and openings)
+SE = strel('disk', 20,0);
+BWROI = imclose(BW, SE);
+
+% Determine Tresshold more closely for each region and build new picture
+hblob = vision.BlobAnalysis;
+hblob.AreaOutputPort = true;
+hblob.BoundingBoxOutputPort = true;
+hblob.MaximumCount = 1000;
+
+[Area, Centroid, Blobs] = step(hblob, logical(BWROI));
+[noblobs, ~] = size(Blobs);
+
+for i = 1:noblobs
+    % Extract ROI + border from source intensity picture an determine new thresshold
+    boxROI = [Blobs(i,2) Blobs(i,2)+Blobs(i,4)-1 Blobs(i,1) Blobs(i,1)+Blobs(i,3)-1];
+    expansionBorder = 10;
+    if boxROI(1) <= expansionBorder
+        boxROI(1) = 1;
+    else
+        boxROI(1) = boxROI(1) - expansionBorder;
+    end
+    if boxROI(2) > (m - expansionBorder)
+        boxROI(2) = m;
+    else
+        boxROI(2) = boxROI(2) + expansionBorder;
+    end
+    if boxROI(3) <= expansionBorder
+        boxROI(3) = 1;
+    else
+        boxROI(3) = boxROI(3) - expansionBorder;
+    end
+    if boxROI(4) >= (n - expansionBorder)
+        boxROI(4) = n;
+    else
+        boxROI(4) = boxROI(4) + expansionBorder;
+    end    
+    ROI = Int(boxROI(1):boxROI(2),boxROI(3):boxROI(4));
+    
+    ROI = imfilter(ROI,H,'symetric');
+    level = graythresh(ROI) + ((1/3)*std(double(ROI(:))))/255;
+    BWROI = im2bw(ROI,level);
+    BWROI = ~BWROI;
+    
+    % Erode the new region of interrest with a disk of 2.5%
+    total = sqrt(double(bwarea(BWROI)));
+    se = strel('disk',round(total*0.025));
+    erodedI = imerode(BWROI,se);
+    
+    BWROI = imfill(erodedI, 'holes');
+    BWROI = RemoveBorderBlobs(BWROI);
+    L(boxROI(1):boxROI(2),boxROI(3):boxROI(4)) = BWROI;
+end
+
+L = logical(L);
+
+end
+
+
+##### SOURCE END #####
+--></body></html>
