@@ -50,12 +50,12 @@ namespace Vision
 		{
 			// Gets an array of the left part of the histogram
 			uint32_t i = T.first;
-			uint32_t *Left = new uint32_t[i] { 0 };
+			uint32_t *Left = new uint32_t[i] { };
 			while (i-- > 0)	{ Left[i] = OriginalImgStats.bins[i]; }
 
 			// Gets an array of the right part of the histogram
 			uint32_t rightEnd = 256 - T.first;
-			uint32_t *Right = new uint32_t[rightEnd] { 0 };
+			uint32_t *Right = new uint32_t[rightEnd] { };
 			i = rightEnd;
 			while (i-- > 0) { Right[i] = OriginalImgStats.bins[i + T.first]; }
 
@@ -651,7 +651,7 @@ namespace Vision
 		// Loop through the BlobList and finalize it
 		i = 1;
 		pEnd = MaxLabel + 1;
-		ushort *LUT_filter = new ushort[MaxLabel + 1]{ 0 };
+		ushort *LUT_filter = new ushort[MaxLabel + 1]{ };
 		uint32_t x, y;
 		
 		while (i < pEnd)

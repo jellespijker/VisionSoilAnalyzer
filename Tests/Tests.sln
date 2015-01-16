@@ -11,10 +11,20 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SoilMath", "..\src\VisionSoilAnalyzer\SoilMath\SoilMath.vcxproj", "{67EFE1EA-DD56-4EFC-863E-F9637393F160}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Vision", "..\src\VisionSoilAnalyzer\Vision\Vision.vcxproj", "{BA62F399-AD92-4B6B-99EC-DDC785FF70BD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{67EFE1EA-DD56-4EFC-863E-F9637393F160} = {67EFE1EA-DD56-4EFC-863E-F9637393F160}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Test_Vision", "Test_Vision\Test_Vision.vcxproj", "{FBA6AC19-9A44-410A-8D5C-C36EC4DF7C8F}"
 	ProjectSection(ProjectDependencies) = postProject
 		{BA62F399-AD92-4B6B-99EC-DDC785FF70BD} = {BA62F399-AD92-4B6B-99EC-DDC785FF70BD}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Hardware", "..\src\VisionSoilAnalyzer\Hardware\Hardware.vcxproj", "{F659EC64-6260-462B-B2C9-DB1E432CF818}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Test_Hardware", "Test_Hardware\Test_Hardware.vcxproj", "{8CE9D5FA-03FA-4464-A564-E696D96EBA67}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F659EC64-6260-462B-B2C9-DB1E432CF818} = {F659EC64-6260-462B-B2C9-DB1E432CF818}
 	EndProjectSection
 EndProject
 Global
@@ -39,6 +49,14 @@ Global
 		{FBA6AC19-9A44-410A-8D5C-C36EC4DF7C8F}.Debug|Win32.Build.0 = Debug|Win32
 		{FBA6AC19-9A44-410A-8D5C-C36EC4DF7C8F}.Release|Win32.ActiveCfg = Release|Win32
 		{FBA6AC19-9A44-410A-8D5C-C36EC4DF7C8F}.Release|Win32.Build.0 = Release|Win32
+		{F659EC64-6260-462B-B2C9-DB1E432CF818}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F659EC64-6260-462B-B2C9-DB1E432CF818}.Debug|Win32.Build.0 = Debug|Win32
+		{F659EC64-6260-462B-B2C9-DB1E432CF818}.Release|Win32.ActiveCfg = Release|Win32
+		{F659EC64-6260-462B-B2C9-DB1E432CF818}.Release|Win32.Build.0 = Release|Win32
+		{8CE9D5FA-03FA-4464-A564-E696D96EBA67}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8CE9D5FA-03FA-4464-A564-E696D96EBA67}.Debug|Win32.Build.0 = Debug|Win32
+		{8CE9D5FA-03FA-4464-A564-E696D96EBA67}.Release|Win32.ActiveCfg = Release|Win32
+		{8CE9D5FA-03FA-4464-A564-E696D96EBA67}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

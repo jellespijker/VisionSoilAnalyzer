@@ -238,7 +238,7 @@ namespace Hardware
 
 		// Write the desired value to the file
 		eQEP::eQEP_Mode mode;
-		fscanf(fp, "%u", &mode);
+		fscanf(fp, "%u", (unsigned int*)&mode);
 
 		// Commit changes
 		fclose(fp);

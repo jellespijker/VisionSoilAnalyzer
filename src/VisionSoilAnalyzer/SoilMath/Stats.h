@@ -49,7 +49,7 @@ namespace SoilMath
 			Startbin = startBin;
 			EndBin = endBin;
 			this->noBins = noBins;
-			bins = new uint32_t[noBins] { 0 };
+			bins = new uint32_t[noBins] { };
 
 			if (typeid(T1) == typeid(float) || typeid(T1) == typeid(double) || typeid(T1) == typeid(long double))
 			{
@@ -86,7 +86,7 @@ namespace SoilMath
 			Data = data;
 			Rows = rows;
 			Cols = cols;
-			bins = new uint32_t[noBins] { 0 };
+			bins = new uint32_t[noBins] { };
 			this->noBins = noBins;
 			if (isDiscrete) { BasicCalculate(); }
 			else { BasicCalculateFloat(); }
@@ -115,7 +115,7 @@ namespace SoilMath
 				binRange = static_cast<T1>(round((EndBin - Startbin) / noBins));
 			}
 
-			bins = new uint32_t[noBins] { 0 };
+			bins = new uint32_t[noBins] { };
 			while (i-- > 0)
 			{
 				bins[i] = binData[i];
