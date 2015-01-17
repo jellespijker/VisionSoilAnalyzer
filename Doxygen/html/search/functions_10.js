@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['sample',['Sample',['../class_soil_analyzer_1_1_sample.html#a6b7513ef6317fc86181d5b9901d0ce07',1,'SoilAnalyzer::Sample::Sample()'],['../class_soil_analyzer_1_1_sample.html#a8bc19c713faff2bfdde7b494f56fe4c1',1,'SoilAnalyzer::Sample::Sample(const Mat &amp;src)']]],
+  ['segment',['Segment',['../class_vision_1_1_segment.html#adfe9fc7ffcc7269f961d4b1f6720d1e8',1,'Vision::Segment::Segment()'],['../class_vision_1_1_segment.html#ad3c4765e0e519f8d5fc7ac2e567608ee',1,'Vision::Segment::Segment(const Mat &amp;src)']]],
+  ['segmentparticles',['SegmentParticles',['../class_soil_analyzer_1_1_sample.html#a5b10b1e1b603f04e6490bed613457704',1,'SoilAnalyzer::Sample']]],
+  ['set_5fmode',['set_mode',['../class_hardware_1_1e_q_e_p.html#a137d1fb0b0e5772487ece48254342294',1,'Hardware::eQEP']]],
+  ['set_5fperiod',['set_period',['../class_hardware_1_1e_q_e_p.html#ae45ebd84fa06042ba6b9e5d5caccc1ed',1,'Hardware::eQEP']]],
+  ['set_5fposition',['set_position',['../class_hardware_1_1e_q_e_p.html#aa55fc881377f4fc3396895de65ed9161',1,'Hardware::eQEP']]],
+  ['setborder',['SetBorder',['../class_vision_1_1_segment.html#ae3349aa3725f883943fb316c0d52752d',1,'Vision::Segment']]],
+  ['setdirection',['SetDirection',['../class_hardware_1_1_g_p_i_o.html#a4a9fc2f7be304a6b23c2a2876b4c6bf9',1,'Hardware::GPIO']]],
+  ['setduty',['SetDuty',['../class_hardware_1_1_p_w_m.html#a93ea3627da17bf143ac548cbd623d13d',1,'Hardware::PWM']]],
+  ['setedge',['SetEdge',['../class_hardware_1_1_g_p_i_o.html#a4d4ab3b0f1ee53590a300bfbcccae895',1,'Hardware::GPIO']]],
+  ['setintensity',['SetIntensity',['../class_hardware_1_1_p_w_m.html#ad6c6bb44a237454c86c1c28330f76afe',1,'Hardware::PWM::SetIntensity(float value)'],['../class_hardware_1_1_p_w_m.html#abf855c57004d264ec066fbd1a87fd5a8',1,'Hardware::PWM::SetIntensity()']]],
+  ['setmaxintensity',['SetMaxIntensity',['../class_hardware_1_1_a_d_c.html#a998247eb9c5288249b6408312618857a',1,'Hardware::ADC']]],
+  ['setminintensity',['SetMinIntensity',['../class_hardware_1_1_a_d_c.html#a3703337f2df47ae09c52e6a105e739a3',1,'Hardware::ADC']]],
+  ['setperiod',['SetPeriod',['../class_hardware_1_1_p_w_m.html#a205b979fa8b87d25b01ac8e8d0f06fb6',1,'Hardware::PWM']]],
+  ['setpixelcolor',['SetPixelColor',['../class_hardware_1_1_e_c12_p.html#a9ef5c813c9eb38db1c236d1be0d23911',1,'Hardware::EC12P']]],
+  ['setpixelvalue',['SetPixelValue',['../class_hardware_1_1_p_w_m.html#ad9b2d460ab02f958653ff29b4cb62a80',1,'Hardware::PWM']]],
+  ['setpolarity',['SetPolarity',['../class_hardware_1_1_p_w_m.html#a2fc3f25039bd180daf3af186912c3a29',1,'Hardware::PWM']]],
+  ['setrun',['SetRun',['../class_hardware_1_1_p_w_m.html#a73b5f0047d4eb62f93f72745124fca73',1,'Hardware::PWM']]],
+  ['setvalue',['SetValue',['../class_hardware_1_1_g_p_i_o.html#a2564893797de6a2dab596c4fc990b919',1,'Hardware::GPIO']]],
+  ['soil',['Soil',['../class_soil_analyzer_1_1_soil.html#aee6934dca3d712e86648f92d60e78765',1,'SoilAnalyzer::Soil']]],
+  ['soilcape',['SoilCape',['../class_hardware_1_1_soil_cape.html#acbe71c2b3132c35e3aa9fb619e193a10',1,'Hardware::SoilCape']]],
+  ['sort',['Sort',['../class_soil_math_1_1_sort.html#ac5553af8753454e71e6d621690fdab3f',1,'SoilMath::Sort']]],
+  ['stats',['Stats',['../class_soil_math_1_1_stats.html#a2bc3899fe78a6c5fedad5f22b90d9963',1,'SoilMath::Stats::Stats(int noBins=256, T1 startBin=0, T1 endBin=255)'],['../class_soil_math_1_1_stats.html#abeac34a7efc9b08bf3bade8ab23cadee',1,'SoilMath::Stats::Stats(T1 *data, uint16_t rows, uint16_t cols, int noBins=256, T1 startBin=0, T1 endBin=255)'],['../class_soil_math_1_1_stats.html#aba14006e6fdc6369a9e723390ed5d75c',1,'SoilMath::Stats::Stats(T2 *binData, uint16_t startC, uint16_t endC)']]],
+  ['stoprainbowloop',['StopRainbowLoop',['../class_hardware_1_1_e_c12_p.html#acc39f96105144c8aa5fca04942832987',1,'Hardware::EC12P']]],
+  ['stringtonumber',['StringToNumber',['../class_hardware_1_1_b_b_b.html#a7484c095027594aa5bfde8b56b73be7b',1,'Hardware::BBB']]]
+];
