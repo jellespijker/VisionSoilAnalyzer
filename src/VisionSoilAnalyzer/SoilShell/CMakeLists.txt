@@ -3,7 +3,7 @@
 
 cmake_minimum_required(VERSION 2.7)
 project(SoilShell)
-set(LIBRARIES_FROM_REFERENCES ${CMAKE_SOURCE_DIR}/../Vision/Debug/libVision.a)
+set(LIBRARIES_FROM_REFERENCES ${CMAKE_SOURCE_DIR}/../Hardware/Debug_BBB/libHardware.a ${CMAKE_SOURCE_DIR}/../Vision/Debug_BBB/libVision.a ${CMAKE_SOURCE_DIR}/../Soil/Debug_BBB/Soil ${CMAKE_SOURCE_DIR}/../SoilMath/Debug_BBB/libSoilMath.a)
 add_executable(SoilShell SoilShell.cpp)
 target_link_libraries(SoilShell "${LIBRARIES_FROM_REFERENCES}")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c++11 -ggdb -ffunction-sections -O0")

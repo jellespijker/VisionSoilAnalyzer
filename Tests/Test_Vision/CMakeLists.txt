@@ -3,7 +3,7 @@
 
 cmake_minimum_required(VERSION 2.7)
 project(Test_Vision)
-set(LIBRARIES_FROM_REFERENCES ${CMAKE_SOURCE_DIR}/../../src/VisionSoilAnalyzer/Vision/Debug/libVision.a)
+set(LIBRARIES_FROM_REFERENCES ${CMAKE_SOURCE_DIR}/../../src/VisionSoilAnalyzer/Vision/Debug_BBB/libVision.a)
 add_executable(Test_Vision Test_Vision.cpp)
 target_link_libraries(Test_Vision -L/usr/local/lib -lopencv_core -lopencv_highgui -lopencv_imgcodecs "${LIBRARIES_FROM_REFERENCES}")
 include_directories(/usr/local/include /usr/local/include/opencv)

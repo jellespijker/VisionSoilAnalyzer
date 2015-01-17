@@ -4,7 +4,7 @@
 cmake_minimum_required(VERSION 2.7)
 project(Soil)
 set(LIBRARIES_FROM_REFERENCES "")
-add_executable(Soil)
+add_executable(Soil AnalysisResults.cpp Particle.cpp Sample.cpp Soil.cpp)
 target_link_libraries(Soil  "${LIBRARIES_FROM_REFERENCES}")
 set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -std=c++11")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -std=c++11")
