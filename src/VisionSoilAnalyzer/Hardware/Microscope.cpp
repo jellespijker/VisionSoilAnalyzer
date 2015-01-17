@@ -8,6 +8,25 @@ using namespace cv;
 
 namespace Hardware
 {
+	Microscope::Microscope()
+	{
+		FrameDelayTrigger = 3;
+		Dimensions = Resolution{ 2592, 1944 };
+
+		try { openCam(); }
+		catch (Exception::MicroscopeNotFoundException& e)
+		{
+			// Tries to soft reset the USB port. Haven't got this working yet
+			USB usbdev;
+			usbdev.ResetUSB();
+			captureDevice.open(0);
+			if (!captureDevice.isOpened())
+			{
+				throw Exception::MicroscopeNotFoundException("Soft reset of microscope didn't work. Try turning the soil analyzer on and off again!");
+			}
+		}
+	}
+
 	/*! Constructor of the class which initializes the USB microscope 
 	\param frameDelayTrigger the delay between the first initialization of the microscope and the retrivial of the image expressed in seconds. Default value is 3 seconds
 	\param dimension A resolution Struct indicating which resolution the webcam should use. Default is 2592 x 1944

@@ -171,16 +171,16 @@ int main(int argc, char *argv[])
 	Mat origImg;
 	Mat procImg;
 
-	if (argc > 0)
+	if (argc > 1)
 	{
 		std::string arg = argv[1];
-		std::string filename = argv[argc];
+		std::string filename = argv[argc - 1];
 		filename = filename.substr(11, filename.length() - 11);
 
 		if (arg == "--help") DisplayHelp();
 		else
 		{
-			for (uint8_t i = 1; i < argc; i++)
+			for (uint8_t i = 1; i < (argc-1); i++)
 			{
 				arg = argv[i];
 				if (arg == "--Blur")
@@ -243,9 +243,8 @@ int main(int argc, char *argv[])
 				}
 			}
 		}
-
-
 	}
+	else {	DisplayHelp(); }
 
 	return 0;
 }

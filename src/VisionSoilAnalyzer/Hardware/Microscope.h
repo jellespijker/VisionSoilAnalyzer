@@ -46,7 +46,8 @@ namespace Hardware{
 		Mat LastFrame;				/*!< Last grabbed and processed frame */
 		Resolution Dimensions;		/*!< Dimensions of the frame */
 
-		Microscope(uint8_t frameDelayTrigger = 3, Resolution dimensions = Resolution{ 2592, 1944 });
+		Microscope();
+		Microscope(uint8_t frameDelayTrigger, Resolution dimensions = Resolution{ 2592, 1944 });
 		//Microscope(uint8_t frameDelayTrigger = 3, Resolution dimensions = Resolution{ 1944, 2592 });
 		~Microscope();
 
