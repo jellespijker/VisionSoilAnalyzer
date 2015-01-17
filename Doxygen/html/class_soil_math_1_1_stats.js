@@ -1,0 +1,27 @@
+var class_soil_math_1_1_stats =
+[
+    [ "Stats", "class_soil_math_1_1_stats.html#a2bc3899fe78a6c5fedad5f22b90d9963", null ],
+    [ "Stats", "class_soil_math_1_1_stats.html#abeac34a7efc9b08bf3bade8ab23cadee", null ],
+    [ "Stats", "class_soil_math_1_1_stats.html#aba14006e6fdc6369a9e723390ed5d75c", null ],
+    [ "~Stats", "class_soil_math_1_1_stats.html#a7cbfe21964aa7ec3e5c7d42d90400746", null ],
+    [ "BasicCalculate", "class_soil_math_1_1_stats.html#ab0c816e596174e53b8e5460b1afce4f9", null ],
+    [ "BasicCalculateFloat", "class_soil_math_1_1_stats.html#aabe2c0ee2c46c58d915dc7a6eb2d4b84", null ],
+    [ "BinCalculations", "class_soil_math_1_1_stats.html#ae93423b2eb3074051a01c0aee35070f1", null ],
+    [ "binRange", "class_soil_math_1_1_stats.html#a00be1d2a705a8aba532fbe726001bbb2", null ],
+    [ "bins", "class_soil_math_1_1_stats.html#a00778b298b1ebb335eb0c4eed69e471c", null ],
+    [ "Calculated", "class_soil_math_1_1_stats.html#a3d3cd491b829b2e30f6752fee38fe261", null ],
+    [ "Cols", "class_soil_math_1_1_stats.html#a971f1ec23c32137805c4577f05454d83", null ],
+    [ "Data", "class_soil_math_1_1_stats.html#affce366ceab8419a3f732e3c3a358f65", null ],
+    [ "EndBin", "class_soil_math_1_1_stats.html#a0db07157ff238d0d40c4e1f4d67afd46", null ],
+    [ "isDiscrete", "class_soil_math_1_1_stats.html#a2f54bbc8d815345b23ebbd4ba2b302bf", null ],
+    [ "max", "class_soil_math_1_1_stats.html#ad49ee1f533564ec587cf98a094b8c564", null ],
+    [ "Mean", "class_soil_math_1_1_stats.html#a6f53982d52cf492ddd4df9b56bd014e7", null ],
+    [ "min", "class_soil_math_1_1_stats.html#aa44c07a23b1c2ce0f0407e7cee4f39a9", null ],
+    [ "n", "class_soil_math_1_1_stats.html#a7bc57af334b68253832ebac17f85d091", null ],
+    [ "noBins", "class_soil_math_1_1_stats.html#a4202c9085eacaff2e04eda84fc90e92b", null ],
+    [ "Range", "class_soil_math_1_1_stats.html#a7154ac6c97dc2e83bdff7fef3cbdac5b", null ],
+    [ "Rows", "class_soil_math_1_1_stats.html#a0e462c013f12f02e31e9ae03334151c3", null ],
+    [ "Startbin", "class_soil_math_1_1_stats.html#acf54f4a105482109ebc884c8e56d0ba9", null ],
+    [ "Std", "class_soil_math_1_1_stats.html#a6af590b7d033d882d5428c0d7a1f5e59", null ],
+    [ "Sum", "class_soil_math_1_1_stats.html#af326fa61048522fc146b799759e345f9", null ]
+];
