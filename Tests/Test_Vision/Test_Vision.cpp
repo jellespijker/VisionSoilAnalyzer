@@ -101,7 +101,7 @@ void TestLabelBlobs(const Mat &origImg, Mat &procImg)
 	Test.RemoveBorderBlobs(Segment::Eight, true);
 
 	clock_gettime(CLOCK_REALTIME, &tstart);
-	Test.LabelBlobs(Segment::Eight, true);
+	Test.LabelBlobs(25, Segment::Eight, true);
 	clock_gettime(CLOCK_REALTIME, &tstop);
 	elapsedTime = (unsigned int)(tstop.tv_nsec - tstart.tv_nsec);
 	cout << "Execution time for LabelBlobs : " << elapsedTime << " [ns] " << endl;
@@ -151,8 +151,8 @@ void TestGetBlobList(const Mat&origImg)
 	Test.GetBlobList(Segment::Eight, true);
 	clock_gettime(CLOCK_REALTIME, &tstop);
 	elapsedTime = (unsigned int)(tstop.tv_nsec - tstart.tv_nsec);
-	cout << "Execution time for get Edges took :" << elapsedTime << " [ns] " << endl;
-	imwrite("/mnt/card/Soil/Debug/LabelBlobs.ppm", Test.LabelledImg);
+	cout << "Execution time for get BlobList took :" << elapsedTime << " [ns] " << endl;
+	imwrite("LabelBlobs.ppm", Test.LabelledImg);
 
 	uint32_t i = 1;
 	string filen;
@@ -160,8 +160,9 @@ void TestGetBlobList(const Mat&origImg)
 	{
 		ostringstream ss;
 		ss << i;
-		filen = "/mnt/card/Soil/Debug/" + ss.str() + ".ppm";
-		imwrite(filen, Test.BlobList[i++].Img);
+		filen = ss.str() + ".ppm";
+		//imwrite(filen, Test.BlobList[i++].Img);
+		imwrite(filen, Test.LabelledImg(Test.BlobList[i++].cvROI));
 	}
 }
 

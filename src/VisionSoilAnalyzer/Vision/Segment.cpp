@@ -281,8 +281,9 @@ namespace Vision
 	/*! Label all the individual blobs in a BW source image. The result are written to the labelledImg as an ushort
 	\param conn set the pixel connection eight or four
 	\param chain use the results from the previous operation default value = false;
+	\param minBlobArea minimum area when an artifact is considered a blob
 	*/
-	void Segment::LabelBlobs(Connected conn, bool chain)
+	void Segment::LabelBlobs(uint16_t minBlobArea, Connected conn, bool chain)
 	{
 		// Exception handling
 		CV_Assert(OriginalImg.depth() != sizeof(uchar));
@@ -442,7 +443,7 @@ namespace Vision
 					lowestVal = pChainVal;
 				}
 
-				// Write the lowest label to the Look-Up-Tabel
+				// Write the lowest label to the Look-Up-Table
 				LUT_newVal[i] = lowestVal;
 			}
 			else { LUT_newVal[i] = i; }	// End of the line so use the same label
@@ -451,20 +452,8 @@ namespace Vision
 
 		// Make the labels consecutive numbers
 		uint16_t *tempLUT = new uint16_t[currentlbl + 1];
-		i = currentlbl + 1;
-		while (i-- > 0)	{ tempLUT[i] = LUT_newVal[i]; }
-		SoilMath::Sort::QuickSort<uint16_t>(tempLUT, currentlbl + 1);
-		std::vector<uint16_t> v(LUT_newVal, LUT_newVal + (currentlbl + 1));
-
-		uint16_t count = 0;
-		i = 1;
-		while (i <= currentlbl)
-		{
-			if (tempLUT[i] != tempLUT[i - 1]) {	std::replace(v.begin(), v.end(), tempLUT[i], ++count);	}
-			i++;
-		}
-
-		LUT_newVal = &v[0];
+		makeConsecutive(currentlbl, tempLUT, LUT_newVal);
+		
 		// Get the maximum value
 		i = 0;
 		while (i <= currentlbl)
@@ -473,8 +462,29 @@ namespace Vision
 			i++;
 		}
 
-		// Second loop through each pixel to replace them with corresponding
-		// numbers and get the maximum label
+		// Second loop through each pixel to replace them with corresponding intermediate value
+		i = 0;
+		while (i < pEnd)
+		{
+			P[i] = LUT_newVal[P[i]];
+			i++;
+		}
+
+		// Create a LUT_filter for each value that is smaller then minBlobArea
+		SoilMath::Stats<uint16_t, uint32_t, uint64_t> ProcImgStats(P, nCols, nRows, MaxLabel, 0, MaxLabel);
+		LUT_newVal = new uint16_t[MaxLabel + 1] { };
+		uint16_t count = 0;
+		i = 0;
+		while (i <= MaxLabel)
+		{
+			if (ProcImgStats.bins[i] > minBlobArea) { LUT_newVal[i] = count++; }
+			i++;
+		}
+
+		noOfFilteredBlobs = MaxLabel - count - 1;
+		MaxLabel = count - 1;
+
+		// third loop through each pixel to replace them with corresponding final value
 		i = 0;
 		while (i < pEnd)
 		{
@@ -586,7 +596,7 @@ namespace Vision
 		EMPTY_CHECK(OriginalImg);
 
 		// If there isn't a labelledImg make one
-		if (MaxLabel < 1) { LabelBlobs(conn, chain); }
+		if (MaxLabel < 1) { LabelBlobs(25, conn, chain); }
 
 		// Make an empty BlobList
 		uint32_t i = 0;
@@ -672,4 +682,24 @@ namespace Vision
 			i++;
 		}
 	}
+
+
+	void Segment::makeConsecutive(uint16_t LastLabelUsed, uint16_t * tempLUT, uint16_t * &LUT_newVal)
+	{
+		uint32_t i = LastLabelUsed + 1;
+		while (i-- > 0)	{ tempLUT[i] = LUT_newVal[i]; }
+		SoilMath::Sort::QuickSort<uint16_t>(tempLUT, LastLabelUsed + 1);
+		std::vector<uint16_t> v(LUT_newVal, LUT_newVal + (LastLabelUsed + 1));
+
+		uint16_t count = 0;
+		i = 1;
+		while (i <= LastLabelUsed)
+		{
+			if (tempLUT[i] != tempLUT[i - 1]) { std::replace(v.begin(), v.end(), tempLUT[i], ++count); }
+			i++;
+		}
+
+		LUT_newVal = &v[0];
+	}
+
 }

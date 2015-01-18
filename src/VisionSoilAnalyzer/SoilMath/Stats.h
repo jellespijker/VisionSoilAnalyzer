@@ -1,5 +1,6 @@
 #pragma once
 #define MAX_UINT8_VALUE 256
+#define VECTOR_CALC 1
 #define STATS_VERSION 1
 
 #include <stdint.h>

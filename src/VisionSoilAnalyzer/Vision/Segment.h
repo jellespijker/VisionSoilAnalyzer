@@ -29,6 +29,7 @@ namespace Vision
 
 		cv::Mat LabelledImg;	/*!< Image with each individual blob labeled with a individual number */
 		uint16_t MaxLabel = 0;	/*!< Maximum labels found in the labelled image*/
+		uint16_t noOfFilteredBlobs = 0;	/*!< Total numbers of blobs that where filtered beacuse the where smaller than the minBlobArea*/
 
 		/*! Coordinates for the region of interest*/
 		typedef struct Rect
@@ -68,7 +69,9 @@ namespace Vision
 
 		void Threshold(uchar t, TypeOfObjects Typeobjects);
 
-		void LabelBlobs(Connected conn = Eight, bool chain = false);
+		void LabelBlobs(uint16_t minBlobArea = 25, Connected conn = Eight, bool chain = false);
+
+		void makeConsecutive(uint16_t LastLabelUsed, uint16_t * tempLUT, uint16_t * &LUT_newVal);
 
 		void RemoveBorderBlobs(Connected conn = Eight, bool chain = false);
 
