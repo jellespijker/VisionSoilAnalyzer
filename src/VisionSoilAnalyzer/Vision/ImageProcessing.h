@@ -41,7 +41,7 @@ namespace Vision
 		{
 			Mat dst(src.size(), cvType);
 			uint32_t i = 0;
-			uint32_t nData = src.rows * src.cols;
+			uint32_t nData = src.rows * src.cols * src.step[1];
 			while (i < nData)
 			{
 				dst.data[i] = LUT[src.data[i]];

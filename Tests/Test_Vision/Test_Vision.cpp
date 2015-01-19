@@ -161,7 +161,11 @@ void TestGetBlobList(const Mat&origImg)
 		ostringstream ss;
 		ss << i;
 		filen = ss.str() + ".ppm";
-		//imwrite(filen, Test.BlobList[i++].Img);
+		imwrite(filen, Test.BlobList[i].Img);
+		ss.str("");
+		ss.clear();
+		ss << i;
+		filen = ss.str() + "L.ppm";
 		imwrite(filen, Test.LabelledImg(Test.BlobList[i++].cvROI));
 	}
 }
