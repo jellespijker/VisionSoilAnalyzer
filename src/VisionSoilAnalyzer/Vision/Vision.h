@@ -4,3 +4,4 @@
 #include "Conversion.h"
 #include "Enhance.h"
 #include "Segment.h"
+#include "MorphologicalFilter.h"
