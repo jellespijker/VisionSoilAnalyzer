@@ -186,6 +186,43 @@ void TestFillHoles(const Mat &origImg)
 	imwrite("FilledHoles.ppm", Test.ProcessedImg);
 }
 
+void TestGetEdgeEroded(const Mat &origImg)
+{
+	timespec tstart, tstop, tdiff;
+	unsigned int elapsedTime;
+
+	Segment Test(origImg);
+	Test.ConvertToBW(Segment::Dark);
+	imwrite("BW.ppm", Test.ProcessedImg);
+	clock_gettime(CLOCK_REALTIME, &tstart);
+	Test.FillHoles(true);
+	clock_gettime(CLOCK_REALTIME, &tstop);
+	elapsedTime = (unsigned int)(tstop.tv_nsec - tstart.tv_nsec);
+	cout << "Execution time to fillholes :" << elapsedTime << " [ns] " << endl;
+	imwrite("FilledHoles.ppm", Test.ProcessedImg);
+
+}
+
+void TestErosion(const Mat &origImg)
+{
+	timespec tstart, tstop, tdiff;
+	unsigned int elapsedTime;
+
+	Segment TestBW(origImg);
+	TestBW.ConvertToBW(Segment::Dark);
+
+	MorphologicalFilter Test;
+	Mat dst;
+	Mat mask(5, 5, CV_8UC1, 1);
+
+	imwrite("BW.ppm", TestBW.ProcessedImg);
+	clock_gettime(CLOCK_REALTIME, &tstart);
+	Test.Erosion(TestBW.ProcessedImg, dst, mask);
+	clock_gettime(CLOCK_REALTIME, &tstop);
+	elapsedTime = (unsigned int)(tstop.tv_nsec - tstart.tv_nsec);
+	cout << "Execution time to erode :" << elapsedTime << " [ns] " << endl;
+	imwrite("eroded.ppm", dst);
+}
 
 int main(int argc, char *argv[])
 {
@@ -262,6 +299,16 @@ int main(int argc, char *argv[])
 				{
 					origImg = imread(filename, 0);
 					TestFillHoles(origImg);
+				}
+				else if (arg == "--Erosion")
+				{
+					origImg = imread(filename, 0);
+					TestErosion(origImg);
+				}
+				else if (arg == "--GetEdgesEroding")
+				{
+					origImg = imread(filename, 0);
+					TestGetEdgeEroded(origImg);
 				}
 				else
 				{

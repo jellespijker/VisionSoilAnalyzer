@@ -15,7 +15,7 @@ namespace Vision
 
 		~MorphologicalFilter();
 
-		void Erosion(const Mat &mask, bool chain = true);
+		void Erosion(const Mat &mask, bool chain = false);
 		void Erosion(const Mat &src, Mat &dst, const Mat &mask);
 
 	private:

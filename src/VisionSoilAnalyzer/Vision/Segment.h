@@ -8,6 +8,7 @@
 #include "opencv2/imgproc/imgproc.hpp"
 
 #include "ImageProcessing.h"
+#include "MorphologicalFilter.h"
 #include "../SoilMath/SoilMath.h"
 
 namespace Vision
@@ -67,6 +68,8 @@ namespace Vision
 		void GetEdges(bool chain = false, Connected conn = Eight);
 		void GetEdges(const Mat &src, Mat &dst, bool chain = false, Connected conn = Eight);
 
+		void GetEdgesEroding(bool chain);
+
 		void GetBlobList(bool chain = false, Connected conn = Eight);
 		void GetBlobList(const Mat &src, Mat &dst, bool chain = false, Connected conn = Eight);
 
@@ -84,6 +87,5 @@ namespace Vision
 		void SetBorder(uchar *P, uchar setValue);
 		void FloodFill(uchar *O, uchar *P, uint16_t x, uint16_t y, uchar fillValue, uchar OldValue);
 		void makeConsecutive(uint16_t LastLabelUsed, uint16_t * tempLUT, uint16_t * &LUT_newVal);
-
 	};
 }

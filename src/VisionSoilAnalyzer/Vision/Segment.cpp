@@ -585,6 +585,41 @@ namespace Vision
 		}
 	}
 
+	void Segment::GetEdgesEroding(bool chain)
+	{
+		// Exception handling
+		CV_Assert(OriginalImg.depth() != sizeof(uchar));
+		EMPTY_CHECK(OriginalImg);
+
+		// make Pointers
+		uchar *O;
+		CHAIN_PROCESS(chain, O, uchar);
+		uchar *P = ProcessedImg.data;
+
+		uint32_t nCols = OriginalImg.cols;
+		uint32_t nRows = OriginalImg.rows;
+		uint32_t nData = nCols * nRows;
+		uint32_t pEnd = nData + 1;
+		uint32_t i = 0;
+
+		// Setup the erosion
+		MorphologicalFilter eroder;
+		if (chain) {	eroder.OriginalImg = OriginalImg; }
+		else { eroder.OriginalImg = TempImg; }
+		// Setup the mask
+		Mat mask(5, 5, CV_8UC1, 1);
+		// Erode the image
+		eroder.Erosion(mask);
+
+		// Loop through the image and set the not eroded pixels to zero
+		while (i < pEnd)
+		{
+			if (O[i] != eroder.ProcessedImg.data[i]) { P[i] = 1; }
+			else { P[i] = 0; }
+			i++;
+		}
+	}
+
 	/*! Create a BlobList subtracting each individual blob out of a Labelled image. If the labelled image is empty build a new one with a BW image.
 	\param conn set the pixel connection eight or four
 	\param chain use the results from the previous operation default value = false;

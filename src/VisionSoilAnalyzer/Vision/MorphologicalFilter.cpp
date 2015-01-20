@@ -2,32 +2,31 @@
 
 namespace Vision
 {
-	MorphologicalFilter::MorphologicalFilter() 
-	{
-	
-	}
+	MorphologicalFilter::MorphologicalFilter() 	{	}
 
 	MorphologicalFilter::MorphologicalFilter(const Mat &src)
 	{
-		ProcessedImg.create(src.size(), CV_8UC1);
 		OriginalImg = src;
+		ProcessedImg.create(OriginalImg.size(), CV_8UC1);
 	}
 
 	MorphologicalFilter::~MorphologicalFilter() {}
 
 	void MorphologicalFilter::Erosion(const Mat &src, Mat &dst, const Mat &mask)
 	{
-
+		OriginalImg = src;
+		ProcessedImg.create(src.size(), CV_8UC1);
+		Erosion(mask);
+		dst = ProcessedImg;
 	}
-
 
 	void MorphologicalFilter::Erosion(const Mat &mask, bool chain)
 	{
 		// Exception handling
 		CV_Assert(OriginalImg.depth() != sizeof(uchar));
 		EMPTY_CHECK(OriginalImg);
-		if (mask.cols % 2 != 0 || mask.cols < 3) { throw Exception::WrongKernelSizeException("Wrong Kernelsize columns!"); }
-		if (mask.rows % 2 != 0 || mask.rows < 3) { throw Exception::WrongKernelSizeException("Wrong Kernelsize rows!"); }
+		if (mask.cols % 2 == 0 || mask.cols < 3) { throw Exception::WrongKernelSizeException("Wrong Kernelsize columns!"); }
+		if (mask.rows % 2 == 0 || mask.rows < 3) { throw Exception::WrongKernelSizeException("Wrong Kernelsize rows!"); }
 
 		// make Pointers
 		uchar *O;
