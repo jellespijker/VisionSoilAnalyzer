@@ -2,7 +2,10 @@
 #define SEGMENT_VERSION 1
 
 #include <vector>
+#include <queue>
 #include <string>
+
+#include "opencv2/imgproc/imgproc.hpp"
 
 #include "ImageProcessing.h"
 #include "../SoilMath/SoilMath.h"
@@ -61,23 +64,26 @@ namespace Vision
 		void ConvertToBW(TypeOfObjects Typeobjects);
 		void ConvertToBW(const Mat &src, Mat &dst, TypeOfObjects Typeobjects);
 
-		void GetEdges(Connected conn = Eight, bool chain = false);
-		void GetEdges(const Mat &src, Mat &dst, Connected conn = Eight,  bool chain = false);
+		void GetEdges(bool chain = false, Connected conn = Eight);
+		void GetEdges(const Mat &src, Mat &dst, bool chain = false, Connected conn = Eight);
 
-		void GetBlobList(Connected conn = Eight, bool chain = false);
-		void GetBlobList(const Mat &src, Mat &dst, Connected conn = Eight, bool chain = false);
+		void GetBlobList(bool chain = false, Connected conn = Eight);
+		void GetBlobList(const Mat &src, Mat &dst, bool chain = false, Connected conn = Eight);
 
 		void Threshold(uchar t, TypeOfObjects Typeobjects);
 
-		void LabelBlobs(uint16_t minBlobArea = 25, Connected conn = Eight, bool chain = false);
+		void LabelBlobs(bool chain = false, uint16_t minBlobArea = 25, Connected conn = Eight);
 
-		void makeConsecutive(uint16_t LastLabelUsed, uint16_t * tempLUT, uint16_t * &LUT_newVal);
+		void RemoveBorderBlobs(bool chain = false, Connected conn = Eight);
 
-		void RemoveBorderBlobs(Connected conn = Eight, bool chain = false);
+		void FillHoles(bool chain = false);
 
 	private:
 
 		uint8_t GetThresholdLevel(TypeOfObjects TypeObject);
 		void SetBorder(uchar *P, uchar setValue);
+		void FloodFill(uchar *O, uchar *P, uint16_t x, uint16_t y, uchar fillValue, uchar OldValue);
+		void makeConsecutive(uint16_t LastLabelUsed, uint16_t * tempLUT, uint16_t * &LUT_newVal);
+
 	};
 }

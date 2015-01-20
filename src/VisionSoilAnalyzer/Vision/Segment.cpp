@@ -185,8 +185,8 @@ namespace Vision
 	\param conn set the pixel connection eight or four
 	\param chain use the results from the previous operation default value = false;
 	*/
-	void Segment::RemoveBorderBlobs(Connected conn, bool chain)
-	{
+	void Segment::RemoveBorderBlobs(bool chain /*= false*/, Connected conn /*= Eight*/)
+{
 		// Exception handling
 		CV_Assert(OriginalImg.depth() != sizeof(uchar));
 		EMPTY_CHECK(OriginalImg);
@@ -283,8 +283,8 @@ namespace Vision
 	\param chain use the results from the previous operation default value = false;
 	\param minBlobArea minimum area when an artifact is considered a blob
 	*/
-	void Segment::LabelBlobs(uint16_t minBlobArea, Connected conn, bool chain)
-	{
+	void Segment::LabelBlobs(bool chain, uint16_t minBlobArea, Connected conn)
+{
 		// Exception handling
 		CV_Assert(OriginalImg.depth() != sizeof(uchar));
 		EMPTY_CHECK(OriginalImg);
@@ -499,10 +499,10 @@ namespace Vision
 	\param conn set the pixel connection eight or four
 	\param chain use the results from the previous operation default value = false;
 	*/
-	void Segment::GetEdges(const Mat &src, Mat &dst, Connected conn , bool chain)
+	void Segment::GetEdges(const Mat &src, Mat &dst, bool chain, Connected conn)
 	{
 		OriginalImg = src;
-		GetEdges(conn, chain);
+		GetEdges(chain, conn);
 		dst = ProcessedImg;
 	}
 	
@@ -510,7 +510,7 @@ namespace Vision
 	\param conn set the pixel connection eight or four
 	\param chain use the results from the previous operation default value = false;
 	*/
-	void Segment::GetEdges(Connected conn, bool chain)
+	void Segment::GetEdges(bool chain, Connected conn)
 	{
 		// Exception handling
 		CV_Assert(OriginalImg.depth() != sizeof(uchar));
@@ -589,14 +589,14 @@ namespace Vision
 	\param conn set the pixel connection eight or four
 	\param chain use the results from the previous operation default value = false;
 	*/
-	void Segment::GetBlobList(Connected conn, bool chain)
+	void Segment::GetBlobList(bool chain, Connected conn)
 	{
 		// Exception handling
 		CV_Assert(OriginalImg.depth() != sizeof(uchar));
 		EMPTY_CHECK(OriginalImg);
 
 		// If there isn't a labelledImg make one
-		if (MaxLabel < 1) { LabelBlobs(25, conn, chain); }
+		if (MaxLabel < 1) { LabelBlobs(chain, 25, conn); }
 
 		// Make an empty BlobList
 		uint32_t i = 0;
@@ -702,4 +702,53 @@ namespace Vision
 		LUT_newVal = &v[0];
 	}
 
+	void Segment::FillHoles(bool chain)
+	{
+		// Exception handling
+		CV_Assert(OriginalImg.depth() != sizeof(uchar));
+		EMPTY_CHECK(OriginalImg);
+
+		// make Pointers
+		uchar *O;
+		CHAIN_PROCESS(chain, O, uchar);
+		if (chain) { ProcessedImg = TempImg.clone(); }
+		else { ProcessedImg = OriginalImg.clone(); }
+
+		uchar *P = ProcessedImg.data;
+
+		// Determine the starting point of the floodfill
+		int itt = -1;
+		while (P[++itt] != 0);
+		uint16_t row = static_cast<uint16_t>(itt / OriginalImg.rows);
+		uint16_t col = static_cast<uint16_t>(itt % OriginalImg.rows);
+
+		// Fill the outside
+		//FloodFill(O, P, row, col, 2, 0);
+		cv::Rect rectangle;
+		cv::floodFill(ProcessedImg, cv::Point(col, row), cv::Scalar(2));
+
+		// Set the unreached areas to 1 and the outside to 0;
+		uchar LUT_newVal[3] = { 1, 1, 0 };
+		uint32_t nData = OriginalImg.rows * OriginalImg.cols;
+		uint32_t i = 0;
+		while (i <= nData)
+		{
+			P[i] = LUT_newVal[P[i]];
+			i++;
+		}
+	}
+
+	void Segment::FloodFill(uchar *O, uchar *P, uint16_t row, uint16_t col, uchar fillValue, uchar OldValue)
+	{
+		if (row < 0 || row > OriginalImg.rows) { return; }
+		if (col < 0 || col > OriginalImg.cols) { return; }
+		if (P[col + row * OriginalImg.rows] == OldValue)
+		{
+			P[col + row * OriginalImg.rows] = fillValue;
+			FloodFill(O, P, row + 1, col, fillValue, OldValue);
+			FloodFill(O, P, row, col + 1, fillValue, OldValue);
+			FloodFill(O, P, row - 1, col, fillValue, OldValue);
+			FloodFill(O, P, row, col - 1, fillValue, OldValue);
+		}
+	}
 }

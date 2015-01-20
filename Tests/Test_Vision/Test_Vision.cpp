@@ -83,7 +83,7 @@ void TestRemoveBorderBlobs(const Mat &origImg, Mat &procImg)
 	Test.ConvertToBW(Segment::Dark);
 
 	clock_gettime(CLOCK_REALTIME, &tstart);
-	Test.RemoveBorderBlobs(Segment::Eight, true);
+	Test.RemoveBorderBlobs(true, Segment::Eight);
 	clock_gettime(CLOCK_REALTIME, &tstop);
 	elapsedTime = (unsigned int)(tstop.tv_nsec - tstart.tv_nsec);
 	cout << "Execution time for RemoveBorderBlobs : " << elapsedTime << " [ns] " << endl;
@@ -98,10 +98,10 @@ void TestLabelBlobs(const Mat &origImg, Mat &procImg)
 
 	Segment Test(origImg);
 	Test.ConvertToBW(Segment::Dark);
-	Test.RemoveBorderBlobs(Segment::Eight, true);
+	Test.RemoveBorderBlobs(true, Segment::Eight);
 
 	clock_gettime(CLOCK_REALTIME, &tstart);
-	Test.LabelBlobs(25, Segment::Eight, true);
+	Test.LabelBlobs(true, 25, Segment::Eight);
 	clock_gettime(CLOCK_REALTIME, &tstop);
 	elapsedTime = (unsigned int)(tstop.tv_nsec - tstart.tv_nsec);
 	cout << "Execution time for LabelBlobs : " << elapsedTime << " [ns] " << endl;
@@ -132,7 +132,7 @@ void TestGetEdges(const Mat &origImg, Mat &procImg)
 	Segment Test(origImg);
 	Test.ConvertToBW(Segment::Dark);
 	clock_gettime(CLOCK_REALTIME, &tstart);
-	Test.GetEdges(Segment::Eight, true);
+	Test.GetEdges(true, Segment::Eight);
 	clock_gettime(CLOCK_REALTIME, &tstop);
 	elapsedTime = (unsigned int)(tstop.tv_nsec - tstart.tv_nsec);
 	cout << "Execution time for get Edges took :" << elapsedTime << " [ns] " << endl;
@@ -140,7 +140,7 @@ void TestGetEdges(const Mat &origImg, Mat &procImg)
 	procImg = Test.ProcessedImg;
 }
 
-void TestGetBlobList(const Mat&origImg)
+void TestGetBlobList(const Mat &origImg)
 {
 	timespec tstart, tstop, tdiff;
 	unsigned int elapsedTime;
@@ -148,7 +148,7 @@ void TestGetBlobList(const Mat&origImg)
 	Segment Test(origImg);
 	Test.ConvertToBW(Segment::Dark);
 	clock_gettime(CLOCK_REALTIME, &tstart);
-	Test.GetBlobList(Segment::Eight, true);
+	Test.GetBlobList(true, Segment::Eight);
 	clock_gettime(CLOCK_REALTIME, &tstop);
 	elapsedTime = (unsigned int)(tstop.tv_nsec - tstart.tv_nsec);
 	cout << "Execution time for get BlobList took :" << elapsedTime << " [ns] " << endl;
@@ -168,6 +168,22 @@ void TestGetBlobList(const Mat&origImg)
 		filen = ss.str() + "L.ppm";
 		imwrite(filen, Test.LabelledImg(Test.BlobList[i++].cvROI));
 	}
+}
+
+void TestFillHoles(const Mat &origImg)
+{
+	timespec tstart, tstop, tdiff;
+	unsigned int elapsedTime;
+
+	Segment Test(origImg);
+	Test.ConvertToBW(Segment::Dark);
+	imwrite("BW.ppm", Test.ProcessedImg);
+	clock_gettime(CLOCK_REALTIME, &tstart);
+	Test.FillHoles(true);
+	clock_gettime(CLOCK_REALTIME, &tstop);
+	elapsedTime = (unsigned int)(tstop.tv_nsec - tstart.tv_nsec);
+	cout << "Execution time to fillholes :" << elapsedTime << " [ns] " << endl;
+	imwrite("FilledHoles.ppm", Test.ProcessedImg);
 }
 
 
@@ -241,6 +257,11 @@ int main(int argc, char *argv[])
 				{
 					origImg = imread(filename, 0);
 					TestGetBlobList(origImg);
+				}
+				else if (arg == "--FillHoles")
+				{
+					origImg = imread(filename, 0);
+					TestFillHoles(origImg);
 				}
 				else
 				{

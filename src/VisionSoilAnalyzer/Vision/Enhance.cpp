@@ -20,11 +20,11 @@ namespace Vision
 	/*! Constructor
 	\param src cv::Mat source image
 	\param dst cv::Mat destination image
-	\param kernelsize an uint8_t which represent the kernelsize should be an uneven number higher than two
+	\param kernelsize an uchar which represent the kernelsize should be an uneven number higher than two
 	\param factor float which indicates the amount the effect should take place standard value is 1.0 only used in the adaptive contrast stretch enhancement
 	\param operation enumerator EnhanceOperation which enhancement should be performed
 	*/
-	Enhance::Enhance(const Mat& src, Mat& dst, uint8_t kernelsize, float factor, EnhanceOperation operation)
+	Enhance::Enhance(const Mat& src, Mat& dst, uchar kernelsize, float factor, EnhanceOperation operation)
 	{
 		OriginalImg = src;
 		ProcessedImg.create(OriginalImg.size(), CV_8UC1);
@@ -95,10 +95,10 @@ namespace Vision
 	/*! Homebrew AdaptiveContrastStretch function which calculate the mean and standard deviation from the neighboring pixels if the current pixel is higher then the mean the value is incremented with an given factor multiplied with the standard deviation, and decreased if it's lower then the mean.
 	\param src cv::Mat source image
 	\param dst cv::Mat destination image
-	\param kernelsize an uint8_t which represent the kernelsize should be an uneven number higher than two
+	\param kernelsize an uchar which represent the kernelsize should be an uneven number higher than two
 	\param factor float which indicates the amount the effect should take place standard value is 1.0 only used in the adaptive contrast stretch enhancement
 	*/
-	void Enhance::AdaptiveContrastStretch(const Mat &src, Mat &dst, uint8_t kernelsize, float factor)
+	void Enhance::AdaptiveContrastStretch(const Mat &src, Mat &dst, uchar kernelsize, float factor)
 	{
 		OriginalImg = src;
 		ProcessedImg.create(OriginalImg.size(), CV_8UC1);
@@ -107,11 +107,11 @@ namespace Vision
 	}
 
 	/*! Homebrew AdaptiveContrastStretch function which calculate the mean and standard deviation from the neighboring pixels if the current pixel is higher then the mean the value is incremented with an given factor multiplied with the standard deviation, and decreased if it's lower then the mean.
-	\param kernelsize an uint8_t which represent the kernelsize should be an uneven number higher than two
+	\param kernelsize an uchar which represent the kernelsize should be an uneven number higher than two
 	\param factor float which indicates the amount the effect should take place standard value is 1.0 only used in the adaptive contrast stretch enhancement
 	\param chain use the results from the previous operation default value = false;
 	*/
-	void Enhance::AdaptiveContrastStretch(uint8_t kernelsize, float factor, bool chain)
+	void Enhance::AdaptiveContrastStretch(uchar kernelsize, float factor, bool chain)
 	{
 		// Exception handling
 		EMPTY_CHECK(OriginalImg);
@@ -176,9 +176,9 @@ namespace Vision
 	/*! Blurs the image with a NxN kernel
 	\param src cv::Mat source image
 	\param dst cv::Mat destination image
-	\param kernelsize an uint8_t which represent the kernelsize should be an uneven number higher than two
+	\param kernelsize an uchar which represent the kernelsize should be an uneven number higher than two
 	*/
-	void Enhance::Blur(const Mat& src, Mat& dst, uint8_t kernelsize)
+	void Enhance::Blur(const Mat& src, Mat& dst, uchar kernelsize)
 	{
 		OriginalImg = src;
 		ProcessedImg.create(OriginalImg.size(), CV_8UC1);
@@ -187,10 +187,10 @@ namespace Vision
 	}
 
 	/*! Blurs the image with a NxN kernel
-	\param kernelsize an uint8_t which represent the kernelsize should be an uneven number higher than two
+	\param kernelsize an uchar which represent the kernelsize should be an uneven number higher than two
 	\param chain use the results from the previous operation default value = false;
 	*/
-	void Enhance::Blur(uint8_t kernelsize, bool chain)
+	void Enhance::Blur(uchar kernelsize, bool chain)
 	{
 		// Exception handling
 		EMPTY_CHECK(OriginalImg);
@@ -247,8 +247,8 @@ namespace Vision
 		else { sFact = 1.0f; }
 
 		uint32_t i = 256;
-		register uint8_t LUT_changeValue[256];
-		while (i-- > 0)	{ LUT_changeValue[i] = (uint8_t)(((float)(i) * sFact) + 0.5f); }
+		register uchar LUT_changeValue[256];
+		while (i-- > 0)	{ LUT_changeValue[i] = (uchar)(((float)(i) * sFact) + 0.5f); }
 
 		O = OriginalImg.data;
 
