@@ -193,13 +193,13 @@ void TestGetEdgeEroded(const Mat &origImg)
 
 	Segment Test(origImg);
 	Test.ConvertToBW(Segment::Dark);
-	imwrite("BW.ppm", Test.ProcessedImg);
+
 	clock_gettime(CLOCK_REALTIME, &tstart);
-	Test.FillHoles(true);
+	Test.GetEdgesEroding(true);
 	clock_gettime(CLOCK_REALTIME, &tstop);
 	elapsedTime = (unsigned int)(tstop.tv_nsec - tstart.tv_nsec);
-	cout << "Execution time to fillholes :" << elapsedTime << " [ns] " << endl;
-	imwrite("FilledHoles.ppm", Test.ProcessedImg);
+	cout << "Execution time to EdgeEroded :" << elapsedTime << " [ns] " << endl;
+	imwrite("EdgeEroded.ppm", Test.ProcessedImg);
 }
 
 void TestErosion(const Mat &origImg)
@@ -220,9 +220,6 @@ void TestErosion(const Mat &origImg)
 	clock_gettime(CLOCK_REALTIME, &tstop);
 	elapsedTime = (unsigned int)(tstop.tv_nsec - tstart.tv_nsec);
 	cout << "Execution time to erode :" << elapsedTime << " [ns] " << endl;
-	//namedWindow("Display window", WINDOW_AUTOSIZE);
-	//imshow("Display window", dst);                   
-
 	imwrite("eroded.ppm", dst);
 }
 

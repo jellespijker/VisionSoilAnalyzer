@@ -604,12 +604,14 @@ namespace Vision
 
 		// Setup the erosion
 		MorphologicalFilter eroder;
-		if (chain) {	eroder.OriginalImg = OriginalImg; }
-		else { eroder.OriginalImg = TempImg; }
+		if (chain) {	eroder.OriginalImg = TempImg; }
+		else { eroder.OriginalImg = OriginalImg; }
+		// Setup the processed image of the eroder
+		eroder.ProcessedImg.create(OriginalImg.size(), CV_8UC1);
 		// Setup the mask
-		Mat mask(5, 5, CV_8UC1, 1);
+		Mat mask(3, 3, CV_8UC1, 1);
 		// Erode the image
-		eroder.Erosion(mask);
+		eroder.Erosion(mask, false);
 
 		// Loop through the image and set the not eroded pixels to zero
 		while (i < pEnd)
