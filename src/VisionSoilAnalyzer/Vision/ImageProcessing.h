@@ -22,7 +22,7 @@ namespace Vision
 	class ImageProcessing
 	{
 	protected:
-		uchar* GetNRow(int nData, int hKsize, int nCols);
+		uchar* GetNRow(int nData, int hKsize, int nCols, uint32_t totalRows);
 		Mat TempImg;
 
 	public:

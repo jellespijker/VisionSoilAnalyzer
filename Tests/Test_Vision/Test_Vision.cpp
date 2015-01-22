@@ -200,7 +200,6 @@ void TestGetEdgeEroded(const Mat &origImg)
 	elapsedTime = (unsigned int)(tstop.tv_nsec - tstart.tv_nsec);
 	cout << "Execution time to fillholes :" << elapsedTime << " [ns] " << endl;
 	imwrite("FilledHoles.ppm", Test.ProcessedImg);
-
 }
 
 void TestErosion(const Mat &origImg)
@@ -213,7 +212,7 @@ void TestErosion(const Mat &origImg)
 
 	MorphologicalFilter Test;
 	Mat dst;
-	Mat mask(5, 5, CV_8UC1, 1);
+	Mat mask(7, 7, CV_8UC1, 1);
 
 	imwrite("BW.ppm", TestBW.ProcessedImg);
 	clock_gettime(CLOCK_REALTIME, &tstart);
@@ -221,6 +220,9 @@ void TestErosion(const Mat &origImg)
 	clock_gettime(CLOCK_REALTIME, &tstop);
 	elapsedTime = (unsigned int)(tstop.tv_nsec - tstart.tv_nsec);
 	cout << "Execution time to erode :" << elapsedTime << " [ns] " << endl;
+	//namedWindow("Display window", WINDOW_AUTOSIZE);
+	//imshow("Display window", dst);                   
+
 	imwrite("eroded.ppm", dst);
 }
 

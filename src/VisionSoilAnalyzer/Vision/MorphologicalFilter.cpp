@@ -46,10 +46,10 @@ namespace Vision
 		int currentKcol = -hKsizeCol;
 		bool isEroded = false;
 		uint32_t nKData = mask.cols * mask.rows;
-		uchar *nRow = GetNRow(nData, hKsizeCol, nCols);
-		uchar *nKRow = GetNRow(nKData, 0, mask.rows);
+		uchar *nRow = GetNRow(nData, hKsizeCol, nCols, OriginalImg.rows);
+		uchar *nKRow = GetNRow(nKData, 0, mask.cols, mask.rows);
 
-		while (i <= pEnd)
+		while (i < pEnd)
 		{
 			// Checks if pixel isn't a border pixel and progresses to the new row
 			if (nRow[i] == 1) { i += mask.cols; }
@@ -64,11 +64,11 @@ namespace Vision
 				currentKRow = -hKszieRow;
 				currentKcol = -hKsizeCol - 1;
 				isEroded = false;
-				while (j <= nKData && !isEroded)
+				while (j < nKData && !isEroded)
 				{
 					// Checks if pixel isn't a border pixel from the kernel
 					currentKcol += 1;
-					if (nRow[i] == 1) 
+					if (nKRow[j] == 1) 
 					{
 						currentKRow++; 
 						currentKcol = -hKsizeCol;

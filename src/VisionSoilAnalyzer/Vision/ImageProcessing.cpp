@@ -18,13 +18,16 @@ namespace Vision
 	\param nCols int number of columns in a row
 	\return array of uchars where a zero is a middle column and a 1 indicates an end of an row minus the offset from half the kernel size
 	*/
-	uchar* ImageProcessing::GetNRow(int nData, int hKsize, int nCols)
-	{
+	uchar* ImageProcessing::GetNRow(int nData, int hKsize, int nCols, uint32_t totalRows)
+{
 		// Create LUT to determine when there is an new row
-		uchar *nRow = new uchar[nData] {};
+		uchar *nRow = new uchar[nData] { };
 		int i = 0;
-		i = OriginalImg.rows + 1;
-		while (i-- > 1)	{ nRow[i * nCols - hKsize] = 1; }
+		int shift = nCols - hKsize;
+		while (i <= totalRows)
+		{
+			nRow[(i++ * shift) + shift - 1] = 1;
+		}
 		return nRow;
 	}
 }

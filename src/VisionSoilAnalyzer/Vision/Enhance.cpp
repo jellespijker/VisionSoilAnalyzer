@@ -134,7 +134,7 @@ namespace Vision
 		register uint32_t sum;
 		register float mean = 0.0;
 
-		uchar *nRow = GetNRow(nData, hKsize, nCols);
+		uchar *nRow = GetNRow(nData, hKsize, nCols, OriginalImg.rows);
 
 		i = pStart;
 		while (i++ < pEnd)
@@ -211,7 +211,7 @@ namespace Vision
 		register uint32_t sum;
 
 		uint32_t i;
-		uchar *nRow = GetNRow(nData, hKsize, nCols);
+		uchar *nRow = GetNRow(nData, hKsize, nCols, OriginalImg.rows);
 		i = pStart;
 		while (i++ < pEnd)
 		{
