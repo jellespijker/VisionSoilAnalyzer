@@ -3,6 +3,7 @@
 #include "Stats.h"
 #include "Sort.h"
 #include "CommonOperations.h"
+#include "FFT.h"
 
 namespace SoilMath
 {
