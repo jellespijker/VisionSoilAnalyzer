@@ -2,9 +2,13 @@
 #include <sys/time.h>
 #include <string>
 
+#include <opencv2/opencv.hpp>
+#include <opencv/highgui.h>
+
 #include "../../src/VisionSoilAnalyzer/Hardware/Hardware.h"
 
 using namespace std;
+using namespace cv;
 
 bool stop = false;
 int btnpressed = 0;
@@ -13,9 +17,24 @@ int Position;
 Hardware::PWM threeLeds{ Hardware::PWM::P9_14 };
 Hardware::SoilCape Test;
 
+
 void DisplayHelp()
 {
 	cout << "You pressed help" << endl;
+}
+
+void TestNormalCam(Mat &procImg)
+{
+	timespec tstart, tstop, tdiff;
+	unsigned int elapsedTime;
+
+	Hardware::Microscope Test(3, Hardware::Microscope::Resolution{ 2592, 1944 });
+
+	clock_gettime(CLOCK_REALTIME, &tstart);
+	Test.GetFrame(procImg);
+	clock_gettime(CLOCK_REALTIME, &tstop);
+	elapsedTime = (unsigned int)(tstop.tv_nsec - tstart.tv_nsec);
+	cout << "Capturing of 1 frame : " << elapsedTime << " [ns] " << endl;
 }
 
 int TestThreadBtnPressed(int var)
@@ -172,8 +191,15 @@ void TestSoilCape()
 
 int TakeSnapshot(int var)
 {
-	cout << "Snapshot taken... you fool!" << endl;
-	return 0;
+	cv::Mat procImg;
+	Hardware::Microscope Test;
+
+	Test.GetFrame(procImg);
+	cout << "Snapshot " << ++btnpressed << endl;
+
+	ostringstream ss;
+	ss << "/mnt/card/Soil/Debug/image" << btnpressed << ".ppm";
+	imwrite(ss.str(), procImg);
 
 }
 
@@ -198,8 +224,23 @@ void TestMicroscopeCase()
 
 }
 
+void TestHDRMicroscope(Mat &img)
+{
+	timespec tstart, tstop, tdiff;
+	unsigned int elapsedTime;
+
+	Hardware::Microscope Test(3, Hardware::Microscope::Resolution{ 2592, 1944 });
+
+	clock_gettime(CLOCK_REALTIME, &tstart);
+	Test.GetHDRFrame(img, 3);
+	clock_gettime(CLOCK_REALTIME, &tstop);
+	elapsedTime = (unsigned int)(tstop.tv_nsec - tstart.tv_nsec);
+	cout << "Capturing of 1 HDR frame : " << elapsedTime << " [ns] " << endl;
+}
+
 int main(int argc, char *argv[])
 {
+	Mat img;
 	string arg = argv[1];
 
 	if (argc > 0 || arg != "--help")
@@ -207,7 +248,12 @@ int main(int argc, char *argv[])
 		for (uint8_t i = 1; i < argc; i++)
 		{
 			arg = argv[i];
-			if (arg == "--GPIO")
+			if (arg == "--NormalCam")
+			{
+				TestNormalCam(img);
+				imwrite("/mnt/card/Soil/Debug/NormalCam.ppm", img);
+			}
+			else if (arg == "--GPIO")
 			{
 				TestGPIO();
 			}
@@ -236,6 +282,11 @@ int main(int argc, char *argv[])
 			else if (arg == "--MicroscopeCase")
 			{
 				TestMicroscopeCase();
+			}
+			else if (arg == "--HDR")
+			{
+				TestHDRMicroscope(img);
+				imwrite("/mnt/card/Soil/Debug/HDR.ppm", img);
 			}
 		}
 	}

@@ -24,11 +24,9 @@ Interaction with the USB 5 MP microscope
 #include "USB.h"
 
 #include <opencv2/photo.hpp>
-#include "opencv2/imgcodecs.hpp"
-#include "opencv2/opencv.hpp"
-#include "opencv/highgui.h"
-
-using namespace cv;
+#include <opencv2/imgcodecs.hpp>
+#include <opencv2/opencv.hpp>
+#include <opencv/highgui.h>
 
 namespace Hardware{
 	class Microscope
@@ -43,7 +41,7 @@ namespace Hardware{
 		};
 
 		uint8_t FrameDelayTrigger;	/*!< Delay in seconds */
-		Mat LastFrame;				/*!< Last grabbed and processed frame */
+		cv::Mat LastFrame;				/*!< Last grabbed and processed frame */
 		Resolution Dimensions;		/*!< Dimensions of the frame */
 
 		Microscope();
@@ -59,10 +57,10 @@ namespace Hardware{
 
 	private:
 		
-		VideoCapture captureDevice; /*!< An openCV instance of the capture device*/
+		cv::VideoCapture captureDevice; /*!< An openCV instance of the capture device*/
 		void openCam();
 
-		std::vector<Mat> HDRframes;
+		std::vector<cv::Mat> HDRframes;
 		std::vector<float> times;
 	};
 }
