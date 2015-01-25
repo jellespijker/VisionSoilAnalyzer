@@ -12,6 +12,7 @@
 #include <typeinfo>
 
 #include "MathException.h"
+#include "SoilMathTypes.h"
 
 using namespace std;
 
@@ -275,3 +276,7 @@ namespace SoilMath
 		}
 	};
 }
+
+typedef SoilMath::Stats<float, double, long double> floatStat_t;
+typedef SoilMath::Stats<uchar, uint32_t, uint64_t> ucharStat_t;
+

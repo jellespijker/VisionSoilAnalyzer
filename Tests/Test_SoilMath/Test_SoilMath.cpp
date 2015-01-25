@@ -1,17 +1,21 @@
 #include <iostream>
 #include <sys/time.h>
 #include <array>
+#include <opencv2/core/core.hpp>
+#include <opencv2/highgui/highgui.hpp>
 
 #include "TestMatrix.h"
 #include "FloatTestMatrix.h"
 #include "../../src/VisionSoilAnalyzer/SoilMath/SoilMath.h"
 
+
 using namespace std;
 
 void DisplayHelp()
 {
-	cout << "--float         Test floating type stats" << endl;
-	cout << "--uchar         Test uchar type stats" << endl;
+	cout << "--Stats-float         Test floating type stats" << endl;
+	cout << "--Stats-uchar         Test uchar type stats" << endl;
+	cout << "--FFT                 Test Fast Fourier Transform of an Edge" << endl;
 }
 
 bool checkArray(uint32_t *a, uint32_t *b)
@@ -55,7 +59,7 @@ void TestUcharStat()
 	unsigned int elapsedTime;
 
 	clock_gettime(CLOCK_REALTIME, &tstart);
-	SoilMath::ucharStat_t Test((uint8_t *)testMatrix, 200, 200);
+	ucharStat_t Test((uint8_t *)testMatrix, 200, 200);
 	clock_gettime(CLOCK_REALTIME, &tstop);
 	elapsedTime = tstop.tv_nsec - tstart.tv_nsec;
 
@@ -82,7 +86,7 @@ void TestFloatStat()
 	unsigned int elapsedTime;
 
 	clock_gettime(CLOCK_REALTIME, &tstart);
-	SoilMath::floatStat_t Test((float *)ftestMatrix, 50, 50);
+	floatStat_t Test((float *)ftestMatrix, 50, 50);
 	clock_gettime(CLOCK_REALTIME, &tstop);
 	elapsedTime = tstop.tv_nsec - tstart.tv_nsec;
 
@@ -105,10 +109,13 @@ void TestFloatStat()
 
 void TestFFT()
 {
-
-	SoilMath::FFT test;
-	test.GetDescriptors();
+	cv::Mat src;
+	src = cv::imread("EdgeTest.ppm", 0);
+	SoilMath::FFT Test;
+	Test.GetDescriptors(src);
+	
 }
+
 
 
 int main(int argc, char *argv[])

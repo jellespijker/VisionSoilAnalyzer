@@ -621,6 +621,7 @@ namespace Vision
 			else { P[i] = 0; }
 			i++;
 		}
+		eroder.~MorphologicalFilter();
 	}
 
 	/*! Create a BlobList subtracting each individual blob out of a Labelled image. If the labelled image is empty build a new one with a BW image.
