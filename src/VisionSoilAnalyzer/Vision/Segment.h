@@ -4,6 +4,7 @@
 #include <vector>
 #include <queue>
 #include <string>
+#include <stdint.h>
 
 #include "opencv2/imgproc/imgproc.hpp"
 
@@ -68,7 +69,7 @@ namespace Vision
 		void GetEdges(bool chain = false, Connected conn = Eight);
 		void GetEdges(const Mat &src, Mat &dst, bool chain = false, Connected conn = Eight);
 
-		void GetEdgesEroding(bool chain);
+		void GetEdgesEroding(bool chain = false);
 
 		void GetBlobList(bool chain = false, Connected conn = Eight);
 		void GetBlobList(const Mat &src, Mat &dst, bool chain = false, Connected conn = Eight);

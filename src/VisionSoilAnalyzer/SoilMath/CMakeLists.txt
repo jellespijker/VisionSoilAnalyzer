@@ -7,7 +7,7 @@ set (SoilMath_VERSION_MAJOR 1)
 set (SoilMath_VERSION_MINOR 0)
 
 set(LIBRARIES_FROM_REFERENCES "")
-add_library(SoilMath SoilMath.cpp Sort.cpp)
+add_library(SoilMath FFT.cpp SoilMath.cpp Sort.cpp)
 target_link_libraries(SoilMath  "${LIBRARIES_FROM_REFERENCES}")
 set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} ")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} ")

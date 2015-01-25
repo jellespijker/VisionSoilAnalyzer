@@ -2,6 +2,7 @@
 #include <sys/time.h>
 #include <string>
 #include <vector>
+#include <unistd.h>
 
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
@@ -23,6 +24,7 @@ void DisplayHelp()
 	cout << "--Conversion" << endl;
 	cout << "--GetEdges" << endl;
 	cout << "--GetBlobList" << endl;
+	cout << "--GetBlobEdges" << endl;
 }
 
 void TestBlur(const Mat &origImg, Mat &procImg)
@@ -223,6 +225,51 @@ void TestErosion(const Mat &origImg)
 	imwrite("eroded.ppm", dst);
 }
 
+void TestGetBlobEdges(const Mat &origImg)
+{
+	timespec tstart, tstop, tdiff;
+	unsigned int elapsedTime;
+
+	Segment Test(origImg);
+	Test.ConvertToBW(Segment::Dark);
+	Test.FillHoles(true);
+	clock_gettime(CLOCK_REALTIME, &tstart);
+	Test.GetBlobList(true, Segment::Eight);
+	clock_gettime(CLOCK_REALTIME, &tstop);
+	elapsedTime = (unsigned int)(tstop.tv_nsec - tstart.tv_nsec);
+	cout << "Execution time for get BlobList took :" << elapsedTime << " [ns] " << endl;
+	imwrite("LabelBlobs.ppm", Test.LabelledImg);
+
+	Segment edger(Test.BlobList[21].Img);
+	edger.GetEdgesEroding();
+
+	imwrite("BW_21.ppm", Test.BlobList[21].Img);
+	imwrite("E_21.ppm", edger.ProcessedImg);
+
+	//cv::Mat dst;
+	//uint32_t i = 1;
+	//string filen;
+	//while (i < Test.MaxLabel)
+	//{
+	//	ostringstream ss;
+	//	ss << i;
+	//	filen = "E_" + ss.str() + ".ppm";
+	//	sleep(1);
+	//	
+
+	//	//imwrite(filen, Test.BlobList[i].Img);
+	//	//ss.str("");
+	//	//ss.clear();
+	//	//ss << i;
+	//	//filen = ss.str() + "E.ppm";
+	//	//Vision::MorphologicalFilter moFilter(Test.BlobList[i].Img);
+	//	//moFilter.Erosion(cv::Mat(3, 3, CV_8UC1, 1));
+	//	//imwrite(filen, moFilter.ProcessedImg);
+	//	//moFilter.~MorphologicalFilter();
+	//	i++;
+	//}
+}
+
 int main(int argc, char *argv[])
 {
 	Mat origImg;
@@ -308,6 +355,12 @@ int main(int argc, char *argv[])
 				{
 					origImg = imread(filename, 0);
 					TestGetEdgeEroded(origImg);
+				}
+				else if (arg == "--GetBlobEdges")
+				{
+					origImg = imread(filename, 0);
+					TestGetBlobEdges(origImg);
+
 				}
 				else
 				{

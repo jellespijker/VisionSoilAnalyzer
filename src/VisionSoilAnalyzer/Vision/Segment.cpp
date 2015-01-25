@@ -26,7 +26,7 @@ namespace Vision
 	/*! Determine the threshold level by iteration, between two distribution, presumably back- and foreground. It works towards the average of the two averages and finally sets the threshold with two time the standard deviation from the mean of the set object
 	\param TypeObject is an enumerator indicating if the bright or the dark pixels are the object and should be set to one
 	\return The threshold level as an uint8_t	*/
-	u_int8_t Segment::GetThresholdLevel(TypeOfObjects TypeObject)
+	uint8_t Segment::GetThresholdLevel(TypeOfObjects TypeObject)
 	{
 		// Exception handling
 		EMPTY_CHECK(OriginalImg);
@@ -713,7 +713,7 @@ namespace Vision
 			if (BlobList[i].cvROI.height == 0) { BlobList[i].cvROI.height = 1; }
 			
 			//BlobList[i].Img = LabelledImg(BlobList[i].cvROI).clone(); Doesn't work............... blerk
-			BlobList[i].Img = CopyMat<ushort>(LabelledImg(BlobList[i].cvROI).clone(), LUT_filter, CV_16UC1);
+			BlobList[i].Img = CopyMat<ushort>(LabelledImg(BlobList[i].cvROI).clone(), LUT_filter, CV_8UC1);
 
 			LUT_filter[i] = 0;
 			i++;

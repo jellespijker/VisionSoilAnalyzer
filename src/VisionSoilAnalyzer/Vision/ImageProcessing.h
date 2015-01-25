@@ -41,10 +41,10 @@ namespace Vision
 		{
 			Mat dst(src.size(), cvType);
 			uint32_t i = 0;
-			uint32_t nData = src.rows * src.cols * src.step[1];
+			uint32_t nData = dst.rows * dst.cols * dst.step[1];
 			while (i < nData)
 			{
-				dst.data[i] = LUT[src.data[i]];
+				dst.data[i] = LUT[(T)src.data[i * src.step[1]]];
 				i++;
 			}
 			return dst;
