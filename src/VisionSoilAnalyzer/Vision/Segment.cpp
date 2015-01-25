@@ -712,7 +712,6 @@ namespace Vision
 			if (BlobList[i].cvROI.width == 0) { BlobList[i].cvROI.width = 1; }
 			if (BlobList[i].cvROI.height == 0) { BlobList[i].cvROI.height = 1; }
 			
-			//BlobList[i].Img = LabelledImg(BlobList[i].cvROI).clone(); Doesn't work............... blerk
 			BlobList[i].Img = CopyMat<ushort>(LabelledImg(BlobList[i].cvROI).clone(), LUT_filter, CV_8UC1);
 
 			LUT_filter[i] = 0;
