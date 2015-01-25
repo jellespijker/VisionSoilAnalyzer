@@ -5,9 +5,12 @@
 
 #include "Stats.h"
 
-typedef unsigned char uchar;
-typedef unsigned short ushort;
-typedef SoilMath::Stats<float, double, long double> floatStat_t;
-typedef SoilMath::Stats<uchar, uint32_t, uint64_t> ucharStat_t;
-typedef std::vector<std::complex<float>> complexVect_t;
-typedef std::vector<float> descriptor_t;
+namespace SoilMath
+{
+	typedef unsigned char uchar;
+	typedef unsigned short ushort;
+	typedef SoilMath::Stats<float, double, long double> floatStat_t;
+	typedef SoilMath::Stats<uchar, uint32_t, uint64_t> ucharStat_t;
+	typedef std::complex<float> comp_t;
+	typedef std::vector<comp_t> complexVect_t;
+}

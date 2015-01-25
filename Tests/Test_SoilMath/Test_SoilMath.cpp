@@ -39,7 +39,7 @@ bool checkfloatArray(uint32_t *a, uint32_t *b)
 	while (i-- > 0)
 	{
 		cout << "Calculated : " << *a << " - Expected : " << *b << endl;
- 		if (*a++ != *b++)
+		if (*a++ != *b++)
 		{
 			retVal = false;
 		}
@@ -103,6 +103,14 @@ void TestFloatStat()
 
 }
 
+void TestFFT()
+{
+
+	SoilMath::FFT test;
+	test.GetDescriptors();
+}
+
+
 int main(int argc, char *argv[])
 {
 	if (argc < 1) DisplayHelp();
@@ -114,13 +122,17 @@ int main(int argc, char *argv[])
 		for (uint8_t i = 1; i < argc; i++)
 		{
 			arg = argv[i];
-			if (arg == "--uchar")
+			if (arg == "--Stats-uchar")
 			{
 				TestUcharStat();
 			}
-			else if (arg == "--float")
+			else if (arg == "--Stats-float")
 			{
 				TestFloatStat();
+			}
+			else if (arg == "--FFT")
+			{
+				TestFFT();
 			}
 			else { DisplayHelp(); }
 		}
