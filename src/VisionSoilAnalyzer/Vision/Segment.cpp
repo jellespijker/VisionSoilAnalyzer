@@ -608,6 +608,7 @@ namespace Vision
 		else { eroder.OriginalImg = OriginalImg; }
 		// Setup the processed image of the eroder
 		eroder.ProcessedImg.create(OriginalImg.size(), CV_8UC1);
+		eroder.ProcessedImg.setTo(0);
 		// Setup the mask
 		Mat mask(3, 3, CV_8UC1, 1);
 		// Erode the image

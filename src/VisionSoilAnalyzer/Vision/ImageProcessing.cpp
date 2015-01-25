@@ -23,10 +23,11 @@ namespace Vision
 		// Create LUT to determine when there is an new row
 		uchar *nRow = new uchar[nData] { };
 		int i = 0;
-		int shift = nCols - hKsize;
+		int shift = nCols - hKsize - 1;
 		while (i <= totalRows)
 		{
-			nRow[(i++ * shift) + shift - 1] = 1;
+			nRow[(i * nCols) + shift] = 1;
+			i++;
 		}
 		return nRow;
 	}

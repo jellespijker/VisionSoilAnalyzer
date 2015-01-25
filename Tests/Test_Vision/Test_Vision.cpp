@@ -238,36 +238,29 @@ void TestGetBlobEdges(const Mat &origImg)
 	clock_gettime(CLOCK_REALTIME, &tstop);
 	elapsedTime = (unsigned int)(tstop.tv_nsec - tstart.tv_nsec);
 	cout << "Execution time for get BlobList took :" << elapsedTime << " [ns] " << endl;
-	imwrite("LabelBlobs.ppm", Test.LabelledImg);
 
-	Segment edger(Test.BlobList[21].Img);
-	edger.GetEdgesEroding();
+	cv::Mat dst;
+	uint32_t i = 1;
+	string filen;
+	ostringstream ss;
 
-	imwrite("BW_21.ppm", Test.BlobList[21].Img);
-	imwrite("E_21.ppm", edger.ProcessedImg);
-
-	//cv::Mat dst;
-	//uint32_t i = 1;
-	//string filen;
-	//while (i < Test.MaxLabel)
-	//{
-	//	ostringstream ss;
-	//	ss << i;
-	//	filen = "E_" + ss.str() + ".ppm";
-	//	sleep(1);
-	//	
-
-	//	//imwrite(filen, Test.BlobList[i].Img);
-	//	//ss.str("");
-	//	//ss.clear();
-	//	//ss << i;
-	//	//filen = ss.str() + "E.ppm";
-	//	//Vision::MorphologicalFilter moFilter(Test.BlobList[i].Img);
-	//	//moFilter.Erosion(cv::Mat(3, 3, CV_8UC1, 1));
-	//	//imwrite(filen, moFilter.ProcessedImg);
-	//	//moFilter.~MorphologicalFilter();
-	//	i++;
-	//}
+	while (i < Test.MaxLabel)
+	{
+		Segment edge(Test.BlobList[i].Img);
+		edge.GetEdgesEroding();
+		ss << i;
+		filen = "E_" + ss.str() + ".ppm";
+		imwrite(filen, edge.ProcessedImg);
+		ss.str("");
+		ss.clear();
+		ss << i;
+		filen = "BW_" + ss.str() + ".ppm";
+		imwrite(filen, edge.OriginalImg);
+		ss.str("");
+		ss.clear();
+		i++;
+		sleep(1);
+	}
 }
 
 int main(int argc, char *argv[])

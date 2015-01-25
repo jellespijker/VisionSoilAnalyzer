@@ -5,6 +5,7 @@
 #include <queue>
 #include <string>
 #include <stdint.h>
+#include <iostream>
 
 #include "opencv2/imgproc/imgproc.hpp"
 

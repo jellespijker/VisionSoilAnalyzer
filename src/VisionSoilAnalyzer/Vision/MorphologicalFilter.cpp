@@ -46,7 +46,7 @@ namespace Vision
 		int currentKcol = -hKsizeCol;
 		bool isEroded = false;
 		uint32_t nKData = mask.cols * mask.rows;
-		uchar *nRow = GetNRow(nData, hKsizeCol, nCols, OriginalImg.rows);
+		uchar *nRow = GetNRow(nData, hKsizeCol, nCols, nRows);
 		uchar *nKRow = GetNRow(nKData, 0, mask.cols, mask.rows);
 
 		while (i < pEnd)
