@@ -109,8 +109,15 @@ void TestFloatStat()
 
 void TestFFT()
 {
-	cv::Mat src;
-	src = cv::imread("EdgeTest.ppm", 0);
+	uchar data[] = 
+		{0, 0, 0, 0, 0, 0,
+		 0, 1, 1, 0, 0, 0,
+		 1, 0, 0, 1, 0, 0,
+		 1, 1, 0, 0, 1, 0,
+		 0, 0, 1, 1, 1, 0,
+		 0, 0, 0, 0, 0, 0 };
+	cv::Mat src(6, 6, CV_8UC1, &data, 1);
+	//src = cv::imread("EdgeTest.ppm", 0);
 	SoilMath::FFT Test;
 	Test.GetDescriptors(src);
 	
