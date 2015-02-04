@@ -37,34 +37,136 @@ namespace SoilMath
 		return fftDescriptors;
 	}
 
+
+	// Find the shortest path
+	ComplexVect_t FFT::DijkstraContour2Complex(const cv::Mat &img)
+	{
+
+	}
+
 	ComplexVect_t FFT::Contour2Complex(const cv::Mat &img)
 	{
 		uchar *O = img.data;
 
-		uint32_t i = 0, j = 0, count = 0;
+		uint  cContour = 0;
+		iCountourVect_t Contours;
+
+		uint32_t pEnd = img.rows * img.cols;
+
+		for (uint32_t i = 0; i < pEnd; i++)
+		{
+			if (O[i] == 1)
+			{
+				Contours[cContour].second.push_back(i);
+				iContour_t nBors = Neighbors(O, i, img.cols, img.rows);
+				if (nBors.size() > 2) // Choice point
+				{
+					for_each(nBors.begin(), nBors.end(), [&nBors, &Contours, &cContour](uint32_t &n)
+					{
+						uint32_t count = 0;
+						bool first = true;
+						if (n != Contours[cContour].second[Contours[cContour].second.size() - 2] && n != Contours[cContour].second[0]) // Continuous loop
+						{
+							if (first == true) { Contours[cContour].second.push_back(n); }
+							else
+							{
+								Contours.push_back(Contours[cContour]);
+								Contours[cContour].second[Contours[cContour].second.size() - 1] = n;
+							}
+						}
+						else if (n != Contours[cContour].second[Contours[cContour].second.size() - 2] && n == Contours[cContour].second[0]) // Back @ start point
+						{
+							Contours[cContour + count].first = true;;
+						}
+						count++;
+					});
+				}
+				else if (nBors.size() == 1) // death-end
+				{
+
+				}
+
+				// Normal handling
+			}
+		}
+		if (cContour.size() < 1) { throw Exception::MathException("No contour found in image!"); }
+
+	}
+
+	iContour_t Neighbors(uchar *O, int pixel, uint32_t columns, uint32_t rows)
+	{
+		int LUT_nBore[8] = { 1, 1 + columns, columns, columns - 1, -1, -columns - 1, -columns, -columns + 1 };
+		iContour_t neighbors;
+		uint32_t pEnd = rows * columns;
+		uint32_t count = 0;
+		for (uint32_t i = 0; i < 8; i++)
+		{
+			count = pixel + LUT_nBore[i];
+			while ((count < 0 || count >= pEnd) && i < 8) { count = pixel + LUT_nBore[++i]; }
+			if (O[count] == 1) neighbors.push_back(LUT_nBore[i]);
+		}
+		return neighbors;
+	}
+
+	//Can only be used on contours that can't double back up on them self
+	ComplexVect_t FFT::Contour2Complex(const cv::Mat &img)
+	{
+		uchar *O = img.data;
+
+		uint32_t i = 0, j = 0, k = 1, count = 0, backup = 0, bcount;
 		uint32_t pEnd = img.cols * img.rows;
 		int LUT_nBore[8] = { 1, 1 + img.cols, img.cols, img.cols - 1, -1, -img.cols - 1, -img.cols, -img.cols + 1 };
 
 		std::vector<uint32_t> foundEdge;
+		std::vector<uint32_t> foundAllEdge;
 		ComplexVect_t contour;
-
+		bool troep = false;
 		for (uint32_t i = 0; i < pEnd; i++)
 		{
-			if (foundEdge.size() > 1 && i == foundEdge[foundEdge.size() - 1] + 1) { break; } // End of the contour
-
 			if (O[i] == 1)
 			{
-				foundEdge.push_back(i); 
+				foundEdge.push_back(i);
 				for (uint32_t j = 0; j < 8; j++)
 				{
 					count = i + LUT_nBore[j];
-					while ((count < 0 || count > pEnd) && j < 8) { count = i + LUT_nBore[++j];	} // correction for edges of the image
+					while ((count < 0 || count >= pEnd) && j < 8) {	count = i + LUT_nBore[++j];	}
 					if (O[count] == 1)
 					{
-						if ((std::find(foundEdge.begin(), foundEdge.end(), count) == foundEdge.end())) // if i already present move to the next neighbore
+						std::vector<uint32_t>::iterator itt = std::find(foundEdge.begin(), foundEdge.end(), count);
+						if (itt == foundEdge.end())  // newly found point hasn't been previously visited
 						{
 							i = count - 1;
 							break;
+						}
+						else if (itt == foundEdge.begin()) // newly found point is the start of contour and therefore the current point is the end
+						{
+							i = pEnd;
+							break;
+						}
+						else if (foundEdge[foundEdge.size() - 2] != count) // if the newly found point deviate from the previous point but is still visited before iterate back 
+						{
+							k = 1;
+							bool runItt = true;
+							while (runItt)
+							{
+								backup = foundEdge[foundEdge.size() - k];
+								j = 0;
+								while (j < 8)
+								{
+									bcount = backup + LUT_nBore[j++];
+									while ((bcount < 0 || bcount >= pEnd) && j < 8) { bcount = i + LUT_nBore[++j]; }
+									if (O[bcount] == 1 && std::find(foundEdge.begin(), foundEdge.end(), bcount) == foundEdge.end() && bcount != count)
+									{
+										i = bcount - 1;
+										foundAllEdge.reserve(foundAllEdge.size() + k);
+										foundAllEdge.insert(foundAllEdge.end(), foundEdge.end() - k, foundEdge.end());
+										foundEdge.erase(foundEdge.end() - k, foundEdge.end());
+										runItt = false;
+										break;
+									}
+								}
+								k++;
+							}
 						}
 					}
 				}
@@ -75,7 +177,8 @@ namespace SoilMath
 	
 		for_each(foundEdge.begin(), foundEdge.end(), [&img, &cPoint, &contour](uint32_t &e)
 		{
-			cPoint.real((double)((e % img.rows) / img.cols));
+			if (e % img.cols == 0) { cPoint.real(1.0); }
+			else { cPoint.real((double)((e % img.cols) / img.cols)); }
 			cPoint.imag((double)(floorf(e / img.cols) / img.rows));
 			contour.push_back(cPoint);
 		});

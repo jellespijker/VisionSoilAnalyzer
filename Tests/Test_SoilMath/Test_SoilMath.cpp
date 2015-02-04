@@ -109,17 +109,23 @@ void TestFloatStat()
 
 void TestFFT()
 {
-	uchar data[] = 
-		{0, 0, 0, 0, 0, 0,
-		 0, 1, 1, 0, 0, 0,
-		 1, 0, 0, 1, 0, 0,
-		 1, 1, 0, 0, 1, 0,
-		 0, 0, 1, 1, 1, 0,
-		 0, 0, 0, 0, 0, 0 };
-	cv::Mat src(6, 6, CV_8UC1, &data, 1);
-	//src = cv::imread("EdgeTest.ppm", 0);
+	//uchar data[] = 
+	//	{0, 0, 0, 0, 0, 0,
+	//	 0, 1, 1, 0, 0, 0,
+	//	 1, 0, 0, 1, 0, 0,
+	//	 1, 1, 0, 0, 1, 0,
+	//	 0, 0, 1, 1, 1, 0,
+	//	 0, 0, 0, 0, 0, 0 };
+	//cv::Mat src(6, 6, CV_8UC1, &data, 1);
+	cv::Mat src = cv::imread("EdgeTest.ppm", 0);
 	SoilMath::FFT Test;
-	Test.GetDescriptors(src);
+	ComplexVect_t desc = Test.GetDescriptors(src);
+
+	for_each(desc.begin(), desc.end(), [](Complex_t &e)
+	{
+		cout << e.real() << " + " << e.imag() << "i" << endl;
+	});
+
 	
 }
 
