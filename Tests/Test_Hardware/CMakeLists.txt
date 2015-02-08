@@ -3,7 +3,7 @@
 
 cmake_minimum_required(VERSION 2.7)
 project(Test_Hardware)
-set(LIBRARIES_FROM_REFERENCES ${CMAKE_SOURCE_DIR}/../../src/VisionSoilAnalyzer/Hardware/Debug_BBB/libHardware.a)
+set(LIBRARIES_FROM_REFERENCES ${CMAKE_SOURCE_DIR}/../../src/VisionSoilAnalyzer/Hardware/Debug/libHardware.a)
 add_executable(Test_Hardware Test_Hardware.cpp)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c++11 -pthread")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread")

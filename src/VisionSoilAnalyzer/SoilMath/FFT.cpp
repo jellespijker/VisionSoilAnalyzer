@@ -44,58 +44,10 @@ namespace SoilMath
 
 	}
 
-	ComplexVect_t FFT::Contour2Complex(const cv::Mat &img)
+	iContour_t FFT::Neighbors(uchar *O, int pixel, uint32_t columns, uint32_t rows)
 	{
-		uchar *O = img.data;
-
-		uint  cContour = 0;
-		iCountourVect_t Contours;
-
-		uint32_t pEnd = img.rows * img.cols;
-
-		for (uint32_t i = 0; i < pEnd; i++)
-		{
-			if (O[i] == 1)
-			{
-				Contours[cContour].second.push_back(i);
-				iContour_t nBors = Neighbors(O, i, img.cols, img.rows);
-				if (nBors.size() > 2) // Choice point
-				{
-					for_each(nBors.begin(), nBors.end(), [&nBors, &Contours, &cContour](uint32_t &n)
-					{
-						uint32_t count = 0;
-						bool first = true;
-						if (n != Contours[cContour].second[Contours[cContour].second.size() - 2] && n != Contours[cContour].second[0]) // Continuous loop
-						{
-							if (first == true) { Contours[cContour].second.push_back(n); }
-							else
-							{
-								Contours.push_back(Contours[cContour]);
-								Contours[cContour].second[Contours[cContour].second.size() - 1] = n;
-							}
-						}
-						else if (n != Contours[cContour].second[Contours[cContour].second.size() - 2] && n == Contours[cContour].second[0]) // Back @ start point
-						{
-							Contours[cContour + count].first = true;;
-						}
-						count++;
-					});
-				}
-				else if (nBors.size() == 1) // death-end
-				{
-
-				}
-
-				// Normal handling
-			}
-		}
-		if (cContour.size() < 1) { throw Exception::MathException("No contour found in image!"); }
-
-	}
-
-	iContour_t Neighbors(uchar *O, int pixel, uint32_t columns, uint32_t rows)
-	{
-		int LUT_nBore[8] = { 1, 1 + columns, columns, columns - 1, -1, -columns - 1, -columns, -columns + 1 };
+		//long int LUT_nBore[8] = { 1, 1 + columns, columns, columns - 1, -1, -columns - 1, -columns, -columns + 1 };
+		long int LUT_nBore[8] = { -columns + 1, -columns, -columns - 1, -1, columns - 1, columns, 1 + columns, 1 };
 		iContour_t neighbors;
 		uint32_t pEnd = rows * columns;
 		uint32_t count = 0;
@@ -103,79 +55,71 @@ namespace SoilMath
 		{
 			count = pixel + LUT_nBore[i];
 			while ((count < 0 || count >= pEnd) && i < 8) { count = pixel + LUT_nBore[++i]; }
-			if (O[count] == 1) neighbors.push_back(LUT_nBore[i]);
+			if (i >= 8) { break; }
+			if (O[count] == 1) neighbors.push_back(count);
 		}
 		return neighbors;
 	}
 
-	//Can only be used on contours that can't double back up on them self
+	// Depth first search with extension list,
+	// based upon: http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-034-artificial-intelligence-fall-2010/lecture-videos/lecture-4-search-depth-first-hill-climbing-beam/
 	ComplexVect_t FFT::Contour2Complex(const cv::Mat &img)
 	{
 		uchar *O = img.data;
-
-		uint32_t i = 0, j = 0, k = 1, count = 0, backup = 0, bcount;
 		uint32_t pEnd = img.cols * img.rows;
-		int LUT_nBore[8] = { 1, 1 + img.cols, img.cols, img.cols - 1, -1, -img.cols - 1, -img.cols, -img.cols + 1 };
 
-		std::vector<uint32_t> foundEdge;
-		std::vector<uint32_t> foundAllEdge;
-		ComplexVect_t contour;
-		bool troep = false;
+		std::deque<std::deque<uint32_t>> sCont;
+		std::deque<uint32_t> eList;
+		
+		//Initialize the queue
 		for (uint32_t i = 0; i < pEnd; i++)
 		{
-			if (O[i] == 1)
+			if (O[i] == 1) 
 			{
-				foundEdge.push_back(i);
-				for (uint32_t j = 0; j < 8; j++)
-				{
-					count = i + LUT_nBore[j];
-					while ((count < 0 || count >= pEnd) && j < 8) {	count = i + LUT_nBore[++j];	}
-					if (O[count] == 1)
-					{
-						std::vector<uint32_t>::iterator itt = std::find(foundEdge.begin(), foundEdge.end(), count);
-						if (itt == foundEdge.end())  // newly found point hasn't been previously visited
-						{
-							i = count - 1;
-							break;
-						}
-						else if (itt == foundEdge.begin()) // newly found point is the start of contour and therefore the current point is the end
-						{
-							i = pEnd;
-							break;
-						}
-						else if (foundEdge[foundEdge.size() - 2] != count) // if the newly found point deviate from the previous point but is still visited before iterate back 
-						{
-							k = 1;
-							bool runItt = true;
-							while (runItt)
-							{
-								backup = foundEdge[foundEdge.size() - k];
-								j = 0;
-								while (j < 8)
-								{
-									bcount = backup + LUT_nBore[j++];
-									while ((bcount < 0 || bcount >= pEnd) && j < 8) { bcount = i + LUT_nBore[++j]; }
-									if (O[bcount] == 1 && std::find(foundEdge.begin(), foundEdge.end(), bcount) == foundEdge.end() && bcount != count)
-									{
-										i = bcount - 1;
-										foundAllEdge.reserve(foundAllEdge.size() + k);
-										foundAllEdge.insert(foundAllEdge.end(), foundEdge.end() - k, foundEdge.end());
-										foundEdge.erase(foundEdge.end() - k, foundEdge.end());
-										runItt = false;
-										break;
-									}
-								}
-								k++;
-							}
-						}
-					}
-				}
+				std::deque<uint32_t> tmpQ;
+				tmpQ.push_back(i);
+				sCont.push_back(tmpQ); 
+				break;
 			}
 		}
 
+		if (sCont.front().size() < 1) { throw Exception::MathException("No contour found in image!"); } // Exception handling
+
+		uint32_t prev = -1;
+
+		// Extend path on queue
+		for (uint32_t i = sCont.front().front(); i < pEnd;)
+		{
+			iContour_t nBors = Neighbors(O, i, img.cols, img.rows); // find neighboring pixels
+			std::deque<uint32_t> cQ = sCont.front(); //store first queue;
+			sCont.erase(sCont.begin());	// erase first queue from beginning 
+			if (cQ.size() > 1) { prev = cQ.size() - 2; }
+			else { prev = 0; }
+			// Loop through each neighbor
+			for (uint32_t j = 0; j < nBors.size(); j++)
+			{
+				if (nBors[j] != cQ[prev]) // No backtracking
+				{
+					if (nBors[j] == cQ.front() && cQ.size() > 8) { i = pEnd; } // Back at first node
+					if (std::find(eList.begin(), eList.end(), nBors[j]) == eList.end()) // Check if this current route is extended elsewhere
+					{
+						std::deque<uint32_t> nQ = cQ;
+						nQ.push_back(nBors[j]); // Add the neighbor to the queue
+						sCont.push_front(nQ); // add the sequence to the front of the queue
+					}
+				}
+			}
+			if (nBors.size() > 2) { eList.push_back(i); } // if there are multiple choices put current node in extension List
+			if (i != pEnd) { i = sCont.front().back(); } // If it isn't the end set i to the last node of the first queue
+			if (sCont.size() == 0) { throw Exception::MathException("No continuous contour found, or less then 8 pixels long!"); }
+		}
+
+		// convert the first queue to a complex normalized vector
 		Complex_t cPoint;
-	
-		for_each(foundEdge.begin(), foundEdge.end(), [&img, &cPoint, &contour](uint32_t &e)
+		ComplexVect_t contour;
+
+		//Normalize and convert the complex function
+		for_each(sCont.front().begin(), sCont.front().end(), [&img, &cPoint, &contour](uint32_t &e)
 		{
 			if (e % img.cols == 0) { cPoint.real(1.0); }
 			else { cPoint.real((double)((e % img.cols) / img.cols)); }
@@ -184,6 +128,7 @@ namespace SoilMath
 		});
 
 		return contour;
+
 	}
 
 	void FFT::fft(ComplexArray_t &CA)

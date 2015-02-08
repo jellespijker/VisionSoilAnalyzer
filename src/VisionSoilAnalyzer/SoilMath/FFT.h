@@ -5,6 +5,8 @@
 #include <cmath>
 #include <valarray>
 #include <array>
+#include <deque>
+#include <queue>
 #include <iterator>
 #include <algorithm>
 #include <stdint.h>
