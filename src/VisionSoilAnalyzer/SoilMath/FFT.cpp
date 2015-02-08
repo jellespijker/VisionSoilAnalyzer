@@ -15,7 +15,7 @@ namespace SoilMath
 	{
 		if (!fftDescriptors.empty()) { return fftDescriptors; }
 
-		complexcontour = Contour2Complex(img);
+		complexcontour = Contour2Complex(img, img.cols / 2, img.rows / 2);
 
 		// Supplement the vector of complex numbers so that N = 2^m
 		uint32_t N = complexcontour.size();
@@ -37,17 +37,10 @@ namespace SoilMath
 		return fftDescriptors;
 	}
 
-
-	// Find the shortest path
-	ComplexVect_t FFT::DijkstraContour2Complex(const cv::Mat &img)
-	{
-
-	}
-
 	iContour_t FFT::Neighbors(uchar *O, int pixel, uint32_t columns, uint32_t rows)
 	{
 		//long int LUT_nBore[8] = { 1, 1 + columns, columns, columns - 1, -1, -columns - 1, -columns, -columns + 1 };
-		long int LUT_nBore[8] = { -columns + 1, -columns, -columns - 1, -1, columns - 1, columns, 1 + columns, 1 };
+		int LUT_nBore[8] = { -columns + 1, -columns, -columns - 1, -1, columns - 1, columns, 1 + columns, 1 };
 		iContour_t neighbors;
 		uint32_t pEnd = rows * columns;
 		uint32_t count = 0;
@@ -63,7 +56,7 @@ namespace SoilMath
 
 	// Depth first search with extension list,
 	// based upon: http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-034-artificial-intelligence-fall-2010/lecture-videos/lecture-4-search-depth-first-hill-climbing-beam/
-	ComplexVect_t FFT::Contour2Complex(const cv::Mat &img)
+	ComplexVect_t FFT::Contour2Complex(const cv::Mat &img, float centerCol, float centerRow)
 	{
 		uchar *O = img.data;
 		uint32_t pEnd = img.cols * img.rows;
@@ -117,13 +110,14 @@ namespace SoilMath
 		// convert the first queue to a complex normalized vector
 		Complex_t cPoint;
 		ComplexVect_t contour;
-
+		float col = 0.0;
 		//Normalize and convert the complex function
-		for_each(sCont.front().begin(), sCont.front().end(), [&img, &cPoint, &contour](uint32_t &e)
+		for_each(sCont.front().begin(), sCont.front().end(), [&img, &cPoint, &contour, &centerCol, &centerRow, &col](uint32_t &e)
 		{
-			if (e % img.cols == 0) { cPoint.real(1.0); }
-			else { cPoint.real((double)((e % img.cols) / img.cols)); }
-			cPoint.imag((double)(floorf(e / img.cols) / img.rows));
+			col = (float)((e % img.cols) - centerCol);
+			if (col == 0.0) {	cPoint.real(1.0);}
+			else { cPoint.real((float)(col / centerCol)); }
+			cPoint.imag((float)((floorf(e / img.cols) - centerRow) / centerRow));
 			contour.push_back(cPoint);
 		});
 
