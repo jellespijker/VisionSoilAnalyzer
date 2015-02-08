@@ -1,7 +1,11 @@
 
-class NN
+namespace SoilMath
 {
-public:
-	NN();
-	~NN();
-};
+	class NN
+	{
+	public:
+		NN();
+		~NN();
+
+	};
+}

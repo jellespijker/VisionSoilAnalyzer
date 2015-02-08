@@ -1,11 +1,13 @@
 #include "NN.h"
 
-
-NN::NN()
+namespace SoilMath
 {
-}
+	NN::NN()
+	{
+	}
 
 
-NN::~NN()
-{
+	NN::~NN()
+	{
+	}
 }
