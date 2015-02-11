@@ -9,6 +9,7 @@
 
 typedef std::vector<ComplexVect_t> InputLearnVector_t;
 typedef std::vector<uint32_t> OutputLearnVector_t;
+
 typedef struct Predict_struct
 {
 	uint32_t Category;
