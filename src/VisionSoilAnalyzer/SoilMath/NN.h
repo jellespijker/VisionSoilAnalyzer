@@ -13,6 +13,7 @@ typedef std::vector<uint32_t> OutputLearnVector_t;
 typedef struct Predict_struct
 {
 	uint32_t Category;
+	float RealValue;
 	float Accuracy;
 } Predict_t;
 
