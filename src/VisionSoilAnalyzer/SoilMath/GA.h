@@ -1,13 +1,15 @@
 #pragma once
 #define GENE_MAX 32
-#define CROSSOVER 16
-#define MUTATIONRATE 0.01f
-#define END_ERROR 0.001f
+#define CROSSOVER 12
+#define MUTATIONRATE 0.08f
+#define ELITISME 1
+#define END_ERROR 0.01f
 
 #include <bitset>
 #include <random>
 #include <string>
 #include <algorithm>
+#include <chrono>
 
 #include "NN.h"
 #include "MathException.h"
@@ -37,7 +39,7 @@ namespace SoilMath
 		GA(NNfunctionType nnfunction);
 		~GA();
 
-		void Evolve(const ComplexVect_t &inputValues, Weight_t &weights, MinMaxWeight_t rangeweights, float goal, uint32_t maxGenerations = 100, uint32_t popSize = 20);
+		void Evolve(const ComplexVect_t &inputValues, Weight_t &weights, MinMaxWeight_t rangeweights, float goal, uint32_t maxGenerations = 200, uint32_t popSize = 30);
 
 	private:
 		NNfunctionType NNfuction;
@@ -48,18 +50,23 @@ namespace SoilMath
 		void GrowToAdulthood(Population_t &pop, const ComplexVect_t &inputValues, MinMaxWeight_t rangeweights, float goal, float &totalFitness);
 		bool SurvivalOfTheFittest(Population_t &pop, float &totalFitness);
 
-		bool PopMemberSort(PopMember_t i, PopMember_t j) { return (i.Fitness < j.Fitness); }
+		static bool PopMemberSort(PopMember_t i, PopMember_t j) { return (i.Fitness < j.Fitness); }
 
 		template <typename T>
 		inline Genome_t ConvertToGenome(T value, std::pair<T, T> range)
 		{
-			return Genome_t(static_cast<uint32_t>(((value + range.first) / range.second) * UINT32_MAX));
+			uint32_t intVal = static_cast<uint32_t>((UINT32_MAX * (range.first + value)) / (range.second - range.first));
+			Genome_t retVal(intVal);
+			return retVal;
 		};
 
 		template <typename T>
 		inline T ConvertToValue(Genome_t gen, std::pair<T, T> range)
 		{
-			return static_cast<T>(gen.to_ulong() / UINT32_MAX) - range.first);
+			T retVal = range.first + (((range.second - range.first) * static_cast<T>(gen.to_ulong())) / UINT32_MAX);
+			//if (retVal < range.first) { retVal = range.first; }
+			//else if (retVal > range.second) { retVal = range.second; }
+			return retVal;
 		};
 	};
 

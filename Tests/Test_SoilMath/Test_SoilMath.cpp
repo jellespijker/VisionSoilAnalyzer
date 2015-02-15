@@ -3,6 +3,8 @@
 #include <array>
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
+#include <math.h>
+#include <cmath>
 
 #include "TestMatrix.h"
 #include "FloatTestMatrix.h"
@@ -16,6 +18,7 @@ void DisplayHelp()
 	cout << "--Stats-float         Test floating type stats" << endl;
 	cout << "--Stats-uchar         Test uchar type stats" << endl;
 	cout << "--FFT                 Test Fast Fourier Transform of an Edge" << endl;
+	cout << "--GA                  Test Genetic ALgorithm" << endl;
 }
 
 bool checkArray(uint32_t *a, uint32_t *b)
@@ -125,10 +128,32 @@ void TestFFT()
 	{
 		cout << e.real() << " + " << e.imag() << "i" << endl;
 	});
-
-	
 }
 
+Predict_t NNfunction(ComplexVect_t input, Weight_t weights)
+{
+	Predict_t retVal;
+	retVal.RealValue = -abs(sin(weights[0])*cos(weights[1])*exp(abs(1 - (sqrt(pow(weights[0], 2) + pow(weights[1], 2)) / M_PI))));
+	return retVal;
+}
+
+void TestGA()
+{
+	SoilMath::GA Test(NNfunction);
+	Weight_t weights;
+	ComplexVect_t input;
+
+	weights.push_back(0);
+	weights.push_back(0);
+
+	Test.Evolve(input, weights, MinMaxWeight_t(-10.0f, 10.0f), -19.2085f);
+	for_each(weights.begin(), weights.end(), [](float &w)
+	{
+		cout << w << endl;
+	});
+
+	cout << NNfunction(input, weights).RealValue << endl;
+}
 
 
 int main(int argc, char *argv[])
@@ -153,6 +178,10 @@ int main(int argc, char *argv[])
 			else if (arg == "--FFT")
 			{
 				TestFFT();
+			}
+			else if (arg == "--GA")
+			{
+				TestGA();
 			}
 			else { DisplayHelp(); }
 		}

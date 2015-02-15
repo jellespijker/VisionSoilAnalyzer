@@ -3,6 +3,12 @@
 namespace SoilMath
 {
 	GA::GA() { } 
+
+	GA::GA(NNfunctionType nnfunction)
+	{
+		NNfuction = nnfunction;
+	}
+
 	
 	GA::~GA() { }
 
@@ -11,6 +17,7 @@ namespace SoilMath
 		// Create the population
 		Population_t pop = Genesis(weights, rangeweights, popSize);
 		float totalFitness = 0.0;
+
 		for (uint32_t i = 0; i < maxGenerations; i++)
 		{
 			CrossOver(pop);
@@ -26,7 +33,8 @@ namespace SoilMath
 	Population_t GA::Genesis(const Weight_t &weights, MinMaxWeight_t rangeweights, uint32_t popSize)
 	{
 		Population_t pop;
-		std::default_random_engine gen;
+		unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+		std::default_random_engine gen(seed);
 		std::uniform_real_distribution<float> dis(rangeweights.first, rangeweights.second);
 
 		for (uint32_t i = 0; i < popSize; i++)
@@ -45,32 +53,37 @@ namespace SoilMath
 	void GA::CrossOver(Population_t &pop)
 	{
 		Population_t newPop; // create a new population
-
-		SplitGenome_t Split[2];
 		PopMember_t newPopMembers[2];
+		SplitGenome_t Split[2];
 
 		for (uint32_t i = 0; i < pop.size(); i += 2)
 		{
-			for (uint32_t j = 0; j < pop[i].weights.size(); j += 2)
+
+			for (uint32_t j = 0; j < pop[i].weights.size(); j++)
 			{
+				// Split A
 				Split[0].first = bitset<CROSSOVER>(pop[i].weightsGen[j].to_string().substr(0, CROSSOVER));
 				Split[0].second = bitset<GENE_MAX - CROSSOVER>(pop[i].weightsGen[j].to_string().substr(CROSSOVER, GENE_MAX - CROSSOVER));
 
+				// Split B
 				Split[1].first = bitset<CROSSOVER>(pop[i + 1].weightsGen[j].to_string().substr(0, CROSSOVER));
 				Split[1].second = bitset<GENE_MAX - CROSSOVER>(pop[i + 1].weightsGen[j].to_string().substr(CROSSOVER, GENE_MAX - CROSSOVER));
 
+				// Mate A and B to AB and BA
 				newPopMembers[0].weightsGen.push_back(Genome_t(Split[0].first.to_string() + Split[1].second.to_string()));
 				newPopMembers[1].weightsGen.push_back(Genome_t(Split[1].first.to_string() + Split[0].second.to_string()));
 			}
 			newPop.push_back(newPopMembers[0]);
 			newPop.push_back(newPopMembers[1]);
+			newPopMembers[0].weightsGen.clear();
+			newPopMembers[1].weightsGen.clear();
 		}
 
 		//Allow the top tiers population partners to mate again
 		uint32_t halfN = pop.size() / 2;
 		for (uint32_t i = 0; i < halfN; i++)
 		{
-			for (uint32_t j = 0; j < pop[i].weights.size(); j += 2)
+			for (uint32_t j = 0; j < pop[i].weights.size(); j++)
 			{
 				Split[0].first = bitset<CROSSOVER>(pop[i].weightsGen[j].to_string().substr(0, CROSSOVER));
 				Split[0].second = bitset<GENE_MAX - CROSSOVER>(pop[i].weightsGen[j].to_string().substr(CROSSOVER, GENE_MAX - CROSSOVER));
@@ -83,24 +96,30 @@ namespace SoilMath
 			}
 			newPop.push_back(newPopMembers[0]);
 			newPop.push_back(newPopMembers[1]);
+			newPopMembers[0].weightsGen.clear();
+			newPopMembers[1].weightsGen.clear();
 		}
 		pop = newPop;
 	}
 
 	void GA::Mutate(Population_t &pop)
 	{
-		std::default_random_engine gen;
+		unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+
+		std::default_random_engine gen(seed);
 		std::uniform_real_distribution<float> dis(0, 1);
 
-		std::default_random_engine genGen;
+		std::default_random_engine genGen(seed);
 		std::uniform_int_distribution<int> disGen(0, (GENE_MAX - 1));
 
-		uint32_t chance = MUTATIONRATE * GENE_MAX;
 		for (uint32_t i = 0; i < pop.size(); i++)
 		{
 			for (uint32_t j = 0; j < pop[i].weightsGen.size(); j++)
 			{
-				if (dis(gen) < chance) { pop[i].weightsGen[j][disGen(genGen)].flip(); }
+				if (dis(gen) < MUTATIONRATE)
+				{
+					pop[i].weightsGen[j][disGen(genGen)].flip();
+				}
 			}
 		}
 	}
@@ -123,18 +142,22 @@ namespace SoilMath
 	{
 		bool retVal = false;
 		uint32_t decimationCount = pop.size() / 2;
+
 		std::default_random_engine gen;
 		std::uniform_real_distribution<float> dis(0, totalFitness);
 
-		uint32_t i = 0;
+		std::sort(pop.begin(), pop.end(), PopMemberSort);
+
+		uint32_t i = ELITISME;
 		while (pop.size() > decimationCount)
 		{
-			if (i >= pop.size()) { i = 0; }
-			if (dis(gen) < pop[i].Fitness) { pop.erase(pop.begin() + i); }
+			if (i >= pop.size()) { i = ELITISME; }
+			if (dis(gen) < pop[i].Fitness) 
+			{
+				pop.erase(pop.begin() + i--); 
+			}
 			i++;
 		}
-
-		std::sort(pop.begin(), pop.end(), PopMemberSort);
 
 		if (pop[0].Fitness < END_ERROR) { retVal = true; }
 		return retVal;
