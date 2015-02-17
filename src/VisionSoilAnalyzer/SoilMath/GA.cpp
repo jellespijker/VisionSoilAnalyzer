@@ -114,13 +114,7 @@ namespace SoilMath
 
 		for (uint32_t i = 0; i < pop.size(); i++)
 		{
-			for (uint32_t j = 0; j < pop[i].weightsGen.size(); j++)
-			{
-				if (dis(gen) < MUTATIONRATE)
-				{
-					pop[i].weightsGen[j][disGen(genGen)].flip();
-				}
-			}
+			for (uint32_t j = 0; j < pop[i].weightsGen.size(); j++) { if (dis(gen) < MUTATIONRATE) { pop[i].weightsGen[j][disGen(genGen)].flip(); }	}
 		}
 	}
 
@@ -128,10 +122,7 @@ namespace SoilMath
 	{
 		for (uint32_t i = 0; i < pop.size(); i++)
 		{
-			for (uint32_t j = 0; j < pop[i].weightsGen.size(); j++)
-			{
-				pop[i].weights.push_back(ConvertToValue<float>(pop[i].weightsGen[j], rangeweights));
-			}
+			for (uint32_t j = 0; j < pop[i].weightsGen.size(); j++)	{ pop[i].weights.push_back(ConvertToValue<float>(pop[i].weightsGen[j], rangeweights));	}
 			pop[i].Calculated = NNfuction(inputValues, pop[i].weights).RealValue;
 			pop[i].Fitness = fabsf(1.0 - (pop[i].Calculated / goal));
 			totalFitness += pop[i].Fitness;
@@ -143,7 +134,8 @@ namespace SoilMath
 		bool retVal = false;
 		uint32_t decimationCount = pop.size() / 2;
 
-		std::default_random_engine gen;
+		unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+		std::default_random_engine gen(seed);
 		std::uniform_real_distribution<float> dis(0, totalFitness);
 
 		std::sort(pop.begin(), pop.end(), PopMemberSort);
@@ -152,10 +144,7 @@ namespace SoilMath
 		while (pop.size() > decimationCount)
 		{
 			if (i >= pop.size()) { i = ELITISME; }
-			if (dis(gen) < pop[i].Fitness) 
-			{
-				pop.erase(pop.begin() + i--); 
-			}
+			if (dis(gen) < pop[i].Fitness) { pop.erase(pop.begin() + i--); 	}
 			i++;
 		}
 

@@ -1,9 +1,4 @@
 #pragma once
-#define GENE_MAX 32
-#define CROSSOVER 12
-#define MUTATIONRATE 0.08f
-#define ELITISME 1
-#define END_ERROR 0.01f
 
 #include <bitset>
 #include <random>
@@ -12,22 +7,8 @@
 #include <chrono>
 
 #include "NN.h"
+#include "SoilMathTypes.h"
 #include "MathException.h"
-
-typedef std::bitset<GENE_MAX> Genome_t;
-typedef std::pair<std::bitset<CROSSOVER>, std::bitset<GENE_MAX - CROSSOVER>> SplitGenome_t;
-typedef std::vector<float> Weight_t;
-typedef std::vector<Genome_t> GenVect_t;
-typedef struct PopMemberStruct
-{
-	Weight_t weights;
-	GenVect_t weightsGen;
-	float Calculated = 0.0;
-	float Fitness = 0.0;
-} PopMember_t;
-typedef std::vector<PopMember_t> Population_t;
-typedef std::pair<float, float> MinMaxWeight_t;
-typedef Predict_t(*NNfunctionType)(ComplexVect_t, Weight_t); 
 
 namespace SoilMath
 {
@@ -64,8 +45,6 @@ namespace SoilMath
 		inline T ConvertToValue(Genome_t gen, std::pair<T, T> range)
 		{
 			T retVal = range.first + (((range.second - range.first) * static_cast<T>(gen.to_ulong())) / UINT32_MAX);
-			//if (retVal < range.first) { retVal = range.first; }
-			//else if (retVal > range.second) { retVal = range.second; }
 			return retVal;
 		};
 	};

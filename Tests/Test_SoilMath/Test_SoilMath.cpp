@@ -19,6 +19,7 @@ void DisplayHelp()
 	cout << "--Stats-uchar         Test uchar type stats" << endl;
 	cout << "--FFT                 Test Fast Fourier Transform of an Edge" << endl;
 	cout << "--GA                  Test Genetic ALgorithm" << endl;
+	cout << "--NN                  Test Neural Network" << endl;
 }
 
 bool checkArray(uint32_t *a, uint32_t *b)
@@ -155,6 +156,18 @@ void TestGA()
 	cout << NNfunction(input, weights).RealValue << endl;
 }
 
+void TestNN()
+{
+	SoilMath::NN Test;
+	Test.Learn(InputLearnVector_t(), OutputLearnVector_t(), 0);
+	for_each(Test.weights.begin(), Test.weights.end(), [](float &w)
+	{
+		cout << w << endl;
+	});
+
+	cout << Test.Predict(ComplexVect_t(), Test.weights).RealValue << endl;
+}
+
 
 int main(int argc, char *argv[])
 {
@@ -182,6 +195,10 @@ int main(int argc, char *argv[])
 			else if (arg == "--GA")
 			{
 				TestGA();
+			}
+			else if (arg == "--NN")
+			{
+				TestNN();
 			}
 			else { DisplayHelp(); }
 		}

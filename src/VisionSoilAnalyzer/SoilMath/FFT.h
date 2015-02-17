@@ -14,11 +14,6 @@
 #include "SoilMathTypes.h"
 #include "MathException.h"
 
-typedef std::complex<double> Complex_t;
-typedef std::vector<Complex_t> ComplexVect_t;
-typedef std::valarray<Complex_t> ComplexArray_t;
-typedef std::vector<uint32_t> iContour_t;
-
 namespace SoilMath
 {
 	class FFT
