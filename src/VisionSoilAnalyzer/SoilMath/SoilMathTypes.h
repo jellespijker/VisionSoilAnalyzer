@@ -44,4 +44,5 @@ typedef struct Predict_struct
 	float RealValue;
 	float Accuracy;
 } Predict_t;
-typedef Predict_t(*NNfunctionType)(ComplexVect_t, Weight_t); 
+//typedef Predict_t(*NNfunctionType)(ComplexVect_t, Weight_t); 
+typedef Predict_t(*NNfunctionType)(SoilMath::NN);

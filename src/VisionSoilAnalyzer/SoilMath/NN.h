@@ -1,5 +1,7 @@
 #pragma once
 
+#define BETA = 2
+
 #include <stdint.h>
 #include <vector>
 #include <string>
@@ -16,7 +18,7 @@ namespace SoilMath
 		NN();
 		~NN();
 
-		static Predict_t Predict(ComplexVect_t input, Weight_t weights);
+		Predict_t Predict(ComplexVect_t input);
 
 		void Learn(InputLearnVector_t input, OutputLearnVector_t cat, uint32_t noOfDescriptorsUsed );
 		void SaveState(string filename);
@@ -26,8 +28,15 @@ namespace SoilMath
 
 		Weight_t weights;
 
-
 	private:
+		ComplexVect_t iNeurons;
+		Weight_t iWeights;
+
+		ComplexVect_t hNeurons;
+		Weight_t hWeights;
+
+		ComplexVect_t oNeurons;
+
 		float *inputWeights;
 		float *outputWeights;
 		float *hiddenWeights;
@@ -38,5 +47,7 @@ namespace SoilMath
 		uint32_t outputNeurons;
 
 		bool studied = false;
+		static Predict_struct PredictLearn(NN neuralnet);
+
 	};
 }
