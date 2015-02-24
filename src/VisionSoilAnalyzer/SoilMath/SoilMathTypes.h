@@ -43,6 +43,6 @@ typedef struct Predict_struct
 	uint32_t Category;
 	float RealValue;
 	float Accuracy;
+	std::vector<float> OutputNeurons;
 } Predict_t;
-//typedef Predict_t(*NNfunctionType)(ComplexVect_t, Weight_t); 
-typedef Predict_t(*NNfunctionType)(SoilMath::NN);
+typedef Predict_t(*NNfunctionType)(ComplexVect_t, Weight_t, Weight_t, uint32_t, uint32_t, uint32_t);
