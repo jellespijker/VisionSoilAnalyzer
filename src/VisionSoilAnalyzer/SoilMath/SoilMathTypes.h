@@ -4,7 +4,7 @@
 #define CROSSOVER 12
 #define MUTATIONRATE 0.08f
 #define ELITISME 1
-#define END_ERROR 0.01f
+#define END_ERROR 0.03f
 
 #include <stdint.h>
 #include <bitset>

@@ -1,6 +1,6 @@
 #pragma once
 
-#define BETA = 1
+#define BETA 1
 
 #include <stdint.h>
 #include <vector>
@@ -31,6 +31,8 @@ namespace SoilMath
 
 		void SaveState(string filename);
 		void LoadState(string filename);
+
+		std::vector<Weight_t> learnedWeights;
 
 	private:
 		std::vector<float> iNeurons;

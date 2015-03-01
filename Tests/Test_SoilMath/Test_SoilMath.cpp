@@ -5,6 +5,8 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <math.h>
 #include <cmath>
+#include <random>
+
 
 #include "TestMatrix.h"
 #include "FloatTestMatrix.h"
@@ -140,32 +142,66 @@ Predict_t NNfunction(ComplexVect_t input, Weight_t weights)
 
 void TestGA()
 {
-	SoilMath::GA Test(NNfunction);
-	Weight_t weights;
-	ComplexVect_t input;
+	//SoilMath::GA Test(NNfunction);
+	//Weight_t weights;
+	//ComplexVect_t input;
 
-	weights.push_back(0);
-	weights.push_back(0);
+	//weights.push_back(0);
+	//weights.push_back(0);
 
-	Test.Evolve(input, weights, MinMaxWeight_t(-10.0f, 10.0f), -19.2085f);
-	for_each(weights.begin(), weights.end(), [](float &w)
-	{
-		cout << w << endl;
-	});
+	//Test.Evolve(input, weights, MinMaxWeight_t(-10.0f, 10.0f), -19.2085f);
+	//for_each(weights.begin(), weights.end(), [](float &w)
+	//{
+	//	cout << w << endl;
+	//});
 
-	cout << NNfunction(input, weights).RealValue << endl;
+	//cout << NNfunction(input, weights).RealValue << endl;
 }
 
 void TestNN()
 {
-	SoilMath::NN Test;
-	Test.Learn(InputLearnVector_t(), OutputLearnVector_t(), 0);
-	for_each(Test.weights.begin(), Test.weights.end(), [](float &w)
+	SoilMath::NN Test(2,2,1);
+
+	InputLearnVector_t inputVect;
+	OutputLearnVector_t outputVect;
+
+	Population_t pop;
+	unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+	std::default_random_engine gen(seed);
+	std::uniform_real_distribution<float> dis(0.0, 1.0);
+
+	float i1 = 0.0, i2 = 0.0;
+	uint32_t o1 = 0.0;
+
+	for (uint32_t i = 0; i < 50; i++)
 	{
-		cout << w << endl;
+		if (dis(gen) > 0.5f) { i1 = 1.0; }
+		else { i1 = 0.0; }
+		if (dis(gen) > 0.5f) { i2 = 1.0; }
+		else { i2 = 0.0; }
+
+		if (i1 != i2) { o1 = 0; }
+		else { o1 = 1; }
+
+		ComplexVect_t inputTemp;
+		inputTemp.push_back(Complex_t(i1, 0));
+		inputTemp.push_back(Complex_t(i2, 0));
+		inputVect.push_back(inputTemp);
+
+		outputVect.push_back(o1);
+	}
+
+
+	Test.Learn(inputVect, outputVect, 0);
+	for_each(Test.learnedWeights.begin(), Test.learnedWeights.end(), [](Weight_t &w)
+	{
+		for_each(w.begin(), w.end(), [](float &v)
+		{
+			cout << v << " , ";
+		});
+		cout << endl;
 	});
 
-	cout << Test.Predict(ComplexVect_t(), Test.weights).RealValue << endl;
 }
 
 

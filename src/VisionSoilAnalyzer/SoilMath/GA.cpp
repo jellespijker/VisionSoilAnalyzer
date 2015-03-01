@@ -4,9 +4,12 @@ namespace SoilMath
 {
 	GA::GA() { } 
 
-	GA::GA(NNfunctionType nnfunction)
+	GA::GA(NNfunctionType nnfunction, uint32_t inputneurons, uint32_t hiddenneurons, uint32_t outputneurons)
 	{
-		NNfuction = nnfunction;
+		this->NNfuction = nnfunction;
+		this->inputneurons = inputneurons;
+		this->hiddenneurons = hiddenneurons;
+		this->outputneurons = outputneurons;
 	}
 
 	
@@ -120,10 +123,13 @@ namespace SoilMath
 
 	void GA::GrowToAdulthood(Population_t &pop, const ComplexVect_t &inputValues, MinMaxWeight_t rangeweights, float goal, float &totalFitness)
 	{
+		if (goal == 0.0f) { goal = 0.0001f; }
 		for (uint32_t i = 0; i < pop.size(); i++)
 		{
 			for (uint32_t j = 0; j < pop[i].weightsGen.size(); j++)	{ pop[i].weights.push_back(ConvertToValue<float>(pop[i].weightsGen[j], rangeweights));	}
-			pop[i].Calculated = NNfuction(inputValues, pop[i].weights).RealValue;
+			Weight_t iWeight(pop[i].weights.begin(), pop[i].weights.begin() + ((inputneurons + 1) * hiddenneurons));
+			Weight_t hWeight(pop[i].weights.begin() + ((inputneurons + 1) * hiddenneurons), pop[i].weights.end());
+			pop[i].Calculated = NNfuction(inputValues, iWeight, hWeight, inputneurons, hiddenneurons, outputneurons).RealValue;
 			pop[i].Fitness = fabsf(1.0 - (pop[i].Calculated / goal));
 			totalFitness += pop[i].Fitness;
 		}

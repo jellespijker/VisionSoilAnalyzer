@@ -17,13 +17,16 @@ namespace SoilMath
 	{
 	public:
 		GA();
-		GA(NNfunctionType nnfunction);
+		GA(NNfunctionType nnfunction, uint32_t inputneurons, uint32_t hiddenneurons, uint32_t outputneurons);
 		~GA();
 
 		void Evolve(const ComplexVect_t &inputValues, Weight_t &weights, MinMaxWeight_t rangeweights, float goal, uint32_t maxGenerations = 200, uint32_t popSize = 30);
 
 	private:
 		NNfunctionType NNfuction;
+		uint32_t inputneurons;
+		uint32_t hiddenneurons;
+		uint32_t outputneurons;
 
 		Population_t Genesis(const Weight_t &weights, MinMaxWeight_t rangeweights, uint32_t popSize);
 		void CrossOver(Population_t &pop);
