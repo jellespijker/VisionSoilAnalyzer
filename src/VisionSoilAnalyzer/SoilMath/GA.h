@@ -21,6 +21,7 @@ namespace SoilMath
 		~GA();
 
 		void Evolve(const ComplexVect_t &inputValues, Weight_t &weights, std::vector<Weight_t> &prevWeights, MinMaxWeight_t rangeweights, Predict_t goal, uint32_t maxGenerations = 200, uint32_t popSize = 30);
+		void Evolve(const InputLearnVector_t &inputValues, Weight_t &weights, MinMaxWeight_t rangeweights, OutputLearnVector_t &goal, uint32_t maxGenerations = 200, uint32_t popSize = 30);
 
 	private:
 		NNfunctionType NNfuction;
@@ -32,6 +33,7 @@ namespace SoilMath
 		void CrossOver(Population_t &pop);
 		void Mutate(Population_t &pop);
 		void GrowToAdulthood(Population_t &pop, const ComplexVect_t &inputValues, MinMaxWeight_t rangeweights, Predict_t goal, float &totalFitness);
+		void GrowToAdulthood(Population_t &pop, const InputLearnVector_t &inputValues, MinMaxWeight_t rangeweights, OutputLearnVector_t &goal, float &totalFitness);
 		bool SurvivalOfTheFittest(Population_t &pop, float &totalFitness);
 
 		static bool PopMemberSort(PopMember_t i, PopMember_t j) { return (i.Fitness < j.Fitness); }

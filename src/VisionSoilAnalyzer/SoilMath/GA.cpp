@@ -41,6 +41,23 @@ namespace SoilMath
 
 	}
 
+	void GA::Evolve(const InputLearnVector_t &inputValues, Weight_t &weights, MinMaxWeight_t rangeweights, OutputLearnVector_t &goal, uint32_t maxGenerations, uint32_t popSize)
+	{
+		// Create the population
+		Population_t pop = Genesis(weights, rangeweights, popSize);
+		float totalFitness = 0.0;
+		for (uint32_t i = 0; i < maxGenerations; i++)
+		{
+			CrossOver(pop);
+			Mutate(pop);
+			totalFitness = 0.0;
+			GrowToAdulthood(pop, inputValues, rangeweights, goal, totalFitness);
+			if (SurvivalOfTheFittest(pop, totalFitness)) { break; }
+		}
+		weights = pop[0].weights;
+	}
+
+
 
 	Population_t GA::Genesis(const Weight_t &weights, MinMaxWeight_t rangeweights, uint32_t popSize)
 	{
@@ -140,7 +157,6 @@ namespace SoilMath
 			Weight_t iWeight(pop[i].weights.begin(), pop[i].weights.begin() + ((inputneurons + 1) * hiddenneurons));
 			Weight_t hWeight(pop[i].weights.begin() + ((inputneurons + 1) * hiddenneurons), pop[i].weights.end());
 			Predict_t results = NNfuction(inputValues, iWeight, hWeight, inputneurons, hiddenneurons, outputneurons);
-			uint32_t count = 0;
 			for (uint32_t j = 0; j < results.OutputNeurons.size(); j++)
 			{
 				pop[i].Fitness -= results.OutputNeurons[j] / goal.OutputNeurons[j];
@@ -149,6 +165,28 @@ namespace SoilMath
 			totalFitness += pop[i].Fitness;
 		}
 	}
+
+	void GA::GrowToAdulthood(Population_t &pop, const InputLearnVector_t &inputValues, MinMaxWeight_t rangeweights, OutputLearnVector_t &goal, float &totalFitness)
+	{
+		for (uint32_t i = 0; i < pop.size(); i++)
+		{
+			for (uint32_t j = 0; j < pop[i].weightsGen.size(); j++)	{ pop[i].weights.push_back(ConvertToValue<float>(pop[i].weightsGen[j], rangeweights)); }
+			Weight_t iWeight(pop[i].weights.begin(), pop[i].weights.begin() + ((inputneurons + 1) * hiddenneurons));
+			Weight_t hWeight(pop[i].weights.begin() + ((inputneurons + 1) * hiddenneurons), pop[i].weights.end());
+			for (uint32_t j = 0; j < inputValues.size(); j++)
+			{
+				Predict_t results = NNfuction(inputValues[j], iWeight, hWeight, inputneurons, hiddenneurons, outputneurons);
+				for (uint32_t k = 0; k < results.OutputNeurons.size(); k++)
+				{
+					pop[i].Fitness -= results.OutputNeurons[k] / goal[j].OutputNeurons[k];
+				}
+				pop[i].Fitness += results.OutputNeurons.size();
+			}
+			pop[i].Fitness /= inputValues.size();
+			totalFitness += pop[i].Fitness;
+		}
+	}
+
 
 	bool GA::SurvivalOfTheFittest(Population_t &pop, float &totalFitness)
 	{

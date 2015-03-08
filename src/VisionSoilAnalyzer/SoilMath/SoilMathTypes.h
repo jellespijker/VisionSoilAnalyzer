@@ -1,10 +1,10 @@
 #pragma once
 
 #define GENE_MAX 32
-#define CROSSOVER 12
+#define CROSSOVER 16
 #define MUTATIONRATE 0.075f
-#define ELITISME 1
-#define END_ERROR 0.10f
+#define ELITISME 4
+#define END_ERROR 0.01f
 
 #include <stdint.h>
 #include <bitset>

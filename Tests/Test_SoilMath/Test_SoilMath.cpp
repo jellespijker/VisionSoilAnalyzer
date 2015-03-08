@@ -161,7 +161,7 @@ void TestGA()
 
 void TestNN()
 {
-	SoilMath::NN Test(2, 2, 2);
+	SoilMath::NN Test(3, 4, 2);
 
 	InputLearnVector_t inputVect;
 	OutputLearnVector_t outputVect;
@@ -171,7 +171,7 @@ void TestNN()
 	std::default_random_engine gen(seed);
 	std::uniform_real_distribution<float> dis(0.0, 1.0);
 
-	float i1 = 0.0, i2 = 0.0;
+	float i1 = 0.0, i2 = 0.0, i3 = 0.0;
 	float o1 = 0.0, o2 = 0.0;
 
 	for (uint32_t i = 0; i < 200; i++)
@@ -180,21 +180,59 @@ void TestNN()
 		else { i1 = 0.0; }
 		if (dis(gen) > 0.5f) { i2 = 1.0; }
 		else { i2 = 0.0; }
+		if (dis(gen) > 0.5f) { i3 = 1.0; }
+		else { i3 = 0.0; }
 
-		if (i1 == 1.0 && i2 == 1.0) 
-		{ 
-			o1 = -1.0;
-			o2 = 1.0;
-		}
-		else 
+		//if (i3 == 0.0)
+		//{
+		//	if (i1 != i2)
+		//	{
+		//		o1 == 1.0;
+		//		o2 == -1.0;
+		//	}
+		//	else if (i1 == 0.0 && i2 == 0.0)
+		//	{
+		//		o1 == 1.0;
+		//		o2 == -1.0;
+		//	}
+		//	else
+		//	{
+		//		o1 == -1.0;
+		//		o2 == 1.0;
+		//	}
+		//}
+		//else
+		//{
+		//	o1 == -1.0;
+		//	o2 == 1.0;
+		//}
+
+		if (i1 == 1.0 && i2 == 1.0 && i3 == 1.0)
 		{
 			o1 = 1.0;
 			o2 = -1.0;
 		}
+		else
+		{
+			o1 = -1.0;
+			o2 = 1.0;
+		}
+
+		//if (i1 == 1.0 && i2 == 1.0) 
+		//{ 
+		//	o1 = -1.0;
+		//	o2 = 1.0;
+		//}
+		//else 
+		//{
+		//	o1 = 1.0;
+		//	o2 = -1.0;
+		//}
 
 		ComplexVect_t inputTemp;
 		inputTemp.push_back(Complex_t(i1, 0));
 		inputTemp.push_back(Complex_t(i2, 0));
+		inputTemp.push_back(Complex_t(i3, 0));
 		inputVect.push_back(inputTemp);
 
 		Predict_t outputTemp;
@@ -213,7 +251,7 @@ void TestNN()
 			dev += outp.OutputNeurons[j] / outputVect[i].OutputNeurons[j];
 		}
 		dev = dev - outp.OutputNeurons.size();
-		cout << "input : " << inputVect[i][0] << " , " << inputVect[i][1] << " = " << outp.OutputNeurons[0] << " , " << outp.OutputNeurons[1] << " acc = " << dev << endl;
+		cout << "input : " << abs(inputVect[i][0]) << ", " << abs(inputVect[i][1]) << ", " << abs(inputVect[i][2]) << " = " << round(outp.OutputNeurons[0]) << " , " << round(outp.OutputNeurons[1]) << " acc = " << dev << endl;
 	}
 
 }

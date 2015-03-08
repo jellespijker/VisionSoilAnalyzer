@@ -91,12 +91,7 @@ namespace SoilMath
 		std::vector<Weight_t> weights;
 		Weight_t weight(((inputNeurons + 1) * hiddenNeurons) + ((hiddenNeurons + 1) * outputNeurons), 0);
 		// loop through each case and adjust the weights
-
-		for (uint32_t i = 0; i < input.size(); i++)
-		{
-			optim.Evolve(input[i], weight, weights, MinMaxWeight_t(-1, 1), cat[i], 10, 50);
-			weights.push_back(weight);
-		}
+		optim.Evolve(input, weight, MinMaxWeight_t(-50, 50), cat, 1000, 50);
 		learnedWeights = weights;
 		
 		this->iWeights = Weight_t(weight.begin(), weight.begin() + ((inputNeurons + 1) * hiddenNeurons));
