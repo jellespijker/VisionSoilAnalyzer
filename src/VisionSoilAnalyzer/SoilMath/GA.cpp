@@ -15,26 +15,37 @@ namespace SoilMath
 	
 	GA::~GA() { }
 
-	void GA::Evolve(const ComplexVect_t &inputValues, Weight_t &weights, MinMaxWeight_t rangeweights, float goal, uint32_t maxGenerations, uint32_t popSize)
+	void GA::Evolve(const ComplexVect_t &inputValues, Weight_t &weights, std::vector<Weight_t> &prevWeights, MinMaxWeight_t rangeweights, Predict_t goal, uint32_t maxGenerations, uint32_t popSize)
 	{
 		// Create the population
-		Population_t pop = Genesis(weights, rangeweights, popSize);
+		uint32_t NOprevPopUsed = prevWeights.size() < popSize ? prevWeights.size() : popSize;
+		Population_t pop = Genesis(weights, rangeweights, popSize - NOprevPopUsed);
+		for (uint32_t i = 0; i < NOprevPopUsed; i++)
+		{
+			PopMember_t newMember;
+			newMember.weights = prevWeights[i];
+			for (uint32_t j = 0; j < newMember.weights.size(); j++) { newMember.weightsGen.push_back(ConvertToGenome<float>(newMember.weights[j], rangeweights)); }
+			pop.push_back(newMember);
+		}
 		float totalFitness = 0.0;
-
 		for (uint32_t i = 0; i < maxGenerations; i++)
 		{
 			CrossOver(pop);
 			Mutate(pop);
 			totalFitness = 0.0;
-			GrowToAdulthood(pop, inputValues,rangeweights, goal, totalFitness);
+			GrowToAdulthood(pop, inputValues, rangeweights, goal, totalFitness);
 			if (SurvivalOfTheFittest(pop, totalFitness)) { break; }
 		}
 
 		weights = pop[0].weights;
+
 	}
+
 
 	Population_t GA::Genesis(const Weight_t &weights, MinMaxWeight_t rangeweights, uint32_t popSize)
 	{
+		if (popSize < 1) return Population_t();
+
 		Population_t pop;
 		unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
 		std::default_random_engine gen(seed);
@@ -121,16 +132,20 @@ namespace SoilMath
 		}
 	}
 
-	void GA::GrowToAdulthood(Population_t &pop, const ComplexVect_t &inputValues, MinMaxWeight_t rangeweights, float goal, float &totalFitness)
+	void GA::GrowToAdulthood(Population_t &pop, const ComplexVect_t &inputValues, MinMaxWeight_t rangeweights, Predict_t goal, float &totalFitness)
 	{
-		if (goal == 0.0f) { goal = 0.0001f; }
 		for (uint32_t i = 0; i < pop.size(); i++)
 		{
 			for (uint32_t j = 0; j < pop[i].weightsGen.size(); j++)	{ pop[i].weights.push_back(ConvertToValue<float>(pop[i].weightsGen[j], rangeweights));	}
 			Weight_t iWeight(pop[i].weights.begin(), pop[i].weights.begin() + ((inputneurons + 1) * hiddenneurons));
 			Weight_t hWeight(pop[i].weights.begin() + ((inputneurons + 1) * hiddenneurons), pop[i].weights.end());
-			pop[i].Calculated = NNfuction(inputValues, iWeight, hWeight, inputneurons, hiddenneurons, outputneurons).RealValue;
-			pop[i].Fitness = fabsf(1.0 - (pop[i].Calculated / goal));
+			Predict_t results = NNfuction(inputValues, iWeight, hWeight, inputneurons, hiddenneurons, outputneurons);
+			uint32_t count = 0;
+			for (uint32_t j = 0; j < results.OutputNeurons.size(); j++)
+			{
+				pop[i].Fitness -= results.OutputNeurons[j] / goal.OutputNeurons[j];
+			}
+			pop[i].Fitness += results.OutputNeurons.size();
 			totalFitness += pop[i].Fitness;
 		}
 	}
@@ -142,7 +157,6 @@ namespace SoilMath
 
 		unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
 		std::default_random_engine gen(seed);
-		std::uniform_real_distribution<float> dis(0, totalFitness);
 
 		std::sort(pop.begin(), pop.end(), PopMemberSort);
 
@@ -150,7 +164,12 @@ namespace SoilMath
 		while (pop.size() > decimationCount)
 		{
 			if (i >= pop.size()) { i = ELITISME; }
-			if (dis(gen) < pop[i].Fitness) { pop.erase(pop.begin() + i--); 	}
+			std::uniform_real_distribution<float> dis(0, totalFitness);
+			if (dis(gen) < pop[i].Fitness) 
+			{
+				pop.erase(pop.begin() + i--); 
+				totalFitness -= pop[i].Fitness;
+			}
 			i++;
 		}
 

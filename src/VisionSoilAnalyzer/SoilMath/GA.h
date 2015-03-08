@@ -20,7 +20,7 @@ namespace SoilMath
 		GA(NNfunctionType nnfunction, uint32_t inputneurons, uint32_t hiddenneurons, uint32_t outputneurons);
 		~GA();
 
-		void Evolve(const ComplexVect_t &inputValues, Weight_t &weights, MinMaxWeight_t rangeweights, float goal, uint32_t maxGenerations = 200, uint32_t popSize = 30);
+		void Evolve(const ComplexVect_t &inputValues, Weight_t &weights, std::vector<Weight_t> &prevWeights, MinMaxWeight_t rangeweights, Predict_t goal, uint32_t maxGenerations = 200, uint32_t popSize = 30);
 
 	private:
 		NNfunctionType NNfuction;
@@ -31,7 +31,7 @@ namespace SoilMath
 		Population_t Genesis(const Weight_t &weights, MinMaxWeight_t rangeweights, uint32_t popSize);
 		void CrossOver(Population_t &pop);
 		void Mutate(Population_t &pop);
-		void GrowToAdulthood(Population_t &pop, const ComplexVect_t &inputValues, MinMaxWeight_t rangeweights, float goal, float &totalFitness);
+		void GrowToAdulthood(Population_t &pop, const ComplexVect_t &inputValues, MinMaxWeight_t rangeweights, Predict_t goal, float &totalFitness);
 		bool SurvivalOfTheFittest(Population_t &pop, float &totalFitness);
 
 		static bool PopMemberSort(PopMember_t i, PopMember_t j) { return (i.Fitness < j.Fitness); }

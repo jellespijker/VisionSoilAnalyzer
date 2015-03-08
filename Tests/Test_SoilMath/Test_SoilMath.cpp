@@ -22,6 +22,7 @@ void DisplayHelp()
 	cout << "--FFT                 Test Fast Fourier Transform of an Edge" << endl;
 	cout << "--GA                  Test Genetic ALgorithm" << endl;
 	cout << "--NN                  Test Neural Network" << endl;
+	cout << "--NNPredict           Test Neural Network Predictionfunction" << endl;
 }
 
 bool checkArray(uint32_t *a, uint32_t *b)
@@ -160,7 +161,7 @@ void TestGA()
 
 void TestNN()
 {
-	SoilMath::NN Test(2,2,1);
+	SoilMath::NN Test(2, 2, 2);
 
 	InputLearnVector_t inputVect;
 	OutputLearnVector_t outputVect;
@@ -171,37 +172,80 @@ void TestNN()
 	std::uniform_real_distribution<float> dis(0.0, 1.0);
 
 	float i1 = 0.0, i2 = 0.0;
-	uint32_t o1 = 0.0;
+	float o1 = 0.0, o2 = 0.0;
 
-	for (uint32_t i = 0; i < 50; i++)
+	for (uint32_t i = 0; i < 200; i++)
 	{
 		if (dis(gen) > 0.5f) { i1 = 1.0; }
 		else { i1 = 0.0; }
 		if (dis(gen) > 0.5f) { i2 = 1.0; }
 		else { i2 = 0.0; }
 
-		if (i1 != i2) { o1 = 0; }
-		else { o1 = 1; }
+		if (i1 == 1.0 && i2 == 1.0) 
+		{ 
+			o1 = -1.0;
+			o2 = 1.0;
+		}
+		else 
+		{
+			o1 = 1.0;
+			o2 = -1.0;
+		}
 
 		ComplexVect_t inputTemp;
 		inputTemp.push_back(Complex_t(i1, 0));
 		inputTemp.push_back(Complex_t(i2, 0));
 		inputVect.push_back(inputTemp);
 
-		outputVect.push_back(o1);
+		Predict_t outputTemp;
+		outputTemp.OutputNeurons.push_back(o1);
+		outputTemp.OutputNeurons.push_back(o2);
+		outputVect.push_back(outputTemp);
 	}
 
-
 	Test.Learn(inputVect, outputVect, 0);
-	for_each(Test.learnedWeights.begin(), Test.learnedWeights.end(), [](Weight_t &w)
+	for (uint32_t i = 0; i < inputVect.size(); i++)
 	{
-		for_each(w.begin(), w.end(), [](float &v)
+		Predict_t outp = Test.Predict(inputVect[i]);
+		float dev = 0.0;
+		for (uint32_t j = 0; j < outp.OutputNeurons.size(); j++)
 		{
-			cout << v << " , ";
-		});
-		cout << endl;
-	});
+			dev += outp.OutputNeurons[j] / outputVect[i].OutputNeurons[j];
+		}
+		dev = dev - outp.OutputNeurons.size();
+		cout << "input : " << inputVect[i][0] << " , " << inputVect[i][1] << " = " << outp.OutputNeurons[0] << " , " << outp.OutputNeurons[1] << " acc = " << dev << endl;
+	}
 
+}
+
+void TestNNPredict()
+{
+	SoilMath::NN Test(2, 2, 2);
+
+	InputLearnVector_t inputVect;
+	OutputLearnVector_t outputVect;
+
+	ComplexVect_t inp;
+	Weight_t iW;
+	Weight_t hW;
+	iW.push_back(2.17267);
+	iW.push_back(0.616982);
+	iW.push_back(2.87581);
+	iW.push_back(2.9699);
+	iW.push_back(0.885658);
+	iW.push_back(-0.585273);
+	hW.push_back(2.96601);
+	hW.push_back(1.322);
+	hW.push_back(0.795877);
+	hW.push_back(-2.8764);
+	hW.push_back(-0.244496);
+	hW.push_back(-2.46119);
+
+	inp.push_back(Complex_t(1, 0));
+	inp.push_back(Complex_t(1, 0));
+	Predict_t result = Test.PredictLearn(inp, iW, hW, 2, 2, 2);
+	for_each(result.OutputNeurons.begin(), result.OutputNeurons.end(), [](float &x){cout << x << " "; });
+	cout << endl;
 }
 
 
@@ -235,6 +279,10 @@ int main(int argc, char *argv[])
 			else if (arg == "--NN")
 			{
 				TestNN();
+			}
+			else if (arg == "--NNPredict")
+			{
+				TestNNPredict();
 			}
 			else { DisplayHelp(); }
 		}

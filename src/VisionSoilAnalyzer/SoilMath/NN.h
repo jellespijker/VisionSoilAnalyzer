@@ -1,6 +1,6 @@
 #pragma once
 
-#define BETA 1
+#define BETA 0.75
 
 #include <stdint.h>
 #include <vector>

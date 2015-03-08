@@ -40,7 +40,7 @@ namespace SoilMath
 	iContour_t FFT::Neighbors(uchar *O, int pixel, uint32_t columns, uint32_t rows)
 	{
 		//long int LUT_nBore[8] = { 1, 1 + columns, columns, columns - 1, -1, -columns - 1, -columns, -columns + 1 };
-		int LUT_nBore[8] = { -columns + 1, -columns, -columns - 1, -1, columns - 1, columns, 1 + columns, 1 };
+		long int LUT_nBore[8] = { -columns + 1, -columns, -columns - 1, -1, columns - 1, columns, 1 + columns, 1 };
 		iContour_t neighbors;
 		uint32_t pEnd = rows * columns;
 		uint32_t count = 0;

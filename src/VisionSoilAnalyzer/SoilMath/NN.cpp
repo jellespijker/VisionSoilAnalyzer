@@ -8,15 +8,10 @@ namespace SoilMath
 		inputNeurons = inputneurons;
 		hiddenNeurons = hiddenneurons;
 		outputNeurons = outputneurons;
-
 		// Reserve the vector space
 		iNeurons.reserve(inputNeurons + 1); // input neurons + bias
 		hNeurons.reserve(hiddenNeurons + 1); // hidden neurons + bias
 		oNeurons.reserve(outputNeurons); // output neurons
-
-		// Set the bias in the input and hidden vector to 1 (real number)
-		iNeurons.push_back(1.0f);
-		hNeurons.push_back(1.0f);
 	}
 
 
@@ -47,40 +42,44 @@ namespace SoilMath
 	{
 		if (input.size() != inputNeurons) { throw Exception::MathException("Size of input Neurons Exception!"); }
 
-		Predict_t retVal;
+		iNeurons.clear();
+		hNeurons.clear();
+		oNeurons.clear();
 
-		uint32_t totInputNeurons = inputNeurons + 1;
-		uint32_t totHiddenNeurons = hiddenNeurons + 1;
+		// Set the bias in the input and hidden vector to 1 (real number)
+		iNeurons.push_back(1.0f);
+		hNeurons.push_back(1.0f);
+
+		Predict_t retVal;
 		uint32_t wCount = 0;
 
 		// Init the network
-		for (uint32_t i = 1; i < totInputNeurons; i++) { iNeurons.push_back(static_cast<float>(abs(input[i])));	}
-		for (uint32_t i = 1; i < totHiddenNeurons; i++)	{ hNeurons.push_back(0.0f);	}
+		for (uint32_t i = 0; i < inputNeurons; i++) { iNeurons.push_back(static_cast<float>(abs(input[i]))); }
+		for (uint32_t i = 0; i < hiddenNeurons; i++)	{ hNeurons.push_back(0.0f); }
 		for (uint32_t i = 0; i < outputNeurons; i++)	{ oNeurons.push_back(0.0f); }
 
-		for (uint32_t i = 0; i < iNeurons.size(); i++)
+		for (uint32_t i = 1; i < hNeurons.size(); i++)
 		{
-			for (uint32_t j = 1; j < hNeurons.size(); j++)
+			wCount = i - 1;
+			for (uint32_t j = 0; j < iNeurons.size(); j++)
 			{
-				hNeurons[j] += iNeurons[i] * iWeights[wCount++];
+				hNeurons[i] += iNeurons[j] * iWeights[wCount];
+				wCount += hNeurons.size() - 1;
 			}
-		}
-
-		for (uint32_t i = 0; i < hNeurons.size(); i++)
-		{
 			hNeurons[i] = 1 / (1 + pow(2.71828f, (-hNeurons[i] * BETA)));
 		}
 
-		wCount = 0;
-		for (uint32_t i = 1; i < hNeurons.size(); i++)
+		for (uint32_t i = 0; i < oNeurons.size(); i++)
 		{
-			for (uint32_t j = 1; j < oNeurons.size(); j++)
+			wCount = i;
+			for (uint32_t j = 0; j < hNeurons.size(); j++)
 			{
-				oNeurons[i] += hNeurons[j] * hWeights[wCount++];
+				oNeurons[i] += hNeurons[j] * hWeights[wCount];
+				wCount += oNeurons.size();
 			}
+			oNeurons[i] = (2 / (1.0f + pow(2.71828f, (-oNeurons[i] * BETA)))) - 1; // Shift plus scale so the learning function can be calculated
 		}
 
-		retVal.RealValue = oNeurons[0];
 		retVal.OutputNeurons = oNeurons;
 		return retVal;
 	}
@@ -90,14 +89,18 @@ namespace SoilMath
 		SoilMath::GA optim(PredictLearn, inputNeurons, hiddenNeurons, outputNeurons);
 		ComplexVect_t inputTest;
 		std::vector<Weight_t> weights;
+		Weight_t weight(((inputNeurons + 1) * hiddenNeurons) + ((hiddenNeurons + 1) * outputNeurons), 0);
 		// loop through each case and adjust the weights
+
 		for (uint32_t i = 0; i < input.size(); i++)
 		{
-			Weight_t weight(((inputNeurons + 1) * hiddenNeurons) + ((hiddenNeurons + 1) * outputNeurons), 0);
-			optim.Evolve(input[i], weight, MinMaxWeight_t(0, 2), cat[i]);
+			optim.Evolve(input[i], weight, weights, MinMaxWeight_t(-1, 1), cat[i], 10, 50);
 			weights.push_back(weight);
 		}
 		learnedWeights = weights;
+		
+		this->iWeights = Weight_t(weight.begin(), weight.begin() + ((inputNeurons + 1) * hiddenNeurons));
+		this->hWeights = Weight_t(weight.begin() + ((inputNeurons + 1) * hiddenNeurons), weight.end());
 	}
 
 }

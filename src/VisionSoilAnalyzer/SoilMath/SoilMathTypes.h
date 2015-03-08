@@ -2,9 +2,9 @@
 
 #define GENE_MAX 32
 #define CROSSOVER 12
-#define MUTATIONRATE 0.08f
+#define MUTATIONRATE 0.075f
 #define ELITISME 1
-#define END_ERROR 0.03f
+#define END_ERROR 0.10f
 
 #include <stdint.h>
 #include <bitset>
@@ -35,9 +35,6 @@ typedef struct PopMemberStruct
 typedef std::vector<PopMember_t> Population_t;
 typedef std::pair<float, float> MinMaxWeight_t;
 
-typedef std::vector<ComplexVect_t> InputLearnVector_t;
-typedef std::vector<uint32_t> OutputLearnVector_t;
-
 typedef struct Predict_struct
 {
 	uint32_t Category;
@@ -46,3 +43,6 @@ typedef struct Predict_struct
 	std::vector<float> OutputNeurons;
 } Predict_t;
 typedef Predict_t(*NNfunctionType)(ComplexVect_t, Weight_t, Weight_t, uint32_t, uint32_t, uint32_t);
+
+typedef std::vector<ComplexVect_t> InputLearnVector_t;
+typedef std::vector<Predict_t> OutputLearnVector_t;
