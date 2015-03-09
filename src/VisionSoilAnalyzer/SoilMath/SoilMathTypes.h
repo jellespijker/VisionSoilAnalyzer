@@ -3,8 +3,8 @@
 #define GENE_MAX 32
 #define CROSSOVER 16
 #define MUTATIONRATE 0.075f
-#define ELITISME 4
-#define END_ERROR 0.01f
+#define ELITISME 5
+#define END_ERROR 0.005f
 
 #include <stdint.h>
 #include <bitset>

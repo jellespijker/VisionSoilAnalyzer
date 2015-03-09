@@ -183,31 +183,12 @@ void TestNN()
 		if (dis(gen) > 0.5f) { i3 = 1.0; }
 		else { i3 = 0.0; }
 
-		//if (i3 == 0.0)
-		//{
-		//	if (i1 != i2)
-		//	{
-		//		o1 == 1.0;
-		//		o2 == -1.0;
-		//	}
-		//	else if (i1 == 0.0 && i2 == 0.0)
-		//	{
-		//		o1 == 1.0;
-		//		o2 == -1.0;
-		//	}
-		//	else
-		//	{
-		//		o1 == -1.0;
-		//		o2 == 1.0;
-		//	}
-		//}
-		//else
-		//{
-		//	o1 == -1.0;
-		//	o2 == 1.0;
-		//}
-
-		if (i1 == 1.0 && i2 == 1.0 && i3 == 1.0)
+		if (i1 == 1.0 && i2 == 1.0 && i3 == 0.0)
+		{
+			o1 = 1.0;
+			o2 = -1.0;
+		}
+		else if (i1 == 0.0 && i2 == 0.0 && i3 == 1.0)
 		{
 			o1 = 1.0;
 			o2 = -1.0;
@@ -217,17 +198,6 @@ void TestNN()
 			o1 = -1.0;
 			o2 = 1.0;
 		}
-
-		//if (i1 == 1.0 && i2 == 1.0) 
-		//{ 
-		//	o1 = -1.0;
-		//	o2 = 1.0;
-		//}
-		//else 
-		//{
-		//	o1 = 1.0;
-		//	o2 = -1.0;
-		//}
 
 		ComplexVect_t inputTemp;
 		inputTemp.push_back(Complex_t(i1, 0));
@@ -242,9 +212,14 @@ void TestNN()
 	}
 
 	Test.Learn(inputVect, outputVect, 0);
+	Test.SaveState("NN.xml");
+
+	SoilMath::NN loadTest;
+	loadTest.LoadState("NN.xml");
+
 	for (uint32_t i = 0; i < inputVect.size(); i++)
 	{
-		Predict_t outp = Test.Predict(inputVect[i]);
+		Predict_t outp = loadTest.Predict(inputVect[i]);
 		float dev = 0.0;
 		for (uint32_t j = 0; j < outp.OutputNeurons.size(); j++)
 		{
@@ -253,8 +228,8 @@ void TestNN()
 		dev = dev - outp.OutputNeurons.size();
 		cout << "input : " << abs(inputVect[i][0]) << ", " << abs(inputVect[i][1]) << ", " << abs(inputVect[i][2]) << " = " << round(outp.OutputNeurons[0]) << " , " << round(outp.OutputNeurons[1]) << " acc = " << dev << endl;
 	}
-
 }
+
 
 void TestNNPredict()
 {

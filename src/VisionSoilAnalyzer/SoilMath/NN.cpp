@@ -2,6 +2,11 @@
 
 namespace SoilMath
 {
+	NN::NN()
+	{
+		beta = 0.666;
+	}
+
 	NN::NN(uint32_t inputneurons, uint32_t hiddenneurons, uint32_t outputneurons)
 	{
 		// Set the number of neurons in the network
@@ -12,23 +17,39 @@ namespace SoilMath
 		iNeurons.reserve(inputNeurons + 1); // input neurons + bias
 		hNeurons.reserve(hiddenNeurons + 1); // hidden neurons + bias
 		oNeurons.reserve(outputNeurons); // output neurons
+
+		beta = 0.666;
 	}
 
 
-	NN::~NN()
-	{
-	}
+	NN::~NN()	{	}
 
 	void NN::LoadState(string filename)
 	{
-
+		std::ifstream ifs(filename.c_str());
+		boost::archive::xml_iarchive ia(ifs);
+		NN loadState;
+		ia >> BOOST_SERIALIZATION_NVP(loadState);
+		this->inputNeurons = loadState.inputNeurons;
+		this->hiddenNeurons = loadState.hiddenNeurons;
+		this->outputNeurons = loadState.outputNeurons;
+		this->beta = loadState.beta;
+		this->iWeights = loadState.iWeights;
+		this->hWeights = loadState.hWeights;
+		this->studied = loadState.studied;
 	}
 
 	void NN::SaveState(string filename)
 	{
-
+		std::ofstream ofs(filename.c_str());
+		boost::archive::xml_oarchive oa(ofs);
+		NN saveState(this->inputNeurons, this->hiddenNeurons, this->outputNeurons);
+		saveState.SetBeta(this->beta);
+		saveState.SetInputWeights(this->iWeights);
+		saveState.SetHiddenWeights(this->hWeights);
+		saveState.studied = this->studied;
+		oa << BOOST_SERIALIZATION_NVP(saveState);
 	}
-
 
 	Predict_t NN::PredictLearn(ComplexVect_t input, Weight_t inputweights, Weight_t hiddenweights, uint32_t inputneurons, uint32_t hiddenneurons, uint32_t outputneurons)
 	{
@@ -66,7 +87,7 @@ namespace SoilMath
 				hNeurons[i] += iNeurons[j] * iWeights[wCount];
 				wCount += hNeurons.size() - 1;
 			}
-			hNeurons[i] = 1 / (1 + pow(2.71828f, (-hNeurons[i] * BETA)));
+			hNeurons[i] = 1 / (1 + pow(2.71828f, (-hNeurons[i] * beta)));
 		}
 
 		for (uint32_t i = 0; i < oNeurons.size(); i++)
@@ -77,7 +98,7 @@ namespace SoilMath
 				oNeurons[i] += hNeurons[j] * hWeights[wCount];
 				wCount += oNeurons.size();
 			}
-			oNeurons[i] = (2 / (1.0f + pow(2.71828f, (-oNeurons[i] * BETA)))) - 1; // Shift plus scale so the learning function can be calculated
+			oNeurons[i] = (2 / (1.0f + pow(2.71828f, (-oNeurons[i] * beta)))) - 1; // Shift plus scale so the learning function can be calculated
 		}
 
 		retVal.OutputNeurons = oNeurons;
@@ -92,10 +113,10 @@ namespace SoilMath
 		Weight_t weight(((inputNeurons + 1) * hiddenNeurons) + ((hiddenNeurons + 1) * outputNeurons), 0);
 		// loop through each case and adjust the weights
 		optim.Evolve(input, weight, MinMaxWeight_t(-50, 50), cat, 1000, 50);
-		learnedWeights = weights;
 		
 		this->iWeights = Weight_t(weight.begin(), weight.begin() + ((inputNeurons + 1) * hiddenNeurons));
 		this->hWeights = Weight_t(weight.begin() + ((inputNeurons + 1) * hiddenNeurons), weight.end());
+		studied = true;
 	}
 
 }
