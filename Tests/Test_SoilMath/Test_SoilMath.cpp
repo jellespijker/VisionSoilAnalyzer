@@ -161,7 +161,7 @@ void TestGA()
 
 void TestNN()
 {
-	SoilMath::NN Test(3, 4, 2);
+	SoilMath::NN Test(3, 5, 2);
 
 	InputLearnVector_t inputVect;
 	OutputLearnVector_t outputVect;

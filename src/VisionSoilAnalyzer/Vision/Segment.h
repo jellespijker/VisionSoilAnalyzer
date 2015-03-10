@@ -57,7 +57,7 @@ namespace Vision
 
 		vector<Blob> BlobList; /*!< vector with all the individual blobs*/
 
-		SoilMath::ucharStat_t OriginalImgStats; /*!< Statistical data from the original image*/
+		ucharStat_t OriginalImgStats; /*!< Statistical data from the original image*/
 		uint8_t ThresholdLevel = 0;				/*!< Current calculated threshold level*/
 		
 		Segment(); 

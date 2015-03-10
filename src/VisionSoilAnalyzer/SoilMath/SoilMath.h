@@ -6,3 +6,4 @@
 #include "NN.h"
 #include "GA.h"
 #include "CommonOperations.h"
+#include "SoilMathTypes.h"

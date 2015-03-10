@@ -15,6 +15,15 @@ namespace SoilAnalyzer
 	{
 	}
 
+	void Sample::Save(string &filename)
+	{
+		std::ofstream ofs(filename.c_str());
+		boost::archive::xml_oarchive oa(ofs);
+		Sample saveState;
+		saveState.BW = this->BW;
+		oa << BOOST_SERIALIZATION_NVP(saveState);
+	}
+
 	void Sample::Analyse()
 	{
 		if (OriginalImage.empty())
@@ -52,7 +61,7 @@ namespace SoilAnalyzer
 			throw Exception::AnalysisException("Segmentation of Particles failed!", 7);
 		}
 
-		if (!AnalysePopVect(Population, Resulst))
+		if (!AnalysePopVect(Population, Results))
 		{
 			throw Exception::AnalysisException("Analysis Failed!", 8);
 		}

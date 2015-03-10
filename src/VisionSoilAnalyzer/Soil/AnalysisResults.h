@@ -14,9 +14,9 @@ namespace SoilAnalyzer
 		~AnalysisResults();
 		void Analyse(AnalyseType analyseType);
 		uint8_t version;
-		SoilMath::ucharStat_t ClassRoundness;
+		ucharStat_t ClassRoundness;
 		std::pair<float, float> LAB;
-		SoilMath::ucharStat_t PSD;
-		SoilMath::ucharStat_t RI;
+		ucharStat_t PSD;
+		ucharStat_t RI;
 	};
 }

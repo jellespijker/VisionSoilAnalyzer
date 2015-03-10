@@ -33,7 +33,7 @@ namespace Vision
 		CV_Assert(OriginalImg.depth() != sizeof(uchar));
 		
 		// Calculate the statistics of the whole picture
-		SoilMath::ucharStat_t OriginalImgStats(OriginalImg.data, OriginalImg.rows, OriginalImg.cols);
+		ucharStat_t OriginalImgStats(OriginalImg.data, OriginalImg.rows, OriginalImg.cols);
 
 		// Sets the initial threshold with the mean of the total picture 
 		pair<uchar, uchar> T;
@@ -61,8 +61,8 @@ namespace Vision
 
 			// Calculate the statistics of both histograms,
 			// taking into account the current threshold
-			SoilMath::ucharStat_t sLeft(Left, 0, T.first);
-			SoilMath::ucharStat_t sRight(Right, T.first, 256);
+			ucharStat_t sLeft(Left, 0, T.first);
+			ucharStat_t sRight(Right, T.first, 256);
 
 			// Calculate the new threshold the mean of the means
 			T.second = T.first;
