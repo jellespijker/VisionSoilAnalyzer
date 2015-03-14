@@ -19,9 +19,14 @@ namespace SoilAnalyzer
 	{
 		std::ofstream ofs(filename.c_str());
 		boost::archive::xml_oarchive oa(ofs);
-		Sample saveState;
-		saveState.BW = this->BW;
-		oa << BOOST_SERIALIZATION_NVP(saveState);
+		oa << boost::serialization::make_nvp("SoilSample", *this);
+	}
+
+	void Sample::Load(string &filename)
+	{
+		std::ifstream ifs(filename.c_str());
+		boost::archive::xml_iarchive ia(ifs);
+		ia >> boost::serialization::make_nvp("SoilSample", *this);
 	}
 
 	void Sample::Analyse()

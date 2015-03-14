@@ -28,27 +28,14 @@ namespace SoilMath
 	{
 		std::ifstream ifs(filename.c_str());
 		boost::archive::xml_iarchive ia(ifs);
-		NN loadState;
-		ia >> BOOST_SERIALIZATION_NVP(loadState);
-		this->inputNeurons = loadState.inputNeurons;
-		this->hiddenNeurons = loadState.hiddenNeurons;
-		this->outputNeurons = loadState.outputNeurons;
-		this->beta = loadState.beta;
-		this->iWeights = loadState.iWeights;
-		this->hWeights = loadState.hWeights;
-		this->studied = loadState.studied;
+		ia >> boost::serialization::make_nvp("NeuralNet", *this);
 	}
 
 	void NN::SaveState(string filename)
 	{
 		std::ofstream ofs(filename.c_str());
 		boost::archive::xml_oarchive oa(ofs);
-		NN saveState(this->inputNeurons, this->hiddenNeurons, this->outputNeurons);
-		saveState.SetBeta(this->beta);
-		saveState.SetInputWeights(this->iWeights);
-		saveState.SetHiddenWeights(this->hWeights);
-		saveState.studied = this->studied;
-		oa << BOOST_SERIALIZATION_NVP(saveState);
+		oa << boost::serialization::make_nvp("NeuralNet", *this);
 	}
 
 	Predict_t NN::PredictLearn(ComplexVect_t input, Weight_t inputweights, Weight_t hiddenweights, uint32_t inputneurons, uint32_t hiddenneurons, uint32_t outputneurons)

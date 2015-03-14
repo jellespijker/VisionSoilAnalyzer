@@ -10,6 +10,12 @@
 #include <cmath>
 #include <limits>
 #include <typeinfo>
+#include <string>
+
+#include <fstream>
+
+#include <boost/archive/xml_iarchive.hpp>
+#include <boost/archive/xml_oarchive.hpp>
 
 #include "MathException.h"
 #include "SoilMathTypes.h"
@@ -21,10 +27,8 @@ namespace SoilMath
 	template <typename T1, typename T2, typename T3>
 	class Stats
 	{
-	private:
-		bool isDiscrete = true;
-
 	public:
+		bool isDiscrete = true;
 
 		T1 *Data;
 		uint32_t *bins;
@@ -51,7 +55,7 @@ namespace SoilMath
 			Startbin = startBin;
 			EndBin = endBin;
 			this->noBins = noBins;
-			bins = new uint32_t[noBins] { };
+			bins = new uint32_t[noBins] {};
 
 			if (typeid(T1) == typeid(float) || typeid(T1) == typeid(double) || typeid(T1) == typeid(long double))
 			{
@@ -88,7 +92,7 @@ namespace SoilMath
 			Data = data;
 			Rows = rows;
 			Cols = cols;
-			bins = new uint32_t[noBins] { };
+			bins = new uint32_t[noBins] {};
 			this->noBins = noBins;
 			if (isDiscrete) { BasicCalculate(); }
 			else { BasicCalculateFloat(); }
@@ -117,7 +121,7 @@ namespace SoilMath
 				binRange = static_cast<T1>(round((EndBin - Startbin) / noBins));
 			}
 
-			bins = new uint32_t[noBins] { };
+			bins = new uint32_t[noBins] {};
 			while (i-- > 0)
 			{
 				bins[i] = binData[i];
@@ -151,7 +155,7 @@ namespace SoilMath
 			uint16_t index = 0;
 			T1 shift = -min;
 
-			i = n - 1 ;
+			i = n - 1;
 			Data = StartDataPointer;
 			while (i > 0)
 			{
@@ -274,9 +278,40 @@ namespace SoilMath
 			Std = sqrt((float)(sum_dev / n));
 			Calculated = true;
 		}
+	private:
+		friend class boost::serialization::access;
+		template <class Archive>
+		void serialize(Archive & ar, const unsigned int version)
+		{
+			ar & BOOST_SERIALIZATION_NVP(isDiscrete);
+			ar & BOOST_SERIALIZATION_NVP(n);
+			for (size_t dc = 0; dc < n; dc++) {
+				std::stringstream ss;
+				ss << "Data_" << dc;
+				ar & boost::serialization::make_nvp(ss.str().c_str(), Data[dc]);
+			}
+			ar & BOOST_SERIALIZATION_NVP(noBins);
+			for (size_t dc = 0; dc < noBins; dc++) {
+				std::stringstream ss;
+				ss << "Bin_" << dc;
+				ar & boost::serialization::make_nvp(ss.str().c_str(), bins[dc]);
+			}
+			ar & BOOST_SERIALIZATION_NVP(Calculated);
+			ar & BOOST_SERIALIZATION_NVP(Mean);
+			ar & BOOST_SERIALIZATION_NVP(Range);
+			ar & BOOST_SERIALIZATION_NVP(min);
+			ar & BOOST_SERIALIZATION_NVP(max);
+			ar & BOOST_SERIALIZATION_NVP(Startbin);
+			ar & BOOST_SERIALIZATION_NVP(EndBin);
+			ar & BOOST_SERIALIZATION_NVP(binRange);
+			ar & BOOST_SERIALIZATION_NVP(Std);
+			ar & BOOST_SERIALIZATION_NVP(Sum);
+			ar & BOOST_SERIALIZATION_NVP(Rows);
+			ar & BOOST_SERIALIZATION_NVP(Cols);
+		}
+
 	};
 }
 
 typedef SoilMath::Stats<float, double, long double> floatStat_t;
 typedef SoilMath::Stats<uchar, uint32_t, uint64_t> ucharStat_t;
-

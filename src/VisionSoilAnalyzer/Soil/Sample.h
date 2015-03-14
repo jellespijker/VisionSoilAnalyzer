@@ -42,7 +42,7 @@ namespace SoilAnalyzer
 			ar & BOOST_SERIALIZATION_BASE_OBJECT_NVP(Soil);
 			ar & BOOST_SERIALIZATION_NVP(OriginalImage);
 			ar & BOOST_SERIALIZATION_NVP(Population);
-			//ar & Results;
+			ar & BOOST_SERIALIZATION_NVP(Results);
 		}
 
 		bool AnalysePopVect(const vector<Particle>& population, AnalysisResults& results);

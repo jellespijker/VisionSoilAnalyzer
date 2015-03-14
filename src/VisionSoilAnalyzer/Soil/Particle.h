@@ -13,6 +13,8 @@ namespace SoilAnalyzer
 	public:
 		Particle();
 		~Particle();
+		void Save(std::string &filename);
+		void Load(std::string &filename);
 
 	private:
 		friend class boost::serialization::access;
