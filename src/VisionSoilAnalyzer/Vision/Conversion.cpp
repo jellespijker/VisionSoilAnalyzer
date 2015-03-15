@@ -166,15 +166,14 @@ namespace Vision
 		uint32_t i = 0;
 		uint32_t endData = nData * OriginalImg.step.buf[1];
 		float R, G, B;
-		while (i < endData)
+		for (uint32_t i = 0; i < endData; i += OriginalImg.step.buf[1])
 		{
-			R = *(O + i + 2);
-			G = *(O + i + 1);
-			B = *(O + i);
-			P[i] = (XYZmat[0][0] * R) + (XYZmat[0][1] * G) + (XYZmat[0][2] * B); //Z
-			P[i + 1] = (XYZmat[1][0] * R) + (XYZmat[1][1] * G) + (XYZmat[1][2] * B); //Y
-			P[i + 2] = (XYZmat[2][0] * R) + (XYZmat[2][1] * G) + (XYZmat[2][2] * B); //X
-			i += OriginalImg.step.buf[1];
+			R = static_cast<float>(*(O + i + 2)	/ 255.0f);
+			B = static_cast<float>(*(O + i + 1) / 255.0f);
+			G = static_cast<float>(*(O + i)		/ 255.0f);
+			P[i] =		(XYZmat[0][0] * R) + (XYZmat[0][1] * B) + (XYZmat[0][2] * G);	//X
+			P[i + 1] =	(XYZmat[1][0] * R) + (XYZmat[1][1] * B) + (XYZmat[1][2] * G);	//Y
+			P[i + 2] =	(XYZmat[2][0] * R) + (XYZmat[2][1] * B) + (XYZmat[2][2] * G);	//Z
 		}
 	}
 
@@ -188,7 +187,7 @@ namespace Vision
 		uint32_t i = 0;
 		uint32_t endData = nData * 3;
 		float yy0, xx0, zz0;
-		while (i < endData)
+		for (size_t i = 0; i < endData; i += 3)
 		{
 			xx0 = *(O + i) / whitePoint[0];
 			yy0 = *(O + i + 1) / whitePoint[1];
@@ -203,11 +202,15 @@ namespace Vision
 				P[i] = 903.3 * yy0; // L
 			}
 
-			P[i + 1] = 500 * (pow(xx0, 0.333f) - pow(yy0, 0.333f)); // a*
-			P[i + 2] = pow(yy0, 0.333f) - pow(zz0, 0.333f); // b*
-
-			i += 3;
+			P[i + 1] = 500 * (f_xyz2lab(xx0) - f_xyz2lab(yy0));
+			P[i + 2] = 200 * (f_xyz2lab(yy0) - f_xyz2lab(zz0));
 		}
+	}
+
+	inline float Conversion::f_xyz2lab(float t)
+	{
+		if (t > 0.008856) { return pow(t, 0.3333333333f); }
+		return 7.787 * t + 0.137931034482759f;
 	}
 
 	/*! Conversion from CIE La*b* to Redness Index

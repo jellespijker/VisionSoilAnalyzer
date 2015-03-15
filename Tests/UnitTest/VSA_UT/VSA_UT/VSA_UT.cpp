@@ -1,6 +1,7 @@
 #define BOOST_TEST_MODULE VSA_UNIT_TESTS
 
 // Custom libraries
+#include "../../../../src/VisionSoilAnalyzer/Vision/Vision.h"
 #include "../../../../src/VisionSoilAnalyzer/Soil/VisionSoil.h"
 #include "../../../../src/VisionSoilAnalyzer/SoilMath/SoilMath.h"
 #include "FloatTestMatrix.h"
@@ -10,17 +11,28 @@
 #include <boost/test/results_reporter.hpp>
 #include <iostream>
 #include <fstream>
+
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
+
 #include <string>
 #include <boost/archive/xml_oarchive.hpp>
 #include <boost/archive/xml_iarchive.hpp>
+#include <boost/archive/binary_iarchive.hpp>
+#include <boost/archive/binary_oarchive.hpp>
 #include <boost/serialization/vector.hpp>
+
+// Statistical analysis
+#include <boost/math/distributions/students_t.hpp>
+#include "StatisticalComparisonDefinition.h"
 
 #include <math.h>
 #include <cmath>
 #include <random>
 #include <sys/time.h>
+
+using namespace cv;
+using namespace std;
 
 // Create the Report Redirector
 struct LogToFile
@@ -42,6 +54,53 @@ struct LogToFile
 };
 BOOST_GLOBAL_FIXTURE(LogToFile);
 
+struct M {
+	M() 
+	{
+		BOOST_TEST_MESSAGE("setup fixture");
+		src = imread("../ComparisionPictures/SoilSampleRGB.ppm"); 
+	}
+	~M()         { BOOST_TEST_MESSAGE("teardown fixture"); }
+
+	Mat src;
+	Mat dst;
+	Mat comp;
+};
+
+//Compare the sample using the Welch's Test (source: http://www.boost.org/doc/libs/1_57_0/libs/math/doc/html/math_toolkit/stat_tut/weg/st_eg/two_sample_students_t.html)
+template <typename T1, typename T2, typename T3>
+bool WelchTest(SoilMath::Stats<T1, T2, T3> &statComp, SoilMath::Stats<T1, T2, T3> &statDst)
+{
+	double alpha = 0.05;
+	// Degrees of freedom:
+	double v = statComp.Std * statComp.Std / statComp.n + statDst.Std * statDst.Std / statDst.n;
+	v *= v;
+	double t1 = statComp.Std * statComp.Std / statComp.n;
+	t1 *= t1;
+	t1 /= (statComp.n - 1);
+	double t2 = statDst.Std * statDst.Std / statDst.n;
+	t2 *= t2;
+	t2 /= (statDst.n - 1);
+	v /= (t1 + t2);
+	// t-statistic:
+	double t_stat = (statComp.Mean - statDst.Mean) / sqrt(statComp.Std * statComp.Std / statComp.n + statDst.Std * statDst.Std / statDst.n);
+	//
+	// Define our distribution, and get the probability:
+	//
+	boost::math::students_t dist(v);
+	double q = cdf(complement(dist, fabs(t_stat)));
+
+	bool rejected = false;
+	// Sample 1 Mean == Sample 2 Mean test the NULL hypothesis, the two means are the same
+	if (q < alpha / 2)
+		rejected = false;
+	else
+		rejected = true;
+	return rejected;
+}
+
+
+//----------------------------------------------------------------------------------------
 BOOST_AUTO_TEST_SUITE(SoilMath_Test_Suit)
 
 BOOST_AUTO_TEST_CASE(SoilMath_ucharStat_t)
@@ -137,7 +196,7 @@ BOOST_AUTO_TEST_CASE(SoilMath_NN_Save_And_Load)
 	InputLearnVector_t inputVect;
 	OutputLearnVector_t outputVect;
 
-	Population_t pop;
+	//Population_t pop;
 	unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
 	std::default_random_engine gen(seed);
 	std::uniform_real_distribution<float> dis(0.0, 1.0);
@@ -191,17 +250,237 @@ BOOST_AUTO_TEST_CASE(SoilMath_NN_Save_And_Load)
 	std::vector<float> test_out = Test.Predict(inputVect[0]).OutputNeurons;
 	std::vector<float> loadtest_out = loadTest.Predict(inputVect[0]).OutputNeurons;
 
-	BOOST_CHECK_EQUAL_COLLECTIONS(test_out.begin(), test_out.end(), loadtest_out.begin(), loadtest_out.end());
+	BOOST_REQUIRE_EQUAL_COLLECTIONS(Test.hWeights.begin(), Test.hWeights.end(), loadTest.hWeights.begin(), loadTest.hWeights.end());
+	BOOST_REQUIRE_EQUAL_COLLECTIONS(Test.iWeights.begin(), Test.iWeights.end(), loadTest.iWeights.begin(), loadTest.iWeights.end());
+}
 
+BOOST_AUTO_TEST_CASE(SoilMath_NN_Prediction_Accurancy)
+{
+	SoilMath::NN Test;
+	Test.LoadState("NN.xml");
+
+
+	InputLearnVector_t inputVect;
+	OutputLearnVector_t outputVect;
+	OutputLearnVector_t outputPredictVect;
+
+	unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+	std::default_random_engine gen(seed);
+	std::uniform_real_distribution<float> dis(0.0, 1.0);
+
+	float i1 = 0.0, i2 = 0.0, i3 = 0.0;
+	float o1 = 0.0, o2 = 0.0;
+
+	for (uint32_t i = 0; i < 10; i++)
+	{
+		if (dis(gen) > 0.5f) { i1 = 1.0; }
+		else { i1 = 0.0; }
+		if (dis(gen) > 0.5f) { i2 = 1.0; }
+		else { i2 = 0.0; }
+		if (dis(gen) > 0.5f) { i3 = 1.0; }
+		else { i3 = 0.0; }
+
+		if (i1 == 1.0 && i2 == 1.0 && i3 == 0.0)
+		{
+			o1 = 1.0;
+			o2 = -1.0;
+		}
+		else if (i1 == 0.0 && i2 == 0.0 && i3 == 1.0)
+		{
+			o1 = 1.0;
+			o2 = -1.0;
+		}
+		else
+		{
+			o1 = -1.0;
+			o2 = 1.0;
+		}
+
+		ComplexVect_t inputTemp;
+		inputTemp.push_back(Complex_t(i1, 0));
+		inputTemp.push_back(Complex_t(i2, 0));
+		inputTemp.push_back(Complex_t(i3, 0));
+		inputVect.push_back(inputTemp);
+
+		Predict_t outputTemp;
+		outputTemp.OutputNeurons.push_back(o1);
+		outputTemp.OutputNeurons.push_back(o2);
+		outputVect.push_back(outputTemp);
+
+		Predict_t outputPredictTemp;
+		outputPredictTemp.OutputNeurons = Test.Predict(inputTemp).OutputNeurons;
+		
+		for (uint32_t j = 0; j < outputTemp.OutputNeurons.size(); j++)
+		{
+			BOOST_CHECK_CLOSE(outputPredictTemp.OutputNeurons[j], outputTemp.OutputNeurons[j], 5);
+		}
+	}
 }
 
 BOOST_AUTO_TEST_SUITE_END()
+
+//----------------------------------------------------------------------------------------
+BOOST_AUTO_TEST_SUITE(Vision_Test_Suite)
+
+BOOST_FIXTURE_TEST_CASE(Vision_Convert_RGB_To_Intensity, M)
+{
+	// Convert the RGB picture to an intensity picture
+	Vision::Conversion Test;
+	Test.Convert(src, dst, Vision::Conversion::RGB, Vision::Conversion::Intensity);
+
+	// Read in the Matlab converted intensity picture converted with the Matlab command:
+	// Matlab_int=0.2126*RGB(:,:,1)+0.7152*RGB(:,:,2)+0.0722*RGB(:,:,3);
+	comp = imread("../ComparisionPictures/Matlab_int.ppm", 0);
+
+	// Calculate the statistics of the two images
+	ucharStat_t statDst(dst.data, dst.rows, dst.cols);
+	ucharStat_t statComp(comp.data, comp.rows, comp.cols);
+
+	// Simple comparison
+	BOOST_CHECK_CLOSE(statDst.Mean, statComp.Mean, 0.5);
+	BOOST_CHECK_CLOSE(statDst.Std, statComp.Std, 0.5);
+	BOOST_CHECK_CLOSE((double)statDst.Range, (double)statComp.Range, 0.5);
+	BOOST_CHECK_CLOSE((double)statDst.min, (double)statComp.min, 0.5);
+	BOOST_CHECK_CLOSE((double)statDst.max, (double)statComp.max, 0.5);
+	BOOST_CHECK_CLOSE((double)statDst.Sum, (double)statComp.Sum, 0.5);
+
+	// Welch test comparison of the means
+	bool rejected = WelchTest<uchar, uint32_t, uint64_t>(statComp, statDst);
+	BOOST_CHECK_EQUAL(rejected, true);
+}
+
+BOOST_FIXTURE_TEST_CASE(Vision_Convert_RGB_To_CIEXYZ, M)
+{
+	// Convert the RGB to an CIElab
+	Vision::Conversion Test;
+	Test.Convert(src, dst, Vision::Conversion::RGB, Vision::Conversion::CIE_XYZ);
+	vector<Mat> LAB = Test.extractChannel(dst, 0);
+
+	floatStat_t statDstX((float *)LAB[0].data, src.rows, src.cols);
+	floatStat_t statCompX;
+	statCompX.Std = X_STD;
+	statCompX.n = N_MAT;
+	statCompX.Mean = X_MEAN;
+	statCompX.Range = X_RANGE;
+	statCompX.min = X_MIN;
+	statCompX.max = X_MAX;
+	statCompX.Sum = X_SUM;
+
+	// Simple comparison
+	BOOST_CHECK_CLOSE(statDstX.Mean, statCompX.Mean, 0.5);
+	BOOST_CHECK_CLOSE(statDstX.Std, statCompX.Std, 0.5);
+	BOOST_CHECK_CLOSE((double)statDstX.Range, (double)statCompX.Range, 0.5);
+	BOOST_CHECK_CLOSE((double)statDstX.min, (double)statCompX.min, 0.5);
+	BOOST_CHECK_CLOSE((double)statDstX.max, (double)statCompX.max, 0.5);
+	BOOST_CHECK_CLOSE((double)statDstX.Sum, (double)statCompX.Sum, 0.5);
+
+	//// Welch test comparison of the means
+	//bool rejected = WelchTest<float, double, long double>(statCompX, statDstX);
+	//BOOST_CHECK_EQUAL(rejected, false); // TODO: Find out why my null hypothese doesn't hold
+
+	floatStat_t statDstY((float *)LAB[1].data, src.rows, src.cols);
+	floatStat_t statCompY;
+	statCompY.Std = Y_STD;
+	statCompY.n = N_MAT;
+	statCompY.Mean = Y_MEAN;
+	statCompY.Range = Y_RANGE;
+	statCompY.min = Y_MIN;
+	statCompY.max = Y_MAX;
+	statCompY.Sum = Y_SUM;
+
+	// Simple comparison
+	BOOST_CHECK_CLOSE(statDstY.Mean, statCompY.Mean, 0.5);
+	BOOST_CHECK_CLOSE(statDstY.Std, statCompY.Std, 0.5);
+	BOOST_CHECK_CLOSE((double)statDstY.Range, (double)statCompY.Range, 0.5);
+	BOOST_CHECK_CLOSE((double)statDstY.min, (double)statCompY.min, 0.5);
+	BOOST_CHECK_CLOSE((double)statDstY.max, (double)statCompY.max, 0.5);
+	BOOST_CHECK_CLOSE((double)statDstY.Sum, (double)statCompY.Sum, 0.5);
+
+	//// Welch test comparison of the means
+	//rejected = WelchTest<float, double, long double>(statCompY, statDstY);
+	//BOOST_CHECK_EQUAL(rejected, false);
+
+	floatStat_t statDstZ((float *)LAB[2].data, src.rows, src.cols);
+	floatStat_t statCompZ;
+	statCompZ.Std = Z_STD;
+	statCompZ.n = N_MAT;
+	statCompZ.Mean = Z_MEAN;
+	statCompZ.Range = Z_RANGE;
+	statCompZ.min = Z_MIN;
+	statCompZ.max = Z_MAX;
+	statCompZ.Sum = Z_SUM;
+
+	// Simple comparison
+	BOOST_CHECK_CLOSE(statDstZ.Mean, statCompZ.Mean, 0.5);
+	BOOST_CHECK_CLOSE(statDstZ.Std, statCompZ.Std, 0.5);
+	BOOST_CHECK_CLOSE((double)statDstZ.Range, (double)statCompZ.Range, 0.5);
+	BOOST_CHECK_CLOSE((double)statDstZ.min, (double)statCompZ.min, 0.5);
+	BOOST_CHECK_CLOSE((double)statDstZ.max, (double)statCompZ.max, 0.5);
+	BOOST_CHECK_CLOSE((double)statDstZ.Sum, (double)statCompZ.Sum, 0.5);
+
+	//// Welch test comparison of the means
+	//rejected = WelchTest<float, double, long double>(statCompZ, statDstZ);
+	//BOOST_CHECK_EQUAL(rejected, false);
+
+
+}
+
+BOOST_FIXTURE_TEST_CASE(Vision_Convert_RGB_To_CIElab, M)
+{
+	// Convert the RGB to an CIElab
+	Vision::Conversion Test;
+	Test.Convert(src, dst, Vision::Conversion::RGB, Vision::Conversion::CIE_lab);
+	vector<Mat> LAB = Test.extractChannel(dst, 0);
+	imwrite("LAB.tiff", dst);
+
+	floatStat_t statDstL((float *)LAB[0].data, src.rows, src.cols);
+	floatStat_t statCompL;
+	statCompL.Std = L_STD;
+	statCompL.n = N_MAT;
+	statCompL.Mean = L_MEAN;
+	statCompL.Range = L_RANGE;
+	statCompL.min = L_MIN;
+	statCompL.max = L_MAX;
+	statCompL.Sum = L_SUM;
+
+	// Simple comparison
+	BOOST_CHECK_CLOSE(statDstL.Mean, statCompL.Mean, 0.5);
+	BOOST_CHECK_CLOSE(statDstL.Std, statCompL.Std, 0.5);
+	BOOST_CHECK_CLOSE((double)statDstL.Range, (double)statCompL.Range, 0.5);
+	BOOST_CHECK_CLOSE((double)statDstL.min, (double)statCompL.min, 0.5);
+	BOOST_CHECK_CLOSE((double)statDstL.max, (double)statCompL.max, 0.5);
+	BOOST_CHECK_CLOSE((double)statDstL.Sum, (double)statCompL.Sum, 0.5);
+
+	// Welch test comparison of the means
+	bool rejected = WelchTest<float, double, long double>(statCompL, statDstL);
+	BOOST_CHECK_EQUAL(rejected, false);
+
+
+	// Since the CIELa*b* values are doubles and they cannot be easily exported from Matlab. Thus the st.dev, n and mean are calculated in Matlab CieLab mat 
+	// file is found in the comparison folder
+	
+
+}
+
+
+BOOST_AUTO_TEST_SUITE_END()
+
+//----------------------------------------------------------------------------------------
 BOOST_AUTO_TEST_SUITE(SoilAnalyzer_Test_Suite)
 
-BOOST_AUTO_TEST_CASE(Soil_Sample_Save_And_Load)
+BOOST_FIXTURE_TEST_CASE(Soil_Sample_Save_And_Load, M)
 {
-	SoilAnalyzer::Sample Test;
-	std::string filename = "SoilSample.xml";
+
+	SoilAnalyzer::Sample Test(src);
+	Test.Analyse();
+	std::string filename = "SoilSample.vsa";
 	Test.Save(filename);
+
+	SoilAnalyzer::Sample TestLoad;
+	TestLoad.Load(filename);
+
+	BOOST_CHECK_EQUAL_COLLECTIONS(Test.RGB.datastart, Test.RGB.dataend, TestLoad.RGB.datastart, TestLoad.RGB.dataend);
 }
+
 BOOST_AUTO_TEST_SUITE_END()
+

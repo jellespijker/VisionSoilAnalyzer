@@ -34,13 +34,12 @@ namespace SoilMath
 		void SaveState(string filename);
 		void LoadState(string filename);
 
-	private:
-		std::vector<float> iNeurons;
 		Weight_t iWeights;
-
-		std::vector<float> hNeurons;
 		Weight_t hWeights;
 
+	private:
+		std::vector<float> iNeurons;
+		std::vector<float> hNeurons;
 		std::vector<float> oNeurons;
 
 		uint32_t hiddenNeurons;

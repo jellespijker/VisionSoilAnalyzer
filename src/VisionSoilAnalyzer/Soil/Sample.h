@@ -12,6 +12,8 @@
 #include <vector>
 #include <string>
 
+#include "../Vision/Vision.h"
+
 using namespace std;
 using namespace cv;
 
@@ -47,7 +49,7 @@ namespace SoilAnalyzer
 
 		bool AnalysePopVect(const vector<Particle>& population, AnalysisResults& results);
 		bool ConvertToBW(const Mat& src, Mat& dst);
-		bool ConvertToInt(const Mat& src, Mat& dst);
+		void ConvertToInt(const Mat& src, Mat& dst);
 		bool ConvertToLAB(const Mat& src, Mat& dst);
 		bool ConvertToRI(const Mat& src, Mat& dst);
 		bool EnhanceImg(const Mat& src, Mat& dst);

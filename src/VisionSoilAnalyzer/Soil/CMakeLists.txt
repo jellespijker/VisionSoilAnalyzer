@@ -8,7 +8,7 @@ set (Soil_VERSION_MINOR 0)
 
 find_package(Boost COMPONENTS serialization REQUIRED)
 
-set(LIBRARIES_FROM_REFERENCES ${CMAKE_SOURCE_DIR}/../SoilMath/Debug/libSoilMath.so)
+set(LIBRARIES_FROM_REFERENCES ${CMAKE_SOURCE_DIR}/../Vision/Debug/libVision.so ${CMAKE_SOURCE_DIR}/../SoilMath/Debug/libSoilMath.so)
 add_library(Soil SHARED AnalysisResults.cpp Particle.cpp Sample.cpp ShapeClassification.cpp Soil.cpp)
 target_link_libraries(Soil -L/usr/local/lib ${Boost_LIBRARY_DIRS} -lopencv_calib3d -lopencv_core -lopencv_features2d -lopencv_imgproc -lopencv_flann -lopencv_highgui -lopencv_imgcodecs -lopencv_ml -lopencv_objdetect -lopencv_photo -lopencv_shape -lopencv_stitching -lopencv_superres -lopencv_ts -lopencv_video -lopencv_videoio -lopencv_videostab -lboost_serialization "${LIBRARIES_FROM_REFERENCES}")
 include_directories(/usr/local/include /usr/local/include/opencv ${Boost_INCLUDE_DIRS})

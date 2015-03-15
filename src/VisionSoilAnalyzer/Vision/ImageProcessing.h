@@ -10,9 +10,11 @@
 #include <stdint.h>
 #include <opencv2/core.hpp>
 #include <cmath>
+#include <vector>
 
 #include "EmptyImageException.h"
 #include "WrongKernelSizeException.h"
+#include "ChannelMismatchException.h"
 #include "PixelValueOutOfBoundException.h"
 
 using namespace cv;
@@ -31,13 +33,15 @@ namespace Vision
 		Mat OriginalImg;
 		Mat ProcessedImg;
 
+		std::vector<Mat> extractChannel(const Mat &src, uint8_t channel);
+
 		/*! Copy a matrix to a new matrix with a LUT mask
 		\param src the source image
 		\param *LUT type T with a LUT to filter out unwanted pixel values
 		\param cvType an in where you can pas CV_UC8C1 etc.
 		\return The new matrix
 		*/
-		template <typename T>	Mat CopyMat(const Mat src, T *LUT, int cvType)
+		template <typename T>	Mat CopyMat(const Mat &src, T *LUT, int cvType)
 		{
 			Mat dst(src.size(), cvType);
 			uint32_t i = 0;

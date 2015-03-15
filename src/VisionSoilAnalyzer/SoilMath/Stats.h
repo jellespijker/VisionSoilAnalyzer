@@ -144,15 +144,22 @@ namespace SoilMath
 			uint32_t i = n;
 
 			// Get sum , min, max, fill histogram
-			while (i-- > 0)
+			for (uint32_t i = 0; i < n; i++)
 			{
-				if (*Data > max) { max = *Data; }
-				else if (*Data < min) { min = *Data; }
-				Sum += *Data++;
+				if (Data[i] > max) { max = Data[i]; }
+				else if (Data[i] < min) { min = Data[i]; }
+				Sum += Data[i];
 			}
 
+			//while (i-- > 0)
+			//{
+			//	if (*Data > max) { max = *Data; }
+			//	else if (*Data < min) { min = *Data; }
+			//	Sum += *Data++;
+			//}
+
 			binRange = (max - min) / noBins;
-			uint16_t index = 0;
+			uint32_t index = 0;
 			T1 shift = -min;
 
 			i = n - 1;

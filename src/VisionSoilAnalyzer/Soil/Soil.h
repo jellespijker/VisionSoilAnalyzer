@@ -2,8 +2,9 @@
 
 // Needed for serialization
 #include <fstream>
-#include <boost/archive/xml_oarchive.hpp>
-#include <boost/archive/xml_iarchive.hpp>
+#include <boost/archive/binary_iarchive.hpp>
+#include <boost/archive/binary_oarchive.hpp>
+
 #include <boost/serialization/string.hpp>
 #include "Mat_archive.h"
 
@@ -32,7 +33,11 @@ namespace SoilAnalyzer
 			ar & BOOST_SERIALIZATION_NVP(LAB);
 			ar & BOOST_SERIALIZATION_NVP(RI);
 			ar & BOOST_SERIALIZATION_NVP(RGB);
+			ar & BOOST_SERIALIZATION_NVP(OptimizedInt);
 		}
+
+	protected:
+		cv::Mat OptimizedInt;
 
 	public:
 		Soil();
