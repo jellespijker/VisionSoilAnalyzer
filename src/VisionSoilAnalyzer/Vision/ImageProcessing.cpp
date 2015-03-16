@@ -33,26 +33,8 @@ namespace Vision
 	}
 
 	// Todo: Optimize
-	std::vector<Mat> ImageProcessing::extractChannel(const Mat &src, uint8_t channel)
+	std::vector<Mat> ImageProcessing::extractChannel(const Mat &src)
 	{
-		if (channel >= src.channels()) { throw Exception::ChannelMismatchException(); }
-
-		//Mat chans[3] = { Mat(src.size(), src.type()), Mat(src.size(), src.type()), Mat(src.size(), src.type()) };
-
-		//uint32_t nData = src.rows * src.cols * src.step.buf[1];
-		//uint32_t stepSize = src.step.buf[1] / 3;
-		//uint32_t count = 0;
-		//for (uint32_t i = 0; i < nData; i += stepSize)
-		//{
-		//	chans[0].data[count] = src.data[i];
-		//	i += stepSize;
-		//	chans[1].data[count] = src.data[i];
-		//	i += stepSize;
-		//	chans[2].data[count] = src.data[i];
-		//	count += stepSize;
-		//}
-		
-
 		vector<Mat> chans;
 		split(src, chans);
 		return chans;

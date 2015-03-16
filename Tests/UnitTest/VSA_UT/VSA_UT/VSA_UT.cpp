@@ -354,7 +354,7 @@ BOOST_FIXTURE_TEST_CASE(Vision_Convert_RGB_To_CIEXYZ, M)
 	// Convert the RGB to an CIElab
 	Vision::Conversion Test;
 	Test.Convert(src, dst, Vision::Conversion::RGB, Vision::Conversion::CIE_XYZ);
-	vector<Mat> LAB = Test.extractChannel(dst, 0);
+	vector<Mat> LAB = Test.extractChannel(dst);
 
 	floatStat_t statDstX((float *)LAB[0].data, src.rows, src.cols);
 	floatStat_t statCompX;
@@ -430,8 +430,7 @@ BOOST_FIXTURE_TEST_CASE(Vision_Convert_RGB_To_CIElab, M)
 	// Convert the RGB to an CIElab
 	Vision::Conversion Test;
 	Test.Convert(src, dst, Vision::Conversion::RGB, Vision::Conversion::CIE_lab);
-	vector<Mat> LAB = Test.extractChannel(dst, 0);
-	imwrite("LAB.tiff", dst);
+	vector<Mat> LAB = Test.extractChannel(dst);
 
 	floatStat_t statDstL((float *)LAB[0].data, src.rows, src.cols);
 	floatStat_t statCompL;
@@ -455,13 +454,79 @@ BOOST_FIXTURE_TEST_CASE(Vision_Convert_RGB_To_CIElab, M)
 	bool rejected = WelchTest<float, double, long double>(statCompL, statDstL);
 	BOOST_CHECK_EQUAL(rejected, false);
 
+	floatStat_t statDstA((float *)LAB[1].data, src.rows, src.cols);
+	floatStat_t statCompA;
+	statCompA.Std = A_STD;
+	statCompA.n = N_MAT;
+	statCompA.Mean = A_MEAN;
+	statCompA.Range = A_RANGE;
+	statCompA.min = A_MIN;
+	statCompA.max = A_MAX;
+	statCompA.Sum = A_SUM;
 
-	// Since the CIELa*b* values are doubles and they cannot be easily exported from Matlab. Thus the st.dev, n and mean are calculated in Matlab CieLab mat 
-	// file is found in the comparison folder
-	
+	// Simple comparison
+	BOOST_CHECK_CLOSE(statDstA.Mean, statCompA.Mean, 0.5);
+	BOOST_CHECK_CLOSE(statDstA.Std, statCompA.Std, 0.5);
+	BOOST_CHECK_CLOSE((double)statDstA.Range, (double)statCompA.Range, 0.5);
+	BOOST_CHECK_CLOSE((double)statDstA.min, (double)statCompA.min, 0.5);
+	BOOST_CHECK_CLOSE((double)statDstA.max, (double)statCompA.max, 0.5);
+	BOOST_CHECK_CLOSE((double)statDstA.Sum, (double)statCompA.Sum, 0.5);
 
+	// Welch test comparison of the means
+	rejected = WelchTest<float, double, long double>(statCompA, statDstA);
+	BOOST_CHECK_EQUAL(rejected, false);
+
+	floatStat_t statDstB((float *)LAB[2].data, src.rows, src.cols);
+	floatStat_t statCompB;
+	statCompB.Std = B_STD;
+	statCompB.n = N_MAT;
+	statCompB.Mean = B_MEAN;
+	statCompB.Range = B_RANGE;
+	statCompB.min = B_MIN;
+	statCompB.max = B_MAX;
+	statCompB.Sum = B_SUM;
+
+	// Simple comparison
+	BOOST_CHECK_CLOSE(statDstB.Mean, statCompB.Mean, 0.5);
+	BOOST_CHECK_CLOSE(statDstB.Std, statCompB.Std, 0.5);
+	BOOST_CHECK_CLOSE((double)statDstB.Range, (double)statCompB.Range, 0.5);
+	BOOST_CHECK_CLOSE((double)statDstB.min, (double)statCompB.min, 0.5);
+	BOOST_CHECK_CLOSE((double)statDstB.max, (double)statCompB.max, 0.5);
+	BOOST_CHECK_CLOSE((double)statDstB.Sum, (double)statCompB.Sum, 0.5);
+
+	// Welch test comparison of the means
+	rejected = WelchTest<float, double, long double>(statCompB, statDstB);
+	BOOST_CHECK_EQUAL(rejected, false);
 }
 
+BOOST_FIXTURE_TEST_CASE(Vision_Convert_RGB_To_RI, M)
+{
+	// Convert the RGB to an CIElab
+	Vision::Conversion Test;
+	Test.Convert(src, dst, Vision::Conversion::RGB, Vision::Conversion::RI);
+
+	floatStat_t statDstRI((float *)dst.data, src.rows, src.cols);
+	floatStat_t statCompRI;
+	statCompRI.Std = RI_STD;
+	statCompRI.n = N_MAT;
+	statCompRI.Mean = RI_MEAN;
+	statCompRI.Range = RI_RANGE;
+	statCompRI.min = RI_MIN;
+	statCompRI.max = RI_MAX;
+	statCompRI.Sum = RI_SUM;
+
+	// Simple comparison
+	BOOST_CHECK_CLOSE(statDstRI.Mean, statCompRI.Mean, 0.5);
+	BOOST_CHECK_CLOSE(statDstRI.Std, statCompRI.Std, 0.5);
+	BOOST_CHECK_CLOSE((double)statDstRI.Range, (double)statCompRI.Range, 0.5);
+	BOOST_CHECK_CLOSE((double)statDstRI.min, (double)statCompRI.min, 0.5);
+	BOOST_CHECK_CLOSE((double)statDstRI.max, (double)statCompRI.max, 0.5);
+	BOOST_CHECK_CLOSE((double)statDstRI.Sum, (double)statCompRI.Sum, 0.5);
+
+	// Welch test comparison of the means
+	bool rejected = WelchTest<float, double, long double>(statCompRI, statDstRI);
+	BOOST_CHECK_EQUAL(rejected, false);
+}
 
 BOOST_AUTO_TEST_SUITE_END()
 

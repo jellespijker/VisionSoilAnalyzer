@@ -33,7 +33,7 @@ namespace Vision
 		Mat OriginalImg;
 		Mat ProcessedImg;
 
-		std::vector<Mat> extractChannel(const Mat &src, uint8_t channel);
+		std::vector<Mat> extractChannel(const Mat &src);
 
 		/*! Copy a matrix to a new matrix with a LUT mask
 		\param src the source image
