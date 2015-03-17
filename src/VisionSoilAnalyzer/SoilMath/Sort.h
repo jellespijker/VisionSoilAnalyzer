@@ -6,8 +6,8 @@ namespace SoilMath
 	class Sort
 	{
 	public:
-		Sort();
-		~Sort();
+		Sort() {};
+		~Sort() {};
 
 		template <typename T>
 		static void QuickSort(T *arr, int i)

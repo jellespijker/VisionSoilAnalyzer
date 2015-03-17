@@ -103,6 +103,14 @@ bool WelchTest(SoilMath::Stats<T1, T2, T3> &statComp, SoilMath::Stats<T1, T2, T3
 //----------------------------------------------------------------------------------------
 BOOST_AUTO_TEST_SUITE(SoilMath_Test_Suit)
 
+BOOST_AUTO_TEST_CASE(SoilMath_Sort)
+{
+	int testDiscrete[] = { 2, 8, 1, 3, 0, 7, 4, 5, 9, 6, 6 };
+	int ucomp[] = { 0, 1, 2, 3, 4, 5, 6, 6, 7, 8, 9};
+	SoilMath::Sort::QuickSort<int>(testDiscrete, 11);
+	BOOST_CHECK_EQUAL_COLLECTIONS(testDiscrete, testDiscrete + 10, ucomp, ucomp + 10);
+}
+
 BOOST_AUTO_TEST_CASE(SoilMath_ucharStat_t)
 {
 	ucharStat_t Test((uint8_t *)testMatrix, 200, 200);
