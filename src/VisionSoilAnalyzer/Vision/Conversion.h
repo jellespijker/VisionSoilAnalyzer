@@ -38,8 +38,8 @@ namespace Vision
 			{0.019334, 0.119194, 0.950227 }
 		};
 		
-		float whitePoint[3] = { 95.047e-3, 100e-3, 108.883e-3 }; /*!< Natural whitepoint in XYZ colorspace D65 */
-		//float whitePoint[3] = { 96.42, 100.00, 82.49 }; /*!< Natural whitepoint in XYZ colorspace D50 according to Matlab */
+		float whitePoint[3] = { 0.9504, 1.0000, 1.0889 }; /*!< Natural whitepoint in XYZ colorspace D65 according to Matlab */
+		//float whitePoint[3] = { 0.9642, 1.0000, 0.8251 }; /*!< Natural whitepoint in XYZ colorspace D50 according to Matlab */
 
 		void Lab2RI(float *O, float *P, int nData);
 		void RGB2XYZ(uchar *O, float *P, int nData);

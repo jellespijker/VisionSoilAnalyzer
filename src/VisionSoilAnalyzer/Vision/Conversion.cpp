@@ -133,7 +133,7 @@ namespace Vision
 			float *O;
 			CHAIN_PROCESS(chain, O, float);
 
-			Lab2RI(O, P, nData);
+			Lab2RI(O, P, nData * 3);
 		}
 		else { throw Exception::ConversionNotSupportedException(); }
 	}
@@ -195,7 +195,7 @@ namespace Vision
 
 			if (yy0 > 0.008856)
 			{
-				P[i] = (116 * pow(yy0, 0.333f)) - 116; // L
+				P[i] = (116 * pow(yy0, 0.333f)) - 16; // L
 			}
 			else
 			{
@@ -223,13 +223,12 @@ namespace Vision
 		uint32_t i = 0;
 		uint32_t j = 0;
 		float L, a, b;
-		while (j < nData)
+		for (uint32_t i = 0; i < nData; i += 3)
 		{
 			L = *(O + i);
 			a = *(O + i + 1);
 			b = *(O + i + 2);
 			P[j++] = (L * (pow((pow(a, 2.0f) + pow(b, 2.0f)), 0.5f) * (pow(10, 8.2f)))) / (b * pow(L, 6.0f));
-			i += 3;
 		}
 	}
 }

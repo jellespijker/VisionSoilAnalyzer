@@ -4,7 +4,7 @@
 cmake_minimum_required(VERSION 2.7)
 project(Hardware)
 set(LIBRARIES_FROM_REFERENCES "")
-add_library(Hardware ADC.cpp BBB.cpp EC12P.cpp eqep.cpp GPIO.cpp Microscope.cpp PWM.cpp Resolution.cpp SoilCape.cpp USB.cpp)
+add_library(Hardware ADC.cpp BBB.cpp EC12P.cpp eqep.cpp GPIO.cpp Microscope.cpp PWM.cpp SoilCape.cpp USB.cpp)
 target_link_libraries(Hardware -L/usr/local/lib -lopencv_calib3d -lopencv_core -lopencv_features2d -lopencv_flann -lopencv_highgui -lopencv_imgcodecs -lopencv_imgproc -lopencv_ml -lopencv_objdetect -lopencv_photo -lopencv_shape -lopencv_stitching -lopencv_superres -lopencv_ts -lopencv_video -lopencv_videoio -lopencv_videostab "${LIBRARIES_FROM_REFERENCES}")
 include_directories(/usr/local/include /usr/local/include/opencv)
 set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} ")
