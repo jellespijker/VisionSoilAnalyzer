@@ -16,6 +16,7 @@
 
 #include <boost/archive/xml_iarchive.hpp>
 #include <boost/archive/xml_oarchive.hpp>
+#include <boost/math/distributions/students_t.hpp>
 
 #include "MathException.h"
 #include "SoilMathTypes.h"
@@ -46,6 +47,37 @@ namespace SoilMath
 		T3 Sum = 0;
 		uint16_t Rows = 0;
 		uint16_t Cols = 0;
+
+		//Compare the sample using the Welch's Test (source: http://www.boost.org/doc/libs/1_57_0/libs/math/doc/html/math_toolkit/stat_tut/weg/st_eg/two_sample_students_t.html)
+		bool WelchTest(SoilMath::Stats<T1, T2, T3> &statComp)
+		{
+			double alpha = 0.05;
+			// Degrees of freedom:
+			double v = statComp.Std * statComp.Std / statComp.n + this->Std * this->Std / this->n;
+			v *= v;
+			double t1 = statComp.Std * statComp.Std / statComp.n;
+			t1 *= t1;
+			t1 /= (statComp.n - 1);
+			double t2 = this->Std * this->Std / this->n;
+			t2 *= t2;
+			t2 /= (this->n - 1);
+			v /= (t1 + t2);
+			// t-statistic:
+			double t_stat = (statComp.Mean - this->Mean) / sqrt(statComp.Std * statComp.Std / statComp.n + this->Std * this->Std / this->n);
+			//
+			// Define our distribution, and get the probability:
+			//
+			boost::math::students_t dist(v);
+			double q = cdf(complement(dist, fabs(t_stat)));
+
+			bool rejected = false;
+			// Sample 1 Mean == Sample 2 Mean test the NULL hypothesis, the two means are the same
+			if (q < alpha / 2)
+				rejected = false;
+			else
+				rejected = true;
+			return rejected;
+		}
 
 		Stats(int noBins = 256, T1 startBin = 0, T1 endBin = 255)
 		{
@@ -316,7 +348,6 @@ namespace SoilMath
 			ar & BOOST_SERIALIZATION_NVP(Rows);
 			ar & BOOST_SERIALIZATION_NVP(Cols);
 		}
-
 	};
 }
 

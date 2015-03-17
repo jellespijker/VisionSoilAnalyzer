@@ -23,7 +23,6 @@
 #include <boost/serialization/vector.hpp>
 
 // Statistical analysis
-#include <boost/math/distributions/students_t.hpp>
 #include "StatisticalComparisonDefinition.h"
 
 #include <math.h>
@@ -66,39 +65,6 @@ struct M {
 	Mat dst;
 	Mat comp;
 };
-
-//Compare the sample using the Welch's Test (source: http://www.boost.org/doc/libs/1_57_0/libs/math/doc/html/math_toolkit/stat_tut/weg/st_eg/two_sample_students_t.html)
-template <typename T1, typename T2, typename T3>
-bool WelchTest(SoilMath::Stats<T1, T2, T3> &statComp, SoilMath::Stats<T1, T2, T3> &statDst)
-{
-	double alpha = 0.05;
-	// Degrees of freedom:
-	double v = statComp.Std * statComp.Std / statComp.n + statDst.Std * statDst.Std / statDst.n;
-	v *= v;
-	double t1 = statComp.Std * statComp.Std / statComp.n;
-	t1 *= t1;
-	t1 /= (statComp.n - 1);
-	double t2 = statDst.Std * statDst.Std / statDst.n;
-	t2 *= t2;
-	t2 /= (statDst.n - 1);
-	v /= (t1 + t2);
-	// t-statistic:
-	double t_stat = (statComp.Mean - statDst.Mean) / sqrt(statComp.Std * statComp.Std / statComp.n + statDst.Std * statDst.Std / statDst.n);
-	//
-	// Define our distribution, and get the probability:
-	//
-	boost::math::students_t dist(v);
-	double q = cdf(complement(dist, fabs(t_stat)));
-
-	bool rejected = false;
-	// Sample 1 Mean == Sample 2 Mean test the NULL hypothesis, the two means are the same
-	if (q < alpha / 2)
-		rejected = false;
-	else
-		rejected = true;
-	return rejected;
-}
-
 
 //----------------------------------------------------------------------------------------
 BOOST_AUTO_TEST_SUITE(SoilMath_Test_Suit)
@@ -353,7 +319,7 @@ BOOST_FIXTURE_TEST_CASE(Vision_Convert_RGB_To_Intensity, M)
 	BOOST_CHECK_CLOSE((double)statDst.Sum, (double)statComp.Sum, 0.5);
 
 	// Welch test comparison of the means
-	bool rejected = WelchTest<uchar, uint32_t, uint64_t>(statComp, statDst);
+	bool rejected = statDst.WelchTest(statComp);
 	BOOST_CHECK_EQUAL(rejected, true);
 }
 
@@ -383,8 +349,8 @@ BOOST_FIXTURE_TEST_CASE(Vision_Convert_RGB_To_CIEXYZ, M)
 	BOOST_CHECK_CLOSE((double)statDstX.Sum, (double)statCompX.Sum, 0.5);
 
 	//// Welch test comparison of the means
-	//bool rejected = WelchTest<float, double, long double>(statCompX, statDstX);
-	//BOOST_CHECK_EQUAL(rejected, false); // TODO: Find out why my null hypothese doesn't hold
+	bool rejected = statDstX.WelchTest(statCompX);
+	BOOST_CHECK_EQUAL(rejected, false); // TODO: Find out why my null hypothese doesn't hold
 
 	floatStat_t statDstY((float *)LAB[1].data, src.rows, src.cols);
 	floatStat_t statCompY;
@@ -405,8 +371,8 @@ BOOST_FIXTURE_TEST_CASE(Vision_Convert_RGB_To_CIEXYZ, M)
 	BOOST_CHECK_CLOSE((double)statDstY.Sum, (double)statCompY.Sum, 0.5);
 
 	//// Welch test comparison of the means
-	//rejected = WelchTest<float, double, long double>(statCompY, statDstY);
-	//BOOST_CHECK_EQUAL(rejected, false);
+	rejected = statDstY.WelchTest(statCompY);
+	BOOST_CHECK_EQUAL(rejected, false);
 
 	floatStat_t statDstZ((float *)LAB[2].data, src.rows, src.cols);
 	floatStat_t statCompZ;
@@ -427,10 +393,8 @@ BOOST_FIXTURE_TEST_CASE(Vision_Convert_RGB_To_CIEXYZ, M)
 	BOOST_CHECK_CLOSE((double)statDstZ.Sum, (double)statCompZ.Sum, 0.5);
 
 	//// Welch test comparison of the means
-	//rejected = WelchTest<float, double, long double>(statCompZ, statDstZ);
-	//BOOST_CHECK_EQUAL(rejected, false);
-
-
+	rejected = statDstZ.WelchTest(statCompZ);
+	BOOST_CHECK_EQUAL(rejected, false);
 }
 
 BOOST_FIXTURE_TEST_CASE(Vision_Convert_RGB_To_CIElab, M)
@@ -459,7 +423,7 @@ BOOST_FIXTURE_TEST_CASE(Vision_Convert_RGB_To_CIElab, M)
 	BOOST_CHECK_CLOSE((double)statDstL.Sum, (double)statCompL.Sum, 0.5);
 
 	// Welch test comparison of the means
-	bool rejected = WelchTest<float, double, long double>(statCompL, statDstL);
+	bool rejected = statDstL.WelchTest(statCompL);
 	BOOST_CHECK_EQUAL(rejected, false);
 
 	floatStat_t statDstA((float *)LAB[1].data, src.rows, src.cols);
@@ -481,7 +445,7 @@ BOOST_FIXTURE_TEST_CASE(Vision_Convert_RGB_To_CIElab, M)
 	BOOST_CHECK_CLOSE((double)statDstA.Sum, (double)statCompA.Sum, 0.5);
 
 	// Welch test comparison of the means
-	rejected = WelchTest<float, double, long double>(statCompA, statDstA);
+	rejected = statDstA.WelchTest(statCompA);
 	BOOST_CHECK_EQUAL(rejected, false);
 
 	floatStat_t statDstB((float *)LAB[2].data, src.rows, src.cols);
@@ -503,7 +467,7 @@ BOOST_FIXTURE_TEST_CASE(Vision_Convert_RGB_To_CIElab, M)
 	BOOST_CHECK_CLOSE((double)statDstB.Sum, (double)statCompB.Sum, 0.5);
 
 	// Welch test comparison of the means
-	rejected = WelchTest<float, double, long double>(statCompB, statDstB);
+	rejected = statDstB.WelchTest(statCompB);
 	BOOST_CHECK_EQUAL(rejected, false);
 }
 
@@ -534,7 +498,7 @@ BOOST_FIXTURE_TEST_CASE(Vision_Convert_LAB_To_RI, M)
 	BOOST_CHECK_CLOSE((double)statDstRI.Sum, (double)statCompRI.Sum, 1.25);
 
 	// Welch test comparison of the means
-	bool rejected = WelchTest<float, double, long double>(statCompRI, statDstRI);
+	bool rejected = statDstRI.WelchTest(statCompRI);
 	BOOST_CHECK_EQUAL(rejected, false);
 }
 
