@@ -23,17 +23,17 @@ namespace SoilAnalyzer
 		template<class Archive>
 		void serialize(Archive & ar, const unsigned int version)
 		{
-			ar & BOOST_SERIALIZATION_NVP(ID);
-			ar & BOOST_SERIALIZATION_NVP(Location);
-			ar & BOOST_SERIALIZATION_NVP(TimeTaken);
-			ar & BOOST_SERIALIZATION_NVP(TimeAnalyzed);
-			ar & BOOST_SERIALIZATION_NVP(Analyzed);
-			ar & BOOST_SERIALIZATION_NVP(BW);
-			ar & BOOST_SERIALIZATION_NVP(Intensity);
-			ar & BOOST_SERIALIZATION_NVP(LAB);
-			ar & BOOST_SERIALIZATION_NVP(RI);
-			ar & BOOST_SERIALIZATION_NVP(RGB);
-			ar & BOOST_SERIALIZATION_NVP(OptimizedInt);
+			ar & ID;
+			ar & Location;
+			ar & TimeTaken;
+			ar & TimeAnalyzed;
+			ar & Analyzed;
+			ar & BW;
+			ar & Intensity;
+			ar & LAB;
+			ar & RI;
+			ar & RGB;
+			ar & OptimizedInt;
 		}
 
 	protected:
@@ -48,6 +48,7 @@ namespace SoilAnalyzer
 		cv::Mat LAB;
 		cv::Mat RGB;
 		cv::Mat RI;
+		cv::Mat Edge;
 		uint8_t version;
 		std::string TimeTaken;
 		std::string TimeAnalyzed;

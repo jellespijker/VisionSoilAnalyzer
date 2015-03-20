@@ -53,5 +53,26 @@ namespace Vision
 			}
 			return dst;
 		}
+
+		/*! Copy a matrix to a new matrix with a mask
+		\param src the source image
+		\param *LUT type T with a LUT to filter out unwanted pixel values
+		\param cvType an in where you can pas CV_UC8C1 etc.
+		\return The new matrix
+		*/
+		template <typename T>	Mat CopyMat(const Mat &src, const Mat &mask, int cvType)
+		{
+			Mat dst(src.size(), cvType);
+			uint32_t i = 0;
+			uint32_t nData = dst.rows * dst.cols * dst.step[1];
+			while (i < nData)
+			{
+				if (mask[i] = 1) { dst.data[i] = (T)src.data[i * src.step[1]; }
+				else { dst.data[i] = (T)0; }
+				i++;
+			}
+			return dst;
+		}
+
 	};
 }

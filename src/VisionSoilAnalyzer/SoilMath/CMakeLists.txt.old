@@ -9,7 +9,7 @@ set (SoilMath_VERSION_MINOR 0)
 find_package(Boost COMPONENTS serialization REQUIRED)
 
 set(LIBRARIES_FROM_REFERENCES "")
-add_library(SoilMath SHARED FFT.cpp GA.cpp NN.cpp Sort.h)
+add_library(SoilMath SHARED FFT.cpp GA.cpp NN.cpp)
 target_link_libraries(SoilMath -L/usr/local/lib ${Boost_LIBRARY_DIRS} -lopencv_calib3d -lopencv_core -lopencv_features2d -lopencv_imgproc -lopencv_flann -lopencv_highgui -lopencv_imgcodecs -lopencv_ml -lopencv_objdetect -lopencv_photo -lopencv_shape -lopencv_stitching -lopencv_superres -lopencv_ts -lopencv_video -lopencv_videoio -lopencv_videostab -lboost_serialization "${LIBRARIES_FROM_REFERENCES}")
 set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} ")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} ")

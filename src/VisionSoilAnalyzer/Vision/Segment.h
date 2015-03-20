@@ -33,6 +33,14 @@ namespace Vision
 			Eight	/*!< Enum Eight connected, relation between Center, North, NorthEast, East, SouthEast, South, SouthWest, West and NorthWest */
 		};
 
+		/*!< Enumerator which indicate which Segmentation technique should be used */
+		enum SegmentationType
+		{
+			Normal,			/*!< Segmentation looking at the intensity of an individual pixel */
+			LabNeuralNet,	/*!< Segmentation looking at the chromatic a* and b* of the processed pixel and it's surrounding pixels, feeding it in an Neural Net */
+			GraphMinCut		/*!< Segmentation using a graph function and the minimum cut */
+		};
+
 		cv::Mat LabelledImg;	/*!< Image with each individual blob labeled with a individual number */
 		uint16_t MaxLabel = 0;	/*!< Maximum labels found in the labelled image*/
 		uint16_t noOfFilteredBlobs = 0;	/*!< Total numbers of blobs that where filtered beacuse the where smaller than the minBlobArea*/

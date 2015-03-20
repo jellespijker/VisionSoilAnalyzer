@@ -42,17 +42,12 @@ namespace SoilAnalyzer
 		void serialize(Archive & ar, const unsigned int version)
 		{
 			ar & BOOST_SERIALIZATION_BASE_OBJECT_NVP(Soil);
-			ar & BOOST_SERIALIZATION_NVP(OriginalImage);
-			ar & BOOST_SERIALIZATION_NVP(Population);
-			ar & BOOST_SERIALIZATION_NVP(Results);
+			ar & OriginalImage;
+			ar & Population;
+			ar & Results;
 		}
 
 		bool AnalysePopVect(const vector<Particle>& population, AnalysisResults& results);
-		bool ConvertToBW(const Mat& src, Mat& dst);
-		void ConvertToInt(const Mat& src, Mat& dst);
-		bool ConvertToLAB(const Mat& src, Mat& dst);
-		bool ConvertToRI(const Mat& src, Mat& dst);
-		bool EnhanceImg(const Mat& src, Mat& dst);
-		bool SegmentParticles(const Mat& rgb, const Mat& intensity, const Mat& bw, const Mat& lab, const Mat& ri, vector<Particle>& population);
+		std::vector<Particle> SegmentParticles(Vision::Segment::SegmentationType segType = Vision::Segment::Normal);
 	};
 }

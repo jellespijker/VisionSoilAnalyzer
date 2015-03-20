@@ -518,7 +518,7 @@ BOOST_FIXTURE_TEST_CASE(Soil_Sample_Save_And_Load, M)
 	SoilAnalyzer::Sample TestLoad;
 	TestLoad.Load(filename);
 
-	//BOOST_CHECK_EQUAL_COLLECTIONS(Test.RGB.datastart, Test.RGB.dataend, TestLoad.RGB.datastart, TestLoad.RGB.dataend);
+	BOOST_CHECK_EQUAL_COLLECTIONS(Test.OriginalImage.data, Test.OriginalImage.data + 1000, TestLoad.OriginalImage.data, TestLoad.OriginalImage.data + 1000);
 }
 
 BOOST_AUTO_TEST_SUITE_END()
