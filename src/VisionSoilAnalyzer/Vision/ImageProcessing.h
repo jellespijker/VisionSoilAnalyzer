@@ -60,16 +60,61 @@ namespace Vision
 		\param cvType an in where you can pas CV_UC8C1 etc.
 		\return The new matrix
 		*/
-		template <typename T>	Mat CopyMat(const Mat &src, const Mat &mask, int cvType)
+		template <typename T>	
+		Mat CopyMat(const Mat &src, const Mat &mask, int cvType)
 		{
+			if (src.size != mask.size) { throw Exception::WrongKernelSizeException("Mask not the same size as src Exception!"); }
 			Mat dst(src.size(), cvType);
 			uint32_t i = 0;
-			uint32_t nData = dst.rows * dst.cols * dst.step[1];
-			while (i < nData)
+			uint32_t nData = mask.rows * mask.cols;
+			switch (dst.channels())
 			{
-				if (mask[i] = 1) { dst.data[i] = (T)src.data[i * src.step[1]; }
-				else { dst.data[i] = (T)0; }
-				i++;
+			case 1:
+				for (uint32_t i = 0; i < nData; i++)
+				{
+					if (mask.data[i] == 1) {	dst.data[i] = (T)src.data[i]; }
+					else {	dst.data[i] = (T)0;	}
+				}
+				break;
+			case 2:
+				for (uint32_t i = 0; i < nData; i++)
+				{
+					if (mask.data[i] == 1)
+					{
+						dst.data[i * 2] = (T)src.data[i * 2];
+						dst.data[i * 2 + 1] = (T)src.data[i * 2 + 1];
+					}
+					else
+					{
+						dst.data[i * 2] = (T)0;
+						dst.data[i * 2 + 1] = (T)0;
+					}
+				}
+				break;
+			case 3:
+				for (uint32_t i = 0; i < nData; i++)
+				{
+					if (mask.data[i] == 1)
+					{
+						dst.data[i * 3] = (T)src.data[i * 3];
+						dst.data[i * 3 + 1] = (T)src.data[i * 3 + 1];
+						dst.data[i *3 + 2] = (T)src.data[i * 3 + 2];
+					}
+					else
+					{
+						dst.data[i * 3] = (T)0;
+						dst.data[i * 3 + 1] = (T)0;
+						dst.data[i * 3 + 2] = (T)0;
+					}
+				}
+				break;
+			default:
+				for (uint32_t i = 0; i < nData; i++)
+				{
+					if (mask.data[i] == 1) {	for (uint32_t j = 0; j < dst.channels(); j++) {	dst.data[i * dst.channels() + j] = (T)src.data[i * dst.channels() + j];	} }
+					else { for (uint32_t j = 0; j < dst.channels(); j++) {	dst.data[i * dst.channels() + j] = (T)0;	} }
+				}
+				break;
 			}
 			return dst;
 		}

@@ -502,6 +502,17 @@ BOOST_FIXTURE_TEST_CASE(Vision_Convert_LAB_To_RI, M)
 	BOOST_CHECK_EQUAL(rejected, false);
 }
 
+BOOST_AUTO_TEST_CASE(Vision_CopyMat_With_Mask)
+{
+	Mat RGB_crop = imread("../ComparisionPictures/RGB_crop.ppm", 1);
+	Mat mask = imread("../ComparisionPictures/mask.ppm", 0);
+	Mat RGB_res = imread("../ComparisionPictures/RGB_res.ppm", 1);
+
+	Vision::ImageProcessing iProcess;
+	Mat copiedMat = iProcess.CopyMat<uchar>(RGB_crop, mask, RGB_crop.type());
+	BOOST_CHECK_EQUAL_COLLECTIONS(copiedMat.data, copiedMat.data + (copiedMat.rows * copiedMat.cols * 3), RGB_res.data, RGB_res.data + (RGB_res.rows * RGB_res.cols * 3));
+}
+
 BOOST_AUTO_TEST_SUITE_END()
 
 //----------------------------------------------------------------------------------------

@@ -43,7 +43,7 @@ namespace SoilAnalyzer
 		Convertor.Convert(LAB, RI, Vision::Conversion::CIE_lab, Vision::Conversion::RI);
 
 		// Segment the particles and create the particle list
-		std::vector<Vision::Segment::Blob> bloblist = SegmentParticles();
+		std::vector<Particle> bloblist = SegmentParticles();
 		
 
 
@@ -61,39 +61,6 @@ namespace SoilAnalyzer
 
 	bool Sample::AnalysePopVect(	const vector<Particle>& population,
 									AnalysisResults& results)
-	{
-
-		return true;
-	}
-
-	bool Sample::ConvertToBW(	const Mat& src,
-								Mat& dst)
-	{
-
-		return true;
-	}
-
-	void Sample::ConvertToInt(	const Mat& src,
-								Mat& dst)
-	{
-	}
-
-	bool Sample::ConvertToLAB(	const Mat& src,
-								Mat& dst)
-	{
-
-		return true;
-	}
-
-	bool Sample::ConvertToRI(	const Mat& src,
-								Mat& dst)
-	{
-
-		return true;
-	}
-
-	bool Sample::EnhanceImg(	const Mat& src,
-								Mat& dst)
 	{
 
 		return true;
@@ -146,8 +113,6 @@ namespace SoilAnalyzer
 
 			Population.push_back(newPart);
 		}
-
-
 		return Population;
 	}
 
