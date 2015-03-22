@@ -6,7 +6,7 @@ class which enhances a greyscale cv::Mat image
 namespace Vision
 {
 	/*! Constructor*/
-	Enhance::Enhance()	{	}
+	Enhance::Enhance() {	}
 
 	/*! Constructor
 	\param src cv::Mat source image
@@ -44,7 +44,7 @@ namespace Vision
 	}
 
 	/*! Dec-constructor*/
-	Enhance::~Enhance()	{ }
+	Enhance::~Enhance() { }
 
 	/*! Calculate the standard deviation of the neighboring pixels
 	\param O uchar pointer to the current pixel of the original image
@@ -156,18 +156,17 @@ namespace Vision
 			if (O[i] > mean)
 			{
 				int addValue = O[i] + (int)(round(factor * Std));
-				if (addValue < 255)	{ P[i] = addValue; }
+				if (addValue < 255) { P[i] = addValue; }
 				else { P[i] = 255; }
-
 			}
 			else if (O[i] < mean)
 			{
 				int subValue = O[i] - (int)(round(factor * Std));
-				if (subValue > 0)	{ P[i] = subValue; }
+				if (subValue > 0) { P[i] = subValue; }
 				else { P[i] = 0; }
 			}
 			else { P[i] = O[i]; }
-		}	
+		}
 
 		// Stretch the image with an normal histogram equalization
 		HistogramEqualization(true);
@@ -248,11 +247,11 @@ namespace Vision
 
 		uint32_t i = 256;
 		register uchar LUT_changeValue[256];
-		while (i-- > 0)	{ LUT_changeValue[i] = (uchar)(((float)(i) * sFact) + 0.5f); }
+		while (i-- > 0) { LUT_changeValue[i] = (uchar)(((float)(i)* sFact) + 0.5f); }
 
 		O = OriginalImg.data;
 
 		i = OriginalImg.cols * OriginalImg.rows + 1;
-		while (i-- > 0)	{ *P++ = LUT_changeValue[*O++ - imgStats.min]; }
+		while (i-- > 0) { *P++ = LUT_changeValue[*O++ - imgStats.min]; }
 	}
 }

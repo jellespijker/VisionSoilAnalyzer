@@ -6,7 +6,6 @@ namespace SoilAnalyzer
 	{
 	}
 
-
 	Soil::~Soil()
 	{
 	}

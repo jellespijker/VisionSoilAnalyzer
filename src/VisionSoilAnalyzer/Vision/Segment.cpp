@@ -31,11 +31,11 @@ namespace Vision
 		// Exception handling
 		EMPTY_CHECK(OriginalImg);
 		CV_Assert(OriginalImg.depth() != sizeof(uchar));
-		
+
 		// Calculate the statistics of the whole picture
 		ucharStat_t OriginalImgStats(OriginalImg.data, OriginalImg.rows, OriginalImg.cols);
 
-		// Sets the initial threshold with the mean of the total picture 
+		// Sets the initial threshold with the mean of the total picture
 		pair<uchar, uchar> T;
 		T.first = (uchar)(OriginalImgStats.Mean + 0.5);
 		T.second = 0;
@@ -50,12 +50,12 @@ namespace Vision
 		{
 			// Gets an array of the left part of the histogram
 			uint32_t i = T.first;
-			uint32_t *Left = new uint32_t[i] { };
-			while (i-- > 0)	{ Left[i] = OriginalImgStats.bins[i]; }
+			uint32_t *Left = new uint32_t[i]{};
+			while (i-- > 0) { Left[i] = OriginalImgStats.bins[i]; }
 
 			// Gets an array of the right part of the histogram
 			uint32_t rightEnd = 256 - T.first;
-			uint32_t *Right = new uint32_t[rightEnd] { };
+			uint32_t *Right = new uint32_t[rightEnd]{};
 			i = rightEnd;
 			while (i-- > 0) { Right[i] = OriginalImgStats.bins[i + T.first]; }
 
@@ -92,7 +92,7 @@ namespace Vision
 	\param src is the source image as a cv::Mat
 	\param dst destination image as a cv::Mat
 	\param TypeObject is an enumerator indicating if the bright or the dark pixels are the object and should be set to one	*/
-	void Segment::ConvertToBW(const Mat &src, Mat &dst,	TypeOfObjects Typeobjects)
+	void Segment::ConvertToBW(const Mat &src, Mat &dst, TypeOfObjects Typeobjects)
 	{
 		OriginalImg = src;
 		ProcessedImg.create(OriginalImg.size(), CV_8UC1);
@@ -112,7 +112,7 @@ namespace Vision
 		Threshold(T, Typeobjects);
 	}
 
-	/*! Convert a greyscale image to a BW 
+	/*! Convert a greyscale image to a BW
 	\param t uchar set the value which is the tiping point
 	\param TypeObject is an enumerator indicating if the bright or the dark pixels are the object and should be set to one 	*/
 	void Segment::Threshold(uchar t, TypeOfObjects Typeobjects)
@@ -120,12 +120,12 @@ namespace Vision
 		// Exception handling
 		EMPTY_CHECK(OriginalImg);
 		CV_Assert(OriginalImg.depth() != sizeof(uchar) ||
-					OriginalImg.depth() != sizeof(uint16_t));
+			OriginalImg.depth() != sizeof(uint16_t));
 
 		uint32_t i = 0;
 
 		// Create LUT
-		uchar LUT_newValue[256] { 0 };
+		uchar LUT_newValue[256]{ 0 };
 		if (Typeobjects == Bright)
 		{
 			i = 256;
@@ -143,7 +143,7 @@ namespace Vision
 
 		// Fills the ProcessedImg with either a 0 or 1
 		i = OriginalImg.cols * OriginalImg.rows + 1;
-		while (i-- > 0)	{ *P++ = LUT_newValue[*O++]; }
+		while (i-- > 0) { *P++ = LUT_newValue[*O++]; }
 	}
 
 	/*! Set all the border pixels to a set value
@@ -155,7 +155,7 @@ namespace Vision
 		// Exception handling
 		EMPTY_CHECK(OriginalImg);
 		CV_Assert(OriginalImg.depth() != sizeof(uchar) ||
-					OriginalImg.depth() != sizeof(uint16_t));
+			OriginalImg.depth() != sizeof(uint16_t));
 
 		uint32_t nData = OriginalImg.cols * OriginalImg.rows;
 
@@ -186,7 +186,7 @@ namespace Vision
 	\param chain use the results from the previous operation default value = false;
 	*/
 	void Segment::RemoveBorderBlobs(bool chain /*= false*/, Connected conn /*= Eight*/)
-{
+	{
 		// Exception handling
 		CV_Assert(OriginalImg.depth() != sizeof(uchar));
 		EMPTY_CHECK(OriginalImg);
@@ -234,11 +234,11 @@ namespace Vision
 			{
 				if (O[i] == 1 && P[i] != 2)
 				{
-					if (P[i - 1] == 2 || P[i - nCols] == 2)	{ P[i] = 2; }
+					if (P[i - 1] == 2 || P[i - nCols] == 2) { P[i] = 2; }
 					else { P[i] = 1; }
 				}
-				else if (O[i] == 0){ P[i] = 0; }
-				else if (O[i] > 1 || O[i] < 0){ throw Exception::PixelValueOutOfBoundException(); }
+				else if (O[i] == 0) { P[i] = 0; }
+				else if (O[i] > 1 || O[i] < 0) { throw Exception::PixelValueOutOfBoundException(); }
 				i++;
 			}
 		}
@@ -257,22 +257,21 @@ namespace Vision
 					}
 					else { P[i] = 1; }
 				}
-				else if (O[i] == 0){ P[i] = 0; }
+				else if (O[i] == 0) { P[i] = 0; }
 				else if (O[i] > 1 || O[i] < 0) { throw Exception::PixelValueOutOfBoundException(); }
 				i++;
 			}
-
 		}
 
 		// Change values 2 -> 0
-		uchar LUT_newValue[3] { 0, 1, 0 };
+		uchar LUT_newValue[3]{ 0, 1, 0 };
 
 		// P = ProcessedImg.data;
 
 		i = 0;
 		pEnd = nData + 1;
-		while (i < pEnd) 
-		{ 
+		while (i < pEnd)
+		{
 			P[i] = LUT_newValue[P[i]];
 			i++;
 		}
@@ -284,7 +283,7 @@ namespace Vision
 	\param minBlobArea minimum area when an artifact is considered a blob
 	*/
 	void Segment::LabelBlobs(bool chain, uint16_t minBlobArea, Connected conn)
-{
+	{
 		// Exception handling
 		CV_Assert(OriginalImg.depth() != sizeof(uchar));
 		EMPTY_CHECK(OriginalImg);
@@ -345,7 +344,6 @@ namespace Vision
 
 						/* If North and West belong to two different connected components set the current processed value to the lowest value and remember that the highest value should be the lowest value */
 						if (North != 0 && West != 0 && maxVal != minVal) { connectedLabels[maxVal].push_back(minVal); }
-
 					}
 				}
 
@@ -378,7 +376,7 @@ namespace Vision
 					// Sort the neighbors for easier checking
 					SoilMath::Sort::QuickSort<uint16_t>(nPixels, 4);
 
-					 //If North NorthWest, NorthEast and West are all zero assume this is a new blob
+					//If North NorthWest, NorthEast and West are all zero assume this is a new blob
 					if (nPixels[3] == 0)
 					{
 						P[i] = ++currentlbl;
@@ -400,13 +398,13 @@ namespace Vision
 
 						P[i] = minVal;
 
-						 /* If North NorthWest, NorthEast and West belong to different connected components set the current processed value to the lowest value and remember that the other value should be the lowest value*/
+						/* If North NorthWest, NorthEast and West belong to different connected components set the current processed value to the lowest value and remember that the other value should be the lowest value*/
 						if (nPixels[0] != nPixels[3])
 						{
 							j = 4;
 							while (j-- > 0)
 							{
-								if (nPixels[j] != 0 && nPixels[j] > minVal)	{ connectedLabels[nPixels[j]].push_back(minVal);	}
+								if (nPixels[j] != 0 && nPixels[j] > minVal) { connectedLabels[nPixels[j]].push_back(minVal); }
 							}
 						}
 					}
@@ -419,18 +417,17 @@ namespace Vision
 
 		// Sort all the vectors so the min value is easily obtained
 		i = currentlbl + 1;
-		while (i-- > 0)	{ std::sort(connectedLabels[i].begin(), connectedLabels[i].end()); }
+		while (i-- > 0) { std::sort(connectedLabels[i].begin(), connectedLabels[i].end()); }
 
 		// Create the LUT
 		uint16_t *LUT_newVal = new uint16_t[currentlbl + 1];
 		i = currentlbl + 1;
 		while (i-- > 0)
 		{
-			// If the value has a chain, crawl in that rabbit hole till the 
+			// If the value has a chain, crawl in that rabbit hole till the
 			// lowest value is found and sets the LUT
 			if (connectedLabels[i].size() > 1)
 			{
-
 				uint16_t pChainVal = connectedLabels[connectedLabels[i][0]][0];
 				uint16_t cChainVal = connectedLabels[i][0];
 				uint16_t lowestVal = pChainVal;
@@ -447,13 +444,12 @@ namespace Vision
 				LUT_newVal[i] = lowestVal;
 			}
 			else { LUT_newVal[i] = i; }	// End of the line so use the same label
-
 		}
 
 		// Make the labels consecutive numbers
 		uint16_t *tempLUT = new uint16_t[currentlbl + 1];
 		makeConsecutive(currentlbl, tempLUT, LUT_newVal);
-		
+
 		// Get the maximum value
 		i = 0;
 		while (i <= currentlbl)
@@ -472,7 +468,7 @@ namespace Vision
 
 		// Create a LUT_filter for each value that is smaller then minBlobArea
 		SoilMath::Stats<uint16_t, uint32_t, uint64_t> ProcImgStats(P, nCols, nRows, MaxLabel, 0, MaxLabel);
-		LUT_newVal = new uint16_t[MaxLabel + 1] { };
+		LUT_newVal = new uint16_t[MaxLabel + 1]{};
 		uint16_t count = 0;
 		i = 0;
 		while (i <= MaxLabel)
@@ -495,7 +491,7 @@ namespace Vision
 
 	/*! Create a BW image with only edges from a BW image
 	\param src source image as a const cv::Mat
-	\param dst destination image as a cv::Mat 
+	\param dst destination image as a cv::Mat
 	\param conn set the pixel connection eight or four
 	\param chain use the results from the previous operation default value = false;
 	*/
@@ -505,7 +501,7 @@ namespace Vision
 		GetEdges(chain, conn);
 		dst = ProcessedImg;
 	}
-	
+
 	/*! Create a BW image with only edges from a BW image
 	\param conn set the pixel connection eight or four
 	\param chain use the results from the previous operation default value = false;
@@ -604,7 +600,7 @@ namespace Vision
 
 		// Setup the erosion
 		MorphologicalFilter eroder;
-		if (chain) {	eroder.OriginalImg = TempImg; }
+		if (chain) { eroder.OriginalImg = TempImg; }
 		else { eroder.OriginalImg = OriginalImg; }
 		// Setup the processed image of the eroder
 		eroder.ProcessedImg.create(OriginalImg.size(), CV_8UC1);
@@ -631,7 +627,7 @@ namespace Vision
 	void Segment::GetBlobList(bool chain, Connected conn)
 	{
 		// Exception handling
-		CV_Assert(OriginalImg.depth() != sizeof(uchar));
+ 		CV_Assert(OriginalImg.depth() != sizeof(uchar));
 		EMPTY_CHECK(OriginalImg);
 
 		// If there isn't a labelledImg make one
@@ -700,9 +696,9 @@ namespace Vision
 		// Loop through the BlobList and finalize it
 		i = 1;
 		pEnd = MaxLabel + 1;
-		ushort *LUT_filter = new ushort[MaxLabel + 1]{ };
+		ushort *LUT_filter = new ushort[MaxLabel + 1]{};
 		uint32_t x, y;
-		
+
 		while (i < pEnd)
 		{
 			LUT_filter[i] = 1;
@@ -713,19 +709,35 @@ namespace Vision
 			BlobList[i].cvROI.width = BlobList[i].ROI.rightY - BlobList[i].ROI.leftY;
 			if (BlobList[i].cvROI.width == 0) { BlobList[i].cvROI.width = 1; }
 			if (BlobList[i].cvROI.height == 0) { BlobList[i].cvROI.height = 1; }
-			
+
 			BlobList[i].Img = CopyMat<ushort>(LabelledImg(BlobList[i].cvROI).clone(), LUT_filter, CV_8UC1);
 
 			LUT_filter[i] = 0;
 			i++;
 		}
-	}
 
+		//final check the bloblist and remove Mat with zero rows or cols
+		std::remove_if(BlobList.begin(), BlobList.end(),[](Blob &b) -> bool
+		{
+			if (b.Img.cols == 0 || b.Img.rows == 0)	return true;
+			else return false;
+		});
+
+		// Sort BlobList with top most most location and remove duplicates
+		std::sort(BlobList.begin(), BlobList.end(), [](Blob & a, Blob & b) -> bool
+		{
+			//if (a.ROI.leftY < b.ROI.leftY)	return true;
+			//else if (a.ROI.leftY == b.ROI.leftY && a.ROI.leftX < b.ROI.leftX) return true;
+			//else return false;
+			return (pow((float)a.ROI.leftX, 2) + pow((float)a.ROI.leftY, 2)) > (pow((float)b.ROI.leftX, 2) + pow((float)b.ROI.leftY, 2));
+		});
+		//BlobList.erase(unique(BlobList.begin(), BlobList.end()), BlobList.end());
+	}
 
 	void Segment::makeConsecutive(uint16_t LastLabelUsed, uint16_t * tempLUT, uint16_t * &LUT_newVal)
 	{
 		uint32_t i = LastLabelUsed + 1;
-		while (i-- > 0)	{ tempLUT[i] = LUT_newVal[i]; }
+		while (i-- > 0) { tempLUT[i] = LUT_newVal[i]; }
 		SoilMath::Sort::QuickSort<uint16_t>(tempLUT, LastLabelUsed + 1);
 		std::vector<uint16_t> v(LUT_newVal, LUT_newVal + (LastLabelUsed + 1));
 

@@ -7,7 +7,7 @@ Core class of all the image classes with a few commonly shared functions and var
 namespace Vision
 {
 	/*! Constructor of the core class*/
-	ImageProcessing::ImageProcessing()	{	}
+	ImageProcessing::ImageProcessing() {	}
 
 	/*! De-constructor of the core class*/
 	ImageProcessing::~ImageProcessing() {	}
@@ -21,7 +21,7 @@ namespace Vision
 	uchar* ImageProcessing::GetNRow(int nData, int hKsize, int nCols, uint32_t totalRows)
 	{
 		// Create LUT to determine when there is an new row
-		uchar *nRow = new uchar[nData] { };
+		uchar *nRow = new uchar[nData]{};
 		int i = 0;
 		int shift = nCols - hKsize - 1;
 		while (i <= totalRows)

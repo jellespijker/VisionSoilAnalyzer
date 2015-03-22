@@ -6,6 +6,7 @@
 #include <string>
 #include <stdint.h>
 #include <iostream>
+#include <algorithm>
 
 #include "opencv2/imgproc/imgproc.hpp"
 

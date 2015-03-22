@@ -2,7 +2,7 @@
 
 namespace Vision
 {
-	MorphologicalFilter::MorphologicalFilter() 	{	}
+	MorphologicalFilter::MorphologicalFilter() {	}
 
 	MorphologicalFilter::MorphologicalFilter(const Mat &src)
 	{
@@ -68,14 +68,14 @@ namespace Vision
 				{
 					// Checks if pixel isn't a border pixel from the kernel
 					currentKcol += 1;
-					if (nKRow[j] == 1) 
+					if (nKRow[j] == 1)
 					{
-						currentKRow++; 
+						currentKRow++;
 						currentKcol = -hKsizeCol;
 					}
-					
+
 					// If one of the pixels is different then the corresponding mask pixel set the processed pixel to zero and exit loop
-					if (mask.data[j] != O[i + (currentKRow * nCols) + currentKcol]) 
+					if (mask.data[j] != O[i + (currentKRow * nCols) + currentKcol])
 					{
 						P[i] = 0;
 						isEroded = true;

@@ -168,12 +168,12 @@ namespace Vision
 		float R, G, B;
 		for (uint32_t i = 0; i < endData; i += OriginalImg.step.buf[1])
 		{
-			R = static_cast<float>(*(O + i + 2)	/ 255.0f);
+			R = static_cast<float>(*(O + i + 2) / 255.0f);
 			B = static_cast<float>(*(O + i + 1) / 255.0f);
-			G = static_cast<float>(*(O + i)		/ 255.0f);
-			P[i] =		(XYZmat[0][0] * R) + (XYZmat[0][1] * B) + (XYZmat[0][2] * G);	//X
-			P[i + 1] =	(XYZmat[1][0] * R) + (XYZmat[1][1] * B) + (XYZmat[1][2] * G);	//Y
-			P[i + 2] =	(XYZmat[2][0] * R) + (XYZmat[2][1] * B) + (XYZmat[2][2] * G);	//Z
+			G = static_cast<float>(*(O + i) / 255.0f);
+			P[i] = (XYZmat[0][0] * R) + (XYZmat[0][1] * B) + (XYZmat[0][2] * G);	//X
+			P[i + 1] = (XYZmat[1][0] * R) + (XYZmat[1][1] * B) + (XYZmat[1][2] * G);	//Y
+			P[i + 2] = (XYZmat[2][0] * R) + (XYZmat[2][1] * B) + (XYZmat[2][2] * G);	//Z
 		}
 	}
 

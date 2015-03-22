@@ -48,6 +48,6 @@ namespace SoilAnalyzer
 		}
 
 		bool AnalysePopVect(const vector<Particle>& population, AnalysisResults& results);
-		std::vector<Particle> SegmentParticles(Vision::Segment::SegmentationType segType = Vision::Segment::Normal);
+		void SegmentParticles(Vision::Segment::SegmentationType segType = Vision::Segment::Normal);
 	};
 }

@@ -11,6 +11,7 @@
 #include <boost/test/results_reporter.hpp>
 #include <iostream>
 #include <fstream>
+#include <sstream>
 
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
@@ -54,12 +55,25 @@ struct LogToFile
 BOOST_GLOBAL_FIXTURE(LogToFile);
 
 struct M {
-	M() 
+	M()
 	{
 		BOOST_TEST_MESSAGE("setup fixture");
-		src = imread("../ComparisionPictures/SoilSampleRGB.ppm"); 
+		src = imread("../ComparisionPictures/SoilSampleRGB.ppm");
 	}
-	~M()         { BOOST_TEST_MESSAGE("teardown fixture"); }
+	~M() { BOOST_TEST_MESSAGE("teardown fixture"); }
+
+	Mat src;
+	Mat dst;
+	Mat comp;
+};
+
+struct B {
+	B()
+	{
+		BOOST_TEST_MESSAGE("Setup fixture");
+		src = imread("../ComparisionPictures/BlobTest.ppm", 0);
+	}
+	~B() { BOOST_TEST_MESSAGE("teardown fixture"); }
 
 	Mat src;
 	Mat dst;
@@ -72,7 +86,7 @@ BOOST_AUTO_TEST_SUITE(SoilMath_Test_Suit)
 BOOST_AUTO_TEST_CASE(SoilMath_Sort)
 {
 	int testDiscrete[] = { 2, 8, 1, 3, 0, 7, 4, 5, 9, 6, 6 };
-	int ucomp[] = { 0, 1, 2, 3, 4, 5, 6, 6, 7, 8, 9};
+	int ucomp[] = { 0, 1, 2, 3, 4, 5, 6, 6, 7, 8, 9 };
 	SoilMath::Sort::QuickSort<int>(testDiscrete, 11);
 	BOOST_CHECK_EQUAL_COLLECTIONS(testDiscrete, testDiscrete + 10, ucomp, ucomp + 10);
 }
@@ -233,7 +247,6 @@ BOOST_AUTO_TEST_CASE(SoilMath_NN_Prediction_Accurancy)
 	SoilMath::NN Test;
 	Test.LoadState("NN.xml");
 
-
 	InputLearnVector_t inputVect;
 	OutputLearnVector_t outputVect;
 	OutputLearnVector_t outputPredictVect;
@@ -283,7 +296,7 @@ BOOST_AUTO_TEST_CASE(SoilMath_NN_Prediction_Accurancy)
 
 		Predict_t outputPredictTemp;
 		outputPredictTemp.OutputNeurons = Test.Predict(inputTemp).OutputNeurons;
-		
+
 		for (uint32_t j = 0; j < outputTemp.OutputNeurons.size(); j++)
 		{
 			BOOST_CHECK_CLOSE(outputPredictTemp.OutputNeurons[j], outputTemp.OutputNeurons[j], 5);
@@ -508,21 +521,45 @@ BOOST_AUTO_TEST_CASE(Vision_CopyMat_With_Mask)
 	Mat mask = imread("../ComparisionPictures/mask.ppm", 0);
 	Mat RGB_res = imread("../ComparisionPictures/RGB_res.ppm", 1);
 
-	Vision::ImageProcessing iProcess;
-	Mat copiedMat = iProcess.CopyMat<uchar>(RGB_crop, mask, RGB_crop.type());
+	Mat copiedMat = Vision::ImageProcessing::CopyMat<uchar>(RGB_crop, mask, RGB_crop.type());
 	BOOST_CHECK_EQUAL_COLLECTIONS(copiedMat.data, copiedMat.data + (copiedMat.rows * copiedMat.cols * 3), RGB_res.data, RGB_res.data + (RGB_res.rows * RGB_res.cols * 3));
 }
 
+BOOST_AUTO_TEST_CASE(Vision_CopyMat_With_LUT)
+{
+	Mat BW_res = imread("../ComparisionPictures/mask.ppm", 0);
+	Mat Label = imread("../ComparisionPictures/Label.ppm", 0);
+	uint32_t *LUT = new uint32_t[255]{};
+	LUT[255] = 1;
+
+	Mat copiedMat = Vision::ImageProcessing::CopyMat<uint32_t>(Label, LUT, CV_8UC1);
+	BOOST_CHECK_EQUAL_COLLECTIONS(copiedMat.data, copiedMat.data + (copiedMat.rows * copiedMat.cols), BW_res.data, BW_res.data + (BW_res.rows * BW_res.cols));
+}
 BOOST_AUTO_TEST_SUITE_END()
+
+BOOST_FIXTURE_TEST_CASE(Vision_Create_Blobs, B)
+{
+	Vision::Segment Test(src);
+	Test.ConvertToBW(Vision::Segment::Bright);
+	Test.GetBlobList(true);
+	BOOST_CHECK_EQUAL(42, Test.BlobList.size());
+	for (uint32_t i = 0; i < Test.BlobList.size(); i++)
+	{
+		Mat temp = Test.BlobList[i].Img * 255;
+		stringstream ss;
+		ss << i << ".bmp";
+		imwrite(ss.str(), temp);
+	}
+}
+
+
 
 //----------------------------------------------------------------------------------------
 BOOST_AUTO_TEST_SUITE(SoilAnalyzer_Test_Suite)
 
 BOOST_FIXTURE_TEST_CASE(Soil_Sample_Save_And_Load, M)
 {
-
 	SoilAnalyzer::Sample Test(src);
-	Test.Analyse();
 	std::string filename = "SoilSample.vsa";
 	Test.Save(filename);
 
@@ -532,5 +569,27 @@ BOOST_FIXTURE_TEST_CASE(Soil_Sample_Save_And_Load, M)
 	BOOST_CHECK_EQUAL_COLLECTIONS(Test.OriginalImage.data, Test.OriginalImage.data + 1000, TestLoad.OriginalImage.data, TestLoad.OriginalImage.data + 1000);
 }
 
-BOOST_AUTO_TEST_SUITE_END()
+BOOST_FIXTURE_TEST_CASE(Soil_Sample_Analyze, M)
+{
+	SoilAnalyzer::Sample Test(src);
+	Test.Analyse();
 
+	imwrite("A_BW.ppm", Test.BW);
+	imwrite("A_Edge.ppm", Test.Edge);
+	imwrite("A_Int.ppm", Test.Intensity);
+	
+	for (uint32_t i = 0; i < Test.Population.size(); i++)
+	{
+		std::stringstream ss;
+		ss << i << "_BW.ppm";
+		imwrite(ss.str(), Test.Population[i].BW);
+		std::stringstream sss;
+		sss << i << "_Edge.ppm";
+		imwrite(sss.str(), Test.Population[i].Edge);
+		std::stringstream ssss;
+		ssss << i << "_RGB.ppm";
+		imwrite(ssss.str(), Test.Population[i].RGB);
+	}
+}
+
+BOOST_AUTO_TEST_SUITE_END()

@@ -54,6 +54,5 @@ namespace SoilAnalyzer
 		std::string TimeAnalyzed;
 		std::string Location;
 		uint32_t ID;
-
 	};
 }

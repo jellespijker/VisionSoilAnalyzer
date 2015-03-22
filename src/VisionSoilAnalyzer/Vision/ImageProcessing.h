@@ -33,7 +33,7 @@ namespace Vision
 		Mat OriginalImg;
 		Mat ProcessedImg;
 
-		std::vector<Mat> extractChannel(const Mat &src);
+		static std::vector<Mat> extractChannel(const Mat &src);
 
 		/*! Copy a matrix to a new matrix with a LUT mask
 		\param src the source image
@@ -41,7 +41,8 @@ namespace Vision
 		\param cvType an in where you can pas CV_UC8C1 etc.
 		\return The new matrix
 		*/
-		template <typename T>	Mat CopyMat(const Mat &src, T *LUT, int cvType)
+		template <typename T>
+		static Mat CopyMat(const Mat &src, T *LUT, int cvType)
 		{
 			Mat dst(src.size(), cvType);
 			uint32_t i = 0;
@@ -60,8 +61,8 @@ namespace Vision
 		\param cvType an in where you can pas CV_UC8C1 etc.
 		\return The new matrix
 		*/
-		template <typename T>	
-		Mat CopyMat(const Mat &src, const Mat &mask, int cvType)
+		template <typename T>
+		static Mat CopyMat(const Mat &src, const Mat &mask, int cvType)
 		{
 			if (src.size != mask.size) { throw Exception::WrongKernelSizeException("Mask not the same size as src Exception!"); }
 			Mat dst(src.size(), cvType);
@@ -72,8 +73,8 @@ namespace Vision
 			case 1:
 				for (uint32_t i = 0; i < nData; i++)
 				{
-					if (mask.data[i] == 1) {	dst.data[i] = (T)src.data[i]; }
-					else {	dst.data[i] = (T)0;	}
+					if (mask.data[i] == 1) { dst.data[i] = (T)src.data[i]; }
+					else { dst.data[i] = (T)0; }
 				}
 				break;
 			case 2:
@@ -98,7 +99,7 @@ namespace Vision
 					{
 						dst.data[i * 3] = (T)src.data[i * 3];
 						dst.data[i * 3 + 1] = (T)src.data[i * 3 + 1];
-						dst.data[i *3 + 2] = (T)src.data[i * 3 + 2];
+						dst.data[i * 3 + 2] = (T)src.data[i * 3 + 2];
 					}
 					else
 					{
@@ -111,13 +112,12 @@ namespace Vision
 			default:
 				for (uint32_t i = 0; i < nData; i++)
 				{
-					if (mask.data[i] == 1) {	for (uint32_t j = 0; j < dst.channels(); j++) {	dst.data[i * dst.channels() + j] = (T)src.data[i * dst.channels() + j];	} }
-					else { for (uint32_t j = 0; j < dst.channels(); j++) {	dst.data[i * dst.channels() + j] = (T)0;	} }
+					if (mask.data[i] == 1) { for (uint32_t j = 0; j < dst.channels(); j++) { dst.data[i * dst.channels() + j] = (T)src.data[i * dst.channels() + j]; } }
+					else { for (uint32_t j = 0; j < dst.channels(); j++) { dst.data[i * dst.channels() + j] = (T)0; } }
 				}
 				break;
 			}
 			return dst;
 		}
-
 	};
 }
