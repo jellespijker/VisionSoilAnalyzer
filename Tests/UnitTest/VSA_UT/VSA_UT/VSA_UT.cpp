@@ -542,6 +542,7 @@ BOOST_FIXTURE_TEST_CASE(Vision_Create_Blobs, B)
 	Vision::Segment Test(src);
 	Test.ConvertToBW(Vision::Segment::Bright);
 	Test.GetBlobList(true);
+	imwrite("LabeledBlobs.ppm", Test.LabelledImg);
 	BOOST_CHECK_EQUAL(42, Test.BlobList.size());
 	for (uint32_t i = 0; i < Test.BlobList.size(); i++)
 	{

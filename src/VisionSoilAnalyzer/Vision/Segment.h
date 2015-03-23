@@ -62,6 +62,7 @@ namespace Vision
 			cv::Mat Img;	/*!< BW image of the blob all the pixel belonging to the blob are set to 1 others are 0*/
 			Rect ROI;		/*!< Coordinates for the blob in the original picture*/
 			cv::Rect cvROI;	/*!< Coordinates for the blob in the original picture as a cv::Rect*/
+			uint32_t Area;  /*!< Calculated stats of the blob*/
 		} Blob;
 
 		vector<Blob> BlobList; /*!< vector with all the individual blobs*/
@@ -93,7 +94,6 @@ namespace Vision
 		void FillHoles(bool chain = false);
 
 	private:
-
 		uint8_t GetThresholdLevel(TypeOfObjects TypeObject);
 		void SetBorder(uchar *P, uchar setValue);
 		void FloodFill(uchar *O, uchar *P, uint16_t x, uint16_t y, uchar fillValue, uchar OldValue);
