@@ -185,96 +185,48 @@ namespace Vision
 	\param conn set the pixel connection eight or four
 	\param chain use the results from the previous operation default value = false;
 	*/
-	void Segment::RemoveBorderBlobs(bool chain /*= false*/, Connected conn /*= Eight*/)
+	void Segment::RemoveBorderBlobs(uint32_t border, bool chain)
 	{
-		// Exception handling
+		border + 1;
 		CV_Assert(OriginalImg.depth() != sizeof(uchar));
 		EMPTY_CHECK(OriginalImg);
-
 		// make Pointers
 		uchar *O;
 		CHAIN_PROCESS(chain, O, uchar);
+		ProcessedImg = OriginalImg.clone();
 		uchar *P = ProcessedImg.data;
-
-		// Set the border of the processed image to 2
-		//SetBorder(P, 2);
-		uint32_t nData = OriginalImg.cols * OriginalImg.rows;
-
-		// Set borderPixels to 2
-		uint32_t i = 0;
-		uint32_t pEnd = OriginalImg.cols + 1;
-
-		// Set the top row to value 2
-		while (i < pEnd) { P[i++] = 2; }
-
-		// Set the bottom row to value 2
-		i = nData + 1;
-		pEnd = nData - OriginalImg.cols;
-		while (i-- > pEnd) { P[i] = 2; }
-
-		//Sets the first and the last Column to 2
-		i = 1;
-		pEnd = OriginalImg.rows;
-		while (i < pEnd)
+		uint32_t cols = ProcessedImg.cols;
+		uint32_t rows = ProcessedImg.rows;
+		for (uint32_t i = 0; i < border; i++)
 		{
-			P[(i * OriginalImg.cols) - 1] = 2;
-			P[(i++ * OriginalImg.cols)] = 2;
-		}
-
-		// Iterates through the data and sets all border connected Blobs to 2;
-		uint32_t nCols = OriginalImg.cols;
-		uint32_t nRows = OriginalImg.rows;
-		nData = nCols * nRows;
-		i = OriginalImg.cols + 2;
-		pEnd = nData - OriginalImg.cols;
-
-		if (conn == Four)
-		{
-			while (i < pEnd)
+			for (uint32_t j = 0; j < cols; j++)
 			{
-				if (O[i] == 1 && P[i] != 2)
-				{
-					if (P[i - 1] == 2 || P[i - nCols] == 2) { P[i] = 2; }
-					else { P[i] = 1; }
-				}
-				else if (O[i] == 0) { P[i] = 0; }
-				else if (O[i] > 1 || O[i] < 0) { throw Exception::PixelValueOutOfBoundException(); }
-				i++;
+				if (O[(i * cols) + j] == 1 && P[(i * cols) + j] != 2) { cv::floodFill(ProcessedImg, cv::Point(j, i), 2); }
 			}
 		}
-		else
+
+		for (uint32_t i = rows - border - 1; i < rows; i++)
 		{
-			while (i < pEnd)
+			for (uint32_t j = 0; j < cols; j++)
 			{
-				if (O[i] == 1 && P[i] != 2)
-				{
-					if (P[i - 1] == 2 ||
-						P[i - nCols] == 2 ||
-						P[i - nCols - 1] == 2 ||
-						P[i - nCols + 1] == 2)
-					{
-						P[i] = 2;
-					}
-					else { P[i] = 1; }
-				}
-				else if (O[i] == 0) { P[i] = 0; }
-				else if (O[i] > 1 || O[i] < 0) { throw Exception::PixelValueOutOfBoundException(); }
-				i++;
+				if (O[(i * cols) + j] == 1 && P[(i * cols) + j] != 2) { cv::floodFill(ProcessedImg, cv::Point(j, i), 2); }
+			}
+		}
+
+		for (uint32_t i = border; i < rows - border; i++)
+		{
+			for (uint32_t j = 0; j < border; j++)
+			{
+				if (O[(i * cols) + j] == 1 && P[(i * cols) + j] != 2) {	cv::floodFill(ProcessedImg, cv::Point(j, i), 2); }
+				if (O[(i * cols) + (cols - j - 1)] == 1 && P[(i * cols) + (cols - j - 1)] != 2)	{ cv::floodFill(ProcessedImg, cv::Point(cols - j - 1, i), 2);	}
 			}
 		}
 
 		// Change values 2 -> 0
 		uchar LUT_newValue[3]{ 0, 1, 0 };
-
-		// P = ProcessedImg.data;
-
-		i = 0;
-		pEnd = nData + 1;
-		while (i < pEnd)
-		{
-			P[i] = LUT_newValue[P[i]];
-			i++;
-		}
+		P = ProcessedImg.data;
+		uint32_t nData = rows * cols;
+		for (uint32_t i = 0; i < nData; i++) { P[i] = LUT_newValue[P[i]];}
 	}
 
 	/*! Label all the individual blobs in a BW source image. The result are written to the labelledImg as an ushort

@@ -535,7 +535,17 @@ BOOST_AUTO_TEST_CASE(Vision_CopyMat_With_LUT)
 	Mat copiedMat = Vision::ImageProcessing::CopyMat<uint32_t>(Label, LUT, CV_8UC1);
 	BOOST_CHECK_EQUAL_COLLECTIONS(copiedMat.data, copiedMat.data + (copiedMat.rows * copiedMat.cols), BW_res.data, BW_res.data + (BW_res.rows * BW_res.cols));
 }
-BOOST_AUTO_TEST_SUITE_END()
+
+BOOST_AUTO_TEST_CASE(Vision_RemoveBorder)
+{
+	cv::Mat Border = imread("../ComparisionPictures/Border.ppm", 0);
+	cv::Mat noBorderComp = imread("../ComparisionPictures/noBorder.ppm", 0);
+	
+	Vision::Segment Test(Border);
+	Test.RemoveBorderBlobs(1);
+	imwrite("noBorder.ppm", Test.ProcessedImg);
+	BOOST_CHECK_EQUAL_COLLECTIONS(Test.ProcessedImg.data, Test.ProcessedImg.data + (Test.ProcessedImg.rows * Test.ProcessedImg.cols), noBorderComp.data, noBorderComp.data + (noBorderComp.rows * noBorderComp.cols));
+}
 
 BOOST_FIXTURE_TEST_CASE(Vision_Create_Blobs, B)
 {
@@ -544,15 +554,9 @@ BOOST_FIXTURE_TEST_CASE(Vision_Create_Blobs, B)
 	Test.GetBlobList(true);
 	imwrite("LabeledBlobs.ppm", Test.LabelledImg);
 	BOOST_CHECK_EQUAL(42, Test.BlobList.size());
-	for (uint32_t i = 0; i < Test.BlobList.size(); i++)
-	{
-		Mat temp = Test.BlobList[i].Img * 255;
-		stringstream ss;
-		ss << i << ".bmp";
-		imwrite(ss.str(), temp);
-	}
 }
 
+BOOST_AUTO_TEST_SUITE_END()
 
 
 //----------------------------------------------------------------------------------------
@@ -569,6 +573,8 @@ BOOST_FIXTURE_TEST_CASE(Soil_Sample_Save_And_Load, M)
 
 	BOOST_CHECK_EQUAL_COLLECTIONS(Test.OriginalImage.data, Test.OriginalImage.data + 1000, TestLoad.OriginalImage.data, TestLoad.OriginalImage.data + 1000);
 }
+
+BOOST_AUTO_TEST_SUITE_END()
 
 BOOST_FIXTURE_TEST_CASE(Soil_Sample_Analyze, M)
 {
@@ -593,4 +599,3 @@ BOOST_FIXTURE_TEST_CASE(Soil_Sample_Analyze, M)
 	}
 }
 
-BOOST_AUTO_TEST_SUITE_END()

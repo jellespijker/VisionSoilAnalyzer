@@ -89,7 +89,7 @@ namespace Vision
 
 		void LabelBlobs(bool chain = false, uint16_t minBlobArea = 25, Connected conn = Eight);
 
-		void RemoveBorderBlobs(bool chain = false, Connected conn = Eight);
+		void RemoveBorderBlobs(uint32_t border = 1, bool chain = false);
 
 		void FillHoles(bool chain = false);
 
