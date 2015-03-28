@@ -94,7 +94,7 @@ BOOST_AUTO_TEST_CASE(SoilMath_Sort)
 BOOST_AUTO_TEST_CASE(SoilMath_ucharStat_t)
 {
 	ucharStat_t Test((uint8_t *)testMatrix, 200, 200);
-
+	
 	BOOST_CHECK_EQUAL_COLLECTIONS(Test.bins, Test.bins + 255, histTestResult, histTestResult + 255);
 	BOOST_CHECK_CLOSE(Test.Mean, meanTestResult, 0.0001);
 	BOOST_CHECK_EQUAL(Test.n, nTestResult);
