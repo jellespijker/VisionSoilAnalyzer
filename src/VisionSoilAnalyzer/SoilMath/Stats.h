@@ -108,17 +108,17 @@ namespace SoilMath
 			Range = max - min;
 
 			Startbin = startBin;
-			EndBin = endBin;
+			EndBin = startBin + noBins;
 
 			if (typeid(T1) == typeid(float) || typeid(T1) == typeid(double) || typeid(T1) == typeid(long double))
 			{
 				isDiscrete = false;
-				binRange = static_cast<T1>((EndBin - Startbin) / noBins);
+				//binRange = static_cast<T1>((EndBin + 1 - Startbin) / noBins);
 			}
 			else
 			{
 				isDiscrete = true;
-				binRange = static_cast<T1>(round((EndBin - Startbin) / noBins));
+				//binRange = static_cast<T1>(round((EndBin + 1 - Startbin) / noBins));
 			}
 
 			Data = data;
@@ -150,7 +150,6 @@ namespace SoilMath
 			else
 			{
 				isDiscrete = true;
-				binRange = static_cast<T1>(round((EndBin - Startbin) / noBins));
 			}
 
 			bins = new uint32_t[noBins] {};
@@ -168,14 +167,10 @@ namespace SoilMath
 		{
 			float sum_dev = 0.0;
 
-			// Make copy of the starting pointer
-			T1 *StartDataPointer = Data;
-
 			// Get number of samples
 			n = Rows * Cols;
-			uint32_t i = n;
 
-			// Get sum , min, max, fill histogram
+			// Get sum , min, max
 			for (uint32_t i = 0; i < n; i++)
 			{
 				if (Data[i] > max) { max = Data[i]; }
@@ -183,25 +178,8 @@ namespace SoilMath
 				Sum += Data[i];
 			}
 
-			//while (i-- > 0)
-			//{
-			//	if (*Data > max) { max = *Data; }
-			//	else if (*Data < min) { min = *Data; }
-			//	Sum += *Data++;
-			//}
-
 			binRange = (max - min) / noBins;
 			uint32_t index = 0;
-			T1 shift = -min;
-
-			i = n - 1;
-			Data = StartDataPointer;
-			while (i > 0)
-			{
-				index = (shift + Data[i]) / binRange;
-				bins[index]++;
-				i--;
-			}
 
 			// Get Mean
 			Mean = Sum / (float)n;
@@ -209,64 +187,52 @@ namespace SoilMath
 			// Get Max;
 			Range = max - min;
 
-			// Calculate Standard Deviation
-			Data = StartDataPointer;
-			i = n;
-			while (i-- > 0)	{ sum_dev += pow((*Data++ - Mean), 2); }
+			//  fill histogram
+			for (uint32_t i = 0; i < n; i++)
+			{
+				index = static_cast<uint32_t>(floor((Data[i] - min) / binRange));
+				bins[index]++;
+				sum_dev += pow((Data[i] - Mean), 2);
+			}
+
 			Std = sqrt((float)(sum_dev / n));
 			Calculated = true;
-
-			// Reset the pointer
-			Data = StartDataPointer;
 		}
 
 		void BasicCalculate()
 		{
 			float sum_dev = 0.0;
 
-			// Make copy of the starting pointer
-			T1 *StartDataPointer = Data;
-
 			// Get number of samples
 			n = Rows * Cols;
 
-			// fills the histogram
-			uint32_t i = n;
-
-			while (i-- > 0) { bins[(uint32_t)*Data++]++; }
-
-			// Depending on the data size choose between using the histogram or
-			// actual data for efficient calculations
-			if (n > MAX_UINT8_VALUE) { BinCalculations(0, 256); }
-			else
+			// Get sum , min, max
+			for (uint32_t i = 0; i < n; i++)
 			{
-				Data = StartDataPointer;
-
-				// Get sum , min, max
-				i = n;
-				while (i-- > 0)
-				{
-					if (*Data > max) { max = *Data; }
-					else if (*Data < min) { min = *Data; }
-					Sum += *Data++;
-				}
-
-				// Get Mean
-				Mean = Sum / (float)n;
-
-				// Get Max;
-				Range = max - min;
-
-				// Calculate Standard Deviation
-				Data = StartDataPointer;
-				i = n;
-				while (i-- > 0)	{ sum_dev += pow((*Data++ - Mean), 2); }
-				Std = sqrt((float)(sum_dev / n));
-				Calculated = true;
+				if (Data[i] > max) { max = Data[i]; }
+				else if (Data[i] < min) { min = Data[i]; }
+				Sum += Data[i];
 			}
 
-			// Reset the pointer
-			Data = StartDataPointer;
+			binRange = static_cast<T1>(ceil((max - min) / static_cast<float>(noBins)));
+
+			// Get Mean
+			Mean = Sum / (float)n;
+
+			// Get Max;
+			Range = max - min;
+
+			// fills the histogram and calculate the std. dev
+			uint32_t index;
+			for (uint32_t i = 0; i < n; i++)
+			{
+				index = static_cast<uint32_t>(floor((Data[i] - min) / binRange));
+				bins[index]++;
+				sum_dev += pow((Data[i] - Mean), 2);
+			}
+
+			Std = sqrt((float)(sum_dev / n));
+			Calculated = true;
 		}
 
 		/// <summary>
@@ -275,49 +241,48 @@ namespace SoilMath
 		void BinCalculations(uint16_t startC, uint16_t endC)
 		{
 			float sum_dev = 0.0;
-			uint32_t lastC = endC - startC;
-			int32_t i = lastC;
-			// Get sum
-			while (i-- > 0) { Sum += bins[i] * (startC + i); }
+			// Get the Sum
+			for (uint32_t i = 0; i < noBins; i++)
+			{
+				Sum += bins[i] * (startC + i);
+			}
 
 			// Get Mean
 			Mean = Sum / (float)n;
 
 			// Get max
-			i = lastC;
-			while (i-- > 0)
+			for (uint32_t i = noBins; i > 0; i--)
 			{
 				if (bins[i] != 0)
 				{
-					max = i;
+					max = i + startC;
 					break;
 				}
 			}
-			max += startC;
 
 			// Get min
-			i = 0;
-			while (i < lastC)
+			for (uint32_t i = 0; i < noBins; i++)
 			{
 				if (bins[i] != 0)
 				{
-					min = i;
+					min = i + startC;
 					break;
 				}
-				i++;
 			}
-			min += startC;
 
 			// Get Max;
 			Range = max - min;
 
 			// Calculate Standard Deviation
-			i = lastC;
-			while (i-- > 0)	{ sum_dev += bins[i] * pow(((i + startC) - Mean), 2); }
+			for (uint32_t i = 0; i < noBins; i++)
+			{
+				sum_dev += bins[i] * pow(((i + startC) - Mean), 2);
+			}
 			Std = sqrt((float)(sum_dev / n));
 			Calculated = true;
 		}
 	private:
+		bool MinMaxSumCalc = false;
 		friend class boost::serialization::access;
 		template <class Archive>
 		void serialize(Archive & ar, const unsigned int version)
