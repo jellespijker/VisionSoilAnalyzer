@@ -42,7 +42,7 @@ namespace SoilAnalyzer
 	public:
 		Soil();
 		~Soil();
-		bool Analyzed;
+		bool Analyzed = false;
 		cv::Mat BW;
 		cv::Mat Intensity;
 		cv::Mat LAB;
