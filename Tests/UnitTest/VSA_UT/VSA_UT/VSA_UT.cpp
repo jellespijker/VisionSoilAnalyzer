@@ -80,8 +80,24 @@ struct B {
 	Mat comp;
 };
 
-//----------------------------------------------------------------------------------------
-BOOST_AUTO_TEST_SUITE(SoilMath_Test_Suit)
+// SoilMath Test
+
+BOOST_AUTO_TEST_CASE(SoilMath_DiscreteMath_BigNumber)
+{
+	uint16_t *BigNoTestMatrix = new uint16_t[40000];
+	uint32_t count = 0;
+	for (uint32_t i = 0; i < 200; i++)
+	{
+		for (uint32_t j = 0; j < 200; j++)
+		{
+			BigNoTestMatrix[count++] = testMatrix[i][j] * 10;
+		}
+	}
+
+	SoilMath::Stats<uint16_t, uint32_t, uint64_t> Test(BigNoTestMatrix, 200, 200);
+	uint16_t bigMeanTestResults = meanTestResult * 10;
+	BOOST_CHECK_CLOSE(Test.Mean, bigMeanTestResults, 0.0001);
+}
 
 BOOST_AUTO_TEST_CASE(SoilMath_Sort)
 {
@@ -304,10 +320,7 @@ BOOST_AUTO_TEST_CASE(SoilMath_NN_Prediction_Accurancy)
 	}
 }
 
-BOOST_AUTO_TEST_SUITE_END()
-
-//----------------------------------------------------------------------------------------
-BOOST_AUTO_TEST_SUITE(Vision_Test_Suite)
+// Vision Test
 
 BOOST_FIXTURE_TEST_CASE(Vision_Convert_RGB_To_Intensity, M)
 {
@@ -556,11 +569,7 @@ BOOST_FIXTURE_TEST_CASE(Vision_Create_Blobs, B)
 	BOOST_CHECK_EQUAL(42, Test.BlobList.size());
 }
 
-BOOST_AUTO_TEST_SUITE_END()
-
-
-//----------------------------------------------------------------------------------------
-BOOST_AUTO_TEST_SUITE(SoilAnalyzer_Test_Suite)
+// Soil Test
 
 BOOST_FIXTURE_TEST_CASE(Soil_Sample_Save_And_Load, M)
 {
@@ -573,8 +582,6 @@ BOOST_FIXTURE_TEST_CASE(Soil_Sample_Save_And_Load, M)
 
 	BOOST_CHECK_EQUAL_COLLECTIONS(Test.OriginalImage.data, Test.OriginalImage.data + 1000, TestLoad.OriginalImage.data, TestLoad.OriginalImage.data + 1000);
 }
-
-BOOST_AUTO_TEST_SUITE_END()
 
 BOOST_FIXTURE_TEST_CASE(Soil_Sample_Analyze, M)
 {
