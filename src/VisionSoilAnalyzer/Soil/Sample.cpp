@@ -68,18 +68,31 @@ namespace SoilAnalyzer
 	{
 		Vision::Enhance Enhancer(Intensity);
 		Vision::Segment Segmenter;
+		Vision::MorphologicalFilter Eroder;
 
 		switch (segType)
 		{
 		case Vision::Segment::Normal:
 			// Optimize the intensity image
-			Enhancer.AdaptiveContrastStretch(5, 0.5);
-			Enhancer.Blur(9, true);
+			Enhancer.Blur(15);
+			Enhancer.AdaptiveContrastStretch(5, 0.125, true);
+			//Enhancer.HistogramEqualization(true);
 
 			// Segment the enhance image and remove borderblobs get the edges
 			Segmenter = Vision::Segment(Enhancer.ProcessedImg);
 			Segmenter.ConvertToBW(Vision::Segment::Dark);
-			Segmenter.RemoveBorderBlobs(true);
+			Segmenter.RemoveBorderBlobs(3, true);
+			
+			// Erode the BW picture
+	//		Eroder = Vision::MorphologicalFilter(Segmenter.ProcessedImg);
+			//Mat erosionmask = (Mat_<uchar>(5, 5) <<
+			//	0, 0, 1, 0, 0,
+			//	0, 1, 1, 1, 0,
+			//	1, 1, 1, 1, 1,
+			//	0, 1, 1, 1, 0,
+			//	0, 0, 1, 0, 0);
+		//	Eroder.Erosion(erosionmask);
+		//	BW = Eroder.ProcessedImg;
 			BW = Segmenter.ProcessedImg.clone();
 			break;
 		case Vision::Segment::LabNeuralNet:
@@ -92,8 +105,9 @@ namespace SoilAnalyzer
 			break;
 		}
 
-		Segmenter.GetEdgesEroding(true);
-		Edge = Segmenter.ProcessedImg.clone();
+		Vision::Segment getEdges(BW);
+		getEdges.GetEdgesEroding();
+		Edge = getEdges.ProcessedImg;
 
 		// Get the Particlelist
 		Segmenter.GetBlobList(true);
