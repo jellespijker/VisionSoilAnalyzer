@@ -82,7 +82,7 @@ struct B {
 
 // SoilMath Test
 
-BOOST_AUTO_TEST_CASE(SoilMath_Stats_DiscreteMath_BigNumber)
+BOOST_AUTO_TEST_CASE(SoilMath_DiscreteMath_BigNumber)
 {
 	uint16_t *BigNoTestMatrix = new uint16_t[40000];
 	uint32_t count = 0;
@@ -95,15 +95,8 @@ BOOST_AUTO_TEST_CASE(SoilMath_Stats_DiscreteMath_BigNumber)
 	}
 
 	SoilMath::Stats<uint16_t, uint32_t, uint64_t> Test(BigNoTestMatrix, 200, 200);
-	BOOST_CHECK_EQUAL_COLLECTIONS(Test.bins, Test.bins + 255, histTestResult, histTestResult + 255);
-	BOOST_CHECK_CLOSE(Test.Mean, meanTestResult * 10, 0.0001);
-	BOOST_CHECK_EQUAL(Test.n, nTestResult);
-	BOOST_CHECK_EQUAL(Test.Sum, sumTestResult * 10);
-	BOOST_CHECK_EQUAL(Test.min, minTestResult * 10);
-	BOOST_CHECK_EQUAL(Test.max, maxTestResult * 10);
-	BOOST_CHECK_EQUAL(Test.Range, rangeTestResult * 10);
-	BOOST_CHECK_CLOSE(Test.Std, stdTestResult * 10, 0.01);
-
+	uint16_t bigMeanTestResults = meanTestResult * 10;
+	BOOST_CHECK_CLOSE(Test.Mean, bigMeanTestResults, 0.0001);
 }
 
 BOOST_AUTO_TEST_CASE(SoilMath_Sort)
@@ -114,7 +107,7 @@ BOOST_AUTO_TEST_CASE(SoilMath_Sort)
 	BOOST_CHECK_EQUAL_COLLECTIONS(testDiscrete, testDiscrete + 10, ucomp, ucomp + 10);
 }
 
-BOOST_AUTO_TEST_CASE(SoilMath_Stats_ucharStat_t)
+BOOST_AUTO_TEST_CASE(SoilMath_ucharStat_t)
 {
 	ucharStat_t Test((uint8_t *)testMatrix, 200, 200);
 	
@@ -128,7 +121,7 @@ BOOST_AUTO_TEST_CASE(SoilMath_Stats_ucharStat_t)
 	BOOST_CHECK_CLOSE(Test.Std, stdTestResult, 0.01);
 }
 
-BOOST_AUTO_TEST_CASE(SoilMath_Stats_floatStat_t)
+BOOST_AUTO_TEST_CASE(SoilMath_floatStat_t)
 {
 	floatStat_t Test((float *)ftestMatrix, 50, 50);
 
