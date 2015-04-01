@@ -80,6 +80,19 @@ struct B {
 	Mat comp;
 };
 
+struct BM {
+	BM()
+	{
+		BOOST_TEST_MESSAGE("Setup fixture");
+		src = imread("../ComparisionPictures/BlobTestMany.ppm", 0);
+	}
+	~BM() { BOOST_TEST_MESSAGE("teardown fixture"); }
+
+	Mat src;
+	Mat dst;
+	Mat comp;
+};
+
 // SoilMath Test
 
 BOOST_AUTO_TEST_CASE(SoilMath_Stats_DiscreteMath_BigNumber)
@@ -103,7 +116,7 @@ BOOST_AUTO_TEST_CASE(SoilMath_Stats_DiscreteMath_BigNumber)
 	BOOST_CHECK_EQUAL(Test.max, maxTestResult * 10);
 	BOOST_CHECK_EQUAL(Test.Range, rangeTestResult * 10);
 	BOOST_CHECK_CLOSE(Test.Std, stdTestResult * 10, 0.01);
-
+	delete[] BigNoTestMatrix;
 }
 
 BOOST_AUTO_TEST_CASE(SoilMath_Sort)
@@ -268,7 +281,7 @@ BOOST_AUTO_TEST_CASE(SoilMath_NN_Save_And_Load)
 BOOST_AUTO_TEST_CASE(SoilMath_NN_Prediction_Accurancy)
 {
 	SoilMath::NN Test;
-	Test.LoadState("NN.xml");
+	Test.LoadState("../ComparisionPictures/NN_test.xml");
 
 	InputLearnVector_t inputVect;
 	OutputLearnVector_t outputVect;
@@ -520,8 +533,10 @@ BOOST_AUTO_TEST_CASE(Vision_CopyMat_With_LUT)
 	uint32_t *LUT = new uint32_t[255]{};
 	LUT[255] = 1;
 
-	Mat copiedMat = Vision::ImageProcessing::CopyMat<uint32_t>(Label, LUT, CV_8UC1);
+	Mat copiedMat;
+	Vision::ImageProcessing::CopyMat<uint32_t>(Label, copiedMat, LUT, CV_8UC1);
 	BOOST_CHECK_EQUAL_COLLECTIONS(copiedMat.data, copiedMat.data + (copiedMat.rows * copiedMat.cols), BW_res.data, BW_res.data + (BW_res.rows * BW_res.cols));
+	delete[] LUT;
 }
 
 BOOST_FIXTURE_TEST_CASE(Vision_Create_Blobs, B)
@@ -531,6 +546,15 @@ BOOST_FIXTURE_TEST_CASE(Vision_Create_Blobs, B)
 	Test.GetBlobList(true);
 	imwrite("LabeledBlobs.ppm", Test.LabelledImg);
 	BOOST_CHECK_EQUAL(42, Test.BlobList.size());
+}
+
+BOOST_FIXTURE_TEST_CASE(Vision_Create_Many_Blobs, BM)
+{
+	Vision::Segment Test(src);
+	Test.ConvertToBW(Vision::Segment::Bright);
+	Test.GetBlobList(true);
+	imwrite("LabeledBlobsMany.ppm", Test.LabelledImg);
+	BOOST_CHECK_EQUAL(370, Test.BlobList.size());
 }
 
 BOOST_AUTO_TEST_CASE(Vision_RemoveBorder)

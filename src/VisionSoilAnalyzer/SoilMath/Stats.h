@@ -87,7 +87,7 @@ namespace SoilMath
 			Startbin = startBin;
 			EndBin = endBin;
 			this->noBins = noBins;
-			bins = new uint32_t[noBins] {};
+			bins = new uint32_t[noBins]{};
 
 			if (typeid(T1) == typeid(float) || typeid(T1) == typeid(double) || typeid(T1) == typeid(long double))
 			{
@@ -113,18 +113,16 @@ namespace SoilMath
 			if (typeid(T1) == typeid(float) || typeid(T1) == typeid(double) || typeid(T1) == typeid(long double))
 			{
 				isDiscrete = false;
-				//binRange = static_cast<T1>((EndBin + 1 - Startbin) / noBins);
 			}
 			else
 			{
 				isDiscrete = true;
-				//binRange = static_cast<T1>(round((EndBin + 1 - Startbin) / noBins));
 			}
 
 			Data = data;
 			Rows = rows;
 			Cols = cols;
-			bins = new uint32_t[noBins] {};
+			bins = new uint32_t[noBins]{};
 			this->noBins = noBins;
 			if (isDiscrete) { BasicCalculate(); }
 			else { BasicCalculateFloat(); }
@@ -152,7 +150,7 @@ namespace SoilMath
 				isDiscrete = true;
 			}
 
-			bins = new uint32_t[noBins] {};
+			bins = new uint32_t[noBins]{};
 			while (i-- > 0)
 			{
 				bins[i] = binData[i];
@@ -161,7 +159,10 @@ namespace SoilMath
 			BinCalculations(startC, endC);
 		}
 
-		~Stats() {};
+		~Stats() 
+		{
+			delete[] bins;
+		};
 
 		void BasicCalculateFloat()
 		{
@@ -251,7 +252,7 @@ namespace SoilMath
 			Mean = Sum / (float)n;
 
 			// Get max
-			for (uint32_t i = noBins; i > 0; i--)
+			for (int i = noBins - 1; i >= 0; i--)
 			{
 				if (bins[i] != 0)
 				{
@@ -282,7 +283,7 @@ namespace SoilMath
 			Calculated = true;
 		}
 	private:
-		bool MinMaxSumCalc = false;
+		uint32_t n_end = 0;
 		friend class boost::serialization::access;
 		template <class Archive>
 		void serialize(Archive & ar, const unsigned int version)

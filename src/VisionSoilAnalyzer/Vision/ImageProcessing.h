@@ -42,17 +42,15 @@ namespace Vision
 		\return The new matrix
 		*/
 		template <typename T>
-		static Mat CopyMat(const Mat &src, T *LUT, int cvType)
+		static void CopyMat(const Mat &src, Mat &dst, T *LUT, int cvType)
 		{
-			Mat dst(src.size(), cvType);
+			if (dst.empty() && src.rows > 0 && src.cols > 0) { dst.create(src.rows, src.cols, cvType); }
 			uint32_t i = 0;
 			uint32_t nData = dst.rows * dst.cols * dst.step[1];
-			while (i < nData)
+			for (uint32_t i = 0; i < nData; i++)
 			{
 				dst.data[i] = LUT[(T)src.data[i * src.step[1]]];
-				i++;
 			}
-			return dst;
 		}
 
 		/*! Copy a matrix to a new matrix with a mask

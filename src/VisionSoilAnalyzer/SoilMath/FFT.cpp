@@ -47,7 +47,7 @@ namespace SoilMath
 		for (uint32_t i = 0; i < 8; i++)
 		{
 			count = pixel + LUT_nBore[i];
-			while ((count < 0 || count >= pEnd) && i < 8) { count = pixel + LUT_nBore[++i]; }
+			while (count >= pEnd && i < 8) { count = pixel + LUT_nBore[++i]; }
 			if (i >= 8) { break; }
 			if (O[count] == 1) neighbors.push_back(count);
 		}

@@ -72,6 +72,8 @@ namespace Vision
 			Lmean = (uchar)(sLeft.Mean + 0.5);
 			Rstd = (uchar)(sRight.Std + 0.5);
 			Lstd = (uchar)(sLeft.Std + 0.5);
+			delete[] Left;
+			delete[] Right;
 		}
 
 		// Assumes the pixel value of the sought object lies between 2 sigma
@@ -187,7 +189,7 @@ namespace Vision
 	*/
 	void Segment::RemoveBorderBlobs(uint32_t border, bool chain)
 	{
-		border + 1;
+		border += 1;
 		CV_Assert(OriginalImg.depth() != sizeof(uchar));
 		EMPTY_CHECK(OriginalImg);
 		// make Pointers
@@ -269,7 +271,7 @@ namespace Vision
 				if (O[i] == 0) { P[i] = 0; }
 
 				// If current value = 1 check North and West and act accordingly
-				else if (O[i] = 1)
+				else if (O[i] == 1)
 				{
 					uint16_t North = P[i - nCols];
 					uint16_t West = P[i - 1];
@@ -315,7 +317,7 @@ namespace Vision
 				if (O[i] == 0) { P[i] = 0; }
 
 				// If current value = 1 check North and West and act accordingly
-				else if (O[i] = 1)
+				else if (O[i] == 1)
 				{
 					uint16_t *nPixels = new uint16_t[4];
 					nPixels[0] = P[i - 1];
@@ -357,6 +359,7 @@ namespace Vision
 							while (j-- > 0)	{ if (nPixels[j] != 0 && nPixels[j] > minVal) { connectedLabels[nPixels[j]].push_back(minVal); } }
 						}
 					}
+					delete[] nPixels;
 				}
 				// If there is a value greater then 1 or smaller then 1 throw error
 				else { throw Exception::PixelValueOutOfBoundException(); }
@@ -417,14 +420,14 @@ namespace Vision
 
 		// Create a LUT_filter for each value that is smaller then minBlobArea
 		SoilMath::Stats<uint16_t, uint32_t, uint64_t> ProcImgStats(P, nCols, nRows, MaxLabel, 0, MaxLabel);
-		LUT_newVal = new uint16_t[MaxLabel + 1]{};
+		uint16_t *LUT_finalVal = new uint16_t[MaxLabel + 1]{};
 		uint16_t count = 0;
 		i = 0;
 		while (i <= MaxLabel)
 		{
 			if (ProcImgStats.bins[i] > minBlobArea) 
 			{
-				LUT_newVal[i] = count++; 
+				LUT_finalVal[i] = count++; 
 			}
 			i++;
 		}
@@ -436,9 +439,13 @@ namespace Vision
 		i = 0;
 		while (i < pEnd)
 		{
-			P[i] = LUT_newVal[P[i]];
+			P[i] = LUT_finalVal[P[i]];
 			i++;
 		}
+
+		delete[] tempLUT;
+		delete[] LUT_newVal;
+		delete[] LUT_finalVal;
 	}
 
 	/*! Create a BW image with only edges from a BW image
@@ -476,7 +483,7 @@ namespace Vision
 		uint32_t i = 0;
 
 		//Loop through the image and set each pixel which has a zero neighbor set it to two.
-		if (conn = Four)
+		if (conn == Four)
 		{
 			// Loop through the picture
 			while (i < pEnd)
@@ -484,7 +491,7 @@ namespace Vision
 				// If current value = zero processed value = zero
 				if (O[i] == 0) { P[i] = 0; }
 				// If current value = 1 check North West, South and East and act accordingly
-				else if (O[i] = 1)
+				else if (O[i] == 1)
 				{
 					uchar *nPixels = new uchar[4];
 					nPixels[0] = O[i - 1];
@@ -509,7 +516,7 @@ namespace Vision
 				// If current value = zero processed value = zero
 				if (O[i] == 0) { P[i] = 0; }
 				// If current value = 1 check North West, South and East and act accordingly
-				else if (O[i] = 1)
+				else if (O[i] == 1)
 				{
 					uchar *nPixels = new uchar[8];
 					nPixels[0] = O[i - 1];
@@ -579,105 +586,116 @@ namespace Vision
 	void Segment::GetBlobList(bool chain, Connected conn)
 	{
 		// Exception handling
- 		CV_Assert(OriginalImg.depth() != sizeof(uchar));
+		CV_Assert(OriginalImg.depth() != sizeof(uchar));
 		EMPTY_CHECK(OriginalImg);
 
 		// If there isn't a labelledImg make one
 		if (MaxLabel < 1) { LabelBlobs(chain, 25, conn); }
 
-		// Make an empty BlobList
-		uint32_t pEnd = MaxLabel + 1;
-		uint32_t nCols = OriginalImg.cols;
-		uint32_t nRows = OriginalImg.rows;
-		uint32_t nData = nCols * nRows;
-
-		// Create the statistics
-		SoilMath::Stats<uint16_t, uint32_t, uint64_t> LabelStats((uint16_t *)LabelledImg.data, LabelledImg.cols, LabelledImg.rows, pEnd, 0, pEnd - 1);
-
-		Blob emptyBlob;
-		for (uint32_t i = 0; i < pEnd - 1; i++)
+		for (uint32_t i = 0; i < MaxLabel; i++)
 		{
-			emptyBlob.Label = i + 1;
-			emptyBlob.ROI.leftX = nCols;
-			emptyBlob.ROI.leftY = nRows;
-			emptyBlob.ROI.rightX = 0;
-			emptyBlob.ROI.rightY = 0;
-			emptyBlob.Area = LabelStats.bins[emptyBlob.Label];
-			BlobList.push_back(emptyBlob);
+			BlobList.push_back(Blob_t());
 		}
 
-		// make Pointers
-		ushort *L = (ushort *)LabelledImg.data;
-
-		pEnd = nData + 1;
-		ushort currentBlob = 1;
-		uint32_t currentX, currentY;
-		uint16_t leftX, leftY, rightX, rightY, index;
-		//Loop through the labeled image and extract the Blobs
-		for (uint32_t i = 0; i < pEnd; i++)
-		{
-			index = L[i];
-			if (index != 0)
-			{
-				index -= 1;
-				/* Determine the current x and y value of the current blob and
-				sees if it is min/max */
-				currentX = i / nCols;
-				currentY = i % nCols;
-
-				leftX = BlobList[index].ROI.leftX;
-				leftY = BlobList[index].ROI.leftY;
-				rightX = BlobList[index].ROI.rightX;
-				rightY = BlobList[index].ROI.rightY;
-
-				// Min value
-				if (currentX < leftX) { BlobList[index].ROI.leftX = currentX; }
-				if (currentY < leftY) { BlobList[index].ROI.leftY = currentY; }
-
-				// Max value
-				if (currentX > rightX) { BlobList[index].ROI.rightX = currentX; }
-				if (currentY > rightY) { BlobList[index].ROI.rightY = currentY; }
-			}
-		}
-
-		// Loop through the BlobList and finalize it
-		pEnd = BlobList.size();
-		ushort *LUT_filter = new ushort[MaxLabel]{};
-		uint32_t x, y;
-
-		for (uint32_t i = 0; i < pEnd; i++)
-		{
-			LUT_filter[i + 1] = 1;
-			// Fix swapping of x and y
-			BlobList[i].cvROI.y = BlobList[i].ROI.leftX;
-			BlobList[i].cvROI.x = BlobList[i].ROI.leftY;
-			BlobList[i].cvROI.height = BlobList[i].ROI.rightX - BlobList[i].ROI.leftX;
-			BlobList[i].cvROI.width = BlobList[i].ROI.rightY - BlobList[i].ROI.leftY;
-			if (BlobList[i].cvROI.width == 0) { BlobList[i].cvROI.width = 1; }
-			if (BlobList[i].cvROI.height == 0) { BlobList[i].cvROI.height = 1; }
-
-			BlobList[i].Img = CopyMat<ushort>(LabelledImg(BlobList[i].cvROI).clone(), LUT_filter, CV_8UC1);
-
-			LUT_filter[i + 1] = 0;
-		}
-
-		//final check the bloblist and remove Mat with zero rows or cols
-		std::remove_if(BlobList.begin(), BlobList.end(),[](Blob &b) -> bool
-		{
-			if (b.Img.cols == 0 || b.Img.rows == 0)	return true;
-			else return false;
-		});
-
-		// Sort BlobList with top most most location and remove duplicates
-		//std::sort(BlobList.begin(), BlobList.end(), [](Blob & a, Blob & b) -> bool
-		//{
-		//	//if (a.ROI.leftY < b.ROI.leftY)	return true;
-		//	//else if (a.ROI.leftY == b.ROI.leftY && a.ROI.leftX < b.ROI.leftX) return true;
-		//	//else return false;
-		//	return (pow((float)a.ROI.leftX, 2) + pow((float)a.ROI.leftY, 2)) > (pow((float)b.ROI.leftX, 2) + pow((float)b.ROI.leftY, 2));
-		//});
-		////BlobList.erase(unique(BlobList.begin(), BlobList.end()), BlobList.end());
 	}
+
+	//void Segment::GetBlobList(bool chain, Connected conn)
+	//{
+	//	// Exception handling
+ //		CV_Assert(OriginalImg.depth() != sizeof(uchar));
+	//	EMPTY_CHECK(OriginalImg);
+
+	//	// If there isn't a labelledImg make one
+	//	if (MaxLabel < 1) { LabelBlobs(chain, 25, conn); }
+
+	//	// Make an empty BlobList
+	//	uint32_t nCols = OriginalImg.cols;
+	//	uint32_t nRows = OriginalImg.rows;
+	//	uint32_t nData = nCols * nRows;
+
+	//	// Calculate Stats the statistics
+	//	SoilMath::Stats<uint16_t, uint32_t, uint64_t> LabelStats((uint16_t *)LabelledImg.data, LabelledImg.cols, LabelledImg.rows, MaxLabel + 1, 0, MaxLabel);
+	//	
+	//	BlobList_t tempList;
+	//	tempList.reserve(MaxLabel);
+
+	//	for (uint32_t i = 1; i < MaxLabel + 1; i++)
+	//	{
+	//		Blob_t emptyBlob;
+	//		emptyBlob.Label = i;
+	//		emptyBlob.ROI.leftX = nCols;
+	//		emptyBlob.ROI.leftY = nRows;
+	//		emptyBlob.ROI.rightX = 0;
+	//		emptyBlob.ROI.rightY = 0;
+	//		emptyBlob.Area = LabelStats.bins[emptyBlob.Label];
+	//		tempList.push_back(emptyBlob);
+	//	}
+
+	//	// make Pointers
+	//	uint16_t *L = (uint16_t *)LabelledImg.data;
+
+	//	uint32_t currentX, currentY;
+	//	uint16_t leftX, leftY, rightX, rightY, index;
+	//	//Loop through the labeled image and extract the Blobs
+	//	for (uint32_t i = 0; i < nData; i++)
+	//	{
+	//		index = L[i];
+	//		if (index != 0)
+	//		{
+	//			index -= 1;
+	//			/* Determine the current x and y value of the current blob and
+	//			checks if it is min/max */
+	//			currentX = i / nCols;
+	//			currentY = i % nCols;
+
+	//			leftX = tempList[index].ROI.leftX;
+	//			leftY = tempList[index].ROI.leftY;
+	//			rightX = tempList[index].ROI.rightX;
+	//			rightY = tempList[index].ROI.rightY;
+
+	//			// Min value
+	//			if (currentX < leftX) { tempList[index].ROI.leftX = currentX; }
+	//			if (currentY < leftY) { tempList[index].ROI.leftY = currentY; }
+
+	//			// Max value
+	//			if (currentX > rightX) { tempList[index].ROI.rightX = currentX; }
+	//			if (currentY > rightY) { tempList[index].ROI.rightY = currentY; }
+	//		}
+	//	}
+
+	//	// Loop through the BlobList and finalize it
+	//	uint16_t *LUT_filter = new uint16_t[MaxLabel + 1]{};
+	//	for (uint32_t i = 0; i < MaxLabel; i++)
+	//	{
+	//		LUT_filter[i + 1] = 1;
+	//		tempList[i].cvROI.y = tempList[i].ROI.leftX;
+	//		tempList[i].cvROI.x = tempList[i].ROI.leftY;
+	//		tempList[i].cvROI.height = tempList[i].ROI.rightX - tempList[i].ROI.leftX;
+	//		tempList[i].cvROI.width = tempList[i].ROI.rightY - tempList[i].ROI.leftY;
+	//		if (tempList[i].cvROI.width == 0) { tempList[i].cvROI.width = 1; }
+	//		if (tempList[i].cvROI.height == 0) { tempList[i].cvROI.height = 1; }
+	//		tempList[i].Img.create(tempList[i].cvROI.height, tempList[i].cvROI.width, CV_8UC1);
+	//		CopyMat<uint16_t>(LabelledImg(tempList[i].cvROI), tempList[i].Img, LUT_filter, CV_8UC1);
+	//		LUT_filter[i + 1] = 0;
+	//	}
+
+	//	//final check the bloblist and remove Mat with zero rows or cols
+	//	std::remove_if(BlobList.begin(), BlobList.end(),[](Blob_t &b) -> bool
+	//	{
+	//		if (b.Img.cols == 0 || b.Img.rows == 0)	return true;
+	//		else return false;
+	//	});
+
+	//	// Sort BlobList with top most most location and remove duplicates
+	//	//std::sort(BlobList.begin(), BlobList.end(), [](Blob & a, Blob & b) -> bool
+	//	//{
+	//	//	//if (a.ROI.leftY < b.ROI.leftY)	return true;
+	//	//	//else if (a.ROI.leftY == b.ROI.leftY && a.ROI.leftX < b.ROI.leftX) return true;
+	//	//	//else return false;
+	//	//	return (pow((float)a.ROI.leftX, 2) + pow((float)a.ROI.leftY, 2)) > (pow((float)b.ROI.leftX, 2) + pow((float)b.ROI.leftY, 2));
+	//	//});
+	//	////BlobList.erase(unique(BlobList.begin(), BlobList.end()), BlobList.end());
+	//}
 
 	void Segment::makeConsecutive(uint16_t LastLabelUsed, uint16_t * tempLUT, uint16_t * &LUT_newVal)
 	{

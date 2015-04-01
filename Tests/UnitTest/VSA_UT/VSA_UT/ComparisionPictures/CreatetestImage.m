@@ -1,25 +1,25 @@
 clear; clc;
-I = zeros(640,640);
+I = zeros(2000,2000);
 
-n = 80;
-loc = randi([40 600],n, 2);
+n = 600;
+loc = randi([50, 2000-50],n, 2);
 for i = 1:n
-   Z = zeros(80,80);
+   Z = zeros(100,100);
    XY = 0;
    K = 0;
    x = 0;
    y = 0;
    sides = 0;
-   sides = randi([3 5],1); 
-   x = randi([0 80], 1, sides);
-   y = randi([0 80], 1, sides);
+   sides = randi([3 7],1); 
+   x = randi([0 100], 1, sides);
+   y = randi([0 100], 1, sides);
    K = convhull(x,y, 'simplify', true);
    c = numel(K) - 1;
    count = 0;
    for j = 1:2:(c*2)
       count = count + 1;
-      XY(j) = (x(count)-40)+loc(i,1);
-      XY(j+1) = (y(count)-40)+loc(i,2);
+      XY(j) = (x(count)-25)+loc(i,1);
+      XY(j+1) = (y(count)-25)+loc(i,2);
    end
    
    I = insertShape(I, 'FilledPolygon', XY);
@@ -44,6 +44,7 @@ hopening.Neighborhood = strel('disk', 6);
 I = step(hopening, uint8(I));
 
 H = vision.BlobAnalysis;
+H.MaximumCount = 1000;
 [AREA, CENTROID, BBOX] = step(H, logical(I));
 I = I * 255;
 imshow(I);

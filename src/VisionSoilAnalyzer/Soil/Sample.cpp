@@ -113,21 +113,21 @@ namespace SoilAnalyzer
 		Segmenter.GetBlobList(true);
 		for (uint32_t i = 0; i < Segmenter.BlobList.size(); i++)
 		{
-			if (Segmenter.BlobList[i].cvROI.height > 9 && Segmenter.BlobList[i].cvROI.width > 9)
-			{
-				Particle newPart;
-				newPart.ID = Segmenter.BlobList[i].Label;
-				newPart.Analyzed = false;
-				newPart.BW = Segmenter.BlobList[i].Img.clone();
-				cv::Rect ROI = Segmenter.BlobList[i].cvROI;
-				newPart.Edge = Vision::Segment::CopyMat<uchar>(Edge(ROI).clone(), newPart.BW, CV_8UC1);
-				newPart.Intensity = Vision::Segment::CopyMat<uchar>(Intensity(ROI).clone(), newPart.BW, CV_8UC1);
-				newPart.LAB = Vision::Segment::CopyMat<float>(LAB(ROI).clone(), newPart.BW, CV_32FC3);
-				newPart.RGB = Vision::Segment::CopyMat<uchar>(LAB(ROI).clone(), newPart.BW, CV_8UC3);
-				newPart.RI = Vision::Segment::CopyMat<float>(LAB(ROI).clone(), newPart.BW, CV_32FC1);
+			//if (Segmenter.BlobList[i].cvROI.height > 9 && Segmenter.BlobList[i].cvROI.width > 9)
+			//{
+			//	Particle newPart;
+			//	newPart.ID = Segmenter.BlobList[i].Label;
+			//	newPart.Analyzed = false;
+			//	newPart.BW = Segmenter.BlobList[i].Img.clone();
+			//	cv::Rect ROI = Segmenter.BlobList[i].cvROI;
+			//	newPart.Edge = Vision::Segment::CopyMat<uchar>(Edge(ROI).clone(), newPart.BW, CV_8UC1);
+			//	newPart.Intensity = Vision::Segment::CopyMat<uchar>(Intensity(ROI).clone(), newPart.BW, CV_8UC1);
+			//	newPart.LAB = Vision::Segment::CopyMat<float>(LAB(ROI).clone(), newPart.BW, CV_32FC3);
+			//	newPart.RGB = Vision::Segment::CopyMat<uchar>(LAB(ROI).clone(), newPart.BW, CV_8UC3);
+			//	newPart.RI = Vision::Segment::CopyMat<float>(LAB(ROI).clone(), newPart.BW, CV_32FC1);
 
-				Population.push_back(newPart);
-			}
+			//	Population.push_back(newPart);
+			//}
 		}
 	}
 }
