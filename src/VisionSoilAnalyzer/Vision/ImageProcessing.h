@@ -42,15 +42,47 @@ namespace Vision
 		\return The new matrix
 		*/
 		template <typename T>
-		static void CopyMat(const Mat &src, Mat &dst, T *LUT, int cvType)
+		static Mat CopyMat(const Mat &src, T *LUT, int cvType)
 		{
-			if (dst.empty() && src.rows > 0 && src.cols > 0) { dst.create(src.rows, src.cols, cvType); }
-			uint32_t i = 0;
-			uint32_t nData = dst.rows * dst.cols * dst.step[1];
-			for (uint32_t i = 0; i < nData; i++)
+			Mat dst(src.size(), cvType);
+			uint32_t i = 0, i_src = 0;
+			uint32_t nData = src.rows * src.cols * dst.step[1];
+			if (cvType == 0 || cvType == 8 || cvType == 16 || cvType == 24)
 			{
-				dst.data[i] = LUT[(T)src.data[i * src.step[1]]];
+				for (uint32_t i = 0; i < nData; i += dst.step[1])
+				{
+					dst.data[i] = static_cast<uint8_t>(LUT[*(T*)(src.data + (i * src.step[1]))]);
+				}
 			}
+			else if (cvType == 1 || cvType == 9 || cvType == 17 || cvType == 25)
+			{
+				for (uint32_t i = 0; i < nData; i += src.step[1])
+				{
+					dst.data[i] = static_cast<int8_t>(LUT[*(T*)(src.data + (i * src.step[1]))]);
+				}
+			}
+			else if (cvType == 2 || cvType == 10 || cvType == 18 || cvType == 26)
+			{
+				for (uint32_t i = 0; i < nData; i += src.step[1])
+				{
+					dst.data[i] = static_cast<uint16_t>(LUT[*(T*)(src.data + (i * src.step[1]))]);
+				}
+			}
+			else if (cvType == 3 || cvType == 11 || cvType == 19 || cvType == 27)
+			{
+				for (uint32_t i = 0; i < nData; i += src.step[1])
+				{
+					dst.data[i] = static_cast<int16_t>(LUT[*(T*)(src.data + (i * src.step[1]))]);
+				}
+			}
+			else if (cvType == 4 || cvType == 12 || cvType == 20 || cvType == 28)
+			{
+				for (uint32_t i = 0; i < nData; i += src.step[1])
+				{
+					dst.data[i] = static_cast<int32_t>(LUT[*(T*)(src.data + (i * src.step[1]))]);
+				}
+			}
+			return dst;
 		}
 
 		/*! Copy a matrix to a new matrix with a mask

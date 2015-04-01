@@ -26,9 +26,10 @@ namespace Vision
 			uint16_t leftY;		/*!< Left Y coordinate*/
 			uint16_t rightX;	/*!< Right X coordinate*/
 			uint16_t rightY;	/*!< Right Y coordinate*/
+			Rect(uint16_t lx, uint16_t ly, uint16_t rx, uint16_t ry) : leftX(lx), leftY(ly), rightX(rx), rightY(ry) {};
 		} Rect_t;
 
-		typedef std::vector<Segment::Rect_t> RectList_t;
+		typedef std::vector<Vision::Segment::Rect_t> RectList_t;
 
 		/*! Individual blob*/
 		typedef struct Blob
@@ -37,6 +38,7 @@ namespace Vision
 			cv::Mat Img;	/*!< BW image of the blob all the pixel belonging to the blob are set to 1 others are 0*/
 			cv::Rect ROI;	/*!< Coordinates for the blob in the original picture as a cv::Rect*/
 			uint32_t Area;  /*!< Calculated stats of the blob*/
+			Blob(uint16_t label, uint32_t area) : Label(label), Area(area) {};
 		} Blob_t;
 
 		typedef std::vector<Blob_t> BlobList_t;

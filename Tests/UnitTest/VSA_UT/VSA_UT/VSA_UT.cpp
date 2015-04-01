@@ -524,6 +524,7 @@ BOOST_AUTO_TEST_CASE(Vision_CopyMat_With_Mask)
 
 	Mat copiedMat = Vision::ImageProcessing::CopyMat<uchar>(RGB_crop, mask, RGB_crop.type());
 	BOOST_CHECK_EQUAL_COLLECTIONS(copiedMat.data, copiedMat.data + (copiedMat.rows * copiedMat.cols * 3), RGB_res.data, RGB_res.data + (RGB_res.rows * RGB_res.cols * 3));
+	imwrite("Copy_with_Mask.ppm", copiedMat);
 }
 
 BOOST_AUTO_TEST_CASE(Vision_CopyMat_With_LUT)
@@ -533,8 +534,7 @@ BOOST_AUTO_TEST_CASE(Vision_CopyMat_With_LUT)
 	uint32_t *LUT = new uint32_t[255]{};
 	LUT[255] = 1;
 
-	Mat copiedMat;
-	Vision::ImageProcessing::CopyMat<uint32_t>(Label, copiedMat, LUT, CV_8UC1);
+	Mat copiedMat = Vision::ImageProcessing::CopyMat<uint32_t>(Label, LUT, CV_8UC1);
 	BOOST_CHECK_EQUAL_COLLECTIONS(copiedMat.data, copiedMat.data + (copiedMat.rows * copiedMat.cols), BW_res.data, BW_res.data + (BW_res.rows * BW_res.cols));
 	delete[] LUT;
 }
@@ -546,6 +546,12 @@ BOOST_FIXTURE_TEST_CASE(Vision_Create_Blobs, B)
 	Test.GetBlobList(true);
 	imwrite("LabeledBlobs.ppm", Test.LabelledImg);
 	BOOST_CHECK_EQUAL(42, Test.BlobList.size());
+	for_each(Test.BlobList.begin(), Test.BlobList.end(), [](Vision::Segment::Blob_t &b) 
+	{
+		stringstream ss;
+		ss << b.Label << "_few_.ppm";
+		imwrite(ss.str(), b.Img);
+	});
 }
 
 BOOST_FIXTURE_TEST_CASE(Vision_Create_Many_Blobs, BM)
@@ -555,6 +561,12 @@ BOOST_FIXTURE_TEST_CASE(Vision_Create_Many_Blobs, BM)
 	Test.GetBlobList(true);
 	imwrite("LabeledBlobsMany.ppm", Test.LabelledImg);
 	BOOST_CHECK_EQUAL(370, Test.BlobList.size());
+	for_each(Test.BlobList.begin(), Test.BlobList.end(), [](Vision::Segment::Blob_t &b)
+	{
+		stringstream ss;
+		ss << b.Label << "_many_.ppm";
+		imwrite(ss.str(), b.Img);
+	});
 }
 
 BOOST_AUTO_TEST_CASE(Vision_RemoveBorder)
