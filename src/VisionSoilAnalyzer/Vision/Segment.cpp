@@ -395,7 +395,10 @@ namespace Vision
 				// Write the lowest label to the Look-Up-Table
 				LUT_newVal[i] = lowestVal;
 			}
-			else { LUT_newVal[i] = i; }	// End of the line so use the same label
+			else 
+			{
+				LUT_newVal[i] = i; 
+			}	// End of the line so use the same label
 		}
 
 		// Make the labels consecutive numbers
@@ -697,7 +700,7 @@ namespace Vision
 	//	////BlobList.erase(unique(BlobList.begin(), BlobList.end()), BlobList.end());
 	//}
 
-	void Segment::makeConsecutive(uint16_t LastLabelUsed, uint16_t * tempLUT, uint16_t * &LUT_newVal)
+	void Segment::makeConsecutive(uint16_t LastLabelUsed, uint16_t * tempLUT, uint16_t *LUT_newVal)
 	{
 		uint32_t i = LastLabelUsed + 1;
 		while (i-- > 0) { tempLUT[i] = LUT_newVal[i]; }

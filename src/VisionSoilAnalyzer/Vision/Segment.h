@@ -97,6 +97,6 @@ namespace Vision
 		uint8_t GetThresholdLevel(TypeOfObjects TypeObject);
 		void SetBorder(uchar *P, uchar setValue);
 		void FloodFill(uchar *O, uchar *P, uint16_t x, uint16_t y, uchar fillValue, uchar OldValue);
-		void makeConsecutive(uint16_t LastLabelUsed, uint16_t * tempLUT, uint16_t * &LUT_newVal);
+		void makeConsecutive(uint16_t LastLabelUsed, uint16_t * tempLUT, uint16_t *LUT_newVal);
 	};
 }
