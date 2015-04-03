@@ -14,8 +14,8 @@
 
 #include <fstream>
 
-#include <boost/archive/xml_iarchive.hpp>
-#include <boost/archive/xml_oarchive.hpp>
+#include <boost/archive/binary_iarchive.hpp>
+#include <boost/archive/binary_oarchive.hpp>
 #include <boost/math/distributions/students_t.hpp>
 
 #include "MathException.h"
@@ -77,6 +77,56 @@ namespace SoilMath
 			else
 				rejected = true;
 			return rejected;
+		}
+
+		Stats(const Stats &rhs) : bins{ new uint32_t[rhs.noBins] }, Data{ new T1[rhs.n] }
+		{
+			this->binRange = rhs.binRange;
+			this->Calculated = rhs.Calculated;
+			this->Cols = rhs.Cols;
+			this->EndBin = rhs.EndBin;
+			this->isDiscrete = rhs.isDiscrete;
+			this->max = rhs.max;
+			this->Mean = rhs.Mean;
+			this->min = rhs.min;
+			this->n = rhs.n;
+			this->noBins = rhs.noBins;
+			this->n_end = rhs.n_end;
+			this->Range = rhs.Range;
+			this->Rows = rhs.Rows;
+			this->Startbin = rhs.Startbin;
+			this->Std = rhs.Std;
+			this->Sum = rhs.Sum;
+			std::copy(rhs.Data, rhs.Data + rhs.n, this->Data);
+			std::copy(rhs.bins, rhs.bins + rhs.noBins, this->bins);
+		}
+
+		Stats &operator=(Stats const &rhs)
+		{
+			if (&rhs != this) 
+			{
+				bins = new uint32_t[rhs.noBins];
+				Data = new T1[rhs.n];
+				this->binRange = rhs.binRange;
+				this->Calculated = rhs.Calculated;
+				this->Cols = rhs.Cols;
+				this->EndBin = rhs.EndBin;
+				this->isDiscrete = rhs.isDiscrete;
+				this->max = rhs.max;
+				this->Mean = rhs.Mean;
+				this->min = rhs.min;
+				this->n = rhs.n;
+				this->noBins = rhs.noBins;
+				this->n_end = rhs.n_end;
+				this->Range = rhs.Range;
+				this->Rows = rhs.Rows;
+				this->Startbin = rhs.Startbin;
+				this->Std = rhs.Std;
+				this->Sum = rhs.Sum;
+				std::copy(rhs.Data, rhs.Data + rhs.n, this->Data);
+				std::copy(rhs.bins, rhs.bins + rhs.noBins, this->bins);
+			}
+			return *this;
 		}
 
 		Stats(int noBins = 256, T1 startBin = 0, T1 endBin = 255)
@@ -159,7 +209,7 @@ namespace SoilMath
 			BinCalculations(startC, endC);
 		}
 
-		~Stats() 
+		~Stats()
 		{
 			delete[] bins;
 		};
@@ -288,34 +338,28 @@ namespace SoilMath
 		template <class Archive>
 		void serialize(Archive & ar, const unsigned int version)
 		{
-			ar & BOOST_SERIALIZATION_NVP(isDiscrete);
-			ar & BOOST_SERIALIZATION_NVP(n);
-			for (size_t dc = 0; dc < n; dc++) {
-				std::stringstream ss;
-				ss << "Data_" << dc;
-				ar & boost::serialization::make_nvp(ss.str().c_str(), Data[dc]);
-			}
-			ar & BOOST_SERIALIZATION_NVP(noBins);
-			for (size_t dc = 0; dc < noBins; dc++) {
-				std::stringstream ss;
-				ss << "Bin_" << dc;
-				ar & boost::serialization::make_nvp(ss.str().c_str(), bins[dc]);
-			}
-			ar & BOOST_SERIALIZATION_NVP(Calculated);
-			ar & BOOST_SERIALIZATION_NVP(Mean);
-			ar & BOOST_SERIALIZATION_NVP(Range);
-			ar & BOOST_SERIALIZATION_NVP(min);
-			ar & BOOST_SERIALIZATION_NVP(max);
-			ar & BOOST_SERIALIZATION_NVP(Startbin);
-			ar & BOOST_SERIALIZATION_NVP(EndBin);
-			ar & BOOST_SERIALIZATION_NVP(binRange);
-			ar & BOOST_SERIALIZATION_NVP(Std);
-			ar & BOOST_SERIALIZATION_NVP(Sum);
-			ar & BOOST_SERIALIZATION_NVP(Rows);
-			ar & BOOST_SERIALIZATION_NVP(Cols);
+			ar & isDiscrete;
+			ar & n;
+			for (size_t dc = 0; dc < n; dc++) { ar & Data[dc]; }
+			ar & noBins;
+			for (size_t dc = 0; dc < noBins; dc++) { ar & bins[dc]; }
+			ar & Calculated;
+			ar & Mean;
+			ar & Range;
+			ar & min;
+			ar & max;
+			ar & Startbin;
+			ar & EndBin;
+			ar & binRange;
+			ar & Std;
+			ar & Sum;
+			ar & Rows;
+			ar & Cols;
 		}
 	};
 }
 
 typedef SoilMath::Stats<float, double, long double> floatStat_t;
 typedef SoilMath::Stats<uchar, uint32_t, uint64_t> ucharStat_t;
+typedef SoilMath::Stats<uint16_t, uint32_t, uint64_t> uint16Stat_t;
+typedef SoilMath::Stats<uint32_t, uint32_t, uint64_t> uint32Stat_t;

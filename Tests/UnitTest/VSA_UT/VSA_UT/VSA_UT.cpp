@@ -107,7 +107,7 @@ BOOST_AUTO_TEST_CASE(SoilMath_Stats_DiscreteMath_BigNumber)
 		}
 	}
 
-	SoilMath::Stats<uint16_t, uint32_t, uint64_t> Test(BigNoTestMatrix, 200, 200);
+	uint16Stat_t Test(BigNoTestMatrix, 200, 200);
 	BOOST_CHECK_EQUAL_COLLECTIONS(Test.bins, Test.bins + 255, histTestResult, histTestResult + 255);
 	BOOST_CHECK_CLOSE(Test.Mean, meanTestResult * 10, 0.0001);
 	BOOST_CHECK_EQUAL(Test.n, nTestResult);
@@ -581,6 +581,15 @@ BOOST_AUTO_TEST_CASE(Vision_RemoveBorder)
 }
 
 // Soil Test
+
+BOOST_FIXTURE_TEST_CASE(Soil_Particle_Analyze, M)
+{
+	SoilMath::NN nn;
+	nn.LoadState("../ComparisionPictures/NN_test.xml");
+
+	SoilAnalyzer::Sample Test(src);
+	Test.Analyse(nn);
+}
 
 BOOST_FIXTURE_TEST_CASE(Soil_Sample_Save_And_Load, M)
 {

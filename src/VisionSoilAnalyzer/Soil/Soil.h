@@ -27,7 +27,6 @@ namespace SoilAnalyzer
 			ar & Location;
 			ar & TimeTaken;
 			ar & TimeAnalyzed;
-			ar & Analyzed;
 			ar & BW;
 			ar & Intensity;
 			ar & LAB;
@@ -42,7 +41,6 @@ namespace SoilAnalyzer
 	public:
 		Soil();
 		~Soil();
-		bool Analyzed = false;
 		cv::Mat BW;
 		cv::Mat Intensity;
 		cv::Mat LAB;

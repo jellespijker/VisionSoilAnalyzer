@@ -422,7 +422,7 @@ namespace Vision
 		}
 
 		// Create a LUT_filter for each value that is smaller then minBlobArea
-		SoilMath::Stats<uint16_t, uint32_t, uint64_t> ProcImgStats(P, nCols, nRows, MaxLabel, 0, MaxLabel);
+		uint16Stat_t ProcImgStats(P, nCols, nRows, MaxLabel, 0, MaxLabel);
 		uint16_t *LUT_finalVal = new uint16_t[MaxLabel + 1]{};
 		uint16_t count = 0;
 		i = 0;
@@ -602,7 +602,7 @@ namespace Vision
 		RectList_t rectList;
 
 		// Calculate Stats the statistics
-		SoilMath::Stats<uint16_t, uint32_t, uint64_t> LabelStats((uint16_t *)LabelledImg.data, LabelledImg.cols, LabelledImg.rows, MaxLabel + 1, 0, MaxLabel);
+		uint16Stat_t LabelStats((uint16_t *)LabelledImg.data, LabelledImg.cols, LabelledImg.rows, MaxLabel + 1, 0, MaxLabel);
 
 		BlobList.reserve(MaxLabel + 1);
 		rectList.reserve(MaxLabel + 1);
@@ -656,13 +656,6 @@ namespace Vision
 			LUT_filter[i] = 0;
 		}
 		delete[] LUT_filter;
-
-		////final check the bloblist and remove Mat with zero rows or cols
-		//std::remove_if(BlobList.begin(), BlobList.end(),[](Blob_t &b) -> bool
-		//{
-		//	if (b.Img.cols == 0 || b.Img.rows == 0)	return true;
-		//	else return false;
-		//});
 
 		//Remove background blob
 		BlobList.erase(BlobList.begin());

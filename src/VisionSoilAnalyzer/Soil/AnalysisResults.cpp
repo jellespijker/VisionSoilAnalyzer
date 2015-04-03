@@ -12,7 +12,4 @@ namespace SoilAnalyzer
 	}
 
 
-	void AnalysisResults::Analyse(AnalyseType analysetType)
-	{
-	}
 }
