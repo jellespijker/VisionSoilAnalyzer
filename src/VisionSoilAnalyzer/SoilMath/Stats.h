@@ -47,6 +47,9 @@ namespace SoilMath
 		T3 Sum = 0;
 		uint16_t Rows = 0;
 		uint16_t Cols = 0;
+		
+		uint32_t *begin() {	return &bins[0]; }
+		uint32_t *end() { return &bins[noBins]; }
 
 		//Compare the sample using the Welch's Test (source: http://www.boost.org/doc/libs/1_57_0/libs/math/doc/html/math_toolkit/stat_tut/weg/st_eg/two_sample_students_t.html)
 		bool WelchTest(SoilMath::Stats<T1, T2, T3> &statComp)
@@ -97,8 +100,9 @@ namespace SoilMath
 			this->Startbin = rhs.Startbin;
 			this->Std = rhs.Std;
 			this->Sum = rhs.Sum;
-			std::copy(rhs.Data, rhs.Data + rhs.n, this->Data);
+			//std::copy(rhs.Data, rhs.Data + rhs.n, this->Data);
 			std::copy(rhs.bins, rhs.bins + rhs.noBins, this->bins);
+			this->Data = &rhs.Data[0];
 		}
 
 		Stats &operator=(Stats const &rhs)
@@ -123,7 +127,8 @@ namespace SoilMath
 				this->Startbin = rhs.Startbin;
 				this->Std = rhs.Std;
 				this->Sum = rhs.Sum;
-				std::copy(rhs.Data, rhs.Data + rhs.n, this->Data);
+				//std::copy(rhs.Data, rhs.Data + rhs.n, this->Data);
+				this->Data = &rhs.Data[0];
 				std::copy(rhs.bins, rhs.bins + rhs.noBins, this->bins);
 			}
 			return *this;
