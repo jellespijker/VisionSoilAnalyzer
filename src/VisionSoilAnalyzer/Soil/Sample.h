@@ -9,10 +9,13 @@
 #include "Mat_archive.h"
 
 #include <opencv2/core.hpp>
+#include <opencv2/highgui.hpp>
+
 #include <vector>
 #include <string>
 
 #include "../Vision/Vision.h"
+#include "../SoilMath/SoilMath.h"
 
 using namespace std;
 using namespace cv;
@@ -31,8 +34,8 @@ namespace SoilAnalyzer
 		vector<Particle> Population;
 		AnalysisResults Results;
 
-		void Analyse();
-		void Analyse(const Mat& src);
+		void Analyse(SoilMath::NN &nn);
+		void Analyse(const Mat& src, SoilMath::NN &nn);
 		void Save(string &filename);
 		void Load(string &filename);
 

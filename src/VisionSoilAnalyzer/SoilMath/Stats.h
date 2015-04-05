@@ -14,8 +14,8 @@
 
 #include <fstream>
 
-#include <boost/archive/xml_iarchive.hpp>
-#include <boost/archive/xml_oarchive.hpp>
+#include <boost/archive/binary_iarchive.hpp>
+#include <boost/archive/binary_oarchive.hpp>
 #include <boost/math/distributions/students_t.hpp>
 
 #include "MathException.h"
@@ -37,16 +37,19 @@ namespace SoilMath
 		float Mean = 0.0;
 		uint32_t n = 0;
 		uint32_t noBins = 0;
-		T1 Range;
-		T1 min;
-		T1 max;
-		T1 Startbin;
-		T1 EndBin;
-		T1 binRange;
+		T1 Range = 0;
+		T1 min = 0;
+		T1 max = 0;
+		T1 Startbin = 0;
+		T1 EndBin = 0;
+		T1 binRange = 0;
 		float Std = 0.0;
 		T3 Sum = 0;
 		uint16_t Rows = 0;
 		uint16_t Cols = 0;
+		
+		uint32_t *begin() {	return &bins[0]; }
+		uint32_t *end() { return &bins[noBins]; }
 
 		//Compare the sample using the Welch's Test (source: http://www.boost.org/doc/libs/1_57_0/libs/math/doc/html/math_toolkit/stat_tut/weg/st_eg/two_sample_students_t.html)
 		bool WelchTest(SoilMath::Stats<T1, T2, T3> &statComp)
@@ -79,6 +82,56 @@ namespace SoilMath
 			return rejected;
 		}
 
+		Stats(const Stats &rhs) : bins{ new uint32_t[rhs.noBins] }, Data{ new T1[rhs.n] }
+		{
+			this->binRange = rhs.binRange;
+			this->Calculated = rhs.Calculated;
+			this->Cols = rhs.Cols;
+			this->EndBin = rhs.EndBin;
+			this->isDiscrete = rhs.isDiscrete;
+			this->max = rhs.max;
+			this->Mean = rhs.Mean;
+			this->min = rhs.min;
+			this->n = rhs.n;
+			this->noBins = rhs.noBins;
+			this->n_end = rhs.n_end;
+			this->Range = rhs.Range;
+			this->Rows = rhs.Rows;
+			this->Startbin = rhs.Startbin;
+			this->Std = rhs.Std;
+			this->Sum = rhs.Sum;
+			std::copy(rhs.bins, rhs.bins + rhs.noBins, this->bins);
+			this->Data = &rhs.Data[0];
+		}
+
+		Stats &operator=(Stats const &rhs)
+		{
+			if (&rhs != this) 
+			{
+				bins = new uint32_t[rhs.noBins];
+				Data = new T1[rhs.n];
+				this->binRange = rhs.binRange;
+				this->Calculated = rhs.Calculated;
+				this->Cols = rhs.Cols;
+				this->EndBin = rhs.EndBin;
+				this->isDiscrete = rhs.isDiscrete;
+				this->max = rhs.max;
+				this->Mean = rhs.Mean;
+				this->min = rhs.min;
+				this->n = rhs.n;
+				this->noBins = rhs.noBins;
+				this->n_end = rhs.n_end;
+				this->Range = rhs.Range;
+				this->Rows = rhs.Rows;
+				this->Startbin = rhs.Startbin;
+				this->Std = rhs.Std;
+				this->Sum = rhs.Sum;
+				this->Data = &rhs.Data[0];
+				std::copy(rhs.bins, rhs.bins + rhs.noBins, this->bins);
+			}
+			return *this;
+		}
+
 		Stats(int noBins = 256, T1 startBin = 0, T1 endBin = 255)
 		{
 			min = numeric_limits<T1>::max();
@@ -87,7 +140,7 @@ namespace SoilMath
 			Startbin = startBin;
 			EndBin = endBin;
 			this->noBins = noBins;
-			bins = new uint32_t[noBins] {};
+			bins = new uint32_t[noBins]{};
 
 			if (typeid(T1) == typeid(float) || typeid(T1) == typeid(double) || typeid(T1) == typeid(long double))
 			{
@@ -113,18 +166,16 @@ namespace SoilMath
 			if (typeid(T1) == typeid(float) || typeid(T1) == typeid(double) || typeid(T1) == typeid(long double))
 			{
 				isDiscrete = false;
-				//binRange = static_cast<T1>((EndBin + 1 - Startbin) / noBins);
 			}
 			else
 			{
 				isDiscrete = true;
-				//binRange = static_cast<T1>(round((EndBin + 1 - Startbin) / noBins));
 			}
 
 			Data = data;
 			Rows = rows;
 			Cols = cols;
-			bins = new uint32_t[noBins] {};
+			bins = new uint32_t[noBins]{};
 			this->noBins = noBins;
 			if (isDiscrete) { BasicCalculate(); }
 			else { BasicCalculateFloat(); }
@@ -152,7 +203,7 @@ namespace SoilMath
 				isDiscrete = true;
 			}
 
-			bins = new uint32_t[noBins] {};
+			bins = new uint32_t[noBins]{};
 			while (i-- > 0)
 			{
 				bins[i] = binData[i];
@@ -161,7 +212,10 @@ namespace SoilMath
 			BinCalculations(startC, endC);
 		}
 
-		~Stats() {};
+		~Stats()
+		{
+			delete[] bins;
+		};
 
 		void BasicCalculateFloat()
 		{
@@ -186,11 +240,12 @@ namespace SoilMath
 
 			// Get Max;
 			Range = max - min;
-
+			bool troep = false;
 			//  fill histogram
 			for (uint32_t i = 0; i < n; i++)
 			{
 				index = static_cast<uint32_t>(floor((Data[i] - min) / binRange));
+				if (index == noBins) { index -= 1; }
 				bins[index]++;
 				sum_dev += pow((Data[i] - Mean), 2);
 			}
@@ -221,12 +276,13 @@ namespace SoilMath
 
 			// Get Max;
 			Range = max - min;
-
+			bool troep = true;
 			// fills the histogram and calculate the std. dev
 			uint32_t index;
 			for (uint32_t i = 0; i < n; i++)
 			{
 				index = static_cast<uint32_t>(floor((Data[i] - min) / binRange));
+				if (index == noBins) { index -= 1; }
 				bins[index]++;
 				sum_dev += pow((Data[i] - Mean), 2);
 			}
@@ -242,16 +298,14 @@ namespace SoilMath
 		{
 			float sum_dev = 0.0;
 			// Get the Sum
-			for (uint32_t i = 0; i < noBins; i++)
-			{
-				Sum += bins[i] * (startC + i);
-			}
+			uint32_t i = 0;
+			for_each(begin(), end(), [&](uint32_t &b) { Sum += b * (startC + i++); });
 
 			// Get Mean
 			Mean = Sum / (float)n;
 
 			// Get max
-			for (uint32_t i = noBins; i > 0; i--)
+			for (int i = noBins - 1; i >= 0; i--)
 			{
 				if (bins[i] != 0)
 				{
@@ -274,47 +328,39 @@ namespace SoilMath
 			Range = max - min;
 
 			// Calculate Standard Deviation
-			for (uint32_t i = 0; i < noBins; i++)
-			{
-				sum_dev += bins[i] * pow(((i + startC) - Mean), 2);
-			}
+			i = 0;
+			for_each(begin(), end(), [&](uint32_t &b) { sum_dev += b * pow(((i++ + startC) - Mean), 2); });
 			Std = sqrt((float)(sum_dev / n));
 			Calculated = true;
 		}
 	private:
-		bool MinMaxSumCalc = false;
+		uint32_t n_end = 0;
 		friend class boost::serialization::access;
 		template <class Archive>
 		void serialize(Archive & ar, const unsigned int version)
 		{
-			ar & BOOST_SERIALIZATION_NVP(isDiscrete);
-			ar & BOOST_SERIALIZATION_NVP(n);
-			for (size_t dc = 0; dc < n; dc++) {
-				std::stringstream ss;
-				ss << "Data_" << dc;
-				ar & boost::serialization::make_nvp(ss.str().c_str(), Data[dc]);
-			}
-			ar & BOOST_SERIALIZATION_NVP(noBins);
-			for (size_t dc = 0; dc < noBins; dc++) {
-				std::stringstream ss;
-				ss << "Bin_" << dc;
-				ar & boost::serialization::make_nvp(ss.str().c_str(), bins[dc]);
-			}
-			ar & BOOST_SERIALIZATION_NVP(Calculated);
-			ar & BOOST_SERIALIZATION_NVP(Mean);
-			ar & BOOST_SERIALIZATION_NVP(Range);
-			ar & BOOST_SERIALIZATION_NVP(min);
-			ar & BOOST_SERIALIZATION_NVP(max);
-			ar & BOOST_SERIALIZATION_NVP(Startbin);
-			ar & BOOST_SERIALIZATION_NVP(EndBin);
-			ar & BOOST_SERIALIZATION_NVP(binRange);
-			ar & BOOST_SERIALIZATION_NVP(Std);
-			ar & BOOST_SERIALIZATION_NVP(Sum);
-			ar & BOOST_SERIALIZATION_NVP(Rows);
-			ar & BOOST_SERIALIZATION_NVP(Cols);
+			ar & isDiscrete;
+			ar & n;
+			for (size_t dc = 0; dc < n; dc++) { ar & Data[dc]; }
+			ar & noBins;
+			for (size_t dc = 0; dc < noBins; dc++) { ar & bins[dc]; }
+			ar & Calculated;
+			ar & Mean;
+			ar & Range;
+			ar & min;
+			ar & max;
+			ar & Startbin;
+			ar & EndBin;
+			ar & binRange;
+			ar & Std;
+			ar & Sum;
+			ar & Rows;
+			ar & Cols;
 		}
 	};
 }
 
 typedef SoilMath::Stats<float, double, long double> floatStat_t;
 typedef SoilMath::Stats<uchar, uint32_t, uint64_t> ucharStat_t;
+typedef SoilMath::Stats<uint16_t, uint32_t, uint64_t> uint16Stat_t;
+typedef SoilMath::Stats<uint32_t, uint32_t, uint64_t> uint32Stat_t;

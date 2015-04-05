@@ -21,8 +21,32 @@ namespace Vision
 		OriginalImg = src;
 	}
 
+	/*! Copy constructor*/
+	Conversion::Conversion(const Conversion & rhs)
+	{
+		this->OriginalColorSpace = rhs.OriginalColorSpace;
+		this->OriginalImg = rhs.OriginalImg;
+		this->ProcessedColorSpace = rhs.ProcessedColorSpace;
+		this->ProcessedImg = rhs.ProcessedImg;
+		this->TempImg = rhs.TempImg;
+	}
+
 	/*! De-constructor of the class*/
 	Conversion::~Conversion() {	}
+
+	/*! Assignment operator*/
+	Conversion & Conversion::operator=(Conversion rhs)
+	{
+		if (&rhs != this)
+		{
+			this->OriginalColorSpace = rhs.OriginalColorSpace;
+			this->OriginalImg = rhs.OriginalImg;
+			this->ProcessedColorSpace = rhs.ProcessedColorSpace;
+			this->ProcessedImg = rhs.ProcessedImg;
+			this->TempImg = rhs.TempImg;
+		}
+		return *this;
+	}
 
 	/*! Convert the source image from one colorspace to a destination colorspace
 	- RGB 2 Intensity

@@ -17,6 +17,13 @@ namespace Vision
 		ProcessedImg.create(OriginalImg.size(), CV_8UC1);
 	}
 
+	Enhance::Enhance(const Enhance & rhs)
+	{
+		this->OriginalImg = rhs.OriginalImg;
+		this->ProcessedImg = rhs.OriginalImg;
+		this->TempImg = rhs.TempImg;
+	}
+
 	/*! Constructor
 	\param src cv::Mat source image
 	\param dst cv::Mat destination image
@@ -46,6 +53,17 @@ namespace Vision
 	/*! Dec-constructor*/
 	Enhance::~Enhance() { }
 
+		Enhance & Enhance::operator=(Enhance rhs)
+		{
+			if (&rhs != this)
+			{
+				this->OriginalImg = rhs.OriginalImg;
+				this->ProcessedImg = rhs.ProcessedImg;
+				this->TempImg = rhs.ProcessedImg;
+			}
+			return *this;
+		}
+
 	/*! Calculate the standard deviation of the neighboring pixels
 	\param O uchar pointer to the current pixel of the original image
 	\param i current counter
@@ -57,17 +75,16 @@ namespace Vision
 	*/
 	float Enhance::CalculateStdOfNeighboringPixels(uchar *O, int i, int hKsize, int nCols, int noNeighboursPix, float mean)
 	{
-		register float sum_dev = 0.0;
-		register float Std = 0.0;
-		int k;
-		int l;
+		float sum_dev = 0.0;
+		float Std = 0.0;
 		sum_dev = 0.0;
 		Std = 0.0;
-		k = -hKsize;
-		while (k++ <= hKsize)
+		for (int j = -hKsize; j < hKsize; j++)
 		{
-			l = -hKsize;
-			while (l++ <= hKsize) { sum_dev += pow((O[i + k * nCols + l] - mean), 2); }
+			for (int k = -hKsize; k < hKsize; k++)
+			{
+				sum_dev += pow((O[i + j * nCols + k] - mean), 2);
+			}
 		}
 		Std = sqrt(sum_dev / noNeighboursPix);
 		return Std;
@@ -82,13 +99,12 @@ namespace Vision
 	*/
 	void Enhance::CalculateSumOfNeighboringPixels(uchar *O, int i, int hKsize, int nCols, uint32_t &sum)
 	{
-		register int k;
-		k = -hKsize;
-		register int l;
-		while (k++ <= hKsize)
+		for (int j = -hKsize; j < hKsize; j++)
 		{
-			l = -hKsize;
-			while (l++ <= hKsize) { sum += O[i + k * nCols + l]; }
+			for (int k = -hKsize; k < hKsize; k++)
+			{
+				sum += O[i + j * nCols + k];
+			}
 		}
 	}
 
@@ -123,16 +139,16 @@ namespace Vision
 		CHAIN_PROCESS(chain, O, uchar);
 		uchar *P = ProcessedImg.data;
 
-		register uint32_t i = 0;
+		uint32_t i = 0;
 		int hKsize = kernelsize / 2;
 		int nCols = OriginalImg.cols;
-		register int pStart = (hKsize * nCols) + hKsize + 1;
+		int pStart = (hKsize * nCols) + hKsize + 1;
 
 		int nData = OriginalImg.rows * OriginalImg.cols;
-		register int pEnd = nData - pStart;
+		int pEnd = nData - pStart;
 		uint32_t noNeighboursPix = kernelsize * kernelsize;
-		register uint32_t sum;
-		register float mean = 0.0;
+		uint32_t sum;
+		float mean = 0.0;
 
 		uchar *nRow = GetNRow(nData, hKsize, nCols, OriginalImg.rows);
 
@@ -170,6 +186,8 @@ namespace Vision
 
 		// Stretch the image with an normal histogram equalization
 		HistogramEqualization(true);
+
+		delete[] nRow;
 	}
 
 	/*! Blurs the image with a NxN kernel
@@ -204,10 +222,10 @@ namespace Vision
 		int nData = OriginalImg.rows * OriginalImg.cols;
 		int hKsize = kernelsize / 2;
 		int nCols = OriginalImg.cols;
-		register int pStart = (hKsize * nCols) + hKsize + 1;
-		register int pEnd = nData - pStart;
+		int pStart = (hKsize * nCols) + hKsize + 1;
+		int pEnd = nData - pStart;
 		int noNeighboursPix = kernelsize * kernelsize;
-		register uint32_t sum;
+		uint32_t sum;
 
 		uint32_t i;
 		uchar *nRow = GetNRow(nData, hKsize, nCols, OriginalImg.rows);
@@ -223,6 +241,8 @@ namespace Vision
 
 			P[i] = (uchar)(round(sum / noNeighboursPix));
 		}
+
+		delete[] nRow;
 	}
 
 	/*! Stretches the image using a histogram
@@ -241,12 +261,12 @@ namespace Vision
 
 		// Calculate the statics of the whole image
 		ucharStat_t imgStats(O, OriginalImg.rows, OriginalImg.cols);
-		register float sFact;
+		float sFact;
 		if (imgStats.min != imgStats.max) { sFact = 255.0f / (imgStats.max - imgStats.min); }
 		else { sFact = 1.0f; }
 
 		uint32_t i = 256;
-		register uchar LUT_changeValue[256];
+		uchar LUT_changeValue[256];
 		while (i-- > 0) { LUT_changeValue[i] = (uchar)(((float)(i)* sFact) + 0.5f); }
 
 		O = OriginalImg.data;

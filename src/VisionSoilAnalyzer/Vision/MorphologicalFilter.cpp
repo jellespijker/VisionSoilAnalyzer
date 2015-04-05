@@ -10,7 +10,25 @@ namespace Vision
 		ProcessedImg.create(OriginalImg.size(), CV_8UC1);
 	}
 
+	MorphologicalFilter::MorphologicalFilter(const MorphologicalFilter & rhs)
+	{
+		this->OriginalImg = rhs.OriginalImg;
+		this->ProcessedImg = rhs.ProcessedImg;
+		this->TempImg = rhs.ProcessedImg;
+	}
+
 	MorphologicalFilter::~MorphologicalFilter() {}
+
+		MorphologicalFilter & MorphologicalFilter::operator=(MorphologicalFilter & rhs)
+		{
+			if (&rhs != this)
+			{
+				this->OriginalImg = rhs.OriginalImg;
+				this->ProcessedImg = rhs.ProcessedImg;
+				this->TempImg = rhs.TempImg;
+			}
+			return *this;
+		}
 
 	void MorphologicalFilter::Erosion(const Mat &src, Mat &dst, const Mat &mask)
 	{
@@ -48,6 +66,9 @@ namespace Vision
 		uint32_t nKData = mask.cols * mask.rows;
 		uchar *nRow = GetNRow(nData, hKsizeCol, nCols, nRows);
 		uchar *nKRow = GetNRow(nKData, 0, mask.cols, mask.rows);
+
+		SHOW_DEBUG_IMG(OriginalImg, uchar, 255, "Original Image Erode!");
+		SHOW_DEBUG_IMG(TempImg, uchar, 255, "Temp Image Erode!");
 
 		while (i < pEnd)
 		{
@@ -88,5 +109,10 @@ namespace Vision
 			else { throw Exception::PixelValueOutOfBoundException(); } // Unexpected value throw exception
 			i++;
 		}
+
+		delete[] nRow;
+		delete[] nKRow;
+
+		SHOW_DEBUG_IMG(ProcessedImg, uchar, 255, "Processed Image Erode!");
 	}
 }

@@ -18,9 +18,46 @@ namespace Vision
 		LabelledImg.create(OriginalImg.size(), CV_16UC1);
 	}
 
+	Segment::Segment(const Segment & rhs)
+	{
+		this->BlobList = rhs.BlobList;
+		this->LabelledImg = rhs.LabelledImg;
+		this->MaxLabel = rhs.MaxLabel;
+		this->noOfFilteredBlobs = rhs.noOfFilteredBlobs;
+		this->OriginalImg = rhs.OriginalImg;
+		this->OriginalImgStats = rhs.OriginalImgStats;
+		this->ProcessedImg = rhs.ProcessedImg;
+		this->TempImg = rhs.TempImg;
+		this->ThresholdLevel = rhs.ThresholdLevel;
+	}
+
 	//! De-constructor
 	Segment::~Segment()
 	{
+	}
+
+	Segment & Segment::operator=(Segment & rhs)
+	{
+		if (&rhs != this)
+		{
+			this->BlobList = rhs.BlobList;
+			this->LabelledImg = rhs.LabelledImg;
+			this->MaxLabel = rhs.MaxLabel;
+			this->noOfFilteredBlobs = rhs.noOfFilteredBlobs;
+			this->OriginalImg = rhs.OriginalImg;
+			this->OriginalImgStats = rhs.OriginalImgStats;
+			this->ProcessedImg = rhs.ProcessedImg;
+			this->TempImg = rhs.TempImg;
+			this->ThresholdLevel = rhs.ThresholdLevel;
+		}
+		return *this;
+	}
+
+	void Segment::LoadOriginalImg(const Mat & src)
+	{
+		OriginalImg = src;
+		ProcessedImg.create(OriginalImg.size(), CV_8UC1);
+		LabelledImg.create(OriginalImg.size(), CV_16UC1);
 	}
 
 	/*! Determine the threshold level by iteration, between two distribution, presumably back- and foreground. It works towards the average of the two averages and finally sets the threshold with two time the standard deviation from the mean of the set object
@@ -72,6 +109,8 @@ namespace Vision
 			Lmean = (uchar)(sLeft.Mean + 0.5);
 			Rstd = (uchar)(sRight.Std + 0.5);
 			Lstd = (uchar)(sLeft.Std + 0.5);
+			delete[] Left;
+			delete[] Right;
 		}
 
 		// Assumes the pixel value of the sought object lies between 2 sigma
@@ -122,19 +161,21 @@ namespace Vision
 		CV_Assert(OriginalImg.depth() != sizeof(uchar) ||
 			OriginalImg.depth() != sizeof(uint16_t));
 
-		uint32_t i = 0;
-
 		// Create LUT
 		uchar LUT_newValue[256]{ 0 };
 		if (Typeobjects == Bright)
 		{
-			i = 256;
-			while (i-- > t) { LUT_newValue[i] = 1; }
+			for (uint32_t i = t; i < 256; i++)
+			{
+				LUT_newValue[i] = 1;
+			}
 		}
 		else
 		{
-			i = t + 1;
-			while (i-- > 0) { LUT_newValue[i] = 1; }
+			for (uint32_t i = 0; i <= t; i++)
+			{
+				LUT_newValue[i] = 1;
+			}
 		}
 
 		// Create the pointers to the data
@@ -142,8 +183,10 @@ namespace Vision
 		uchar *O = OriginalImg.data;
 
 		// Fills the ProcessedImg with either a 0 or 1
-		i = OriginalImg.cols * OriginalImg.rows + 1;
-		while (i-- > 0) { *P++ = LUT_newValue[*O++]; }
+		for (uint32_t i = 0; i < OriginalImg.cols * OriginalImg.rows; i++)
+		{
+			P[i] = LUT_newValue[O[i]];
+		}
 	}
 
 	/*! Set all the border pixels to a set value
@@ -187,13 +230,17 @@ namespace Vision
 	*/
 	void Segment::RemoveBorderBlobs(uint32_t border, bool chain)
 	{
-		border + 1;
 		CV_Assert(OriginalImg.depth() != sizeof(uchar));
 		EMPTY_CHECK(OriginalImg);
 		// make Pointers
 		uchar *O;
 		CHAIN_PROCESS(chain, O, uchar);
-		ProcessedImg = OriginalImg.clone();
+		if (chain) { ProcessedImg = TempImg.clone(); } 
+		else { ProcessedImg = OriginalImg.clone(); } 		
+
+		SHOW_DEBUG_IMG(OriginalImg, uchar, 255, "Original Image RemoverBorderBlobs!");
+		SHOW_DEBUG_IMG(TempImg, uchar, 255, "Temp Image RemoverBorderBlobs!");
+
 		uchar *P = ProcessedImg.data;
 		uint32_t cols = ProcessedImg.cols;
 		uint32_t rows = ProcessedImg.rows;
@@ -201,7 +248,7 @@ namespace Vision
 		{
 			for (uint32_t j = 0; j < cols; j++)
 			{
-				if (O[(i * cols) + j] == 1 && P[(i * cols) + j] != 2) { cv::floodFill(ProcessedImg, cv::Point(j, i), 2); }
+				if (O[(i * cols) + j] == 1 && P[(i * cols) + j] != 2) { cv::floodFill(ProcessedImg, cv::Point(j, i), (uchar)2); }
 			}
 		}
 
@@ -209,7 +256,7 @@ namespace Vision
 		{
 			for (uint32_t j = 0; j < cols; j++)
 			{
-				if (O[(i * cols) + j] == 1 && P[(i * cols) + j] != 2) { cv::floodFill(ProcessedImg, cv::Point(j, i), 2); }
+				if (O[(i * cols) + j] == 1 && P[(i * cols) + j] != 2) { cv::floodFill(ProcessedImg, cv::Point(j, i), (uchar)2); }
 			}
 		}
 
@@ -217,16 +264,20 @@ namespace Vision
 		{
 			for (uint32_t j = 0; j < border; j++)
 			{
-				if (O[(i * cols) + j] == 1 && P[(i * cols) + j] != 2) {	cv::floodFill(ProcessedImg, cv::Point(j, i), 2); }
-				if (O[(i * cols) + (cols - j - 1)] == 1 && P[(i * cols) + (cols - j - 1)] != 2)	{ cv::floodFill(ProcessedImg, cv::Point(cols - j - 1, i), 2);	}
+				if (O[(i * cols) + j] == 1 && P[(i * cols) + j] != 2) {	cv::floodFill(ProcessedImg, cv::Point(j, i), (uchar)2); }
+				if (O[(i * cols) + (cols - j - 1)] == 1 && P[(i * cols) + (cols - j - 1)] != 2)	{ cv::floodFill(ProcessedImg, cv::Point(cols - j - 1, i), (uchar)2);	}
 			}
 		}
+
+		SHOW_DEBUG_IMG(ProcessedImg, uchar, 255, "Processed Image RemoverBorderBlobs before LUT!");
 
 		// Change values 2 -> 0
 		uchar LUT_newValue[3]{ 0, 1, 0 };
 		P = ProcessedImg.data;
 		uint32_t nData = rows * cols;
 		for (uint32_t i = 0; i < nData; i++) { P[i] = LUT_newValue[P[i]];}
+
+		SHOW_DEBUG_IMG(ProcessedImg, uchar, 255, "Processed Image RemoverBorderBlobs!");
 	}
 
 	/*! Label all the individual blobs in a BW source image. The result are written to the labelledImg as an ushort
@@ -269,7 +320,7 @@ namespace Vision
 				if (O[i] == 0) { P[i] = 0; }
 
 				// If current value = 1 check North and West and act accordingly
-				else if (O[i] = 1)
+				else if (O[i] == 1)
 				{
 					uint16_t North = P[i - nCols];
 					uint16_t West = P[i - 1];
@@ -315,7 +366,7 @@ namespace Vision
 				if (O[i] == 0) { P[i] = 0; }
 
 				// If current value = 1 check North and West and act accordingly
-				else if (O[i] = 1)
+				else if (O[i] == 1)
 				{
 					uint16_t *nPixels = new uint16_t[4];
 					nPixels[0] = P[i - 1];
@@ -357,6 +408,7 @@ namespace Vision
 							while (j-- > 0)	{ if (nPixels[j] != 0 && nPixels[j] > minVal) { connectedLabels[nPixels[j]].push_back(minVal); } }
 						}
 					}
+					delete[] nPixels;
 				}
 				// If there is a value greater then 1 or smaller then 1 throw error
 				else { throw Exception::PixelValueOutOfBoundException(); }
@@ -392,7 +444,10 @@ namespace Vision
 				// Write the lowest label to the Look-Up-Table
 				LUT_newVal[i] = lowestVal;
 			}
-			else { LUT_newVal[i] = i; }	// End of the line so use the same label
+			else 
+			{
+				LUT_newVal[i] = i; 
+			}	// End of the line so use the same label
 		}
 
 		// Make the labels consecutive numbers
@@ -416,15 +471,15 @@ namespace Vision
 		}
 
 		// Create a LUT_filter for each value that is smaller then minBlobArea
-		SoilMath::Stats<uint16_t, uint32_t, uint64_t> ProcImgStats(P, nCols, nRows, MaxLabel, 0, MaxLabel);
-		LUT_newVal = new uint16_t[MaxLabel + 1]{};
+		uint16Stat_t ProcImgStats(P, nCols, nRows, MaxLabel + 1, 0, MaxLabel);
+		uint16_t *LUT_finalVal = new uint16_t[MaxLabel + 1]{};
 		uint16_t count = 0;
 		i = 0;
 		while (i <= MaxLabel)
 		{
 			if (ProcImgStats.bins[i] > minBlobArea) 
 			{
-				LUT_newVal[i] = count++; 
+				LUT_finalVal[i] = count++; 
 			}
 			i++;
 		}
@@ -436,9 +491,13 @@ namespace Vision
 		i = 0;
 		while (i < pEnd)
 		{
-			P[i] = LUT_newVal[P[i]];
+			P[i] = LUT_finalVal[P[i]];
 			i++;
 		}
+
+		delete[] tempLUT;
+		delete[] LUT_newVal;
+		delete[] LUT_finalVal;
 	}
 
 	/*! Create a BW image with only edges from a BW image
@@ -476,7 +535,7 @@ namespace Vision
 		uint32_t i = 0;
 
 		//Loop through the image and set each pixel which has a zero neighbor set it to two.
-		if (conn = Four)
+		if (conn == Four)
 		{
 			// Loop through the picture
 			while (i < pEnd)
@@ -484,7 +543,7 @@ namespace Vision
 				// If current value = zero processed value = zero
 				if (O[i] == 0) { P[i] = 0; }
 				// If current value = 1 check North West, South and East and act accordingly
-				else if (O[i] = 1)
+				else if (O[i] == 1)
 				{
 					uchar *nPixels = new uchar[4];
 					nPixels[0] = O[i - 1];
@@ -509,7 +568,7 @@ namespace Vision
 				// If current value = zero processed value = zero
 				if (O[i] == 0) { P[i] = 0; }
 				// If current value = 1 check North West, South and East and act accordingly
-				else if (O[i] = 1)
+				else if (O[i] == 1)
 				{
 					uchar *nPixels = new uchar[8];
 					nPixels[0] = O[i - 1];
@@ -547,8 +606,6 @@ namespace Vision
 		uint32_t nCols = OriginalImg.cols;
 		uint32_t nRows = OriginalImg.rows;
 		uint32_t nData = nCols * nRows;
-		uint32_t pEnd = nData + 1;
-		uint32_t i = 0;
 
 		// Setup the erosion
 		MorphologicalFilter eroder;
@@ -563,13 +620,13 @@ namespace Vision
 		eroder.Erosion(mask, false);
 
 		// Loop through the image and set the not eroded pixels to zero
-		while (i < pEnd)
+		for (uint32_t i = 0; i < nData; i++)
 		{
 			if (O[i] != eroder.ProcessedImg.data[i]) { P[i] = 1; }
 			else { P[i] = 0; }
-			i++;
 		}
-		eroder.~MorphologicalFilter();
+
+		SHOW_DEBUG_IMG(ProcessedImg, uchar, 255, "GetEdgesEroding Processed Image!");
 	}
 
 	/*! Create a BlobList subtracting each individual blob out of a Labelled image. If the labelled image is empty build a new one with a BW image.
@@ -579,107 +636,89 @@ namespace Vision
 	void Segment::GetBlobList(bool chain, Connected conn)
 	{
 		// Exception handling
- 		CV_Assert(OriginalImg.depth() != sizeof(uchar));
+		CV_Assert(OriginalImg.depth() != sizeof(uchar));
 		EMPTY_CHECK(OriginalImg);
 
 		// If there isn't a labelledImg make one
-		if (MaxLabel < 1) { LabelBlobs(chain, 25, conn); }
+		if (MaxLabel < 1) { LabelBlobs(chain, 5, conn); }
 
 		// Make an empty BlobList
-		uint32_t pEnd = MaxLabel + 1;
 		uint32_t nCols = OriginalImg.cols;
 		uint32_t nRows = OriginalImg.rows;
 		uint32_t nData = nCols * nRows;
+		RectList_t rectList;
 
-		// Create the statistics
-		SoilMath::Stats<uint16_t, uint32_t, uint64_t> LabelStats((uint16_t *)LabelledImg.data, LabelledImg.cols, LabelledImg.rows, pEnd, 0, pEnd - 1);
+		// Calculate Stats the statistics
+		uint16Stat_t LabelStats((uint16_t *)LabelledImg.data, LabelledImg.cols, LabelledImg.rows, MaxLabel + 1, 0, MaxLabel);
 
-		Blob emptyBlob;
-		for (uint32_t i = 0; i < pEnd - 1; i++)
+		BlobList.reserve(MaxLabel + 1);
+		rectList.reserve(MaxLabel + 1);
+
+		BlobList.push_back(Blob_t(0, 0));
+		rectList.push_back(Rect_t(0, 0, 0, 0));
+
+		for (uint32_t i = 1; i <= MaxLabel; i++)
 		{
-			emptyBlob.Label = i + 1;
-			emptyBlob.ROI.leftX = nCols;
-			emptyBlob.ROI.leftY = nRows;
-			emptyBlob.ROI.rightX = 0;
-			emptyBlob.ROI.rightY = 0;
-			emptyBlob.Area = LabelStats.bins[emptyBlob.Label];
-			BlobList.push_back(emptyBlob);
+			BlobList.push_back(Blob_t(i, LabelStats.bins[i]));
+			rectList.push_back(Rect_t(nCols, nRows, 0, 0));
 		}
 
 		// make Pointers
-		ushort *L = (ushort *)LabelledImg.data;
+		uint16_t *L = (uint16_t *)LabelledImg.data;
 
-		pEnd = nData + 1;
-		ushort currentBlob = 1;
 		uint32_t currentX, currentY;
-		uint16_t leftX, leftY, rightX, rightY, index;
+		uint16_t leftX, leftY, rightX, rightY;
 		//Loop through the labeled image and extract the Blobs
-		for (uint32_t i = 0; i < pEnd; i++)
+		for (uint32_t i = 0; i < nData; i++)
 		{
-			index = L[i];
-			if (index != 0)
+			if (L[i] != 0)
 			{
-				index -= 1;
 				/* Determine the current x and y value of the current blob and
-				sees if it is min/max */
+				checks if it is min/max */
 				currentX = i / nCols;
 				currentY = i % nCols;
 
-				leftX = BlobList[index].ROI.leftX;
-				leftY = BlobList[index].ROI.leftY;
-				rightX = BlobList[index].ROI.rightX;
-				rightY = BlobList[index].ROI.rightY;
-
 				// Min value
-				if (currentX < leftX) { BlobList[index].ROI.leftX = currentX; }
-				if (currentY < leftY) { BlobList[index].ROI.leftY = currentY; }
+				if (currentX < rectList[L[i]].leftX) { rectList[L[i]].leftX = currentX; }
+				if (currentY < rectList[L[i]].leftY) { rectList[L[i]].leftY = currentY; }
 
 				// Max value
-				if (currentX > rightX) { BlobList[index].ROI.rightX = currentX; }
-				if (currentY > rightY) { BlobList[index].ROI.rightY = currentY; }
+				if (currentX > rectList[L[i]].rightX) { rectList[L[i]].rightX = currentX; }
+				if (currentY > rectList[L[i]].rightY) { rectList[L[i]].rightY = currentY; }
 			}
 		}
 
 		// Loop through the BlobList and finalize it
-		pEnd = BlobList.size();
-		ushort *LUT_filter = new ushort[MaxLabel]{};
-		uint32_t x, y;
-
-		for (uint32_t i = 0; i < pEnd; i++)
+		uint8_t *LUT_filter = new uint8_t[MaxLabel + 1]{};
+		for (uint32_t i = 1; i <= MaxLabel; i++)
 		{
-			LUT_filter[i + 1] = 1;
-			// Fix swapping of x and y
-			BlobList[i].cvROI.y = BlobList[i].ROI.leftX;
-			BlobList[i].cvROI.x = BlobList[i].ROI.leftY;
-			BlobList[i].cvROI.height = BlobList[i].ROI.rightX - BlobList[i].ROI.leftX;
-			BlobList[i].cvROI.width = BlobList[i].ROI.rightY - BlobList[i].ROI.leftY;
-			if (BlobList[i].cvROI.width == 0) { BlobList[i].cvROI.width = 1; }
-			if (BlobList[i].cvROI.height == 0) { BlobList[i].cvROI.height = 1; }
-
-			BlobList[i].Img = CopyMat<ushort>(LabelledImg(BlobList[i].cvROI).clone(), LUT_filter, CV_8UC1);
-
-			LUT_filter[i + 1] = 0;
+			LUT_filter[i] = 1;
+			BlobList[i].ROI.y = rectList[i].leftX;
+			BlobList[i].ROI.x = rectList[i].leftY;
+			BlobList[i].ROI.height = rectList[i].rightX - rectList[i].leftX;
+			BlobList[i].ROI.width = rectList[i].rightY - rectList[i].leftY;
+			if (BlobList[i].ROI.height < 0)
+			{
+				BlobList[i].ROI.height -= BlobList[i].ROI.height;
+				BlobList[i].ROI.y = rectList[i].rightX;
+			}
+			else if (BlobList[i].ROI.height == 0) { BlobList[i].ROI.height++;	}
+			if (BlobList[i].ROI.width < 0)
+			{
+				BlobList[i].ROI.width -= BlobList[i].ROI.width;
+				BlobList[i].ROI.x = rectList[i].rightY;
+			}
+			else if (BlobList[i].ROI.width == 0) { BlobList[i].ROI.width++; }
+			BlobList[i].Img = CopyMat<uint8_t, uint16_t>(LabelledImg(BlobList[i].ROI).clone(), LUT_filter, CV_8UC1);
+			LUT_filter[i] = 0;
 		}
+		delete[] LUT_filter;
 
-		//final check the bloblist and remove Mat with zero rows or cols
-		std::remove_if(BlobList.begin(), BlobList.end(),[](Blob &b) -> bool
-		{
-			if (b.Img.cols == 0 || b.Img.rows == 0)	return true;
-			else return false;
-		});
-
-		// Sort BlobList with top most most location and remove duplicates
-		//std::sort(BlobList.begin(), BlobList.end(), [](Blob & a, Blob & b) -> bool
-		//{
-		//	//if (a.ROI.leftY < b.ROI.leftY)	return true;
-		//	//else if (a.ROI.leftY == b.ROI.leftY && a.ROI.leftX < b.ROI.leftX) return true;
-		//	//else return false;
-		//	return (pow((float)a.ROI.leftX, 2) + pow((float)a.ROI.leftY, 2)) > (pow((float)b.ROI.leftX, 2) + pow((float)b.ROI.leftY, 2));
-		//});
-		////BlobList.erase(unique(BlobList.begin(), BlobList.end()), BlobList.end());
+		//Remove background blob
+		BlobList.erase(BlobList.begin());
 	}
 
-	void Segment::makeConsecutive(uint16_t LastLabelUsed, uint16_t * tempLUT, uint16_t * &LUT_newVal)
+	void Segment::makeConsecutive(uint16_t LastLabelUsed, uint16_t * tempLUT, uint16_t *LUT_newVal)
 	{
 		uint32_t i = LastLabelUsed + 1;
 		while (i-- > 0) { tempLUT[i] = LUT_newVal[i]; }

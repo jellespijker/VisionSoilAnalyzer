@@ -62,6 +62,7 @@ struct M {
 	}
 	~M() { BOOST_TEST_MESSAGE("teardown fixture"); }
 
+	friend class SoilAnalyzer::Sample;
 	Mat src;
 	Mat dst;
 	Mat comp;
@@ -73,7 +74,24 @@ struct B {
 		BOOST_TEST_MESSAGE("Setup fixture");
 		src = imread("../ComparisionPictures/BlobTest.ppm", 0);
 	}
-	~B() { BOOST_TEST_MESSAGE("teardown fixture"); }
+	~B() 
+	{
+		src.release();
+		BOOST_TEST_MESSAGE("teardown fixture");
+	}
+
+	Mat src;
+	Mat dst;
+	Mat comp;
+};
+
+struct BM {
+	BM()
+	{
+		BOOST_TEST_MESSAGE("Setup fixture");
+		src = imread("../ComparisionPictures/BlobTestMany.ppm", 0);
+	}
+	~BM() { BOOST_TEST_MESSAGE("teardown fixture"); }
 
 	Mat src;
 	Mat dst;
@@ -81,6 +99,37 @@ struct B {
 };
 
 // SoilMath Test
+BOOST_AUTO_TEST_CASE(Vision_Create_Blobs)
+{
+	cv::Mat src = imread("../ComparisionPictures/BlobTest.ppm", 0);
+
+	Vision::Segment Test(src);
+	Test.ConvertToBW(Vision::Segment::Bright);
+	Test.GetBlobList(true);
+	imwrite("LabeledBlobs.ppm", Test.LabelledImg);
+	BOOST_CHECK_EQUAL(42, Test.BlobList.size());
+	for_each(Test.BlobList.begin(), Test.BlobList.end(), [](Vision::Segment::Blob_t &b)
+	{
+		stringstream ss;
+		ss << b.Label << "_few_1nd.ppm";
+		imwrite(ss.str(), b.Img);
+	});
+}
+
+BOOST_FIXTURE_TEST_CASE(Vision_Create_Many_Blobs, BM)
+{
+	Vision::Segment Test(src);
+	Test.ConvertToBW(Vision::Segment::Bright);
+	Test.GetBlobList(true);
+	imwrite("LabeledBlobsMany.ppm", Test.LabelledImg);
+	BOOST_CHECK_EQUAL(370, Test.BlobList.size());
+	for_each(Test.BlobList.begin(), Test.BlobList.end(), [](Vision::Segment::Blob_t &b)
+	{
+		stringstream ss;
+		ss << b.Label << "_many_.ppm";
+		imwrite(ss.str(), b.Img);
+	});
+}
 
 BOOST_AUTO_TEST_CASE(SoilMath_Stats_DiscreteMath_BigNumber)
 {
@@ -94,7 +143,7 @@ BOOST_AUTO_TEST_CASE(SoilMath_Stats_DiscreteMath_BigNumber)
 		}
 	}
 
-	SoilMath::Stats<uint16_t, uint32_t, uint64_t> Test(BigNoTestMatrix, 200, 200);
+	uint16Stat_t Test(BigNoTestMatrix, 200, 200);
 	BOOST_CHECK_EQUAL_COLLECTIONS(Test.bins, Test.bins + 255, histTestResult, histTestResult + 255);
 	BOOST_CHECK_CLOSE(Test.Mean, meanTestResult * 10, 0.0001);
 	BOOST_CHECK_EQUAL(Test.n, nTestResult);
@@ -103,7 +152,7 @@ BOOST_AUTO_TEST_CASE(SoilMath_Stats_DiscreteMath_BigNumber)
 	BOOST_CHECK_EQUAL(Test.max, maxTestResult * 10);
 	BOOST_CHECK_EQUAL(Test.Range, rangeTestResult * 10);
 	BOOST_CHECK_CLOSE(Test.Std, stdTestResult * 10, 0.01);
-
+	delete[] BigNoTestMatrix;
 }
 
 BOOST_AUTO_TEST_CASE(SoilMath_Sort)
@@ -268,7 +317,7 @@ BOOST_AUTO_TEST_CASE(SoilMath_NN_Save_And_Load)
 BOOST_AUTO_TEST_CASE(SoilMath_NN_Prediction_Accurancy)
 {
 	SoilMath::NN Test;
-	Test.LoadState("NN.xml");
+	Test.LoadState("../ComparisionPictures/NN_test.xml");
 
 	InputLearnVector_t inputVect;
 	OutputLearnVector_t outputVect;
@@ -503,34 +552,67 @@ BOOST_FIXTURE_TEST_CASE(Vision_Convert_LAB_To_RI, M)
 	BOOST_CHECK_CLOSE((double)statDstRI.Sum, (double)statCompRI.Sum, 1.25);
 }
 
-BOOST_AUTO_TEST_CASE(Vision_CopyMat_With_Mask)
+BOOST_AUTO_TEST_CASE(Vision_CopyMat_3_Uchar_Channel_With_Mask)
 {
 	Mat RGB_crop = imread("../ComparisionPictures/RGB_crop.ppm", 1);
 	Mat mask = imread("../ComparisionPictures/mask.ppm", 0);
 	Mat RGB_res = imread("../ComparisionPictures/RGB_res.ppm", 1);
 
-	Mat copiedMat = Vision::ImageProcessing::CopyMat<uchar>(RGB_crop, mask, RGB_crop.type());
-	BOOST_CHECK_EQUAL_COLLECTIONS(copiedMat.data, copiedMat.data + (copiedMat.rows * copiedMat.cols * 3), RGB_res.data, RGB_res.data + (RGB_res.rows * RGB_res.cols * 3));
+	Mat copiedMat = Vision::ImageProcessing::CopyMat<uchar>(RGB_crop, mask, CV_8UC1);
+
+	BOOST_CHECK_EQUAL_COLLECTIONS(copiedMat.begin<cv::Vec3b>(), copiedMat.end<cv::Vec3b>(), RGB_res.begin<cv::Vec3b>(), RGB_res.end<cv::Vec3b>());
+	cv::imwrite("Copy_with_Mask.ppm", copiedMat);
+}
+
+BOOST_AUTO_TEST_CASE(Vision_CopyMat_1_Uchar_Channel_With_Mask)
+{
+	Mat Int = imread("../ComparisionPictures/RGB_crop.ppm", 0);
+	Mat mask = imread("../ComparisionPictures/mask.ppm", 0);
+	Mat Int_res = imread("../ComparisionPictures/RGB_res.ppm", 0);
+
+	Mat copiedMat = Vision::ImageProcessing::CopyMat<uchar>(Int, mask, CV_8UC1);
+
+	BOOST_CHECK_EQUAL_COLLECTIONS(copiedMat.begin<uchar>(), copiedMat.end<uchar>(), Int_res.begin<uchar>(), Int_res.end<uchar>());
+	cv::imwrite("Copy_with_Mask.ppm", copiedMat);
+}
+
+BOOST_AUTO_TEST_CASE(Vision_CopyMat_1_Float_Channel_With_Mask)
+{
+	Mat floatTest = (Mat_<float>(5, 5) <<	0.1, 0.2, 0.3, 0.4, 0.5,
+											1.1, 1.2, 1.3, 1.4, 1.5,
+											2.1, 2.2, 2.3, 2.4, 2.5,
+											3.1, 3.2, 3.3, 3.4, 3.5,
+											4.1, 4.2, 4.3, 4.4, 4.5,
+											5.1, 5.2, 5.3, 5.4, 5.5);
+
+	Mat mask = (Mat_<float>(5, 5) <<		0, 0, 0, 0, 0,
+											0, 1, 1, 0, 0,
+											1, 1, 1, 1, 0,
+											0, 0, 0, 1, 1,
+											0, 0, 0, 0, 0,
+											0, 0, 0, 0, 0);
+
+	Mat floatres = (Mat_<float>(5, 5) <<	0, 0, 0, 0, 0,
+											0, 1.2, 1.3,0, 0,
+											2.1, 2.2, 2.3, 2.4,0,
+											0, 0, 0, 3.4, 3.5,
+											0, 0, 0, 0, 0,
+											0, 0, 0, 0, 0);
+	Mat copiedMat = Vision::ImageProcessing::CopyMat<float>(floatTest, mask, CV_32F);
+	BOOST_CHECK_EQUAL_COLLECTIONS(copiedMat.begin<float>(), copiedMat.end<float>(), floatres.begin<float>(), floatres.end<float>());
 }
 
 BOOST_AUTO_TEST_CASE(Vision_CopyMat_With_LUT)
 {
 	Mat BW_res = imread("../ComparisionPictures/mask.ppm", 0);
 	Mat Label = imread("../ComparisionPictures/Label.ppm", 0);
-	uint32_t *LUT = new uint32_t[255]{};
+	uint8_t *LUT = new uint8_t[300]{};
 	LUT[255] = 1;
 
-	Mat copiedMat = Vision::ImageProcessing::CopyMat<uint32_t>(Label, LUT, CV_8UC1);
+	Mat copiedMat = Vision::ImageProcessing::CopyMat<uint8_t, uint8_t>(Label, LUT, CV_8UC1);
+	imwrite("copiedMat.ppm", copiedMat);
 	BOOST_CHECK_EQUAL_COLLECTIONS(copiedMat.data, copiedMat.data + (copiedMat.rows * copiedMat.cols), BW_res.data, BW_res.data + (BW_res.rows * BW_res.cols));
-}
-
-BOOST_FIXTURE_TEST_CASE(Vision_Create_Blobs, B)
-{
-	Vision::Segment Test(src);
-	Test.ConvertToBW(Vision::Segment::Bright);
-	Test.GetBlobList(true);
-	imwrite("LabeledBlobs.ppm", Test.LabelledImg);
-	BOOST_CHECK_EQUAL(42, Test.BlobList.size());
+	delete[] LUT;
 }
 
 BOOST_AUTO_TEST_CASE(Vision_RemoveBorder)
@@ -544,7 +626,59 @@ BOOST_AUTO_TEST_CASE(Vision_RemoveBorder)
 	BOOST_CHECK_EQUAL_COLLECTIONS(Test.ProcessedImg.data, Test.ProcessedImg.data + (Test.ProcessedImg.rows * Test.ProcessedImg.cols), noBorderComp.data, noBorderComp.data + (noBorderComp.rows * noBorderComp.cols));
 }
 
+BOOST_AUTO_TEST_CASE(Vision_RemoveBorder_Chain_Event)
+{
+	cv::Mat Border = imread("../ComparisionPictures/Border.ppm", 0);
+	cv::Mat noBorderComp = imread("../ComparisionPictures/noBorder.ppm", 0);
+	Border *= 255;
+
+	Vision::Segment Test(Border);
+	Test.ConvertToBW(Vision::Segment::Bright);
+	Test.FillHoles(true);
+	Test.RemoveBorderBlobs(1, true);
+	imwrite("noBorder.ppm", Test.ProcessedImg);
+	BOOST_CHECK_EQUAL_COLLECTIONS(Test.ProcessedImg.data, Test.ProcessedImg.data + (Test.ProcessedImg.rows * Test.ProcessedImg.cols), noBorderComp.data, noBorderComp.data + (noBorderComp.rows * noBorderComp.cols));
+}
+
+BOOST_AUTO_TEST_CASE(Vision_Erode)
+{
+	cv::Mat Border = imread("../ComparisionPictures/Border.ppm", 0);
+	cv::Mat ErodedComp = imread("../ComparisionPictures/erodedDisk5Border.ppm", 0);
+
+	Vision::MorphologicalFilter Test(Border);
+	Mat mask = cv::Mat::zeros(5, 5, CV_8UC1);
+	circle(mask, Point(3, 3), 3, 1, -1);
+	Test.Erosion(mask);
+
+	BOOST_CHECK_EQUAL_COLLECTIONS(Test.ProcessedImg.begin<uchar>(), Test.ProcessedImg.end<uchar>(), ErodedComp.begin<uchar>(), ErodedComp.end<uchar>());
+
+}
+
+
 // Soil Test
+
+BOOST_FIXTURE_TEST_CASE(Soil_Particle_Analyze, M)
+{
+	SoilMath::NN nn;
+	nn.LoadState("../ComparisionPictures/NN_test.xml");
+
+	SoilAnalyzer::Sample Test(src);
+	Test.Analyse(nn);
+
+	imwrite("BW.ppm", Test.BW);
+//	imwrite("Edge.ppm", Test.Edge);
+
+	//uint32_t i = 0;
+	//for_each(Test.Population.begin(), Test.Population.end(), [&](SoilAnalyzer::Particle &p) 
+	//{	
+	//	stringstream ss_edge;
+	//	stringstream ss_RGB;
+	//	ss_edge << i << "_edge.ppm";
+	//	ss_RGB << i << "_RGB.ppm";
+	//	imwrite(ss_edge.str(), p.Edge);
+	//	imwrite(ss_RGB.str(), p.RGB);
+	//});
+}
 
 BOOST_FIXTURE_TEST_CASE(Soil_Sample_Save_And_Load, M)
 {

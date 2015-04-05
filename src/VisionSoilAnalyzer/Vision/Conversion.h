@@ -23,7 +23,11 @@ namespace Vision
 
 		Conversion();
 		Conversion(const Mat &src);
+		Conversion(const Conversion &rhs);
+
 		~Conversion();
+
+		Conversion &operator=(Conversion rhs);
 
 		void Convert(ColorSpace convertFrom, ColorSpace convertTo, bool chain = false);
 		void Convert(const Mat &src, Mat &dst, ColorSpace convertFrom, ColorSpace convertTo, bool chain = false);
