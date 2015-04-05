@@ -13,3 +13,5 @@ target_link_libraries(Soil -L/usr/local/lib -L/usr/lib/x86_64-linux-gnu/ -lopenc
 include_directories(/usr/local/include /usr/local/include/opencv /usr/include/boost)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c++11")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -DDEBUG")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DDEBUG")

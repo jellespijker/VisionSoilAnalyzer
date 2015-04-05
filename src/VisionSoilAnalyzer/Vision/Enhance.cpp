@@ -17,6 +17,13 @@ namespace Vision
 		ProcessedImg.create(OriginalImg.size(), CV_8UC1);
 	}
 
+	Enhance::Enhance(const Enhance & rhs)
+	{
+		this->OriginalImg = rhs.OriginalImg;
+		this->ProcessedImg = rhs.OriginalImg;
+		this->TempImg = rhs.TempImg;
+	}
+
 	/*! Constructor
 	\param src cv::Mat source image
 	\param dst cv::Mat destination image
@@ -46,6 +53,17 @@ namespace Vision
 	/*! Dec-constructor*/
 	Enhance::~Enhance() { }
 
+		Enhance & Enhance::operator=(Enhance rhs)
+		{
+			if (&rhs != this)
+			{
+				this->OriginalImg = rhs.OriginalImg;
+				this->ProcessedImg = rhs.ProcessedImg;
+				this->TempImg = rhs.ProcessedImg;
+			}
+			return *this;
+		}
+
 	/*! Calculate the standard deviation of the neighboring pixels
 	\param O uchar pointer to the current pixel of the original image
 	\param i current counter
@@ -59,15 +77,14 @@ namespace Vision
 	{
 		float sum_dev = 0.0;
 		float Std = 0.0;
-		int k;
-		int l;
 		sum_dev = 0.0;
 		Std = 0.0;
-		k = -hKsize;
-		while (k++ <= hKsize)
+		for (int j = -hKsize; j < hKsize; j++)
 		{
-			l = -hKsize;
-			while (l++ <= hKsize) { sum_dev += pow((O[i + k * nCols + l] - mean), 2); }
+			for (int k = -hKsize; k < hKsize; k++)
+			{
+				sum_dev += pow((O[i + j * nCols + k] - mean), 2);
+			}
 		}
 		Std = sqrt(sum_dev / noNeighboursPix);
 		return Std;
@@ -82,13 +99,12 @@ namespace Vision
 	*/
 	void Enhance::CalculateSumOfNeighboringPixels(uchar *O, int i, int hKsize, int nCols, uint32_t &sum)
 	{
-		int k;
-		k = -hKsize;
-		int l;
-		while (k++ <= hKsize)
+		for (int j = -hKsize; j < hKsize; j++)
 		{
-			l = -hKsize;
-			while (l++ <= hKsize) { sum += O[i + k * nCols + l]; }
+			for (int k = -hKsize; k < hKsize; k++)
+			{
+				sum += O[i + j * nCols + k];
+			}
 		}
 	}
 
@@ -170,6 +186,8 @@ namespace Vision
 
 		// Stretch the image with an normal histogram equalization
 		HistogramEqualization(true);
+
+		delete[] nRow;
 	}
 
 	/*! Blurs the image with a NxN kernel
@@ -223,6 +241,8 @@ namespace Vision
 
 			P[i] = (uchar)(round(sum / noNeighboursPix));
 		}
+
+		delete[] nRow;
 	}
 
 	/*! Stretches the image using a histogram

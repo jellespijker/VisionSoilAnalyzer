@@ -9,6 +9,8 @@
 #include "Mat_archive.h"
 
 #include <opencv2/core.hpp>
+#include <opencv2/highgui.hpp>
+
 #include <vector>
 #include <string>
 

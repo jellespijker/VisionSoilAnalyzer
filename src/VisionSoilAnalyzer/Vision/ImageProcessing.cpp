@@ -21,13 +21,12 @@ namespace Vision
 	uchar* ImageProcessing::GetNRow(int nData, int hKsize, int nCols, uint32_t totalRows)
 	{
 		// Create LUT to determine when there is an new row
-		uchar *nRow = new uchar[nData]{};
-		int i = 0;
+		uchar *nRow = new uchar[nData + 1]{};
+		//int i = 0;
 		int shift = nCols - hKsize - 1;
-		while (i <= totalRows)
+		for (uint32_t i = 0; i < totalRows; i++)
 		{
 			nRow[(i * nCols) + shift] = 1;
-			i++;
 		}
 		return nRow;
 	}

@@ -75,7 +75,13 @@ namespace Vision
 		
 		Segment(); 
 		Segment(const Mat &src); 
+		Segment(const Segment &rhs);
+
 		~Segment(); 
+
+		Segment &operator=(Segment &rhs);
+
+		void LoadOriginalImg(const Mat &src);
 
 		void ConvertToBW(TypeOfObjects Typeobjects);
 		void ConvertToBW(const Mat &src, Mat &dst, TypeOfObjects Typeobjects);

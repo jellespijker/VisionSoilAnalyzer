@@ -27,8 +27,11 @@ namespace Vision
 		Enhance();
 		Enhance(const Mat& src);
 		Enhance(const Mat& src, Mat& dst, uint8_t kernelsize = 9, float factor = 1.0, EnhanceOperation operation = _Blur);
+		Enhance(const Enhance &rhs);
 
 		~Enhance();
+
+		Enhance &operator=(Enhance rhs);
 
 		void AdaptiveContrastStretch(uint8_t kernelsize, float factor, bool chain = false);
 		void AdaptiveContrastStretch(const Mat& src, Mat& dst, uint8_t kernelsize, float factor);

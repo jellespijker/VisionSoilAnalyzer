@@ -37,12 +37,12 @@ namespace SoilMath
 		float Mean = 0.0;
 		uint32_t n = 0;
 		uint32_t noBins = 0;
-		T1 Range;
-		T1 min;
-		T1 max;
-		T1 Startbin;
-		T1 EndBin;
-		T1 binRange;
+		T1 Range = 0;
+		T1 min = 0;
+		T1 max = 0;
+		T1 Startbin = 0;
+		T1 EndBin = 0;
+		T1 binRange = 0;
 		float Std = 0.0;
 		T3 Sum = 0;
 		uint16_t Rows = 0;
@@ -100,7 +100,6 @@ namespace SoilMath
 			this->Startbin = rhs.Startbin;
 			this->Std = rhs.Std;
 			this->Sum = rhs.Sum;
-			//std::copy(rhs.Data, rhs.Data + rhs.n, this->Data);
 			std::copy(rhs.bins, rhs.bins + rhs.noBins, this->bins);
 			this->Data = &rhs.Data[0];
 		}
@@ -127,7 +126,6 @@ namespace SoilMath
 				this->Startbin = rhs.Startbin;
 				this->Std = rhs.Std;
 				this->Sum = rhs.Sum;
-				//std::copy(rhs.Data, rhs.Data + rhs.n, this->Data);
 				this->Data = &rhs.Data[0];
 				std::copy(rhs.bins, rhs.bins + rhs.noBins, this->bins);
 			}
@@ -242,11 +240,12 @@ namespace SoilMath
 
 			// Get Max;
 			Range = max - min;
-
+			bool troep = false;
 			//  fill histogram
 			for (uint32_t i = 0; i < n; i++)
 			{
 				index = static_cast<uint32_t>(floor((Data[i] - min) / binRange));
+				if (index == noBins) { index -= 1; }
 				bins[index]++;
 				sum_dev += pow((Data[i] - Mean), 2);
 			}
@@ -277,12 +276,13 @@ namespace SoilMath
 
 			// Get Max;
 			Range = max - min;
-
+			bool troep = true;
 			// fills the histogram and calculate the std. dev
 			uint32_t index;
 			for (uint32_t i = 0; i < n; i++)
 			{
 				index = static_cast<uint32_t>(floor((Data[i] - min) / binRange));
+				if (index == noBins) { index -= 1; }
 				bins[index]++;
 				sum_dev += pow((Data[i] - Mean), 2);
 			}
@@ -298,10 +298,8 @@ namespace SoilMath
 		{
 			float sum_dev = 0.0;
 			// Get the Sum
-			for (uint32_t i = 0; i < noBins; i++)
-			{
-				Sum += bins[i] * (startC + i);
-			}
+			uint32_t i = 0;
+			for_each(begin(), end(), [&](uint32_t &b) { Sum += b * (startC + i++); });
 
 			// Get Mean
 			Mean = Sum / (float)n;
@@ -330,10 +328,8 @@ namespace SoilMath
 			Range = max - min;
 
 			// Calculate Standard Deviation
-			for (uint32_t i = 0; i < noBins; i++)
-			{
-				sum_dev += bins[i] * pow(((i + startC) - Mean), 2);
-			}
+			i = 0;
+			for_each(begin(), end(), [&](uint32_t &b) { sum_dev += b * pow(((i++ + startC) - Mean), 2); });
 			Std = sqrt((float)(sum_dev / n));
 			Calculated = true;
 		}

@@ -18,9 +18,46 @@ namespace Vision
 		LabelledImg.create(OriginalImg.size(), CV_16UC1);
 	}
 
+	Segment::Segment(const Segment & rhs)
+	{
+		this->BlobList = rhs.BlobList;
+		this->LabelledImg = rhs.LabelledImg;
+		this->MaxLabel = rhs.MaxLabel;
+		this->noOfFilteredBlobs = rhs.noOfFilteredBlobs;
+		this->OriginalImg = rhs.OriginalImg;
+		this->OriginalImgStats = rhs.OriginalImgStats;
+		this->ProcessedImg = rhs.ProcessedImg;
+		this->TempImg = rhs.TempImg;
+		this->ThresholdLevel = rhs.ThresholdLevel;
+	}
+
 	//! De-constructor
 	Segment::~Segment()
 	{
+	}
+
+	Segment & Segment::operator=(Segment & rhs)
+	{
+		if (&rhs != this)
+		{
+			this->BlobList = rhs.BlobList;
+			this->LabelledImg = rhs.LabelledImg;
+			this->MaxLabel = rhs.MaxLabel;
+			this->noOfFilteredBlobs = rhs.noOfFilteredBlobs;
+			this->OriginalImg = rhs.OriginalImg;
+			this->OriginalImgStats = rhs.OriginalImgStats;
+			this->ProcessedImg = rhs.ProcessedImg;
+			this->TempImg = rhs.TempImg;
+			this->ThresholdLevel = rhs.ThresholdLevel;
+		}
+		return *this;
+	}
+
+	void Segment::LoadOriginalImg(const Mat & src)
+	{
+		OriginalImg = src;
+		ProcessedImg.create(OriginalImg.size(), CV_8UC1);
+		LabelledImg.create(OriginalImg.size(), CV_16UC1);
 	}
 
 	/*! Determine the threshold level by iteration, between two distribution, presumably back- and foreground. It works towards the average of the two averages and finally sets the threshold with two time the standard deviation from the mean of the set object
@@ -124,19 +161,21 @@ namespace Vision
 		CV_Assert(OriginalImg.depth() != sizeof(uchar) ||
 			OriginalImg.depth() != sizeof(uint16_t));
 
-		uint32_t i = 0;
-
 		// Create LUT
 		uchar LUT_newValue[256]{ 0 };
 		if (Typeobjects == Bright)
 		{
-			i = 256;
-			while (i-- > t) { LUT_newValue[i] = 1; }
+			for (uint32_t i = t; i < 256; i++)
+			{
+				LUT_newValue[i] = 1;
+			}
 		}
 		else
 		{
-			i = t + 1;
-			while (i-- > 0) { LUT_newValue[i] = 1; }
+			for (uint32_t i = 0; i <= t; i++)
+			{
+				LUT_newValue[i] = 1;
+			}
 		}
 
 		// Create the pointers to the data
@@ -144,8 +183,10 @@ namespace Vision
 		uchar *O = OriginalImg.data;
 
 		// Fills the ProcessedImg with either a 0 or 1
-		i = OriginalImg.cols * OriginalImg.rows + 1;
-		while (i-- > 0) { *P++ = LUT_newValue[*O++]; }
+		for (uint32_t i = 0; i < OriginalImg.cols * OriginalImg.rows; i++)
+		{
+			P[i] = LUT_newValue[O[i]];
+		}
 	}
 
 	/*! Set all the border pixels to a set value
@@ -189,13 +230,17 @@ namespace Vision
 	*/
 	void Segment::RemoveBorderBlobs(uint32_t border, bool chain)
 	{
-		border += 1;
 		CV_Assert(OriginalImg.depth() != sizeof(uchar));
 		EMPTY_CHECK(OriginalImg);
 		// make Pointers
 		uchar *O;
 		CHAIN_PROCESS(chain, O, uchar);
-		ProcessedImg = OriginalImg.clone();
+		if (chain) { ProcessedImg = TempImg.clone(); } 
+		else { ProcessedImg = OriginalImg.clone(); } 		
+
+		SHOW_DEBUG_IMG(OriginalImg, uchar, 255, "Original Image RemoverBorderBlobs!");
+		SHOW_DEBUG_IMG(TempImg, uchar, 255, "Temp Image RemoverBorderBlobs!");
+
 		uchar *P = ProcessedImg.data;
 		uint32_t cols = ProcessedImg.cols;
 		uint32_t rows = ProcessedImg.rows;
@@ -203,7 +248,7 @@ namespace Vision
 		{
 			for (uint32_t j = 0; j < cols; j++)
 			{
-				if (O[(i * cols) + j] == 1 && P[(i * cols) + j] != 2) { cv::floodFill(ProcessedImg, cv::Point(j, i), 2); }
+				if (O[(i * cols) + j] == 1 && P[(i * cols) + j] != 2) { cv::floodFill(ProcessedImg, cv::Point(j, i), (uchar)2); }
 			}
 		}
 
@@ -211,7 +256,7 @@ namespace Vision
 		{
 			for (uint32_t j = 0; j < cols; j++)
 			{
-				if (O[(i * cols) + j] == 1 && P[(i * cols) + j] != 2) { cv::floodFill(ProcessedImg, cv::Point(j, i), 2); }
+				if (O[(i * cols) + j] == 1 && P[(i * cols) + j] != 2) { cv::floodFill(ProcessedImg, cv::Point(j, i), (uchar)2); }
 			}
 		}
 
@@ -219,16 +264,20 @@ namespace Vision
 		{
 			for (uint32_t j = 0; j < border; j++)
 			{
-				if (O[(i * cols) + j] == 1 && P[(i * cols) + j] != 2) {	cv::floodFill(ProcessedImg, cv::Point(j, i), 2); }
-				if (O[(i * cols) + (cols - j - 1)] == 1 && P[(i * cols) + (cols - j - 1)] != 2)	{ cv::floodFill(ProcessedImg, cv::Point(cols - j - 1, i), 2);	}
+				if (O[(i * cols) + j] == 1 && P[(i * cols) + j] != 2) {	cv::floodFill(ProcessedImg, cv::Point(j, i), (uchar)2); }
+				if (O[(i * cols) + (cols - j - 1)] == 1 && P[(i * cols) + (cols - j - 1)] != 2)	{ cv::floodFill(ProcessedImg, cv::Point(cols - j - 1, i), (uchar)2);	}
 			}
 		}
+
+		SHOW_DEBUG_IMG(ProcessedImg, uchar, 255, "Processed Image RemoverBorderBlobs before LUT!");
 
 		// Change values 2 -> 0
 		uchar LUT_newValue[3]{ 0, 1, 0 };
 		P = ProcessedImg.data;
 		uint32_t nData = rows * cols;
 		for (uint32_t i = 0; i < nData; i++) { P[i] = LUT_newValue[P[i]];}
+
+		SHOW_DEBUG_IMG(ProcessedImg, uchar, 255, "Processed Image RemoverBorderBlobs!");
 	}
 
 	/*! Label all the individual blobs in a BW source image. The result are written to the labelledImg as an ushort
@@ -422,7 +471,7 @@ namespace Vision
 		}
 
 		// Create a LUT_filter for each value that is smaller then minBlobArea
-		uint16Stat_t ProcImgStats(P, nCols, nRows, MaxLabel, 0, MaxLabel);
+		uint16Stat_t ProcImgStats(P, nCols, nRows, MaxLabel + 1, 0, MaxLabel);
 		uint16_t *LUT_finalVal = new uint16_t[MaxLabel + 1]{};
 		uint16_t count = 0;
 		i = 0;
@@ -557,8 +606,6 @@ namespace Vision
 		uint32_t nCols = OriginalImg.cols;
 		uint32_t nRows = OriginalImg.rows;
 		uint32_t nData = nCols * nRows;
-		uint32_t pEnd = nData + 1;
-		uint32_t i = 0;
 
 		// Setup the erosion
 		MorphologicalFilter eroder;
@@ -573,13 +620,13 @@ namespace Vision
 		eroder.Erosion(mask, false);
 
 		// Loop through the image and set the not eroded pixels to zero
-		while (i < pEnd)
+		for (uint32_t i = 0; i < nData; i++)
 		{
 			if (O[i] != eroder.ProcessedImg.data[i]) { P[i] = 1; }
 			else { P[i] = 0; }
-			i++;
 		}
-		eroder.~MorphologicalFilter();
+
+		SHOW_DEBUG_IMG(ProcessedImg, uchar, 255, "GetEdgesEroding Processed Image!");
 	}
 
 	/*! Create a BlobList subtracting each individual blob out of a Labelled image. If the labelled image is empty build a new one with a BW image.
@@ -593,7 +640,7 @@ namespace Vision
 		EMPTY_CHECK(OriginalImg);
 
 		// If there isn't a labelledImg make one
-		if (MaxLabel < 1) { LabelBlobs(chain, 25, conn); }
+		if (MaxLabel < 1) { LabelBlobs(chain, 5, conn); }
 
 		// Make an empty BlobList
 		uint32_t nCols = OriginalImg.cols;
@@ -642,7 +689,7 @@ namespace Vision
 		}
 
 		// Loop through the BlobList and finalize it
-		uint16_t *LUT_filter = new uint16_t[MaxLabel + 1]{};
+		uint8_t *LUT_filter = new uint8_t[MaxLabel + 1]{};
 		for (uint32_t i = 1; i <= MaxLabel; i++)
 		{
 			LUT_filter[i] = 1;
@@ -650,9 +697,19 @@ namespace Vision
 			BlobList[i].ROI.x = rectList[i].leftY;
 			BlobList[i].ROI.height = rectList[i].rightX - rectList[i].leftX;
 			BlobList[i].ROI.width = rectList[i].rightY - rectList[i].leftY;
-			if (BlobList[i].ROI.width == 0) { BlobList[i].ROI.width = 1; }
-			if (BlobList[i].ROI.height == 0) { BlobList[i].ROI.height = 1; }
-			BlobList[i].Img = CopyMat<uint16_t>(LabelledImg(BlobList[i].ROI).clone(), LUT_filter, CV_8UC1);
+			if (BlobList[i].ROI.height < 0)
+			{
+				BlobList[i].ROI.height -= BlobList[i].ROI.height;
+				BlobList[i].ROI.y = rectList[i].rightX;
+			}
+			else if (BlobList[i].ROI.height == 0) { BlobList[i].ROI.height++;	}
+			if (BlobList[i].ROI.width < 0)
+			{
+				BlobList[i].ROI.width -= BlobList[i].ROI.width;
+				BlobList[i].ROI.x = rectList[i].rightY;
+			}
+			else if (BlobList[i].ROI.width == 0) { BlobList[i].ROI.width++; }
+			BlobList[i].Img = CopyMat<uint8_t, uint16_t>(LabelledImg(BlobList[i].ROI).clone(), LUT_filter, CV_8UC1);
 			LUT_filter[i] = 0;
 		}
 		delete[] LUT_filter;

@@ -3,7 +3,7 @@
 
 cmake_minimum_required(VERSION 2.7)
 project(VSA_UT)
-ADD_DEFINITIONS(-DBOOST_TEST_DYN_LINK) 
+ADD_DEFINITIONS(-DBOOST_TEST_DYN_LINK -DDEBUG) 
 SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
 set(LIBRARIES_FROM_REFERENCES ${CMAKE_SOURCE_DIR}/../../../../src/VisionSoilAnalyzer/Vision/Debug/libVision.so ${CMAKE_SOURCE_DIR}/../../../../src/VisionSoilAnalyzer/Soil/Debug/libSoil.so ${CMAKE_SOURCE_DIR}/../../../../src/VisionSoilAnalyzer/SoilMath/Debug/libSoilMath.so)
