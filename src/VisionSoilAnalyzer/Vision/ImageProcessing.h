@@ -141,14 +141,24 @@ namespace Vision
 				// Find the global max and min
 				for_each(exSrc.begin(), exSrc.end(), [&](const Mat & sItem)
 				{
-					std::for_each(sItem.begin<T1>(), sItem.end<T1>(), [&](const T1 &s) { if (s > MatMax) { MatMax = s; } else if (s < MatMin) { MatMin = s; } });
+					std::for_each(sItem.begin<T1>(), sItem.end<T1>(), [&](const T1 &s) 
+					{
+						if (s > MatMax) { MatMax = s; }
+						else if (s < MatMin) { MatMin = s; } 
+					});
 				});
+
+				int Range = MatMax - MatMin;
+				if (Range < 1) Range = maxVal;
 
 				// Convert the values
 				for_each(exSrc.begin(), exSrc.end(), [&](const Mat & sItem)
 				{
 					Mat dItem(img.size(), cvBaseType);
-					std::transform(sItem.begin<T1>(), sItem.end<T1>(), dItem.begin<T1>(), [&](const T1 &s) -> T1 { return (T1)round(((s - MatMin) * maxVal) / (MatMax - MatMin)); });
+					std::transform(sItem.begin<T1>(), sItem.end<T1>(), dItem.begin<T1>(), [&](const T1 &s) -> T1 
+					{
+						return (T1)round(((s - MatMin) * maxVal) / Range); 
+					});
 					exDst.push_back(dItem);
 				});
 
@@ -157,6 +167,7 @@ namespace Vision
 				cv::namedWindow(windowName, cv::WINDOW_NORMAL);
 				cv::imshow(windowName, tempImg);
 				cv::waitKey(0);
+				cv::destroyWindow(windowName);
 			}
 		};
 #endif

@@ -646,12 +646,22 @@ BOOST_AUTO_TEST_CASE(Vision_Erode)
 	cv::Mat ErodedComp = imread("../ComparisionPictures/erodedDisk5Border.ppm", 0);
 
 	Vision::MorphologicalFilter Test(Border);
-	Mat mask = cv::Mat::zeros(5, 5, CV_8UC1);
-	circle(mask, Point(3, 3), 3, 1, -1);
+	Mat mask = cv::Mat::zeros(21, 21, CV_8UC1);
+	circle(mask, Point(10, 10), 11, 1, -1);
 	Test.Erosion(mask);
 
 	BOOST_CHECK_EQUAL_COLLECTIONS(Test.ProcessedImg.begin<uchar>(), Test.ProcessedImg.end<uchar>(), ErodedComp.begin<uchar>(), ErodedComp.end<uchar>());
+}
 
+BOOST_AUTO_TEST_CASE(Vision_Dilate)
+{
+	cv::Mat FilterImg = imread("../ComparisionPictures/FilterImg.ppm", 0);
+	cv::Mat DilateComp = imread("../ComparisionPictures/DilatedResult.ppm", 0);
+	Mat mask = imread("../ComparisionPictures/MorphMask.ppm", 0);
+	Vision::MorphologicalFilter Test(FilterImg);
+	Test.Dilation(mask);
+
+	BOOST_CHECK_EQUAL_COLLECTIONS(Test.ProcessedImg.begin<uchar>(), Test.ProcessedImg.end<uchar>(), DilateComp.begin<uchar>(), DilateComp.end<uchar>());
 }
 
 

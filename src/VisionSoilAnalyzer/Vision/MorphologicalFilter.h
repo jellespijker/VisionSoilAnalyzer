@@ -18,6 +18,8 @@ namespace Vision
 
 		MorphologicalFilter &operator=(MorphologicalFilter &rhs);
 
+		void Dilation(const Mat &mask, bool chain = false);
+
 		void Erosion(const Mat &mask, bool chain = false);
 		void Erosion(const Mat &src, Mat &dst, const Mat &mask);
 
