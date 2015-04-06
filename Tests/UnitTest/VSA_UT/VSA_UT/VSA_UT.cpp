@@ -640,23 +640,21 @@ BOOST_AUTO_TEST_CASE(Vision_RemoveBorder_Chain_Event)
 	BOOST_CHECK_EQUAL_COLLECTIONS(Test.ProcessedImg.data, Test.ProcessedImg.data + (Test.ProcessedImg.rows * Test.ProcessedImg.cols), noBorderComp.data, noBorderComp.data + (noBorderComp.rows * noBorderComp.cols));
 }
 
-BOOST_AUTO_TEST_CASE(Vision_Erode)
-{
-	cv::Mat Border = imread("../ComparisionPictures/Border.ppm", 0);
-	cv::Mat ErodedComp = imread("../ComparisionPictures/erodedDisk5Border.ppm", 0);
-
-	Vision::MorphologicalFilter Test(Border);
-	Mat mask = cv::Mat::zeros(21, 21, CV_8UC1);
-	circle(mask, Point(10, 10), 11, 1, -1);
-	Test.Erosion(mask);
-
-	BOOST_CHECK_EQUAL_COLLECTIONS(Test.ProcessedImg.begin<uchar>(), Test.ProcessedImg.end<uchar>(), ErodedComp.begin<uchar>(), ErodedComp.end<uchar>());
-}
-
-BOOST_AUTO_TEST_CASE(Vision_Dilate)
+BOOST_AUTO_TEST_CASE(Vision_MorphologicalFilter_Erode)
 {
 	cv::Mat FilterImg = imread("../ComparisionPictures/FilterImg.ppm", 0);
-	cv::Mat DilateComp = imread("../ComparisionPictures/DilatedResult.ppm", 0);
+	cv::Mat ErosionComp = imread("../ComparisionPictures/erodedResult.ppm", 0);
+	Mat mask = imread("../ComparisionPictures/MorphMask.ppm", 0);
+	Vision::MorphologicalFilter Test(FilterImg);
+	Test.Erosion(mask);
+
+	BOOST_CHECK_EQUAL_COLLECTIONS(Test.ProcessedImg.begin<uchar>(), Test.ProcessedImg.end<uchar>(), ErosionComp.begin<uchar>(), ErosionComp.end<uchar>());
+}
+
+BOOST_AUTO_TEST_CASE(Vision_MorphologicalFilter_Dilate)
+{
+	cv::Mat FilterImg = imread("../ComparisionPictures/FilterImg.ppm", 0);
+	cv::Mat DilateComp = imread("../ComparisionPictures/dilatedResult.ppm", 0);
 	Mat mask = imread("../ComparisionPictures/MorphMask.ppm", 0);
 	Vision::MorphologicalFilter Test(FilterImg);
 	Test.Dilation(mask);
@@ -664,6 +662,27 @@ BOOST_AUTO_TEST_CASE(Vision_Dilate)
 	BOOST_CHECK_EQUAL_COLLECTIONS(Test.ProcessedImg.begin<uchar>(), Test.ProcessedImg.end<uchar>(), DilateComp.begin<uchar>(), DilateComp.end<uchar>());
 }
 
+BOOST_AUTO_TEST_CASE(Vision_MorphologicalFilter_Open)
+{
+	cv::Mat FilterImg = imread("../ComparisionPictures/FilterImg.ppm", 0);
+	cv::Mat OpenComp = imread("../ComparisionPictures/openResult.ppm", 0);
+	Mat mask = imread("../ComparisionPictures/MorphMask.ppm", 0);
+	Vision::MorphologicalFilter Test(FilterImg);
+	Test.Open(mask);
+
+	BOOST_CHECK_EQUAL_COLLECTIONS(Test.ProcessedImg.begin<uchar>(), Test.ProcessedImg.end<uchar>(), OpenComp.begin<uchar>(), OpenComp.end<uchar>());
+}
+
+BOOST_AUTO_TEST_CASE(Vision_MorphologicalFilter_Close)
+{
+	cv::Mat FilterImg = imread("../ComparisionPictures/FilterImg.ppm", 0);
+	cv::Mat CloseComp = imread("../ComparisionPictures/closeResult.ppm", 0);
+	Mat mask = imread("../ComparisionPictures/MorphMask.ppm", 0);
+	Vision::MorphologicalFilter Test(FilterImg);
+	Test.Close(mask);
+	imwrite("closeRun.ppm", Test.ProcessedImg);
+	BOOST_CHECK_EQUAL_COLLECTIONS(Test.ProcessedImg.begin<uchar>(), Test.ProcessedImg.end<uchar>(), CloseComp.begin<uchar>(), CloseComp.end<uchar>());
+}
 
 // Soil Test
 

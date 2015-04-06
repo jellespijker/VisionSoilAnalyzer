@@ -19,11 +19,13 @@ namespace Vision
 		MorphologicalFilter &operator=(MorphologicalFilter &rhs);
 
 		void Dilation(const Mat &mask, bool chain = false);
-
 		void Erosion(const Mat &mask, bool chain = false);
-		void Erosion(const Mat &src, Mat &dst, const Mat &mask);
+
+		void Close(const Mat &mask, bool chain = false);
+		void Open(const Mat &mask, bool chain = false);
 
 	private:
+		void Filter(const Mat &mask, bool chain, uchar startVal, uchar newVal, uchar switchVal);
 
 	};
 
