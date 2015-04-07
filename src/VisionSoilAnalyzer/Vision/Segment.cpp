@@ -626,6 +626,9 @@ namespace Vision
 			else { P[i] = 0; }
 		}
 
+		//ProcessedImg = OriginalImg.clone() - eroder.ProcessedImg.clone();
+
+		SHOW_DEBUG_IMG(eroder.ProcessedImg, uchar, 255, "Eroded img Processed Image!");
 		SHOW_DEBUG_IMG(ProcessedImg, uchar, 255, "GetEdgesEroding Processed Image!");
 	}
 

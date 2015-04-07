@@ -149,7 +149,12 @@ namespace Vision
 				});
 
 				int Range = MatMax - MatMin;
-				if (Range < 1) Range = maxVal;
+				if (Range < 1) 
+				{
+					MatMin = 0;
+					MatMax = maxVal;
+					Range = maxVal;
+				}
 
 				// Convert the values
 				for_each(exSrc.begin(), exSrc.end(), [&](const Mat & sItem)

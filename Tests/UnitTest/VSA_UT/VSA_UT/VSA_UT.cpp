@@ -680,8 +680,17 @@ BOOST_AUTO_TEST_CASE(Vision_MorphologicalFilter_Close)
 	Mat mask = imread("../ComparisionPictures/MorphMask.ppm", 0);
 	Vision::MorphologicalFilter Test(FilterImg);
 	Test.Close(mask);
-	imwrite("closeRun.ppm", Test.ProcessedImg);
 	BOOST_CHECK_EQUAL_COLLECTIONS(Test.ProcessedImg.begin<uchar>(), Test.ProcessedImg.end<uchar>(), CloseComp.begin<uchar>(), CloseComp.end<uchar>());
+}
+
+BOOST_AUTO_TEST_CASE(Vision_Segment_GetEdgesByErosion)
+{
+	cv::Mat BlobImg = imread("../ComparisionPictures/FilterImg.ppm", 0);
+	cv::Mat EdgeComp = imread("../ComparisionPictures/BlobTestEdgeResult.ppm", 0);
+
+	Vision::Segment Test(BlobImg);
+	Test.GetEdgesEroding();
+	BOOST_CHECK_EQUAL_COLLECTIONS(Test.ProcessedImg.begin<uchar>(), Test.ProcessedImg.end<uchar>(), EdgeComp.begin<uchar>(), EdgeComp.end<uchar>());
 }
 
 // Soil Test
