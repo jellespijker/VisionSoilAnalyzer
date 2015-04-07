@@ -1,4 +1,5 @@
 #pragma once
+#define SEGMENT_OFFSET 4
 
 #include <vector>
 #include <queue>

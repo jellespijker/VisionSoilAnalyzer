@@ -8,7 +8,7 @@ namespace SoilAnalyzer
 
 	Sample::Sample(const Mat& src)
 	{
-		OriginalImage = src;
+		OriginalImage = src.clone();
 	}
 
 	Sample::~Sample()
@@ -32,55 +32,60 @@ namespace SoilAnalyzer
 	void Sample::Analyse(SoilMath::NN &nn)
 	{
 		if (OriginalImage.empty()) { throw Exception::AnalysisException("No Image found to analyze!", 1); }
+		SHOW_DEBUG_IMG(OriginalImage, uchar, 255, "RGB", false);
 
 		// Convert the image to an intensity image and an enhanced Intinsity for better segmentation
 		Vision::Conversion RGBConvertor(OriginalImage);
 		RGBConvertor.Convert(Vision::Conversion::RGB, Vision::Conversion::Intensity);
 		Intensity = RGBConvertor.ProcessedImg.clone();
-		SHOW_DEBUG_IMG(Intensity, uchar, 255, "Intensity");
+		SHOW_DEBUG_IMG(Intensity, uchar, 255, "Intensity", false);
 
 		// Enhance the image with an Adaptive contrast stretch followed by a blur
 		Vision::Enhance IntEnchance(Intensity);
-		IntEnchance.AdaptiveContrastStretch(7, 10);
-		IntEnchance.Blur(7);
+		IntEnchance.AdaptiveContrastStretch(9, 10);
+		IntEnchance.Blur(5);
 		OptimizedInt = IntEnchance.ProcessedImg(cv::Rect(10, 10, OriginalImage.cols - 20, OriginalImage.rows - 20)).clone();
-		SHOW_DEBUG_IMG(OptimizedInt, uchar, 255, "IntEnchance");
+		SHOW_DEBUG_IMG(OptimizedInt, uchar, 255, "IntEnchance", false);
 
 		// Segment the Dark Objects en fill the holes
 		Vision::Segment Segmenter(OptimizedInt);
 		Segmenter.ConvertToBW(Vision::Segment::Dark);
 		Segmenter.FillHoles(true);
 		Segmenter.RemoveBorderBlobs(1, true);
-		//Segmenter.GetEdgesEroding(true);
-		SHOW_DEBUG_IMG(Segmenter.ProcessedImg, uchar, 255, "Segmenter");
+		SHOW_DEBUG_IMG(Segmenter.ProcessedImg, uchar, 255, "Segmenter", true);
 
-		// Erode the segmented image and sets the BW image
+		// Erode the segmented image and sets the BW image use it to create the NO background RGB
 		Vision::MorphologicalFilter Filter(Segmenter.ProcessedImg);
 		Mat mask = cv::Mat::zeros(5, 5, CV_8UC1); 
-		circle(mask, Point(3, 3), 3, 1, -1);
-		Filter.Erosion(mask);
+		circle(mask, Point(2, 2), 3, 1, -1);
+		Filter.Open(mask);
 		BW = Filter.ProcessedImg.clone();
-		SHOW_DEBUG_IMG(BW, uchar, 255, "BW after segmentation, fill holes and erosion");
-		
-		//// Make the CIE La*b* conversion
-		//cv::Mat RGBwork = cv::Mat(RGB(cv::Rect(10, 10, OriginalImage.cols - 20, OriginalImage.rows - 20))).clone();
-		//Vision::Conversion RGBnewConvertor(RGBwork);
-		//RGBnewConvertor.Convert(Vision::Conversion::RGB, Vision::Conversion::CIE_lab);
-		//LAB = RGBnewConvertor.CopyMat<float>(RGB, BW, CV_32F);
-		//SHOW_DEBUG_IMG(LAB, float, 1.0, "LAB");
-
-		//// Create the Redness Index
-		//Vision::Conversion LABConvertor(LAB);
-		//LABConvertor.Convert(Vision::Conversion::CIE_lab, Vision::Conversion::RI);
-		//RI = LABConvertor.ProcessedImg;
-		//SHOW_DEBUG_IMG(RI, float, 1.0, "RI");
+		SHOW_DEBUG_IMG(BW, uchar, 255, "BW after segmentation, fill holes and erosion", true);
+		RGB = Vision::ImageProcessing::CopyMat<uchar>(OriginalImage(cv::Rect(10, 10, OriginalImage.cols - 20, OriginalImage.rows - 20)).clone(), BW, CV_8UC1);
+		SHOW_DEBUG_IMG(RGB, uchar, 255, "RGB no Background", false);
 
 		// Create the Edge image
-		//Vision::Segment Edger(BW);
-		//Edger.GetEdgesEroding(false);
-		//Edge = Edger.ProcessedImg;
+		Vision::Segment Edger(BW);
+		Edger.GetEdgesEroding();
+		Edge = Edger.ProcessedImg;
+		SHOW_DEBUG_IMG(Edge, uchar, 255, "Edge", true);
 
+		// Make the CIE La*b* conversion
+		Vision::Conversion RGBnewConvertor(RGB);
+		RGBnewConvertor.Convert(Vision::Conversion::RGB, Vision::Conversion::CIE_lab);
+		LAB = RGBnewConvertor.CopyMat<float>(RGB, BW, CV_32F);
+		SHOW_DEBUG_IMG(LAB, float, 1.0, "LAB", true);
+		//Calculate the statistics CIE La*b*
+		vector<Mat> LABextract = Vision::ImageProcessing::extractChannel(LAB);
+		for_each(LABextract.begin(), LABextract.end(), [&](Mat &lab) { Results.LAB_Stat.push_back(floatStat_t((float *)lab.data, lab.rows, lab.cols)); });
 
+		// Create the Redness Index
+		Vision::Conversion LABConvertor(LAB);
+		LABConvertor.Convert(Vision::Conversion::CIE_lab, Vision::Conversion::RI);
+		RI = LABConvertor.ProcessedImg;
+		SHOW_DEBUG_IMG(RI, float, 1.0, "RI", true);
+		//Calculate the statistics RI
+		Results.RI_Stat = floatStat_t((float *)RI.data, RI.rows, RI.cols);
 
 		// Segment and analyze the particles
 		//SegmentParticles();

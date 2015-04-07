@@ -703,6 +703,9 @@ BOOST_FIXTURE_TEST_CASE(Soil_Particle_Analyze, M)
 	SoilAnalyzer::Sample Test(src);
 	Test.Analyse(nn);
 
+	std::string filename = "SoilSample.vsa";
+	Test.Save(filename);
+
 	imwrite("BW.ppm", Test.BW);
 //	imwrite("Edge.ppm", Test.Edge);
 

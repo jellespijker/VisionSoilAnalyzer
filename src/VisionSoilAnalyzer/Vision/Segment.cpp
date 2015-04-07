@@ -114,13 +114,20 @@ namespace Vision
 		}
 
 		// Assumes the pixel value of the sought object lies between 2 sigma
+		int val = 0;
 		switch (TypeObject)
 		{
 		case Bright:
-			T.first = Rmean - (3 * Rstd);
+			val = Rmean - (3 * Rstd) - SEGMENT_OFFSET;
+			if (val < 0) { val = 0; }
+			else if (val > 255) { val = 255; }
+			T.first = (uchar)val;
 			break;
 		case Dark:
-			T.first = Lmean + (3 * Lstd);
+			val = Lmean + (3 * Lstd) + SEGMENT_OFFSET;
+			if (val < 0) { val = 0; }
+			else if (val > 255) { val = 255; }
+			T.first = (uchar)val;
 			break;
 		}
 
