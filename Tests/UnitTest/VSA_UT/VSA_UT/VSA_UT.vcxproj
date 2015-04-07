@@ -65,8 +65,10 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="CMakeLists.txt" />
-    <Text Include="Debug\valgrind.log" />
     <Text Include="Debug\VSA_UNIT_TESTS.log" />
+    <Text Include="valgrind.log">
+      <SubType>Designer</SubType>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FloatTestMatrix.h" />
@@ -75,6 +77,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="toolchain-Debug.cmake" />
+    <None Include="ValgrindTest.sh" />
+    <None Include="VSA_UT.sh" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
