@@ -4,18 +4,20 @@
 #include "../../../../src/VisionSoilAnalyzer/Vision/Vision.h"
 #include "../../../../src/VisionSoilAnalyzer/Soil/VisionSoil.h"
 #include "../../../../src/VisionSoilAnalyzer/SoilMath/SoilMath.h"
+#include "../../../../src/VisionSoilAnalyzer/SoilPlot/SoilPlot.h"
+
+// Test Libraries
 #include "FloatTestMatrix.h"
 #include "TestMatrix.h"
+#include "StatisticalComparisonDefinition.h"
 
 #include <boost/test/unit_test.hpp>
 #include <boost/test/results_reporter.hpp>
 #include <iostream>
 #include <fstream>
 #include <sstream>
-
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
-
 #include <string>
 #include <boost/archive/xml_oarchive.hpp>
 #include <boost/archive/xml_iarchive.hpp>
@@ -24,7 +26,6 @@
 #include <boost/serialization/vector.hpp>
 
 // Statistical analysis
-#include "StatisticalComparisonDefinition.h"
 
 #include <math.h>
 #include <cmath>
@@ -97,6 +98,26 @@ struct BM {
 	Mat dst;
 	Mat comp;
 };
+
+//SoilPlot Test
+BOOST_AUTO_TEST_CASE(SoilPlot_Bar_Graph)
+{
+	SoilPlot::Graph Test;
+	
+	Test.Figure.create(500, 500, CV_8UC3);
+	Test.Env.GraphTitle.Text = "Soil Plot Test Graph";
+	Test.Env.GraphTitle.Thickness = 2;
+	Test.Env.GraphTitle.Font = cv::FONT_HERSHEY_PLAIN;
+	Test.Env.GraphTitle.FillColor = cv::Scalar_<uchar>(255, 255, 255, 255);
+	Test.Draw();
+	//Test.Env.X0.StartPoint = cv::Point(10, 10);
+	//Test.Env.X0.EndPoint = cv::Point(490, 10);
+	//Test.Env.X0.Thickness = 5;
+	//Test.Draw();
+	namedWindow("Test uint32_t Bar Graph", cv::WINDOW_NORMAL);
+	imshow("Test uint32_t Bar Graph", Test.Figure);
+}
+
 
 // SoilMath Test
 BOOST_AUTO_TEST_CASE(Vision_Create_Blobs)

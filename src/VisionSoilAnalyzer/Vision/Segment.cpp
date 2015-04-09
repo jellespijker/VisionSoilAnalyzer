@@ -2,7 +2,6 @@
 \brief Segmentation algorithms
 With this class, various segmentation routines can be applied to a greyscale or black and white source image.
 */
-
 #include "Segment.h"
 
 namespace Vision
@@ -245,8 +244,8 @@ namespace Vision
 		if (chain) { ProcessedImg = TempImg.clone(); } 
 		else { ProcessedImg = OriginalImg.clone(); } 		
 
-		SHOW_DEBUG_IMG(OriginalImg, uchar, 255, "Original Image RemoverBorderBlobs!");
-		SHOW_DEBUG_IMG(TempImg, uchar, 255, "Temp Image RemoverBorderBlobs!");
+		SHOW_DEBUG_IMG(OriginalImg, uchar, 255, "Original Image RemoverBorderBlobs!", true);
+		SHOW_DEBUG_IMG(TempImg, uchar, 255, "Temp Image RemoverBorderBlobs!", true);
 
 		uchar *P = ProcessedImg.data;
 		uint32_t cols = ProcessedImg.cols;
@@ -276,7 +275,7 @@ namespace Vision
 			}
 		}
 
-		SHOW_DEBUG_IMG(ProcessedImg, uchar, 255, "Processed Image RemoverBorderBlobs before LUT!");
+		SHOW_DEBUG_IMG(ProcessedImg, uchar, 255, "Processed Image RemoverBorderBlobs before LUT!", true);
 
 		// Change values 2 -> 0
 		uchar LUT_newValue[3]{ 0, 1, 0 };
@@ -284,7 +283,7 @@ namespace Vision
 		uint32_t nData = rows * cols;
 		for (uint32_t i = 0; i < nData; i++) { P[i] = LUT_newValue[P[i]];}
 
-		SHOW_DEBUG_IMG(ProcessedImg, uchar, 255, "Processed Image RemoverBorderBlobs!");
+		SHOW_DEBUG_IMG(ProcessedImg, uchar, 255, "Processed Image RemoverBorderBlobs!", true);
 	}
 
 	/*! Label all the individual blobs in a BW source image. The result are written to the labelledImg as an ushort
@@ -635,8 +634,8 @@ namespace Vision
 
 		//ProcessedImg = OriginalImg.clone() - eroder.ProcessedImg.clone();
 
-		SHOW_DEBUG_IMG(eroder.ProcessedImg, uchar, 255, "Eroded img Processed Image!");
-		SHOW_DEBUG_IMG(ProcessedImg, uchar, 255, "GetEdgesEroding Processed Image!");
+		SHOW_DEBUG_IMG(eroder.ProcessedImg, uchar, 255, "Eroded img Processed Image!", true);
+		SHOW_DEBUG_IMG(ProcessedImg, uchar, 255, "GetEdgesEroding Processed Image!", true);
 	}
 
 	/*! Create a BlobList subtracting each individual blob out of a Labelled image. If the labelled image is empty build a new one with a BW image.

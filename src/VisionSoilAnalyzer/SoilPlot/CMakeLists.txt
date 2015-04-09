@@ -3,6 +3,15 @@
 
 cmake_minimum_required(VERSION 2.7)
 project(SoilPlot)
+set (SoilPlot_VERSION_MAJOR 1)
+set (SoilPlot_VERSION_MINOR 0)
+SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+
 set(LIBRARIES_FROM_REFERENCES "")
-add_executable(SoilPlot SoilPlot.cpp)
-target_link_libraries(SoilPlot "${LIBRARIES_FROM_REFERENCES}")
+add_library(SoilPlot SHARED Axis.cpp Background.cpp DrawFigure.cpp Environment.cpp Graph.cpp Grid.cpp Label.cpp)
+include_directories(/usr/local/include /usr/local/include/opencv)
+target_link_libraries(SoilPlot -L/usr/local/lib -L/usr/lib/x86_64-linux-gnu/ -lopencv_calib3d -lopencv_core -lopencv_features2d -lopencv_imgproc -lopencv_flann -lopencv_highgui -lopencv_imgcodecs -lopencv_ml -lopencv_objdetect -lopencv_photo -lopencv_shape -lopencv_stitching -lopencv_superres -lopencv_ts -lopencv_video -lopencv_videoio -lopencv_videostab "${LIBRARIES_FROM_REFERENCES}")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c++11")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} ")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} ")
