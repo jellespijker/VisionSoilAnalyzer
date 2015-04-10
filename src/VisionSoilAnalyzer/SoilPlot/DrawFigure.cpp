@@ -4,8 +4,8 @@ namespace SoilPlot
 {
 	DrawFigure::DrawFigure()
 	{
-		this->EdgeColor = cv::Scalar(0, 0, 0, 255);
-		this->FillColor = cv::Scalar(0, 0, 0, 255);
+		this->EdgeColor = cv::Scalar(0, 0, 0, 0);
+		this->FillColor = cv::Scalar(0, 0, 0, 0);
 		this->Thickness = 1;
 		this->TopLeftCorner = cv::Point(0,0);
 		this->ForegrondBlend = 1.;
@@ -45,7 +45,7 @@ namespace SoilPlot
 			{
 				cv::Vec4b *F = &Figure.at<cv::Vec4b>(cv::Point(i, j));
 				cv::Vec4b *G = &workImg.at<cv::Vec4b>(cv::Point(i, j));
-				float ratio = 255.0 / (*F)[3];
+				float ratio = (*F)[3] / 255;
 				for (uint32_t k = 0; k < 3; k++)
 				{
 					int newVal = (*G)[k] * (1 - ratio) + (*F)[k] * ratio;

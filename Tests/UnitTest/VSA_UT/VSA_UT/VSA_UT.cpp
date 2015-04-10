@@ -107,17 +107,26 @@ BOOST_AUTO_TEST_CASE(SoilPlot_Bar_Graph)
 	Test.Figure.create(500, 500, CV_8UC4);
 	Test.Env.Figure.create(500, 500, CV_8UC4);
 	Test.Env.GraphBackground.Figure.create(500, 500, CV_8UC4);
-	Test.Env.GraphBackground.FillColor = cv::Scalar(120, 0, 120, 255);
+	Test.Env.GraphBackground.FillColor = cv::Scalar(0, 0, 0, 255);
 
 	Test.Env.GraphTitleBorderOffset = 500 * 0.05;
 
 	Test.Env.GraphTitle.Text << "Soil!";
-	Test.Env.GraphTitle.Thickness = 1;
-	Test.Env.GraphTitle.Font = cv::FONT_HERSHEY_PLAIN;
-	Test.Env.GraphTitle.FillColor = cv::Scalar(0, 255, 0, 100);
+	Test.Env.GraphTitle.Thickness = 2;
+	Test.Env.GraphTitle.Font = cv::FONT_HERSHEY_COMPLEX;
+	Test.Env.GraphTitle.FillColor = cv::Scalar(0, 0, 0, 0);
 	Test.Env.GraphTitle.EdgeColor = cv::Scalar(255, 0, 120, 255);
 	Test.Env.GraphTitle.Scale = 3;
 	Test.Draw();
+
+	SoilPlot::Line test(cv::Point(250, 10), cv::Point(400, 400));
+	test.FillColor = cv::Scalar(255, 255, 255, 0);
+	test.EdgeColor = cv::Scalar(255, 255, 0, 255);
+	test.Thickness = 4;
+	test.Draw();
+	test.DrawOnTop(Test.Figure, test.StartPoint);
+
+
 	//Test.Env.X0.StartPoint = cv::Point(10, 10);
 	//Test.Env.X0.EndPoint = cv::Point(490, 10);
 	//Test.Env.X0.Thickness = 5;

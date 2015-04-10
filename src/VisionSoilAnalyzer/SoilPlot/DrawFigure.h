@@ -10,6 +10,13 @@ namespace SoilPlot
 	class DrawFigure
 	{
 	public:
+		enum Orientation_enum
+		{
+			Horizontal,
+			Vertical,
+			Free
+		};
+
 		cv::Mat Figure;
 		cv::Scalar FillColor;
 		cv::Scalar EdgeColor;
