@@ -21,20 +21,48 @@ namespace SoilPlot
 
 	}
 
+	Environment::Environment(const Environment & rhs) : DrawFigure(rhs)
+	{
+		this->DataRegion = rhs.DataRegion;
+		this->GraphAxes = rhs.GraphAxes;
+		this->GraphBackground = rhs.GraphBackground;
+		this->GraphGrid = rhs.GraphGrid;
+		this->GraphTitle = rhs.GraphTitle;
+		this->GraphTitleBorderOffset = rhs.GraphTitleBorderOffset;
+	}
+
+	Environment & Environment::operator=(const Environment & rhs)
+	{
+		if (&rhs != this)
+		{
+			DrawFigure::operator=(rhs);
+			this->DataRegion = rhs.DataRegion;
+			this->GraphAxes = rhs.GraphAxes;
+			this->GraphBackground = rhs.GraphBackground;
+			this->GraphGrid = rhs.GraphGrid;
+			this->GraphTitle = rhs.GraphTitle;
+			this->GraphTitleBorderOffset = rhs.GraphTitleBorderOffset;
+		}
+		return *this;
+	}
+
 	cv::Mat Environment::Draw()
 	{
-		GraphBackground.Draw();
-		GraphBackground.DrawOnTop(Figure, GraphBackground.TopLeftCorner);
-		//for_each(GraphAxes.begin(), GraphAxes.end(), [&](Axis &X) 
-		//{
-		//	X.Draw();
-		//	X.DrawOnTop(Figure, X.TopLeftCorner);
-		//});
-		//GraphGrid.Draw();
-		//GraphGrid.DrawOnTop(Figure, GraphGrid.TopLeftCorner);
-		GraphTitle.Draw();
-		GraphTitle.TopLeftCorner = cv::Point((GraphTitle.Figure.cols - Figure.cols) / 2, GraphTitleBorderOffset);
-		GraphTitle.DrawOnTop(Figure, GraphTitle.TopLeftCorner);
+		if (Figure.rows > 0 && Figure.cols > 0)
+		{
+			GraphBackground.Draw();
+			GraphBackground.DrawOnTop(Figure, GraphBackground.TopLeftCorner);
+			//for_each(GraphAxes.begin(), GraphAxes.end(), [&](Axis &X) 
+			//{
+			//	X.Draw();
+			//	X.DrawOnTop(Figure, X.TopLeftCorner);
+			//});
+			//GraphGrid.Draw();
+			//GraphGrid.DrawOnTop(Figure, GraphGrid.TopLeftCorner);
+			GraphTitle.Draw();
+			GraphTitle.TopLeftCorner = cv::Point((Figure.cols - GraphTitle.Figure.cols) / 2, GraphTitleBorderOffset);
+			GraphTitle.DrawOnTop(Figure, GraphTitle.TopLeftCorner);
+		}
 		return Figure;
 	}
 }

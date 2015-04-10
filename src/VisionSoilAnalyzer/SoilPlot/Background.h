@@ -7,11 +7,11 @@ namespace SoilPlot
 		public DrawFigure
 	{
 	public:
-		Background() {};
-		Background(const Background &rhs) = default;
+		Background();
+		Background(const Background &rhs);
 		Background(cv::Size size);
 
-		Background &operator=(const Background &rhs) = default;
+		Background &operator=(const Background &rhs);
 
 		~Background() {};
 

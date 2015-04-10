@@ -16,7 +16,7 @@ namespace SoilPlot
 
 		Axis() {};
 		Axis(const Axis &rhs);
-		Axis(cv::Point startpoint, cv::Point endpoint, Orientation_enum orientation);
+		Axis(cv::Point startpoint, uint32_t length, Orientation_enum orientation);
 
 		Axis &operator=(const Axis &rhs);
 
@@ -33,7 +33,7 @@ namespace SoilPlot
 		bool ShowTickMinor;
 
 		cv::Point StartPoint;
-		cv::Point EndPoint;
+		uint32_t Length;
 		Orientation_enum Orientation;
 		
 		int Thickness;

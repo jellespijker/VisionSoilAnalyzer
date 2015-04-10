@@ -108,6 +108,8 @@ namespace SoilMath
 		{
 			if (&rhs != this) 
 			{
+				delete[] bins;
+				delete[] Data;
 				bins = new uint32_t[rhs.noBins];
 				Data = new T1[rhs.n];
 				this->binRange = rhs.binRange;

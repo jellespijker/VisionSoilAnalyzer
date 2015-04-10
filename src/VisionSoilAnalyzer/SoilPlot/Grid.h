@@ -7,8 +7,12 @@ namespace SoilPlot
 		public DrawFigure
 	{
 	public:
-		Grid() {};
-		~Grid() {};
+		Grid();
+		Grid(const Grid &rhs);
+
+		Grid &operator=(const Grid &rhs);
+
+		~Grid();
 
 		cv::Mat Draw();
 	};

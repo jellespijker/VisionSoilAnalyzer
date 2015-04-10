@@ -2,41 +2,77 @@
 
 namespace SoilPlot
 {
-	Graph::Graph(Graph &lhs)
+	Graph::Graph(const Graph &rhs)
 	{
-		lhs.Data = this->Data;
-		lhs.Env = this->Env;
-		lhs.Figure = this->Figure;
-		lhs.Type = this->Type;
+		this->Data = new uint32_t[rhs.n];
+		for (uint32_t i = 0; i < n; i++)
+		{
+			this->Data[i] = rhs.Data[i];
+		}
+		this->Env = rhs.Env;
+		this->Figure = rhs.Figure.clone();
+		this->Type = rhs.Type;
+		this->n = rhs.n;
 	}
 
-	Graph::Graph(uint32_t * data, cv::Size size)
+	Graph::Graph()
 	{
-		this->Data = &data[0];
+		this->Data = new uint32_t[1];
+	}
+
+	Graph::Graph(uint32_t * data, uint32_t n, cv::Size size)
+	{
+		this->Data = new uint32_t[n];
+		for (uint32_t i = 0; i < n; i++)
+		{
+			this->Data[i] = data[i];
+		}
+		this->n = n;
 		this->Figure = cv::Mat(size, CV_8UC4);
 	}
 
-	Graph::Graph(uint32_t * data, cv::Size size, GraphType_enum type)
+	Graph::Graph(uint32_t * data, uint32_t n, cv::Size size, GraphType_enum type)
 	{
+		this->Data = new uint32_t[n];
+		for (uint32_t i = 0; i < n; i++)
+		{
+			this->Data[i] = data[i];
+		}
+		this->n = n;
+		this->Figure = cv::Mat(size, CV_8UC4);
+		this->Type = type;
 	}
 
 	Graph & Graph::operator=(const Graph & rhs)
 	{
-		this->Data = &rhs.Data[0];
-		this->Env = rhs.Env;
-		this->Figure = rhs.Figure;
-		this->Type = rhs.Type;
+		if (&rhs != this)
+		{
+			delete[] this->Data;
+			this->Data = new uint32_t[rhs.n];
+			for (uint32_t i = 0; i < n; i++)
+			{
+				this->Data[i] = rhs.Data[i];
+			}
+			this->Env = rhs.Env;
+			this->Figure = rhs.Figure.clone();
+			this->Type = rhs.Type;
+			this->n = rhs.n;
+		}
 		return *this;
 	}
 
 	Graph::~Graph()
 	{
+		delete[] this->Data;
 	}
 
 	cv::Mat Graph::Draw()
 	{
-		Env.Draw();
-		Env.DrawOnTop(this->Figure, Env.TopLeftCorner);
+		if (Figure.rows > 0 && Figure.cols > 0)
+		{
+			Env.Draw();
+			Env.DrawOnTop(this->Figure, Env.TopLeftCorner);
+		}
 		return Figure;
 	}
 

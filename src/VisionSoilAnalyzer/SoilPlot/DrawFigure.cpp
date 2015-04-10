@@ -2,6 +2,39 @@
 
 namespace SoilPlot
 {
+	DrawFigure::DrawFigure()
+	{
+		this->EdgeColor = cv::Scalar(0, 0, 0, 255);
+		this->FillColor = cv::Scalar(0, 0, 0, 255);
+		this->Thickness = 1;
+		this->TopLeftCorner = cv::Point(0,0);
+		this->ForegrondBlend = 1.;
+	}
+
+	DrawFigure::DrawFigure(const DrawFigure & rhs)
+	{
+		this->EdgeColor = rhs.EdgeColor;
+		this->Figure = rhs.Figure;
+		this->FillColor = rhs.FillColor;
+		this->Thickness = rhs.Thickness;
+		this->TopLeftCorner = rhs.TopLeftCorner;
+		this->ForegrondBlend = rhs.ForegrondBlend;
+	}
+
+	DrawFigure & DrawFigure::operator=(const DrawFigure & rhs)
+	{
+		if (&rhs != this)
+		{
+			this->EdgeColor = rhs.EdgeColor;
+			this->Figure = rhs.Figure;
+			this->FillColor = rhs.FillColor;
+			this->Thickness = rhs.Thickness;
+			this->TopLeftCorner = rhs.TopLeftCorner;
+			this->ForegrondBlend = rhs.ForegrondBlend;
+		}
+		return *this;
+	}
+
 	void DrawFigure::DrawOnTop(cv::Mat & graphfigure, cv::Point topleft)
 	{
 		cv::Mat workImg = graphfigure(cv::Rect(topleft.x, topleft.y, Figure.cols, Figure.rows));

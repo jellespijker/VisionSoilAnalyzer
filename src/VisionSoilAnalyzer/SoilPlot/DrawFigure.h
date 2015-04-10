@@ -11,19 +11,20 @@ namespace SoilPlot
 	{
 	public:
 		cv::Mat Figure;
-		cv::Scalar_<uchar> FillColor;
-		cv::Scalar_<uchar> EdgeColor;
+		cv::Scalar FillColor;
+		cv::Scalar EdgeColor;
 		cv::Point TopLeftCorner;
+		float ForegrondBlend;
 		int Thickness;
 
-		DrawFigure() {};
-		DrawFigure(const DrawFigure &rhs) = default;
+		DrawFigure();
+		DrawFigure(const DrawFigure &rhs);
 
-		DrawFigure &operator=(const DrawFigure &lhs) = default;
+		DrawFigure &operator=(const DrawFigure &rhs);
 
 		~DrawFigure() {};
 
 		void DrawOnTop(cv::Mat &graphfigure, cv::Point LeftTopPosition);
-		virtual cv::Mat Draw();
+		virtual cv::Mat Draw() { return Figure; };
 	};
 }

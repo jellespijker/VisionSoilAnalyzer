@@ -17,9 +17,9 @@ namespace SoilPlot
 	public:
 		Environment() {};
 		Environment(cv::Size size);
-		Environment(const Environment &rhs) {};
+		Environment(const Environment &rhs);
 
-		Environment &operator=(const Environment &rhs) {};
+		Environment &operator=(const Environment &rhs);
 
 		~Environment() {};
 

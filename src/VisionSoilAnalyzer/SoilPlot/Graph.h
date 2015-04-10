@@ -18,11 +18,11 @@ namespace SoilPlot
 		GraphType_enum Type;
 		cv::Mat Figure;
 
-		Graph(Graph &lhs);
-		Graph() {};
+		Graph(const Graph &rhs);
+		Graph();
 		Graph(cv::Size size) : Figure(size, CV_8UC4) {};
-		Graph(uint32_t *data, cv::Size size);
-		Graph(uint32_t *data, cv::Size size, GraphType_enum type);
+		Graph(uint32_t *data, uint32_t n, cv::Size size);
+		Graph(uint32_t *data, uint32_t n, cv::Size size, GraphType_enum type);
 
 		Graph &operator=(const Graph &rhs);
 		~Graph();
@@ -31,6 +31,7 @@ namespace SoilPlot
 
 	private:
 		uint32_t *Data;
+		uint32_t n;
 
 	};
 }
