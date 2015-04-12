@@ -57,4 +57,9 @@ namespace SoilPlot
 			}
 		}
 	}
+
+	cv::Point DrawFigure::abs(const cv::Point &point)
+	{
+		return cv::Point(std::abs(point.x), std::abs(point.y));
+	}
 }

@@ -8,8 +8,7 @@ namespace SoilPlot
 	{
 	public:
 		Line();
-		Line(cv::Point startpoint, cv::Point endpoint);
-		Line(cv::Point startpoint, Orientation_enum orientation, uint32_t length, bool flip = false);
+		Line(cv::Point startpoint, cv::Point endpoint, uint32_t thickness = 1, cv::Scalar edgecolor = cv::Scalar(255, 255, 255, 255), cv::Scalar fillcolor = cv::Scalar(0, 0, 0, 0));
 
 		Line(const Line &rhs);
 
@@ -25,7 +24,9 @@ namespace SoilPlot
 
 		cv::Mat Draw();
 	private:
-		float calcAngle(cv::Point point);
-		DrawFigure::Orientation_enum detOrientation(float angle, cv::Point point);
+		float calcAngle(cv::Point startpoint, cv::Point endpoint);
+		DrawFigure::Orientation_enum detOrientation(float angle);
+		cv::Point RelStartPoint;
+		cv::Point RelEndPoint;
 	};
 }

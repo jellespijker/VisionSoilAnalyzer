@@ -99,7 +99,64 @@ struct BM {
 	Mat comp;
 };
 
+struct PM {
+	PM()
+	{
+		BOOST_TEST_MESSAGE("Setup fixture");
+		checker = imread("../ComparisionPictures/checker.ppm", 0);
+		std::vector<cv::Mat> RGB;
+		for (uint32_t i = 0; i < 3; i++)
+		{
+			RGB.push_back(checker);
+		}
+		cv::Mat alpha(checker.rows, checker.cols, CV_8UC1);
+		alpha.setTo(255);
+		RGB.push_back(alpha);
+		merge(RGB, RGBchecker);
+	}
+	~PM() { BOOST_TEST_MESSAGE("teardown fixture"); }
+
+	std::string TestWindow = "SoilPlot Image window";
+	Mat checker;
+	Mat RGBchecker;
+	Mat comp;
+};
+
 //SoilPlot Test
+BOOST_FIXTURE_TEST_CASE(SoilPlot_Label, PM)
+{
+	SoilPlot::Label Test;
+	Test.EdgeColor = cv::Scalar(255, 0, 0, 255);
+	Test.FillColor = cv::Scalar::all(0);
+	Test.Text << "Soil!";
+	Test.Font = cv::FONT_HERSHEY_COMPLEX_SMALL;
+	Test.Scale = 2;
+	Test.Draw();
+	Test.DrawOnTop(RGBchecker, Test.TopLeftCorner);
+	namedWindow(TestWindow, cv::WINDOW_NORMAL);
+	imshow(TestWindow, RGBchecker);
+	cv::waitKey(0);
+}
+
+BOOST_FIXTURE_TEST_CASE(SoilPlot_Lines, PM)
+{
+	std::vector<SoilPlot::Line> Lines;
+	Lines.push_back(SoilPlot::Line(cv::Point(80, 10), cv::Point(80, 150), 3, cv::Scalar(255, 0, 0, 255)));
+	Lines.push_back(SoilPlot::Line(cv::Point(10, 80), cv::Point(150, 80), 3, cv::Scalar(0, 255, 0, 255)));
+	Lines.push_back(SoilPlot::Line(cv::Point(10, 10), cv::Point(150, 150), 5, cv::Scalar(0, 0, 255, 255)));
+	Lines.push_back(SoilPlot::Line(cv::Point(150, 10), cv::Point(10, 150), 10, cv::Scalar(255, 255, 255, 127)));
+	for_each(Lines.begin(), Lines.end(), [&](SoilPlot::Line &L) 
+	{
+		L.Draw();
+		L.DrawOnTop(RGBchecker, L.TopLeftCorner);
+	});
+
+	namedWindow(TestWindow, cv::WINDOW_NORMAL);
+	imshow(TestWindow, RGBchecker);
+	cv::waitKey(0);
+}
+
+
 BOOST_AUTO_TEST_CASE(SoilPlot_Bar_Graph)
 {
 	SoilPlot::Graph Test;

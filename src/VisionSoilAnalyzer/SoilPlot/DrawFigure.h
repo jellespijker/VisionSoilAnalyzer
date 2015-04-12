@@ -4,6 +4,7 @@
 
 #include <algorithm>
 #include <stdint.h>
+#include <stdexcept>
 
 namespace SoilPlot
 {
@@ -32,6 +33,7 @@ namespace SoilPlot
 		~DrawFigure() {};
 
 		void DrawOnTop(cv::Mat &graphfigure, cv::Point LeftTopPosition);
+		cv::Point abs(const cv::Point &point);
 		virtual cv::Mat Draw() { return Figure; };
 	};
 }

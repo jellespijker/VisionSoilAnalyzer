@@ -52,11 +52,11 @@ namespace SoilPlot
 		{
 			GraphBackground.Draw();
 			GraphBackground.DrawOnTop(Figure, GraphBackground.TopLeftCorner);
-			//for_each(GraphAxes.begin(), GraphAxes.end(), [&](Axis &X) 
-			//{
-			//	X.Draw();
-			//	X.DrawOnTop(Figure, X.TopLeftCorner);
-			//});
+			for_each(GraphAxes.begin(), GraphAxes.end(), [&](Axis &X) 
+			{
+				X.Draw();
+				X.DrawOnTop(Figure, X.TopLeftCorner);
+			});
 			//GraphGrid.Draw();
 			//GraphGrid.DrawOnTop(Figure, GraphGrid.TopLeftCorner);
 			GraphTitle.Draw();
