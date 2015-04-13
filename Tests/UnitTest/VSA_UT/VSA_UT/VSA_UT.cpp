@@ -4,18 +4,20 @@
 #include "../../../../src/VisionSoilAnalyzer/Vision/Vision.h"
 #include "../../../../src/VisionSoilAnalyzer/Soil/VisionSoil.h"
 #include "../../../../src/VisionSoilAnalyzer/SoilMath/SoilMath.h"
+#include "../../../../src/VisionSoilAnalyzer/SoilPlot/SoilPlot.h"
+
+// Test Libraries
 #include "FloatTestMatrix.h"
 #include "TestMatrix.h"
+#include "StatisticalComparisonDefinition.h"
 
 #include <boost/test/unit_test.hpp>
 #include <boost/test/results_reporter.hpp>
 #include <iostream>
 #include <fstream>
 #include <sstream>
-
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
-
 #include <string>
 #include <boost/archive/xml_oarchive.hpp>
 #include <boost/archive/xml_iarchive.hpp>
@@ -24,7 +26,6 @@
 #include <boost/serialization/vector.hpp>
 
 // Statistical analysis
-#include "StatisticalComparisonDefinition.h"
 
 #include <math.h>
 #include <cmath>
@@ -97,6 +98,141 @@ struct BM {
 	Mat dst;
 	Mat comp;
 };
+
+struct PM {
+	PM()
+	{
+		BOOST_TEST_MESSAGE("Setup fixture");
+		checker = imread("../ComparisionPictures/checker.ppm", 0);
+		std::vector<cv::Mat> RGB;
+		for (uint32_t i = 0; i < 3; i++)
+		{
+			RGB.push_back(checker);
+		}
+		cv::Mat alpha(checker.rows, checker.cols, CV_8UC1);
+		alpha.setTo(255);
+		RGB.push_back(alpha);
+		merge(RGB, RGBchecker);
+	}
+	~PM() { BOOST_TEST_MESSAGE("teardown fixture"); }
+
+	std::string TestWindow = "SoilPlot Image window";
+	Mat checker;
+	Mat RGBchecker;
+	Mat comp;
+};
+
+//SoilPlot Test
+BOOST_FIXTURE_TEST_CASE(SoilPlot_Label, PM)
+{
+	SoilPlot::Label Test;
+	Test.EdgeColor = cv::Scalar(255, 0, 0, 255);
+	Test.FillColor = cv::Scalar::all(0);
+	Test.Text << "Soil!";
+	Test.Font = cv::FONT_HERSHEY_COMPLEX_SMALL;
+	Test.Scale = 2;
+	Test.Draw();
+	Test.DrawOnTop(RGBchecker, Test.TopLeftCorner);
+	namedWindow(TestWindow, cv::WINDOW_NORMAL);
+	imshow(TestWindow, RGBchecker);
+	cv::waitKey(0);
+}
+
+BOOST_FIXTURE_TEST_CASE(SoilPlot_Lines, PM)
+{
+	std::vector<SoilPlot::Line> Lines;
+	Lines.push_back(SoilPlot::Line(cv::Point(80, 80), cv::Point(150, 150), 1, cv::Scalar(255, 0, 0, 255)));
+	Lines.push_back(SoilPlot::Line(cv::Point(80, 80), cv::Point(10, 150), 2, cv::Scalar(0, 255, 0, 255)));
+	Lines.push_back(SoilPlot::Line(cv::Point(80, 80), cv::Point(10, 10), 3, cv::Scalar(0, 0,255, 255)));
+	Lines.push_back(SoilPlot::Line(cv::Point(80, 80), cv::Point(150, 10), 4, cv::Scalar(255, 0, 0, 255)));
+	Lines.push_back(SoilPlot::Line(cv::Point(80, 10), cv::Point(80, 150), 5, cv::Scalar(255, 0, 255, 255)));
+	Lines.push_back(SoilPlot::Line(cv::Point(10, 80), cv::Point(150, 80), 10, cv::Scalar(255, 255, 0, 200)));
+	for_each(Lines.begin(), Lines.end(), [&](SoilPlot::Line &L) 
+	{
+		L.Draw();
+		L.DrawOnTop(RGBchecker, L.TopLeftCorner);
+	});
+
+	namedWindow(TestWindow, cv::WINDOW_NORMAL);
+	imshow(TestWindow, RGBchecker);
+	cv::waitKey(0);
+}
+
+
+BOOST_AUTO_TEST_CASE(SoilPlot_Bar_Graph)
+{
+	SoilPlot::Graph Test;
+	
+	Test.Figure.create(500, 500, CV_8UC4);
+	Test.Env.Figure.create(500, 500, CV_8UC4);
+	Test.Env.GraphBackground.Figure.create(500, 500, CV_8UC4);
+	Test.Env.GraphBackground.FillColor = cv::Scalar(0, 0, 0, 255);
+
+	Test.Env.GraphTitleBorderOffset = 500 * 0.05;
+
+	Test.Env.GraphTitle.Text << "Soil!";
+	Test.Env.GraphTitle.Thickness = 2;
+	Test.Env.GraphTitle.Font = cv::FONT_HERSHEY_COMPLEX;
+	Test.Env.GraphTitle.FillColor = cv::Scalar(0, 0, 0, 0);
+	Test.Env.GraphTitle.EdgeColor = cv::Scalar(255, 0, 120, 255);
+	Test.Env.GraphTitle.Scale = 3;
+	Test.Draw();
+
+	SoilPlot::Line test(cv::Point(250, 10), cv::Point(400, 400));
+	test.FillColor = cv::Scalar(255, 255, 255, 0);
+	test.EdgeColor = cv::Scalar(255, 255, 0, 255);
+	test.Thickness = 4;
+	test.Draw();
+	test.DrawOnTop(Test.Figure, test.StartPoint);
+
+
+	//Test.Env.X0.StartPoint = cv::Point(10, 10);
+	//Test.Env.X0.EndPoint = cv::Point(490, 10);
+	//Test.Env.X0.Thickness = 5;
+	//Test.Draw();
+
+	namedWindow("Test uint32_t Bar Graph", cv::WINDOW_NORMAL);
+	imshow("Test uint32_t Bar Graph", Test.Figure);
+	cv::waitKey(0);
+}
+
+BOOST_AUTO_TEST_CASE(Put_text)
+{
+	string text = "Funny text inside the box";
+	int fontFace = FONT_HERSHEY_SCRIPT_SIMPLEX;
+	double fontScale = 2;
+	int thickness = 3;
+
+	Mat img(600, 800, CV_8UC4, Scalar::all(0));
+
+	int baseline = 0;
+	Size textSize = getTextSize(text, fontFace,
+		fontScale, thickness, &baseline);
+	baseline += thickness;
+
+	// center the text
+	Point textOrg((img.cols - textSize.width) / 2,
+		(img.rows + textSize.height) / 2);
+
+	// draw the box
+	rectangle(img, textOrg + Point(0, baseline),
+		textOrg + Point(textSize.width, -textSize.height),
+		Scalar(0, 0, 255));
+	// ... and the baseline first
+	line(img, textOrg + Point(0, thickness),
+		textOrg + Point(textSize.width, thickness),
+		Scalar(0, 0, 255));
+
+	// then put the text itself
+	putText(img, text, textOrg, fontFace, fontScale,
+		Scalar::all(255), thickness, 8);
+
+	namedWindow("Test text", cv::WINDOW_NORMAL);
+	imshow("Test text", img);
+	cv::waitKey(0);
+
+}
+
 
 // SoilMath Test
 BOOST_AUTO_TEST_CASE(Vision_Create_Blobs)
