@@ -14,7 +14,9 @@ namespace SoilPlot
 
 	Line::Line(cv::Point startpoint, cv::Point endpoint, uint32_t thickness, cv::Scalar edgecolor, cv::Scalar fillcolor)
 	{
-		Angle = calcAngle(startpoint, endpoint);
+		Kwarter kwarter;
+		float AngleError;
+		Angle = calcAngle(startpoint, endpoint, kwarter, AngleError);
 		Orientation = detOrientation(Angle);
 		this->StartPoint = startpoint;
 		this->EndPoint = endpoint;
@@ -23,47 +25,45 @@ namespace SoilPlot
 		this->FillColor = fillcolor;
 		cv::Point relPoint = abs(endpoint - startpoint);
 		this->Length = static_cast<uint32_t>(roundf(sqrtf(powf((float)relPoint.x, 2.) + powf((float)relPoint.y, 2.))));
-		float AngleError = roundf(Angle * 100.0);
-		if (Orientation == Vertical)
+
+		switch (kwarter)
 		{
-			if (AngleError == 157.) { this->TopLeftCorner = startpoint - cv::Point(thickness / 2, 0); }
-			else { this->TopLeftCorner = endpoint - cv::Point(thickness / 2, 0); }
-			this->RelStartPoint = cv::Point(thickness / 2, 0);
-			this->RelEndPoint = cv::Point(thickness / 2, relPoint.y);
-		}
-		else if (Orientation == Horizontal)
-		{
-			if (AngleError == 0.) { this->TopLeftCorner = startpoint - cv::Point(0, thickness / 2); }
-			else { this->TopLeftCorner = endpoint - cv::Point(0, thickness / 2); }
-			this->RelStartPoint = cv::Point(0, thickness / 2);
-			this->RelEndPoint = cv::Point(relPoint.x, thickness / 2);
-		}
-		else
-		{
-			if (AngleError > 0 || (AngleError < 157.0 && AngleError > 0))
+		case SoilPlot::Line::I:
+			this->RelStartPoint = cv::Point(0, 0);
+			this->RelEndPoint = relPoint;
+			this->TopLeftCorner = startpoint;
+			break;
+		case SoilPlot::Line::II:
+			this->RelStartPoint = cv::Point(relPoint.x, 0);
+			this->RelEndPoint = cv::Point(0, relPoint.y);
+			this->TopLeftCorner = startpoint - cv::Point(relPoint.x, 0);
+			break;
+		case SoilPlot::Line::III:
+			this->RelStartPoint = cv::Point(0, 0);
+			this->RelEndPoint = relPoint;
+			this->TopLeftCorner = startpoint - relPoint;
+			break;
+		case SoilPlot::Line::IV:
+			this->RelStartPoint = cv::Point(0, relPoint.y);
+			this->RelEndPoint = cv::Point(relPoint.x, 0);
+			this->TopLeftCorner = startpoint - cv::Point(0, relPoint.y);
+			break;
+		case SoilPlot::Line::None:
+			if (Orientation == Vertical)
 			{
-				this->TopLeftCorner = startpoint;
-				this->RelStartPoint = cv::Point(0, 0);
-				this->RelEndPoint = relPoint;
+				if (AngleError == 157.) { this->TopLeftCorner = startpoint - cv::Point(thickness / 2, 0); }
+				else { this->TopLeftCorner = endpoint - cv::Point(thickness / 2, 0); }
+				this->RelStartPoint = cv::Point(thickness / 2, 0);
+				this->RelEndPoint = cv::Point(thickness / 2, relPoint.y);
 			}
-			else if (AngleError > 157 || (AngleError < 314.0 && AngleError > 0))
+			else if (Orientation == Horizontal)
 			{
-				this->TopLeftCorner = cv::Point(endpoint.x, startpoint.y);
-				this->RelStartPoint = cv::Point(relPoint.x, 0);
-				this->RelEndPoint = cv::Point(0, relPoint.y);
+				if (AngleError == 0.) { this->TopLeftCorner = startpoint - cv::Point(0, thickness / 2); }
+				else { this->TopLeftCorner = endpoint - cv::Point(0, thickness / 2); }
+				this->RelStartPoint = cv::Point(0, thickness / 2);
+				this->RelEndPoint = cv::Point(relPoint.x, thickness / 2);
 			}
-			else if (AngleError < -157 || (AngleError > -314.0 && AngleError < 0))
-			{
-				this->TopLeftCorner = cv::Point(startpoint.x, endpoint.y);
-				this->RelStartPoint = cv::Point(0, 0);
-				this->RelEndPoint = relPoint;
-			}
-			else
-			{
-				this->TopLeftCorner = endpoint;
-				this->RelStartPoint = cv::Point(0, relPoint.y);
-				this->RelEndPoint = cv::Point(relPoint.x, 0);
-			}
+			break;
 		}
 	}
 
@@ -101,23 +101,36 @@ namespace SoilPlot
 	{
 		if (Orientation == Horizontal) { Figure.create(Thickness, Length, CV_8UC4); }
 		else if (Orientation == Vertical) { Figure.create(Length, Thickness, CV_8UC4); }
-		else if (Orientation == Free) { Figure.create(cv::Size(RelEndPoint - RelStartPoint + cv::Point(1, 1)), CV_8UC4); }
+		else if (Orientation == Free) { Figure.create(cv::Size(abs(RelEndPoint - RelStartPoint) + cv::Point(1, 1)), CV_8UC4); }
 		Figure.setTo(FillColor);
 		cv::line(Figure, RelStartPoint, RelEndPoint, EdgeColor, Thickness);
 		return Figure;
 	}
 
-	float Line::calcAngle(cv::Point startpoint, cv::Point endpoint)
+	float Line::calcAngle(cv::Point startpoint, cv::Point endpoint, Kwarter &kwarter, float &angleerror)
 	{
 		cv::Point point = endpoint - startpoint;
+		if (point.x > 0)
+		{
+			if (point.y > 0) { kwarter = Kwarter::I; }
+			else { kwarter = Kwarter::IV; }
+		}
+		else
+		{
+			if (point.y < 0) { kwarter = Kwarter::III; }
+			else { kwarter = Kwarter::II; }
+		}
 		float dxdy = 0.0;
 		if (point.y != 0) { dxdy = point.x / (float)point.y; }
 		float angle = atanf(dxdy);
-		if (roundf(angle * 100.0) == 0)
+		angleerror = roundf(angle * 100.0);
+		if (angleerror == 0)
 		{
+			kwarter = Kwarter::None;
 			if (point.y > 0) { angle = M_PI_2; }
 			else if (point.y < 0) { angle = -M_PI_2; }
 			else if (point.x < 0) { angle = M_PI; }
+			angleerror = roundf(angle * 100.0);
 		}
 		return angle;
 	}

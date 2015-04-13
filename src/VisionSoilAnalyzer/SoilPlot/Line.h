@@ -7,6 +7,14 @@ namespace SoilPlot
 		public DrawFigure
 	{
 	public:
+		enum Kwarter
+		{
+			I,
+			II,
+			III,
+			IV,
+			None
+		};
 		Line();
 		Line(cv::Point startpoint, cv::Point endpoint, uint32_t thickness = 1, cv::Scalar edgecolor = cv::Scalar(255, 255, 255, 255), cv::Scalar fillcolor = cv::Scalar(0, 0, 0, 0));
 
@@ -24,7 +32,7 @@ namespace SoilPlot
 
 		cv::Mat Draw();
 	private:
-		float calcAngle(cv::Point startpoint, cv::Point endpoint);
+		float calcAngle(cv::Point startpoint, cv::Point endpoint, Kwarter &kwarter, float &angleerror);
 		DrawFigure::Orientation_enum detOrientation(float angle);
 		cv::Point RelStartPoint;
 		cv::Point RelEndPoint;

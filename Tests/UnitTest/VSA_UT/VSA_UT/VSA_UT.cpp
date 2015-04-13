@@ -141,10 +141,12 @@ BOOST_FIXTURE_TEST_CASE(SoilPlot_Label, PM)
 BOOST_FIXTURE_TEST_CASE(SoilPlot_Lines, PM)
 {
 	std::vector<SoilPlot::Line> Lines;
-	Lines.push_back(SoilPlot::Line(cv::Point(80, 10), cv::Point(80, 150), 3, cv::Scalar(255, 0, 0, 255)));
-	Lines.push_back(SoilPlot::Line(cv::Point(10, 80), cv::Point(150, 80), 3, cv::Scalar(0, 255, 0, 255)));
-	Lines.push_back(SoilPlot::Line(cv::Point(10, 10), cv::Point(150, 150), 5, cv::Scalar(0, 0, 255, 255)));
-	Lines.push_back(SoilPlot::Line(cv::Point(150, 10), cv::Point(10, 150), 10, cv::Scalar(255, 255, 255, 127)));
+	Lines.push_back(SoilPlot::Line(cv::Point(80, 80), cv::Point(150, 150), 1, cv::Scalar(255, 0, 0, 255)));
+	Lines.push_back(SoilPlot::Line(cv::Point(80, 80), cv::Point(10, 150), 2, cv::Scalar(0, 255, 0, 255)));
+	Lines.push_back(SoilPlot::Line(cv::Point(80, 80), cv::Point(10, 10), 3, cv::Scalar(0, 0,255, 255)));
+	Lines.push_back(SoilPlot::Line(cv::Point(80, 80), cv::Point(150, 10), 4, cv::Scalar(255, 0, 0, 255)));
+	Lines.push_back(SoilPlot::Line(cv::Point(80, 10), cv::Point(80, 150), 5, cv::Scalar(255, 0, 255, 255)));
+	Lines.push_back(SoilPlot::Line(cv::Point(10, 80), cv::Point(150, 80), 10, cv::Scalar(255, 255, 0, 200)));
 	for_each(Lines.begin(), Lines.end(), [&](SoilPlot::Line &L) 
 	{
 		L.Draw();
