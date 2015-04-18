@@ -51,17 +51,17 @@ namespace SoilPlot
 		if (Figure.rows > 0 && Figure.cols > 0)
 		{
 			GraphBackground.Draw();
-			GraphBackground.DrawOnTop(Figure, GraphBackground.TopLeftCorner);
+			GraphBackground.DrawOnTop(Figure);
 			for_each(GraphAxes.begin(), GraphAxes.end(), [&](Axis &X) 
 			{
 				X.Draw();
-				X.DrawOnTop(Figure, X.TopLeftCorner);
+				X.DrawOnTop(Figure);
 			});
 			//GraphGrid.Draw();
-			//GraphGrid.DrawOnTop(Figure, GraphGrid.TopLeftCorner);
+			//GraphGrid.DrawOnTop(Figure);
 			GraphTitle.Draw();
 			GraphTitle.TopLeftCorner = cv::Point((Figure.cols - GraphTitle.Figure.cols) / 2, GraphTitleBorderOffset);
-			GraphTitle.DrawOnTop(Figure, GraphTitle.TopLeftCorner);
+			GraphTitle.DrawOnTop(Figure);
 		}
 		return Figure;
 	}

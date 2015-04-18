@@ -10,10 +10,15 @@ namespace SoilPlot
 		public DrawFigure
 	{
 	public:
+		enum ValuePosition
+		{
+			UnderTick,
+			NextToTick
+		};
 
 		Axis();
 		Axis(const Axis &rhs);
-		Axis(cv::Point startpoint, uint32_t length, Orientation_enum orientation);
+		Axis(cv::Point startpoint, uint32_t length, Orientation_enum orientation, std::vector<Label> &values, Label label, ValuePosition valuepos, bool showmajortick = true);
 
 		Axis &operator=(const Axis &rhs);
 
@@ -28,6 +33,7 @@ namespace SoilPlot
 
 		std::vector<Label> Values;
 		bool ShowValues;
+		ValuePosition ValuesPosition;
 
 		uint32_t TickResolutionMinor;
 		std::vector<Line> MinorTicks;
@@ -42,5 +48,6 @@ namespace SoilPlot
 	private:
 		cv::Size calcFigureSize();
 		uint32_t noValues;
+		cv::Point endPoint;
 	};
 }

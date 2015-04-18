@@ -125,14 +125,11 @@ struct PM {
 //SoilPlot Test
 BOOST_FIXTURE_TEST_CASE(SoilPlot_Label, PM)
 {
-	SoilPlot::Label Test;
-	Test.EdgeColor = cv::Scalar(255, 0, 0, 255);
-	Test.FillColor = cv::Scalar::all(0);
-	Test.Text << "Soil!";
-	Test.Font = cv::FONT_HERSHEY_COMPLEX_SMALL;
-	Test.Scale = 2;
+	//SoilPlot::Label Test("Hello World !", cv::FONT_HERSHEY_PLAIN, 20, 2, cv::Scalar(255, 0, 0, 200));
+	SoilPlot::Label Test("Hello World!", "times", 40, cv::Scalar(255,120,0,255), cv::Scalar(0,0,0,0), false, true);
+	Test.TopLeftCorner = cv::Point(0, 0);
 	Test.Draw();
-	Test.DrawOnTop(RGBchecker, Test.TopLeftCorner);
+	Test.DrawOnTop(RGBchecker);
 	namedWindow(TestWindow, cv::WINDOW_NORMAL);
 	imshow(TestWindow, RGBchecker);
 	cv::waitKey(0);
@@ -150,7 +147,7 @@ BOOST_FIXTURE_TEST_CASE(SoilPlot_Lines, PM)
 	for_each(Lines.begin(), Lines.end(), [&](SoilPlot::Line &L) 
 	{
 		L.Draw();
-		L.DrawOnTop(RGBchecker, L.TopLeftCorner);
+		L.DrawOnTop(RGBchecker);
 	});
 
 	namedWindow(TestWindow, cv::WINDOW_NORMAL);
@@ -158,42 +155,28 @@ BOOST_FIXTURE_TEST_CASE(SoilPlot_Lines, PM)
 	cv::waitKey(0);
 }
 
+BOOST_FIXTURE_TEST_CASE(SoilPlot_Axis, PM)
+{
+	std::vector<SoilPlot::Axis> axes;
+	SoilPlot::Label axisLabel("Horizontal", "times", 40, cv::Scalar(200, 80, 80, 255), cv::Scalar(0, 0, 0, 0), true, true);
+	
+	std::vector<SoilPlot::Label> Values;
+	Values.push_back(SoilPlot::Label("1", "times", 16, cv::Scalar(200,80,3,255), cv::Scalar(0,0,0,0), false, true));
+	Values.push_back(SoilPlot::Label("2", "times", 16, cv::Scalar(200,80,3,255), cv::Scalar(0,0,0,0), false, true));
+	Values.push_back(SoilPlot::Label("3", "times", 16, cv::Scalar(200,80,3,255), cv::Scalar(0,0,0,0), false, true));
+	
+	axes.push_back(SoilPlot::Axis(cv::Point(20,140), 120, SoilPlot::Axis::Orientation_enum::Horizontal, Values, axisLabel, SoilPlot::Axis::ValuePosition::UnderTick, false));
+	for_each(axes.begin(), axes.end(), [&](SoilPlot::Axis &A)
+	{
+		A.Draw();
+		A.DrawOnTop(RGBchecker);
+	});
+}
+
 
 BOOST_AUTO_TEST_CASE(SoilPlot_Bar_Graph)
 {
-	SoilPlot::Graph Test;
 	
-	Test.Figure.create(500, 500, CV_8UC4);
-	Test.Env.Figure.create(500, 500, CV_8UC4);
-	Test.Env.GraphBackground.Figure.create(500, 500, CV_8UC4);
-	Test.Env.GraphBackground.FillColor = cv::Scalar(0, 0, 0, 255);
-
-	Test.Env.GraphTitleBorderOffset = 500 * 0.05;
-
-	Test.Env.GraphTitle.Text << "Soil!";
-	Test.Env.GraphTitle.Thickness = 2;
-	Test.Env.GraphTitle.Font = cv::FONT_HERSHEY_COMPLEX;
-	Test.Env.GraphTitle.FillColor = cv::Scalar(0, 0, 0, 0);
-	Test.Env.GraphTitle.EdgeColor = cv::Scalar(255, 0, 120, 255);
-	Test.Env.GraphTitle.Scale = 3;
-	Test.Draw();
-
-	SoilPlot::Line test(cv::Point(250, 10), cv::Point(400, 400));
-	test.FillColor = cv::Scalar(255, 255, 255, 0);
-	test.EdgeColor = cv::Scalar(255, 255, 0, 255);
-	test.Thickness = 4;
-	test.Draw();
-	test.DrawOnTop(Test.Figure, test.StartPoint);
-
-
-	//Test.Env.X0.StartPoint = cv::Point(10, 10);
-	//Test.Env.X0.EndPoint = cv::Point(490, 10);
-	//Test.Env.X0.Thickness = 5;
-	//Test.Draw();
-
-	namedWindow("Test uint32_t Bar Graph", cv::WINDOW_NORMAL);
-	imshow("Test uint32_t Bar Graph", Test.Figure);
-	cv::waitKey(0);
 }
 
 BOOST_AUTO_TEST_CASE(Put_text)

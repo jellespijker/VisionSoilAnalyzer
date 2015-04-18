@@ -19,6 +19,7 @@ namespace SoilPlot
 		this->Thickness = rhs.Thickness;
 		this->TopLeftCorner = rhs.TopLeftCorner;
 		this->ForegrondBlend = rhs.ForegrondBlend;
+		this->Orientation = rhs.Orientation;
 	}
 
 	DrawFigure & DrawFigure::operator=(const DrawFigure & rhs)
@@ -31,13 +32,14 @@ namespace SoilPlot
 			this->Thickness = rhs.Thickness;
 			this->TopLeftCorner = rhs.TopLeftCorner;
 			this->ForegrondBlend = rhs.ForegrondBlend;
+			this->Orientation = rhs.Orientation;
 		}
 		return *this;
 	}
 
-	void DrawFigure::DrawOnTop(cv::Mat & graphfigure, cv::Point topleft)
+	void DrawFigure::DrawOnTop(cv::Mat & graphfigure)
 	{
-		cv::Mat workImg = graphfigure(cv::Rect(topleft.x, topleft.y, Figure.cols, Figure.rows));
+		cv::Mat workImg = graphfigure(cv::Rect(TopLeftCorner.x, TopLeftCorner.y, Figure.cols, Figure.rows));
 		
 		for (uint32_t i = 0; i < Figure.cols; i++)
 		{
@@ -61,5 +63,20 @@ namespace SoilPlot
 	cv::Point DrawFigure::abs(const cv::Point &point)
 	{
 		return cv::Point(std::abs(point.x), std::abs(point.y));
+	}
+	
+	void DrawFigure::Rotate()
+	{
+		//TODO make neat and 
+		if (Orientation == Horizontal)
+		{
+			cv::transpose(Figure, Figure);
+			TopLeftCorner -= cv::Point(0, Figure.rows); // Maybe not necessary, need to check
+			Orientation = Vertical;
+		}
+		else if (Orientation == Vertical)
+		{
+			Orientation = Horizontal;
+		}
 	}
 }

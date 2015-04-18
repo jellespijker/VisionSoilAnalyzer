@@ -71,7 +71,7 @@ namespace SoilPlot
 		if (Figure.rows > 0 && Figure.cols > 0)
 		{
 			Env.Draw();
-			Env.DrawOnTop(this->Figure, Env.TopLeftCorner);
+			Env.DrawOnTop(this->Figure);
 		}
 		return Figure;
 	}

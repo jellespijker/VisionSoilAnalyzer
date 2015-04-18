@@ -1,6 +1,8 @@
 #pragma once
 #include <opencv2/core/core.hpp>
 #include <opencv2/opencv.hpp>
+#include "../Vision/VisionDebug.h"
+#include "../Vision/Vision.h"
 
 #include <algorithm>
 #include <stdint.h>
@@ -24,7 +26,8 @@ namespace SoilPlot
 		cv::Point TopLeftCorner;
 		float ForegrondBlend;
 		int Thickness;
-
+		Orientation_enum Orientation;
+		
 		DrawFigure();
 		DrawFigure(const DrawFigure &rhs);
 
@@ -32,8 +35,9 @@ namespace SoilPlot
 
 		~DrawFigure() {};
 
-		void DrawOnTop(cv::Mat &graphfigure, cv::Point LeftTopPosition);
+		void DrawOnTop(cv::Mat &graphfigure);
 		cv::Point abs(const cv::Point &point);
 		virtual cv::Mat Draw() { return Figure; };
+		void Rotate();
 	};
 }
