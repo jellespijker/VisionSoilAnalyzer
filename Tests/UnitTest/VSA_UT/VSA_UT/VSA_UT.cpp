@@ -125,11 +125,24 @@ struct PM {
 //SoilPlot Test
 BOOST_FIXTURE_TEST_CASE(SoilPlot_Label, PM)
 {
-	//SoilPlot::Label Test("Hello World !", cv::FONT_HERSHEY_PLAIN, 20, 2, cv::Scalar(255, 0, 0, 200));
-	SoilPlot::Label Test("Hello World!", "times", 40, cv::Scalar(255,120,0,255), cv::Scalar(0,0,0,0), false, true);
-	Test.TopLeftCorner = cv::Point(0, 0);
-	Test.Draw();
-	Test.DrawOnTop(RGBchecker);
+	SoilPlot::Label TestR("RED", "times", 20, cv::Scalar(255, 0, 0, 0), cv::Scalar(0,0,0,0), false, true);
+	SoilPlot::Label TestG("GREEN", "times", 20, cv::Scalar(0, 255, 0, 0), cv::Scalar(0, 0, 0, 0), false, true);
+	SoilPlot::Label TestB("BLUE", "times", 20, cv::Scalar(0, 0, 255, 0), cv::Scalar(0, 0, 0, 0), false, true);
+	SoilPlot::Label TestA("ALPHA", "times", 20, cv::Scalar(125, 125, 125, 125), cv::Scalar(0, 0, 0, 0), false, true);
+
+	TestR.TopLeftCorner = cv::Point(0, 0);
+	TestR.Draw();
+	TestR.DrawOnTop(RGBchecker);
+	TestG.TopLeftCorner = cv::Point(0, TestR.Figure.rows);
+	TestG.Draw();
+	TestG.DrawOnTop(RGBchecker);
+	TestB.TopLeftCorner = cv::Point(0, TestG.TopLeftCorner.y + TestG.Figure.rows);
+	TestB.Draw();
+	TestB.DrawOnTop(RGBchecker);
+	TestA.TopLeftCorner = cv::Point(0, TestB.TopLeftCorner.y + TestB.Figure.rows);
+	TestA.Draw();
+	TestA.DrawOnTop(RGBchecker);
+
 	namedWindow(TestWindow, cv::WINDOW_NORMAL);
 	imshow(TestWindow, RGBchecker);
 	cv::waitKey(0);
@@ -158,7 +171,7 @@ BOOST_FIXTURE_TEST_CASE(SoilPlot_Lines, PM)
 BOOST_FIXTURE_TEST_CASE(SoilPlot_Axis, PM)
 {
 	std::vector<SoilPlot::Axis> axes;
-	SoilPlot::Label axisLabel("Horizontal", "times", 40, cv::Scalar(200, 80, 80, 255), cv::Scalar(0, 0, 0, 0), true, true);
+	SoilPlot::Label axisLabel("Horizontal", "times", 30, cv::Scalar(200, 80, 80, 255), cv::Scalar(0, 0, 0, 0), true, true);
 	
 	std::vector<SoilPlot::Label> Values;
 	Values.push_back(SoilPlot::Label("1", "times", 16, cv::Scalar(200,80,3,255), cv::Scalar(0,0,0,0), false, true));

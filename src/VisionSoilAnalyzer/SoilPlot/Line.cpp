@@ -82,6 +82,7 @@ namespace SoilPlot
 	{
 		if (&rhs != this)
 		{
+			DrawFigure::operator=(rhs);
 			this->Angle = rhs.Angle;
 			this->Orientation = rhs.Orientation;
 			this->Length = rhs.Length;

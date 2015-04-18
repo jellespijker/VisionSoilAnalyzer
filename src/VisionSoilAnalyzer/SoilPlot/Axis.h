@@ -48,6 +48,7 @@ namespace SoilPlot
 	private:
 		cv::Size calcFigureSize();
 		uint32_t noValues;
-		cv::Point endPoint;
+		cv::Point relEndPoint;
+		cv::Point relStartPoint;
 	};
 }

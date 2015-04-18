@@ -1,5 +1,4 @@
 #pragma once
-#include <sstream>
 #include <string>
 #include <cairo/cairo.h>
 #include <opencv2/highgui.hpp>
@@ -19,7 +18,6 @@ namespace SoilPlot
 
 		~Label() {};
 
-		//std::ostringstream Text;
 		std::string Text;
 		std::string FontFace;
 		double FontSize;

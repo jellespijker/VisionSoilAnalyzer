@@ -25,7 +25,8 @@ namespace SoilPlot
 		this->TickResolutionMajor = rhs.TickResolutionMajor;
 		this->TickResolutionMinor = rhs.TickResolutionMinor;
 		this->ValuesPosition = rhs.ValuesPosition;
-		this->endPoint = rhs.endPoint;
+		this->relEndPoint = rhs.relEndPoint;
+		this->relStartPoint = rhs.relStartPoint;
 		this->Orientation = rhs.Orientation;
 		this->Values = rhs.Values;
 	}
@@ -33,14 +34,15 @@ namespace SoilPlot
 	Axis::Axis(cv::Point startpoint, uint32_t length, Orientation_enum orientation, std::vector<Label> &values, Label label, ValuePosition valuepos, bool showmajortick)
 	{
 		this->StartPoint = startpoint;
+		this->relStartPoint = cv::Point(0, 0);
 		this->Orientation = orientation;
 		switch (Orientation)
 		{
 		case SoilPlot::DrawFigure::Horizontal:
-			endPoint = startpoint + cv::Point(length, 0);
+			relEndPoint = relStartPoint + cv::Point(length, 0);
 			break;
 		case SoilPlot::DrawFigure::Vertical:
-			endPoint = startpoint + cv::Point(0, length);
+			relEndPoint = relStartPoint + cv::Point(0, length);
 			break;
 		case SoilPlot::DrawFigure::Free:
 			throw std::logic_error("Free Orientation not supported for axis Exception!");
@@ -78,7 +80,8 @@ namespace SoilPlot
 			this->TickResolutionMajor = rhs.TickResolutionMajor;
 			this->TickResolutionMinor = rhs.TickResolutionMinor;
 			this->ValuesPosition = rhs.ValuesPosition;
-			this->endPoint = rhs.endPoint;
+			this->relEndPoint = rhs.relEndPoint;
+			this->relStartPoint = rhs.relStartPoint;
 			this->Orientation = rhs.Orientation;
 			this->Values = rhs.Values;
 		}
@@ -92,27 +95,44 @@ namespace SoilPlot
 	cv::Mat Axis::Draw()
 	{
 		// Draws the Axii
-		Axii = Line(StartPoint, endPoint, Thickness, EdgeColor, FillColor);
+		if (Orientation == Horizontal)
+		{
+			relStartPoint += cv::Point(0, Thickness / 2);
+			relEndPoint += cv::Point(0, Thickness / 2);
+		}
+		else
+		{
+			relStartPoint += cv::Point(Thickness / 2, 0);
+			relEndPoint += cv::Point(Thickness / 2, 0);
+		}
+		Axii = Line(relStartPoint, relEndPoint, Thickness, EdgeColor, FillColor);
 		Axii.Draw();
-		SHOW_DEBUG_IMG(Axii.Figure, uchar, 255, "Axii", false);
-		
+
 		// Draws the label, values and ticks, needed at this stage to calc the figure dimensions
 		if (ShowLabel) { AxisLabel.Draw(); }
 		if (ShowValues) { for_each(Values.begin(), Values.end(), [&](Label &V) { V.Draw(); }); 	}
 		if (ShowTickMajor) { for_each(MajorTicks.begin(), MajorTicks.end(), [&](Line &T) { T.Draw(); }); }
  		if (ShowTickMinor) { for_each(MinorTicks.begin(), MinorTicks.end(), [&](Line &T) { T.Draw(); }); }
 		
-		// Calc the figure dimensions and teh TopLeftCorner locations
+		// Calc the figure dimensions and the TopLeftCorner locations
 		cv::Size figsize(Axii.Figure.cols, Axii.Figure.rows);
 		
 		if (Orientation == Horizontal)
 		{
 			if (ShowLabel) 
 			{
+				// If the Label is bigger then the axii, resize the label
+				if (AxisLabel.Figure.cols > Axii.Figure.cols)
+				{
+					float factor = static_cast<float>(Axii.Figure.cols) / static_cast<float>(AxisLabel.Figure.cols);
+					cv::resize(AxisLabel.Figure, AxisLabel.Figure,cv::Size(floor(factor * AxisLabel.Figure.cols), floor(factor * AxisLabel.Figure.rows)));
+				}
+				
 				// Add the height of the Label to the Axis Figure
 				figsize.height += AxisLabel.Figure.rows; 
+
 				// Center the Label below the axii
-				AxisLabel.TopLeftCorner = cv::Point((figsize.width - AxisLabel.Figure.cols) / 2, Axii.Figure.rows);
+				AxisLabel.TopLeftCorner = cv::Point((Axii.Figure.cols - AxisLabel.Figure.cols) / 2, Axii.Figure.rows);
 			}
 			if (ShowTickMajor)
 			{
@@ -180,10 +200,10 @@ namespace SoilPlot
 		
 		Axii.DrawOnTop(Figure);
 		if (ShowLabel) { AxisLabel.DrawOnTop(Figure); }
-		if (ShowValues) { for_each(Values.begin(), Values.end(), [&](Label &V) { V.DrawOnTop(Figure); }); }
-		if (ShowTickMajor) { for_each(MajorTicks.begin(), MajorTicks.end(), [&](Line &T) { T.DrawOnTop(Figure) }); }
-		if (ShowTickMinor) { for_each(MinorTicks.begin(), MinorTicks.end(), [&](Line &T) { T.DrawOnTop(Figure) }); }
-
+		//if (ShowValues) { for_each(Values.begin(), Values.end(), [&](Label &V) { V.DrawOnTop(Figure); }); }
+		//if (ShowTickMajor) { for_each(MajorTicks.begin(), MajorTicks.end(), [&](Line &T) { T.DrawOnTop(Figure); }); }
+		//if (ShowTickMinor) { for_each(MinorTicks.begin(), MinorTicks.end(), [&](Line &T) { T.DrawOnTop(Figure); }); }
+//
 		SHOW_DEBUG_IMG(Figure, uchar, 255, "Axis", false);
 		return Figure;
 	}

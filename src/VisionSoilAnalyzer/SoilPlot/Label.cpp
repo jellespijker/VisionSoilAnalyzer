@@ -1,5 +1,4 @@
 #include "Label.h"
-#include <iostream>
 
 namespace SoilPlot
 {
@@ -9,7 +8,6 @@ namespace SoilPlot
 
 	Label::Label(const Label & rhs) : DrawFigure(rhs)
 	{
-		//this->Text << rhs.Text;
 		this->Text =rhs.Text;
 		this->Bold = rhs.Bold;
 		this->FontFace =rhs.FontFace;
@@ -19,7 +17,6 @@ namespace SoilPlot
 	
 	Label::Label(std::string const& text, std::string const& fontFace, double fontSize, cv::Scalar edgecolor, cv::Scalar fillcolor, bool fontItalic, bool fontBold)
 	{
-		//this->Text << text;
 		this->Text = text;
 		this->EdgeColor = edgecolor;
 		this->FillColor = fillcolor;
@@ -32,10 +29,8 @@ namespace SoilPlot
 	{
 		if (&rhs != this)
 		{
-			//this->Text.clear();
 			this->Text.clear();
 			DrawFigure::operator=(rhs);
-			//this->Text << rhs.Text;
 			this->Text = rhs.Text;
 			this->Bold = rhs.Bold;
 			this->FontFace = rhs.FontFace;
@@ -47,9 +42,7 @@ namespace SoilPlot
 
 	cv::Mat Label::Draw()
 	{
-		cout << "stringstream text str = " << Text << endl;
 		putTextCairo(Figure, Text, FontFace, FontSize, EdgeColor, Italic, Bold); 
-		SHOW_DEBUG_IMG(Figure, uchar, 255, "Cairo Text", false);
 		return Figure;
 	}
 	
@@ -74,7 +67,6 @@ namespace SoilPlot
 		
 		cairo_move_to(cairo, 0, extents.height);
 		cairo_show_text(cairo, text.c_str());
-		cout << "cairo text c_str = " << text.c_str() << endl;
 	    // Copy the data to the output image
 		targetImage = Mat(cairo_image_surface_get_height(surface), cairo_image_surface_get_width(surface), CV_8UC4, cairo_image_surface_get_data(surface));
 
@@ -83,7 +75,6 @@ namespace SoilPlot
 		
 		cv::Rect ROI(cv::Point(1, 1), cv::Point(extents.width, extents.height));
 		targetImage = targetImage(ROI).clone();
-		//Vision::ImageProcessing::extractChannel(targetImage);
 		
 	}
 }
