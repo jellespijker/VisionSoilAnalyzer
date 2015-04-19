@@ -70,13 +70,13 @@ namespace SoilPlot
 		cairo_move_to(cairo, 0, extents.height);
 		cairo_show_text(cairo, text.c_str());
 	    // Copy the data to the output image
-		targetImage = Mat(cairo_image_surface_get_height(surface), cairo_image_surface_get_width(surface), CV_8UC4, cairo_image_surface_get_data(surface));
+        cv::Mat tImg(cairo_image_surface_get_height(surface), cairo_image_surface_get_width(surface), CV_8UC4, cairo_image_surface_get_data(surface));
 
 		cairo_destroy(cairo);
 		cairo_surface_destroy(surface);
 		
 		cv::Rect ROI(cv::Point(1, 1), cv::Point(extents.width, extents.height));
-		targetImage = targetImage(ROI).clone();
+        targetImage = tImg(ROI).clone();
 		
 	}
 }

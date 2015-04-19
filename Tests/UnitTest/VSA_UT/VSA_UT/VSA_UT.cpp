@@ -458,7 +458,7 @@ BOOST_AUTO_TEST_CASE(SoilMath_NN_Save_And_Load)
 BOOST_AUTO_TEST_CASE(SoilMath_NN_Prediction_Accurancy)
 {
 	SoilMath::NN Test;
-	Test.LoadState("../ComparisionPictures/NN_test.xml");
+    Test.LoadState("../ComparisionPictures/NN_Test.xml");
 
 	InputLearnVector_t inputVect;
 	OutputLearnVector_t outputVect;
