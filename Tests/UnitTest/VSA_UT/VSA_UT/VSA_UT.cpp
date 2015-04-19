@@ -129,21 +129,30 @@ BOOST_FIXTURE_TEST_CASE(SoilPlot_Label, PM)
 	SoilPlot::Label TestG("GREEN", "times", 20, cv::Scalar(0, 255, 0, 0), cv::Scalar(0, 0, 0, 0), false, true);
 	SoilPlot::Label TestB("BLUE", "times", 20, cv::Scalar(0, 0, 255, 0), cv::Scalar(0, 0, 0, 0), false, true);
 	SoilPlot::Label TestA("ALPHA", "times", 20, cv::Scalar(125, 125, 125, 125), cv::Scalar(0, 0, 0, 0), false, true);
+    namedWindow(TestWindow, cv::WINDOW_NORMAL);
 
 	TestR.TopLeftCorner = cv::Point(0, 0);
 	TestR.Draw();
+    imshow(TestWindow, TestR.Figure);
+    cv::waitKey(0);
 	TestR.DrawOnTop(RGBchecker);
 	TestG.TopLeftCorner = cv::Point(0, TestR.Figure.rows);
 	TestG.Draw();
+    imshow(TestWindow, TestG.Figure);
+    cv::waitKey(0);
 	TestG.DrawOnTop(RGBchecker);
 	TestB.TopLeftCorner = cv::Point(0, TestG.TopLeftCorner.y + TestG.Figure.rows);
 	TestB.Draw();
+    imshow(TestWindow, TestB.Figure);
+    cv::waitKey(0);
 	TestB.DrawOnTop(RGBchecker);
 	TestA.TopLeftCorner = cv::Point(0, TestB.TopLeftCorner.y + TestB.Figure.rows);
 	TestA.Draw();
+    imshow(TestWindow, TestA.Figure);
+    cv::waitKey(0);
 	TestA.DrawOnTop(RGBchecker);
 
-	namedWindow(TestWindow, cv::WINDOW_NORMAL);
+
 	imshow(TestWindow, RGBchecker);
 	cv::waitKey(0);
 }

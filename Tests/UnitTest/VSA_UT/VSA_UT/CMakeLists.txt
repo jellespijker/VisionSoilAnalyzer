@@ -3,12 +3,15 @@
 
 cmake_minimum_required(VERSION 2.7)
 project(VSA_UT)
+SET(CMAKE_SYSTEM_NAME Linux)
+SET(CMAKE_C_COMPILER "clang")
+SET(CMAKE_CXX_COMPILER "clang++")
 ADD_DEFINITIONS(-DBOOST_TEST_DYN_LINK -DDEBUG) 
 SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
-set(LIBRARIES_FROM_REFERENCES ${CMAKE_SOURCE_DIR}/../../../../src/VisionSoilAnalyzer/Vision/Debug/libVision.so ${CMAKE_SOURCE_DIR}/../../../../src/VisionSoilAnalyzer/Soil/Debug/libSoil.so ${CMAKE_SOURCE_DIR}/../../../../src/VisionSoilAnalyzer/SoilPlot/Debug/libSoilPlot.so ${CMAKE_SOURCE_DIR}/../../../../src/VisionSoilAnalyzer/SoilMath/Debug/libSoilMath.so)
+set(LIBRARIES_FROM_REFERENCES ${CMAKE_SOURCE_DIR}/../../../../src/VisionSoilAnalyzer/Vision/Vision_build/libVision.so ${CMAKE_SOURCE_DIR}/../../../../src/VisionSoilAnalyzer/Soil/Soil_build/libSoil.so ${CMAKE_SOURCE_DIR}/../../../../src/VisionSoilAnalyzer/SoilPlot/SoilPlot_build/libSoilPlot.so ${CMAKE_SOURCE_DIR}/../../../../src/VisionSoilAnalyzer/SoilMath/SoilMath_build/libSoilMath.so)
 add_executable(VSA_UT VSA_UT.cpp)
-target_link_libraries(VSA_UT -L/usr/local/lib -L/usr/lib/x86_64-linux-gnu/ -lopencv_calib3d -lopencv_core -lopencv_features2d -lopencv_imgproc -lopencv_flann -lopencv_highgui -lopencv_imgcodecs -lopencv_ml -lopencv_objdetect -lopencv_photo -lopencv_shape -lopencv_stitching -lopencv_superres -lopencv_ts -lopencv_video -lopencv_videoio -lopencv_videostab "${LIBRARIES_FROM_REFERENCES}"  -lboost_serialization -lboost_unit_test_framework)
+target_link_libraries(VSA_UT -L/usr/local/lib -L/usr/lib/x86_64-linux-gnu/ -lopencv_calib3d -lopencv_core -lopencv_features2d -lopencv_imgproc -lopencv_flann -lopencv_highgui -lopencv_imgcodecs -lopencv_ml -lopencv_objdetect -lopencv_photo -lopencv_shape -lopencv_stitching -lopencv_superres -lopencv_ts -lopencv_video -lopencv_videoio -lopencv_videostab -lboost_serialization -lboost_unit_test_framework "${LIBRARIES_FROM_REFERENCES}")
 include_directories (/usr/local/include /usr/local/include/opencv /usr/include/boost)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c++11")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")

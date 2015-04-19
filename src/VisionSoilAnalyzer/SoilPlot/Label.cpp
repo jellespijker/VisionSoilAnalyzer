@@ -13,6 +13,7 @@ namespace SoilPlot
 		this->FontFace =rhs.FontFace;
 		this->FontSize = rhs.FontSize;
 		this->Italic = rhs.Italic;
+        this->Orientation = Orientation_enum::Horizontal;
 	}
 	
 	Label::Label(std::string const& text, std::string const& fontFace, double fontSize, cv::Scalar edgecolor, cv::Scalar fillcolor, bool fontItalic, bool fontBold)
@@ -21,8 +22,9 @@ namespace SoilPlot
 		this->EdgeColor = edgecolor;
 		this->FillColor = fillcolor;
 		this->Bold = fontBold;
-		this->FontFace = fontFace;
-		this->FontSize = fontSize;
+        this->FontFace = fontFace;
+        this->FontSize = fontSize;
+        this->Orientation = Orientation_enum::Horizontal;
 	}
 
 	Label & Label::operator=(const Label & rhs)

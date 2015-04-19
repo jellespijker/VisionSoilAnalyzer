@@ -3,11 +3,14 @@
 
 cmake_minimum_required(VERSION 2.7)
 project(SoilPlot)
+SET(CMAKE_SYSTEM_NAME Linux)
+SET(CMAKE_C_COMPILER "clang")
+SET(CMAKE_CXX_COMPILER "clang++")
 set (SoilPlot_VERSION_MAJOR 1)
 set (SoilPlot_VERSION_MINOR 0)
 SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
-set(LIBRARIES_FROM_REFERENCES ${CMAKE_SOURCE_DIR}/../Vision/Debug/libVision.so)
+set(LIBRARIES_FROM_REFERENCES ${CMAKE_SOURCE_DIR}/../Vision/Vision_build/libVision.so)
 add_library(SoilPlot SHARED Axis.cpp Background.cpp DrawFigure.cpp Environment.cpp Graph.cpp Grid.cpp Label.cpp Line.cpp)
 include_directories(/usr/local/include /usr/local/include/opencv /usr/include/cairo)
 target_link_libraries(SoilPlot -L/usr/local/lib -L/usr/lib/x86_64-linux-gnu/ -lopencv_calib3d -lopencv_core -lopencv_features2d -lopencv_imgproc -lopencv_flann -lopencv_highgui -lopencv_imgcodecs -lopencv_ml -lopencv_objdetect -lopencv_photo -lopencv_shape -lopencv_stitching -lopencv_superres -lopencv_ts -lopencv_video -lopencv_videoio -lopencv_videostab -lcairo "${LIBRARIES_FROM_REFERENCES}")

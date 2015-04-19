@@ -3,6 +3,9 @@
 
 cmake_minimum_required(VERSION 2.7)
 project(SoilMath)
+SET(CMAKE_SYSTEM_NAME Linux)
+SET(CMAKE_C_COMPILER "clang")
+SET(CMAKE_CXX_COMPILER "clang++")
 set (SoilMath_VERSION_MAJOR 1)
 set (SoilMath_VERSION_MINOR 0)
 SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
