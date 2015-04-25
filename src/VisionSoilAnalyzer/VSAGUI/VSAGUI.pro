@@ -5,17 +5,20 @@
 #-------------------------------------------------
 
 QT       += core gui
+QMAKE_CXXFLAGS += -std=c++11
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 
 TARGET = VSAGUI
 TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        vsagui.cpp
+        vsagui.cpp \
+    qcustomplot.cpp
 
-HEADERS  += vsagui.h
+HEADERS  += vsagui.h \
+    qcustomplot.h
 
 FORMS    += vsagui.ui
 
