@@ -23,6 +23,13 @@ VSAGUI::VSAGUI(QWidget *parent) :
     ui->plot_lab->yAxis->setRange(0,1);
     ui->plot_lab->replot();
 
+    cv::Mat soil = cv::imread("../SoilSample1.png", 1);
+    QImage image = OpenCVQT::Mat2QImage(soil);
+    QGraphicsScene* scene = new QGraphicsScene();
+    ui->graphicsView_soil->setScene(scene);
+    QGraphicsPixmapItem* item = new QGraphicsPixmapItem(QPixmap::fromImage(image));
+    scene->addItem(item);
+    ui->graphicsView_soil->show();
 }
 
 VSAGUI::~VSAGUI()

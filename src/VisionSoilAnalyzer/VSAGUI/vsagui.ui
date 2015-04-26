@@ -6,15 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1280</width>
-    <height>720</height>
+    <width>1024</width>
+    <height>768</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1024</width>
+    <height>768</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Vision Soil Analyzer</string>
   </property>
   <property name="windowIcon">
-   <iconset>
+   <iconset resource="VSA.qrc">
     <normaloff>:/IHClogo/IHClogo.png</normaloff>:/IHClogo/IHClogo.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
@@ -31,27 +37,11 @@
          </widget>
         </item>
         <item>
-         <spacer name="verticalSpacer_3">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Minimum</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>10</width>
-            <height>10</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
          <widget class="QCustomPlot" name="plot_psd" native="true">
           <property name="minimumSize">
            <size>
-            <width>240</width>
-            <height>240</height>
+            <width>200</width>
+            <height>200</height>
            </size>
           </property>
          </widget>
@@ -68,27 +58,11 @@
          </widget>
         </item>
         <item>
-         <spacer name="verticalSpacer">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Minimum</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>10</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
          <widget class="QCustomPlot" name="plot_shape" native="true">
           <property name="minimumSize">
            <size>
-            <width>240</width>
-            <height>240</height>
+            <width>200</width>
+            <height>200</height>
            </size>
           </property>
          </widget>
@@ -105,27 +79,11 @@
          </widget>
         </item>
         <item>
-         <spacer name="verticalSpacer_2">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Minimum</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>10</width>
-            <height>10</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
          <widget class="QCustomPlot" name="plot_lab" native="true">
           <property name="minimumSize">
            <size>
-            <width>240</width>
-            <height>240</height>
+            <width>200</width>
+            <height>200</height>
            </size>
           </property>
          </widget>
@@ -160,6 +118,13 @@
          </layout>
         </item>
         <item>
+         <widget class="QSlider" name="verticalSlider">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
          <layout class="QVBoxLayout" name="verticalLayout_6">
           <item>
            <widget class="QLabel" name="label_soil_desc">
@@ -179,7 +144,7 @@
             <property name="minimumSize">
              <size>
               <width>300</width>
-              <height>0</height>
+              <height>150</height>
              </size>
             </property>
            </widget>
@@ -202,7 +167,7 @@
             <property name="minimumSize">
              <size>
               <width>300</width>
-              <height>0</height>
+              <height>150</height>
              </size>
             </property>
            </widget>
@@ -220,7 +185,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1280</width>
+     <width>1024</width>
      <height>25</height>
     </rect>
    </property>
@@ -236,8 +201,10 @@
    </widget>
    <widget class="QMenu" name="menuAbout">
     <property name="title">
-     <string>About</string>
+     <string>Edit</string>
     </property>
+    <addaction name="actionSegmentation"/>
+    <addaction name="actionMicroscope"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuAbout"/>
@@ -274,6 +241,16 @@
     <string>Exit</string>
    </property>
   </action>
+  <action name="actionSegmentation">
+   <property name="text">
+    <string>Segmentation</string>
+   </property>
+  </action>
+  <action name="actionMicroscope">
+   <property name="text">
+    <string>Microscope</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
@@ -284,7 +261,9 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="VSA.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>actionExit</sender>

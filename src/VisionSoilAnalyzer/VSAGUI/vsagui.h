@@ -2,7 +2,12 @@
 #define VSAGUI_H
 
 #include <QMainWindow>
-#include <../SoilMath.h>
+#include <QtGui>
+
+#include <opencv2/core.hpp>
+#include <opencv2/highgui.hpp>
+
+#include "opencvqt.h"
 
 namespace Ui {
 class VSAGUI;
@@ -10,7 +15,7 @@ class VSAGUI;
 
 class VSAGUI : public QMainWindow
 {
-    Q_OBJECT
+Q_OBJECT
 
 public:
     explicit VSAGUI(QWidget *parent = 0);
