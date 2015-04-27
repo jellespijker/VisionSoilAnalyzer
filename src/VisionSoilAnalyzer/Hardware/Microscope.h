@@ -20,6 +20,9 @@ Interaction with the USB 5 MP microscope
 
 #include "stdint.h"
 #include <vector>
+#include <string>
+#include <sys/stat.h>
+#include <sys/utsname.h>
 
 #include "USB.h"
 
@@ -27,6 +30,9 @@ Interaction with the USB 5 MP microscope
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/opencv.hpp>
 #include <opencv/highgui.h>
+
+#include <boost/filesystem.hpp>
+#include <fstream>
 
 namespace Hardware{
 	class Microscope
@@ -44,10 +50,10 @@ namespace Hardware{
 		cv::Mat LastFrame;				/*!< Last grabbed and processed frame */
 		Resolution Dimensions;		/*!< Dimensions of the frame */
 
-		Microscope();
-		Microscope(uint8_t frameDelayTrigger, Resolution dimensions = Resolution{ 2592, 1944 });
-		//Microscope(uint8_t frameDelayTrigger = 3, Resolution dimensions = Resolution{ 1944, 2592 });
+        Microscope(uint8_t frameDelayTrigger = 3, Resolution dimensions = Resolution{ 2592, 1944 });
 		~Microscope();
+
+        std::vector<std::string> AvailableCams();
 
 		void GetFrame(cv::Mat &dst);
 		void GetHDRFrame(cv::Mat &dst, uint32_t noframes = 5);
@@ -56,11 +62,15 @@ namespace Hardware{
 		void Release();
 
 	private:
-		
+        std::string arch;
+
 		cv::VideoCapture captureDevice; /*!< An openCV instance of the capture device*/
-		void openCam();
+        void openCam(int dev);
+        void StartupSeq();
 
 		std::vector<cv::Mat> HDRframes;
 		std::vector<float> times;
+
+        bool exist(const std::string &name);
 	};
 }

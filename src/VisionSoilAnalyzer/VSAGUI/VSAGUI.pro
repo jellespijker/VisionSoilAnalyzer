@@ -23,10 +23,17 @@ HEADERS  += vsagui.h \
 
 FORMS    += vsagui.ui
 
-LIBS += -L$$PWD/../SoilMath/Debug/ -lSoilMath
 LIBS += -L/usr/local/lib -lopencv_calib3d -lopencv_core -lopencv_features2d -lopencv_imgproc -lopencv_flann -lopencv_highgui -lopencv_imgcodecs -lopencv_ml -lopencv_objdetect -lopencv_photo -lopencv_shape -lopencv_stitching -lopencv_superres -lopencv_ts -lopencv_video -lopencv_videoio -lopencv_videostab
-DEPENDPATH += $$PWD/../SoilMath/Debug
-
 INCLUDEPATH += /usr/local/include/opencv
 INCLUDEPATH += /usr/local/include
 
+INCLUDEPATH += /usr/include/boost
+LIBS += -L/usr/lib/x86_64-linux-gnu/ -lboost_filesystem -lboost_system
+
+unix:!macx: LIBS += -L$$PWD/../Hardware/Debug/ -lHardware
+INCLUDEPATH += $$PWD/../Hardware/Debug
+DEPENDPATH += $$PWD/../Hardware/Debug
+
+unix:!macx: LIBS += -L$$PWD/../SoilMath/Debug/ -lSoilMath
+INCLUDEPATH += $$PWD/../SoilMath/Debug
+DEPENDPATH += $$PWD/../SoilMath/Debug
