@@ -37,3 +37,7 @@ DEPENDPATH += $$PWD/../Hardware/Debug
 unix:!macx: LIBS += -L$$PWD/../SoilMath/Debug/ -lSoilMath
 INCLUDEPATH += $$PWD/../SoilMath/Debug
 DEPENDPATH += $$PWD/../SoilMath/Debug
+
+unix:!macx: LIBS += -L$$PWD/../Vision/Debug/ -lVision
+INCLUDEPATH += $$PWD/../Vision/Debug
+DEPENDPATH += $$PWD/../Vision/Debug

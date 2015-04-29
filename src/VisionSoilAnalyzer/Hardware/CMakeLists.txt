@@ -15,7 +15,7 @@ else()
 endif() 
 
 set(LIBRARIES_FROM_REFERENCES "")
-add_library(Hardware SHARED ADC.cpp BBB.cpp EC12P.cpp eqep.cpp GPIO.cpp Microscope.cpp PWM.cpp SoilCape.cpp USB.cpp)
+add_library(Hardware SHARED ADC.cpp BBB.cpp EC12P.cpp eqep.cpp GPIO.cpp Microscope.cpp PWM.cpp SoilCape.cpp USB.cpp Hardware.h CouldNotGrabImageException.h ADCReadException.h FailedToCreateGPIOPollingThreadException.h FailedToCreateThreadException.h GPIOReadException.h MicroscopeNotFoundException.h ValueOutOfBoundsException.h)
 target_link_libraries(Hardware -L/usr/local/lib -L/usr/lib/x86_64-linux-gnu/ -lopencv_calib3d -lopencv_core -lopencv_features2d -lopencv_flann -lopencv_highgui -lopencv_imgcodecs -lopencv_imgproc -lopencv_ml -lopencv_objdetect -lopencv_photo -lopencv_shape -lopencv_stitching -lopencv_superres -lopencv_ts -lopencv_video -lopencv_videoio -lopencv_videostab -lboost_filesystem "${LIBRARIES_FROM_REFERENCES}")
 include_directories(/usr/local/include /usr/local/include/opencv /usr/include/boost)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c++11 -pthread")

@@ -20,7 +20,7 @@
    <string>Vision Soil Analyzer</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="VSA.qrc">
+   <iconset>
     <normaloff>:/IHClogo/IHClogo.png</normaloff>:/IHClogo/IHClogo.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
@@ -99,19 +99,75 @@
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_7">
           <item>
-           <widget class="QLabel" name="label_sample">
-            <property name="text">
-             <string>Soil Sample</string>
-            </property>
-           </widget>
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <item>
+             <widget class="QLabel" name="label_sample">
+              <property name="text">
+               <string>Soil Sample</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="SegmentButton">
+              <property name="text">
+               <string>Segment</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Minimum</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="SnapshotButton">
+              <property name="text">
+               <string>SnapeShot</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
           <item>
-           <widget class="QGraphicsView" name="graphicsView_soil">
+           <widget class="QLabel" name="MainImg">
             <property name="minimumSize">
              <size>
               <width>640</width>
               <height>480</height>
              </size>
+            </property>
+            <property name="baseSize">
+             <size>
+              <width>640</width>
+              <height>480</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
             </property>
            </widget>
           </item>
@@ -186,7 +242,7 @@
      <x>0</x>
      <y>0</y>
      <width>1024</width>
-     <height>25</height>
+     <height>27</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -261,9 +317,7 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
- <resources>
-  <include location="VSA.qrc"/>
- </resources>
+ <resources/>
  <connections>
   <connection>
    <sender>actionExit</sender>

@@ -27,6 +27,7 @@ namespace Hardware
     {
         std::vector<std::string> camNames = AvailableCams();
         int videodev = find(camNames.begin(), camNames.end(), "USB Microscope") - camNames.begin();
+        if (videodev == camNames.size()) {throw Exception::MicroscopeNotFoundException("Microscope Not Found Exception!");}
 
         struct utsname unameData;
         uname(&unameData);
@@ -41,7 +42,7 @@ namespace Hardware
             captureDevice.open(videodev);
             if (!captureDevice.isOpened())
             {
-                throw Exception::MicroscopeNotFoundException("Soft reset of microscope didn't work. Try turning the soil analyzer on and off again!");
+                throw Exception::MicroscopeNotFoundException("USB Soft Reset Exception!");
             }
         }
     }
@@ -57,7 +58,7 @@ namespace Hardware
 	*/
 	void Microscope::GetFrame(cv::Mat &dst)
 	{
-        //Work around for crap cam retrival of the BBB
+        //Work around for crappy cam retrival of the BBB
         if (arch.find("armv7l") != string::npos)
         {
             if (!captureDevice.grab())	{ throw Exception::CouldNotGrabImageException(); }
@@ -124,10 +125,9 @@ namespace Hardware
     void Microscope::openCam(int dev)
 	{
         captureDevice.open(dev);
-
 		if (!captureDevice.isOpened()) { throw Exception::MicroscopeNotFoundException(); }
-		captureDevice.set(CV_CAP_PROP_FRAME_WIDTH, Dimensions.Width);
-		captureDevice.set(CV_CAP_PROP_FRAME_HEIGHT, Dimensions.Height);
+        captureDevice.set(CV_CAP_PROP_FRAME_WIDTH, Dimensions.Width);
+        captureDevice.set(CV_CAP_PROP_FRAME_HEIGHT, Dimensions.Height);
 	}
 
     std::vector<std::string> Microscope::AvailableCams()
