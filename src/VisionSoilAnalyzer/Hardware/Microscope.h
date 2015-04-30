@@ -24,6 +24,9 @@ Interaction with the USB 5 MP microscope
 #include <sys/stat.h>
 #include <sys/utsname.h>
 
+#include "boost/signals2.hpp"
+#include <boost/bind.hpp>
+
 #include "USB.h"
 
 #include <opencv2/photo.hpp>
@@ -36,7 +39,7 @@ Interaction with the USB 5 MP microscope
 #include <fstream>
 
 namespace Hardware{
-	class Microscope
+    class Microscope
 	{
 	public:
 		/*! Struct that represent the Resolution that is used */
@@ -46,6 +49,12 @@ namespace Hardware{
 			uint16_t Width;		/*!< Width of the image*/
 			uint16_t Height;	/*!< Height of the image*/
 		};
+
+        typedef boost::signals2::signal<void ()> Finished_t;
+        typedef boost::signals2::signal<void (int)> Progress_t;
+
+        boost::signals2::connection connect_Finished(const Finished_t::slot_type &subscriber);
+        boost::signals2::connection connect_Progress(const Progress_t::slot_type &subscriber);
 
 		uint8_t FrameDelayTrigger;	/*!< Delay in seconds */
 		cv::Mat LastFrame;				/*!< Last grabbed and processed frame */
@@ -65,6 +74,9 @@ namespace Hardware{
         void openCam(int dev);
 
 	private:
+        Finished_t fin_sig;
+        Progress_t prog_sig;
+
         std::string arch;
 
 		cv::VideoCapture captureDevice; /*!< An openCV instance of the capture device*/

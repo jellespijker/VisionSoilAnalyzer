@@ -63,32 +63,12 @@ VSAGUI::VSAGUI(QWidget *parent) :
             *OrigImg = cv::imread("../Images/SoilSample1.png");
         }
     }
-    SHOW_DEBUG_IMG(*OrigImg, uchar, 255, "Orig Img", false);
     SetMatToMainView(*OrigImg);
 }
 
 void VSAGUI::SetMatToMainView(cv::Mat &img)
 {
-    cv::Mat viewImg;
-    if (runFromBBB)
-    {
-        QSize imgSize = ui->MainImg->size();
-        float factor = static_cast<float>(imgSize.width()) / static_cast<float>(img.cols);
-        cv::resize(img, viewImg,cv::Size(floor(factor * img.cols), floor(factor * img.rows)));
-    }
-    else
-    {
-        viewImg = img;
-    }
-    if (QOrigImg != nullptr )
-    {
-        delete QOrigImg;
-    }
-    if (QOrigPix != nullptr )
-    {
-        delete QOrigPix;
-    }
-    QImage *qOrigImg = new QImage(OpenCVQT::Mat2QImage(viewImg));
+    QImage *qOrigImg = new QImage(OpenCVQT::Mat2QImage(img));
     QPixmap *qOrigPix = new QPixmap(QPixmap::fromImage(*qOrigImg));
     ui->MainImg->setPixmap(*qOrigPix);
     ui->MainImg->show();
@@ -104,10 +84,10 @@ void VSAGUI::on_SnapshotButton_clicked()
     delete OrigImg;
     OrigImg = new cv::Mat;
     Hardware::Microscope microscope;
+    this->statusLabel->setText(tr("Grabbing new Image!"));
+    finished_sig = microscope.connect_Finished(boost::bind(&VSAGUI::on_miscroscope_finished, this));
+    progress_sig = microscope.connect_Progress(boost::bind(&VSAGUI::on_microscope_update, this, _1));
     microscope.GetHDRFrame(*OrigImg, 3);
-    SHOW_DEBUG_IMG(*OrigImg, uchar, 255, "Orig Img", false);
-
-    SetMatToMainView(*OrigImg);
 }
 
 void VSAGUI::on_SegmentButton_clicked()
@@ -118,4 +98,15 @@ void VSAGUI::on_SegmentButton_clicked()
     //enhancer.AdaptiveContrastStretch(9, 5);
     enhancer.Blur(9, true);
     SetMatToMainView(enhancer.ProcessedImg);
+}
+
+void VSAGUI::on_miscroscope_finished()
+{
+    SetMatToMainView(*OrigImg);
+    this->statusLabel->setText(tr("New Image Grabbed"));
+}
+
+void VSAGUI::on_microscope_update(int prog)
+{
+    this->progressBar->setValue(prog);
 }

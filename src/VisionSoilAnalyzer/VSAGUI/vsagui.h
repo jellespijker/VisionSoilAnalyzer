@@ -21,6 +21,8 @@
 #include <opencv2/highgui.hpp>
 
 #include <boost/filesystem.hpp>
+#include <boost/signals2.hpp>
+#include <boost/bind.hpp>
 
 #include "opencvqt.h"
 
@@ -50,12 +52,18 @@ private slots:
     void on_SegmentButton_clicked();
 
 private:
+    boost::signals2::connection finished_sig;
+    boost::signals2::connection progress_sig;
+
+    void on_miscroscope_finished();
+    void on_microscope_update(int prog);
+
+    int ProgressIndicator = 0;
+
     Ui::VSAGUI *ui;
     QErrorMessage *errorMessageDialog;
 
     cv::Mat *OrigImg;
-    QImage *QOrigImg = nullptr;
-    QPixmap *QOrigPix = nullptr;
     QProgressBar *progressBar = nullptr;
     QLabel *statusLabel = nullptr;
 
