@@ -121,9 +121,9 @@
              </spacer>
             </item>
             <item>
-             <widget class="QPushButton" name="SegmentButton">
+             <widget class="QPushButton" name="AnalyzeButton">
               <property name="text">
-               <string>Segment</string>
+               <string>Analyze</string>
               </property>
              </widget>
             </item>
@@ -259,20 +259,55 @@
      <string>File</string>
     </property>
     <addaction name="actionNew"/>
-    <addaction name="actionLoad"/>
     <addaction name="actionSave"/>
+    <addaction name="actionLoad"/>
     <addaction name="separator"/>
     <addaction name="actionExit"/>
    </widget>
    <widget class="QMenu" name="menuAbout">
     <property name="title">
-     <string>Edit</string>
+     <string>Soil Sample</string>
     </property>
-    <addaction name="actionSegmentation"/>
-    <addaction name="actionMicroscope"/>
+    <widget class="QMenu" name="menuColorspace">
+     <property name="title">
+      <string>Colorspace</string>
+     </property>
+     <addaction name="actionIntensity"/>
+     <addaction name="actionCIE_La_b"/>
+     <addaction name="actionRedness_Index"/>
+     <addaction name="actionRGB"/>
+     <addaction name="separator"/>
+     <addaction name="actionSettings"/>
+    </widget>
+    <addaction name="menuColorspace"/>
+   </widget>
+   <widget class="QMenu" name="menuNeuralNet">
+    <property name="title">
+     <string>NeuralNet</string>
+    </property>
+    <addaction name="actionImport"/>
+    <addaction name="actionExport"/>
+    <addaction name="separator"/>
+    <addaction name="actionLearn"/>
+   </widget>
+   <widget class="QMenu" name="menuHardware">
+    <property name="title">
+     <string>Hardware</string>
+    </property>
+    <widget class="QMenu" name="menuMicroscope">
+     <property name="title">
+      <string>Microscope</string>
+     </property>
+     <addaction name="actionCheese"/>
+     <addaction name="actionSettings_2"/>
+    </widget>
+    <addaction name="menuMicroscope"/>
+    <addaction name="actionSoilCape"/>
    </widget>
    <addaction name="menuFile"/>
+   <addaction name="menuNeuralNet"/>
    <addaction name="menuAbout"/>
+   <addaction name="menuHardware"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -314,6 +349,61 @@
   <action name="actionMicroscope">
    <property name="text">
     <string>Microscope</string>
+   </property>
+  </action>
+  <action name="actionImport">
+   <property name="text">
+    <string>Import</string>
+   </property>
+  </action>
+  <action name="actionExport">
+   <property name="text">
+    <string>Export</string>
+   </property>
+  </action>
+  <action name="actionLearn">
+   <property name="text">
+    <string>Learn</string>
+   </property>
+  </action>
+  <action name="actionIntensity">
+   <property name="text">
+    <string>Intensity</string>
+   </property>
+  </action>
+  <action name="actionCIE_La_b">
+   <property name="text">
+    <string>CIE La*b*</string>
+   </property>
+  </action>
+  <action name="actionRedness_Index">
+   <property name="text">
+    <string>Redness Index</string>
+   </property>
+  </action>
+  <action name="actionRGB">
+   <property name="text">
+    <string>RGB</string>
+   </property>
+  </action>
+  <action name="actionSettings">
+   <property name="text">
+    <string>Settings</string>
+   </property>
+  </action>
+  <action name="actionCheese">
+   <property name="text">
+    <string>Cheese</string>
+   </property>
+  </action>
+  <action name="actionSettings_2">
+   <property name="text">
+    <string>Settings</string>
+   </property>
+  </action>
+  <action name="actionSoilCape">
+   <property name="text">
+    <string>SoilCape</string>
    </property>
   </action>
  </widget>

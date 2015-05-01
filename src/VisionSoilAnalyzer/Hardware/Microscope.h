@@ -24,7 +24,7 @@ Interaction with the USB 5 MP microscope
 #include <sys/stat.h>
 #include <sys/utsname.h>
 
-#include "boost/signals2.hpp"
+#include <boost/signals2.hpp>
 #include <boost/bind.hpp>
 
 #include "USB.h"

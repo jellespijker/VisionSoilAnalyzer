@@ -16,6 +16,7 @@
 #include <QPixmap>
 #include <QLabel>
 #include <QProgressBar>
+#include <QFileDialog>
 
 #include <opencv2/core.hpp>
 #include <opencv2/highgui.hpp>
@@ -23,13 +24,16 @@
 #include <boost/filesystem.hpp>
 #include <boost/signals2.hpp>
 #include <boost/bind.hpp>
+#include <boost/serialization/serialization.hpp>
+//#include <boost/thread.hpp>
 
 #include "opencvqt.h"
 
-#include "../Hardware.h"
-#include "../SoilMath.h"
-#include "../Vision.h"
-#include "../VisionDebug.h"
+#include "Hardware.h"
+#include "SoilMath.h"
+#include "Vision.h"
+#include "VisionDebug.h"
+#include "VisionSoil.h"
 
 class QErrorMessage;
 
@@ -49,28 +53,34 @@ private slots:
 
     void on_SnapshotButton_clicked();
 
-    void on_SegmentButton_clicked();
+    void on_actionSave_triggered();
+
+    void on_actionLoad_triggered();
+
+    void on_AnalyzeButton_clicked();
+
+    void on_actionNew_triggered();
+
+    void on_actionImport_triggered();
+
+    void on_actionExport_triggered();
 
 private:
-    boost::signals2::connection finished_sig;
-    boost::signals2::connection progress_sig;
-
-    void on_miscroscope_finished();
-    void on_microscope_update(int prog);
-
-    int ProgressIndicator = 0;
-
     Ui::VSAGUI *ui;
     QErrorMessage *errorMessageDialog;
+
+    boost::signals2::connection finished_sig;
+    boost::signals2::connection progress_sig;
+    boost::signals2::connection visionprogress_seg;
+
+    void on_vision_update(float prog, string statusText);
+
+    SoilAnalyzer::Sample *SoilSample = nullptr;
+    SoilMath::NN *NeuralNet = nullptr;
 
     cv::Mat *OrigImg;
     QProgressBar *progressBar = nullptr;
     QLabel *statusLabel = nullptr;
-
-    Vision::Enhance enhancer;
-    Vision::Conversion convertor;
-    Vision::Segment segmenter;
-    Vision::MorphologicalFilter filter;
 
     bool runFromBBB = false;
     bool Segmented = false;

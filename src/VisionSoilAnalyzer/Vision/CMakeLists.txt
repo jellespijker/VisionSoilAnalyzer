@@ -20,7 +20,7 @@ else()
 	set(LIBRARIES_FROM_REFERENCES ${CMAKE_SOURCE_DIR}/../SoilMath/Release/libSoilMath.so)
 endif() 
 
-add_library(Vision SHARED Conversion.cpp Enhance.cpp ImageProcessing.cpp MorphologicalFilter.cpp Segment.cpp Vision.h)
+add_library(Vision SHARED Conversion.cpp Enhance.cpp ImageProcessing.cpp MorphologicalFilter.cpp Segment.cpp Vision.h ConversionNotSupportedException.h EmptyImageException.h PixelValueOutOfBoundException.h VisionDebug.h)
 include_directories(/usr/local/include /usr/local/include/opencv)
 target_link_libraries(Vision -L/usr/local/lib -L/usr/lib/x86_64-linux-gnu/ -lopencv_calib3d -lopencv_core -lopencv_features2d -lopencv_imgproc -lopencv_flann -lopencv_highgui -lopencv_imgcodecs -lopencv_ml -lopencv_objdetect -lopencv_photo -lopencv_shape -lopencv_stitching -lopencv_superres -lopencv_ts -lopencv_video -lopencv_videoio -lopencv_videostab "${LIBRARIES_FROM_REFERENCES}")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c++11")

@@ -11,6 +11,10 @@
 #include <opencv2/core.hpp>
 #include <cmath>
 #include <vector>
+#include <string>
+
+#include <boost/signals2.hpp>
+#include <boost/bind.hpp>
 
 #include "EmptyImageException.h"
 #include "WrongKernelSizeException.h"
@@ -24,15 +28,24 @@ namespace Vision
 {
 	class ImageProcessing
 	{
+    public:
+        typedef boost::signals2::signal<void (float, std::string)> Progress_t;
+        boost::signals2::connection connect_Progress(const Progress_t::slot_type &subscriber);
+
 	protected:
 		uchar* GetNRow(int nData, int hKsize, int nCols, uint32_t totalRows);
 		Mat TempImg;
+
+        Progress_t prog_sig;
 
 	public:
 		ImageProcessing();
 		~ImageProcessing();
 		Mat OriginalImg;
 		Mat ProcessedImg;
+
+        double currentProg = 0.;
+        double ProgStep = 0.;
 
 		static std::vector<Mat> extractChannel(const Mat &src);
 
