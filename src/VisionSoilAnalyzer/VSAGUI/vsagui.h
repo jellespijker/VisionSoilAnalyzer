@@ -1,7 +1,7 @@
 #ifndef VSAGUI_H
 #define VSAGUI_H
 
-#define DEBUG
+//#define DEBUG
 
 #include <string>
 #include <vector>
@@ -25,9 +25,9 @@
 #include <boost/signals2.hpp>
 #include <boost/bind.hpp>
 #include <boost/serialization/serialization.hpp>
-//#include <boost/thread.hpp>
 
 #include "opencvqt.h"
+#include "visionsettings.h"
 
 #include "Hardware.h"
 #include "SoilMath.h"
@@ -65,9 +65,23 @@ private slots:
 
     void on_actionExport_triggered();
 
+    void on_actionSegmentation_Settings_triggered();
+
+    void on_actionSave_Settings_triggered();
+
+    void on_actionLoad_Settings_triggered();
+
+    void on_actionRestore_Default_triggered();
+
+    void on_SegmentButton_clicked();
+
+    void on_verticalSlider_sliderReleased();
+
 private:
     Ui::VSAGUI *ui;
     QErrorMessage *errorMessageDialog;
+    VisionSettings *settingWindow;
+    SoilAnalyzer::SoilSettings *sSettings;
 
     boost::signals2::connection finished_sig;
     boost::signals2::connection progress_sig;

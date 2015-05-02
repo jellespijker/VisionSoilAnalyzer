@@ -16,8 +16,11 @@ VSAGUI::VSAGUI(QWidget *parent) :
     SoilSample = new SoilAnalyzer::Sample;
     NeuralNet = new SoilMath::NN;
     NeuralNet->LoadState("NeuralNet/Default.NN");
+    sSettings = new SoilAnalyzer::SoilSettings;
+    sSettings->LoadSettings("Settings/Default.ini");
+    ui->OffsetSlider->setValue(sSettings->thresholdOffsetValue);
 
-    // Init the progress bar
+    // Init the status bar
     progressBar = new QProgressBar(ui->statusBar);
     progressBar->setAlignment(Qt::AlignLeft);
     progressBar->setMaximumSize(640, 19);
@@ -70,7 +73,6 @@ VSAGUI::VSAGUI(QWidget *parent) :
             SoilSample->OriginalImage = cv::imread("/Images/SoilSample1.png");
         }
     }
-    //SetMatToMainView(*OrigImg);
 }
 
 void VSAGUI::SetMatToMainView(cv::Mat &img)
@@ -156,5 +158,53 @@ void VSAGUI::on_actionExport_triggered()
         if (!fn.contains(tr(".NN"))) { fn.append(tr(".NN")); }
         std::string filename = fn.toStdString();
         NeuralNet->SaveState(filename);
+    }
+}
+
+void VSAGUI::on_actionSegmentation_Settings_triggered()
+{
+    settingWindow = new VisionSettings(0, sSettings);
+    settingWindow->exec();
+}
+
+void VSAGUI::on_actionSave_Settings_triggered()
+{
+    QString fn = QFileDialog::getSaveFileName(this, tr("Save Settings"), tr("/home/"), tr("Settings (*.ini);;All Files (*)"));
+    if (!fn.isEmpty());
+    {
+        if (!fn.contains(tr(".ini"))) { fn.append(tr(".ini")); }
+        std::string filename = fn.toStdString();
+        sSettings->SaveSettings(filename);
+    }
+}
+
+void VSAGUI::on_actionLoad_Settings_triggered()
+{
+    QString fn = QFileDialog::getOpenFileName(this, tr("Load Settings"), tr("/home/"), tr("Settings (*.ini);;All Files (*)"));
+    if (!fn.isEmpty());
+    {
+        std::string filename = fn.toStdString();
+        sSettings->LoadSettings(filename);
+    }
+}
+
+void VSAGUI::on_actionRestore_Default_triggered()
+{
+    std::string filename = "Settings/Default.ini";
+    sSettings->LoadSettings(filename);
+}
+
+void VSAGUI::on_SegmentButton_clicked()
+{
+    SoilSample->PrepImg(sSettings);
+    SetMatToMainView(SoilSample->RGB);
+}
+
+void VSAGUI::on_verticalSlider_sliderReleased()
+{
+    sSettings->thresholdOffsetValue = ui->OffsetSlider->value();
+    if (SoilSample->imgPrepped)
+    {
+        SoilSample->PrepImg(sSettings);
     }
 }

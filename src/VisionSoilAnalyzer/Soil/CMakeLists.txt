@@ -20,7 +20,7 @@ else()
 	set(LIBRARIES_FROM_REFERENCES ${CMAKE_SOURCE_DIR}/../Vision/Release/libVision.so ${CMAKE_SOURCE_DIR}/../SoilMath/Release/libSoilMath.so)
 endif() 
 
-add_library(Soil SHARED AnalysisResults.cpp Particle.cpp ParticleAnalysisResults.cpp Sample.cpp SampleAnalysisResult.cpp ShapeClassification.cpp Soil.cpp AnalyseType.h Mat_archive.h)
+add_library(Soil SHARED AnalysisResults.cpp Particle.cpp ParticleAnalysisResults.cpp Sample.cpp SampleAnalysisResult.cpp ShapeClassification.cpp Soil.cpp AnalyseType.h Mat_archive.h soilsettings.cpp VisionSoil.h)
 target_link_libraries(Soil -L/usr/local/lib -L/usr/lib/x86_64-linux-gnu/ -lopencv_calib3d -lopencv_core -lopencv_features2d -lopencv_imgproc -lopencv_flann -lopencv_highgui -lopencv_imgcodecs -lopencv_ml -lopencv_objdetect -lopencv_photo -lopencv_shape -lopencv_stitching -lopencv_superres -lopencv_ts -lopencv_video -lopencv_videoio -lopencv_videostab -lboost_serialization "${LIBRARIES_FROM_REFERENCES}")
 include_directories(/usr/local/include /usr/local/include/opencv /usr/include/boost)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c++11")

@@ -117,13 +117,13 @@ namespace Vision
 		switch (TypeObject)
 		{
 		case Bright:
-			val = Rmean - (3 * Rstd) - SEGMENT_OFFSET;
+            val = Rmean - (sigma * Rstd) - thresholdOffset;
 			if (val < 0) { val = 0; }
 			else if (val > 255) { val = 255; }
 			T.first = (uchar)val;
 			break;
 		case Dark:
-			val = Lmean + (3 * Lstd) + SEGMENT_OFFSET;
+            val = Lmean + (sigma * Lstd) + thresholdOffset;
 			if (val < 0) { val = 0; }
 			else if (val > 255) { val = 255; }
 			T.first = (uchar)val;

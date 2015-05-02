@@ -4,3 +4,4 @@
 #include "Sample.h"
 #include "AnalysisResults.h"
 #include "AnalyseType.h"
+#include "soilsettings.h"

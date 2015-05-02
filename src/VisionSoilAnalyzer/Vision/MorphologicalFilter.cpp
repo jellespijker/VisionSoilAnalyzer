@@ -4,11 +4,49 @@ namespace Vision
 {
 	MorphologicalFilter::MorphologicalFilter() {	}
 
-	MorphologicalFilter::MorphologicalFilter(const Mat &src)
+    MorphologicalFilter::MorphologicalFilter(FilterType filtertype)
+    {
+        switch  (filtertype)
+        {
+             case FilterType::OPEN:
+                  Open(OriginalImg);
+                break;
+             case FilterType::CLOSE:
+                  Close(OriginalImg);
+                 break;
+             case FilterType::ERODE:
+                  Erosion(OriginalImg);
+                 break;
+             case FilterType::DILATE:
+                  Dilation(OriginalImg);
+                 break;
+            case FilterType::NONE:
+                break;
+        }
+    }
+
+    MorphologicalFilter::MorphologicalFilter(const Mat &src, FilterType filtertype)
 	{
 		OriginalImg = src;
 		ProcessedImg.create(OriginalImg.size(), CV_8UC1);
-	}
+        switch  (filtertype)
+        {
+             case FilterType::OPEN:
+                  Open(OriginalImg);
+                break;
+             case FilterType::CLOSE:
+                  Close(OriginalImg);
+                 break;
+             case FilterType::ERODE:
+                  Erosion(OriginalImg);
+                 break;
+             case FilterType::DILATE:
+                  Dilation(OriginalImg);
+                 break;
+            case FilterType::NONE:
+                break;
+        }
+    }
 
 	MorphologicalFilter::MorphologicalFilter(const MorphologicalFilter & rhs)
 	{
