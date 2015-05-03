@@ -1,4 +1,5 @@
 #pragma once
+#define DEBUG
 #define PROG_INCR(status) currentProg += progstep; prog_sig(currentProg, status)
 #include "Soil.h"
 #include "Particle.h"
@@ -33,11 +34,6 @@ namespace SoilAnalyzer
 	public:
         typedef boost::signals2::signal<void (float, std::string)> Progress_t;
         boost::signals2::connection connect_Progress(const Progress_t::slot_type &subscriber);
-
-        boost::signals2::connection ImageProcessing::connect_Progress(const Progress_t::slot_type &subscriber)
-        {
-            return prog_sig.connect(subscriber);
-        }
 
         Sample(SoilSettings *settings = nullptr);
         Sample(const Mat& src, SoilSettings *settings = nullptr);

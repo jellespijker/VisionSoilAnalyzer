@@ -14,6 +14,7 @@ VSAGUI::VSAGUI(QWidget *parent) :
     // Startup the UI
     ui->setupUi(this);
     SoilSample = new SoilAnalyzer::Sample;
+    SoilSample->connect_Progress(boost::bind(&VSAGUI::on_vision_update, this, _1, _2));
     NeuralNet = new SoilMath::NN;
     NeuralNet->LoadState("NeuralNet/Default.NN");
     sSettings = new SoilAnalyzer::SoilSettings;
@@ -29,6 +30,7 @@ VSAGUI::VSAGUI(QWidget *parent) :
 
     statusLabel = new QLabel(ui->statusBar);
     statusLabel->setAlignment(Qt::AlignRight);
+    statusLabel->setMinimumSize(600, 19);
     statusLabel->setMaximumSize(600, 19);
     ui->statusBar->addWidget(statusLabel);
     statusLabel->setText(tr("First Grab"));
@@ -79,6 +81,7 @@ void VSAGUI::SetMatToMainView(cv::Mat &img)
 {
     QImage *qOrigImg = new QImage(OpenCVQT::Mat2QImage(img));
     QPixmap *qOrigPix = new QPixmap(QPixmap::fromImage(*qOrigImg));
+    ui->MainImg->clear();
     ui->MainImg->setPixmap(*qOrigPix);
     ui->MainImg->show();
 }
@@ -91,6 +94,9 @@ VSAGUI::~VSAGUI()
 void VSAGUI::on_SnapshotButton_clicked()
 {
     Hardware::Microscope microscope;
+    delete SoilSample;
+    SoilSample = new SoilAnalyzer::Sample;
+    SoilSample->connect_Progress(boost::bind(&VSAGUI::on_vision_update, this, _1, _2));
     this->statusLabel->setText(tr("Grabbing new Image!"));
     finished_sig = microscope.connect_Finished([&]() {
         SetMatToMainView(SoilSample->OriginalImage);
@@ -122,8 +128,11 @@ void VSAGUI::on_actionLoad_triggered()
     QString fn = QFileDialog::getOpenFileName(this, tr("Load Soil Sample"), tr("/home/"), tr("Soil Samples (*.VSS);; Soil Particles (*.VPS);; All Files (*)"));
     if (!fn.isEmpty() && fn.contains(tr("VSS")));
     {
+        delete SoilSample;
+        SoilSample = new SoilAnalyzer::Sample;
         std::string filename = fn.toStdString();
         SoilSample->Load(filename);
+        SoilSample->connect_Progress(boost::bind(&VSAGUI::on_vision_update, this, _1, _2));
         SetMatToMainView(SoilSample->OriginalImage);
     }
 }
@@ -137,6 +146,7 @@ void VSAGUI::on_actionNew_triggered()
 {
     delete SoilSample;
     SoilSample = new SoilAnalyzer::Sample;
+    SoilSample->connect_Progress(boost::bind(&VSAGUI::on_vision_update, this, _1, _2));
     on_SnapshotButton_clicked();
 }
 
@@ -207,4 +217,13 @@ void VSAGUI::on_verticalSlider_sliderReleased()
     {
         SoilSample->PrepImg(sSettings);
     }
+}
+void VSAGUI::on_OffsetSlider_valueChanged(int value)
+{
+    sSettings->thresholdOffsetValue = ui->OffsetSlider->value();
+}
+
+void VSAGUI::on_OffsetSlider_sliderReleased()
+{
+
 }

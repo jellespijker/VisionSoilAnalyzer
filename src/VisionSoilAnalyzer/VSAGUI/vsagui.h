@@ -77,6 +77,10 @@ private slots:
 
     void on_verticalSlider_sliderReleased();
 
+    void on_OffsetSlider_valueChanged(int value);
+
+    void on_OffsetSlider_sliderReleased();
+
 private:
     Ui::VSAGUI *ui;
     QErrorMessage *errorMessageDialog;

@@ -45,12 +45,15 @@ namespace SoilAnalyzer
 
         // set up the progress signal
         float currentProg = 0.;
-        prog_sig(currentProg);
+        prog_sig(currentProg, "Starting segmentation");
 
-        uint32_t totalsteps =
-
-                float progstep = 0.2;
-
+        uint32_t totalsteps = 5;
+        if (Settings->useAdaptiveContrast) { totalsteps++; }
+        if (Settings->useBlur) { totalsteps++; }
+        if (Settings->fillHoles) { totalsteps++; }
+        if (Settings->ignorePartialBorderParticles) { totalsteps++; }
+        if (Settings->morphFilterType != Vision::MorphologicalFilter::NONE) { totalsteps++; }
+        float progstep = 1. / static_cast<float>(totalsteps);
 
         if (OriginalImage.empty()) { throw Exception::AnalysisException("No Image found to analyze!", 1); }
         SHOW_DEBUG_IMG(OriginalImage, uchar, 255, "RGB", false);
@@ -243,4 +246,10 @@ namespace SoilAnalyzer
 			i++;
 		});
 	}
+
+    boost::signals2::connection Sample::connect_Progress(const Progress_t::slot_type &subscriber)
+    {
+        return prog_sig.connect(subscriber);
+    }
+
 }

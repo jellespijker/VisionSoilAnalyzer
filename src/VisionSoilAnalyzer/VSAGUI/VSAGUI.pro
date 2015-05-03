@@ -50,15 +50,18 @@ TEMPLATE = app
 SOURCES += main.cpp\
         vsagui.cpp \
     qcustomplot.cpp \
-    visionsettings.cpp
+    visionsettings.cpp \
+    hardwaresettings.cpp
 
 HEADERS  += vsagui.h \
     qcustomplot.h \
     opencvqt.h \
-    visionsettings.h
+    visionsettings.h \
+    hardwaresettings.h
 
 FORMS    += vsagui.ui \
-    visionsettings.ui
+    visionsettings.ui \
+    hardwaresettings.ui
 
 #opencv
 LIBS += -L/usr/local/lib -lopencv_calib3d -lopencv_core -lopencv_features2d -lopencv_imgproc -lopencv_flann -lopencv_highgui -lopencv_imgcodecs -lopencv_ml -lopencv_objdetect -lopencv_photo -lopencv_shape -lopencv_stitching -lopencv_superres -lopencv_ts -lopencv_video -lopencv_videoio -lopencv_videostab
@@ -86,3 +89,8 @@ DEPENDPATH += $$PWD/../Vision
 unix:!macx: LIBS += -L$${OUT_PWD}/Bin -lSoil
 INCLUDEPATH += $$PWD/../Soil
 DEPENDPATH += $$PWD/../Soil
+
+OTHER_FILES += \
+    Settings/Default.ini \
+    NeuralNet/Default.NN \
+    Images/SoilSample1.png
