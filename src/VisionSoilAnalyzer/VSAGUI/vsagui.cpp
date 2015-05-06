@@ -37,6 +37,7 @@ VSAGUI::VSAGUI(QWidget *parent) :
 
     // Get HDR snapshot of the sample or normal shot when HDR grab faulters or test image if normal grab falters
     Hardware::Microscope microscope;
+
     finished_sig = microscope.connect_Finished([&]() {
         SetMatToMainView(SoilSample->OriginalImage);
         this->statusLabel->setText(tr("New Image Grabbed")); });
@@ -44,7 +45,7 @@ VSAGUI::VSAGUI(QWidget *parent) :
 
     try
     {
-        if (microscope.IsOpened()) { microscope.GetHDRFrame(SoilSample->OriginalImage, 5);  }
+        if (microscope.IsOpened()) { microscope.GetHDRFrame(SoilSample->OriginalImage, sSettings->HDRframes);  }
     }
     catch (Hardware::Exception::MicroscopeNotFoundException &em)
     {
@@ -102,7 +103,7 @@ void VSAGUI::on_SnapshotButton_clicked()
         SetMatToMainView(SoilSample->OriginalImage);
         this->statusLabel->setText(tr("New Image Grabbed")); });
     progress_sig = microscope.connect_Progress([&](int &prog){ this->progressBar->setValue(prog); });
-    microscope.GetHDRFrame(SoilSample->OriginalImage, 5);
+    microscope.GetHDRFrame(SoilSample->OriginalImage, sSettings->HDRframes);
 }
 
 void VSAGUI::on_vision_update(float prog, string statusText)
@@ -226,4 +227,10 @@ void VSAGUI::on_OffsetSlider_valueChanged(int value)
 void VSAGUI::on_OffsetSlider_sliderReleased()
 {
 
+}
+
+void VSAGUI::on_actionHardware_Settings_triggered()
+{
+    hsetttingWindow = new HardwareSettings(0, sSettings);
+    hsetttingWindow->exec();
 }

@@ -14,35 +14,30 @@ RESOURCES     = VSA.qrc
 NNtarget.path += $${OUT_PWD}/NeuralNet
 NNtarget.files += $${PWD}/NeuralNet/*
 INSTALLS += NNtarget
+bNNtarget.path += $${PWD}/../VSA/NeuralNet
+bNNtarget.files += $${PWD}/NeuralNet/*
+INSTALLS += bNNtarget
 
 #ImageFiles
 IMGtarget.path += $${OUT_PWD}/Images
 IMGtarget.files += $${PWD}/Images/*
 INSTALLS += IMGtarget
+bIMGtarget.path += $${PWD}/../VSA/Images
+bIMGtarget.files += $${PWD}/Images/*
+INSTALLS += bIMGtarget
 
 #SettingFiles
 INItarget.path += $${OUT_PWD}/Settings
 INItarget.files += $${PWD}/Settings/*
 INSTALLS += INItarget
+bINItarget.path += $${PWD}/../VSA/Settings
+bINItarget.files += $${PWD}/Settings/*
+INSTALLS += bINItarget
 
-#Copy the current libs
-SMtarget.path += $${OUT_PWD}/Bin
-CONFIG(debug,debug|release) {
-EXTRA_BINFILES += \
-    ../SoilMath/Debug/libSoilMath.so \
-    ../Vision/Debug/libVision.so \
-    ../Soil/Debug/libSoil.so \
-    ../Hardware/Debug/libHardware.so
-for(FILE,EXTRA_BINFILES){ QMAKE_PRE_LINK += $$quote(cp $$PWD/$${FILE} $$OUT_PWD/Bin$$escape_expand(\\n\\t))}
-}
-else {
-EXTRA_BINFILES += \
-    ../SoilMath/Release/libSoilMath.so \
-    ../Vision/Release/libVision.so \
-    ../Soil/Release/libSoil.so \
-    ../Hardware/Release/libHardware.so
-for(FILE,EXTRA_BINFILES){ QMAKE_PRE_LINK += $$quote(cp $$PWD/$${FILE} $$OUT_PWD/Bin$$escape_expand(\\n\\t)) }
-}
+#MainProg
+VSAtarget.path += $${PWD}/../VSA
+VSAtarget.files += $${OUT_PWD}/VSAGUI
+INSTALLS += VSAtarget
 
 TARGET = VSAGUI
 TEMPLATE = app
@@ -73,24 +68,29 @@ DEFINES += BOOST_ALL_DYN_LINK
 INCLUDEPATH += /usr/include/boost
 LIBS += -L/usr/lib/x86_64-linux-gnu/ -lboost_filesystem -lboost_system -lboost_serialization
 
-#own libs
-unix:!macx: LIBS += -L$${OUT_PWD}/Bin -lHardware
-INCLUDEPATH += $$PWD/../Hardware
-DEPENDPATH += $$PWD/../Hardware
-
-unix:!macx: LIBS += -L$${OUT_PWD}/Bin -L$${OUT_PWD}/Bin -lSoilMath
-INCLUDEPATH += $$PWD/../SoilMath
-DEPENDPATH += $$PWD/../SoilMath
-
-unix:!macx: LIBS += -L$${OUT_PWD}/Bin -lVision
-INCLUDEPATH += $$PWD/../Vision
-DEPENDPATH += $$PWD/../Vision
-
-unix:!macx: LIBS += -L$${OUT_PWD}/Bin -lSoil
-INCLUDEPATH += $$PWD/../Soil
-DEPENDPATH += $$PWD/../Soil
-
 OTHER_FILES += \
     Settings/Default.ini \
     NeuralNet/Default.NN \
     Images/SoilSample1.png
+
+#own Libs
+
+unix:!macx: LIBS += -L$$PWD/../VSA/ -lHardware
+
+INCLUDEPATH += $$PWD/../Hardware
+DEPENDPATH += $$PWD/../Hardware
+
+unix:!macx: LIBS += -L$$PWD/../VSA/ -lSoil
+
+INCLUDEPATH += $$PWD/../Soil
+DEPENDPATH += $$PWD/../Soil
+
+unix:!macx: LIBS += -L$$PWD/../VSA/ -lSoilMath
+
+INCLUDEPATH += $$PWD/../SoilMath
+DEPENDPATH += $$PWD/../SoilMath
+
+unix:!macx: LIBS += -L$$PWD/../VSA/ -lVision
+
+INCLUDEPATH += $$PWD/../Vision
+DEPENDPATH += $$PWD/../Vision

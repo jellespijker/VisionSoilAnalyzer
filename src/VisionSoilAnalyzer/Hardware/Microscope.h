@@ -60,7 +60,7 @@ namespace Hardware{
 		cv::Mat LastFrame;				/*!< Last grabbed and processed frame */
 		Resolution Dimensions;		/*!< Dimensions of the frame */
 
-        Microscope(uint8_t frameDelayTrigger = 3, Resolution dimensions = Resolution{ 2048, 1536 });
+        Microscope(uint8_t frameDelayTrigger = 3, Resolution dimensions = Resolution{ 2048, 1536 }, bool firstdefault = true);
 		~Microscope();
 
         std::vector<std::string> AvailableCams();
@@ -80,7 +80,7 @@ namespace Hardware{
         std::string arch;
 
 		cv::VideoCapture captureDevice; /*!< An openCV instance of the capture device*/
-        void StartupSeq();
+        void StartupSeq(bool firstdefault);
 
 		std::vector<cv::Mat> HDRframes;
 		std::vector<float> times;

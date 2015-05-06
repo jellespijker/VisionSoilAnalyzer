@@ -20,8 +20,8 @@
    <string>Vision Soil Analyzer</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>:/IHClogo/IHClogo.png</normaloff>:/IHClogo/IHClogo.png</iconset>
+   <iconset resource="VSA.qrc">
+    <normaloff>:/Icons/ICH</normaloff>:/Icons/ICH</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -267,7 +267,7 @@
      <x>0</x>
      <y>0</y>
      <width>1024</width>
-     <height>25</height>
+     <height>28</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -444,12 +444,12 @@
   </action>
   <action name="actionHardware_Settings">
    <property name="text">
-    <string>Hardware Settings</string>
+    <string>&amp;Hardware Settings</string>
    </property>
   </action>
   <action name="actionNeural_Net_Settings">
    <property name="text">
-    <string>Neural Net Settings</string>
+    <string>&amp;Neural Net Settings</string>
    </property>
   </action>
  </widget>
@@ -462,7 +462,9 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="VSA.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>actionExit</sender>

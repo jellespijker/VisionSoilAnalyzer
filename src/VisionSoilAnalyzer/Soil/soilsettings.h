@@ -31,6 +31,11 @@ namespace SoilAnalyzer {
         Vision::MorphologicalFilter::FilterType morphFilterType = Vision::MorphologicalFilter::OPEN;
         uint32_t filterMaskSize = 5;
 
+        uint32_t HDRframes = 5;
+        float lightLevel = 0.5;
+        bool encInv = false;
+        bool enableRainbow = true;
+
     private:
         friend class boost::serialization::access;
         template <class Archive>
@@ -48,6 +53,10 @@ namespace SoilAnalyzer {
             ar & BOOST_SERIALIZATION_NVP(morphFilterType);
             ar & BOOST_SERIALIZATION_NVP(filterMaskSize);
             ar & BOOST_SERIALIZATION_NVP(thresholdOffsetValue);
+            ar & BOOST_SERIALIZATION_NVP(HDRframes);
+            ar & BOOST_SERIALIZATION_NVP(lightLevel);
+            ar & BOOST_SERIALIZATION_NVP(encInv);
+            ar & BOOST_SERIALIZATION_NVP(enableRainbow);
         }
     };
 }

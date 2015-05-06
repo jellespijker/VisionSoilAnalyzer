@@ -28,6 +28,7 @@
 
 #include "opencvqt.h"
 #include "visionsettings.h"
+#include "hardwaresettings.h"
 
 #include "Hardware.h"
 #include "SoilMath.h"
@@ -81,10 +82,14 @@ private slots:
 
     void on_OffsetSlider_sliderReleased();
 
+    void on_actionHardware_Settings_triggered();
+
 private:
     Ui::VSAGUI *ui;
     QErrorMessage *errorMessageDialog;
     VisionSettings *settingWindow;
+    HardwareSettings *hsetttingWindow;
+
     SoilAnalyzer::SoilSettings *sSettings;
 
     boost::signals2::connection finished_sig;

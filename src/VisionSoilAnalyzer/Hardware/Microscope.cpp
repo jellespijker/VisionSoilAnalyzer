@@ -15,19 +15,20 @@ namespace Hardware
 	\param frameDelayTrigger the delay between the first initialization of the microscope and the retrivial of the image expressed in seconds. Default value is 3 seconds
 	\param dimension A resolution Struct indicating which resolution the webcam should use. Default is 2592 x 1944
 	*/
-    Microscope::Microscope(uint8_t frameDelayTrigger, Resolution dimensions)
+    Microscope::Microscope(uint8_t frameDelayTrigger, Resolution dimensions,  bool firstdefault)
 	{
 		FrameDelayTrigger = frameDelayTrigger;
 		Dimensions = dimensions;
 
-        StartupSeq();
+        StartupSeq(firstdefault);
 	}
 
-    void Microscope::StartupSeq()
+    void Microscope::StartupSeq(bool firstdefault)
     {
         std::vector<std::string> camNames = AvailableCams();
         int videodev = find(camNames.begin(), camNames.end(), "USB Microscope") - camNames.begin();
-        if (videodev == camNames.size()) {throw Exception::MicroscopeNotFoundException("Microscope Not Found Exception!");}
+        if (videodev == camNames.size() && !firstdefault) {throw Exception::MicroscopeNotFoundException("Microscope Not Found Exception!");}
+        else if (videodev == camNames.size() && firstdefault) { videodev = 0; }
 
         struct utsname unameData;
         uname(&unameData);
