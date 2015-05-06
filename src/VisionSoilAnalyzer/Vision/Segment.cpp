@@ -2,7 +2,6 @@
 \brief Segmentation algorithms
 With this class, various segmentation routines can be applied to a greyscale or black and white source image.
 */
-
 #include "Segment.h"
 
 namespace Vision
@@ -114,13 +113,20 @@ namespace Vision
 		}
 
 		// Assumes the pixel value of the sought object lies between 2 sigma
+		int val = 0;
 		switch (TypeObject)
 		{
 		case Bright:
-			T.first = Rmean - (3 * Rstd);
+            val = Rmean - (sigma * Rstd) - thresholdOffset;
+			if (val < 0) { val = 0; }
+			else if (val > 255) { val = 255; }
+			T.first = (uchar)val;
 			break;
 		case Dark:
-			T.first = Lmean + (3 * Lstd);
+            val = Lmean + (sigma * Lstd) + thresholdOffset;
+			if (val < 0) { val = 0; }
+			else if (val > 255) { val = 255; }
+			T.first = (uchar)val;
 			break;
 		}
 
@@ -238,38 +244,42 @@ namespace Vision
 		if (chain) { ProcessedImg = TempImg.clone(); } 
 		else { ProcessedImg = OriginalImg.clone(); } 		
 
-		SHOW_DEBUG_IMG(OriginalImg, uchar, 255, "Original Image RemoverBorderBlobs!");
-		SHOW_DEBUG_IMG(TempImg, uchar, 255, "Temp Image RemoverBorderBlobs!");
+		SHOW_DEBUG_IMG(OriginalImg, uchar, 255, "Original Image RemoverBorderBlobs!", true);
+		SHOW_DEBUG_IMG(TempImg, uchar, 255, "Temp Image RemoverBorderBlobs!", true);
 
 		uchar *P = ProcessedImg.data;
 		uint32_t cols = ProcessedImg.cols;
 		uint32_t rows = ProcessedImg.rows;
-		for (uint32_t i = 0; i < border; i++)
-		{
-			for (uint32_t j = 0; j < cols; j++)
-			{
-				if (O[(i * cols) + j] == 1 && P[(i * cols) + j] != 2) { cv::floodFill(ProcessedImg, cv::Point(j, i), (uchar)2); }
-			}
-		}
 
-		for (uint32_t i = rows - border - 1; i < rows; i++)
-		{
-			for (uint32_t j = 0; j < cols; j++)
-			{
-				if (O[(i * cols) + j] == 1 && P[(i * cols) + j] != 2) { cv::floodFill(ProcessedImg, cv::Point(j, i), (uchar)2); }
-			}
-		}
+        try
+        {
+            for (uint32_t i = 0; i < border; i++)
+            {
+                for (uint32_t j = 0; j < cols; j++)
+                {
+                    if (O[(i * cols) + j] == 1 && P[(i * cols) + j] != 2) { cv::floodFill(ProcessedImg, cv::Point(j, i), (uchar)2); }
+                }
+            }
 
-		for (uint32_t i = border; i < rows - border; i++)
-		{
-			for (uint32_t j = 0; j < border; j++)
-			{
-				if (O[(i * cols) + j] == 1 && P[(i * cols) + j] != 2) {	cv::floodFill(ProcessedImg, cv::Point(j, i), (uchar)2); }
-				if (O[(i * cols) + (cols - j - 1)] == 1 && P[(i * cols) + (cols - j - 1)] != 2)	{ cv::floodFill(ProcessedImg, cv::Point(cols - j - 1, i), (uchar)2);	}
-			}
-		}
+            for (uint32_t i = rows - border - 1; i < rows; i++)
+            {
+                for (uint32_t j = 0; j < cols; j++)
+                {
+                    if (O[(i * cols) + j] == 1 && P[(i * cols) + j] != 2) { cv::floodFill(ProcessedImg, cv::Point(j, i), (uchar)2); }
+                }
+            }
 
-		SHOW_DEBUG_IMG(ProcessedImg, uchar, 255, "Processed Image RemoverBorderBlobs before LUT!");
+            for (uint32_t i = border; i < rows - border; i++)
+            {
+                for (uint32_t j = 0; j < border; j++)
+                {
+                    if (O[(i * cols) + j] == 1 && P[(i * cols) + j] != 2) {	cv::floodFill(ProcessedImg, cv::Point(j, i), (uchar)2); }
+                    if (O[(i * cols) + (cols - j - 1)] == 1 && P[(i * cols) + (cols - j - 1)] != 2)	{ cv::floodFill(ProcessedImg, cv::Point(cols - j - 1, i), (uchar)2);	}
+                }
+            }
+        }
+        catch (cv::Exception &e) { }
+		SHOW_DEBUG_IMG(ProcessedImg, uchar, 255, "Processed Image RemoverBorderBlobs before LUT!", true);
 
 		// Change values 2 -> 0
 		uchar LUT_newValue[3]{ 0, 1, 0 };
@@ -277,7 +287,7 @@ namespace Vision
 		uint32_t nData = rows * cols;
 		for (uint32_t i = 0; i < nData; i++) { P[i] = LUT_newValue[P[i]];}
 
-		SHOW_DEBUG_IMG(ProcessedImg, uchar, 255, "Processed Image RemoverBorderBlobs!");
+		SHOW_DEBUG_IMG(ProcessedImg, uchar, 255, "Processed Image RemoverBorderBlobs!", true);
 	}
 
 	/*! Label all the individual blobs in a BW source image. The result are written to the labelledImg as an ushort
@@ -626,7 +636,10 @@ namespace Vision
 			else { P[i] = 0; }
 		}
 
-		SHOW_DEBUG_IMG(ProcessedImg, uchar, 255, "GetEdgesEroding Processed Image!");
+		//ProcessedImg = OriginalImg.clone() - eroder.ProcessedImg.clone();
+
+		SHOW_DEBUG_IMG(eroder.ProcessedImg, uchar, 255, "Eroded img Processed Image!", true);
+		SHOW_DEBUG_IMG(ProcessedImg, uchar, 255, "GetEdgesEroding Processed Image!", true);
 	}
 
 	/*! Create a BlobList subtracting each individual blob out of a Labelled image. If the labelled image is empty build a new one with a BW image.
@@ -758,8 +771,12 @@ namespace Vision
 
 		// Fill the outside
 		//FloodFill(O, P, row, col, 2, 0);
-		cv::Rect rectangle;
-		cv::floodFill(ProcessedImg, cv::Point(col, row), cv::Scalar(2));
+
+        try
+        {
+            cv::floodFill(ProcessedImg, cv::Point(col, row), cv::Scalar(2));
+        }
+        catch (cv::Exception &e) { }
 
 		// Set the unreached areas to 1 and the outside to 0;
 		uchar LUT_newVal[3] = { 1, 1, 0 };

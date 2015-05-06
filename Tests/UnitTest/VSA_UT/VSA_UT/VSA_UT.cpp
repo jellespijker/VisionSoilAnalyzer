@@ -4,18 +4,20 @@
 #include "../../../../src/VisionSoilAnalyzer/Vision/Vision.h"
 #include "../../../../src/VisionSoilAnalyzer/Soil/VisionSoil.h"
 #include "../../../../src/VisionSoilAnalyzer/SoilMath/SoilMath.h"
+#include "../../../../src/VisionSoilAnalyzer/SoilPlot/SoilPlot.h"
+
+// Test Libraries
 #include "FloatTestMatrix.h"
 #include "TestMatrix.h"
+#include "StatisticalComparisonDefinition.h"
 
 #include <boost/test/unit_test.hpp>
 #include <boost/test/results_reporter.hpp>
 #include <iostream>
 #include <fstream>
 #include <sstream>
-
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
-
 #include <string>
 #include <boost/archive/xml_oarchive.hpp>
 #include <boost/archive/xml_iarchive.hpp>
@@ -24,7 +26,6 @@
 #include <boost/serialization/vector.hpp>
 
 // Statistical analysis
-#include "StatisticalComparisonDefinition.h"
 
 #include <math.h>
 #include <cmath>
@@ -98,6 +99,108 @@ struct BM {
 	Mat comp;
 };
 
+struct PM {
+	PM()
+	{
+		BOOST_TEST_MESSAGE("Setup fixture");
+		checker = imread("../ComparisionPictures/checker.ppm", 0);
+		std::vector<cv::Mat> RGB;
+		for (uint32_t i = 0; i < 3; i++)
+		{
+			RGB.push_back(checker);
+		}
+		cv::Mat alpha(checker.rows, checker.cols, CV_8UC1);
+		alpha.setTo(255);
+		RGB.push_back(alpha);
+		merge(RGB, RGBchecker);
+	}
+	~PM() { BOOST_TEST_MESSAGE("teardown fixture"); }
+
+	std::string TestWindow = "SoilPlot Image window";
+	Mat checker;
+	Mat RGBchecker;
+	Mat comp;
+};
+
+//SoilPlot Test
+BOOST_FIXTURE_TEST_CASE(SoilPlot_Label, PM)
+{
+    SoilPlot::Label TestR("RED", "times", 30, cv::Scalar(255, 0, 0, 255), cv::Scalar(0,0,0,0), false, true);
+    SoilPlot::Label TestG("GREEN", "times", 30, cv::Scalar(0, 255, 0, 255), cv::Scalar(0, 0, 0, 0), false, true);
+    SoilPlot::Label TestB("BLUE", "times", 30, cv::Scalar(0, 0, 255, 255), cv::Scalar(0, 0, 0, 0), false, true);
+    SoilPlot::Label TestA("ALPHA", "times", 30, cv::Scalar(255, 125, 0, 10), cv::Scalar(0, 0, 0, 0), false, true);
+    namedWindow(TestWindow, cv::WINDOW_NORMAL);
+
+    TestR.TopLeftCorner = cv::Point(50, 10);
+	TestR.Draw();
+    imshow(TestWindow, TestR.Figure);
+    cv::waitKey(0);
+	TestR.DrawOnTop(RGBchecker);
+    TestG.TopLeftCorner = cv::Point(50, TestR.Figure.rows + 30);
+	TestG.Draw();
+    imshow(TestWindow, TestG.Figure);
+    cv::waitKey(0);
+	TestG.DrawOnTop(RGBchecker);
+    TestB.TopLeftCorner = cv::Point(50, TestG.TopLeftCorner.y + TestG.Figure.rows + 20);
+	TestB.Draw();
+    imshow(TestWindow, TestB.Figure);
+    cv::waitKey(0);
+	TestB.DrawOnTop(RGBchecker);
+    TestA.TopLeftCorner = cv::Point(50, TestB.TopLeftCorner.y + TestB.Figure.rows + 20);
+	TestA.Draw();
+    imshow(TestWindow, TestA.Figure);
+    cv::waitKey(0);
+	TestA.DrawOnTop(RGBchecker);
+
+
+	imshow(TestWindow, RGBchecker);
+	cv::waitKey(0);
+}
+
+BOOST_FIXTURE_TEST_CASE(SoilPlot_Lines, PM)
+{
+	std::vector<SoilPlot::Line> Lines;
+	Lines.push_back(SoilPlot::Line(cv::Point(80, 80), cv::Point(150, 150), 1, cv::Scalar(255, 0, 0, 255)));
+	Lines.push_back(SoilPlot::Line(cv::Point(80, 80), cv::Point(10, 150), 2, cv::Scalar(0, 255, 0, 255)));
+	Lines.push_back(SoilPlot::Line(cv::Point(80, 80), cv::Point(10, 10), 3, cv::Scalar(0, 0,255, 255)));
+	Lines.push_back(SoilPlot::Line(cv::Point(80, 80), cv::Point(150, 10), 4, cv::Scalar(255, 0, 0, 255)));
+	Lines.push_back(SoilPlot::Line(cv::Point(80, 10), cv::Point(80, 150), 5, cv::Scalar(255, 0, 255, 255)));
+	Lines.push_back(SoilPlot::Line(cv::Point(10, 80), cv::Point(150, 80), 10, cv::Scalar(255, 255, 0, 200)));
+	for_each(Lines.begin(), Lines.end(), [&](SoilPlot::Line &L) 
+	{
+		L.Draw();
+		L.DrawOnTop(RGBchecker);
+	});
+
+	namedWindow(TestWindow, cv::WINDOW_NORMAL);
+	imshow(TestWindow, RGBchecker);
+	cv::waitKey(0);
+}
+
+BOOST_FIXTURE_TEST_CASE(SoilPlot_Axis, PM)
+{
+	std::vector<SoilPlot::Axis> axes;
+	SoilPlot::Label axisLabel("Horizontal", "times", 30, cv::Scalar(200, 80, 80, 255), cv::Scalar(0, 0, 0, 0), true, true);
+	
+	std::vector<SoilPlot::Label> Values;
+	Values.push_back(SoilPlot::Label("1", "times", 16, cv::Scalar(200,80,3,255), cv::Scalar(0,0,0,0), false, true));
+	Values.push_back(SoilPlot::Label("2", "times", 16, cv::Scalar(200,80,3,255), cv::Scalar(0,0,0,0), false, true));
+	Values.push_back(SoilPlot::Label("3", "times", 16, cv::Scalar(200,80,3,255), cv::Scalar(0,0,0,0), false, true));
+	
+	axes.push_back(SoilPlot::Axis(cv::Point(20,140), 120, SoilPlot::Axis::Orientation_enum::Horizontal, Values, axisLabel, SoilPlot::Axis::ValuePosition::UnderTick, false));
+	for_each(axes.begin(), axes.end(), [&](SoilPlot::Axis &A)
+	{
+		A.Draw();
+		A.DrawOnTop(RGBchecker);
+	});
+}
+
+
+BOOST_AUTO_TEST_CASE(SoilPlot_Bar_Graph)
+{
+	
+}
+
 // SoilMath Test
 BOOST_AUTO_TEST_CASE(Vision_Create_Blobs)
 {
@@ -131,7 +234,7 @@ BOOST_FIXTURE_TEST_CASE(Vision_Create_Many_Blobs, BM)
 	});
 }
 
-BOOST_AUTO_TEST_CASE(SoilMath_Stats_DiscreteMath_BigNumber)
+BOOST_AUTO_TEST_CASE(SoilMath_Stats_BigNoDiscrete)
 {
 	uint16_t *BigNoTestMatrix = new uint16_t[40000];
 	uint32_t count = 0;
@@ -317,7 +420,7 @@ BOOST_AUTO_TEST_CASE(SoilMath_NN_Save_And_Load)
 BOOST_AUTO_TEST_CASE(SoilMath_NN_Prediction_Accurancy)
 {
 	SoilMath::NN Test;
-	Test.LoadState("../ComparisionPictures/NN_test.xml");
+    Test.LoadState("../ComparisionPictures/NN_Test.xml");
 
 	InputLearnVector_t inputVect;
 	OutputLearnVector_t outputVect;
@@ -605,7 +708,7 @@ BOOST_AUTO_TEST_CASE(Vision_CopyMat_1_Float_Channel_With_Mask)
 BOOST_AUTO_TEST_CASE(Vision_CopyMat_With_LUT)
 {
 	Mat BW_res = imread("../ComparisionPictures/mask.ppm", 0);
-	Mat Label = imread("../ComparisionPictures/Label.ppm", 0);
+    Mat Label = imread("../ComparisionPictures/label.ppm", 0);
 	uint8_t *LUT = new uint8_t[300]{};
 	LUT[255] = 1;
 
@@ -642,8 +745,8 @@ BOOST_AUTO_TEST_CASE(Vision_RemoveBorder_Chain_Event)
 
 BOOST_AUTO_TEST_CASE(Vision_MorphologicalFilter_Erode)
 {
-	cv::Mat FilterImg = imread("../ComparisionPictures/FilterImg.ppm", 0);
-	cv::Mat ErosionComp = imread("../ComparisionPictures/erodedResult.ppm", 0);
+    cv::Mat FilterImg = imread("../ComparisionPictures/FilterImg.ppm", 0);
+    cv::Mat ErosionComp = imread("../ComparisionPictures/erodedResult.ppm", 0);
 	Mat mask = imread("../ComparisionPictures/MorphMask.ppm", 0);
 	Vision::MorphologicalFilter Test(FilterImg);
 	Test.Erosion(mask);
@@ -654,7 +757,7 @@ BOOST_AUTO_TEST_CASE(Vision_MorphologicalFilter_Erode)
 BOOST_AUTO_TEST_CASE(Vision_MorphologicalFilter_Dilate)
 {
 	cv::Mat FilterImg = imread("../ComparisionPictures/FilterImg.ppm", 0);
-	cv::Mat DilateComp = imread("../ComparisionPictures/dilatedResult.ppm", 0);
+    cv::Mat DilateComp = imread("../ComparisionPictures/DilatedResult.ppm", 0);
 	Mat mask = imread("../ComparisionPictures/MorphMask.ppm", 0);
 	Vision::MorphologicalFilter Test(FilterImg);
 	Test.Dilation(mask);
@@ -666,7 +769,7 @@ BOOST_AUTO_TEST_CASE(Vision_MorphologicalFilter_Open)
 {
 	cv::Mat FilterImg = imread("../ComparisionPictures/FilterImg.ppm", 0);
 	cv::Mat OpenComp = imread("../ComparisionPictures/openResult.ppm", 0);
-	Mat mask = imread("../ComparisionPictures/MorphMask.ppm", 0);
+    Mat mask = imread("../ComparisionPictures/MorphMask.ppm", 0);
 	Vision::MorphologicalFilter Test(FilterImg);
 	Test.Open(mask);
 
@@ -680,8 +783,17 @@ BOOST_AUTO_TEST_CASE(Vision_MorphologicalFilter_Close)
 	Mat mask = imread("../ComparisionPictures/MorphMask.ppm", 0);
 	Vision::MorphologicalFilter Test(FilterImg);
 	Test.Close(mask);
-	imwrite("closeRun.ppm", Test.ProcessedImg);
 	BOOST_CHECK_EQUAL_COLLECTIONS(Test.ProcessedImg.begin<uchar>(), Test.ProcessedImg.end<uchar>(), CloseComp.begin<uchar>(), CloseComp.end<uchar>());
+}
+
+BOOST_AUTO_TEST_CASE(Vision_Segment_GetEdgesByErosion)
+{
+	cv::Mat BlobImg = imread("../ComparisionPictures/FilterImg.ppm", 0);
+	cv::Mat EdgeComp = imread("../ComparisionPictures/BlobTestEdgeResult.ppm", 0);
+
+	Vision::Segment Test(BlobImg);
+	Test.GetEdgesEroding();
+	BOOST_CHECK_EQUAL_COLLECTIONS(Test.ProcessedImg.begin<uchar>(), Test.ProcessedImg.end<uchar>(), EdgeComp.begin<uchar>(), EdgeComp.end<uchar>());
 }
 
 // Soil Test
@@ -689,10 +801,13 @@ BOOST_AUTO_TEST_CASE(Vision_MorphologicalFilter_Close)
 BOOST_FIXTURE_TEST_CASE(Soil_Particle_Analyze, M)
 {
 	SoilMath::NN nn;
-	nn.LoadState("../ComparisionPictures/NN_test.xml");
+    nn.LoadState("../ComparisionPictures/NN_Test.xml");
 
 	SoilAnalyzer::Sample Test(src);
 	Test.Analyse(nn);
+
+	std::string filename = "SoilSample.vsa";
+	Test.Save(filename);
 
 	imwrite("BW.ppm", Test.BW);
 //	imwrite("Edge.ppm", Test.Edge);

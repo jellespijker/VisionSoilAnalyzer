@@ -73,6 +73,9 @@ namespace Vision
 		ucharStat_t OriginalImgStats; /*!< Statistical data from the original image*/
 		uint8_t ThresholdLevel = 0;				/*!< Current calculated threshold level*/
 		
+        float sigma = 2;
+        uint32_t thresholdOffset = 4;
+
 		Segment(); 
 		Segment(const Mat &src); 
 		Segment(const Segment &rhs);

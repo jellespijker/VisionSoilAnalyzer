@@ -10,8 +10,18 @@ namespace Vision
 	{
 	public:
 
+        enum FilterType
+        {
+            OPEN,
+            CLOSE,
+            ERODE,
+            DILATE,
+            NONE
+        };
+
 		MorphologicalFilter();
-		MorphologicalFilter(const Mat &src);
+        MorphologicalFilter(FilterType filtertype);
+        MorphologicalFilter(const Mat &src, FilterType filtertype = FilterType::NONE);
 		MorphologicalFilter(const MorphologicalFilter &rhs);
 
 		~MorphologicalFilter();

@@ -31,11 +31,15 @@ namespace Vision
 		return nRow;
 	}
 
-	// Todo: Optimize
 	std::vector<Mat> ImageProcessing::extractChannel(const Mat &src)
 	{
 		vector<Mat> chans;
 		split(src, chans);
 		return chans;
 	}
+
+    boost::signals2::connection ImageProcessing::connect_Progress(const Progress_t::slot_type &subscriber)
+    {
+        return prog_sig.connect(subscriber);
+    }
 }
