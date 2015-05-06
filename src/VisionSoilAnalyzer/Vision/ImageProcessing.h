@@ -7,8 +7,10 @@
 /*! MACRO which trows an EmtpyImageException if the matrix is empty*/
 #define EMPTY_CHECK(img) if (img.empty()) { throw Exception::EmtpyImageException(); }
 
-#include <stdint.h>
 #include <opencv2/core.hpp>
+#include <opencv2/highgui.hpp>
+
+#include <stdint.h>
 #include <cmath>
 #include <vector>
 #include <string>

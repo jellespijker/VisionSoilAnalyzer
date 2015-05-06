@@ -14,10 +14,14 @@ VSAGUI::VSAGUI(QWidget *parent) :
     // Startup the UI
     ui->setupUi(this);
     SoilSample = new SoilAnalyzer::Sample;
+    SoilSample->connect_Progress(boost::bind(&VSAGUI::on_vision_update, this, _1, _2));
     NeuralNet = new SoilMath::NN;
     NeuralNet->LoadState("NeuralNet/Default.NN");
+    sSettings = new SoilAnalyzer::SoilSettings;
+    sSettings->LoadSettings("Settings/Default.ini");
+    ui->OffsetSlider->setValue(sSettings->thresholdOffsetValue);
 
-    // Init the progress bar
+    // Init the status bar
     progressBar = new QProgressBar(ui->statusBar);
     progressBar->setAlignment(Qt::AlignLeft);
     progressBar->setMaximumSize(640, 19);
@@ -26,12 +30,14 @@ VSAGUI::VSAGUI(QWidget *parent) :
 
     statusLabel = new QLabel(ui->statusBar);
     statusLabel->setAlignment(Qt::AlignRight);
+    statusLabel->setMinimumSize(600, 19);
     statusLabel->setMaximumSize(600, 19);
     ui->statusBar->addWidget(statusLabel);
     statusLabel->setText(tr("First Grab"));
 
     // Get HDR snapshot of the sample or normal shot when HDR grab faulters or test image if normal grab falters
     Hardware::Microscope microscope;
+
     finished_sig = microscope.connect_Finished([&]() {
         SetMatToMainView(SoilSample->OriginalImage);
         this->statusLabel->setText(tr("New Image Grabbed")); });
@@ -39,7 +45,7 @@ VSAGUI::VSAGUI(QWidget *parent) :
 
     try
     {
-        if (microscope.IsOpened()) { microscope.GetHDRFrame(SoilSample->OriginalImage, 5);  }
+        if (microscope.IsOpened()) { microscope.GetHDRFrame(SoilSample->OriginalImage, sSettings->HDRframes);  }
     }
     catch (Hardware::Exception::MicroscopeNotFoundException &em)
     {
@@ -70,13 +76,13 @@ VSAGUI::VSAGUI(QWidget *parent) :
             SoilSample->OriginalImage = cv::imread("/Images/SoilSample1.png");
         }
     }
-    //SetMatToMainView(*OrigImg);
 }
 
 void VSAGUI::SetMatToMainView(cv::Mat &img)
 {
     QImage *qOrigImg = new QImage(OpenCVQT::Mat2QImage(img));
     QPixmap *qOrigPix = new QPixmap(QPixmap::fromImage(*qOrigImg));
+    ui->MainImg->clear();
     ui->MainImg->setPixmap(*qOrigPix);
     ui->MainImg->show();
 }
@@ -89,12 +95,15 @@ VSAGUI::~VSAGUI()
 void VSAGUI::on_SnapshotButton_clicked()
 {
     Hardware::Microscope microscope;
+    delete SoilSample;
+    SoilSample = new SoilAnalyzer::Sample;
+    SoilSample->connect_Progress(boost::bind(&VSAGUI::on_vision_update, this, _1, _2));
     this->statusLabel->setText(tr("Grabbing new Image!"));
     finished_sig = microscope.connect_Finished([&]() {
         SetMatToMainView(SoilSample->OriginalImage);
         this->statusLabel->setText(tr("New Image Grabbed")); });
     progress_sig = microscope.connect_Progress([&](int &prog){ this->progressBar->setValue(prog); });
-    microscope.GetHDRFrame(SoilSample->OriginalImage, 5);
+    microscope.GetHDRFrame(SoilSample->OriginalImage, sSettings->HDRframes);
 }
 
 void VSAGUI::on_vision_update(float prog, string statusText)
@@ -120,8 +129,11 @@ void VSAGUI::on_actionLoad_triggered()
     QString fn = QFileDialog::getOpenFileName(this, tr("Load Soil Sample"), tr("/home/"), tr("Soil Samples (*.VSS);; Soil Particles (*.VPS);; All Files (*)"));
     if (!fn.isEmpty() && fn.contains(tr("VSS")));
     {
+        delete SoilSample;
+        SoilSample = new SoilAnalyzer::Sample;
         std::string filename = fn.toStdString();
         SoilSample->Load(filename);
+        SoilSample->connect_Progress(boost::bind(&VSAGUI::on_vision_update, this, _1, _2));
         SetMatToMainView(SoilSample->OriginalImage);
     }
 }
@@ -135,6 +147,7 @@ void VSAGUI::on_actionNew_triggered()
 {
     delete SoilSample;
     SoilSample = new SoilAnalyzer::Sample;
+    SoilSample->connect_Progress(boost::bind(&VSAGUI::on_vision_update, this, _1, _2));
     on_SnapshotButton_clicked();
 }
 
@@ -157,4 +170,67 @@ void VSAGUI::on_actionExport_triggered()
         std::string filename = fn.toStdString();
         NeuralNet->SaveState(filename);
     }
+}
+
+void VSAGUI::on_actionSegmentation_Settings_triggered()
+{
+    settingWindow = new VisionSettings(0, sSettings);
+    settingWindow->exec();
+}
+
+void VSAGUI::on_actionSave_Settings_triggered()
+{
+    QString fn = QFileDialog::getSaveFileName(this, tr("Save Settings"), tr("/home/"), tr("Settings (*.ini);;All Files (*)"));
+    if (!fn.isEmpty());
+    {
+        if (!fn.contains(tr(".ini"))) { fn.append(tr(".ini")); }
+        std::string filename = fn.toStdString();
+        sSettings->SaveSettings(filename);
+    }
+}
+
+void VSAGUI::on_actionLoad_Settings_triggered()
+{
+    QString fn = QFileDialog::getOpenFileName(this, tr("Load Settings"), tr("/home/"), tr("Settings (*.ini);;All Files (*)"));
+    if (!fn.isEmpty());
+    {
+        std::string filename = fn.toStdString();
+        sSettings->LoadSettings(filename);
+    }
+}
+
+void VSAGUI::on_actionRestore_Default_triggered()
+{
+    std::string filename = "Settings/Default.ini";
+    sSettings->LoadSettings(filename);
+}
+
+void VSAGUI::on_SegmentButton_clicked()
+{
+    SoilSample->PrepImg(sSettings);
+    SetMatToMainView(SoilSample->RGB);
+}
+
+void VSAGUI::on_verticalSlider_sliderReleased()
+{
+    sSettings->thresholdOffsetValue = ui->OffsetSlider->value();
+    if (SoilSample->imgPrepped)
+    {
+        SoilSample->PrepImg(sSettings);
+    }
+}
+void VSAGUI::on_OffsetSlider_valueChanged(int value)
+{
+    sSettings->thresholdOffsetValue = ui->OffsetSlider->value();
+}
+
+void VSAGUI::on_OffsetSlider_sliderReleased()
+{
+
+}
+
+void VSAGUI::on_actionHardware_Settings_triggered()
+{
+    hsetttingWindow = new HardwareSettings(0, sSettings);
+    hsetttingWindow->exec();
 }

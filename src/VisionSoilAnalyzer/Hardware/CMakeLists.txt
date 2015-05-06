@@ -20,4 +20,6 @@ target_link_libraries(Hardware -L/usr/local/lib -L/usr/lib/x86_64-linux-gnu/ -lo
 include_directories(/usr/local/include /usr/local/include/opencv /usr/include/boost)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c++11 -pthread")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread")
+install(TARGETS Hardware DESTINATION ${CMAKE_SOURCE_DIR}/../VSA)
+install(DIRECTORY ${CMAKE_SOURCE_DIR} DESTINATION ${CMAKE_SOURCE_DIR}/../VSA/include FILES_MATCHING PATTERN "*.h")
 

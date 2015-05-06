@@ -24,3 +24,5 @@ target_link_libraries(SoilMath -L/usr/local/lib -L/usr/lib/x86_64-linux-gnu/ -lo
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c++11")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 include_directories(/usr/local/include /usr/local/include/opencv /usr/include/boost)
+install(TARGETS SoilMath DESTINATION ${CMAKE_SOURCE_DIR}/../VSA)
+install(DIRECTORY ${CMAKE_SOURCE_DIR} DESTINATION ${CMAKE_SOURCE_DIR}/../VSA/include FILES_MATCHING PATTERN "*.h")

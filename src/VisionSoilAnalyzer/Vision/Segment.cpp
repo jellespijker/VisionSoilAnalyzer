@@ -117,13 +117,13 @@ namespace Vision
 		switch (TypeObject)
 		{
 		case Bright:
-			val = Rmean - (3 * Rstd) - SEGMENT_OFFSET;
+            val = Rmean - (sigma * Rstd) - thresholdOffset;
 			if (val < 0) { val = 0; }
 			else if (val > 255) { val = 255; }
 			T.first = (uchar)val;
 			break;
 		case Dark:
-			val = Lmean + (3 * Lstd) + SEGMENT_OFFSET;
+            val = Lmean + (sigma * Lstd) + thresholdOffset;
 			if (val < 0) { val = 0; }
 			else if (val > 255) { val = 255; }
 			T.first = (uchar)val;
@@ -250,31 +250,35 @@ namespace Vision
 		uchar *P = ProcessedImg.data;
 		uint32_t cols = ProcessedImg.cols;
 		uint32_t rows = ProcessedImg.rows;
-		for (uint32_t i = 0; i < border; i++)
-		{
-			for (uint32_t j = 0; j < cols; j++)
-			{
-				if (O[(i * cols) + j] == 1 && P[(i * cols) + j] != 2) { cv::floodFill(ProcessedImg, cv::Point(j, i), (uchar)2); }
-			}
-		}
 
-		for (uint32_t i = rows - border - 1; i < rows; i++)
-		{
-			for (uint32_t j = 0; j < cols; j++)
-			{
-				if (O[(i * cols) + j] == 1 && P[(i * cols) + j] != 2) { cv::floodFill(ProcessedImg, cv::Point(j, i), (uchar)2); }
-			}
-		}
+        try
+        {
+            for (uint32_t i = 0; i < border; i++)
+            {
+                for (uint32_t j = 0; j < cols; j++)
+                {
+                    if (O[(i * cols) + j] == 1 && P[(i * cols) + j] != 2) { cv::floodFill(ProcessedImg, cv::Point(j, i), (uchar)2); }
+                }
+            }
 
-		for (uint32_t i = border; i < rows - border; i++)
-		{
-			for (uint32_t j = 0; j < border; j++)
-			{
-				if (O[(i * cols) + j] == 1 && P[(i * cols) + j] != 2) {	cv::floodFill(ProcessedImg, cv::Point(j, i), (uchar)2); }
-				if (O[(i * cols) + (cols - j - 1)] == 1 && P[(i * cols) + (cols - j - 1)] != 2)	{ cv::floodFill(ProcessedImg, cv::Point(cols - j - 1, i), (uchar)2);	}
-			}
-		}
+            for (uint32_t i = rows - border - 1; i < rows; i++)
+            {
+                for (uint32_t j = 0; j < cols; j++)
+                {
+                    if (O[(i * cols) + j] == 1 && P[(i * cols) + j] != 2) { cv::floodFill(ProcessedImg, cv::Point(j, i), (uchar)2); }
+                }
+            }
 
+            for (uint32_t i = border; i < rows - border; i++)
+            {
+                for (uint32_t j = 0; j < border; j++)
+                {
+                    if (O[(i * cols) + j] == 1 && P[(i * cols) + j] != 2) {	cv::floodFill(ProcessedImg, cv::Point(j, i), (uchar)2); }
+                    if (O[(i * cols) + (cols - j - 1)] == 1 && P[(i * cols) + (cols - j - 1)] != 2)	{ cv::floodFill(ProcessedImg, cv::Point(cols - j - 1, i), (uchar)2);	}
+                }
+            }
+        }
+        catch (cv::Exception &e) { }
 		SHOW_DEBUG_IMG(ProcessedImg, uchar, 255, "Processed Image RemoverBorderBlobs before LUT!", true);
 
 		// Change values 2 -> 0
@@ -767,8 +771,12 @@ namespace Vision
 
 		// Fill the outside
 		//FloodFill(O, P, row, col, 2, 0);
-		cv::Rect rectangle;
-		cv::floodFill(ProcessedImg, cv::Point(col, row), cv::Scalar(2));
+
+        try
+        {
+            cv::floodFill(ProcessedImg, cv::Point(col, row), cv::Scalar(2));
+        }
+        catch (cv::Exception &e) { }
 
 		// Set the unreached areas to 1 and the outside to 0;
 		uchar LUT_newVal[3] = { 1, 1, 0 };
