@@ -47,6 +47,7 @@ namespace SoilMath
 		T3 Sum = 0;
 		uint16_t Rows = 0;
 		uint16_t Cols = 0;
+        bool StartAtZero = true;
 		
 		uint32_t *begin() {	return &bins[0]; }
 		uint32_t *end() { return &bins[noBins]; }
@@ -102,6 +103,7 @@ namespace SoilMath
 			this->Sum = rhs.Sum;
 			std::copy(rhs.bins, rhs.bins + rhs.noBins, this->bins);
 			this->Data = &rhs.Data[0];
+            this->StartAtZero = rhs.StartAtZero;
 		}
 
 		Stats &operator=(Stats const &rhs)
@@ -130,11 +132,12 @@ namespace SoilMath
 				this->Sum = rhs.Sum;
 				this->Data = &rhs.Data[0];
 				std::copy(rhs.bins, rhs.bins + rhs.noBins, this->bins);
+                this->StartAtZero = rhs.StartAtZero;
 			}
 			return *this;
 		}
 
-		Stats(int noBins = 256, T1 startBin = 0, T1 endBin = 255)
+        Stats(int noBins = 256, T1 startBin = 0, T1 endBin = 255)
 		{
 			min = numeric_limits<T1>::max();
 			max = numeric_limits<T1>::min();
@@ -156,7 +159,7 @@ namespace SoilMath
 			}
 		}
 
-		Stats(T1 *data, uint16_t rows, uint16_t cols, int noBins = 256, T1 startBin = 0, T1 endBin = 255)
+        Stats(T1 *data, uint16_t rows, uint16_t cols, int noBins = 256, T1 startBin = 0, bool startatzero = true)
 		{
 			min = numeric_limits<T1>::max();
 			max = numeric_limits<T1>::min();
@@ -164,6 +167,7 @@ namespace SoilMath
 
 			Startbin = startBin;
 			EndBin = startBin + noBins;
+            StartAtZero = startatzero;
 
 			if (typeid(T1) == typeid(float) || typeid(T1) == typeid(double) || typeid(T1) == typeid(long double))
 			{
@@ -182,6 +186,34 @@ namespace SoilMath
 			if (isDiscrete) { BasicCalculate(); }
 			else { BasicCalculateFloat(); }
 		}
+
+        Stats(T1 *data, uint16_t rows, uint16_t cols, uchar *mask,int noBins = 256, T1 startBin = 0, bool startatzero = true)
+        {
+            min = numeric_limits<T1>::max();
+            max = numeric_limits<T1>::min();
+            Range = max - min;
+
+            Startbin = startBin;
+            EndBin = startBin + noBins;
+            StartAtZero = startatzero;
+
+            if (typeid(T1) == typeid(float) || typeid(T1) == typeid(double) || typeid(T1) == typeid(long double))
+            {
+                isDiscrete = false;
+            }
+            else
+            {
+                isDiscrete = true;
+            }
+
+            Data = data;
+            Rows = rows;
+            Cols = cols;
+            bins = new uint32_t[noBins]{};
+            this->noBins = noBins;
+            if (isDiscrete) { BasicCalculate(mask); }
+            else { BasicCalculateFloat(mask); }
+        }
 
 		/// <summary>
 		/// Constructor when the data is given as an histogram
@@ -217,8 +249,11 @@ namespace SoilMath
 		~Stats()
 		{
 			delete[] bins;
-		};
+        }
 
+        /// <summary>
+        /// Calculate the stats using a mask with the same size as the data
+        /// </summary>
 		void BasicCalculateFloat()
 		{
 			float sum_dev = 0.0;
@@ -230,7 +265,7 @@ namespace SoilMath
 			for (uint32_t i = 0; i < n; i++)
 			{
 				if (Data[i] > max) { max = Data[i]; }
-				else if (Data[i] < min) { min = Data[i]; }
+                if (Data[i] < min) { min = Data[i]; }
 				Sum += Data[i];
 			}
 
@@ -242,19 +277,94 @@ namespace SoilMath
 
 			// Get Max;
 			Range = max - min;
-			bool troep = false;
 			//  fill histogram
-			for (uint32_t i = 0; i < n; i++)
-			{
-				index = static_cast<uint32_t>(floor((Data[i] - min) / binRange));
-				if (index == noBins) { index -= 1; }
-				bins[index]++;
-				sum_dev += pow((Data[i] - Mean), 2);
-			}
-
+            if (StartAtZero)
+            {
+                for (uint32_t i = 0; i < n; i++)
+                {
+                    index = static_cast<uint32_t>(floor(Data[i] / binRange));
+                    if (index == noBins) { index -= 1; }
+                    bins[index]++;
+                    sum_dev += pow((Data[i] - Mean), 2);
+                }
+            }
+            else
+            {
+                for (uint32_t i = 0; i < n; i++)
+                {
+                    index = static_cast<uint32_t>(floor((Data[i] - min) / binRange));
+                    if (index == noBins) { index -= 1; }
+                    bins[index]++;
+                    sum_dev += pow((Data[i] - Mean), 2);
+                }
+            }
 			Std = sqrt((float)(sum_dev / n));
 			Calculated = true;
 		}
+
+        /// <summary>
+        /// Calculate the stats using a mask with the same size as the data
+        /// </summary>
+        /// <param name="mask">A mask type uchar</param>
+        void BasicCalculateFloat(uchar *mask)
+        {
+            float sum_dev = 0.0;
+
+            // Get number of samples
+            n = Rows * Cols;
+            uint32_t nmask = 0;
+
+            // Get sum , min, max
+            for (uint32_t i = 0; i < n; i++)
+            {
+                if (mask[i] != 0)
+                {
+                    if (Data[i] > max) { max = Data[i]; }
+                    if (Data[i] < min) { min = Data[i]; }
+                    Sum += Data[i];
+                    nmask++;
+                }
+            }
+
+            binRange = (max - min) / noBins;
+            uint32_t index = 0;
+
+            // Get Mean
+            Mean = Sum / (float)nmask;
+
+            // Get Max;
+            Range = max - min;
+            //  fill histogram
+            if (StartAtZero)
+            {
+                for (uint32_t i = 0; i < n; i++)
+                {
+                    if (mask[i] != 0)
+                    {
+                        index = static_cast<uint32_t>(floor(Data[i] / binRange));
+                        if (index == noBins) { index -= 1; }
+                        bins[index]++;
+                        sum_dev += pow((Data[i] - Mean), 2);
+                    }
+                }
+            }
+            else
+            {
+                for (uint32_t i = 0; i < n; i++)
+                {
+                    if (mask[i] != 0)
+                    {
+                        index = static_cast<uint32_t>(floor((Data[i] - min) / binRange));
+                        if (index == noBins) { index -= 1; }
+                        bins[index]++;
+                        sum_dev += pow((Data[i] - Mean), 2);
+                    }
+                }
+            }
+
+            Std = sqrt((float)(sum_dev / nmask));
+            Calculated = true;
+        }
 
 		void BasicCalculate()
 		{
@@ -267,7 +377,7 @@ namespace SoilMath
 			for (uint32_t i = 0; i < n; i++)
 			{
 				if (Data[i] > max) { max = Data[i]; }
-				else if (Data[i] < min) { min = Data[i]; }
+                if (Data[i] < min) { min = Data[i]; }
 				Sum += Data[i];
 			}
 
@@ -278,20 +388,112 @@ namespace SoilMath
 
 			// Get Max;
 			Range = max - min;
-			bool troep = true;
 			// fills the histogram and calculate the std. dev
 			uint32_t index;
-			for (uint32_t i = 0; i < n; i++)
-			{
-				index = static_cast<uint32_t>(floor((Data[i] - min) / binRange));
-				if (index == noBins) { index -= 1; }
-				bins[index]++;
-				sum_dev += pow((Data[i] - Mean), 2);
-			}
-
+            if (StartAtZero)
+            {
+                for (uint32_t i = 0; i < n; i++)
+                {
+                    index = static_cast<uint32_t>(floor(Data[i] / binRange));
+                    if (index == noBins) { index -= 1; }
+                    bins[index]++;
+                    sum_dev += pow((Data[i] - Mean), 2);
+                }
+            }
+            else
+            {
+                for (uint32_t i = 0; i < n; i++)
+                {
+                    index = static_cast<uint32_t>(floor((Data[i] - min) / binRange));
+                    if (index == noBins) { index -= 1; }
+                    bins[index]++;
+                    sum_dev += pow((Data[i] - Mean), 2);
+                }
+            }
 			Std = sqrt((float)(sum_dev / n));
 			Calculated = true;
 		}
+
+        void BasicCalculate(uchar *mask)
+        {
+            float sum_dev = 0.0;
+
+            // Get number of samples
+            n = Rows * Cols;
+            uint32_t nmask = 0;
+
+            // Get sum , min, max
+            for (uint32_t i = 0; i < n; i++)
+            {
+                if (mask[i] != 0)
+                {
+                    if (Data[i] > max) { max = Data[i]; }
+                    if (Data[i] < min) { min = Data[i]; }
+                    Sum += Data[i];
+                    nmask++;
+                }
+            }
+
+            binRange = static_cast<T1>(ceil((max - min) / static_cast<float>(noBins)));
+
+            // Get Mean
+            Mean = Sum / (float)nmask;
+
+            // Get Max;
+            Range = max - min;
+            // fills the histogram and calculate the std. dev
+            uint32_t index;
+            if (StartAtZero)
+            {
+                uint32_t i = 0;
+                for_each(Data, Data + n, [&](T1 &d)
+                {
+                    if (mask[i++] != 0)
+                    {
+                        index = static_cast<uint32_t>(floor(d / binRange));
+                        if (index == noBins) { index -= 1; }
+                        bins[index]++;
+                        sum_dev += pow((d - Mean), 2);
+                    }
+                });
+//                for (uint32_t i = 0; i < n; i++)
+//                {
+//                    if (mask[i] != 0)
+//                    {
+//                        index = static_cast<uint32_t>(floor(Data[i] / binRange));
+//                        if (index == noBins) { index -= 1; }
+//                        bins[index]++;
+//                        sum_dev += pow((Data[i] - Mean), 2);
+//                    }
+//                }
+            }
+            else
+            {
+                uint32_t i = 0;
+                for_each(Data, Data + n, [&](T1 &d)
+                {
+                    if (mask[i++] != 0)
+                    {
+                        index = static_cast<uint32_t>(floor((d - min) / binRange));
+                        if (index == noBins) { index -= 1; }
+                        bins[index]++;
+                        sum_dev += pow((d - Mean), 2);
+                    }
+                });
+//                for (uint32_t i = 0; i < n; i++)
+//                {
+//                    if (mask[i] != 0)
+//                    {
+//                        index = static_cast<uint32_t>(floor((Data[i] - min) / binRange));
+//                        if (index == noBins) { index -= 1; }
+//                        bins[index]++;
+//                        sum_dev += pow((Data[i] - Mean), 2);
+//                    }
+//                }
+            }
+            Std = sqrt((float)(sum_dev / nmask));
+            Calculated = true;
+        }
 
 		/// <summary>
 		/// Make the calculations using the histogram
@@ -358,6 +560,7 @@ namespace SoilMath
 			ar & Sum;
 			ar & Rows;
 			ar & Cols;
+            ar & StartAtZero;
 		}
 	};
 }
