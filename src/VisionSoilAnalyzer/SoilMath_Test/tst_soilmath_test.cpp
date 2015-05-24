@@ -7,11 +7,15 @@
 
 #include <stdint.h>
 
+#include <opencv2/core.hpp>
+#include <opencv2/highgui.hpp>
+
 #include "SoilMath.h"
 
 #include "StatisticalComparisonDefinition.h"
 #include "FloatTestMatrix.h"
 #include "TestMatrix.h"
+#include "beanhisttest.h"
 
 class SoilMath_Test : public QObject
 {
@@ -23,6 +27,10 @@ public:
 private Q_SLOTS:
     void testCase_Stats_BigNoDiscrete();
     void testCase_Stats_Shifted();
+
+    void testCase_Mat_Stats();
+    void testCase_Mat_Stats_Mask();
+
 
 private:
     uint32_t count = 0;
@@ -79,16 +87,48 @@ void SoilMath_Test::testCase_Stats_Shifted()
     uint16Stat_t Test(BigNoTestMatrix, 200, 200, 266, 0, 265);
 
     QCOMPARE_RANGE(Test.bins, histTestResultShifted, 266, uint32_t);
-    QCLOSE_COMPARE(Test.Mean + 10, meanTestResult + 10, 0.01);
+    QCLOSE_COMPARE(Test.Mean, meanTestResult + 10, 0.01);
     QCOMPARE(Test.n, nTestResult);
-    //QCOMPARE((uint64_t)Test.Sum, (uint64_t)(sumTestResult * 10));
-    //QCOMPARE((uint32_t)Test.min, (uint32_t)(minTestResult * 10));
-    //QCOMPARE((uint32_t)Test.max, (uint32_t)(maxTestResult * 10));
-    //QCOMPARE((uint32_t)Test.Range, (uint32_t)(rangeTestResult * 10));
-    QCLOSE_COMPARE(Test.Std, stdTestResult * 10, 0.025);
+    QCLOSE_COMPARE(Test.Std, stdTestResult, 0.025);
 
     delete[] BigNoTestMatrix;
 }
+
+void SoilMath_Test::testCase_Mat_Stats()
+{
+    cv::Mat beans = cv::imread("Images/beans.ppm",0);
+    ucharStat_t Test((uchar *)beans.data, beans.cols, beans.rows);
+    QCLOSE_COMPARE(Test.Mean, actualMeanBean, 0.001);
+    QCOMPARE_RANGE(Test.bins, actualHistBean, 256, uint32_t);
+    QCOMPARE(Test.min, actualminBean);
+    QCOMPARE(Test.max, actualMaxBean);
+    QCLOSE_COMPARE(Test.Std, actualStdBean, 0.001);
+    QCOMPARE((uint64_t)Test.Sum, (uint64_t)actualSumBean);
+
+    QBENCHMARK
+    {
+        ucharStat_t TestBench((uchar *)beans.data, beans.cols, beans.rows);
+    }
+}
+
+void SoilMath_Test::testCase_Mat_Stats_Mask()
+{
+    cv::Mat beans = cv::imread("Images/beans.ppm",0);
+    cv::Mat mask = cv::imread("Images/beansmask.ppm",0);
+    ucharStat_t Test((uchar *)beans.data, beans.cols, beans.rows, (uchar *)mask.data);
+    QCLOSE_COMPARE(Test.Mean, acutalMeanBeanMask, 0.001);
+    QCOMPARE_RANGE(Test.bins, actualHistBeanMask, 256, uint32_t);
+    QCOMPARE(Test.min, actualminBeanMask);
+    QCOMPARE(Test.max, actualMaxBeanMask);
+    QCOMPARE((uint64_t)Test.Sum, (uint64_t)actualSumBeanMask);
+    QCLOSE_COMPARE(Test.Std, actualStdBeanMask, 0.001);
+    QBENCHMARK
+    {
+        ucharStat_t TestBench((uchar *)beans.data, beans.cols, beans.rows, (uchar *)mask.data);
+    }
+}
+
+
 
 
 QTEST_APPLESS_MAIN(SoilMath_Test)

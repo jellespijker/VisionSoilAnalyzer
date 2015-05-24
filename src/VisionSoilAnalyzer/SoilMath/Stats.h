@@ -392,23 +392,23 @@ namespace SoilMath
 			uint32_t index;
             if (StartAtZero)
             {
-                for (uint32_t i = 0; i < n; i++)
+                for_each(Data, Data + n, [&](T1 &d)
                 {
-                    index = static_cast<uint32_t>(floor(Data[i] / binRange));
+                    index = static_cast<uint32_t>(floor(d / binRange));
                     if (index == noBins) { index -= 1; }
                     bins[index]++;
-                    sum_dev += pow((Data[i] - Mean), 2);
-                }
+                    sum_dev += pow((d - Mean), 2);
+                });
             }
             else
             {
-                for (uint32_t i = 0; i < n; i++)
+                for_each(Data, Data + n, [&](T1 &d)
                 {
-                    index = static_cast<uint32_t>(floor((Data[i] - min) / binRange));
+                    index = static_cast<uint32_t>(floor((d - min) / binRange));
                     if (index == noBins) { index -= 1; }
                     bins[index]++;
-                    sum_dev += pow((Data[i] - Mean), 2);
-                }
+                    sum_dev += pow((d - Mean), 2);
+                });
             }
 			Std = sqrt((float)(sum_dev / n));
 			Calculated = true;
@@ -421,18 +421,18 @@ namespace SoilMath
             // Get number of samples
             n = Rows * Cols;
             uint32_t nmask = 0;
-
             // Get sum , min, max
-            for (uint32_t i = 0; i < n; i++)
+            uint32_t i = 0;
+            for_each(Data, Data + n, [&](T1 &d)
             {
-                if (mask[i] != 0)
+                if (mask[i++] != 0)
                 {
-                    if (Data[i] > max) { max = Data[i]; }
-                    if (Data[i] < min) { min = Data[i]; }
-                    Sum += Data[i];
+                    if (d > max) { max = d; }
+                    if (d < min) { min = d; }
+                    Sum += d;
                     nmask++;
                 }
-            }
+            });
 
             binRange = static_cast<T1>(ceil((max - min) / static_cast<float>(noBins)));
 
@@ -445,7 +445,7 @@ namespace SoilMath
             uint32_t index;
             if (StartAtZero)
             {
-                uint32_t i = 0;
+                i = 0;
                 for_each(Data, Data + n, [&](T1 &d)
                 {
                     if (mask[i++] != 0)
@@ -456,20 +456,10 @@ namespace SoilMath
                         sum_dev += pow((d - Mean), 2);
                     }
                 });
-//                for (uint32_t i = 0; i < n; i++)
-//                {
-//                    if (mask[i] != 0)
-//                    {
-//                        index = static_cast<uint32_t>(floor(Data[i] / binRange));
-//                        if (index == noBins) { index -= 1; }
-//                        bins[index]++;
-//                        sum_dev += pow((Data[i] - Mean), 2);
-//                    }
-//                }
             }
             else
             {
-                uint32_t i = 0;
+                i = 0;
                 for_each(Data, Data + n, [&](T1 &d)
                 {
                     if (mask[i++] != 0)
@@ -480,16 +470,6 @@ namespace SoilMath
                         sum_dev += pow((d - Mean), 2);
                     }
                 });
-//                for (uint32_t i = 0; i < n; i++)
-//                {
-//                    if (mask[i] != 0)
-//                    {
-//                        index = static_cast<uint32_t>(floor((Data[i] - min) / binRange));
-//                        if (index == noBins) { index -= 1; }
-//                        bins[index]++;
-//                        sum_dev += pow((Data[i] - Mean), 2);
-//                    }
-//                }
             }
             Std = sqrt((float)(sum_dev / nmask));
             Calculated = true;
