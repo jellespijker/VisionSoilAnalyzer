@@ -88,9 +88,11 @@ namespace Vision
 
 		// Exception handling
 		EMPTY_CHECK(OriginalImg);
+        currentProg = 0.;
+        prog_sig(currentProg, "Converting colorspace");
 
 		int nData = OriginalImg.rows * OriginalImg.cols;
-		uint32_t i, j;
+        //uint32_t i, j;
 
 		if (convertFrom == RGB && convertTo == Intensity) // RGB 2 Intensity
 		{
@@ -99,7 +101,10 @@ namespace Vision
 			uchar *O;
 			CHAIN_PROCESS(chain, O, uchar);
 
-			RGB2Intensity(O, P, nData);
+            prog_sig(currentProg, "RGB 2 Intensity conversion");
+            RGB2Intensity(O, P, nData);
+            currentProg += ProgStep;
+            prog_sig(currentProg, "RGB 2 Intensity conversion Finished");
 		}
 		else if (convertFrom == RGB && convertTo == CIE_XYZ) // RGB 2 XYZ
 		{
@@ -108,8 +113,11 @@ namespace Vision
 			uchar *O;
 			CHAIN_PROCESS(chain, O, uchar);
 
-			RGB2XYZ(O, P, nData);
-		}
+            prog_sig(currentProg, "RGB 2 CIE XYZ conversion");
+            RGB2XYZ(O, P, nData);
+            currentProg += ProgStep;
+            prog_sig(currentProg, "RGB 2 CIE XYZ conversion Finished");
+        }
 		else if (convertFrom == RGB && convertTo == CIE_lab) // RGB 2 Lab
 		{
 			ProcessedImg.create(OriginalImg.size(), CV_32FC3);
@@ -117,9 +125,12 @@ namespace Vision
 			uchar *O;
 			CHAIN_PROCESS(chain, O, uchar);
 
+            prog_sig(currentProg, "RGB 2 CIE XYZ conversion");
 			RGB2XYZ(O, P, nData);
+            currentProg += ProgStep;
+            prog_sig(currentProg, "RGB 2 CIE XYZ conversion Finished");
 			Convert(CIE_XYZ, CIE_lab, true);
-		}
+        }
 		else if (convertFrom == RGB && convertTo == RI) // RGB 2 RI
 		{
 			ProcessedImg.create(OriginalImg.size(), CV_32FC3);
@@ -127,10 +138,13 @@ namespace Vision
 			uchar *O;
 			CHAIN_PROCESS(chain, O, uchar);
 
-			RGB2XYZ(O, P, nData);
-			Convert(CIE_XYZ, CIE_lab, true);
+            prog_sig(currentProg, "RGB 2 CIE XYZ conversion");
+            RGB2XYZ(O, P, nData);
+            currentProg += ProgStep;
+            prog_sig(currentProg, "RGB 2 CIE XYZ conversion Finished");
+            Convert(CIE_XYZ, CIE_lab, true);
 			Convert(CIE_lab, RI, true);
-		}
+        }
 		else if (convertFrom == CIE_XYZ && convertTo == CIE_lab) // XYZ 2 Lab
 		{
 			ProcessedImg.create(OriginalImg.size(), CV_32FC3);
@@ -138,7 +152,10 @@ namespace Vision
 			float *O;
 			CHAIN_PROCESS(chain, O, float);
 
+            prog_sig(currentProg, "CIE XYZ 2 CIE La*b* conversion");
 			XYZ2Lab(O, P, nData);
+            currentProg += ProgStep;
+            prog_sig(currentProg, "CIE XYZ 2 CIE La*b* conversion Finished");
 		}
 		else if (convertFrom == CIE_XYZ && convertTo == RI) // XYZ 2 RI
 		{
@@ -147,8 +164,11 @@ namespace Vision
 			float *O;
 			CHAIN_PROCESS(chain, O, float);
 
-			XYZ2Lab(O, P, nData);
-			Convert(CIE_lab, RI, true);
+            prog_sig(currentProg, "CIE XYZ 2 CIE La*b* conversion");
+            XYZ2Lab(O, P, nData);
+            currentProg += ProgStep;
+            prog_sig(currentProg, "CIE XYZ 2 CIE La*b* conversion Finished");
+            Convert(CIE_lab, RI, true);
 		}
 		else if (convertFrom == CIE_lab && convertTo == RI) // Lab 2 RI
 		{
@@ -157,7 +177,10 @@ namespace Vision
 			float *O;
 			CHAIN_PROCESS(chain, O, float);
 
+            prog_sig(currentProg, "CIE La*b* 2 Redness Index conversion");
 			Lab2RI(O, P, nData * 3);
+            currentProg += ProgStep;
+            prog_sig(currentProg, "CIE La*b* 2 Redness Index conversion Finsihed");
 		}
 		else { throw Exception::ConversionNotSupportedException(); }
 	}

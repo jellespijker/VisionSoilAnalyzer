@@ -4,11 +4,49 @@ namespace Vision
 {
 	MorphologicalFilter::MorphologicalFilter() {	}
 
-	MorphologicalFilter::MorphologicalFilter(const Mat &src)
+    MorphologicalFilter::MorphologicalFilter(FilterType filtertype)
+    {
+        switch  (filtertype)
+        {
+             case FilterType::OPEN:
+                  Open(OriginalImg);
+                break;
+             case FilterType::CLOSE:
+                  Close(OriginalImg);
+                 break;
+             case FilterType::ERODE:
+                  Erosion(OriginalImg);
+                 break;
+             case FilterType::DILATE:
+                  Dilation(OriginalImg);
+                 break;
+            case FilterType::NONE:
+                break;
+        }
+    }
+
+    MorphologicalFilter::MorphologicalFilter(const Mat &src, FilterType filtertype)
 	{
 		OriginalImg = src;
 		ProcessedImg.create(OriginalImg.size(), CV_8UC1);
-	}
+        switch  (filtertype)
+        {
+             case FilterType::OPEN:
+                  Open(OriginalImg);
+                break;
+             case FilterType::CLOSE:
+                  Close(OriginalImg);
+                 break;
+             case FilterType::ERODE:
+                  Erosion(OriginalImg);
+                 break;
+             case FilterType::DILATE:
+                  Dilation(OriginalImg);
+                 break;
+            case FilterType::NONE:
+                break;
+        }
+    }
 
 	MorphologicalFilter::MorphologicalFilter(const MorphologicalFilter & rhs)
 	{
@@ -91,8 +129,8 @@ namespace Vision
 
 		workProcImg.setTo(0);
 		if (startVal != 0) { workProcImg(cv::Rect(hKsizeCol, hKsizeRow, ProcessedImg.cols, ProcessedImg.rows)).setTo(startVal); }
-		SHOW_DEBUG_IMG(workOrigImg, uchar, 255, "workOrigImg Filter!");
-		SHOW_DEBUG_IMG(mask, uchar, 255, "Filter mask");
+		SHOW_DEBUG_IMG(workOrigImg, uchar, 255, "workOrigImg Filter!", false);
+		SHOW_DEBUG_IMG(mask, uchar, 255, "Filter mask", true);
 
 		for (uint32_t i = nWStart; i < nWEnd; i++)
 		{
@@ -114,8 +152,8 @@ namespace Vision
 			}
 		}
 		delete[] nRow;
-		SHOW_DEBUG_IMG(workProcImg, uchar, 255, "workProcImg Filter!");
+		SHOW_DEBUG_IMG(workProcImg, uchar, 255, "workProcImg Filter!", true);
 		ProcessedImg = workProcImg(Rect(hKsizeCol, hKsizeRow, ProcessedImg.cols, ProcessedImg.rows)).clone();
-		SHOW_DEBUG_IMG(ProcessedImg, uchar, 255, "Processed Image Filter!");
+		SHOW_DEBUG_IMG(ProcessedImg, uchar, 255, "Processed Image Filter!", true);
 	}
 }
