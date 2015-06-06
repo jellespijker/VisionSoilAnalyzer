@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.9.1"/>
-<title>VisionSoilAnalyzer: D:/OneDrive/Opleiding/HTS_HAN/Minor2/CPP/VisionSoilAnalyzer/src/VisionSoilAnalyzer/SoilMath/Sort.h Source File</title>
+<title>Vision Soil Analyzer: /home/peer23peer/VisionSoilAnalyzer/src/SoilMath/Sort.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -30,12 +30,12 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="hanner.bmp"/></td>
+  <td id="projectlogo"><img alt="Logo" src="IHClogo.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectname">VisionSoilAnalyzer
-   &#160;<span id="projectnumber">1.0</span>
+   <div id="projectname">Vision Soil Analyzer
+   &#160;<span id="projectnumber">1.0.0</span>
    </div>
-   <div id="projectbrief">The Soil Analyzer is a portable lab that can analyse soil samples and tells the user about it&#39;s optical properties. It looks at the texture and describe it as a Particle Size Distribution. This information is presented as a Cumulative Distribution Function (CDF). It also describes the structure of the soil sample and gives information on the sphericity and roundness / angularity. It does so by analysing the contour of particles, describing them as Fourier Descriptors and using a Neural Network to describe it&#39;s properties. Finally it gives the color properties in a histogram in the CIE Lab colorspace, which show correlations with the fertility of the soil. and a histogram of the Redness Index, which gives has a correlation on the iron content.</div>
+   <div id="projectbrief">The Soil Analyzer is a portable lab that can analyse soil samples and tells the user about it&#39;s optical properties. It looks at the texture and describe it as a Particle Size Distribution. This information is presented as a Cumulative Distribution Function (CDF). It also describes the structure of the soil sample and gives information on the sphericity and roundness / angularity. It does so by analysing the contour of particles, describing them as Fourier Descriptors and using a Neural Network to describe it&#39;s properties. Finally it gives the color properties in a histogram in the CIE La*b* colorspace, which show correlations with the fertility of the soil. and a histogram of the Redness Index, which gives has a correlation on the iron content.</div>
   </td>
  </tr>
  </tbody>
@@ -49,6 +49,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -113,53 +114,50 @@ $(document).ready(function(){initNavTree('_sort_8h_source.html','');});
 <a href="_sort_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_soil_math.html">SoilMath</a></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;{</div>
-<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="class_soil_math_1_1_sort.html">    6</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_soil_math_1_1_sort.html">Sort</a></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    {</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        <a class="code" href="class_soil_math_1_1_sort.html#ac5553af8753454e71e6d621690fdab3f">Sort</a>();</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <a class="code" href="class_soil_math_1_1_sort.html#a62273dbd3620f999201abacdff5e2557">~Sort</a>();</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_soil_math_1_1_sort.html#adca7b48be7482f89767b806ad2016d67">   13</a></span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_soil_math_1_1_sort.html#adca7b48be7482f89767b806ad2016d67">QuickSort</a>(T *arr, <span class="keywordtype">int</span> i)</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        {</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;            <span class="keywordflow">if</span> (i &lt; 2) <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            T p = arr[i / 2];</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            T *l = arr;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            T *r = arr + i - 1;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            <span class="keywordflow">while</span> (l &lt;= r) {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                <span class="keywordflow">if</span> (*l &lt; p) { l++; }</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (*r &gt; p) { r--; }</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                {</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                    <span class="keywordtype">int</span> t = *l;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                    *l = *r;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                    *r = t;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                    l++;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                    r--;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                }</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            }</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            Sort::QuickSort&lt;T&gt;(arr, r - arr + 1);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            Sort::QuickSort&lt;T&gt;(l, arr + i - l);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        };</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    };</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div>
-<div class="ttc" id="class_soil_math_1_1_sort_html"><div class="ttname"><a href="class_soil_math_1_1_sort.html">SoilMath::Sort</a></div><div class="ttdef"><b>Definition:</b> <a href="_sort_8h_source.html#l00006">Sort.h:6</a></div></div>
-<div class="ttc" id="class_soil_math_1_1_sort_html_ac5553af8753454e71e6d621690fdab3f"><div class="ttname"><a href="class_soil_math_1_1_sort.html#ac5553af8753454e71e6d621690fdab3f">SoilMath::Sort::Sort</a></div><div class="ttdeci">Sort()</div><div class="ttdef"><b>Definition:</b> <a href="_sort_8cpp_source.html#l00005">Sort.cpp:5</a></div></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_soil_math.html">SoilMath</a> {</div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="class_soil_math_1_1_sort.html">    5</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_soil_math_1_1_sort.html">Sort</a> {</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="class_soil_math_1_1_sort.html#ac5553af8753454e71e6d621690fdab3f">    7</a></span>&#160;  <a class="code" href="class_soil_math_1_1_sort.html#ac5553af8753454e71e6d621690fdab3f">Sort</a>(){}</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="class_soil_math_1_1_sort.html#a62273dbd3620f999201abacdff5e2557">    8</a></span>&#160;  <a class="code" href="class_soil_math_1_1_sort.html#a62273dbd3620f999201abacdff5e2557">~Sort</a>(){}</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="class_soil_math_1_1_sort.html#adca7b48be7482f89767b806ad2016d67">   10</a></span>&#160;  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_soil_math_1_1_sort.html#adca7b48be7482f89767b806ad2016d67">QuickSort</a>(T *arr, <span class="keywordtype">int</span> <a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a>) {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordflow">if</span> (i &lt; 2)</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;      <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    T p = arr[i / 2];</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    T *l = arr;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    T *r = arr + i - 1;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordflow">while</span> (l &lt;= r) {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;      <span class="keywordflow">if</span> (*l &lt; p) {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        l++;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;      } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (*r &gt; p) {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        r--;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;      } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordtype">int</span> t = *l;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        *l = *r;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        *r = t;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        l++;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        r--;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;      }</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    }</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    Sort::QuickSort&lt;T&gt;(arr, r - arr + 1);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    Sort::QuickSort&lt;T&gt;(l, arr + i - l);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  }</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;};</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}</div>
+<div class="ttc" id="class_soil_math_1_1_sort_html"><div class="ttname"><a href="class_soil_math_1_1_sort.html">SoilMath::Sort</a></div><div class="ttdef"><b>Definition:</b> <a href="_sort_8h_source.html#l00005">Sort.h:5</a></div></div>
+<div class="ttc" id="class_soil_math_1_1_sort_html_ac5553af8753454e71e6d621690fdab3f"><div class="ttname"><a href="class_soil_math_1_1_sort.html#ac5553af8753454e71e6d621690fdab3f">SoilMath::Sort::Sort</a></div><div class="ttdeci">Sort()</div><div class="ttdef"><b>Definition:</b> <a href="_sort_8h_source.html#l00007">Sort.h:7</a></div></div>
+<div class="ttc" id="_comparision_pictures_2_createtest_image_8m_html_a6f6ccfcf58b31cb6412107d9d5281426"><div class="ttname"><a href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a></div><div class="ttdeci">for i</div><div class="ttdef"><b>Definition:</b> <a href="_comparision_pictures_2_createtest_image_8m_source.html#l00006">CreatetestImage.m:6</a></div></div>
 <div class="ttc" id="namespace_soil_math_html"><div class="ttname"><a href="namespace_soil_math.html">SoilMath</a></div><div class="ttdef"><b>Definition:</b> <a href="_common_operations_8h_source.html#l00007">CommonOperations.h:7</a></div></div>
-<div class="ttc" id="class_soil_math_1_1_sort_html_a62273dbd3620f999201abacdff5e2557"><div class="ttname"><a href="class_soil_math_1_1_sort.html#a62273dbd3620f999201abacdff5e2557">SoilMath::Sort::~Sort</a></div><div class="ttdeci">~Sort()</div><div class="ttdef"><b>Definition:</b> <a href="_sort_8cpp_source.html#l00010">Sort.cpp:10</a></div></div>
-<div class="ttc" id="class_soil_math_1_1_sort_html_adca7b48be7482f89767b806ad2016d67"><div class="ttname"><a href="class_soil_math_1_1_sort.html#adca7b48be7482f89767b806ad2016d67">SoilMath::Sort::QuickSort</a></div><div class="ttdeci">static void QuickSort(T *arr, int i)</div><div class="ttdef"><b>Definition:</b> <a href="_sort_8h_source.html#l00013">Sort.h:13</a></div></div>
+<div class="ttc" id="class_soil_math_1_1_sort_html_a62273dbd3620f999201abacdff5e2557"><div class="ttname"><a href="class_soil_math_1_1_sort.html#a62273dbd3620f999201abacdff5e2557">SoilMath::Sort::~Sort</a></div><div class="ttdeci">~Sort()</div><div class="ttdef"><b>Definition:</b> <a href="_sort_8h_source.html#l00008">Sort.h:8</a></div></div>
+<div class="ttc" id="class_soil_math_1_1_sort_html_adca7b48be7482f89767b806ad2016d67"><div class="ttname"><a href="class_soil_math_1_1_sort.html#adca7b48be7482f89767b806ad2016d67">SoilMath::Sort::QuickSort</a></div><div class="ttdeci">static void QuickSort(T *arr, int i)</div><div class="ttdef"><b>Definition:</b> <a href="_sort_8h_source.html#l00010">Sort.h:10</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_e5ed19147291f8a84b470a9159669fe2.html">src</a></li><li class="navelem"><a class="el" href="dir_7844d1de82fd775c2c6709336b03ac97.html">VisionSoilAnalyzer</a></li><li class="navelem"><a class="el" href="dir_12a6f923e6cf4bbd1272bafa0c0ad321.html">SoilMath</a></li><li class="navelem"><a class="el" href="_sort_8h.html">Sort.h</a></li>
-    <li class="footer">Generated on Sat Jan 17 2015 00:56:36 for VisionSoilAnalyzer by
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_38989e3f393d92babfcacf51a2b05fb4.html">SoilMath</a></li><li class="navelem"><a class="el" href="_sort_8h.html">Sort.h</a></li>
+    <li class="footer">Generated on Sat Jun 6 2015 19:51:31 for Vision Soil Analyzer by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

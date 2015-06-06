@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['typeofobjects',['TypeOfObjects',['../class_vision_1_1_segment.html#ac3ddf2c72ee6333007510b680db1e7dd',1,'Vision::Segment']]]
+  ['gradientpreset',['GradientPreset',['../class_q_c_p_color_gradient.html#aed6569828fee337023670272910c9072',1,'QCPColorGradient']]]
 ];

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.9.1"/>
-<title>VisionSoilAnalyzer: Hardware::Microscope Class Reference</title>
+<title>Vision Soil Analyzer: Hardware::Microscope Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -30,12 +30,12 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="hanner.bmp"/></td>
+  <td id="projectlogo"><img alt="Logo" src="IHClogo.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectname">VisionSoilAnalyzer
-   &#160;<span id="projectnumber">1.0</span>
+   <div id="projectname">Vision Soil Analyzer
+   &#160;<span id="projectnumber">1.0.0</span>
    </div>
-   <div id="projectbrief">The Soil Analyzer is a portable lab that can analyse soil samples and tells the user about it&#39;s optical properties. It looks at the texture and describe it as a Particle Size Distribution. This information is presented as a Cumulative Distribution Function (CDF). It also describes the structure of the soil sample and gives information on the sphericity and roundness / angularity. It does so by analysing the contour of particles, describing them as Fourier Descriptors and using a Neural Network to describe it&#39;s properties. Finally it gives the color properties in a histogram in the CIE Lab colorspace, which show correlations with the fertility of the soil. and a histogram of the Redness Index, which gives has a correlation on the iron content.</div>
+   <div id="projectbrief">The Soil Analyzer is a portable lab that can analyse soil samples and tells the user about it&#39;s optical properties. It looks at the texture and describe it as a Particle Size Distribution. This information is presented as a Cumulative Distribution Function (CDF). It also describes the structure of the soil sample and gives information on the sphericity and roundness / angularity. It does so by analysing the contour of particles, describing them as Fourier Descriptors and using a Neural Network to describe it&#39;s properties. Finally it gives the color properties in a histogram in the CIE La*b* colorspace, which show correlations with the fertility of the soil. and a histogram of the Redness Index, which gives has a correlation on the iron content.</div>
   </td>
  </tr>
  </tbody>
@@ -49,6 +49,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -74,7 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="inherits.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -110,6 +111,7 @@ $(document).ready(function(){initNavTree('class_hardware_1_1_microscope.html',''
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
@@ -121,18 +123,38 @@ $(document).ready(function(){initNavTree('class_hardware_1_1_microscope.html',''
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="_microscope_8h_source.html">Microscope.h</a>&gt;</code></p>
+<div class="dynheader">
+Collaboration diagram for Hardware::Microscope:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_hardware_1_1_microscope__coll__graph.png" border="0" usemap="#_hardware_1_1_microscope_coll__map" alt="Collaboration graph"/></div>
+<map name="_hardware_1_1_microscope_coll__map" id="_hardware_1_1_microscope_coll__map">
+<area shape="rect" id="node2" href="struct_hardware_1_1_microscope_1_1_resolution.html" title="{Hardware::Microscope\l::Resolution\n|+ Width\l+ Height\l|}" alt="" coords="5,5,159,112"/></map>
+</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_hardware_1_1_microscope_1_1_resolution.html">Resolution</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a062b6c7876e05cc311a54bd85da459b2"><td class="memItemLeft" align="right" valign="top">typedef boost::signals2::signal&lt; void()&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hardware_1_1_microscope.html#a062b6c7876e05cc311a54bd85da459b2">Finished_t</a></td></tr>
+<tr class="separator:a062b6c7876e05cc311a54bd85da459b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5288928044551054276042c402c5a6a1"><td class="memItemLeft" align="right" valign="top">typedef boost::signals2::signal&lt; void(int)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hardware_1_1_microscope.html#a5288928044551054276042c402c5a6a1">Progress_t</a></td></tr>
+<tr class="separator:a5288928044551054276042c402c5a6a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a817ae1937dbc3b3520c1aa302dd396ae"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hardware_1_1_microscope.html#a817ae1937dbc3b3520c1aa302dd396ae">Microscope</a> (uint8_t frameDelayTrigger=3, <a class="el" href="struct_hardware_1_1_microscope_1_1_resolution.html">Resolution</a> dimensions=<a class="el" href="struct_hardware_1_1_microscope_1_1_resolution.html">Resolution</a>{2592, 1944})</td></tr>
-<tr class="separator:a817ae1937dbc3b3520c1aa302dd396ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc3f008ec7cf00e6ddf31b0a4ed392cb"><td class="memItemLeft" align="right" valign="top">boost::signals2::connection&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hardware_1_1_microscope.html#abc3f008ec7cf00e6ddf31b0a4ed392cb">connect_Finished</a> (const Finished_t::slot_type &amp;subscriber)</td></tr>
+<tr class="separator:abc3f008ec7cf00e6ddf31b0a4ed392cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc29f83a2f0ba536df3eb7ccc250b111"><td class="memItemLeft" align="right" valign="top">boost::signals2::connection&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hardware_1_1_microscope.html#abc29f83a2f0ba536df3eb7ccc250b111">connect_Progress</a> (const Progress_t::slot_type &amp;subscriber)</td></tr>
+<tr class="separator:abc29f83a2f0ba536df3eb7ccc250b111"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a335599c313acd6f5e2f94c09a3475620"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hardware_1_1_microscope.html#a335599c313acd6f5e2f94c09a3475620">Microscope</a> (uint8_t frameDelayTrigger=3, <a class="el" href="struct_hardware_1_1_microscope_1_1_resolution.html">Resolution</a> dimensions=<a class="el" href="struct_hardware_1_1_microscope_1_1_resolution.html">Resolution</a>{2048, 1536}, bool firstdefault=true)</td></tr>
+<tr class="separator:a335599c313acd6f5e2f94c09a3475620"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb6b20021157077feaf8df0e465a1f0e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hardware_1_1_microscope.html#afb6b20021157077feaf8df0e465a1f0e">~Microscope</a> ()</td></tr>
 <tr class="separator:afb6b20021157077feaf8df0e465a1f0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48c34d1597a9d90f61427cbd2a25bdb9"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hardware_1_1_microscope.html#a48c34d1597a9d90f61427cbd2a25bdb9">AvailableCams</a> ()</td></tr>
+<tr class="separator:a48c34d1597a9d90f61427cbd2a25bdb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ec5c792320ae4db3f3b39830e74f880"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hardware_1_1_microscope.html#a1ec5c792320ae4db3f3b39830e74f880">GetFrame</a> (cv::Mat &amp;dst)</td></tr>
 <tr class="separator:a1ec5c792320ae4db3f3b39830e74f880"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8cec2eacbd3f0ea164d16100a6078d5b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hardware_1_1_microscope.html#a8cec2eacbd3f0ea164d16100a6078d5b">GetHDRFrame</a> (cv::Mat &amp;dst, uint32_t noframes=5)</td></tr>
@@ -141,35 +163,74 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ae799dbdff39787d3226e8e8ce25386de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a87119548948d7af1e3c38af2e2afa482"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hardware_1_1_microscope.html#a87119548948d7af1e3c38af2e2afa482">Release</a> ()</td></tr>
 <tr class="separator:a87119548948d7af1e3c38af2e2afa482"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc753dfc72956ef7285d0e373fb7e1f1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hardware_1_1_microscope.html#abc753dfc72956ef7285d0e373fb7e1f1">openCam</a> (int dev)</td></tr>
+<tr class="separator:abc753dfc72956ef7285d0e373fb7e1f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:ac2da14781a22924a389fc287df3dbfda"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hardware_1_1_microscope.html#ac2da14781a22924a389fc287df3dbfda">FrameDelayTrigger</a></td></tr>
 <tr class="separator:ac2da14781a22924a389fc287df3dbfda"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a07fdfc05dae59b53ea56dbafd6f0c076"><td class="memItemLeft" align="right" valign="top">Mat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hardware_1_1_microscope.html#a07fdfc05dae59b53ea56dbafd6f0c076">LastFrame</a></td></tr>
-<tr class="separator:a07fdfc05dae59b53ea56dbafd6f0c076"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbbec8a14cd277cec7c3ee6ce0ba54a1"><td class="memItemLeft" align="right" valign="top">cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hardware_1_1_microscope.html#afbbec8a14cd277cec7c3ee6ce0ba54a1">LastFrame</a></td></tr>
+<tr class="separator:afbbec8a14cd277cec7c3ee6ce0ba54a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae89c25318a095e2efcdf48fb8f769038"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_hardware_1_1_microscope_1_1_resolution.html">Resolution</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hardware_1_1_microscope.html#ae89c25318a095e2efcdf48fb8f769038">Dimensions</a></td></tr>
 <tr class="separator:ae89c25318a095e2efcdf48fb8f769038"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a8d2cf6645e61d405175f192e09647c9a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hardware_1_1_microscope.html#a8d2cf6645e61d405175f192e09647c9a">openCam</a> ()</td></tr>
-<tr class="separator:a8d2cf6645e61d405175f192e09647c9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad045b565e258b1b3b68c2c55273b3058"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hardware_1_1_microscope.html#ad045b565e258b1b3b68c2c55273b3058">StartupSeq</a> (bool firstdefault)</td></tr>
+<tr class="separator:ad045b565e258b1b3b68c2c55273b3058"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44da9ff8054b51b4659238cc7eda2baf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hardware_1_1_microscope.html#a44da9ff8054b51b4659238cc7eda2baf">exist</a> (const std::string &amp;name)</td></tr>
+<tr class="separator:a44da9ff8054b51b4659238cc7eda2baf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a62647fa70a7bf6e4259f7eb173d2cc30"><td class="memItemLeft" align="right" valign="top">VideoCapture&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hardware_1_1_microscope.html#a62647fa70a7bf6e4259f7eb173d2cc30">captureDevice</a></td></tr>
-<tr class="separator:a62647fa70a7bf6e4259f7eb173d2cc30"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab5c862426f7f6e5bfbc7b158e84a1bc5"><td class="memItemLeft" align="right" valign="top">std::vector&lt; Mat &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hardware_1_1_microscope.html#ab5c862426f7f6e5bfbc7b158e84a1bc5">HDRframes</a></td></tr>
-<tr class="separator:ab5c862426f7f6e5bfbc7b158e84a1bc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c23e6a55ef77443e861418a15c6e244"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_hardware_1_1_microscope.html#a062b6c7876e05cc311a54bd85da459b2">Finished_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hardware_1_1_microscope.html#a8c23e6a55ef77443e861418a15c6e244">fin_sig</a></td></tr>
+<tr class="separator:a8c23e6a55ef77443e861418a15c6e244"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a819e11c0bfdb12b4c42b7ee2d330cb4d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_hardware_1_1_microscope.html#a5288928044551054276042c402c5a6a1">Progress_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hardware_1_1_microscope.html#a819e11c0bfdb12b4c42b7ee2d330cb4d">prog_sig</a></td></tr>
+<tr class="separator:a819e11c0bfdb12b4c42b7ee2d330cb4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e74ed11f3426a1a6adf05ec2d842066"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hardware_1_1_microscope.html#a2e74ed11f3426a1a6adf05ec2d842066">arch</a></td></tr>
+<tr class="separator:a2e74ed11f3426a1a6adf05ec2d842066"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fd921d7c937e808c5bc44c0294aa490"><td class="memItemLeft" align="right" valign="top">cv::VideoCapture&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hardware_1_1_microscope.html#a8fd921d7c937e808c5bc44c0294aa490">captureDevice</a></td></tr>
+<tr class="separator:a8fd921d7c937e808c5bc44c0294aa490"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c73db8010320428db3fd41d840dd0eb"><td class="memItemLeft" align="right" valign="top">std::vector&lt; cv::Mat &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hardware_1_1_microscope.html#a2c73db8010320428db3fd41d840dd0eb">HDRframes</a></td></tr>
+<tr class="separator:a2c73db8010320428db3fd41d840dd0eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5aababdeaa4cc4da051c0e44cba20003"><td class="memItemLeft" align="right" valign="top">std::vector&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hardware_1_1_microscope.html#a5aababdeaa4cc4da051c0e44cba20003">times</a></td></tr>
 <tr class="separator:a5aababdeaa4cc4da051c0e44cba20003"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p>Definition at line <a class="el" href="_microscope_8h_source.html#l00034">34</a> of file <a class="el" href="_microscope_8h_source.html">Microscope.h</a>.</p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a817ae1937dbc3b3520c1aa302dd396ae"></a>
+<p>Definition at line <a class="el" href="_microscope_8h_source.html#l00043">43</a> of file <a class="el" href="_microscope_8h_source.html">Microscope.h</a>.</p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a class="anchor" id="a062b6c7876e05cc311a54bd85da459b2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef boost::signals2::signal&lt;void ()&gt; <a class="el" href="class_hardware_1_1_microscope.html#a062b6c7876e05cc311a54bd85da459b2">Hardware::Microscope::Finished_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_microscope_8h_source.html#l00054">54</a> of file <a class="el" href="_microscope_8h_source.html">Microscope.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5288928044551054276042c402c5a6a1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef boost::signals2::signal&lt;void (int)&gt; <a class="el" href="class_hardware_1_1_microscope.html#a5288928044551054276042c402c5a6a1">Hardware::Microscope::Progress_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_microscope_8h_source.html#l00055">55</a> of file <a class="el" href="_microscope_8h_source.html">Microscope.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a335599c313acd6f5e2f94c09a3475620"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -183,7 +244,13 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="struct_hardware_1_1_microscope_1_1_resolution.html">Resolution</a>&#160;</td>
-          <td class="paramname"><em>dimensions</em> = <code><a class="el" href="struct_hardware_1_1_microscope_1_1_resolution.html">Resolution</a>{&#160;2592,&#160;1944&#160;}</code>&#160;</td>
+          <td class="paramname"><em>dimensions</em> = <code><a class="el" href="struct_hardware_1_1_microscope_1_1_resolution.html">Resolution</a>{&#160;2048,&#160;1536&#160;}</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>firstdefault</em> = <code>true</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -195,13 +262,22 @@ Private Attributes</h2></td></tr>
 <p>Constructor of the class which initializes the <a class="el" href="class_hardware_1_1_u_s_b.html">USB</a> microscope </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">frameDelayTrigger</td><td>the delay between the first initialization of the microscope and the retrivial of the image expressed in seconds. Default value is 3 seconds </td></tr>
-    <tr><td class="paramname">dimension</td><td>A resolution Struct indicating which resolution the webcam should use. Default is 2592 x 1944De-constructor </td></tr>
+    <tr><td class="paramname">dimension</td><td>A resolution Struct indicating which resolution the webcam should use. Default is 2592 x 1944 </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_microscope_8cpp_source.html#l00015">15</a> of file <a class="el" href="_microscope_8cpp_source.html">Microscope.cpp</a>.</p>
-
+<p>Definition at line <a class="el" href="_microscope_8cpp_source.html#l00018">18</a> of file <a class="el" href="_microscope_8cpp_source.html">Microscope.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <a class="code" href="class_hardware_1_1_microscope.html#ac2da14781a22924a389fc287df3dbfda">FrameDelayTrigger</a> = frameDelayTrigger;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <a class="code" href="class_hardware_1_1_microscope.html#ae89c25318a095e2efcdf48fb8f769038">Dimensions</a> = dimensions;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <a class="code" href="class_hardware_1_1_microscope.html#ad045b565e258b1b3b68c2c55273b3058">StartupSeq</a>(firstdefault);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    }</div>
+<div class="ttc" id="class_hardware_1_1_microscope_html_ac2da14781a22924a389fc287df3dbfda"><div class="ttname"><a href="class_hardware_1_1_microscope.html#ac2da14781a22924a389fc287df3dbfda">Hardware::Microscope::FrameDelayTrigger</a></div><div class="ttdeci">uint8_t FrameDelayTrigger</div><div class="ttdef"><b>Definition:</b> <a href="_microscope_8h_source.html#l00060">Microscope.h:60</a></div></div>
+<div class="ttc" id="class_hardware_1_1_microscope_html_ad045b565e258b1b3b68c2c55273b3058"><div class="ttname"><a href="class_hardware_1_1_microscope.html#ad045b565e258b1b3b68c2c55273b3058">Hardware::Microscope::StartupSeq</a></div><div class="ttdeci">void StartupSeq(bool firstdefault)</div><div class="ttdef"><b>Definition:</b> <a href="_microscope_8cpp_source.html#l00026">Microscope.cpp:26</a></div></div>
+<div class="ttc" id="class_hardware_1_1_microscope_html_ae89c25318a095e2efcdf48fb8f769038"><div class="ttname"><a href="class_hardware_1_1_microscope.html#ae89c25318a095e2efcdf48fb8f769038">Hardware::Microscope::Dimensions</a></div><div class="ttdeci">Resolution Dimensions</div><div class="ttdef"><b>Definition:</b> <a href="_microscope_8h_source.html#l00062">Microscope.h:62</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="afb6b20021157077feaf8df0e465a1f0e"></a>
@@ -217,15 +293,163 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_microscope_8cpp_source.html#l00035">35</a> of file <a class="el" href="_microscope_8cpp_source.html">Microscope.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    {</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <a class="code" href="class_hardware_1_1_microscope.html#a62647fa70a7bf6e4259f7eb173d2cc30">captureDevice</a>.~VideoCapture();</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    }</div>
-<div class="ttc" id="class_hardware_1_1_microscope_html_a62647fa70a7bf6e4259f7eb173d2cc30"><div class="ttname"><a href="class_hardware_1_1_microscope.html#a62647fa70a7bf6e4259f7eb173d2cc30">Hardware::Microscope::captureDevice</a></div><div class="ttdeci">VideoCapture captureDevice</div><div class="ttdef"><b>Definition:</b> <a href="_microscope_8h_source.html#l00061">Microscope.h:61</a></div></div>
+<p>Definition at line <a class="el" href="_microscope_8cpp_source.html#l00052">52</a> of file <a class="el" href="_microscope_8cpp_source.html">Microscope.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <a class="code" href="class_hardware_1_1_microscope.html#a8fd921d7c937e808c5bc44c0294aa490">captureDevice</a>.~VideoCapture();</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    }</div>
+<div class="ttc" id="class_hardware_1_1_microscope_html_a8fd921d7c937e808c5bc44c0294aa490"><div class="ttname"><a href="class_hardware_1_1_microscope.html#a8fd921d7c937e808c5bc44c0294aa490">Hardware::Microscope::captureDevice</a></div><div class="ttdeci">cv::VideoCapture captureDevice</div><div class="ttdef"><b>Definition:</b> <a href="_microscope_8h_source.html#l00083">Microscope.h:83</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a48c34d1597a9d90f61427cbd2a25bdb9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::string &gt; Microscope::AvailableCams </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_microscope_8cpp_source.html#l00139">139</a> of file <a class="el" href="_microscope_8cpp_source.html">Microscope.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="vsagui_8cpp_source.html#l00004">VSAGUI::VSAGUI()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    {</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        std::vector&lt;std::string&gt; cams;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">string</span> path_ss = <span class="stringliteral">&quot;/sys/class/video4linux&quot;</span>;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="class_hardware_1_1_microscope.html#a44da9ff8054b51b4659238cc7eda2baf">exist</a>(path_ss)) <span class="keywordflow">return</span> cams;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        <span class="keywordflow">for</span> (directory_iterator itr(path_ss); itr!=directory_iterator(); ++itr)</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        {</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            <span class="keywordtype">string</span> videoln = itr-&gt;path().string();</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;            videoln.append(<span class="stringliteral">&quot;/name&quot;</span>);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_hardware_1_1_microscope.html#a44da9ff8054b51b4659238cc7eda2baf">exist</a>(videoln))</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            {</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                std::ifstream camName;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                camName.open(videoln);</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                std::string name;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                std::getline(camName, name);</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                cams.push_back(name);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                camName.close();</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            }</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        }</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        <span class="keywordflow">return</span> cams;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    }</div>
+<div class="ttc" id="class_hardware_1_1_microscope_html_a44da9ff8054b51b4659238cc7eda2baf"><div class="ttname"><a href="class_hardware_1_1_microscope.html#a44da9ff8054b51b4659238cc7eda2baf">Hardware::Microscope::exist</a></div><div class="ttdeci">bool exist(const std::string &amp;name)</div><div class="ttdef"><b>Definition:</b> <a href="_microscope_8cpp_source.html#l00164">Microscope.cpp:164</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_hardware_1_1_microscope_a48c34d1597a9d90f61427cbd2a25bdb9_icgraph.png" border="0" usemap="#class_hardware_1_1_microscope_a48c34d1597a9d90f61427cbd2a25bdb9_icgraph" alt=""/></div>
+<map name="class_hardware_1_1_microscope_a48c34d1597a9d90f61427cbd2a25bdb9_icgraph" id="class_hardware_1_1_microscope_a48c34d1597a9d90f61427cbd2a25bdb9_icgraph">
+<area shape="rect" id="node2" href="class_v_s_a_g_u_i.html#a987a20380023fe5985bd1fef0491af40" title="VSAGUI::VSAGUI" alt="" coords="207,13,339,39"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="abc3f008ec7cf00e6ddf31b0a4ed392cb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">boost::signals2::connection Microscope::connect_Finished </td>
+          <td>(</td>
+          <td class="paramtype">const Finished_t::slot_type &amp;&#160;</td>
+          <td class="paramname"><em>subscriber</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_microscope_8cpp_source.html#l00170">170</a> of file <a class="el" href="_microscope_8cpp_source.html">Microscope.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="vsagui_8cpp_source.html#l00095">VSAGUI::on_SnapshotButton_clicked()</a>, and <a class="el" href="vsagui_8cpp_source.html#l00004">VSAGUI::VSAGUI()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    {</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="class_hardware_1_1_microscope.html#a8c23e6a55ef77443e861418a15c6e244">fin_sig</a>.connect(subscriber);</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    }</div>
+<div class="ttc" id="class_hardware_1_1_microscope_html_a8c23e6a55ef77443e861418a15c6e244"><div class="ttname"><a href="class_hardware_1_1_microscope.html#a8c23e6a55ef77443e861418a15c6e244">Hardware::Microscope::fin_sig</a></div><div class="ttdeci">Finished_t fin_sig</div><div class="ttdef"><b>Definition:</b> <a href="_microscope_8h_source.html#l00078">Microscope.h:78</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_hardware_1_1_microscope_abc3f008ec7cf00e6ddf31b0a4ed392cb_icgraph.png" border="0" usemap="#class_hardware_1_1_microscope_abc3f008ec7cf00e6ddf31b0a4ed392cb_icgraph" alt=""/></div>
+<map name="class_hardware_1_1_microscope_abc3f008ec7cf00e6ddf31b0a4ed392cb_icgraph" id="class_hardware_1_1_microscope_abc3f008ec7cf00e6ddf31b0a4ed392cb_icgraph">
+<area shape="rect" id="node2" href="class_v_s_a_g_u_i.html#a5e3ff078ad6165e40faa9cb9f21987b2" title="VSAGUI::on_SnapshotButton\l_clicked" alt="" coords="207,5,401,47"/><area shape="rect" id="node4" href="class_v_s_a_g_u_i.html#a987a20380023fe5985bd1fef0491af40" title="VSAGUI::VSAGUI" alt="" coords="238,71,370,98"/><area shape="rect" id="node3" href="class_v_s_a_g_u_i.html#a9695404e3f9a371a8ce182e3609b62f4" title="VSAGUI::on_actionNew\l_triggered" alt="" coords="449,5,613,47"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="abc29f83a2f0ba536df3eb7ccc250b111"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">boost::signals2::connection Microscope::connect_Progress </td>
+          <td>(</td>
+          <td class="paramtype">const Progress_t::slot_type &amp;&#160;</td>
+          <td class="paramname"><em>subscriber</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_microscope_8cpp_source.html#l00175">175</a> of file <a class="el" href="_microscope_8cpp_source.html">Microscope.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="vsagui_8cpp_source.html#l00095">VSAGUI::on_SnapshotButton_clicked()</a>, and <a class="el" href="vsagui_8cpp_source.html#l00004">VSAGUI::VSAGUI()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    {</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="class_hardware_1_1_microscope.html#a819e11c0bfdb12b4c42b7ee2d330cb4d">prog_sig</a>.connect(subscriber);</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    }</div>
+<div class="ttc" id="class_hardware_1_1_microscope_html_a819e11c0bfdb12b4c42b7ee2d330cb4d"><div class="ttname"><a href="class_hardware_1_1_microscope.html#a819e11c0bfdb12b4c42b7ee2d330cb4d">Hardware::Microscope::prog_sig</a></div><div class="ttdeci">Progress_t prog_sig</div><div class="ttdef"><b>Definition:</b> <a href="_microscope_8h_source.html#l00079">Microscope.h:79</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_hardware_1_1_microscope_abc29f83a2f0ba536df3eb7ccc250b111_icgraph.png" border="0" usemap="#class_hardware_1_1_microscope_abc29f83a2f0ba536df3eb7ccc250b111_icgraph" alt=""/></div>
+<map name="class_hardware_1_1_microscope_abc29f83a2f0ba536df3eb7ccc250b111_icgraph" id="class_hardware_1_1_microscope_abc29f83a2f0ba536df3eb7ccc250b111_icgraph">
+<area shape="rect" id="node2" href="class_v_s_a_g_u_i.html#a5e3ff078ad6165e40faa9cb9f21987b2" title="VSAGUI::on_SnapshotButton\l_clicked" alt="" coords="207,5,401,47"/><area shape="rect" id="node4" href="class_v_s_a_g_u_i.html#a987a20380023fe5985bd1fef0491af40" title="VSAGUI::VSAGUI" alt="" coords="238,71,370,98"/><area shape="rect" id="node3" href="class_v_s_a_g_u_i.html#a9695404e3f9a371a8ce182e3609b62f4" title="VSAGUI::on_actionNew\l_triggered" alt="" coords="449,5,613,47"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a44da9ff8054b51b4659238cc7eda2baf"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Microscope::exist </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_microscope_8cpp_source.html#l00164">164</a> of file <a class="el" href="_microscope_8cpp_source.html">Microscope.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    {</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        <span class="keyword">struct </span>stat buffer;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        <span class="keywordflow">return</span> (stat (name.c_str(), &amp;buffer) == 0);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    }</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a class="anchor" id="a1ec5c792320ae4db3f3b39830e74f880"></a>
 <div class="memitem">
 <div class="memproto">
@@ -246,16 +470,36 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_microscope_8cpp_source.html#l00043">43</a> of file <a class="el" href="_microscope_8cpp_source.html">Microscope.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="class_hardware_1_1_microscope.html#a62647fa70a7bf6e4259f7eb173d2cc30">captureDevice</a>.grab())  { <span class="keywordflow">throw</span> Exception::CouldNotGrabImageException(); }</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        sleep(<a class="code" href="class_hardware_1_1_microscope.html#ac2da14781a22924a389fc287df3dbfda">FrameDelayTrigger</a>); <span class="comment">// Needed otherwise scrambled picture</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="class_hardware_1_1_microscope.html#a62647fa70a7bf6e4259f7eb173d2cc30">captureDevice</a>.grab())  { <span class="keywordflow">throw</span> Exception::CouldNotGrabImageException(); }</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <a class="code" href="class_hardware_1_1_microscope.html#a62647fa70a7bf6e4259f7eb173d2cc30">captureDevice</a>.retrieve(dst);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    }</div>
-<div class="ttc" id="class_hardware_1_1_microscope_html_ac2da14781a22924a389fc287df3dbfda"><div class="ttname"><a href="class_hardware_1_1_microscope.html#ac2da14781a22924a389fc287df3dbfda">Hardware::Microscope::FrameDelayTrigger</a></div><div class="ttdeci">uint8_t FrameDelayTrigger</div><div class="ttdef"><b>Definition:</b> <a href="_microscope_8h_source.html#l00045">Microscope.h:45</a></div></div>
-<div class="ttc" id="class_hardware_1_1_microscope_html_a62647fa70a7bf6e4259f7eb173d2cc30"><div class="ttname"><a href="class_hardware_1_1_microscope.html#a62647fa70a7bf6e4259f7eb173d2cc30">Hardware::Microscope::captureDevice</a></div><div class="ttdeci">VideoCapture captureDevice</div><div class="ttdef"><b>Definition:</b> <a href="_microscope_8h_source.html#l00061">Microscope.h:61</a></div></div>
+<p>Definition at line <a class="el" href="_microscope_8cpp_source.html#l00060">60</a> of file <a class="el" href="_microscope_8cpp_source.html">Microscope.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="vsagui_8cpp_source.html#l00004">VSAGUI::VSAGUI()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="comment">//Work around for crappy cam retrival of the BBB</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="class_hardware_1_1_microscope.html#a2e74ed11f3426a1a6adf05ec2d842066">arch</a>.find(<span class="stringliteral">&quot;armv7l&quot;</span>) != string::npos)</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <span class="keywordflow">if</span> (!<a class="code" href="class_hardware_1_1_microscope.html#a8fd921d7c937e808c5bc44c0294aa490">captureDevice</a>.grab())  { <span class="keywordflow">throw</span> Exception::CouldNotGrabImageException(); }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            sleep(<a class="code" href="class_hardware_1_1_microscope.html#ac2da14781a22924a389fc287df3dbfda">FrameDelayTrigger</a>); <span class="comment">// Needed otherwise scrambled picture</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keywordflow">if</span> (!<a class="code" href="class_hardware_1_1_microscope.html#a8fd921d7c937e808c5bc44c0294aa490">captureDevice</a>.grab())  { <span class="keywordflow">throw</span> Exception::CouldNotGrabImageException(); }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <a class="code" href="class_hardware_1_1_microscope.html#a8fd921d7c937e808c5bc44c0294aa490">captureDevice</a>.retrieve(dst);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            <span class="keywordflow">if</span> (!<a class="code" href="class_hardware_1_1_microscope.html#a8fd921d7c937e808c5bc44c0294aa490">captureDevice</a>.read(dst)) { <span class="keywordflow">throw</span> Exception::CouldNotGrabImageException(); }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    }</div>
+<div class="ttc" id="class_hardware_1_1_microscope_html_ac2da14781a22924a389fc287df3dbfda"><div class="ttname"><a href="class_hardware_1_1_microscope.html#ac2da14781a22924a389fc287df3dbfda">Hardware::Microscope::FrameDelayTrigger</a></div><div class="ttdeci">uint8_t FrameDelayTrigger</div><div class="ttdef"><b>Definition:</b> <a href="_microscope_8h_source.html#l00060">Microscope.h:60</a></div></div>
+<div class="ttc" id="class_hardware_1_1_microscope_html_a8fd921d7c937e808c5bc44c0294aa490"><div class="ttname"><a href="class_hardware_1_1_microscope.html#a8fd921d7c937e808c5bc44c0294aa490">Hardware::Microscope::captureDevice</a></div><div class="ttdeci">cv::VideoCapture captureDevice</div><div class="ttdef"><b>Definition:</b> <a href="_microscope_8h_source.html#l00083">Microscope.h:83</a></div></div>
+<div class="ttc" id="class_hardware_1_1_microscope_html_a2e74ed11f3426a1a6adf05ec2d842066"><div class="ttname"><a href="class_hardware_1_1_microscope.html#a2e74ed11f3426a1a6adf05ec2d842066">Hardware::Microscope::arch</a></div><div class="ttdeci">std::string arch</div><div class="ttdef"><b>Definition:</b> <a href="_microscope_8h_source.html#l00081">Microscope.h:81</a></div></div>
 </div><!-- fragment -->
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_hardware_1_1_microscope_a1ec5c792320ae4db3f3b39830e74f880_icgraph.png" border="0" usemap="#class_hardware_1_1_microscope_a1ec5c792320ae4db3f3b39830e74f880_icgraph" alt=""/></div>
+<map name="class_hardware_1_1_microscope_a1ec5c792320ae4db3f3b39830e74f880_icgraph" id="class_hardware_1_1_microscope_a1ec5c792320ae4db3f3b39830e74f880_icgraph">
+<area shape="rect" id="node2" href="class_v_s_a_g_u_i.html#a987a20380023fe5985bd1fef0491af40" title="VSAGUI::VSAGUI" alt="" coords="207,13,339,39"/></map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="a8cec2eacbd3f0ea164d16100a6078d5b"></a>
@@ -289,7 +533,20 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_microscope_8cpp_source.html#l00055">55</a> of file <a class="el" href="_microscope_8cpp_source.html">Microscope.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_microscope_8cpp_source.html#l00080">80</a> of file <a class="el" href="_microscope_8cpp_source.html">Microscope.cpp</a>.</p>
+
+<p>References <a class="el" href="_comparision_pictures_2_createtest_image_8m_source.html#l00006">i</a>, <a class="el" href="_microscope_8h_source.html#l00009">MAX_BRIGHTNESS</a>, <a class="el" href="_microscope_8h_source.html#l00011">MAX_CONTRAST</a>, and <a class="el" href="_microscope_8h_source.html#l00008">MIN_BRIGHTNESS</a>.</p>
+
+<p>Referenced by <a class="el" href="vsagui_8cpp_source.html#l00095">VSAGUI::on_SnapshotButton_clicked()</a>, and <a class="el" href="vsagui_8cpp_source.html#l00004">VSAGUI::VSAGUI()</a>.</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_hardware_1_1_microscope_a8cec2eacbd3f0ea164d16100a6078d5b_icgraph.png" border="0" usemap="#class_hardware_1_1_microscope_a8cec2eacbd3f0ea164d16100a6078d5b_icgraph" alt=""/></div>
+<map name="class_hardware_1_1_microscope_a8cec2eacbd3f0ea164d16100a6078d5b_icgraph" id="class_hardware_1_1_microscope_a8cec2eacbd3f0ea164d16100a6078d5b_icgraph">
+<area shape="rect" id="node2" href="class_v_s_a_g_u_i.html#a5e3ff078ad6165e40faa9cb9f21987b2" title="VSAGUI::on_SnapshotButton\l_clicked" alt="" coords="207,5,401,47"/><area shape="rect" id="node4" href="class_v_s_a_g_u_i.html#a987a20380023fe5985bd1fef0491af40" title="VSAGUI::VSAGUI" alt="" coords="238,71,370,98"/><area shape="rect" id="node3" href="class_v_s_a_g_u_i.html#a9695404e3f9a371a8ce182e3609b62f4" title="VSAGUI::on_actionNew\l_triggered" alt="" coords="449,5,613,47"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -307,44 +564,58 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Safely release the capture device </p>
 
-<p>Definition at line <a class="el" href="_microscope_8cpp_source.html#l00088">88</a> of file <a class="el" href="_microscope_8cpp_source.html">Microscope.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_microscope_8cpp_source.html#l00119">119</a> of file <a class="el" href="_microscope_8cpp_source.html">Microscope.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="vsagui_8cpp_source.html#l00004">VSAGUI::VSAGUI()</a>.</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_hardware_1_1_microscope_ae799dbdff39787d3226e8e8ce25386de_icgraph.png" border="0" usemap="#class_hardware_1_1_microscope_ae799dbdff39787d3226e8e8ce25386de_icgraph" alt=""/></div>
+<map name="class_hardware_1_1_microscope_ae799dbdff39787d3226e8e8ce25386de_icgraph" id="class_hardware_1_1_microscope_ae799dbdff39787d3226e8e8ce25386de_icgraph">
+<area shape="rect" id="node2" href="class_v_s_a_g_u_i.html#a987a20380023fe5985bd1fef0491af40" title="VSAGUI::VSAGUI" alt="" coords="207,13,339,39"/></map>
+</div>
+</p>
 
 </div>
 </div>
-<a class="anchor" id="a8d2cf6645e61d405175f192e09647c9a"></a>
+<a class="anchor" id="abc753dfc72956ef7285d0e373fb7e1f1"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void Microscope::openCam </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>dev</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_microscope_8cpp_source.html#l00100">100</a> of file <a class="el" href="_microscope_8cpp_source.html">Microscope.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    {</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <a class="code" href="class_hardware_1_1_microscope.html#a62647fa70a7bf6e4259f7eb173d2cc30">captureDevice</a>.open(0);</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="class_hardware_1_1_microscope.html#a62647fa70a7bf6e4259f7eb173d2cc30">captureDevice</a>.isOpened()) { <span class="keywordflow">throw</span> Exception::MicroscopeNotFoundException(); }</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <a class="code" href="class_hardware_1_1_microscope.html#a62647fa70a7bf6e4259f7eb173d2cc30">captureDevice</a>.set(CV_CAP_PROP_FRAME_WIDTH, <a class="code" href="class_hardware_1_1_microscope.html#ae89c25318a095e2efcdf48fb8f769038">Dimensions</a>.<a class="code" href="struct_hardware_1_1_microscope_1_1_resolution.html#a0e1ef543db0224230559cd9c6531aad2">Width</a>);</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <a class="code" href="class_hardware_1_1_microscope.html#a62647fa70a7bf6e4259f7eb173d2cc30">captureDevice</a>.set(CV_CAP_PROP_FRAME_HEIGHT, <a class="code" href="class_hardware_1_1_microscope.html#ae89c25318a095e2efcdf48fb8f769038">Dimensions</a>.<a class="code" href="struct_hardware_1_1_microscope_1_1_resolution.html#aaa54a929acd6e8c224182a97264c85d1">Height</a>);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    }</div>
-<div class="ttc" id="struct_hardware_1_1_microscope_1_1_resolution_html_aaa54a929acd6e8c224182a97264c85d1"><div class="ttname"><a href="struct_hardware_1_1_microscope_1_1_resolution.html#aaa54a929acd6e8c224182a97264c85d1">Hardware::Microscope::Resolution::Height</a></div><div class="ttdeci">uint16_t Height</div><div class="ttdef"><b>Definition:</b> <a href="_microscope_8h_source.html#l00042">Microscope.h:42</a></div></div>
-<div class="ttc" id="struct_hardware_1_1_microscope_1_1_resolution_html_a0e1ef543db0224230559cd9c6531aad2"><div class="ttname"><a href="struct_hardware_1_1_microscope_1_1_resolution.html#a0e1ef543db0224230559cd9c6531aad2">Hardware::Microscope::Resolution::Width</a></div><div class="ttdeci">uint16_t Width</div><div class="ttdef"><b>Definition:</b> <a href="_microscope_8h_source.html#l00041">Microscope.h:41</a></div></div>
-<div class="ttc" id="class_hardware_1_1_microscope_html_a62647fa70a7bf6e4259f7eb173d2cc30"><div class="ttname"><a href="class_hardware_1_1_microscope.html#a62647fa70a7bf6e4259f7eb173d2cc30">Hardware::Microscope::captureDevice</a></div><div class="ttdeci">VideoCapture captureDevice</div><div class="ttdef"><b>Definition:</b> <a href="_microscope_8h_source.html#l00061">Microscope.h:61</a></div></div>
-<div class="ttc" id="class_hardware_1_1_microscope_html_ae89c25318a095e2efcdf48fb8f769038"><div class="ttname"><a href="class_hardware_1_1_microscope.html#ae89c25318a095e2efcdf48fb8f769038">Hardware::Microscope::Dimensions</a></div><div class="ttdeci">Resolution Dimensions</div><div class="ttdef"><b>Definition:</b> <a href="_microscope_8h_source.html#l00047">Microscope.h:47</a></div></div>
+<p>Definition at line <a class="el" href="_microscope_8cpp_source.html#l00131">131</a> of file <a class="el" href="_microscope_8cpp_source.html">Microscope.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="vsagui_8cpp_source.html#l00004">VSAGUI::VSAGUI()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    {</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <a class="code" href="class_hardware_1_1_microscope.html#a8fd921d7c937e808c5bc44c0294aa490">captureDevice</a>.open(dev);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="class_hardware_1_1_microscope.html#a8fd921d7c937e808c5bc44c0294aa490">captureDevice</a>.isOpened()) { <span class="keywordflow">throw</span> Exception::MicroscopeNotFoundException(); }</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <a class="code" href="class_hardware_1_1_microscope.html#a8fd921d7c937e808c5bc44c0294aa490">captureDevice</a>.set(CV_CAP_PROP_FRAME_WIDTH, <a class="code" href="class_hardware_1_1_microscope.html#ae89c25318a095e2efcdf48fb8f769038">Dimensions</a>.<a class="code" href="struct_hardware_1_1_microscope_1_1_resolution.html#a0e1ef543db0224230559cd9c6531aad2">Width</a>);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <a class="code" href="class_hardware_1_1_microscope.html#a8fd921d7c937e808c5bc44c0294aa490">captureDevice</a>.set(CV_CAP_PROP_FRAME_HEIGHT, <a class="code" href="class_hardware_1_1_microscope.html#ae89c25318a095e2efcdf48fb8f769038">Dimensions</a>.<a class="code" href="struct_hardware_1_1_microscope_1_1_resolution.html#aaa54a929acd6e8c224182a97264c85d1">Height</a>);</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    }</div>
+<div class="ttc" id="struct_hardware_1_1_microscope_1_1_resolution_html_aaa54a929acd6e8c224182a97264c85d1"><div class="ttname"><a href="struct_hardware_1_1_microscope_1_1_resolution.html#aaa54a929acd6e8c224182a97264c85d1">Hardware::Microscope::Resolution::Height</a></div><div class="ttdeci">uint16_t Height</div><div class="ttdef"><b>Definition:</b> <a href="_microscope_8h_source.html#l00051">Microscope.h:51</a></div></div>
+<div class="ttc" id="struct_hardware_1_1_microscope_1_1_resolution_html_a0e1ef543db0224230559cd9c6531aad2"><div class="ttname"><a href="struct_hardware_1_1_microscope_1_1_resolution.html#a0e1ef543db0224230559cd9c6531aad2">Hardware::Microscope::Resolution::Width</a></div><div class="ttdeci">uint16_t Width</div><div class="ttdef"><b>Definition:</b> <a href="_microscope_8h_source.html#l00050">Microscope.h:50</a></div></div>
+<div class="ttc" id="class_hardware_1_1_microscope_html_a8fd921d7c937e808c5bc44c0294aa490"><div class="ttname"><a href="class_hardware_1_1_microscope.html#a8fd921d7c937e808c5bc44c0294aa490">Hardware::Microscope::captureDevice</a></div><div class="ttdeci">cv::VideoCapture captureDevice</div><div class="ttdef"><b>Definition:</b> <a href="_microscope_8h_source.html#l00083">Microscope.h:83</a></div></div>
+<div class="ttc" id="class_hardware_1_1_microscope_html_ae89c25318a095e2efcdf48fb8f769038"><div class="ttname"><a href="class_hardware_1_1_microscope.html#ae89c25318a095e2efcdf48fb8f769038">Hardware::Microscope::Dimensions</a></div><div class="ttdeci">Resolution Dimensions</div><div class="ttdef"><b>Definition:</b> <a href="_microscope_8h_source.html#l00062">Microscope.h:62</a></div></div>
 </div><!-- fragment -->
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_hardware_1_1_microscope_abc753dfc72956ef7285d0e373fb7e1f1_icgraph.png" border="0" usemap="#class_hardware_1_1_microscope_abc753dfc72956ef7285d0e373fb7e1f1_icgraph" alt=""/></div>
+<map name="class_hardware_1_1_microscope_abc753dfc72956ef7285d0e373fb7e1f1_icgraph" id="class_hardware_1_1_microscope_abc753dfc72956ef7285d0e373fb7e1f1_icgraph">
+<area shape="rect" id="node2" href="class_v_s_a_g_u_i.html#a987a20380023fe5985bd1fef0491af40" title="VSAGUI::VSAGUI" alt="" coords="207,13,339,39"/></map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="a87119548948d7af1e3c38af2e2afa482"></a>
@@ -361,12 +632,11 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Opens the webcam </p>
 
-<p>Definition at line <a class="el" href="_microscope_8cpp_source.html#l00094">94</a> of file <a class="el" href="_microscope_8cpp_source.html">Microscope.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_microscope_8cpp_source.html#l00125">125</a> of file <a class="el" href="_microscope_8cpp_source.html">Microscope.cpp</a>.</p>
 
 </div>
 </div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a class="anchor" id="a62647fa70a7bf6e4259f7eb173d2cc30"></a>
+<a class="anchor" id="ad045b565e258b1b3b68c2c55273b3058"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -374,7 +644,68 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">VideoCapture Hardware::Microscope::captureDevice</td>
+          <td class="memname">void Microscope::StartupSeq </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>firstdefault</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>De-constructor </p>
+
+<p>Definition at line <a class="el" href="_microscope_8cpp_source.html#l00026">26</a> of file <a class="el" href="_microscope_8cpp_source.html">Microscope.cpp</a>.</p>
+
+<p>References <a class="el" href="_u_s_b_8cpp_source.html#l00015">Hardware::USB::ResetUSB()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_hardware_1_1_microscope_ad045b565e258b1b3b68c2c55273b3058_cgraph.png" border="0" usemap="#class_hardware_1_1_microscope_ad045b565e258b1b3b68c2c55273b3058_cgraph" alt=""/></div>
+<map name="class_hardware_1_1_microscope_ad045b565e258b1b3b68c2c55273b3058_cgraph" id="class_hardware_1_1_microscope_ad045b565e258b1b3b68c2c55273b3058_cgraph">
+<area shape="rect" id="node2" href="class_hardware_1_1_u_s_b.html#af387867ec84f4c709b55e3605f9e313e" title="Hardware::USB::ResetUSB" alt="" coords="207,13,392,39"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a2e74ed11f3426a1a6adf05ec2d842066"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Hardware::Microscope::arch</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_microscope_8h_source.html#l00081">81</a> of file <a class="el" href="_microscope_8h_source.html">Microscope.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8fd921d7c937e808c5bc44c0294aa490"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">cv::VideoCapture Hardware::Microscope::captureDevice</td>
         </tr>
       </table>
   </td>
@@ -385,7 +716,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>An openCV instance of the capture device </p>
 
-<p>Definition at line <a class="el" href="_microscope_8h_source.html#l00061">61</a> of file <a class="el" href="_microscope_8h_source.html">Microscope.h</a>.</p>
+<p>Definition at line <a class="el" href="_microscope_8h_source.html#l00083">83</a> of file <a class="el" href="_microscope_8h_source.html">Microscope.h</a>.</p>
 
 </div>
 </div>
@@ -400,7 +731,29 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Dimensions of the frame </p>
 
-<p>Definition at line <a class="el" href="_microscope_8h_source.html#l00047">47</a> of file <a class="el" href="_microscope_8h_source.html">Microscope.h</a>.</p>
+<p>Definition at line <a class="el" href="_microscope_8h_source.html#l00062">62</a> of file <a class="el" href="_microscope_8h_source.html">Microscope.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8c23e6a55ef77443e861418a15c6e244"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_hardware_1_1_microscope.html#a062b6c7876e05cc311a54bd85da459b2">Finished_t</a> Hardware::Microscope::fin_sig</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_microscope_8h_source.html#l00078">78</a> of file <a class="el" href="_microscope_8h_source.html">Microscope.h</a>.</p>
 
 </div>
 </div>
@@ -415,11 +768,11 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Delay in seconds </p>
 
-<p>Definition at line <a class="el" href="_microscope_8h_source.html#l00045">45</a> of file <a class="el" href="_microscope_8h_source.html">Microscope.h</a>.</p>
+<p>Definition at line <a class="el" href="_microscope_8h_source.html#l00060">60</a> of file <a class="el" href="_microscope_8h_source.html">Microscope.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ab5c862426f7f6e5bfbc7b158e84a1bc5"></a>
+<a class="anchor" id="a2c73db8010320428db3fd41d840dd0eb"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -427,7 +780,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;Mat&gt; Hardware::Microscope::HDRframes</td>
+          <td class="memname">std::vector&lt;cv::Mat&gt; Hardware::Microscope::HDRframes</td>
         </tr>
       </table>
   </td>
@@ -437,22 +790,44 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_microscope_8h_source.html#l00064">64</a> of file <a class="el" href="_microscope_8h_source.html">Microscope.h</a>.</p>
+<p>Definition at line <a class="el" href="_microscope_8h_source.html#l00086">86</a> of file <a class="el" href="_microscope_8h_source.html">Microscope.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a07fdfc05dae59b53ea56dbafd6f0c076"></a>
+<a class="anchor" id="afbbec8a14cd277cec7c3ee6ce0ba54a1"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">Mat Hardware::Microscope::LastFrame</td>
+          <td class="memname">cv::Mat Hardware::Microscope::LastFrame</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Last grabbed and processed frame </p>
 
-<p>Definition at line <a class="el" href="_microscope_8h_source.html#l00046">46</a> of file <a class="el" href="_microscope_8h_source.html">Microscope.h</a>.</p>
+<p>Definition at line <a class="el" href="_microscope_8h_source.html#l00061">61</a> of file <a class="el" href="_microscope_8h_source.html">Microscope.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a819e11c0bfdb12b4c42b7ee2d330cb4d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_hardware_1_1_microscope.html#a5288928044551054276042c402c5a6a1">Progress_t</a> Hardware::Microscope::prog_sig</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_microscope_8h_source.html#l00079">79</a> of file <a class="el" href="_microscope_8h_source.html">Microscope.h</a>.</p>
 
 </div>
 </div>
@@ -474,13 +849,13 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_microscope_8h_source.html#l00065">65</a> of file <a class="el" href="_microscope_8h_source.html">Microscope.h</a>.</p>
+<p>Definition at line <a class="el" href="_microscope_8h_source.html#l00087">87</a> of file <a class="el" href="_microscope_8h_source.html">Microscope.h</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>D:/OneDrive/Opleiding/HTS_HAN/Minor2/CPP/VisionSoilAnalyzer/src/VisionSoilAnalyzer/Hardware/<a class="el" href="_microscope_8h_source.html">Microscope.h</a></li>
-<li>D:/OneDrive/Opleiding/HTS_HAN/Minor2/CPP/VisionSoilAnalyzer/src/VisionSoilAnalyzer/Hardware/<a class="el" href="_microscope_8cpp_source.html">Microscope.cpp</a></li>
+<li>/home/peer23peer/VisionSoilAnalyzer/src/SoilHardware/<a class="el" href="_microscope_8h_source.html">Microscope.h</a></li>
+<li>/home/peer23peer/VisionSoilAnalyzer/src/SoilHardware/<a class="el" href="_microscope_8cpp_source.html">Microscope.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -488,7 +863,7 @@ Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_hardware.html">Hardware</a></li><li class="navelem"><a class="el" href="class_hardware_1_1_microscope.html">Microscope</a></li>
-    <li class="footer">Generated on Sat Jan 17 2015 00:56:37 for VisionSoilAnalyzer by
+    <li class="footer">Generated on Sat Jun 6 2015 19:51:45 for Vision Soil Analyzer by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

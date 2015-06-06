@@ -1,0 +1,87 @@
+\hypertarget{struct_log_to_file}{}\section{Log\+To\+File Struct Reference}
+\label{struct_log_to_file}\index{Log\+To\+File@{Log\+To\+File}}
+
+
+Collaboration diagram for Log\+To\+File\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=160pt]{struct_log_to_file__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_log_to_file_a99db657b999b4cf62bfa55f9403af0a9}{Log\+To\+File} ()
+\item 
+\hyperlink{struct_log_to_file_a488a63ef1d7e0d62c284775ebd5b4f84}{$\sim$\+Log\+To\+File} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ofstream \hyperlink{struct_log_to_file_afa6d7b7e1f102a6589b255c51274b1bd}{log\+File}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 39 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{struct_log_to_file_a99db657b999b4cf62bfa55f9403af0a9}{}\index{Log\+To\+File@{Log\+To\+File}!Log\+To\+File@{Log\+To\+File}}
+\index{Log\+To\+File@{Log\+To\+File}!Log\+To\+File@{Log\+To\+File}}
+\subsubsection[{Log\+To\+File}]{\setlength{\rightskip}{0pt plus 5cm}Log\+To\+File\+::\+Log\+To\+File (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{struct_log_to_file_a99db657b999b4cf62bfa55f9403af0a9}
+
+
+Definition at line 41 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
+
+
+\begin{DoxyCode}
+42     \{
+43         std::string logFileName(boost::unit\_test::framework::master\_test\_suite().p\_name);
+44         logFileName.append(\textcolor{stringliteral}{".log"});
+45         \hyperlink{struct_log_to_file_afa6d7b7e1f102a6589b255c51274b1bd}{logFile}.open(logFileName.c\_str());
+46         boost::unit\_test::unit\_test\_log.set\_stream(\hyperlink{struct_log_to_file_afa6d7b7e1f102a6589b255c51274b1bd}{logFile});
+47     \}
+\end{DoxyCode}
+\hypertarget{struct_log_to_file_a488a63ef1d7e0d62c284775ebd5b4f84}{}\index{Log\+To\+File@{Log\+To\+File}!````~Log\+To\+File@{$\sim$\+Log\+To\+File}}
+\index{````~Log\+To\+File@{$\sim$\+Log\+To\+File}!Log\+To\+File@{Log\+To\+File}}
+\subsubsection[{$\sim$\+Log\+To\+File}]{\setlength{\rightskip}{0pt plus 5cm}Log\+To\+File\+::$\sim$\+Log\+To\+File (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{struct_log_to_file_a488a63ef1d7e0d62c284775ebd5b4f84}
+
+
+Definition at line 48 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
+
+
+\begin{DoxyCode}
+49     \{
+50         boost::unit\_test::unit\_test\_log.test\_finish();
+51         \hyperlink{struct_log_to_file_afa6d7b7e1f102a6589b255c51274b1bd}{logFile}.close();
+52         boost::unit\_test::unit\_test\_log.set\_stream(std::cout);
+53     \}
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{struct_log_to_file_afa6d7b7e1f102a6589b255c51274b1bd}{}\index{Log\+To\+File@{Log\+To\+File}!log\+File@{log\+File}}
+\index{log\+File@{log\+File}!Log\+To\+File@{Log\+To\+File}}
+\subsubsection[{log\+File}]{\setlength{\rightskip}{0pt plus 5cm}std\+::ofstream Log\+To\+File\+::log\+File}\label{struct_log_to_file_afa6d7b7e1f102a6589b255c51274b1bd}
+
+
+Definition at line 54 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/peer23peer/\+Vision\+Soil\+Analyzer/src/\+Tests/\+V\+S\+A\+\_\+\+U\+T/\hyperlink{_v_s_a___u_t_8cpp}{V\+S\+A\+\_\+\+U\+T.\+cpp}\end{DoxyCompactItemize}

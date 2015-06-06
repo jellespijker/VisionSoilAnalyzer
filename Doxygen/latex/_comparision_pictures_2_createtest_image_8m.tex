@@ -1,0 +1,318 @@
+\hypertarget{_comparision_pictures_2_createtest_image_8m}{}\section{/home/peer23peer/\+Vision\+Soil\+Analyzer/src/\+Tests/\+Comparision\+Pictures/\+Createtest\+Image.m File Reference}
+\label{_comparision_pictures_2_createtest_image_8m}\index{/home/peer23peer/\+Vision\+Soil\+Analyzer/src/\+Tests/\+Comparision\+Pictures/\+Createtest\+Image.\+m@{/home/peer23peer/\+Vision\+Soil\+Analyzer/src/\+Tests/\+Comparision\+Pictures/\+Createtest\+Image.\+m}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_comparision_pictures_2_createtest_image_8m_a0d1d4daa87490ffda2b817ec721331ff}{X\+Y} (\hyperlink{_v_s_a___u_t_2_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j})
+\item 
+\hyperlink{_comparision_pictures_2_createtest_image_8m_a604d1307f2ddd6b63e6de907e9494cf2}{X\+Y} (\hyperlink{_v_s_a___u_t_2_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}+1)
+\item 
+\hyperlink{_comparision_pictures_2_createtest_image_8m_ab203292116da4a8a72763ec58b04da8f}{imshow} (\hyperlink{_v_s_a___u_t_2_comparision_pictures_2_createtest_image_8m_a66cc12e3c6d68de3fef6de89cf033f67}{I})
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_comparision_pictures_2_createtest_image_8m_aebfdce4f6cc7241ba38924f77a12e7cf}{clear}
+\item 
+\hyperlink{_comparision_pictures_2_createtest_image_8m_a3f3d3b13a15c726d6aa03db3dd0d6377}{clc}
+\item 
+\hyperlink{_comparision_pictures_2_createtest_image_8m_aa7400a30a3cc1d4ef58923b44ecb7719}{I} = zeros(2000,2000)
+\item 
+\hyperlink{_comparision_pictures_2_createtest_image_8m_aeab71244afb687f16d8c4f5ee9d6ef0e}{n} = 600
+\item 
+\hyperlink{_comparision_pictures_2_createtest_image_8m_aeee9f371db14fda0de35d16324a167df}{loc} = randi(\mbox{[}50, 2000-\/50\mbox{]},\hyperlink{_v_s_a___u_t_2_comparision_pictures_2_createtest_image_8m_aeab71244afb687f16d8c4f5ee9d6ef0e}{n}, 2)
+\item 
+for \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}
+\item 
+\hyperlink{_comparision_pictures_2_createtest_image_8m_aca89e792ebf5d88964f1cb66ce6ddf61}{X\+Y} = 0
+\item 
+\hyperlink{_comparision_pictures_2_createtest_image_8m_a16e4ef534cec559430e07e05eb71c719}{K} = 0
+\item 
+\hyperlink{_comparision_pictures_2_createtest_image_8m_a9336ebf25087d91c818ee6e9ec29f8c1}{x} = 0
+\item 
+\hyperlink{_comparision_pictures_2_createtest_image_8m_a2fb1c5cf58867b5bbc9a1b145a86f3a0}{y} = 0
+\item 
+\hyperlink{_comparision_pictures_2_createtest_image_8m_a2fd0c42bc0f9d36e00931ccceebc7087}{sides} = 0
+\item 
+\hyperlink{_comparision_pictures_2_createtest_image_8m_ae0323a9039add2978bf5b49550572c7c}{c} = numel(\hyperlink{_v_s_a___u_t_2_comparision_pictures_2_createtest_image_8m_a16e4ef534cec559430e07e05eb71c719}{K}) -\/ 1
+\item 
+\hyperlink{_comparision_pictures_2_createtest_image_8m_ae11b3deb3de3df7dc48e439074023e35}{count} = 0
+\item 
+for \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}
+\item 
+\hyperlink{_comparision_pictures_2_createtest_image_8m_a9bc372f028ff8dfe72ade6ad7c65a434}{channel1\+Min} = 0.\+180
+\item 
+\hyperlink{_comparision_pictures_2_createtest_image_8m_ac2ea11e016daaeb1ac2984647f70441c}{channel1\+Max} = 0.\+152
+\item 
+\hyperlink{_comparision_pictures_2_createtest_image_8m_aeaf30cc4d7b2dfc4ded7fe40e4316f46}{channel2\+Min} = 0.\+000
+\item 
+\hyperlink{_comparision_pictures_2_createtest_image_8m_a4316bd8a71c2d0ed1c5d36a91665f58a}{channel2\+Max} = 1.\+000
+\item 
+\hyperlink{_comparision_pictures_2_createtest_image_8m_a66b6dfcbbcebf7a22ad7d321f3ca8975}{channel3\+Min} = 0.\+000
+\item 
+\hyperlink{_comparision_pictures_2_createtest_image_8m_ae2a7b5ca577a1a9641dba3ed4bec1c30}{channel3\+Max} = 1.\+000
+\item 
+\hyperlink{_comparision_pictures_2_createtest_image_8m_a2e8092630180214d047735d28f1d3de8}{hopening} = vision.\+Morphological\+Open
+\item 
+\hyperlink{_v_s_a___u_t_2_comparision_pictures_2_createtest_image_8m_a2e8092630180214d047735d28f1d3de8}{hopening} \hyperlink{_comparision_pictures_2_createtest_image_8m_a1793ae4d33491c784d49ec153b1c1250}{Neighborhood} = strel(\textquotesingle{}disk\textquotesingle{}, 6)
+\item 
+\hyperlink{_comparision_pictures_2_createtest_image_8m_afaafc315b95987fc2b071bcd8f698b81}{H} = vision.\+Blob\+Analysis
+\item 
+\hyperlink{_v_s_a___u_t_2_comparision_pictures_2_createtest_image_8m_afaafc315b95987fc2b071bcd8f698b81}{H} \hyperlink{_comparision_pictures_2_createtest_image_8m_ae09ac0419be26215bb8cbc6bc964cf1f}{Maximum\+Count} = 1000
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{_comparision_pictures_2_createtest_image_8m_ab203292116da4a8a72763ec58b04da8f}{}\index{Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}!imshow@{imshow}}
+\index{imshow@{imshow}!Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}}
+\subsubsection[{imshow}]{\setlength{\rightskip}{0pt plus 5cm}imshow (
+\begin{DoxyParamCaption}
+\item[{{\bf I}}]{}
+\end{DoxyParamCaption}
+)}\label{_comparision_pictures_2_createtest_image_8m_ab203292116da4a8a72763ec58b04da8f}
+
+
+Referenced by B\+O\+O\+S\+T\+\_\+\+F\+I\+X\+T\+U\+R\+E\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E(), and Vision\+::\+Image\+Processing\+::\+Show\+Debug\+Img().
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=330pt]{_comparision_pictures_2_createtest_image_8m_ab203292116da4a8a72763ec58b04da8f_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{_comparision_pictures_2_createtest_image_8m_a0d1d4daa87490ffda2b817ec721331ff}{}\index{Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}!X\+Y@{X\+Y}}
+\index{X\+Y@{X\+Y}!Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}}
+\subsubsection[{X\+Y}]{\setlength{\rightskip}{0pt plus 5cm}X\+Y (
+\begin{DoxyParamCaption}
+\item[{{\bf j}}]{}
+\end{DoxyParamCaption}
+)}\label{_comparision_pictures_2_createtest_image_8m_a0d1d4daa87490ffda2b817ec721331ff}
+\hypertarget{_comparision_pictures_2_createtest_image_8m_a604d1307f2ddd6b63e6de907e9494cf2}{}\index{Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}!X\+Y@{X\+Y}}
+\index{X\+Y@{X\+Y}!Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}}
+\subsubsection[{X\+Y}]{\setlength{\rightskip}{0pt plus 5cm}X\+Y (
+\begin{DoxyParamCaption}
+\item[{{\bf j}+}]{1}
+\end{DoxyParamCaption}
+)}\label{_comparision_pictures_2_createtest_image_8m_a604d1307f2ddd6b63e6de907e9494cf2}
+
+
+\subsection{Variable Documentation}
+\hypertarget{_comparision_pictures_2_createtest_image_8m_ae0323a9039add2978bf5b49550572c7c}{}\index{Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}!c@{c}}
+\index{c@{c}!Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}}
+\subsubsection[{c}]{\setlength{\rightskip}{0pt plus 5cm}c = numel({\bf K}) -\/ 1}\label{_comparision_pictures_2_createtest_image_8m_ae0323a9039add2978bf5b49550572c7c}
+
+
+Definition at line 17 of file Createtest\+Image.\+m.
+
+
+
+Referenced by Q\+Custom\+Plot\+::clear\+Graphs(), Q\+Custom\+Plot\+::clear\+Items(), Q\+Custom\+Plot\+::clear\+Plottables(), Q\+C\+P\+Layout\+::elements(), Q\+C\+P\+Layout\+Grid\+::elements(), Vision\+::\+Morphological\+Filter\+::\+Filter(), Q\+C\+P\+Graph\+::get\+Prepared\+Data(), Q\+C\+P\+Item\+Ellipse\+::select\+Test(), and Q\+C\+P\+Item\+Bracket\+::select\+Test().
+
+\hypertarget{_comparision_pictures_2_createtest_image_8m_ac2ea11e016daaeb1ac2984647f70441c}{}\index{Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}!channel1\+Max@{channel1\+Max}}
+\index{channel1\+Max@{channel1\+Max}!Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}}
+\subsubsection[{channel1\+Max}]{\setlength{\rightskip}{0pt plus 5cm}channel1\+Max = 0.\+152}\label{_comparision_pictures_2_createtest_image_8m_ac2ea11e016daaeb1ac2984647f70441c}
+
+
+Definition at line 32 of file Createtest\+Image.\+m.
+
+\hypertarget{_comparision_pictures_2_createtest_image_8m_a9bc372f028ff8dfe72ade6ad7c65a434}{}\index{Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}!channel1\+Min@{channel1\+Min}}
+\index{channel1\+Min@{channel1\+Min}!Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}}
+\subsubsection[{channel1\+Min}]{\setlength{\rightskip}{0pt plus 5cm}channel1\+Min = 0.\+180}\label{_comparision_pictures_2_createtest_image_8m_a9bc372f028ff8dfe72ade6ad7c65a434}
+
+
+Definition at line 31 of file Createtest\+Image.\+m.
+
+\hypertarget{_comparision_pictures_2_createtest_image_8m_a4316bd8a71c2d0ed1c5d36a91665f58a}{}\index{Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}!channel2\+Max@{channel2\+Max}}
+\index{channel2\+Max@{channel2\+Max}!Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}}
+\subsubsection[{channel2\+Max}]{\setlength{\rightskip}{0pt plus 5cm}channel2\+Max = 1.\+000}\label{_comparision_pictures_2_createtest_image_8m_a4316bd8a71c2d0ed1c5d36a91665f58a}
+
+
+Definition at line 34 of file Createtest\+Image.\+m.
+
+\hypertarget{_comparision_pictures_2_createtest_image_8m_aeaf30cc4d7b2dfc4ded7fe40e4316f46}{}\index{Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}!channel2\+Min@{channel2\+Min}}
+\index{channel2\+Min@{channel2\+Min}!Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}}
+\subsubsection[{channel2\+Min}]{\setlength{\rightskip}{0pt plus 5cm}channel2\+Min = 0.\+000}\label{_comparision_pictures_2_createtest_image_8m_aeaf30cc4d7b2dfc4ded7fe40e4316f46}
+
+
+Definition at line 33 of file Createtest\+Image.\+m.
+
+\hypertarget{_comparision_pictures_2_createtest_image_8m_ae2a7b5ca577a1a9641dba3ed4bec1c30}{}\index{Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}!channel3\+Max@{channel3\+Max}}
+\index{channel3\+Max@{channel3\+Max}!Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}}
+\subsubsection[{channel3\+Max}]{\setlength{\rightskip}{0pt plus 5cm}channel3\+Max = 1.\+000}\label{_comparision_pictures_2_createtest_image_8m_ae2a7b5ca577a1a9641dba3ed4bec1c30}
+
+
+Definition at line 36 of file Createtest\+Image.\+m.
+
+\hypertarget{_comparision_pictures_2_createtest_image_8m_a66b6dfcbbcebf7a22ad7d321f3ca8975}{}\index{Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}!channel3\+Min@{channel3\+Min}}
+\index{channel3\+Min@{channel3\+Min}!Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}}
+\subsubsection[{channel3\+Min}]{\setlength{\rightskip}{0pt plus 5cm}channel3\+Min = 0.\+000}\label{_comparision_pictures_2_createtest_image_8m_a66b6dfcbbcebf7a22ad7d321f3ca8975}
+
+
+Definition at line 35 of file Createtest\+Image.\+m.
+
+\hypertarget{_comparision_pictures_2_createtest_image_8m_a3f3d3b13a15c726d6aa03db3dd0d6377}{}\index{Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}!clc@{clc}}
+\index{clc@{clc}!Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}}
+\subsubsection[{clc}]{\setlength{\rightskip}{0pt plus 5cm}clc}\label{_comparision_pictures_2_createtest_image_8m_a3f3d3b13a15c726d6aa03db3dd0d6377}
+
+
+Definition at line 1 of file Createtest\+Image.\+m.
+
+\hypertarget{_comparision_pictures_2_createtest_image_8m_aebfdce4f6cc7241ba38924f77a12e7cf}{}\index{Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}!clear@{clear}}
+\index{clear@{clear}!Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}}
+\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}clear}\label{_comparision_pictures_2_createtest_image_8m_aebfdce4f6cc7241ba38924f77a12e7cf}
+
+
+Definition at line 1 of file Createtest\+Image.\+m.
+
+\hypertarget{_comparision_pictures_2_createtest_image_8m_ae11b3deb3de3df7dc48e439074023e35}{}\index{Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}!count@{count}}
+\index{count@{count}!Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}}
+\subsubsection[{count}]{\setlength{\rightskip}{0pt plus 5cm}count = 0}\label{_comparision_pictures_2_createtest_image_8m_ae11b3deb3de3df7dc48e439074023e35}
+
+
+Definition at line 18 of file Createtest\+Image.\+m.
+
+
+
+Referenced by B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E(), Q\+C\+P\+Graph\+::count\+Data\+In\+Bounds(), Vision\+::\+Segment\+::\+Label\+Blobs(), Vision\+::\+Segment\+::make\+Consecutive(), Soil\+Math\+::\+F\+F\+T\+::\+Neighbors(), Q\+C\+P\+Axis\+::set\+Sub\+Tick\+Count(), Q\+C\+P\+Financial\+::time\+Series\+To\+Ohlc(), Hardware\+::\+G\+P\+I\+O\+::\+Wait\+For\+Edge(), and Hardware\+::\+A\+D\+C\+::\+Wait\+For\+Value\+Change().
+
+\hypertarget{_comparision_pictures_2_createtest_image_8m_afaafc315b95987fc2b071bcd8f698b81}{}\index{Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}!H@{H}}
+\index{H@{H}!Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}}
+\subsubsection[{H}]{\setlength{\rightskip}{0pt plus 5cm}H = vision.\+Blob\+Analysis}\label{_comparision_pictures_2_createtest_image_8m_afaafc315b95987fc2b071bcd8f698b81}
+
+
+Definition at line 46 of file Createtest\+Image.\+m.
+
+\hypertarget{_comparision_pictures_2_createtest_image_8m_a2e8092630180214d047735d28f1d3de8}{}\index{Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}!hopening@{hopening}}
+\index{hopening@{hopening}!Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}}
+\subsubsection[{hopening}]{\setlength{\rightskip}{0pt plus 5cm}hopening = vision.\+Morphological\+Open}\label{_comparision_pictures_2_createtest_image_8m_a2e8092630180214d047735d28f1d3de8}
+
+
+Definition at line 42 of file Createtest\+Image.\+m.
+
+\hypertarget{_comparision_pictures_2_createtest_image_8m_aa7400a30a3cc1d4ef58923b44ecb7719}{}\index{Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}!I@{I}}
+\index{I@{I}!Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}}
+\subsubsection[{I}]{\setlength{\rightskip}{0pt plus 5cm}end Convert R\+G\+B image to chosen color space I = zeros(2000,2000)}\label{_comparision_pictures_2_createtest_image_8m_aa7400a30a3cc1d4ef58923b44ecb7719}
+
+
+Definition at line 2 of file Createtest\+Image.\+m.
+
+
+
+Referenced by Soil\+Math\+::\+G\+A\+::\+Genesis().
+
+\hypertarget{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{}\index{Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}!i@{i}}
+\index{i@{i}!Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}}
+\subsubsection[{i}]{\setlength{\rightskip}{0pt plus 5cm}for i}\label{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= 1:\hyperlink{_comparision_pictures_2_createtest_image_8m_aeab71244afb687f16d8c4f5ee9d6ef0e}{n}
+   Z = zeros(100,100)
+\end{DoxyCode}
+
+
+Definition at line 6 of file Createtest\+Image.\+m.
+
+
+
+Referenced by Q\+C\+P\+Graph\+::add\+Data(), Q\+C\+P\+Curve\+::add\+Data(), Q\+C\+P\+Bars\+::add\+Data(), Q\+C\+P\+Financial\+::add\+Data(), Soil\+Analyzer\+::\+Particle\+::\+Analyze(), Q\+C\+P\+Abstract\+Item\+::anchor(), Soil\+Math\+::\+Stats$<$ float, double, long double $>$\+::\+Basic\+Calculate(), Soil\+Math\+::\+Stats$<$ float, double, long double $>$\+::\+Basic\+Calculate\+Float(), Soil\+Math\+::\+Stats$<$ float, double, long double $>$\+::\+Bin\+Calculations(), B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E(), Q\+C\+P\+Axis\+::calculate\+Margin(), Q\+C\+P\+Margin\+Group\+::clear(), Q\+C\+P\+Layout\+::clear(), Q\+Custom\+Plot\+::clear\+Graphs(), Q\+Custom\+Plot\+::clear\+Items(), Q\+C\+P\+Legend\+::clear\+Items(), Q\+Custom\+Plot\+::clear\+Plottables(), Q\+C\+P\+Color\+Gradient\+::colorize(), Hardware\+::color\+Loop(), Q\+C\+P\+Color\+Scale\+::color\+Maps(), Q\+C\+P\+Margin\+Group\+::common\+Margin(), Soil\+Math\+::\+F\+F\+T\+::\+Contour2\+Complex(), Vision\+::\+Image\+Processing\+::\+Copy\+Mat(), Soil\+Math\+::\+G\+A\+::\+Cross\+Over(), Q\+C\+P\+Axis\+::draw(), Q\+C\+P\+Axis\+Painter\+Private\+::draw(), Q\+C\+P\+Curve\+::draw(), Q\+C\+P\+Statistical\+Box\+::draw(), Q\+C\+P\+Grid\+::draw\+Grid\+Lines(), Q\+C\+P\+Graph\+::draw\+Line\+Plot(), Q\+C\+P\+Statistical\+Box\+::draw\+Outliers(), Q\+C\+P\+Graph\+::draw\+Scatter\+Plot(), Q\+C\+P\+Curve\+::draw\+Scatter\+Plot(), Q\+C\+P\+Grid\+::draw\+Sub\+Grid\+Lines(), Q\+C\+P\+Layout\+::elements(), Q\+C\+P\+Layout\+Grid\+::elements(), Soil\+Math\+::\+G\+A\+::\+Evolve(), Q\+C\+P\+Layout\+Grid\+::expand\+To(), Q\+C\+P\+Color\+Map\+Data\+::fill(), Vision\+::\+Segment\+::\+Fill\+Holes(), Vision\+::\+Morphological\+Filter\+::\+Filter(), Q\+C\+P\+Graph\+::find\+Index\+Above\+X(), Q\+C\+P\+Graph\+::find\+Index\+Above\+Y(), Q\+C\+P\+Graph\+::find\+Index\+Below\+X(), Q\+C\+P\+Graph\+::find\+Index\+Below\+Y(), Q\+C\+P\+Axis\+::generate\+Auto\+Ticks(), Soil\+Math\+::\+G\+A\+::\+Genesis(), Vision\+::\+Segment\+::\+Get\+Blob\+List(), Q\+C\+P\+Graph\+::get\+Channel\+Fill\+Polygon(), Soil\+Math\+::\+F\+F\+T\+::\+Get\+Descriptors(), Vision\+::\+Segment\+::\+Get\+Edges(), Vision\+::\+Segment\+::\+Get\+Edges\+Eroding(), Hardware\+::\+Microscope\+::\+Get\+H\+D\+R\+Frame(), Q\+C\+P\+Graph\+::get\+Impulse\+Plot\+Data(), Q\+C\+P\+Graph\+::get\+Line\+Plot\+Data(), Vision\+::\+Image\+Processing\+::\+Get\+N\+Row(), Q\+C\+P\+Item\+Line\+::get\+Rect\+Clipped\+Line(), Q\+C\+P\+Item\+Straight\+Line\+::get\+Rect\+Clipped\+Straight\+Line(), Q\+C\+P\+Layout\+::get\+Section\+Sizes(), Q\+C\+P\+Graph\+::get\+Step\+Center\+Plot\+Data(), Q\+C\+P\+Graph\+::get\+Step\+Left\+Plot\+Data(), Q\+C\+P\+Graph\+::get\+Step\+Right\+Plot\+Data(), Vision\+::\+Segment\+::\+Get\+Threshold\+Level(), Q\+C\+P\+Curve\+::get\+Traverse(), Q\+C\+P\+Statistical\+Box\+::get\+Value\+Range(), Q\+C\+P\+Axis\+::graphs(), Q\+C\+P\+Axis\+Rect\+::graphs(), Soil\+Math\+::\+G\+A\+::\+Grow\+To\+Adulthood(), Q\+C\+P\+Abstract\+Item\+::has\+Anchor(), Q\+C\+P\+Legend\+::has\+Item(), Vision\+::\+Enhance\+::\+Histogram\+Equalization(), Q\+C\+P\+Legend\+::item\+With\+Plottable(), Q\+C\+P\+Bars\+Group\+::key\+Pixel\+Offset(), Vision\+::\+Conversion\+::\+Lab2\+R\+I(), Vision\+::\+Segment\+::\+Label\+Blobs(), Q\+Custom\+Plot\+::layerable\+At(), Vision\+::\+Segment\+::make\+Consecutive(), Q\+C\+P\+Layout\+Grid\+::maximum\+Size\+Hint(), Q\+C\+P\+Layout\+Grid\+::minimum\+Size\+Hint(), Soil\+Math\+::\+G\+A\+::\+Mutate(), Soil\+Math\+::\+F\+F\+T\+::\+Neighbors(), Q\+C\+P\+Axis\+::plottables(), Q\+C\+P\+Axis\+Rect\+::plottables(), P\+M\+::\+P\+M(), Q\+C\+P\+Graph\+::point\+Distance(), Q\+C\+P\+Curve\+::point\+Distance(), Q\+C\+P\+Abstract\+Item\+::position(), Soil\+Math\+::\+N\+N\+::\+Predict(), Q\+C\+P\+Color\+Map\+Data\+::recalculate\+Data\+Bounds(), Q\+C\+P\+Abstract\+Item\+::rect\+Select\+Test(), Vision\+::\+Segment\+::\+Remove\+Border\+Blobs(), Q\+Custom\+Plot\+::remove\+Layer(), Q\+C\+P\+Axis\+::rescale(), Q\+C\+P\+Color\+Scale\+::rescale\+Data\+Range(), Vision\+::\+Conversion\+::\+R\+G\+B2\+Intensity(), Vision\+::\+Conversion\+::\+R\+G\+B2\+X\+Y\+Z(), Soil\+Analyzer\+::\+Sample\+::\+Segment\+Particles(), Q\+C\+P\+Legend\+::selected\+Items(), Q\+C\+P\+Legend\+::selected\+Parts(), Q\+C\+P\+Layout\+Inset\+::select\+Test(), Q\+C\+P\+Item\+Curve\+::select\+Test(), Vision\+::\+Segment\+::\+Set\+Border(), Q\+C\+P\+Layout\+Grid\+::set\+Column\+Stretch\+Factors(), Q\+C\+P\+Graph\+::set\+Data(), Q\+C\+P\+Curve\+::set\+Data(), Q\+C\+P\+Bars\+::set\+Data(), Q\+C\+P\+Financial\+::set\+Data(), Q\+C\+P\+Graph\+::set\+Data\+Both\+Error(), Q\+C\+P\+Graph\+::set\+Data\+Key\+Error(), Q\+C\+P\+Graph\+::set\+Data\+Value\+Error(), Q\+C\+P\+Legend\+::set\+Font(), Q\+C\+P\+Layout\+Element\+::set\+Margin\+Group(), Q\+C\+P\+Layout\+Grid\+::set\+Row\+Stretch\+Factors(), Q\+C\+P\+Legend\+::set\+Selected\+Font(), Q\+C\+P\+Legend\+::set\+Selected\+Parts(), Q\+C\+P\+Legend\+::set\+Selected\+Text\+Color(), Q\+C\+P\+Legend\+::set\+Text\+Color(), Q\+C\+P\+Axis\+::setup\+Tick\+Vectors(), Q\+C\+P\+Axis\+Painter\+Private\+::size(), Soil\+Math\+::\+Stats$<$ float, double, long double $>$\+::\+Stats(), Soil\+Math\+::\+G\+A\+::\+Survival\+Of\+The\+Fittest(), Q\+C\+P\+Layout\+Grid\+::take(), Q\+C\+P\+Layout\+Inset\+::take(), Soil\+Math\+\_\+\+Test\+::test\+Case\+\_\+fast\+Pow(), Soil\+Math\+\_\+\+Test\+::test\+Case\+\_\+quick\+Pow(), Soil\+Math\+\_\+\+Test\+::test\+Case\+\_\+\+Stats\+\_\+\+Big\+No\+Discrete(), Soil\+Math\+\_\+\+Test\+::test\+Case\+\_\+\+Stats\+\_\+\+Shifted(), Vision\+::\+Segment\+::\+Threshold(), Q\+C\+P\+Financial\+::time\+Series\+To\+Ohlc(), Q\+C\+P\+Layout\+::update(), Q\+C\+P\+Axis\+Rect\+::update(), Q\+C\+P\+Axis\+Rect\+::update\+Axes\+Offset(), Q\+C\+P\+Color\+Gradient\+::update\+Color\+Buffer(), Q\+C\+P\+Color\+Scale\+Axis\+Rect\+Private\+::update\+Gradient\+Image(), Q\+Custom\+Plot\+::update\+Layer\+Indices(), Q\+C\+P\+Layout\+Inset\+::update\+Layout(), Q\+C\+P\+Axis\+::visible\+Tick\+Bounds(), Hardware\+::\+G\+P\+I\+O\+::\+Wait\+For\+Edge(), Hardware\+::\+A\+D\+C\+::\+Wait\+For\+Value\+Change(), Vision\+::\+Conversion\+::\+X\+Y\+Z2\+Lab(), and Q\+C\+P\+Axis\+Rect\+::$\sim$\+Q\+C\+P\+Axis\+Rect().
+
+\hypertarget{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{}\index{Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}!j@{j}}
+\index{j@{j}!Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}}
+\subsubsection[{j}]{\setlength{\rightskip}{0pt plus 5cm}for j}\label{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= 1:2:(\hyperlink{_comparision_pictures_2_createtest_image_8m_ae0323a9039add2978bf5b49550572c7c}{c}*2)
+      \hyperlink{_comparision_pictures_2_createtest_image_8m_ae11b3deb3de3df7dc48e439074023e35}{count} = \hyperlink{_comparision_pictures_2_createtest_image_8m_ae11b3deb3de3df7dc48e439074023e35}{count} + 1
+\end{DoxyCode}
+
+
+Definition at line 19 of file Createtest\+Image.\+m.
+
+
+
+Referenced by B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E(), Vision\+::\+Enhance\+::\+Calculate\+Std\+Of\+Neighboring\+Pixels(), Vision\+::\+Enhance\+::\+Calculate\+Sum\+Of\+Neighboring\+Pixels(), Soil\+Math\+::\+F\+F\+T\+::\+Contour2\+Complex(), Soil\+Math\+::\+G\+A\+::\+Cross\+Over(), Soil\+Math\+::\+G\+A\+::\+Evolve(), Soil\+Math\+::\+G\+A\+::\+Genesis(), Soil\+Math\+::\+G\+A\+::\+Grow\+To\+Adulthood(), Vision\+::\+Conversion\+::\+Lab2\+R\+I(), Vision\+::\+Segment\+::\+Label\+Blobs(), Soil\+Math\+::\+G\+A\+::\+Mutate(), Soil\+Math\+::\+N\+N\+::\+Predict(), Vision\+::\+Segment\+::\+Remove\+Border\+Blobs(), Vision\+::\+Conversion\+::\+R\+G\+B2\+Intensity(), Soil\+Math\+\_\+\+Test\+::test\+Case\+\_\+\+Stats\+\_\+\+Big\+No\+Discrete(), and Soil\+Math\+\_\+\+Test\+::test\+Case\+\_\+\+Stats\+\_\+\+Shifted().
+
+\hypertarget{_comparision_pictures_2_createtest_image_8m_a16e4ef534cec559430e07e05eb71c719}{}\index{Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}!K@{K}}
+\index{K@{K}!Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}}
+\subsubsection[{K}]{\setlength{\rightskip}{0pt plus 5cm}K = 0}\label{_comparision_pictures_2_createtest_image_8m_a16e4ef534cec559430e07e05eb71c719}
+
+
+Definition at line 9 of file Createtest\+Image.\+m.
+
+\hypertarget{_comparision_pictures_2_createtest_image_8m_aeee9f371db14fda0de35d16324a167df}{}\index{Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}!loc@{loc}}
+\index{loc@{loc}!Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}}
+\subsubsection[{loc}]{\setlength{\rightskip}{0pt plus 5cm}loc = randi(\mbox{[}50, 2000-\/50\mbox{]},{\bf n}, 2)}\label{_comparision_pictures_2_createtest_image_8m_aeee9f371db14fda0de35d16324a167df}
+
+
+Definition at line 5 of file Createtest\+Image.\+m.
+
+\hypertarget{_comparision_pictures_2_createtest_image_8m_ae09ac0419be26215bb8cbc6bc964cf1f}{}\index{Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}!Maximum\+Count@{Maximum\+Count}}
+\index{Maximum\+Count@{Maximum\+Count}!Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}}
+\subsubsection[{Maximum\+Count}]{\setlength{\rightskip}{0pt plus 5cm}{\bf H} Maximum\+Count = 1000}\label{_comparision_pictures_2_createtest_image_8m_ae09ac0419be26215bb8cbc6bc964cf1f}
+
+
+Definition at line 47 of file Createtest\+Image.\+m.
+
+\hypertarget{_comparision_pictures_2_createtest_image_8m_aeab71244afb687f16d8c4f5ee9d6ef0e}{}\index{Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}!n@{n}}
+\index{n@{n}!Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}}
+\subsubsection[{n}]{\setlength{\rightskip}{0pt plus 5cm}n = 600}\label{_comparision_pictures_2_createtest_image_8m_aeab71244afb687f16d8c4f5ee9d6ef0e}
+
+
+Definition at line 4 of file Createtest\+Image.\+m.
+
+
+
+Referenced by Q\+C\+P\+Graph\+::add\+Data(), Q\+C\+P\+Curve\+::add\+Data(), Q\+C\+P\+Bars\+::add\+Data(), Q\+C\+P\+Financial\+::add\+Data(), Soil\+Analyzer\+::\+Particle\+::\+Analyze(), Soil\+Math\+::\+Stats$<$ float, double, long double $>$\+::\+Basic\+Calculate(), Soil\+Math\+::\+Stats$<$ float, double, long double $>$\+::\+Basic\+Calculate\+Float(), Q\+C\+P\+Color\+Gradient\+::colorize(), Soil\+Math\+::quick\+\_\+pow10(), Soil\+Math\+::\+Stats$<$ float, double, long double $>$\+::serialize(), Q\+C\+P\+Graph\+::set\+Data(), Q\+C\+P\+Curve\+::set\+Data(), Q\+C\+P\+Bars\+::set\+Data(), Q\+C\+P\+Financial\+::set\+Data(), Q\+C\+P\+Graph\+::set\+Data\+Both\+Error(), Q\+C\+P\+Graph\+::set\+Data\+Key\+Error(), Q\+C\+P\+Graph\+::set\+Data\+Value\+Error(), Q\+C\+P\+Color\+Gradient\+::set\+Level\+Count(), Q\+C\+P\+Color\+Scale\+Axis\+Rect\+Private\+::update\+Gradient\+Image(), and Soil\+Math\+::\+Stats$<$ float, double, long double $>$\+::\+Welch\+Test().
+
+\hypertarget{_comparision_pictures_2_createtest_image_8m_a1793ae4d33491c784d49ec153b1c1250}{}\index{Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}!Neighborhood@{Neighborhood}}
+\index{Neighborhood@{Neighborhood}!Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}}
+\subsubsection[{Neighborhood}]{\setlength{\rightskip}{0pt plus 5cm}{\bf hopening} Neighborhood = strel(\textquotesingle{}disk\textquotesingle{}, 6)}\label{_comparision_pictures_2_createtest_image_8m_a1793ae4d33491c784d49ec153b1c1250}
+
+
+Definition at line 43 of file Createtest\+Image.\+m.
+
+\hypertarget{_comparision_pictures_2_createtest_image_8m_a2fd0c42bc0f9d36e00931ccceebc7087}{}\index{Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}!sides@{sides}}
+\index{sides@{sides}!Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}}
+\subsubsection[{sides}]{\setlength{\rightskip}{0pt plus 5cm}sides = 0}\label{_comparision_pictures_2_createtest_image_8m_a2fd0c42bc0f9d36e00931ccceebc7087}
+
+
+Definition at line 12 of file Createtest\+Image.\+m.
+
+
+
+Referenced by Q\+C\+P\+Layout\+Element\+::set\+Auto\+Margins().
+
+\hypertarget{_comparision_pictures_2_createtest_image_8m_a9336ebf25087d91c818ee6e9ec29f8c1}{}\index{Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}!x@{x}}
+\index{x@{x}!Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}}
+\subsubsection[{x}]{\setlength{\rightskip}{0pt plus 5cm}x = 0}\label{_comparision_pictures_2_createtest_image_8m_a9336ebf25087d91c818ee6e9ec29f8c1}
+
+
+Definition at line 10 of file Createtest\+Image.\+m.
+
+
+
+Referenced by Soil\+Math\+::fast\+Pow(), Q\+C\+P\+Graph\+::find\+Index\+Above\+X(), Q\+C\+P\+Graph\+::find\+Index\+Below\+X(), Test\+Particle\+Generator\+::\+Gen\+Particle(), Q\+C\+P\+Axis\+Painter\+Private\+::get\+Tick\+Label\+Draw\+Offset(), Q\+C\+P\+Item\+Ellipse\+::select\+Test(), Q\+C\+P\+Item\+Position\+::set\+Parent\+Anchor\+Y(), Q\+C\+P\+Item\+Position\+::set\+Pixel\+Point(), Q\+C\+P\+Color\+Scale\+Axis\+Rect\+Private\+::update\+Gradient\+Image(), and Q\+C\+P\+Layout\+Inset\+::update\+Layout().
+
+\hypertarget{_comparision_pictures_2_createtest_image_8m_aca89e792ebf5d88964f1cb66ce6ddf61}{}\index{Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}!X\+Y@{X\+Y}}
+\index{X\+Y@{X\+Y}!Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}}
+\subsubsection[{X\+Y}]{\setlength{\rightskip}{0pt plus 5cm}X\+Y = 0}\label{_comparision_pictures_2_createtest_image_8m_aca89e792ebf5d88964f1cb66ce6ddf61}
+
+
+Definition at line 8 of file Createtest\+Image.\+m.
+
+\hypertarget{_comparision_pictures_2_createtest_image_8m_a2fb1c5cf58867b5bbc9a1b145a86f3a0}{}\index{Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}!y@{y}}
+\index{y@{y}!Comparision\+Pictures/\+Createtest\+Image.\+m@{Comparision\+Pictures/\+Createtest\+Image.\+m}}
+\subsubsection[{y}]{\setlength{\rightskip}{0pt plus 5cm}y = 0}\label{_comparision_pictures_2_createtest_image_8m_a2fb1c5cf58867b5bbc9a1b145a86f3a0}
+
+
+Definition at line 11 of file Createtest\+Image.\+m.
+
+
+
+Referenced by Q\+C\+P\+Graph\+::find\+Index\+Above\+Y(), Q\+C\+P\+Graph\+::find\+Index\+Below\+Y(), Test\+Particle\+Generator\+::\+Gen\+Particle(), Q\+C\+P\+Axis\+Painter\+Private\+::get\+Tick\+Label\+Draw\+Offset(), Q\+C\+P\+Item\+Ellipse\+::select\+Test(), Q\+C\+P\+Item\+Position\+::set\+Parent\+Anchor\+X(), Q\+C\+P\+Item\+Position\+::set\+Pixel\+Point(), Q\+C\+P\+Color\+Scale\+Axis\+Rect\+Private\+::update\+Gradient\+Image(), and Q\+C\+P\+Layout\+Inset\+::update\+Layout().
+

@@ -1,0 +1,116 @@
+\hypertarget{_stats_8h}{}\section{/home/peer23peer/\+Vision\+Soil\+Analyzer/src/\+Soil\+Math/\+Stats.h File Reference}
+\label{_stats_8h}\index{/home/peer23peer/\+Vision\+Soil\+Analyzer/src/\+Soil\+Math/\+Stats.\+h@{/home/peer23peer/\+Vision\+Soil\+Analyzer/src/\+Soil\+Math/\+Stats.\+h}}
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+{\ttfamily \#include $<$utility$>$}\\*
+{\ttfamily \#include $<$vector$>$}\\*
+{\ttfamily \#include $<$cstdlib$>$}\\*
+{\ttfamily \#include $<$cmath$>$}\\*
+{\ttfamily \#include $<$limits$>$}\\*
+{\ttfamily \#include $<$typeinfo$>$}\\*
+{\ttfamily \#include $<$string$>$}\\*
+{\ttfamily \#include $<$fstream$>$}\\*
+{\ttfamily \#include $<$boost/archive/binary\+\_\+iarchive.\+hpp$>$}\\*
+{\ttfamily \#include $<$boost/archive/binary\+\_\+oarchive.\+hpp$>$}\\*
+{\ttfamily \#include $<$boost/math/distributions/students\+\_\+t.\+hpp$>$}\\*
+{\ttfamily \#include \char`\"{}Math\+Exception.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Soil\+Math\+Types.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Common\+Operations.\+h\char`\"{}}\\*
+Include dependency graph for Stats.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_stats_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_stats_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_soil_math_1_1_stats}{Soil\+Math\+::\+Stats$<$ T1, T2, T3 $>$}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \hyperlink{namespace_soil_math}{Soil\+Math}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_stats_8h_a3db36e4d6027332cc759a581cfc715e2}{M\+A\+X\+\_\+\+U\+I\+N\+T8\+\_\+\+V\+A\+L\+U\+E}~256
+\item 
+\#define \hyperlink{_stats_8h_a95ab35e4385bfca01b19afc5ca5c33e9}{V\+E\+C\+T\+O\+R\+\_\+\+C\+A\+L\+C}~1
+\item 
+\#define \hyperlink{_stats_8h_ab128ff0ec787c68e1a7360e1e2cfa2c3}{S\+T\+A\+T\+S\+\_\+\+V\+E\+R\+S\+I\+O\+N}~1
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef \hyperlink{class_soil_math_1_1_stats}{Soil\+Math\+::\+Stats}$<$ float, double, long double $>$ \hyperlink{_stats_8h_a5f9676504b14f796e82c229b4dddc50b}{float\+Stat\+\_\+t}
+\item 
+typedef \hyperlink{class_soil_math_1_1_stats}{Soil\+Math\+::\+Stats}$<$ \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}, uint32\+\_\+t, uint64\+\_\+t $>$ \hyperlink{_stats_8h_a5b876b087ada3df30b8dd6309fc25191}{uchar\+Stat\+\_\+t}
+\item 
+typedef \hyperlink{class_soil_math_1_1_stats}{Soil\+Math\+::\+Stats}$<$ uint16\+\_\+t, uint32\+\_\+t, uint64\+\_\+t $>$ \hyperlink{_stats_8h_a78f1b1fd7cec859f1d5597f89b27df68}{uint16\+Stat\+\_\+t}
+\item 
+typedef \hyperlink{class_soil_math_1_1_stats}{Soil\+Math\+::\+Stats}$<$ uint32\+\_\+t, uint32\+\_\+t, uint64\+\_\+t $>$ \hyperlink{_stats_8h_a7c49bb4faf7ca4792e46c1b756c07b20}{uint32\+Stat\+\_\+t}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{_stats_8h_a3db36e4d6027332cc759a581cfc715e2}{}\index{Stats.\+h@{Stats.\+h}!M\+A\+X\+\_\+\+U\+I\+N\+T8\+\_\+\+V\+A\+L\+U\+E@{M\+A\+X\+\_\+\+U\+I\+N\+T8\+\_\+\+V\+A\+L\+U\+E}}
+\index{M\+A\+X\+\_\+\+U\+I\+N\+T8\+\_\+\+V\+A\+L\+U\+E@{M\+A\+X\+\_\+\+U\+I\+N\+T8\+\_\+\+V\+A\+L\+U\+E}!Stats.\+h@{Stats.\+h}}
+\subsubsection[{M\+A\+X\+\_\+\+U\+I\+N\+T8\+\_\+\+V\+A\+L\+U\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+A\+X\+\_\+\+U\+I\+N\+T8\+\_\+\+V\+A\+L\+U\+E~256}\label{_stats_8h_a3db36e4d6027332cc759a581cfc715e2}
+
+
+Definition at line 2 of file Stats.\+h.
+
+\hypertarget{_stats_8h_ab128ff0ec787c68e1a7360e1e2cfa2c3}{}\index{Stats.\+h@{Stats.\+h}!S\+T\+A\+T\+S\+\_\+\+V\+E\+R\+S\+I\+O\+N@{S\+T\+A\+T\+S\+\_\+\+V\+E\+R\+S\+I\+O\+N}}
+\index{S\+T\+A\+T\+S\+\_\+\+V\+E\+R\+S\+I\+O\+N@{S\+T\+A\+T\+S\+\_\+\+V\+E\+R\+S\+I\+O\+N}!Stats.\+h@{Stats.\+h}}
+\subsubsection[{S\+T\+A\+T\+S\+\_\+\+V\+E\+R\+S\+I\+O\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+T\+A\+T\+S\+\_\+\+V\+E\+R\+S\+I\+O\+N~1}\label{_stats_8h_ab128ff0ec787c68e1a7360e1e2cfa2c3}
+
+
+Definition at line 4 of file Stats.\+h.
+
+\hypertarget{_stats_8h_a95ab35e4385bfca01b19afc5ca5c33e9}{}\index{Stats.\+h@{Stats.\+h}!V\+E\+C\+T\+O\+R\+\_\+\+C\+A\+L\+C@{V\+E\+C\+T\+O\+R\+\_\+\+C\+A\+L\+C}}
+\index{V\+E\+C\+T\+O\+R\+\_\+\+C\+A\+L\+C@{V\+E\+C\+T\+O\+R\+\_\+\+C\+A\+L\+C}!Stats.\+h@{Stats.\+h}}
+\subsubsection[{V\+E\+C\+T\+O\+R\+\_\+\+C\+A\+L\+C}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+E\+C\+T\+O\+R\+\_\+\+C\+A\+L\+C~1}\label{_stats_8h_a95ab35e4385bfca01b19afc5ca5c33e9}
+
+
+Definition at line 3 of file Stats.\+h.
+
+
+
+\subsection{Typedef Documentation}
+\hypertarget{_stats_8h_a5f9676504b14f796e82c229b4dddc50b}{}\index{Stats.\+h@{Stats.\+h}!float\+Stat\+\_\+t@{float\+Stat\+\_\+t}}
+\index{float\+Stat\+\_\+t@{float\+Stat\+\_\+t}!Stats.\+h@{Stats.\+h}}
+\subsubsection[{float\+Stat\+\_\+t}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf Soil\+Math\+::\+Stats}$<$float, double, long double$>$ {\bf float\+Stat\+\_\+t}}\label{_stats_8h_a5f9676504b14f796e82c229b4dddc50b}
+
+
+Definition at line 500 of file Stats.\+h.
+
+\hypertarget{_stats_8h_a5b876b087ada3df30b8dd6309fc25191}{}\index{Stats.\+h@{Stats.\+h}!uchar\+Stat\+\_\+t@{uchar\+Stat\+\_\+t}}
+\index{uchar\+Stat\+\_\+t@{uchar\+Stat\+\_\+t}!Stats.\+h@{Stats.\+h}}
+\subsubsection[{uchar\+Stat\+\_\+t}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf Soil\+Math\+::\+Stats}$<${\bf uchar}, uint32\+\_\+t, uint64\+\_\+t$>$ {\bf uchar\+Stat\+\_\+t}}\label{_stats_8h_a5b876b087ada3df30b8dd6309fc25191}
+
+
+Definition at line 501 of file Stats.\+h.
+
+\hypertarget{_stats_8h_a78f1b1fd7cec859f1d5597f89b27df68}{}\index{Stats.\+h@{Stats.\+h}!uint16\+Stat\+\_\+t@{uint16\+Stat\+\_\+t}}
+\index{uint16\+Stat\+\_\+t@{uint16\+Stat\+\_\+t}!Stats.\+h@{Stats.\+h}}
+\subsubsection[{uint16\+Stat\+\_\+t}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf Soil\+Math\+::\+Stats}$<$uint16\+\_\+t, uint32\+\_\+t, uint64\+\_\+t$>$ {\bf uint16\+Stat\+\_\+t}}\label{_stats_8h_a78f1b1fd7cec859f1d5597f89b27df68}
+
+
+Definition at line 502 of file Stats.\+h.
+
+\hypertarget{_stats_8h_a7c49bb4faf7ca4792e46c1b756c07b20}{}\index{Stats.\+h@{Stats.\+h}!uint32\+Stat\+\_\+t@{uint32\+Stat\+\_\+t}}
+\index{uint32\+Stat\+\_\+t@{uint32\+Stat\+\_\+t}!Stats.\+h@{Stats.\+h}}
+\subsubsection[{uint32\+Stat\+\_\+t}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf Soil\+Math\+::\+Stats}$<$uint32\+\_\+t, uint32\+\_\+t, uint64\+\_\+t$>$ {\bf uint32\+Stat\+\_\+t}}\label{_stats_8h_a7c49bb4faf7ca4792e46c1b756c07b20}
+
+
+Definition at line 503 of file Stats.\+h.
+

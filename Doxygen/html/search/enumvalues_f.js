@@ -1,8 +1,10 @@
 var searchData=
 [
-  ['s_5flab',['S_LAB',['../namespace_soil_analyzer.html#a4fda1552be67ca3afa21a0e328ce20b1a00a4725e08e412784be26a1712ddc0e8',1,'SoilAnalyzer']]],
-  ['s_5fpsd',['S_PSD',['../namespace_soil_analyzer.html#a4fda1552be67ca3afa21a0e328ce20b1a05f4e00557f8e26c29892bde8a130df6',1,'SoilAnalyzer']]],
-  ['s_5fri',['S_RI',['../namespace_soil_analyzer.html#a4fda1552be67ca3afa21a0e328ce20b1a2e919e63ee899d56718e0f9143983fb8',1,'SoilAnalyzer']]],
-  ['s_5froundness',['S_ROUNDNESS',['../namespace_soil_analyzer.html#a4fda1552be67ca3afa21a0e328ce20b1ad2ec0fc01286dbe9e8a1b08c5fa20c1f',1,'SoilAnalyzer']]],
-  ['skyblue',['SkyBlue',['../class_hardware_1_1_e_c12_p.html#a8341f410cd939bf03160fe239bc782aaaac948b76451e5914627c3b482c5054c4',1,'Hardware::EC12P']]]
+  ['red',['Red',['../class_hardware_1_1_e_c12_p.html#a8341f410cd939bf03160fe239bc782aaa3b57c8754eb52c7023d81c7c45687f05',1,'Hardware::EC12P']]],
+  ['rgb',['RGB',['../class_vision_1_1_conversion.html#a0a21d4ccbb013185f1974d35ec86e388af3fab43e1e6d8ffab1bf27050866a8d5',1,'Vision::Conversion']]],
+  ['ri',['RI',['../class_vision_1_1_conversion.html#a0a21d4ccbb013185f1974d35ec86e388addf2a4063c4fe27e2675fafccdcdd9c1',1,'Vision::Conversion']]],
+  ['rising',['Rising',['../class_hardware_1_1_g_p_i_o.html#a9a7595aabdac9aec75f22e8b86342162afbb0aadc6c0311beb25d5a056c61ed46',1,'Hardware::GPIO']]],
+  ['rphint',['rpHint',['../class_q_custom_plot.html#a45d61392d13042e712a956d27762aa39adfa1f2387617168d9299f4c8ad15b332',1,'QCustomPlot']]],
+  ['rpimmediate',['rpImmediate',['../class_q_custom_plot.html#a45d61392d13042e712a956d27762aa39a0d4831572370d871f2b7cb88806bac59',1,'QCustomPlot']]],
+  ['rpqueued',['rpQueued',['../class_q_custom_plot.html#a45d61392d13042e712a956d27762aa39aaaae083a19bc668597bf0f86e000f798',1,'QCustomPlot']]]
 ];

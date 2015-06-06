@@ -1,0 +1,415 @@
+\hypertarget{class_soil_math___test}{}\section{Soil\+Math\+\_\+\+Test Class Reference}
+\label{class_soil_math___test}\index{Soil\+Math\+\_\+\+Test@{Soil\+Math\+\_\+\+Test}}
+
+
+Inheritance diagram for Soil\+Math\+\_\+\+Test\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{class_soil_math___test__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Soil\+Math\+\_\+\+Test\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{class_soil_math___test__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_soil_math___test_a3a7ea7f0348fc0297539b2b2e61ce289}{Soil\+Math\+\_\+\+Test} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_soil_math___test_a605821d942854308a2557763708c77f0}{test\+Case\+\_\+\+Stats\+\_\+\+Big\+No\+Discrete} ()
+\item 
+void \hyperlink{class_soil_math___test_a8e6337f7d3bbe1b344f8ae4e3b70ddab}{test\+Case\+\_\+\+Stats\+\_\+\+Shifted} ()
+\item 
+void \hyperlink{class_soil_math___test_a7d9aeafa693fad06c4d4a8c0409f5f58}{test\+Case\+\_\+\+Mat\+\_\+\+Stats} ()
+\item 
+void \hyperlink{class_soil_math___test_a8fc45bafb08a1480751e491645dc634a}{test\+Case\+\_\+\+Mat\+\_\+\+Stats\+\_\+\+Mask} ()
+\item 
+void \hyperlink{class_soil_math___test_ae31bfe07ba0acf742447f52f32f37519}{test\+Case\+\_\+benchmark\+\_\+roundcast} ()
+\item 
+void \hyperlink{class_soil_math___test_a409d3ab35999ef8a7b217f9e50ca0ba0}{test\+Case\+\_\+benchmark\+\_\+float2intround} ()
+\item 
+void \hyperlink{class_soil_math___test_aa6c80a8278e16cfdab3947c98c71e3be}{test\+Case\+\_\+quick\+Pow} ()
+\item 
+void \hyperlink{class_soil_math___test_ac8a7be30b5df394cdf1a784abcad4a04}{test\+Case\+\_\+fast\+Pow} ()
+\item 
+void \hyperlink{class_soil_math___test_aca4ac3b1b8790bd74559e880522559c4}{test\+Case\+\_\+normal\+Pow} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t \hyperlink{class_soil_math___test_a693af150765ec63434f414f36e27b91e}{count} = 0
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 20 of file tst\+\_\+soilmath\+\_\+test.\+cpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_soil_math___test_a3a7ea7f0348fc0297539b2b2e61ce289}{}\index{Soil\+Math\+\_\+\+Test@{Soil\+Math\+\_\+\+Test}!Soil\+Math\+\_\+\+Test@{Soil\+Math\+\_\+\+Test}}
+\index{Soil\+Math\+\_\+\+Test@{Soil\+Math\+\_\+\+Test}!Soil\+Math\+\_\+\+Test@{Soil\+Math\+\_\+\+Test}}
+\subsubsection[{Soil\+Math\+\_\+\+Test}]{\setlength{\rightskip}{0pt plus 5cm}Soil\+Math\+\_\+\+Test\+::\+Soil\+Math\+\_\+\+Test (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_soil_math___test_a3a7ea7f0348fc0297539b2b2e61ce289}
+
+
+Definition at line 45 of file tst\+\_\+soilmath\+\_\+test.\+cpp.
+
+
+\begin{DoxyCode}
+46 \{
+47 \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_soil_math___test_a409d3ab35999ef8a7b217f9e50ca0ba0}{}\index{Soil\+Math\+\_\+\+Test@{Soil\+Math\+\_\+\+Test}!test\+Case\+\_\+benchmark\+\_\+float2intround@{test\+Case\+\_\+benchmark\+\_\+float2intround}}
+\index{test\+Case\+\_\+benchmark\+\_\+float2intround@{test\+Case\+\_\+benchmark\+\_\+float2intround}!Soil\+Math\+\_\+\+Test@{Soil\+Math\+\_\+\+Test}}
+\subsubsection[{test\+Case\+\_\+benchmark\+\_\+float2intround}]{\setlength{\rightskip}{0pt plus 5cm}void Soil\+Math\+\_\+\+Test\+::test\+Case\+\_\+benchmark\+\_\+float2intround (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\label{class_soil_math___test_a409d3ab35999ef8a7b217f9e50ca0ba0}
+
+
+Definition at line 147 of file tst\+\_\+soilmath\+\_\+test.\+cpp.
+
+
+
+References Soil\+Math\+::float2int\+Round().
+
+
+\begin{DoxyCode}
+148 \{
+149     \textcolor{keywordtype}{float} testf = 254.5;
+150 
+151     QBENCHMARK
+152     \{
+153         \hyperlink{namespace_soil_math_a5b0b4bcf1fecd0f3eefc2520c624f9f4}{SoilMath::float2intRound}(testf);
+154     \}
+155 
+156 \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_soil_math___test_a409d3ab35999ef8a7b217f9e50ca0ba0_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_soil_math___test_ae31bfe07ba0acf742447f52f32f37519}{}\index{Soil\+Math\+\_\+\+Test@{Soil\+Math\+\_\+\+Test}!test\+Case\+\_\+benchmark\+\_\+roundcast@{test\+Case\+\_\+benchmark\+\_\+roundcast}}
+\index{test\+Case\+\_\+benchmark\+\_\+roundcast@{test\+Case\+\_\+benchmark\+\_\+roundcast}!Soil\+Math\+\_\+\+Test@{Soil\+Math\+\_\+\+Test}}
+\subsubsection[{test\+Case\+\_\+benchmark\+\_\+roundcast}]{\setlength{\rightskip}{0pt plus 5cm}void Soil\+Math\+\_\+\+Test\+::test\+Case\+\_\+benchmark\+\_\+roundcast (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\label{class_soil_math___test_ae31bfe07ba0acf742447f52f32f37519}
+
+
+Definition at line 137 of file tst\+\_\+soilmath\+\_\+test.\+cpp.
+
+
+\begin{DoxyCode}
+138 \{
+139     \textcolor{keywordtype}{float} testf = 254.5;
+140 
+141     QBENCHMARK
+142     \{
+143         \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(std::round(testf));
+144     \}
+145 \}
+\end{DoxyCode}
+\hypertarget{class_soil_math___test_ac8a7be30b5df394cdf1a784abcad4a04}{}\index{Soil\+Math\+\_\+\+Test@{Soil\+Math\+\_\+\+Test}!test\+Case\+\_\+fast\+Pow@{test\+Case\+\_\+fast\+Pow}}
+\index{test\+Case\+\_\+fast\+Pow@{test\+Case\+\_\+fast\+Pow}!Soil\+Math\+\_\+\+Test@{Soil\+Math\+\_\+\+Test}}
+\subsubsection[{test\+Case\+\_\+fast\+Pow}]{\setlength{\rightskip}{0pt plus 5cm}void Soil\+Math\+\_\+\+Test\+::test\+Case\+\_\+fast\+Pow (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\label{class_soil_math___test_ac8a7be30b5df394cdf1a784abcad4a04}
+
+
+Definition at line 171 of file tst\+\_\+soilmath\+\_\+test.\+cpp.
+
+
+
+References Soil\+Math\+::fast\+Pow(), i, and Q\+C\+L\+O\+S\+E\+\_\+\+C\+O\+M\+P\+A\+R\+E.
+
+
+\begin{DoxyCode}
+172 \{
+173     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 1; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < 256; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++)
+174     \{
+175        \hyperlink{tst__soilmath__test_8cpp_a8a8e087bc3a2f5ca88371122b7c8e9cc}{QCLOSE\_COMPARE}(\hyperlink{namespace_soil_math_ab3886ae2a670a717bbe01f94543922a0}{SoilMath::fastPow}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}, 2), std::pow(
+      \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}, 2), 0.1);
+176     \}
+177 
+178     QBENCHMARK
+179     \{
+180         \hyperlink{namespace_soil_math_ab3886ae2a670a717bbe01f94543922a0}{SoilMath::fastPow}(127, 2);
+181     \}
+182 \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{class_soil_math___test_ac8a7be30b5df394cdf1a784abcad4a04_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_soil_math___test_a7d9aeafa693fad06c4d4a8c0409f5f58}{}\index{Soil\+Math\+\_\+\+Test@{Soil\+Math\+\_\+\+Test}!test\+Case\+\_\+\+Mat\+\_\+\+Stats@{test\+Case\+\_\+\+Mat\+\_\+\+Stats}}
+\index{test\+Case\+\_\+\+Mat\+\_\+\+Stats@{test\+Case\+\_\+\+Mat\+\_\+\+Stats}!Soil\+Math\+\_\+\+Test@{Soil\+Math\+\_\+\+Test}}
+\subsubsection[{test\+Case\+\_\+\+Mat\+\_\+\+Stats}]{\setlength{\rightskip}{0pt plus 5cm}void Soil\+Math\+\_\+\+Test\+::test\+Case\+\_\+\+Mat\+\_\+\+Stats (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\label{class_soil_math___test_a7d9aeafa693fad06c4d4a8c0409f5f58}
+
+
+Definition at line 103 of file tst\+\_\+soilmath\+\_\+test.\+cpp.
+
+
+
+References actual\+Hist\+Bean, actual\+Max\+Bean, actual\+Mean\+Bean, actualmin\+Bean, actual\+Std\+Bean, actual\+Sum\+Bean, Soil\+Math\+::\+Stats$<$ T1, T2, T3 $>$\+::bins, Soil\+Math\+::\+Stats$<$ T1, T2, T3 $>$\+::max, Soil\+Math\+::\+Stats$<$ T1, T2, T3 $>$\+::\+Mean, Soil\+Math\+::\+Stats$<$ T1, T2, T3 $>$\+::min, Q\+C\+L\+O\+S\+E\+\_\+\+C\+O\+M\+P\+A\+R\+E, Q\+C\+O\+M\+P\+A\+R\+E\+\_\+\+R\+A\+N\+G\+E, Soil\+Math\+::\+Stats$<$ T1, T2, T3 $>$\+::\+Std, and Soil\+Math\+::\+Stats$<$ T1, T2, T3 $>$\+::\+Sum.
+
+
+\begin{DoxyCode}
+104 \{
+105     cv::Mat beans = cv::imread(\textcolor{stringliteral}{"Images/beans.ppm"},0);
+106     \hyperlink{class_soil_math_1_1_stats}{ucharStat\_t} Test((\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *)beans.data, beans.cols, beans.rows);
+107     \hyperlink{tst__soilmath__test_8cpp_a8a8e087bc3a2f5ca88371122b7c8e9cc}{QCLOSE\_COMPARE}(Test.Mean, \hyperlink{beanhisttest_8h_a0b15bf4a322248c790838daf1bf56d0d}{actualMeanBean}, 0.001);
+108     \hyperlink{tst__soilmath__test_8cpp_a72a3de1ae27adae72631c94b1eaaea56}{QCOMPARE\_RANGE}(Test.bins, \hyperlink{beanhisttest_8h_ad8af0ad07ac33ffa63f6ee826178b9ef}{actualHistBean}, 256, uint32\_t);
+109     QCOMPARE(Test.min, \hyperlink{beanhisttest_8h_a496fe0b603f38d8941903bf999fd60a3}{actualminBean});
+110     QCOMPARE(Test.max, \hyperlink{beanhisttest_8h_afbe07bade6e2a480f4b93608c0950e23}{actualMaxBean});
+111     \hyperlink{tst__soilmath__test_8cpp_a8a8e087bc3a2f5ca88371122b7c8e9cc}{QCLOSE\_COMPARE}(Test.Std, \hyperlink{beanhisttest_8h_a89ad9e5941b4406a2f25a63533a3a514}{actualStdBean}, 0.01);
+112     QCOMPARE((uint64\_t)Test.Sum, (uint64\_t)\hyperlink{beanhisttest_8h_a0d43590c8c9131f805318fa62d39652c}{actualSumBean});
+113 
+114     QBENCHMARK
+115     \{
+116         \hyperlink{class_soil_math_1_1_stats}{ucharStat\_t} TestBench((\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *)beans.data, beans.cols, beans.rows);
+117     \}
+118 \}
+\end{DoxyCode}
+\hypertarget{class_soil_math___test_a8fc45bafb08a1480751e491645dc634a}{}\index{Soil\+Math\+\_\+\+Test@{Soil\+Math\+\_\+\+Test}!test\+Case\+\_\+\+Mat\+\_\+\+Stats\+\_\+\+Mask@{test\+Case\+\_\+\+Mat\+\_\+\+Stats\+\_\+\+Mask}}
+\index{test\+Case\+\_\+\+Mat\+\_\+\+Stats\+\_\+\+Mask@{test\+Case\+\_\+\+Mat\+\_\+\+Stats\+\_\+\+Mask}!Soil\+Math\+\_\+\+Test@{Soil\+Math\+\_\+\+Test}}
+\subsubsection[{test\+Case\+\_\+\+Mat\+\_\+\+Stats\+\_\+\+Mask}]{\setlength{\rightskip}{0pt plus 5cm}void Soil\+Math\+\_\+\+Test\+::test\+Case\+\_\+\+Mat\+\_\+\+Stats\+\_\+\+Mask (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\label{class_soil_math___test_a8fc45bafb08a1480751e491645dc634a}
+
+
+Definition at line 120 of file tst\+\_\+soilmath\+\_\+test.\+cpp.
+
+
+
+References actual\+Hist\+Bean\+Mask, actual\+Max\+Bean\+Mask, actualmin\+Bean\+Mask, actual\+Std\+Bean\+Mask, actual\+Sum\+Bean\+Mask, acutal\+Mean\+Bean\+Mask, Soil\+Math\+::\+Stats$<$ T1, T2, T3 $>$\+::bins, mask, Soil\+Math\+::\+Stats$<$ T1, T2, T3 $>$\+::max, Soil\+Math\+::\+Stats$<$ T1, T2, T3 $>$\+::\+Mean, Soil\+Math\+::\+Stats$<$ T1, T2, T3 $>$\+::min, Q\+C\+L\+O\+S\+E\+\_\+\+C\+O\+M\+P\+A\+R\+E, Q\+C\+O\+M\+P\+A\+R\+E\+\_\+\+R\+A\+N\+G\+E, Soil\+Math\+::\+Stats$<$ T1, T2, T3 $>$\+::\+Std, and Soil\+Math\+::\+Stats$<$ T1, T2, T3 $>$\+::\+Sum.
+
+
+\begin{DoxyCode}
+121 \{
+122     cv::Mat beans = cv::imread(\textcolor{stringliteral}{"Images/beans.ppm"},0);
+123     cv::Mat \hyperlink{_gen_blob_8m_a5d76cc2129e79ba1941d2cc2f53b9e8e}{mask} = cv::imread(\textcolor{stringliteral}{"Images/beansmask.ppm"},0);
+124     \hyperlink{class_soil_math_1_1_stats}{ucharStat\_t} Test((\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *)beans.data, beans.cols, beans.rows, (
+      \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *)mask.data);
+125     \hyperlink{tst__soilmath__test_8cpp_a8a8e087bc3a2f5ca88371122b7c8e9cc}{QCLOSE\_COMPARE}(Test.Mean, \hyperlink{beanhisttest_8h_a8a6727317fd8384c82a8215fdf292073}{acutalMeanBeanMask}, 0.001);
+126     \hyperlink{tst__soilmath__test_8cpp_a72a3de1ae27adae72631c94b1eaaea56}{QCOMPARE\_RANGE}(Test.bins, \hyperlink{beanhisttest_8h_aa70a1287fa02b7677d9a2dd5377f9933}{actualHistBeanMask}, 256, uint32\_t);
+127     QCOMPARE(Test.min, \hyperlink{beanhisttest_8h_abd380182491950c1e704def6fab34c21}{actualminBeanMask});
+128     QCOMPARE(Test.max, \hyperlink{beanhisttest_8h_a354ff38fb7fc4f471e9c3247213b7ec7}{actualMaxBeanMask});
+129     QCOMPARE((uint64\_t)Test.Sum, (uint64\_t)\hyperlink{beanhisttest_8h_af00b8daba38848258fa94b96a45308f2}{actualSumBeanMask});
+130     \hyperlink{tst__soilmath__test_8cpp_a8a8e087bc3a2f5ca88371122b7c8e9cc}{QCLOSE\_COMPARE}(Test.Std, \hyperlink{beanhisttest_8h_a8fde1bc8cc700165840fe6f4aad2e18a}{actualStdBeanMask}, 0.01);
+131     QBENCHMARK
+132     \{
+133         \hyperlink{class_soil_math_1_1_stats}{ucharStat\_t} TestBench((\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *)beans.data, beans.cols, beans.rows, (
+      \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *)mask.data);
+134     \}
+135 \}
+\end{DoxyCode}
+\hypertarget{class_soil_math___test_aca4ac3b1b8790bd74559e880522559c4}{}\index{Soil\+Math\+\_\+\+Test@{Soil\+Math\+\_\+\+Test}!test\+Case\+\_\+normal\+Pow@{test\+Case\+\_\+normal\+Pow}}
+\index{test\+Case\+\_\+normal\+Pow@{test\+Case\+\_\+normal\+Pow}!Soil\+Math\+\_\+\+Test@{Soil\+Math\+\_\+\+Test}}
+\subsubsection[{test\+Case\+\_\+normal\+Pow}]{\setlength{\rightskip}{0pt plus 5cm}void Soil\+Math\+\_\+\+Test\+::test\+Case\+\_\+normal\+Pow (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\label{class_soil_math___test_aca4ac3b1b8790bd74559e880522559c4}
+
+
+Definition at line 184 of file tst\+\_\+soilmath\+\_\+test.\+cpp.
+
+
+\begin{DoxyCode}
+185 \{
+186     QBENCHMARK
+187     \{
+188         std::pow(127, 2);
+189     \}
+190 \}
+\end{DoxyCode}
+\hypertarget{class_soil_math___test_aa6c80a8278e16cfdab3947c98c71e3be}{}\index{Soil\+Math\+\_\+\+Test@{Soil\+Math\+\_\+\+Test}!test\+Case\+\_\+quick\+Pow@{test\+Case\+\_\+quick\+Pow}}
+\index{test\+Case\+\_\+quick\+Pow@{test\+Case\+\_\+quick\+Pow}!Soil\+Math\+\_\+\+Test@{Soil\+Math\+\_\+\+Test}}
+\subsubsection[{test\+Case\+\_\+quick\+Pow}]{\setlength{\rightskip}{0pt plus 5cm}void Soil\+Math\+\_\+\+Test\+::test\+Case\+\_\+quick\+Pow (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\label{class_soil_math___test_aa6c80a8278e16cfdab3947c98c71e3be}
+
+
+Definition at line 158 of file tst\+\_\+soilmath\+\_\+test.\+cpp.
+
+
+
+References i, Q\+C\+L\+O\+S\+E\+\_\+\+C\+O\+M\+P\+A\+R\+E, and Soil\+Math\+::quick\+\_\+pow2().
+
+
+\begin{DoxyCode}
+159 \{
+160     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = -255; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < 256; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++)
+161     \{
+162         \hyperlink{tst__soilmath__test_8cpp_a8a8e087bc3a2f5ca88371122b7c8e9cc}{QCLOSE\_COMPARE}(\hyperlink{namespace_soil_math_a69d186af0e164a5f98c42985aabec919}{SoilMath::quick\_pow2}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}), std::pow(
+      \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}, 2), 0.0001);
+163     \}
+164 
+165     QBENCHMARK
+166     \{
+167         \hyperlink{namespace_soil_math_a69d186af0e164a5f98c42985aabec919}{SoilMath::quick\_pow2}(127);
+168     \}
+169 \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_soil_math___test_aa6c80a8278e16cfdab3947c98c71e3be_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_soil_math___test_a605821d942854308a2557763708c77f0}{}\index{Soil\+Math\+\_\+\+Test@{Soil\+Math\+\_\+\+Test}!test\+Case\+\_\+\+Stats\+\_\+\+Big\+No\+Discrete@{test\+Case\+\_\+\+Stats\+\_\+\+Big\+No\+Discrete}}
+\index{test\+Case\+\_\+\+Stats\+\_\+\+Big\+No\+Discrete@{test\+Case\+\_\+\+Stats\+\_\+\+Big\+No\+Discrete}!Soil\+Math\+\_\+\+Test@{Soil\+Math\+\_\+\+Test}}
+\subsubsection[{test\+Case\+\_\+\+Stats\+\_\+\+Big\+No\+Discrete}]{\setlength{\rightskip}{0pt plus 5cm}void Soil\+Math\+\_\+\+Test\+::test\+Case\+\_\+\+Stats\+\_\+\+Big\+No\+Discrete (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\label{class_soil_math___test_a605821d942854308a2557763708c77f0}
+
+
+Definition at line 49 of file tst\+\_\+soilmath\+\_\+test.\+cpp.
+
+
+
+References Soil\+Math\+::\+Stats$<$ T1, T2, T3 $>$\+::bins, count, hist\+Test\+Result, i, j, Soil\+Math\+::\+Stats$<$ T1, T2, T3 $>$\+::max, max\+Test\+Result, Soil\+Math\+::\+Stats$<$ T1, T2, T3 $>$\+::\+Mean, mean\+Test\+Result, Soil\+Math\+::\+Stats$<$ T1, T2, T3 $>$\+::min, min\+Test\+Result, Soil\+Math\+::\+Stats$<$ T1, T2, T3 $>$\+::n, n\+Test\+Result, Q\+C\+L\+O\+S\+E\+\_\+\+C\+O\+M\+P\+A\+R\+E, Q\+C\+O\+M\+P\+A\+R\+E\+\_\+\+R\+A\+N\+G\+E, Soil\+Math\+::\+Stats$<$ T1, T2, T3 $>$\+::\+Range, range\+Test\+Result, Soil\+Math\+::\+Stats$<$ T1, T2, T3 $>$\+::\+Std, std\+Test\+Result, Soil\+Math\+::\+Stats$<$ T1, T2, T3 $>$\+::\+Sum, sum\+Test\+Result, and test\+Matrix.
+
+
+\begin{DoxyCode}
+50 \{
+51     uint16\_t *BigNoTestMatrix = \textcolor{keyword}{new} uint16\_t[40000];
+52     uint32\_t \hyperlink{class_soil_math___test_a693af150765ec63434f414f36e27b91e}{count} = 0;
+53     \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < 200; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++)
+54     \{
+55         \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} < 200; \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}++)
+56         \{
+57             BigNoTestMatrix[count++] = \hyperlink{_soil_math___test_2_test_matrix_8h_a851251dd15fea61823d550775a34026f}{testMatrix}[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}][\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}] * 10;
+58         \}
+59     \}
+60 
+61     \hyperlink{class_soil_math_1_1_stats}{uint16Stat\_t} Test(BigNoTestMatrix, 200, 200);
+62 
+63     \hyperlink{tst__soilmath__test_8cpp_a72a3de1ae27adae72631c94b1eaaea56}{QCOMPARE\_RANGE}(Test.bins, \hyperlink{_soil_math___test_2_test_matrix_8h_ae6e28ebbec7c148147e1899ee0e4101a}{histTestResult}, 255, uint32\_t);
+64     \hyperlink{tst__soilmath__test_8cpp_a8a8e087bc3a2f5ca88371122b7c8e9cc}{QCLOSE\_COMPARE}(Test.Mean, \hyperlink{_soil_math___test_2_test_matrix_8h_a7e8ab2528be88b28e47b39e08b3ea930}{meanTestResult} * 10, 0.01);
+65     QCOMPARE(Test.n, \hyperlink{_soil_math___test_2_test_matrix_8h_ab985607d993111edac08c3230d9d4870}{nTestResult});
+66     QCOMPARE((uint64\_t)Test.Sum, (uint64\_t)(\hyperlink{_soil_math___test_2_test_matrix_8h_a12502757753c2f005a778d41bddd17e5}{sumTestResult} * 10));
+67     QCOMPARE((uint32\_t)Test.min, (uint32\_t)(\hyperlink{_soil_math___test_2_test_matrix_8h_a863c475b5bbd0698e59641731dc0d02a}{minTestResult} * 10));
+68     QCOMPARE((uint32\_t)Test.max, (uint32\_t)(\hyperlink{_soil_math___test_2_test_matrix_8h_a4f6c20350e2cb35c4aa59b24e1e34602}{maxTestResult} * 10));
+69     QCOMPARE((uint32\_t)Test.Range, (uint32\_t)(\hyperlink{_soil_math___test_2_test_matrix_8h_a5e698e7f944fe3c70a61b1464caab553}{rangeTestResult} * 10));
+70     \hyperlink{tst__soilmath__test_8cpp_a8a8e087bc3a2f5ca88371122b7c8e9cc}{QCLOSE\_COMPARE}(Test.Std, \hyperlink{_soil_math___test_2_test_matrix_8h_a0fcdc329e79d2a521b6814a8b81ef0f0}{stdTestResult} * 10, 0.025);
+71 
+72     \textcolor{keyword}{delete}[] BigNoTestMatrix;
+73 \}
+\end{DoxyCode}
+\hypertarget{class_soil_math___test_a8e6337f7d3bbe1b344f8ae4e3b70ddab}{}\index{Soil\+Math\+\_\+\+Test@{Soil\+Math\+\_\+\+Test}!test\+Case\+\_\+\+Stats\+\_\+\+Shifted@{test\+Case\+\_\+\+Stats\+\_\+\+Shifted}}
+\index{test\+Case\+\_\+\+Stats\+\_\+\+Shifted@{test\+Case\+\_\+\+Stats\+\_\+\+Shifted}!Soil\+Math\+\_\+\+Test@{Soil\+Math\+\_\+\+Test}}
+\subsubsection[{test\+Case\+\_\+\+Stats\+\_\+\+Shifted}]{\setlength{\rightskip}{0pt plus 5cm}void Soil\+Math\+\_\+\+Test\+::test\+Case\+\_\+\+Stats\+\_\+\+Shifted (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\label{class_soil_math___test_a8e6337f7d3bbe1b344f8ae4e3b70ddab}
+
+
+Definition at line 75 of file tst\+\_\+soilmath\+\_\+test.\+cpp.
+
+
+
+References Soil\+Math\+::\+Stats$<$ T1, T2, T3 $>$\+::bins, count, hist\+Test\+Result, i, j, Soil\+Math\+::\+Stats$<$ T1, T2, T3 $>$\+::\+Mean, mean\+Test\+Result, Soil\+Math\+::\+Stats$<$ T1, T2, T3 $>$\+::n, n\+Test\+Result, Q\+C\+L\+O\+S\+E\+\_\+\+C\+O\+M\+P\+A\+R\+E, Q\+C\+O\+M\+P\+A\+R\+E\+\_\+\+R\+A\+N\+G\+E, Soil\+Math\+::\+Stats$<$ T1, T2, T3 $>$\+::\+Std, std\+Test\+Result, and test\+Matrix.
+
+
+\begin{DoxyCode}
+76 \{
+77     uint16\_t *BigNoTestMatrix = \textcolor{keyword}{new} uint16\_t[40000];
+78     uint32\_t \hyperlink{class_soil_math___test_a693af150765ec63434f414f36e27b91e}{count} = 0;
+79     \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < 200; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++)
+80     \{
+81         \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} < 200; \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}++)
+82         \{
+83             BigNoTestMatrix[count++] = \hyperlink{_soil_math___test_2_test_matrix_8h_a851251dd15fea61823d550775a34026f}{testMatrix}[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}][\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}] + 10;
+84         \}
+85     \}
+86 
+87     uint32\_t *histTestResultShifted = \textcolor{keyword}{new} uint32\_t[266] \{\};
+88     \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 10; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < 266; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++)
+89     \{
+90         histTestResultShifted[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = \hyperlink{_soil_math___test_2_test_matrix_8h_ae6e28ebbec7c148147e1899ee0e4101a}{histTestResult}[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} - 10];
+91     \}
+92 
+93     \hyperlink{class_soil_math_1_1_stats}{uint16Stat\_t} Test(BigNoTestMatrix, 200, 200, 266, 0, 265);
+94 
+95     \hyperlink{tst__soilmath__test_8cpp_a72a3de1ae27adae72631c94b1eaaea56}{QCOMPARE\_RANGE}(Test.bins, histTestResultShifted, 266, uint32\_t);
+96     \hyperlink{tst__soilmath__test_8cpp_a8a8e087bc3a2f5ca88371122b7c8e9cc}{QCLOSE\_COMPARE}(Test.Mean, \hyperlink{_soil_math___test_2_test_matrix_8h_a7e8ab2528be88b28e47b39e08b3ea930}{meanTestResult} + 10, 0.01);
+97     QCOMPARE(Test.n, \hyperlink{_soil_math___test_2_test_matrix_8h_ab985607d993111edac08c3230d9d4870}{nTestResult});
+98     \hyperlink{tst__soilmath__test_8cpp_a8a8e087bc3a2f5ca88371122b7c8e9cc}{QCLOSE\_COMPARE}(Test.Std, \hyperlink{_soil_math___test_2_test_matrix_8h_a0fcdc329e79d2a521b6814a8b81ef0f0}{stdTestResult}, 0.025);
+99 
+100     \textcolor{keyword}{delete}[] BigNoTestMatrix;
+101 \}
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_soil_math___test_a693af150765ec63434f414f36e27b91e}{}\index{Soil\+Math\+\_\+\+Test@{Soil\+Math\+\_\+\+Test}!count@{count}}
+\index{count@{count}!Soil\+Math\+\_\+\+Test@{Soil\+Math\+\_\+\+Test}}
+\subsubsection[{count}]{\setlength{\rightskip}{0pt plus 5cm}uint32\+\_\+t Soil\+Math\+\_\+\+Test\+::count = 0\hspace{0.3cm}{\ttfamily [private]}}\label{class_soil_math___test_a693af150765ec63434f414f36e27b91e}
+
+
+Definition at line 42 of file tst\+\_\+soilmath\+\_\+test.\+cpp.
+
+
+
+Referenced by test\+Case\+\_\+\+Stats\+\_\+\+Big\+No\+Discrete(), and test\+Case\+\_\+\+Stats\+\_\+\+Shifted().
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/peer23peer/\+Vision\+Soil\+Analyzer/src/\+Tests/\+Soil\+Math\+\_\+\+Test/\hyperlink{tst__soilmath__test_8cpp}{tst\+\_\+soilmath\+\_\+test.\+cpp}\end{DoxyCompactItemize}

@@ -1,8 +1,28 @@
 var searchData=
 [
-  ['tempimg',['TempImg',['../class_vision_1_1_image_processing.html#a5371ad8d6f7aac9d43ee5c902ade7435',1,'Vision::ImageProcessing']]],
-  ['thread',['thread',['../class_hardware_1_1_b_b_b.html#a3ad3fe886705bfc242ef58dc5329166e',1,'Hardware::BBB::thread()'],['../class_hardware_1_1_e_c12_p.html#a718a90836ff46cd71d18ce099a656533',1,'Hardware::EC12P::thread()']]],
-  ['threadrunning',['threadRunning',['../class_hardware_1_1_b_b_b.html#a0d9d8c56afb37955e0d0c6baf0f418df',1,'Hardware::BBB::threadRunning()'],['../class_hardware_1_1_e_c12_p.html#a81af8167f5a5192d8575ebad04952d57',1,'Hardware::EC12P::threadRunning()']]],
-  ['thresholdlevel',['ThresholdLevel',['../class_vision_1_1_segment.html#a44f45a7d08ba6fed38e5c31bc9108291',1,'Vision::Segment']]],
-  ['times',['times',['../class_hardware_1_1_microscope.html#a5aababdeaa4cc4da051c0e44cba20003',1,'Hardware::Microscope']]]
+  ['r',['R',['../class_hardware_1_1_e_c12_p.html#a0a4f03a37d709349994e800e44f5c781',1,'Hardware::EC12P']]],
+  ['range',['Range',['../class_soil_math_1_1_stats.html#a7154ac6c97dc2e83bdff7fef3cbdac5b',1,'SoilMath::Stats']]],
+  ['rangetestresult',['rangeTestResult',['../_soil_math___test_2_test_matrix_8h.html#a5e698e7f944fe3c70a61b1464caab553',1,'rangeTestResult():&#160;TestMatrix.h'],['../_v_s_a___u_t_2_test_matrix_8h.html#a5e698e7f944fe3c70a61b1464caab553',1,'rangeTestResult():&#160;TestMatrix.h']]],
+  ['realvalue',['RealValue',['../struct_predict__struct.html#a09932ff9ac15e4b182bf6e53232eba0f',1,'Predict_struct']]],
+  ['rect',['rect',['../_gen_blob_8m.html#aea8f6815d9a63491fc422c5572c6b3c3',1,'GenBlob.m']]],
+  ['results',['Results',['../class_soil_analyzer_1_1_sample.html#ab242ae1c2f229168fd630a9f31d7237f',1,'SoilAnalyzer::Sample']]],
+  ['reversedendings',['reversedEndings',['../class_q_c_p_axis_painter_private.html#a06d0ef3f4f1b567feb84196fc3b140da',1,'QCPAxisPainterPrivate']]],
+  ['rgb',['RGB',['../class_soil_analyzer_1_1_soil.html#a4a328e0ebe7f1f3c5a1c4c581180d19e',1,'SoilAnalyzer::Soil']]],
+  ['rgb_5fstat',['RGB_Stat',['../class_soil_analyzer_1_1_analysis_results.html#ab35eca5f2cfca4b80797cfc314d5cdf5',1,'SoilAnalyzer::AnalysisResults']]],
+  ['rgbchecker',['RGBchecker',['../struct_p_m.html#a536041e64b62e33d2136365842f32d95',1,'PM']]],
+  ['rgbencoder',['RGBEncoder',['../class_hardware_1_1_soil_cape.html#a0e68dc6f30fdcbff0462d2996e47a338',1,'Hardware::SoilCape']]],
+  ['rgbmat',['rgbmat',['../_gen_blob_8m.html#a5938237805483a188136e504cfd06491',1,'GenBlob.m']]],
+  ['ri',['RI',['../class_soil_analyzer_1_1_soil.html#abe8693b60a3d88433ffb8255b8d260c3',1,'SoilAnalyzer::Soil']]],
+  ['ri_5fstat',['RI_Stat',['../class_soil_analyzer_1_1_analysis_results.html#a3bbccb36afd62b9a35b7afa578c4919d',1,'SoilAnalyzer::AnalysisResults']]],
+  ['right',['right',['../class_q_c_p_item_rect.html#a7979c1915f61ad2609a9cc179c2e445e',1,'QCPItemRect::right()'],['../class_q_c_p_item_text.html#aef159622ce6502412e782a21ba6d84f2',1,'QCPItemText::right()'],['../class_q_c_p_item_ellipse.html#a50091a3bd8761d3ce0d95d9c727e4a82',1,'QCPItemEllipse::right()'],['../class_q_c_p_item_pixmap.html#ac9c0fd231f9e285765978a05d13f8280',1,'QCPItemPixmap::right()'],['../class_q_c_p_item_bracket.html#afa6c1360b05a50c4e0df37b3cebab6be',1,'QCPItemBracket::right()']]],
+  ['rightx',['rightX',['../struct_vision_1_1_segment_1_1_rect.html#a6de0dfefe6b8360ee4d57027d1fba928',1,'Vision::Segment::Rect']]],
+  ['righty',['rightY',['../struct_vision_1_1_segment_1_1_rect.html#ab1a913248c715c25362c478498246983',1,'Vision::Segment::Rect']]],
+  ['rmat',['rmat',['../_gen_blob_8m.html#a48854fc8bda7b6dbcb66c5a3108cde53',1,'GenBlob.m']]],
+  ['roi',['ROI',['../struct_vision_1_1_segment_1_1_blob.html#aceb3e938bb4489c08edd9324fdee7465',1,'Vision::Segment::Blob']]],
+  ['rotary',['Rotary',['../class_hardware_1_1_e_c12_p.html#abfe8d6ea8948c77d4866ca8a05dbebe9',1,'Hardware::EC12P']]],
+  ['rotatedtotalbounds',['rotatedTotalBounds',['../struct_q_c_p_axis_painter_private_1_1_tick_label_data.html#aa4d38c5ea47c9184a78ee33ae7f1012e',1,'QCPAxisPainterPrivate::TickLabelData']]],
+  ['rows',['Rows',['../class_soil_math_1_1_stats.html#a0e462c013f12f02e31e9ae03334151c3',1,'SoilMath::Stats']]],
+  ['run',['run',['../class_hardware_1_1_p_w_m.html#a04531646b41accced24d46046c4bc7de',1,'Hardware::PWM']]],
+  ['runfrombbb',['runFromBBB',['../class_v_s_a_g_u_i.html#ad093d6fc67a6ad9e27948023ddba775d',1,'VSAGUI']]],
+  ['runpath',['runpath',['../class_hardware_1_1_p_w_m.html#ac1eb93467481ee2bd3565f1be47b8a01',1,'Hardware::PWM']]]
 ];

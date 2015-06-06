@@ -1,4 +1,23 @@
 var searchData=
 [
-  ['framedelaytrigger',['FrameDelayTrigger',['../class_hardware_1_1_microscope.html#ac2da14781a22924a389fc287df3dbfda',1,'Hardware::Microscope']]]
+  ['fft_5fdescriptors',['FFT_descriptors',['../class_shape_classification.html#afecc3c98ca8a930b359ddd936aad21f3',1,'ShapeClassification']]],
+  ['fftdescriptors',['fftDescriptors',['../class_soil_math_1_1_f_f_t.html#a466b360529319d0e6e3220f446f703be',1,'SoilMath::FFT']]],
+  ['fhisttestresult',['fhistTestResult',['../_soil_math___test_2_float_test_matrix_8h.html#a4ab5b9a1e8a816854678c2bd37afbc62',1,'fhistTestResult():&#160;FloatTestMatrix.h'],['../_v_s_a___u_t_2_float_test_matrix_8h.html#a4ab5b9a1e8a816854678c2bd37afbc62',1,'fhistTestResult():&#160;FloatTestMatrix.h']]],
+  ['fillholes',['fillHoles',['../class_soil_analyzer_1_1_soil_settings.html#a2c9dbe9429742aed1da9d9683da5cc1e',1,'SoilAnalyzer::SoilSettings']]],
+  ['filtermasksize',['filterMaskSize',['../class_soil_analyzer_1_1_soil_settings.html#ad9d5071bbf6d10638df024e883c6199f',1,'SoilAnalyzer::SoilSettings']]],
+  ['fin_5fsig',['fin_sig',['../class_hardware_1_1_microscope.html#a8c23e6a55ef77443e861418a15c6e244',1,'Hardware::Microscope']]],
+  ['finished_5fsig',['finished_sig',['../class_v_s_a_g_u_i.html#a670325c6bab3874937f0a9b7e8e3b370',1,'VSAGUI']]],
+  ['fitness',['Fitness',['../struct_pop_member_struct.html#a750ec8010731e3e2a876051475c31b14',1,'PopMemberStruct']]],
+  ['fmaxtestresult',['fmaxTestResult',['../_soil_math___test_2_float_test_matrix_8h.html#a131de3a20a0cca668f0f78c5be2aece1',1,'fmaxTestResult():&#160;FloatTestMatrix.h'],['../_v_s_a___u_t_2_float_test_matrix_8h.html#a131de3a20a0cca668f0f78c5be2aece1',1,'fmaxTestResult():&#160;FloatTestMatrix.h']]],
+  ['fmeantestresult',['fmeanTestResult',['../_soil_math___test_2_float_test_matrix_8h.html#a36f652d91cf54bdaa06ee9de5d1b6251',1,'fmeanTestResult():&#160;FloatTestMatrix.h'],['../_v_s_a___u_t_2_float_test_matrix_8h.html#a36f652d91cf54bdaa06ee9de5d1b6251',1,'fmeanTestResult():&#160;FloatTestMatrix.h']]],
+  ['fmediaantestresult',['fmediaanTestResult',['../_soil_math___test_2_float_test_matrix_8h.html#a8bfb086e9f65f9280717f5d1778b42cf',1,'fmediaanTestResult():&#160;FloatTestMatrix.h'],['../_v_s_a___u_t_2_float_test_matrix_8h.html#a8bfb086e9f65f9280717f5d1778b42cf',1,'fmediaanTestResult():&#160;FloatTestMatrix.h']]],
+  ['fmintestresult',['fminTestResult',['../_soil_math___test_2_float_test_matrix_8h.html#aff9859e332223d25cc5ad7fcd3a1a903',1,'fminTestResult():&#160;FloatTestMatrix.h'],['../_v_s_a___u_t_2_float_test_matrix_8h.html#aff9859e332223d25cc5ad7fcd3a1a903',1,'fminTestResult():&#160;FloatTestMatrix.h']]],
+  ['fmodetestresult',['fmodeTestResult',['../_soil_math___test_2_float_test_matrix_8h.html#abe77cd7a5de7ad5e9026e0fb9bd4db2c',1,'fmodeTestResult():&#160;FloatTestMatrix.h'],['../_v_s_a___u_t_2_float_test_matrix_8h.html#abe77cd7a5de7ad5e9026e0fb9bd4db2c',1,'fmodeTestResult():&#160;FloatTestMatrix.h']]],
+  ['fntestresult',['fnTestResult',['../_soil_math___test_2_float_test_matrix_8h.html#a4428f1f94839a9ce1eb1bd1d92f18e02',1,'fnTestResult():&#160;FloatTestMatrix.h'],['../_v_s_a___u_t_2_float_test_matrix_8h.html#a4428f1f94839a9ce1eb1bd1d92f18e02',1,'fnTestResult():&#160;FloatTestMatrix.h']]],
+  ['framedelaytrigger',['FrameDelayTrigger',['../class_hardware_1_1_microscope.html#ac2da14781a22924a389fc287df3dbfda',1,'Hardware::Microscope']]],
+  ['frangetestresult',['frangeTestResult',['../_soil_math___test_2_float_test_matrix_8h.html#a2aa681618079b77a6646615f67b3b97f',1,'frangeTestResult():&#160;FloatTestMatrix.h'],['../_v_s_a___u_t_2_float_test_matrix_8h.html#a2aa681618079b77a6646615f67b3b97f',1,'frangeTestResult():&#160;FloatTestMatrix.h']]],
+  ['fstdtestresult',['fstdTestResult',['../_soil_math___test_2_float_test_matrix_8h.html#a3a055845e53affbdd42e831e0cc0ce05',1,'fstdTestResult():&#160;FloatTestMatrix.h'],['../_v_s_a___u_t_2_float_test_matrix_8h.html#a3a055845e53affbdd42e831e0cc0ce05',1,'fstdTestResult():&#160;FloatTestMatrix.h']]],
+  ['fsumtestresult',['fsumTestResult',['../_soil_math___test_2_float_test_matrix_8h.html#a722d3023c4ee2615e1db76861fe7acc6',1,'fsumTestResult():&#160;FloatTestMatrix.h'],['../_v_s_a___u_t_2_float_test_matrix_8h.html#a722d3023c4ee2615e1db76861fe7acc6',1,'fsumTestResult():&#160;FloatTestMatrix.h']]],
+  ['ftestmatrix',['ftestMatrix',['../_soil_math___test_2_float_test_matrix_8h.html#a33d62728ab90bb98fa77989517221786',1,'ftestMatrix():&#160;FloatTestMatrix.h'],['../_v_s_a___u_t_2_float_test_matrix_8h.html#a33d62728ab90bb98fa77989517221786',1,'ftestMatrix():&#160;FloatTestMatrix.h']]],
+  ['function',['function',['../_gen_blob_8m.html#a8b358d4b453db3004d672ef2016359c3',1,'GenBlob.m']]]
 ];

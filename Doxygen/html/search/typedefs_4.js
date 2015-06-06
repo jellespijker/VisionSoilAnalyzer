@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['uchar',['uchar',['../namespace_soil_math.html#afcaf30dbe80e326a716ee4d4cf3b3db5',1,'SoilMath']]],
-  ['ucharstat_5ft',['ucharStat_t',['../namespace_soil_math.html#a768733d6dbf4caf0dd728fa4f0d33909',1,'SoilMath']]]
+  ['icontour_5ft',['iContour_t',['../_soil_math_types_8h.html#a1ade796add2f13888dfa9e6bde0bdc37',1,'SoilMathTypes.h']]],
+  ['inputlearnvector_5ft',['InputLearnVector_t',['../_soil_math_types_8h.html#a45aa81992bf0ddf272907bd4fa0b96cf',1,'SoilMathTypes.h']]]
 ];

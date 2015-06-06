@@ -1,0 +1,27 @@
+var _soil_math_types_8h =
+[
+    [ "PopMemberStruct", "struct_pop_member_struct.html", "struct_pop_member_struct" ],
+    [ "Predict_struct", "struct_predict__struct.html", "struct_predict__struct" ],
+    [ "CROSSOVER", "_soil_math_types_8h.html#ae84e527452fcf9dfc8ef8fd0dd5cd598", null ],
+    [ "ELITISME", "_soil_math_types_8h.html#aa2f6faf3ad4bc7b9d4df4f766203a2ff", null ],
+    [ "END_ERROR", "_soil_math_types_8h.html#ae9ddcafe7b5c7bc5956b50623aa31747", null ],
+    [ "GENE_MAX", "_soil_math_types_8h.html#aa5e1eb1a998e5ed69af2076cf318df4b", null ],
+    [ "MUTATIONRATE", "_soil_math_types_8h.html#a609754629b7669df73d7e8edda337162", null ],
+    [ "Complex_t", "_soil_math_types_8h.html#a26c307796ad803485b0376c90026d8f7", null ],
+    [ "ComplexArray_t", "_soil_math_types_8h.html#a5118c9f6b02a06945c93a3893e51febe", null ],
+    [ "ComplexVect_t", "_soil_math_types_8h.html#a7567e521c2b2c408dcb62dbff72390f7", null ],
+    [ "Genome_t", "_soil_math_types_8h.html#a58f6ab36d2cb0527a73caec36d14a0e0", null ],
+    [ "GenVect_t", "_soil_math_types_8h.html#a1447b70c8b8604a379eb96cdce9d2152", null ],
+    [ "iContour_t", "_soil_math_types_8h.html#a1ade796add2f13888dfa9e6bde0bdc37", null ],
+    [ "InputLearnVector_t", "_soil_math_types_8h.html#a45aa81992bf0ddf272907bd4fa0b96cf", null ],
+    [ "MinMaxWeight_t", "_soil_math_types_8h.html#aaa919636507bcd52b19efa301aa80b9a", null ],
+    [ "NNfunctionType", "_soil_math_types_8h.html#a7791f1b8f92a964847637c5d657c1b10", null ],
+    [ "OutputLearnVector_t", "_soil_math_types_8h.html#a2d8b5a261688166d724b68addd8561e6", null ],
+    [ "PopMember_t", "_soil_math_types_8h.html#a7ded6c03705047ebe50207b22395dcd1", null ],
+    [ "Population_t", "_soil_math_types_8h.html#a8d2d4c736cf817d048a2d66dec8b12ec", null ],
+    [ "Predict_t", "_soil_math_types_8h.html#aaeba766195a440b2539f0438d3d41f95", null ],
+    [ "SplitGenome_t", "_soil_math_types_8h.html#a44bbe64bbeb237fd8918433d5f6f85b7", null ],
+    [ "uchar", "_soil_math_types_8h.html#a65f85814a8290f9797005d3b28e7e5fc", null ],
+    [ "ushort", "_soil_math_types_8h.html#ab95f123a6c9bcfee6a343170ef8c5f69", null ],
+    [ "Weight_t", "_soil_math_types_8h.html#ac56ad2b88186620fd0de0d213aa715dd", null ]
+];

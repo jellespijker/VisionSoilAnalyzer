@@ -13,7 +13,6 @@ DEFINES += SOILMATH_LIBRARY
 QMAKE_CXXFLAGS += -std=c++11
 
 SOURCES += \
-    SoilMath.cpp \
     NN.cpp \
     GA.cpp \
     FFT.cpp

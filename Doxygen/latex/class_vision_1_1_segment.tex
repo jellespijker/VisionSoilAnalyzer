@@ -1,0 +1,1765 @@
+\hypertarget{class_vision_1_1_segment}{}\section{Vision\+:\+:Segment Class Reference}
+\label{class_vision_1_1_segment}\index{Vision\+::\+Segment@{Vision\+::\+Segment}}
+
+
+{\ttfamily \#include $<$Segment.\+h$>$}
+
+
+
+Inheritance diagram for Vision\+:\+:Segment\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_vision_1_1_segment__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Vision\+:\+:Segment\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_vision_1_1_segment__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_vision_1_1_segment_1_1_blob}{Blob}
+\item 
+struct \hyperlink{struct_vision_1_1_segment_1_1_rect}{Rect}
+\end{DoxyCompactItemize}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7dd}{Type\+Of\+Objects} \{ \hyperlink{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7ddad37a09a08a5a4fdf88cb15f21e5ff28b}{Bright}, 
+\hyperlink{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7dda962a0c0955809f63df036dbd41824c54}{Dark}
+ \}
+\item 
+enum \hyperlink{class_vision_1_1_segment_a330240c08320e72270fac0aa83d5e27e}{Connected} \{ \hyperlink{class_vision_1_1_segment_a330240c08320e72270fac0aa83d5e27ea1fca5ab1c285c0edd2bdc3072cab0c01}{Four}, 
+\hyperlink{class_vision_1_1_segment_a330240c08320e72270fac0aa83d5e27eae8e2b0fa6d15448f10cddc0390284a39}{Eight}
+ \}
+\item 
+enum \hyperlink{class_vision_1_1_segment_af3a2b992526eac54bca53e34cf2db4da}{Segmentation\+Type} \{ \hyperlink{class_vision_1_1_segment_af3a2b992526eac54bca53e34cf2db4daae000cfc8d629752d6cdbba0d3d750184}{Normal}, 
+\hyperlink{class_vision_1_1_segment_af3a2b992526eac54bca53e34cf2db4daa6ddef558061ee58899a362608a5b163b}{Lab\+Neural\+Net}, 
+\hyperlink{class_vision_1_1_segment_af3a2b992526eac54bca53e34cf2db4daa0291c0ff93e52e8e78f86698b0288353}{Graph\+Min\+Cut}
+ \}
+\item 
+typedef struct \hyperlink{struct_vision_1_1_segment_1_1_rect}{Vision\+::\+Segment\+::\+Rect} \hyperlink{class_vision_1_1_segment_af9428422a82edaab8a1e5ba59acc8c16}{Rect\+\_\+t}
+\item 
+typedef std\+::vector$<$ \hyperlink{class_vision_1_1_segment_af9428422a82edaab8a1e5ba59acc8c16}{Vision\+::\+Segment\+::\+Rect\+\_\+t} $>$ \hyperlink{class_vision_1_1_segment_aaaa7a3b37f6fa4402bc1309e9bf74bec}{Rect\+List\+\_\+t}
+\item 
+typedef struct \hyperlink{struct_vision_1_1_segment_1_1_blob}{Vision\+::\+Segment\+::\+Blob} \hyperlink{class_vision_1_1_segment_add6c81230e499b159218c5232e3b76ae}{Blob\+\_\+t}
+\item 
+typedef std\+::vector$<$ \hyperlink{class_vision_1_1_segment_add6c81230e499b159218c5232e3b76ae}{Blob\+\_\+t} $>$ \hyperlink{class_vision_1_1_segment_a60e08251e2ab94239e245044c31cde51}{Blob\+List\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_vision_1_1_segment_adfe9fc7ffcc7269f961d4b1f6720d1e8}{Segment} ()
+\begin{DoxyCompactList}\small\item\em Constructor of the Segmentation class. \end{DoxyCompactList}\item 
+\hyperlink{class_vision_1_1_segment_ad3c4765e0e519f8d5fc7ac2e567608ee}{Segment} (const Mat \&src)
+\begin{DoxyCompactList}\small\item\em Constructor of the Segmentation class. \end{DoxyCompactList}\item 
+\hyperlink{class_vision_1_1_segment_a365b40b1f7886344c063c881c5cd27ca}{Segment} (const \hyperlink{class_vision_1_1_segment}{Segment} \&rhs)
+\item 
+\hyperlink{class_vision_1_1_segment_a76b45a453304f1f485e3bc2fcad58b59}{$\sim$\+Segment} ()
+\begin{DoxyCompactList}\small\item\em De-\/constructor. \end{DoxyCompactList}\item 
+\hyperlink{class_vision_1_1_segment}{Segment} \& \hyperlink{class_vision_1_1_segment_a1bfc12c503f6e07cca595ec884273e13}{operator=} (\hyperlink{class_vision_1_1_segment}{Segment} \&rhs)
+\item 
+void \hyperlink{class_vision_1_1_segment_a8b5edc7f5a69d961e47f61a2191b8745}{Load\+Original\+Img} (const Mat \&src)
+\item 
+void \hyperlink{class_vision_1_1_segment_a4272ceb22f9cb20c6f65d9536149d3c0}{Convert\+To\+B\+W} (\hyperlink{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7dd}{Type\+Of\+Objects} Typeobjects)
+\item 
+void \hyperlink{class_vision_1_1_segment_a513af00e29683fa172ce1844ffd7f98f}{Convert\+To\+B\+W} (const Mat \&src, Mat \&dst, \hyperlink{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7dd}{Type\+Of\+Objects} Typeobjects)
+\item 
+void \hyperlink{class_vision_1_1_segment_ad002015511d2d8a4d42106c14e163623}{Get\+Edges} (bool chain=false, \hyperlink{class_vision_1_1_segment_a330240c08320e72270fac0aa83d5e27e}{Connected} conn=\hyperlink{class_vision_1_1_segment_a330240c08320e72270fac0aa83d5e27eae8e2b0fa6d15448f10cddc0390284a39}{Eight})
+\item 
+void \hyperlink{class_vision_1_1_segment_a427f6a51ce04127927ae60d8b9ba8e12}{Get\+Edges} (const Mat \&src, Mat \&dst, bool chain=false, \hyperlink{class_vision_1_1_segment_a330240c08320e72270fac0aa83d5e27e}{Connected} conn=\hyperlink{class_vision_1_1_segment_a330240c08320e72270fac0aa83d5e27eae8e2b0fa6d15448f10cddc0390284a39}{Eight})
+\item 
+void \hyperlink{class_vision_1_1_segment_af4fe7471c44ded04653f8e3f74162c86}{Get\+Edges\+Eroding} (bool chain=false)
+\item 
+void \hyperlink{class_vision_1_1_segment_a6dba1b8506fe7e8054e99ea5330d4abc}{Get\+Blob\+List} (bool chain=false, \hyperlink{class_vision_1_1_segment_a330240c08320e72270fac0aa83d5e27e}{Connected} conn=\hyperlink{class_vision_1_1_segment_a330240c08320e72270fac0aa83d5e27eae8e2b0fa6d15448f10cddc0390284a39}{Eight})
+\item 
+void \hyperlink{class_vision_1_1_segment_a1d486dd3b67e1e1208c9ca04be8f6659}{Threshold} (\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} t, \hyperlink{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7dd}{Type\+Of\+Objects} Typeobjects)
+\item 
+void \hyperlink{class_vision_1_1_segment_ac10de08f4c3b0f8cb91f0469b6cf37c9}{Label\+Blobs} (bool chain=false, uint16\+\_\+t min\+Blob\+Area=25, \hyperlink{class_vision_1_1_segment_a330240c08320e72270fac0aa83d5e27e}{Connected} conn=\hyperlink{class_vision_1_1_segment_a330240c08320e72270fac0aa83d5e27eae8e2b0fa6d15448f10cddc0390284a39}{Eight})
+\item 
+void \hyperlink{class_vision_1_1_segment_a65a50340b5a1a0fb08a1b5749b7145b6}{Remove\+Border\+Blobs} (uint32\+\_\+t border=1, bool chain=false)
+\item 
+void \hyperlink{class_vision_1_1_segment_a9b1476507a27dbef21acca64efd217b8}{Fill\+Holes} (bool chain=false)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_vision_1_1_segment_a60e08251e2ab94239e245044c31cde51}{Blob\+List\+\_\+t} \hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{Blob\+List}
+\item 
+cv\+::\+Mat \hyperlink{class_vision_1_1_segment_a4daa143f6cd4a753d3bbe45c6a67d27f}{Labelled\+Img}
+\item 
+uint16\+\_\+t \hyperlink{class_vision_1_1_segment_a22d2a688de65f4d25b164f8b2a03f4a9}{Max\+Label} = 0
+\item 
+uint16\+\_\+t \hyperlink{class_vision_1_1_segment_a97077da3a144e800073bc06f5d4722d4}{no\+Of\+Filtered\+Blobs} = 0
+\item 
+\hyperlink{_stats_8h_a5b876b087ada3df30b8dd6309fc25191}{uchar\+Stat\+\_\+t} \hyperlink{class_vision_1_1_segment_ab35cfe5504de7e5ea327991468e6cf3b}{Original\+Img\+Stats}
+\item 
+uint8\+\_\+t \hyperlink{class_vision_1_1_segment_a44f45a7d08ba6fed38e5c31bc9108291}{Threshold\+Level} = 0
+\item 
+float \hyperlink{class_vision_1_1_segment_a0d2c607a6064d8d8fea925fc7bfbbc53}{sigma} = 2
+\item 
+uint32\+\_\+t \hyperlink{class_vision_1_1_segment_a1338fc42ead26c6b1dd661f4281f5674}{threshold\+Offset} = 4
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \hyperlink{class_vision_1_1_segment_a1b15d616db9cbdcd0b07bb267f60895b}{Get\+Threshold\+Level} (\hyperlink{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7dd}{Type\+Of\+Objects} Type\+Object)
+\item 
+void \hyperlink{class_vision_1_1_segment_ae3349aa3725f883943fb316c0d52752d}{Set\+Border} (\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} $\ast$P, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} set\+Value)
+\item 
+void \hyperlink{class_vision_1_1_segment_a62e29f1cc5db86f670c488966a06d644}{Flood\+Fill} (\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} $\ast$O, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} $\ast$P, uint16\+\_\+t \hyperlink{_v_s_a___u_t_2_comparision_pictures_2_createtest_image_8m_a9336ebf25087d91c818ee6e9ec29f8c1}{x}, uint16\+\_\+t \hyperlink{_v_s_a___u_t_2_comparision_pictures_2_createtest_image_8m_a2fb1c5cf58867b5bbc9a1b145a86f3a0}{y}, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} fill\+Value, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} Old\+Value)
+\item 
+void \hyperlink{class_vision_1_1_segment_a3543a9696469dc07718c8227eaeaf9c0}{make\+Consecutive} (uint16\+\_\+t Last\+Label\+Used, uint16\+\_\+t $\ast$temp\+L\+U\+T, uint16\+\_\+t $\ast$L\+U\+T\+\_\+new\+Val)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 18 of file Segment.\+h.
+
+
+
+\subsection{Member Typedef Documentation}
+\hypertarget{class_vision_1_1_segment_add6c81230e499b159218c5232e3b76ae}{}\index{Vision\+::\+Segment@{Vision\+::\+Segment}!Blob\+\_\+t@{Blob\+\_\+t}}
+\index{Blob\+\_\+t@{Blob\+\_\+t}!Vision\+::\+Segment@{Vision\+::\+Segment}}
+\subsubsection[{Blob\+\_\+t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf Vision\+::\+Segment\+::\+Blob}  {\bf Vision\+::\+Segment\+::\+Blob\+\_\+t}}\label{class_vision_1_1_segment_add6c81230e499b159218c5232e3b76ae}
+Individual blob \hypertarget{class_vision_1_1_segment_a60e08251e2ab94239e245044c31cde51}{}\index{Vision\+::\+Segment@{Vision\+::\+Segment}!Blob\+List\+\_\+t@{Blob\+List\+\_\+t}}
+\index{Blob\+List\+\_\+t@{Blob\+List\+\_\+t}!Vision\+::\+Segment@{Vision\+::\+Segment}}
+\subsubsection[{Blob\+List\+\_\+t}]{\setlength{\rightskip}{0pt plus 5cm}typedef std\+::vector$<${\bf Blob\+\_\+t}$>$ {\bf Vision\+::\+Segment\+::\+Blob\+List\+\_\+t}}\label{class_vision_1_1_segment_a60e08251e2ab94239e245044c31cde51}
+
+
+Definition at line 44 of file Segment.\+h.
+
+\hypertarget{class_vision_1_1_segment_af9428422a82edaab8a1e5ba59acc8c16}{}\index{Vision\+::\+Segment@{Vision\+::\+Segment}!Rect\+\_\+t@{Rect\+\_\+t}}
+\index{Rect\+\_\+t@{Rect\+\_\+t}!Vision\+::\+Segment@{Vision\+::\+Segment}}
+\subsubsection[{Rect\+\_\+t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf Vision\+::\+Segment\+::\+Rect}  {\bf Vision\+::\+Segment\+::\+Rect\+\_\+t}}\label{class_vision_1_1_segment_af9428422a82edaab8a1e5ba59acc8c16}
+Coordinates for the region of interest \hypertarget{class_vision_1_1_segment_aaaa7a3b37f6fa4402bc1309e9bf74bec}{}\index{Vision\+::\+Segment@{Vision\+::\+Segment}!Rect\+List\+\_\+t@{Rect\+List\+\_\+t}}
+\index{Rect\+List\+\_\+t@{Rect\+List\+\_\+t}!Vision\+::\+Segment@{Vision\+::\+Segment}}
+\subsubsection[{Rect\+List\+\_\+t}]{\setlength{\rightskip}{0pt plus 5cm}typedef std\+::vector$<${\bf Vision\+::\+Segment\+::\+Rect\+\_\+t}$>$ {\bf Vision\+::\+Segment\+::\+Rect\+List\+\_\+t}}\label{class_vision_1_1_segment_aaaa7a3b37f6fa4402bc1309e9bf74bec}
+
+
+Definition at line 32 of file Segment.\+h.
+
+
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{class_vision_1_1_segment_a330240c08320e72270fac0aa83d5e27e}{}\index{Vision\+::\+Segment@{Vision\+::\+Segment}!Connected@{Connected}}
+\index{Connected@{Connected}!Vision\+::\+Segment@{Vision\+::\+Segment}}
+\subsubsection[{Connected}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Vision\+::\+Segment\+::\+Connected}}\label{class_vision_1_1_segment_a330240c08320e72270fac0aa83d5e27e}
+Enumerator to indicate how the pixel correlate between each other in a blob \begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{Four@{Four}!Vision\+::\+Segment@{Vision\+::\+Segment}}\index{Vision\+::\+Segment@{Vision\+::\+Segment}!Four@{Four}}\item[{\em 
+\hypertarget{class_vision_1_1_segment_a330240c08320e72270fac0aa83d5e27ea1fca5ab1c285c0edd2bdc3072cab0c01}{}Four\label{class_vision_1_1_segment_a330240c08320e72270fac0aa83d5e27ea1fca5ab1c285c0edd2bdc3072cab0c01}
+}]Enum Four connected, relation between Center, North, East, South and West \index{Eight@{Eight}!Vision\+::\+Segment@{Vision\+::\+Segment}}\index{Vision\+::\+Segment@{Vision\+::\+Segment}!Eight@{Eight}}\item[{\em 
+\hypertarget{class_vision_1_1_segment_a330240c08320e72270fac0aa83d5e27eae8e2b0fa6d15448f10cddc0390284a39}{}Eight\label{class_vision_1_1_segment_a330240c08320e72270fac0aa83d5e27eae8e2b0fa6d15448f10cddc0390284a39}
+}]Enum Eight connected, relation between Center, North, North\+East, East, South\+East, South, South\+West, West and North\+West \end{description}
+\end{Desc}
+
+
+Definition at line 55 of file Segment.\+h.
+
+
+\begin{DoxyCode}
+56         \{
+57             \hyperlink{class_vision_1_1_segment_a330240c08320e72270fac0aa83d5e27ea1fca5ab1c285c0edd2bdc3072cab0c01}{Four},   
+58             \hyperlink{class_vision_1_1_segment_a330240c08320e72270fac0aa83d5e27eae8e2b0fa6d15448f10cddc0390284a39}{Eight}  
+59         \};
+\end{DoxyCode}
+\hypertarget{class_vision_1_1_segment_af3a2b992526eac54bca53e34cf2db4da}{}\index{Vision\+::\+Segment@{Vision\+::\+Segment}!Segmentation\+Type@{Segmentation\+Type}}
+\index{Segmentation\+Type@{Segmentation\+Type}!Vision\+::\+Segment@{Vision\+::\+Segment}}
+\subsubsection[{Segmentation\+Type}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Vision\+::\+Segment\+::\+Segmentation\+Type}}\label{class_vision_1_1_segment_af3a2b992526eac54bca53e34cf2db4da}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{Normal@{Normal}!Vision\+::\+Segment@{Vision\+::\+Segment}}\index{Vision\+::\+Segment@{Vision\+::\+Segment}!Normal@{Normal}}\item[{\em 
+\hypertarget{class_vision_1_1_segment_af3a2b992526eac54bca53e34cf2db4daae000cfc8d629752d6cdbba0d3d750184}{}Normal\label{class_vision_1_1_segment_af3a2b992526eac54bca53e34cf2db4daae000cfc8d629752d6cdbba0d3d750184}
+}]Segmentation looking at the intensity of an individual pixel \index{Lab\+Neural\+Net@{Lab\+Neural\+Net}!Vision\+::\+Segment@{Vision\+::\+Segment}}\index{Vision\+::\+Segment@{Vision\+::\+Segment}!Lab\+Neural\+Net@{Lab\+Neural\+Net}}\item[{\em 
+\hypertarget{class_vision_1_1_segment_af3a2b992526eac54bca53e34cf2db4daa6ddef558061ee58899a362608a5b163b}{}Lab\+Neural\+Net\label{class_vision_1_1_segment_af3a2b992526eac54bca53e34cf2db4daa6ddef558061ee58899a362608a5b163b}
+}]Segmentation looking at the chromatic a$\ast$ and b$\ast$ of the processed pixel and it\textquotesingle{}s surrounding pixels, feeding it in an Neural Net \index{Graph\+Min\+Cut@{Graph\+Min\+Cut}!Vision\+::\+Segment@{Vision\+::\+Segment}}\index{Vision\+::\+Segment@{Vision\+::\+Segment}!Graph\+Min\+Cut@{Graph\+Min\+Cut}}\item[{\em 
+\hypertarget{class_vision_1_1_segment_af3a2b992526eac54bca53e34cf2db4daa0291c0ff93e52e8e78f86698b0288353}{}Graph\+Min\+Cut\label{class_vision_1_1_segment_af3a2b992526eac54bca53e34cf2db4daa0291c0ff93e52e8e78f86698b0288353}
+}]Segmentation using a graph function and the minimum cut \end{description}
+\end{Desc}
+
+
+Definition at line 62 of file Segment.\+h.
+
+
+\begin{DoxyCode}
+63         \{
+64             \hyperlink{class_vision_1_1_segment_af3a2b992526eac54bca53e34cf2db4daae000cfc8d629752d6cdbba0d3d750184}{Normal},           
+65             \hyperlink{class_vision_1_1_segment_af3a2b992526eac54bca53e34cf2db4daa6ddef558061ee58899a362608a5b163b}{LabNeuralNet},   
+66             \hyperlink{class_vision_1_1_segment_af3a2b992526eac54bca53e34cf2db4daa0291c0ff93e52e8e78f86698b0288353}{GraphMinCut}      
+67         \};
+\end{DoxyCode}
+\hypertarget{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7dd}{}\index{Vision\+::\+Segment@{Vision\+::\+Segment}!Type\+Of\+Objects@{Type\+Of\+Objects}}
+\index{Type\+Of\+Objects@{Type\+Of\+Objects}!Vision\+::\+Segment@{Vision\+::\+Segment}}
+\subsubsection[{Type\+Of\+Objects}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Vision\+::\+Segment\+::\+Type\+Of\+Objects}}\label{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7dd}
+Enumerator to indicate what kind of object to extract \begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{Bright@{Bright}!Vision\+::\+Segment@{Vision\+::\+Segment}}\index{Vision\+::\+Segment@{Vision\+::\+Segment}!Bright@{Bright}}\item[{\em 
+\hypertarget{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7ddad37a09a08a5a4fdf88cb15f21e5ff28b}{}Bright\label{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7ddad37a09a08a5a4fdf88cb15f21e5ff28b}
+}]Enum value Bright object \index{Dark@{Dark}!Vision\+::\+Segment@{Vision\+::\+Segment}}\index{Vision\+::\+Segment@{Vision\+::\+Segment}!Dark@{Dark}}\item[{\em 
+\hypertarget{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7dda962a0c0955809f63df036dbd41824c54}{}Dark\label{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7dda962a0c0955809f63df036dbd41824c54}
+}]Enum value Dark object. \end{description}
+\end{Desc}
+
+
+Definition at line 48 of file Segment.\+h.
+
+
+\begin{DoxyCode}
+49         \{
+50             \hyperlink{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7ddad37a09a08a5a4fdf88cb15f21e5ff28b}{Bright},       
+51             \hyperlink{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7dda962a0c0955809f63df036dbd41824c54}{Dark}        
+52         \};
+\end{DoxyCode}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_vision_1_1_segment_adfe9fc7ffcc7269f961d4b1f6720d1e8}{}\index{Vision\+::\+Segment@{Vision\+::\+Segment}!Segment@{Segment}}
+\index{Segment@{Segment}!Vision\+::\+Segment@{Vision\+::\+Segment}}
+\subsubsection[{Segment}]{\setlength{\rightskip}{0pt plus 5cm}Segment\+::\+Segment (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_vision_1_1_segment_adfe9fc7ffcc7269f961d4b1f6720d1e8}
+
+
+Constructor of the Segmentation class. 
+
+
+
+Definition at line 10 of file Segment.\+cpp.
+
+
+\begin{DoxyCode}
+10 \{ \}
+\end{DoxyCode}
+\hypertarget{class_vision_1_1_segment_ad3c4765e0e519f8d5fc7ac2e567608ee}{}\index{Vision\+::\+Segment@{Vision\+::\+Segment}!Segment@{Segment}}
+\index{Segment@{Segment}!Vision\+::\+Segment@{Vision\+::\+Segment}}
+\subsubsection[{Segment}]{\setlength{\rightskip}{0pt plus 5cm}Segment\+::\+Segment (
+\begin{DoxyParamCaption}
+\item[{const Mat \&}]{src}
+\end{DoxyParamCaption}
+)}\label{class_vision_1_1_segment_ad3c4765e0e519f8d5fc7ac2e567608ee}
+
+
+Constructor of the Segmentation class. 
+
+
+
+Definition at line 13 of file Segment.\+cpp.
+
+
+
+References Labelled\+Img, Vision\+::\+Image\+Processing\+::\+Original\+Img, and Vision\+::\+Image\+Processing\+::\+Processed\+Img.
+
+
+\begin{DoxyCode}
+14     \{
+15         \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg} = src;
+16         \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.create(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.size(), CV\_8UC1);
+17         \hyperlink{class_vision_1_1_segment_a4daa143f6cd4a753d3bbe45c6a67d27f}{LabelledImg}.create(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.size(), CV\_16UC1);
+18     \}
+\end{DoxyCode}
+\hypertarget{class_vision_1_1_segment_a365b40b1f7886344c063c881c5cd27ca}{}\index{Vision\+::\+Segment@{Vision\+::\+Segment}!Segment@{Segment}}
+\index{Segment@{Segment}!Vision\+::\+Segment@{Vision\+::\+Segment}}
+\subsubsection[{Segment}]{\setlength{\rightskip}{0pt plus 5cm}Segment\+::\+Segment (
+\begin{DoxyParamCaption}
+\item[{const {\bf Segment} \&}]{rhs}
+\end{DoxyParamCaption}
+)}\label{class_vision_1_1_segment_a365b40b1f7886344c063c881c5cd27ca}
+
+
+Definition at line 20 of file Segment.\+cpp.
+
+
+
+References Blob\+List, Labelled\+Img, Max\+Label, no\+Of\+Filtered\+Blobs, Vision\+::\+Image\+Processing\+::\+Original\+Img, Original\+Img\+Stats, Vision\+::\+Image\+Processing\+::\+Processed\+Img, Vision\+::\+Image\+Processing\+::\+Temp\+Img, and Threshold\+Level.
+
+
+\begin{DoxyCode}
+21     \{
+22         this->\hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{BlobList} = rhs.BlobList;
+23         this->\hyperlink{class_vision_1_1_segment_a4daa143f6cd4a753d3bbe45c6a67d27f}{LabelledImg} = rhs.LabelledImg;
+24         this->\hyperlink{class_vision_1_1_segment_a22d2a688de65f4d25b164f8b2a03f4a9}{MaxLabel} = rhs.MaxLabel;
+25         this->\hyperlink{class_vision_1_1_segment_a97077da3a144e800073bc06f5d4722d4}{noOfFilteredBlobs} = rhs.noOfFilteredBlobs;
+26         this->\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg} = rhs.OriginalImg;
+27         this->\hyperlink{class_vision_1_1_segment_ab35cfe5504de7e5ea327991468e6cf3b}{OriginalImgStats} = rhs.OriginalImgStats;
+28         this->\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg} = rhs.ProcessedImg;
+29         this->\hyperlink{class_vision_1_1_image_processing_a5371ad8d6f7aac9d43ee5c902ade7435}{TempImg} = rhs.TempImg;
+30         this->\hyperlink{class_vision_1_1_segment_a44f45a7d08ba6fed38e5c31bc9108291}{ThresholdLevel} = rhs.ThresholdLevel;
+31     \}
+\end{DoxyCode}
+\hypertarget{class_vision_1_1_segment_a76b45a453304f1f485e3bc2fcad58b59}{}\index{Vision\+::\+Segment@{Vision\+::\+Segment}!````~Segment@{$\sim$\+Segment}}
+\index{````~Segment@{$\sim$\+Segment}!Vision\+::\+Segment@{Vision\+::\+Segment}}
+\subsubsection[{$\sim$\+Segment}]{\setlength{\rightskip}{0pt plus 5cm}Segment\+::$\sim$\+Segment (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_vision_1_1_segment_a76b45a453304f1f485e3bc2fcad58b59}
+
+
+De-\/constructor. 
+
+
+
+Definition at line 34 of file Segment.\+cpp.
+
+
+\begin{DoxyCode}
+35     \{
+36     \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_vision_1_1_segment_a4272ceb22f9cb20c6f65d9536149d3c0}{}\index{Vision\+::\+Segment@{Vision\+::\+Segment}!Convert\+To\+B\+W@{Convert\+To\+B\+W}}
+\index{Convert\+To\+B\+W@{Convert\+To\+B\+W}!Vision\+::\+Segment@{Vision\+::\+Segment}}
+\subsubsection[{Convert\+To\+B\+W}]{\setlength{\rightskip}{0pt plus 5cm}void Segment\+::\+Convert\+To\+B\+W (
+\begin{DoxyParamCaption}
+\item[{{\bf Type\+Of\+Objects}}]{Typeobjects}
+\end{DoxyParamCaption}
+)}\label{class_vision_1_1_segment_a4272ceb22f9cb20c6f65d9536149d3c0}
+Convert a greyscale image to a B\+W using an automatic Threshold 
+\begin{DoxyParams}{Parameters}
+{\em Type\+Object} & is an enumerator indicating if the bright or the dark pixels are the object and should be set to one \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 151 of file Segment.\+cpp.
+
+
+
+References Get\+Threshold\+Level(), and Threshold().
+
+
+
+Referenced by B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E(), B\+O\+O\+S\+T\+\_\+\+F\+I\+X\+T\+U\+R\+E\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E(), Convert\+To\+B\+W(), Soil\+Analyzer\+::\+Sample\+::\+Prep\+Img(), and Soil\+Analyzer\+::\+Sample\+::\+Segment\+Particles().
+
+
+\begin{DoxyCode}
+152     \{
+153         \textcolor{comment}{// Determine the threshold}
+154         \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} T = \hyperlink{class_vision_1_1_segment_a1b15d616db9cbdcd0b07bb267f60895b}{GetThresholdLevel}(Typeobjects);
+155 
+156         \textcolor{comment}{// Threshold the picture}
+157         \hyperlink{class_vision_1_1_segment_a1d486dd3b67e1e1208c9ca04be8f6659}{Threshold}(T, Typeobjects);
+158     \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_vision_1_1_segment_a4272ceb22f9cb20c6f65d9536149d3c0_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_vision_1_1_segment_a4272ceb22f9cb20c6f65d9536149d3c0_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_vision_1_1_segment_a513af00e29683fa172ce1844ffd7f98f}{}\index{Vision\+::\+Segment@{Vision\+::\+Segment}!Convert\+To\+B\+W@{Convert\+To\+B\+W}}
+\index{Convert\+To\+B\+W@{Convert\+To\+B\+W}!Vision\+::\+Segment@{Vision\+::\+Segment}}
+\subsubsection[{Convert\+To\+B\+W}]{\setlength{\rightskip}{0pt plus 5cm}void Segment\+::\+Convert\+To\+B\+W (
+\begin{DoxyParamCaption}
+\item[{const Mat \&}]{src, }
+\item[{Mat \&}]{dst, }
+\item[{{\bf Type\+Of\+Objects}}]{Typeobjects}
+\end{DoxyParamCaption}
+)}\label{class_vision_1_1_segment_a513af00e29683fa172ce1844ffd7f98f}
+Convert a greyscale image to a B\+W using an automatic Threshold 
+\begin{DoxyParams}{Parameters}
+{\em src} & is the source image as a cv\+::\+Mat \\
+\hline
+{\em dst} & destination image as a cv\+::\+Mat \\
+\hline
+{\em Type\+Object} & is an enumerator indicating if the bright or the dark pixels are the object and should be set to one \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 140 of file Segment.\+cpp.
+
+
+
+References Convert\+To\+B\+W(), Labelled\+Img, Vision\+::\+Image\+Processing\+::\+Original\+Img, and Vision\+::\+Image\+Processing\+::\+Processed\+Img.
+
+
+\begin{DoxyCode}
+141     \{
+142         \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg} = src;
+143         \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.create(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.size(), CV\_8UC1);
+144         \hyperlink{class_vision_1_1_segment_a4daa143f6cd4a753d3bbe45c6a67d27f}{LabelledImg}.create(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.size(), CV\_16UC1);
+145         \hyperlink{class_vision_1_1_segment_a4272ceb22f9cb20c6f65d9536149d3c0}{ConvertToBW}(Typeobjects);
+146         dst = \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg};
+147     \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_vision_1_1_segment_a513af00e29683fa172ce1844ffd7f98f_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_vision_1_1_segment_a9b1476507a27dbef21acca64efd217b8}{}\index{Vision\+::\+Segment@{Vision\+::\+Segment}!Fill\+Holes@{Fill\+Holes}}
+\index{Fill\+Holes@{Fill\+Holes}!Vision\+::\+Segment@{Vision\+::\+Segment}}
+\subsubsection[{Fill\+Holes}]{\setlength{\rightskip}{0pt plus 5cm}void Segment\+::\+Fill\+Holes (
+\begin{DoxyParamCaption}
+\item[{bool}]{chain = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}\label{class_vision_1_1_segment_a9b1476507a27dbef21acca64efd217b8}
+
+
+Definition at line 752 of file Segment.\+cpp.
+
+
+
+References C\+H\+A\+I\+N\+\_\+\+P\+R\+O\+C\+E\+S\+S, E\+M\+P\+T\+Y\+\_\+\+C\+H\+E\+C\+K, i, Vision\+::\+Image\+Processing\+::\+Original\+Img, Vision\+::\+Image\+Processing\+::\+Processed\+Img, and Vision\+::\+Image\+Processing\+::\+Temp\+Img.
+
+
+
+Referenced by B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E(), and Soil\+Analyzer\+::\+Sample\+::\+Prep\+Img().
+
+
+\begin{DoxyCode}
+753     \{
+754         \textcolor{comment}{// Exception handling}
+755         CV\_Assert(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.depth() != \textcolor{keyword}{sizeof}(\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}));
+756         \hyperlink{_image_processing_8h_a27c4e53b88a0f9f2c097add555131056}{EMPTY\_CHECK}(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg});
+757 
+758         \textcolor{comment}{// make Pointers}
+759         \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *O;
+760         \hyperlink{_image_processing_8h_a6e6f0183cb53c76ef458d4fd34e07bcd}{CHAIN\_PROCESS}(chain, O, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar});
+761         \textcolor{keywordflow}{if} (chain) \{ \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg} = \hyperlink{class_vision_1_1_image_processing_a5371ad8d6f7aac9d43ee5c902ade7435}{TempImg}.clone(); \}
+762         \textcolor{keywordflow}{else} \{ \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg} = \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.clone(); \}
+763 
+764         \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *P = \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.data;
+765 
+766         \textcolor{comment}{// Determine the starting point of the floodfill}
+767         \textcolor{keywordtype}{int} itt = -1;
+768         \textcolor{keywordflow}{while} (P[++itt] != 0);
+769         uint16\_t row = \textcolor{keyword}{static\_cast<}uint16\_t\textcolor{keyword}{>}(itt / \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.rows);
+770         uint16\_t col = \textcolor{keyword}{static\_cast<}uint16\_t\textcolor{keyword}{>}(itt % \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.rows);
+771 
+772         \textcolor{comment}{// Fill the outside}
+773         \textcolor{comment}{//FloodFill(O, P, row, col, 2, 0);}
+774 
+775         \textcolor{keywordflow}{try}
+776         \{
+777             cv::floodFill(\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}, cv::Point(col, row), cv::Scalar(2));
+778         \}
+779         \textcolor{keywordflow}{catch} (cv::Exception &e) \{ \}
+780 
+781         \textcolor{comment}{// Set the unreached areas to 1 and the outside to 0;}
+782         \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} LUT\_newVal[3] = \{ 1, 1, 0 \};
+783         uint32\_t nData = \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.rows * \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.cols;
+784         uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0;
+785         \textcolor{keywordflow}{while} (i <= nData)
+786         \{
+787             P[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = LUT\_newVal[P[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}]];
+788             i++;
+789         \}
+790     \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_vision_1_1_segment_a9b1476507a27dbef21acca64efd217b8_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_vision_1_1_segment_a62e29f1cc5db86f670c488966a06d644}{}\index{Vision\+::\+Segment@{Vision\+::\+Segment}!Flood\+Fill@{Flood\+Fill}}
+\index{Flood\+Fill@{Flood\+Fill}!Vision\+::\+Segment@{Vision\+::\+Segment}}
+\subsubsection[{Flood\+Fill}]{\setlength{\rightskip}{0pt plus 5cm}void Segment\+::\+Flood\+Fill (
+\begin{DoxyParamCaption}
+\item[{{\bf uchar} $\ast$}]{O, }
+\item[{{\bf uchar} $\ast$}]{P, }
+\item[{uint16\+\_\+t}]{x, }
+\item[{uint16\+\_\+t}]{y, }
+\item[{{\bf uchar}}]{fill\+Value, }
+\item[{{\bf uchar}}]{Old\+Value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_vision_1_1_segment_a62e29f1cc5db86f670c488966a06d644}
+
+
+Definition at line 792 of file Segment.\+cpp.
+
+
+
+References Vision\+::\+Image\+Processing\+::\+Original\+Img.
+
+
+\begin{DoxyCode}
+793     \{
+794         \textcolor{keywordflow}{if} (row < 0 || row > \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.rows) \{ \textcolor{keywordflow}{return}; \}
+795         \textcolor{keywordflow}{if} (col < 0 || col > \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.cols) \{ \textcolor{keywordflow}{return}; \}
+796         \textcolor{keywordflow}{if} (P[col + row * \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.rows] == OldValue)
+797         \{
+798             P[col + row * \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.rows] = fillValue;
+799             \hyperlink{class_vision_1_1_segment_a62e29f1cc5db86f670c488966a06d644}{FloodFill}(O, P, row + 1, col, fillValue, OldValue);
+800             \hyperlink{class_vision_1_1_segment_a62e29f1cc5db86f670c488966a06d644}{FloodFill}(O, P, row, col + 1, fillValue, OldValue);
+801             \hyperlink{class_vision_1_1_segment_a62e29f1cc5db86f670c488966a06d644}{FloodFill}(O, P, row - 1, col, fillValue, OldValue);
+802             \hyperlink{class_vision_1_1_segment_a62e29f1cc5db86f670c488966a06d644}{FloodFill}(O, P, row, col - 1, fillValue, OldValue);
+803         \}
+804     \}
+\end{DoxyCode}
+\hypertarget{class_vision_1_1_segment_a6dba1b8506fe7e8054e99ea5330d4abc}{}\index{Vision\+::\+Segment@{Vision\+::\+Segment}!Get\+Blob\+List@{Get\+Blob\+List}}
+\index{Get\+Blob\+List@{Get\+Blob\+List}!Vision\+::\+Segment@{Vision\+::\+Segment}}
+\subsubsection[{Get\+Blob\+List}]{\setlength{\rightskip}{0pt plus 5cm}void Segment\+::\+Get\+Blob\+List (
+\begin{DoxyParamCaption}
+\item[{bool}]{chain = {\ttfamily false}, }
+\item[{{\bf Connected}}]{conn = {\ttfamily {\bf Eight}}}
+\end{DoxyParamCaption}
+)}\label{class_vision_1_1_segment_a6dba1b8506fe7e8054e99ea5330d4abc}
+Create a Blob\+List subtracting each individual blob out of a Labelled image. If the labelled image is empty build a new one with a B\+W image. 
+\begin{DoxyParams}{Parameters}
+{\em conn} & set the pixel connection eight or four \\
+\hline
+{\em chain} & use the results from the previous operation default value = false; \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 649 of file Segment.\+cpp.
+
+
+
+References Soil\+Math\+::\+Stats$<$ T1, T2, T3 $>$\+::bins, Blob\+List, E\+M\+P\+T\+Y\+\_\+\+C\+H\+E\+C\+K, i, Label\+Blobs(), Labelled\+Img, Max\+Label, and Vision\+::\+Image\+Processing\+::\+Original\+Img.
+
+
+
+Referenced by B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E(), B\+O\+O\+S\+T\+\_\+\+F\+I\+X\+T\+U\+R\+E\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E(), and Soil\+Analyzer\+::\+Sample\+::\+Segment\+Particles().
+
+
+\begin{DoxyCode}
+650     \{
+651         \textcolor{comment}{// Exception handling}
+652         CV\_Assert(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.depth() != \textcolor{keyword}{sizeof}(\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}));
+653         \hyperlink{_image_processing_8h_a27c4e53b88a0f9f2c097add555131056}{EMPTY\_CHECK}(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg});
+654 
+655         \textcolor{comment}{// If there isn't a labelledImg make one}
+656         \textcolor{keywordflow}{if} (\hyperlink{class_vision_1_1_segment_a22d2a688de65f4d25b164f8b2a03f4a9}{MaxLabel} < 1) \{ \hyperlink{class_vision_1_1_segment_ac10de08f4c3b0f8cb91f0469b6cf37c9}{LabelBlobs}(chain, 5, conn); \}
+657 
+658         \textcolor{comment}{// Make an empty BlobList}
+659         uint32\_t nCols = \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.cols;
+660         uint32\_t nRows = \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.rows;
+661         uint32\_t nData = nCols * nRows;
+662         \hyperlink{class_vision_1_1_segment_aaaa7a3b37f6fa4402bc1309e9bf74bec}{RectList\_t} rectList;
+663 
+664         \textcolor{comment}{// Calculate Stats the statistics}
+665         \hyperlink{class_soil_math_1_1_stats}{uint16Stat\_t} LabelStats((uint16\_t *)\hyperlink{class_vision_1_1_segment_a4daa143f6cd4a753d3bbe45c6a67d27f}{LabelledImg}.data, 
+      \hyperlink{class_vision_1_1_segment_a4daa143f6cd4a753d3bbe45c6a67d27f}{LabelledImg}.cols, \hyperlink{class_vision_1_1_segment_a4daa143f6cd4a753d3bbe45c6a67d27f}{LabelledImg}.rows, \hyperlink{class_vision_1_1_segment_a22d2a688de65f4d25b164f8b2a03f4a9}{MaxLabel} + 1, 0, 
+      \hyperlink{class_vision_1_1_segment_a22d2a688de65f4d25b164f8b2a03f4a9}{MaxLabel});
+666 
+667         \hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{BlobList}.reserve(\hyperlink{class_vision_1_1_segment_a22d2a688de65f4d25b164f8b2a03f4a9}{MaxLabel} + 1);
+668         rectList.reserve(\hyperlink{class_vision_1_1_segment_a22d2a688de65f4d25b164f8b2a03f4a9}{MaxLabel} + 1);
+669 
+670         \hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{BlobList}.push\_back(\hyperlink{class_vision_1_1_segment_add6c81230e499b159218c5232e3b76ae}{Blob\_t}(0, 0));
+671         rectList.push\_back(\hyperlink{class_vision_1_1_segment_af9428422a82edaab8a1e5ba59acc8c16}{Rect\_t}(0, 0, 0, 0));
+672 
+673         \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 1; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} <= \hyperlink{class_vision_1_1_segment_a22d2a688de65f4d25b164f8b2a03f4a9}{MaxLabel}; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++)
+674         \{
+675             \hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{BlobList}.push\_back(\hyperlink{class_vision_1_1_segment_add6c81230e499b159218c5232e3b76ae}{Blob\_t}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}, LabelStats.bins[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}]));
+676             rectList.push\_back(\hyperlink{class_vision_1_1_segment_af9428422a82edaab8a1e5ba59acc8c16}{Rect\_t}(nCols, nRows, 0, 0));
+677         \}
+678 
+679         \textcolor{comment}{// make Pointers}
+680         uint16\_t *L = (uint16\_t *)\hyperlink{class_vision_1_1_segment_a4daa143f6cd4a753d3bbe45c6a67d27f}{LabelledImg}.data;
+681 
+682         uint32\_t currentX, currentY;
+683         uint16\_t leftX, leftY, rightX, rightY;
+684         \textcolor{comment}{//Loop through the labeled image and extract the Blobs}
+685         for (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < nData; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++)
+686         \{
+687             \textcolor{keywordflow}{if} (L[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] != 0)
+688             \{
+689                 \textcolor{comment}{/* Determine the current x and y value of the current blob and}
+690 \textcolor{comment}{                checks if it is min/max */}
+691                 currentX = \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} / nCols;
+692                 currentY = \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} % nCols;
+693 
+694                 \textcolor{comment}{// Min value}
+695                 \textcolor{keywordflow}{if} (currentX < rectList[L[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}]].leftX) \{ rectList[L[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}]].leftX = currentX; \}
+696                 \textcolor{keywordflow}{if} (currentY < rectList[L[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}]].leftY) \{ rectList[L[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}]].leftY = currentY; \}
+697 
+698                 \textcolor{comment}{// Max value}
+699                 \textcolor{keywordflow}{if} (currentX > rectList[L[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}]].rightX) \{ rectList[L[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}]].rightX = currentX; \}
+700                 \textcolor{keywordflow}{if} (currentY > rectList[L[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}]].rightY) \{ rectList[L[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}]].rightY = currentY; \}
+701             \}
+702         \}
+703 
+704         \textcolor{comment}{// Loop through the BlobList and finalize it}
+705         uint8\_t *LUT\_filter = \textcolor{keyword}{new} uint8\_t[\hyperlink{class_vision_1_1_segment_a22d2a688de65f4d25b164f8b2a03f4a9}{MaxLabel} + 1]\{\};
+706         \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 1; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} <= \hyperlink{class_vision_1_1_segment_a22d2a688de65f4d25b164f8b2a03f4a9}{MaxLabel}; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++)
+707         \{
+708             LUT\_filter[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = 1;
+709             \hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{BlobList}[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].ROI.y = rectList[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].leftX;
+710             \hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{BlobList}[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].ROI.x = rectList[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].leftY;
+711             \hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{BlobList}[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].ROI.height = rectList[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].rightX - rectList[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].leftX;
+712             \hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{BlobList}[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].ROI.width = rectList[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].rightY - rectList[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].leftY;
+713             \textcolor{keywordflow}{if} (\hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{BlobList}[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].ROI.height < 0)
+714             \{
+715                 \hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{BlobList}[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].ROI.height -= \hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{BlobList}[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].ROI.height;
+716                 \hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{BlobList}[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].ROI.y = rectList[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].rightX;
+717             \}
+718             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{BlobList}[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].ROI.height == 0) \{ \hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{BlobList}[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].ROI.height++; \}
+719             \textcolor{keywordflow}{if} (\hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{BlobList}[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].ROI.width < 0)
+720             \{
+721                 \hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{BlobList}[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].ROI.width -= \hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{BlobList}[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].ROI.width;
+722                 \hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{BlobList}[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].ROI.x = rectList[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].rightY;
+723             \}
+724             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{BlobList}[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].ROI.width == 0) \{ \hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{BlobList}[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].ROI.width++; \}
+725             \hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{BlobList}[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].Img = CopyMat<uint8\_t, uint16\_t>(\hyperlink{class_vision_1_1_segment_a4daa143f6cd4a753d3bbe45c6a67d27f}{LabelledImg}(
+      \hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{BlobList}[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].ROI).clone(), LUT\_filter, CV\_8UC1);
+726             LUT\_filter[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = 0;
+727         \}
+728         \textcolor{keyword}{delete}[] LUT\_filter;
+729 
+730         \textcolor{comment}{//Remove background blob}
+731         \hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{BlobList}.erase(\hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{BlobList}.begin());
+732     \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_vision_1_1_segment_a6dba1b8506fe7e8054e99ea5330d4abc_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_vision_1_1_segment_a6dba1b8506fe7e8054e99ea5330d4abc_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_vision_1_1_segment_ad002015511d2d8a4d42106c14e163623}{}\index{Vision\+::\+Segment@{Vision\+::\+Segment}!Get\+Edges@{Get\+Edges}}
+\index{Get\+Edges@{Get\+Edges}!Vision\+::\+Segment@{Vision\+::\+Segment}}
+\subsubsection[{Get\+Edges}]{\setlength{\rightskip}{0pt plus 5cm}void Segment\+::\+Get\+Edges (
+\begin{DoxyParamCaption}
+\item[{bool}]{chain = {\ttfamily false}, }
+\item[{{\bf Connected}}]{conn = {\ttfamily {\bf Eight}}}
+\end{DoxyParamCaption}
+)}\label{class_vision_1_1_segment_ad002015511d2d8a4d42106c14e163623}
+Create a B\+W image with only edges from a B\+W image 
+\begin{DoxyParams}{Parameters}
+{\em conn} & set the pixel connection eight or four \\
+\hline
+{\em chain} & use the results from the previous operation default value = false; \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 530 of file Segment.\+cpp.
+
+
+
+References C\+H\+A\+I\+N\+\_\+\+P\+R\+O\+C\+E\+S\+S, E\+M\+P\+T\+Y\+\_\+\+C\+H\+E\+C\+K, Four, i, Vision\+::\+Image\+Processing\+::\+Original\+Img, and Vision\+::\+Image\+Processing\+::\+Processed\+Img.
+
+
+
+Referenced by Get\+Edges().
+
+
+\begin{DoxyCode}
+531     \{
+532         \textcolor{comment}{// Exception handling}
+533         CV\_Assert(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.depth() != \textcolor{keyword}{sizeof}(\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}));
+534         \hyperlink{_image_processing_8h_a27c4e53b88a0f9f2c097add555131056}{EMPTY\_CHECK}(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg});
+535 
+536         \textcolor{comment}{// make Pointers}
+537         \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *O;
+538         \hyperlink{_image_processing_8h_a6e6f0183cb53c76ef458d4fd34e07bcd}{CHAIN\_PROCESS}(chain, O, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar});
+539         \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *P = \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.data;
+540 
+541         uint32\_t nCols = \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.cols;
+542         uint32\_t nRows = \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.rows;
+543         uint32\_t nData = nCols * nRows;
+544         uint32\_t pEnd = nData + 1;
+545         uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0;
+546 
+547         \textcolor{comment}{//Loop through the image and set each pixel which has a zero neighbor set it to two.}
+548         \textcolor{keywordflow}{if} (conn == \hyperlink{class_vision_1_1_segment_a330240c08320e72270fac0aa83d5e27ea1fca5ab1c285c0edd2bdc3072cab0c01}{Four})
+549         \{
+550             \textcolor{comment}{// Loop through the picture}
+551             \textcolor{keywordflow}{while} (i < pEnd)
+552             \{
+553                 \textcolor{comment}{// If current value = zero processed value = zero}
+554                 \textcolor{keywordflow}{if} (O[i] == 0) \{ P[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = 0; \}
+555                 \textcolor{comment}{// If current value = 1 check North West, South and East and act accordingly}
+556                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (O[i] == 1)
+557                 \{
+558                     \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *nPixels = \textcolor{keyword}{new} \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}[4];
+559                     nPixels[0] = O[i - 1];
+560                     nPixels[1] = O[i - nCols];
+561                     nPixels[2] = O[i + 1];
+562                     nPixels[3] = O[i + nCols];
+563 
+564                     \textcolor{comment}{// Sort the neighbors for easier checking}
+565                     SoilMath::Sort::QuickSort<uchar>(nPixels, 4);
+566                     \textcolor{keywordflow}{if} (nPixels[0] == 0) \{ P[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = 1; \}
+567                     \textcolor{keywordflow}{else} \{ P[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = 0; \}
+568                 \}
+569                 \textcolor{keywordflow}{else} \{ \textcolor{keywordflow}{throw} Exception::PixelValueOutOfBoundException(); \}
+570                 i++;
+571             \}
+572         \}
+573         \textcolor{keywordflow}{else}
+574         \{
+575             \textcolor{comment}{// Loop through the picture}
+576             \textcolor{keywordflow}{while} (i < pEnd)
+577             \{
+578                 \textcolor{comment}{// If current value = zero processed value = zero}
+579                 \textcolor{keywordflow}{if} (O[i] == 0) \{ P[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = 0; \}
+580                 \textcolor{comment}{// If current value = 1 check North West, South and East and act accordingly}
+581                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (O[i] == 1)
+582                 \{
+583                     \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *nPixels = \textcolor{keyword}{new} \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}[8];
+584                     nPixels[0] = O[i - 1];
+585                     nPixels[1] = O[i - nCols];
+586                     nPixels[2] = O[i - nCols - 1];
+587                     nPixels[3] = O[i - nCols + 1];
+588                     nPixels[4] = O[i + 1];
+589                     nPixels[5] = O[i + nCols + 1];
+590                     nPixels[6] = O[i + nCols];
+591                     nPixels[7] = O[i + nCols - 1];
+592 
+593                     \textcolor{comment}{// Sort the neighbors for easier checking}
+594                     SoilMath::Sort::QuickSort<uchar>(nPixels, 8);
+595 
+596                     \textcolor{keywordflow}{if} (nPixels[0] == 0) \{ P[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = 1; \}
+597                     \textcolor{keywordflow}{else} \{ P[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = 0; \}
+598                 \}
+599                 \textcolor{keywordflow}{else} \{ \textcolor{keywordflow}{throw} Exception::PixelValueOutOfBoundException(); \}
+600                 i++;
+601             \}
+602         \}
+603     \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_vision_1_1_segment_ad002015511d2d8a4d42106c14e163623_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_vision_1_1_segment_a427f6a51ce04127927ae60d8b9ba8e12}{}\index{Vision\+::\+Segment@{Vision\+::\+Segment}!Get\+Edges@{Get\+Edges}}
+\index{Get\+Edges@{Get\+Edges}!Vision\+::\+Segment@{Vision\+::\+Segment}}
+\subsubsection[{Get\+Edges}]{\setlength{\rightskip}{0pt plus 5cm}void Segment\+::\+Get\+Edges (
+\begin{DoxyParamCaption}
+\item[{const Mat \&}]{src, }
+\item[{Mat \&}]{dst, }
+\item[{bool}]{chain = {\ttfamily false}, }
+\item[{{\bf Connected}}]{conn = {\ttfamily {\bf Eight}}}
+\end{DoxyParamCaption}
+)}\label{class_vision_1_1_segment_a427f6a51ce04127927ae60d8b9ba8e12}
+Create a B\+W image with only edges from a B\+W image 
+\begin{DoxyParams}{Parameters}
+{\em src} & source image as a const cv\+::\+Mat \\
+\hline
+{\em dst} & destination image as a cv\+::\+Mat \\
+\hline
+{\em conn} & set the pixel connection eight or four \\
+\hline
+{\em chain} & use the results from the previous operation default value = false; \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 519 of file Segment.\+cpp.
+
+
+
+References Get\+Edges(), Vision\+::\+Image\+Processing\+::\+Original\+Img, and Vision\+::\+Image\+Processing\+::\+Processed\+Img.
+
+
+\begin{DoxyCode}
+520     \{
+521         \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg} = src;
+522         \hyperlink{class_vision_1_1_segment_ad002015511d2d8a4d42106c14e163623}{GetEdges}(chain, conn);
+523         dst = \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg};
+524     \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_vision_1_1_segment_a427f6a51ce04127927ae60d8b9ba8e12_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_vision_1_1_segment_af4fe7471c44ded04653f8e3f74162c86}{}\index{Vision\+::\+Segment@{Vision\+::\+Segment}!Get\+Edges\+Eroding@{Get\+Edges\+Eroding}}
+\index{Get\+Edges\+Eroding@{Get\+Edges\+Eroding}!Vision\+::\+Segment@{Vision\+::\+Segment}}
+\subsubsection[{Get\+Edges\+Eroding}]{\setlength{\rightskip}{0pt plus 5cm}void Segment\+::\+Get\+Edges\+Eroding (
+\begin{DoxyParamCaption}
+\item[{bool}]{chain = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}\label{class_vision_1_1_segment_af4fe7471c44ded04653f8e3f74162c86}
+
+
+Definition at line 605 of file Segment.\+cpp.
+
+
+
+References C\+H\+A\+I\+N\+\_\+\+P\+R\+O\+C\+E\+S\+S, E\+M\+P\+T\+Y\+\_\+\+C\+H\+E\+C\+K, Vision\+::\+Morphological\+Filter\+::\+Erosion(), i, mask, Vision\+::\+Image\+Processing\+::\+Original\+Img, Vision\+::\+Image\+Processing\+::\+Processed\+Img, S\+H\+O\+W\+\_\+\+D\+E\+B\+U\+G\+\_\+\+I\+M\+G, and Vision\+::\+Image\+Processing\+::\+Temp\+Img.
+
+
+
+Referenced by B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E(), Soil\+Analyzer\+::\+Sample\+::\+Prep\+Img(), and Soil\+Analyzer\+::\+Sample\+::\+Segment\+Particles().
+
+
+\begin{DoxyCode}
+606     \{
+607         \textcolor{comment}{// Exception handling}
+608         CV\_Assert(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.depth() != \textcolor{keyword}{sizeof}(\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}));
+609         \hyperlink{_image_processing_8h_a27c4e53b88a0f9f2c097add555131056}{EMPTY\_CHECK}(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg});
+610 
+611         \textcolor{comment}{// make Pointers}
+612         \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *O;
+613         \hyperlink{_image_processing_8h_a6e6f0183cb53c76ef458d4fd34e07bcd}{CHAIN\_PROCESS}(chain, O, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar});
+614         \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *P = \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.data;
+615 
+616         uint32\_t nCols = \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.cols;
+617         uint32\_t nRows = \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.rows;
+618         uint32\_t nData = nCols * nRows;
+619 
+620         \textcolor{comment}{// Setup the erosion}
+621         MorphologicalFilter eroder;
+622         \textcolor{keywordflow}{if} (chain) \{ eroder.OriginalImg = \hyperlink{class_vision_1_1_image_processing_a5371ad8d6f7aac9d43ee5c902ade7435}{TempImg}; \}
+623         \textcolor{keywordflow}{else} \{ eroder.OriginalImg = \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}; \}
+624         \textcolor{comment}{// Setup the processed image of the eroder}
+625         eroder.ProcessedImg.create(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.size(), CV\_8UC1);
+626         eroder.ProcessedImg.setTo(0);
+627         \textcolor{comment}{// Setup the mask}
+628         Mat \hyperlink{_gen_blob_8m_a5d76cc2129e79ba1941d2cc2f53b9e8e}{mask}(3, 3, CV\_8UC1, 1);
+629         \textcolor{comment}{// Erode the image}
+630         eroder.Erosion(\hyperlink{_gen_blob_8m_a5d76cc2129e79ba1941d2cc2f53b9e8e}{mask}, \textcolor{keyword}{false});
+631 
+632         \textcolor{comment}{// Loop through the image and set the not eroded pixels to zero}
+633         \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < nData; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++)
+634         \{
+635             \textcolor{keywordflow}{if} (O[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] != eroder.ProcessedImg.data[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}]) \{ P[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = 1; \}
+636             \textcolor{keywordflow}{else} \{ P[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = 0; \}
+637         \}
+638 
+639         \textcolor{comment}{//ProcessedImg = OriginalImg.clone() - eroder.ProcessedImg.clone();}
+640 
+641         \hyperlink{_vision_debug_8h_aae864fa4f990213a4184a209ff236202}{SHOW\_DEBUG\_IMG}(eroder.ProcessedImg, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}, 255, \textcolor{stringliteral}{"Eroded img Processed Image!"}, \textcolor{keyword}{
+      true});
+642         \hyperlink{_vision_debug_8h_aae864fa4f990213a4184a209ff236202}{SHOW\_DEBUG\_IMG}(\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}, 255, \textcolor{stringliteral}{"GetEdgesEroding Processed
+       Image!"}, \textcolor{keyword}{true});
+643     \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_vision_1_1_segment_af4fe7471c44ded04653f8e3f74162c86_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_vision_1_1_segment_af4fe7471c44ded04653f8e3f74162c86_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_vision_1_1_segment_a1b15d616db9cbdcd0b07bb267f60895b}{}\index{Vision\+::\+Segment@{Vision\+::\+Segment}!Get\+Threshold\+Level@{Get\+Threshold\+Level}}
+\index{Get\+Threshold\+Level@{Get\+Threshold\+Level}!Vision\+::\+Segment@{Vision\+::\+Segment}}
+\subsubsection[{Get\+Threshold\+Level}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t Segment\+::\+Get\+Threshold\+Level (
+\begin{DoxyParamCaption}
+\item[{{\bf Type\+Of\+Objects}}]{Type\+Object}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_vision_1_1_segment_a1b15d616db9cbdcd0b07bb267f60895b}
+Determine the threshold level by iteration, between two distribution, presumably back-\/ and foreground. It works towards the average of the two averages and finally sets the threshold with two time the standard deviation from the mean of the set object 
+\begin{DoxyParams}{Parameters}
+{\em Type\+Object} & is an enumerator indicating if the bright or the dark pixels are the object and should be set to one \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The threshold level as an uint8\+\_\+t 
+\end{DoxyReturn}
+
+
+Definition at line 65 of file Segment.\+cpp.
+
+
+
+References Soil\+Math\+::\+Stats$<$ T1, T2, T3 $>$\+::bins, Bright, Dark, E\+M\+P\+T\+Y\+\_\+\+C\+H\+E\+C\+K, i, Soil\+Math\+::\+Stats$<$ T1, T2, T3 $>$\+::\+Mean, Vision\+::\+Image\+Processing\+::\+Original\+Img, Original\+Img\+Stats, sigma, Soil\+Math\+::\+Stats$<$ T1, T2, T3 $>$\+::\+Std, and threshold\+Offset.
+
+
+
+Referenced by Convert\+To\+B\+W().
+
+
+\begin{DoxyCode}
+66     \{
+67         \textcolor{comment}{// Exception handling}
+68         \hyperlink{_image_processing_8h_a27c4e53b88a0f9f2c097add555131056}{EMPTY\_CHECK}(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg});
+69         CV\_Assert(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.depth() != \textcolor{keyword}{sizeof}(\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}));
+70 
+71         \textcolor{comment}{// Calculate the statistics of the whole picture}
+72         \hyperlink{class_soil_math_1_1_stats}{ucharStat\_t} \hyperlink{class_vision_1_1_segment_ab35cfe5504de7e5ea327991468e6cf3b}{OriginalImgStats}(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.data, 
+      \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.rows, \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.cols);
+73 
+74         \textcolor{comment}{// Sets the initial threshold with the mean of the total picture}
+75         pair<uchar, uchar> T;
+76         T.first = (\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar})(\hyperlink{class_vision_1_1_segment_ab35cfe5504de7e5ea327991468e6cf3b}{OriginalImgStats}.\hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{Mean} + 0.5);
+77         T.second = 0;
+78 
+79         \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} Rstd = 0;
+80         \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} Lstd = 0;
+81         \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} Rmean = 0;
+82         \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} Lmean = 0;
+83 
+84         \textcolor{comment}{// Iterate till optimum Threshold is found between back- & foreground}
+85         \textcolor{keywordflow}{while} (T.first != T.second)
+86         \{
+87             \textcolor{comment}{// Gets an array of the left part of the histogram}
+88             uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = T.first;
+89             uint32\_t *Left = \textcolor{keyword}{new} uint32\_t[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}]\{\};
+90             \textcolor{keywordflow}{while} (i-- > 0) \{ Left[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = \hyperlink{class_vision_1_1_segment_ab35cfe5504de7e5ea327991468e6cf3b}{OriginalImgStats}.\hyperlink{class_soil_math_1_1_stats_a00778b298b1ebb335eb0c4eed69e471c}{bins}[
+      \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}]; \}
+91 
+92             \textcolor{comment}{// Gets an array of the right part of the histogram}
+93             uint32\_t rightEnd = 256 - T.first;
+94             uint32\_t *Right = \textcolor{keyword}{new} uint32\_t[rightEnd]\{\};
+95             i = rightEnd;
+96             \textcolor{keywordflow}{while} (i-- > 0) \{ Right[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = \hyperlink{class_vision_1_1_segment_ab35cfe5504de7e5ea327991468e6cf3b}{OriginalImgStats}.\hyperlink{class_soil_math_1_1_stats_a00778b298b1ebb335eb0c4eed69e471c}{bins}[i + T.first]; \}
+97 
+98             \textcolor{comment}{// Calculate the statistics of both histograms,}
+99             \textcolor{comment}{// taking into account the current threshold}
+100             \hyperlink{class_soil_math_1_1_stats}{ucharStat\_t} sLeft(Left, 0, T.first);
+101             \hyperlink{class_soil_math_1_1_stats}{ucharStat\_t} sRight(Right, T.first, 256);
+102 
+103             \textcolor{comment}{// Calculate the new threshold the mean of the means}
+104             T.second = T.first;
+105             T.first = (\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar})(((sLeft.Mean + sRight.Mean) / 2) + 0.5);
+106 
+107             Rmean = (\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar})(sRight.Mean + 0.5);
+108             Lmean = (\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar})(sLeft.Mean + 0.5);
+109             Rstd = (\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar})(sRight.Std + 0.5);
+110             Lstd = (\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar})(sLeft.Std + 0.5);
+111             \textcolor{keyword}{delete}[] Left;
+112             \textcolor{keyword}{delete}[] Right;
+113         \}
+114 
+115         \textcolor{comment}{// Assumes the pixel value of the sought object lies between 2 sigma}
+116         \textcolor{keywordtype}{int} val = 0;
+117         \textcolor{keywordflow}{switch} (TypeObject)
+118         \{
+119         \textcolor{keywordflow}{case} \hyperlink{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7ddad37a09a08a5a4fdf88cb15f21e5ff28b}{Bright}:
+120             val = Rmean - (\hyperlink{class_vision_1_1_segment_a0d2c607a6064d8d8fea925fc7bfbbc53}{sigma} * Rstd) - \hyperlink{class_vision_1_1_segment_a1338fc42ead26c6b1dd661f4281f5674}{thresholdOffset};
+121             \textcolor{keywordflow}{if} (val < 0) \{ val = 0; \}
+122             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (val > 255) \{ val = 255; \}
+123             T.first = (\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar})val;
+124             \textcolor{keywordflow}{break};
+125         \textcolor{keywordflow}{case} \hyperlink{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7dda962a0c0955809f63df036dbd41824c54}{Dark}:
+126             val = Lmean + (\hyperlink{class_vision_1_1_segment_a0d2c607a6064d8d8fea925fc7bfbbc53}{sigma} * Lstd) + \hyperlink{class_vision_1_1_segment_a1338fc42ead26c6b1dd661f4281f5674}{thresholdOffset};
+127             \textcolor{keywordflow}{if} (val < 0) \{ val = 0; \}
+128             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (val > 255) \{ val = 255; \}
+129             T.first = (\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar})val;
+130             \textcolor{keywordflow}{break};
+131         \}
+132 
+133         \textcolor{keywordflow}{return} T.first;
+134     \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_vision_1_1_segment_a1b15d616db9cbdcd0b07bb267f60895b_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_vision_1_1_segment_ac10de08f4c3b0f8cb91f0469b6cf37c9}{}\index{Vision\+::\+Segment@{Vision\+::\+Segment}!Label\+Blobs@{Label\+Blobs}}
+\index{Label\+Blobs@{Label\+Blobs}!Vision\+::\+Segment@{Vision\+::\+Segment}}
+\subsubsection[{Label\+Blobs}]{\setlength{\rightskip}{0pt plus 5cm}void Segment\+::\+Label\+Blobs (
+\begin{DoxyParamCaption}
+\item[{bool}]{chain = {\ttfamily false}, }
+\item[{uint16\+\_\+t}]{min\+Blob\+Area = {\ttfamily 25}, }
+\item[{{\bf Connected}}]{conn = {\ttfamily {\bf Eight}}}
+\end{DoxyParamCaption}
+)}\label{class_vision_1_1_segment_ac10de08f4c3b0f8cb91f0469b6cf37c9}
+Label all the individual blobs in a B\+W source image. The result are written to the labelled\+Img as an ushort 
+\begin{DoxyParams}{Parameters}
+{\em conn} & set the pixel connection eight or four \\
+\hline
+{\em chain} & use the results from the previous operation default value = false; \\
+\hline
+{\em min\+Blob\+Area} & minimum area when an artifact is considered a blob \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 298 of file Segment.\+cpp.
+
+
+
+References Soil\+Math\+::\+Stats$<$ T1, T2, T3 $>$\+::bins, C\+H\+A\+I\+N\+\_\+\+P\+R\+O\+C\+E\+S\+S, count, E\+M\+P\+T\+Y\+\_\+\+C\+H\+E\+C\+K, Four, i, j, Labelled\+Img, make\+Consecutive(), Soil\+Math\+::\+Max(), Max\+Label, Soil\+Math\+::\+Min(), no\+Of\+Filtered\+Blobs, and Vision\+::\+Image\+Processing\+::\+Original\+Img.
+
+
+
+Referenced by Get\+Blob\+List().
+
+
+\begin{DoxyCode}
+299     \{
+300         \textcolor{comment}{// Exception handling}
+301         CV\_Assert(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.depth() != \textcolor{keyword}{sizeof}(\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}));
+302         \hyperlink{_image_processing_8h_a27c4e53b88a0f9f2c097add555131056}{EMPTY\_CHECK}(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg});
+303 
+304         \textcolor{comment}{// make the Pointers}
+305         \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *O;
+306         \hyperlink{_image_processing_8h_a6e6f0183cb53c76ef458d4fd34e07bcd}{CHAIN\_PROCESS}(chain, O, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar});
+307         uint16\_t *P = (uint16\_t *)\hyperlink{class_vision_1_1_segment_a4daa143f6cd4a753d3bbe45c6a67d27f}{LabelledImg}.data;
+308 
+309         uint32\_t nCols = \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.cols;
+310         uint32\_t nRows = \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.rows;
+311         uint32\_t nData = nCols * nRows;
+312         uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.cols + 2;
+313         uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} = 4;
+314         uint32\_t pEnd = nData - \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.cols;
+315 
+316         uint16\_t currentlbl = 0;
+317         vector<vector<uint16\_t>> connectedLabels;
+318         vector<uint16\_t> zeroVector;
+319         zeroVector.push\_back(currentlbl);
+320         connectedLabels.push\_back(zeroVector);
+321 
+322         \textcolor{comment}{/* Four connected strategy... Although it's more code. If I place this check here it's less machine
+       instructions compared to doing it's done}
+323 \textcolor{comment}{        inside the loop */}
+324         \textcolor{keywordflow}{if} (conn == \hyperlink{class_vision_1_1_segment_a330240c08320e72270fac0aa83d5e27ea1fca5ab1c285c0edd2bdc3072cab0c01}{Four})
+325         \{
+326             \textcolor{comment}{// Loop through the picture}
+327             \textcolor{keywordflow}{while} (\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < pEnd)
+328             \{
+329                 \textcolor{comment}{// If current value = zero processed value = zero}
+330                 \textcolor{keywordflow}{if} (O[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] == 0) \{ P[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = 0; \}
+331 
+332                 \textcolor{comment}{// If current value = 1 check North and West and act accordingly}
+333                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (O[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] == 1)
+334                 \{
+335                     uint16\_t North = P[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} - nCols];
+336                     uint16\_t West = P[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} - 1];
+337                     uint16\_t minVal;
+338                     uint16\_t maxVal;
+339 
+340                     \textcolor{comment}{// If North and West are both zero assume this is a new blob}
+341                     \textcolor{keywordflow}{if} (North == 0 && West == 0)
+342                     \{
+343                         P[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = ++currentlbl;
+344                         vector<uint16\_t> cVector;
+345                         cVector.push\_back(currentlbl);
+346                         connectedLabels.push\_back(cVector);
+347                     \}
+348 
+349                     \textcolor{comment}{//Sets the processed value to the smallest non - zero value of North and West and
+       update the connectedLabels}
+350                     \textcolor{keywordflow}{else}
+351                     \{
+352                         maxVal = \hyperlink{namespace_soil_math_a9d385c44fb7e60a278a6eee8446f7b64}{SoilMath::Max}(North, West);
+353                         \textcolor{keywordflow}{if} (North == 0 || West == 0) \{ minVal = maxVal; \}
+354                         \textcolor{keywordflow}{else} \{ minVal = \hyperlink{namespace_soil_math_ad458fb6889451aa72a4a7097d10490a5}{SoilMath::Min}(North, West); \}
+355 
+356                         P[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = minVal;
+357 
+358                         \textcolor{comment}{/* If North and West belong to two different connected components set the current
+       processed value to the lowest value and remember that the highest value should be the lowest value */}
+359                         \textcolor{keywordflow}{if} (North != 0 && West != 0 && maxVal != minVal) \{ connectedLabels[maxVal].
+      push\_back(minVal); \}
+360                     \}
+361                 \}
+362 
+363                 \textcolor{comment}{// If there is a value greater then 1 or smaller then 1 throw error}
+364                 \textcolor{keywordflow}{else} \{ \textcolor{keywordflow}{throw} Exception::PixelValueOutOfBoundException(); \}
+365                 \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++;
+366             \}
+367         \}
+368 
+369         \textcolor{comment}{// If eight connected is required}
+370         \textcolor{keywordflow}{else}
+371         \{
+372             \textcolor{comment}{// Loop through the picture}
+373             \textcolor{keywordflow}{while} (\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < pEnd)
+374             \{
+375                 \textcolor{comment}{// If current value = zero processed value = zero}
+376                 \textcolor{keywordflow}{if} (O[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] == 0) \{ P[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = 0; \}
+377 
+378                 \textcolor{comment}{// If current value = 1 check North and West and act accordingly}
+379                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (O[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] == 1)
+380                 \{
+381                     uint16\_t *nPixels = \textcolor{keyword}{new} uint16\_t[4];
+382                     nPixels[0] = P[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} - 1];
+383                     nPixels[1] = P[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} - nCols - 1];
+384                     nPixels[2] = P[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} - nCols];
+385                     nPixels[3] = P[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} - nCols + 1];
+386                     uint16\_t minVal;
+387                     uint16\_t maxVal;
+388 
+389                     \textcolor{comment}{// Sort the neighbors for easier checking}
+390                     SoilMath::Sort::QuickSort<uint16\_t>(nPixels, 4);
+391 
+392                     \textcolor{comment}{//If North NorthWest, NorthEast and West are all zero assume this is a new blob}
+393                     \textcolor{keywordflow}{if} (nPixels[3] == 0)
+394                     \{
+395                         P[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = ++currentlbl;
+396                         vector<uint16\_t> cVector;
+397                         cVector.push\_back(currentlbl);
+398                         connectedLabels.push\_back(cVector);
+399                     \}
+400 
+401                     \textcolor{comment}{// Sets the processed value to the smallest non-zero value of North and West and update
+       the connectedLabels}
+402                     \textcolor{keywordflow}{else}
+403                     \{
+404                         maxVal = nPixels[3];
+405 
+406                         \textcolor{comment}{// If there is only 1 neighbor of importance}
+407                         \textcolor{keywordflow}{if} (nPixels[2] == 0) \{ minVal = nPixels[3]; \}
+408                         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (nPixels[1] == 0) \{ minVal = nPixels[2]; \}
+409                         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (nPixels[0] == 0) \{ minVal = nPixels[2]; \}
+410                         \textcolor{keywordflow}{else} \{ minVal = nPixels[0]; \}
+411 
+412                         P[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = minVal;
+413 
+414                         \textcolor{comment}{/* If North NorthWest, NorthEast and West belong to different connected components
+       set the current processed value to the lowest value and remember that the other value should be the lowest
+       value*/}
+415                         \textcolor{keywordflow}{if} (nPixels[0] != nPixels[3])
+416                         \{
+417                             \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} = 4;
+418                             \textcolor{keywordflow}{while} (\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}-- > 0)    \{ \textcolor{keywordflow}{if} (nPixels[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}] != 0 && nPixels[
+      \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}] > minVal) \{ connectedLabels[nPixels[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}]].push\_back(minVal); \} \}
+419                         \}
+420                     \}
+421                     \textcolor{keyword}{delete}[] nPixels;
+422                 \}
+423                 \textcolor{comment}{// If there is a value greater then 1 or smaller then 1 throw error}
+424                 \textcolor{keywordflow}{else} \{ \textcolor{keywordflow}{throw} Exception::PixelValueOutOfBoundException(); \}
+425                 \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++;
+426             \}
+427         \}
+428 
+429         \textcolor{comment}{// Sort all the vectors so the min value is easily obtained}
+430         \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = currentlbl + 1;
+431         \textcolor{keywordflow}{while} (\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}-- > 0) \{ std::sort(connectedLabels[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].begin(), connectedLabels[
+      \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].end()); \}
+432 
+433         \textcolor{comment}{// Create the LUT}
+434         uint16\_t *LUT\_newVal = \textcolor{keyword}{new} uint16\_t[currentlbl + 1];
+435         \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = currentlbl + 1;
+436         \textcolor{keywordflow}{while} (\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}-- > 0)
+437         \{
+438             \textcolor{comment}{// If the value has a chain, crawl in that rabbit hole till the}
+439             \textcolor{comment}{// lowest value is found and sets the LUT}
+440             \textcolor{keywordflow}{if} (connectedLabels[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].size() > 1)
+441             \{
+442                 uint16\_t pChainVal = connectedLabels[connectedLabels[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}][0]][0];
+443                 uint16\_t cChainVal = connectedLabels[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}][0];
+444                 uint16\_t lowestVal = pChainVal;
+445 
+446                 \textcolor{comment}{// How far goes the rabbit hole}
+447                 \textcolor{keywordflow}{while} (pChainVal != cChainVal)
+448                 \{
+449                     cChainVal = connectedLabels[pChainVal][0];
+450                     pChainVal = connectedLabels[cChainVal][0];
+451                     lowestVal = pChainVal;
+452                 \}
+453 
+454                 \textcolor{comment}{// Write the lowest label to the Look-Up-Table}
+455                 LUT\_newVal[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = lowestVal;
+456             \}
+457             \textcolor{keywordflow}{else} 
+458             \{
+459                 LUT\_newVal[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}; 
+460             \}   \textcolor{comment}{// End of the line so use the same label}
+461         \}
+462 
+463         \textcolor{comment}{// Make the labels consecutive numbers}
+464         uint16\_t *tempLUT = \textcolor{keyword}{new} uint16\_t[currentlbl + 1];
+465         \hyperlink{class_vision_1_1_segment_a3543a9696469dc07718c8227eaeaf9c0}{makeConsecutive}(currentlbl, tempLUT, LUT\_newVal);
+466 
+467         \textcolor{comment}{// Get the maximum value}
+468         \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0;
+469         \textcolor{keywordflow}{while} (\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} <= currentlbl)
+470         \{
+471             \textcolor{keywordflow}{if} (LUT\_newVal[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] > \hyperlink{class_vision_1_1_segment_a22d2a688de65f4d25b164f8b2a03f4a9}{MaxLabel}) \{ \hyperlink{class_vision_1_1_segment_a22d2a688de65f4d25b164f8b2a03f4a9}{MaxLabel} = LUT\_newVal[
+      \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}]; \}
+472             \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++;
+473         \}
+474 
+475         \textcolor{comment}{// Second loop through each pixel to replace them with corresponding intermediate value}
+476         \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0;
+477         \textcolor{keywordflow}{while} (\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < pEnd)
+478         \{
+479             P[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = LUT\_newVal[P[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}]];
+480             \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++;
+481         \}
+482 
+483         \textcolor{comment}{// Create a LUT\_filter for each value that is smaller then minBlobArea}
+484         \hyperlink{class_soil_math_1_1_stats}{uint16Stat\_t} ProcImgStats(P, nCols, nRows, \hyperlink{class_vision_1_1_segment_a22d2a688de65f4d25b164f8b2a03f4a9}{MaxLabel} + 1, 0, 
+      \hyperlink{class_vision_1_1_segment_a22d2a688de65f4d25b164f8b2a03f4a9}{MaxLabel});
+485         uint16\_t *LUT\_finalVal = \textcolor{keyword}{new} uint16\_t[\hyperlink{class_vision_1_1_segment_a22d2a688de65f4d25b164f8b2a03f4a9}{MaxLabel} + 1]\{\};
+486         uint16\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_ae11b3deb3de3df7dc48e439074023e35}{count} = 0;
+487         \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0;
+488         \textcolor{keywordflow}{while} (\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} <= \hyperlink{class_vision_1_1_segment_a22d2a688de65f4d25b164f8b2a03f4a9}{MaxLabel})
+489         \{
+490             \textcolor{keywordflow}{if} (ProcImgStats.bins[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] > minBlobArea) 
+491             \{
+492                 LUT\_finalVal[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = count++; 
+493             \}
+494             \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++;
+495         \}
+496 
+497         \hyperlink{class_vision_1_1_segment_a97077da3a144e800073bc06f5d4722d4}{noOfFilteredBlobs} = \hyperlink{class_vision_1_1_segment_a22d2a688de65f4d25b164f8b2a03f4a9}{MaxLabel} - count - 1;
+498         \hyperlink{class_vision_1_1_segment_a22d2a688de65f4d25b164f8b2a03f4a9}{MaxLabel} = count - 1;
+499 
+500         \textcolor{comment}{// third loop through each pixel to replace them with corresponding final value}
+501         \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0;
+502         \textcolor{keywordflow}{while} (\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < pEnd)
+503         \{
+504             P[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = LUT\_finalVal[P[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}]];
+505             \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++;
+506         \}
+507 
+508         \textcolor{keyword}{delete}[] tempLUT;
+509         \textcolor{keyword}{delete}[] LUT\_newVal;
+510         \textcolor{keyword}{delete}[] LUT\_finalVal;
+511     \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_vision_1_1_segment_ac10de08f4c3b0f8cb91f0469b6cf37c9_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_vision_1_1_segment_ac10de08f4c3b0f8cb91f0469b6cf37c9_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_vision_1_1_segment_a8b5edc7f5a69d961e47f61a2191b8745}{}\index{Vision\+::\+Segment@{Vision\+::\+Segment}!Load\+Original\+Img@{Load\+Original\+Img}}
+\index{Load\+Original\+Img@{Load\+Original\+Img}!Vision\+::\+Segment@{Vision\+::\+Segment}}
+\subsubsection[{Load\+Original\+Img}]{\setlength{\rightskip}{0pt plus 5cm}void Segment\+::\+Load\+Original\+Img (
+\begin{DoxyParamCaption}
+\item[{const Mat \&}]{src}
+\end{DoxyParamCaption}
+)}\label{class_vision_1_1_segment_a8b5edc7f5a69d961e47f61a2191b8745}
+
+
+Definition at line 55 of file Segment.\+cpp.
+
+
+
+References Labelled\+Img, Vision\+::\+Image\+Processing\+::\+Original\+Img, and Vision\+::\+Image\+Processing\+::\+Processed\+Img.
+
+
+
+Referenced by Soil\+Analyzer\+::\+Sample\+::\+Segment\+Particles().
+
+
+\begin{DoxyCode}
+56     \{
+57         \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg} = src;
+58         \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.create(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.size(), CV\_8UC1);
+59         \hyperlink{class_vision_1_1_segment_a4daa143f6cd4a753d3bbe45c6a67d27f}{LabelledImg}.create(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.size(), CV\_16UC1);
+60     \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_vision_1_1_segment_a8b5edc7f5a69d961e47f61a2191b8745_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_vision_1_1_segment_a3543a9696469dc07718c8227eaeaf9c0}{}\index{Vision\+::\+Segment@{Vision\+::\+Segment}!make\+Consecutive@{make\+Consecutive}}
+\index{make\+Consecutive@{make\+Consecutive}!Vision\+::\+Segment@{Vision\+::\+Segment}}
+\subsubsection[{make\+Consecutive}]{\setlength{\rightskip}{0pt plus 5cm}void Segment\+::make\+Consecutive (
+\begin{DoxyParamCaption}
+\item[{uint16\+\_\+t}]{Last\+Label\+Used, }
+\item[{uint16\+\_\+t $\ast$}]{temp\+L\+U\+T, }
+\item[{uint16\+\_\+t $\ast$}]{L\+U\+T\+\_\+new\+Val}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_vision_1_1_segment_a3543a9696469dc07718c8227eaeaf9c0}
+
+
+Definition at line 734 of file Segment.\+cpp.
+
+
+
+References count, and i.
+
+
+
+Referenced by Label\+Blobs().
+
+
+\begin{DoxyCode}
+735     \{
+736         uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = LastLabelUsed + 1;
+737         \textcolor{keywordflow}{while} (i-- > 0) \{ tempLUT[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = LUT\_newVal[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}]; \}
+738         SoilMath::Sort::QuickSort<uint16\_t>(tempLUT, LastLabelUsed + 1);
+739         std::vector<uint16\_t> v(LUT\_newVal, LUT\_newVal + (LastLabelUsed + 1));
+740 
+741         uint16\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_ae11b3deb3de3df7dc48e439074023e35}{count} = 0;
+742         i = 1;
+743         \textcolor{keywordflow}{while} (i <= LastLabelUsed)
+744         \{
+745             \textcolor{keywordflow}{if} (tempLUT[i] != tempLUT[i - 1]) \{ std::replace(v.begin(), v.end(), tempLUT[
+      \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}], ++\hyperlink{_comparision_pictures_2_createtest_image_8m_ae11b3deb3de3df7dc48e439074023e35}{count}); \}
+746             i++;
+747         \}
+748 
+749         LUT\_newVal = &v[0];
+750     \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_vision_1_1_segment_a3543a9696469dc07718c8227eaeaf9c0_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_vision_1_1_segment_a1bfc12c503f6e07cca595ec884273e13}{}\index{Vision\+::\+Segment@{Vision\+::\+Segment}!operator=@{operator=}}
+\index{operator=@{operator=}!Vision\+::\+Segment@{Vision\+::\+Segment}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Segment} \& Segment\+::operator= (
+\begin{DoxyParamCaption}
+\item[{{\bf Segment} \&}]{rhs}
+\end{DoxyParamCaption}
+)}\label{class_vision_1_1_segment_a1bfc12c503f6e07cca595ec884273e13}
+
+
+Definition at line 38 of file Segment.\+cpp.
+
+
+
+References Blob\+List, Labelled\+Img, Max\+Label, no\+Of\+Filtered\+Blobs, Vision\+::\+Image\+Processing\+::\+Original\+Img, Original\+Img\+Stats, Vision\+::\+Image\+Processing\+::\+Processed\+Img, Vision\+::\+Image\+Processing\+::\+Temp\+Img, and Threshold\+Level.
+
+
+\begin{DoxyCode}
+39     \{
+40         \textcolor{keywordflow}{if} (&rhs != \textcolor{keyword}{this})
+41         \{
+42             this->\hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{BlobList} = rhs.BlobList;
+43             this->\hyperlink{class_vision_1_1_segment_a4daa143f6cd4a753d3bbe45c6a67d27f}{LabelledImg} = rhs.LabelledImg;
+44             this->\hyperlink{class_vision_1_1_segment_a22d2a688de65f4d25b164f8b2a03f4a9}{MaxLabel} = rhs.MaxLabel;
+45             this->\hyperlink{class_vision_1_1_segment_a97077da3a144e800073bc06f5d4722d4}{noOfFilteredBlobs} = rhs.noOfFilteredBlobs;
+46             this->\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg} = rhs.OriginalImg;
+47             this->\hyperlink{class_vision_1_1_segment_ab35cfe5504de7e5ea327991468e6cf3b}{OriginalImgStats} = rhs.OriginalImgStats;
+48             this->\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg} = rhs.ProcessedImg;
+49             this->\hyperlink{class_vision_1_1_image_processing_a5371ad8d6f7aac9d43ee5c902ade7435}{TempImg} = rhs.TempImg;
+50             this->\hyperlink{class_vision_1_1_segment_a44f45a7d08ba6fed38e5c31bc9108291}{ThresholdLevel} = rhs.ThresholdLevel;
+51         \}
+52         \textcolor{keywordflow}{return} *\textcolor{keyword}{this};
+53     \}
+\end{DoxyCode}
+\hypertarget{class_vision_1_1_segment_a65a50340b5a1a0fb08a1b5749b7145b6}{}\index{Vision\+::\+Segment@{Vision\+::\+Segment}!Remove\+Border\+Blobs@{Remove\+Border\+Blobs}}
+\index{Remove\+Border\+Blobs@{Remove\+Border\+Blobs}!Vision\+::\+Segment@{Vision\+::\+Segment}}
+\subsubsection[{Remove\+Border\+Blobs}]{\setlength{\rightskip}{0pt plus 5cm}void Segment\+::\+Remove\+Border\+Blobs (
+\begin{DoxyParamCaption}
+\item[{uint32\+\_\+t}]{border = {\ttfamily 1}, }
+\item[{bool}]{chain = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}\label{class_vision_1_1_segment_a65a50340b5a1a0fb08a1b5749b7145b6}
+Remove the blobs that are connected to the border 
+\begin{DoxyParams}{Parameters}
+{\em conn} & set the pixel connection eight or four \\
+\hline
+{\em chain} & use the results from the previous operation default value = false; \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 237 of file Segment.\+cpp.
+
+
+
+References C\+H\+A\+I\+N\+\_\+\+P\+R\+O\+C\+E\+S\+S, E\+M\+P\+T\+Y\+\_\+\+C\+H\+E\+C\+K, i, j, Vision\+::\+Image\+Processing\+::\+Original\+Img, Vision\+::\+Image\+Processing\+::\+Processed\+Img, S\+H\+O\+W\+\_\+\+D\+E\+B\+U\+G\+\_\+\+I\+M\+G, and Vision\+::\+Image\+Processing\+::\+Temp\+Img.
+
+
+
+Referenced by B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E(), Soil\+Analyzer\+::\+Sample\+::\+Prep\+Img(), and Soil\+Analyzer\+::\+Sample\+::\+Segment\+Particles().
+
+
+\begin{DoxyCode}
+238     \{
+239         CV\_Assert(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.depth() != \textcolor{keyword}{sizeof}(\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}));
+240         \hyperlink{_image_processing_8h_a27c4e53b88a0f9f2c097add555131056}{EMPTY\_CHECK}(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg});
+241         \textcolor{comment}{// make Pointers}
+242         \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *O;
+243         \hyperlink{_image_processing_8h_a6e6f0183cb53c76ef458d4fd34e07bcd}{CHAIN\_PROCESS}(chain, O, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar});
+244         \textcolor{keywordflow}{if} (chain) \{ \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg} = \hyperlink{class_vision_1_1_image_processing_a5371ad8d6f7aac9d43ee5c902ade7435}{TempImg}.clone(); \} 
+245         \textcolor{keywordflow}{else} \{ \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg} = \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.clone(); \}         
+246 
+247         \hyperlink{_vision_debug_8h_aae864fa4f990213a4184a209ff236202}{SHOW\_DEBUG\_IMG}(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}, 255, \textcolor{stringliteral}{"Original Image
+       RemoverBorderBlobs!"}, \textcolor{keyword}{true});
+248         \hyperlink{_vision_debug_8h_aae864fa4f990213a4184a209ff236202}{SHOW\_DEBUG\_IMG}(\hyperlink{class_vision_1_1_image_processing_a5371ad8d6f7aac9d43ee5c902ade7435}{TempImg}, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}, 255, \textcolor{stringliteral}{"Temp Image RemoverBorderBlobs!"}, \textcolor{keyword}{
+      true});
+249 
+250         \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *P = \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.data;
+251         uint32\_t cols = \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.cols;
+252         uint32\_t rows = \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.rows;
+253 
+254         \textcolor{keywordflow}{try}
+255         \{
+256             \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < border; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++)
+257             \{
+258                 \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} < cols; \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}++)
+259                 \{
+260                     \textcolor{keywordflow}{if} (O[(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} * cols) + \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}] == 1 && P[(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} * cols) + \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}] != 2) \{ cv::floodFill(
+      \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}, cv::Point(\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}, \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}), (\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar})2); \}
+261                 \}
+262             \}
+263 
+264             \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = rows - border - 1; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < rows; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++)
+265             \{
+266                 \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} < cols; \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}++)
+267                 \{
+268                     \textcolor{keywordflow}{if} (O[(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} * cols) + \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}] == 1 && P[(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} * cols) + \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}] != 2) \{ cv::floodFill(
+      \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}, cv::Point(\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}, \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}), (\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar})2); \}
+269                 \}
+270             \}
+271 
+272             \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = border; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < rows - border; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++)
+273             \{
+274                 \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} < border; \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}++)
+275                 \{
+276                     \textcolor{keywordflow}{if} (O[(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} * cols) + \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}] == 1 && P[(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} * cols) + \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}] != 2) \{ cv::floodFill(
+      \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}, cv::Point(\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}, \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}), (\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar})2); \}
+277                     \textcolor{keywordflow}{if} (O[(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} * cols) + (cols - \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} - 1)] == 1 && P[(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} * cols) + (cols - 
+      \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} - 1)] != 2)  \{ cv::floodFill(\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}, cv::Point(cols - \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} - 1, 
+      \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}), (\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar})2);    \}
+278                 \}
+279             \}
+280         \}
+281         \textcolor{keywordflow}{catch} (cv::Exception &e) \{ \}
+282         \hyperlink{_vision_debug_8h_aae864fa4f990213a4184a209ff236202}{SHOW\_DEBUG\_IMG}(\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}, 255, \textcolor{stringliteral}{"Processed Image
+       RemoverBorderBlobs before LUT!"}, \textcolor{keyword}{true});
+283 
+284         \textcolor{comment}{// Change values 2 -> 0}
+285         \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} LUT\_newValue[3]\{ 0, 1, 0 \};
+286         P = \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.data;
+287         uint32\_t nData = rows * cols;
+288         \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < nData; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++) \{ P[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = LUT\_newValue[P[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}]];\}
+289 
+290         \hyperlink{_vision_debug_8h_aae864fa4f990213a4184a209ff236202}{SHOW\_DEBUG\_IMG}(\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}, 255, \textcolor{stringliteral}{"Processed Image
+       RemoverBorderBlobs!"}, \textcolor{keyword}{true});
+291     \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_vision_1_1_segment_a65a50340b5a1a0fb08a1b5749b7145b6_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_vision_1_1_segment_ae3349aa3725f883943fb316c0d52752d}{}\index{Vision\+::\+Segment@{Vision\+::\+Segment}!Set\+Border@{Set\+Border}}
+\index{Set\+Border@{Set\+Border}!Vision\+::\+Segment@{Vision\+::\+Segment}}
+\subsubsection[{Set\+Border}]{\setlength{\rightskip}{0pt plus 5cm}void Segment\+::\+Set\+Border (
+\begin{DoxyParamCaption}
+\item[{{\bf uchar} $\ast$}]{P, }
+\item[{{\bf uchar}}]{set\+Value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_vision_1_1_segment_ae3349aa3725f883943fb316c0d52752d}
+Set all the border pixels to a set value 
+\begin{DoxyParams}{Parameters}
+{\em $\ast$\+P} & uchar pointer to the Mat.\+data \\
+\hline
+{\em set\+Value} & uchar the value which is written to the border pixels \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 202 of file Segment.\+cpp.
+
+
+
+References E\+M\+P\+T\+Y\+\_\+\+C\+H\+E\+C\+K, i, and Vision\+::\+Image\+Processing\+::\+Original\+Img.
+
+
+\begin{DoxyCode}
+203     \{
+204         \textcolor{comment}{// Exception handling}
+205         \hyperlink{_image_processing_8h_a27c4e53b88a0f9f2c097add555131056}{EMPTY\_CHECK}(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg});
+206         CV\_Assert(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.depth() != \textcolor{keyword}{sizeof}(\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}) ||
+207             \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.depth() != \textcolor{keyword}{sizeof}(uint16\_t));
+208 
+209         uint32\_t nData = \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.cols * \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.rows;
+210 
+211         \textcolor{comment}{// Set borderPixels to 2}
+212         uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0;
+213         uint32\_t pEnd = \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.cols + 1;
+214 
+215         \textcolor{comment}{// Set the top row to value 2}
+216         \textcolor{keywordflow}{while} (i < pEnd) \{ P[i++] = setValue; \}
+217 
+218         \textcolor{comment}{// Set the bottom row to value 2}
+219         i = nData + 1;
+220         pEnd = nData - \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.cols;
+221         \textcolor{keywordflow}{while} (i-- > pEnd) \{ P[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = setValue; \}
+222 
+223         \textcolor{comment}{//Sets the first and the last Column to 2}
+224         i = 1;
+225         pEnd = \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.rows;
+226         \textcolor{keywordflow}{while} (i < pEnd)
+227         \{
+228             P[(i * \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.cols) - 1] = setValue;
+229             P[(i++ * \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.cols)] = setValue;
+230         \}
+231     \}
+\end{DoxyCode}
+\hypertarget{class_vision_1_1_segment_a1d486dd3b67e1e1208c9ca04be8f6659}{}\index{Vision\+::\+Segment@{Vision\+::\+Segment}!Threshold@{Threshold}}
+\index{Threshold@{Threshold}!Vision\+::\+Segment@{Vision\+::\+Segment}}
+\subsubsection[{Threshold}]{\setlength{\rightskip}{0pt plus 5cm}void Segment\+::\+Threshold (
+\begin{DoxyParamCaption}
+\item[{{\bf uchar}}]{t, }
+\item[{{\bf Type\+Of\+Objects}}]{Typeobjects}
+\end{DoxyParamCaption}
+)}\label{class_vision_1_1_segment_a1d486dd3b67e1e1208c9ca04be8f6659}
+Convert a greyscale image to a B\+W 
+\begin{DoxyParams}{Parameters}
+{\em t} & uchar set the value which is the tiping point \\
+\hline
+{\em Type\+Object} & is an enumerator indicating if the bright or the dark pixels are the object and should be set to one \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 163 of file Segment.\+cpp.
+
+
+
+References Bright, E\+M\+P\+T\+Y\+\_\+\+C\+H\+E\+C\+K, i, Vision\+::\+Image\+Processing\+::\+Original\+Img, and Vision\+::\+Image\+Processing\+::\+Processed\+Img.
+
+
+
+Referenced by Convert\+To\+B\+W().
+
+
+\begin{DoxyCode}
+164     \{
+165         \textcolor{comment}{// Exception handling}
+166         \hyperlink{_image_processing_8h_a27c4e53b88a0f9f2c097add555131056}{EMPTY\_CHECK}(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg});
+167         CV\_Assert(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.depth() != \textcolor{keyword}{sizeof}(\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}) ||
+168             \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.depth() != \textcolor{keyword}{sizeof}(uint16\_t));
+169 
+170         \textcolor{comment}{// Create LUT}
+171         \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} LUT\_newValue[256]\{ 0 \};
+172         \textcolor{keywordflow}{if} (Typeobjects == \hyperlink{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7ddad37a09a08a5a4fdf88cb15f21e5ff28b}{Bright})
+173         \{
+174             \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = t; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < 256; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++)
+175             \{
+176                 LUT\_newValue[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = 1;
+177             \}
+178         \}
+179         \textcolor{keywordflow}{else}
+180         \{
+181             \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} <= t; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++)
+182             \{
+183                 LUT\_newValue[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = 1;
+184             \}
+185         \}
+186 
+187         \textcolor{comment}{// Create the pointers to the data}
+188         \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *P = \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.data;
+189         \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *O = \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.data;
+190 
+191         \textcolor{comment}{// Fills the ProcessedImg with either a 0 or 1}
+192         \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.cols * \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.rows; 
+      \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++)
+193         \{
+194             P[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = LUT\_newValue[O[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}]];
+195         \}
+196     \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_vision_1_1_segment_a1d486dd3b67e1e1208c9ca04be8f6659_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{}\index{Vision\+::\+Segment@{Vision\+::\+Segment}!Blob\+List@{Blob\+List}}
+\index{Blob\+List@{Blob\+List}!Vision\+::\+Segment@{Vision\+::\+Segment}}
+\subsubsection[{Blob\+List}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Blob\+List\+\_\+t} Vision\+::\+Segment\+::\+Blob\+List}\label{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}
+vector with all the individual blobs 
+
+Definition at line 45 of file Segment.\+h.
+
+
+
+Referenced by B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E(), B\+O\+O\+S\+T\+\_\+\+F\+I\+X\+T\+U\+R\+E\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E(), Get\+Blob\+List(), operator=(), Segment(), and Soil\+Analyzer\+::\+Sample\+::\+Segment\+Particles().
+
+\hypertarget{class_vision_1_1_segment_a4daa143f6cd4a753d3bbe45c6a67d27f}{}\index{Vision\+::\+Segment@{Vision\+::\+Segment}!Labelled\+Img@{Labelled\+Img}}
+\index{Labelled\+Img@{Labelled\+Img}!Vision\+::\+Segment@{Vision\+::\+Segment}}
+\subsubsection[{Labelled\+Img}]{\setlength{\rightskip}{0pt plus 5cm}cv\+::\+Mat Vision\+::\+Segment\+::\+Labelled\+Img}\label{class_vision_1_1_segment_a4daa143f6cd4a753d3bbe45c6a67d27f}
+Image with each individual blob labeled with a individual number 
+
+Definition at line 69 of file Segment.\+h.
+
+
+
+Referenced by B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E(), B\+O\+O\+S\+T\+\_\+\+F\+I\+X\+T\+U\+R\+E\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E(), Convert\+To\+B\+W(), Get\+Blob\+List(), Label\+Blobs(), Load\+Original\+Img(), operator=(), and Segment().
+
+\hypertarget{class_vision_1_1_segment_a22d2a688de65f4d25b164f8b2a03f4a9}{}\index{Vision\+::\+Segment@{Vision\+::\+Segment}!Max\+Label@{Max\+Label}}
+\index{Max\+Label@{Max\+Label}!Vision\+::\+Segment@{Vision\+::\+Segment}}
+\subsubsection[{Max\+Label}]{\setlength{\rightskip}{0pt plus 5cm}uint16\+\_\+t Vision\+::\+Segment\+::\+Max\+Label = 0}\label{class_vision_1_1_segment_a22d2a688de65f4d25b164f8b2a03f4a9}
+Maximum labels found in the labelled image 
+
+Definition at line 70 of file Segment.\+h.
+
+
+
+Referenced by Get\+Blob\+List(), Label\+Blobs(), operator=(), and Segment().
+
+\hypertarget{class_vision_1_1_segment_a97077da3a144e800073bc06f5d4722d4}{}\index{Vision\+::\+Segment@{Vision\+::\+Segment}!no\+Of\+Filtered\+Blobs@{no\+Of\+Filtered\+Blobs}}
+\index{no\+Of\+Filtered\+Blobs@{no\+Of\+Filtered\+Blobs}!Vision\+::\+Segment@{Vision\+::\+Segment}}
+\subsubsection[{no\+Of\+Filtered\+Blobs}]{\setlength{\rightskip}{0pt plus 5cm}uint16\+\_\+t Vision\+::\+Segment\+::no\+Of\+Filtered\+Blobs = 0}\label{class_vision_1_1_segment_a97077da3a144e800073bc06f5d4722d4}
+Total numbers of blobs that where filtered beacuse the where smaller than the min\+Blob\+Area 
+
+Definition at line 71 of file Segment.\+h.
+
+
+
+Referenced by Label\+Blobs(), operator=(), and Segment().
+
+\hypertarget{class_vision_1_1_segment_ab35cfe5504de7e5ea327991468e6cf3b}{}\index{Vision\+::\+Segment@{Vision\+::\+Segment}!Original\+Img\+Stats@{Original\+Img\+Stats}}
+\index{Original\+Img\+Stats@{Original\+Img\+Stats}!Vision\+::\+Segment@{Vision\+::\+Segment}}
+\subsubsection[{Original\+Img\+Stats}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uchar\+Stat\+\_\+t} Vision\+::\+Segment\+::\+Original\+Img\+Stats}\label{class_vision_1_1_segment_ab35cfe5504de7e5ea327991468e6cf3b}
+Statistical data from the original image 
+
+Definition at line 73 of file Segment.\+h.
+
+
+
+Referenced by Get\+Threshold\+Level(), operator=(), and Segment().
+
+\hypertarget{class_vision_1_1_segment_a0d2c607a6064d8d8fea925fc7bfbbc53}{}\index{Vision\+::\+Segment@{Vision\+::\+Segment}!sigma@{sigma}}
+\index{sigma@{sigma}!Vision\+::\+Segment@{Vision\+::\+Segment}}
+\subsubsection[{sigma}]{\setlength{\rightskip}{0pt plus 5cm}float Vision\+::\+Segment\+::sigma = 2}\label{class_vision_1_1_segment_a0d2c607a6064d8d8fea925fc7bfbbc53}
+
+
+Definition at line 76 of file Segment.\+h.
+
+
+
+Referenced by Get\+Threshold\+Level(), and Soil\+Analyzer\+::\+Sample\+::\+Prep\+Img().
+
+\hypertarget{class_vision_1_1_segment_a44f45a7d08ba6fed38e5c31bc9108291}{}\index{Vision\+::\+Segment@{Vision\+::\+Segment}!Threshold\+Level@{Threshold\+Level}}
+\index{Threshold\+Level@{Threshold\+Level}!Vision\+::\+Segment@{Vision\+::\+Segment}}
+\subsubsection[{Threshold\+Level}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t Vision\+::\+Segment\+::\+Threshold\+Level = 0}\label{class_vision_1_1_segment_a44f45a7d08ba6fed38e5c31bc9108291}
+Current calculated threshold level 
+
+Definition at line 74 of file Segment.\+h.
+
+
+
+Referenced by operator=(), and Segment().
+
+\hypertarget{class_vision_1_1_segment_a1338fc42ead26c6b1dd661f4281f5674}{}\index{Vision\+::\+Segment@{Vision\+::\+Segment}!threshold\+Offset@{threshold\+Offset}}
+\index{threshold\+Offset@{threshold\+Offset}!Vision\+::\+Segment@{Vision\+::\+Segment}}
+\subsubsection[{threshold\+Offset}]{\setlength{\rightskip}{0pt plus 5cm}uint32\+\_\+t Vision\+::\+Segment\+::threshold\+Offset = 4}\label{class_vision_1_1_segment_a1338fc42ead26c6b1dd661f4281f5674}
+
+
+Definition at line 77 of file Segment.\+h.
+
+
+
+Referenced by Get\+Threshold\+Level(), and Soil\+Analyzer\+::\+Sample\+::\+Prep\+Img().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/peer23peer/\+Vision\+Soil\+Analyzer/src/\+Soil\+Vision/\hyperlink{_segment_8h}{Segment.\+h}\item 
+/home/peer23peer/\+Vision\+Soil\+Analyzer/src/\+Soil\+Vision/\hyperlink{_segment_8cpp}{Segment.\+cpp}\end{DoxyCompactItemize}

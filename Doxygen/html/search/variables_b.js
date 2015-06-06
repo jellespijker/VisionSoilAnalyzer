@@ -1,6 +1,22 @@
 var searchData=
 [
-  ['n',['n',['../class_soil_math_1_1_stats.html#a7bc57af334b68253832ebac17f85d091',1,'SoilMath::Stats']]],
-  ['nobins',['noBins',['../class_soil_math_1_1_stats.html#a4202c9085eacaff2e04eda84fc90e92b',1,'SoilMath::Stats']]],
-  ['number',['number',['../class_hardware_1_1_g_p_i_o.html#a1671a87bb70911b0a6a29019a068cf96',1,'Hardware::GPIO']]]
+  ['lab',['LAB',['../class_soil_analyzer_1_1_soil.html#a59ee773ff73380a12b1c2af3b86f6638',1,'SoilAnalyzer::Soil']]],
+  ['lab_5fstat',['LAB_Stat',['../class_soil_analyzer_1_1_analysis_results.html#ae931f7b47ece1f91dc3427520ef4a9b2',1,'SoilAnalyzer::AnalysisResults']]],
+  ['label',['label',['../class_q_c_p_axis_painter_private.html#afe004c322f92543c0467afc02da6cf6d',1,'QCPAxisPainterPrivate::label()'],['../struct_vision_1_1_segment_1_1_blob.html#aaa4c2a0d3f0c920fb8b59417dd54f82b',1,'Vision::Segment::Blob::Label()']]],
+  ['labelcolor',['labelColor',['../class_q_c_p_axis_painter_private.html#a5c36467daf057da0cf0792f3c5a06089',1,'QCPAxisPainterPrivate']]],
+  ['labelfont',['labelFont',['../class_q_c_p_axis_painter_private.html#add1ff1030fbc36112c19b1468ad82d55',1,'QCPAxisPainterPrivate']]],
+  ['labelledimg',['LabelledImg',['../class_vision_1_1_segment.html#a4daa143f6cd4a753d3bbe45c6a67d27f',1,'Vision::Segment']]],
+  ['labelpadding',['labelPadding',['../class_q_c_p_axis_painter_private.html#a3f7465372df132bf7814345ea697dd34',1,'QCPAxisPainterPrivate']]],
+  ['lastframe',['LastFrame',['../class_hardware_1_1_microscope.html#afbbec8a14cd277cec7c3ee6ce0ba54a1',1,'Hardware::Microscope']]],
+  ['left',['left',['../class_q_c_p_item_rect.html#aad0ca1af0c8debfc20d7b47fc942764d',1,'QCPItemRect::left()'],['../class_q_c_p_item_text.html#ab8c6c6e1df36256986fab1463c0a1d38',1,'QCPItemText::left()'],['../class_q_c_p_item_ellipse.html#aa259cd03efaedf60cf5b1019b20e4f2b',1,'QCPItemEllipse::left()'],['../class_q_c_p_item_pixmap.html#a8c85fcb8cb8ce292859a0499d16539b1',1,'QCPItemPixmap::left()'],['../class_q_c_p_item_bracket.html#af6cc6d27d96171778c6927d6edce48b0',1,'QCPItemBracket::left()']]],
+  ['leftx',['leftX',['../struct_vision_1_1_segment_1_1_rect.html#acf3a2a045d75348971e57df5eeb7808e',1,'Vision::Segment::Rect']]],
+  ['lefty',['leftY',['../struct_vision_1_1_segment_1_1_rect.html#ac6d22f96862077f159abc7e1accc20ab',1,'Vision::Segment::Rect']]],
+  ['legend',['legend',['../class_q_custom_plot.html#a4eadcd237dc6a09938b68b16877fa6af',1,'QCustomPlot']]],
+  ['lightlevel',['lightLevel',['../class_soil_analyzer_1_1_soil_settings.html#aa4d3ed8c1ab6551bfa4763e8a1ffc148',1,'SoilAnalyzer::SoilSettings']]],
+  ['loc',['loc',['../_comparision_pictures_2_createtest_image_8m.html#aeee9f371db14fda0de35d16324a167df',1,'loc():&#160;CreatetestImage.m'],['../_v_s_a___u_t_2_comparision_pictures_2_createtest_image_8m.html#aeee9f371db14fda0de35d16324a167df',1,'loc():&#160;CreatetestImage.m']]],
+  ['location',['Location',['../class_soil_analyzer_1_1_soil.html#a9c3cabd71691bfc4bb56d32fdb298e72',1,'SoilAnalyzer::Soil']]],
+  ['logfile',['logFile',['../struct_log_to_file.html#afa6d7b7e1f102a6589b255c51274b1bd',1,'LogToFile']]],
+  ['low',['low',['../class_q_c_p_financial_data.html#aecce0fb45a115e3f3a25eea78491ac16',1,'QCPFinancialData']]],
+  ['lower',['lower',['../class_q_c_p_range.html#aa3aca3edb14f7ca0c85d912647b91745',1,'QCPRange']]],
+  ['lowerending',['lowerEnding',['../class_q_c_p_axis_painter_private.html#a077696dd1e7efb96e4c199f521433e24',1,'QCPAxisPainterPrivate']]]
 ];
