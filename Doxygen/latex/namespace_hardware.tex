@@ -1,0 +1,213 @@
+\hypertarget{namespace_hardware}{}\section{Hardware Namespace Reference}
+\label{namespace_hardware}\index{Hardware@{Hardware}}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \hyperlink{namespace_hardware_1_1_exception}{Exception}
+\end{DoxyCompactItemize}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_hardware_1_1_a_d_c}{A\+D\+C}
+\item 
+class \hyperlink{class_hardware_1_1_b_b_b}{B\+B\+B}
+\item 
+class \hyperlink{class_hardware_1_1_e_c12_p}{E\+C12\+P}
+\item 
+class \hyperlink{class_hardware_1_1e_q_e_p}{e\+Q\+E\+P}
+\item 
+class \hyperlink{class_hardware_1_1_g_p_i_o}{G\+P\+I\+O}
+\item 
+class \hyperlink{class_hardware_1_1_microscope}{Microscope}
+\item 
+class \hyperlink{class_hardware_1_1_p_w_m}{P\+W\+M}
+\item 
+class \hyperlink{class_hardware_1_1_soil_cape}{Soil\+Cape}
+\item 
+class \hyperlink{class_hardware_1_1_u_s_b}{U\+S\+B}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef int($\ast$ \hyperlink{namespace_hardware_a5ba2e4bdfa2bbd8b551b1d5b2a0c61fd}{Callback\+Type}) (int)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void $\ast$ \hyperlink{namespace_hardware_a594324488333eeaa49790a5391626fad}{threaded\+Poll\+A\+D\+C} (void $\ast$value)
+\item 
+void $\ast$ \hyperlink{namespace_hardware_a999708509591fcc4884019c76b9f74ed}{color\+Loop} (void $\ast$value)
+\item 
+void $\ast$ \hyperlink{namespace_hardware_abb5f0943d53124cfc6df04c91ffcb21b}{threaded\+Polleqep} (void $\ast$value)
+\item 
+void $\ast$ \hyperlink{namespace_hardware_af5f1bde915012872fc6b800981948aaa}{threaded\+Poll\+G\+P\+I\+O} (void $\ast$value)
+\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\hypertarget{namespace_hardware_a5ba2e4bdfa2bbd8b551b1d5b2a0c61fd}{}\index{Hardware@{Hardware}!Callback\+Type@{Callback\+Type}}
+\index{Callback\+Type@{Callback\+Type}!Hardware@{Hardware}}
+\subsubsection[{Callback\+Type}]{\setlength{\rightskip}{0pt plus 5cm}typedef int($\ast$ Hardware\+::\+Callback\+Type) (int)}\label{namespace_hardware_a5ba2e4bdfa2bbd8b551b1d5b2a0c61fd}
+Callback\+Type used to pass a function to a thread 
+
+Definition at line 28 of file B\+B\+B.\+h.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{namespace_hardware_a999708509591fcc4884019c76b9f74ed}{}\index{Hardware@{Hardware}!color\+Loop@{color\+Loop}}
+\index{color\+Loop@{color\+Loop}!Hardware@{Hardware}}
+\subsubsection[{color\+Loop}]{\setlength{\rightskip}{0pt plus 5cm}void $\ast$ Hardware\+::color\+Loop (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{value}
+\end{DoxyParamCaption}
+)}\label{namespace_hardware_a999708509591fcc4884019c76b9f74ed}
+The thread function that runs trough all the colors 
+
+Definition at line 87 of file E\+C12\+P.\+cpp.
+
+
+
+References i, Hardware\+::\+E\+C12\+P\+::\+Set\+Pixel\+Color(), Hardware\+::\+E\+C12\+P\+::sleepperiod, and Hardware\+::\+E\+C12\+P\+::thread\+Running.
+
+
+\begin{DoxyCode}
+88     \{
+89         \textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0;
+90         \hyperlink{class_e_c12_p}{EC12P} *ec12p = \textcolor{keyword}{static\_cast<}\hyperlink{class_e_c12_p}{EC12P}*\textcolor{keyword}{>}(value);
+91         EC12P::Color pcolor;
+92         \textcolor{keywordflow}{while} (ec12p->threadRunning)
+93         \{
+94             pcolor = \textcolor{keyword}{static\_cast<}EC12P::Color\textcolor{keyword}{>}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i});
+95             ec12p->SetPixelColor(pcolor);
+96             usleep(ec12p->sleepperiod);
+97             i++;
+98             \textcolor{keywordflow}{if} (i == 6) \{ i = 0; \}
+99         \}
+100         \textcolor{keywordflow}{return} ec12p;
+101     \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespace_hardware_a999708509591fcc4884019c76b9f74ed_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{namespace_hardware_a594324488333eeaa49790a5391626fad}{}\index{Hardware@{Hardware}!threaded\+Poll\+A\+D\+C@{threaded\+Poll\+A\+D\+C}}
+\index{threaded\+Poll\+A\+D\+C@{threaded\+Poll\+A\+D\+C}!Hardware@{Hardware}}
+\subsubsection[{threaded\+Poll\+A\+D\+C}]{\setlength{\rightskip}{0pt plus 5cm}void $\ast$ Hardware\+::threaded\+Poll\+A\+D\+C (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{value}
+\end{DoxyParamCaption}
+)}\label{namespace_hardware_a594324488333eeaa49790a5391626fad}
+friendly function to start the threading 
+
+Definition at line 116 of file A\+D\+C.\+cpp.
+
+
+
+References Hardware\+::\+B\+B\+B\+::callback\+Function, Hardware\+::\+B\+B\+B\+::thread\+Running, and Hardware\+::\+A\+D\+C\+::\+Wait\+For\+Value\+Change().
+
+
+\begin{DoxyCode}
+117     \{
+118         \hyperlink{class_a_d_c}{ADC} *adc = \textcolor{keyword}{static\_cast<}\hyperlink{class_a_d_c}{ADC}*\textcolor{keyword}{>}(value);
+119         \textcolor{keywordflow}{while} (adc->threadRunning)
+120         \{
+121             adc->callbackFunction(adc->WaitForValueChange());
+122             usleep(200000);
+123         \}
+124     \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespace_hardware_a594324488333eeaa49790a5391626fad_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{namespace_hardware_abb5f0943d53124cfc6df04c91ffcb21b}{}\index{Hardware@{Hardware}!threaded\+Polleqep@{threaded\+Polleqep}}
+\index{threaded\+Polleqep@{threaded\+Polleqep}!Hardware@{Hardware}}
+\subsubsection[{threaded\+Polleqep}]{\setlength{\rightskip}{0pt plus 5cm}void $\ast$ Hardware\+::threaded\+Polleqep (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{value}
+\end{DoxyParamCaption}
+)}\label{namespace_hardware_abb5f0943d53124cfc6df04c91ffcb21b}
+
+
+Definition at line 250 of file eqep.\+cpp.
+
+
+
+References Hardware\+::\+B\+B\+B\+::callback\+Function, Hardware\+::\+B\+B\+B\+::debounce\+Time, Hardware\+::e\+Q\+E\+P\+::get\+\_\+position(), and Hardware\+::\+B\+B\+B\+::thread\+Running.
+
+
+\begin{DoxyCode}
+251     \{
+252         eQEP *eqep = \textcolor{keyword}{static\_cast<}eQEP*\textcolor{keyword}{>}(value);
+253         \textcolor{keywordflow}{while} (eqep->threadRunning)
+254         \{
+255             eqep->callbackFunction(eqep->get\_position(\textcolor{keyword}{true}));
+256             usleep(eqep->debounceTime * 1000);
+257         \}
+258         \textcolor{keywordflow}{return} 0;
+259     \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespace_hardware_abb5f0943d53124cfc6df04c91ffcb21b_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{namespace_hardware_af5f1bde915012872fc6b800981948aaa}{}\index{Hardware@{Hardware}!threaded\+Poll\+G\+P\+I\+O@{threaded\+Poll\+G\+P\+I\+O}}
+\index{threaded\+Poll\+G\+P\+I\+O@{threaded\+Poll\+G\+P\+I\+O}!Hardware@{Hardware}}
+\subsubsection[{threaded\+Poll\+G\+P\+I\+O}]{\setlength{\rightskip}{0pt plus 5cm}void $\ast$ Hardware\+::threaded\+Poll\+G\+P\+I\+O (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{value}
+\end{DoxyParamCaption}
+)}\label{namespace_hardware_af5f1bde915012872fc6b800981948aaa}
+
+
+Definition at line 180 of file G\+P\+I\+O.\+cpp.
+
+
+
+References Hardware\+::\+B\+B\+B\+::callback\+Function, Hardware\+::\+B\+B\+B\+::debounce\+Time, Hardware\+::\+B\+B\+B\+::thread\+Running, and Hardware\+::\+G\+P\+I\+O\+::\+Wait\+For\+Edge().
+
+
+\begin{DoxyCode}
+181     \{
+182         GPIO *gpio = \textcolor{keyword}{static\_cast<}GPIO*\textcolor{keyword}{>}(value);
+183         \textcolor{keywordflow}{while} (gpio->threadRunning)
+184         \{
+185             gpio->callbackFunction(gpio->WaitForEdge());
+186             usleep(gpio->debounceTime * 1000);
+187         \}
+188         \textcolor{keywordflow}{return} 0;
+189     \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespace_hardware_af5f1bde915012872fc6b800981948aaa_cgraph}
+\end{center}
+\end{figure}
+
+

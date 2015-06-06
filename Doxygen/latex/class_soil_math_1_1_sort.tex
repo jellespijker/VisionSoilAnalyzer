@@ -1,0 +1,113 @@
+\hypertarget{class_soil_math_1_1_sort}{}\section{Soil\+Math\+:\+:Sort Class Reference}
+\label{class_soil_math_1_1_sort}\index{Soil\+Math\+::\+Sort@{Soil\+Math\+::\+Sort}}
+
+
+{\ttfamily \#include $<$Sort.\+h$>$}
+
+
+
+Collaboration diagram for Soil\+Math\+:\+:Sort\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=159pt]{class_soil_math_1_1_sort__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_soil_math_1_1_sort_ac5553af8753454e71e6d621690fdab3f}{Sort} ()
+\item 
+\hyperlink{class_soil_math_1_1_sort_a62273dbd3620f999201abacdff5e2557}{$\sim$\+Sort} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\static void \hyperlink{class_soil_math_1_1_sort_adca7b48be7482f89767b806ad2016d67}{Quick\+Sort} (T $\ast$arr, int \hyperlink{_v_s_a___u_t_2_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 5 of file Sort.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_soil_math_1_1_sort_ac5553af8753454e71e6d621690fdab3f}{}\index{Soil\+Math\+::\+Sort@{Soil\+Math\+::\+Sort}!Sort@{Sort}}
+\index{Sort@{Sort}!Soil\+Math\+::\+Sort@{Soil\+Math\+::\+Sort}}
+\subsubsection[{Sort}]{\setlength{\rightskip}{0pt plus 5cm}Soil\+Math\+::\+Sort\+::\+Sort (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_soil_math_1_1_sort_ac5553af8753454e71e6d621690fdab3f}
+
+
+Definition at line 7 of file Sort.\+h.
+
+
+\begin{DoxyCode}
+7 \{\}
+\end{DoxyCode}
+\hypertarget{class_soil_math_1_1_sort_a62273dbd3620f999201abacdff5e2557}{}\index{Soil\+Math\+::\+Sort@{Soil\+Math\+::\+Sort}!````~Sort@{$\sim$\+Sort}}
+\index{````~Sort@{$\sim$\+Sort}!Soil\+Math\+::\+Sort@{Soil\+Math\+::\+Sort}}
+\subsubsection[{$\sim$\+Sort}]{\setlength{\rightskip}{0pt plus 5cm}Soil\+Math\+::\+Sort\+::$\sim$\+Sort (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_soil_math_1_1_sort_a62273dbd3620f999201abacdff5e2557}
+
+
+Definition at line 8 of file Sort.\+h.
+
+
+\begin{DoxyCode}
+8 \{\}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_soil_math_1_1_sort_adca7b48be7482f89767b806ad2016d67}{}\index{Soil\+Math\+::\+Sort@{Soil\+Math\+::\+Sort}!Quick\+Sort@{Quick\+Sort}}
+\index{Quick\+Sort@{Quick\+Sort}!Soil\+Math\+::\+Sort@{Soil\+Math\+::\+Sort}}
+\subsubsection[{Quick\+Sort}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ static void Soil\+Math\+::\+Sort\+::\+Quick\+Sort (
+\begin{DoxyParamCaption}
+\item[{T $\ast$}]{arr, }
+\item[{int}]{i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{class_soil_math_1_1_sort_adca7b48be7482f89767b806ad2016d67}
+
+
+Definition at line 10 of file Sort.\+h.
+
+
+\begin{DoxyCode}
+10                                                              \{
+11     \textcolor{keywordflow}{if} (\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < 2)
+12       \textcolor{keywordflow}{return};
+13 
+14     T p = arr[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} / 2];
+15     T *l = arr;
+16     T *r = arr + \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} - 1;
+17     \textcolor{keywordflow}{while} (l <= r) \{
+18       \textcolor{keywordflow}{if} (*l < p) \{
+19         l++;
+20       \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (*r > p) \{
+21         r--;
+22       \} \textcolor{keywordflow}{else} \{
+23         \textcolor{keywordtype}{int} t = *l;
+24         *l = *r;
+25         *r = t;
+26         l++;
+27         r--;
+28       \}
+29     \}
+30     Sort::QuickSort<T>(arr, r - arr + 1);
+31     Sort::QuickSort<T>(l, arr + i - l);
+32   \}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/peer23peer/\+Vision\+Soil\+Analyzer/src/\+Soil\+Math/\hyperlink{_sort_8h}{Sort.\+h}\end{DoxyCompactItemize}

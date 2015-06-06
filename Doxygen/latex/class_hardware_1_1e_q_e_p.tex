@@ -1,0 +1,586 @@
+\hypertarget{class_hardware_1_1e_q_e_p}{}\section{Hardware\+:\+:e\+Q\+E\+P Class Reference}
+\label{class_hardware_1_1e_q_e_p}\index{Hardware\+::e\+Q\+E\+P@{Hardware\+::e\+Q\+E\+P}}
+
+
+{\ttfamily \#include $<$eqep.\+h$>$}
+
+
+
+Inheritance diagram for Hardware\+:\+:e\+Q\+E\+P\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{class_hardware_1_1e_q_e_p__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Hardware\+:\+:e\+Q\+E\+P\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{class_hardware_1_1e_q_e_p__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{class_hardware_1_1e_q_e_p_a3f97f26c64d49d6f2643a257b7249070}{e\+Q\+E\+P\+\_\+\+Mode} \{ \hyperlink{class_hardware_1_1e_q_e_p_a3f97f26c64d49d6f2643a257b7249070a5e916ce9f21af5bd9c5c63609630df7e}{e\+Q\+E\+P\+\_\+\+Mode\+\_\+\+Absolute} = 0, 
+\hyperlink{class_hardware_1_1e_q_e_p_a3f97f26c64d49d6f2643a257b7249070a66e4b97a79f9c26d25f2adb99638257e}{e\+Q\+E\+P\+\_\+\+Mode\+\_\+\+Relative} = 1, 
+\hyperlink{class_hardware_1_1e_q_e_p_a3f97f26c64d49d6f2643a257b7249070a7456c9de6f190e0267c8e176ed739fad}{e\+Q\+E\+P\+\_\+\+Mode\+\_\+\+Error} = 2
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_hardware_1_1e_q_e_p_adc9ce642c8927e217afc3600a63002e5}{e\+Q\+E\+P} (std\+::string \+\_\+path, \hyperlink{class_hardware_1_1e_q_e_p_a3f97f26c64d49d6f2643a257b7249070}{e\+Q\+E\+P\+\_\+\+Mode} \+\_\+mode)
+\item 
+void \hyperlink{class_hardware_1_1e_q_e_p_aa55fc881377f4fc3396895de65ed9161}{set\+\_\+position} (int32\+\_\+t position)
+\item 
+int32\+\_\+t \hyperlink{class_hardware_1_1e_q_e_p_a3b06e47e9bb9a559e81427fe3e4f7cf9}{get\+\_\+position} (bool \+\_\+poll=true)
+\item 
+int \hyperlink{class_hardware_1_1e_q_e_p_a529f04118a9be4768c117c552ba34bd0}{Wait\+For\+Position\+Change} (\hyperlink{namespace_hardware_a5ba2e4bdfa2bbd8b551b1d5b2a0c61fd}{Callback\+Type} callback)
+\item 
+void \hyperlink{class_hardware_1_1e_q_e_p_aae8e9f7ac543384dac031fb81f092574}{Wait\+For\+Position\+Change\+Cancel} ()
+\item 
+void \hyperlink{class_hardware_1_1e_q_e_p_ae45ebd84fa06042ba6b9e5d5caccc1ed}{set\+\_\+period} (uint64\+\_\+t period)
+\item 
+uint64\+\_\+t \hyperlink{class_hardware_1_1e_q_e_p_a9ef725e955086baf06b9d8363318d5b3}{get\+\_\+period} ()
+\item 
+void \hyperlink{class_hardware_1_1e_q_e_p_a137d1fb0b0e5772487ece48254342294}{set\+\_\+mode} (\hyperlink{class_hardware_1_1e_q_e_p_a3f97f26c64d49d6f2643a257b7249070}{e\+Q\+E\+P\+\_\+\+Mode} mode)
+\item 
+\hyperlink{class_hardware_1_1e_q_e_p_a3f97f26c64d49d6f2643a257b7249070}{e\+Q\+E\+P\+\_\+\+Mode} \hyperlink{class_hardware_1_1e_q_e_p_a83f60cc0b6199828a629f54c0849ab16}{get\+\_\+mode} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \hyperlink{class_hardware_1_1e_q_e_p_a82718bc8478cde37f28fc685a859525e}{path}
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+void $\ast$ \hyperlink{class_hardware_1_1e_q_e_p_a0dd4c4778480f930ef697f898f2d4668}{threaded\+Polleqep} (void $\ast$value)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 40 of file eqep.\+h.
+
+
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{class_hardware_1_1e_q_e_p_a3f97f26c64d49d6f2643a257b7249070}{}\index{Hardware\+::e\+Q\+E\+P@{Hardware\+::e\+Q\+E\+P}!e\+Q\+E\+P\+\_\+\+Mode@{e\+Q\+E\+P\+\_\+\+Mode}}
+\index{e\+Q\+E\+P\+\_\+\+Mode@{e\+Q\+E\+P\+\_\+\+Mode}!Hardware\+::e\+Q\+E\+P@{Hardware\+::e\+Q\+E\+P}}
+\subsubsection[{e\+Q\+E\+P\+\_\+\+Mode}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Hardware\+::e\+Q\+E\+P\+::e\+Q\+E\+P\+\_\+\+Mode}}\label{class_hardware_1_1e_q_e_p_a3f97f26c64d49d6f2643a257b7249070}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{e\+Q\+E\+P\+\_\+\+Mode\+\_\+\+Absolute@{e\+Q\+E\+P\+\_\+\+Mode\+\_\+\+Absolute}!Hardware\+::e\+Q\+E\+P@{Hardware\+::e\+Q\+E\+P}}\index{Hardware\+::e\+Q\+E\+P@{Hardware\+::e\+Q\+E\+P}!e\+Q\+E\+P\+\_\+\+Mode\+\_\+\+Absolute@{e\+Q\+E\+P\+\_\+\+Mode\+\_\+\+Absolute}}\item[{\em 
+\hypertarget{class_hardware_1_1e_q_e_p_a3f97f26c64d49d6f2643a257b7249070a5e916ce9f21af5bd9c5c63609630df7e}{}e\+Q\+E\+P\+\_\+\+Mode\+\_\+\+Absolute\label{class_hardware_1_1e_q_e_p_a3f97f26c64d49d6f2643a257b7249070a5e916ce9f21af5bd9c5c63609630df7e}
+}]\index{e\+Q\+E\+P\+\_\+\+Mode\+\_\+\+Relative@{e\+Q\+E\+P\+\_\+\+Mode\+\_\+\+Relative}!Hardware\+::e\+Q\+E\+P@{Hardware\+::e\+Q\+E\+P}}\index{Hardware\+::e\+Q\+E\+P@{Hardware\+::e\+Q\+E\+P}!e\+Q\+E\+P\+\_\+\+Mode\+\_\+\+Relative@{e\+Q\+E\+P\+\_\+\+Mode\+\_\+\+Relative}}\item[{\em 
+\hypertarget{class_hardware_1_1e_q_e_p_a3f97f26c64d49d6f2643a257b7249070a66e4b97a79f9c26d25f2adb99638257e}{}e\+Q\+E\+P\+\_\+\+Mode\+\_\+\+Relative\label{class_hardware_1_1e_q_e_p_a3f97f26c64d49d6f2643a257b7249070a66e4b97a79f9c26d25f2adb99638257e}
+}]\index{e\+Q\+E\+P\+\_\+\+Mode\+\_\+\+Error@{e\+Q\+E\+P\+\_\+\+Mode\+\_\+\+Error}!Hardware\+::e\+Q\+E\+P@{Hardware\+::e\+Q\+E\+P}}\index{Hardware\+::e\+Q\+E\+P@{Hardware\+::e\+Q\+E\+P}!e\+Q\+E\+P\+\_\+\+Mode\+\_\+\+Error@{e\+Q\+E\+P\+\_\+\+Mode\+\_\+\+Error}}\item[{\em 
+\hypertarget{class_hardware_1_1e_q_e_p_a3f97f26c64d49d6f2643a257b7249070a7456c9de6f190e0267c8e176ed739fad}{}e\+Q\+E\+P\+\_\+\+Mode\+\_\+\+Error\label{class_hardware_1_1e_q_e_p_a3f97f26c64d49d6f2643a257b7249070a7456c9de6f190e0267c8e176ed739fad}
+}]\end{description}
+\end{Desc}
+
+
+Definition at line 47 of file eqep.\+h.
+
+
+\begin{DoxyCode}
+48         \{
+49             \textcolor{comment}{// Absolute positioning mode}
+50             \hyperlink{class_hardware_1_1e_q_e_p_a3f97f26c64d49d6f2643a257b7249070a5e916ce9f21af5bd9c5c63609630df7e}{eQEP\_Mode\_Absolute} = 0,
+51 
+52             \textcolor{comment}{// Relative positioning mode}
+53             \hyperlink{class_hardware_1_1e_q_e_p_a3f97f26c64d49d6f2643a257b7249070a66e4b97a79f9c26d25f2adb99638257e}{eQEP\_Mode\_Relative} = 1,
+54 
+55             \textcolor{comment}{// Error flag}
+56             \hyperlink{class_hardware_1_1e_q_e_p_a3f97f26c64d49d6f2643a257b7249070a7456c9de6f190e0267c8e176ed739fad}{eQEP\_Mode\_Error} = 2,
+57         \} \hyperlink{class_hardware_1_1e_q_e_p_a3f97f26c64d49d6f2643a257b7249070}{eQEP\_Mode};
+\end{DoxyCode}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_hardware_1_1e_q_e_p_adc9ce642c8927e217afc3600a63002e5}{}\index{Hardware\+::e\+Q\+E\+P@{Hardware\+::e\+Q\+E\+P}!e\+Q\+E\+P@{e\+Q\+E\+P}}
+\index{e\+Q\+E\+P@{e\+Q\+E\+P}!Hardware\+::e\+Q\+E\+P@{Hardware\+::e\+Q\+E\+P}}
+\subsubsection[{e\+Q\+E\+P}]{\setlength{\rightskip}{0pt plus 5cm}Hardware\+::e\+Q\+E\+P\+::e\+Q\+E\+P (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{\+\_\+path, }
+\item[{{\bf e\+Q\+E\+P\+::e\+Q\+E\+P\+\_\+\+Mode}}]{\+\_\+mode}
+\end{DoxyParamCaption}
+)}\label{class_hardware_1_1e_q_e_p_adc9ce642c8927e217afc3600a63002e5}
+
+
+Definition at line 40 of file eqep.\+cpp.
+
+
+
+References Hardware\+::\+B\+B\+B\+::\+Cape\+Loaded(), e\+Q\+E\+P0, e\+Q\+E\+P1, e\+Q\+E\+P2, set\+\_\+mode(), set\+\_\+position(), S\+L\+O\+T\+S, and Hardware\+::\+B\+B\+B\+::\+Write().
+
+
+\begin{DoxyCode}
+41         : \hyperlink{class_hardware_1_1e_q_e_p_a82718bc8478cde37f28fc685a859525e}{path}(\_path)
+42     \{
+43         \textcolor{keywordflow}{if} (\_path == \hyperlink{eqep_8h_a6b7cf82bbc86508b5df1d751c202e601}{eQEP0})
+44         \{
+45             \textcolor{keywordflow}{if} (!\hyperlink{class_hardware_1_1_b_b_b_aaf2f732c771eac0b1ee984dbc0bca784}{CapeLoaded}(\textcolor{stringliteral}{"bone\_eqep0"})) \{ \hyperlink{class_hardware_1_1_b_b_b_a155cc06f76d82a6b690ce5ea08e7c68e}{Write}(\hyperlink{_b_b_b_8h_a3de26a5dbd2276c1486afbba5fc8de59}{SLOTS}, \textcolor{stringliteral}{"bone\_eqep0"}); \}
+46         \}
+47         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\_path == \hyperlink{eqep_8h_a490269705de1a8a0cc6d52c6cdbaa422}{eQEP1})
+48         \{
+49             \textcolor{keywordflow}{if} (!\hyperlink{class_hardware_1_1_b_b_b_aaf2f732c771eac0b1ee984dbc0bca784}{CapeLoaded}(\textcolor{stringliteral}{"bone\_eqep1"})) \{ \hyperlink{class_hardware_1_1_b_b_b_a155cc06f76d82a6b690ce5ea08e7c68e}{Write}(\hyperlink{_b_b_b_8h_a3de26a5dbd2276c1486afbba5fc8de59}{SLOTS}, \textcolor{stringliteral}{"bone\_eqep1"}); \}
+50         \}
+51         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\_path == \hyperlink{eqep_8h_a2dfbafc696aef9c14226ce25fb77c5f1}{eQEP2})
+52         \{
+53             \textcolor{keywordflow}{if} (!\hyperlink{class_hardware_1_1_b_b_b_aaf2f732c771eac0b1ee984dbc0bca784}{CapeLoaded}(\textcolor{stringliteral}{"bone\_eqep2b"})) \{ \hyperlink{class_hardware_1_1_b_b_b_a155cc06f76d82a6b690ce5ea08e7c68e}{Write}(\hyperlink{_b_b_b_8h_a3de26a5dbd2276c1486afbba5fc8de59}{SLOTS}, \textcolor{stringliteral}{"bone\_eqep2b"}); \}
+54         \}
+55 
+56         \textcolor{comment}{// Set the mode of the hardware}
+57         this->\hyperlink{class_hardware_1_1e_q_e_p_a137d1fb0b0e5772487ece48254342294}{set\_mode}(\_mode);
+58 
+59         \textcolor{comment}{// Reset the position}
+60         this->\hyperlink{class_hardware_1_1e_q_e_p_aa55fc881377f4fc3396895de65ed9161}{set\_position}(0);
+61     \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_hardware_1_1e_q_e_p_adc9ce642c8927e217afc3600a63002e5_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_hardware_1_1e_q_e_p_a83f60cc0b6199828a629f54c0849ab16}{}\index{Hardware\+::e\+Q\+E\+P@{Hardware\+::e\+Q\+E\+P}!get\+\_\+mode@{get\+\_\+mode}}
+\index{get\+\_\+mode@{get\+\_\+mode}!Hardware\+::e\+Q\+E\+P@{Hardware\+::e\+Q\+E\+P}}
+\subsubsection[{get\+\_\+mode}]{\setlength{\rightskip}{0pt plus 5cm}{\bf e\+Q\+E\+P\+::e\+Q\+E\+P\+\_\+\+Mode} Hardware\+::e\+Q\+E\+P\+::get\+\_\+mode (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_hardware_1_1e_q_e_p_a83f60cc0b6199828a629f54c0849ab16}
+
+
+Definition at line 226 of file eqep.\+cpp.
+
+
+
+References e\+Q\+E\+P\+\_\+\+Mode\+\_\+\+Error, and path.
+
+
+\begin{DoxyCode}
+227     \{
+228         \textcolor{comment}{// Open the file representing the position}
+229         FILE *fp = fopen((this->\hyperlink{class_hardware_1_1e_q_e_p_a82718bc8478cde37f28fc685a859525e}{path} + \textcolor{stringliteral}{"/mode"}).c\_str(), \textcolor{stringliteral}{"r"});
+230 
+231         \textcolor{comment}{// Check that we opened the file correctly}
+232         \textcolor{keywordflow}{if} (fp == NULL)
+233         \{
+234             \textcolor{comment}{// Error, break out}
+235             std::cerr << \textcolor{stringliteral}{"[eQEP "} << this->\hyperlink{class_hardware_1_1e_q_e_p_a82718bc8478cde37f28fc685a859525e}{path} << \textcolor{stringliteral}{"] Unable to open mode for read"} << std::endl;
+236             \textcolor{keywordflow}{return} \hyperlink{class_hardware_1_1e_q_e_p_a3f97f26c64d49d6f2643a257b7249070a7456c9de6f190e0267c8e176ed739fad}{eQEP::eQEP\_Mode\_Error};
+237         \}
+238 
+239         \textcolor{comment}{// Write the desired value to the file}
+240         \hyperlink{class_hardware_1_1e_q_e_p_a3f97f26c64d49d6f2643a257b7249070}{eQEP::eQEP\_Mode} mode;
+241         fscanf(fp, \textcolor{stringliteral}{"%u"}, (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}*)&mode);
+242 
+243         \textcolor{comment}{// Commit changes}
+244         fclose(fp);
+245 
+246         \textcolor{comment}{// Return the mode}
+247         \textcolor{keywordflow}{return} mode;
+248     \}
+\end{DoxyCode}
+\hypertarget{class_hardware_1_1e_q_e_p_a9ef725e955086baf06b9d8363318d5b3}{}\index{Hardware\+::e\+Q\+E\+P@{Hardware\+::e\+Q\+E\+P}!get\+\_\+period@{get\+\_\+period}}
+\index{get\+\_\+period@{get\+\_\+period}!Hardware\+::e\+Q\+E\+P@{Hardware\+::e\+Q\+E\+P}}
+\subsubsection[{get\+\_\+period}]{\setlength{\rightskip}{0pt plus 5cm}uint64\+\_\+t Hardware\+::e\+Q\+E\+P\+::get\+\_\+period (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_hardware_1_1e_q_e_p_a9ef725e955086baf06b9d8363318d5b3}
+
+
+Definition at line 201 of file eqep.\+cpp.
+
+
+
+References path.
+
+
+\begin{DoxyCode}
+202     \{
+203         \textcolor{comment}{// Open the file representing the position}
+204         FILE *fp = fopen((this->\hyperlink{class_hardware_1_1e_q_e_p_a82718bc8478cde37f28fc685a859525e}{path} + \textcolor{stringliteral}{"/period"}).c\_str(), \textcolor{stringliteral}{"r"});
+205 
+206         \textcolor{comment}{// Check that we opened the file correctly}
+207         \textcolor{keywordflow}{if} (fp == NULL)
+208         \{
+209             \textcolor{comment}{// Error, break out}
+210             std::cerr << \textcolor{stringliteral}{"[eQEP "} << this->\hyperlink{class_hardware_1_1e_q_e_p_a82718bc8478cde37f28fc685a859525e}{path} << \textcolor{stringliteral}{"] Unable to open period for read"} << std::endl;
+211             \textcolor{keywordflow}{return} 0;
+212         \}
+213 
+214         \textcolor{comment}{// Write the desired value to the file}
+215         uint64\_t period = 0;
+216         fscanf(fp, \textcolor{stringliteral}{"%llu"}, &period);
+217 
+218         \textcolor{comment}{// Commit changes}
+219         fclose(fp);
+220 
+221         \textcolor{comment}{// Return the period}
+222         \textcolor{keywordflow}{return} period;
+223     \}
+\end{DoxyCode}
+\hypertarget{class_hardware_1_1e_q_e_p_a3b06e47e9bb9a559e81427fe3e4f7cf9}{}\index{Hardware\+::e\+Q\+E\+P@{Hardware\+::e\+Q\+E\+P}!get\+\_\+position@{get\+\_\+position}}
+\index{get\+\_\+position@{get\+\_\+position}!Hardware\+::e\+Q\+E\+P@{Hardware\+::e\+Q\+E\+P}}
+\subsubsection[{get\+\_\+position}]{\setlength{\rightskip}{0pt plus 5cm}int32\+\_\+t Hardware\+::e\+Q\+E\+P\+::get\+\_\+position (
+\begin{DoxyParamCaption}
+\item[{bool}]{\+\_\+poll = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}\label{class_hardware_1_1e_q_e_p_a3b06e47e9bb9a559e81427fe3e4f7cf9}
+
+
+Definition at line 140 of file eqep.\+cpp.
+
+
+
+References path.
+
+
+
+Referenced by Hardware\+::threaded\+Polleqep().
+
+
+\begin{DoxyCode}
+141     \{
+142         \textcolor{comment}{// Position temporary variable}
+143         int32\_t       position;
+144         \textcolor{keywordtype}{char}          dummy;
+145         \textcolor{keyword}{struct }pollfd ufd;
+146 
+147         \textcolor{comment}{// Do we want to poll? }
+148         \textcolor{keywordflow}{if} (\_poll)
+149         \{
+150             \textcolor{comment}{// Open a connection to the attribute file.}
+151             \textcolor{keywordflow}{if} ((ufd.fd = open((this->\hyperlink{class_hardware_1_1e_q_e_p_a82718bc8478cde37f28fc685a859525e}{path} + \textcolor{stringliteral}{"/position"}).c\_str(), O\_RDWR)) < 0)
+152             \{
+153                 \textcolor{comment}{// Error, break out}
+154                 std::cerr << \textcolor{stringliteral}{"[eQEP "} << this->\hyperlink{class_hardware_1_1e_q_e_p_a82718bc8478cde37f28fc685a859525e}{path} << \textcolor{stringliteral}{"] unable to open position for polling"} << 
+      std::endl;
+155                 \textcolor{keywordflow}{return} 0;
+156             \}
+157 
+158             \textcolor{comment}{// Dummy read}
+159             read(ufd.fd, &dummy, 1);
+160 
+161             \textcolor{comment}{// Poll the port}
+162             ufd.events = (short)EPOLLET;
+163             \textcolor{keywordflow}{if} (poll(&ufd, 1, -1) < 0)
+164             \{
+165                 \textcolor{comment}{// Error, break out}
+166                 std::cerr << \textcolor{stringliteral}{"[eQEP "} << this->\hyperlink{class_hardware_1_1e_q_e_p_a82718bc8478cde37f28fc685a859525e}{path} << \textcolor{stringliteral}{"] Error occurred whilst polling"} << std::endl;
+167                 close(ufd.fd);
+168                 \textcolor{keywordflow}{return} 0;
+169             \}
+170         \}
+171 
+172         \textcolor{comment}{// Read the position}
+173         FILE *fp = fopen((this->\hyperlink{class_hardware_1_1e_q_e_p_a82718bc8478cde37f28fc685a859525e}{path} + \textcolor{stringliteral}{"/position"}).c\_str(), \textcolor{stringliteral}{"r"});
+174 
+175         \textcolor{comment}{// Check that we opened the file correctly}
+176         \textcolor{keywordflow}{if} (fp == NULL)
+177         \{
+178             \textcolor{comment}{// Error, break out}
+179             std::cerr << \textcolor{stringliteral}{"[eQEP "} << this->\hyperlink{class_hardware_1_1e_q_e_p_a82718bc8478cde37f28fc685a859525e}{path} << \textcolor{stringliteral}{"] Unable to open position for read"} << std::endl;
+180             close(ufd.fd);
+181             \textcolor{keywordflow}{return} 0;
+182         \}
+183 
+184         \textcolor{comment}{// Write the desired value to the file}
+185         fscanf(fp, \textcolor{stringliteral}{"%d"}, &position);
+186 
+187         \textcolor{comment}{// Commit changes}
+188         fclose(fp);
+189 
+190         \textcolor{comment}{// If we were polling, close the polling file}
+191         \textcolor{keywordflow}{if} (\_poll)
+192         \{
+193             close(ufd.fd);
+194         \}
+195 
+196         \textcolor{comment}{// Return the position}
+197         \textcolor{keywordflow}{return} position;
+198     \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_hardware_1_1e_q_e_p_a3b06e47e9bb9a559e81427fe3e4f7cf9_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_hardware_1_1e_q_e_p_a137d1fb0b0e5772487ece48254342294}{}\index{Hardware\+::e\+Q\+E\+P@{Hardware\+::e\+Q\+E\+P}!set\+\_\+mode@{set\+\_\+mode}}
+\index{set\+\_\+mode@{set\+\_\+mode}!Hardware\+::e\+Q\+E\+P@{Hardware\+::e\+Q\+E\+P}}
+\subsubsection[{set\+\_\+mode}]{\setlength{\rightskip}{0pt plus 5cm}void Hardware\+::e\+Q\+E\+P\+::set\+\_\+mode (
+\begin{DoxyParamCaption}
+\item[{{\bf e\+Q\+E\+P\+::e\+Q\+E\+P\+\_\+\+Mode}}]{\+\_\+mode}
+\end{DoxyParamCaption}
+)}\label{class_hardware_1_1e_q_e_p_a137d1fb0b0e5772487ece48254342294}
+
+
+Definition at line 106 of file eqep.\+cpp.
+
+
+
+References path.
+
+
+
+Referenced by e\+Q\+E\+P().
+
+
+\begin{DoxyCode}
+107     \{
+108         \textcolor{comment}{// Open the file representing the position}
+109         FILE *fp = fopen((this->\hyperlink{class_hardware_1_1e_q_e_p_a82718bc8478cde37f28fc685a859525e}{path} + \textcolor{stringliteral}{"/mode"}).c\_str(), \textcolor{stringliteral}{"w"});
+110 
+111         \textcolor{comment}{// Check that we opened the file correctly}
+112         \textcolor{keywordflow}{if} (fp == NULL)
+113         \{
+114             \textcolor{comment}{// Error, break out}
+115             std::cerr << \textcolor{stringliteral}{"[eQEP "} << this->\hyperlink{class_hardware_1_1e_q_e_p_a82718bc8478cde37f28fc685a859525e}{path} << \textcolor{stringliteral}{"] Unable to open mode for write"} << std::endl;
+116             \textcolor{keywordflow}{return};
+117         \}
+118 
+119         \textcolor{comment}{// Write the desired value to the file}
+120         fprintf(fp, \textcolor{stringliteral}{"%u\(\backslash\)n"}, \_mode);
+121 
+122         \textcolor{comment}{// Commit changes}
+123         fclose(fp);
+124     \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_hardware_1_1e_q_e_p_a137d1fb0b0e5772487ece48254342294_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_hardware_1_1e_q_e_p_ae45ebd84fa06042ba6b9e5d5caccc1ed}{}\index{Hardware\+::e\+Q\+E\+P@{Hardware\+::e\+Q\+E\+P}!set\+\_\+period@{set\+\_\+period}}
+\index{set\+\_\+period@{set\+\_\+period}!Hardware\+::e\+Q\+E\+P@{Hardware\+::e\+Q\+E\+P}}
+\subsubsection[{set\+\_\+period}]{\setlength{\rightskip}{0pt plus 5cm}void Hardware\+::e\+Q\+E\+P\+::set\+\_\+period (
+\begin{DoxyParamCaption}
+\item[{uint64\+\_\+t}]{period}
+\end{DoxyParamCaption}
+)}\label{class_hardware_1_1e_q_e_p_ae45ebd84fa06042ba6b9e5d5caccc1ed}
+
+
+Definition at line 85 of file eqep.\+cpp.
+
+
+
+References path.
+
+
+
+Referenced by Hardware\+::\+E\+C12\+P\+::\+E\+C12\+P().
+
+
+\begin{DoxyCode}
+86     \{
+87         \textcolor{comment}{// Open the file representing the position}
+88         FILE *fp = fopen((this->\hyperlink{class_hardware_1_1e_q_e_p_a82718bc8478cde37f28fc685a859525e}{path} + \textcolor{stringliteral}{"/period"}).c\_str(), \textcolor{stringliteral}{"w"});
+89 
+90         \textcolor{comment}{// Check that we opened the file correctly}
+91         \textcolor{keywordflow}{if} (fp == NULL)
+92         \{
+93             \textcolor{comment}{// Error, break out}
+94             std::cerr << \textcolor{stringliteral}{"[eQEP "} << this->\hyperlink{class_hardware_1_1e_q_e_p_a82718bc8478cde37f28fc685a859525e}{path} << \textcolor{stringliteral}{"] Unable to open period for write"} << std::endl;
+95             \textcolor{keywordflow}{return};
+96         \}
+97 
+98         \textcolor{comment}{// Write the desired value to the file}
+99         fprintf(fp, \textcolor{stringliteral}{"%llu\(\backslash\)n"}, period);
+100 
+101         \textcolor{comment}{// Commit changes}
+102         fclose(fp);
+103     \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_hardware_1_1e_q_e_p_ae45ebd84fa06042ba6b9e5d5caccc1ed_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_hardware_1_1e_q_e_p_aa55fc881377f4fc3396895de65ed9161}{}\index{Hardware\+::e\+Q\+E\+P@{Hardware\+::e\+Q\+E\+P}!set\+\_\+position@{set\+\_\+position}}
+\index{set\+\_\+position@{set\+\_\+position}!Hardware\+::e\+Q\+E\+P@{Hardware\+::e\+Q\+E\+P}}
+\subsubsection[{set\+\_\+position}]{\setlength{\rightskip}{0pt plus 5cm}void Hardware\+::e\+Q\+E\+P\+::set\+\_\+position (
+\begin{DoxyParamCaption}
+\item[{int32\+\_\+t}]{position}
+\end{DoxyParamCaption}
+)}\label{class_hardware_1_1e_q_e_p_aa55fc881377f4fc3396895de65ed9161}
+
+
+Definition at line 64 of file eqep.\+cpp.
+
+
+
+References path.
+
+
+
+Referenced by e\+Q\+E\+P().
+
+
+\begin{DoxyCode}
+65     \{
+66         \textcolor{comment}{// Open the file representing the position}
+67         FILE *fp = fopen((this->\hyperlink{class_hardware_1_1e_q_e_p_a82718bc8478cde37f28fc685a859525e}{path} + \textcolor{stringliteral}{"/position"}).c\_str(), \textcolor{stringliteral}{"w"});
+68 
+69         \textcolor{comment}{// Check that we opened the file correctly}
+70         \textcolor{keywordflow}{if} (fp == NULL)
+71         \{
+72             \textcolor{comment}{// Error, break out}
+73             std::cerr << \textcolor{stringliteral}{"[eQEP "} << this->\hyperlink{class_hardware_1_1e_q_e_p_a82718bc8478cde37f28fc685a859525e}{path} << \textcolor{stringliteral}{"] Unable to open position for write"} << std::endl;
+74             \textcolor{keywordflow}{return};
+75         \}
+76 
+77         \textcolor{comment}{// Write the desired value to the file}
+78         fprintf(fp, \textcolor{stringliteral}{"%d\(\backslash\)n"}, position);
+79 
+80         \textcolor{comment}{// Commit changes}
+81         fclose(fp);
+82     \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=349pt]{class_hardware_1_1e_q_e_p_aa55fc881377f4fc3396895de65ed9161_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_hardware_1_1e_q_e_p_a529f04118a9be4768c117c552ba34bd0}{}\index{Hardware\+::e\+Q\+E\+P@{Hardware\+::e\+Q\+E\+P}!Wait\+For\+Position\+Change@{Wait\+For\+Position\+Change}}
+\index{Wait\+For\+Position\+Change@{Wait\+For\+Position\+Change}!Hardware\+::e\+Q\+E\+P@{Hardware\+::e\+Q\+E\+P}}
+\subsubsection[{Wait\+For\+Position\+Change}]{\setlength{\rightskip}{0pt plus 5cm}int Hardware\+::e\+Q\+E\+P\+::\+Wait\+For\+Position\+Change (
+\begin{DoxyParamCaption}
+\item[{{\bf Callback\+Type}}]{callback}
+\end{DoxyParamCaption}
+)}\label{class_hardware_1_1e_q_e_p_a529f04118a9be4768c117c552ba34bd0}
+
+
+Definition at line 126 of file eqep.\+cpp.
+
+
+
+References Hardware\+::\+B\+B\+B\+::callback\+Function, Hardware\+::\+B\+B\+B\+::thread, threaded\+Polleqep, and Hardware\+::\+B\+B\+B\+::thread\+Running.
+
+
+\begin{DoxyCode}
+127     \{
+128         \hyperlink{class_hardware_1_1_b_b_b_a0d9d8c56afb37955e0d0c6baf0f418df}{threadRunning} = \textcolor{keyword}{true};
+129         \hyperlink{class_hardware_1_1_b_b_b_a66d583952f3949a732ee15eea81e80e5}{callbackFunction} = callback;
+130         \textcolor{keywordflow}{if} (pthread\_create(&this->\hyperlink{class_hardware_1_1_b_b_b_a3ad3fe886705bfc242ef58dc5329166e}{thread}, NULL, &\hyperlink{class_hardware_1_1e_q_e_p_a0dd4c4778480f930ef697f898f2d4668}{threadedPolleqep}, static\_cast<void*>
+      (\textcolor{keyword}{this})))
+131         \{
+132             \hyperlink{class_hardware_1_1_b_b_b_a0d9d8c56afb37955e0d0c6baf0f418df}{threadRunning} = \textcolor{keyword}{false};
+133             \textcolor{keywordflow}{throw} Exception::FailedToCreateGPIOPollingThreadException();
+134         \}
+135 
+136         \textcolor{keywordflow}{return} 0;
+137     \}
+\end{DoxyCode}
+\hypertarget{class_hardware_1_1e_q_e_p_aae8e9f7ac543384dac031fb81f092574}{}\index{Hardware\+::e\+Q\+E\+P@{Hardware\+::e\+Q\+E\+P}!Wait\+For\+Position\+Change\+Cancel@{Wait\+For\+Position\+Change\+Cancel}}
+\index{Wait\+For\+Position\+Change\+Cancel@{Wait\+For\+Position\+Change\+Cancel}!Hardware\+::e\+Q\+E\+P@{Hardware\+::e\+Q\+E\+P}}
+\subsubsection[{Wait\+For\+Position\+Change\+Cancel}]{\setlength{\rightskip}{0pt plus 5cm}void Hardware\+::e\+Q\+E\+P\+::\+Wait\+For\+Position\+Change\+Cancel (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_hardware_1_1e_q_e_p_aae8e9f7ac543384dac031fb81f092574}
+
+
+Definition at line 70 of file eqep.\+h.
+
+
+
+References Hardware\+::\+B\+B\+B\+::thread\+Running.
+
+
+\begin{DoxyCode}
+70 \{ this->\hyperlink{class_hardware_1_1_b_b_b_a0d9d8c56afb37955e0d0c6baf0f418df}{threadRunning} = \textcolor{keyword}{false}; \}
+\end{DoxyCode}
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{class_hardware_1_1e_q_e_p_a0dd4c4778480f930ef697f898f2d4668}{}\index{Hardware\+::e\+Q\+E\+P@{Hardware\+::e\+Q\+E\+P}!threaded\+Polleqep@{threaded\+Polleqep}}
+\index{threaded\+Polleqep@{threaded\+Polleqep}!Hardware\+::e\+Q\+E\+P@{Hardware\+::e\+Q\+E\+P}}
+\subsubsection[{threaded\+Polleqep}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ threaded\+Polleqep (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}\label{class_hardware_1_1e_q_e_p_a0dd4c4778480f930ef697f898f2d4668}
+
+
+Definition at line 250 of file eqep.\+cpp.
+
+
+
+Referenced by Wait\+For\+Position\+Change().
+
+
+\begin{DoxyCode}
+251     \{
+252         \hyperlink{class_hardware_1_1e_q_e_p_adc9ce642c8927e217afc3600a63002e5}{eQEP} *eqep = \textcolor{keyword}{static\_cast<}\hyperlink{class_hardware_1_1e_q_e_p_adc9ce642c8927e217afc3600a63002e5}{eQEP}*\textcolor{keyword}{>}(value);
+253         \textcolor{keywordflow}{while} (eqep->threadRunning)
+254         \{
+255             eqep->callbackFunction(eqep->get\_position(\textcolor{keyword}{true}));
+256             usleep(eqep->debounceTime * 1000);
+257         \}
+258         \textcolor{keywordflow}{return} 0;
+259     \}
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_hardware_1_1e_q_e_p_a82718bc8478cde37f28fc685a859525e}{}\index{Hardware\+::e\+Q\+E\+P@{Hardware\+::e\+Q\+E\+P}!path@{path}}
+\index{path@{path}!Hardware\+::e\+Q\+E\+P@{Hardware\+::e\+Q\+E\+P}}
+\subsubsection[{path}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Hardware\+::e\+Q\+E\+P\+::path\hspace{0.3cm}{\ttfamily [private]}}\label{class_hardware_1_1e_q_e_p_a82718bc8478cde37f28fc685a859525e}
+
+
+Definition at line 44 of file eqep.\+h.
+
+
+
+Referenced by get\+\_\+mode(), get\+\_\+period(), get\+\_\+position(), set\+\_\+mode(), set\+\_\+period(), and set\+\_\+position().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/peer23peer/\+Vision\+Soil\+Analyzer/src/\+Soil\+Hardware/\hyperlink{eqep_8h}{eqep.\+h}\item 
+/home/peer23peer/\+Vision\+Soil\+Analyzer/src/\+Soil\+Hardware/\hyperlink{eqep_8cpp}{eqep.\+cpp}\end{DoxyCompactItemize}

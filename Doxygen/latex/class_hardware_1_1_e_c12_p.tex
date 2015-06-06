@@ -1,0 +1,479 @@
+\hypertarget{class_hardware_1_1_e_c12_p}{}\section{Hardware\+:\+:E\+C12\+P Class Reference}
+\label{class_hardware_1_1_e_c12_p}\index{Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}}
+
+
+{\ttfamily \#include $<$E\+C12\+P.\+h$>$}
+
+
+
+Collaboration diagram for Hardware\+:\+:E\+C12\+P\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_hardware_1_1_e_c12_p__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aa}{Color} \{ \\*
+\hyperlink{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aaa3b57c8754eb52c7023d81c7c45687f05}{Red}, 
+\hyperlink{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aaab5841c141282166e57407746841ff248}{Pink}, 
+\hyperlink{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aaa3f67a6d3b6004f86b8e4a477b3c5f915}{Blue}, 
+\hyperlink{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aaaac948b76451e5914627c3b482c5054c4}{Sky\+Blue}, 
+\\*
+\hyperlink{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aaafaadad2fea189e40df690d3bde44ac28}{Green}, 
+\hyperlink{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aaa25b4723962c85776a4ce70b8eee81263}{Yellow}, 
+\hyperlink{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aaacd1663fa4d06aa68eca32bbf370d9e15}{White}, 
+\hyperlink{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aaa0a40adb50c361b3ee3a6faca241d7c7a}{None}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_hardware_1_1_e_c12_p_a0b5c45d061ad98239e816e3845535d15}{E\+C12\+P} ()
+\item 
+\hyperlink{class_hardware_1_1_e_c12_p_a22ea7087bba0f459caed9f2fb6cd7412}{$\sim$\+E\+C12\+P} ()
+\item 
+void \hyperlink{class_hardware_1_1_e_c12_p_a9ef5c813c9eb38db1c236d1be0d23911}{Set\+Pixel\+Color} (\hyperlink{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aa}{Color} value)
+\item 
+\hyperlink{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aa}{Color} \hyperlink{class_hardware_1_1_e_c12_p_adc2a46fdee1bbec702761787a5a6a95b}{Get\+Pixel\+Color} ()
+\item 
+void \hyperlink{class_hardware_1_1_e_c12_p_aa2247dfecd78d1a384b1ba1d6e8d62e8}{Rainbow\+Loop} (int \hyperlink{class_hardware_1_1_e_c12_p_adff7ed51fd97bac61075c88a06102348}{sleepperiod})
+\item 
+void \hyperlink{class_hardware_1_1_e_c12_p_acc39f96105144c8aa5fca04942832987}{Stop\+Rainbow\+Loop} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_hardware_1_1e_q_e_p}{e\+Q\+E\+P} \hyperlink{class_hardware_1_1_e_c12_p_abfe8d6ea8948c77d4866ca8a05dbebe9}{Rotary} \{ \hyperlink{eqep_8h_a2dfbafc696aef9c14226ce25fb77c5f1}{e\+Q\+E\+P2}, \hyperlink{class_hardware_1_1e_q_e_p_a3f97f26c64d49d6f2643a257b7249070a5e916ce9f21af5bd9c5c63609630df7e}{e\+Q\+E\+P\+::e\+Q\+E\+P\+\_\+\+Mode\+\_\+\+Absolute} \}
+\item 
+\hyperlink{class_hardware_1_1_g_p_i_o}{G\+P\+I\+O} \hyperlink{class_hardware_1_1_e_c12_p_a6d91a7b1767f080af8c33bacdae1dd1d}{Button} \{ 68 \}
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aa}{Color} \hyperlink{class_hardware_1_1_e_c12_p_a1bc6223c152c6d9f30304b92069f05c0}{Pixel\+Color}
+\item 
+\hyperlink{class_hardware_1_1_g_p_i_o}{G\+P\+I\+O} \hyperlink{class_hardware_1_1_e_c12_p_a0a4f03a37d709349994e800e44f5c781}{R} \{ 31 \}
+\item 
+\hyperlink{class_hardware_1_1_g_p_i_o}{G\+P\+I\+O} \hyperlink{class_hardware_1_1_e_c12_p_a326f00b2047ecb58ee1e7e894dc61ad3}{B} \{ 48 \}
+\item 
+\hyperlink{class_hardware_1_1_g_p_i_o}{G\+P\+I\+O} \hyperlink{class_hardware_1_1_e_c12_p_a7afd63c14e12d861c8b20614ef34d70e}{G} \{ 51 \}
+\item 
+pthread\+\_\+t \hyperlink{class_hardware_1_1_e_c12_p_a718a90836ff46cd71d18ce099a656533}{thread}
+\item 
+bool \hyperlink{class_hardware_1_1_e_c12_p_a81af8167f5a5192d8575ebad04952d57}{thread\+Running}
+\item 
+int \hyperlink{class_hardware_1_1_e_c12_p_adff7ed51fd97bac61075c88a06102348}{sleepperiod}
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+void $\ast$ \hyperlink{class_hardware_1_1_e_c12_p_ae57007919c8fb89fc45e952de846c90e}{color\+Loop} (void $\ast$value)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 17 of file E\+C12\+P.\+h.
+
+
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aa}{}\index{Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}!Color@{Color}}
+\index{Color@{Color}!Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}}
+\subsubsection[{Color}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Hardware\+::\+E\+C12\+P\+::\+Color}}\label{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aa}
+Enumerator indicating the color of the encoder shaft \begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{Red@{Red}!Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}}\index{Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}!Red@{Red}}\item[{\em 
+\hypertarget{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aaa3b57c8754eb52c7023d81c7c45687f05}{}Red\label{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aaa3b57c8754eb52c7023d81c7c45687f05}
+}]Red \index{Pink@{Pink}!Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}}\index{Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}!Pink@{Pink}}\item[{\em 
+\hypertarget{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aaab5841c141282166e57407746841ff248}{}Pink\label{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aaab5841c141282166e57407746841ff248}
+}]Pink \index{Blue@{Blue}!Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}}\index{Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}!Blue@{Blue}}\item[{\em 
+\hypertarget{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aaa3f67a6d3b6004f86b8e4a477b3c5f915}{}Blue\label{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aaa3f67a6d3b6004f86b8e4a477b3c5f915}
+}]Blue \index{Sky\+Blue@{Sky\+Blue}!Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}}\index{Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}!Sky\+Blue@{Sky\+Blue}}\item[{\em 
+\hypertarget{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aaaac948b76451e5914627c3b482c5054c4}{}Sky\+Blue\label{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aaaac948b76451e5914627c3b482c5054c4}
+}]Sky\+Blue \index{Green@{Green}!Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}}\index{Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}!Green@{Green}}\item[{\em 
+\hypertarget{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aaafaadad2fea189e40df690d3bde44ac28}{}Green\label{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aaafaadad2fea189e40df690d3bde44ac28}
+}]Green \index{Yellow@{Yellow}!Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}}\index{Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}!Yellow@{Yellow}}\item[{\em 
+\hypertarget{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aaa25b4723962c85776a4ce70b8eee81263}{}Yellow\label{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aaa25b4723962c85776a4ce70b8eee81263}
+}]Yellow \index{White@{White}!Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}}\index{Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}!White@{White}}\item[{\em 
+\hypertarget{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aaacd1663fa4d06aa68eca32bbf370d9e15}{}White\label{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aaacd1663fa4d06aa68eca32bbf370d9e15}
+}]White \index{None@{None}!Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}}\index{Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}!None@{None}}\item[{\em 
+\hypertarget{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aaa0a40adb50c361b3ee3a6faca241d7c7a}{}None\label{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aaa0a40adb50c361b3ee3a6faca241d7c7a}
+}]Off \end{description}
+\end{Desc}
+
+
+Definition at line 24 of file E\+C12\+P.\+h.
+
+
+\begin{DoxyCode}
+25         \{
+26             \hyperlink{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aaa3b57c8754eb52c7023d81c7c45687f05}{Red},     
+27             \hyperlink{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aaab5841c141282166e57407746841ff248}{Pink},       
+28             \hyperlink{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aaa3f67a6d3b6004f86b8e4a477b3c5f915}{Blue},       
+29             \hyperlink{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aaaac948b76451e5914627c3b482c5054c4}{SkyBlue}, 
+30             \hyperlink{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aaafaadad2fea189e40df690d3bde44ac28}{Green},     
+31             \hyperlink{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aaa25b4723962c85776a4ce70b8eee81263}{Yellow},       
+32             \hyperlink{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aaacd1663fa4d06aa68eca32bbf370d9e15}{White},     
+33             \hyperlink{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aaa0a40adb50c361b3ee3a6faca241d7c7a}{None}        
+34         \};
+\end{DoxyCode}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_hardware_1_1_e_c12_p_a0b5c45d061ad98239e816e3845535d15}{}\index{Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}!E\+C12\+P@{E\+C12\+P}}
+\index{E\+C12\+P@{E\+C12\+P}!Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}}
+\subsubsection[{E\+C12\+P}]{\setlength{\rightskip}{0pt plus 5cm}E\+C12\+P\+::\+E\+C12\+P (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_hardware_1_1_e_c12_p_a0b5c45d061ad98239e816e3845535d15}
+Constructor 
+
+Definition at line 6 of file E\+C12\+P.\+cpp.
+
+
+
+References Button, G, Hardware\+::\+G\+P\+I\+O\+::\+Input, None, Hardware\+::\+G\+P\+I\+O\+::\+Output, R, Hardware\+::\+G\+P\+I\+O\+::\+Rising, Rotary, Hardware\+::e\+Q\+E\+P\+::set\+\_\+period(), Hardware\+::\+G\+P\+I\+O\+::\+Set\+Direction(), Hardware\+::\+G\+P\+I\+O\+::\+Set\+Edge(), Set\+Pixel\+Color(), and thread\+Running.
+
+
+\begin{DoxyCode}
+7     \{
+8         \textcolor{comment}{// Init Rotary button}
+9         \hyperlink{class_hardware_1_1_e_c12_p_a6d91a7b1767f080af8c33bacdae1dd1d}{Button}.\hyperlink{class_hardware_1_1_g_p_i_o_a4a9fc2f7be304a6b23c2a2876b4c6bf9}{SetDirection}(\hyperlink{class_hardware_1_1_g_p_i_o_a7507431d6341c146f22dcdb21b78ffd4a5614339496b61db558bd9a26a327088e}{GPIO::Input});
+10         \hyperlink{class_hardware_1_1_e_c12_p_a6d91a7b1767f080af8c33bacdae1dd1d}{Button}.\hyperlink{class_hardware_1_1_g_p_i_o_a4d4ab3b0f1ee53590a300bfbcccae895}{SetEdge}(\hyperlink{class_hardware_1_1_g_p_i_o_a9a7595aabdac9aec75f22e8b86342162afbb0aadc6c0311beb25d5a056c61ed46}{GPIO::Rising});
+11         
+12         \textcolor{comment}{// Init Encoder}
+13         \hyperlink{class_hardware_1_1_e_c12_p_abfe8d6ea8948c77d4866ca8a05dbebe9}{Rotary}.\hyperlink{class_hardware_1_1e_q_e_p_ae45ebd84fa06042ba6b9e5d5caccc1ed}{set\_period}(100000000L);
+14 
+15         \textcolor{comment}{// Init Encoder color}
+16         \hyperlink{class_hardware_1_1_e_c12_p_a0a4f03a37d709349994e800e44f5c781}{R}.\hyperlink{class_hardware_1_1_g_p_i_o_a4a9fc2f7be304a6b23c2a2876b4c6bf9}{SetDirection}(\hyperlink{class_hardware_1_1_g_p_i_o_a7507431d6341c146f22dcdb21b78ffd4a72432a9b39a6e45297b1158da8bb60eb}{GPIO::Output});
+17         \hyperlink{struct_b}{B}.SetDirection(\hyperlink{class_hardware_1_1_g_p_i_o_a7507431d6341c146f22dcdb21b78ffd4a72432a9b39a6e45297b1158da8bb60eb}{GPIO::Output});
+18         \hyperlink{class_hardware_1_1_e_c12_p_a7afd63c14e12d861c8b20614ef34d70e}{G}.\hyperlink{class_hardware_1_1_g_p_i_o_a4a9fc2f7be304a6b23c2a2876b4c6bf9}{SetDirection}(\hyperlink{class_hardware_1_1_g_p_i_o_a7507431d6341c146f22dcdb21b78ffd4a72432a9b39a6e45297b1158da8bb60eb}{GPIO::Output});
+19         \hyperlink{class_hardware_1_1_e_c12_p_a9ef5c813c9eb38db1c236d1be0d23911}{SetPixelColor}(\hyperlink{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aaa0a40adb50c361b3ee3a6faca241d7c7a}{None});
+20 
+21         \hyperlink{class_hardware_1_1_e_c12_p_a81af8167f5a5192d8575ebad04952d57}{threadRunning} = \textcolor{keyword}{false};
+22     \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_hardware_1_1_e_c12_p_a0b5c45d061ad98239e816e3845535d15_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_hardware_1_1_e_c12_p_a22ea7087bba0f459caed9f2fb6cd7412}{}\index{Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}!````~E\+C12\+P@{$\sim$\+E\+C12\+P}}
+\index{````~E\+C12\+P@{$\sim$\+E\+C12\+P}!Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}}
+\subsubsection[{$\sim$\+E\+C12\+P}]{\setlength{\rightskip}{0pt plus 5cm}E\+C12\+P\+::$\sim$\+E\+C12\+P (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_hardware_1_1_e_c12_p_a22ea7087bba0f459caed9f2fb6cd7412}
+De-\/constructor 
+
+Definition at line 25 of file E\+C12\+P.\+cpp.
+
+
+\begin{DoxyCode}
+25 \{   \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_hardware_1_1_e_c12_p_adc2a46fdee1bbec702761787a5a6a95b}{}\index{Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}!Get\+Pixel\+Color@{Get\+Pixel\+Color}}
+\index{Get\+Pixel\+Color@{Get\+Pixel\+Color}!Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}}
+\subsubsection[{Get\+Pixel\+Color}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Color} Hardware\+::\+E\+C12\+P\+::\+Get\+Pixel\+Color (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_hardware_1_1_e_c12_p_adc2a46fdee1bbec702761787a5a6a95b}
+
+
+Definition at line 37 of file E\+C12\+P.\+h.
+
+
+\begin{DoxyCode}
+37 \{ \textcolor{keywordflow}{return} \hyperlink{class_hardware_1_1_e_c12_p_a1bc6223c152c6d9f30304b92069f05c0}{PixelColor}; \};
+\end{DoxyCode}
+\hypertarget{class_hardware_1_1_e_c12_p_aa2247dfecd78d1a384b1ba1d6e8d62e8}{}\index{Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}!Rainbow\+Loop@{Rainbow\+Loop}}
+\index{Rainbow\+Loop@{Rainbow\+Loop}!Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}}
+\subsubsection[{Rainbow\+Loop}]{\setlength{\rightskip}{0pt plus 5cm}void E\+C12\+P\+::\+Rainbow\+Loop (
+\begin{DoxyParamCaption}
+\item[{int}]{sleepperiod}
+\end{DoxyParamCaption}
+)}\label{class_hardware_1_1_e_c12_p_aa2247dfecd78d1a384b1ba1d6e8d62e8}
+Loops through all the colors except of as a thread 
+
+Definition at line 79 of file E\+C12\+P.\+cpp.
+
+
+
+References color\+Loop, sleepperiod, thread, and thread\+Running.
+
+
+\begin{DoxyCode}
+80     \{
+81         this->\hyperlink{class_hardware_1_1_e_c12_p_adff7ed51fd97bac61075c88a06102348}{sleepperiod} = \hyperlink{class_hardware_1_1_e_c12_p_adff7ed51fd97bac61075c88a06102348}{sleepperiod};
+82         this->\hyperlink{class_hardware_1_1_e_c12_p_a81af8167f5a5192d8575ebad04952d57}{threadRunning} = \textcolor{keyword}{true};
+83         \textcolor{keywordflow}{if} (pthread\_create(&\hyperlink{class_hardware_1_1_e_c12_p_a718a90836ff46cd71d18ce099a656533}{thread}, NULL, \hyperlink{class_hardware_1_1_e_c12_p_ae57007919c8fb89fc45e952de846c90e}{colorLoop}, \textcolor{keyword}{this}))  \{   \textcolor{keywordflow}{throw} 
+      Exception::FailedToCreateThreadException();   \}
+84     \}
+\end{DoxyCode}
+\hypertarget{class_hardware_1_1_e_c12_p_a9ef5c813c9eb38db1c236d1be0d23911}{}\index{Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}!Set\+Pixel\+Color@{Set\+Pixel\+Color}}
+\index{Set\+Pixel\+Color@{Set\+Pixel\+Color}!Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}}
+\subsubsection[{Set\+Pixel\+Color}]{\setlength{\rightskip}{0pt plus 5cm}void E\+C12\+P\+::\+Set\+Pixel\+Color (
+\begin{DoxyParamCaption}
+\item[{{\bf Color}}]{value}
+\end{DoxyParamCaption}
+)}\label{class_hardware_1_1_e_c12_p_a9ef5c813c9eb38db1c236d1be0d23911}
+Set the shaft color 
+\begin{DoxyParams}{Parameters}
+{\em value} & as Color enumerator \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 30 of file E\+C12\+P.\+cpp.
+
+
+
+References Blue, G, Green, Hardware\+::\+G\+P\+I\+O\+::\+High, Hardware\+::\+G\+P\+I\+O\+::\+Low, None, Pink, Pixel\+Color, R, Red, Hardware\+::\+G\+P\+I\+O\+::\+Set\+Value(), Sky\+Blue, White, and Yellow.
+
+
+
+Referenced by Hardware\+::color\+Loop(), and E\+C12\+P().
+
+
+\begin{DoxyCode}
+31     \{
+32         \textcolor{keywordflow}{switch} (value)
+33         \{
+34         \textcolor{keywordflow}{case} \hyperlink{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aaa3b57c8754eb52c7023d81c7c45687f05}{Hardware::EC12P::Red}:
+35             \hyperlink{class_hardware_1_1_e_c12_p_a0a4f03a37d709349994e800e44f5c781}{R}.\hyperlink{class_hardware_1_1_g_p_i_o_a2564893797de6a2dab596c4fc990b919}{SetValue}(\hyperlink{class_hardware_1_1_g_p_i_o_ad357201dc1ad13ad96ba1773108a5f6da93471c709b9d95bfaef4794b4c41e22c}{GPIO::High});
+36             \hyperlink{struct_b}{B}.SetValue(\hyperlink{class_hardware_1_1_g_p_i_o_ad357201dc1ad13ad96ba1773108a5f6da93de7d5aa4e577175e4fe1fcb0206a85}{GPIO::Low});
+37             \hyperlink{class_hardware_1_1_e_c12_p_a7afd63c14e12d861c8b20614ef34d70e}{G}.\hyperlink{class_hardware_1_1_g_p_i_o_a2564893797de6a2dab596c4fc990b919}{SetValue}(\hyperlink{class_hardware_1_1_g_p_i_o_ad357201dc1ad13ad96ba1773108a5f6da93de7d5aa4e577175e4fe1fcb0206a85}{GPIO::Low});
+38             \textcolor{keywordflow}{break};
+39         \textcolor{keywordflow}{case} \hyperlink{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aaab5841c141282166e57407746841ff248}{Hardware::EC12P::Pink}:
+40             \hyperlink{class_hardware_1_1_e_c12_p_a0a4f03a37d709349994e800e44f5c781}{R}.\hyperlink{class_hardware_1_1_g_p_i_o_a2564893797de6a2dab596c4fc990b919}{SetValue}(\hyperlink{class_hardware_1_1_g_p_i_o_ad357201dc1ad13ad96ba1773108a5f6da93471c709b9d95bfaef4794b4c41e22c}{GPIO::High});
+41             \hyperlink{struct_b}{B}.SetValue(\hyperlink{class_hardware_1_1_g_p_i_o_ad357201dc1ad13ad96ba1773108a5f6da93471c709b9d95bfaef4794b4c41e22c}{GPIO::High});
+42             \hyperlink{class_hardware_1_1_e_c12_p_a7afd63c14e12d861c8b20614ef34d70e}{G}.\hyperlink{class_hardware_1_1_g_p_i_o_a2564893797de6a2dab596c4fc990b919}{SetValue}(\hyperlink{class_hardware_1_1_g_p_i_o_ad357201dc1ad13ad96ba1773108a5f6da93de7d5aa4e577175e4fe1fcb0206a85}{GPIO::Low});
+43             \textcolor{keywordflow}{break};
+44         \textcolor{keywordflow}{case} \hyperlink{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aaa3f67a6d3b6004f86b8e4a477b3c5f915}{Hardware::EC12P::Blue}:
+45             \hyperlink{class_hardware_1_1_e_c12_p_a0a4f03a37d709349994e800e44f5c781}{R}.\hyperlink{class_hardware_1_1_g_p_i_o_a2564893797de6a2dab596c4fc990b919}{SetValue}(\hyperlink{class_hardware_1_1_g_p_i_o_ad357201dc1ad13ad96ba1773108a5f6da93de7d5aa4e577175e4fe1fcb0206a85}{GPIO::Low});
+46             \hyperlink{struct_b}{B}.SetValue(\hyperlink{class_hardware_1_1_g_p_i_o_ad357201dc1ad13ad96ba1773108a5f6da93471c709b9d95bfaef4794b4c41e22c}{GPIO::High});
+47             \hyperlink{class_hardware_1_1_e_c12_p_a7afd63c14e12d861c8b20614ef34d70e}{G}.\hyperlink{class_hardware_1_1_g_p_i_o_a2564893797de6a2dab596c4fc990b919}{SetValue}(\hyperlink{class_hardware_1_1_g_p_i_o_ad357201dc1ad13ad96ba1773108a5f6da93de7d5aa4e577175e4fe1fcb0206a85}{GPIO::Low});
+48             \textcolor{keywordflow}{break};
+49         \textcolor{keywordflow}{case} \hyperlink{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aaaac948b76451e5914627c3b482c5054c4}{Hardware::EC12P::SkyBlue}:
+50             \hyperlink{class_hardware_1_1_e_c12_p_a0a4f03a37d709349994e800e44f5c781}{R}.\hyperlink{class_hardware_1_1_g_p_i_o_a2564893797de6a2dab596c4fc990b919}{SetValue}(\hyperlink{class_hardware_1_1_g_p_i_o_ad357201dc1ad13ad96ba1773108a5f6da93de7d5aa4e577175e4fe1fcb0206a85}{GPIO::Low});
+51             \hyperlink{struct_b}{B}.SetValue(\hyperlink{class_hardware_1_1_g_p_i_o_ad357201dc1ad13ad96ba1773108a5f6da93471c709b9d95bfaef4794b4c41e22c}{GPIO::High});
+52             \hyperlink{class_hardware_1_1_e_c12_p_a7afd63c14e12d861c8b20614ef34d70e}{G}.\hyperlink{class_hardware_1_1_g_p_i_o_a2564893797de6a2dab596c4fc990b919}{SetValue}(\hyperlink{class_hardware_1_1_g_p_i_o_ad357201dc1ad13ad96ba1773108a5f6da93471c709b9d95bfaef4794b4c41e22c}{GPIO::High});
+53             \textcolor{keywordflow}{break};
+54         \textcolor{keywordflow}{case} \hyperlink{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aaafaadad2fea189e40df690d3bde44ac28}{Hardware::EC12P::Green}:
+55             \hyperlink{class_hardware_1_1_e_c12_p_a0a4f03a37d709349994e800e44f5c781}{R}.\hyperlink{class_hardware_1_1_g_p_i_o_a2564893797de6a2dab596c4fc990b919}{SetValue}(\hyperlink{class_hardware_1_1_g_p_i_o_ad357201dc1ad13ad96ba1773108a5f6da93de7d5aa4e577175e4fe1fcb0206a85}{GPIO::Low});
+56             \hyperlink{struct_b}{B}.SetValue(\hyperlink{class_hardware_1_1_g_p_i_o_ad357201dc1ad13ad96ba1773108a5f6da93de7d5aa4e577175e4fe1fcb0206a85}{GPIO::Low});
+57             \hyperlink{class_hardware_1_1_e_c12_p_a7afd63c14e12d861c8b20614ef34d70e}{G}.\hyperlink{class_hardware_1_1_g_p_i_o_a2564893797de6a2dab596c4fc990b919}{SetValue}(\hyperlink{class_hardware_1_1_g_p_i_o_ad357201dc1ad13ad96ba1773108a5f6da93471c709b9d95bfaef4794b4c41e22c}{GPIO::High});
+58             \textcolor{keywordflow}{break};
+59         \textcolor{keywordflow}{case} \hyperlink{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aaa25b4723962c85776a4ce70b8eee81263}{Hardware::EC12P::Yellow}:
+60             \hyperlink{class_hardware_1_1_e_c12_p_a0a4f03a37d709349994e800e44f5c781}{R}.\hyperlink{class_hardware_1_1_g_p_i_o_a2564893797de6a2dab596c4fc990b919}{SetValue}(\hyperlink{class_hardware_1_1_g_p_i_o_ad357201dc1ad13ad96ba1773108a5f6da93471c709b9d95bfaef4794b4c41e22c}{GPIO::High});
+61             \hyperlink{struct_b}{B}.SetValue(\hyperlink{class_hardware_1_1_g_p_i_o_ad357201dc1ad13ad96ba1773108a5f6da93de7d5aa4e577175e4fe1fcb0206a85}{GPIO::Low});
+62             \hyperlink{class_hardware_1_1_e_c12_p_a7afd63c14e12d861c8b20614ef34d70e}{G}.\hyperlink{class_hardware_1_1_g_p_i_o_a2564893797de6a2dab596c4fc990b919}{SetValue}(\hyperlink{class_hardware_1_1_g_p_i_o_ad357201dc1ad13ad96ba1773108a5f6da93471c709b9d95bfaef4794b4c41e22c}{GPIO::High});
+63             \textcolor{keywordflow}{break};
+64         \textcolor{keywordflow}{case} \hyperlink{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aaacd1663fa4d06aa68eca32bbf370d9e15}{Hardware::EC12P::White}:
+65             \hyperlink{class_hardware_1_1_e_c12_p_a0a4f03a37d709349994e800e44f5c781}{R}.\hyperlink{class_hardware_1_1_g_p_i_o_a2564893797de6a2dab596c4fc990b919}{SetValue}(\hyperlink{class_hardware_1_1_g_p_i_o_ad357201dc1ad13ad96ba1773108a5f6da93471c709b9d95bfaef4794b4c41e22c}{GPIO::High});
+66             \hyperlink{struct_b}{B}.SetValue(\hyperlink{class_hardware_1_1_g_p_i_o_ad357201dc1ad13ad96ba1773108a5f6da93471c709b9d95bfaef4794b4c41e22c}{GPIO::High});
+67             \hyperlink{class_hardware_1_1_e_c12_p_a7afd63c14e12d861c8b20614ef34d70e}{G}.\hyperlink{class_hardware_1_1_g_p_i_o_a2564893797de6a2dab596c4fc990b919}{SetValue}(\hyperlink{class_hardware_1_1_g_p_i_o_ad357201dc1ad13ad96ba1773108a5f6da93471c709b9d95bfaef4794b4c41e22c}{GPIO::High});
+68             \textcolor{keywordflow}{break};
+69         \textcolor{keywordflow}{case} \hyperlink{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aaa0a40adb50c361b3ee3a6faca241d7c7a}{Hardware::EC12P::None}:
+70             \hyperlink{class_hardware_1_1_e_c12_p_a0a4f03a37d709349994e800e44f5c781}{R}.\hyperlink{class_hardware_1_1_g_p_i_o_a2564893797de6a2dab596c4fc990b919}{SetValue}(\hyperlink{class_hardware_1_1_g_p_i_o_ad357201dc1ad13ad96ba1773108a5f6da93de7d5aa4e577175e4fe1fcb0206a85}{GPIO::Low});
+71             \hyperlink{struct_b}{B}.SetValue(\hyperlink{class_hardware_1_1_g_p_i_o_ad357201dc1ad13ad96ba1773108a5f6da93de7d5aa4e577175e4fe1fcb0206a85}{GPIO::Low});
+72             \hyperlink{class_hardware_1_1_e_c12_p_a7afd63c14e12d861c8b20614ef34d70e}{G}.\hyperlink{class_hardware_1_1_g_p_i_o_a2564893797de6a2dab596c4fc990b919}{SetValue}(\hyperlink{class_hardware_1_1_g_p_i_o_ad357201dc1ad13ad96ba1773108a5f6da93de7d5aa4e577175e4fe1fcb0206a85}{GPIO::Low});
+73             \textcolor{keywordflow}{break};
+74         \}
+75         \hyperlink{class_hardware_1_1_e_c12_p_a1bc6223c152c6d9f30304b92069f05c0}{PixelColor} = value;
+76     \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_hardware_1_1_e_c12_p_a9ef5c813c9eb38db1c236d1be0d23911_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_hardware_1_1_e_c12_p_a9ef5c813c9eb38db1c236d1be0d23911_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_hardware_1_1_e_c12_p_acc39f96105144c8aa5fca04942832987}{}\index{Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}!Stop\+Rainbow\+Loop@{Stop\+Rainbow\+Loop}}
+\index{Stop\+Rainbow\+Loop@{Stop\+Rainbow\+Loop}!Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}}
+\subsubsection[{Stop\+Rainbow\+Loop}]{\setlength{\rightskip}{0pt plus 5cm}void Hardware\+::\+E\+C12\+P\+::\+Stop\+Rainbow\+Loop (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_hardware_1_1_e_c12_p_acc39f96105144c8aa5fca04942832987}
+
+
+Definition at line 40 of file E\+C12\+P.\+h.
+
+
+\begin{DoxyCode}
+40 \{ \hyperlink{class_hardware_1_1_e_c12_p_a81af8167f5a5192d8575ebad04952d57}{threadRunning} = \textcolor{keyword}{false}; \};
+\end{DoxyCode}
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{class_hardware_1_1_e_c12_p_ae57007919c8fb89fc45e952de846c90e}{}\index{Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}!color\+Loop@{color\+Loop}}
+\index{color\+Loop@{color\+Loop}!Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}}
+\subsubsection[{color\+Loop}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ color\+Loop (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}\label{class_hardware_1_1_e_c12_p_ae57007919c8fb89fc45e952de846c90e}
+The thread function that runs trough all the colors 
+
+Definition at line 87 of file E\+C12\+P.\+cpp.
+
+
+
+Referenced by Rainbow\+Loop().
+
+
+\begin{DoxyCode}
+88     \{
+89         \textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0;
+90         \hyperlink{class_e_c12_p}{EC12P} *ec12p = \textcolor{keyword}{static\_cast<}\hyperlink{class_e_c12_p}{EC12P}*\textcolor{keyword}{>}(value);
+91         \hyperlink{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aa}{EC12P::Color} pcolor;
+92         \textcolor{keywordflow}{while} (ec12p->threadRunning)
+93         \{
+94             pcolor = \textcolor{keyword}{static\_cast<}\hyperlink{class_hardware_1_1_e_c12_p_a8341f410cd939bf03160fe239bc782aa}{EC12P::Color}\textcolor{keyword}{>}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i});
+95             ec12p->SetPixelColor(pcolor);
+96             usleep(ec12p->sleepperiod);
+97             i++;
+98             \textcolor{keywordflow}{if} (i == 6) \{ i = 0; \}
+99         \}
+100         \textcolor{keywordflow}{return} ec12p;
+101     \}
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_hardware_1_1_e_c12_p_a326f00b2047ecb58ee1e7e894dc61ad3}{}\index{Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}!B@{B}}
+\index{B@{B}!Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}}
+\subsubsection[{B}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+P\+I\+O} Hardware\+::\+E\+C12\+P\+::\+B \{ 48 \}\hspace{0.3cm}{\ttfamily [private]}}\label{class_hardware_1_1_e_c12_p_a326f00b2047ecb58ee1e7e894dc61ad3}
+Blue L\+E\+D 
+
+Definition at line 49 of file E\+C12\+P.\+h.
+
+\hypertarget{class_hardware_1_1_e_c12_p_a6d91a7b1767f080af8c33bacdae1dd1d}{}\index{Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}!Button@{Button}}
+\index{Button@{Button}!Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}}
+\subsubsection[{Button}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+P\+I\+O} Hardware\+::\+E\+C12\+P\+::\+Button \{ 68 \}}\label{class_hardware_1_1_e_c12_p_a6d91a7b1767f080af8c33bacdae1dd1d}
+The pushbutton 
+
+Definition at line 43 of file E\+C12\+P.\+h.
+
+
+
+Referenced by E\+C12\+P().
+
+\hypertarget{class_hardware_1_1_e_c12_p_a7afd63c14e12d861c8b20614ef34d70e}{}\index{Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}!G@{G}}
+\index{G@{G}!Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}}
+\subsubsection[{G}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+P\+I\+O} Hardware\+::\+E\+C12\+P\+::\+G \{ 51 \}\hspace{0.3cm}{\ttfamily [private]}}\label{class_hardware_1_1_e_c12_p_a7afd63c14e12d861c8b20614ef34d70e}
+Green L\+E\+D 
+
+Definition at line 50 of file E\+C12\+P.\+h.
+
+
+
+Referenced by E\+C12\+P(), and Set\+Pixel\+Color().
+
+\hypertarget{class_hardware_1_1_e_c12_p_a1bc6223c152c6d9f30304b92069f05c0}{}\index{Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}!Pixel\+Color@{Pixel\+Color}}
+\index{Pixel\+Color@{Pixel\+Color}!Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}}
+\subsubsection[{Pixel\+Color}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Color} Hardware\+::\+E\+C12\+P\+::\+Pixel\+Color\hspace{0.3cm}{\ttfamily [private]}}\label{class_hardware_1_1_e_c12_p_a1bc6223c152c6d9f30304b92069f05c0}
+Current shaft color 
+
+Definition at line 46 of file E\+C12\+P.\+h.
+
+
+
+Referenced by Set\+Pixel\+Color().
+
+\hypertarget{class_hardware_1_1_e_c12_p_a0a4f03a37d709349994e800e44f5c781}{}\index{Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}!R@{R}}
+\index{R@{R}!Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}}
+\subsubsection[{R}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+P\+I\+O} Hardware\+::\+E\+C12\+P\+::\+R \{ 31 \}\hspace{0.3cm}{\ttfamily [private]}}\label{class_hardware_1_1_e_c12_p_a0a4f03a37d709349994e800e44f5c781}
+Red L\+E\+D 
+
+Definition at line 48 of file E\+C12\+P.\+h.
+
+
+
+Referenced by E\+C12\+P(), and Set\+Pixel\+Color().
+
+\hypertarget{class_hardware_1_1_e_c12_p_abfe8d6ea8948c77d4866ca8a05dbebe9}{}\index{Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}!Rotary@{Rotary}}
+\index{Rotary@{Rotary}!Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}}
+\subsubsection[{Rotary}]{\setlength{\rightskip}{0pt plus 5cm}{\bf e\+Q\+E\+P} Hardware\+::\+E\+C12\+P\+::\+Rotary \{ {\bf e\+Q\+E\+P2}, {\bf e\+Q\+E\+P\+::e\+Q\+E\+P\+\_\+\+Mode\+\_\+\+Absolute} \}}\label{class_hardware_1_1_e_c12_p_abfe8d6ea8948c77d4866ca8a05dbebe9}
+The encoder 
+
+Definition at line 42 of file E\+C12\+P.\+h.
+
+
+
+Referenced by E\+C12\+P().
+
+\hypertarget{class_hardware_1_1_e_c12_p_adff7ed51fd97bac61075c88a06102348}{}\index{Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}!sleepperiod@{sleepperiod}}
+\index{sleepperiod@{sleepperiod}!Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}}
+\subsubsection[{sleepperiod}]{\setlength{\rightskip}{0pt plus 5cm}int Hardware\+::\+E\+C12\+P\+::sleepperiod\hspace{0.3cm}{\ttfamily [private]}}\label{class_hardware_1_1_e_c12_p_adff7ed51fd97bac61075c88a06102348}
+Sleep period 
+
+Definition at line 54 of file E\+C12\+P.\+h.
+
+
+
+Referenced by Hardware\+::color\+Loop(), and Rainbow\+Loop().
+
+\hypertarget{class_hardware_1_1_e_c12_p_a718a90836ff46cd71d18ce099a656533}{}\index{Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}!thread@{thread}}
+\index{thread@{thread}!Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}}
+\subsubsection[{thread}]{\setlength{\rightskip}{0pt plus 5cm}pthread\+\_\+t Hardware\+::\+E\+C12\+P\+::thread\hspace{0.3cm}{\ttfamily [private]}}\label{class_hardware_1_1_e_c12_p_a718a90836ff46cd71d18ce099a656533}
+the thread 
+
+Definition at line 52 of file E\+C12\+P.\+h.
+
+
+
+Referenced by Rainbow\+Loop().
+
+\hypertarget{class_hardware_1_1_e_c12_p_a81af8167f5a5192d8575ebad04952d57}{}\index{Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}!thread\+Running@{thread\+Running}}
+\index{thread\+Running@{thread\+Running}!Hardware\+::\+E\+C12\+P@{Hardware\+::\+E\+C12\+P}}
+\subsubsection[{thread\+Running}]{\setlength{\rightskip}{0pt plus 5cm}bool Hardware\+::\+E\+C12\+P\+::thread\+Running\hspace{0.3cm}{\ttfamily [private]}}\label{class_hardware_1_1_e_c12_p_a81af8167f5a5192d8575ebad04952d57}
+Bool used to stop the thread 
+
+Definition at line 53 of file E\+C12\+P.\+h.
+
+
+
+Referenced by Hardware\+::color\+Loop(), E\+C12\+P(), and Rainbow\+Loop().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/peer23peer/\+Vision\+Soil\+Analyzer/src/\+Soil\+Hardware/\hyperlink{_e_c12_p_8h}{E\+C12\+P.\+h}\item 
+/home/peer23peer/\+Vision\+Soil\+Analyzer/src/\+Soil\+Hardware/\hyperlink{_e_c12_p_8cpp}{E\+C12\+P.\+cpp}\end{DoxyCompactItemize}

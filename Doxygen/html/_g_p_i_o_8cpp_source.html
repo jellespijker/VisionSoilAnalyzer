@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.9.1"/>
-<title>VisionSoilAnalyzer: D:/OneDrive/Opleiding/HTS_HAN/Minor2/CPP/VisionSoilAnalyzer/src/VisionSoilAnalyzer/Hardware/GPIO.cpp Source File</title>
+<title>Vision Soil Analyzer: /home/peer23peer/VisionSoilAnalyzer/src/SoilHardware/GPIO.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -30,12 +30,12 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="hanner.bmp"/></td>
+  <td id="projectlogo"><img alt="Logo" src="IHClogo.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectname">VisionSoilAnalyzer
-   &#160;<span id="projectnumber">1.0</span>
+   <div id="projectname">Vision Soil Analyzer
+   &#160;<span id="projectnumber">1.0.0</span>
    </div>
-   <div id="projectbrief">The Soil Analyzer is a portable lab that can analyse soil samples and tells the user about it&#39;s optical properties. It looks at the texture and describe it as a Particle Size Distribution. This information is presented as a Cumulative Distribution Function (CDF). It also describes the structure of the soil sample and gives information on the sphericity and roundness / angularity. It does so by analysing the contour of particles, describing them as Fourier Descriptors and using a Neural Network to describe it&#39;s properties. Finally it gives the color properties in a histogram in the CIE Lab colorspace, which show correlations with the fertility of the soil. and a histogram of the Redness Index, which gives has a correlation on the iron content.</div>
+   <div id="projectbrief">The Soil Analyzer is a portable lab that can analyse soil samples and tells the user about it&#39;s optical properties. It looks at the texture and describe it as a Particle Size Distribution. This information is presented as a Cumulative Distribution Function (CDF). It also describes the structure of the soil sample and gives information on the sphericity and roundness / angularity. It does so by analysing the contour of particles, describing them as Fourier Descriptors and using a Neural Network to describe it&#39;s properties. Finally it gives the color properties in a histogram in the CIE La*b* colorspace, which show correlations with the fertility of the soil. and a histogram of the Redness Index, which gives has a correlation on the iron content.</div>
   </td>
  </tr>
  </tbody>
@@ -49,6 +49,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -149,7 +150,7 @@ $(document).ready(function(){initNavTree('_g_p_i_o_8cpp_source.html','');});
 <div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="class_hardware_1_1_g_p_i_o.html#afd1340f1a1907168e7dc4ad24027b96a">   37</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_hardware_1_1_g_p_i_o.html#afd1340f1a1907168e7dc4ad24027b96a">GPIO::WaitForEdge</a>()</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    {</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="class_hardware_1_1_g_p_i_o.html#a77e93e4f6650507fdc4898d272d540e7">direction</a> == <a class="code" href="class_hardware_1_1_g_p_i_o.html#a7507431d6341c146f22dcdb21b78ffd4a72432a9b39a6e45297b1158da8bb60eb">Output</a>) { <a class="code" href="class_hardware_1_1_g_p_i_o.html#a4a9fc2f7be304a6b23c2a2876b4c6bf9">SetDirection</a>(<a class="code" href="class_hardware_1_1_g_p_i_o.html#a7507431d6341c146f22dcdb21b78ffd4a5614339496b61db558bd9a26a327088e">Input</a>); }</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordtype">int</span> fd, i, epollfd, count = 0;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordtype">int</span> fd, <a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a>, epollfd, <a class="code" href="_comparision_pictures_2_createtest_image_8m.html#ae11b3deb3de3df7dc48e439074023e35">count</a> = 0;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keyword">struct </span>epoll_event ev;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        epollfd = epoll_create(1);</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordflow">if</span> (epollfd == -1)</div>
@@ -324,6 +325,7 @@ $(document).ready(function(){initNavTree('_g_p_i_o_8cpp_source.html','');});
 <div class="ttc" id="class_hardware_1_1_g_p_i_o_html_afd1340f1a1907168e7dc4ad24027b96a"><div class="ttname"><a href="class_hardware_1_1_g_p_i_o.html#afd1340f1a1907168e7dc4ad24027b96a">Hardware::GPIO::WaitForEdge</a></div><div class="ttdeci">int WaitForEdge()</div><div class="ttdef"><b>Definition:</b> <a href="_g_p_i_o_8cpp_source.html#l00037">GPIO.cpp:37</a></div></div>
 <div class="ttc" id="class_hardware_1_1_g_p_i_o_html_a1a880bee633c9c5227cb36d2d6c63a52"><div class="ttname"><a href="class_hardware_1_1_g_p_i_o.html#a1a880bee633c9c5227cb36d2d6c63a52">Hardware::GPIO::ExportPin</a></div><div class="ttdeci">bool ExportPin(int number)</div><div class="ttdef"><b>Definition:</b> <a href="_g_p_i_o_8cpp_source.html#l00106">GPIO.cpp:106</a></div></div>
 <div class="ttc" id="class_hardware_1_1_b_b_b_html_a0d9d8c56afb37955e0d0c6baf0f418df"><div class="ttname"><a href="class_hardware_1_1_b_b_b.html#a0d9d8c56afb37955e0d0c6baf0f418df">Hardware::BBB::threadRunning</a></div><div class="ttdeci">bool threadRunning</div><div class="ttdef"><b>Definition:</b> <a href="_b_b_b_8h_source.html#l00039">BBB.h:39</a></div></div>
+<div class="ttc" id="_comparision_pictures_2_createtest_image_8m_html_a6f6ccfcf58b31cb6412107d9d5281426"><div class="ttname"><a href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a></div><div class="ttdeci">for i</div><div class="ttdef"><b>Definition:</b> <a href="_comparision_pictures_2_createtest_image_8m_source.html#l00006">CreatetestImage.m:6</a></div></div>
 <div class="ttc" id="class_hardware_1_1_b_b_b_html_a8b287ded7bcb2cfab361d1fca2b62e9f"><div class="ttname"><a href="class_hardware_1_1_b_b_b.html#a8b287ded7bcb2cfab361d1fca2b62e9f">Hardware::BBB::Read</a></div><div class="ttdeci">string Read(const string &amp;path)</div><div class="ttdef"><b>Definition:</b> <a href="_b_b_b_8cpp_source.html#l00021">BBB.cpp:21</a></div></div>
 <div class="ttc" id="class_hardware_1_1_b_b_b_html_a155cc06f76d82a6b690ce5ea08e7c68e"><div class="ttname"><a href="class_hardware_1_1_b_b_b.html#a155cc06f76d82a6b690ce5ea08e7c68e">Hardware::BBB::Write</a></div><div class="ttdeci">void Write(const string &amp;path, const string &amp;value)</div><div class="ttdef"><b>Definition:</b> <a href="_b_b_b_8cpp_source.html#l00036">BBB.cpp:36</a></div></div>
 <div class="ttc" id="class_hardware_1_1_g_p_i_o_html_a4a9fc2f7be304a6b23c2a2876b4c6bf9"><div class="ttname"><a href="class_hardware_1_1_g_p_i_o.html#a4a9fc2f7be304a6b23c2a2876b4c6bf9">Hardware::GPIO::SetDirection</a></div><div class="ttdeci">void SetDirection(Direction direction)</div><div class="ttdef"><b>Definition:</b> <a href="_g_p_i_o_8cpp_source.html#l00082">GPIO.cpp:82</a></div></div>
@@ -340,6 +342,7 @@ $(document).ready(function(){initNavTree('_g_p_i_o_8cpp_source.html','');});
 <div class="ttc" id="class_hardware_1_1_g_p_i_o_html_ad357201dc1ad13ad96ba1773108a5f6d"><div class="ttname"><a href="class_hardware_1_1_g_p_i_o.html#ad357201dc1ad13ad96ba1773108a5f6d">Hardware::GPIO::Value</a></div><div class="ttdeci">Value</div><div class="ttdef"><b>Definition:</b> <a href="_g_p_i_o_8h_source.html#l00027">GPIO.h:27</a></div></div>
 <div class="ttc" id="class_hardware_1_1_g_p_i_o_html_a9a7595aabdac9aec75f22e8b86342162aa49ebde2bcdeefb0e7be23fd0fbbdee6"><div class="ttname"><a href="class_hardware_1_1_g_p_i_o.html#a9a7595aabdac9aec75f22e8b86342162aa49ebde2bcdeefb0e7be23fd0fbbdee6">Hardware::GPIO::None</a></div><div class="ttdef"><b>Definition:</b> <a href="_g_p_i_o_8h_source.html#l00028">GPIO.h:28</a></div></div>
 <div class="ttc" id="class_hardware_1_1_g_p_i_o_html_a875d4f95ff3e6a70196660faa0477cf5"><div class="ttname"><a href="class_hardware_1_1_g_p_i_o.html#a875d4f95ff3e6a70196660faa0477cf5">Hardware::GPIO::ReadsDirection</a></div><div class="ttdeci">Direction ReadsDirection(const string &amp;gpiopath)</div><div class="ttdef"><b>Definition:</b> <a href="_g_p_i_o_8cpp_source.html#l00118">GPIO.cpp:118</a></div></div>
+<div class="ttc" id="_comparision_pictures_2_createtest_image_8m_html_ae11b3deb3de3df7dc48e439074023e35"><div class="ttname"><a href="_comparision_pictures_2_createtest_image_8m.html#ae11b3deb3de3df7dc48e439074023e35">count</a></div><div class="ttdeci">count</div><div class="ttdef"><b>Definition:</b> <a href="_comparision_pictures_2_createtest_image_8m_source.html#l00018">CreatetestImage.m:18</a></div></div>
 <div class="ttc" id="_g_p_i_o_8h_html"><div class="ttname"><a href="_g_p_i_o_8h.html">GPIO.h</a></div></div>
 <div class="ttc" id="namespace_hardware_html"><div class="ttname"><a href="namespace_hardware.html">Hardware</a></div><div class="ttdef"><b>Definition:</b> <a href="_a_d_c_8cpp_source.html#l00003">ADC.cpp:3</a></div></div>
 <div class="ttc" id="_g_p_i_o_8h_html_a57a9168261422a24cc4b062b0376449b"><div class="ttname"><a href="_g_p_i_o_8h.html#a57a9168261422a24cc4b062b0376449b">UNEXPORT_PIN</a></div><div class="ttdeci">#define UNEXPORT_PIN</div><div class="ttdef"><b>Definition:</b> <a href="_g_p_i_o_8h_source.html#l00012">GPIO.h:12</a></div></div>
@@ -357,8 +360,8 @@ $(document).ready(function(){initNavTree('_g_p_i_o_8cpp_source.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_e5ed19147291f8a84b470a9159669fe2.html">src</a></li><li class="navelem"><a class="el" href="dir_7844d1de82fd775c2c6709336b03ac97.html">VisionSoilAnalyzer</a></li><li class="navelem"><a class="el" href="dir_7bce071a646e7aa754dd7e4d5d8f209a.html">Hardware</a></li><li class="navelem"><a class="el" href="_g_p_i_o_8cpp.html">GPIO.cpp</a></li>
-    <li class="footer">Generated on Sat Jan 17 2015 00:56:35 for VisionSoilAnalyzer by
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_7d1931b727af368c927c89b2ad19148d.html">SoilHardware</a></li><li class="navelem"><a class="el" href="_g_p_i_o_8cpp.html">GPIO.cpp</a></li>
+    <li class="footer">Generated on Sat Jun 6 2015 19:51:31 for Vision Soil Analyzer by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

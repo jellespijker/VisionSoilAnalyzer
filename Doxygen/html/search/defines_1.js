@@ -1,5 +1,10 @@
 var searchData=
 [
-  ['chain_5fprocess',['CHAIN_PROCESS',['../_image_processing_8h.html#a6e6f0183cb53c76ef458d4fd34e07bcd',1,'ImageProcessing.h']]],
-  ['commonoperations_5fversion',['COMMONOPERATIONS_VERSION',['../_common_operations_8h.html#a2eaf90dc9ea1487911cc3005ae0b1bf3',1,'CommonOperations.h']]]
+  ['b_5fmax',['B_MAX',['../_soil_math___test_2_statistical_comparison_definition_8h.html#a91f9fc76288a0520677dfbe3dfc952a6',1,'B_MAX():&#160;StatisticalComparisonDefinition.h'],['../_v_s_a___u_t_2_statistical_comparison_definition_8h.html#a91f9fc76288a0520677dfbe3dfc952a6',1,'B_MAX():&#160;StatisticalComparisonDefinition.h']]],
+  ['b_5fmean',['B_MEAN',['../_soil_math___test_2_statistical_comparison_definition_8h.html#a90ee2d7f2e879233f69fe2fe36fa5d55',1,'B_MEAN():&#160;StatisticalComparisonDefinition.h'],['../_v_s_a___u_t_2_statistical_comparison_definition_8h.html#a90ee2d7f2e879233f69fe2fe36fa5d55',1,'B_MEAN():&#160;StatisticalComparisonDefinition.h']]],
+  ['b_5fmin',['B_MIN',['../_soil_math___test_2_statistical_comparison_definition_8h.html#aee79048b157ba88e895ec7aa6fbfcd53',1,'B_MIN():&#160;StatisticalComparisonDefinition.h'],['../_v_s_a___u_t_2_statistical_comparison_definition_8h.html#aee79048b157ba88e895ec7aa6fbfcd53',1,'B_MIN():&#160;StatisticalComparisonDefinition.h']]],
+  ['b_5frange',['B_RANGE',['../_soil_math___test_2_statistical_comparison_definition_8h.html#a0ed7688bfd8317736aeb7f299c48e391',1,'B_RANGE():&#160;StatisticalComparisonDefinition.h'],['../_v_s_a___u_t_2_statistical_comparison_definition_8h.html#a0ed7688bfd8317736aeb7f299c48e391',1,'B_RANGE():&#160;StatisticalComparisonDefinition.h']]],
+  ['b_5fstd',['B_STD',['../_soil_math___test_2_statistical_comparison_definition_8h.html#aa53b995da340eddd79e5054a99952719',1,'B_STD():&#160;StatisticalComparisonDefinition.h'],['../_v_s_a___u_t_2_statistical_comparison_definition_8h.html#aa53b995da340eddd79e5054a99952719',1,'B_STD():&#160;StatisticalComparisonDefinition.h']]],
+  ['b_5fsum',['B_SUM',['../_soil_math___test_2_statistical_comparison_definition_8h.html#aafb369e39311d3a7ce9e0d7afed65253',1,'B_SUM():&#160;StatisticalComparisonDefinition.h'],['../_v_s_a___u_t_2_statistical_comparison_definition_8h.html#aafb369e39311d3a7ce9e0d7afed65253',1,'B_SUM():&#160;StatisticalComparisonDefinition.h']]],
+  ['boost_5ftest_5fmodule',['BOOST_TEST_MODULE',['../_v_s_a___u_t_8cpp.html#a6b2a3852db8bb19ab6909bac01859985',1,'VSA_UT.cpp']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['resolution_2ecpp',['Resolution.cpp',['../_resolution_8cpp.html',1,'']]]
+  ['opencvqt_2eh',['opencvqt.h',['../opencvqt_8h.html',1,'']]]
 ];

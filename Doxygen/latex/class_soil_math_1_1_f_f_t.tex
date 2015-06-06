@@ -1,0 +1,518 @@
+\hypertarget{class_soil_math_1_1_f_f_t}{}\section{Soil\+Math\+:\+:F\+F\+T Class Reference}
+\label{class_soil_math_1_1_f_f_t}\index{Soil\+Math\+::\+F\+F\+T@{Soil\+Math\+::\+F\+F\+T}}
+
+
+{\ttfamily \#include $<$F\+F\+T.\+h$>$}
+
+
+
+Collaboration diagram for Soil\+Math\+:\+:F\+F\+T\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=187pt]{class_soil_math_1_1_f_f_t__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_soil_math_1_1_f_f_t_a52638bf8f971d1448e46b2b6db5f5e8b}{F\+F\+T} ()
+\begin{DoxyCompactList}\small\item\em Standard constructor. \end{DoxyCompactList}\item 
+\hyperlink{class_soil_math_1_1_f_f_t_a279862b286d865ebc5aa707f94f19d73}{$\sim$\+F\+F\+T} ()
+\begin{DoxyCompactList}\small\item\em Standard deconstructor. \end{DoxyCompactList}\item 
+\hyperlink{_soil_math_types_8h_a7567e521c2b2c408dcb62dbff72390f7}{Complex\+Vect\+\_\+t} \hyperlink{class_soil_math_1_1_f_f_t_af5fb6f4804079ee184a314e2f0a0f2fc}{Get\+Descriptors} (const cv\+::\+Mat \&img)
+\begin{DoxyCompactList}\small\item\em Transforming the img to the frequency domain and returning the Fourier Descriptors. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_soil_math_types_8h_a7567e521c2b2c408dcb62dbff72390f7}{Complex\+Vect\+\_\+t} \hyperlink{class_soil_math_1_1_f_f_t_a18a95490ea8e929584c2af6569dec3b6}{Contour2\+Complex} (const cv\+::\+Mat \&img, float center\+Col, float center\+Row)
+\begin{DoxyCompactList}\small\item\em Contour2\+Complex. \end{DoxyCompactList}\item 
+\hyperlink{_soil_math_types_8h_a1ade796add2f13888dfa9e6bde0bdc37}{i\+Contour\+\_\+t} \hyperlink{class_soil_math_1_1_f_f_t_a45b32ad009154112d2fc4e467fc7c5ac}{Neighbors} (\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} $\ast$O, int pixel, uint32\+\_\+t columns, uint32\+\_\+t rows)
+\begin{DoxyCompactList}\small\item\em Neighbors. \end{DoxyCompactList}\item 
+void \hyperlink{class_soil_math_1_1_f_f_t_a48bc7ad948d820d6f87b3e353b6d1cd4}{fft} (\hyperlink{_soil_math_types_8h_a5118c9f6b02a06945c93a3893e51febe}{Complex\+Array\+\_\+t} \&C\+A)
+\item 
+void \hyperlink{class_soil_math_1_1_f_f_t_a5b7f18d1cb2d728584414d8660d52586}{ifft} (\hyperlink{_soil_math_types_8h_a5118c9f6b02a06945c93a3893e51febe}{Complex\+Array\+\_\+t} \&C\+A)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_soil_math_types_8h_a7567e521c2b2c408dcb62dbff72390f7}{Complex\+Vect\+\_\+t} \hyperlink{class_soil_math_1_1_f_f_t_a466b360529319d0e6e3220f446f703be}{fft\+Descriptors}
+\item 
+\hyperlink{_soil_math_types_8h_a7567e521c2b2c408dcb62dbff72390f7}{Complex\+Vect\+\_\+t} \hyperlink{class_soil_math_1_1_f_f_t_a48141f0c777ca86f2e536f88b509b639}{complexcontour}
+\item 
+cv\+::\+Mat \hyperlink{class_soil_math_1_1_f_f_t_a2efda8f90cd255a2c18352636352044f}{Img}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 24 of file F\+F\+T.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_soil_math_1_1_f_f_t_a52638bf8f971d1448e46b2b6db5f5e8b}{}\index{Soil\+Math\+::\+F\+F\+T@{Soil\+Math\+::\+F\+F\+T}!F\+F\+T@{F\+F\+T}}
+\index{F\+F\+T@{F\+F\+T}!Soil\+Math\+::\+F\+F\+T@{Soil\+Math\+::\+F\+F\+T}}
+\subsubsection[{F\+F\+T}]{\setlength{\rightskip}{0pt plus 5cm}Soil\+Math\+::\+F\+F\+T\+::\+F\+F\+T (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_soil_math_1_1_f_f_t_a52638bf8f971d1448e46b2b6db5f5e8b}
+
+
+Standard constructor. 
+
+
+
+Definition at line 4 of file F\+F\+T.\+cpp.
+
+
+\begin{DoxyCode}
+4 \{\}
+\end{DoxyCode}
+\hypertarget{class_soil_math_1_1_f_f_t_a279862b286d865ebc5aa707f94f19d73}{}\index{Soil\+Math\+::\+F\+F\+T@{Soil\+Math\+::\+F\+F\+T}!````~F\+F\+T@{$\sim$\+F\+F\+T}}
+\index{````~F\+F\+T@{$\sim$\+F\+F\+T}!Soil\+Math\+::\+F\+F\+T@{Soil\+Math\+::\+F\+F\+T}}
+\subsubsection[{$\sim$\+F\+F\+T}]{\setlength{\rightskip}{0pt plus 5cm}Soil\+Math\+::\+F\+F\+T\+::$\sim$\+F\+F\+T (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_soil_math_1_1_f_f_t_a279862b286d865ebc5aa707f94f19d73}
+
+
+Standard deconstructor. 
+
+
+
+Definition at line 6 of file F\+F\+T.\+cpp.
+
+
+\begin{DoxyCode}
+6 \{\}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_soil_math_1_1_f_f_t_a18a95490ea8e929584c2af6569dec3b6}{}\index{Soil\+Math\+::\+F\+F\+T@{Soil\+Math\+::\+F\+F\+T}!Contour2\+Complex@{Contour2\+Complex}}
+\index{Contour2\+Complex@{Contour2\+Complex}!Soil\+Math\+::\+F\+F\+T@{Soil\+Math\+::\+F\+F\+T}}
+\subsubsection[{Contour2\+Complex}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Complex\+Vect\+\_\+t} Soil\+Math\+::\+F\+F\+T\+::\+Contour2\+Complex (
+\begin{DoxyParamCaption}
+\item[{const cv\+::\+Mat \&}]{img, }
+\item[{float}]{center\+Col, }
+\item[{float}]{center\+Row}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_soil_math_1_1_f_f_t_a18a95490ea8e929584c2af6569dec3b6}
+
+
+Contour2\+Complex. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em img} & \\
+\hline
+{\em center\+Col} & \\
+\hline
+{\em center\+Row} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line 62 of file F\+F\+T.\+cpp.
+
+
+
+References i, j, and Neighbors().
+
+
+
+Referenced by Get\+Descriptors().
+
+
+\begin{DoxyCode}
+63                                                     \{
+64   \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *O = img.data;
+65   uint32\_t pEnd = img.cols * img.rows;
+66 
+67   std::deque<std::deque<uint32\_t>> sCont;
+68   std::deque<uint32\_t> eList;
+69 
+70   \textcolor{comment}{// Initialize the queue}
+71   \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < pEnd; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++) \{
+72     \textcolor{keywordflow}{if} (O[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] == 1) \{
+73       std::deque<uint32\_t> tmpQ;
+74       tmpQ.push\_back(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i});
+75       sCont.push\_back(tmpQ);
+76       \textcolor{keywordflow}{break};
+77     \}
+78   \}
+79 
+80   \textcolor{keywordflow}{if} (sCont.front().size() < 1) \{
+81     \textcolor{keywordflow}{throw} Exception::MathException(\textcolor{stringliteral}{"No contour found in image!"});
+82   \} \textcolor{comment}{// Exception handling}
+83 
+84   uint32\_t prev = -1;
+85 
+86   \textcolor{comment}{// Extend path on queue}
+87   \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = sCont.front().front(); \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < pEnd;) \{
+88     \hyperlink{_soil_math_types_8h_a1ade796add2f13888dfa9e6bde0bdc37}{iContour\_t} nBors =
+89         \hyperlink{class_soil_math_1_1_f_f_t_a45b32ad009154112d2fc4e467fc7c5ac}{Neighbors}(O, \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}, img.cols, img.rows); \textcolor{comment}{// find neighboring pixels}
+90     std::deque<uint32\_t> cQ = sCont.front(); \textcolor{comment}{// store first queue;}
+91     sCont.erase(sCont.begin()); \textcolor{comment}{// erase first queue from beginning}
+92     \textcolor{keywordflow}{if} (cQ.size() > 1) \{
+93       prev = cQ.size() - 2;
+94     \} \textcolor{keywordflow}{else} \{
+95       prev = 0;
+96     \}
+97     \textcolor{comment}{// Loop through each neighbor}
+98     \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} < nBors.size(); \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}++) \{
+99       \textcolor{keywordflow}{if} (nBors[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}] != cQ[prev]) \textcolor{comment}{// No backtracking}
+100       \{
+101         \textcolor{keywordflow}{if} (nBors[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}] == cQ.front() && cQ.size() > 8) \{
+102           \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = pEnd;
+103         \} \textcolor{comment}{// Back at first node}
+104         \textcolor{keywordflow}{if} (std::find(eList.begin(), eList.end(), nBors[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}]) ==
+105             eList.end()) \textcolor{comment}{// Check if this current route is extended elsewhere}
+106         \{
+107           std::deque<uint32\_t> nQ = cQ;
+108           nQ.push\_back(nBors[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}]); \textcolor{comment}{// Add the neighbor to the queue}
+109           sCont.push\_front(nQ);   \textcolor{comment}{// add the sequence to the front of the queue}
+110         \}
+111       \}
+112     \}
+113     \textcolor{keywordflow}{if} (nBors.size() > 2) \{
+114       eList.push\_back(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i});
+115     \} \textcolor{comment}{// if there are multiple choices put current node in extension List}
+116     \textcolor{keywordflow}{if} (\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} != pEnd) \{
+117       \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = sCont.front().back();
+118     \} \textcolor{comment}{// If it isn't the end set i to the last node of the first queue}
+119     \textcolor{keywordflow}{if} (sCont.size() == 0) \{
+120       \textcolor{keywordflow}{throw} Exception::MathException(
+121           \textcolor{stringliteral}{"No continuous contour found, or less then 8 pixels long!"});
+122     \}
+123   \}
+124 
+125   \textcolor{comment}{// convert the first queue to a complex normalized vector}
+126   \hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t} cPoint;
+127   \hyperlink{_soil_math_types_8h_a7567e521c2b2c408dcb62dbff72390f7}{ComplexVect\_t} contour;
+128   \textcolor{keywordtype}{float} col = 0.0;
+129   \textcolor{comment}{// Normalize and convert the complex function}
+130   for\_each(
+131       sCont.front().begin(), sCont.front().end(),
+132       [&img, &cPoint, &contour, &centerCol, &centerRow, &col](uint32\_t &e) \{
+133         col = (float)((e % img.cols) - centerCol);
+134         \textcolor{keywordflow}{if} (col == 0.0) \{
+135           cPoint.real(1.0);
+136         \} \textcolor{keywordflow}{else} \{
+137           cPoint.real((\textcolor{keywordtype}{float})(col / centerCol));
+138         \}
+139         cPoint.imag((\textcolor{keywordtype}{float})((floorf(e / img.cols) - centerRow) / centerRow));
+140         contour.push\_back(cPoint);
+141       \});
+142 
+143   \textcolor{keywordflow}{return} contour;
+144 \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_soil_math_1_1_f_f_t_a18a95490ea8e929584c2af6569dec3b6_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_soil_math_1_1_f_f_t_a18a95490ea8e929584c2af6569dec3b6_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_soil_math_1_1_f_f_t_a48bc7ad948d820d6f87b3e353b6d1cd4}{}\index{Soil\+Math\+::\+F\+F\+T@{Soil\+Math\+::\+F\+F\+T}!fft@{fft}}
+\index{fft@{fft}!Soil\+Math\+::\+F\+F\+T@{Soil\+Math\+::\+F\+F\+T}}
+\subsubsection[{fft}]{\setlength{\rightskip}{0pt plus 5cm}void Soil\+Math\+::\+F\+F\+T\+::fft (
+\begin{DoxyParamCaption}
+\item[{{\bf Complex\+Array\+\_\+t} \&}]{C\+A}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_soil_math_1_1_f_f_t_a48bc7ad948d820d6f87b3e353b6d1cd4}
+
+
+Definition at line 146 of file F\+F\+T.\+cpp.
+
+
+
+Referenced by Get\+Descriptors(), and ifft().
+
+
+\begin{DoxyCode}
+146                                 \{
+147   \textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} N = CA.size();
+148   \textcolor{keywordflow}{if} (N <= 1) \{
+149     \textcolor{keywordflow}{return};
+150   \}
+151 
+152   \hyperlink{_soil_math_types_8h_a5118c9f6b02a06945c93a3893e51febe}{ComplexArray\_t} even = CA[std::slice(0, N / 2, 2)];
+153   \hyperlink{_soil_math_types_8h_a5118c9f6b02a06945c93a3893e51febe}{ComplexArray\_t} odd = CA[std::slice(1, N / 2, 2)];
+154 
+155   \hyperlink{class_soil_math_1_1_f_f_t_a48bc7ad948d820d6f87b3e353b6d1cd4}{fft}(even);
+156   \hyperlink{class_soil_math_1_1_f_f_t_a48bc7ad948d820d6f87b3e353b6d1cd4}{fft}(odd);
+157 
+158   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} k = 0; k < N / 2; ++k) \{
+159     \hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t} ct = std::polar(1.0, -2 * M\_PI * k / N) * odd[k];
+160     CA[k] = even[k] + ct;
+161     CA[k + N / 2] = even[k] - ct;
+162   \}
+163 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_soil_math_1_1_f_f_t_a48bc7ad948d820d6f87b3e353b6d1cd4_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_soil_math_1_1_f_f_t_af5fb6f4804079ee184a314e2f0a0f2fc}{}\index{Soil\+Math\+::\+F\+F\+T@{Soil\+Math\+::\+F\+F\+T}!Get\+Descriptors@{Get\+Descriptors}}
+\index{Get\+Descriptors@{Get\+Descriptors}!Soil\+Math\+::\+F\+F\+T@{Soil\+Math\+::\+F\+F\+T}}
+\subsubsection[{Get\+Descriptors}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Complex\+Vect\+\_\+t} Soil\+Math\+::\+F\+F\+T\+::\+Get\+Descriptors (
+\begin{DoxyParamCaption}
+\item[{const cv\+::\+Mat \&}]{img}
+\end{DoxyParamCaption}
+)}\label{class_soil_math_1_1_f_f_t_af5fb6f4804079ee184a314e2f0a0f2fc}
+
+
+Transforming the img to the frequency domain and returning the Fourier Descriptors. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em img} & contour img in the form of a cv\+::\+Mat type C\+V\+\_\+8\+U\+C1. Which should consist of a continous contour. $ \{ img \in \mathbb{Z} | 0 \leq img \leq 1 \} $ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a vector with complex values, represing the contour in the frequency domain, expressed as Fourier Descriptors 
+\end{DoxyReturn}
+
+
+Definition at line 8 of file F\+F\+T.\+cpp.
+
+
+
+References complexcontour, Contour2\+Complex(), fft(), fft\+Descriptors, and i.
+
+
+
+Referenced by Soil\+Analyzer\+::\+Particle\+::\+Analyze(), and B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E().
+
+
+\begin{DoxyCode}
+8                                                   \{
+9   \textcolor{keywordflow}{if} (!\hyperlink{class_soil_math_1_1_f_f_t_a466b360529319d0e6e3220f446f703be}{fftDescriptors}.empty()) \{
+10     \textcolor{keywordflow}{return} \hyperlink{class_soil_math_1_1_f_f_t_a466b360529319d0e6e3220f446f703be}{fftDescriptors};
+11   \}
+12 
+13   \hyperlink{class_soil_math_1_1_f_f_t_a48141f0c777ca86f2e536f88b509b639}{complexcontour} = \hyperlink{class_soil_math_1_1_f_f_t_a18a95490ea8e929584c2af6569dec3b6}{Contour2Complex}(img, img.cols / 2, img.rows / 2);
+14 
+15   \textcolor{comment}{// Supplement the vector of complex numbers so that N = 2^m}
+16   uint32\_t N = \hyperlink{class_soil_math_1_1_f_f_t_a48141f0c777ca86f2e536f88b509b639}{complexcontour}.size();
+17   \textcolor{keywordtype}{double} logN = log(static\_cast<double>(N)) / log(2.0);
+18   \textcolor{keywordflow}{if} (floor(logN) != logN) \{
+19     \textcolor{comment}{// Get the next power of 2}
+20     \textcolor{keywordtype}{double} nextLogN = floor(logN + 1.0);
+21     N = \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(pow(2, nextLogN));
+22 
+23     uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = \hyperlink{class_soil_math_1_1_f_f_t_a48141f0c777ca86f2e536f88b509b639}{complexcontour}.size();
+24     \textcolor{comment}{// Append the vector with zeros}
+25     \textcolor{keywordflow}{while} (i++ < N) \{
+26       \hyperlink{class_soil_math_1_1_f_f_t_a48141f0c777ca86f2e536f88b509b639}{complexcontour}.push\_back(\hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(0.0, 0.0));
+27     \}
+28   \}
+29 
+30   \hyperlink{_soil_math_types_8h_a5118c9f6b02a06945c93a3893e51febe}{ComplexArray\_t} ca(\hyperlink{class_soil_math_1_1_f_f_t_a48141f0c777ca86f2e536f88b509b639}{complexcontour}.data(), 
+      \hyperlink{class_soil_math_1_1_f_f_t_a48141f0c777ca86f2e536f88b509b639}{complexcontour}.size());
+31   \hyperlink{class_soil_math_1_1_f_f_t_a48bc7ad948d820d6f87b3e353b6d1cd4}{fft}(ca);
+32   \hyperlink{class_soil_math_1_1_f_f_t_a466b360529319d0e6e3220f446f703be}{fftDescriptors}.assign(std::begin(ca), std::end(ca));
+33   \textcolor{keywordflow}{return} \hyperlink{class_soil_math_1_1_f_f_t_a466b360529319d0e6e3220f446f703be}{fftDescriptors};
+34 \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_soil_math_1_1_f_f_t_af5fb6f4804079ee184a314e2f0a0f2fc_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_soil_math_1_1_f_f_t_af5fb6f4804079ee184a314e2f0a0f2fc_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_soil_math_1_1_f_f_t_a5b7f18d1cb2d728584414d8660d52586}{}\index{Soil\+Math\+::\+F\+F\+T@{Soil\+Math\+::\+F\+F\+T}!ifft@{ifft}}
+\index{ifft@{ifft}!Soil\+Math\+::\+F\+F\+T@{Soil\+Math\+::\+F\+F\+T}}
+\subsubsection[{ifft}]{\setlength{\rightskip}{0pt plus 5cm}void Soil\+Math\+::\+F\+F\+T\+::ifft (
+\begin{DoxyParamCaption}
+\item[{{\bf Complex\+Array\+\_\+t} \&}]{C\+A}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_soil_math_1_1_f_f_t_a5b7f18d1cb2d728584414d8660d52586}
+
+
+Definition at line 165 of file F\+F\+T.\+cpp.
+
+
+
+References fft().
+
+
+\begin{DoxyCode}
+165                                  \{
+166   CA = CA.apply(std::conj);
+167   \hyperlink{class_soil_math_1_1_f_f_t_a48bc7ad948d820d6f87b3e353b6d1cd4}{fft}(CA);
+168   CA = CA.apply(std::conj);
+169   CA /= CA.size();
+170 \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=306pt]{class_soil_math_1_1_f_f_t_a5b7f18d1cb2d728584414d8660d52586_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_soil_math_1_1_f_f_t_a45b32ad009154112d2fc4e467fc7c5ac}{}\index{Soil\+Math\+::\+F\+F\+T@{Soil\+Math\+::\+F\+F\+T}!Neighbors@{Neighbors}}
+\index{Neighbors@{Neighbors}!Soil\+Math\+::\+F\+F\+T@{Soil\+Math\+::\+F\+F\+T}}
+\subsubsection[{Neighbors}]{\setlength{\rightskip}{0pt plus 5cm}{\bf i\+Contour\+\_\+t} Soil\+Math\+::\+F\+F\+T\+::\+Neighbors (
+\begin{DoxyParamCaption}
+\item[{{\bf uchar} $\ast$}]{O, }
+\item[{int}]{pixel, }
+\item[{uint32\+\_\+t}]{columns, }
+\item[{uint32\+\_\+t}]{rows}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_soil_math_1_1_f_f_t_a45b32ad009154112d2fc4e467fc7c5ac}
+
+
+Neighbors. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em O} & \\
+\hline
+{\em pixel} & \\
+\hline
+{\em columns} & \\
+\hline
+{\em rows} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line 36 of file F\+F\+T.\+cpp.
+
+
+
+References count, and i.
+
+
+
+Referenced by Contour2\+Complex().
+
+
+\begin{DoxyCode}
+37                                          \{
+38   \textcolor{comment}{// long int LUT\_nBore[8] = \{ 1, 1 + columns, columns, columns - 1, -1,}
+39   \textcolor{comment}{// -columns - 1, -columns, -columns + 1 \};}
+40   \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} LUT\_nBore[8] = \{-columns + 1, -columns, -columns - 1, -1,
+41                            columns - 1,  columns,  1 + columns,  1\};
+42   \hyperlink{_soil_math_types_8h_a1ade796add2f13888dfa9e6bde0bdc37}{iContour\_t} neighbors;
+43   uint32\_t pEnd = rows * columns;
+44   uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_ae11b3deb3de3df7dc48e439074023e35}{count} = 0;
+45   \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < 8; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++) \{
+46     count = pixel + LUT\_nBore[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}];
+47     \textcolor{keywordflow}{while} (count >= pEnd && \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < 8) \{
+48       count = pixel + LUT\_nBore[++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}];
+49     \}
+50     \textcolor{keywordflow}{if} (\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} >= 8) \{
+51       \textcolor{keywordflow}{break};
+52     \}
+53     \textcolor{keywordflow}{if} (O[count] == 1)
+54       neighbors.push\_back(count);
+55   \}
+56   \textcolor{keywordflow}{return} neighbors;
+57 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_soil_math_1_1_f_f_t_a45b32ad009154112d2fc4e467fc7c5ac_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_soil_math_1_1_f_f_t_a48141f0c777ca86f2e536f88b509b639}{}\index{Soil\+Math\+::\+F\+F\+T@{Soil\+Math\+::\+F\+F\+T}!complexcontour@{complexcontour}}
+\index{complexcontour@{complexcontour}!Soil\+Math\+::\+F\+F\+T@{Soil\+Math\+::\+F\+F\+T}}
+\subsubsection[{complexcontour}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Complex\+Vect\+\_\+t} Soil\+Math\+::\+F\+F\+T\+::complexcontour\hspace{0.3cm}{\ttfamily [private]}}\label{class_soil_math_1_1_f_f_t_a48141f0c777ca86f2e536f88b509b639}
+Vector with complex values which represent the contour 
+
+Definition at line 50 of file F\+F\+T.\+h.
+
+
+
+Referenced by Get\+Descriptors().
+
+\hypertarget{class_soil_math_1_1_f_f_t_a466b360529319d0e6e3220f446f703be}{}\index{Soil\+Math\+::\+F\+F\+T@{Soil\+Math\+::\+F\+F\+T}!fft\+Descriptors@{fft\+Descriptors}}
+\index{fft\+Descriptors@{fft\+Descriptors}!Soil\+Math\+::\+F\+F\+T@{Soil\+Math\+::\+F\+F\+T}}
+\subsubsection[{fft\+Descriptors}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Complex\+Vect\+\_\+t} Soil\+Math\+::\+F\+F\+T\+::fft\+Descriptors\hspace{0.3cm}{\ttfamily [private]}}\label{class_soil_math_1_1_f_f_t_a466b360529319d0e6e3220f446f703be}
+Vector with complex values which represent the descriptors 
+
+Definition at line 47 of file F\+F\+T.\+h.
+
+
+
+Referenced by Get\+Descriptors().
+
+\hypertarget{class_soil_math_1_1_f_f_t_a2efda8f90cd255a2c18352636352044f}{}\index{Soil\+Math\+::\+F\+F\+T@{Soil\+Math\+::\+F\+F\+T}!Img@{Img}}
+\index{Img@{Img}!Soil\+Math\+::\+F\+F\+T@{Soil\+Math\+::\+F\+F\+T}}
+\subsubsection[{Img}]{\setlength{\rightskip}{0pt plus 5cm}cv\+::\+Mat Soil\+Math\+::\+F\+F\+T\+::\+Img\hspace{0.3cm}{\ttfamily [private]}}\label{class_soil_math_1_1_f_f_t_a2efda8f90cd255a2c18352636352044f}
+Img which will be analysed 
+
+Definition at line 52 of file F\+F\+T.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/peer23peer/\+Vision\+Soil\+Analyzer/src/\+Soil\+Math/\hyperlink{_f_f_t_8h}{F\+F\+T.\+h}\item 
+/home/peer23peer/\+Vision\+Soil\+Analyzer/src/\+Soil\+Math/\hyperlink{_f_f_t_8cpp}{F\+F\+T.\+cpp}\end{DoxyCompactItemize}

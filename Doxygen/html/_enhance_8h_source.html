@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.9.1"/>
-<title>VisionSoilAnalyzer: D:/OneDrive/Opleiding/HTS_HAN/Minor2/CPP/VisionSoilAnalyzer/src/VisionSoilAnalyzer/Vision/Enhance.h Source File</title>
+<title>Vision Soil Analyzer: /home/peer23peer/VisionSoilAnalyzer/src/SoilVision/Enhance.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -30,12 +30,12 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="hanner.bmp"/></td>
+  <td id="projectlogo"><img alt="Logo" src="IHClogo.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectname">VisionSoilAnalyzer
-   &#160;<span id="projectnumber">1.0</span>
+   <div id="projectname">Vision Soil Analyzer
+   &#160;<span id="projectnumber">1.0.0</span>
    </div>
-   <div id="projectbrief">The Soil Analyzer is a portable lab that can analyse soil samples and tells the user about it&#39;s optical properties. It looks at the texture and describe it as a Particle Size Distribution. This information is presented as a Cumulative Distribution Function (CDF). It also describes the structure of the soil sample and gives information on the sphericity and roundness / angularity. It does so by analysing the contour of particles, describing them as Fourier Descriptors and using a Neural Network to describe it&#39;s properties. Finally it gives the color properties in a histogram in the CIE Lab colorspace, which show correlations with the fertility of the soil. and a histogram of the Redness Index, which gives has a correlation on the iron content.</div>
+   <div id="projectbrief">The Soil Analyzer is a portable lab that can analyse soil samples and tells the user about it&#39;s optical properties. It looks at the texture and describe it as a Particle Size Distribution. This information is presented as a Cumulative Distribution Function (CDF). It also describes the structure of the soil sample and gives information on the sphericity and roundness / angularity. It does so by analysing the contour of particles, describing them as Fourier Descriptors and using a Neural Network to describe it&#39;s properties. Finally it gives the color properties in a histogram in the CIE La*b* colorspace, which show correlations with the fertility of the soil. and a histogram of the Redness Index, which gives has a correlation on the iron content.</div>
   </td>
  </tr>
  </tbody>
@@ -49,6 +49,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -125,8 +126,8 @@ $(document).ready(function(){initNavTree('_enhance_8h_source.html','');});
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keyword">public</span> <a class="code" href="class_vision_1_1_image_processing.html">ImageProcessing</a></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    {</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keywordtype">void</span> CalculateSumOfNeighboringPixels(<a class="code" href="namespace_soil_math.html#afcaf30dbe80e326a716ee4d4cf3b3db5">uchar</a> *O, <span class="keywordtype">int</span> i, <span class="keywordtype">int</span> hKsize, <span class="keywordtype">int</span> nCols, uint32_t &amp;sum);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keywordtype">float</span> CalculateStdOfNeighboringPixels(<a class="code" href="namespace_soil_math.html#afcaf30dbe80e326a716ee4d4cf3b3db5">uchar</a> *O,  <span class="keywordtype">int</span> i, <span class="keywordtype">int</span> hKsize, <span class="keywordtype">int</span> nCols, <span class="keywordtype">int</span> noNeighboursPix, <span class="keywordtype">float</span> mean);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keywordtype">void</span> CalculateSumOfNeighboringPixels(<a class="code" href="_soil_math_types_8h.html#a65f85814a8290f9797005d3b28e7e5fc">uchar</a> *O, <span class="keywordtype">int</span> <a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a>, <span class="keywordtype">int</span> hKsize, <span class="keywordtype">int</span> nCols, uint32_t &amp;sum);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keywordtype">float</span> CalculateStdOfNeighboringPixels(<a class="code" href="_soil_math_types_8h.html#a65f85814a8290f9797005d3b28e7e5fc">uchar</a> *O,  <span class="keywordtype">int</span> i, <span class="keywordtype">int</span> hKsize, <span class="keywordtype">int</span> nCols, <span class="keywordtype">int</span> noNeighboursPix, <span class="keywordtype">float</span> mean);</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_vision_1_1_enhance.html#a36caf2ddf5cb2575bfae8bcdca04e58e">   20</a></span>&#160;        <span class="keyword">enum</span> <a class="code" href="class_vision_1_1_enhance.html#a36caf2ddf5cb2575bfae8bcdca04e58e">EnhanceOperation</a></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        {</div>
@@ -138,27 +139,31 @@ $(document).ready(function(){initNavTree('_enhance_8h_source.html','');});
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <a class="code" href="class_vision_1_1_enhance.html">Enhance</a>();</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <a class="code" href="class_vision_1_1_enhance.html">Enhance</a>(<span class="keyword">const</span> Mat&amp; src);</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <a class="code" href="class_vision_1_1_enhance.html">Enhance</a>(<span class="keyword">const</span> Mat&amp; src, Mat&amp; dst, uint8_t kernelsize = 9, <span class="keywordtype">float</span> factor = 1.0, EnhanceOperation operation = _Blur);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        ~<a class="code" href="class_vision_1_1_enhance.html">Enhance</a>();</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordtype">void</span> AdaptiveContrastStretch(uint8_t kernelsize, <span class="keywordtype">float</span> factor, <span class="keywordtype">bool</span> chain = <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordtype">void</span> AdaptiveContrastStretch(<span class="keyword">const</span> Mat&amp; src, Mat&amp; dst, uint8_t kernelsize, <span class="keywordtype">float</span> factor);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <a class="code" href="class_vision_1_1_enhance.html">Enhance</a>(<span class="keyword">const</span> <a class="code" href="class_vision_1_1_enhance.html">Enhance</a> &amp;rhs);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        ~<a class="code" href="class_vision_1_1_enhance.html">Enhance</a>();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <a class="code" href="class_vision_1_1_enhance.html">Enhance</a> &amp;operator=(<a class="code" href="class_vision_1_1_enhance.html">Enhance</a> rhs);</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordtype">void</span> Blur(uint8_t kernelsize, <span class="keywordtype">bool</span> chain = <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordtype">void</span> Blur(<span class="keyword">const</span> Mat&amp; src, Mat&amp; dst, uint8_t kernelsize);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordtype">void</span> AdaptiveContrastStretch(uint8_t kernelsize, <span class="keywordtype">float</span> factor, <span class="keywordtype">bool</span> chain = <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordtype">void</span> AdaptiveContrastStretch(<span class="keyword">const</span> Mat&amp; src, Mat&amp; dst, uint8_t kernelsize, <span class="keywordtype">float</span> factor);</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordtype">void</span> HistogramEqualization(<span class="keywordtype">bool</span> chain = <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordtype">void</span> HistogramEqualization(<span class="keyword">const</span> Mat&amp; src, Mat&amp; dst);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    };</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordtype">void</span> Blur(uint8_t kernelsize, <span class="keywordtype">bool</span> chain = <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordtype">void</span> Blur(<span class="keyword">const</span> Mat&amp; src, Mat&amp; dst, uint8_t kernelsize);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordtype">void</span> HistogramEqualization(<span class="keywordtype">bool</span> chain = <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordtype">void</span> HistogramEqualization(<span class="keyword">const</span> Mat&amp; src, Mat&amp; dst);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    };</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
 <div class="ttc" id="class_vision_1_1_enhance_html_a36caf2ddf5cb2575bfae8bcdca04e58ea5245bfc56341cd91a53b2fcb676c8fc8"><div class="ttname"><a href="class_vision_1_1_enhance.html#a36caf2ddf5cb2575bfae8bcdca04e58ea5245bfc56341cd91a53b2fcb676c8fc8">Vision::Enhance::_Blur</a></div><div class="ttdef"><b>Definition:</b> <a href="_enhance_8h_source.html#l00023">Enhance.h:23</a></div></div>
-<div class="ttc" id="namespace_soil_math_html_afcaf30dbe80e326a716ee4d4cf3b3db5"><div class="ttname"><a href="namespace_soil_math.html#afcaf30dbe80e326a716ee4d4cf3b3db5">SoilMath::uchar</a></div><div class="ttdeci">unsigned char uchar</div><div class="ttdef"><b>Definition:</b> <a href="_soil_math_8h_source.html#l00009">SoilMath.h:9</a></div></div>
 <div class="ttc" id="namespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div></div>
+<div class="ttc" id="_soil_math_types_8h_html_a65f85814a8290f9797005d3b28e7e5fc"><div class="ttname"><a href="_soil_math_types_8h.html#a65f85814a8290f9797005d3b28e7e5fc">uchar</a></div><div class="ttdeci">unsigned char uchar</div><div class="ttdef"><b>Definition:</b> <a href="_soil_math_types_8h_source.html#l00016">SoilMathTypes.h:16</a></div></div>
 <div class="ttc" id="class_vision_1_1_enhance_html_a36caf2ddf5cb2575bfae8bcdca04e58eae6586f260ee8f32c3b9497731524e9ae"><div class="ttname"><a href="class_vision_1_1_enhance.html#a36caf2ddf5cb2575bfae8bcdca04e58eae6586f260ee8f32c3b9497731524e9ae">Vision::Enhance::_AdaptiveContrastStretch</a></div><div class="ttdef"><b>Definition:</b> <a href="_enhance_8h_source.html#l00022">Enhance.h:22</a></div></div>
-<div class="ttc" id="class_vision_1_1_image_processing_html"><div class="ttname"><a href="class_vision_1_1_image_processing.html">Vision::ImageProcessing</a></div><div class="ttdef"><b>Definition:</b> <a href="_image_processing_8h_source.html#l00022">ImageProcessing.h:22</a></div></div>
+<div class="ttc" id="_comparision_pictures_2_createtest_image_8m_html_a6f6ccfcf58b31cb6412107d9d5281426"><div class="ttname"><a href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a></div><div class="ttdeci">for i</div><div class="ttdef"><b>Definition:</b> <a href="_comparision_pictures_2_createtest_image_8m_source.html#l00006">CreatetestImage.m:6</a></div></div>
+<div class="ttc" id="class_vision_1_1_image_processing_html"><div class="ttname"><a href="class_vision_1_1_image_processing.html">Vision::ImageProcessing</a></div><div class="ttdef"><b>Definition:</b> <a href="_image_processing_8h_source.html#l00031">ImageProcessing.h:31</a></div></div>
 <div class="ttc" id="namespace_soil_math_html"><div class="ttname"><a href="namespace_soil_math.html">SoilMath</a></div><div class="ttdef"><b>Definition:</b> <a href="_common_operations_8h_source.html#l00007">CommonOperations.h:7</a></div></div>
 <div class="ttc" id="_image_processing_8h_html"><div class="ttname"><a href="_image_processing_8h.html">ImageProcessing.h</a></div></div>
-<div class="ttc" id="namespace_vision_html"><div class="ttname"><a href="namespace_vision.html">Vision</a></div><div class="ttdef"><b>Definition:</b> <a href="_conversion_8cpp_source.html#l00005">Conversion.cpp:5</a></div></div>
+<div class="ttc" id="namespace_vision_html"><div class="ttname"><a href="namespace_vision.html">Vision</a></div><div class="ttdef"><b>Definition:</b> <a href="_channel_mismatch_exception_8h_source.html#l00012">ChannelMismatchException.h:12</a></div></div>
 <div class="ttc" id="class_vision_1_1_enhance_html"><div class="ttname"><a href="class_vision_1_1_enhance.html">Vision::Enhance</a></div><div class="ttdef"><b>Definition:</b> <a href="_enhance_8h_source.html#l00012">Enhance.h:12</a></div></div>
 <div class="ttc" id="class_vision_1_1_enhance_html_a36caf2ddf5cb2575bfae8bcdca04e58e"><div class="ttname"><a href="class_vision_1_1_enhance.html#a36caf2ddf5cb2575bfae8bcdca04e58e">Vision::Enhance::EnhanceOperation</a></div><div class="ttdeci">EnhanceOperation</div><div class="ttdef"><b>Definition:</b> <a href="_enhance_8h_source.html#l00020">Enhance.h:20</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -166,8 +171,8 @@ $(document).ready(function(){initNavTree('_enhance_8h_source.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_e5ed19147291f8a84b470a9159669fe2.html">src</a></li><li class="navelem"><a class="el" href="dir_7844d1de82fd775c2c6709336b03ac97.html">VisionSoilAnalyzer</a></li><li class="navelem"><a class="el" href="dir_3db3b1a626a5583330689495f9792fad.html">Vision</a></li><li class="navelem"><a class="el" href="_enhance_8h.html">Enhance.h</a></li>
-    <li class="footer">Generated on Sat Jan 17 2015 00:56:36 for VisionSoilAnalyzer by
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ea42e375a3de63dd9af88aca163ce8d3.html">SoilVision</a></li><li class="navelem"><a class="el" href="_enhance_8h.html">Enhance.h</a></li>
+    <li class="footer">Generated on Sat Jun 6 2015 19:51:31 for Vision Soil Analyzer by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>
