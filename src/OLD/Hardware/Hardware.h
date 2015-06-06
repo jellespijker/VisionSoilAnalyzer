@@ -1,0 +1,16 @@
+#pragma once
+
+#include "ADC.h"
+#include "EC12P.h"
+#include "eqep.h"
+#include "GPIO.h"
+#include "PWM.h"
+#include "SoilCape.h"
+#include "Microscope.h"
+#include "CouldNotGrabImageException.h"
+#include "ADCReadException.h"
+#include "FailedToCreateGPIOPollingThreadException.h"
+#include "FailedToCreateThreadException.h"
+#include "GPIOReadException.h"
+#include "MicroscopeNotFoundException.h"
+#include "ValueOutOfBoundsException.h"
