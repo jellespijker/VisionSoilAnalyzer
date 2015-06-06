@@ -1,0 +1,753 @@
+\hypertarget{class_soil_analyzer_1_1_sample}{}\section{Soil\+Analyzer\+:\+:Sample Class Reference}
+\label{class_soil_analyzer_1_1_sample}\index{Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}}
+
+
+{\ttfamily \#include $<$Sample.\+h$>$}
+
+
+
+Inheritance diagram for Soil\+Analyzer\+:\+:Sample\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_soil_analyzer_1_1_sample__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Soil\+Analyzer\+:\+:Sample\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_soil_analyzer_1_1_sample__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef boost\+::signals2\+::signal$<$ void(float, std\+::string)$>$ \hyperlink{class_soil_analyzer_1_1_sample_a745151be7222e75b39268c46b16a9899}{Progress\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+boost\+::signals2\+::connection \hyperlink{class_soil_analyzer_1_1_sample_a472dfdde346375463c979e45eb75fbb7}{connect\+\_\+\+Progress} (const Progress\+\_\+t\+::slot\+\_\+type \&subscriber)
+\item 
+\hyperlink{class_soil_analyzer_1_1_sample_aa132beeb85f46a9d14f7ed0903eda595}{Sample} (\hyperlink{class_soil_analyzer_1_1_soil_settings}{Soil\+Settings} $\ast$settings=nullptr)
+\item 
+\hyperlink{class_soil_analyzer_1_1_sample_a8d469b55b6af5c3e9283665df8430926}{Sample} (const Mat \&src, \hyperlink{class_soil_analyzer_1_1_soil_settings}{Soil\+Settings} $\ast$settings=nullptr)
+\item 
+\hyperlink{class_soil_analyzer_1_1_sample_a26f964ba39721002cbb182f3834ebb3c}{$\sim$\+Sample} ()
+\item 
+void \hyperlink{class_soil_analyzer_1_1_sample_a23050a1fff3e11e907657623756333b2}{Prep\+Img} (\hyperlink{class_soil_analyzer_1_1_soil_settings}{Soil\+Settings} $\ast$settings=nullptr)
+\item 
+void \hyperlink{class_soil_analyzer_1_1_sample_aeb62e34de081b3f298e9b8ebf82df36d}{Analyse} (\hyperlink{class_soil_math_1_1_n_n}{Soil\+Math\+::\+N\+N} \&nn)
+\item 
+void \hyperlink{class_soil_analyzer_1_1_sample_a5555ad91e224aeb59e2a301f23e1899f}{Analyse} (const Mat \&src, \hyperlink{class_soil_math_1_1_n_n}{Soil\+Math\+::\+N\+N} \&nn)
+\item 
+void \hyperlink{class_soil_analyzer_1_1_sample_a00fd0ec3bbea70454a6d8a6c1aaf34df}{Save} (string \&filename)
+\item 
+void \hyperlink{class_soil_analyzer_1_1_sample_a88f29d8ee3fad37cdad6cb88b2c8a288}{Load} (string \&filename)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+cv\+::\+Mat \hyperlink{class_soil_analyzer_1_1_sample_a0d6e6fca9e232a77329daf0b4b29c634}{Original\+Image}
+\item 
+vector$<$ \hyperlink{class_soil_analyzer_1_1_particle}{Particle} $>$ \hyperlink{class_soil_analyzer_1_1_sample_ab87a190f2b4a49bc71b355f9c52d8aa4}{Population}
+\item 
+\hyperlink{class_soil_analyzer_1_1_analysis_results}{Analysis\+Results} \hyperlink{class_soil_analyzer_1_1_sample_ab242ae1c2f229168fd630a9f31d7237f}{Results}
+\item 
+\hyperlink{class_soil_analyzer_1_1_soil_settings}{Soil\+Settings} $\ast$ \hyperlink{class_soil_analyzer_1_1_sample_a31f7b29fc46497f9b2847285c7893832}{Settings} = nullptr
+\item 
+bool \hyperlink{class_soil_analyzer_1_1_sample_ab025a26f7276128a5a974cae15b51dfc}{img\+Prepped} = false
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Archive $>$ }\\void \hyperlink{class_soil_analyzer_1_1_sample_a5be6eea7a7d74e0adec741d1e203635e}{serialize} (Archive \&ar, const unsigned int \hyperlink{class_soil_analyzer_1_1_soil_ac32132912c73338edf60b5cd6de4feb8}{version})
+\item 
+bool \hyperlink{class_soil_analyzer_1_1_sample_ab086f5475a5e404625b6ae1faa0fe7a2}{Analyse\+Pop\+Vect} (const vector$<$ \hyperlink{class_soil_analyzer_1_1_particle}{Particle} $>$ \&population, \hyperlink{class_soil_analyzer_1_1_analysis_results}{Analysis\+Results} \&results)
+\item 
+void \hyperlink{class_soil_analyzer_1_1_sample_a38d665f29d94e597cb4c6a467d2e1f0b}{Segment\+Particles} (\hyperlink{class_vision_1_1_segment_af3a2b992526eac54bca53e34cf2db4da}{Vision\+::\+Segment\+::\+Segmentation\+Type} seg\+Type=\hyperlink{class_vision_1_1_segment_af3a2b992526eac54bca53e34cf2db4daae000cfc8d629752d6cdbba0d3d750184}{Vision\+::\+Segment\+::\+Normal})
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_soil_analyzer_1_1_sample_a745151be7222e75b39268c46b16a9899}{Progress\+\_\+t} \hyperlink{class_soil_analyzer_1_1_sample_aab3a7522152890650245a1f069605a13}{prog\+\_\+sig}
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_soil_analyzer_1_1_sample_ac98d07dd8f7b70e16ccb9a01abf56b9c}{boost\+::serialization\+::access}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 31 of file Sample.\+h.
+
+
+
+\subsection{Member Typedef Documentation}
+\hypertarget{class_soil_analyzer_1_1_sample_a745151be7222e75b39268c46b16a9899}{}\index{Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}!Progress\+\_\+t@{Progress\+\_\+t}}
+\index{Progress\+\_\+t@{Progress\+\_\+t}!Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}}
+\subsubsection[{Progress\+\_\+t}]{\setlength{\rightskip}{0pt plus 5cm}typedef boost\+::signals2\+::signal$<$void (float, std\+::string)$>$ {\bf Soil\+Analyzer\+::\+Sample\+::\+Progress\+\_\+t}}\label{class_soil_analyzer_1_1_sample_a745151be7222e75b39268c46b16a9899}
+
+
+Definition at line 35 of file Sample.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_soil_analyzer_1_1_sample_aa132beeb85f46a9d14f7ed0903eda595}{}\index{Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}!Sample@{Sample}}
+\index{Sample@{Sample}!Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}}
+\subsubsection[{Sample}]{\setlength{\rightskip}{0pt plus 5cm}Soil\+Analyzer\+::\+Sample\+::\+Sample (
+\begin{DoxyParamCaption}
+\item[{{\bf Soil\+Settings} $\ast$}]{settings = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)}\label{class_soil_analyzer_1_1_sample_aa132beeb85f46a9d14f7ed0903eda595}
+
+
+Definition at line 5 of file Sample.\+cpp.
+
+
+
+References Settings.
+
+
+\begin{DoxyCode}
+6     \{
+7         \hyperlink{class_soil_analyzer_1_1_sample_a31f7b29fc46497f9b2847285c7893832}{Settings} = settings;
+8     \}
+\end{DoxyCode}
+\hypertarget{class_soil_analyzer_1_1_sample_a8d469b55b6af5c3e9283665df8430926}{}\index{Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}!Sample@{Sample}}
+\index{Sample@{Sample}!Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}}
+\subsubsection[{Sample}]{\setlength{\rightskip}{0pt plus 5cm}Soil\+Analyzer\+::\+Sample\+::\+Sample (
+\begin{DoxyParamCaption}
+\item[{const Mat \&}]{src, }
+\item[{{\bf Soil\+Settings} $\ast$}]{settings = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)}\label{class_soil_analyzer_1_1_sample_a8d469b55b6af5c3e9283665df8430926}
+
+
+Definition at line 10 of file Sample.\+cpp.
+
+
+
+References Original\+Image, and Settings.
+
+
+\begin{DoxyCode}
+11     \{
+12         \hyperlink{class_soil_analyzer_1_1_sample_a31f7b29fc46497f9b2847285c7893832}{Settings} = settings;
+13         \hyperlink{class_soil_analyzer_1_1_sample_a0d6e6fca9e232a77329daf0b4b29c634}{OriginalImage} = src.clone();
+14     \}
+\end{DoxyCode}
+\hypertarget{class_soil_analyzer_1_1_sample_a26f964ba39721002cbb182f3834ebb3c}{}\index{Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}!````~Sample@{$\sim$\+Sample}}
+\index{````~Sample@{$\sim$\+Sample}!Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}}
+\subsubsection[{$\sim$\+Sample}]{\setlength{\rightskip}{0pt plus 5cm}Soil\+Analyzer\+::\+Sample\+::$\sim$\+Sample (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_soil_analyzer_1_1_sample_a26f964ba39721002cbb182f3834ebb3c}
+
+
+Definition at line 16 of file Sample.\+cpp.
+
+
+\begin{DoxyCode}
+17     \{
+18     \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_soil_analyzer_1_1_sample_aeb62e34de081b3f298e9b8ebf82df36d}{}\index{Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}!Analyse@{Analyse}}
+\index{Analyse@{Analyse}!Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}}
+\subsubsection[{Analyse}]{\setlength{\rightskip}{0pt plus 5cm}void Soil\+Analyzer\+::\+Sample\+::\+Analyse (
+\begin{DoxyParamCaption}
+\item[{{\bf Soil\+Math\+::\+N\+N} \&}]{nn}
+\end{DoxyParamCaption}
+)}\label{class_soil_analyzer_1_1_sample_aeb62e34de081b3f298e9b8ebf82df36d}
+
+
+Definition at line 166 of file Sample.\+cpp.
+
+
+
+References img\+Prepped, and Prep\+Img().
+
+
+
+Referenced by Analyse(), B\+O\+O\+S\+T\+\_\+\+F\+I\+X\+T\+U\+R\+E\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E(), and V\+S\+A\+G\+U\+I\+::on\+\_\+\+Analyze\+Button\+\_\+clicked().
+
+
+\begin{DoxyCode}
+167     \{
+168         \textcolor{keywordflow}{if} (!\hyperlink{class_soil_analyzer_1_1_sample_ab025a26f7276128a5a974cae15b51dfc}{imgPrepped}) \{ \hyperlink{class_soil_analyzer_1_1_sample_a23050a1fff3e11e907657623756333b2}{PrepImg}(); \}
+169         \textcolor{comment}{//Calculate the statistics CIE La*b*}
+170         \textcolor{comment}{//vector<Mat> LABextract = Vision::ImageProcessing::extractChannel(LAB);}
+171         \textcolor{comment}{//for\_each(LABextract.begin(), LABextract.end(), [&](Mat &lab) \{
+       Results.LAB\_Stat.push\_back(floatStat\_t((float *)lab.data, lab.rows, lab.cols)); \});}
+172 
+173         \textcolor{comment}{//Calculate the statistics RI}
+174         \textcolor{comment}{//Results.RI\_Stat = floatStat\_t((float *)RI.data, RI.rows, RI.cols);}
+175 
+176         \textcolor{comment}{// Segment and analyze the particles}
+177         \textcolor{comment}{//SegmentParticles();}
+178         \textcolor{comment}{//for\_each(Population.begin(), Population.end(), [&](Particle &P) }
+179         \textcolor{comment}{//\{}
+180         \textcolor{comment}{//  P.Analyze(nn); }
+181         \textcolor{comment}{//\});}
+182 
+183         \textcolor{comment}{// Analyze the image}
+184     \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_soil_analyzer_1_1_sample_aeb62e34de081b3f298e9b8ebf82df36d_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_soil_analyzer_1_1_sample_aeb62e34de081b3f298e9b8ebf82df36d_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_soil_analyzer_1_1_sample_a5555ad91e224aeb59e2a301f23e1899f}{}\index{Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}!Analyse@{Analyse}}
+\index{Analyse@{Analyse}!Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}}
+\subsubsection[{Analyse}]{\setlength{\rightskip}{0pt plus 5cm}void Soil\+Analyzer\+::\+Sample\+::\+Analyse (
+\begin{DoxyParamCaption}
+\item[{const Mat \&}]{src, }
+\item[{{\bf Soil\+Math\+::\+N\+N} \&}]{nn}
+\end{DoxyParamCaption}
+)}\label{class_soil_analyzer_1_1_sample_a5555ad91e224aeb59e2a301f23e1899f}
+
+
+Definition at line 186 of file Sample.\+cpp.
+
+
+
+References Analyse(), and Original\+Image.
+
+
+\begin{DoxyCode}
+187     \{
+188         \hyperlink{class_soil_analyzer_1_1_sample_a0d6e6fca9e232a77329daf0b4b29c634}{OriginalImage} = src;
+189         \hyperlink{class_soil_analyzer_1_1_sample_aeb62e34de081b3f298e9b8ebf82df36d}{Analyse}(nn);
+190     \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_soil_analyzer_1_1_sample_a5555ad91e224aeb59e2a301f23e1899f_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_soil_analyzer_1_1_sample_ab086f5475a5e404625b6ae1faa0fe7a2}{}\index{Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}!Analyse\+Pop\+Vect@{Analyse\+Pop\+Vect}}
+\index{Analyse\+Pop\+Vect@{Analyse\+Pop\+Vect}!Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}}
+\subsubsection[{Analyse\+Pop\+Vect}]{\setlength{\rightskip}{0pt plus 5cm}bool Soil\+Analyzer\+::\+Sample\+::\+Analyse\+Pop\+Vect (
+\begin{DoxyParamCaption}
+\item[{const vector$<$ {\bf Particle} $>$ \&}]{population, }
+\item[{{\bf Analysis\+Results} \&}]{results}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_soil_analyzer_1_1_sample_ab086f5475a5e404625b6ae1faa0fe7a2}
+
+
+Definition at line 192 of file Sample.\+cpp.
+
+
+\begin{DoxyCode}
+194     \{
+195         \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+196     \}
+\end{DoxyCode}
+\hypertarget{class_soil_analyzer_1_1_sample_a472dfdde346375463c979e45eb75fbb7}{}\index{Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}!connect\+\_\+\+Progress@{connect\+\_\+\+Progress}}
+\index{connect\+\_\+\+Progress@{connect\+\_\+\+Progress}!Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}}
+\subsubsection[{connect\+\_\+\+Progress}]{\setlength{\rightskip}{0pt plus 5cm}boost\+::signals2\+::connection Soil\+Analyzer\+::\+Sample\+::connect\+\_\+\+Progress (
+\begin{DoxyParamCaption}
+\item[{const Progress\+\_\+t\+::slot\+\_\+type \&}]{subscriber}
+\end{DoxyParamCaption}
+)}\label{class_soil_analyzer_1_1_sample_a472dfdde346375463c979e45eb75fbb7}
+
+
+Definition at line 250 of file Sample.\+cpp.
+
+
+
+References prog\+\_\+sig.
+
+
+
+Referenced by V\+S\+A\+G\+U\+I\+::on\+\_\+action\+Load\+\_\+triggered(), V\+S\+A\+G\+U\+I\+::on\+\_\+action\+New\+\_\+triggered(), V\+S\+A\+G\+U\+I\+::on\+\_\+\+Snapshot\+Button\+\_\+clicked(), and V\+S\+A\+G\+U\+I\+::\+V\+S\+A\+G\+U\+I().
+
+
+\begin{DoxyCode}
+251     \{
+252         \textcolor{keywordflow}{return} \hyperlink{class_soil_analyzer_1_1_sample_aab3a7522152890650245a1f069605a13}{prog\_sig}.connect(subscriber);
+253     \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_soil_analyzer_1_1_sample_a472dfdde346375463c979e45eb75fbb7_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_soil_analyzer_1_1_sample_a88f29d8ee3fad37cdad6cb88b2c8a288}{}\index{Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}!Load@{Load}}
+\index{Load@{Load}!Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}}
+\subsubsection[{Load}]{\setlength{\rightskip}{0pt plus 5cm}void Soil\+Analyzer\+::\+Sample\+::\+Load (
+\begin{DoxyParamCaption}
+\item[{string \&}]{filename}
+\end{DoxyParamCaption}
+)}\label{class_soil_analyzer_1_1_sample_a88f29d8ee3fad37cdad6cb88b2c8a288}
+
+
+Definition at line 27 of file Sample.\+cpp.
+
+
+
+Referenced by B\+O\+O\+S\+T\+\_\+\+F\+I\+X\+T\+U\+R\+E\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E(), and V\+S\+A\+G\+U\+I\+::on\+\_\+action\+Load\+\_\+triggered().
+
+
+\begin{DoxyCode}
+28     \{
+29         std::ifstream ifs(filename.c\_str());
+30         boost::archive::binary\_iarchive ia(ifs);
+31         ia >> boost::serialization::make\_nvp(\textcolor{stringliteral}{"SoilSample"}, *\textcolor{keyword}{this});
+32     \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_soil_analyzer_1_1_sample_a88f29d8ee3fad37cdad6cb88b2c8a288_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_soil_analyzer_1_1_sample_a23050a1fff3e11e907657623756333b2}{}\index{Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}!Prep\+Img@{Prep\+Img}}
+\index{Prep\+Img@{Prep\+Img}!Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}}
+\subsubsection[{Prep\+Img}]{\setlength{\rightskip}{0pt plus 5cm}void Soil\+Analyzer\+::\+Sample\+::\+Prep\+Img (
+\begin{DoxyParamCaption}
+\item[{{\bf Soil\+Settings} $\ast$}]{settings = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)}\label{class_soil_analyzer_1_1_sample_a23050a1fff3e11e907657623756333b2}
+
+
+Definition at line 34 of file Sample.\+cpp.
+
+
+
+References Soil\+Analyzer\+::\+Soil\+Settings\+::adapt\+Contrast\+Kernel\+Size, Vision\+::\+Enhance\+::\+Adaptive\+Contrast\+Stretch(), Vision\+::\+Enhance\+::\+Blur(), Soil\+Analyzer\+::\+Soil\+Settings\+::blur\+Kernel\+Size, Soil\+Analyzer\+::\+Soil\+::\+B\+W, Vision\+::\+Conversion\+::\+C\+I\+E\+\_\+lab, circle, Vision\+::\+Morphological\+Filter\+::\+C\+L\+O\+S\+E, Vision\+::\+Morphological\+Filter\+::\+Close(), Vision\+::\+Conversion\+::\+Convert(), Vision\+::\+Segment\+::\+Convert\+To\+B\+W(), Vision\+::\+Image\+Processing\+::\+Copy\+Mat(), Vision\+::\+Morphological\+Filter\+::\+D\+I\+L\+A\+T\+E, Vision\+::\+Morphological\+Filter\+::\+Dilation(), Soil\+Analyzer\+::\+Soil\+::\+Edge, Vision\+::\+Morphological\+Filter\+::\+E\+R\+O\+D\+E, Vision\+::\+Morphological\+Filter\+::\+Erosion(), Soil\+Analyzer\+::\+Soil\+Settings\+::fill\+Holes, Vision\+::\+Segment\+::\+Fill\+Holes(), Soil\+Analyzer\+::\+Soil\+Settings\+::filter\+Mask\+Size, Vision\+::\+Segment\+::\+Get\+Edges\+Eroding(), Soil\+Analyzer\+::\+Soil\+Settings\+::ignore\+Partial\+Border\+Particles, img\+Prepped, Vision\+::\+Conversion\+::\+Intensity, Soil\+Analyzer\+::\+Soil\+::\+Intensity, Soil\+Analyzer\+::\+Soil\+::\+L\+A\+B, mask, Soil\+Analyzer\+::\+Soil\+Settings\+::morph\+Filter\+Type, Vision\+::\+Morphological\+Filter\+::\+N\+O\+N\+E, Vision\+::\+Morphological\+Filter\+::\+O\+P\+E\+N, Vision\+::\+Morphological\+Filter\+::\+Open(), Soil\+Analyzer\+::\+Soil\+::\+Optimized\+Int, Original\+Image, Vision\+::\+Image\+Processing\+::\+Original\+Img, Vision\+::\+Image\+Processing\+::\+Processed\+Img, P\+R\+O\+G\+\_\+\+I\+N\+C\+R, prog\+\_\+sig, Vision\+::\+Segment\+::\+Remove\+Border\+Blobs(), Vision\+::\+Conversion\+::\+R\+G\+B, Soil\+Analyzer\+::\+Soil\+::\+R\+G\+B, Vision\+::\+Conversion\+::\+R\+I, Soil\+Analyzer\+::\+Soil\+::\+R\+I, Settings, S\+H\+O\+W\+\_\+\+D\+E\+B\+U\+G\+\_\+\+I\+M\+G, Vision\+::\+Segment\+::sigma, Soil\+Analyzer\+::\+Soil\+Settings\+::sigma\+Factor, Vision\+::\+Segment\+::threshold\+Offset, Soil\+Analyzer\+::\+Soil\+Settings\+::threshold\+Offset\+Value, Soil\+Analyzer\+::\+Soil\+Settings\+::type\+Of\+Objects\+Segmented, Soil\+Analyzer\+::\+Soil\+Settings\+::use\+Adaptive\+Contrast, and Soil\+Analyzer\+::\+Soil\+Settings\+::use\+Blur.
+
+
+
+Referenced by Analyse(), V\+S\+A\+G\+U\+I\+::on\+\_\+\+Segment\+Button\+\_\+clicked(), and V\+S\+A\+G\+U\+I\+::on\+\_\+vertical\+Slider\+\_\+slider\+Released().
+
+
+\begin{DoxyCode}
+35     \{
+36         \textcolor{comment}{//setup the settings}
+37         \textcolor{keywordflow}{if} (settings == \textcolor{keyword}{nullptr} && \hyperlink{class_soil_analyzer_1_1_sample_a31f7b29fc46497f9b2847285c7893832}{Settings} == \textcolor{keyword}{nullptr})
+38         \{
+39             \hyperlink{class_soil_analyzer_1_1_sample_a31f7b29fc46497f9b2847285c7893832}{Settings} = \textcolor{keyword}{new} SoilSettings;
+40         \}
+41         \textcolor{keywordflow}{else}
+42         \{
+43             \hyperlink{class_soil_analyzer_1_1_sample_a31f7b29fc46497f9b2847285c7893832}{Settings} = settings;
+44         \}
+45 
+46         \textcolor{comment}{// set up the progress signal}
+47         \textcolor{keywordtype}{float} currentProg = 0.;
+48         \hyperlink{class_soil_analyzer_1_1_sample_aab3a7522152890650245a1f069605a13}{prog\_sig}(currentProg, \textcolor{stringliteral}{"Starting segmentation"});
+49 
+50         uint32\_t totalsteps = 5;
+51         \textcolor{keywordflow}{if} (\hyperlink{class_soil_analyzer_1_1_sample_a31f7b29fc46497f9b2847285c7893832}{Settings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a0e27335d05aed8f3f084744062368578}{useAdaptiveContrast}) \{ totalsteps++; \}
+52         \textcolor{keywordflow}{if} (\hyperlink{class_soil_analyzer_1_1_sample_a31f7b29fc46497f9b2847285c7893832}{Settings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a21bd246a48a712734af86f592030e18b}{useBlur}) \{ totalsteps++; \}
+53         \textcolor{keywordflow}{if} (\hyperlink{class_soil_analyzer_1_1_sample_a31f7b29fc46497f9b2847285c7893832}{Settings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a2c9dbe9429742aed1da9d9683da5cc1e}{fillHoles}) \{ totalsteps++; \}
+54         \textcolor{keywordflow}{if} (\hyperlink{class_soil_analyzer_1_1_sample_a31f7b29fc46497f9b2847285c7893832}{Settings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a24fb1d7da2247da77a17d853ea1494d7}{ignorePartialBorderParticles}) \{ totalsteps++; \}
+55         \textcolor{keywordflow}{if} (\hyperlink{class_soil_analyzer_1_1_sample_a31f7b29fc46497f9b2847285c7893832}{Settings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_ad1420c4800badb3eb07eba4767e3df81}{morphFilterType} != 
+      \hyperlink{class_vision_1_1_morphological_filter_a1f19c9cb13f0d68778c77d6fd0370868a8bc137e512a8def100d5ce92af334438}{Vision::MorphologicalFilter::NONE}) \{ totalsteps++; \}
+56         \textcolor{keywordtype}{float} progstep = 1. / \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(totalsteps);
+57 
+58         \textcolor{keywordflow}{if} (\hyperlink{class_soil_analyzer_1_1_sample_a0d6e6fca9e232a77329daf0b4b29c634}{OriginalImage}.empty()) \{ \textcolor{keywordflow}{throw} Exception::AnalysisException(\textcolor{stringliteral}{"No Image found to
+       analyze!"}, 1); \}
+59         \hyperlink{_vision_debug_8h_aae864fa4f990213a4184a209ff236202}{SHOW\_DEBUG\_IMG}(\hyperlink{class_soil_analyzer_1_1_sample_a0d6e6fca9e232a77329daf0b4b29c634}{OriginalImage}, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}, 255, \textcolor{stringliteral}{"RGB"}, \textcolor{keyword}{false});
+60 
+61         \textcolor{comment}{// Convert the image to an intensity image and an enhanced Intinsity for better segmentation}
+62         \hyperlink{class_vision_1_1_conversion}{Vision::Conversion} RGBConvertor(\hyperlink{class_soil_analyzer_1_1_sample_a0d6e6fca9e232a77329daf0b4b29c634}{OriginalImage});
+63         RGBConvertor.Convert(\hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388af3fab43e1e6d8ffab1bf27050866a8d5}{Vision::Conversion::RGB}, 
+      \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388abfa5e56d2444f73ce850195468885fdd}{Vision::Conversion::Intensity});
+64         \hyperlink{_sample_8h_a46c89e6320d3c886c2726161399fed91}{PROG\_INCR}(\textcolor{stringliteral}{"Converted to intensity"});
+65         \hyperlink{class_soil_analyzer_1_1_soil_a6f56200f2722df5b849d8cddd094c852}{Intensity} = RGBConvertor.ProcessedImg.clone();
+66         \hyperlink{_vision_debug_8h_aae864fa4f990213a4184a209ff236202}{SHOW\_DEBUG\_IMG}(\hyperlink{class_soil_analyzer_1_1_soil_a6f56200f2722df5b849d8cddd094c852}{Intensity}, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}, 255, \textcolor{stringliteral}{"Intensity"}, \textcolor{keyword}{false});
+67 
+68         \textcolor{comment}{// Enhance the image with an Adaptive contrast stretch and/or followed by a blur}
+69         \hyperlink{class_vision_1_1_enhance}{Vision::Enhance} IntEnchance(\hyperlink{class_soil_analyzer_1_1_soil_a6f56200f2722df5b849d8cddd094c852}{Intensity});
+70         \textcolor{keywordflow}{if} (\hyperlink{class_soil_analyzer_1_1_sample_a31f7b29fc46497f9b2847285c7893832}{Settings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a0e27335d05aed8f3f084744062368578}{useAdaptiveContrast})
+71         \{
+72             IntEnchance.AdaptiveContrastStretch(\hyperlink{class_soil_analyzer_1_1_sample_a31f7b29fc46497f9b2847285c7893832}{Settings}->
+      \hyperlink{class_soil_analyzer_1_1_soil_settings_a73f627b092dbdbda37b66ef6c2eef95c}{adaptContrastKernelSize}, \hyperlink{class_soil_analyzer_1_1_sample_a31f7b29fc46497f9b2847285c7893832}{Settings}->
+      \hyperlink{class_soil_analyzer_1_1_soil_settings_a73f627b092dbdbda37b66ef6c2eef95c}{adaptContrastKernelSize});
+73             \hyperlink{_sample_8h_a46c89e6320d3c886c2726161399fed91}{PROG\_INCR}(\textcolor{stringliteral}{"Adaptive contrast stretch applied"});
+74             \textcolor{keywordflow}{if} (\hyperlink{class_soil_analyzer_1_1_sample_a31f7b29fc46497f9b2847285c7893832}{Settings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a21bd246a48a712734af86f592030e18b}{useBlur})
+75             \{
+76                 IntEnchance.Blur(\hyperlink{class_soil_analyzer_1_1_sample_a31f7b29fc46497f9b2847285c7893832}{Settings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_afa46542d30045e00fadbdd5a6ab9a1e1}{blurKernelSize}, \textcolor{keyword}{true});
+77                 \hyperlink{_sample_8h_a46c89e6320d3c886c2726161399fed91}{PROG\_INCR}(\textcolor{stringliteral}{"Blur applied"});
+78             \}
+79         \}
+80         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\hyperlink{class_soil_analyzer_1_1_sample_a31f7b29fc46497f9b2847285c7893832}{Settings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a21bd246a48a712734af86f592030e18b}{useBlur})
+81         \{
+82             IntEnchance.Blur(\hyperlink{class_soil_analyzer_1_1_sample_a31f7b29fc46497f9b2847285c7893832}{Settings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_afa46542d30045e00fadbdd5a6ab9a1e1}{blurKernelSize}, \textcolor{keyword}{false});
+83             \hyperlink{_sample_8h_a46c89e6320d3c886c2726161399fed91}{PROG\_INCR}(\textcolor{stringliteral}{"Blur applied"});
+84         \}
+85         \textcolor{keywordflow}{else}
+86         \{
+87             IntEnchance.ProcessedImg = IntEnchance.OriginalImg;
+88         \}
+89         \hyperlink{class_soil_analyzer_1_1_soil_a27f7c15f63cbf64c07ceedb30c25e861}{OptimizedInt} = IntEnchance.ProcessedImg(cv::Rect(10, 10, 
+      \hyperlink{class_soil_analyzer_1_1_sample_a0d6e6fca9e232a77329daf0b4b29c634}{OriginalImage}.cols - 20, \hyperlink{class_soil_analyzer_1_1_sample_a0d6e6fca9e232a77329daf0b4b29c634}{OriginalImage}.rows - 20)).clone();
+90         \hyperlink{_vision_debug_8h_aae864fa4f990213a4184a209ff236202}{SHOW\_DEBUG\_IMG}(\hyperlink{class_soil_analyzer_1_1_soil_a27f7c15f63cbf64c07ceedb30c25e861}{OptimizedInt}, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}, 255, \textcolor{stringliteral}{"IntEnchance"}, \textcolor{keyword}{false});
+91 
+92         \textcolor{comment}{// Segment the Dark Objects en fill the holes}
+93         \hyperlink{class_vision_1_1_segment}{Vision::Segment} Segmenter(\hyperlink{class_soil_analyzer_1_1_soil_a27f7c15f63cbf64c07ceedb30c25e861}{OptimizedInt});
+94         Segmenter.sigma = \hyperlink{class_soil_analyzer_1_1_sample_a31f7b29fc46497f9b2847285c7893832}{Settings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a97e62512e12a2ba9210fd93950b6e717}{sigmaFactor};
+95         Segmenter.thresholdOffset = \hyperlink{class_soil_analyzer_1_1_sample_a31f7b29fc46497f9b2847285c7893832}{Settings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a48330eb812672b50a94483f264614e8f}{thresholdOffsetValue};
+96         Segmenter.ConvertToBW(\hyperlink{class_soil_analyzer_1_1_sample_a31f7b29fc46497f9b2847285c7893832}{Settings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a21ae88dba6b9b0b07d9c26812bc739fb}{typeOfObjectsSegmented});
+97         \hyperlink{_sample_8h_a46c89e6320d3c886c2726161399fed91}{PROG\_INCR}(\textcolor{stringliteral}{"Threshold applied"});
+98         \textcolor{keywordflow}{if} (\hyperlink{class_soil_analyzer_1_1_sample_a31f7b29fc46497f9b2847285c7893832}{Settings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a2c9dbe9429742aed1da9d9683da5cc1e}{fillHoles})
+99         \{
+100             Segmenter.FillHoles(\textcolor{keyword}{true});
+101             \hyperlink{_sample_8h_a46c89e6320d3c886c2726161399fed91}{PROG\_INCR}(\textcolor{stringliteral}{"Holes filled"});
+102         \}
+103         \textcolor{keywordflow}{if} (\hyperlink{class_soil_analyzer_1_1_sample_a31f7b29fc46497f9b2847285c7893832}{Settings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a24fb1d7da2247da77a17d853ea1494d7}{ignorePartialBorderParticles})
+104         \{
+105             Segmenter.RemoveBorderBlobs(1, \textcolor{keyword}{true});
+106             \hyperlink{_sample_8h_a46c89e6320d3c886c2726161399fed91}{PROG\_INCR}(\textcolor{stringliteral}{"Border Blobs removed"});
+107         \}
+108         \hyperlink{_vision_debug_8h_aae864fa4f990213a4184a209ff236202}{SHOW\_DEBUG\_IMG}(Segmenter.ProcessedImg, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}, 255, \textcolor{stringliteral}{"Segmenter"}, \textcolor{keyword}{true});
+109 
+110         \textcolor{comment}{// Erode the segmented image and sets the BW image use it to create the NO background RGB}
+111         \hyperlink{class_vision_1_1_morphological_filter}{Vision::MorphologicalFilter} Filter(Segmenter.ProcessedImg);
+112         uint kSize = \hyperlink{class_soil_analyzer_1_1_sample_a31f7b29fc46497f9b2847285c7893832}{Settings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_ad9d5071bbf6d10638df024e883c6199f}{filterMaskSize};
+113         Mat \hyperlink{_gen_blob_8m_a5d76cc2129e79ba1941d2cc2f53b9e8e}{mask} = cv::Mat::zeros(kSize, kSize, CV\_8UC1);
+114         \hyperlink{_gen_blob_8m_abf7c2c3a34f5da034b14e89486f97f16}{circle}(mask, Point(kSize/2, kSize/2), (kSize/2)+1, 1, -1);
+115         \textcolor{keywordflow}{switch} (\hyperlink{class_soil_analyzer_1_1_sample_a31f7b29fc46497f9b2847285c7893832}{Settings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_ad1420c4800badb3eb07eba4767e3df81}{morphFilterType})
+116         \{
+117         \textcolor{keywordflow}{case} \hyperlink{class_vision_1_1_morphological_filter_a1f19c9cb13f0d68778c77d6fd0370868a0e01d9ebb7d53eaa2ae98ea36cc810f6}{Vision::MorphologicalFilter::CLOSE}:
+118             Filter.Close(mask);
+119             \hyperlink{_sample_8h_a46c89e6320d3c886c2726161399fed91}{PROG\_INCR}(\textcolor{stringliteral}{"Morphological filer - close applied"});
+120             \textcolor{keywordflow}{break};
+121         \textcolor{keywordflow}{case} \hyperlink{class_vision_1_1_morphological_filter_a1f19c9cb13f0d68778c77d6fd0370868afbd91b5e6d75b6bcfc8faca3f5da7c47}{Vision::MorphologicalFilter::DILATE}:
+122             Filter.Dilation(mask);
+123             \hyperlink{_sample_8h_a46c89e6320d3c886c2726161399fed91}{PROG\_INCR}(\textcolor{stringliteral}{"Morphological filer - dilate applied"});
+124             \textcolor{keywordflow}{break};
+125         \textcolor{keywordflow}{case} \hyperlink{class_vision_1_1_morphological_filter_a1f19c9cb13f0d68778c77d6fd0370868a4ca3c81298a713b3d1f279c9233e7547}{Vision::MorphologicalFilter::ERODE}:
+126             Filter.Erosion(mask);
+127             \hyperlink{_sample_8h_a46c89e6320d3c886c2726161399fed91}{PROG\_INCR}(\textcolor{stringliteral}{"Morphological filer - erode applied"});
+128             \textcolor{keywordflow}{break};
+129         \textcolor{keywordflow}{case} \hyperlink{class_vision_1_1_morphological_filter_a1f19c9cb13f0d68778c77d6fd0370868afd436eed00afa15b23eeac4de3509303}{Vision::MorphologicalFilter::OPEN}:
+130             Filter.Open(mask);
+131             \hyperlink{_sample_8h_a46c89e6320d3c886c2726161399fed91}{PROG\_INCR}(\textcolor{stringliteral}{"Morphological filer - open applied"});
+132             \textcolor{keywordflow}{break};
+133         \textcolor{keywordflow}{case} \hyperlink{class_vision_1_1_morphological_filter_a1f19c9cb13f0d68778c77d6fd0370868a8bc137e512a8def100d5ce92af334438}{Vision::MorphologicalFilter::NONE}:
+134             Filter.ProcessedImg = Filter.OriginalImg;
+135         \}
+136         \hyperlink{class_soil_analyzer_1_1_soil_ae11b578192ebae3165f75c09d6116f74}{BW} = Filter.ProcessedImg.clone();
+137         \hyperlink{_vision_debug_8h_aae864fa4f990213a4184a209ff236202}{SHOW\_DEBUG\_IMG}(\hyperlink{class_soil_analyzer_1_1_soil_ae11b578192ebae3165f75c09d6116f74}{BW}, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}, 255, \textcolor{stringliteral}{"BW after segmentation, fill holes and erosion"}
+      , \textcolor{keyword}{true});
+138         \hyperlink{class_soil_analyzer_1_1_soil_a4a328e0ebe7f1f3c5a1c4c581180d19e}{RGB} = Vision::ImageProcessing::CopyMat<uchar>(\hyperlink{class_soil_analyzer_1_1_sample_a0d6e6fca9e232a77329daf0b4b29c634}{OriginalImage}(cv::Rect(10, 10, 
+      \hyperlink{class_soil_analyzer_1_1_sample_a0d6e6fca9e232a77329daf0b4b29c634}{OriginalImage}.cols - 20, \hyperlink{class_soil_analyzer_1_1_sample_a0d6e6fca9e232a77329daf0b4b29c634}{OriginalImage}.rows - 20)).clone(), 
+      \hyperlink{class_soil_analyzer_1_1_soil_ae11b578192ebae3165f75c09d6116f74}{BW}, CV\_8UC1);
+139         \hyperlink{_sample_8h_a46c89e6320d3c886c2726161399fed91}{PROG\_INCR}(\textcolor{stringliteral}{"RGB masked image generated"});
+140         \hyperlink{_vision_debug_8h_aae864fa4f990213a4184a209ff236202}{SHOW\_DEBUG\_IMG}(\hyperlink{class_soil_analyzer_1_1_soil_a4a328e0ebe7f1f3c5a1c4c581180d19e}{RGB}, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}, 255, \textcolor{stringliteral}{"RGB no Background"}, \textcolor{keyword}{false});
+141 
+142         \textcolor{comment}{// Create the Edge image}
+143         \hyperlink{class_vision_1_1_segment}{Vision::Segment} Edger(\hyperlink{class_soil_analyzer_1_1_soil_ae11b578192ebae3165f75c09d6116f74}{BW});
+144         Edger.GetEdgesEroding();
+145         \hyperlink{class_soil_analyzer_1_1_soil_ab867a74ecebcd5a3d84e2f9ea806b874}{Edge} = Edger.ProcessedImg;
+146         \hyperlink{_sample_8h_a46c89e6320d3c886c2726161399fed91}{PROG\_INCR}(\textcolor{stringliteral}{"Edge filter applied"});
+147         \hyperlink{_vision_debug_8h_aae864fa4f990213a4184a209ff236202}{SHOW\_DEBUG\_IMG}(\hyperlink{class_soil_analyzer_1_1_soil_ab867a74ecebcd5a3d84e2f9ea806b874}{Edge}, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}, 255, \textcolor{stringliteral}{"Edge"}, \textcolor{keyword}{true});
+148 
+149         \textcolor{comment}{// Make the CIE La*b* conversion}
+150         \hyperlink{class_vision_1_1_conversion}{Vision::Conversion} RGBnewConvertor(\hyperlink{class_soil_analyzer_1_1_soil_a4a328e0ebe7f1f3c5a1c4c581180d19e}{RGB});
+151         RGBnewConvertor.Convert(\hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388af3fab43e1e6d8ffab1bf27050866a8d5}{Vision::Conversion::RGB}, 
+      \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388afd9ec9933d500e5eeec6ce3359321b0e}{Vision::Conversion::CIE\_lab});
+152         \hyperlink{class_soil_analyzer_1_1_soil_a59ee773ff73380a12b1c2af3b86f6638}{LAB} = RGBnewConvertor.CopyMat<\textcolor{keywordtype}{float}>(\hyperlink{class_soil_analyzer_1_1_soil_a4a328e0ebe7f1f3c5a1c4c581180d19e}{RGB}, \hyperlink{class_soil_analyzer_1_1_soil_ae11b578192ebae3165f75c09d6116f74}{BW}, CV\_32F);
+153         \hyperlink{_sample_8h_a46c89e6320d3c886c2726161399fed91}{PROG\_INCR}(\textcolor{stringliteral}{"CIE La*b* conversion calculated"});
+154         \hyperlink{_vision_debug_8h_aae864fa4f990213a4184a209ff236202}{SHOW\_DEBUG\_IMG}(\hyperlink{class_soil_analyzer_1_1_soil_a59ee773ff73380a12b1c2af3b86f6638}{LAB}, \textcolor{keywordtype}{float}, 1.0, \textcolor{stringliteral}{"LAB"}, \textcolor{keyword}{true});
+155 
+156         \textcolor{comment}{// Create the Redness Index}
+157         \hyperlink{class_vision_1_1_conversion}{Vision::Conversion} LABConvertor(\hyperlink{class_soil_analyzer_1_1_soil_a59ee773ff73380a12b1c2af3b86f6638}{LAB});
+158         LABConvertor.Convert(\hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388afd9ec9933d500e5eeec6ce3359321b0e}{Vision::Conversion::CIE\_lab}, 
+      \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388addf2a4063c4fe27e2675fafccdcdd9c1}{Vision::Conversion::RI});
+159         \hyperlink{class_soil_analyzer_1_1_soil_abe8693b60a3d88433ffb8255b8d260c3}{RI} = LABConvertor.ProcessedImg;
+160         \hyperlink{_sample_8h_a46c89e6320d3c886c2726161399fed91}{PROG\_INCR}(\textcolor{stringliteral}{"Redness conversion calculated"});
+161         \hyperlink{_vision_debug_8h_aae864fa4f990213a4184a209ff236202}{SHOW\_DEBUG\_IMG}(\hyperlink{class_soil_analyzer_1_1_soil_abe8693b60a3d88433ffb8255b8d260c3}{RI}, \textcolor{keywordtype}{float}, 1.0, \textcolor{stringliteral}{"RI"}, \textcolor{keyword}{true});
+162 
+163         \hyperlink{class_soil_analyzer_1_1_sample_ab025a26f7276128a5a974cae15b51dfc}{imgPrepped} = \textcolor{keyword}{true};
+164     \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_soil_analyzer_1_1_sample_a23050a1fff3e11e907657623756333b2_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_soil_analyzer_1_1_sample_a23050a1fff3e11e907657623756333b2_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_soil_analyzer_1_1_sample_a00fd0ec3bbea70454a6d8a6c1aaf34df}{}\index{Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}!Save@{Save}}
+\index{Save@{Save}!Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}}
+\subsubsection[{Save}]{\setlength{\rightskip}{0pt plus 5cm}void Soil\+Analyzer\+::\+Sample\+::\+Save (
+\begin{DoxyParamCaption}
+\item[{string \&}]{filename}
+\end{DoxyParamCaption}
+)}\label{class_soil_analyzer_1_1_sample_a00fd0ec3bbea70454a6d8a6c1aaf34df}
+
+
+Definition at line 20 of file Sample.\+cpp.
+
+
+
+Referenced by B\+O\+O\+S\+T\+\_\+\+F\+I\+X\+T\+U\+R\+E\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E(), and V\+S\+A\+G\+U\+I\+::on\+\_\+action\+Save\+\_\+triggered().
+
+
+\begin{DoxyCode}
+21     \{
+22         std::ofstream ofs(filename.c\_str());
+23         boost::archive::binary\_oarchive oa(ofs);
+24         oa << boost::serialization::make\_nvp(\textcolor{stringliteral}{"SoilSample"}, *\textcolor{keyword}{this});
+25     \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_soil_analyzer_1_1_sample_a00fd0ec3bbea70454a6d8a6c1aaf34df_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_soil_analyzer_1_1_sample_a38d665f29d94e597cb4c6a467d2e1f0b}{}\index{Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}!Segment\+Particles@{Segment\+Particles}}
+\index{Segment\+Particles@{Segment\+Particles}!Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}}
+\subsubsection[{Segment\+Particles}]{\setlength{\rightskip}{0pt plus 5cm}void Soil\+Analyzer\+::\+Sample\+::\+Segment\+Particles (
+\begin{DoxyParamCaption}
+\item[{{\bf Vision\+::\+Segment\+::\+Segmentation\+Type}}]{seg\+Type = {\ttfamily {\bf Vision\+::\+Segment\+::\+Normal}}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_soil_analyzer_1_1_sample_a38d665f29d94e597cb4c6a467d2e1f0b}
+
+
+Definition at line 198 of file Sample.\+cpp.
+
+
+
+References Vision\+::\+Enhance\+::\+Adaptive\+Contrast\+Stretch(), Vision\+::\+Segment\+::\+Blob\+List, Vision\+::\+Enhance\+::\+Blur(), Soil\+Analyzer\+::\+Soil\+::\+B\+W, Vision\+::\+Segment\+::\+Convert\+To\+B\+W(), Vision\+::\+Segment\+::\+Dark, Soil\+Analyzer\+::\+Soil\+::\+Edge, Vision\+::\+Segment\+::\+Get\+Blob\+List(), Vision\+::\+Segment\+::\+Get\+Edges\+Eroding(), Vision\+::\+Segment\+::\+Graph\+Min\+Cut, i, Soil\+Analyzer\+::\+Soil\+::\+Intensity, Soil\+Analyzer\+::\+Soil\+::\+L\+A\+B, Vision\+::\+Segment\+::\+Lab\+Neural\+Net, Vision\+::\+Segment\+::\+Load\+Original\+Img(), Vision\+::\+Segment\+::\+Normal, Population, Vision\+::\+Image\+Processing\+::\+Processed\+Img, and Vision\+::\+Segment\+::\+Remove\+Border\+Blobs().
+
+
+\begin{DoxyCode}
+199     \{
+200         \hyperlink{class_vision_1_1_enhance}{Vision::Enhance} Enhancer(\hyperlink{class_soil_analyzer_1_1_soil_a6f56200f2722df5b849d8cddd094c852}{Intensity});
+201         \hyperlink{class_vision_1_1_segment}{Vision::Segment} Segmenter;
+202         \hyperlink{class_vision_1_1_morphological_filter}{Vision::MorphologicalFilter} Eroder;
+203 
+204         \textcolor{keywordflow}{switch} (segType)
+205         \{
+206         \textcolor{keywordflow}{case} \hyperlink{class_vision_1_1_segment_af3a2b992526eac54bca53e34cf2db4daae000cfc8d629752d6cdbba0d3d750184}{Vision::Segment::Normal}:
+207             \textcolor{comment}{// Optimize the intensity image}
+208             Enhancer.Blur(15);
+209             Enhancer.AdaptiveContrastStretch(5, 0.125, \textcolor{keyword}{true});
+210 
+211             \textcolor{comment}{// Segment the enhance image and remove borderblobs get the edges}
+212             Segmenter.\hyperlink{class_vision_1_1_segment_a8b5edc7f5a69d961e47f61a2191b8745}{LoadOriginalImg}(Enhancer.ProcessedImg);
+213             Segmenter.\hyperlink{class_vision_1_1_segment_a4272ceb22f9cb20c6f65d9536149d3c0}{ConvertToBW}(\hyperlink{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7dda962a0c0955809f63df036dbd41824c54}{Vision::Segment::Dark});
+214             Segmenter.\hyperlink{class_vision_1_1_segment_a65a50340b5a1a0fb08a1b5749b7145b6}{RemoveBorderBlobs}(1, \textcolor{keyword}{true});
+215             \hyperlink{class_soil_analyzer_1_1_soil_ae11b578192ebae3165f75c09d6116f74}{BW} = Segmenter.\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.clone();
+216             \textcolor{keywordflow}{break};
+217         \textcolor{keywordflow}{case} \hyperlink{class_vision_1_1_segment_af3a2b992526eac54bca53e34cf2db4daa6ddef558061ee58899a362608a5b163b}{Vision::Segment::LabNeuralNet}:
+218             \textcolor{keywordflow}{throw} Exception::AnalysisException(\textcolor{stringliteral}{"Not yet implemented!"}, 1);
+219             \textcolor{keywordflow}{break};
+220         \textcolor{keywordflow}{case} \hyperlink{class_vision_1_1_segment_af3a2b992526eac54bca53e34cf2db4daa0291c0ff93e52e8e78f86698b0288353}{Vision::Segment::GraphMinCut}:
+221             \textcolor{keywordflow}{throw} Exception::AnalysisException(\textcolor{stringliteral}{"Not yet implemented!"}, 1);
+222             \textcolor{keywordflow}{break};
+223         \textcolor{keywordflow}{default}:
+224             \textcolor{keywordflow}{break};
+225         \}
+226 
+227         \hyperlink{class_vision_1_1_segment}{Vision::Segment} getEdges(\hyperlink{class_soil_analyzer_1_1_soil_ae11b578192ebae3165f75c09d6116f74}{BW});
+228         getEdges.GetEdgesEroding();
+229         \hyperlink{class_soil_analyzer_1_1_soil_ab867a74ecebcd5a3d84e2f9ea806b874}{Edge} = getEdges.ProcessedImg;
+230 
+231         \textcolor{comment}{// Get the Particlelist}
+232         Segmenter.\hyperlink{class_vision_1_1_segment_a6dba1b8506fe7e8054e99ea5330d4abc}{GetBlobList}(\textcolor{keyword}{true});
+233         \hyperlink{class_soil_analyzer_1_1_sample_ab87a190f2b4a49bc71b355f9c52d8aa4}{Population}.resize(Segmenter.\hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{BlobList}.size());
+234         uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0;
+235         for\_each(\hyperlink{class_soil_analyzer_1_1_sample_ab87a190f2b4a49bc71b355f9c52d8aa4}{Population}.begin(), \hyperlink{class_soil_analyzer_1_1_sample_ab87a190f2b4a49bc71b355f9c52d8aa4}{Population}.end(), [&](Particle &P) 
+236         \{
+237             P.ID = Segmenter.\hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{BlobList}[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].Label;
+238             P.Analysis.Analyzed = \textcolor{keyword}{false};
+239             P.BW = Segmenter.\hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{BlobList}[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].Img.clone();
+240             cv::Rect ROI = Segmenter.\hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{BlobList}[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].ROI;
+241             P.Intensity = Vision::Segment::CopyMat<uchar>(\hyperlink{class_soil_analyzer_1_1_soil_a6f56200f2722df5b849d8cddd094c852}{Intensity}(ROI).clone(), P.BW, CV\_8UC1);
+242             P.LAB = Vision::Segment::CopyMat<float>(\hyperlink{class_soil_analyzer_1_1_soil_a59ee773ff73380a12b1c2af3b86f6638}{LAB}(ROI).clone(), P.BW, CV\_32FC3);
+243             P.RGB = Vision::Segment::CopyMat<uchar>(\hyperlink{class_soil_analyzer_1_1_soil_a59ee773ff73380a12b1c2af3b86f6638}{LAB}(ROI).clone(), P.BW, CV\_8UC3);
+244             P.RI = Vision::Segment::CopyMat<float>(\hyperlink{class_soil_analyzer_1_1_soil_a59ee773ff73380a12b1c2af3b86f6638}{LAB}(ROI).clone(), P.BW, CV\_32FC1);
+245             P.Edge = Vision::Segment::CopyMat<uchar>(\hyperlink{class_soil_analyzer_1_1_soil_ab867a74ecebcd5a3d84e2f9ea806b874}{Edge}(ROI).clone(), P.BW, CV\_8UC1);
+246             i++;
+247         \});
+248     \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_soil_analyzer_1_1_sample_a38d665f29d94e597cb4c6a467d2e1f0b_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_soil_analyzer_1_1_sample_a5be6eea7a7d74e0adec741d1e203635e}{}\index{Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}!serialize@{serialize}}
+\index{serialize@{serialize}!Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}}
+\subsubsection[{serialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Archive $>$ void Soil\+Analyzer\+::\+Sample\+::serialize (
+\begin{DoxyParamCaption}
+\item[{Archive \&}]{ar, }
+\item[{const unsigned int}]{version}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}\label{class_soil_analyzer_1_1_sample_a5be6eea7a7d74e0adec741d1e203635e}
+
+
+Definition at line 61 of file Sample.\+h.
+
+
+\begin{DoxyCode}
+62         \{
+63             ar & BOOST\_SERIALIZATION\_BASE\_OBJECT\_NVP(\hyperlink{class_soil_analyzer_1_1_soil_aee6934dca3d712e86648f92d60e78765}{Soil});
+64             ar & \hyperlink{class_soil_analyzer_1_1_sample_a0d6e6fca9e232a77329daf0b4b29c634}{OriginalImage};
+65             ar & \hyperlink{class_soil_analyzer_1_1_sample_ab87a190f2b4a49bc71b355f9c52d8aa4}{Population};
+66             ar & \hyperlink{class_soil_analyzer_1_1_sample_ab242ae1c2f229168fd630a9f31d7237f}{Results};
+67             ar & \hyperlink{class_soil_analyzer_1_1_sample_a31f7b29fc46497f9b2847285c7893832}{Settings};
+68             ar & \hyperlink{class_soil_analyzer_1_1_sample_ab025a26f7276128a5a974cae15b51dfc}{imgPrepped};
+69         \}
+\end{DoxyCode}
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{class_soil_analyzer_1_1_sample_ac98d07dd8f7b70e16ccb9a01abf56b9c}{}\index{Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}!boost\+::serialization\+::access@{boost\+::serialization\+::access}}
+\index{boost\+::serialization\+::access@{boost\+::serialization\+::access}!Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}}
+\subsubsection[{boost\+::serialization\+::access}]{\setlength{\rightskip}{0pt plus 5cm}friend class boost\+::serialization\+::access\hspace{0.3cm}{\ttfamily [friend]}}\label{class_soil_analyzer_1_1_sample_ac98d07dd8f7b70e16ccb9a01abf56b9c}
+
+
+Definition at line 59 of file Sample.\+h.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_soil_analyzer_1_1_sample_ab025a26f7276128a5a974cae15b51dfc}{}\index{Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}!img\+Prepped@{img\+Prepped}}
+\index{img\+Prepped@{img\+Prepped}!Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}}
+\subsubsection[{img\+Prepped}]{\setlength{\rightskip}{0pt plus 5cm}bool Soil\+Analyzer\+::\+Sample\+::img\+Prepped = false}\label{class_soil_analyzer_1_1_sample_ab025a26f7276128a5a974cae15b51dfc}
+
+
+Definition at line 49 of file Sample.\+h.
+
+
+
+Referenced by Analyse(), V\+S\+A\+G\+U\+I\+::on\+\_\+vertical\+Slider\+\_\+slider\+Released(), and Prep\+Img().
+
+\hypertarget{class_soil_analyzer_1_1_sample_a0d6e6fca9e232a77329daf0b4b29c634}{}\index{Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}!Original\+Image@{Original\+Image}}
+\index{Original\+Image@{Original\+Image}!Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}}
+\subsubsection[{Original\+Image}]{\setlength{\rightskip}{0pt plus 5cm}cv\+::\+Mat Soil\+Analyzer\+::\+Sample\+::\+Original\+Image}\label{class_soil_analyzer_1_1_sample_a0d6e6fca9e232a77329daf0b4b29c634}
+
+
+Definition at line 42 of file Sample.\+h.
+
+
+
+Referenced by Analyse(), B\+O\+O\+S\+T\+\_\+\+F\+I\+X\+T\+U\+R\+E\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E(), V\+S\+A\+G\+U\+I\+::on\+\_\+action\+Load\+\_\+triggered(), V\+S\+A\+G\+U\+I\+::on\+\_\+\+Snapshot\+Button\+\_\+clicked(), Prep\+Img(), Sample(), and V\+S\+A\+G\+U\+I\+::\+V\+S\+A\+G\+U\+I().
+
+\hypertarget{class_soil_analyzer_1_1_sample_ab87a190f2b4a49bc71b355f9c52d8aa4}{}\index{Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}!Population@{Population}}
+\index{Population@{Population}!Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}}
+\subsubsection[{Population}]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf Particle}$>$ Soil\+Analyzer\+::\+Sample\+::\+Population}\label{class_soil_analyzer_1_1_sample_ab87a190f2b4a49bc71b355f9c52d8aa4}
+
+
+Definition at line 43 of file Sample.\+h.
+
+
+
+Referenced by Segment\+Particles().
+
+\hypertarget{class_soil_analyzer_1_1_sample_aab3a7522152890650245a1f069605a13}{}\index{Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}!prog\+\_\+sig@{prog\+\_\+sig}}
+\index{prog\+\_\+sig@{prog\+\_\+sig}!Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}}
+\subsubsection[{prog\+\_\+sig}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Progress\+\_\+t} Soil\+Analyzer\+::\+Sample\+::prog\+\_\+sig\hspace{0.3cm}{\ttfamily [private]}}\label{class_soil_analyzer_1_1_sample_aab3a7522152890650245a1f069605a13}
+
+
+Definition at line 57 of file Sample.\+h.
+
+
+
+Referenced by connect\+\_\+\+Progress(), and Prep\+Img().
+
+\hypertarget{class_soil_analyzer_1_1_sample_ab242ae1c2f229168fd630a9f31d7237f}{}\index{Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}!Results@{Results}}
+\index{Results@{Results}!Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}}
+\subsubsection[{Results}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Analysis\+Results} Soil\+Analyzer\+::\+Sample\+::\+Results}\label{class_soil_analyzer_1_1_sample_ab242ae1c2f229168fd630a9f31d7237f}
+
+
+Definition at line 44 of file Sample.\+h.
+
+\hypertarget{class_soil_analyzer_1_1_sample_a31f7b29fc46497f9b2847285c7893832}{}\index{Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}!Settings@{Settings}}
+\index{Settings@{Settings}!Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}}
+\subsubsection[{Settings}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Soil\+Settings}$\ast$ Soil\+Analyzer\+::\+Sample\+::\+Settings = nullptr}\label{class_soil_analyzer_1_1_sample_a31f7b29fc46497f9b2847285c7893832}
+
+
+Definition at line 46 of file Sample.\+h.
+
+
+
+Referenced by Prep\+Img(), and Sample().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/peer23peer/\+Vision\+Soil\+Analyzer/src/\+Soil/\hyperlink{_sample_8h}{Sample.\+h}\item 
+/home/peer23peer/\+Vision\+Soil\+Analyzer/src/\+Soil/\hyperlink{_sample_8cpp}{Sample.\+cpp}\end{DoxyCompactItemize}

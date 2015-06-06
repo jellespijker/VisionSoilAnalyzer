@@ -1,5 +1,25 @@
 var searchData=
 [
+  ['abbreviatedecimalpowers',['abbreviateDecimalPowers',['../class_q_c_p_axis_painter_private.html#a68353c2eeabd00d96a2e36a0b3809cb2',1,'QCPAxisPainterPrivate']]],
+  ['accuracy',['Accuracy',['../struct_predict__struct.html#a587f18ac05cd65437327a54261d1e22c',1,'Predict_struct']]],
+  ['actualhistbean',['actualHistBean',['../beanhisttest_8h.html#ad8af0ad07ac33ffa63f6ee826178b9ef',1,'beanhisttest.h']]],
+  ['actualhistbeanmask',['actualHistBeanMask',['../beanhisttest_8h.html#aa70a1287fa02b7677d9a2dd5377f9933',1,'beanhisttest.h']]],
+  ['actualmaxbean',['actualMaxBean',['../beanhisttest_8h.html#afbe07bade6e2a480f4b93608c0950e23',1,'beanhisttest.h']]],
+  ['actualmaxbeanmask',['actualMaxBeanMask',['../beanhisttest_8h.html#a354ff38fb7fc4f471e9c3247213b7ec7',1,'beanhisttest.h']]],
+  ['actualmeanbean',['actualMeanBean',['../beanhisttest_8h.html#a0b15bf4a322248c790838daf1bf56d0d',1,'beanhisttest.h']]],
+  ['actualminbean',['actualminBean',['../beanhisttest_8h.html#a496fe0b603f38d8941903bf999fd60a3',1,'beanhisttest.h']]],
+  ['actualminbeanmask',['actualminBeanMask',['../beanhisttest_8h.html#abd380182491950c1e704def6fab34c21',1,'beanhisttest.h']]],
+  ['actualstdbean',['actualStdBean',['../beanhisttest_8h.html#a89ad9e5941b4406a2f25a63533a3a514',1,'beanhisttest.h']]],
+  ['actualstdbeanmask',['actualStdBeanMask',['../beanhisttest_8h.html#a8fde1bc8cc700165840fe6f4aad2e18a',1,'beanhisttest.h']]],
+  ['actualsumbean',['actualSumBean',['../beanhisttest_8h.html#a0d43590c8c9131f805318fa62d39652c',1,'beanhisttest.h']]],
+  ['actualsumbeanmask',['actualSumBeanMask',['../beanhisttest_8h.html#af00b8daba38848258fa94b96a45308f2',1,'beanhisttest.h']]],
+  ['acutalmeanbeanmask',['acutalMeanBeanMask',['../beanhisttest_8h.html#a8a6727317fd8384c82a8215fdf292073',1,'beanhisttest.h']]],
+  ['adaptcontrastkernelfactor',['adaptContrastKernelFactor',['../class_soil_analyzer_1_1_soil_settings.html#ace12c0f4bc35d420ef528cc390fc2cdb',1,'SoilAnalyzer::SoilSettings']]],
+  ['adaptcontrastkernelsize',['adaptContrastKernelSize',['../class_soil_analyzer_1_1_soil_settings.html#a73f627b092dbdbda37b66ef6c2eef95c',1,'SoilAnalyzer::SoilSettings']]],
   ['adcpath',['adcpath',['../class_hardware_1_1_a_d_c.html#a820ce4f097a70b95246049f9ea01df21',1,'Hardware::ADC']]],
-  ['analyzed',['Analyzed',['../class_soil_analyzer_1_1_soil.html#a159579202878d6c9d307c89b66047b77',1,'SoilAnalyzer::Soil']]]
+  ['analysis',['Analysis',['../class_soil_analyzer_1_1_particle.html#a4df8d4d8fb130bce05fef5d4601ef89e',1,'SoilAnalyzer::Particle']]],
+  ['analyzed',['Analyzed',['../class_soil_analyzer_1_1_particle_analysis_results.html#abfb8465c0cfbe9a6ad4d844f6269676f',1,'SoilAnalyzer::ParticleAnalysisResults']]],
+  ['arch',['arch',['../class_hardware_1_1_microscope.html#a2e74ed11f3426a1a6adf05ec2d842066',1,'Hardware::Microscope']]],
+  ['area',['Area',['../class_soil_analyzer_1_1_particle_analysis_results.html#a1a6dbe8880b29f51ba3d8ec28b96ed45',1,'SoilAnalyzer::ParticleAnalysisResults::Area()'],['../struct_vision_1_1_segment_1_1_blob.html#a391697e1f49d65415c6c0ed8c3221a74',1,'Vision::Segment::Blob::Area()']]],
+  ['axisrect',['axisRect',['../class_q_c_p_axis_painter_private.html#afcd55b0e1ecd689fffd2b1fc75dc7732',1,'QCPAxisPainterPrivate']]]
 ];

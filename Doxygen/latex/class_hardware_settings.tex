@@ -1,0 +1,255 @@
+\hypertarget{class_hardware_settings}{}\section{Hardware\+Settings Class Reference}
+\label{class_hardware_settings}\index{Hardware\+Settings@{Hardware\+Settings}}
+
+
+{\ttfamily \#include $<$hardwaresettings.\+h$>$}
+
+
+
+Inheritance diagram for Hardware\+Settings\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=263pt]{class_hardware_settings__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Hardware\+Settings\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=304pt]{class_hardware_settings__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_hardware_settings_a354b31caf3670eadd6b60cd6dd01c315}{Hardware\+Settings} (Q\+Widget $\ast$parent=0, \hyperlink{class_soil_analyzer_1_1_soil_settings}{Soil\+Analyzer\+::\+Soil\+Settings} $\ast$soilsetting=0)
+\item 
+\hyperlink{class_hardware_settings_a638ad23710a2c39a95473b3b4374ebb7}{$\sim$\+Hardware\+Settings} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_hardware_settings_a667f301ecd49dd8d8df164ec27568f91}{on\+\_\+sb\+\_\+\+H\+D\+Rframes\+\_\+editing\+Finished} ()
+\item 
+void \hyperlink{class_hardware_settings_a2eee1385ac9ad1ad88d04c7682ee8c2c}{on\+\_\+sb\+\_\+light\+Level\+\_\+editing\+Finished} ()
+\item 
+void \hyperlink{class_hardware_settings_a3127a1b2e53d6ac09e20391a0b6c9920}{on\+\_\+cb\+\_\+encoder\+Inv\+\_\+clicked} (bool checked)
+\item 
+void \hyperlink{class_hardware_settings_a4febc1e4a9e63c81ab74347bb1f66fe2}{on\+\_\+cb\+\_\+enable\+Rainbow\+\_\+clicked} (bool checked)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Ui\+::\+Hardware\+Settings $\ast$ \hyperlink{class_hardware_settings_ae46cc8fe1f4247ab95bedf9bd5c14557}{ui}
+\item 
+\hyperlink{class_soil_analyzer_1_1_soil_settings}{Soil\+Analyzer\+::\+Soil\+Settings} $\ast$ \hyperlink{class_hardware_settings_a01cb694c4dbf49199d239a890639dce6}{soil\+Setting} = nullptr
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 13 of file hardwaresettings.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_hardware_settings_a354b31caf3670eadd6b60cd6dd01c315}{}\index{Hardware\+Settings@{Hardware\+Settings}!Hardware\+Settings@{Hardware\+Settings}}
+\index{Hardware\+Settings@{Hardware\+Settings}!Hardware\+Settings@{Hardware\+Settings}}
+\subsubsection[{Hardware\+Settings}]{\setlength{\rightskip}{0pt plus 5cm}Hardware\+Settings\+::\+Hardware\+Settings (
+\begin{DoxyParamCaption}
+\item[{Q\+Widget $\ast$}]{parent = {\ttfamily 0}, }
+\item[{{\bf Soil\+Analyzer\+::\+Soil\+Settings} $\ast$}]{soilsetting = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}\label{class_hardware_settings_a354b31caf3670eadd6b60cd6dd01c315}
+
+
+Definition at line 4 of file hardwaresettings.\+cpp.
+
+
+
+References Soil\+Analyzer\+::\+Soil\+Settings\+::enable\+Rainbow, Soil\+Analyzer\+::\+Soil\+Settings\+::enc\+Inv, Soil\+Analyzer\+::\+Soil\+Settings\+::\+H\+D\+Rframes, Soil\+Analyzer\+::\+Soil\+Settings\+::light\+Level, soil\+Setting, and ui.
+
+
+\begin{DoxyCode}
+4                                                                                          :
+5     QDialog(parent),
+6     \hyperlink{class_hardware_settings_ae46cc8fe1f4247ab95bedf9bd5c14557}{ui}(\textcolor{keyword}{new} Ui::HardwareSettings)
+7 \{
+8     \hyperlink{class_hardware_settings_ae46cc8fe1f4247ab95bedf9bd5c14557}{ui}->setupUi(\textcolor{keyword}{this});
+9     \textcolor{keywordflow}{if} (soilsetting != 0)
+10     \{
+11         \hyperlink{class_hardware_settings_a01cb694c4dbf49199d239a890639dce6}{soilSetting} = soilsetting;
+12     \}
+13     \textcolor{keywordflow}{else}
+14     \{
+15         \hyperlink{class_hardware_settings_a01cb694c4dbf49199d239a890639dce6}{soilSetting} = \textcolor{keyword}{new} \hyperlink{class_soil_analyzer_1_1_soil_settings}{SoilAnalyzer::SoilSettings};
+16     \}
+17 
+18     \hyperlink{class_hardware_settings_ae46cc8fe1f4247ab95bedf9bd5c14557}{ui}->cb\_enableRainbow->setChecked(\hyperlink{class_hardware_settings_a01cb694c4dbf49199d239a890639dce6}{soilSetting}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a9ece0b96eb8614a497fba3a19d8b4da1}{enableRainbow});
+19     \hyperlink{class_hardware_settings_ae46cc8fe1f4247ab95bedf9bd5c14557}{ui}->cb\_encoderInv->setChecked(\hyperlink{class_hardware_settings_a01cb694c4dbf49199d239a890639dce6}{soilSetting}->\hyperlink{class_soil_analyzer_1_1_soil_settings_ad831e13b61fc2097219bbf7252f045d5}{encInv});
+20     \hyperlink{class_hardware_settings_ae46cc8fe1f4247ab95bedf9bd5c14557}{ui}->sb\_HDRframes->setValue(\hyperlink{class_hardware_settings_a01cb694c4dbf49199d239a890639dce6}{soilSetting}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a77e631ff44efe74762b5adaa2eb2cd11}{HDRframes});
+21     \hyperlink{class_hardware_settings_ae46cc8fe1f4247ab95bedf9bd5c14557}{ui}->sb\_lightLevel->setValue(\hyperlink{class_hardware_settings_a01cb694c4dbf49199d239a890639dce6}{soilSetting}->\hyperlink{class_soil_analyzer_1_1_soil_settings_aa4d3ed8c1ab6551bfa4763e8a1ffc148}{lightLevel});
+22 
+23     \textcolor{comment}{// Get system info}
+24     \textcolor{keyword}{struct }utsname unameData;
+25     uname(&unameData);
+26 
+27     \hyperlink{class_hardware_settings_ae46cc8fe1f4247ab95bedf9bd5c14557}{ui}->label\_machinename->setText(tr(unameData.machine));
+28     \hyperlink{class_hardware_settings_ae46cc8fe1f4247ab95bedf9bd5c14557}{ui}->label\_nodename->setText(tr(unameData.nodename));
+29     \hyperlink{class_hardware_settings_ae46cc8fe1f4247ab95bedf9bd5c14557}{ui}->label\_releasename->setText(tr(unameData.release));
+30     \hyperlink{class_hardware_settings_ae46cc8fe1f4247ab95bedf9bd5c14557}{ui}->label\_systemname->setText(tr(unameData.sysname));
+31     \hyperlink{class_hardware_settings_ae46cc8fe1f4247ab95bedf9bd5c14557}{ui}->label\_versioname->setText(tr(unameData.version));
+32     std::string arch = \textcolor{keyword}{static\_cast<}std::string\textcolor{keyword}{>}(unameData.machine);
+33     \textcolor{keywordflow}{if} (arch.find(\textcolor{stringliteral}{"armv7l"}) == string::npos)
+34     \{
+35         \hyperlink{class_hardware_settings_ae46cc8fe1f4247ab95bedf9bd5c14557}{ui}->cb\_enableRainbow->setDisabled(\textcolor{keyword}{true});
+36         \hyperlink{class_hardware_settings_ae46cc8fe1f4247ab95bedf9bd5c14557}{ui}->cb\_encoderInv->setDisabled(\textcolor{keyword}{true});
+37         \hyperlink{class_hardware_settings_ae46cc8fe1f4247ab95bedf9bd5c14557}{ui}->sb\_lightLevel->setDisabled(\textcolor{keyword}{true});
+38         \hyperlink{class_hardware_settings_ae46cc8fe1f4247ab95bedf9bd5c14557}{ui}->label\_ll->setDisabled(\textcolor{keyword}{true});
+39     \}
+40 
+41 \}
+\end{DoxyCode}
+\hypertarget{class_hardware_settings_a638ad23710a2c39a95473b3b4374ebb7}{}\index{Hardware\+Settings@{Hardware\+Settings}!````~Hardware\+Settings@{$\sim$\+Hardware\+Settings}}
+\index{````~Hardware\+Settings@{$\sim$\+Hardware\+Settings}!Hardware\+Settings@{Hardware\+Settings}}
+\subsubsection[{$\sim$\+Hardware\+Settings}]{\setlength{\rightskip}{0pt plus 5cm}Hardware\+Settings\+::$\sim$\+Hardware\+Settings (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_hardware_settings_a638ad23710a2c39a95473b3b4374ebb7}
+
+
+Definition at line 43 of file hardwaresettings.\+cpp.
+
+
+
+References ui.
+
+
+\begin{DoxyCode}
+44 \{
+45     \textcolor{keyword}{delete} \hyperlink{class_hardware_settings_ae46cc8fe1f4247ab95bedf9bd5c14557}{ui};
+46 \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_hardware_settings_a4febc1e4a9e63c81ab74347bb1f66fe2}{}\index{Hardware\+Settings@{Hardware\+Settings}!on\+\_\+cb\+\_\+enable\+Rainbow\+\_\+clicked@{on\+\_\+cb\+\_\+enable\+Rainbow\+\_\+clicked}}
+\index{on\+\_\+cb\+\_\+enable\+Rainbow\+\_\+clicked@{on\+\_\+cb\+\_\+enable\+Rainbow\+\_\+clicked}!Hardware\+Settings@{Hardware\+Settings}}
+\subsubsection[{on\+\_\+cb\+\_\+enable\+Rainbow\+\_\+clicked}]{\setlength{\rightskip}{0pt plus 5cm}void Hardware\+Settings\+::on\+\_\+cb\+\_\+enable\+Rainbow\+\_\+clicked (
+\begin{DoxyParamCaption}
+\item[{bool}]{checked}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\label{class_hardware_settings_a4febc1e4a9e63c81ab74347bb1f66fe2}
+
+
+Definition at line 63 of file hardwaresettings.\+cpp.
+
+
+
+References Soil\+Analyzer\+::\+Soil\+Settings\+::enable\+Rainbow, and soil\+Setting.
+
+
+\begin{DoxyCode}
+64 \{
+65     \hyperlink{class_hardware_settings_a01cb694c4dbf49199d239a890639dce6}{soilSetting}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a9ece0b96eb8614a497fba3a19d8b4da1}{enableRainbow} = checked;
+66 \}
+\end{DoxyCode}
+\hypertarget{class_hardware_settings_a3127a1b2e53d6ac09e20391a0b6c9920}{}\index{Hardware\+Settings@{Hardware\+Settings}!on\+\_\+cb\+\_\+encoder\+Inv\+\_\+clicked@{on\+\_\+cb\+\_\+encoder\+Inv\+\_\+clicked}}
+\index{on\+\_\+cb\+\_\+encoder\+Inv\+\_\+clicked@{on\+\_\+cb\+\_\+encoder\+Inv\+\_\+clicked}!Hardware\+Settings@{Hardware\+Settings}}
+\subsubsection[{on\+\_\+cb\+\_\+encoder\+Inv\+\_\+clicked}]{\setlength{\rightskip}{0pt plus 5cm}void Hardware\+Settings\+::on\+\_\+cb\+\_\+encoder\+Inv\+\_\+clicked (
+\begin{DoxyParamCaption}
+\item[{bool}]{checked}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\label{class_hardware_settings_a3127a1b2e53d6ac09e20391a0b6c9920}
+
+
+Definition at line 58 of file hardwaresettings.\+cpp.
+
+
+
+References Soil\+Analyzer\+::\+Soil\+Settings\+::enc\+Inv, and soil\+Setting.
+
+
+\begin{DoxyCode}
+59 \{
+60     \hyperlink{class_hardware_settings_a01cb694c4dbf49199d239a890639dce6}{soilSetting}->\hyperlink{class_soil_analyzer_1_1_soil_settings_ad831e13b61fc2097219bbf7252f045d5}{encInv} = checked;
+61 \}
+\end{DoxyCode}
+\hypertarget{class_hardware_settings_a667f301ecd49dd8d8df164ec27568f91}{}\index{Hardware\+Settings@{Hardware\+Settings}!on\+\_\+sb\+\_\+\+H\+D\+Rframes\+\_\+editing\+Finished@{on\+\_\+sb\+\_\+\+H\+D\+Rframes\+\_\+editing\+Finished}}
+\index{on\+\_\+sb\+\_\+\+H\+D\+Rframes\+\_\+editing\+Finished@{on\+\_\+sb\+\_\+\+H\+D\+Rframes\+\_\+editing\+Finished}!Hardware\+Settings@{Hardware\+Settings}}
+\subsubsection[{on\+\_\+sb\+\_\+\+H\+D\+Rframes\+\_\+editing\+Finished}]{\setlength{\rightskip}{0pt plus 5cm}void Hardware\+Settings\+::on\+\_\+sb\+\_\+\+H\+D\+Rframes\+\_\+editing\+Finished (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\label{class_hardware_settings_a667f301ecd49dd8d8df164ec27568f91}
+
+
+Definition at line 48 of file hardwaresettings.\+cpp.
+
+
+
+References Soil\+Analyzer\+::\+Soil\+Settings\+::\+H\+D\+Rframes, soil\+Setting, and ui.
+
+
+\begin{DoxyCode}
+49 \{
+50     \hyperlink{class_hardware_settings_a01cb694c4dbf49199d239a890639dce6}{soilSetting}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a77e631ff44efe74762b5adaa2eb2cd11}{HDRframes} = \hyperlink{class_hardware_settings_ae46cc8fe1f4247ab95bedf9bd5c14557}{ui}->sb\_HDRframes->value();
+51 \}
+\end{DoxyCode}
+\hypertarget{class_hardware_settings_a2eee1385ac9ad1ad88d04c7682ee8c2c}{}\index{Hardware\+Settings@{Hardware\+Settings}!on\+\_\+sb\+\_\+light\+Level\+\_\+editing\+Finished@{on\+\_\+sb\+\_\+light\+Level\+\_\+editing\+Finished}}
+\index{on\+\_\+sb\+\_\+light\+Level\+\_\+editing\+Finished@{on\+\_\+sb\+\_\+light\+Level\+\_\+editing\+Finished}!Hardware\+Settings@{Hardware\+Settings}}
+\subsubsection[{on\+\_\+sb\+\_\+light\+Level\+\_\+editing\+Finished}]{\setlength{\rightskip}{0pt plus 5cm}void Hardware\+Settings\+::on\+\_\+sb\+\_\+light\+Level\+\_\+editing\+Finished (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\label{class_hardware_settings_a2eee1385ac9ad1ad88d04c7682ee8c2c}
+
+
+Definition at line 53 of file hardwaresettings.\+cpp.
+
+
+
+References Soil\+Analyzer\+::\+Soil\+Settings\+::light\+Level, soil\+Setting, and ui.
+
+
+\begin{DoxyCode}
+54 \{
+55     \hyperlink{class_hardware_settings_a01cb694c4dbf49199d239a890639dce6}{soilSetting}->\hyperlink{class_soil_analyzer_1_1_soil_settings_aa4d3ed8c1ab6551bfa4763e8a1ffc148}{lightLevel} = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\hyperlink{class_hardware_settings_ae46cc8fe1f4247ab95bedf9bd5c14557}{ui}->sb\_lightLevel->value());
+56 \}
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_hardware_settings_a01cb694c4dbf49199d239a890639dce6}{}\index{Hardware\+Settings@{Hardware\+Settings}!soil\+Setting@{soil\+Setting}}
+\index{soil\+Setting@{soil\+Setting}!Hardware\+Settings@{Hardware\+Settings}}
+\subsubsection[{soil\+Setting}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Soil\+Analyzer\+::\+Soil\+Settings}$\ast$ Hardware\+Settings\+::soil\+Setting = nullptr\hspace{0.3cm}{\ttfamily [private]}}\label{class_hardware_settings_a01cb694c4dbf49199d239a890639dce6}
+
+
+Definition at line 32 of file hardwaresettings.\+h.
+
+
+
+Referenced by Hardware\+Settings(), on\+\_\+cb\+\_\+enable\+Rainbow\+\_\+clicked(), on\+\_\+cb\+\_\+encoder\+Inv\+\_\+clicked(), on\+\_\+sb\+\_\+\+H\+D\+Rframes\+\_\+editing\+Finished(), and on\+\_\+sb\+\_\+light\+Level\+\_\+editing\+Finished().
+
+\hypertarget{class_hardware_settings_ae46cc8fe1f4247ab95bedf9bd5c14557}{}\index{Hardware\+Settings@{Hardware\+Settings}!ui@{ui}}
+\index{ui@{ui}!Hardware\+Settings@{Hardware\+Settings}}
+\subsubsection[{ui}]{\setlength{\rightskip}{0pt plus 5cm}Ui\+::\+Hardware\+Settings$\ast$ Hardware\+Settings\+::ui\hspace{0.3cm}{\ttfamily [private]}}\label{class_hardware_settings_ae46cc8fe1f4247ab95bedf9bd5c14557}
+
+
+Definition at line 31 of file hardwaresettings.\+h.
+
+
+
+Referenced by Hardware\+Settings(), on\+\_\+sb\+\_\+\+H\+D\+Rframes\+\_\+editing\+Finished(), on\+\_\+sb\+\_\+light\+Level\+\_\+editing\+Finished(), and $\sim$\+Hardware\+Settings().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/peer23peer/\+Vision\+Soil\+Analyzer/src/\+V\+S\+A\+G\+U\+I/\hyperlink{hardwaresettings_8h}{hardwaresettings.\+h}\item 
+/home/peer23peer/\+Vision\+Soil\+Analyzer/src/\+V\+S\+A\+G\+U\+I/\hyperlink{hardwaresettings_8cpp}{hardwaresettings.\+cpp}\end{DoxyCompactItemize}

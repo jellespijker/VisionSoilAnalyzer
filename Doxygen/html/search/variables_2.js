@@ -1,9 +1,25 @@
 var searchData=
 [
-  ['calculated',['Calculated',['../class_soil_math_1_1_stats.html#a3d3cd491b829b2e30f6752fee38fe261',1,'SoilMath::Stats']]],
+  ['c',['c',['../_comparision_pictures_2_createtest_image_8m.html#ae0323a9039add2978bf5b49550572c7c',1,'c():&#160;CreatetestImage.m'],['../_v_s_a___u_t_2_comparision_pictures_2_createtest_image_8m.html#ae0323a9039add2978bf5b49550572c7c',1,'c():&#160;CreatetestImage.m']]],
+  ['calculated',['Calculated',['../struct_pop_member_struct.html#a8e76eeb476bc89f765b1d872d399fe0c',1,'PopMemberStruct::Calculated()'],['../class_soil_math_1_1_stats.html#a3d3cd491b829b2e30f6752fee38fe261',1,'SoilMath::Stats::Calculated()']]],
   ['callbackfunction',['callbackFunction',['../class_hardware_1_1_b_b_b.html#a66d583952f3949a732ee15eea81e80e5',1,'Hardware::BBB']]],
-  ['capturedevice',['captureDevice',['../class_hardware_1_1_microscope.html#a62647fa70a7bf6e4259f7eb173d2cc30',1,'Hardware::Microscope']]],
-  ['classroundness',['ClassRoundness',['../class_soil_analyzer_1_1_analysis_results.html#a5cf3753680d79fa0780b633e37939494',1,'SoilAnalyzer::AnalysisResults']]],
+  ['capturedevice',['captureDevice',['../class_hardware_1_1_microscope.html#a8fd921d7c937e808c5bc44c0294aa490',1,'Hardware::Microscope']]],
+  ['category',['Category',['../class_shape_classification.html#a5b723e358b86496ed6f4b25e2bf7af17',1,'ShapeClassification::Category()'],['../struct_predict__struct.html#a9ec8092acf251221ad920454472f734b',1,'Predict_struct::Category()']]],
+  ['center',['center',['../class_q_c_p_item_ellipse.html#a8b6dd0e854f99239c5806ffdf2f590b3',1,'QCPItemEllipse::center()'],['../class_q_c_p_item_bracket.html#a2dbcabdf5f467f28be12a7b25962ffca',1,'QCPItemBracket::center()']]],
+  ['channel1max',['channel1Max',['../_comparision_pictures_2_createtest_image_8m.html#ac2ea11e016daaeb1ac2984647f70441c',1,'channel1Max():&#160;CreatetestImage.m'],['../_v_s_a___u_t_2_comparision_pictures_2_createtest_image_8m.html#ac2ea11e016daaeb1ac2984647f70441c',1,'channel1Max():&#160;CreatetestImage.m']]],
+  ['channel1min',['channel1Min',['../_comparision_pictures_2_createtest_image_8m.html#a9bc372f028ff8dfe72ade6ad7c65a434',1,'channel1Min():&#160;CreatetestImage.m'],['../_v_s_a___u_t_2_comparision_pictures_2_createtest_image_8m.html#a9bc372f028ff8dfe72ade6ad7c65a434',1,'channel1Min():&#160;CreatetestImage.m']]],
+  ['channel2max',['channel2Max',['../_comparision_pictures_2_createtest_image_8m.html#a4316bd8a71c2d0ed1c5d36a91665f58a',1,'channel2Max():&#160;CreatetestImage.m'],['../_v_s_a___u_t_2_comparision_pictures_2_createtest_image_8m.html#a4316bd8a71c2d0ed1c5d36a91665f58a',1,'channel2Max():&#160;CreatetestImage.m']]],
+  ['channel2min',['channel2Min',['../_comparision_pictures_2_createtest_image_8m.html#aeaf30cc4d7b2dfc4ded7fe40e4316f46',1,'channel2Min():&#160;CreatetestImage.m'],['../_v_s_a___u_t_2_comparision_pictures_2_createtest_image_8m.html#aeaf30cc4d7b2dfc4ded7fe40e4316f46',1,'channel2Min():&#160;CreatetestImage.m']]],
+  ['channel3max',['channel3Max',['../_comparision_pictures_2_createtest_image_8m.html#ae2a7b5ca577a1a9641dba3ed4bec1c30',1,'channel3Max():&#160;CreatetestImage.m'],['../_v_s_a___u_t_2_comparision_pictures_2_createtest_image_8m.html#ae2a7b5ca577a1a9641dba3ed4bec1c30',1,'channel3Max():&#160;CreatetestImage.m']]],
+  ['channel3min',['channel3Min',['../_comparision_pictures_2_createtest_image_8m.html#a66b6dfcbbcebf7a22ad7d321f3ca8975',1,'channel3Min():&#160;CreatetestImage.m'],['../_v_s_a___u_t_2_comparision_pictures_2_createtest_image_8m.html#a66b6dfcbbcebf7a22ad7d321f3ca8975',1,'channel3Min():&#160;CreatetestImage.m']]],
+  ['checker',['checker',['../struct_p_m.html#ae661c05678d510d3bc4a5ed7ddb4bac8',1,'PM']]],
+  ['circle',['circle',['../_gen_blob_8m.html#abf7c2c3a34f5da034b14e89486f97f16',1,'GenBlob.m']]],
+  ['clc',['clc',['../_comparision_pictures_2_createtest_image_8m.html#a3f3d3b13a15c726d6aa03db3dd0d6377',1,'clc():&#160;CreatetestImage.m'],['../_v_s_a___u_t_2_comparision_pictures_2_createtest_image_8m.html#a3f3d3b13a15c726d6aa03db3dd0d6377',1,'clc():&#160;CreatetestImage.m']]],
+  ['clear',['clear',['../_comparision_pictures_2_createtest_image_8m.html#aebfdce4f6cc7241ba38924f77a12e7cf',1,'clear():&#160;CreatetestImage.m'],['../_v_s_a___u_t_2_comparision_pictures_2_createtest_image_8m.html#aebfdce4f6cc7241ba38924f77a12e7cf',1,'clear():&#160;CreatetestImage.m']]],
+  ['close',['close',['../class_q_c_p_financial_data.html#a45e9b96944c4a08ea6c82a72d3d22df2',1,'QCPFinancialData']]],
   ['cols',['Cols',['../class_soil_math_1_1_stats.html#a971f1ec23c32137805c4577f05454d83',1,'SoilMath::Stats']]],
-  ['cvroi',['cvROI',['../struct_vision_1_1_segment_1_1_blob.html#a943e65a51c066d0259e54a4142c54dbb',1,'Vision::Segment::Blob']]]
+  ['comp',['comp',['../struct_m.html#aea135e95a654e5a8fff759cd5c104405',1,'M::comp()'],['../struct_b.html#a255bb9e995f9115cb12fef9911dcfc2e',1,'B::comp()'],['../struct_b_m.html#a91a2c5f22e9d50eef5fb7447d986e081',1,'BM::comp()'],['../struct_p_m.html#aa5501daf13cddde4c540ce70e5d378ca',1,'PM::comp()']]],
+  ['complexcontour',['complexcontour',['../class_soil_math_1_1_f_f_t.html#a48141f0c777ca86f2e536f88b509b639',1,'SoilMath::FFT']]],
+  ['count',['count',['../class_soil_math___test.html#a693af150765ec63434f414f36e27b91e',1,'SoilMath_Test::count()'],['../_comparision_pictures_2_createtest_image_8m.html#ae11b3deb3de3df7dc48e439074023e35',1,'count():&#160;CreatetestImage.m'],['../_v_s_a___u_t_2_comparision_pictures_2_createtest_image_8m.html#ae11b3deb3de3df7dc48e439074023e35',1,'count():&#160;CreatetestImage.m']]],
+  ['currentprog',['currentProg',['../class_vision_1_1_image_processing.html#ac06b3b9501cde8e742aaf99d986af256',1,'Vision::ImageProcessing']]]
 ];

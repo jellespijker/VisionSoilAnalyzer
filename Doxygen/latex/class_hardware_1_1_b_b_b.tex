@@ -1,0 +1,402 @@
+\hypertarget{class_hardware_1_1_b_b_b}{}\section{Hardware\+:\+:B\+B\+B Class Reference}
+\label{class_hardware_1_1_b_b_b}\index{Hardware\+::\+B\+B\+B@{Hardware\+::\+B\+B\+B}}
+
+
+{\ttfamily \#include $<$B\+B\+B.\+h$>$}
+
+
+
+Inheritance diagram for Hardware\+:\+:B\+B\+B\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_hardware_1_1_b_b_b__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Hardware\+:\+:B\+B\+B\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=182pt]{class_hardware_1_1_b_b_b__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_hardware_1_1_b_b_b_ab26c0f13cc9488b757e309495ef398d7}{B\+B\+B} ()
+\item 
+\hyperlink{class_hardware_1_1_b_b_b_a34ee1e17e06e6d229be6d718b9ad1f02}{$\sim$\+B\+B\+B} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{class_hardware_1_1_b_b_b_a353a2d7d4fbade337e5173b484b20b22}{debounce\+Time}
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_hardware_1_1_b_b_b_adf431d8e0e8899f7aa16c350a2270e79}{Directory\+Exist} (const string \&path)
+\item 
+bool \hyperlink{class_hardware_1_1_b_b_b_aaf2f732c771eac0b1ee984dbc0bca784}{Cape\+Loaded} (const string \&shield)
+\item 
+string \hyperlink{class_hardware_1_1_b_b_b_a8b287ded7bcb2cfab361d1fca2b62e9f}{Read} (const string \&path)
+\item 
+void \hyperlink{class_hardware_1_1_b_b_b_a155cc06f76d82a6b690ce5ea08e7c68e}{Write} (const string \&path, const string \&value)
+\item 
+{\footnotesize template$<$typename T $>$ }\\string \hyperlink{class_hardware_1_1_b_b_b_ab2fc876590e3b9b482e3224ba617afba}{Number\+To\+String} (T Number)
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \hyperlink{class_hardware_1_1_b_b_b_a7484c095027594aa5bfde8b56b73be7b}{String\+To\+Number} (string Text)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_hardware_1_1_b_b_b_a0d9d8c56afb37955e0d0c6baf0f418df}{thread\+Running}
+\item 
+pthread\+\_\+t \hyperlink{class_hardware_1_1_b_b_b_a3ad3fe886705bfc242ef58dc5329166e}{thread}
+\item 
+\hyperlink{namespace_hardware_a5ba2e4bdfa2bbd8b551b1d5b2a0c61fd}{Callback\+Type} \hyperlink{class_hardware_1_1_b_b_b_a66d583952f3949a732ee15eea81e80e5}{callback\+Function}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 30 of file B\+B\+B.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_hardware_1_1_b_b_b_ab26c0f13cc9488b757e309495ef398d7}{}\index{Hardware\+::\+B\+B\+B@{Hardware\+::\+B\+B\+B}!B\+B\+B@{B\+B\+B}}
+\index{B\+B\+B@{B\+B\+B}!Hardware\+::\+B\+B\+B@{Hardware\+::\+B\+B\+B}}
+\subsubsection[{B\+B\+B}]{\setlength{\rightskip}{0pt plus 5cm}B\+B\+B\+::\+B\+B\+B (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_hardware_1_1_b_b_b_ab26c0f13cc9488b757e309495ef398d7}
+Constructor 
+
+Definition at line 6 of file B\+B\+B.\+cpp.
+
+
+
+References callback\+Function, debounce\+Time, thread, and thread\+Running.
+
+
+\begin{DoxyCode}
+7     \{
+8         \hyperlink{class_hardware_1_1_b_b_b_a0d9d8c56afb37955e0d0c6baf0f418df}{threadRunning} = \textcolor{keyword}{false};
+9         \hyperlink{class_hardware_1_1_b_b_b_a66d583952f3949a732ee15eea81e80e5}{callbackFunction} = NULL;
+10         \hyperlink{class_hardware_1_1_b_b_b_a353a2d7d4fbade337e5173b484b20b22}{debounceTime} = 0;
+11         \hyperlink{class_hardware_1_1_b_b_b_a3ad3fe886705bfc242ef58dc5329166e}{thread} = (pthread\_t)NULL;
+12     \}
+\end{DoxyCode}
+\hypertarget{class_hardware_1_1_b_b_b_a34ee1e17e06e6d229be6d718b9ad1f02}{}\index{Hardware\+::\+B\+B\+B@{Hardware\+::\+B\+B\+B}!````~B\+B\+B@{$\sim$\+B\+B\+B}}
+\index{````~B\+B\+B@{$\sim$\+B\+B\+B}!Hardware\+::\+B\+B\+B@{Hardware\+::\+B\+B\+B}}
+\subsubsection[{$\sim$\+B\+B\+B}]{\setlength{\rightskip}{0pt plus 5cm}B\+B\+B\+::$\sim$\+B\+B\+B (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_hardware_1_1_b_b_b_a34ee1e17e06e6d229be6d718b9ad1f02}
+De-\/constructor 
+
+Definition at line 15 of file B\+B\+B.\+cpp.
+
+
+\begin{DoxyCode}
+15 \{   \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_hardware_1_1_b_b_b_aaf2f732c771eac0b1ee984dbc0bca784}{}\index{Hardware\+::\+B\+B\+B@{Hardware\+::\+B\+B\+B}!Cape\+Loaded@{Cape\+Loaded}}
+\index{Cape\+Loaded@{Cape\+Loaded}!Hardware\+::\+B\+B\+B@{Hardware\+::\+B\+B\+B}}
+\subsubsection[{Cape\+Loaded}]{\setlength{\rightskip}{0pt plus 5cm}bool B\+B\+B\+::\+Cape\+Loaded (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{shield}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\label{class_hardware_1_1_b_b_b_aaf2f732c771eac0b1ee984dbc0bca784}
+Checks if a cape is loaded in the file /sys/devices/bone\+\_\+capemgr.9/slots 
+\begin{DoxyParams}{Parameters}
+{\em shield} & a const search string which is a (part) of the shield name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the search string is found otherwise false 
+\end{DoxyReturn}
+
+
+Definition at line 59 of file B\+B\+B.\+cpp.
+
+
+
+References S\+L\+O\+T\+S.
+
+
+
+Referenced by Hardware\+::e\+Q\+E\+P\+::e\+Q\+E\+P(), and Hardware\+::\+P\+W\+M\+::\+P\+W\+M().
+
+
+\begin{DoxyCode}
+60     \{
+61         \textcolor{keywordtype}{bool} shieldFound = \textcolor{keyword}{false};
+62 
+63         ifstream fs;
+64         fs.open(\hyperlink{_b_b_b_8h_a3de26a5dbd2276c1486afbba5fc8de59}{SLOTS});
+65         \textcolor{keywordflow}{if} (!fs.is\_open()) \{ \textcolor{keywordflow}{throw} Exception::GPIOReadException(\textcolor{stringliteral}{"Can't open SLOTS"}); \}
+66 
+67         \textcolor{keywordtype}{string} line;
+68         \textcolor{keywordflow}{while} (getline(fs, line))
+69         \{
+70             \textcolor{keywordflow}{if} (line.find(shield) != string::npos) \{ shieldFound = \textcolor{keyword}{true}; \textcolor{keywordflow}{break}; \}
+71         \}
+72         fs.close();
+73         \textcolor{keywordflow}{return} shieldFound;
+74     \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_hardware_1_1_b_b_b_aaf2f732c771eac0b1ee984dbc0bca784_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_hardware_1_1_b_b_b_adf431d8e0e8899f7aa16c350a2270e79}{}\index{Hardware\+::\+B\+B\+B@{Hardware\+::\+B\+B\+B}!Directory\+Exist@{Directory\+Exist}}
+\index{Directory\+Exist@{Directory\+Exist}!Hardware\+::\+B\+B\+B@{Hardware\+::\+B\+B\+B}}
+\subsubsection[{Directory\+Exist}]{\setlength{\rightskip}{0pt plus 5cm}bool B\+B\+B\+::\+Directory\+Exist (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{path}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\label{class_hardware_1_1_b_b_b_adf431d8e0e8899f7aa16c350a2270e79}
+Checks if a directory exist \begin{DoxyReturn}{Returns}
+true if the directory exists and false if not 
+\end{DoxyReturn}
+
+
+Definition at line 48 of file B\+B\+B.\+cpp.
+
+
+
+Referenced by Hardware\+::\+G\+P\+I\+O\+::is\+Exported().
+
+
+\begin{DoxyCode}
+49     \{
+50         \textcolor{keyword}{struct }stat st;
+51         \textcolor{keywordflow}{if} (stat((\textcolor{keywordtype}{char} *)path.c\_str(), &st) != 0) \{ \textcolor{keywordflow}{return} \textcolor{keyword}{false}; \}
+52         \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+53     \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_hardware_1_1_b_b_b_adf431d8e0e8899f7aa16c350a2270e79_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_hardware_1_1_b_b_b_ab2fc876590e3b9b482e3224ba617afba}{}\index{Hardware\+::\+B\+B\+B@{Hardware\+::\+B\+B\+B}!Number\+To\+String@{Number\+To\+String}}
+\index{Number\+To\+String@{Number\+To\+String}!Hardware\+::\+B\+B\+B@{Hardware\+::\+B\+B\+B}}
+\subsubsection[{Number\+To\+String}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ string Hardware\+::\+B\+B\+B\+::\+Number\+To\+String (
+\begin{DoxyParamCaption}
+\item[{T}]{Number}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}\label{class_hardware_1_1_b_b_b_ab2fc876590e3b9b482e3224ba617afba}
+Converts a number to a string 
+\begin{DoxyParams}{Parameters}
+{\em Number} & as typename \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the number as a string 
+\end{DoxyReturn}
+
+
+Definition at line 53 of file B\+B\+B.\+h.
+
+
+\begin{DoxyCode}
+54         \{
+55             ostringstream ss;
+56             ss << Number;
+57             \textcolor{keywordflow}{return} ss.str();
+58         \};
+\end{DoxyCode}
+\hypertarget{class_hardware_1_1_b_b_b_a8b287ded7bcb2cfab361d1fca2b62e9f}{}\index{Hardware\+::\+B\+B\+B@{Hardware\+::\+B\+B\+B}!Read@{Read}}
+\index{Read@{Read}!Hardware\+::\+B\+B\+B@{Hardware\+::\+B\+B\+B}}
+\subsubsection[{Read}]{\setlength{\rightskip}{0pt plus 5cm}string B\+B\+B\+::\+Read (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{path}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\label{class_hardware_1_1_b_b_b_a8b287ded7bcb2cfab361d1fca2b62e9f}
+Reads the first line from a file 
+\begin{DoxyParams}{Parameters}
+{\em path} & constant string pointing towards the file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+this first line 
+\end{DoxyReturn}
+
+
+Definition at line 21 of file B\+B\+B.\+cpp.
+
+
+
+Referenced by Hardware\+::\+A\+D\+C\+::\+Get\+Current\+Value(), Hardware\+::\+P\+W\+M\+::\+P\+W\+M(), Hardware\+::\+G\+P\+I\+O\+::\+Reads\+Direction(), Hardware\+::\+G\+P\+I\+O\+::\+Reads\+Edge(), Hardware\+::\+G\+P\+I\+O\+::\+Reads\+Value(), Hardware\+::\+A\+D\+C\+::\+Set\+Max\+Intensity(), Hardware\+::\+A\+D\+C\+::\+Set\+Min\+Intensity(), and Hardware\+::\+A\+D\+C\+::\+Wait\+For\+Value\+Change().
+
+
+\begin{DoxyCode}
+22     \{
+23         ifstream fs;
+24         fs.open(path.c\_str());
+25         \textcolor{keywordflow}{if} (!fs.is\_open())  \{ \textcolor{keywordflow}{throw} Exception::GPIOReadException((\textcolor{stringliteral}{"Can't open: "} + path).c\_str());  \}
+26         \textcolor{keywordtype}{string} input;
+27         getline(fs, input);
+28         fs.close();
+29         \textcolor{keywordflow}{return} input;
+30     \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_hardware_1_1_b_b_b_a8b287ded7bcb2cfab361d1fca2b62e9f_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_hardware_1_1_b_b_b_a7484c095027594aa5bfde8b56b73be7b}{}\index{Hardware\+::\+B\+B\+B@{Hardware\+::\+B\+B\+B}!String\+To\+Number@{String\+To\+Number}}
+\index{String\+To\+Number@{String\+To\+Number}!Hardware\+::\+B\+B\+B@{Hardware\+::\+B\+B\+B}}
+\subsubsection[{String\+To\+Number}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ T Hardware\+::\+B\+B\+B\+::\+String\+To\+Number (
+\begin{DoxyParamCaption}
+\item[{string}]{Text}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}\label{class_hardware_1_1_b_b_b_a7484c095027594aa5bfde8b56b73be7b}
+Converts a string to a number 
+\begin{DoxyParams}{Parameters}
+{\em Text} & the string that needs to be converted \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the number as typename 
+\end{DoxyReturn}
+
+
+Definition at line 64 of file B\+B\+B.\+h.
+
+
+\begin{DoxyCode}
+65         \{
+66             stringstream ss(Text);
+67             T result;
+68             \textcolor{keywordflow}{return} ss >> result ? result : 0;
+69         \};
+\end{DoxyCode}
+\hypertarget{class_hardware_1_1_b_b_b_a155cc06f76d82a6b690ce5ea08e7c68e}{}\index{Hardware\+::\+B\+B\+B@{Hardware\+::\+B\+B\+B}!Write@{Write}}
+\index{Write@{Write}!Hardware\+::\+B\+B\+B@{Hardware\+::\+B\+B\+B}}
+\subsubsection[{Write}]{\setlength{\rightskip}{0pt plus 5cm}void B\+B\+B\+::\+Write (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{path, }
+\item[{const string \&}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\label{class_hardware_1_1_b_b_b_a155cc06f76d82a6b690ce5ea08e7c68e}
+Writes a value to a file 
+\begin{DoxyParams}{Parameters}
+{\em path} & a constant string pointing towards the file \\
+\hline
+{\em value} & a constant string which should be written in the file \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 36 of file B\+B\+B.\+cpp.
+
+
+
+Referenced by Hardware\+::e\+Q\+E\+P\+::e\+Q\+E\+P(), Hardware\+::\+G\+P\+I\+O\+::\+Export\+Pin(), Hardware\+::\+P\+W\+M\+::\+P\+W\+M(), Hardware\+::\+P\+W\+M\+::\+Set\+Duty(), Hardware\+::\+P\+W\+M\+::\+Set\+Period(), Hardware\+::\+P\+W\+M\+::\+Set\+Polarity(), Hardware\+::\+P\+W\+M\+::\+Set\+Run(), Hardware\+::\+G\+P\+I\+O\+::\+Unexport\+Pin(), Hardware\+::\+G\+P\+I\+O\+::\+Writes\+Direction(), Hardware\+::\+G\+P\+I\+O\+::\+Writes\+Edge(), and Hardware\+::\+G\+P\+I\+O\+::\+Writes\+Value().
+
+
+\begin{DoxyCode}
+37     \{
+38         ofstream fs;
+39         fs.open(path.c\_str());
+40         \textcolor{keywordflow}{if} (!fs.is\_open())\{ \textcolor{keywordflow}{throw} Exception::GPIOReadException((\textcolor{stringliteral}{"Can't open: "} + path).c\_str()); \}
+41         fs << value;
+42         fs.close();
+43     \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_hardware_1_1_b_b_b_a155cc06f76d82a6b690ce5ea08e7c68e_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_hardware_1_1_b_b_b_a66d583952f3949a732ee15eea81e80e5}{}\index{Hardware\+::\+B\+B\+B@{Hardware\+::\+B\+B\+B}!callback\+Function@{callback\+Function}}
+\index{callback\+Function@{callback\+Function}!Hardware\+::\+B\+B\+B@{Hardware\+::\+B\+B\+B}}
+\subsubsection[{callback\+Function}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Callback\+Type} Hardware\+::\+B\+B\+B\+::callback\+Function\hspace{0.3cm}{\ttfamily [protected]}}\label{class_hardware_1_1_b_b_b_a66d583952f3949a732ee15eea81e80e5}
+the callbakcfunction 
+
+Definition at line 41 of file B\+B\+B.\+h.
+
+
+
+Referenced by B\+B\+B(), Hardware\+::threaded\+Poll\+A\+D\+C(), Hardware\+::threaded\+Polleqep(), Hardware\+::threaded\+Poll\+G\+P\+I\+O(), Hardware\+::\+G\+P\+I\+O\+::\+Wait\+For\+Edge(), Hardware\+::e\+Q\+E\+P\+::\+Wait\+For\+Position\+Change(), and Hardware\+::\+A\+D\+C\+::\+Wait\+For\+Value\+Change().
+
+\hypertarget{class_hardware_1_1_b_b_b_a353a2d7d4fbade337e5173b484b20b22}{}\index{Hardware\+::\+B\+B\+B@{Hardware\+::\+B\+B\+B}!debounce\+Time@{debounce\+Time}}
+\index{debounce\+Time@{debounce\+Time}!Hardware\+::\+B\+B\+B@{Hardware\+::\+B\+B\+B}}
+\subsubsection[{debounce\+Time}]{\setlength{\rightskip}{0pt plus 5cm}int Hardware\+::\+B\+B\+B\+::debounce\+Time}\label{class_hardware_1_1_b_b_b_a353a2d7d4fbade337e5173b484b20b22}
+debounce time for a button in milliseconds 
+
+Definition at line 33 of file B\+B\+B.\+h.
+
+
+
+Referenced by B\+B\+B(), Hardware\+::threaded\+Polleqep(), and Hardware\+::threaded\+Poll\+G\+P\+I\+O().
+
+\hypertarget{class_hardware_1_1_b_b_b_a3ad3fe886705bfc242ef58dc5329166e}{}\index{Hardware\+::\+B\+B\+B@{Hardware\+::\+B\+B\+B}!thread@{thread}}
+\index{thread@{thread}!Hardware\+::\+B\+B\+B@{Hardware\+::\+B\+B\+B}}
+\subsubsection[{thread}]{\setlength{\rightskip}{0pt plus 5cm}pthread\+\_\+t Hardware\+::\+B\+B\+B\+::thread\hspace{0.3cm}{\ttfamily [protected]}}\label{class_hardware_1_1_b_b_b_a3ad3fe886705bfc242ef58dc5329166e}
+The thread 
+
+Definition at line 40 of file B\+B\+B.\+h.
+
+
+
+Referenced by B\+B\+B(), Hardware\+::\+G\+P\+I\+O\+::\+Wait\+For\+Edge(), Hardware\+::e\+Q\+E\+P\+::\+Wait\+For\+Position\+Change(), and Hardware\+::\+A\+D\+C\+::\+Wait\+For\+Value\+Change().
+
+\hypertarget{class_hardware_1_1_b_b_b_a0d9d8c56afb37955e0d0c6baf0f418df}{}\index{Hardware\+::\+B\+B\+B@{Hardware\+::\+B\+B\+B}!thread\+Running@{thread\+Running}}
+\index{thread\+Running@{thread\+Running}!Hardware\+::\+B\+B\+B@{Hardware\+::\+B\+B\+B}}
+\subsubsection[{thread\+Running}]{\setlength{\rightskip}{0pt plus 5cm}bool Hardware\+::\+B\+B\+B\+::thread\+Running\hspace{0.3cm}{\ttfamily [protected]}}\label{class_hardware_1_1_b_b_b_a0d9d8c56afb37955e0d0c6baf0f418df}
+used to stop the thread 
+
+Definition at line 39 of file B\+B\+B.\+h.
+
+
+
+Referenced by B\+B\+B(), Hardware\+::threaded\+Poll\+A\+D\+C(), Hardware\+::threaded\+Polleqep(), Hardware\+::threaded\+Poll\+G\+P\+I\+O(), Hardware\+::\+G\+P\+I\+O\+::\+Wait\+For\+Edge(), Hardware\+::e\+Q\+E\+P\+::\+Wait\+For\+Position\+Change(), Hardware\+::e\+Q\+E\+P\+::\+Wait\+For\+Position\+Change\+Cancel(), and Hardware\+::\+A\+D\+C\+::\+Wait\+For\+Value\+Change().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/peer23peer/\+Vision\+Soil\+Analyzer/src/\+Soil\+Hardware/\hyperlink{_b_b_b_8h}{B\+B\+B.\+h}\item 
+/home/peer23peer/\+Vision\+Soil\+Analyzer/src/\+Soil\+Hardware/\hyperlink{_b_b_b_8cpp}{B\+B\+B.\+cpp}\end{DoxyCompactItemize}

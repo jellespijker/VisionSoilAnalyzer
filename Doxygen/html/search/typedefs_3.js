@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['rect',['Rect',['../class_vision_1_1_segment.html#a620553a7a475e403a60937bb5021d714',1,'Vision::Segment']]]
+  ['genome_5ft',['Genome_t',['../_soil_math_types_8h.html#a58f6ab36d2cb0527a73caec36d14a0e0',1,'SoilMathTypes.h']]],
+  ['genvect_5ft',['GenVect_t',['../_soil_math_types_8h.html#a1447b70c8b8604a379eb96cdce9d2152',1,'SoilMathTypes.h']]]
 ];

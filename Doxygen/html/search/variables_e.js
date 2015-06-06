@@ -1,16 +1,13 @@
 var searchData=
 [
-  ['r',['R',['../class_hardware_1_1_e_c12_p.html#a0a4f03a37d709349994e800e44f5c781',1,'Hardware::EC12P']]],
-  ['range',['Range',['../class_soil_math_1_1_stats.html#a7154ac6c97dc2e83bdff7fef3cbdac5b',1,'SoilMath::Stats']]],
-  ['resulst',['Resulst',['../class_soil_analyzer_1_1_sample.html#a5bcdb3a0d420fac141dd62b7232ed8e4',1,'SoilAnalyzer::Sample']]],
-  ['rgb',['RGB',['../class_soil_analyzer_1_1_soil.html#a4a328e0ebe7f1f3c5a1c4c581180d19e',1,'SoilAnalyzer::Soil']]],
-  ['rgbencoder',['RGBEncoder',['../class_hardware_1_1_soil_cape.html#a0e68dc6f30fdcbff0462d2996e47a338',1,'Hardware::SoilCape']]],
-  ['ri',['RI',['../class_soil_analyzer_1_1_analysis_results.html#a0b7b2d6babee80585ab195696b336e2c',1,'SoilAnalyzer::AnalysisResults::RI()'],['../class_soil_analyzer_1_1_soil.html#abe8693b60a3d88433ffb8255b8d260c3',1,'SoilAnalyzer::Soil::RI()']]],
-  ['rightx',['rightX',['../struct_vision_1_1_segment_1_1_rect.html#a6de0dfefe6b8360ee4d57027d1fba928',1,'Vision::Segment::Rect']]],
-  ['righty',['rightY',['../struct_vision_1_1_segment_1_1_rect.html#ab1a913248c715c25362c478498246983',1,'Vision::Segment::Rect']]],
-  ['roi',['ROI',['../struct_vision_1_1_segment_1_1_blob.html#a120710f9814f95a074a50635d2be3e5c',1,'Vision::Segment::Blob']]],
-  ['rotary',['Rotary',['../class_hardware_1_1_e_c12_p.html#abfe8d6ea8948c77d4866ca8a05dbebe9',1,'Hardware::EC12P']]],
-  ['rows',['Rows',['../class_soil_math_1_1_stats.html#a0e462c013f12f02e31e9ae03334151c3',1,'SoilMath::Stats']]],
-  ['run',['run',['../class_hardware_1_1_p_w_m.html#a04531646b41accced24d46046c4bc7de',1,'Hardware::PWM']]],
-  ['runpath',['runpath',['../class_hardware_1_1_p_w_m.html#ac1eb93467481ee2bd3565f1be47b8a01',1,'Hardware::PWM']]]
+  ['offset',['offset',['../class_q_c_p_axis_painter_private.html#aea226a1e39357d71f66d85093e30a830',1,'QCPAxisPainterPrivate::offset()'],['../struct_q_c_p_axis_painter_private_1_1_cached_label.html#a5f502db71c92e572f1e6f44f62c59d8e',1,'QCPAxisPainterPrivate::CachedLabel::offset()']]],
+  ['oneurons',['oNeurons',['../class_soil_math_1_1_n_n.html#a50a52b41982f6845dc5294f17607774b',1,'SoilMath::NN']]],
+  ['open',['open',['../class_q_c_p_financial_data.html#a3059e1e1fbcb9fd243fde0450f238032',1,'QCPFinancialData']]],
+  ['optimizedint',['OptimizedInt',['../class_soil_analyzer_1_1_soil.html#a27f7c15f63cbf64c07ceedb30c25e861',1,'SoilAnalyzer::Soil']]],
+  ['origimg',['OrigImg',['../class_v_s_a_g_u_i.html#ae74be8a44b34a65cb189d9b58ee40455',1,'VSAGUI']]],
+  ['originalcolorspace',['OriginalColorSpace',['../class_vision_1_1_conversion.html#a3fd4bac8a8d6788b6a1886916c5464b4',1,'Vision::Conversion']]],
+  ['originalimage',['OriginalImage',['../class_soil_analyzer_1_1_sample.html#a0d6e6fca9e232a77329daf0b4b29c634',1,'SoilAnalyzer::Sample']]],
+  ['originalimg',['OriginalImg',['../class_vision_1_1_image_processing.html#a77c370dab270158a4e9c634e2d3f48e7',1,'Vision::ImageProcessing']]],
+  ['originalimgstats',['OriginalImgStats',['../class_vision_1_1_segment.html#ab35cfe5504de7e5ea327991468e6cf3b',1,'Vision::Segment']]],
+  ['outputneurons',['outputneurons',['../class_soil_math_1_1_g_a.html#ab454f9968d5ce2a294b89f85c9d3a74f',1,'SoilMath::GA::outputneurons()'],['../class_soil_math_1_1_n_n.html#a65ce6c65168fbe7051c25dccf4bf2b0c',1,'SoilMath::NN::outputNeurons()'],['../struct_predict__struct.html#aa0708cae93baa061f21452537e86d3bd',1,'Predict_struct::OutputNeurons()']]]
 ];

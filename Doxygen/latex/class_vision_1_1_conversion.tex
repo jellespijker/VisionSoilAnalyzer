@@ -1,0 +1,824 @@
+\hypertarget{class_vision_1_1_conversion}{}\section{Vision\+:\+:Conversion Class Reference}
+\label{class_vision_1_1_conversion}\index{Vision\+::\+Conversion@{Vision\+::\+Conversion}}
+
+
+{\ttfamily \#include $<$Conversion.\+h$>$}
+
+
+
+Inheritance diagram for Vision\+:\+:Conversion\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=205pt]{class_vision_1_1_conversion__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Vision\+:\+:Conversion\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=205pt]{class_vision_1_1_conversion__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388}{Color\+Space} \{ \\*
+\hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388afd9ec9933d500e5eeec6ce3359321b0e}{C\+I\+E\+\_\+lab}, 
+\hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388ad4dfd3a535a86b69dd0e32ae7598b590}{C\+I\+E\+\_\+\+X\+Y\+Z}, 
+\hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388addf2a4063c4fe27e2675fafccdcdd9c1}{R\+I}, 
+\hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388af3fab43e1e6d8ffab1bf27050866a8d5}{R\+G\+B}, 
+\\*
+\hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388abfa5e56d2444f73ce850195468885fdd}{Intensity}, 
+\hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388a471c24ee3ed6a2bce23140af4ee3a00d}{None}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_vision_1_1_conversion_ade9665873e1ebd5e07f458d9dcf10996}{Conversion} ()
+\item 
+\hyperlink{class_vision_1_1_conversion_a9d881d8a0fc29f26afb84422fd8599f4}{Conversion} (const Mat \&src)
+\item 
+\hyperlink{class_vision_1_1_conversion_ada85747609dcedb2a117f06fd5c033ce}{Conversion} (const \hyperlink{class_vision_1_1_conversion}{Conversion} \&rhs)
+\item 
+\hyperlink{class_vision_1_1_conversion_a9a22cb622c0e847fa4635e7194c76d4d}{$\sim$\+Conversion} ()
+\item 
+\hyperlink{class_vision_1_1_conversion}{Conversion} \& \hyperlink{class_vision_1_1_conversion_ac1a6958a4d331108ad61f346f06319c7}{operator=} (\hyperlink{class_vision_1_1_conversion}{Conversion} rhs)
+\item 
+void \hyperlink{class_vision_1_1_conversion_ac78b687a5b6cdf4c0ae812b5d76b13fc}{Convert} (\hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388}{Color\+Space} convert\+From, \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388}{Color\+Space} convert\+To, bool chain=false)
+\item 
+void \hyperlink{class_vision_1_1_conversion_a7795d9d544e89e672acff2747b2218f0}{Convert} (const Mat \&src, Mat \&dst, \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388}{Color\+Space} convert\+From, \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388}{Color\+Space} convert\+To, bool chain=false)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388}{Color\+Space} \hyperlink{class_vision_1_1_conversion_a3fd4bac8a8d6788b6a1886916c5464b4}{Original\+Color\+Space}
+\item 
+\hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388}{Color\+Space} \hyperlink{class_vision_1_1_conversion_a57337750cb60b9ff7ed269c184d1fda7}{Processed\+Color\+Space}
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_vision_1_1_conversion_adf3ad076d44a9986332f5078c5fa2cc7}{Lab2\+R\+I} (float $\ast$O, float $\ast$P, int n\+Data)
+\item 
+void \hyperlink{class_vision_1_1_conversion_afe7b24da82f77ff1116f8bc3d0a62fcc}{R\+G\+B2\+X\+Y\+Z} (\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} $\ast$O, float $\ast$P, int n\+Data)
+\item 
+void \hyperlink{class_vision_1_1_conversion_a9ecc41c4226eafc55d0ee0cc550e593b}{X\+Y\+Z2\+Lab} (float $\ast$O, float $\ast$P, int n\+Data)
+\item 
+void \hyperlink{class_vision_1_1_conversion_a93626e56872b99ed79fd3540c6adf776}{R\+G\+B2\+Intensity} (\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} $\ast$O, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} $\ast$P, int n\+Data)
+\item 
+float \hyperlink{class_vision_1_1_conversion_aea73f90915cd0459dcaf70fb3e109a82}{f\+\_\+xyz2lab} (float t)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float \hyperlink{class_vision_1_1_conversion_ad0c6e6c63380927c63da7f967b5e61d1}{X\+Y\+Zmat} \mbox{[}3\mbox{]}\mbox{[}3\mbox{]}
+\item 
+float \hyperlink{class_vision_1_1_conversion_adbaed406827f7ffb583d003815a9f3f8}{white\+Point} \mbox{[}3\mbox{]} = \{ 0.\+9504, 1.\+0000, 1.\+0889 \}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 7 of file Conversion.\+h.
+
+
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388}{}\index{Vision\+::\+Conversion@{Vision\+::\+Conversion}!Color\+Space@{Color\+Space}}
+\index{Color\+Space@{Color\+Space}!Vision\+::\+Conversion@{Vision\+::\+Conversion}}
+\subsubsection[{Color\+Space}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Vision\+::\+Conversion\+::\+Color\+Space}}\label{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388}
+Enumerator which indicates the colorspace used \begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{C\+I\+E\+\_\+lab@{C\+I\+E\+\_\+lab}!Vision\+::\+Conversion@{Vision\+::\+Conversion}}\index{Vision\+::\+Conversion@{Vision\+::\+Conversion}!C\+I\+E\+\_\+lab@{C\+I\+E\+\_\+lab}}\item[{\em 
+\hypertarget{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388afd9ec9933d500e5eeec6ce3359321b0e}{}C\+I\+E\+\_\+lab\label{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388afd9ec9933d500e5eeec6ce3359321b0e}
+}]C\+I\+E La$\ast$b$\ast$ colorspace \index{C\+I\+E\+\_\+\+X\+Y\+Z@{C\+I\+E\+\_\+\+X\+Y\+Z}!Vision\+::\+Conversion@{Vision\+::\+Conversion}}\index{Vision\+::\+Conversion@{Vision\+::\+Conversion}!C\+I\+E\+\_\+\+X\+Y\+Z@{C\+I\+E\+\_\+\+X\+Y\+Z}}\item[{\em 
+\hypertarget{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388ad4dfd3a535a86b69dd0e32ae7598b590}{}C\+I\+E\+\_\+\+X\+Y\+Z\label{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388ad4dfd3a535a86b69dd0e32ae7598b590}
+}]C\+I\+E X\+Y\+Z colorspace \index{R\+I@{R\+I}!Vision\+::\+Conversion@{Vision\+::\+Conversion}}\index{Vision\+::\+Conversion@{Vision\+::\+Conversion}!R\+I@{R\+I}}\item[{\em 
+\hypertarget{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388addf2a4063c4fe27e2675fafccdcdd9c1}{}R\+I\label{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388addf2a4063c4fe27e2675fafccdcdd9c1}
+}]Redness Index colorspace \index{R\+G\+B@{R\+G\+B}!Vision\+::\+Conversion@{Vision\+::\+Conversion}}\index{Vision\+::\+Conversion@{Vision\+::\+Conversion}!R\+G\+B@{R\+G\+B}}\item[{\em 
+\hypertarget{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388af3fab43e1e6d8ffab1bf27050866a8d5}{}R\+G\+B\label{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388af3fab43e1e6d8ffab1bf27050866a8d5}
+}]R\+G\+B colorspace \index{Intensity@{Intensity}!Vision\+::\+Conversion@{Vision\+::\+Conversion}}\index{Vision\+::\+Conversion@{Vision\+::\+Conversion}!Intensity@{Intensity}}\item[{\em 
+\hypertarget{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388abfa5e56d2444f73ce850195468885fdd}{}Intensity\label{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388abfa5e56d2444f73ce850195468885fdd}
+}]Grayscale colorspace \index{None@{None}!Vision\+::\+Conversion@{Vision\+::\+Conversion}}\index{Vision\+::\+Conversion@{Vision\+::\+Conversion}!None@{None}}\item[{\em 
+\hypertarget{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388a471c24ee3ed6a2bce23140af4ee3a00d}{}None\label{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388a471c24ee3ed6a2bce23140af4ee3a00d}
+}]none \end{description}
+\end{Desc}
+
+
+Definition at line 12 of file Conversion.\+h.
+
+
+\begin{DoxyCode}
+13         \{
+14             \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388afd9ec9933d500e5eeec6ce3359321b0e}{CIE\_lab}, 
+15             \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388ad4dfd3a535a86b69dd0e32ae7598b590}{CIE\_XYZ}, 
+16             \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388addf2a4063c4fe27e2675fafccdcdd9c1}{RI},           
+17             \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388af3fab43e1e6d8ffab1bf27050866a8d5}{RGB},     
+18             \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388abfa5e56d2444f73ce850195468885fdd}{Intensity}, 
+19             \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388a471c24ee3ed6a2bce23140af4ee3a00d}{None}        
+20         \};
+\end{DoxyCode}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_vision_1_1_conversion_ade9665873e1ebd5e07f458d9dcf10996}{}\index{Vision\+::\+Conversion@{Vision\+::\+Conversion}!Conversion@{Conversion}}
+\index{Conversion@{Conversion}!Vision\+::\+Conversion@{Vision\+::\+Conversion}}
+\subsubsection[{Conversion}]{\setlength{\rightskip}{0pt plus 5cm}Conversion\+::\+Conversion (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_vision_1_1_conversion_ade9665873e1ebd5e07f458d9dcf10996}
+Constructor of the class 
+
+Definition at line 8 of file Conversion.\+cpp.
+
+
+
+References None, Original\+Color\+Space, and Processed\+Color\+Space.
+
+
+\begin{DoxyCode}
+9     \{
+10         \hyperlink{class_vision_1_1_conversion_a3fd4bac8a8d6788b6a1886916c5464b4}{OriginalColorSpace} = \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388a471c24ee3ed6a2bce23140af4ee3a00d}{None};
+11         \hyperlink{class_vision_1_1_conversion_a57337750cb60b9ff7ed269c184d1fda7}{ProcessedColorSpace} = \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388a471c24ee3ed6a2bce23140af4ee3a00d}{None};
+12     \}
+\end{DoxyCode}
+\hypertarget{class_vision_1_1_conversion_a9d881d8a0fc29f26afb84422fd8599f4}{}\index{Vision\+::\+Conversion@{Vision\+::\+Conversion}!Conversion@{Conversion}}
+\index{Conversion@{Conversion}!Vision\+::\+Conversion@{Vision\+::\+Conversion}}
+\subsubsection[{Conversion}]{\setlength{\rightskip}{0pt plus 5cm}Conversion\+::\+Conversion (
+\begin{DoxyParamCaption}
+\item[{const Mat \&}]{src}
+\end{DoxyParamCaption}
+)}\label{class_vision_1_1_conversion_a9d881d8a0fc29f26afb84422fd8599f4}
+Constructor of the class 
+\begin{DoxyParams}{Parameters}
+{\em src} & a cv\+::\+Mat object which is the source image \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 17 of file Conversion.\+cpp.
+
+
+
+References None, Original\+Color\+Space, Vision\+::\+Image\+Processing\+::\+Original\+Img, and Processed\+Color\+Space.
+
+
+\begin{DoxyCode}
+18     \{
+19         \hyperlink{class_vision_1_1_conversion_a3fd4bac8a8d6788b6a1886916c5464b4}{OriginalColorSpace} = \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388a471c24ee3ed6a2bce23140af4ee3a00d}{None};
+20         \hyperlink{class_vision_1_1_conversion_a57337750cb60b9ff7ed269c184d1fda7}{ProcessedColorSpace} = \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388a471c24ee3ed6a2bce23140af4ee3a00d}{None};
+21         \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg} = src;
+22     \}
+\end{DoxyCode}
+\hypertarget{class_vision_1_1_conversion_ada85747609dcedb2a117f06fd5c033ce}{}\index{Vision\+::\+Conversion@{Vision\+::\+Conversion}!Conversion@{Conversion}}
+\index{Conversion@{Conversion}!Vision\+::\+Conversion@{Vision\+::\+Conversion}}
+\subsubsection[{Conversion}]{\setlength{\rightskip}{0pt plus 5cm}Conversion\+::\+Conversion (
+\begin{DoxyParamCaption}
+\item[{const {\bf Conversion} \&}]{rhs}
+\end{DoxyParamCaption}
+)}\label{class_vision_1_1_conversion_ada85747609dcedb2a117f06fd5c033ce}
+Copy constructor 
+
+Definition at line 25 of file Conversion.\+cpp.
+
+
+
+References Original\+Color\+Space, Vision\+::\+Image\+Processing\+::\+Original\+Img, Processed\+Color\+Space, Vision\+::\+Image\+Processing\+::\+Processed\+Img, and Vision\+::\+Image\+Processing\+::\+Temp\+Img.
+
+
+\begin{DoxyCode}
+26     \{
+27         this->\hyperlink{class_vision_1_1_conversion_a3fd4bac8a8d6788b6a1886916c5464b4}{OriginalColorSpace} = rhs.OriginalColorSpace;
+28         this->\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg} = rhs.OriginalImg;
+29         this->\hyperlink{class_vision_1_1_conversion_a57337750cb60b9ff7ed269c184d1fda7}{ProcessedColorSpace} = rhs.ProcessedColorSpace;
+30         this->\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg} = rhs.ProcessedImg;
+31         this->\hyperlink{class_vision_1_1_image_processing_a5371ad8d6f7aac9d43ee5c902ade7435}{TempImg} = rhs.TempImg;
+32     \}
+\end{DoxyCode}
+\hypertarget{class_vision_1_1_conversion_a9a22cb622c0e847fa4635e7194c76d4d}{}\index{Vision\+::\+Conversion@{Vision\+::\+Conversion}!````~Conversion@{$\sim$\+Conversion}}
+\index{````~Conversion@{$\sim$\+Conversion}!Vision\+::\+Conversion@{Vision\+::\+Conversion}}
+\subsubsection[{$\sim$\+Conversion}]{\setlength{\rightskip}{0pt plus 5cm}Conversion\+::$\sim$\+Conversion (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_vision_1_1_conversion_a9a22cb622c0e847fa4635e7194c76d4d}
+De-\/constructor of the class 
+
+Definition at line 35 of file Conversion.\+cpp.
+
+
+\begin{DoxyCode}
+35 \{   \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_vision_1_1_conversion_ac78b687a5b6cdf4c0ae812b5d76b13fc}{}\index{Vision\+::\+Conversion@{Vision\+::\+Conversion}!Convert@{Convert}}
+\index{Convert@{Convert}!Vision\+::\+Conversion@{Vision\+::\+Conversion}}
+\subsubsection[{Convert}]{\setlength{\rightskip}{0pt plus 5cm}void Conversion\+::\+Convert (
+\begin{DoxyParamCaption}
+\item[{{\bf Color\+Space}}]{convert\+From, }
+\item[{{\bf Color\+Space}}]{convert\+To, }
+\item[{bool}]{chain = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}\label{class_vision_1_1_conversion_ac78b687a5b6cdf4c0ae812b5d76b13fc}
+Convert the source image from one colorspace to a destination colorspace posibilities are\+:
+\begin{DoxyItemize}
+\item R\+G\+B 2 Intensity
+\item R\+G\+B 2 X\+Y\+Z
+\item R\+G\+B 2 Lab
+\item R\+G\+B 2 Redness Index
+\item X\+Y\+Z 2 Lab
+\item X\+Y\+Z 2 Redness Index
+\item Lab 2 Redness Index 
+\begin{DoxyParams}{Parameters}
+{\em convert\+From} & the starting colorspace \\
+\hline
+{\em convert\+To} & the destination colorspace \\
+\hline
+{\em chain} & use the results from the previous operation default value = false; \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}
+
+Definition at line 84 of file Conversion.\+cpp.
+
+
+
+References C\+H\+A\+I\+N\+\_\+\+P\+R\+O\+C\+E\+S\+S, C\+I\+E\+\_\+lab, C\+I\+E\+\_\+\+X\+Y\+Z, Vision\+::\+Image\+Processing\+::current\+Prog, E\+M\+P\+T\+Y\+\_\+\+C\+H\+E\+C\+K, Intensity, Lab2\+R\+I(), Original\+Color\+Space, Vision\+::\+Image\+Processing\+::\+Original\+Img, Processed\+Color\+Space, Vision\+::\+Image\+Processing\+::\+Processed\+Img, Vision\+::\+Image\+Processing\+::prog\+\_\+sig, Vision\+::\+Image\+Processing\+::\+Prog\+Step, R\+G\+B, R\+G\+B2\+Intensity(), R\+G\+B2\+X\+Y\+Z(), R\+I, and X\+Y\+Z2\+Lab().
+
+
+
+Referenced by B\+O\+O\+S\+T\+\_\+\+F\+I\+X\+T\+U\+R\+E\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E(), Convert(), and Soil\+Analyzer\+::\+Sample\+::\+Prep\+Img().
+
+
+\begin{DoxyCode}
+85     \{
+86         \hyperlink{class_vision_1_1_conversion_a3fd4bac8a8d6788b6a1886916c5464b4}{OriginalColorSpace} = convertFrom;
+87         \hyperlink{class_vision_1_1_conversion_a57337750cb60b9ff7ed269c184d1fda7}{ProcessedColorSpace} = convertTo;
+88 
+89         \textcolor{comment}{// Exception handling}
+90         \hyperlink{_image_processing_8h_a27c4e53b88a0f9f2c097add555131056}{EMPTY\_CHECK}(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg});
+91         \hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg} = 0.;
+92         \hyperlink{class_vision_1_1_image_processing_ac0c168e16365ff5941791f67ec895663}{prog\_sig}(\hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg}, \textcolor{stringliteral}{"Converting colorspace"});
+93 
+94         \textcolor{keywordtype}{int} nData = \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.rows * \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.cols;
+95         \textcolor{comment}{//uint32\_t i, j;}
+96 
+97         \textcolor{keywordflow}{if} (convertFrom == \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388af3fab43e1e6d8ffab1bf27050866a8d5}{RGB} && convertTo == \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388abfa5e56d2444f73ce850195468885fdd}{Intensity}) \textcolor{comment}{// RGB 2 Intensity}
+98         \{
+99             \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.create(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.size(), CV\_8UC1);
+100             \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *P = \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.data;
+101             \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *O;
+102             \hyperlink{_image_processing_8h_a6e6f0183cb53c76ef458d4fd34e07bcd}{CHAIN\_PROCESS}(chain, O, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar});
+103 
+104             \hyperlink{class_vision_1_1_image_processing_ac0c168e16365ff5941791f67ec895663}{prog\_sig}(\hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg}, \textcolor{stringliteral}{"RGB 2 Intensity conversion"});
+105             \hyperlink{class_vision_1_1_conversion_a93626e56872b99ed79fd3540c6adf776}{RGB2Intensity}(O, P, nData);
+106             \hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg} += \hyperlink{class_vision_1_1_image_processing_a7438451f9a447a33e9f04bf8e73eae31}{ProgStep};
+107             \hyperlink{class_vision_1_1_image_processing_ac0c168e16365ff5941791f67ec895663}{prog\_sig}(\hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg}, \textcolor{stringliteral}{"RGB 2 Intensity conversion Finished"});
+108         \}
+109         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (convertFrom == \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388af3fab43e1e6d8ffab1bf27050866a8d5}{RGB} && convertTo == \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388ad4dfd3a535a86b69dd0e32ae7598b590}{CIE\_XYZ}) \textcolor{comment}{// RGB 2 XYZ}
+110         \{
+111             \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.create(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.size(), CV\_32FC3);
+112             \textcolor{keywordtype}{float} *P = (\textcolor{keywordtype}{float} *)\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.data;
+113             \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *O;
+114             \hyperlink{_image_processing_8h_a6e6f0183cb53c76ef458d4fd34e07bcd}{CHAIN\_PROCESS}(chain, O, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar});
+115 
+116             \hyperlink{class_vision_1_1_image_processing_ac0c168e16365ff5941791f67ec895663}{prog\_sig}(\hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg}, \textcolor{stringliteral}{"RGB 2 CIE XYZ conversion"});
+117             \hyperlink{class_vision_1_1_conversion_afe7b24da82f77ff1116f8bc3d0a62fcc}{RGB2XYZ}(O, P, nData);
+118             \hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg} += \hyperlink{class_vision_1_1_image_processing_a7438451f9a447a33e9f04bf8e73eae31}{ProgStep};
+119             \hyperlink{class_vision_1_1_image_processing_ac0c168e16365ff5941791f67ec895663}{prog\_sig}(\hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg}, \textcolor{stringliteral}{"RGB 2 CIE XYZ conversion Finished"});
+120         \}
+121         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (convertFrom == \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388af3fab43e1e6d8ffab1bf27050866a8d5}{RGB} && convertTo == \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388afd9ec9933d500e5eeec6ce3359321b0e}{CIE\_lab}) \textcolor{comment}{// RGB 2 Lab}
+122         \{
+123             \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.create(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.size(), CV\_32FC3);
+124             \textcolor{keywordtype}{float} *P = (\textcolor{keywordtype}{float} *)\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.data;
+125             \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *O;
+126             \hyperlink{_image_processing_8h_a6e6f0183cb53c76ef458d4fd34e07bcd}{CHAIN\_PROCESS}(chain, O, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar});
+127 
+128             \hyperlink{class_vision_1_1_image_processing_ac0c168e16365ff5941791f67ec895663}{prog\_sig}(\hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg}, \textcolor{stringliteral}{"RGB 2 CIE XYZ conversion"});
+129             \hyperlink{class_vision_1_1_conversion_afe7b24da82f77ff1116f8bc3d0a62fcc}{RGB2XYZ}(O, P, nData);
+130             \hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg} += \hyperlink{class_vision_1_1_image_processing_a7438451f9a447a33e9f04bf8e73eae31}{ProgStep};
+131             \hyperlink{class_vision_1_1_image_processing_ac0c168e16365ff5941791f67ec895663}{prog\_sig}(\hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg}, \textcolor{stringliteral}{"RGB 2 CIE XYZ conversion Finished"});
+132             \hyperlink{class_vision_1_1_conversion_ac78b687a5b6cdf4c0ae812b5d76b13fc}{Convert}(\hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388ad4dfd3a535a86b69dd0e32ae7598b590}{CIE\_XYZ}, \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388afd9ec9933d500e5eeec6ce3359321b0e}{CIE\_lab}, \textcolor{keyword}{true});
+133         \}
+134         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (convertFrom == \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388af3fab43e1e6d8ffab1bf27050866a8d5}{RGB} && convertTo == \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388addf2a4063c4fe27e2675fafccdcdd9c1}{RI}) \textcolor{comment}{// RGB 2 RI}
+135         \{
+136             \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.create(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.size(), CV\_32FC3);
+137             \textcolor{keywordtype}{float} *P = (\textcolor{keywordtype}{float} *)\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.data;
+138             \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *O;
+139             \hyperlink{_image_processing_8h_a6e6f0183cb53c76ef458d4fd34e07bcd}{CHAIN\_PROCESS}(chain, O, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar});
+140 
+141             \hyperlink{class_vision_1_1_image_processing_ac0c168e16365ff5941791f67ec895663}{prog\_sig}(\hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg}, \textcolor{stringliteral}{"RGB 2 CIE XYZ conversion"});
+142             \hyperlink{class_vision_1_1_conversion_afe7b24da82f77ff1116f8bc3d0a62fcc}{RGB2XYZ}(O, P, nData);
+143             \hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg} += \hyperlink{class_vision_1_1_image_processing_a7438451f9a447a33e9f04bf8e73eae31}{ProgStep};
+144             \hyperlink{class_vision_1_1_image_processing_ac0c168e16365ff5941791f67ec895663}{prog\_sig}(\hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg}, \textcolor{stringliteral}{"RGB 2 CIE XYZ conversion Finished"});
+145             \hyperlink{class_vision_1_1_conversion_ac78b687a5b6cdf4c0ae812b5d76b13fc}{Convert}(\hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388ad4dfd3a535a86b69dd0e32ae7598b590}{CIE\_XYZ}, \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388afd9ec9933d500e5eeec6ce3359321b0e}{CIE\_lab}, \textcolor{keyword}{true});
+146             \hyperlink{class_vision_1_1_conversion_ac78b687a5b6cdf4c0ae812b5d76b13fc}{Convert}(\hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388afd9ec9933d500e5eeec6ce3359321b0e}{CIE\_lab}, \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388addf2a4063c4fe27e2675fafccdcdd9c1}{RI}, \textcolor{keyword}{true});
+147         \}
+148         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (convertFrom == \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388ad4dfd3a535a86b69dd0e32ae7598b590}{CIE\_XYZ} && convertTo == \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388afd9ec9933d500e5eeec6ce3359321b0e}{CIE\_lab}) \textcolor{comment}{// XYZ 2 Lab}
+149         \{
+150             \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.create(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.size(), CV\_32FC3);
+151             \textcolor{keywordtype}{float} *P = (\textcolor{keywordtype}{float} *)\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.data;
+152             \textcolor{keywordtype}{float} *O;
+153             \hyperlink{_image_processing_8h_a6e6f0183cb53c76ef458d4fd34e07bcd}{CHAIN\_PROCESS}(chain, O, \textcolor{keywordtype}{float});
+154 
+155             \hyperlink{class_vision_1_1_image_processing_ac0c168e16365ff5941791f67ec895663}{prog\_sig}(\hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg}, \textcolor{stringliteral}{"CIE XYZ 2 CIE La*b* conversion"});
+156             \hyperlink{class_vision_1_1_conversion_a9ecc41c4226eafc55d0ee0cc550e593b}{XYZ2Lab}(O, P, nData);
+157             \hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg} += \hyperlink{class_vision_1_1_image_processing_a7438451f9a447a33e9f04bf8e73eae31}{ProgStep};
+158             \hyperlink{class_vision_1_1_image_processing_ac0c168e16365ff5941791f67ec895663}{prog\_sig}(\hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg}, \textcolor{stringliteral}{"CIE XYZ 2 CIE La*b* conversion Finished"});
+159         \}
+160         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (convertFrom == \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388ad4dfd3a535a86b69dd0e32ae7598b590}{CIE\_XYZ} && convertTo == \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388addf2a4063c4fe27e2675fafccdcdd9c1}{RI}) \textcolor{comment}{// XYZ 2 RI}
+161         \{
+162             \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.create(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.size(), CV\_32FC3);
+163             \textcolor{keywordtype}{float} *P = (\textcolor{keywordtype}{float} *)\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.data;
+164             \textcolor{keywordtype}{float} *O;
+165             \hyperlink{_image_processing_8h_a6e6f0183cb53c76ef458d4fd34e07bcd}{CHAIN\_PROCESS}(chain, O, \textcolor{keywordtype}{float});
+166 
+167             \hyperlink{class_vision_1_1_image_processing_ac0c168e16365ff5941791f67ec895663}{prog\_sig}(\hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg}, \textcolor{stringliteral}{"CIE XYZ 2 CIE La*b* conversion"});
+168             \hyperlink{class_vision_1_1_conversion_a9ecc41c4226eafc55d0ee0cc550e593b}{XYZ2Lab}(O, P, nData);
+169             \hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg} += \hyperlink{class_vision_1_1_image_processing_a7438451f9a447a33e9f04bf8e73eae31}{ProgStep};
+170             \hyperlink{class_vision_1_1_image_processing_ac0c168e16365ff5941791f67ec895663}{prog\_sig}(\hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg}, \textcolor{stringliteral}{"CIE XYZ 2 CIE La*b* conversion Finished"});
+171             \hyperlink{class_vision_1_1_conversion_ac78b687a5b6cdf4c0ae812b5d76b13fc}{Convert}(\hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388afd9ec9933d500e5eeec6ce3359321b0e}{CIE\_lab}, \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388addf2a4063c4fe27e2675fafccdcdd9c1}{RI}, \textcolor{keyword}{true});
+172         \}
+173         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (convertFrom == \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388afd9ec9933d500e5eeec6ce3359321b0e}{CIE\_lab} && convertTo == \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388addf2a4063c4fe27e2675fafccdcdd9c1}{RI}) \textcolor{comment}{// Lab 2 RI}
+174         \{
+175             \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.create(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.size(), CV\_32FC1);
+176             \textcolor{keywordtype}{float} *P = (\textcolor{keywordtype}{float} *)\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.data;
+177             \textcolor{keywordtype}{float} *O;
+178             \hyperlink{_image_processing_8h_a6e6f0183cb53c76ef458d4fd34e07bcd}{CHAIN\_PROCESS}(chain, O, \textcolor{keywordtype}{float});
+179 
+180             \hyperlink{class_vision_1_1_image_processing_ac0c168e16365ff5941791f67ec895663}{prog\_sig}(\hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg}, \textcolor{stringliteral}{"CIE La*b* 2 Redness Index conversion"});
+181             \hyperlink{class_vision_1_1_conversion_adf3ad076d44a9986332f5078c5fa2cc7}{Lab2RI}(O, P, nData * 3);
+182             \hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg} += \hyperlink{class_vision_1_1_image_processing_a7438451f9a447a33e9f04bf8e73eae31}{ProgStep};
+183             \hyperlink{class_vision_1_1_image_processing_ac0c168e16365ff5941791f67ec895663}{prog\_sig}(\hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg}, \textcolor{stringliteral}{"CIE La*b* 2 Redness Index conversion Finsihed"});
+184         \}
+185         \textcolor{keywordflow}{else} \{ \textcolor{keywordflow}{throw} Exception::ConversionNotSupportedException(); \}
+186     \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_vision_1_1_conversion_ac78b687a5b6cdf4c0ae812b5d76b13fc_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_vision_1_1_conversion_ac78b687a5b6cdf4c0ae812b5d76b13fc_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_vision_1_1_conversion_a7795d9d544e89e672acff2747b2218f0}{}\index{Vision\+::\+Conversion@{Vision\+::\+Conversion}!Convert@{Convert}}
+\index{Convert@{Convert}!Vision\+::\+Conversion@{Vision\+::\+Conversion}}
+\subsubsection[{Convert}]{\setlength{\rightskip}{0pt plus 5cm}void Conversion\+::\+Convert (
+\begin{DoxyParamCaption}
+\item[{const Mat \&}]{src, }
+\item[{Mat \&}]{dst, }
+\item[{{\bf Color\+Space}}]{convert\+From, }
+\item[{{\bf Color\+Space}}]{convert\+To, }
+\item[{bool}]{chain = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}\label{class_vision_1_1_conversion_a7795d9d544e89e672acff2747b2218f0}
+Convert the source image from one colorspace to a destination colorspace
+\begin{DoxyItemize}
+\item R\+G\+B 2 Intensity
+\item R\+G\+B 2 X\+Y\+Z
+\item R\+G\+B 2 Lab
+\item R\+G\+B 2 Redness Index
+\item X\+Y\+Z 2 Lab
+\item X\+Y\+Z 2 Redness Index
+\item Lab 2 Redness Index 
+\begin{DoxyParams}{Parameters}
+{\em src} & a cv\+::\+Mat object which is the source image \\
+\hline
+{\em dst} & a cv\+::\+Mat object which is the destination image \\
+\hline
+{\em convert\+From} & the starting colorspace \\
+\hline
+{\em convert\+To} & the destination colorspace \\
+\hline
+{\em chain} & use the results from the previous operation default value = false; \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}
+
+Definition at line 65 of file Conversion.\+cpp.
+
+
+
+References Convert(), Vision\+::\+Image\+Processing\+::\+Original\+Img, and Vision\+::\+Image\+Processing\+::\+Processed\+Img.
+
+
+\begin{DoxyCode}
+66     \{
+67         \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg} = src;
+68         \hyperlink{class_vision_1_1_conversion_ac78b687a5b6cdf4c0ae812b5d76b13fc}{Convert}(convertFrom, convertTo, chain);
+69         dst = \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg};
+70     \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_vision_1_1_conversion_a7795d9d544e89e672acff2747b2218f0_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_vision_1_1_conversion_aea73f90915cd0459dcaf70fb3e109a82}{}\index{Vision\+::\+Conversion@{Vision\+::\+Conversion}!f\+\_\+xyz2lab@{f\+\_\+xyz2lab}}
+\index{f\+\_\+xyz2lab@{f\+\_\+xyz2lab}!Vision\+::\+Conversion@{Vision\+::\+Conversion}}
+\subsubsection[{f\+\_\+xyz2lab}]{\setlength{\rightskip}{0pt plus 5cm}float Conversion\+::f\+\_\+xyz2lab (
+\begin{DoxyParamCaption}
+\item[{float}]{t}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}\label{class_vision_1_1_conversion_aea73f90915cd0459dcaf70fb3e109a82}
+
+
+Definition at line 257 of file Conversion.\+cpp.
+
+
+
+Referenced by X\+Y\+Z2\+Lab().
+
+
+\begin{DoxyCode}
+258     \{
+259         \textcolor{keywordflow}{if} (t > 0.008856) \{ \textcolor{keywordflow}{return} pow(t, 0.3333333333f); \}
+260         \textcolor{keywordflow}{return} 7.787 * t + 0.137931034482759f;
+261     \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_vision_1_1_conversion_aea73f90915cd0459dcaf70fb3e109a82_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_vision_1_1_conversion_adf3ad076d44a9986332f5078c5fa2cc7}{}\index{Vision\+::\+Conversion@{Vision\+::\+Conversion}!Lab2\+R\+I@{Lab2\+R\+I}}
+\index{Lab2\+R\+I@{Lab2\+R\+I}!Vision\+::\+Conversion@{Vision\+::\+Conversion}}
+\subsubsection[{Lab2\+R\+I}]{\setlength{\rightskip}{0pt plus 5cm}void Conversion\+::\+Lab2\+R\+I (
+\begin{DoxyParamCaption}
+\item[{float $\ast$}]{O, }
+\item[{float $\ast$}]{P, }
+\item[{int}]{n\+Data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_vision_1_1_conversion_adf3ad076d44a9986332f5078c5fa2cc7}
+\hyperlink{class_vision_1_1_conversion}{Conversion} from C\+I\+E La$\ast$b$\ast$ to Redness Index 
+\begin{DoxyParams}{Parameters}
+{\em O} & a uchar pointer to the source image \\
+\hline
+{\em P} & a uchar pointer to the destination image \\
+\hline
+{\em n\+Data} & an int indicating the total number of pixels \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 268 of file Conversion.\+cpp.
+
+
+
+References i, and j.
+
+
+
+Referenced by Convert().
+
+
+\begin{DoxyCode}
+269     \{
+270         uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0;
+271         uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} = 0;
+272         \textcolor{keywordtype}{float} L, a, b;
+273         \textcolor{keywordflow}{for} (uint32\_t i = 0; i < nData; i += 3)
+274         \{
+275             L = *(O + \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i});
+276             a = *(O + i + 1);
+277             b = *(O + i + 2);
+278             P[j++] = (L * (pow((pow(a, 2.0f) + pow(b, 2.0f)), 0.5f) * (pow(10, 8.2f)))) / (b * pow(L, 6.0f)
+      );
+279         \}
+280     \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_vision_1_1_conversion_adf3ad076d44a9986332f5078c5fa2cc7_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_vision_1_1_conversion_ac1a6958a4d331108ad61f346f06319c7}{}\index{Vision\+::\+Conversion@{Vision\+::\+Conversion}!operator=@{operator=}}
+\index{operator=@{operator=}!Vision\+::\+Conversion@{Vision\+::\+Conversion}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Conversion} \& Conversion\+::operator= (
+\begin{DoxyParamCaption}
+\item[{{\bf Conversion}}]{rhs}
+\end{DoxyParamCaption}
+)}\label{class_vision_1_1_conversion_ac1a6958a4d331108ad61f346f06319c7}
+Assignment operator 
+
+Definition at line 38 of file Conversion.\+cpp.
+
+
+
+References Original\+Color\+Space, Vision\+::\+Image\+Processing\+::\+Original\+Img, Processed\+Color\+Space, Vision\+::\+Image\+Processing\+::\+Processed\+Img, and Vision\+::\+Image\+Processing\+::\+Temp\+Img.
+
+
+\begin{DoxyCode}
+39     \{
+40         \textcolor{keywordflow}{if} (&rhs != \textcolor{keyword}{this})
+41         \{
+42             this->\hyperlink{class_vision_1_1_conversion_a3fd4bac8a8d6788b6a1886916c5464b4}{OriginalColorSpace} = rhs.OriginalColorSpace;
+43             this->\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg} = rhs.OriginalImg;
+44             this->\hyperlink{class_vision_1_1_conversion_a57337750cb60b9ff7ed269c184d1fda7}{ProcessedColorSpace} = rhs.ProcessedColorSpace;
+45             this->\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg} = rhs.ProcessedImg;
+46             this->\hyperlink{class_vision_1_1_image_processing_a5371ad8d6f7aac9d43ee5c902ade7435}{TempImg} = rhs.TempImg;
+47         \}
+48         \textcolor{keywordflow}{return} *\textcolor{keyword}{this};
+49     \}
+\end{DoxyCode}
+\hypertarget{class_vision_1_1_conversion_a93626e56872b99ed79fd3540c6adf776}{}\index{Vision\+::\+Conversion@{Vision\+::\+Conversion}!R\+G\+B2\+Intensity@{R\+G\+B2\+Intensity}}
+\index{R\+G\+B2\+Intensity@{R\+G\+B2\+Intensity}!Vision\+::\+Conversion@{Vision\+::\+Conversion}}
+\subsubsection[{R\+G\+B2\+Intensity}]{\setlength{\rightskip}{0pt plus 5cm}void Conversion\+::\+R\+G\+B2\+Intensity (
+\begin{DoxyParamCaption}
+\item[{{\bf uchar} $\ast$}]{O, }
+\item[{{\bf uchar} $\ast$}]{P, }
+\item[{int}]{n\+Data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_vision_1_1_conversion_a93626e56872b99ed79fd3540c6adf776}
+\hyperlink{class_vision_1_1_conversion}{Conversion} from R\+G\+B to Intensity 
+\begin{DoxyParams}{Parameters}
+{\em O} & a uchar pointer to the source image \\
+\hline
+{\em P} & a uchar pointer to the destination image \\
+\hline
+{\em n\+Data} & an int indicating the total number of pixels \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 193 of file Conversion.\+cpp.
+
+
+
+References i, and j.
+
+
+
+Referenced by Convert().
+
+
+\begin{DoxyCode}
+194     \{
+195         uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i};
+196         uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j};
+197         i = 0;
+198         j = 0;
+199         \textcolor{keywordflow}{while} (j < nData)
+200         \{
+201             P[j++] = (*(O + i + 2) * 0.2126 + *(O + i + 1) * 0.7152 + *(O + \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) * 0.0722); \textcolor{comment}{// Grey value}
+202             i += 3;
+203         \}
+204     \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_vision_1_1_conversion_a93626e56872b99ed79fd3540c6adf776_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_vision_1_1_conversion_afe7b24da82f77ff1116f8bc3d0a62fcc}{}\index{Vision\+::\+Conversion@{Vision\+::\+Conversion}!R\+G\+B2\+X\+Y\+Z@{R\+G\+B2\+X\+Y\+Z}}
+\index{R\+G\+B2\+X\+Y\+Z@{R\+G\+B2\+X\+Y\+Z}!Vision\+::\+Conversion@{Vision\+::\+Conversion}}
+\subsubsection[{R\+G\+B2\+X\+Y\+Z}]{\setlength{\rightskip}{0pt plus 5cm}void Conversion\+::\+R\+G\+B2\+X\+Y\+Z (
+\begin{DoxyParamCaption}
+\item[{{\bf uchar} $\ast$}]{O, }
+\item[{float $\ast$}]{P, }
+\item[{int}]{n\+Data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_vision_1_1_conversion_afe7b24da82f77ff1116f8bc3d0a62fcc}
+\hyperlink{class_vision_1_1_conversion}{Conversion} from R\+G\+B to C\+I\+E X\+Y\+Z 
+\begin{DoxyParams}{Parameters}
+{\em O} & a uchar pointer to the source image \\
+\hline
+{\em P} & a uchar pointer to the destination image \\
+\hline
+{\em n\+Data} & an int indicating the total number of pixels \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 211 of file Conversion.\+cpp.
+
+
+
+References i, Vision\+::\+Image\+Processing\+::\+Original\+Img, and X\+Y\+Zmat.
+
+
+
+Referenced by Convert().
+
+
+\begin{DoxyCode}
+212     \{
+213         uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0;
+214         uint32\_t endData = nData * \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.step.buf[1];
+215         \textcolor{keywordtype}{float} R, G, \hyperlink{struct_b}{B};
+216         \textcolor{keywordflow}{for} (uint32\_t i = 0; i < endData; i += \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.step.buf[1])
+217         \{
+218             R = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(*(O + i + 2) / 255.0f);
+219             B = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(*(O + i + 1) / 255.0f);
+220             G = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(*(O + \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) / 255.0f);
+221             P[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = (\hyperlink{class_vision_1_1_conversion_ad0c6e6c63380927c63da7f967b5e61d1}{XYZmat}[0][0] * R) + (\hyperlink{class_vision_1_1_conversion_ad0c6e6c63380927c63da7f967b5e61d1}{XYZmat}[0][1] * B) + (
+      \hyperlink{class_vision_1_1_conversion_ad0c6e6c63380927c63da7f967b5e61d1}{XYZmat}[0][2] * G);    \textcolor{comment}{//X}
+222             P[i + 1] = (\hyperlink{class_vision_1_1_conversion_ad0c6e6c63380927c63da7f967b5e61d1}{XYZmat}[1][0] * R) + (\hyperlink{class_vision_1_1_conversion_ad0c6e6c63380927c63da7f967b5e61d1}{XYZmat}[1][1] * B) + (
+      \hyperlink{class_vision_1_1_conversion_ad0c6e6c63380927c63da7f967b5e61d1}{XYZmat}[1][2] * G);    \textcolor{comment}{//Y}
+223             P[i + 2] = (\hyperlink{class_vision_1_1_conversion_ad0c6e6c63380927c63da7f967b5e61d1}{XYZmat}[2][0] * R) + (\hyperlink{class_vision_1_1_conversion_ad0c6e6c63380927c63da7f967b5e61d1}{XYZmat}[2][1] * B) + (
+      \hyperlink{class_vision_1_1_conversion_ad0c6e6c63380927c63da7f967b5e61d1}{XYZmat}[2][2] * G);    \textcolor{comment}{//Z}
+224         \}
+225     \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_vision_1_1_conversion_afe7b24da82f77ff1116f8bc3d0a62fcc_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_vision_1_1_conversion_a9ecc41c4226eafc55d0ee0cc550e593b}{}\index{Vision\+::\+Conversion@{Vision\+::\+Conversion}!X\+Y\+Z2\+Lab@{X\+Y\+Z2\+Lab}}
+\index{X\+Y\+Z2\+Lab@{X\+Y\+Z2\+Lab}!Vision\+::\+Conversion@{Vision\+::\+Conversion}}
+\subsubsection[{X\+Y\+Z2\+Lab}]{\setlength{\rightskip}{0pt plus 5cm}void Conversion\+::\+X\+Y\+Z2\+Lab (
+\begin{DoxyParamCaption}
+\item[{float $\ast$}]{O, }
+\item[{float $\ast$}]{P, }
+\item[{int}]{n\+Data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_vision_1_1_conversion_a9ecc41c4226eafc55d0ee0cc550e593b}
+\hyperlink{class_vision_1_1_conversion}{Conversion} from C\+I\+E X\+Y\+Z to C\+I\+E La$\ast$b$\ast$ 
+\begin{DoxyParams}{Parameters}
+{\em O} & a uchar pointer to the source image \\
+\hline
+{\em P} & a uchar pointer to the destination image \\
+\hline
+{\em n\+Data} & an int indicating the total number of pixels \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 232 of file Conversion.\+cpp.
+
+
+
+References f\+\_\+xyz2lab(), i, and white\+Point.
+
+
+
+Referenced by Convert().
+
+
+\begin{DoxyCode}
+233     \{
+234         uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0;
+235         uint32\_t endData = nData * 3;
+236         \textcolor{keywordtype}{float} yy0, xx0, zz0;
+237         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < endData; i += 3)
+238         \{
+239             xx0 = *(O + \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) / \hyperlink{class_vision_1_1_conversion_adbaed406827f7ffb583d003815a9f3f8}{whitePoint}[0];
+240             yy0 = *(O + i + 1) / \hyperlink{class_vision_1_1_conversion_adbaed406827f7ffb583d003815a9f3f8}{whitePoint}[1];
+241             zz0 = *(O + i + 2) / \hyperlink{class_vision_1_1_conversion_adbaed406827f7ffb583d003815a9f3f8}{whitePoint}[2];
+242 
+243             \textcolor{keywordflow}{if} (yy0 > 0.008856)
+244             \{
+245                 P[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = (116 * pow(yy0, 0.333f)) - 16; \textcolor{comment}{// L}
+246             \}
+247             \textcolor{keywordflow}{else}
+248             \{
+249                 P[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = 903.3 * yy0; \textcolor{comment}{// L}
+250             \}
+251 
+252             P[i + 1] = 500 * (\hyperlink{class_vision_1_1_conversion_aea73f90915cd0459dcaf70fb3e109a82}{f\_xyz2lab}(xx0) - \hyperlink{class_vision_1_1_conversion_aea73f90915cd0459dcaf70fb3e109a82}{f\_xyz2lab}(yy0));
+253             P[i + 2] = 200 * (\hyperlink{class_vision_1_1_conversion_aea73f90915cd0459dcaf70fb3e109a82}{f\_xyz2lab}(yy0) - \hyperlink{class_vision_1_1_conversion_aea73f90915cd0459dcaf70fb3e109a82}{f\_xyz2lab}(zz0));
+254         \}
+255     \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=314pt]{class_vision_1_1_conversion_a9ecc41c4226eafc55d0ee0cc550e593b_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_vision_1_1_conversion_a9ecc41c4226eafc55d0ee0cc550e593b_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_vision_1_1_conversion_a3fd4bac8a8d6788b6a1886916c5464b4}{}\index{Vision\+::\+Conversion@{Vision\+::\+Conversion}!Original\+Color\+Space@{Original\+Color\+Space}}
+\index{Original\+Color\+Space@{Original\+Color\+Space}!Vision\+::\+Conversion@{Vision\+::\+Conversion}}
+\subsubsection[{Original\+Color\+Space}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Color\+Space} Vision\+::\+Conversion\+::\+Original\+Color\+Space}\label{class_vision_1_1_conversion_a3fd4bac8a8d6788b6a1886916c5464b4}
+The original colorspace 
+
+Definition at line 21 of file Conversion.\+h.
+
+
+
+Referenced by Conversion(), Convert(), and operator=().
+
+\hypertarget{class_vision_1_1_conversion_a57337750cb60b9ff7ed269c184d1fda7}{}\index{Vision\+::\+Conversion@{Vision\+::\+Conversion}!Processed\+Color\+Space@{Processed\+Color\+Space}}
+\index{Processed\+Color\+Space@{Processed\+Color\+Space}!Vision\+::\+Conversion@{Vision\+::\+Conversion}}
+\subsubsection[{Processed\+Color\+Space}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Color\+Space} Vision\+::\+Conversion\+::\+Processed\+Color\+Space}\label{class_vision_1_1_conversion_a57337750cb60b9ff7ed269c184d1fda7}
+The destination colorspace 
+
+Definition at line 22 of file Conversion.\+h.
+
+
+
+Referenced by Conversion(), Convert(), and operator=().
+
+\hypertarget{class_vision_1_1_conversion_adbaed406827f7ffb583d003815a9f3f8}{}\index{Vision\+::\+Conversion@{Vision\+::\+Conversion}!white\+Point@{white\+Point}}
+\index{white\+Point@{white\+Point}!Vision\+::\+Conversion@{Vision\+::\+Conversion}}
+\subsubsection[{white\+Point}]{\setlength{\rightskip}{0pt plus 5cm}float Vision\+::\+Conversion\+::white\+Point\mbox{[}3\mbox{]} = \{ 0.\+9504, 1.\+0000, 1.\+0889 \}\hspace{0.3cm}{\ttfamily [private]}}\label{class_vision_1_1_conversion_adbaed406827f7ffb583d003815a9f3f8}
+Natural whitepoint in X\+Y\+Z colorspace D65 according to Matlab 
+
+Definition at line 45 of file Conversion.\+h.
+
+
+
+Referenced by X\+Y\+Z2\+Lab().
+
+\hypertarget{class_vision_1_1_conversion_ad0c6e6c63380927c63da7f967b5e61d1}{}\index{Vision\+::\+Conversion@{Vision\+::\+Conversion}!X\+Y\+Zmat@{X\+Y\+Zmat}}
+\index{X\+Y\+Zmat@{X\+Y\+Zmat}!Vision\+::\+Conversion@{Vision\+::\+Conversion}}
+\subsubsection[{X\+Y\+Zmat}]{\setlength{\rightskip}{0pt plus 5cm}float Vision\+::\+Conversion\+::\+X\+Y\+Zmat\mbox{[}3\mbox{]}\mbox{[}3\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}\label{class_vision_1_1_conversion_ad0c6e6c63380927c63da7f967b5e61d1}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+        \{
+            \{ 0.412453, 0.357580, 0.180423 \},
+            \{0.212671, 0.715160, 0.072169 \},
+            \{0.019334, 0.119194, 0.950227 \}
+        \}
+\end{DoxyCode}
+$<$ \hyperlink{class_vision_1_1_conversion}{Conversion} matrix used in the conversion between R\+G\+B and C\+I\+E X\+Y\+Z 
+
+Definition at line 38 of file Conversion.\+h.
+
+
+
+Referenced by R\+G\+B2\+X\+Y\+Z().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/peer23peer/\+Vision\+Soil\+Analyzer/src/\+Soil\+Vision/\hyperlink{_conversion_8h}{Conversion.\+h}\item 
+/home/peer23peer/\+Vision\+Soil\+Analyzer/src/\+Soil\+Vision/\hyperlink{_conversion_8cpp}{Conversion.\+cpp}\end{DoxyCompactItemize}

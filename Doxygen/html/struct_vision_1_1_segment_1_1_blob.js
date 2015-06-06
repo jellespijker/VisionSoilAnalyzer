@@ -1,7 +1,8 @@
 var struct_vision_1_1_segment_1_1_blob =
 [
-    [ "cvROI", "struct_vision_1_1_segment_1_1_blob.html#a943e65a51c066d0259e54a4142c54dbb", null ],
+    [ "Blob", "struct_vision_1_1_segment_1_1_blob.html#a4133b605534057e3747506d03e4041cb", null ],
+    [ "Area", "struct_vision_1_1_segment_1_1_blob.html#a391697e1f49d65415c6c0ed8c3221a74", null ],
     [ "Img", "struct_vision_1_1_segment_1_1_blob.html#a776f587282c775375052461a14b0a304", null ],
-    [ "Label", "struct_vision_1_1_segment_1_1_blob.html#ad4963dc22fe60c4266b717a2dac1fa59", null ],
-    [ "ROI", "struct_vision_1_1_segment_1_1_blob.html#a120710f9814f95a074a50635d2be3e5c", null ]
+    [ "Label", "struct_vision_1_1_segment_1_1_blob.html#aaa4c2a0d3f0c920fb8b59417dd54f82b", null ],
+    [ "ROI", "struct_vision_1_1_segment_1_1_blob.html#aceb3e938bb4489c08edd9324fdee7465", null ]
 ];
