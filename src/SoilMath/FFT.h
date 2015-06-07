@@ -1,3 +1,10 @@
+/* Copyright (C) Jelle Spijker - All Rights Reserved
+ * Unauthorized copying of this file, via any medium is strictly prohibited
+ * and only allowed with the written consent of the author (Jelle Spijker)
+ * This software is proprietary and confidential
+ * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015
+ */
+
 //*! Fast Fourier Transform class
 /*!
  * Use this class to transform a black and white blob presented as a cv::Mat
@@ -58,7 +65,9 @@ private:
    * contour image
    * to a vector of complex values. The contour is found using a depth first
    * search with
-   * extension list. The alghorithm is based upon <a href="http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-034-artificial-intelligence-fall-2010/lecture-videos/lecture-4-search-depth-first-hill-climbing-beam/">MIT opencourseware
+   * extension list. The alghorithm is based upon <a
+   * href="http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-034-artificial-intelligence-fall-2010/lecture-videos/lecture-4-search-depth-first-hill-climbing-beam/">MIT
+   * opencourseware
    * 6-034-artificial-intelligence lecture 4</a>
    * \param img contour in the form of a cv::Mat type CV_8UC1. Which should
    * consist of a continous contour. \f$ \{ img \in \mathbb{Z} | 0 \leq img \leq
@@ -70,7 +79,8 @@ private:
   ComplexVect_t Contour2Complex(const cv::Mat &img, float centerCol,
                                 float centerRow);
   /*!
-   * \brief Neighbors a private function returning the neighboring pixels which belong to a contour
+   * \brief Neighbors a private function returning the neighboring pixels which
+   * belong to a contour
    * \param O uchar pointer to the data
    * \param pixel current counter
    * \param columns total number of columns
@@ -85,7 +95,8 @@ private:
    * \f$ CA=[x_0,\ldots,x_{N-1}] \f$ is an \f$ N \f$ dimensional complex vector
    * let \f$ \omega=\exp({-2\pi i\over N}) \f$
    * then \f$ c_k={\frac{1}{N}}\sum_{j=0}^{j=N-1}CA_j\omega^{jk} \f$
-   * \param CA a \f$ CA=[x_0,\ldots,x_{N-1}] \f$ is an \f$ N \f$ dimensional complex vector
+   * \param CA a \f$ CA=[x_0,\ldots,x_{N-1}] \f$ is an \f$ N \f$ dimensional
+   * complex vector
    */
   void fft(ComplexArray_t &CA);
 

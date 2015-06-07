@@ -1,3 +1,10 @@
+/* Copyright (C) Jelle Spijker - All Rights Reserved
+ * Unauthorized copying of this file, via any medium is strictly prohibited
+ * and only allowed with the written consent of the author (Jelle Spijker)
+ * This software is proprietary and confidential
+ * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015
+ */
+
 #include "FFT.h"
 
 namespace SoilMath {
@@ -83,7 +90,7 @@ ComplexVect_t FFT::Contour2Complex(const cv::Mat &img, float centerCol,
     iContour_t nBors =
         Neighbors(O, i, img.cols, img.rows); // find neighboring pixels
     std::deque<uint32_t> cQ = sCont.front(); // store first queue;
-    sCont.erase(sCont.begin()); // erase first queue from beginning
+    sCont.erase(sCont.begin());              // erase first queue from beginning
     if (cQ.size() > 1) {
       prev = cQ.size() - 2;
     } else {
