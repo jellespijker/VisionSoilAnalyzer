@@ -1,9 +1,13 @@
-/*
-* This code is based upon:
-* Derek Molloy, "Exploring BeagleBone: Tools and Techniques for Building
-* with Embedded Linux", Wiley, 2014, ISBN:9781118935125.
-* See: www.exploringbeaglebone.com
-*/
+/* Copyright (C) Jelle Spijker - All Rights Reserved
+ * Unauthorized copying of this file, via any medium is strictly prohibited
+ * and only allowed with the written consent of the author (Jelle Spijker)
+ * This software is proprietary and confidential
+ * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015
+ * This code is based upon:
+ * Derek Molloy, "Exploring BeagleBone: Tools and Techniques for Building
+ * with Embedded Linux", Wiley, 2014, ISBN:9781118935125.
+ * See: www.exploringbeaglebone.com
+ */
 
 #pragma once
 #include "BBB.h"
@@ -17,53 +21,50 @@
 
 using namespace std;
 
-namespace Hardware
-{
-	class GPIO: 
-		public BBB
-	{
-	public:
-		enum Direction{ Input, Output };
-		enum Value{ Low = 0, High = 1 };
-		enum Edge{ None, Rising, Falling, Both };
+namespace Hardware {
+class GPIO : public BBB {
+public:
+  enum Direction { Input, Output };
+  enum Value { Low = 0, High = 1 };
+  enum Edge { None, Rising, Falling, Both };
 
-		int number; // Number of the pin
+  int number; // Number of the pin
 
-        int WaitForEdge();
-		int WaitForEdge(CallbackType callback);
-		void WaitForEdgeCancel() { this->threadRunning = false; }
+  int WaitForEdge();
+  int WaitForEdge(CallbackType callback);
+  void WaitForEdgeCancel() { this->threadRunning = false; }
 
-        Value GetValue();
-		void SetValue(Value value);
+  Value GetValue();
+  void SetValue(Value value);
 
-		Direction GetDirection();
-		void SetDirection(Direction direction);
+  Direction GetDirection();
+  void SetDirection(Direction direction);
 
-		Edge GetEdge();
-		void SetEdge(Edge edge);
+  Edge GetEdge();
+  void SetEdge(Edge edge);
 
-		GPIO(int number);
-		~GPIO();
+  GPIO(int number);
+  ~GPIO();
 
-	private:
-		string gpiopath;
-		Direction direction;
-		Edge edge;
-		friend void* threadedPollGPIO(void *value);
+private:
+  string gpiopath;
+  Direction direction;
+  Edge edge;
+  friend void *threadedPollGPIO(void *value);
 
-		bool isExported(int number, Direction &dir, Edge &edge);
-		bool ExportPin(int number);
-		bool UnexportPin(int number);
+  bool isExported(int number, Direction &dir, Edge &edge);
+  bool ExportPin(int number);
+  bool UnexportPin(int number);
 
-		Direction ReadsDirection(const string &gpiopath);
-		void WritesDirection(const string &gpiopath, Direction direction);
+  Direction ReadsDirection(const string &gpiopath);
+  void WritesDirection(const string &gpiopath, Direction direction);
 
-		Edge ReadsEdge(const string &gpiopath);
-		void WritesEdge(const string &gpiopath, Edge edge);
+  Edge ReadsEdge(const string &gpiopath);
+  void WritesEdge(const string &gpiopath, Edge edge);
 
-		Value ReadsValue(const string &gpiopath);
-		void WritesValue(const string &gpiopath, Value value);
-	};
+  Value ReadsValue(const string &gpiopath);
+  void WritesValue(const string &gpiopath, Value value);
+};
 
-	void* threadedPollGPIO(void *value);
+void *threadedPollGPIO(void *value);
 }
