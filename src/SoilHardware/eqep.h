@@ -34,58 +34,54 @@
 #define eQEP1 "/sys/devices/ocp.3/48302000.epwmss/48302180.eqep"
 #define eQEP2 "/sys/devices/ocp.3/48304000.epwmss/48304180.eqep"
 
-namespace Hardware
-{
-	// Class which defines an interface to my eQEP driver
-	class eQEP:
-		public BBB
-	{
-		// Base path for the eQEP unit
-		std::string path;
-	public:
-		// Modes of operation for the eQEP hardware
-		typedef enum
-		{
-			// Absolute positioning mode
-			eQEP_Mode_Absolute = 0,
+namespace Hardware {
+// Class which defines an interface to my eQEP driver
+class eQEP : public BBB {
+  // Base path for the eQEP unit
+  std::string path;
 
-			// Relative positioning mode
-			eQEP_Mode_Relative = 1,
+public:
+  // Modes of operation for the eQEP hardware
+  typedef enum {
+    // Absolute positioning mode
+    eQEP_Mode_Absolute = 0,
 
-			// Error flag
-			eQEP_Mode_Error = 2,
-		} eQEP_Mode;
+    // Relative positioning mode
+    eQEP_Mode_Relative = 1,
 
-		// Default constructor for the eQEP interface driver
-		eQEP(std::string _path, eQEP_Mode _mode);
+    // Error flag
+    eQEP_Mode_Error = 2,
+  } eQEP_Mode;
 
-		// Reset the value of the encoder
-		void set_position(int32_t position);
+  // Default constructor for the eQEP interface driver
+  eQEP(std::string _path, eQEP_Mode _mode);
 
-		// Get the position of the encoder, pass poll as true to poll the pin, whereas passing false reads the immediate value
-		int32_t get_position(bool _poll = true);
+  // Reset the value of the encoder
+  void set_position(int32_t position);
 
-		// Thread of the poll
-		int WaitForPositionChange(CallbackType callback);
-		void WaitForPositionChangeCancel() { this->threadRunning = false; }
+  // Get the position of the encoder, pass poll as true to poll the pin, whereas
+  // passing false reads the immediate value
+  int32_t get_position(bool _poll = true);
 
-		// Set the polling period
-		void set_period(uint64_t period);
+  // Thread of the poll
+  int WaitForPositionChange(CallbackType callback);
+  void WaitForPositionChangeCancel() { this->threadRunning = false; }
 
-		// Get the polling period of the encoder
-		uint64_t get_period();
+  // Set the polling period
+  void set_period(uint64_t period);
 
-		// Set the mode of the eQEP hardware
-		void set_mode(eQEP_Mode mode);
+  // Get the polling period of the encoder
+  uint64_t get_period();
 
-		// Get the mode of the eQEP hardware
-		eQEP_Mode get_mode();
+  // Set the mode of the eQEP hardware
+  void set_mode(eQEP_Mode mode);
 
-	private:
-		friend void* threadedPolleqep(void *value);
+  // Get the mode of the eQEP hardware
+  eQEP_Mode get_mode();
 
-	};
+private:
+  friend void *threadedPolleqep(void *value);
+};
 
-	void* threadedPolleqep(void *value);
-
+void *threadedPolleqep(void *value);
 }

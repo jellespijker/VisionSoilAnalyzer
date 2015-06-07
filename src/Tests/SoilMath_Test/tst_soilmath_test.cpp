@@ -1,3 +1,11 @@
+/* Copyright (C) Jelle Spijker - All Rights Reserved
+ * Unauthorized copying of this file, via any medium is strictly prohibited
+ * and only allowed with the written consent of the author (Jelle Spijker)
+ * This software is proprietary and confidential
+ * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015
+ */
+
+
 #define QCLOSE_COMPARE(actual, expected, A) QCOMPARE((int64)((actual) / A), (int64)((expected) / A))
 #define QCOMPARE_RANGE(actual, expected, endcount, type) count = 0; for_each(actual, actual + endcount,[&](type &AC){ QCOMPARE(AC, (type)expected[count++]); })
 #define QCLOSE_COMPARE_RANGE(actual, expected, endcount, A, type) count = 0; for_each(actual, actual + endcount,[&](type &AC){ QCLOSE_COMPARE(AC, (type)expected[count++], A); })
