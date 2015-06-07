@@ -35,7 +35,7 @@
    <div id="projectname">Vision Soil Analyzer
    &#160;<span id="projectnumber">1.0.0</span>
    </div>
-   <div id="projectbrief">The Soil Analyzer is a portable lab that can analyse soil samples and tells the user about it&#39;s optical properties. It looks at the texture and describe it as a Particle Size Distribution. This information is presented as a Cumulative Distribution Function (CDF). It also describes the structure of the soil sample and gives information on the sphericity and roundness / angularity. It does so by analysing the contour of particles, describing them as Fourier Descriptors and using a Neural Network to describe it&#39;s properties. Finally it gives the color properties in a histogram in the CIE La*b* colorspace, which show correlations with the fertility of the soil. and a histogram of the Redness Index, which gives has a correlation on the iron content.</div>
+   <div id="projectbrief">Soil analyzer using an USB microscope - for Linux PC and Beaglebone Black</div>
   </td>
  </tr>
  </tbody>
@@ -158,7 +158,7 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a97e62512e12a2ba9210fd93950b6e717"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a48330eb812672b50a94483f264614e8f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_soil_analyzer_1_1_soil_settings.html#a48330eb812672b50a94483f264614e8f">thresholdOffsetValue</a> = 0</td></tr>
 <tr class="separator:a48330eb812672b50a94483f264614e8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad1420c4800badb3eb07eba4767e3df81"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_vision_1_1_morphological_filter.html#a1f19c9cb13f0d68778c77d6fd0370868">Vision::MorphologicalFilter::FilterType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_soil_analyzer_1_1_soil_settings.html#ad1420c4800badb3eb07eba4767e3df81">morphFilterType</a> = <a class="el" href="class_vision_1_1_morphological_filter.html#a1f19c9cb13f0d68778c77d6fd0370868afd436eed00afa15b23eeac4de3509303">Vision::MorphologicalFilter::OPEN</a></td></tr>
+<tr class="memitem:ad1420c4800badb3eb07eba4767e3df81"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_vision_1_1_morphological_filter.html#a1f19c9cb13f0d68778c77d6fd0370868">Vision::MorphologicalFilter::FilterType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_soil_analyzer_1_1_soil_settings.html#ad1420c4800badb3eb07eba4767e3df81">morphFilterType</a></td></tr>
 <tr class="separator:ad1420c4800badb3eb07eba4767e3df81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad9d5071bbf6d10638df024e883c6199f"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_soil_analyzer_1_1_soil_settings.html#ad9d5071bbf6d10638df024e883c6199f">filterMaskSize</a> = 5</td></tr>
 <tr class="separator:ad9d5071bbf6d10638df024e883c6199f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -184,7 +184,7 @@ Friends</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p>Definition at line <a class="el" href="soilsettings_8h_source.html#l00010">10</a> of file <a class="el" href="soilsettings_8h_source.html">soilsettings.h</a>.</p>
+<p>Definition at line <a class="el" href="soilsettings_8h_source.html#l00017">17</a> of file <a class="el" href="soilsettings_8h_source.html">soilsettings.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="ab8359b9a5ea27e6296e79a82789c8719"></a>
 <div class="memitem">
@@ -199,10 +199,8 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="soilsettings_8cpp_source.html#l00004">4</a> of file <a class="el" href="soilsettings_8cpp_source.html">soilsettings.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    {</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    }</div>
+<p>Definition at line <a class="el" href="soilsettings_8cpp_source.html#l00011">11</a> of file <a class="el" href="soilsettings_8cpp_source.html">soilsettings.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -221,14 +219,14 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="soilsettings_8cpp_source.html#l00009">9</a> of file <a class="el" href="soilsettings_8cpp_source.html">soilsettings.cpp</a>.</p>
+<p>Definition at line <a class="el" href="soilsettings_8cpp_source.html#l00013">13</a> of file <a class="el" href="soilsettings_8cpp_source.html">soilsettings.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="vsagui_8cpp_source.html#l00192">VSAGUI::on_actionLoad_Settings_triggered()</a>, <a class="el" href="vsagui_8cpp_source.html#l00202">VSAGUI::on_actionRestore_Default_triggered()</a>, and <a class="el" href="vsagui_8cpp_source.html#l00004">VSAGUI::VSAGUI()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    {</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        std::ifstream ifs(filename.c_str());</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        boost::archive::xml_iarchive ia(ifs);</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        ia &gt;&gt; boost::serialization::make_nvp(<span class="stringliteral">&quot;SoilSettings&quot;</span>, *<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    }</div>
+<p>Referenced by <a class="el" href="vsagui_8cpp_source.html#l00207">VSAGUI::on_actionLoad_Settings_triggered()</a>, <a class="el" href="vsagui_8cpp_source.html#l00219">VSAGUI::on_actionRestore_Default_triggered()</a>, and <a class="el" href="vsagui_8cpp_source.html#l00011">VSAGUI::VSAGUI()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;                                               {</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  std::ifstream ifs(filename.c_str());</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  boost::archive::xml_iarchive ia(ifs);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  ia &gt;&gt; boost::serialization::make_nvp(<span class="stringliteral">&quot;SoilSettings&quot;</span>, *<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;}</div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -255,14 +253,14 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="soilsettings_8cpp_source.html#l00016">16</a> of file <a class="el" href="soilsettings_8cpp_source.html">soilsettings.cpp</a>.</p>
+<p>Definition at line <a class="el" href="soilsettings_8cpp_source.html#l00019">19</a> of file <a class="el" href="soilsettings_8cpp_source.html">soilsettings.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="vsagui_8cpp_source.html#l00181">VSAGUI::on_actionSave_Settings_triggered()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        std::ofstream ofs(filename.c_str());</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        boost::archive::xml_oarchive oa(ofs);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        oa &lt;&lt; boost::serialization::make_nvp(<span class="stringliteral">&quot;SoilSettings&quot;</span>, *<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    }</div>
+<p>Referenced by <a class="el" href="vsagui_8cpp_source.html#l00192">VSAGUI::on_actionSave_Settings_triggered()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                                               {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  std::ofstream ofs(filename.c_str());</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  boost::archive::xml_oarchive oa(ofs);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  oa &lt;&lt; boost::serialization::make_nvp(<span class="stringliteral">&quot;SoilSettings&quot;</span>, *<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}</div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -309,41 +307,41 @@ template&lt;class Archive &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="soilsettings_8h_source.html#l00042">42</a> of file <a class="el" href="soilsettings_8h_source.html">soilsettings.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        {</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            ar &amp; BOOST_SERIALIZATION_NVP(<a class="code" href="class_soil_analyzer_1_1_soil_settings.html#a0e27335d05aed8f3f084744062368578">useAdaptiveContrast</a>);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            ar &amp; BOOST_SERIALIZATION_NVP(<a class="code" href="class_soil_analyzer_1_1_soil_settings.html#ace12c0f4bc35d420ef528cc390fc2cdb">adaptContrastKernelFactor</a>);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            ar &amp; BOOST_SERIALIZATION_NVP(<a class="code" href="class_soil_analyzer_1_1_soil_settings.html#a73f627b092dbdbda37b66ef6c2eef95c">adaptContrastKernelSize</a>);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            ar &amp; BOOST_SERIALIZATION_NVP(<a class="code" href="class_soil_analyzer_1_1_soil_settings.html#a21bd246a48a712734af86f592030e18b">useBlur</a>);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            ar &amp; BOOST_SERIALIZATION_NVP(<a class="code" href="class_soil_analyzer_1_1_soil_settings.html#afa46542d30045e00fadbdd5a6ab9a1e1">blurKernelSize</a>);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            ar &amp; BOOST_SERIALIZATION_NVP(<a class="code" href="class_soil_analyzer_1_1_soil_settings.html#a21ae88dba6b9b0b07d9c26812bc739fb">typeOfObjectsSegmented</a>);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            ar &amp; BOOST_SERIALIZATION_NVP(<a class="code" href="class_soil_analyzer_1_1_soil_settings.html#a24fb1d7da2247da77a17d853ea1494d7">ignorePartialBorderParticles</a>);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            ar &amp; BOOST_SERIALIZATION_NVP(<a class="code" href="class_soil_analyzer_1_1_soil_settings.html#a2c9dbe9429742aed1da9d9683da5cc1e">fillHoles</a>);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            ar &amp; BOOST_SERIALIZATION_NVP(<a class="code" href="class_soil_analyzer_1_1_soil_settings.html#a97e62512e12a2ba9210fd93950b6e717">sigmaFactor</a>);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            ar &amp; BOOST_SERIALIZATION_NVP(<a class="code" href="class_soil_analyzer_1_1_soil_settings.html#ad1420c4800badb3eb07eba4767e3df81">morphFilterType</a>);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            ar &amp; BOOST_SERIALIZATION_NVP(<a class="code" href="class_soil_analyzer_1_1_soil_settings.html#ad9d5071bbf6d10638df024e883c6199f">filterMaskSize</a>);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            ar &amp; BOOST_SERIALIZATION_NVP(<a class="code" href="class_soil_analyzer_1_1_soil_settings.html#a48330eb812672b50a94483f264614e8f">thresholdOffsetValue</a>);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            ar &amp; BOOST_SERIALIZATION_NVP(<a class="code" href="class_soil_analyzer_1_1_soil_settings.html#a77e631ff44efe74762b5adaa2eb2cd11">HDRframes</a>);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            ar &amp; BOOST_SERIALIZATION_NVP(<a class="code" href="class_soil_analyzer_1_1_soil_settings.html#aa4d3ed8c1ab6551bfa4763e8a1ffc148">lightLevel</a>);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            ar &amp; BOOST_SERIALIZATION_NVP(<a class="code" href="class_soil_analyzer_1_1_soil_settings.html#ad831e13b61fc2097219bbf7252f045d5">encInv</a>);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            ar &amp; BOOST_SERIALIZATION_NVP(<a class="code" href="class_soil_analyzer_1_1_soil_settings.html#a9ece0b96eb8614a497fba3a19d8b4da1">enableRainbow</a>);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        }</div>
-<div class="ttc" id="class_soil_analyzer_1_1_soil_settings_html_afa46542d30045e00fadbdd5a6ab9a1e1"><div class="ttname"><a href="class_soil_analyzer_1_1_soil_settings.html#afa46542d30045e00fadbdd5a6ab9a1e1">SoilAnalyzer::SoilSettings::blurKernelSize</a></div><div class="ttdeci">uint32_t blurKernelSize</div><div class="ttdef"><b>Definition:</b> <a href="soilsettings_8h_source.html#l00023">soilsettings.h:23</a></div></div>
-<div class="ttc" id="class_soil_analyzer_1_1_soil_settings_html_a21bd246a48a712734af86f592030e18b"><div class="ttname"><a href="class_soil_analyzer_1_1_soil_settings.html#a21bd246a48a712734af86f592030e18b">SoilAnalyzer::SoilSettings::useBlur</a></div><div class="ttdeci">bool useBlur</div><div class="ttdef"><b>Definition:</b> <a href="soilsettings_8h_source.html#l00022">soilsettings.h:22</a></div></div>
-<div class="ttc" id="class_soil_analyzer_1_1_soil_settings_html_a97e62512e12a2ba9210fd93950b6e717"><div class="ttname"><a href="class_soil_analyzer_1_1_soil_settings.html#a97e62512e12a2ba9210fd93950b6e717">SoilAnalyzer::SoilSettings::sigmaFactor</a></div><div class="ttdeci">float sigmaFactor</div><div class="ttdef"><b>Definition:</b> <a href="soilsettings_8h_source.html#l00028">soilsettings.h:28</a></div></div>
-<div class="ttc" id="class_soil_analyzer_1_1_soil_settings_html_a77e631ff44efe74762b5adaa2eb2cd11"><div class="ttname"><a href="class_soil_analyzer_1_1_soil_settings.html#a77e631ff44efe74762b5adaa2eb2cd11">SoilAnalyzer::SoilSettings::HDRframes</a></div><div class="ttdeci">uint32_t HDRframes</div><div class="ttdef"><b>Definition:</b> <a href="soilsettings_8h_source.html#l00034">soilsettings.h:34</a></div></div>
-<div class="ttc" id="class_soil_analyzer_1_1_soil_settings_html_ad9d5071bbf6d10638df024e883c6199f"><div class="ttname"><a href="class_soil_analyzer_1_1_soil_settings.html#ad9d5071bbf6d10638df024e883c6199f">SoilAnalyzer::SoilSettings::filterMaskSize</a></div><div class="ttdeci">uint32_t filterMaskSize</div><div class="ttdef"><b>Definition:</b> <a href="soilsettings_8h_source.html#l00032">soilsettings.h:32</a></div></div>
-<div class="ttc" id="class_soil_analyzer_1_1_soil_settings_html_a73f627b092dbdbda37b66ef6c2eef95c"><div class="ttname"><a href="class_soil_analyzer_1_1_soil_settings.html#a73f627b092dbdbda37b66ef6c2eef95c">SoilAnalyzer::SoilSettings::adaptContrastKernelSize</a></div><div class="ttdeci">uint32_t adaptContrastKernelSize</div><div class="ttdef"><b>Definition:</b> <a href="soilsettings_8h_source.html#l00019">soilsettings.h:19</a></div></div>
-<div class="ttc" id="class_soil_analyzer_1_1_soil_settings_html_a9ece0b96eb8614a497fba3a19d8b4da1"><div class="ttname"><a href="class_soil_analyzer_1_1_soil_settings.html#a9ece0b96eb8614a497fba3a19d8b4da1">SoilAnalyzer::SoilSettings::enableRainbow</a></div><div class="ttdeci">bool enableRainbow</div><div class="ttdef"><b>Definition:</b> <a href="soilsettings_8h_source.html#l00037">soilsettings.h:37</a></div></div>
-<div class="ttc" id="class_soil_analyzer_1_1_soil_settings_html_aa4d3ed8c1ab6551bfa4763e8a1ffc148"><div class="ttname"><a href="class_soil_analyzer_1_1_soil_settings.html#aa4d3ed8c1ab6551bfa4763e8a1ffc148">SoilAnalyzer::SoilSettings::lightLevel</a></div><div class="ttdeci">float lightLevel</div><div class="ttdef"><b>Definition:</b> <a href="soilsettings_8h_source.html#l00035">soilsettings.h:35</a></div></div>
-<div class="ttc" id="class_soil_analyzer_1_1_soil_settings_html_ad831e13b61fc2097219bbf7252f045d5"><div class="ttname"><a href="class_soil_analyzer_1_1_soil_settings.html#ad831e13b61fc2097219bbf7252f045d5">SoilAnalyzer::SoilSettings::encInv</a></div><div class="ttdeci">bool encInv</div><div class="ttdef"><b>Definition:</b> <a href="soilsettings_8h_source.html#l00036">soilsettings.h:36</a></div></div>
-<div class="ttc" id="class_soil_analyzer_1_1_soil_settings_html_a21ae88dba6b9b0b07d9c26812bc739fb"><div class="ttname"><a href="class_soil_analyzer_1_1_soil_settings.html#a21ae88dba6b9b0b07d9c26812bc739fb">SoilAnalyzer::SoilSettings::typeOfObjectsSegmented</a></div><div class="ttdeci">Vision::Segment::TypeOfObjects typeOfObjectsSegmented</div><div class="ttdef"><b>Definition:</b> <a href="soilsettings_8h_source.html#l00025">soilsettings.h:25</a></div></div>
-<div class="ttc" id="class_soil_analyzer_1_1_soil_settings_html_ace12c0f4bc35d420ef528cc390fc2cdb"><div class="ttname"><a href="class_soil_analyzer_1_1_soil_settings.html#ace12c0f4bc35d420ef528cc390fc2cdb">SoilAnalyzer::SoilSettings::adaptContrastKernelFactor</a></div><div class="ttdeci">float adaptContrastKernelFactor</div><div class="ttdef"><b>Definition:</b> <a href="soilsettings_8h_source.html#l00020">soilsettings.h:20</a></div></div>
-<div class="ttc" id="class_soil_analyzer_1_1_soil_settings_html_ad1420c4800badb3eb07eba4767e3df81"><div class="ttname"><a href="class_soil_analyzer_1_1_soil_settings.html#ad1420c4800badb3eb07eba4767e3df81">SoilAnalyzer::SoilSettings::morphFilterType</a></div><div class="ttdeci">Vision::MorphologicalFilter::FilterType morphFilterType</div><div class="ttdef"><b>Definition:</b> <a href="soilsettings_8h_source.html#l00031">soilsettings.h:31</a></div></div>
-<div class="ttc" id="class_soil_analyzer_1_1_soil_settings_html_a0e27335d05aed8f3f084744062368578"><div class="ttname"><a href="class_soil_analyzer_1_1_soil_settings.html#a0e27335d05aed8f3f084744062368578">SoilAnalyzer::SoilSettings::useAdaptiveContrast</a></div><div class="ttdeci">bool useAdaptiveContrast</div><div class="ttdef"><b>Definition:</b> <a href="soilsettings_8h_source.html#l00018">soilsettings.h:18</a></div></div>
-<div class="ttc" id="class_soil_analyzer_1_1_soil_settings_html_a48330eb812672b50a94483f264614e8f"><div class="ttname"><a href="class_soil_analyzer_1_1_soil_settings.html#a48330eb812672b50a94483f264614e8f">SoilAnalyzer::SoilSettings::thresholdOffsetValue</a></div><div class="ttdeci">int thresholdOffsetValue</div><div class="ttdef"><b>Definition:</b> <a href="soilsettings_8h_source.html#l00029">soilsettings.h:29</a></div></div>
-<div class="ttc" id="class_soil_analyzer_1_1_soil_settings_html_a2c9dbe9429742aed1da9d9683da5cc1e"><div class="ttname"><a href="class_soil_analyzer_1_1_soil_settings.html#a2c9dbe9429742aed1da9d9683da5cc1e">SoilAnalyzer::SoilSettings::fillHoles</a></div><div class="ttdeci">bool fillHoles</div><div class="ttdef"><b>Definition:</b> <a href="soilsettings_8h_source.html#l00027">soilsettings.h:27</a></div></div>
-<div class="ttc" id="class_soil_analyzer_1_1_soil_settings_html_a24fb1d7da2247da77a17d853ea1494d7"><div class="ttname"><a href="class_soil_analyzer_1_1_soil_settings.html#a24fb1d7da2247da77a17d853ea1494d7">SoilAnalyzer::SoilSettings::ignorePartialBorderParticles</a></div><div class="ttdeci">bool ignorePartialBorderParticles</div><div class="ttdef"><b>Definition:</b> <a href="soilsettings_8h_source.html#l00026">soilsettings.h:26</a></div></div>
+<p>Definition at line <a class="el" href="soilsettings_8h_source.html#l00049">49</a> of file <a class="el" href="soilsettings_8h_source.html">soilsettings.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                                                          {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    ar &amp;BOOST_SERIALIZATION_NVP(<a class="code" href="class_soil_analyzer_1_1_soil_settings.html#a0e27335d05aed8f3f084744062368578">useAdaptiveContrast</a>);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    ar &amp;BOOST_SERIALIZATION_NVP(<a class="code" href="class_soil_analyzer_1_1_soil_settings.html#ace12c0f4bc35d420ef528cc390fc2cdb">adaptContrastKernelFactor</a>);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    ar &amp;BOOST_SERIALIZATION_NVP(<a class="code" href="class_soil_analyzer_1_1_soil_settings.html#a73f627b092dbdbda37b66ef6c2eef95c">adaptContrastKernelSize</a>);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    ar &amp;BOOST_SERIALIZATION_NVP(<a class="code" href="class_soil_analyzer_1_1_soil_settings.html#a21bd246a48a712734af86f592030e18b">useBlur</a>);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    ar &amp;BOOST_SERIALIZATION_NVP(<a class="code" href="class_soil_analyzer_1_1_soil_settings.html#afa46542d30045e00fadbdd5a6ab9a1e1">blurKernelSize</a>);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    ar &amp;BOOST_SERIALIZATION_NVP(<a class="code" href="class_soil_analyzer_1_1_soil_settings.html#a21ae88dba6b9b0b07d9c26812bc739fb">typeOfObjectsSegmented</a>);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    ar &amp;BOOST_SERIALIZATION_NVP(<a class="code" href="class_soil_analyzer_1_1_soil_settings.html#a24fb1d7da2247da77a17d853ea1494d7">ignorePartialBorderParticles</a>);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    ar &amp;BOOST_SERIALIZATION_NVP(<a class="code" href="class_soil_analyzer_1_1_soil_settings.html#a2c9dbe9429742aed1da9d9683da5cc1e">fillHoles</a>);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    ar &amp;BOOST_SERIALIZATION_NVP(<a class="code" href="class_soil_analyzer_1_1_soil_settings.html#a97e62512e12a2ba9210fd93950b6e717">sigmaFactor</a>);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    ar &amp;BOOST_SERIALIZATION_NVP(<a class="code" href="class_soil_analyzer_1_1_soil_settings.html#ad1420c4800badb3eb07eba4767e3df81">morphFilterType</a>);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    ar &amp;BOOST_SERIALIZATION_NVP(<a class="code" href="class_soil_analyzer_1_1_soil_settings.html#ad9d5071bbf6d10638df024e883c6199f">filterMaskSize</a>);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    ar &amp;BOOST_SERIALIZATION_NVP(<a class="code" href="class_soil_analyzer_1_1_soil_settings.html#a48330eb812672b50a94483f264614e8f">thresholdOffsetValue</a>);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    ar &amp;BOOST_SERIALIZATION_NVP(<a class="code" href="class_soil_analyzer_1_1_soil_settings.html#a77e631ff44efe74762b5adaa2eb2cd11">HDRframes</a>);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    ar &amp;BOOST_SERIALIZATION_NVP(<a class="code" href="class_soil_analyzer_1_1_soil_settings.html#aa4d3ed8c1ab6551bfa4763e8a1ffc148">lightLevel</a>);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    ar &amp;BOOST_SERIALIZATION_NVP(<a class="code" href="class_soil_analyzer_1_1_soil_settings.html#ad831e13b61fc2097219bbf7252f045d5">encInv</a>);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    ar &amp;BOOST_SERIALIZATION_NVP(<a class="code" href="class_soil_analyzer_1_1_soil_settings.html#a9ece0b96eb8614a497fba3a19d8b4da1">enableRainbow</a>);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  }</div>
+<div class="ttc" id="class_soil_analyzer_1_1_soil_settings_html_afa46542d30045e00fadbdd5a6ab9a1e1"><div class="ttname"><a href="class_soil_analyzer_1_1_soil_settings.html#afa46542d30045e00fadbdd5a6ab9a1e1">SoilAnalyzer::SoilSettings::blurKernelSize</a></div><div class="ttdeci">uint32_t blurKernelSize</div><div class="ttdef"><b>Definition:</b> <a href="soilsettings_8h_source.html#l00029">soilsettings.h:29</a></div></div>
+<div class="ttc" id="class_soil_analyzer_1_1_soil_settings_html_a21bd246a48a712734af86f592030e18b"><div class="ttname"><a href="class_soil_analyzer_1_1_soil_settings.html#a21bd246a48a712734af86f592030e18b">SoilAnalyzer::SoilSettings::useBlur</a></div><div class="ttdeci">bool useBlur</div><div class="ttdef"><b>Definition:</b> <a href="soilsettings_8h_source.html#l00028">soilsettings.h:28</a></div></div>
+<div class="ttc" id="class_soil_analyzer_1_1_soil_settings_html_a97e62512e12a2ba9210fd93950b6e717"><div class="ttname"><a href="class_soil_analyzer_1_1_soil_settings.html#a97e62512e12a2ba9210fd93950b6e717">SoilAnalyzer::SoilSettings::sigmaFactor</a></div><div class="ttdeci">float sigmaFactor</div><div class="ttdef"><b>Definition:</b> <a href="soilsettings_8h_source.html#l00034">soilsettings.h:34</a></div></div>
+<div class="ttc" id="class_soil_analyzer_1_1_soil_settings_html_a77e631ff44efe74762b5adaa2eb2cd11"><div class="ttname"><a href="class_soil_analyzer_1_1_soil_settings.html#a77e631ff44efe74762b5adaa2eb2cd11">SoilAnalyzer::SoilSettings::HDRframes</a></div><div class="ttdeci">uint32_t HDRframes</div><div class="ttdef"><b>Definition:</b> <a href="soilsettings_8h_source.html#l00041">soilsettings.h:41</a></div></div>
+<div class="ttc" id="class_soil_analyzer_1_1_soil_settings_html_ad9d5071bbf6d10638df024e883c6199f"><div class="ttname"><a href="class_soil_analyzer_1_1_soil_settings.html#ad9d5071bbf6d10638df024e883c6199f">SoilAnalyzer::SoilSettings::filterMaskSize</a></div><div class="ttdeci">uint32_t filterMaskSize</div><div class="ttdef"><b>Definition:</b> <a href="soilsettings_8h_source.html#l00039">soilsettings.h:39</a></div></div>
+<div class="ttc" id="class_soil_analyzer_1_1_soil_settings_html_a73f627b092dbdbda37b66ef6c2eef95c"><div class="ttname"><a href="class_soil_analyzer_1_1_soil_settings.html#a73f627b092dbdbda37b66ef6c2eef95c">SoilAnalyzer::SoilSettings::adaptContrastKernelSize</a></div><div class="ttdeci">uint32_t adaptContrastKernelSize</div><div class="ttdef"><b>Definition:</b> <a href="soilsettings_8h_source.html#l00025">soilsettings.h:25</a></div></div>
+<div class="ttc" id="class_soil_analyzer_1_1_soil_settings_html_a9ece0b96eb8614a497fba3a19d8b4da1"><div class="ttname"><a href="class_soil_analyzer_1_1_soil_settings.html#a9ece0b96eb8614a497fba3a19d8b4da1">SoilAnalyzer::SoilSettings::enableRainbow</a></div><div class="ttdeci">bool enableRainbow</div><div class="ttdef"><b>Definition:</b> <a href="soilsettings_8h_source.html#l00044">soilsettings.h:44</a></div></div>
+<div class="ttc" id="class_soil_analyzer_1_1_soil_settings_html_aa4d3ed8c1ab6551bfa4763e8a1ffc148"><div class="ttname"><a href="class_soil_analyzer_1_1_soil_settings.html#aa4d3ed8c1ab6551bfa4763e8a1ffc148">SoilAnalyzer::SoilSettings::lightLevel</a></div><div class="ttdeci">float lightLevel</div><div class="ttdef"><b>Definition:</b> <a href="soilsettings_8h_source.html#l00042">soilsettings.h:42</a></div></div>
+<div class="ttc" id="class_soil_analyzer_1_1_soil_settings_html_ad831e13b61fc2097219bbf7252f045d5"><div class="ttname"><a href="class_soil_analyzer_1_1_soil_settings.html#ad831e13b61fc2097219bbf7252f045d5">SoilAnalyzer::SoilSettings::encInv</a></div><div class="ttdeci">bool encInv</div><div class="ttdef"><b>Definition:</b> <a href="soilsettings_8h_source.html#l00043">soilsettings.h:43</a></div></div>
+<div class="ttc" id="class_soil_analyzer_1_1_soil_settings_html_a21ae88dba6b9b0b07d9c26812bc739fb"><div class="ttname"><a href="class_soil_analyzer_1_1_soil_settings.html#a21ae88dba6b9b0b07d9c26812bc739fb">SoilAnalyzer::SoilSettings::typeOfObjectsSegmented</a></div><div class="ttdeci">Vision::Segment::TypeOfObjects typeOfObjectsSegmented</div><div class="ttdef"><b>Definition:</b> <a href="soilsettings_8h_source.html#l00031">soilsettings.h:31</a></div></div>
+<div class="ttc" id="class_soil_analyzer_1_1_soil_settings_html_ace12c0f4bc35d420ef528cc390fc2cdb"><div class="ttname"><a href="class_soil_analyzer_1_1_soil_settings.html#ace12c0f4bc35d420ef528cc390fc2cdb">SoilAnalyzer::SoilSettings::adaptContrastKernelFactor</a></div><div class="ttdeci">float adaptContrastKernelFactor</div><div class="ttdef"><b>Definition:</b> <a href="soilsettings_8h_source.html#l00026">soilsettings.h:26</a></div></div>
+<div class="ttc" id="class_soil_analyzer_1_1_soil_settings_html_ad1420c4800badb3eb07eba4767e3df81"><div class="ttname"><a href="class_soil_analyzer_1_1_soil_settings.html#ad1420c4800badb3eb07eba4767e3df81">SoilAnalyzer::SoilSettings::morphFilterType</a></div><div class="ttdeci">Vision::MorphologicalFilter::FilterType morphFilterType</div><div class="ttdef"><b>Definition:</b> <a href="soilsettings_8h_source.html#l00037">soilsettings.h:37</a></div></div>
+<div class="ttc" id="class_soil_analyzer_1_1_soil_settings_html_a0e27335d05aed8f3f084744062368578"><div class="ttname"><a href="class_soil_analyzer_1_1_soil_settings.html#a0e27335d05aed8f3f084744062368578">SoilAnalyzer::SoilSettings::useAdaptiveContrast</a></div><div class="ttdeci">bool useAdaptiveContrast</div><div class="ttdef"><b>Definition:</b> <a href="soilsettings_8h_source.html#l00024">soilsettings.h:24</a></div></div>
+<div class="ttc" id="class_soil_analyzer_1_1_soil_settings_html_a48330eb812672b50a94483f264614e8f"><div class="ttname"><a href="class_soil_analyzer_1_1_soil_settings.html#a48330eb812672b50a94483f264614e8f">SoilAnalyzer::SoilSettings::thresholdOffsetValue</a></div><div class="ttdeci">int thresholdOffsetValue</div><div class="ttdef"><b>Definition:</b> <a href="soilsettings_8h_source.html#l00035">soilsettings.h:35</a></div></div>
+<div class="ttc" id="class_soil_analyzer_1_1_soil_settings_html_a2c9dbe9429742aed1da9d9683da5cc1e"><div class="ttname"><a href="class_soil_analyzer_1_1_soil_settings.html#a2c9dbe9429742aed1da9d9683da5cc1e">SoilAnalyzer::SoilSettings::fillHoles</a></div><div class="ttdeci">bool fillHoles</div><div class="ttdef"><b>Definition:</b> <a href="soilsettings_8h_source.html#l00033">soilsettings.h:33</a></div></div>
+<div class="ttc" id="class_soil_analyzer_1_1_soil_settings_html_a24fb1d7da2247da77a17d853ea1494d7"><div class="ttname"><a href="class_soil_analyzer_1_1_soil_settings.html#a24fb1d7da2247da77a17d853ea1494d7">SoilAnalyzer::SoilSettings::ignorePartialBorderParticles</a></div><div class="ttdeci">bool ignorePartialBorderParticles</div><div class="ttdef"><b>Definition:</b> <a href="soilsettings_8h_source.html#l00032">soilsettings.h:32</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -366,7 +364,7 @@ template&lt;class Archive &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="soilsettings_8h_source.html#l00040">40</a> of file <a class="el" href="soilsettings_8h_source.html">soilsettings.h</a>.</p>
+<p>Definition at line <a class="el" href="soilsettings_8h_source.html#l00047">47</a> of file <a class="el" href="soilsettings_8h_source.html">soilsettings.h</a>.</p>
 
 </div>
 </div>
@@ -381,9 +379,9 @@ template&lt;class Archive &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="soilsettings_8h_source.html#l00020">20</a> of file <a class="el" href="soilsettings_8h_source.html">soilsettings.h</a>.</p>
+<p>Definition at line <a class="el" href="soilsettings_8h_source.html#l00026">26</a> of file <a class="el" href="soilsettings_8h_source.html">soilsettings.h</a>.</p>
 
-<p>Referenced by <a class="el" href="visionsettings_8cpp_source.html#l00096">VisionSettings::on_sb_adaptContrastFactor_editingFinished()</a>, and <a class="el" href="visionsettings_8cpp_source.html#l00004">VisionSettings::VisionSettings()</a>.</p>
+<p>Referenced by <a class="el" href="visionsettings_8cpp_source.html#l00091">VisionSettings::on_sb_adaptContrastFactor_editingFinished()</a>, and <a class="el" href="visionsettings_8cpp_source.html#l00011">VisionSettings::VisionSettings()</a>.</p>
 
 </div>
 </div>
@@ -397,9 +395,9 @@ template&lt;class Archive &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="soilsettings_8h_source.html#l00019">19</a> of file <a class="el" href="soilsettings_8h_source.html">soilsettings.h</a>.</p>
+<p>Definition at line <a class="el" href="soilsettings_8h_source.html#l00025">25</a> of file <a class="el" href="soilsettings_8h_source.html">soilsettings.h</a>.</p>
 
-<p>Referenced by <a class="el" href="visionsettings_8cpp_source.html#l00089">VisionSettings::on_sb_adaptContrKernel_editingFinished()</a>, <a class="el" href="_sample_8cpp_source.html#l00034">SoilAnalyzer::Sample::PrepImg()</a>, and <a class="el" href="visionsettings_8cpp_source.html#l00004">VisionSettings::VisionSettings()</a>.</p>
+<p>Referenced by <a class="el" href="visionsettings_8cpp_source.html#l00083">VisionSettings::on_sb_adaptContrKernel_editingFinished()</a>, <a class="el" href="_sample_8cpp_source.html#l00032">SoilAnalyzer::Sample::PrepImg()</a>, and <a class="el" href="visionsettings_8cpp_source.html#l00011">VisionSettings::VisionSettings()</a>.</p>
 
 </div>
 </div>
@@ -413,9 +411,9 @@ template&lt;class Archive &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="soilsettings_8h_source.html#l00023">23</a> of file <a class="el" href="soilsettings_8h_source.html">soilsettings.h</a>.</p>
+<p>Definition at line <a class="el" href="soilsettings_8h_source.html#l00029">29</a> of file <a class="el" href="soilsettings_8h_source.html">soilsettings.h</a>.</p>
 
-<p>Referenced by <a class="el" href="visionsettings_8cpp_source.html#l00106">VisionSettings::on_sb_blurMask_editingFinished()</a>, <a class="el" href="_sample_8cpp_source.html#l00034">SoilAnalyzer::Sample::PrepImg()</a>, and <a class="el" href="visionsettings_8cpp_source.html#l00004">VisionSettings::VisionSettings()</a>.</p>
+<p>Referenced by <a class="el" href="visionsettings_8cpp_source.html#l00100">VisionSettings::on_sb_blurMask_editingFinished()</a>, <a class="el" href="_sample_8cpp_source.html#l00032">SoilAnalyzer::Sample::PrepImg()</a>, and <a class="el" href="visionsettings_8cpp_source.html#l00011">VisionSettings::VisionSettings()</a>.</p>
 
 </div>
 </div>
@@ -429,9 +427,9 @@ template&lt;class Archive &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="soilsettings_8h_source.html#l00037">37</a> of file <a class="el" href="soilsettings_8h_source.html">soilsettings.h</a>.</p>
+<p>Definition at line <a class="el" href="soilsettings_8h_source.html#l00044">44</a> of file <a class="el" href="soilsettings_8h_source.html">soilsettings.h</a>.</p>
 
-<p>Referenced by <a class="el" href="hardwaresettings_8cpp_source.html#l00004">HardwareSettings::HardwareSettings()</a>, and <a class="el" href="hardwaresettings_8cpp_source.html#l00063">HardwareSettings::on_cb_enableRainbow_clicked()</a>.</p>
+<p>Referenced by <a class="el" href="hardwaresettings_8cpp_source.html#l00011">HardwareSettings::HardwareSettings()</a>, and <a class="el" href="hardwaresettings_8cpp_source.html#l00058">HardwareSettings::on_cb_enableRainbow_clicked()</a>.</p>
 
 </div>
 </div>
@@ -445,9 +443,9 @@ template&lt;class Archive &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="soilsettings_8h_source.html#l00036">36</a> of file <a class="el" href="soilsettings_8h_source.html">soilsettings.h</a>.</p>
+<p>Definition at line <a class="el" href="soilsettings_8h_source.html#l00043">43</a> of file <a class="el" href="soilsettings_8h_source.html">soilsettings.h</a>.</p>
 
-<p>Referenced by <a class="el" href="hardwaresettings_8cpp_source.html#l00004">HardwareSettings::HardwareSettings()</a>, and <a class="el" href="hardwaresettings_8cpp_source.html#l00058">HardwareSettings::on_cb_encoderInv_clicked()</a>.</p>
+<p>Referenced by <a class="el" href="hardwaresettings_8cpp_source.html#l00011">HardwareSettings::HardwareSettings()</a>, and <a class="el" href="hardwaresettings_8cpp_source.html#l00054">HardwareSettings::on_cb_encoderInv_clicked()</a>.</p>
 
 </div>
 </div>
@@ -461,9 +459,9 @@ template&lt;class Archive &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="soilsettings_8h_source.html#l00027">27</a> of file <a class="el" href="soilsettings_8h_source.html">soilsettings.h</a>.</p>
+<p>Definition at line <a class="el" href="soilsettings_8h_source.html#l00033">33</a> of file <a class="el" href="soilsettings_8h_source.html">soilsettings.h</a>.</p>
 
-<p>Referenced by <a class="el" href="visionsettings_8cpp_source.html#l00130">VisionSettings::on_cb_fillHoles_stateChanged()</a>, <a class="el" href="_sample_8cpp_source.html#l00034">SoilAnalyzer::Sample::PrepImg()</a>, and <a class="el" href="visionsettings_8cpp_source.html#l00004">VisionSettings::VisionSettings()</a>.</p>
+<p>Referenced by <a class="el" href="visionsettings_8cpp_source.html#l00120">VisionSettings::on_cb_fillHoles_stateChanged()</a>, <a class="el" href="_sample_8cpp_source.html#l00032">SoilAnalyzer::Sample::PrepImg()</a>, and <a class="el" href="visionsettings_8cpp_source.html#l00011">VisionSettings::VisionSettings()</a>.</p>
 
 </div>
 </div>
@@ -477,9 +475,9 @@ template&lt;class Archive &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="soilsettings_8h_source.html#l00032">32</a> of file <a class="el" href="soilsettings_8h_source.html">soilsettings.h</a>.</p>
+<p>Definition at line <a class="el" href="soilsettings_8h_source.html#l00039">39</a> of file <a class="el" href="soilsettings_8h_source.html">soilsettings.h</a>.</p>
 
-<p>Referenced by <a class="el" href="visionsettings_8cpp_source.html#l00172">VisionSettings::on_sb_morphMask_editingFinished()</a>, <a class="el" href="_sample_8cpp_source.html#l00034">SoilAnalyzer::Sample::PrepImg()</a>, and <a class="el" href="visionsettings_8cpp_source.html#l00004">VisionSettings::VisionSettings()</a>.</p>
+<p>Referenced by <a class="el" href="visionsettings_8cpp_source.html#l00152">VisionSettings::on_sb_morphMask_editingFinished()</a>, <a class="el" href="_sample_8cpp_source.html#l00032">SoilAnalyzer::Sample::PrepImg()</a>, and <a class="el" href="visionsettings_8cpp_source.html#l00011">VisionSettings::VisionSettings()</a>.</p>
 
 </div>
 </div>
@@ -493,9 +491,9 @@ template&lt;class Archive &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="soilsettings_8h_source.html#l00034">34</a> of file <a class="el" href="soilsettings_8h_source.html">soilsettings.h</a>.</p>
+<p>Definition at line <a class="el" href="soilsettings_8h_source.html#l00041">41</a> of file <a class="el" href="soilsettings_8h_source.html">soilsettings.h</a>.</p>
 
-<p>Referenced by <a class="el" href="hardwaresettings_8cpp_source.html#l00004">HardwareSettings::HardwareSettings()</a>, <a class="el" href="hardwaresettings_8cpp_source.html#l00048">HardwareSettings::on_sb_HDRframes_editingFinished()</a>, <a class="el" href="vsagui_8cpp_source.html#l00095">VSAGUI::on_SnapshotButton_clicked()</a>, and <a class="el" href="vsagui_8cpp_source.html#l00004">VSAGUI::VSAGUI()</a>.</p>
+<p>Referenced by <a class="el" href="hardwaresettings_8cpp_source.html#l00011">HardwareSettings::HardwareSettings()</a>, <a class="el" href="hardwaresettings_8cpp_source.html#l00046">HardwareSettings::on_sb_HDRframes_editingFinished()</a>, <a class="el" href="vsagui_8cpp_source.html#l00098">VSAGUI::on_SnapshotButton_clicked()</a>, and <a class="el" href="vsagui_8cpp_source.html#l00011">VSAGUI::VSAGUI()</a>.</p>
 
 </div>
 </div>
@@ -509,9 +507,9 @@ template&lt;class Archive &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="soilsettings_8h_source.html#l00026">26</a> of file <a class="el" href="soilsettings_8h_source.html">soilsettings.h</a>.</p>
+<p>Definition at line <a class="el" href="soilsettings_8h_source.html#l00032">32</a> of file <a class="el" href="soilsettings_8h_source.html">soilsettings.h</a>.</p>
 
-<p>Referenced by <a class="el" href="visionsettings_8cpp_source.html#l00125">VisionSettings::on_cb_ignoreBorder_stateChanged()</a>, <a class="el" href="_sample_8cpp_source.html#l00034">SoilAnalyzer::Sample::PrepImg()</a>, and <a class="el" href="visionsettings_8cpp_source.html#l00004">VisionSettings::VisionSettings()</a>.</p>
+<p>Referenced by <a class="el" href="visionsettings_8cpp_source.html#l00116">VisionSettings::on_cb_ignoreBorder_stateChanged()</a>, <a class="el" href="_sample_8cpp_source.html#l00032">SoilAnalyzer::Sample::PrepImg()</a>, and <a class="el" href="visionsettings_8cpp_source.html#l00011">VisionSettings::VisionSettings()</a>.</p>
 
 </div>
 </div>
@@ -525,9 +523,9 @@ template&lt;class Archive &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="soilsettings_8h_source.html#l00035">35</a> of file <a class="el" href="soilsettings_8h_source.html">soilsettings.h</a>.</p>
+<p>Definition at line <a class="el" href="soilsettings_8h_source.html#l00042">42</a> of file <a class="el" href="soilsettings_8h_source.html">soilsettings.h</a>.</p>
 
-<p>Referenced by <a class="el" href="hardwaresettings_8cpp_source.html#l00004">HardwareSettings::HardwareSettings()</a>, and <a class="el" href="hardwaresettings_8cpp_source.html#l00053">HardwareSettings::on_sb_lightLevel_editingFinished()</a>.</p>
+<p>Referenced by <a class="el" href="hardwaresettings_8cpp_source.html#l00011">HardwareSettings::HardwareSettings()</a>, and <a class="el" href="hardwaresettings_8cpp_source.html#l00050">HardwareSettings::on_sb_lightLevel_editingFinished()</a>.</p>
 
 </div>
 </div>
@@ -536,14 +534,16 @@ template&lt;class Archive &gt; </div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_vision_1_1_morphological_filter.html#a1f19c9cb13f0d68778c77d6fd0370868">Vision::MorphologicalFilter::FilterType</a> SoilAnalyzer::SoilSettings::morphFilterType = <a class="el" href="class_vision_1_1_morphological_filter.html#a1f19c9cb13f0d68778c77d6fd0370868afd436eed00afa15b23eeac4de3509303">Vision::MorphologicalFilter::OPEN</a></td>
+          <td class="memname"><a class="el" href="class_vision_1_1_morphological_filter.html#a1f19c9cb13f0d68778c77d6fd0370868">Vision::MorphologicalFilter::FilterType</a> SoilAnalyzer::SoilSettings::morphFilterType</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">      <a class="code" href="class_vision_1_1_morphological_filter.html#a1f19c9cb13f0d68778c77d6fd0370868afd436eed00afa15b23eeac4de3509303">Vision::MorphologicalFilter::OPEN</a></div>
+</div><!-- fragment -->
+<p>Definition at line <a class="el" href="soilsettings_8h_source.html#l00037">37</a> of file <a class="el" href="soilsettings_8h_source.html">soilsettings.h</a>.</p>
 
-<p>Definition at line <a class="el" href="soilsettings_8h_source.html#l00031">31</a> of file <a class="el" href="soilsettings_8h_source.html">soilsettings.h</a>.</p>
-
-<p>Referenced by <a class="el" href="visionsettings_8cpp_source.html#l00148">VisionSettings::on_rb_useClose_toggled()</a>, <a class="el" href="visionsettings_8cpp_source.html#l00164">VisionSettings::on_rb_useDilate_toggled()</a>, <a class="el" href="visionsettings_8cpp_source.html#l00156">VisionSettings::on_rb_useErode_toggled()</a>, <a class="el" href="visionsettings_8cpp_source.html#l00140">VisionSettings::on_rb_useOpen_toggled()</a>, <a class="el" href="_sample_8cpp_source.html#l00034">SoilAnalyzer::Sample::PrepImg()</a>, and <a class="el" href="visionsettings_8cpp_source.html#l00004">VisionSettings::VisionSettings()</a>.</p>
+<p>Referenced by <a class="el" href="visionsettings_8cpp_source.html#l00134">VisionSettings::on_rb_useClose_toggled()</a>, <a class="el" href="visionsettings_8cpp_source.html#l00146">VisionSettings::on_rb_useDilate_toggled()</a>, <a class="el" href="visionsettings_8cpp_source.html#l00140">VisionSettings::on_rb_useErode_toggled()</a>, <a class="el" href="visionsettings_8cpp_source.html#l00128">VisionSettings::on_rb_useOpen_toggled()</a>, <a class="el" href="_sample_8cpp_source.html#l00032">SoilAnalyzer::Sample::PrepImg()</a>, and <a class="el" href="visionsettings_8cpp_source.html#l00011">VisionSettings::VisionSettings()</a>.</p>
 
 </div>
 </div>
@@ -557,9 +557,9 @@ template&lt;class Archive &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="soilsettings_8h_source.html#l00028">28</a> of file <a class="el" href="soilsettings_8h_source.html">soilsettings.h</a>.</p>
+<p>Definition at line <a class="el" href="soilsettings_8h_source.html#l00034">34</a> of file <a class="el" href="soilsettings_8h_source.html">soilsettings.h</a>.</p>
 
-<p>Referenced by <a class="el" href="visionsettings_8cpp_source.html#l00135">VisionSettings::on_sb_sigmaFactor_editingFinished()</a>, <a class="el" href="_sample_8cpp_source.html#l00034">SoilAnalyzer::Sample::PrepImg()</a>, and <a class="el" href="visionsettings_8cpp_source.html#l00004">VisionSettings::VisionSettings()</a>.</p>
+<p>Referenced by <a class="el" href="visionsettings_8cpp_source.html#l00124">VisionSettings::on_sb_sigmaFactor_editingFinished()</a>, <a class="el" href="_sample_8cpp_source.html#l00032">SoilAnalyzer::Sample::PrepImg()</a>, and <a class="el" href="visionsettings_8cpp_source.html#l00011">VisionSettings::VisionSettings()</a>.</p>
 
 </div>
 </div>
@@ -573,9 +573,9 @@ template&lt;class Archive &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="soilsettings_8h_source.html#l00029">29</a> of file <a class="el" href="soilsettings_8h_source.html">soilsettings.h</a>.</p>
+<p>Definition at line <a class="el" href="soilsettings_8h_source.html#l00035">35</a> of file <a class="el" href="soilsettings_8h_source.html">soilsettings.h</a>.</p>
 
-<p>Referenced by <a class="el" href="vsagui_8cpp_source.html#l00222">VSAGUI::on_OffsetSlider_valueChanged()</a>, <a class="el" href="vsagui_8cpp_source.html#l00214">VSAGUI::on_verticalSlider_sliderReleased()</a>, <a class="el" href="_sample_8cpp_source.html#l00034">SoilAnalyzer::Sample::PrepImg()</a>, and <a class="el" href="vsagui_8cpp_source.html#l00004">VSAGUI::VSAGUI()</a>.</p>
+<p>Referenced by <a class="el" href="vsagui_8cpp_source.html#l00235">VSAGUI::on_OffsetSlider_valueChanged()</a>, <a class="el" href="vsagui_8cpp_source.html#l00229">VSAGUI::on_verticalSlider_sliderReleased()</a>, <a class="el" href="_sample_8cpp_source.html#l00032">SoilAnalyzer::Sample::PrepImg()</a>, and <a class="el" href="vsagui_8cpp_source.html#l00011">VSAGUI::VSAGUI()</a>.</p>
 
 </div>
 </div>
@@ -589,9 +589,9 @@ template&lt;class Archive &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="soilsettings_8h_source.html#l00025">25</a> of file <a class="el" href="soilsettings_8h_source.html">soilsettings.h</a>.</p>
+<p>Definition at line <a class="el" href="soilsettings_8h_source.html#l00031">31</a> of file <a class="el" href="soilsettings_8h_source.html">soilsettings.h</a>.</p>
 
-<p>Referenced by <a class="el" href="visionsettings_8cpp_source.html#l00113">VisionSettings::on_rb_useLight_toggled()</a>, <a class="el" href="_sample_8cpp_source.html#l00034">SoilAnalyzer::Sample::PrepImg()</a>, and <a class="el" href="visionsettings_8cpp_source.html#l00004">VisionSettings::VisionSettings()</a>.</p>
+<p>Referenced by <a class="el" href="visionsettings_8cpp_source.html#l00108">VisionSettings::on_rb_useLight_toggled()</a>, <a class="el" href="_sample_8cpp_source.html#l00032">SoilAnalyzer::Sample::PrepImg()</a>, and <a class="el" href="visionsettings_8cpp_source.html#l00011">VisionSettings::VisionSettings()</a>.</p>
 
 </div>
 </div>
@@ -605,9 +605,9 @@ template&lt;class Archive &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="soilsettings_8h_source.html#l00018">18</a> of file <a class="el" href="soilsettings_8h_source.html">soilsettings.h</a>.</p>
+<p>Definition at line <a class="el" href="soilsettings_8h_source.html#l00024">24</a> of file <a class="el" href="soilsettings_8h_source.html">soilsettings.h</a>.</p>
 
-<p>Referenced by <a class="el" href="visionsettings_8cpp_source.html#l00084">VisionSettings::on_cb_use_adaptContrast_stateChanged()</a>, <a class="el" href="_sample_8cpp_source.html#l00034">SoilAnalyzer::Sample::PrepImg()</a>, and <a class="el" href="visionsettings_8cpp_source.html#l00004">VisionSettings::VisionSettings()</a>.</p>
+<p>Referenced by <a class="el" href="visionsettings_8cpp_source.html#l00079">VisionSettings::on_cb_use_adaptContrast_stateChanged()</a>, <a class="el" href="_sample_8cpp_source.html#l00032">SoilAnalyzer::Sample::PrepImg()</a>, and <a class="el" href="visionsettings_8cpp_source.html#l00011">VisionSettings::VisionSettings()</a>.</p>
 
 </div>
 </div>
@@ -621,9 +621,9 @@ template&lt;class Archive &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="soilsettings_8h_source.html#l00022">22</a> of file <a class="el" href="soilsettings_8h_source.html">soilsettings.h</a>.</p>
+<p>Definition at line <a class="el" href="soilsettings_8h_source.html#l00028">28</a> of file <a class="el" href="soilsettings_8h_source.html">soilsettings.h</a>.</p>
 
-<p>Referenced by <a class="el" href="visionsettings_8cpp_source.html#l00101">VisionSettings::on_cb_useBlur_stateChanged()</a>, <a class="el" href="_sample_8cpp_source.html#l00034">SoilAnalyzer::Sample::PrepImg()</a>, and <a class="el" href="visionsettings_8cpp_source.html#l00004">VisionSettings::VisionSettings()</a>.</p>
+<p>Referenced by <a class="el" href="visionsettings_8cpp_source.html#l00096">VisionSettings::on_cb_useBlur_stateChanged()</a>, <a class="el" href="_sample_8cpp_source.html#l00032">SoilAnalyzer::Sample::PrepImg()</a>, and <a class="el" href="visionsettings_8cpp_source.html#l00011">VisionSettings::VisionSettings()</a>.</p>
 
 </div>
 </div>
@@ -637,7 +637,7 @@ template&lt;class Archive &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_soil_analyzer.html">SoilAnalyzer</a></li><li class="navelem"><a class="el" href="class_soil_analyzer_1_1_soil_settings.html">SoilSettings</a></li>
-    <li class="footer">Generated on Sat Jun 6 2015 21:25:40 for Vision Soil Analyzer by
+    <li class="footer">Generated on Sun Jun 7 2015 21:06:54 for Vision Soil Analyzer by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

@@ -63,7 +63,7 @@ pthread\+\_\+t \hyperlink{class_hardware_1_1_b_b_b_a3ad3fe886705bfc242ef58dc5329
 \subsection{Detailed Description}
 
 
-Definition at line 30 of file B\+B\+B.\+h.
+Definition at line 40 of file B\+B\+B.\+h.
 
 
 
@@ -77,7 +77,7 @@ Definition at line 30 of file B\+B\+B.\+h.
 )}\label{class_hardware_1_1_b_b_b_ab26c0f13cc9488b757e309495ef398d7}
 Constructor 
 
-Definition at line 6 of file B\+B\+B.\+cpp.
+Definition at line 12 of file B\+B\+B.\+cpp.
 
 
 
@@ -85,12 +85,12 @@ References callback\+Function, debounce\+Time, thread, and thread\+Running.
 
 
 \begin{DoxyCode}
-7     \{
-8         \hyperlink{class_hardware_1_1_b_b_b_a0d9d8c56afb37955e0d0c6baf0f418df}{threadRunning} = \textcolor{keyword}{false};
-9         \hyperlink{class_hardware_1_1_b_b_b_a66d583952f3949a732ee15eea81e80e5}{callbackFunction} = NULL;
-10         \hyperlink{class_hardware_1_1_b_b_b_a353a2d7d4fbade337e5173b484b20b22}{debounceTime} = 0;
-11         \hyperlink{class_hardware_1_1_b_b_b_a3ad3fe886705bfc242ef58dc5329166e}{thread} = (pthread\_t)NULL;
-12     \}
+12          \{
+13   \hyperlink{class_hardware_1_1_b_b_b_a0d9d8c56afb37955e0d0c6baf0f418df}{threadRunning} = \textcolor{keyword}{false};
+14   \hyperlink{class_hardware_1_1_b_b_b_a66d583952f3949a732ee15eea81e80e5}{callbackFunction} = NULL;
+15   \hyperlink{class_hardware_1_1_b_b_b_a353a2d7d4fbade337e5173b484b20b22}{debounceTime} = 0;
+16   \hyperlink{class_hardware_1_1_b_b_b_a3ad3fe886705bfc242ef58dc5329166e}{thread} = (pthread\_t)NULL;
+17 \}
 \end{DoxyCode}
 \hypertarget{class_hardware_1_1_b_b_b_a34ee1e17e06e6d229be6d718b9ad1f02}{}\index{Hardware\+::\+B\+B\+B@{Hardware\+::\+B\+B\+B}!````~B\+B\+B@{$\sim$\+B\+B\+B}}
 \index{````~B\+B\+B@{$\sim$\+B\+B\+B}!Hardware\+::\+B\+B\+B@{Hardware\+::\+B\+B\+B}}
@@ -101,11 +101,11 @@ References callback\+Function, debounce\+Time, thread, and thread\+Running.
 )}\label{class_hardware_1_1_b_b_b_a34ee1e17e06e6d229be6d718b9ad1f02}
 De-\/constructor 
 
-Definition at line 15 of file B\+B\+B.\+cpp.
+Definition at line 20 of file B\+B\+B.\+cpp.
 
 
 \begin{DoxyCode}
-15 \{   \}
+20 \{\}
 \end{DoxyCode}
 
 
@@ -127,7 +127,7 @@ true if the search string is found otherwise false
 \end{DoxyReturn}
 
 
-Definition at line 59 of file B\+B\+B.\+cpp.
+Definition at line 67 of file B\+B\+B.\+cpp.
 
 
 
@@ -139,21 +139,25 @@ Referenced by Hardware\+::e\+Q\+E\+P\+::e\+Q\+E\+P(), and Hardware\+::\+P\+W\+M\
 
 
 \begin{DoxyCode}
-60     \{
-61         \textcolor{keywordtype}{bool} shieldFound = \textcolor{keyword}{false};
-62 
-63         ifstream fs;
-64         fs.open(\hyperlink{_b_b_b_8h_a3de26a5dbd2276c1486afbba5fc8de59}{SLOTS});
-65         \textcolor{keywordflow}{if} (!fs.is\_open()) \{ \textcolor{keywordflow}{throw} Exception::GPIOReadException(\textcolor{stringliteral}{"Can't open SLOTS"}); \}
-66 
-67         \textcolor{keywordtype}{string} line;
-68         \textcolor{keywordflow}{while} (getline(fs, line))
-69         \{
-70             \textcolor{keywordflow}{if} (line.find(shield) != string::npos) \{ shieldFound = \textcolor{keyword}{true}; \textcolor{keywordflow}{break}; \}
-71         \}
-72         fs.close();
-73         \textcolor{keywordflow}{return} shieldFound;
-74     \}
+67                                          \{
+68   \textcolor{keywordtype}{bool} shieldFound = \textcolor{keyword}{false};
+69 
+70   ifstream fs;
+71   fs.open(\hyperlink{_b_b_b_8h_a3de26a5dbd2276c1486afbba5fc8de59}{SLOTS});
+72   \textcolor{keywordflow}{if} (!fs.is\_open()) \{
+73     \textcolor{keywordflow}{throw} Exception::GPIOReadException(\textcolor{stringliteral}{"Can't open SLOTS"});
+74   \}
+75 
+76   \textcolor{keywordtype}{string} line;
+77   \textcolor{keywordflow}{while} (getline(fs, line)) \{
+78     \textcolor{keywordflow}{if} (line.find(shield) != string::npos) \{
+79       shieldFound = \textcolor{keyword}{true};
+80       \textcolor{keywordflow}{break};
+81     \}
+82   \}
+83   fs.close();
+84   \textcolor{keywordflow}{return} shieldFound;
+85 \}
 \end{DoxyCode}
 
 
@@ -178,7 +182,7 @@ true if the directory exists and false if not
 \end{DoxyReturn}
 
 
-Definition at line 48 of file B\+B\+B.\+cpp.
+Definition at line 55 of file B\+B\+B.\+cpp.
 
 
 
@@ -186,11 +190,13 @@ Referenced by Hardware\+::\+G\+P\+I\+O\+::is\+Exported().
 
 
 \begin{DoxyCode}
-49     \{
-50         \textcolor{keyword}{struct }stat st;
-51         \textcolor{keywordflow}{if} (stat((\textcolor{keywordtype}{char} *)path.c\_str(), &st) != 0) \{ \textcolor{keywordflow}{return} \textcolor{keyword}{false}; \}
-52         \textcolor{keywordflow}{return} \textcolor{keyword}{true};
-53     \}
+55                                            \{
+56   \textcolor{keyword}{struct }stat st;
+57   \textcolor{keywordflow}{if} (stat((\textcolor{keywordtype}{char} *)path.c\_str(), &st) != 0) \{
+58     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+59   \}
+60   \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+61 \}
 \end{DoxyCode}
 
 
@@ -220,15 +226,15 @@ the number as a string
 \end{DoxyReturn}
 
 
-Definition at line 53 of file B\+B\+B.\+h.
+Definition at line 62 of file B\+B\+B.\+h.
 
 
 \begin{DoxyCode}
-54         \{
-55             ostringstream ss;
-56             ss << Number;
-57             \textcolor{keywordflow}{return} ss.str();
-58         \};
+62                                                         \{
+63     ostringstream ss;
+64     ss << Number;
+65     \textcolor{keywordflow}{return} ss.str();
+66   \};
 \end{DoxyCode}
 \hypertarget{class_hardware_1_1_b_b_b_a8b287ded7bcb2cfab361d1fca2b62e9f}{}\index{Hardware\+::\+B\+B\+B@{Hardware\+::\+B\+B\+B}!Read@{Read}}
 \index{Read@{Read}!Hardware\+::\+B\+B\+B@{Hardware\+::\+B\+B\+B}}
@@ -247,7 +253,7 @@ this first line
 \end{DoxyReturn}
 
 
-Definition at line 21 of file B\+B\+B.\+cpp.
+Definition at line 26 of file B\+B\+B.\+cpp.
 
 
 
@@ -255,15 +261,17 @@ Referenced by Hardware\+::\+A\+D\+C\+::\+Get\+Current\+Value(), Hardware\+::\+P\
 
 
 \begin{DoxyCode}
-22     \{
-23         ifstream fs;
-24         fs.open(path.c\_str());
-25         \textcolor{keywordflow}{if} (!fs.is\_open())  \{ \textcolor{keywordflow}{throw} Exception::GPIOReadException((\textcolor{stringliteral}{"Can't open: "} + path).c\_str());  \}
-26         \textcolor{keywordtype}{string} input;
-27         getline(fs, input);
-28         fs.close();
-29         \textcolor{keywordflow}{return} input;
-30     \}
+26                                    \{
+27   ifstream fs;
+28   fs.open(path.c\_str());
+29   \textcolor{keywordflow}{if} (!fs.is\_open()) \{
+30     \textcolor{keywordflow}{throw} Exception::GPIOReadException((\textcolor{stringliteral}{"Can't open: "} + path).c\_str());
+31   \}
+32   \textcolor{keywordtype}{string} input;
+33   getline(fs, input);
+34   fs.close();
+35   \textcolor{keywordflow}{return} input;
+36 \}
 \end{DoxyCode}
 
 
@@ -293,15 +301,15 @@ the number as typename
 \end{DoxyReturn}
 
 
-Definition at line 64 of file B\+B\+B.\+h.
+Definition at line 72 of file B\+B\+B.\+h.
 
 
 \begin{DoxyCode}
-65         \{
-66             stringstream ss(Text);
-67             T result;
-68             \textcolor{keywordflow}{return} ss >> result ? result : 0;
-69         \};
+72                                                       \{
+73     stringstream ss(Text);
+74     T result;
+75     \textcolor{keywordflow}{return} ss >> result ? result : 0;
+76   \};
 \end{DoxyCode}
 \hypertarget{class_hardware_1_1_b_b_b_a155cc06f76d82a6b690ce5ea08e7c68e}{}\index{Hardware\+::\+B\+B\+B@{Hardware\+::\+B\+B\+B}!Write@{Write}}
 \index{Write@{Write}!Hardware\+::\+B\+B\+B@{Hardware\+::\+B\+B\+B}}
@@ -320,7 +328,7 @@ Writes a value to a file
 \end{DoxyParams}
 
 
-Definition at line 36 of file B\+B\+B.\+cpp.
+Definition at line 42 of file B\+B\+B.\+cpp.
 
 
 
@@ -328,13 +336,15 @@ Referenced by Hardware\+::e\+Q\+E\+P\+::e\+Q\+E\+P(), Hardware\+::\+G\+P\+I\+O\+
 
 
 \begin{DoxyCode}
-37     \{
-38         ofstream fs;
-39         fs.open(path.c\_str());
-40         \textcolor{keywordflow}{if} (!fs.is\_open())\{ \textcolor{keywordflow}{throw} Exception::GPIOReadException((\textcolor{stringliteral}{"Can't open: "} + path).c\_str()); \}
-41         fs << value;
-42         fs.close();
-43     \}
+42                                                        \{
+43   ofstream fs;
+44   fs.open(path.c\_str());
+45   \textcolor{keywordflow}{if} (!fs.is\_open()) \{
+46     \textcolor{keywordflow}{throw} Exception::GPIOReadException((\textcolor{stringliteral}{"Can't open: "} + path).c\_str());
+47   \}
+48   fs << value;
+49   fs.close();
+50 \}
 \end{DoxyCode}
 
 
@@ -355,7 +365,7 @@ Here is the caller graph for this function\+:\nopagebreak
 \subsubsection[{callback\+Function}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Callback\+Type} Hardware\+::\+B\+B\+B\+::callback\+Function\hspace{0.3cm}{\ttfamily [protected]}}\label{class_hardware_1_1_b_b_b_a66d583952f3949a732ee15eea81e80e5}
 the callbakcfunction 
 
-Definition at line 41 of file B\+B\+B.\+h.
+Definition at line 50 of file B\+B\+B.\+h.
 
 
 
@@ -366,7 +376,7 @@ Referenced by B\+B\+B(), Hardware\+::threaded\+Poll\+A\+D\+C(), Hardware\+::thre
 \subsubsection[{debounce\+Time}]{\setlength{\rightskip}{0pt plus 5cm}int Hardware\+::\+B\+B\+B\+::debounce\+Time}\label{class_hardware_1_1_b_b_b_a353a2d7d4fbade337e5173b484b20b22}
 debounce time for a button in milliseconds 
 
-Definition at line 33 of file B\+B\+B.\+h.
+Definition at line 42 of file B\+B\+B.\+h.
 
 
 
@@ -377,7 +387,7 @@ Referenced by B\+B\+B(), Hardware\+::threaded\+Polleqep(), and Hardware\+::threa
 \subsubsection[{thread}]{\setlength{\rightskip}{0pt plus 5cm}pthread\+\_\+t Hardware\+::\+B\+B\+B\+::thread\hspace{0.3cm}{\ttfamily [protected]}}\label{class_hardware_1_1_b_b_b_a3ad3fe886705bfc242ef58dc5329166e}
 The thread 
 
-Definition at line 40 of file B\+B\+B.\+h.
+Definition at line 49 of file B\+B\+B.\+h.
 
 
 
@@ -388,7 +398,7 @@ Referenced by B\+B\+B(), Hardware\+::\+G\+P\+I\+O\+::\+Wait\+For\+Edge(), Hardwa
 \subsubsection[{thread\+Running}]{\setlength{\rightskip}{0pt plus 5cm}bool Hardware\+::\+B\+B\+B\+::thread\+Running\hspace{0.3cm}{\ttfamily [protected]}}\label{class_hardware_1_1_b_b_b_a0d9d8c56afb37955e0d0c6baf0f418df}
 used to stop the thread 
 
-Definition at line 39 of file B\+B\+B.\+h.
+Definition at line 48 of file B\+B\+B.\+h.
 
 
 

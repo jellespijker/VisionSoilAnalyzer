@@ -86,7 +86,7 @@ Since this is an abstract base class, you can\textquotesingle{}t instantiate it 
 
 For a general introduction to the layout system, see the dedicated documentation page The Layout System. 
 
-Definition at line 719 of file qcustomplot.\+h.
+Definition at line 856 of file qcustomplot.\+h.
 
 
 
@@ -100,12 +100,11 @@ Definition at line 719 of file qcustomplot.\+h.
 )\hspace{0.3cm}{\ttfamily [explicit]}}\label{class_q_c_p_layout_a04222e6e1361fd802d48f1a25b7020d4}
 Creates an instance of \hyperlink{class_q_c_p_layout}{Q\+C\+P\+Layout} and sets default values. Note that since \hyperlink{class_q_c_p_layout}{Q\+C\+P\+Layout} is an abstract base class, it can\textquotesingle{}t be instantiated directly. 
 
-Definition at line 2124 of file qcustomplot.\+cpp.
+Definition at line 2346 of file qcustomplot.\+cpp.
 
 
 \begin{DoxyCode}
-2125 \{
-2126 \}
+2346 \{\}
 \end{DoxyCode}
 
 
@@ -119,7 +118,7 @@ Definition at line 2124 of file qcustomplot.\+cpp.
 )\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_layout_af6dbbc24156a808da29cd1ec031729a3}
 
 
-Definition at line 2288 of file qcustomplot.\+cpp.
+Definition at line 2514 of file qcustomplot.\+cpp.
 
 
 
@@ -131,17 +130,16 @@ Referenced by Q\+C\+P\+Layout\+Grid\+::add\+Element(), and Q\+C\+P\+Layout\+Inse
 
 
 \begin{DoxyCode}
-2289 \{
-2290   \textcolor{keywordflow}{if} (el)
-2291   \{
-2292     el->\hyperlink{class_q_c_p_layout_element_ae7c75c25549608bd688bdb65d4c38066}{mParentLayout} = \textcolor{keyword}{this};
-2293     el->\hyperlink{class_q_c_p_layerable_aa23c893671f1f6744ac235cf2204cf3a}{setParentLayerable}(\textcolor{keyword}{this});
-2294     el->setParent(\textcolor{keyword}{this});
-2295     \textcolor{keywordflow}{if} (!el->\hyperlink{class_q_c_p_layerable_ab7e0e94461566093d36ffc0f5312b109}{parentPlot}())
-2296       el->\hyperlink{class_q_c_p_layerable_a8cbe5a0c9a5674249982f5ca5f8e02bc}{initializeParentPlot}(\hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot});
-2297   \} \textcolor{keywordflow}{else}
-2298     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Null element passed"};
-2299 \}
+2514                                                  \{
+2515   \textcolor{keywordflow}{if} (el) \{
+2516     el->\hyperlink{class_q_c_p_layout_element_ae7c75c25549608bd688bdb65d4c38066}{mParentLayout} = \textcolor{keyword}{this};
+2517     el->\hyperlink{class_q_c_p_layerable_aa23c893671f1f6744ac235cf2204cf3a}{setParentLayerable}(\textcolor{keyword}{this});
+2518     el->setParent(\textcolor{keyword}{this});
+2519     \textcolor{keywordflow}{if} (!el->\hyperlink{class_q_c_p_layerable_ab7e0e94461566093d36ffc0f5312b109}{parentPlot}())
+2520       el->\hyperlink{class_q_c_p_layerable_a8cbe5a0c9a5674249982f5ca5f8e02bc}{initializeParentPlot}(\hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot});
+2521   \} \textcolor{keywordflow}{else}
+2522     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Null element passed"};
+2523 \}
 \end{DoxyCode}
 
 
@@ -179,7 +177,7 @@ Removes and deletes all layout elements in this layout. Finally calls \hyperlink
 \end{DoxySeeAlso}
 
 
-Definition at line 2233 of file qcustomplot.\+cpp.
+Definition at line 2455 of file qcustomplot.\+cpp.
 
 
 
@@ -191,14 +189,13 @@ Referenced by Q\+C\+P\+Layout\+Grid\+::$\sim$\+Q\+C\+P\+Layout\+Grid(), and Q\+C
 
 
 \begin{DoxyCode}
-2234 \{
-2235   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=\hyperlink{class_q_c_p_layout_a39d3e9ef5d9b82ab1885ba1cb9597e56}{elementCount}()-1; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}>=0; --\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
-2236   \{
-2237     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_afa73ca7d859f8a3ee5c73c9b353d2a56}{elementAt}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}))
-2238       \hyperlink{class_q_c_p_layout_a2403f684fee3ce47132faaeed00bb066}{removeAt}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i});
-2239   \}
-2240   \hyperlink{class_q_c_p_layout_a41e6ac049143866e8f8b4964efab01b2}{simplify}();
-2241 \}
+2455                       \{
+2456   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = \hyperlink{class_q_c_p_layout_a39d3e9ef5d9b82ab1885ba1cb9597e56}{elementCount}() - 1; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} >= 0; --\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) \{
+2457     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_afa73ca7d859f8a3ee5c73c9b353d2a56}{elementAt}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}))
+2458       \hyperlink{class_q_c_p_layout_a2403f684fee3ce47132faaeed00bb066}{removeAt}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i});
+2459   \}
+2460   \hyperlink{class_q_c_p_layout_a41e6ac049143866e8f8b4964efab01b2}{simplify}();
+2461 \}
 \end{DoxyCode}
 
 
@@ -308,7 +305,7 @@ Reimplemented in \hyperlink{class_q_c_p_layout_grid_ae9e24e01552f6667b6d05b12a54
 
 
 
-Definition at line 2154 of file qcustomplot.\+cpp.
+Definition at line 2374 of file qcustomplot.\+cpp.
 
 
 
@@ -320,24 +317,22 @@ Referenced by Q\+C\+P\+Axis\+Rect\+::elements().
 
 
 \begin{DoxyCode}
-2155 \{
-2156   \textcolor{keyword}{const} \textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_ae0323a9039add2978bf5b49550572c7c}{c} = \hyperlink{class_q_c_p_layout_a39d3e9ef5d9b82ab1885ba1cb9597e56}{elementCount}();
-2157   QList<QCPLayoutElement*> result;
-2158 \textcolor{preprocessor}{#if QT\_VERSION >= QT\_VERSION\_CHECK(4, 7, 0)}
-2159   result.reserve(c);
-2160 \textcolor{preprocessor}{#endif}
-2161   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}<\hyperlink{_comparision_pictures_2_createtest_image_8m_ae0323a9039add2978bf5b49550572c7c}{c}; ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
-2162     result.append(\hyperlink{class_q_c_p_layout_afa73ca7d859f8a3ee5c73c9b353d2a56}{elementAt}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}));
-2163   \textcolor{keywordflow}{if} (recursive)
-2164   \{
-2165     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}<\hyperlink{_comparision_pictures_2_createtest_image_8m_ae0323a9039add2978bf5b49550572c7c}{c}; ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
-2166     \{
-2167       \textcolor{keywordflow}{if} (result.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}))
-2168         result << result.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->elements(recursive);
-2169     \}
-2170   \}
-2171   \textcolor{keywordflow}{return} result;
-2172 \}
+2374                                                                   \{
+2375   \textcolor{keyword}{const} \textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_ae0323a9039add2978bf5b49550572c7c}{c} = \hyperlink{class_q_c_p_layout_a39d3e9ef5d9b82ab1885ba1cb9597e56}{elementCount}();
+2376   QList<QCPLayoutElement *> result;
+2377 \textcolor{preprocessor}{#if QT\_VERSION >= QT\_VERSION\_CHECK(4, 7, 0)}
+2378   result.reserve(c);
+2379 \textcolor{preprocessor}{#endif}
+2380   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < \hyperlink{_comparision_pictures_2_createtest_image_8m_ae0323a9039add2978bf5b49550572c7c}{c}; ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
+2381     result.append(\hyperlink{class_q_c_p_layout_afa73ca7d859f8a3ee5c73c9b353d2a56}{elementAt}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}));
+2382   \textcolor{keywordflow}{if} (recursive) \{
+2383     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < \hyperlink{_comparision_pictures_2_createtest_image_8m_ae0323a9039add2978bf5b49550572c7c}{c}; ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) \{
+2384       \textcolor{keywordflow}{if} (result.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}))
+2385         result << result.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->elements(recursive);
+2386     \}
+2387   \}
+2388   \textcolor{keywordflow}{return} result;
+2389 \}
 \end{DoxyCode}
 
 
@@ -373,7 +368,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_layout_a92d9dcd95e9510b323706ef7fc4ff62e}
 
 
-Definition at line 2352 of file qcustomplot.\+cpp.
+Definition at line 2593 of file qcustomplot.\+cpp.
 
 
 
@@ -385,131 +380,144 @@ Referenced by Q\+C\+P\+Layout\+Grid\+::update\+Layout().
 
 
 \begin{DoxyCode}
-2353 \{
-2354   \textcolor{keywordflow}{if} (maxSizes.size() != minSizes.size() || minSizes.size() != stretchFactors.size())
-2355   \{
-2356     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Passed vector sizes aren't equal:"} << maxSizes << minSizes << 
-      stretchFactors;
-2357     \textcolor{keywordflow}{return} QVector<int>();
-2358   \}
-2359   \textcolor{keywordflow}{if} (stretchFactors.isEmpty())
-2360     \textcolor{keywordflow}{return} QVector<int>();
-2361   \textcolor{keywordtype}{int} sectionCount = stretchFactors.size();
-2362   QVector<double> sectionSizes(sectionCount);
-2363   \textcolor{comment}{// if provided total size is forced smaller than total minimum size, ignore minimum sizes (squeeze
-       sections):}
-2364   \textcolor{keywordtype}{int} minSizeSum = 0;
-2365   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}<sectionCount; ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
-2366     minSizeSum += minSizes.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i});
-2367   \textcolor{keywordflow}{if} (totalSize < minSizeSum)
-2368   \{
-2369     \textcolor{comment}{// new stretch factors are minimum sizes and minimum sizes are set to zero:}
-2370     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}<sectionCount; ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
-2371     \{
-2372       stretchFactors[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = minSizes.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i});
-2373       minSizes[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = 0;
-2374     \}
-2375   \}
-2376   
-2377   QList<int> minimumLockedSections;
-2378   QList<int> unfinishedSections;
-2379   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}<sectionCount; ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
-2380     unfinishedSections.append(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i});
-2381   \textcolor{keywordtype}{double} freeSize = totalSize;
-2382   
-2383   \textcolor{keywordtype}{int} outerIterations = 0;
-2384   \textcolor{keywordflow}{while} (!unfinishedSections.isEmpty() && outerIterations < sectionCount*2) \textcolor{comment}{// the iteration check ist just
-       a failsafe in case something really strange happens}
-2385   \{
-2386     ++outerIterations;
-2387     \textcolor{keywordtype}{int} innerIterations = 0;
-2388     \textcolor{keywordflow}{while} (!unfinishedSections.isEmpty() && innerIterations < sectionCount*2) \textcolor{comment}{// the iteration check ist
-       just a failsafe in case something really strange happens}
-2389     \{
-2390       ++innerIterations;
-2391       \textcolor{comment}{// find section that hits its maximum next:}
-2392       \textcolor{keywordtype}{int} nextId = -1;
-2393       \textcolor{keywordtype}{double} nextMax = 1e12;
-2394       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}<unfinishedSections.size(); ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
-2395       \{
-2396         \textcolor{keywordtype}{int} secId = unfinishedSections.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i});
-2397         \textcolor{keywordtype}{double} hitsMaxAt = (maxSizes.at(secId)-sectionSizes.at(secId))/stretchFactors.at(secId);
-2398         \textcolor{keywordflow}{if} (hitsMaxAt < nextMax)
-2399         \{
-2400           nextMax = hitsMaxAt;
-2401           nextId = secId;
-2402         \}
-2403       \}
-2404       \textcolor{comment}{// check if that maximum is actually within the bounds of the total size (i.e. can we stretch all
-       remaining sections so far that the found section}
-2405       \textcolor{comment}{// actually hits its maximum, without exceeding the total size when we add up all sections)}
-2406       \textcolor{keywordtype}{double} stretchFactorSum = 0;
-2407       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}<unfinishedSections.size(); ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
-2408         stretchFactorSum += stretchFactors.at(unfinishedSections.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}));
-2409       \textcolor{keywordtype}{double} nextMaxLimit = freeSize/stretchFactorSum;
-2410       \textcolor{keywordflow}{if} (nextMax < nextMaxLimit) \textcolor{comment}{// next maximum is actually hit, move forward to that point and fix the
-       size of that section}
-2411       \{
-2412         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}<unfinishedSections.size(); ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
-2413         \{
-2414           sectionSizes[unfinishedSections.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})] += nextMax*stretchFactors.at(unfinishedSections.at(
-      \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})); \textcolor{comment}{// increment all sections}
-2415           freeSize -= nextMax*stretchFactors.at(unfinishedSections.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}));
-2416         \}
-2417         unfinishedSections.removeOne(nextId); \textcolor{comment}{// exclude the section that is now at maximum from further
-       changes}
-2418       \} \textcolor{keywordflow}{else} \textcolor{comment}{// next maximum isn't hit, just distribute rest of free space on remaining sections}
-2419       \{
-2420         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}<unfinishedSections.size(); ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
-2421           sectionSizes[unfinishedSections.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})] += nextMaxLimit*stretchFactors.at(unfinishedSections.at(
-      \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})); \textcolor{comment}{// increment all sections}
-2422         unfinishedSections.clear();
-2423       \}
-2424     \}
-2425     \textcolor{keywordflow}{if} (innerIterations == sectionCount*2)
-2426       qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Exceeded maximum expected inner iteration count, layouting aborted. Input
-       was:"} << maxSizes << minSizes << stretchFactors << totalSize;
-2427     
-2428     \textcolor{comment}{// now check whether the resulting section sizes violate minimum restrictions:}
-2429     \textcolor{keywordtype}{bool} foundMinimumViolation = \textcolor{keyword}{false};
-2430     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}<sectionSizes.size(); ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
-2431     \{
-2432       \textcolor{keywordflow}{if} (minimumLockedSections.contains(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}))
-2433         \textcolor{keywordflow}{continue};
-2434       \textcolor{keywordflow}{if} (sectionSizes.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) < minSizes.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})) \textcolor{comment}{// section violates minimum}
-2435       \{
-2436         sectionSizes[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = minSizes.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}); \textcolor{comment}{// set it to minimum}
-2437         foundMinimumViolation = \textcolor{keyword}{true}; \textcolor{comment}{// make sure we repeat the whole optimization process}
-2438         minimumLockedSections.append(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i});
-2439       \}
-2440     \}
-2441     \textcolor{keywordflow}{if} (foundMinimumViolation)
-2442     \{
-2443       freeSize = totalSize;
-2444       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}<sectionCount; ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
-2445       \{
-2446         \textcolor{keywordflow}{if} (!minimumLockedSections.contains(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})) \textcolor{comment}{// only put sections that haven't hit their minimum back
-       into the pool}
-2447           unfinishedSections.append(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i});
-2448         \textcolor{keywordflow}{else}
-2449           freeSize -= sectionSizes.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}); \textcolor{comment}{// remove size of minimum locked sections from available space
-       in next round}
-2450       \}
-2451       \textcolor{comment}{// reset all section sizes to zero that are in unfinished sections (all others have been set to their
-       minimum):}
-2452       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}<unfinishedSections.size(); ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
-2453         sectionSizes[unfinishedSections.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})] = 0;
-2454     \}
-2455   \}
-2456   \textcolor{keywordflow}{if} (outerIterations == sectionCount*2)
-2457     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Exceeded maximum expected outer iteration count, layouting aborted. Input
-       was:"} << maxSizes << minSizes << stretchFactors << totalSize;
-2458   
-2459   QVector<int> result(sectionCount);
-2460   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}<sectionCount; ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
-2461     result[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = qRound(sectionSizes.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}));
-2462   \textcolor{keywordflow}{return} result;
-2463 \}
+2596                                                              \{
+2597   \textcolor{keywordflow}{if} (maxSizes.size() != minSizes.size() ||
+2598       minSizes.size() != stretchFactors.size()) \{
+2599     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Passed vector sizes aren't equal:"} << maxSizes
+2600              << minSizes << stretchFactors;
+2601     \textcolor{keywordflow}{return} QVector<int>();
+2602   \}
+2603   \textcolor{keywordflow}{if} (stretchFactors.isEmpty())
+2604     \textcolor{keywordflow}{return} QVector<int>();
+2605   \textcolor{keywordtype}{int} sectionCount = stretchFactors.size();
+2606   QVector<double> sectionSizes(sectionCount);
+2607   \textcolor{comment}{// if provided total size is forced smaller than total minimum size, ignore}
+2608   \textcolor{comment}{// minimum sizes (squeeze sections):}
+2609   \textcolor{keywordtype}{int} minSizeSum = 0;
+2610   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < sectionCount; ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
+2611     minSizeSum += minSizes.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i});
+2612   \textcolor{keywordflow}{if} (totalSize < minSizeSum) \{
+2613     \textcolor{comment}{// new stretch factors are minimum sizes and minimum sizes are set to zero:}
+2614     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < sectionCount; ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) \{
+2615       stretchFactors[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = minSizes.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i});
+2616       minSizes[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = 0;
+2617     \}
+2618   \}
+2619 
+2620   QList<int> minimumLockedSections;
+2621   QList<int> unfinishedSections;
+2622   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < sectionCount; ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
+2623     unfinishedSections.append(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i});
+2624   \textcolor{keywordtype}{double} freeSize = totalSize;
+2625 
+2626   \textcolor{keywordtype}{int} outerIterations = 0;
+2627   \textcolor{keywordflow}{while} (!unfinishedSections.isEmpty() &&
+2628          outerIterations < sectionCount * 2) \textcolor{comment}{// the iteration check ist just a}
+2629                                              \textcolor{comment}{// failsafe in case something}
+2630                                              \textcolor{comment}{// really strange happens}
+2631   \{
+2632     ++outerIterations;
+2633     \textcolor{keywordtype}{int} innerIterations = 0;
+2634     \textcolor{keywordflow}{while} (!unfinishedSections.isEmpty() &&
+2635            innerIterations < sectionCount * 2) \textcolor{comment}{// the iteration check ist just a}
+2636                                                \textcolor{comment}{// failsafe in case something}
+2637                                                \textcolor{comment}{// really strange happens}
+2638     \{
+2639       ++innerIterations;
+2640       \textcolor{comment}{// find section that hits its maximum next:}
+2641       \textcolor{keywordtype}{int} nextId = -1;
+2642       \textcolor{keywordtype}{double} nextMax = 1e12;
+2643       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < unfinishedSections.size(); ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) \{
+2644         \textcolor{keywordtype}{int} secId = unfinishedSections.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i});
+2645         \textcolor{keywordtype}{double} hitsMaxAt = (maxSizes.at(secId) - sectionSizes.at(secId)) /
+2646                            stretchFactors.at(secId);
+2647         \textcolor{keywordflow}{if} (hitsMaxAt < nextMax) \{
+2648           nextMax = hitsMaxAt;
+2649           nextId = secId;
+2650         \}
+2651       \}
+2652       \textcolor{comment}{// check if that maximum is actually within the bounds of the total size}
+2653       \textcolor{comment}{// (i.e. can we stretch all remaining sections so far that the found}
+2654       \textcolor{comment}{// section}
+2655       \textcolor{comment}{// actually hits its maximum, without exceeding the total size when we add}
+2656       \textcolor{comment}{// up all sections)}
+2657       \textcolor{keywordtype}{double} stretchFactorSum = 0;
+2658       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < unfinishedSections.size(); ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
+2659         stretchFactorSum += stretchFactors.at(unfinishedSections.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}));
+2660       \textcolor{keywordtype}{double} nextMaxLimit = freeSize / stretchFactorSum;
+2661       \textcolor{keywordflow}{if} (nextMax < nextMaxLimit) \textcolor{comment}{// next maximum is actually hit, move forward}
+2662                                   \textcolor{comment}{// to that point and fix the size of that}
+2663                                   \textcolor{comment}{// section}
+2664       \{
+2665         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < unfinishedSections.size(); ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) \{
+2666           sectionSizes[unfinishedSections.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})] +=
+2667               nextMax *
+2668               stretchFactors.at(
+2669                   unfinishedSections.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})); \textcolor{comment}{// increment all sections}
+2670           freeSize -= nextMax * stretchFactors.at(unfinishedSections.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}));
+2671         \}
+2672         unfinishedSections.removeOne(nextId); \textcolor{comment}{// exclude the section that is now}
+2673                                               \textcolor{comment}{// at maximum from further changes}
+2674       \} \textcolor{keywordflow}{else} \textcolor{comment}{// next maximum isn't hit, just distribute rest of free space on}
+2675              \textcolor{comment}{// remaining sections}
+2676       \{
+2677         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < unfinishedSections.size(); ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
+2678           sectionSizes[unfinishedSections.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})] +=
+2679               nextMaxLimit *
+2680               stretchFactors.at(
+2681                   unfinishedSections.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})); \textcolor{comment}{// increment all sections}
+2682         unfinishedSections.clear();
+2683       \}
+2684     \}
+2685     \textcolor{keywordflow}{if} (innerIterations == sectionCount * 2)
+2686       qDebug() << Q\_FUNC\_INFO
+2687                << \textcolor{stringliteral}{"Exceeded maximum expected inner iteration count, layouting "}
+2688                   \textcolor{stringliteral}{"aborted. Input was:"} << maxSizes << minSizes
+2689                << stretchFactors << totalSize;
+2690 
+2691     \textcolor{comment}{// now check whether the resulting section sizes violate minimum}
+2692     \textcolor{comment}{// restrictions:}
+2693     \textcolor{keywordtype}{bool} foundMinimumViolation = \textcolor{keyword}{false};
+2694     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < sectionSizes.size(); ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) \{
+2695       \textcolor{keywordflow}{if} (minimumLockedSections.contains(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}))
+2696         \textcolor{keywordflow}{continue};
+2697       \textcolor{keywordflow}{if} (sectionSizes.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) < minSizes.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})) \textcolor{comment}{// section violates minimum}
+2698       \{
+2699         sectionSizes[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = minSizes.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}); \textcolor{comment}{// set it to minimum}
+2700         foundMinimumViolation =
+2701             \textcolor{keyword}{true}; \textcolor{comment}{// make sure we repeat the whole optimization process}
+2702         minimumLockedSections.append(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i});
+2703       \}
+2704     \}
+2705     \textcolor{keywordflow}{if} (foundMinimumViolation) \{
+2706       freeSize = totalSize;
+2707       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < sectionCount; ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) \{
+2708         \textcolor{keywordflow}{if} (!minimumLockedSections.contains(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})) \textcolor{comment}{// only put sections that}
+2709                                                 \textcolor{comment}{// haven't hit their minimum}
+2710                                                 \textcolor{comment}{// back into the pool}
+2711           unfinishedSections.append(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i});
+2712         \textcolor{keywordflow}{else}
+2713           freeSize -= sectionSizes.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}); \textcolor{comment}{// remove size of minimum locked}
+2714                                           \textcolor{comment}{// sections from available space in}
+2715                                           \textcolor{comment}{// next round}
+2716       \}
+2717       \textcolor{comment}{// reset all section sizes to zero that are in unfinished sections (all}
+2718       \textcolor{comment}{// others have been set to their minimum):}
+2719       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < unfinishedSections.size(); ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
+2720         sectionSizes[unfinishedSections.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})] = 0;
+2721     \}
+2722   \}
+2723   \textcolor{keywordflow}{if} (outerIterations == sectionCount * 2)
+2724     qDebug() << Q\_FUNC\_INFO
+2725              << \textcolor{stringliteral}{"Exceeded maximum expected outer iteration count, layouting "}
+2726                 \textcolor{stringliteral}{"aborted. Input was:"} << maxSizes << minSizes << stretchFactors
+2727              << totalSize;
+2728 
+2729   QVector<int> result(sectionCount);
+2730   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < sectionCount; ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
+2731     result[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = qRound(sectionSizes.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}));
+2732   \textcolor{keywordflow}{return} result;
+2733 \}
 \end{DoxyCode}
 
 
@@ -531,7 +539,7 @@ Here is the caller graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_layout_a4afbb4bef0071f72f91afdac4433a18e}
 
 
-Definition at line 2311 of file qcustomplot.\+cpp.
+Definition at line 2539 of file qcustomplot.\+cpp.
 
 
 
@@ -543,16 +551,16 @@ Referenced by Q\+C\+P\+Layout\+Grid\+::take\+At(), and Q\+C\+P\+Layout\+Inset\+:
 
 
 \begin{DoxyCode}
-2312 \{
-2313   \textcolor{keywordflow}{if} (el)
-2314   \{
-2315     el->\hyperlink{class_q_c_p_layout_element_ae7c75c25549608bd688bdb65d4c38066}{mParentLayout} = 0;
-2316     el->\hyperlink{class_q_c_p_layerable_aa23c893671f1f6744ac235cf2204cf3a}{setParentLayerable}(0);
-2317     el->setParent(\hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot});
-2318     \textcolor{comment}{// Note: Don't initializeParentPlot(0) here, because layout element will stay in same parent plot}
-2319   \} \textcolor{keywordflow}{else}
-2320     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Null element passed"};
-2321 \}
+2539                                                    \{
+2540   \textcolor{keywordflow}{if} (el) \{
+2541     el->\hyperlink{class_q_c_p_layout_element_ae7c75c25549608bd688bdb65d4c38066}{mParentLayout} = 0;
+2542     el->\hyperlink{class_q_c_p_layerable_aa23c893671f1f6744ac235cf2204cf3a}{setParentLayerable}(0);
+2543     el->setParent(\hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot});
+2544     \textcolor{comment}{// Note: Don't initializeParentPlot(0) here, because layout element will}
+2545     \textcolor{comment}{// stay in same parent plot}
+2546   \} \textcolor{keywordflow}{else}
+2547     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Null element passed"};
+2548 \}
 \end{DoxyCode}
 
 
@@ -592,7 +600,7 @@ This function internally uses \hyperlink{class_q_c_p_layout_a5a79621fa0a6eabb8b5
 \end{DoxySeeAlso}
 
 
-Definition at line 2217 of file qcustomplot.\+cpp.
+Definition at line 2440 of file qcustomplot.\+cpp.
 
 
 
@@ -600,14 +608,13 @@ References take().
 
 
 \begin{DoxyCode}
-2218 \{
-2219   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_ada26cd17e56472b0b4d7fbbc96873e4c}{take}(element))
-2220   \{
-2221     \textcolor{keyword}{delete} element;
-2222     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
-2223   \} \textcolor{keywordflow}{else}
-2224     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
-2225 \}
+2440                                                 \{
+2441   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_ada26cd17e56472b0b4d7fbbc96873e4c}{take}(element)) \{
+2442     \textcolor{keyword}{delete} element;
+2443     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+2444   \} \textcolor{keywordflow}{else}
+2445     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+2446 \}
 \end{DoxyCode}
 
 
@@ -636,7 +643,7 @@ This function internally uses \hyperlink{class_q_c_p_layout_a5a79621fa0a6eabb8b5
 \end{DoxySeeAlso}
 
 
-Definition at line 2196 of file qcustomplot.\+cpp.
+Definition at line 2417 of file qcustomplot.\+cpp.
 
 
 
@@ -648,14 +655,13 @@ Referenced by clear(), and Q\+C\+P\+Layout\+Grid\+::simplify().
 
 
 \begin{DoxyCode}
-2197 \{
-2198   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_element}{QCPLayoutElement} *el = \hyperlink{class_q_c_p_layout_a5a79621fa0a6eabb8b520cfc04fb601a}{takeAt}(index))
-2199   \{
-2200     \textcolor{keyword}{delete} el;
-2201     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
-2202   \} \textcolor{keywordflow}{else}
-2203     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
-2204 \}
+2417                                   \{
+2418   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_element}{QCPLayoutElement} *el = \hyperlink{class_q_c_p_layout_a5a79621fa0a6eabb8b520cfc04fb601a}{takeAt}(index)) \{
+2419     \textcolor{keyword}{delete} el;
+2420     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+2421   \} \textcolor{keywordflow}{else}
+2422     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+2423 \}
 \end{DoxyCode}
 
 
@@ -694,7 +700,7 @@ Reimplemented in \hyperlink{class_q_c_p_layout_inset_abb9eb23bf2d7c587a8abe02d06
 
 
 
-Definition at line 2181 of file qcustomplot.\+cpp.
+Definition at line 2400 of file qcustomplot.\+cpp.
 
 
 
@@ -702,8 +708,7 @@ Referenced by clear().
 
 
 \begin{DoxyCode}
-2182 \{
-2183 \}
+2400 \{\}
 \end{DoxyCode}
 
 
@@ -727,7 +732,7 @@ Subclasses call this method to report changed (minimum/maximum) size constraints
 
 If the parent of this layout is again a \hyperlink{class_q_c_p_layout}{Q\+C\+P\+Layout}, forwards the call to the parent\textquotesingle{}s \hyperlink{class_q_c_p_layout_a6218cd7e5c0e30077c1aeaffe55b6145}{size\+Constraints\+Changed}. If the parent is a Q\+Widget (i.\+e. is the \hyperlink{class_q_custom_plot_afd280d4d621ae64a106543a545c508d7}{Q\+Custom\+Plot\+::plot\+Layout} of \hyperlink{class_q_custom_plot}{Q\+Custom\+Plot}), calls Q\+Widget\+::update\+Geometry, so if the \hyperlink{class_q_custom_plot}{Q\+Custom\+Plot} widget is inside a Qt Q\+Layout, it may update itself and resize cells accordingly. 
 
-Definition at line 2251 of file qcustomplot.\+cpp.
+Definition at line 2475 of file qcustomplot.\+cpp.
 
 
 
@@ -735,12 +740,12 @@ Referenced by Q\+C\+P\+Layout\+Element\+::set\+Maximum\+Size(), and Q\+C\+P\+Lay
 
 
 \begin{DoxyCode}
-2252 \{
-2253   \textcolor{keywordflow}{if} (QWidget *w = qobject\_cast<QWidget*>(parent()))
-2254     w->updateGeometry();
-2255   \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout}{QCPLayout} *l = qobject\_cast<QCPLayout*>(parent()))
-2256     l->sizeConstraintsChanged();
-2257 \}
+2475                                              \{
+2476   \textcolor{keywordflow}{if} (QWidget *w = qobject\_cast<QWidget *>(parent()))
+2477     w->updateGeometry();
+2478   \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout}{QCPLayout} *l = qobject\_cast<QCPLayout *>(parent()))
+2479     l->sizeConstraintsChanged();
+2480 \}
 \end{DoxyCode}
 
 
@@ -840,7 +845,7 @@ Reimplemented from \hyperlink{class_q_c_p_layout_element_a929c2ec62e0e0e1d8418ea
 
 
 
-Definition at line 2136 of file qcustomplot.\+cpp.
+Definition at line 2358 of file qcustomplot.\+cpp.
 
 
 
@@ -852,21 +857,20 @@ Referenced by Q\+Custom\+Plot\+::draw(), and Q\+C\+P\+Axis\+Rect\+::update().
 
 
 \begin{DoxyCode}
-2137 \{
-2138   \hyperlink{class_q_c_p_layout_element_a929c2ec62e0e0e1d8418eaa802e2af9b}{QCPLayoutElement::update}(phase);
-2139   
-2140   \textcolor{comment}{// set child element rects according to layout:}
-2141   \textcolor{keywordflow}{if} (phase == \hyperlink{class_q_c_p_layout_element_a0d83360e05735735aaf6d7983c56374da5d1ccf5d79967c232c3c511796860045}{upLayout})
-2142     \hyperlink{class_q_c_p_layout_a165c77f6287ac92e8d03017ad913378b}{updateLayout}();
-2143   
-2144   \textcolor{comment}{// propagate update call to child elements:}
-2145   \textcolor{keyword}{const} \textcolor{keywordtype}{int} elCount = \hyperlink{class_q_c_p_layout_a39d3e9ef5d9b82ab1885ba1cb9597e56}{elementCount}();
-2146   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}<elCount; ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
-2147   \{
-2148     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_element}{QCPLayoutElement} *el = \hyperlink{class_q_c_p_layout_afa73ca7d859f8a3ee5c73c9b353d2a56}{elementAt}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}))
-2149       el->update(phase);
-2150   \}
-2151 \}
+2358                                         \{
+2359   \hyperlink{class_q_c_p_layout_element_a929c2ec62e0e0e1d8418eaa802e2af9b}{QCPLayoutElement::update}(phase);
+2360 
+2361   \textcolor{comment}{// set child element rects according to layout:}
+2362   \textcolor{keywordflow}{if} (phase == \hyperlink{class_q_c_p_layout_element_a0d83360e05735735aaf6d7983c56374da5d1ccf5d79967c232c3c511796860045}{upLayout})
+2363     \hyperlink{class_q_c_p_layout_a165c77f6287ac92e8d03017ad913378b}{updateLayout}();
+2364 
+2365   \textcolor{comment}{// propagate update call to child elements:}
+2366   \textcolor{keyword}{const} \textcolor{keywordtype}{int} elCount = \hyperlink{class_q_c_p_layout_a39d3e9ef5d9b82ab1885ba1cb9597e56}{elementCount}();
+2367   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < elCount; ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) \{
+2368     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_element}{QCPLayoutElement} *el = \hyperlink{class_q_c_p_layout_afa73ca7d859f8a3ee5c73c9b353d2a56}{elementAt}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}))
+2369       el->update(phase);
+2370   \}
+2371 \}
 \end{DoxyCode}
 
 
@@ -903,7 +907,7 @@ Reimplemented in \hyperlink{class_q_c_p_layout_inset_a7b33fdd51b18e6db7cea9bfb2d
 
 
 
-Definition at line 2271 of file qcustomplot.\+cpp.
+Definition at line 2497 of file qcustomplot.\+cpp.
 
 
 
@@ -911,8 +915,7 @@ Referenced by update().
 
 
 \begin{DoxyCode}
-2272 \{
-2273 \}
+2497 \{\}
 \end{DoxyCode}
 
 
@@ -933,7 +936,7 @@ Here is the caller graph for this function\+:\nopagebreak
 \subsubsection[{Q\+C\+P\+Layout\+Element}]{\setlength{\rightskip}{0pt plus 5cm}friend class {\bf Q\+C\+P\+Layout\+Element}\hspace{0.3cm}{\ttfamily [friend]}}\label{class_q_c_p_layout_a0790750c7e7f14fdbd960d172655b42b}
 
 
-Definition at line 753 of file qcustomplot.\+h.
+Definition at line 891 of file qcustomplot.\+h.
 
 
 

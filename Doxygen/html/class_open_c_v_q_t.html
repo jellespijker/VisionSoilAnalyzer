@@ -35,7 +35,7 @@
    <div id="projectname">Vision Soil Analyzer
    &#160;<span id="projectnumber">1.0.0</span>
    </div>
-   <div id="projectbrief">The Soil Analyzer is a portable lab that can analyse soil samples and tells the user about it&#39;s optical properties. It looks at the texture and describe it as a Particle Size Distribution. This information is presented as a Cumulative Distribution Function (CDF). It also describes the structure of the soil sample and gives information on the sphericity and roundness / angularity. It does so by analysing the contour of particles, describing them as Fourier Descriptors and using a Neural Network to describe it&#39;s properties. Finally it gives the color properties in a histogram in the CIE La*b* colorspace, which show correlations with the fertility of the soil. and a histogram of the Redness Index, which gives has a correlation on the iron content.</div>
+   <div id="projectbrief">Soil analyzer using an USB microscope - for Linux PC and Beaglebone Black</div>
   </td>
  </tr>
  </tbody>
@@ -137,7 +137,7 @@ Static Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p>Definition at line <a class="el" href="opencvqt_8h_source.html#l00007">7</a> of file <a class="el" href="opencvqt_8h_source.html">opencvqt.h</a>.</p>
+<p>Definition at line <a class="el" href="opencvqt_8h_source.html#l00014">14</a> of file <a class="el" href="opencvqt_8h_source.html">opencvqt.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a34d38b2b4394ced620283754a881bbe3"></a>
 <div class="memitem">
@@ -177,26 +177,25 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="opencvqt_8h_source.html#l00011">11</a> of file <a class="el" href="opencvqt_8h_source.html">opencvqt.h</a>.</p>
+<p>Definition at line <a class="el" href="opencvqt_8h_source.html#l00017">17</a> of file <a class="el" href="opencvqt_8h_source.html">opencvqt.h</a>.</p>
 
-<p>Referenced by <a class="el" href="vsagui_8cpp_source.html#l00081">VSAGUI::SetMatToMainView()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    {</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;       QImage dest ;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;       <span class="keywordflow">if</span> (src.channels() == 1)</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;       {</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;           cv::Mat destRGB;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;           std::vector&lt;cv::Mat&gt; grayRGB(3, src);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;           cv::merge(grayRGB, destRGB);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;           dest = QImage((<a class="code" href="_soil_math_types_8h.html#a65f85814a8290f9797005d3b28e7e5fc">uchar</a> *)destRGB.data, destRGB.cols, destRGB.rows, destRGB.step, QImage::Format_RGB888);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;       }</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;       <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;       {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;           dest = QImage((<a class="code" href="_soil_math_types_8h.html#a65f85814a8290f9797005d3b28e7e5fc">uchar</a> *)src.data, src.cols, src.rows, src.step, QImage::Format_RGB888);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;           dest = dest.rgbSwapped();</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;       }</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;       <span class="keywordflow">return</span> dest;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    }</div>
-<div class="ttc" id="_soil_math_types_8h_html_a65f85814a8290f9797005d3b28e7e5fc"><div class="ttname"><a href="_soil_math_types_8h.html#a65f85814a8290f9797005d3b28e7e5fc">uchar</a></div><div class="ttdeci">unsigned char uchar</div><div class="ttdef"><b>Definition:</b> <a href="_soil_math_types_8h_source.html#l00016">SoilMathTypes.h:16</a></div></div>
+<p>Referenced by <a class="el" href="vsagui_8cpp_source.html#l00088">VSAGUI::SetMatToMainView()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                                             {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    QImage dest;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordflow">if</span> (src.channels() == 1) {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;      cv::Mat destRGB;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;      std::vector&lt;cv::Mat&gt; grayRGB(3, src);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;      cv::merge(grayRGB, destRGB);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;      dest = QImage((<a class="code" href="_soil_math_types_8h.html#a65f85814a8290f9797005d3b28e7e5fc">uchar</a> *)destRGB.data, destRGB.cols, destRGB.rows,</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                    destRGB.step, QImage::Format_RGB888);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;      dest = QImage((<a class="code" href="_soil_math_types_8h.html#a65f85814a8290f9797005d3b28e7e5fc">uchar</a> *)src.data, src.cols, src.rows, src.step,</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                    QImage::Format_RGB888);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;      dest = dest.rgbSwapped();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    }</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordflow">return</span> dest;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  }</div>
+<div class="ttc" id="_soil_math_types_8h_html_a65f85814a8290f9797005d3b28e7e5fc"><div class="ttname"><a href="_soil_math_types_8h.html#a65f85814a8290f9797005d3b28e7e5fc">uchar</a></div><div class="ttdeci">unsigned char uchar</div><div class="ttdef"><b>Definition:</b> <a href="_soil_math_types_8h_source.html#l00023">SoilMathTypes.h:23</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -218,7 +217,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_open_c_v_q_t.html">OpenCVQT</a></li>
-    <li class="footer">Generated on Sat Jun 6 2015 21:25:31 for Vision Soil Analyzer by
+    <li class="footer">Generated on Sun Jun 7 2015 21:06:35 for Vision Soil Analyzer by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

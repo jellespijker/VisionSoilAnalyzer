@@ -30,7 +30,7 @@ Collaboration diagram for Q\+C\+P\+Painter\+:\nopagebreak
 \subsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
-enum \hyperlink{class_q_c_p_painter_a156cf16444ff5e0d81a73c615fdb156d}{Painter\+Mode} \{ \hyperlink{class_q_c_p_painter_a156cf16444ff5e0d81a73c615fdb156da3bac5e87e3d58553b297befb4eee2a45}{pm\+Default} = 0x00, 
+enum \hyperlink{class_q_c_p_painter_a156cf16444ff5e0d81a73c615fdb156d}{Painter\+Mode} \{ \hyperlink{class_q_c_p_painter_a156cf16444ff5e0d81a73c615fdb156da3bac5e87e3d58553b297befb4eee2a45}{pm\+Default}, 
 \hyperlink{class_q_c_p_painter_a156cf16444ff5e0d81a73c615fdb156daeda679cd55dcd468341d07d48a30b6ab}{pm\+Vectorized} = 0x01, 
 \hyperlink{class_q_c_p_painter_a156cf16444ff5e0d81a73c615fdb156dae78f9a4eb277a5f9207f50850a51a0b0}{pm\+No\+Caching} = 0x02, 
 \hyperlink{class_q_c_p_painter_a156cf16444ff5e0d81a73c615fdb156dac1e481bfaf408f2bd2eaad3ec341f36b}{pm\+Non\+Cosmetic} = 0x04
@@ -94,7 +94,7 @@ This class intentionally hides non-\/virtual functions of Q\+Painter, e.\+g. set
 \end{DoxyWarning}
 
 
-Definition at line 312 of file qcustomplot.\+h.
+Definition at line 413 of file qcustomplot.\+h.
 
 
 
@@ -117,15 +117,20 @@ Defines special modes the painter can operate in. They disable or enable certain
 \end{Desc}
 
 
-Definition at line 320 of file qcustomplot.\+h.
+Definition at line 421 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-320                    \{ \hyperlink{class_q_c_p_painter_a156cf16444ff5e0d81a73c615fdb156da3bac5e87e3d58553b297befb4eee2a45}{pmDefault}       = 0x00   
-321                      ,\hyperlink{class_q_c_p_painter_a156cf16444ff5e0d81a73c615fdb156daeda679cd55dcd468341d07d48a30b6ab}{pmVectorized}   = 0x01   
-322                      ,\hyperlink{class_q_c_p_painter_a156cf16444ff5e0d81a73c615fdb156dae78f9a4eb277a5f9207f50850a51a0b0}{pmNoCaching}    = 0x02   
-323                      ,\hyperlink{class_q_c_p_painter_a156cf16444ff5e0d81a73c615fdb156dac1e481bfaf408f2bd2eaad3ec341f36b}{pmNonCosmetic}  = 0x04   
-324                    \};
+421                    \{
+422     \hyperlink{class_q_c_p_painter_a156cf16444ff5e0d81a73c615fdb156da3bac5e87e3d58553b297befb4eee2a45}{pmDefault} =
+423         0x00 
+424     ,
+425     \hyperlink{class_q_c_p_painter_a156cf16444ff5e0d81a73c615fdb156daeda679cd55dcd468341d07d48a30b6ab}{pmVectorized} = 0x01 
+426     ,
+429     \hyperlink{class_q_c_p_painter_a156cf16444ff5e0d81a73c615fdb156dae78f9a4eb277a5f9207f50850a51a0b0}{pmNoCaching} = 0x02 
+430     ,
+433     \hyperlink{class_q_c_p_painter_a156cf16444ff5e0d81a73c615fdb156dac1e481bfaf408f2bd2eaad3ec341f36b}{pmNonCosmetic} = 0x04 
+434   \};
 \end{DoxyCode}
 
 
@@ -139,18 +144,15 @@ Definition at line 320 of file qcustomplot.\+h.
 )}\label{class_q_c_p_painter_a3c52cb0f43f34573d29bea487da28fe8}
 Creates a new \hyperlink{class_q_c_p_painter}{Q\+C\+P\+Painter} instance and sets default values 
 
-Definition at line 50 of file qcustomplot.\+cpp.
+Definition at line 54 of file qcustomplot.\+cpp.
 
 
 \begin{DoxyCode}
-50                        :
-51   QPainter(),
-52   \hyperlink{class_q_c_p_painter_af5d1d6e5df0adbc7de5633250fb3396c}{mModes}(\hyperlink{class_q_c_p_painter_a156cf16444ff5e0d81a73c615fdb156da3bac5e87e3d58553b297befb4eee2a45}{pmDefault}),
-53   \hyperlink{class_q_c_p_painter_a7055085da176aee0f6b23298f1003d08}{mIsAntialiasing}(\textcolor{keyword}{false})
-54 \{
-55   \textcolor{comment}{// don't setRenderHint(QPainter::NonCosmeticDefautPen) here, because painter isn't active yet and}
-56   \textcolor{comment}{// a call to begin() will follow}
-57 \}
+55     : QPainter(), \hyperlink{class_q_c_p_painter_af5d1d6e5df0adbc7de5633250fb3396c}{mModes}(\hyperlink{class_q_c_p_painter_a156cf16444ff5e0d81a73c615fdb156da3bac5e87e3d58553b297befb4eee2a45}{pmDefault}), \hyperlink{class_q_c_p_painter_a7055085da176aee0f6b23298f1003d08}{mIsAntialiasing}(\textcolor{keyword}{false}) \{
+56   \textcolor{comment}{// don't setRenderHint(QPainter::NonCosmeticDefautPen) here, because painter}
+57   \textcolor{comment}{// isn't active yet and}
+58   \textcolor{comment}{// a call to begin() will follow}
+59 \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_painter_ae58dbb1795ddc4351ab324dc9898aa22}{}\index{Q\+C\+P\+Painter@{Q\+C\+P\+Painter}!Q\+C\+P\+Painter@{Q\+C\+P\+Painter}}
 \index{Q\+C\+P\+Painter@{Q\+C\+P\+Painter}!Q\+C\+P\+Painter@{Q\+C\+P\+Painter}}
@@ -163,21 +165,19 @@ Creates a new \hyperlink{class_q_c_p_painter}{Q\+C\+P\+Painter} instance on the 
 
 Like \hyperlink{class_q_c_p_painter_a0a41146ccd619dceab6e25ec7b46b044}{begin}, this method sets Q\+Painter\+::\+Non\+Cosmetic\+Default\+Pen in Qt versions before Qt5. 
 
-Definition at line 65 of file qcustomplot.\+cpp.
+Definition at line 70 of file qcustomplot.\+cpp.
 
 
 \begin{DoxyCode}
-65                                            :
-66   QPainter(device),
-67   \hyperlink{class_q_c_p_painter_af5d1d6e5df0adbc7de5633250fb3396c}{mModes}(\hyperlink{class_q_c_p_painter_a156cf16444ff5e0d81a73c615fdb156da3bac5e87e3d58553b297befb4eee2a45}{pmDefault}),
-68   \hyperlink{class_q_c_p_painter_a7055085da176aee0f6b23298f1003d08}{mIsAntialiasing}(\textcolor{keyword}{false})
-69 \{
-70 \textcolor{preprocessor}{#if QT\_VERSION < QT\_VERSION\_CHECK(5, 0, 0) // before Qt5, default pens used to be cosmetic if
-       NonCosmeticDefaultPen flag isn't set. So we set it to get consistency across Qt versions.}
-71   \textcolor{keywordflow}{if} (isActive())
-72     setRenderHint(QPainter::NonCosmeticDefaultPen);
-73 \textcolor{preprocessor}{#endif}
-74 \}
+71     : QPainter(device), \hyperlink{class_q_c_p_painter_af5d1d6e5df0adbc7de5633250fb3396c}{mModes}(\hyperlink{class_q_c_p_painter_a156cf16444ff5e0d81a73c615fdb156da3bac5e87e3d58553b297befb4eee2a45}{pmDefault}), \hyperlink{class_q_c_p_painter_a7055085da176aee0f6b23298f1003d08}{mIsAntialiasing}(\textcolor{keyword}{false}) \{
+72 \textcolor{preprocessor}{#if QT\_VERSION <                                                               \(\backslash\)}
+73 \textcolor{preprocessor}{    QT\_VERSION\_CHECK(5, 0, 0) // before Qt5, default pens used to be cosmetic if}
+74                               \textcolor{comment}{// NonCosmeticDefaultPen flag isn't set. So we set}
+75                               \textcolor{comment}{// it to get consistency across Qt versions.}
+76   \textcolor{keywordflow}{if} (isActive())
+77     setRenderHint(QPainter::NonCosmeticDefaultPen);
+78 \textcolor{preprocessor}{#endif}
+79 \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_painter_aa8491da26c0bf7704a93e2dcbb0c5ba1}{}\index{Q\+C\+P\+Painter@{Q\+C\+P\+Painter}!````~Q\+C\+P\+Painter@{$\sim$\+Q\+C\+P\+Painter}}
 \index{````~Q\+C\+P\+Painter@{$\sim$\+Q\+C\+P\+Painter}!Q\+C\+P\+Painter@{Q\+C\+P\+Painter}}
@@ -188,12 +188,11 @@ Definition at line 65 of file qcustomplot.\+cpp.
 )}\label{class_q_c_p_painter_aa8491da26c0bf7704a93e2dcbb0c5ba1}
 
 
-Definition at line 76 of file qcustomplot.\+cpp.
+Definition at line 81 of file qcustomplot.\+cpp.
 
 
 \begin{DoxyCode}
-77 \{
-78 \}
+81 \{\}
 \end{DoxyCode}
 
 
@@ -207,7 +206,7 @@ Definition at line 76 of file qcustomplot.\+cpp.
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_painter_a13370d7996315a7150be2fc868da3d4a}
 
 
-Definition at line 333 of file qcustomplot.\+h.
+Definition at line 446 of file qcustomplot.\+h.
 
 
 
@@ -215,7 +214,7 @@ Referenced by Q\+C\+P\+Axis\+Painter\+Private\+::draw().
 
 
 \begin{DoxyCode}
-333 \{ \textcolor{keywordflow}{return} testRenderHint(QPainter::Antialiasing); \}
+446 \{ \textcolor{keywordflow}{return} testRenderHint(QPainter::Antialiasing); \}
 \end{DoxyCode}
 
 
@@ -244,7 +243,7 @@ this function hides the non-\/virtual base class implementation.
 \end{DoxyNote}
 
 
-Definition at line 179 of file qcustomplot.\+cpp.
+Definition at line 187 of file qcustomplot.\+cpp.
 
 
 
@@ -252,15 +251,17 @@ Referenced by Q\+Custom\+Plot\+::replot(), Q\+Custom\+Plot\+::save\+Pdf(), and Q
 
 
 \begin{DoxyCode}
-180 \{
-181   \textcolor{keywordtype}{bool} result = QPainter::begin(device);
-182 \textcolor{preprocessor}{#if QT\_VERSION < QT\_VERSION\_CHECK(5, 0, 0) // before Qt5, default pens used to be cosmetic if
-       NonCosmeticDefaultPen flag isn't set. So we set it to get consistency across Qt versions.}
-183   \textcolor{keywordflow}{if} (result)
-184     setRenderHint(QPainter::NonCosmeticDefaultPen);
-185 \textcolor{preprocessor}{#endif}
-186   \textcolor{keywordflow}{return} result;
-187 \}
+187                                            \{
+188   \textcolor{keywordtype}{bool} result = QPainter::begin(device);
+189 \textcolor{preprocessor}{#if QT\_VERSION <                                                               \(\backslash\)}
+190 \textcolor{preprocessor}{    QT\_VERSION\_CHECK(5, 0, 0) // before Qt5, default pens used to be cosmetic if}
+191                               \textcolor{comment}{// NonCosmeticDefaultPen flag isn't set. So we set}
+192                               \textcolor{comment}{// it to get consistency across Qt versions.}
+193   \textcolor{keywordflow}{if} (result)
+194     setRenderHint(QPainter::NonCosmeticDefaultPen);
+195 \textcolor{preprocessor}{#endif}
+196   \textcolor{keywordflow}{return} result;
+197 \}
 \end{DoxyCode}
 
 
@@ -289,7 +290,7 @@ this function hides the non-\/virtual base class implementation.
 \end{DoxyNote}
 
 
-Definition at line 129 of file qcustomplot.\+cpp.
+Definition at line 134 of file qcustomplot.\+cpp.
 
 
 
@@ -301,12 +302,12 @@ Referenced by Q\+C\+P\+Line\+Ending\+::draw(), Q\+C\+P\+Axis\+Painter\+Private\+
 
 
 \begin{DoxyCode}
-130 \{
-131   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_painter_a7055085da176aee0f6b23298f1003d08}{mIsAntialiasing} || \hyperlink{class_q_c_p_painter_af5d1d6e5df0adbc7de5633250fb3396c}{mModes}.testFlag(\hyperlink{class_q_c_p_painter_a156cf16444ff5e0d81a73c615fdb156daeda679cd55dcd468341d07d48a30b6ab}{pmVectorized}))
-132     QPainter::drawLine(line);
-133   \textcolor{keywordflow}{else}
-134     QPainter::drawLine(line.toLine());
-135 \}
+134                                             \{
+135   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_painter_a7055085da176aee0f6b23298f1003d08}{mIsAntialiasing} || \hyperlink{class_q_c_p_painter_af5d1d6e5df0adbc7de5633250fb3396c}{mModes}.testFlag(\hyperlink{class_q_c_p_painter_a156cf16444ff5e0d81a73c615fdb156daeda679cd55dcd468341d07d48a30b6ab}{pmVectorized}))
+136     QPainter::drawLine(line);
+137   \textcolor{keywordflow}{else}
+138     QPainter::drawLine(line.toLine());
+139 \}
 \end{DoxyCode}
 
 
@@ -329,42 +330,14 @@ Here is the caller graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_painter_ad1638db27929491b3f1beb74d6cbad5e}
 
 
-Definition at line 347 of file qcustomplot.\+h.
-
-
-
-References draw\+Line().
-
-
-
-Referenced by draw\+Line().
+Definition at line 460 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-347 \{\hyperlink{class_q_c_p_painter_a0b4b1b9bd495e182c731774dc800e6e0}{drawLine}(QLineF(p1, p2));\}
+460                                                       \{
+461     \hyperlink{class_q_c_p_painter_a0b4b1b9bd495e182c731774dc800e6e0}{drawLine}(QLineF(p1, p2));
+462   \}
 \end{DoxyCode}
-
-
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=194pt]{class_q_c_p_painter_ad1638db27929491b3f1beb74d6cbad5e_cgraph}
-\end{center}
-\end{figure}
-
-
-
-
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=194pt]{class_q_c_p_painter_ad1638db27929491b3f1beb74d6cbad5e_icgraph}
-\end{center}
-\end{figure}
-
-
 \hypertarget{class_q_c_p_painter_a7e63fbcf47e35c6f2ecd11b8fef7c7d8}{}\index{Q\+C\+P\+Painter@{Q\+C\+P\+Painter}!make\+Non\+Cosmetic@{make\+Non\+Cosmetic}}
 \index{make\+Non\+Cosmetic@{make\+Non\+Cosmetic}!Q\+C\+P\+Painter@{Q\+C\+P\+Painter}}
 \subsubsection[{make\+Non\+Cosmetic}]{\setlength{\rightskip}{0pt plus 5cm}void Q\+C\+P\+Painter\+::make\+Non\+Cosmetic (
@@ -374,7 +347,7 @@ Here is the caller graph for this function\+:\nopagebreak
 )}\label{class_q_c_p_painter_a7e63fbcf47e35c6f2ecd11b8fef7c7d8}
 Changes the pen width to 1 if it currently is 0. This function is called in the \hyperlink{class_q_c_p_painter_af9c7a4cd1791403901f8c5b82a150195}{set\+Pen} overrides when the \hyperlink{class_q_c_p_painter_a156cf16444ff5e0d81a73c615fdb156dac1e481bfaf408f2bd2eaad3ec341f36b}{pm\+Non\+Cosmetic} mode is set. 
 
-Definition at line 237 of file qcustomplot.\+cpp.
+Definition at line 250 of file qcustomplot.\+cpp.
 
 
 
@@ -382,14 +355,13 @@ Referenced by set\+Pen().
 
 
 \begin{DoxyCode}
-238 \{
-239   \textcolor{keywordflow}{if} (qFuzzyIsNull(pen().widthF()))
-240   \{
-241     QPen p = pen();
-242     p.setWidth(1);
-243     QPainter::setPen(p);
-244   \}
-245 \}
+250                                  \{
+251   \textcolor{keywordflow}{if} (qFuzzyIsNull(pen().widthF())) \{
+252     QPen p = pen();
+253     p.setWidth(1);
+254     QPainter::setPen(p);
+255   \}
+256 \}
 \end{DoxyCode}
 
 
@@ -411,7 +383,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_painter_a99b89eaf5363faaa1e1e6162856f436c}
 
 
-Definition at line 334 of file qcustomplot.\+h.
+Definition at line 447 of file qcustomplot.\+h.
 
 
 
@@ -419,7 +391,7 @@ Referenced by Q\+C\+P\+Line\+Ending\+::draw(), Q\+C\+P\+Curve\+::draw(), Q\+C\+P
 
 
 \begin{DoxyCode}
-334 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_painter_af5d1d6e5df0adbc7de5633250fb3396c}{mModes}; \}
+447 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_painter_af5d1d6e5df0adbc7de5633250fb3396c}{mModes}; \}
 \end{DoxyCode}
 
 
@@ -449,7 +421,7 @@ this function hides the non-\/virtual base class implementation.
 \end{DoxySeeAlso}
 
 
-Definition at line 224 of file qcustomplot.\+cpp.
+Definition at line 237 of file qcustomplot.\+cpp.
 
 
 
@@ -461,13 +433,13 @@ Referenced by Q\+Custom\+Plot\+::draw(), Q\+C\+P\+Plottable\+Legend\+Item\+::dra
 
 
 \begin{DoxyCode}
-225 \{
-226   \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_painter_a0189e641bbf7dc31ac15aef7b36501fa}{mAntialiasingStack}.isEmpty())
-227     \hyperlink{class_q_c_p_painter_a7055085da176aee0f6b23298f1003d08}{mIsAntialiasing} = \hyperlink{class_q_c_p_painter_a0189e641bbf7dc31ac15aef7b36501fa}{mAntialiasingStack}.pop();
-228   \textcolor{keywordflow}{else}
-229     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Unbalanced save/restore"};
-230   QPainter::restore();
-231 \}
+237                          \{
+238   \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_painter_a0189e641bbf7dc31ac15aef7b36501fa}{mAntialiasingStack}.isEmpty())
+239     \hyperlink{class_q_c_p_painter_a7055085da176aee0f6b23298f1003d08}{mIsAntialiasing} = \hyperlink{class_q_c_p_painter_a0189e641bbf7dc31ac15aef7b36501fa}{mAntialiasingStack}.pop();
+240   \textcolor{keywordflow}{else}
+241     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Unbalanced save/restore"};
+242   QPainter::restore();
+243 \}
 \end{DoxyCode}
 
 
@@ -497,7 +469,7 @@ this function hides the non-\/virtual base class implementation.
 \end{DoxySeeAlso}
 
 
-Definition at line 210 of file qcustomplot.\+cpp.
+Definition at line 222 of file qcustomplot.\+cpp.
 
 
 
@@ -509,10 +481,10 @@ Referenced by Q\+Custom\+Plot\+::draw(), Q\+C\+P\+Plottable\+Legend\+Item\+::dra
 
 
 \begin{DoxyCode}
-211 \{
-212   \hyperlink{class_q_c_p_painter_a0189e641bbf7dc31ac15aef7b36501fa}{mAntialiasingStack}.push(\hyperlink{class_q_c_p_painter_a7055085da176aee0f6b23298f1003d08}{mIsAntialiasing});
-213   QPainter::save();
-214 \}
+222                       \{
+223   \hyperlink{class_q_c_p_painter_a0189e641bbf7dc31ac15aef7b36501fa}{mAntialiasingStack}.push(\hyperlink{class_q_c_p_painter_a7055085da176aee0f6b23298f1003d08}{mIsAntialiasing});
+224   QPainter::save();
+225 \}
 \end{DoxyCode}
 
 
@@ -534,7 +506,7 @@ Here is the caller graph for this function\+:\nopagebreak
 )}\label{class_q_c_p_painter_aaba1deb9188244d9ea65b035112b4d05}
 Sets whether painting uses antialiasing or not. Use this method instead of using set\+Render\+Hint with Q\+Painter\+::\+Antialiasing directly, as it allows \hyperlink{class_q_c_p_painter}{Q\+C\+P\+Painter} to regain pixel exactness between antialiased and non-\/antialiased painting (Since Qt $<$ 5.\+0 uses slightly different coordinate systems for A\+A/\+Non-\/\+A\+A painting). 
 
-Definition at line 143 of file qcustomplot.\+cpp.
+Definition at line 150 of file qcustomplot.\+cpp.
 
 
 
@@ -546,21 +518,20 @@ Referenced by Q\+C\+P\+Layerable\+::apply\+Antialiasing\+Hint(), Q\+C\+P\+Axis\+
 
 
 \begin{DoxyCode}
-144 \{
-145   setRenderHint(QPainter::Antialiasing, enabled);
-146   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_painter_a7055085da176aee0f6b23298f1003d08}{mIsAntialiasing} != enabled)
-147   \{
-148     \hyperlink{class_q_c_p_painter_a7055085da176aee0f6b23298f1003d08}{mIsAntialiasing} = enabled;
-149     \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_painter_af5d1d6e5df0adbc7de5633250fb3396c}{mModes}.testFlag(\hyperlink{class_q_c_p_painter_a156cf16444ff5e0d81a73c615fdb156daeda679cd55dcd468341d07d48a30b6ab}{pmVectorized})) \textcolor{comment}{// antialiasing half-pixel shift only needed for
-       rasterized outputs}
-150     \{
-151       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_painter_a7055085da176aee0f6b23298f1003d08}{mIsAntialiasing})
-152         translate(0.5, 0.5);
-153       \textcolor{keywordflow}{else}
-154         translate(-0.5, -0.5);
-155     \}
-156   \}
-157 \}
+150                                              \{
+151   setRenderHint(QPainter::Antialiasing, enabled);
+152   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_painter_a7055085da176aee0f6b23298f1003d08}{mIsAntialiasing} != enabled) \{
+153     \hyperlink{class_q_c_p_painter_a7055085da176aee0f6b23298f1003d08}{mIsAntialiasing} = enabled;
+154     \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_painter_af5d1d6e5df0adbc7de5633250fb3396c}{mModes}.testFlag(\hyperlink{class_q_c_p_painter_a156cf16444ff5e0d81a73c615fdb156daeda679cd55dcd468341d07d48a30b6ab}{pmVectorized})) \textcolor{comment}{// antialiasing half-pixel shift only}
+155                                         \textcolor{comment}{// needed for rasterized outputs}
+156     \{
+157       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_painter_a7055085da176aee0f6b23298f1003d08}{mIsAntialiasing})
+158         translate(0.5, 0.5);
+159       \textcolor{keywordflow}{else}
+160         translate(-0.5, -0.5);
+161     \}
+162   \}
+163 \}
 \end{DoxyCode}
 
 
@@ -585,7 +556,7 @@ This is an overloaded member function, provided for convenience. It differs from
 
 Sets the mode of the painter. This controls whether the painter shall adjust its fixes/workarounds optimized for certain output devices. 
 
-Definition at line 194 of file qcustomplot.\+cpp.
+Definition at line 205 of file qcustomplot.\+cpp.
 
 
 
@@ -597,12 +568,12 @@ Referenced by Q\+Custom\+Plot\+::save\+Pdf(), Q\+Custom\+Plot\+::to\+Painter(), 
 
 
 \begin{DoxyCode}
-195 \{
-196   \textcolor{keywordflow}{if} (!enabled && \hyperlink{class_q_c_p_painter_af5d1d6e5df0adbc7de5633250fb3396c}{mModes}.testFlag(mode))
-197     \hyperlink{class_q_c_p_painter_af5d1d6e5df0adbc7de5633250fb3396c}{mModes} &= ~mode;
-198   \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (enabled && !\hyperlink{class_q_c_p_painter_af5d1d6e5df0adbc7de5633250fb3396c}{mModes}.testFlag(mode))
-199     \hyperlink{class_q_c_p_painter_af5d1d6e5df0adbc7de5633250fb3396c}{mModes} |= mode;
-200 \}
+205                                                                  \{
+206   \textcolor{keywordflow}{if} (!enabled && \hyperlink{class_q_c_p_painter_af5d1d6e5df0adbc7de5633250fb3396c}{mModes}.testFlag(mode))
+207     \hyperlink{class_q_c_p_painter_af5d1d6e5df0adbc7de5633250fb3396c}{mModes} &= ~mode;
+208   \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (enabled && !\hyperlink{class_q_c_p_painter_af5d1d6e5df0adbc7de5633250fb3396c}{mModes}.testFlag(mode))
+209     \hyperlink{class_q_c_p_painter_af5d1d6e5df0adbc7de5633250fb3396c}{mModes} |= mode;
+210 \}
 \end{DoxyCode}
 
 
@@ -624,7 +595,7 @@ Here is the caller graph for this function\+:\nopagebreak
 )}\label{class_q_c_p_painter_a5fac93adc29c7c4dea9f3e171e9e635e}
 Sets the mode of the painter. This controls whether the painter shall adjust its fixes/workarounds optimized for certain output devices. 
 
-Definition at line 163 of file qcustomplot.\+cpp.
+Definition at line 170 of file qcustomplot.\+cpp.
 
 
 
@@ -632,9 +603,7 @@ References m\+Modes, and modes().
 
 
 \begin{DoxyCode}
-164 \{
-165   \hyperlink{class_q_c_p_painter_af5d1d6e5df0adbc7de5633250fb3396c}{mModes} = \hyperlink{class_q_c_p_painter_a99b89eaf5363faaa1e1e6162856f436c}{modes};
-166 \}
+170 \{ \hyperlink{class_q_c_p_painter_af5d1d6e5df0adbc7de5633250fb3396c}{mModes} = \hyperlink{class_q_c_p_painter_a99b89eaf5363faaa1e1e6162856f436c}{modes}; \}
 \end{DoxyCode}
 
 
@@ -661,7 +630,7 @@ this function hides the non-\/virtual base class implementation.
 \end{DoxyNote}
 
 
-Definition at line 86 of file qcustomplot.\+cpp.
+Definition at line 90 of file qcustomplot.\+cpp.
 
 
 
@@ -673,11 +642,11 @@ Referenced by Q\+C\+P\+Scatter\+Style\+::apply\+To(), Q\+C\+P\+Line\+Ending\+::d
 
 
 \begin{DoxyCode}
-87 \{
-88   QPainter::setPen(pen);
-89   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_painter_af5d1d6e5df0adbc7de5633250fb3396c}{mModes}.testFlag(\hyperlink{class_q_c_p_painter_a156cf16444ff5e0d81a73c615fdb156dac1e481bfaf408f2bd2eaad3ec341f36b}{pmNonCosmetic}))
-90     \hyperlink{class_q_c_p_painter_a7e63fbcf47e35c6f2ecd11b8fef7c7d8}{makeNonCosmetic}();
-91 \}
+90                                        \{
+91   QPainter::setPen(pen);
+92   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_painter_af5d1d6e5df0adbc7de5633250fb3396c}{mModes}.testFlag(\hyperlink{class_q_c_p_painter_a156cf16444ff5e0d81a73c615fdb156dac1e481bfaf408f2bd2eaad3ec341f36b}{pmNonCosmetic}))
+93     \hyperlink{class_q_c_p_painter_a7e63fbcf47e35c6f2ecd11b8fef7c7d8}{makeNonCosmetic}();
+94 \}
 \end{DoxyCode}
 
 
@@ -717,7 +686,7 @@ this function hides the non-\/virtual base class implementation.
 \end{DoxyNote}
 
 
-Definition at line 100 of file qcustomplot.\+cpp.
+Definition at line 104 of file qcustomplot.\+cpp.
 
 
 
@@ -725,11 +694,11 @@ References make\+Non\+Cosmetic(), m\+Modes, and pm\+Non\+Cosmetic.
 
 
 \begin{DoxyCode}
-101 \{
-102   QPainter::setPen(color);
-103   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_painter_af5d1d6e5df0adbc7de5633250fb3396c}{mModes}.testFlag(\hyperlink{class_q_c_p_painter_a156cf16444ff5e0d81a73c615fdb156dac1e481bfaf408f2bd2eaad3ec341f36b}{pmNonCosmetic}))
-104     \hyperlink{class_q_c_p_painter_a7e63fbcf47e35c6f2ecd11b8fef7c7d8}{makeNonCosmetic}();
-105 \}
+104                                            \{
+105   QPainter::setPen(color);
+106   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_painter_af5d1d6e5df0adbc7de5633250fb3396c}{mModes}.testFlag(\hyperlink{class_q_c_p_painter_a156cf16444ff5e0d81a73c615fdb156dac1e481bfaf408f2bd2eaad3ec341f36b}{pmNonCosmetic}))
+107     \hyperlink{class_q_c_p_painter_a7e63fbcf47e35c6f2ecd11b8fef7c7d8}{makeNonCosmetic}();
+108 \}
 \end{DoxyCode}
 
 
@@ -758,7 +727,7 @@ this function hides the non-\/virtual base class implementation.
 \end{DoxyNote}
 
 
-Definition at line 114 of file qcustomplot.\+cpp.
+Definition at line 118 of file qcustomplot.\+cpp.
 
 
 
@@ -766,11 +735,11 @@ References make\+Non\+Cosmetic(), m\+Modes, and pm\+Non\+Cosmetic.
 
 
 \begin{DoxyCode}
-115 \{
-116   QPainter::setPen(penStyle);
-117   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_painter_af5d1d6e5df0adbc7de5633250fb3396c}{mModes}.testFlag(\hyperlink{class_q_c_p_painter_a156cf16444ff5e0d81a73c615fdb156dac1e481bfaf408f2bd2eaad3ec341f36b}{pmNonCosmetic}))
-118     \hyperlink{class_q_c_p_painter_a7e63fbcf47e35c6f2ecd11b8fef7c7d8}{makeNonCosmetic}();
-119 \}
+118                                            \{
+119   QPainter::setPen(penStyle);
+120   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_painter_af5d1d6e5df0adbc7de5633250fb3396c}{mModes}.testFlag(\hyperlink{class_q_c_p_painter_a156cf16444ff5e0d81a73c615fdb156dac1e481bfaf408f2bd2eaad3ec341f36b}{pmNonCosmetic}))
+121     \hyperlink{class_q_c_p_painter_a7e63fbcf47e35c6f2ecd11b8fef7c7d8}{makeNonCosmetic}();
+122 \}
 \end{DoxyCode}
 
 
@@ -791,7 +760,7 @@ Here is the call graph for this function\+:\nopagebreak
 \subsubsection[{m\+Antialiasing\+Stack}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Stack$<$bool$>$ Q\+C\+P\+Painter\+::m\+Antialiasing\+Stack\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_painter_a0189e641bbf7dc31ac15aef7b36501fa}
 
 
-Definition at line 360 of file qcustomplot.\+h.
+Definition at line 475 of file qcustomplot.\+h.
 
 
 
@@ -802,7 +771,7 @@ Referenced by restore(), and save().
 \subsubsection[{m\+Is\+Antialiasing}]{\setlength{\rightskip}{0pt plus 5cm}bool Q\+C\+P\+Painter\+::m\+Is\+Antialiasing\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_painter_a7055085da176aee0f6b23298f1003d08}
 
 
-Definition at line 357 of file qcustomplot.\+h.
+Definition at line 472 of file qcustomplot.\+h.
 
 
 
@@ -813,7 +782,7 @@ Referenced by draw\+Line(), restore(), save(), and set\+Antialiasing().
 \subsubsection[{m\+Modes}]{\setlength{\rightskip}{0pt plus 5cm}Painter\+Modes Q\+C\+P\+Painter\+::m\+Modes\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_painter_af5d1d6e5df0adbc7de5633250fb3396c}
 
 
-Definition at line 356 of file qcustomplot.\+h.
+Definition at line 471 of file qcustomplot.\+h.
 
 
 

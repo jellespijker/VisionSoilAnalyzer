@@ -199,7 +199,7 @@ The \hyperlink{class_q_c_p_legend}{Q\+C\+P\+Legend} derives from \hyperlink{clas
 
 By default, every \hyperlink{class_q_custom_plot}{Q\+Custom\+Plot} has one legend (\hyperlink{class_q_custom_plot_a4eadcd237dc6a09938b68b16877fa6af}{Q\+Custom\+Plot\+::legend}) which is placed in the inset layout of the main axis rect (\hyperlink{class_q_c_p_axis_rect_a4114887c7141b59650b7488f930993e5}{Q\+C\+P\+Axis\+Rect\+::inset\+Layout}). To move the legend to another position inside the axis rect, use the methods of the \hyperlink{class_q_c_p_layout_inset}{Q\+C\+P\+Layout\+Inset}. To move the legend outside of the axis rect, place it anywhere else with the Q\+C\+P\+Layout/\+Q\+C\+P\+Layout\+Element interface. 
 
-Definition at line 2169 of file qcustomplot.\+h.
+Definition at line 2497 of file qcustomplot.\+h.
 
 
 
@@ -225,14 +225,17 @@ Defines the selectable parts of a legend
 \end{Desc}
 
 
-Definition at line 2194 of file qcustomplot.\+h.
+Definition at line 2526 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-2194                       \{ \hyperlink{class_q_c_p_legend_a5404de8bc1e4a994ca4ae69e2c7072f1a378201c07d500af7126e3ec91652eed7}{spNone}       = 0x000  
-2195                         ,\hyperlink{class_q_c_p_legend_a5404de8bc1e4a994ca4ae69e2c7072f1a0fa4758962a46fa1dc9da818abae23c4}{spLegendBox}  = 0x001 
-2196                         ,\hyperlink{class_q_c_p_legend_a5404de8bc1e4a994ca4ae69e2c7072f1a768bfb95f323db4c66473375032c0af7}{spItems}      = 0x002 
-2197                       \};
+2526                       \{
+2527     \hyperlink{class_q_c_p_legend_a5404de8bc1e4a994ca4ae69e2c7072f1a378201c07d500af7126e3ec91652eed7}{spNone} = 0x000 
+2528     ,
+2529     \hyperlink{class_q_c_p_legend_a5404de8bc1e4a994ca4ae69e2c7072f1a0fa4758962a46fa1dc9da818abae23c4}{spLegendBox} = 0x001 
+2530     ,
+2531     \hyperlink{class_q_c_p_legend_a5404de8bc1e4a994ca4ae69e2c7072f1a768bfb95f323db4c66473375032c0af7}{spItems} = 0x002 
+2532   \};
 \end{DoxyCode}
 
 
@@ -248,7 +251,7 @@ Constructs a new \hyperlink{class_q_c_p_legend}{Q\+C\+P\+Legend} instance with {
 
 Note that by default, \hyperlink{class_q_custom_plot}{Q\+Custom\+Plot} already contains a legend ready to be used as \hyperlink{class_q_custom_plot_a4eadcd237dc6a09938b68b16877fa6af}{Q\+Custom\+Plot\+::legend} 
 
-Definition at line 12947 of file qcustomplot.\+cpp.
+Definition at line 14268 of file qcustomplot.\+cpp.
 
 
 
@@ -256,27 +259,27 @@ References Q\+C\+P\+Layerable\+::set\+Antialiased(), set\+Border\+Pen(), set\+Br
 
 
 \begin{DoxyCode}
-12948 \{
-12949   \hyperlink{class_q_c_p_layout_grid_aaef2cd2d456197ee06a208793678e436}{setRowSpacing}(0);
-12950   \hyperlink{class_q_c_p_layout_grid_a3a49272aba32bb0fddc3bb2a45a3dba0}{setColumnSpacing}(10);
-12951   \hyperlink{class_q_c_p_layout_element_a8f450b1f3f992ad576fce2c63d8b79cf}{setMargins}(QMargins(2, 3, 2, 2));
-12952   \hyperlink{class_q_c_p_layerable_a4fd43e89be4a553ead41652565ff0581}{setAntialiased}(\textcolor{keyword}{false});
-12953   \hyperlink{class_q_c_p_legend_a8b0740cce488bf7010da6beda6898984}{setIconSize}(32, 18);
-12954   
-12955   \hyperlink{class_q_c_p_legend_a62973bd69d5155e8ea3141366e8968f6}{setIconTextPadding}(7);
-12956   
-12957   \hyperlink{class_q_c_p_legend_a9ce60aa8bbd89f62ae4fa83ac6c60110}{setSelectableParts}(\hyperlink{class_q_c_p_legend_a5404de8bc1e4a994ca4ae69e2c7072f1a0fa4758962a46fa1dc9da818abae23c4}{spLegendBox} | \hyperlink{class_q_c_p_legend_a5404de8bc1e4a994ca4ae69e2c7072f1a768bfb95f323db4c66473375032c0af7}{spItems});
-12958   \hyperlink{class_q_c_p_legend_a2aee309bb5c2a794b1987f3fc97f8ad8}{setSelectedParts}(\hyperlink{class_q_c_p_legend_a5404de8bc1e4a994ca4ae69e2c7072f1a378201c07d500af7126e3ec91652eed7}{spNone});
-12959   
-12960   \hyperlink{class_q_c_p_legend_a866a9e3f5267de7430a6c7f26a61db9f}{setBorderPen}(QPen(Qt::black));
-12961   \hyperlink{class_q_c_p_legend_a2c35d262953a25d96b6112653fbefc88}{setSelectedBorderPen}(QPen(Qt::blue, 2));
-12962   \hyperlink{class_q_c_p_legend_a2f2c93d18a651f4ff294bb3f026f49b8}{setIconBorderPen}(Qt::NoPen);
-12963   \hyperlink{class_q_c_p_legend_ade93aabe9bcccaf9cf46cec22c658027}{setSelectedIconBorderPen}(QPen(Qt::blue, 2));
-12964   \hyperlink{class_q_c_p_legend_a497bbcd38baa3598c08e2b3f48103f23}{setBrush}(Qt::white);
-12965   \hyperlink{class_q_c_p_legend_a875227f3219c9799464631dec5e8f1bd}{setSelectedBrush}(Qt::white);
-12966   \hyperlink{class_q_c_p_legend_ae1eb239ff4a4632fe1b6c3e668d845c6}{setTextColor}(Qt::black);
-12967   \hyperlink{class_q_c_p_legend_a7674dfc7a1f30e1abd1018c0ed45e0bc}{setSelectedTextColor}(Qt::blue);
-12968 \}
+14268                      \{
+14269   \hyperlink{class_q_c_p_layout_grid_aaef2cd2d456197ee06a208793678e436}{setRowSpacing}(0);
+14270   \hyperlink{class_q_c_p_layout_grid_a3a49272aba32bb0fddc3bb2a45a3dba0}{setColumnSpacing}(10);
+14271   \hyperlink{class_q_c_p_layout_element_a8f450b1f3f992ad576fce2c63d8b79cf}{setMargins}(QMargins(2, 3, 2, 2));
+14272   \hyperlink{class_q_c_p_layerable_a4fd43e89be4a553ead41652565ff0581}{setAntialiased}(\textcolor{keyword}{false});
+14273   \hyperlink{class_q_c_p_legend_a8b0740cce488bf7010da6beda6898984}{setIconSize}(32, 18);
+14274 
+14275   \hyperlink{class_q_c_p_legend_a62973bd69d5155e8ea3141366e8968f6}{setIconTextPadding}(7);
+14276 
+14277   \hyperlink{class_q_c_p_legend_a9ce60aa8bbd89f62ae4fa83ac6c60110}{setSelectableParts}(\hyperlink{class_q_c_p_legend_a5404de8bc1e4a994ca4ae69e2c7072f1a0fa4758962a46fa1dc9da818abae23c4}{spLegendBox} | \hyperlink{class_q_c_p_legend_a5404de8bc1e4a994ca4ae69e2c7072f1a768bfb95f323db4c66473375032c0af7}{spItems});
+14278   \hyperlink{class_q_c_p_legend_a2aee309bb5c2a794b1987f3fc97f8ad8}{setSelectedParts}(\hyperlink{class_q_c_p_legend_a5404de8bc1e4a994ca4ae69e2c7072f1a378201c07d500af7126e3ec91652eed7}{spNone});
+14279 
+14280   \hyperlink{class_q_c_p_legend_a866a9e3f5267de7430a6c7f26a61db9f}{setBorderPen}(QPen(Qt::black));
+14281   \hyperlink{class_q_c_p_legend_a2c35d262953a25d96b6112653fbefc88}{setSelectedBorderPen}(QPen(Qt::blue, 2));
+14282   \hyperlink{class_q_c_p_legend_a2f2c93d18a651f4ff294bb3f026f49b8}{setIconBorderPen}(Qt::NoPen);
+14283   \hyperlink{class_q_c_p_legend_ade93aabe9bcccaf9cf46cec22c658027}{setSelectedIconBorderPen}(QPen(Qt::blue, 2));
+14284   \hyperlink{class_q_c_p_legend_a497bbcd38baa3598c08e2b3f48103f23}{setBrush}(Qt::white);
+14285   \hyperlink{class_q_c_p_legend_a875227f3219c9799464631dec5e8f1bd}{setSelectedBrush}(Qt::white);
+14286   \hyperlink{class_q_c_p_legend_ae1eb239ff4a4632fe1b6c3e668d845c6}{setTextColor}(Qt::black);
+14287   \hyperlink{class_q_c_p_legend_a7674dfc7a1f30e1abd1018c0ed45e0bc}{setSelectedTextColor}(Qt::blue);
+14288 \}
 \end{DoxyCode}
 
 
@@ -298,7 +301,7 @@ Here is the call graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_q_c_p_legend_a52b305572e20f4e7cb37e945e2b9bec0}
 
 
-Definition at line 12970 of file qcustomplot.\+cpp.
+Definition at line 14290 of file qcustomplot.\+cpp.
 
 
 
@@ -306,13 +309,17 @@ References clear\+Items(), Q\+Custom\+Plot\+::legend\+Removed(), and Q\+C\+P\+La
 
 
 \begin{DoxyCode}
-12971 \{
-12972   \hyperlink{class_q_c_p_legend_a24795c7250eb5214fcea16b7217b4dfb}{clearItems}();
-12973   \textcolor{keywordflow}{if} (qobject\_cast<QCustomPlot*>(\hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot})) \textcolor{comment}{// make sure this isn't called from QObject dtor
-       when QCustomPlot is already destructed (happens when the legend is not in any layout and thus QObject-child
-       of QCustomPlot)}
-12974     \hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_a9d173454555021c9ffd4f675c4d9037a}{legendRemoved}(\textcolor{keyword}{this});
-12975 \}
+14290                       \{
+14291   \hyperlink{class_q_c_p_legend_a24795c7250eb5214fcea16b7217b4dfb}{clearItems}();
+14292   \textcolor{keywordflow}{if} (qobject\_cast<QCustomPlot *>(\hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot})) \textcolor{comment}{// make sure this isn't called}
+14293                                                 \textcolor{comment}{// from QObject dtor when}
+14294                                                 \textcolor{comment}{// QCustomPlot is already}
+14295                                                 \textcolor{comment}{// destructed (happens when the}
+14296                                                 \textcolor{comment}{// legend is not in any layout}
+14297                                                 \textcolor{comment}{// and thus QObject-child of}
+14298                                                 \textcolor{comment}{// QCustomPlot)}
+14299     \hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_a9d173454555021c9ffd4f675c4d9037a}{legendRemoved}(\textcolor{keyword}{this});
+14300 \}
 \end{DoxyCode}
 
 
@@ -341,7 +348,7 @@ Returns true on sucess, i.\+e. if the item wasn\textquotesingle{}t in the list a
 
 The legend takes ownership of the item. 
 
-Definition at line 13288 of file qcustomplot.\+cpp.
+Definition at line 14605 of file qcustomplot.\+cpp.
 
 
 
@@ -353,13 +360,12 @@ Referenced by Q\+C\+P\+Abstract\+Plottable\+::add\+To\+Legend().
 
 
 \begin{DoxyCode}
-13289 \{
-13290   \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_legend_a380dd19eb631592e1ebb9b24cc5b398a}{hasItem}(item))
-13291   \{
-13292     \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_grid_adff1a2ca691ed83d2d24a4cd1fe17012}{addElement}(\hyperlink{class_q_c_p_layout_grid_af8e6c7a05864ebe610c87756c7b9079c}{rowCount}(), 0, item);
-13293   \} \textcolor{keywordflow}{else}
-13294     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
-13295 \}
+14605                                                    \{
+14606   \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_legend_a380dd19eb631592e1ebb9b24cc5b398a}{hasItem}(item)) \{
+14607     \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_grid_adff1a2ca691ed83d2d24a4cd1fe17012}{addElement}(\hyperlink{class_q_c_p_layout_grid_af8e6c7a05864ebe610c87756c7b9079c}{rowCount}(), 0, item);
+14608   \} \textcolor{keywordflow}{else}
+14609     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+14610 \}
 \end{DoxyCode}
 
 
@@ -396,7 +402,7 @@ Reimplemented from \hyperlink{class_q_c_p_layout_element_ad6d2b4bb0291c2441b2e1c
 
 
 
-Definition at line 13372 of file qcustomplot.\+cpp.
+Definition at line 14684 of file qcustomplot.\+cpp.
 
 
 
@@ -404,10 +410,10 @@ References Q\+C\+P\+::ae\+Legend, Q\+C\+P\+Layerable\+::apply\+Antialiasing\+Hin
 
 
 \begin{DoxyCode}
-13373 \{
-13374   \hyperlink{class_q_c_p_layerable_a62bd552d1a45aa9accb24b310542279e}{applyAntialiasingHint}(painter, \hyperlink{class_q_c_p_layerable_a3ab45a4c76a3333ce42eb217a81733ec}{mAntialiased}, 
+14684                                                                       \{
+14685   \hyperlink{class_q_c_p_layerable_a62bd552d1a45aa9accb24b310542279e}{applyAntialiasingHint}(painter, \hyperlink{class_q_c_p_layerable_a3ab45a4c76a3333ce42eb217a81733ec}{mAntialiased}, 
       \hyperlink{namespace_q_c_p_ae55dbe315d41fe80f29ba88100843a0ca9e0127a6361b5d0596b031a482c5cf97}{QCP::aeLegend});
-13375 \}
+14686 \}
 \end{DoxyCode}
 
 
@@ -429,11 +435,11 @@ Here is the call graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_legend_a8ffd92df86ddf43696d95f04a20e3226}
 
 
-Definition at line 2205 of file qcustomplot.\+h.
+Definition at line 2541 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-2205 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_legend_a52ab8342a382456131d567f962d7f9d0}{mBorderPen}; \}
+2541 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_legend_a52ab8342a382456131d567f962d7f9d0}{mBorderPen}; \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_legend_a7e5d2766e7d724f399022be8a4e8a2cb}{}\index{Q\+C\+P\+Legend@{Q\+C\+P\+Legend}!brush@{brush}}
 \index{brush@{brush}!Q\+C\+P\+Legend@{Q\+C\+P\+Legend}}
@@ -444,7 +450,7 @@ Definition at line 2205 of file qcustomplot.\+h.
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_legend_a7e5d2766e7d724f399022be8a4e8a2cb}
 
 
-Definition at line 2206 of file qcustomplot.\+h.
+Definition at line 2542 of file qcustomplot.\+h.
 
 
 
@@ -452,7 +458,7 @@ Referenced by set\+Brush(), and set\+Selected\+Brush().
 
 
 \begin{DoxyCode}
-2206 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_legend_a9bd7cd05a9a485e06eda513a348baf80}{mBrush}; \}
+2542 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_legend_a9bd7cd05a9a485e06eda513a348baf80}{mBrush}; \}
 \end{DoxyCode}
 
 
@@ -474,7 +480,7 @@ Here is the caller graph for this function\+:\nopagebreak
 )}\label{class_q_c_p_legend_a24795c7250eb5214fcea16b7217b4dfb}
 Removes all items from the legend. 
 
-Definition at line 13333 of file qcustomplot.\+cpp.
+Definition at line 14645 of file qcustomplot.\+cpp.
 
 
 
@@ -486,10 +492,10 @@ Referenced by $\sim$\+Q\+C\+P\+Legend().
 
 
 \begin{DoxyCode}
-13334 \{
-13335   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=\hyperlink{class_q_c_p_legend_a198228e9cdc78d3a3c306fa6763d0404}{itemCount}()-1; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}>=0; --\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
-13336     \hyperlink{class_q_c_p_legend_ac91595c3eaa746fe6321d2eb952c63bb}{removeItem}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i});
-13337 \}
+14645                            \{
+14646   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = \hyperlink{class_q_c_p_legend_a198228e9cdc78d3a3c306fa6763d0404}{itemCount}() - 1; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} >= 0; --\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
+14647     \hyperlink{class_q_c_p_legend_ac91595c3eaa746fe6321d2eb952c63bb}{removeItem}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i});
+14648 \}
 \end{DoxyCode}
 
 
@@ -526,7 +532,7 @@ Reimplemented from \hyperlink{class_q_c_p_layerable_ae546370644a5551c76af739afc0
 
 
 
-Definition at line 13440 of file qcustomplot.\+cpp.
+Definition at line 14760 of file qcustomplot.\+cpp.
 
 
 
@@ -534,16 +540,15 @@ References m\+Selectable\+Parts, m\+Selected\+Parts, selected\+Parts(), set\+Sel
 
 
 \begin{DoxyCode}
-13441 \{
-13442   \hyperlink{class_q_c_p_legend_a917a34dd2856baafd8d56852d94d00e2}{mSelectedParts} = \hyperlink{class_q_c_p_legend_abbbf1b2d6a149013527ed87b0780894a}{selectedParts}(); \textcolor{comment}{// in case item selection has changed}
-13443   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_legend_a179b4d5c1bea723b76e402ff48f0d7fb}{mSelectableParts}.testFlag(\hyperlink{class_q_c_p_legend_a5404de8bc1e4a994ca4ae69e2c7072f1a0fa4758962a46fa1dc9da818abae23c4}{spLegendBox}))
-13444   \{
-13445     SelectableParts selBefore = \hyperlink{class_q_c_p_legend_a917a34dd2856baafd8d56852d94d00e2}{mSelectedParts};
-13446     \hyperlink{class_q_c_p_legend_a2aee309bb5c2a794b1987f3fc97f8ad8}{setSelectedParts}(\hyperlink{class_q_c_p_legend_abbbf1b2d6a149013527ed87b0780894a}{selectedParts}() & ~\hyperlink{class_q_c_p_legend_a5404de8bc1e4a994ca4ae69e2c7072f1a0fa4758962a46fa1dc9da818abae23c4}{spLegendBox});
-13447     \textcolor{keywordflow}{if} (selectionStateChanged)
-13448       *selectionStateChanged = \hyperlink{class_q_c_p_legend_a917a34dd2856baafd8d56852d94d00e2}{mSelectedParts} != selBefore;
-13449   \}
-13450 \}
+14760                                                          \{
+14761   \hyperlink{class_q_c_p_legend_a917a34dd2856baafd8d56852d94d00e2}{mSelectedParts} = \hyperlink{class_q_c_p_legend_abbbf1b2d6a149013527ed87b0780894a}{selectedParts}(); \textcolor{comment}{// in case item selection has changed}
+14762   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_legend_a179b4d5c1bea723b76e402ff48f0d7fb}{mSelectableParts}.testFlag(\hyperlink{class_q_c_p_legend_a5404de8bc1e4a994ca4ae69e2c7072f1a0fa4758962a46fa1dc9da818abae23c4}{spLegendBox})) \{
+14763     SelectableParts selBefore = \hyperlink{class_q_c_p_legend_a917a34dd2856baafd8d56852d94d00e2}{mSelectedParts};
+14764     \hyperlink{class_q_c_p_legend_a2aee309bb5c2a794b1987f3fc97f8ad8}{setSelectedParts}(\hyperlink{class_q_c_p_legend_abbbf1b2d6a149013527ed87b0780894a}{selectedParts}() & ~\hyperlink{class_q_c_p_legend_a5404de8bc1e4a994ca4ae69e2c7072f1a0fa4758962a46fa1dc9da818abae23c4}{spLegendBox});
+14765     \textcolor{keywordflow}{if} (selectionStateChanged)
+14766       *selectionStateChanged = \hyperlink{class_q_c_p_legend_a917a34dd2856baafd8d56852d94d00e2}{mSelectedParts} != selBefore;
+14767   \}
+14768 \}
 \end{DoxyCode}
 
 
@@ -569,7 +574,7 @@ Reimplemented from \hyperlink{class_q_c_p_layout_element_a547bcc1e6e2be5645ca781
 
 
 
-Definition at line 13402 of file qcustomplot.\+cpp.
+Definition at line 14714 of file qcustomplot.\+cpp.
 
 
 
@@ -577,12 +582,12 @@ References get\+Border\+Pen(), get\+Brush(), Q\+C\+P\+Layout\+Element\+::m\+Oute
 
 
 \begin{DoxyCode}
-13403 \{
-13404   \textcolor{comment}{// draw background rect:}
-13405   painter->setBrush(\hyperlink{class_q_c_p_legend_a236fe4cd617c9f88620fd9de74417f20}{getBrush}());
-13406   painter->\hyperlink{class_q_c_p_painter_af9c7a4cd1791403901f8c5b82a150195}{setPen}(\hyperlink{class_q_c_p_legend_a60172c9d2212584f38f5d0c1e50970c7}{getBorderPen}());
-13407   painter->drawRect(\hyperlink{class_q_c_p_layout_element_a07bb4973379e75cb0fa5b032c1d24afd}{mOuterRect});
-13408 \}
+14714                                         \{
+14715   \textcolor{comment}{// draw background rect:}
+14716   painter->setBrush(\hyperlink{class_q_c_p_legend_a236fe4cd617c9f88620fd9de74417f20}{getBrush}());
+14717   painter->\hyperlink{class_q_c_p_painter_af9c7a4cd1791403901f8c5b82a150195}{setPen}(\hyperlink{class_q_c_p_legend_a60172c9d2212584f38f5d0c1e50970c7}{getBorderPen}());
+14718   painter->drawRect(\hyperlink{class_q_c_p_layout_element_a07bb4973379e75cb0fa5b032c1d24afd}{mOuterRect});
+14719 \}
 \end{DoxyCode}
 
 
@@ -604,7 +609,7 @@ Here is the call graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_legend_a5cf8b840bc02f7bf4edb8dde400d0f41}
 
 
-Definition at line 2207 of file qcustomplot.\+h.
+Definition at line 2543 of file qcustomplot.\+h.
 
 
 
@@ -612,7 +617,7 @@ Referenced by set\+Font(), and set\+Selected\+Font().
 
 
 \begin{DoxyCode}
-2207 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_legend_a56ffacb184a99eefe09a0c7181d0713d}{mFont}; \}
+2543 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_legend_a56ffacb184a99eefe09a0c7181d0713d}{mFont}; \}
 \end{DoxyCode}
 
 
@@ -634,7 +639,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_legend_a60172c9d2212584f38f5d0c1e50970c7}
 
 
-Definition at line 13382 of file qcustomplot.\+cpp.
+Definition at line 14694 of file qcustomplot.\+cpp.
 
 
 
@@ -646,10 +651,10 @@ Referenced by draw().
 
 
 \begin{DoxyCode}
-13383 \{
-13384   \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_legend_a917a34dd2856baafd8d56852d94d00e2}{mSelectedParts}.testFlag(\hyperlink{class_q_c_p_legend_a5404de8bc1e4a994ca4ae69e2c7072f1a0fa4758962a46fa1dc9da818abae23c4}{spLegendBox}) ? 
+14694                                    \{
+14695   \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_legend_a917a34dd2856baafd8d56852d94d00e2}{mSelectedParts}.testFlag(\hyperlink{class_q_c_p_legend_a5404de8bc1e4a994ca4ae69e2c7072f1a0fa4758962a46fa1dc9da818abae23c4}{spLegendBox}) ? 
       \hyperlink{class_q_c_p_legend_a62906c996906ae23e9f724b6ac1f7334}{mSelectedBorderPen} : \hyperlink{class_q_c_p_legend_a52ab8342a382456131d567f962d7f9d0}{mBorderPen};
-13385 \}
+14696 \}
 \end{DoxyCode}
 
 
@@ -671,7 +676,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_legend_a236fe4cd617c9f88620fd9de74417f20}
 
 
-Definition at line 13392 of file qcustomplot.\+cpp.
+Definition at line 14704 of file qcustomplot.\+cpp.
 
 
 
@@ -683,10 +688,10 @@ Referenced by draw().
 
 
 \begin{DoxyCode}
-13393 \{
-13394   \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_legend_a917a34dd2856baafd8d56852d94d00e2}{mSelectedParts}.testFlag(\hyperlink{class_q_c_p_legend_a5404de8bc1e4a994ca4ae69e2c7072f1a0fa4758962a46fa1dc9da818abae23c4}{spLegendBox}) ? 
+14704                                  \{
+14705   \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_legend_a917a34dd2856baafd8d56852d94d00e2}{mSelectedParts}.testFlag(\hyperlink{class_q_c_p_legend_a5404de8bc1e4a994ca4ae69e2c7072f1a0fa4758962a46fa1dc9da818abae23c4}{spLegendBox}) ? 
       \hyperlink{class_q_c_p_legend_ab3c7567c86d4784b1e48f76a84b3a1e2}{mSelectedBrush} : \hyperlink{class_q_c_p_legend_a9bd7cd05a9a485e06eda513a348baf80}{mBrush};
-13395 \}
+14706 \}
 \end{DoxyCode}
 
 
@@ -708,7 +713,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const}\label{class_q_c_p_legend_a380dd19eb631592e1ebb9b24cc5b398a}
 Returns whether the legend contains {\itshape itm}. 
 
-Definition at line 13260 of file qcustomplot.\+cpp.
+Definition at line 14577 of file qcustomplot.\+cpp.
 
 
 
@@ -720,14 +725,13 @@ Referenced by add\+Item().
 
 
 \begin{DoxyCode}
-13261 \{
-13262   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}<\hyperlink{class_q_c_p_legend_a198228e9cdc78d3a3c306fa6763d0404}{itemCount}(); ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
-13263   \{
-13264     \textcolor{keywordflow}{if} (item == this->\hyperlink{class_q_c_p_legend_a454272d7094437beb3278a2294006da5}{item}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}))
-13265         \textcolor{keywordflow}{return} \textcolor{keyword}{true};
-13266   \}
-13267   \textcolor{keywordflow}{return} \textcolor{keyword}{false};
-13268 \}
+14577                                                          \{
+14578   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < \hyperlink{class_q_c_p_legend_a198228e9cdc78d3a3c306fa6763d0404}{itemCount}(); ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) \{
+14579     \textcolor{keywordflow}{if} (item == this->\hyperlink{class_q_c_p_legend_a454272d7094437beb3278a2294006da5}{item}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}))
+14580       \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+14581   \}
+14582   \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+14583 \}
 \end{DoxyCode}
 
 
@@ -765,7 +769,7 @@ Returns whether the legend contains a \hyperlink{class_q_c_p_plottable_legend_it
 \end{DoxySeeAlso}
 
 
-Definition at line 13276 of file qcustomplot.\+cpp.
+Definition at line 14592 of file qcustomplot.\+cpp.
 
 
 
@@ -777,9 +781,9 @@ Referenced by Q\+C\+P\+Abstract\+Plottable\+::add\+To\+Legend().
 
 
 \begin{DoxyCode}
-13277 \{
-13278   \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_legend_a5ee80cf83f65e3b6dd386942ee3cc1ee}{itemWithPlottable}(plottable);
-13279 \}
+14593                                                  \{
+14594   \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_legend_a5ee80cf83f65e3b6dd386942ee3cc1ee}{itemWithPlottable}(plottable);
+14595 \}
 \end{DoxyCode}
 
 
@@ -812,7 +816,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_legend_a2c4719d79630b0d0c75ef2333c59a912}
 
 
-Definition at line 2211 of file qcustomplot.\+h.
+Definition at line 2547 of file qcustomplot.\+h.
 
 
 
@@ -820,7 +824,7 @@ Referenced by Q\+C\+P\+Plottable\+Legend\+Item\+::get\+Icon\+Border\+Pen().
 
 
 \begin{DoxyCode}
-2211 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_legend_a773ae518c3149fcabff4a2906fdacbc4}{mIconBorderPen}; \}
+2547 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_legend_a773ae518c3149fcabff4a2906fdacbc4}{mIconBorderPen}; \}
 \end{DoxyCode}
 
 
@@ -842,7 +846,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_legend_a27dfb770b14adc0e8811bef8129780a5}
 
 
-Definition at line 2209 of file qcustomplot.\+h.
+Definition at line 2545 of file qcustomplot.\+h.
 
 
 
@@ -850,7 +854,7 @@ Referenced by Q\+C\+P\+Plottable\+Legend\+Item\+::draw(), and Q\+C\+P\+Plottable
 
 
 \begin{DoxyCode}
-2209 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_legend_a39b972aae6c6a3fa5aa73313ab7a5765}{mIconSize}; \}
+2545 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_legend_a39b972aae6c6a3fa5aa73313ab7a5765}{mIconSize}; \}
 \end{DoxyCode}
 
 
@@ -872,7 +876,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_legend_a9d6d07042a284c4ba5f9e3cb5c9281ef}
 
 
-Definition at line 2210 of file qcustomplot.\+h.
+Definition at line 2546 of file qcustomplot.\+h.
 
 
 
@@ -880,7 +884,7 @@ Referenced by Q\+C\+P\+Plottable\+Legend\+Item\+::draw(), and Q\+C\+P\+Plottable
 
 
 \begin{DoxyCode}
-2210 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_legend_a8abf8843864ee9afc3f54f906c062240}{mIconTextPadding}; \}
+2546 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_legend_a8abf8843864ee9afc3f54f906c062240}{mIconTextPadding}; \}
 \end{DoxyCode}
 
 
@@ -907,7 +911,7 @@ Returns the item with index {\itshape i}.
 \end{DoxySeeAlso}
 
 
-Definition at line 13224 of file qcustomplot.\+cpp.
+Definition at line 14545 of file qcustomplot.\+cpp.
 
 
 
@@ -919,9 +923,9 @@ Referenced by has\+Item(), item\+With\+Plottable(), remove\+Item(), selected\+It
 
 
 \begin{DoxyCode}
-13225 \{
-13226   \textcolor{keywordflow}{return} qobject\_cast<\hyperlink{class_q_c_p_abstract_legend_item}{QCPAbstractLegendItem}*>(\hyperlink{class_q_c_p_layout_grid_a26849ee5c47b4c940e8d65e8462f1065}{elementAt}(index));
-13227 \}
+14545                                                       \{
+14546   \textcolor{keywordflow}{return} qobject\_cast<\hyperlink{class_q_c_p_abstract_legend_item}{QCPAbstractLegendItem} *>(\hyperlink{class_q_c_p_layout_grid_a26849ee5c47b4c940e8d65e8462f1065}{elementAt}(index));
+14547 \}
 \end{DoxyCode}
 
 
@@ -957,7 +961,7 @@ Returns the number of items currently in the legend. \begin{DoxySeeAlso}{See als
 \end{DoxySeeAlso}
 
 
-Definition at line 13252 of file qcustomplot.\+cpp.
+Definition at line 14572 of file qcustomplot.\+cpp.
 
 
 
@@ -969,9 +973,7 @@ Referenced by clear\+Items(), has\+Item(), item\+With\+Plottable(), selected\+It
 
 
 \begin{DoxyCode}
-13253 \{
-13254   \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_grid_aa682b1d36660478f665bab3c64e956a9}{elementCount}();
-13255 \}
+14572 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_grid_aa682b1d36660478f665bab3c64e956a9}{elementCount}(); \}
 \end{DoxyCode}
 
 
@@ -1009,7 +1011,7 @@ Returns the \hyperlink{class_q_c_p_plottable_legend_item}{Q\+C\+P\+Plottable\+Le
 \end{DoxySeeAlso}
 
 
-Definition at line 13235 of file qcustomplot.\+cpp.
+Definition at line 14557 of file qcustomplot.\+cpp.
 
 
 
@@ -1021,18 +1023,16 @@ Referenced by has\+Item\+With\+Plottable(), and Q\+C\+P\+Abstract\+Plottable\+::
 
 
 \begin{DoxyCode}
-13236 \{
-13237   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}<\hyperlink{class_q_c_p_legend_a198228e9cdc78d3a3c306fa6763d0404}{itemCount}(); ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
-13238   \{
-13239     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_plottable_legend_item}{QCPPlottableLegendItem} *pli = qobject\_cast<QCPPlottableLegendItem*>(
-      \hyperlink{class_q_c_p_legend_a454272d7094437beb3278a2294006da5}{item}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})))
-13240     \{
-13241       \textcolor{keywordflow}{if} (pli->plottable() == plottable)
-13242         \textcolor{keywordflow}{return} pli;
-13243     \}
-13244   \}
-13245   \textcolor{keywordflow}{return} 0;
-13246 \}
+14557                                                                         \{
+14558   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < \hyperlink{class_q_c_p_legend_a198228e9cdc78d3a3c306fa6763d0404}{itemCount}(); ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) \{
+14559     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_plottable_legend_item}{QCPPlottableLegendItem} *pli =
+14560             qobject\_cast<QCPPlottableLegendItem *>(\hyperlink{class_q_c_p_legend_a454272d7094437beb3278a2294006da5}{item}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}))) \{
+14561       \textcolor{keywordflow}{if} (pli->plottable() == plottable)
+14562         \textcolor{keywordflow}{return} pli;
+14563     \}
+14564   \}
+14565   \textcolor{keywordflow}{return} 0;
+14566 \}
 \end{DoxyCode}
 
 
@@ -1069,13 +1069,13 @@ Reimplemented from \hyperlink{class_q_c_p_layout_element_a1478899e80e8244b411e96
 
 
 
-Definition at line 13465 of file qcustomplot.\+cpp.
+Definition at line 14781 of file qcustomplot.\+cpp.
 
 
 \begin{DoxyCode}
-13466 \{
-13467   Q\_UNUSED(parentPlot)
-13468 \}
+14781                                                              \{
+14782   Q\_UNUSED(parentPlot)
+14783 \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_legend_ac91595c3eaa746fe6321d2eb952c63bb}{}\index{Q\+C\+P\+Legend@{Q\+C\+P\+Legend}!remove\+Item@{remove\+Item}}
 \index{remove\+Item@{remove\+Item}!Q\+C\+P\+Legend@{Q\+C\+P\+Legend}}
@@ -1093,7 +1093,7 @@ Returns true, if successful.
 \end{DoxySeeAlso}
 
 
-Definition at line 13304 of file qcustomplot.\+cpp.
+Definition at line 14619 of file qcustomplot.\+cpp.
 
 
 
@@ -1105,15 +1105,14 @@ Referenced by clear\+Items(), and Q\+C\+P\+Abstract\+Plottable\+::remove\+From\+
 
 
 \begin{DoxyCode}
-13305 \{
-13306   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_abstract_legend_item}{QCPAbstractLegendItem} *ali = \hyperlink{class_q_c_p_legend_a454272d7094437beb3278a2294006da5}{item}(index))
-13307   \{
-13308     \textcolor{keywordtype}{bool} success = \textcolor{keyword}{remove}(ali);
-13309     \hyperlink{class_q_c_p_layout_grid_a08bba60e4acd20165526a8fd7f986b58}{simplify}();
-13310     \textcolor{keywordflow}{return} success;
-13311   \} \textcolor{keywordflow}{else}
-13312     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
-13313 \}
+14619                                     \{
+14620   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_abstract_legend_item}{QCPAbstractLegendItem} *ali = \hyperlink{class_q_c_p_legend_a454272d7094437beb3278a2294006da5}{item}(index)) \{
+14621     \textcolor{keywordtype}{bool} success = \textcolor{keyword}{remove}(ali);
+14622     \hyperlink{class_q_c_p_layout_grid_a08bba60e4acd20165526a8fd7f986b58}{simplify}();
+14623     \textcolor{keywordflow}{return} success;
+14624   \} \textcolor{keywordflow}{else}
+14625     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+14626 \}
 \end{DoxyCode}
 
 
@@ -1155,7 +1154,7 @@ Returns true, if successful.
 \end{DoxySeeAlso}
 
 
-Definition at line 13323 of file qcustomplot.\+cpp.
+Definition at line 14636 of file qcustomplot.\+cpp.
 
 
 
@@ -1163,11 +1162,11 @@ References item(), and Q\+C\+P\+Layout\+Grid\+::simplify().
 
 
 \begin{DoxyCode}
-13324 \{
-13325   \textcolor{keywordtype}{bool} success = \textcolor{keyword}{remove}(\hyperlink{class_q_c_p_legend_a454272d7094437beb3278a2294006da5}{item});
-13326   \hyperlink{class_q_c_p_layout_grid_a08bba60e4acd20165526a8fd7f986b58}{simplify}();
-13327   \textcolor{keywordflow}{return} success;
-13328 \}
+14636                                                       \{
+14637   \textcolor{keywordtype}{bool} success = \textcolor{keyword}{remove}(\hyperlink{class_q_c_p_legend_a454272d7094437beb3278a2294006da5}{item});
+14638   \hyperlink{class_q_c_p_layout_grid_a08bba60e4acd20165526a8fd7f986b58}{simplify}();
+14639   \textcolor{keywordflow}{return} success;
+14640 \}
 \end{DoxyCode}
 
 
@@ -1211,7 +1210,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_legend_aa90c7fdbad7a0e93527bafb1f1f49a43}
 
 
-Definition at line 2212 of file qcustomplot.\+h.
+Definition at line 2548 of file qcustomplot.\+h.
 
 
 
@@ -1219,7 +1218,7 @@ Referenced by Q\+C\+P\+Abstract\+Legend\+Item\+::deselect\+Event(), Q\+C\+P\+Abs
 
 
 \begin{DoxyCode}
-2212 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_legend_a179b4d5c1bea723b76e402ff48f0d7fb}{mSelectableParts}; \}
+2548 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_legend_a179b4d5c1bea723b76e402ff48f0d7fb}{mSelectableParts}; \}
 \end{DoxyCode}
 
 
@@ -1241,11 +1240,11 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_legend_a63156bc4ce64431bada7415cfa2b4dd1}
 
 
-Definition at line 2214 of file qcustomplot.\+h.
+Definition at line 2550 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-2214 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_legend_a62906c996906ae23e9f724b6ac1f7334}{mSelectedBorderPen}; \}
+2550 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_legend_a62906c996906ae23e9f724b6ac1f7334}{mSelectedBorderPen}; \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_legend_a600dde0d207ddc6f5a603767360cceac}{}\index{Q\+C\+P\+Legend@{Q\+C\+P\+Legend}!selected\+Brush@{selected\+Brush}}
 \index{selected\+Brush@{selected\+Brush}!Q\+C\+P\+Legend@{Q\+C\+P\+Legend}}
@@ -1256,11 +1255,11 @@ Definition at line 2214 of file qcustomplot.\+h.
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_legend_a600dde0d207ddc6f5a603767360cceac}
 
 
-Definition at line 2216 of file qcustomplot.\+h.
+Definition at line 2552 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-2216 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_legend_ab3c7567c86d4784b1e48f76a84b3a1e2}{mSelectedBrush}; \}
+2552 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_legend_ab3c7567c86d4784b1e48f76a84b3a1e2}{mSelectedBrush}; \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_legend_a4c1b08fc0afacb4ffd54f6a49737fa77}{}\index{Q\+C\+P\+Legend@{Q\+C\+P\+Legend}!selected\+Font@{selected\+Font}}
 \index{selected\+Font@{selected\+Font}!Q\+C\+P\+Legend@{Q\+C\+P\+Legend}}
@@ -1271,11 +1270,11 @@ Definition at line 2216 of file qcustomplot.\+h.
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_legend_a4c1b08fc0afacb4ffd54f6a49737fa77}
 
 
-Definition at line 2217 of file qcustomplot.\+h.
+Definition at line 2553 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-2217 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_legend_a86ce8f6c20a2f51a48eaf3c24ce16805}{mSelectedFont}; \}
+2553 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_legend_a86ce8f6c20a2f51a48eaf3c24ce16805}{mSelectedFont}; \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_legend_a165630cad7e41f89b54f65cdef3310e8}{}\index{Q\+C\+P\+Legend@{Q\+C\+P\+Legend}!selected\+Icon\+Border\+Pen@{selected\+Icon\+Border\+Pen}}
 \index{selected\+Icon\+Border\+Pen@{selected\+Icon\+Border\+Pen}!Q\+C\+P\+Legend@{Q\+C\+P\+Legend}}
@@ -1286,7 +1285,7 @@ Definition at line 2217 of file qcustomplot.\+h.
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_legend_a165630cad7e41f89b54f65cdef3310e8}
 
 
-Definition at line 2215 of file qcustomplot.\+h.
+Definition at line 2551 of file qcustomplot.\+h.
 
 
 
@@ -1294,7 +1293,7 @@ Referenced by Q\+C\+P\+Plottable\+Legend\+Item\+::get\+Icon\+Border\+Pen().
 
 
 \begin{DoxyCode}
-2215 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_legend_a7429ac0e64c7b90b649b4d8f4cc5fa55}{mSelectedIconBorderPen}; \}
+2551 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_legend_a7429ac0e64c7b90b649b4d8f4cc5fa55}{mSelectedIconBorderPen}; \}
 \end{DoxyCode}
 
 
@@ -1321,7 +1320,7 @@ Returns the legend items that are currently selected. If no items are selected, 
 \end{DoxySeeAlso}
 
 
-Definition at line 13345 of file qcustomplot.\+cpp.
+Definition at line 14657 of file qcustomplot.\+cpp.
 
 
 
@@ -1329,18 +1328,16 @@ References i, item(), and item\+Count().
 
 
 \begin{DoxyCode}
-13346 \{
-13347   QList<QCPAbstractLegendItem*> result;
-13348   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}<\hyperlink{class_q_c_p_legend_a198228e9cdc78d3a3c306fa6763d0404}{itemCount}(); ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
-13349   \{
-13350     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_abstract_legend_item}{QCPAbstractLegendItem} *ali = \hyperlink{class_q_c_p_legend_a454272d7094437beb3278a2294006da5}{item}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}))
-13351     \{
-13352       \textcolor{keywordflow}{if} (ali->selected())
-13353         result.append(ali);
-13354     \}
-13355   \}
-13356   \textcolor{keywordflow}{return} result;
-13357 \}
+14657                                                               \{
+14658   QList<QCPAbstractLegendItem *> result;
+14659   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < \hyperlink{class_q_c_p_legend_a198228e9cdc78d3a3c306fa6763d0404}{itemCount}(); ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) \{
+14660     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_abstract_legend_item}{QCPAbstractLegendItem} *ali = \hyperlink{class_q_c_p_legend_a454272d7094437beb3278a2294006da5}{item}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})) \{
+14661       \textcolor{keywordflow}{if} (ali->selected())
+14662         result.append(ali);
+14663     \}
+14664   \}
+14665   \textcolor{keywordflow}{return} result;
+14666 \}
 \end{DoxyCode}
 
 
@@ -1362,7 +1359,7 @@ Here is the call graph for this function\+:\nopagebreak
 ) const}\label{class_q_c_p_legend_abbbf1b2d6a149013527ed87b0780894a}
 
 
-Definition at line 12978 of file qcustomplot.\+cpp.
+Definition at line 14303 of file qcustomplot.\+cpp.
 
 
 
@@ -1374,22 +1371,21 @@ Referenced by deselect\+Event(), select\+Event(), and set\+Selected\+Parts().
 
 
 \begin{DoxyCode}
-12979 \{
-12980   \textcolor{comment}{// check whether any legend elements selected, if yes, add spItems to return value}
-12981   \textcolor{keywordtype}{bool} hasSelectedItems = \textcolor{keyword}{false};
-12982   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}<\hyperlink{class_q_c_p_legend_a198228e9cdc78d3a3c306fa6763d0404}{itemCount}(); ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
-12983   \{
-12984     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_legend_a454272d7094437beb3278a2294006da5}{item}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) && \hyperlink{class_q_c_p_legend_a454272d7094437beb3278a2294006da5}{item}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->\hyperlink{class_q_c_p_abstract_legend_item_ac776e68e3367704452131c6aa9908bb9}{selected}())
-12985     \{
-12986       hasSelectedItems = \textcolor{keyword}{true};
-12987       \textcolor{keywordflow}{break};
-12988     \}
-12989   \}
-12990   \textcolor{keywordflow}{if} (hasSelectedItems)
-12991     \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_legend_a917a34dd2856baafd8d56852d94d00e2}{mSelectedParts} | \hyperlink{class_q_c_p_legend_a5404de8bc1e4a994ca4ae69e2c7072f1a768bfb95f323db4c66473375032c0af7}{spItems};
-12992   \textcolor{keywordflow}{else}
-12993     \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_legend_a917a34dd2856baafd8d56852d94d00e2}{mSelectedParts} & ~\hyperlink{class_q_c_p_legend_a5404de8bc1e4a994ca4ae69e2c7072f1a768bfb95f323db4c66473375032c0af7}{spItems};
-12994 \}
+14303                                                         \{
+14304   \textcolor{comment}{// check whether any legend elements selected, if yes, add spItems to return}
+14305   \textcolor{comment}{// value}
+14306   \textcolor{keywordtype}{bool} hasSelectedItems = \textcolor{keyword}{false};
+14307   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < \hyperlink{class_q_c_p_legend_a198228e9cdc78d3a3c306fa6763d0404}{itemCount}(); ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) \{
+14308     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_legend_a454272d7094437beb3278a2294006da5}{item}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) && \hyperlink{class_q_c_p_legend_a454272d7094437beb3278a2294006da5}{item}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->\hyperlink{class_q_c_p_abstract_legend_item_ac776e68e3367704452131c6aa9908bb9}{selected}()) \{
+14309       hasSelectedItems = \textcolor{keyword}{true};
+14310       \textcolor{keywordflow}{break};
+14311     \}
+14312   \}
+14313   \textcolor{keywordflow}{if} (hasSelectedItems)
+14314     \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_legend_a917a34dd2856baafd8d56852d94d00e2}{mSelectedParts} | \hyperlink{class_q_c_p_legend_a5404de8bc1e4a994ca4ae69e2c7072f1a768bfb95f323db4c66473375032c0af7}{spItems};
+14315   \textcolor{keywordflow}{else}
+14316     \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_legend_a917a34dd2856baafd8d56852d94d00e2}{mSelectedParts} & ~\hyperlink{class_q_c_p_legend_a5404de8bc1e4a994ca4ae69e2c7072f1a768bfb95f323db4c66473375032c0af7}{spItems};
+14317 \}
 \end{DoxyCode}
 
 
@@ -1422,11 +1418,11 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_legend_a08005f3c17728c2c4e23b8ffc0842ffb}
 
 
-Definition at line 2218 of file qcustomplot.\+h.
+Definition at line 2554 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-2218 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_legend_a6c25c8796c6e73e983aae6024965f2be}{mSelectedTextColor}; \}
+2554 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_legend_a6c25c8796c6e73e983aae6024965f2be}{mSelectedTextColor}; \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_legend_af93bf87dc5c383a9d2ada80b35f3a1a5}{}\index{Q\+C\+P\+Legend@{Q\+C\+P\+Legend}!select\+Event@{select\+Event}}
 \index{select\+Event@{select\+Event}!Q\+C\+P\+Legend@{Q\+C\+P\+Legend}}
@@ -1444,7 +1440,7 @@ Reimplemented from \hyperlink{class_q_c_p_layerable_a7498c2d0d081cf7cad0fb3bb93a
 
 
 
-Definition at line 13426 of file qcustomplot.\+cpp.
+Definition at line 14738 of file qcustomplot.\+cpp.
 
 
 
@@ -1452,20 +1448,24 @@ References m\+Selectable\+Parts, m\+Selected\+Parts, selected\+Parts(), set\+Sel
 
 
 \begin{DoxyCode}
-13427 \{
-13428   Q\_UNUSED(event)
-13429   \hyperlink{class_q_c_p_legend_a917a34dd2856baafd8d56852d94d00e2}{mSelectedParts} = \hyperlink{class_q_c_p_legend_abbbf1b2d6a149013527ed87b0780894a}{selectedParts}(); \textcolor{comment}{// in case item selection has changed}
-13430   if (details.value<\hyperlink{class_q_c_p_legend_a5404de8bc1e4a994ca4ae69e2c7072f1}{SelectablePart}>() == \hyperlink{class_q_c_p_legend_a5404de8bc1e4a994ca4ae69e2c7072f1a0fa4758962a46fa1dc9da818abae23c4}{spLegendBox} && 
-      \hyperlink{class_q_c_p_legend_a179b4d5c1bea723b76e402ff48f0d7fb}{mSelectableParts}.testFlag(\hyperlink{class_q_c_p_legend_a5404de8bc1e4a994ca4ae69e2c7072f1a0fa4758962a46fa1dc9da818abae23c4}{spLegendBox}))
-13431   \{
-13432     SelectableParts selBefore = \hyperlink{class_q_c_p_legend_a917a34dd2856baafd8d56852d94d00e2}{mSelectedParts};
-13433     \hyperlink{class_q_c_p_legend_a2aee309bb5c2a794b1987f3fc97f8ad8}{setSelectedParts}(additive ? \hyperlink{class_q_c_p_legend_a917a34dd2856baafd8d56852d94d00e2}{mSelectedParts}^spLegendBox : 
-      \hyperlink{class_q_c_p_legend_a917a34dd2856baafd8d56852d94d00e2}{mSelectedParts}|spLegendBox); \textcolor{comment}{// no need to unset spItems in !additive case, because they will
-       be deselected by QCustomPlot (they're normal QCPLayerables with own deselectEvent)}
-13434     \textcolor{keywordflow}{if} (selectionStateChanged)
-13435       *selectionStateChanged = \hyperlink{class_q_c_p_legend_a917a34dd2856baafd8d56852d94d00e2}{mSelectedParts} != selBefore;
-13436   \}
-13437 \}
+14740                                                          \{
+14741   Q\_UNUSED(event)
+14742   \hyperlink{class_q_c_p_legend_a917a34dd2856baafd8d56852d94d00e2}{mSelectedParts} = \hyperlink{class_q_c_p_legend_abbbf1b2d6a149013527ed87b0780894a}{selectedParts}(); \textcolor{comment}{// in case item selection has changed}
+14743   if (details.value<\hyperlink{class_q_c_p_legend_a5404de8bc1e4a994ca4ae69e2c7072f1}{SelectablePart}>() == \hyperlink{class_q_c_p_legend_a5404de8bc1e4a994ca4ae69e2c7072f1a0fa4758962a46fa1dc9da818abae23c4}{spLegendBox} &&
+14744       \hyperlink{class_q_c_p_legend_a179b4d5c1bea723b76e402ff48f0d7fb}{mSelectableParts}.testFlag(\hyperlink{class_q_c_p_legend_a5404de8bc1e4a994ca4ae69e2c7072f1a0fa4758962a46fa1dc9da818abae23c4}{spLegendBox})) \{
+14745     SelectableParts selBefore = \hyperlink{class_q_c_p_legend_a917a34dd2856baafd8d56852d94d00e2}{mSelectedParts};
+14746     \hyperlink{class_q_c_p_legend_a2aee309bb5c2a794b1987f3fc97f8ad8}{setSelectedParts}(additive ? \hyperlink{class_q_c_p_legend_a917a34dd2856baafd8d56852d94d00e2}{mSelectedParts} ^ spLegendBox
+14747                               : \hyperlink{class_q_c_p_legend_a917a34dd2856baafd8d56852d94d00e2}{mSelectedParts} |
+14748                                     spLegendBox); \textcolor{comment}{// no need to unset spItems in}
+14749                                                   \textcolor{comment}{// !additive case, because}
+14750                                                   \textcolor{comment}{// they will be deselected by}
+14751                                                   \textcolor{comment}{// QCustomPlot (they're normal}
+14752                                                   \textcolor{comment}{// QCPLayerables with own}
+14753                                                   \textcolor{comment}{// deselectEvent)}
+14754     \textcolor{keywordflow}{if} (selectionStateChanged)
+14755       *selectionStateChanged = \hyperlink{class_q_c_p_legend_a917a34dd2856baafd8d56852d94d00e2}{mSelectedParts} != selBefore;
+14756   \}
+14757 \}
 \end{DoxyCode}
 
 
@@ -1491,7 +1491,7 @@ Reimplemented from \hyperlink{class_q_c_p_layerable_aa4035e586b7f317a06ba7e74e24
 
 
 
-Definition at line 13453 of file qcustomplot.\+cpp.
+Definition at line 14771 of file qcustomplot.\+cpp.
 
 
 
@@ -1499,9 +1499,9 @@ References Q\+C\+P\+::i\+Select\+Legend.
 
 
 \begin{DoxyCode}
-13454 \{
-13455   \textcolor{keywordflow}{return} \hyperlink{namespace_q_c_p_a2ad6bb6281c7c2d593d4277b44c2b037a269c9af298e257d1108edec0432b5513}{QCP::iSelectLegend};
-13456 \}
+14771                                                   \{
+14772   \textcolor{keywordflow}{return} \hyperlink{namespace_q_c_p_a2ad6bb6281c7c2d593d4277b44c2b037a269c9af298e257d1108edec0432b5513}{QCP::iSelectLegend};
+14773 \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_legend_a82c88464edac07a9eefaf3906268df3b}{}\index{Q\+C\+P\+Legend@{Q\+C\+P\+Legend}!selection\+Changed@{selection\+Changed}}
 \index{selection\+Changed@{selection\+Changed}!Q\+C\+P\+Legend@{Q\+C\+P\+Legend}}
@@ -1549,7 +1549,7 @@ Reimplemented from \hyperlink{class_q_c_p_layout_element_a9fcf5d0ea19f2c23b2b528
 
 
 
-Definition at line 13411 of file qcustomplot.\+cpp.
+Definition at line 14722 of file qcustomplot.\+cpp.
 
 
 
@@ -1557,18 +1557,19 @@ References Q\+C\+P\+Layout\+Element\+::m\+Outer\+Rect, Q\+C\+P\+Layerable\+::m\+
 
 
 \begin{DoxyCode}
-13412 \{
-13413   \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}) \textcolor{keywordflow}{return} -1;
-13414   \textcolor{keywordflow}{if} (onlySelectable && !\hyperlink{class_q_c_p_legend_a179b4d5c1bea723b76e402ff48f0d7fb}{mSelectableParts}.testFlag(\hyperlink{class_q_c_p_legend_a5404de8bc1e4a994ca4ae69e2c7072f1a0fa4758962a46fa1dc9da818abae23c4}{spLegendBox}))
-13415     \textcolor{keywordflow}{return} -1;
-13416   
-13417   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_element_a07bb4973379e75cb0fa5b032c1d24afd}{mOuterRect}.contains(pos.toPoint()))
-13418   \{
-13419     \textcolor{keywordflow}{if} (details) details->setValue(\hyperlink{class_q_c_p_legend_a5404de8bc1e4a994ca4ae69e2c7072f1a0fa4758962a46fa1dc9da818abae23c4}{spLegendBox});
-13420     \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_a7b738074c75e80070ef6a10263c6cd69}{selectionTolerance}()*0.99;
-13421   \}
-13422   \textcolor{keywordflow}{return} -1;
-13423 \}
+14723                                                       \{
+14724   \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot})
+14725     \textcolor{keywordflow}{return} -1;
+14726   \textcolor{keywordflow}{if} (onlySelectable && !\hyperlink{class_q_c_p_legend_a179b4d5c1bea723b76e402ff48f0d7fb}{mSelectableParts}.testFlag(\hyperlink{class_q_c_p_legend_a5404de8bc1e4a994ca4ae69e2c7072f1a0fa4758962a46fa1dc9da818abae23c4}{spLegendBox}))
+14727     \textcolor{keywordflow}{return} -1;
+14728 
+14729   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_element_a07bb4973379e75cb0fa5b032c1d24afd}{mOuterRect}.contains(pos.toPoint())) \{
+14730     \textcolor{keywordflow}{if} (details)
+14731       details->setValue(\hyperlink{class_q_c_p_legend_a5404de8bc1e4a994ca4ae69e2c7072f1a0fa4758962a46fa1dc9da818abae23c4}{spLegendBox});
+14732     \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_a7b738074c75e80070ef6a10263c6cd69}{selectionTolerance}() * 0.99;
+14733   \}
+14734   \textcolor{keywordflow}{return} -1;
+14735 \}
 \end{DoxyCode}
 
 
@@ -1590,7 +1591,7 @@ Here is the call graph for this function\+:\nopagebreak
 )}\label{class_q_c_p_legend_a866a9e3f5267de7430a6c7f26a61db9f}
 Sets the pen, the border of the entire legend is drawn with. 
 
-Definition at line 12999 of file qcustomplot.\+cpp.
+Definition at line 14322 of file qcustomplot.\+cpp.
 
 
 
@@ -1602,9 +1603,7 @@ Referenced by Q\+C\+P\+Legend().
 
 
 \begin{DoxyCode}
-13000 \{
-13001   \hyperlink{class_q_c_p_legend_a52ab8342a382456131d567f962d7f9d0}{mBorderPen} = pen;
-13002 \}
+14322 \{ \hyperlink{class_q_c_p_legend_a52ab8342a382456131d567f962d7f9d0}{mBorderPen} = pen; \}
 \end{DoxyCode}
 
 
@@ -1626,7 +1625,7 @@ Here is the caller graph for this function\+:\nopagebreak
 )}\label{class_q_c_p_legend_a497bbcd38baa3598c08e2b3f48103f23}
 Sets the brush of the legend background. 
 
-Definition at line 13007 of file qcustomplot.\+cpp.
+Definition at line 14327 of file qcustomplot.\+cpp.
 
 
 
@@ -1638,9 +1637,7 @@ Referenced by Q\+C\+P\+Legend().
 
 
 \begin{DoxyCode}
-13008 \{
-13009   \hyperlink{class_q_c_p_legend_a9bd7cd05a9a485e06eda513a348baf80}{mBrush} = \hyperlink{class_q_c_p_legend_a7e5d2766e7d724f399022be8a4e8a2cb}{brush};
-13010 \}
+14327 \{ \hyperlink{class_q_c_p_legend_a9bd7cd05a9a485e06eda513a348baf80}{mBrush} = \hyperlink{class_q_c_p_legend_a7e5d2766e7d724f399022be8a4e8a2cb}{brush}; \}
 \end{DoxyCode}
 
 
@@ -1680,7 +1677,7 @@ This function will also set {\itshape font} on all already existing legend items
 \end{DoxySeeAlso}
 
 
-Definition at line 13021 of file qcustomplot.\+cpp.
+Definition at line 14340 of file qcustomplot.\+cpp.
 
 
 
@@ -1688,14 +1685,13 @@ References font(), i, item(), item\+Count(), m\+Font, and Q\+C\+P\+Abstract\+Leg
 
 
 \begin{DoxyCode}
-13022 \{
-13023   \hyperlink{class_q_c_p_legend_a56ffacb184a99eefe09a0c7181d0713d}{mFont} = \hyperlink{class_q_c_p_legend_a5cf8b840bc02f7bf4edb8dde400d0f41}{font};
-13024   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}<\hyperlink{class_q_c_p_legend_a198228e9cdc78d3a3c306fa6763d0404}{itemCount}(); ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
-13025   \{
-13026     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_legend_a454272d7094437beb3278a2294006da5}{item}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}))
-13027       \hyperlink{class_q_c_p_legend_a454272d7094437beb3278a2294006da5}{item}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->\hyperlink{class_q_c_p_abstract_legend_item_a409c53455d8112f71d70c0c43eb10265}{setFont}(\hyperlink{class_q_c_p_legend_a56ffacb184a99eefe09a0c7181d0713d}{mFont});
-13028   \}
-13029 \}
+14340                                          \{
+14341   \hyperlink{class_q_c_p_legend_a56ffacb184a99eefe09a0c7181d0713d}{mFont} = \hyperlink{class_q_c_p_legend_a5cf8b840bc02f7bf4edb8dde400d0f41}{font};
+14342   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < \hyperlink{class_q_c_p_legend_a198228e9cdc78d3a3c306fa6763d0404}{itemCount}(); ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) \{
+14343     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_legend_a454272d7094437beb3278a2294006da5}{item}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}))
+14344       \hyperlink{class_q_c_p_legend_a454272d7094437beb3278a2294006da5}{item}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->\hyperlink{class_q_c_p_abstract_legend_item_a409c53455d8112f71d70c0c43eb10265}{setFont}(\hyperlink{class_q_c_p_legend_a56ffacb184a99eefe09a0c7181d0713d}{mFont});
+14345   \}
+14346 \}
 \end{DoxyCode}
 
 
@@ -1719,7 +1715,7 @@ Sets the pen used to draw a border around each legend icon. Legend items that dr
 
 If no border is wanted, set this to {\itshape Qt\+::\+No\+Pen}. 
 
-Definition at line 13083 of file qcustomplot.\+cpp.
+Definition at line 14396 of file qcustomplot.\+cpp.
 
 
 
@@ -1731,9 +1727,7 @@ Referenced by Q\+C\+P\+Legend().
 
 
 \begin{DoxyCode}
-13084 \{
-13085   \hyperlink{class_q_c_p_legend_a773ae518c3149fcabff4a2906fdacbc4}{mIconBorderPen} = pen;
-13086 \}
+14396 \{ \hyperlink{class_q_c_p_legend_a773ae518c3149fcabff4a2906fdacbc4}{mIconBorderPen} = pen; \}
 \end{DoxyCode}
 
 
@@ -1755,7 +1749,7 @@ Here is the caller graph for this function\+:\nopagebreak
 )}\label{class_q_c_p_legend_a8b0740cce488bf7010da6beda6898984}
 Sets the size of legend icons. Legend items that draw an icon (e.\+g. a visual representation of the graph) will use this size by default. 
 
-Definition at line 13054 of file qcustomplot.\+cpp.
+Definition at line 14371 of file qcustomplot.\+cpp.
 
 
 
@@ -1767,9 +1761,7 @@ Referenced by Q\+C\+P\+Legend().
 
 
 \begin{DoxyCode}
-13055 \{
-13056   \hyperlink{class_q_c_p_legend_a39b972aae6c6a3fa5aa73313ab7a5765}{mIconSize} = size;
-13057 \}
+14371 \{ \hyperlink{class_q_c_p_legend_a39b972aae6c6a3fa5aa73313ab7a5765}{mIconSize} = size; \}
 \end{DoxyCode}
 
 
@@ -1792,7 +1784,7 @@ Here is the caller graph for this function\+:\nopagebreak
 )}\label{class_q_c_p_legend_a96b1a37fd4ee6a9778e6e54fe56ab6c2}
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. 
 
-Definition at line 13061 of file qcustomplot.\+cpp.
+Definition at line 14375 of file qcustomplot.\+cpp.
 
 
 
@@ -1800,10 +1792,10 @@ References m\+Icon\+Size.
 
 
 \begin{DoxyCode}
-13062 \{
-13063   \hyperlink{class_q_c_p_legend_a39b972aae6c6a3fa5aa73313ab7a5765}{mIconSize}.setWidth(width);
-13064   \hyperlink{class_q_c_p_legend_a39b972aae6c6a3fa5aa73313ab7a5765}{mIconSize}.setHeight(height);
-13065 \}
+14375                                                  \{
+14376   \hyperlink{class_q_c_p_legend_a39b972aae6c6a3fa5aa73313ab7a5765}{mIconSize}.setWidth(width);
+14377   \hyperlink{class_q_c_p_legend_a39b972aae6c6a3fa5aa73313ab7a5765}{mIconSize}.setHeight(height);
+14378 \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_legend_a62973bd69d5155e8ea3141366e8968f6}{}\index{Q\+C\+P\+Legend@{Q\+C\+P\+Legend}!set\+Icon\+Text\+Padding@{set\+Icon\+Text\+Padding}}
 \index{set\+Icon\+Text\+Padding@{set\+Icon\+Text\+Padding}!Q\+C\+P\+Legend@{Q\+C\+P\+Legend}}
@@ -1814,7 +1806,7 @@ References m\+Icon\+Size.
 )}\label{class_q_c_p_legend_a62973bd69d5155e8ea3141366e8968f6}
 Sets the horizontal space in pixels between the legend icon and the text next to it. Legend items that draw an icon (e.\+g. a visual representation of the graph) and text (e.\+g. the name of the graph) will use this space by default. 
 
-Definition at line 13072 of file qcustomplot.\+cpp.
+Definition at line 14387 of file qcustomplot.\+cpp.
 
 
 
@@ -1826,9 +1818,7 @@ Referenced by Q\+C\+P\+Legend().
 
 
 \begin{DoxyCode}
-13073 \{
-13074   \hyperlink{class_q_c_p_legend_a8abf8843864ee9afc3f54f906c062240}{mIconTextPadding} = padding;
-13075 \}
+14387 \{ \hyperlink{class_q_c_p_legend_a8abf8843864ee9afc3f54f906c062240}{mIconTextPadding} = padding; \}
 \end{DoxyCode}
 
 
@@ -1857,7 +1847,7 @@ However, even when {\itshape selectable} is set to a value not allowing the sele
 \end{DoxySeeAlso}
 
 
-Definition at line 13098 of file qcustomplot.\+cpp.
+Definition at line 14411 of file qcustomplot.\+cpp.
 
 
 
@@ -1869,13 +1859,12 @@ Referenced by Q\+C\+P\+Legend().
 
 
 \begin{DoxyCode}
-13099 \{
-13100   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_legend_a179b4d5c1bea723b76e402ff48f0d7fb}{mSelectableParts} != selectable)
-13101   \{
-13102     \hyperlink{class_q_c_p_legend_a179b4d5c1bea723b76e402ff48f0d7fb}{mSelectableParts} = selectable;
-13103     emit \hyperlink{class_q_c_p_legend_a8a77300fd0976d6bdd8000f4e8d114b8}{selectableChanged}(\hyperlink{class_q_c_p_legend_a179b4d5c1bea723b76e402ff48f0d7fb}{mSelectableParts});
-13104   \}
-13105 \}
+14411                                                                     \{
+14412   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_legend_a179b4d5c1bea723b76e402ff48f0d7fb}{mSelectableParts} != selectable) \{
+14413     \hyperlink{class_q_c_p_legend_a179b4d5c1bea723b76e402ff48f0d7fb}{mSelectableParts} = selectable;
+14414     emit \hyperlink{class_q_c_p_legend_a8a77300fd0976d6bdd8000f4e8d114b8}{selectableChanged}(\hyperlink{class_q_c_p_legend_a179b4d5c1bea723b76e402ff48f0d7fb}{mSelectableParts});
+14415   \}
+14416 \}
 \end{DoxyCode}
 
 
@@ -1902,7 +1891,7 @@ When the legend box is selected, this pen is used to draw the border instead of 
 \end{DoxySeeAlso}
 
 
-Definition at line 13159 of file qcustomplot.\+cpp.
+Definition at line 14484 of file qcustomplot.\+cpp.
 
 
 
@@ -1914,9 +1903,9 @@ Referenced by Q\+C\+P\+Legend().
 
 
 \begin{DoxyCode}
-13160 \{
-13161   \hyperlink{class_q_c_p_legend_a62906c996906ae23e9f724b6ac1f7334}{mSelectedBorderPen} = pen;
-13162 \}
+14484                                                     \{
+14485   \hyperlink{class_q_c_p_legend_a62906c996906ae23e9f724b6ac1f7334}{mSelectedBorderPen} = pen;
+14486 \}
 \end{DoxyCode}
 
 
@@ -1943,7 +1932,7 @@ When the legend box is selected, this brush is used to draw the legend backgroun
 \end{DoxySeeAlso}
 
 
-Definition at line 13180 of file qcustomplot.\+cpp.
+Definition at line 14505 of file qcustomplot.\+cpp.
 
 
 
@@ -1955,9 +1944,9 @@ Referenced by Q\+C\+P\+Legend().
 
 
 \begin{DoxyCode}
-13181 \{
-13182   \hyperlink{class_q_c_p_legend_ab3c7567c86d4784b1e48f76a84b3a1e2}{mSelectedBrush} = \hyperlink{class_q_c_p_legend_a7e5d2766e7d724f399022be8a4e8a2cb}{brush};
-13183 \}
+14505                                                     \{
+14506   \hyperlink{class_q_c_p_legend_ab3c7567c86d4784b1e48f76a84b3a1e2}{mSelectedBrush} = \hyperlink{class_q_c_p_legend_a7e5d2766e7d724f399022be8a4e8a2cb}{brush};
+14507 \}
 \end{DoxyCode}
 
 
@@ -1997,7 +1986,7 @@ This function will also set {\itshape font} on all already existing legend items
 \end{DoxySeeAlso}
 
 
-Definition at line 13192 of file qcustomplot.\+cpp.
+Definition at line 14516 of file qcustomplot.\+cpp.
 
 
 
@@ -2005,14 +1994,13 @@ References font(), i, item(), item\+Count(), m\+Selected\+Font, and Q\+C\+P\+Abs
 
 
 \begin{DoxyCode}
-13193 \{
-13194   \hyperlink{class_q_c_p_legend_a86ce8f6c20a2f51a48eaf3c24ce16805}{mSelectedFont} = \hyperlink{class_q_c_p_legend_a5cf8b840bc02f7bf4edb8dde400d0f41}{font};
-13195   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}<\hyperlink{class_q_c_p_legend_a198228e9cdc78d3a3c306fa6763d0404}{itemCount}(); ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
-13196   \{
-13197     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_legend_a454272d7094437beb3278a2294006da5}{item}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}))
-13198       \hyperlink{class_q_c_p_legend_a454272d7094437beb3278a2294006da5}{item}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->\hyperlink{class_q_c_p_abstract_legend_item_a91db5aee48617a9d3206e61376807365}{setSelectedFont}(\hyperlink{class_q_c_p_legend_a5cf8b840bc02f7bf4edb8dde400d0f41}{font});
-13199   \}
-13200 \}
+14516                                                  \{
+14517   \hyperlink{class_q_c_p_legend_a86ce8f6c20a2f51a48eaf3c24ce16805}{mSelectedFont} = \hyperlink{class_q_c_p_legend_a5cf8b840bc02f7bf4edb8dde400d0f41}{font};
+14518   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < \hyperlink{class_q_c_p_legend_a198228e9cdc78d3a3c306fa6763d0404}{itemCount}(); ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) \{
+14519     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_legend_a454272d7094437beb3278a2294006da5}{item}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}))
+14520       \hyperlink{class_q_c_p_legend_a454272d7094437beb3278a2294006da5}{item}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->\hyperlink{class_q_c_p_abstract_legend_item_a91db5aee48617a9d3206e61376807365}{setSelectedFont}(\hyperlink{class_q_c_p_legend_a5cf8b840bc02f7bf4edb8dde400d0f41}{font});
+14521   \}
+14522 \}
 \end{DoxyCode}
 
 
@@ -2039,7 +2027,7 @@ Sets the pen legend items will use to draw their icon borders, when they are sel
 \end{DoxySeeAlso}
 
 
-Definition at line 13169 of file qcustomplot.\+cpp.
+Definition at line 14494 of file qcustomplot.\+cpp.
 
 
 
@@ -2051,9 +2039,9 @@ Referenced by Q\+C\+P\+Legend().
 
 
 \begin{DoxyCode}
-13170 \{
-13171   \hyperlink{class_q_c_p_legend_a7429ac0e64c7b90b649b4d8f4cc5fa55}{mSelectedIconBorderPen} = pen;
-13172 \}
+14494                                                         \{
+14495   \hyperlink{class_q_c_p_legend_a7429ac0e64c7b90b649b4d8f4cc5fa55}{mSelectedIconBorderPen} = pen;
+14496 \}
 \end{DoxyCode}
 
 
@@ -2088,7 +2076,7 @@ Note that it doesn\textquotesingle{}t make sense to set the selected state \hype
 \end{DoxySeeAlso}
 
 
-Definition at line 13128 of file qcustomplot.\+cpp.
+Definition at line 14449 of file qcustomplot.\+cpp.
 
 
 
@@ -2100,32 +2088,33 @@ Referenced by deselect\+Event(), Q\+C\+P\+Legend(), and select\+Event().
 
 
 \begin{DoxyCode}
-13129 \{
-13130   SelectableParts newSelected = selected;
-13131   \hyperlink{class_q_c_p_legend_a917a34dd2856baafd8d56852d94d00e2}{mSelectedParts} = this->\hyperlink{class_q_c_p_legend_abbbf1b2d6a149013527ed87b0780894a}{selectedParts}(); \textcolor{comment}{// update mSelectedParts in case item
-       selection changed}
-13132 
-13133   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_legend_a917a34dd2856baafd8d56852d94d00e2}{mSelectedParts} != newSelected)
-13134   \{
-13135     \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_legend_a917a34dd2856baafd8d56852d94d00e2}{mSelectedParts}.testFlag(\hyperlink{class_q_c_p_legend_a5404de8bc1e4a994ca4ae69e2c7072f1a768bfb95f323db4c66473375032c0af7}{spItems}) && newSelected.testFlag(
-      \hyperlink{class_q_c_p_legend_a5404de8bc1e4a994ca4ae69e2c7072f1a768bfb95f323db4c66473375032c0af7}{spItems})) \textcolor{comment}{// attempt to set spItems flag (can't do that)}
-13136     \{
-13137       qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"spItems flag can not be set, it can only be unset with this function"};
-13138       newSelected &= ~\hyperlink{class_q_c_p_legend_a5404de8bc1e4a994ca4ae69e2c7072f1a768bfb95f323db4c66473375032c0af7}{spItems};
-13139     \}
-13140     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_legend_a917a34dd2856baafd8d56852d94d00e2}{mSelectedParts}.testFlag(\hyperlink{class_q_c_p_legend_a5404de8bc1e4a994ca4ae69e2c7072f1a768bfb95f323db4c66473375032c0af7}{spItems}) && !newSelected.testFlag(
-      \hyperlink{class_q_c_p_legend_a5404de8bc1e4a994ca4ae69e2c7072f1a768bfb95f323db4c66473375032c0af7}{spItems})) \textcolor{comment}{// spItems flag was unset, so clear item selection}
-13141     \{
-13142       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}<\hyperlink{class_q_c_p_legend_a198228e9cdc78d3a3c306fa6763d0404}{itemCount}(); ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
-13143       \{
-13144         \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_legend_a454272d7094437beb3278a2294006da5}{item}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}))
-13145           \hyperlink{class_q_c_p_legend_a454272d7094437beb3278a2294006da5}{item}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->\hyperlink{class_q_c_p_abstract_legend_item_a6eed93b0ab99cb3eabb043fb08179c2b}{setSelected}(\textcolor{keyword}{false});
-13146       \}
-13147     \}
-13148     \hyperlink{class_q_c_p_legend_a917a34dd2856baafd8d56852d94d00e2}{mSelectedParts} = newSelected;
-13149     emit \hyperlink{class_q_c_p_legend_a82c88464edac07a9eefaf3906268df3b}{selectionChanged}(\hyperlink{class_q_c_p_legend_a917a34dd2856baafd8d56852d94d00e2}{mSelectedParts});
-13150   \}
-13151 \}
+14449                                                                 \{
+14450   SelectableParts newSelected = selected;
+14451   \hyperlink{class_q_c_p_legend_a917a34dd2856baafd8d56852d94d00e2}{mSelectedParts} = this->\hyperlink{class_q_c_p_legend_abbbf1b2d6a149013527ed87b0780894a}{selectedParts}(); \textcolor{comment}{// update mSelectedParts in case item}
+14452                                           \textcolor{comment}{// selection changed}
+14453 
+14454   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_legend_a917a34dd2856baafd8d56852d94d00e2}{mSelectedParts} != newSelected) \{
+14455     \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_legend_a917a34dd2856baafd8d56852d94d00e2}{mSelectedParts}.testFlag(\hyperlink{class_q_c_p_legend_a5404de8bc1e4a994ca4ae69e2c7072f1a768bfb95f323db4c66473375032c0af7}{spItems}) &&
+14456         newSelected.testFlag(
+14457             \hyperlink{class_q_c_p_legend_a5404de8bc1e4a994ca4ae69e2c7072f1a768bfb95f323db4c66473375032c0af7}{spItems})) \textcolor{comment}{// attempt to set spItems flag (can't do that)}
+14458     \{
+14459       qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"spItems flag can not be set, it can only be "}
+14460                                  \textcolor{stringliteral}{"unset with this function"};
+14461       newSelected &= ~\hyperlink{class_q_c_p_legend_a5404de8bc1e4a994ca4ae69e2c7072f1a768bfb95f323db4c66473375032c0af7}{spItems};
+14462     \}
+14463     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_legend_a917a34dd2856baafd8d56852d94d00e2}{mSelectedParts}.testFlag(\hyperlink{class_q_c_p_legend_a5404de8bc1e4a994ca4ae69e2c7072f1a768bfb95f323db4c66473375032c0af7}{spItems}) &&
+14464         !newSelected.testFlag(
+14465             \hyperlink{class_q_c_p_legend_a5404de8bc1e4a994ca4ae69e2c7072f1a768bfb95f323db4c66473375032c0af7}{spItems})) \textcolor{comment}{// spItems flag was unset, so clear item selection}
+14466     \{
+14467       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < \hyperlink{class_q_c_p_legend_a198228e9cdc78d3a3c306fa6763d0404}{itemCount}(); ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) \{
+14468         \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_legend_a454272d7094437beb3278a2294006da5}{item}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}))
+14469           \hyperlink{class_q_c_p_legend_a454272d7094437beb3278a2294006da5}{item}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->\hyperlink{class_q_c_p_abstract_legend_item_a6eed93b0ab99cb3eabb043fb08179c2b}{setSelected}(\textcolor{keyword}{false});
+14470       \}
+14471     \}
+14472     \hyperlink{class_q_c_p_legend_a917a34dd2856baafd8d56852d94d00e2}{mSelectedParts} = newSelected;
+14473     emit \hyperlink{class_q_c_p_legend_a82c88464edac07a9eefaf3906268df3b}{selectionChanged}(\hyperlink{class_q_c_p_legend_a917a34dd2856baafd8d56852d94d00e2}{mSelectedParts});
+14474   \}
+14475 \}
 \end{DoxyCode}
 
 
@@ -2165,7 +2154,7 @@ This function will also set {\itshape color} on all already existing legend item
 \end{DoxySeeAlso}
 
 
-Definition at line 13209 of file qcustomplot.\+cpp.
+Definition at line 14532 of file qcustomplot.\+cpp.
 
 
 
@@ -2177,14 +2166,13 @@ Referenced by Q\+C\+P\+Legend().
 
 
 \begin{DoxyCode}
-13210 \{
-13211   \hyperlink{class_q_c_p_legend_a6c25c8796c6e73e983aae6024965f2be}{mSelectedTextColor} = color;
-13212   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}<\hyperlink{class_q_c_p_legend_a198228e9cdc78d3a3c306fa6763d0404}{itemCount}(); ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
-13213   \{
-13214     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_legend_a454272d7094437beb3278a2294006da5}{item}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}))
-13215       \hyperlink{class_q_c_p_legend_a454272d7094437beb3278a2294006da5}{item}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->\hyperlink{class_q_c_p_abstract_legend_item_a4d01d008ee1a5bfe9905b0397a421936}{setSelectedTextColor}(color);
-13216   \}
-13217 \}
+14532                                                         \{
+14533   \hyperlink{class_q_c_p_legend_a6c25c8796c6e73e983aae6024965f2be}{mSelectedTextColor} = color;
+14534   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < \hyperlink{class_q_c_p_legend_a198228e9cdc78d3a3c306fa6763d0404}{itemCount}(); ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) \{
+14535     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_legend_a454272d7094437beb3278a2294006da5}{item}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}))
+14536       \hyperlink{class_q_c_p_legend_a454272d7094437beb3278a2294006da5}{item}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->\hyperlink{class_q_c_p_abstract_legend_item_a4d01d008ee1a5bfe9905b0397a421936}{setSelectedTextColor}(color);
+14537   \}
+14538 \}
 \end{DoxyCode}
 
 
@@ -2224,7 +2212,7 @@ This function will also set {\itshape color} on all already existing legend item
 \end{DoxySeeAlso}
 
 
-Definition at line 13040 of file qcustomplot.\+cpp.
+Definition at line 14359 of file qcustomplot.\+cpp.
 
 
 
@@ -2236,14 +2224,13 @@ Referenced by Q\+C\+P\+Legend().
 
 
 \begin{DoxyCode}
-13041 \{
-13042   \hyperlink{class_q_c_p_legend_a478b2d809a7390e9ff8f8bb70d6bd9fe}{mTextColor} = color;
-13043   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}<\hyperlink{class_q_c_p_legend_a198228e9cdc78d3a3c306fa6763d0404}{itemCount}(); ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
-13044   \{
-13045     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_legend_a454272d7094437beb3278a2294006da5}{item}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}))
-13046       \hyperlink{class_q_c_p_legend_a454272d7094437beb3278a2294006da5}{item}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->\hyperlink{class_q_c_p_abstract_legend_item_a6ebace6aaffaedcdab2d74e88acc2d1e}{setTextColor}(color);
-13047   \}
-13048 \}
+14359                                                 \{
+14360   \hyperlink{class_q_c_p_legend_a478b2d809a7390e9ff8f8bb70d6bd9fe}{mTextColor} = color;
+14361   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < \hyperlink{class_q_c_p_legend_a198228e9cdc78d3a3c306fa6763d0404}{itemCount}(); ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) \{
+14362     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_legend_a454272d7094437beb3278a2294006da5}{item}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}))
+14363       \hyperlink{class_q_c_p_legend_a454272d7094437beb3278a2294006da5}{item}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->\hyperlink{class_q_c_p_abstract_legend_item_a6ebace6aaffaedcdab2d74e88acc2d1e}{setTextColor}(color);
+14364   \}
+14365 \}
 \end{DoxyCode}
 
 
@@ -2276,11 +2263,11 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_legend_ad60a058af7491f6b140c104c6a0f9458}
 
 
-Definition at line 2208 of file qcustomplot.\+h.
+Definition at line 2544 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-2208 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_legend_a478b2d809a7390e9ff8f8bb70d6bd9fe}{mTextColor}; \}
+2544 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_legend_a478b2d809a7390e9ff8f8bb70d6bd9fe}{mTextColor}; \}
 \end{DoxyCode}
 
 
@@ -2290,14 +2277,14 @@ Definition at line 2208 of file qcustomplot.\+h.
 \subsubsection[{Q\+C\+P\+Abstract\+Legend\+Item}]{\setlength{\rightskip}{0pt plus 5cm}friend class {\bf Q\+C\+P\+Abstract\+Legend\+Item}\hspace{0.3cm}{\ttfamily [friend]}}\label{class_q_c_p_legend_a8a375e31e42c68de049fcf0fd35db5b0}
 
 
-Definition at line 2287 of file qcustomplot.\+h.
+Definition at line 2627 of file qcustomplot.\+h.
 
 \hypertarget{class_q_c_p_legend_a1cdf9df76adcfae45261690aa0ca2198}{}\index{Q\+C\+P\+Legend@{Q\+C\+P\+Legend}!Q\+Custom\+Plot@{Q\+Custom\+Plot}}
 \index{Q\+Custom\+Plot@{Q\+Custom\+Plot}!Q\+C\+P\+Legend@{Q\+C\+P\+Legend}}
 \subsubsection[{Q\+Custom\+Plot}]{\setlength{\rightskip}{0pt plus 5cm}friend class {\bf Q\+Custom\+Plot}\hspace{0.3cm}{\ttfamily [friend]}}\label{class_q_c_p_legend_a1cdf9df76adcfae45261690aa0ca2198}
 
 
-Definition at line 2286 of file qcustomplot.\+h.
+Definition at line 2626 of file qcustomplot.\+h.
 
 
 
@@ -2307,7 +2294,7 @@ Definition at line 2286 of file qcustomplot.\+h.
 \subsubsection[{m\+Border\+Pen}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Pen Q\+C\+P\+Legend\+::m\+Border\+Pen\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_legend_a52ab8342a382456131d567f962d7f9d0}
 
 
-Definition at line 2258 of file qcustomplot.\+h.
+Definition at line 2596 of file qcustomplot.\+h.
 
 
 
@@ -2318,7 +2305,7 @@ Referenced by get\+Border\+Pen(), and set\+Border\+Pen().
 \subsubsection[{m\+Brush}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Brush Q\+C\+P\+Legend\+::m\+Brush\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_legend_a9bd7cd05a9a485e06eda513a348baf80}
 
 
-Definition at line 2259 of file qcustomplot.\+h.
+Definition at line 2597 of file qcustomplot.\+h.
 
 
 
@@ -2329,7 +2316,7 @@ Referenced by get\+Brush(), and set\+Brush().
 \subsubsection[{m\+Font}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Font Q\+C\+P\+Legend\+::m\+Font\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_legend_a56ffacb184a99eefe09a0c7181d0713d}
 
 
-Definition at line 2260 of file qcustomplot.\+h.
+Definition at line 2598 of file qcustomplot.\+h.
 
 
 
@@ -2340,7 +2327,7 @@ Referenced by set\+Font().
 \subsubsection[{m\+Icon\+Border\+Pen}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Pen Q\+C\+P\+Legend\+::m\+Icon\+Border\+Pen\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_legend_a773ae518c3149fcabff4a2906fdacbc4}
 
 
-Definition at line 2258 of file qcustomplot.\+h.
+Definition at line 2596 of file qcustomplot.\+h.
 
 
 
@@ -2351,7 +2338,7 @@ Referenced by set\+Icon\+Border\+Pen().
 \subsubsection[{m\+Icon\+Size}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Size Q\+C\+P\+Legend\+::m\+Icon\+Size\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_legend_a39b972aae6c6a3fa5aa73313ab7a5765}
 
 
-Definition at line 2262 of file qcustomplot.\+h.
+Definition at line 2600 of file qcustomplot.\+h.
 
 
 
@@ -2362,7 +2349,7 @@ Referenced by set\+Icon\+Size().
 \subsubsection[{m\+Icon\+Text\+Padding}]{\setlength{\rightskip}{0pt plus 5cm}int Q\+C\+P\+Legend\+::m\+Icon\+Text\+Padding\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_legend_a8abf8843864ee9afc3f54f906c062240}
 
 
-Definition at line 2263 of file qcustomplot.\+h.
+Definition at line 2601 of file qcustomplot.\+h.
 
 
 
@@ -2373,7 +2360,7 @@ Referenced by set\+Icon\+Text\+Padding().
 \subsubsection[{m\+Selectable\+Parts}]{\setlength{\rightskip}{0pt plus 5cm}Selectable\+Parts Q\+C\+P\+Legend\+::m\+Selectable\+Parts\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_legend_a179b4d5c1bea723b76e402ff48f0d7fb}
 
 
-Definition at line 2264 of file qcustomplot.\+h.
+Definition at line 2602 of file qcustomplot.\+h.
 
 
 
@@ -2384,7 +2371,7 @@ Referenced by deselect\+Event(), select\+Event(), select\+Test(), and set\+Selec
 \subsubsection[{m\+Selected\+Border\+Pen}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Pen Q\+C\+P\+Legend\+::m\+Selected\+Border\+Pen\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_legend_a62906c996906ae23e9f724b6ac1f7334}
 
 
-Definition at line 2265 of file qcustomplot.\+h.
+Definition at line 2603 of file qcustomplot.\+h.
 
 
 
@@ -2395,7 +2382,7 @@ Referenced by get\+Border\+Pen(), and set\+Selected\+Border\+Pen().
 \subsubsection[{m\+Selected\+Brush}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Brush Q\+C\+P\+Legend\+::m\+Selected\+Brush\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_legend_ab3c7567c86d4784b1e48f76a84b3a1e2}
 
 
-Definition at line 2266 of file qcustomplot.\+h.
+Definition at line 2604 of file qcustomplot.\+h.
 
 
 
@@ -2406,7 +2393,7 @@ Referenced by get\+Brush(), and set\+Selected\+Brush().
 \subsubsection[{m\+Selected\+Font}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Font Q\+C\+P\+Legend\+::m\+Selected\+Font\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_legend_a86ce8f6c20a2f51a48eaf3c24ce16805}
 
 
-Definition at line 2267 of file qcustomplot.\+h.
+Definition at line 2605 of file qcustomplot.\+h.
 
 
 
@@ -2417,7 +2404,7 @@ Referenced by set\+Selected\+Font().
 \subsubsection[{m\+Selected\+Icon\+Border\+Pen}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Pen Q\+C\+P\+Legend\+::m\+Selected\+Icon\+Border\+Pen\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_legend_a7429ac0e64c7b90b649b4d8f4cc5fa55}
 
 
-Definition at line 2265 of file qcustomplot.\+h.
+Definition at line 2603 of file qcustomplot.\+h.
 
 
 
@@ -2428,7 +2415,7 @@ Referenced by set\+Selected\+Icon\+Border\+Pen().
 \subsubsection[{m\+Selected\+Parts}]{\setlength{\rightskip}{0pt plus 5cm}Selectable\+Parts Q\+C\+P\+Legend\+::m\+Selected\+Parts\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_legend_a917a34dd2856baafd8d56852d94d00e2}
 
 
-Definition at line 2264 of file qcustomplot.\+h.
+Definition at line 2602 of file qcustomplot.\+h.
 
 
 
@@ -2439,7 +2426,7 @@ Referenced by deselect\+Event(), get\+Border\+Pen(), get\+Brush(), selected\+Par
 \subsubsection[{m\+Selected\+Text\+Color}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Color Q\+C\+P\+Legend\+::m\+Selected\+Text\+Color\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_legend_a6c25c8796c6e73e983aae6024965f2be}
 
 
-Definition at line 2268 of file qcustomplot.\+h.
+Definition at line 2606 of file qcustomplot.\+h.
 
 
 
@@ -2450,7 +2437,7 @@ Referenced by set\+Selected\+Text\+Color().
 \subsubsection[{m\+Text\+Color}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Color Q\+C\+P\+Legend\+::m\+Text\+Color\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_legend_a478b2d809a7390e9ff8f8bb70d6bd9fe}
 
 
-Definition at line 2261 of file qcustomplot.\+h.
+Definition at line 2599 of file qcustomplot.\+h.
 
 
 

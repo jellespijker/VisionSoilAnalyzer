@@ -75,9 +75,11 @@ Q\+Pen \hyperlink{class_q_c_p_item_straight_line_a0307a0d56a018656adbf798bc84c2a
 \subsection{Detailed Description}
 A straight line that spans infinitely in both directions. 
 
- It has two positions, {\itshape point1} and {\itshape point2}, which define the straight line. 
+ circles are anchors, solid blue discs are positions."
 
-Definition at line 3237 of file qcustomplot.\+h.
+It has two positions, {\itshape point1} and {\itshape point2}, which define the straight line. 
+
+Definition at line 3696 of file qcustomplot.\+h.
 
 
 
@@ -93,7 +95,7 @@ Creates a straight line item and sets default values.
 
 The constructed item can be added to the plot with \hyperlink{class_q_custom_plot_aa500620379262321685cb7a7674cbd2a}{Q\+Custom\+Plot\+::add\+Item}. 
 
-Definition at line 21461 of file qcustomplot.\+cpp.
+Definition at line 23997 of file qcustomplot.\+cpp.
 
 
 
@@ -101,17 +103,15 @@ References point1, point2, Q\+C\+P\+Item\+Position\+::set\+Coords(), set\+Pen(),
 
 
 \begin{DoxyCode}
-21461                                                                 :
-21462   \hyperlink{class_q_c_p_abstract_item_a9922507d8b4503a1fe1ed0b1030e23b6}{QCPAbstractItem}(parentPlot),
-21463   \hyperlink{class_q_c_p_item_straight_line_ac131a6ffe456f2cc7364dce541fe0120}{point1}(\hyperlink{class_q_c_p_abstract_item_a75036d39c4d4e2e1a7dd145fff915d32}{createPosition}(QLatin1String(\textcolor{stringliteral}{"point1"}))),
-21464   \hyperlink{class_q_c_p_item_straight_line_ad26c0a732e471f63f75d481dcd48cfc9}{point2}(\hyperlink{class_q_c_p_abstract_item_a75036d39c4d4e2e1a7dd145fff915d32}{createPosition}(QLatin1String(\textcolor{stringliteral}{"point2"})))
-21465 \{
-21466   \hyperlink{class_q_c_p_item_straight_line_ac131a6ffe456f2cc7364dce541fe0120}{point1}->\hyperlink{class_q_c_p_item_position_aa988ba4e87ab684c9021017dcaba945f}{setCoords}(0, 0);
-21467   \hyperlink{class_q_c_p_item_straight_line_ad26c0a732e471f63f75d481dcd48cfc9}{point2}->\hyperlink{class_q_c_p_item_position_aa988ba4e87ab684c9021017dcaba945f}{setCoords}(1, 1);
-21468   
-21469   \hyperlink{class_q_c_p_item_straight_line_a9f36c9c9e60d7d9ac084c80380ac8601}{setPen}(QPen(Qt::black));
-21470   \hyperlink{class_q_c_p_item_straight_line_a5c33559498d33543fa95cf0a36e851ff}{setSelectedPen}(QPen(Qt::blue,2));
-21471 \}
+23998     : \hyperlink{class_q_c_p_abstract_item_a9922507d8b4503a1fe1ed0b1030e23b6}{QCPAbstractItem}(parentPlot),
+23999       \hyperlink{class_q_c_p_item_straight_line_ac131a6ffe456f2cc7364dce541fe0120}{point1}(\hyperlink{class_q_c_p_abstract_item_a75036d39c4d4e2e1a7dd145fff915d32}{createPosition}(QLatin1String(\textcolor{stringliteral}{"point1"}))),
+24000       \hyperlink{class_q_c_p_item_straight_line_ad26c0a732e471f63f75d481dcd48cfc9}{point2}(\hyperlink{class_q_c_p_abstract_item_a75036d39c4d4e2e1a7dd145fff915d32}{createPosition}(QLatin1String(\textcolor{stringliteral}{"point2"}))) \{
+24001   \hyperlink{class_q_c_p_item_straight_line_ac131a6ffe456f2cc7364dce541fe0120}{point1}->\hyperlink{class_q_c_p_item_position_aa988ba4e87ab684c9021017dcaba945f}{setCoords}(0, 0);
+24002   \hyperlink{class_q_c_p_item_straight_line_ad26c0a732e471f63f75d481dcd48cfc9}{point2}->\hyperlink{class_q_c_p_item_position_aa988ba4e87ab684c9021017dcaba945f}{setCoords}(1, 1);
+24003 
+24004   \hyperlink{class_q_c_p_item_straight_line_a9f36c9c9e60d7d9ac084c80380ac8601}{setPen}(QPen(Qt::black));
+24005   \hyperlink{class_q_c_p_item_straight_line_a5c33559498d33543fa95cf0a36e851ff}{setSelectedPen}(QPen(Qt::blue, 2));
+24006 \}
 \end{DoxyCode}
 
 
@@ -133,12 +133,11 @@ Here is the call graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_q_c_p_item_straight_line_a1f0730759916ce203baeaad1ad2af3ea}
 
 
-Definition at line 21473 of file qcustomplot.\+cpp.
+Definition at line 24008 of file qcustomplot.\+cpp.
 
 
 \begin{DoxyCode}
-21474 \{
-21475 \}
+24008 \{\}
 \end{DoxyCode}
 
 
@@ -154,7 +153,7 @@ Definition at line 21473 of file qcustomplot.\+cpp.
 ) const\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_straight_line_adc9b6c5bd33c7f806b748b79dfa25926}
 
 
-Definition at line 21530 of file qcustomplot.\+cpp.
+Definition at line 24062 of file qcustomplot.\+cpp.
 
 
 
@@ -162,9 +161,11 @@ Referenced by select\+Test().
 
 
 \begin{DoxyCode}
-21531 \{
-21532   \textcolor{keywordflow}{return} qAbs((base.y()-point.y())*vec.x()-(base.x()-point.x())*vec.y())/vec.length();
-21533 \}
+24064                                                                              \{
+24065   \textcolor{keywordflow}{return} qAbs((base.y() - point.y()) * vec.x() -
+24066               (base.x() - point.x()) * vec.y()) /
+24067          vec.length();
+24068 \}
 \end{DoxyCode}
 
 
@@ -190,7 +191,7 @@ Implements \hyperlink{class_q_c_p_abstract_item_ad0dc056f650c3ca73414e6b4f01674e
 
 
 
-Definition at line 21508 of file qcustomplot.\+cpp.
+Definition at line 24039 of file qcustomplot.\+cpp.
 
 
 
@@ -198,20 +199,20 @@ References Q\+C\+P\+Abstract\+Item\+::clip\+Rect(), Q\+C\+P\+Painter\+::draw\+Li
 
 
 \begin{DoxyCode}
-21509 \{
-21510   QVector2D start(\hyperlink{class_q_c_p_item_straight_line_ac131a6ffe456f2cc7364dce541fe0120}{point1}->\hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}());
-21511   QVector2D end(\hyperlink{class_q_c_p_item_straight_line_ad26c0a732e471f63f75d481dcd48cfc9}{point2}->\hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}());
-21512   \textcolor{comment}{// get visible segment of straight line inside clipRect:}
-21513   \textcolor{keywordtype}{double} clipPad = \hyperlink{class_q_c_p_item_straight_line_a63ef39814c5b560dbb7b13e3fec1d940}{mainPen}().widthF();
-21514   QLineF line = \hyperlink{class_q_c_p_item_straight_line_af18ac29577b5b96fece15b0ffea70177}{getRectClippedStraightLine}(start, end-start, 
-      \hyperlink{class_q_c_p_abstract_item_a538e25ff8856534582f5b2b400a46405}{clipRect}().adjusted(-clipPad, -clipPad, clipPad, clipPad));
-21515   \textcolor{comment}{// paint visible segment, if existent:}
-21516   \textcolor{keywordflow}{if} (!line.isNull())
-21517   \{
-21518     painter->\hyperlink{class_q_c_p_painter_af9c7a4cd1791403901f8c5b82a150195}{setPen}(\hyperlink{class_q_c_p_item_straight_line_a63ef39814c5b560dbb7b13e3fec1d940}{mainPen}());
-21519     painter->\hyperlink{class_q_c_p_painter_a0b4b1b9bd495e182c731774dc800e6e0}{drawLine}(line);
-21520   \}
-21521 \}
+24039                                                   \{
+24040   QVector2D start(\hyperlink{class_q_c_p_item_straight_line_ac131a6ffe456f2cc7364dce541fe0120}{point1}->\hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}());
+24041   QVector2D end(\hyperlink{class_q_c_p_item_straight_line_ad26c0a732e471f63f75d481dcd48cfc9}{point2}->\hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}());
+24042   \textcolor{comment}{// get visible segment of straight line inside clipRect:}
+24043   \textcolor{keywordtype}{double} clipPad = \hyperlink{class_q_c_p_item_straight_line_a63ef39814c5b560dbb7b13e3fec1d940}{mainPen}().widthF();
+24044   QLineF line = \hyperlink{class_q_c_p_item_straight_line_af18ac29577b5b96fece15b0ffea70177}{getRectClippedStraightLine}(
+24045       start, end - start,
+24046       \hyperlink{class_q_c_p_abstract_item_a538e25ff8856534582f5b2b400a46405}{clipRect}().adjusted(-clipPad, -clipPad, clipPad, clipPad));
+24047   \textcolor{comment}{// paint visible segment, if existent:}
+24048   \textcolor{keywordflow}{if} (!line.isNull()) \{
+24049     painter->\hyperlink{class_q_c_p_painter_af9c7a4cd1791403901f8c5b82a150195}{setPen}(\hyperlink{class_q_c_p_item_straight_line_a63ef39814c5b560dbb7b13e3fec1d940}{mainPen}());
+24050     painter->\hyperlink{class_q_c_p_painter_a0b4b1b9bd495e182c731774dc800e6e0}{drawLine}(line);
+24051   \}
+24052 \}
 \end{DoxyCode}
 
 
@@ -235,7 +236,7 @@ Here is the call graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_straight_line_af18ac29577b5b96fece15b0ffea70177}
 
 
-Definition at line 21542 of file qcustomplot.\+cpp.
+Definition at line 24078 of file qcustomplot.\+cpp.
 
 
 
@@ -247,86 +248,85 @@ Referenced by draw().
 
 
 \begin{DoxyCode}
-21543 \{
-21544   \textcolor{keywordtype}{double} bx, by;
-21545   \textcolor{keywordtype}{double} gamma;
-21546   QLineF result;
-21547   \textcolor{keywordflow}{if} (vec.x() == 0 && vec.y() == 0)
-21548     \textcolor{keywordflow}{return} result;
-21549   \textcolor{keywordflow}{if} (qFuzzyIsNull(vec.x())) \textcolor{comment}{// line is vertical}
-21550   \{
-21551     \textcolor{comment}{// check top of rect:}
-21552     bx = \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.left();
-21553     by = \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.top();
-21554     gamma = base.x()-bx + (by-base.y())*vec.x()/vec.y();
-21555     \textcolor{keywordflow}{if} (gamma >= 0 && gamma <= \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.width())
-21556       result.setLine(bx+gamma, \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.top(), bx+gamma, \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.bottom()); \textcolor{comment}{// no need to check bottom
-       because we know line is vertical}
-21557   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (qFuzzyIsNull(vec.y())) \textcolor{comment}{// line is horizontal}
-21558   \{
-21559     \textcolor{comment}{// check left of rect:}
-21560     bx = \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.left();
-21561     by = \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.top();
-21562     gamma = base.y()-by + (bx-base.x())*vec.y()/vec.x();
-21563     \textcolor{keywordflow}{if} (gamma >= 0 && gamma <= \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.height())
-21564       result.setLine(\hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.left(), by+gamma, \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.right(), by+gamma); \textcolor{comment}{// no need to check right
-       because we know line is horizontal}
-21565   \} \textcolor{keywordflow}{else} \textcolor{comment}{// line is skewed}
-21566   \{
-21567     QList<QVector2D> pointVectors;
-21568     \textcolor{comment}{// check top of rect:}
-21569     bx = \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.left();
-21570     by = \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.top();
-21571     gamma = base.x()-bx + (by-base.y())*vec.x()/vec.y();
-21572     \textcolor{keywordflow}{if} (gamma >= 0 && gamma <= \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.width())
-21573       pointVectors.append(QVector2D(bx+gamma, by));
-21574     \textcolor{comment}{// check bottom of rect:}
-21575     bx = \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.left();
-21576     by = \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.bottom();
-21577     gamma = base.x()-bx + (by-base.y())*vec.x()/vec.y();
-21578     \textcolor{keywordflow}{if} (gamma >= 0 && gamma <= \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.width())
-21579       pointVectors.append(QVector2D(bx+gamma, by));
-21580     \textcolor{comment}{// check left of rect:}
-21581     bx = \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.left();
-21582     by = \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.top();
-21583     gamma = base.y()-by + (bx-base.x())*vec.y()/vec.x();
-21584     \textcolor{keywordflow}{if} (gamma >= 0 && gamma <= \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.height())
-21585       pointVectors.append(QVector2D(bx, by+gamma));
-21586     \textcolor{comment}{// check right of rect:}
-21587     bx = \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.right();
-21588     by = \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.top();
-21589     gamma = base.y()-by + (bx-base.x())*vec.y()/vec.x();
-21590     \textcolor{keywordflow}{if} (gamma >= 0 && gamma <= \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.height())
-21591       pointVectors.append(QVector2D(bx, by+gamma));
-21592     
-21593     \textcolor{comment}{// evaluate points:}
-21594     \textcolor{keywordflow}{if} (pointVectors.size() == 2)
-21595     \{
-21596       result.setPoints(pointVectors.at(0).toPointF(), pointVectors.at(1).toPointF());
-21597     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (pointVectors.size() > 2)
-21598     \{
-21599       \textcolor{comment}{// line probably goes through corner of rect, and we got two points there. single out the point pair
-       with greatest distance:}
-21600       \textcolor{keywordtype}{double} distSqrMax = 0;
-21601       QVector2D pv1, pv2;
-21602       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}<pointVectors.size()-1; ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
-21603       \{
-21604         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k=\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}+1; k<pointVectors.size(); ++k)
-21605         \{
-21606           \textcolor{keywordtype}{double} distSqr = (pointVectors.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})-pointVectors.at(k)).lengthSquared();
-21607           \textcolor{keywordflow}{if} (distSqr > distSqrMax)
-21608           \{
-21609             pv1 = pointVectors.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i});
-21610             pv2 = pointVectors.at(k);
-21611             distSqrMax = distSqr;
-21612           \}
-21613         \}
-21614       \}
-21615       result.setPoints(pv1.toPointF(), pv2.toPointF());
-21616     \}
-21617   \}
-21618   \textcolor{keywordflow}{return} result;
-21619 \}
+24079                                                                           \{
+24080   \textcolor{keywordtype}{double} bx, by;
+24081   \textcolor{keywordtype}{double} gamma;
+24082   QLineF result;
+24083   \textcolor{keywordflow}{if} (vec.x() == 0 && vec.y() == 0)
+24084     \textcolor{keywordflow}{return} result;
+24085   \textcolor{keywordflow}{if} (qFuzzyIsNull(vec.x())) \textcolor{comment}{// line is vertical}
+24086   \{
+24087     \textcolor{comment}{// check top of rect:}
+24088     bx = \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.left();
+24089     by = \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.top();
+24090     gamma = base.x() - bx + (by - base.y()) * vec.x() / vec.y();
+24091     \textcolor{keywordflow}{if} (gamma >= 0 && gamma <= \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.width())
+24092       result.setLine(bx + gamma, \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.top(), bx + gamma,
+24093                      \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.bottom()); \textcolor{comment}{// no need to check bottom because we know}
+24094                                      \textcolor{comment}{// line is vertical}
+24095   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (qFuzzyIsNull(vec.y()))  \textcolor{comment}{// line is horizontal}
+24096   \{
+24097     \textcolor{comment}{// check left of rect:}
+24098     bx = \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.left();
+24099     by = \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.top();
+24100     gamma = base.y() - by + (bx - base.x()) * vec.y() / vec.x();
+24101     \textcolor{keywordflow}{if} (gamma >= 0 && gamma <= \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.height())
+24102       result.setLine(\hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.left(), by + gamma, \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.right(),
+24103                      by + gamma); \textcolor{comment}{// no need to check right because we know line}
+24104                                   \textcolor{comment}{// is horizontal}
+24105   \} \textcolor{keywordflow}{else}                          \textcolor{comment}{// line is skewed}
+24106   \{
+24107     QList<QVector2D> pointVectors;
+24108     \textcolor{comment}{// check top of rect:}
+24109     bx = \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.left();
+24110     by = \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.top();
+24111     gamma = base.x() - bx + (by - base.y()) * vec.x() / vec.y();
+24112     \textcolor{keywordflow}{if} (gamma >= 0 && gamma <= \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.width())
+24113       pointVectors.append(QVector2D(bx + gamma, by));
+24114     \textcolor{comment}{// check bottom of rect:}
+24115     bx = \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.left();
+24116     by = \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.bottom();
+24117     gamma = base.x() - bx + (by - base.y()) * vec.x() / vec.y();
+24118     \textcolor{keywordflow}{if} (gamma >= 0 && gamma <= \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.width())
+24119       pointVectors.append(QVector2D(bx + gamma, by));
+24120     \textcolor{comment}{// check left of rect:}
+24121     bx = \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.left();
+24122     by = \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.top();
+24123     gamma = base.y() - by + (bx - base.x()) * vec.y() / vec.x();
+24124     \textcolor{keywordflow}{if} (gamma >= 0 && gamma <= \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.height())
+24125       pointVectors.append(QVector2D(bx, by + gamma));
+24126     \textcolor{comment}{// check right of rect:}
+24127     bx = \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.right();
+24128     by = \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.top();
+24129     gamma = base.y() - by + (bx - base.x()) * vec.y() / vec.x();
+24130     \textcolor{keywordflow}{if} (gamma >= 0 && gamma <= \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.height())
+24131       pointVectors.append(QVector2D(bx, by + gamma));
+24132 
+24133     \textcolor{comment}{// evaluate points:}
+24134     \textcolor{keywordflow}{if} (pointVectors.size() == 2) \{
+24135       result.setPoints(pointVectors.at(0).toPointF(),
+24136                        pointVectors.at(1).toPointF());
+24137     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (pointVectors.size() > 2) \{
+24138       \textcolor{comment}{// line probably goes through corner of rect, and we got two points there.}
+24139       \textcolor{comment}{// single out the point pair with greatest distance:}
+24140       \textcolor{keywordtype}{double} distSqrMax = 0;
+24141       QVector2D pv1, pv2;
+24142       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < pointVectors.size() - 1; ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) \{
+24143         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k = \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} + 1; k < pointVectors.size(); ++k) \{
+24144           \textcolor{keywordtype}{double} distSqr =
+24145               (pointVectors.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) - pointVectors.at(k)).lengthSquared();
+24146           \textcolor{keywordflow}{if} (distSqr > distSqrMax) \{
+24147             pv1 = pointVectors.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i});
+24148             pv2 = pointVectors.at(k);
+24149             distSqrMax = distSqr;
+24150           \}
+24151         \}
+24152       \}
+24153       result.setPoints(pv1.toPointF(), pv2.toPointF());
+24154     \}
+24155   \}
+24156   \textcolor{keywordflow}{return} result;
+24157 \}
 \end{DoxyCode}
 
 
@@ -348,7 +348,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_straight_line_a63ef39814c5b560dbb7b13e3fec1d940}
 
 
-Definition at line 21626 of file qcustomplot.\+cpp.
+Definition at line 24164 of file qcustomplot.\+cpp.
 
 
 
@@ -360,9 +360,9 @@ Referenced by draw().
 
 
 \begin{DoxyCode}
-21627 \{
-21628   \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_abstract_item_a4bdb3457dad1d268c0f78a44152b9645}{mSelected} ? \hyperlink{class_q_c_p_item_straight_line_a0307a0d56a018656adbf798bc84c2a4b}{mSelectedPen} : \hyperlink{class_q_c_p_item_straight_line_a15106ddc2ebd73ed5c1bc57aa92bee8f}{mPen};
-21629 \}
+24164                                         \{
+24165   \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_abstract_item_a4bdb3457dad1d268c0f78a44152b9645}{mSelected} ? \hyperlink{class_q_c_p_item_straight_line_a0307a0d56a018656adbf798bc84c2a4b}{mSelectedPen} : \hyperlink{class_q_c_p_item_straight_line_a15106ddc2ebd73ed5c1bc57aa92bee8f}{mPen};
+24166 \}
 \end{DoxyCode}
 
 
@@ -384,7 +384,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_item_straight_line_ad858ab1a444391aab778f765453ea222}
 
 
-Definition at line 3249 of file qcustomplot.\+h.
+Definition at line 3707 of file qcustomplot.\+h.
 
 
 
@@ -392,7 +392,7 @@ Referenced by set\+Pen(), and set\+Selected\+Pen().
 
 
 \begin{DoxyCode}
-3249 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_straight_line_a15106ddc2ebd73ed5c1bc57aa92bee8f}{mPen}; \}
+3707 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_straight_line_a15106ddc2ebd73ed5c1bc57aa92bee8f}{mPen}; \}
 \end{DoxyCode}
 
 
@@ -414,11 +414,11 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_item_straight_line_a9e33ae966a7e2ea1083b3b9aeabeaea5}
 
 
-Definition at line 3250 of file qcustomplot.\+h.
+Definition at line 3708 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-3250 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_straight_line_a0307a0d56a018656adbf798bc84c2a4b}{mSelectedPen}; \}
+3708 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_straight_line_a0307a0d56a018656adbf798bc84c2a4b}{mSelectedPen}; \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_item_straight_line_a64cc3796f58ce856012732603edb2f1c}{}\index{Q\+C\+P\+Item\+Straight\+Line@{Q\+C\+P\+Item\+Straight\+Line}!select\+Test@{select\+Test}}
 \index{select\+Test@{select\+Test}!Q\+C\+P\+Item\+Straight\+Line@{Q\+C\+P\+Item\+Straight\+Line}}
@@ -452,7 +452,7 @@ Implements \hyperlink{class_q_c_p_abstract_item_a96d522d10ffc0413b9a366c6f7f0476
 
 
 
-Definition at line 21498 of file qcustomplot.\+cpp.
+Definition at line 24027 of file qcustomplot.\+cpp.
 
 
 
@@ -460,14 +460,15 @@ References dist\+To\+Straight\+Line(), Q\+C\+P\+Abstract\+Item\+::m\+Selectable,
 
 
 \begin{DoxyCode}
-21499 \{
-21500   Q\_UNUSED(details)
-21501   if (onlySelectable && !\hyperlink{class_q_c_p_abstract_item_ad81eb35c8726a0f458db9df9732e0e41}{mSelectable})
-21502     return -1;
-21503   
-21504   return \hyperlink{class_q_c_p_item_straight_line_adc9b6c5bd33c7f806b748b79dfa25926}{distToStraightLine}(QVector2D(\hyperlink{class_q_c_p_item_straight_line_ac131a6ffe456f2cc7364dce541fe0120}{point1}->pixelPoint()), QVector2D(
-      \hyperlink{class_q_c_p_item_straight_line_ad26c0a732e471f63f75d481dcd48cfc9}{point2}->pixelPoint()-\hyperlink{class_q_c_p_item_straight_line_ac131a6ffe456f2cc7364dce541fe0120}{point1}->pixelPoint()), QVector2D(pos));
-21505 \}
+24028                                                                 \{
+24029   Q\_UNUSED(details)
+24030   if (onlySelectable && !\hyperlink{class_q_c_p_abstract_item_ad81eb35c8726a0f458db9df9732e0e41}{mSelectable})
+24031     return -1;
+24032 
+24033   return \hyperlink{class_q_c_p_item_straight_line_adc9b6c5bd33c7f806b748b79dfa25926}{distToStraightLine}(
+24034       QVector2D(\hyperlink{class_q_c_p_item_straight_line_ac131a6ffe456f2cc7364dce541fe0120}{point1}->pixelPoint()),
+24035       QVector2D(\hyperlink{class_q_c_p_item_straight_line_ad26c0a732e471f63f75d481dcd48cfc9}{point2}->pixelPoint() - \hyperlink{class_q_c_p_item_straight_line_ac131a6ffe456f2cc7364dce541fe0120}{point1}->pixelPoint()), QVector2D(pos));
+24036 \}
 \end{DoxyCode}
 
 
@@ -494,7 +495,7 @@ Sets the pen that will be used to draw the line
 \end{DoxySeeAlso}
 
 
-Definition at line 21482 of file qcustomplot.\+cpp.
+Definition at line 24015 of file qcustomplot.\+cpp.
 
 
 
@@ -506,9 +507,7 @@ Referenced by Q\+C\+P\+Item\+Straight\+Line().
 
 
 \begin{DoxyCode}
-21483 \{
-21484   \hyperlink{class_q_c_p_item_straight_line_a15106ddc2ebd73ed5c1bc57aa92bee8f}{mPen} = \hyperlink{class_q_c_p_item_straight_line_ad858ab1a444391aab778f765453ea222}{pen};
-21485 \}
+24015 \{ \hyperlink{class_q_c_p_item_straight_line_a15106ddc2ebd73ed5c1bc57aa92bee8f}{mPen} = \hyperlink{class_q_c_p_item_straight_line_ad858ab1a444391aab778f765453ea222}{pen}; \}
 \end{DoxyCode}
 
 
@@ -546,7 +545,7 @@ Sets the pen that will be used to draw the line when selected
 \end{DoxySeeAlso}
 
 
-Definition at line 21492 of file qcustomplot.\+cpp.
+Definition at line 24022 of file qcustomplot.\+cpp.
 
 
 
@@ -558,9 +557,9 @@ Referenced by Q\+C\+P\+Item\+Straight\+Line().
 
 
 \begin{DoxyCode}
-21493 \{
-21494   \hyperlink{class_q_c_p_item_straight_line_a0307a0d56a018656adbf798bc84c2a4b}{mSelectedPen} = \hyperlink{class_q_c_p_item_straight_line_ad858ab1a444391aab778f765453ea222}{pen};
-21495 \}
+24022                                                         \{
+24023   \hyperlink{class_q_c_p_item_straight_line_a0307a0d56a018656adbf798bc84c2a4b}{mSelectedPen} = \hyperlink{class_q_c_p_item_straight_line_ad858ab1a444391aab778f765453ea222}{pen};
+24024 \}
 \end{DoxyCode}
 
 
@@ -592,7 +591,7 @@ Here is the caller graph for this function\+:\nopagebreak
 \subsubsection[{m\+Pen}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Pen Q\+C\+P\+Item\+Straight\+Line\+::m\+Pen\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_straight_line_a15106ddc2ebd73ed5c1bc57aa92bee8f}
 
 
-Definition at line 3264 of file qcustomplot.\+h.
+Definition at line 3723 of file qcustomplot.\+h.
 
 
 
@@ -603,7 +602,7 @@ Referenced by main\+Pen(), and set\+Pen().
 \subsubsection[{m\+Selected\+Pen}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Pen Q\+C\+P\+Item\+Straight\+Line\+::m\+Selected\+Pen\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_straight_line_a0307a0d56a018656adbf798bc84c2a4b}
 
 
-Definition at line 3264 of file qcustomplot.\+h.
+Definition at line 3723 of file qcustomplot.\+h.
 
 
 
@@ -614,7 +613,7 @@ Referenced by main\+Pen(), and set\+Selected\+Pen().
 \subsubsection[{point1}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Item\+Position}$\ast$ const Q\+C\+P\+Item\+Straight\+Line\+::point1}\label{class_q_c_p_item_straight_line_ac131a6ffe456f2cc7364dce541fe0120}
 
 
-Definition at line 3259 of file qcustomplot.\+h.
+Definition at line 3718 of file qcustomplot.\+h.
 
 
 
@@ -625,7 +624,7 @@ Referenced by draw(), Q\+C\+P\+Item\+Straight\+Line(), and select\+Test().
 \subsubsection[{point2}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Item\+Position}$\ast$ const Q\+C\+P\+Item\+Straight\+Line\+::point2}\label{class_q_c_p_item_straight_line_ad26c0a732e471f63f75d481dcd48cfc9}
 
 
-Definition at line 3260 of file qcustomplot.\+h.
+Definition at line 3719 of file qcustomplot.\+h.
 
 
 

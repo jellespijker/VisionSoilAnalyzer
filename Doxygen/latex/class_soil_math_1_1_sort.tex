@@ -30,7 +30,7 @@ Collaboration diagram for Soil\+Math\+:\+:Sort\+:\nopagebreak
 \subsection{Detailed Description}
 
 
-Definition at line 5 of file Sort.\+h.
+Definition at line 12 of file Sort.\+h.
 
 
 
@@ -44,11 +44,11 @@ Definition at line 5 of file Sort.\+h.
 )\hspace{0.3cm}{\ttfamily [inline]}}\label{class_soil_math_1_1_sort_ac5553af8753454e71e6d621690fdab3f}
 
 
-Definition at line 7 of file Sort.\+h.
+Definition at line 14 of file Sort.\+h.
 
 
 \begin{DoxyCode}
-7 \{\}
+14 \{\}
 \end{DoxyCode}
 \hypertarget{class_soil_math_1_1_sort_a62273dbd3620f999201abacdff5e2557}{}\index{Soil\+Math\+::\+Sort@{Soil\+Math\+::\+Sort}!````~Sort@{$\sim$\+Sort}}
 \index{````~Sort@{$\sim$\+Sort}!Soil\+Math\+::\+Sort@{Soil\+Math\+::\+Sort}}
@@ -59,11 +59,11 @@ Definition at line 7 of file Sort.\+h.
 )\hspace{0.3cm}{\ttfamily [inline]}}\label{class_soil_math_1_1_sort_a62273dbd3620f999201abacdff5e2557}
 
 
-Definition at line 8 of file Sort.\+h.
+Definition at line 15 of file Sort.\+h.
 
 
 \begin{DoxyCode}
-8 \{\}
+15 \{\}
 \end{DoxyCode}
 
 
@@ -78,33 +78,33 @@ Definition at line 8 of file Sort.\+h.
 )\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{class_soil_math_1_1_sort_adca7b48be7482f89767b806ad2016d67}
 
 
-Definition at line 10 of file Sort.\+h.
+Definition at line 17 of file Sort.\+h.
 
 
 \begin{DoxyCode}
-10                                                              \{
-11     \textcolor{keywordflow}{if} (\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < 2)
-12       \textcolor{keywordflow}{return};
-13 
-14     T p = arr[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} / 2];
-15     T *l = arr;
-16     T *r = arr + \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} - 1;
-17     \textcolor{keywordflow}{while} (l <= r) \{
-18       \textcolor{keywordflow}{if} (*l < p) \{
-19         l++;
-20       \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (*r > p) \{
-21         r--;
-22       \} \textcolor{keywordflow}{else} \{
-23         \textcolor{keywordtype}{int} t = *l;
-24         *l = *r;
-25         *r = t;
+17                                                              \{
+18     \textcolor{keywordflow}{if} (\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < 2)
+19       \textcolor{keywordflow}{return};
+20 
+21     T p = arr[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} / 2];
+22     T *l = arr;
+23     T *r = arr + \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} - 1;
+24     \textcolor{keywordflow}{while} (l <= r) \{
+25       \textcolor{keywordflow}{if} (*l < p) \{
 26         l++;
-27         r--;
-28       \}
-29     \}
-30     Sort::QuickSort<T>(arr, r - arr + 1);
-31     Sort::QuickSort<T>(l, arr + i - l);
-32   \}
+27       \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (*r > p) \{
+28         r--;
+29       \} \textcolor{keywordflow}{else} \{
+30         \textcolor{keywordtype}{int} t = *l;
+31         *l = *r;
+32         *r = t;
+33         l++;
+34         r--;
+35       \}
+36     \}
+37     Sort::QuickSort<T>(arr, r - arr + 1);
+38     Sort::QuickSort<T>(l, arr + i - l);
+39   \}
 \end{DoxyCode}
 
 

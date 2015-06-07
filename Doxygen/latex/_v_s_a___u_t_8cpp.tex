@@ -128,7 +128,7 @@ struct \hyperlink{struct_p_m}{P\+M}
 \subsubsection[{B\+O\+O\+S\+T\+\_\+\+T\+E\+S\+T\+\_\+\+M\+O\+D\+U\+L\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+O\+O\+S\+T\+\_\+\+T\+E\+S\+T\+\_\+\+M\+O\+D\+U\+L\+E~V\+S\+A\+\_\+\+U\+N\+I\+T\+\_\+\+T\+E\+S\+T\+S}\label{_v_s_a___u_t_8cpp_a6b2a3852db8bb19ab6909bac01859985}
 
 
-Definition at line 1 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
+Definition at line 9 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
 
 \hypertarget{_v_s_a___u_t_8cpp_a82b14f5fb6975ddc95c5244b2d8d7fa6}{}\index{V\+S\+A\+\_\+\+U\+T.\+cpp@{V\+S\+A\+\_\+\+U\+T.\+cpp}!R\+I\+\_\+\+S\+U\+M@{R\+I\+\_\+\+S\+U\+M}}
 \index{R\+I\+\_\+\+S\+U\+M@{R\+I\+\_\+\+S\+U\+M}!V\+S\+A\+\_\+\+U\+T.\+cpp@{V\+S\+A\+\_\+\+U\+T.\+cpp}}
@@ -149,13 +149,13 @@ Referenced by B\+O\+O\+S\+T\+\_\+\+F\+I\+X\+T\+U\+R\+E\+\_\+\+T\+E\+S\+T\+\_\+\+
 )}\label{_v_s_a___u_t_8cpp_a2f3652a1adf3705b61a2145f14cb52ab}
 
 
-Definition at line 199 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
+Definition at line 207 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
 
 
 \begin{DoxyCode}
-200 \{
-201     
-202 \}
+208 \{
+209     
+210 \}
 \end{DoxyCode}
 \hypertarget{_v_s_a___u_t_8cpp_a344c30d44fcefe29e99e97a93daaa5ba}{}\index{V\+S\+A\+\_\+\+U\+T.\+cpp@{V\+S\+A\+\_\+\+U\+T.\+cpp}!B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E@{B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E}}
 \index{B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E@{B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E}!V\+S\+A\+\_\+\+U\+T.\+cpp@{V\+S\+A\+\_\+\+U\+T.\+cpp}}
@@ -166,7 +166,7 @@ Definition at line 199 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
 )}\label{_v_s_a___u_t_8cpp_a344c30d44fcefe29e99e97a93daaa5ba}
 
 
-Definition at line 205 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
+Definition at line 213 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
 
 
 
@@ -174,22 +174,22 @@ References Vision\+::\+Segment\+::\+Blob\+List, Vision\+::\+Segment\+::\+Bright,
 
 
 \begin{DoxyCode}
-206 \{
-207     cv::Mat src = imread(\textcolor{stringliteral}{"../ComparisionPictures/BlobTest.ppm"}, 0);
-208 
-209     \hyperlink{class_vision_1_1_segment}{Vision::Segment} Test(src);
-210     Test.ConvertToBW(\hyperlink{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7ddad37a09a08a5a4fdf88cb15f21e5ff28b}{Vision::Segment::Bright});
-211     Test.GetBlobList(\textcolor{keyword}{true});
-212     imwrite(\textcolor{stringliteral}{"LabeledBlobs.ppm"}, Test.LabelledImg);
-213     BOOST\_CHECK\_EQUAL(42, Test.BlobList.size());
-214     for\_each(Test.BlobList.begin(), Test.BlobList.end(), [](
+214 \{
+215     cv::Mat src = imread(\textcolor{stringliteral}{"../ComparisionPictures/BlobTest.ppm"}, 0);
+216 
+217     \hyperlink{class_vision_1_1_segment}{Vision::Segment} Test(src);
+218     Test.ConvertToBW(\hyperlink{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7ddad37a09a08a5a4fdf88cb15f21e5ff28b}{Vision::Segment::Bright});
+219     Test.GetBlobList(\textcolor{keyword}{true});
+220     imwrite(\textcolor{stringliteral}{"LabeledBlobs.ppm"}, Test.LabelledImg);
+221     BOOST\_CHECK\_EQUAL(42, Test.BlobList.size());
+222     for\_each(Test.BlobList.begin(), Test.BlobList.end(), [](
       \hyperlink{struct_vision_1_1_segment_1_1_blob}{Vision::Segment::Blob\_t} &b)
-215     \{
-216         stringstream ss;
-217         ss << b.Label << \textcolor{stringliteral}{"\_few\_1nd.ppm"};
-218         imwrite(ss.str(), b.Img);
-219     \});
-220 \}
+223     \{
+224         stringstream ss;
+225         ss << b.Label << \textcolor{stringliteral}{"\_few\_1nd.ppm"};
+226         imwrite(ss.str(), b.Img);
+227     \});
+228 \}
 \end{DoxyCode}
 
 
@@ -211,7 +211,7 @@ Here is the call graph for this function\+:\nopagebreak
 )}\label{_v_s_a___u_t_8cpp_a4e75e7f2f8e3c2f4c56c830463c87970}
 
 
-Definition at line 237 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
+Definition at line 245 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
 
 
 
@@ -219,29 +219,29 @@ References Soil\+Math\+::\+Stats$<$ T1, T2, T3 $>$\+::bins, count, hist\+Test\+R
 
 
 \begin{DoxyCode}
-238 \{
-239     uint16\_t *BigNoTestMatrix = \textcolor{keyword}{new} uint16\_t[40000];
-240     uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_ae11b3deb3de3df7dc48e439074023e35}{count} = 0;
-241     \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < 200; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++)
-242     \{
-243         \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} < 200; \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}++)
-244         \{
-245             BigNoTestMatrix[count++] = \hyperlink{_soil_math___test_2_test_matrix_8h_a851251dd15fea61823d550775a34026f}{testMatrix}[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}][\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}] * 10;
-246         \}
-247     \}
-248 
-249     \hyperlink{class_soil_math_1_1_stats}{uint16Stat\_t} Test(BigNoTestMatrix, 200, 200);
-250     BOOST\_CHECK\_EQUAL\_COLLECTIONS(Test.bins, Test.bins + 255, \hyperlink{_soil_math___test_2_test_matrix_8h_ae6e28ebbec7c148147e1899ee0e4101a}{histTestResult}, 
+246 \{
+247     uint16\_t *BigNoTestMatrix = \textcolor{keyword}{new} uint16\_t[40000];
+248     uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_ae11b3deb3de3df7dc48e439074023e35}{count} = 0;
+249     \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < 200; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++)
+250     \{
+251         \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} < 200; \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}++)
+252         \{
+253             BigNoTestMatrix[count++] = \hyperlink{_soil_math___test_2_test_matrix_8h_a851251dd15fea61823d550775a34026f}{testMatrix}[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}][\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}] * 10;
+254         \}
+255     \}
+256 
+257     \hyperlink{class_soil_math_1_1_stats}{uint16Stat\_t} Test(BigNoTestMatrix, 200, 200);
+258     BOOST\_CHECK\_EQUAL\_COLLECTIONS(Test.bins, Test.bins + 255, \hyperlink{_soil_math___test_2_test_matrix_8h_ae6e28ebbec7c148147e1899ee0e4101a}{histTestResult}, 
       \hyperlink{_soil_math___test_2_test_matrix_8h_ae6e28ebbec7c148147e1899ee0e4101a}{histTestResult} + 255);
-251     BOOST\_CHECK\_CLOSE(Test.Mean, \hyperlink{_soil_math___test_2_test_matrix_8h_a7e8ab2528be88b28e47b39e08b3ea930}{meanTestResult} * 10, 0.0001);
-252     BOOST\_CHECK\_EQUAL(Test.n, \hyperlink{_soil_math___test_2_test_matrix_8h_ab985607d993111edac08c3230d9d4870}{nTestResult});
-253     BOOST\_CHECK\_EQUAL(Test.Sum, \hyperlink{_soil_math___test_2_test_matrix_8h_a12502757753c2f005a778d41bddd17e5}{sumTestResult} * 10);
-254     BOOST\_CHECK\_EQUAL(Test.min, \hyperlink{_soil_math___test_2_test_matrix_8h_a863c475b5bbd0698e59641731dc0d02a}{minTestResult} * 10);
-255     BOOST\_CHECK\_EQUAL(Test.max, \hyperlink{_soil_math___test_2_test_matrix_8h_a4f6c20350e2cb35c4aa59b24e1e34602}{maxTestResult} * 10);
-256     BOOST\_CHECK\_EQUAL(Test.Range, \hyperlink{_soil_math___test_2_test_matrix_8h_a5e698e7f944fe3c70a61b1464caab553}{rangeTestResult} * 10);
-257     BOOST\_CHECK\_CLOSE(Test.Std, \hyperlink{_soil_math___test_2_test_matrix_8h_a0fcdc329e79d2a521b6814a8b81ef0f0}{stdTestResult} * 10, 0.01);
-258     \textcolor{keyword}{delete}[] BigNoTestMatrix;
-259 \}
+259     BOOST\_CHECK\_CLOSE(Test.Mean, \hyperlink{_soil_math___test_2_test_matrix_8h_a7e8ab2528be88b28e47b39e08b3ea930}{meanTestResult} * 10, 0.0001);
+260     BOOST\_CHECK\_EQUAL(Test.n, \hyperlink{_soil_math___test_2_test_matrix_8h_ab985607d993111edac08c3230d9d4870}{nTestResult});
+261     BOOST\_CHECK\_EQUAL(Test.Sum, \hyperlink{_soil_math___test_2_test_matrix_8h_a12502757753c2f005a778d41bddd17e5}{sumTestResult} * 10);
+262     BOOST\_CHECK\_EQUAL(Test.min, \hyperlink{_soil_math___test_2_test_matrix_8h_a863c475b5bbd0698e59641731dc0d02a}{minTestResult} * 10);
+263     BOOST\_CHECK\_EQUAL(Test.max, \hyperlink{_soil_math___test_2_test_matrix_8h_a4f6c20350e2cb35c4aa59b24e1e34602}{maxTestResult} * 10);
+264     BOOST\_CHECK\_EQUAL(Test.Range, \hyperlink{_soil_math___test_2_test_matrix_8h_a5e698e7f944fe3c70a61b1464caab553}{rangeTestResult} * 10);
+265     BOOST\_CHECK\_CLOSE(Test.Std, \hyperlink{_soil_math___test_2_test_matrix_8h_a0fcdc329e79d2a521b6814a8b81ef0f0}{stdTestResult} * 10, 0.01);
+266     \textcolor{keyword}{delete}[] BigNoTestMatrix;
+267 \}
 \end{DoxyCode}
 \hypertarget{_v_s_a___u_t_8cpp_a5280447c39655cb1a193c0fc7e127569}{}\index{V\+S\+A\+\_\+\+U\+T.\+cpp@{V\+S\+A\+\_\+\+U\+T.\+cpp}!B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E@{B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E}}
 \index{B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E@{B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E}!V\+S\+A\+\_\+\+U\+T.\+cpp@{V\+S\+A\+\_\+\+U\+T.\+cpp}}
@@ -252,16 +252,16 @@ References Soil\+Math\+::\+Stats$<$ T1, T2, T3 $>$\+::bins, count, hist\+Test\+R
 )}\label{_v_s_a___u_t_8cpp_a5280447c39655cb1a193c0fc7e127569}
 
 
-Definition at line 261 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
+Definition at line 269 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
 
 
 \begin{DoxyCode}
-262 \{
-263     \textcolor{keywordtype}{int} testDiscrete[] = \{ 2, 8, 1, 3, 0, 7, 4, 5, 9, 6, 6 \};
-264     \textcolor{keywordtype}{int} ucomp[] = \{ 0, 1, 2, 3, 4, 5, 6, 6, 7, 8, 9 \};
-265     SoilMath::Sort::QuickSort<int>(testDiscrete, 11);
-266     BOOST\_CHECK\_EQUAL\_COLLECTIONS(testDiscrete, testDiscrete + 10, ucomp, ucomp + 10);
-267 \}
+270 \{
+271     \textcolor{keywordtype}{int} testDiscrete[] = \{ 2, 8, 1, 3, 0, 7, 4, 5, 9, 6, 6 \};
+272     \textcolor{keywordtype}{int} ucomp[] = \{ 0, 1, 2, 3, 4, 5, 6, 6, 7, 8, 9 \};
+273     SoilMath::Sort::QuickSort<int>(testDiscrete, 11);
+274     BOOST\_CHECK\_EQUAL\_COLLECTIONS(testDiscrete, testDiscrete + 10, ucomp, ucomp + 10);
+275 \}
 \end{DoxyCode}
 \hypertarget{_v_s_a___u_t_8cpp_ad104baa281c611c64abf2d3c79f91497}{}\index{V\+S\+A\+\_\+\+U\+T.\+cpp@{V\+S\+A\+\_\+\+U\+T.\+cpp}!B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E@{B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E}}
 \index{B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E@{B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E}!V\+S\+A\+\_\+\+U\+T.\+cpp@{V\+S\+A\+\_\+\+U\+T.\+cpp}}
@@ -272,7 +272,7 @@ Definition at line 261 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
 )}\label{_v_s_a___u_t_8cpp_ad104baa281c611c64abf2d3c79f91497}
 
 
-Definition at line 269 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
+Definition at line 277 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
 
 
 
@@ -280,19 +280,19 @@ References Soil\+Math\+::\+Stats$<$ T1, T2, T3 $>$\+::bins, hist\+Test\+Result, 
 
 
 \begin{DoxyCode}
-270 \{
-271     \hyperlink{class_soil_math_1_1_stats}{ucharStat\_t} Test((uint8\_t *)\hyperlink{_soil_math___test_2_test_matrix_8h_a851251dd15fea61823d550775a34026f}{testMatrix}, 200, 200);
-272     
-273     BOOST\_CHECK\_EQUAL\_COLLECTIONS(Test.bins, Test.bins + 255, \hyperlink{_soil_math___test_2_test_matrix_8h_ae6e28ebbec7c148147e1899ee0e4101a}{histTestResult}, 
+278 \{
+279     \hyperlink{class_soil_math_1_1_stats}{ucharStat\_t} Test((uint8\_t *)\hyperlink{_soil_math___test_2_test_matrix_8h_a851251dd15fea61823d550775a34026f}{testMatrix}, 200, 200);
+280     
+281     BOOST\_CHECK\_EQUAL\_COLLECTIONS(Test.bins, Test.bins + 255, \hyperlink{_soil_math___test_2_test_matrix_8h_ae6e28ebbec7c148147e1899ee0e4101a}{histTestResult}, 
       \hyperlink{_soil_math___test_2_test_matrix_8h_ae6e28ebbec7c148147e1899ee0e4101a}{histTestResult} + 255);
-274     BOOST\_CHECK\_CLOSE(Test.Mean, \hyperlink{_soil_math___test_2_test_matrix_8h_a7e8ab2528be88b28e47b39e08b3ea930}{meanTestResult}, 0.0001);
-275     BOOST\_CHECK\_EQUAL(Test.n, \hyperlink{_soil_math___test_2_test_matrix_8h_ab985607d993111edac08c3230d9d4870}{nTestResult});
-276     BOOST\_CHECK\_EQUAL(Test.Sum, \hyperlink{_soil_math___test_2_test_matrix_8h_a12502757753c2f005a778d41bddd17e5}{sumTestResult});
-277     BOOST\_CHECK\_EQUAL(Test.min, \hyperlink{_soil_math___test_2_test_matrix_8h_a863c475b5bbd0698e59641731dc0d02a}{minTestResult});
-278     BOOST\_CHECK\_EQUAL(Test.max, \hyperlink{_soil_math___test_2_test_matrix_8h_a4f6c20350e2cb35c4aa59b24e1e34602}{maxTestResult});
-279     BOOST\_CHECK\_EQUAL(Test.Range, \hyperlink{_soil_math___test_2_test_matrix_8h_a5e698e7f944fe3c70a61b1464caab553}{rangeTestResult});
-280     BOOST\_CHECK\_CLOSE(Test.Std, \hyperlink{_soil_math___test_2_test_matrix_8h_a0fcdc329e79d2a521b6814a8b81ef0f0}{stdTestResult}, 0.01);
-281 \}
+282     BOOST\_CHECK\_CLOSE(Test.Mean, \hyperlink{_soil_math___test_2_test_matrix_8h_a7e8ab2528be88b28e47b39e08b3ea930}{meanTestResult}, 0.0001);
+283     BOOST\_CHECK\_EQUAL(Test.n, \hyperlink{_soil_math___test_2_test_matrix_8h_ab985607d993111edac08c3230d9d4870}{nTestResult});
+284     BOOST\_CHECK\_EQUAL(Test.Sum, \hyperlink{_soil_math___test_2_test_matrix_8h_a12502757753c2f005a778d41bddd17e5}{sumTestResult});
+285     BOOST\_CHECK\_EQUAL(Test.min, \hyperlink{_soil_math___test_2_test_matrix_8h_a863c475b5bbd0698e59641731dc0d02a}{minTestResult});
+286     BOOST\_CHECK\_EQUAL(Test.max, \hyperlink{_soil_math___test_2_test_matrix_8h_a4f6c20350e2cb35c4aa59b24e1e34602}{maxTestResult});
+287     BOOST\_CHECK\_EQUAL(Test.Range, \hyperlink{_soil_math___test_2_test_matrix_8h_a5e698e7f944fe3c70a61b1464caab553}{rangeTestResult});
+288     BOOST\_CHECK\_CLOSE(Test.Std, \hyperlink{_soil_math___test_2_test_matrix_8h_a0fcdc329e79d2a521b6814a8b81ef0f0}{stdTestResult}, 0.01);
+289 \}
 \end{DoxyCode}
 \hypertarget{_v_s_a___u_t_8cpp_af4247b9dc36297fac5b2c91b6f91fc38}{}\index{V\+S\+A\+\_\+\+U\+T.\+cpp@{V\+S\+A\+\_\+\+U\+T.\+cpp}!B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E@{B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E}}
 \index{B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E@{B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E}!V\+S\+A\+\_\+\+U\+T.\+cpp@{V\+S\+A\+\_\+\+U\+T.\+cpp}}
@@ -303,7 +303,7 @@ References Soil\+Math\+::\+Stats$<$ T1, T2, T3 $>$\+::bins, hist\+Test\+Result, 
 )}\label{_v_s_a___u_t_8cpp_af4247b9dc36297fac5b2c91b6f91fc38}
 
 
-Definition at line 283 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
+Definition at line 291 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
 
 
 
@@ -311,19 +311,19 @@ References Soil\+Math\+::\+Stats$<$ T1, T2, T3 $>$\+::bins, fhist\+Test\+Result,
 
 
 \begin{DoxyCode}
-284 \{
-285     \hyperlink{class_soil_math_1_1_stats}{floatStat\_t} Test((\textcolor{keywordtype}{float} *)\hyperlink{_soil_math___test_2_float_test_matrix_8h_a33d62728ab90bb98fa77989517221786}{ftestMatrix}, 50, 50);
-286 
-287     BOOST\_CHECK\_EQUAL\_COLLECTIONS(Test.bins, Test.bins + 255, \hyperlink{_soil_math___test_2_float_test_matrix_8h_a4ab5b9a1e8a816854678c2bd37afbc62}{fhistTestResult}, 
+292 \{
+293     \hyperlink{class_soil_math_1_1_stats}{floatStat\_t} Test((\textcolor{keywordtype}{float} *)\hyperlink{_soil_math___test_2_float_test_matrix_8h_a33d62728ab90bb98fa77989517221786}{ftestMatrix}, 50, 50);
+294 
+295     BOOST\_CHECK\_EQUAL\_COLLECTIONS(Test.bins, Test.bins + 255, \hyperlink{_soil_math___test_2_float_test_matrix_8h_a4ab5b9a1e8a816854678c2bd37afbc62}{fhistTestResult}, 
       \hyperlink{_soil_math___test_2_float_test_matrix_8h_a4ab5b9a1e8a816854678c2bd37afbc62}{fhistTestResult} + 255);
-288     BOOST\_CHECK\_CLOSE(Test.Mean, \hyperlink{_soil_math___test_2_float_test_matrix_8h_a36f652d91cf54bdaa06ee9de5d1b6251}{fmeanTestResult}, 0.01);
-289     BOOST\_CHECK\_EQUAL(Test.n, \hyperlink{_soil_math___test_2_float_test_matrix_8h_a4428f1f94839a9ce1eb1bd1d92f18e02}{fnTestResult});
-290     BOOST\_CHECK\_CLOSE(Test.Sum, \hyperlink{_soil_math___test_2_float_test_matrix_8h_a722d3023c4ee2615e1db76861fe7acc6}{fsumTestResult}, 0.01);
-291     BOOST\_CHECK\_CLOSE(Test.min, \hyperlink{_soil_math___test_2_float_test_matrix_8h_aff9859e332223d25cc5ad7fcd3a1a903}{fminTestResult}, 0.01);
-292     BOOST\_CHECK\_CLOSE(Test.max, \hyperlink{_soil_math___test_2_float_test_matrix_8h_a131de3a20a0cca668f0f78c5be2aece1}{fmaxTestResult}, 0.01);
-293     BOOST\_CHECK\_CLOSE(Test.Range, \hyperlink{_soil_math___test_2_float_test_matrix_8h_a2aa681618079b77a6646615f67b3b97f}{frangeTestResult}, 0.01);
-294     BOOST\_CHECK\_CLOSE(Test.Std, \hyperlink{_soil_math___test_2_float_test_matrix_8h_a3a055845e53affbdd42e831e0cc0ce05}{fstdTestResult}, 0.025);
-295 \}
+296     BOOST\_CHECK\_CLOSE(Test.Mean, \hyperlink{_soil_math___test_2_float_test_matrix_8h_a36f652d91cf54bdaa06ee9de5d1b6251}{fmeanTestResult}, 0.01);
+297     BOOST\_CHECK\_EQUAL(Test.n, \hyperlink{_soil_math___test_2_float_test_matrix_8h_a4428f1f94839a9ce1eb1bd1d92f18e02}{fnTestResult});
+298     BOOST\_CHECK\_CLOSE(Test.Sum, \hyperlink{_soil_math___test_2_float_test_matrix_8h_a722d3023c4ee2615e1db76861fe7acc6}{fsumTestResult}, 0.01);
+299     BOOST\_CHECK\_CLOSE(Test.min, \hyperlink{_soil_math___test_2_float_test_matrix_8h_aff9859e332223d25cc5ad7fcd3a1a903}{fminTestResult}, 0.01);
+300     BOOST\_CHECK\_CLOSE(Test.max, \hyperlink{_soil_math___test_2_float_test_matrix_8h_a131de3a20a0cca668f0f78c5be2aece1}{fmaxTestResult}, 0.01);
+301     BOOST\_CHECK\_CLOSE(Test.Range, \hyperlink{_soil_math___test_2_float_test_matrix_8h_a2aa681618079b77a6646615f67b3b97f}{frangeTestResult}, 0.01);
+302     BOOST\_CHECK\_CLOSE(Test.Std, \hyperlink{_soil_math___test_2_float_test_matrix_8h_a3a055845e53affbdd42e831e0cc0ce05}{fstdTestResult}, 0.025);
+303 \}
 \end{DoxyCode}
 \hypertarget{_v_s_a___u_t_8cpp_a9cc36511e6538414d328e1b0c941f4d3}{}\index{V\+S\+A\+\_\+\+U\+T.\+cpp@{V\+S\+A\+\_\+\+U\+T.\+cpp}!B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E@{B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E}}
 \index{B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E@{B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E}!V\+S\+A\+\_\+\+U\+T.\+cpp@{V\+S\+A\+\_\+\+U\+T.\+cpp}}
@@ -334,7 +334,7 @@ References Soil\+Math\+::\+Stats$<$ T1, T2, T3 $>$\+::bins, fhist\+Test\+Result,
 )}\label{_v_s_a___u_t_8cpp_a9cc36511e6538414d328e1b0c941f4d3}
 
 
-Definition at line 297 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
+Definition at line 305 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
 
 
 
@@ -342,46 +342,46 @@ References Soil\+Math\+::\+F\+F\+T\+::\+Get\+Descriptors(), and i.
 
 
 \begin{DoxyCode}
-298 \{
-299     \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} data[] =
-300     \{ 0, 0, 1, 1, 0, 0,
-301     0, 1, 0, 0, 1, 0,
-302     0, 1, 0, 0, 1, 0,
-303     1, 0, 0, 0, 0, 1,
-304     1, 0, 0, 0, 0, 1,
-305     0, 1, 0, 0, 1, 0,
-306     0, 1, 0, 0, 1, 0,
-307     0, 0, 1, 1, 0, 0 \};
-308     cv::Mat src(8, 6, CV\_8UC1, &data, 1);
-309     \hyperlink{class_soil_math_1_1_f_f_t}{SoilMath::FFT} Test;
-310     \hyperlink{_soil_math_types_8h_a7567e521c2b2c408dcb62dbff72390f7}{ComplexVect\_t} desc = Test.\hyperlink{class_soil_math_1_1_f_f_t_af5fb6f4804079ee184a314e2f0a0f2fc}{GetDescriptors}(src);
-311     \hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t} desc\_exp[] = \{
-312         \hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(-1.6666667, -6),
-313         \hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(2.02375780, -0.16742019),
-314         \hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(-3.1094758, -6.13316500),
-315         \hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(-1.8036530, 1.023864110),
-316         \hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(-0.6666667, -1),
-317         \hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(0.04350554, -2.55884126),
-318         \hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(-3.0522848, -0.63807119),
-319         \hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(-0.7780360, -0.31809187),
-320         \hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(-0.3333333, 0),
-321         \hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(-1.3856866, -1.43021101),
-322         \hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(-1.2238576, 0.466498316),
-323         \hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(-0.3295119, 1.459385072),
-324         \hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(1.33333331, -1),
-325         \hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(-0.3482434, 0.489805636),
-326         \hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(0.71895134, 0.304737878),
-327         \hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(5.24453433, -0.49849056)
-328     \};
-329 
-330     BOOST\_CHECK\_EQUAL(desc.size(), 16);
-331 
-332     \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < 16; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++)
-333     \{
-334         BOOST\_CHECK\_CLOSE(desc[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].real(), desc\_exp[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].real(), 0.0001);
-335         BOOST\_CHECK\_CLOSE(desc[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].imag(), desc\_exp[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].imag(), 0.0001);
-336     \}
-337 \}
+306 \{
+307     \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} data[] =
+308     \{ 0, 0, 1, 1, 0, 0,
+309     0, 1, 0, 0, 1, 0,
+310     0, 1, 0, 0, 1, 0,
+311     1, 0, 0, 0, 0, 1,
+312     1, 0, 0, 0, 0, 1,
+313     0, 1, 0, 0, 1, 0,
+314     0, 1, 0, 0, 1, 0,
+315     0, 0, 1, 1, 0, 0 \};
+316     cv::Mat src(8, 6, CV\_8UC1, &data, 1);
+317     \hyperlink{class_soil_math_1_1_f_f_t}{SoilMath::FFT} Test;
+318     \hyperlink{_soil_math_types_8h_a7567e521c2b2c408dcb62dbff72390f7}{ComplexVect\_t} desc = Test.\hyperlink{class_soil_math_1_1_f_f_t_af5fb6f4804079ee184a314e2f0a0f2fc}{GetDescriptors}(src);
+319     \hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t} desc\_exp[] = \{
+320         \hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(-1.6666667, -6),
+321         \hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(2.02375780, -0.16742019),
+322         \hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(-3.1094758, -6.13316500),
+323         \hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(-1.8036530, 1.023864110),
+324         \hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(-0.6666667, -1),
+325         \hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(0.04350554, -2.55884126),
+326         \hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(-3.0522848, -0.63807119),
+327         \hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(-0.7780360, -0.31809187),
+328         \hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(-0.3333333, 0),
+329         \hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(-1.3856866, -1.43021101),
+330         \hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(-1.2238576, 0.466498316),
+331         \hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(-0.3295119, 1.459385072),
+332         \hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(1.33333331, -1),
+333         \hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(-0.3482434, 0.489805636),
+334         \hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(0.71895134, 0.304737878),
+335         \hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(5.24453433, -0.49849056)
+336     \};
+337 
+338     BOOST\_CHECK\_EQUAL(desc.size(), 16);
+339 
+340     \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < 16; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++)
+341     \{
+342         BOOST\_CHECK\_CLOSE(desc[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].real(), desc\_exp[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].real(), 0.0001);
+343         BOOST\_CHECK\_CLOSE(desc[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].imag(), desc\_exp[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].imag(), 0.0001);
+344     \}
+345 \}
 \end{DoxyCode}
 
 
@@ -403,7 +403,7 @@ Here is the call graph for this function\+:\nopagebreak
 )}\label{_v_s_a___u_t_8cpp_a6a6a90ebe9c4ad9d3a298aac5dabae2e}
 
 
-Definition at line 339 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
+Definition at line 347 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
 
 
 
@@ -411,21 +411,21 @@ References Soil\+Math\+::\+F\+F\+T\+::\+Get\+Descriptors().
 
 
 \begin{DoxyCode}
-340 \{
-341     \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} data[] =
-342     \{ 0, 0, 0, 1, 0, 0,
-343     0, 1, 0, 0, 1, 0,
-344     0, 1, 0, 0, 1, 0,
-345     1, 0, 0, 0, 0, 1,
-346     1, 0, 0, 0, 0, 1,
-347     0, 1, 0, 0, 1, 0,
-348     0, 1, 0, 0, 1, 0,
-349     0, 0, 1, 1, 0, 0 \};
-350     cv::Mat src(8, 6, CV\_8UC1, &data, 1);
-351     \hyperlink{class_soil_math_1_1_f_f_t}{SoilMath::FFT} Test;
-352     BOOST\_CHECK\_THROW(Test.\hyperlink{class_soil_math_1_1_f_f_t_af5fb6f4804079ee184a314e2f0a0f2fc}{GetDescriptors}(src), 
+348 \{
+349     \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} data[] =
+350     \{ 0, 0, 0, 1, 0, 0,
+351     0, 1, 0, 0, 1, 0,
+352     0, 1, 0, 0, 1, 0,
+353     1, 0, 0, 0, 0, 1,
+354     1, 0, 0, 0, 0, 1,
+355     0, 1, 0, 0, 1, 0,
+356     0, 1, 0, 0, 1, 0,
+357     0, 0, 1, 1, 0, 0 \};
+358     cv::Mat src(8, 6, CV\_8UC1, &data, 1);
+359     \hyperlink{class_soil_math_1_1_f_f_t}{SoilMath::FFT} Test;
+360     BOOST\_CHECK\_THROW(Test.\hyperlink{class_soil_math_1_1_f_f_t_af5fb6f4804079ee184a314e2f0a0f2fc}{GetDescriptors}(src), 
       \hyperlink{class_soil_math_1_1_exception_1_1_math_exception}{SoilMath::Exception::MathException});
-353 \}
+361 \}
 \end{DoxyCode}
 
 
@@ -447,7 +447,7 @@ Here is the call graph for this function\+:\nopagebreak
 )}\label{_v_s_a___u_t_8cpp_abe5678967e2f67306f9379355016cad2}
 
 
-Definition at line 355 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
+Definition at line 363 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
 
 
 
@@ -455,76 +455,77 @@ References Soil\+Math\+::\+N\+N\+::h\+Weights, i, Soil\+Math\+::\+N\+N\+::i\+Wei
 
 
 \begin{DoxyCode}
-356 \{
-357     \hyperlink{class_soil_math_1_1_n_n}{SoilMath::NN} Test(3, 5, 2);
-358 
-359     \hyperlink{_soil_math_types_8h_a45aa81992bf0ddf272907bd4fa0b96cf}{InputLearnVector\_t} inputVect;
-360     \hyperlink{_soil_math_types_8h_a2d8b5a261688166d724b68addd8561e6}{OutputLearnVector\_t} outputVect;
-361 
-362     \textcolor{comment}{//Population\_t pop;}
-363     \textcolor{keywordtype}{unsigned} seed = std::chrono::system\_clock::now().time\_since\_epoch().count();
-364     std::default\_random\_engine gen(seed);
-365     std::uniform\_real\_distribution<float> dis(0.0, 1.0);
+364 \{
+365     \hyperlink{class_soil_math_1_1_n_n}{SoilMath::NN} Test(3, 5, 2);
 366 
-367     \textcolor{keywordtype}{float} i1 = 0.0, i2 = 0.0, i3 = 0.0;
-368     \textcolor{keywordtype}{float} o1 = 0.0, o2 = 0.0;
+367     \hyperlink{_soil_math_types_8h_a45aa81992bf0ddf272907bd4fa0b96cf}{InputLearnVector\_t} inputVect;
+368     \hyperlink{_soil_math_types_8h_a2d8b5a261688166d724b68addd8561e6}{OutputLearnVector\_t} outputVect;
 369 
-370     \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < 200; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++)
-371     \{
-372         \textcolor{keywordflow}{if} (dis(gen) > 0.5f) \{ i1 = 1.0; \}
-373         \textcolor{keywordflow}{else} \{ i1 = 0.0; \}
-374         \textcolor{keywordflow}{if} (dis(gen) > 0.5f) \{ i2 = 1.0; \}
-375         \textcolor{keywordflow}{else} \{ i2 = 0.0; \}
-376         \textcolor{keywordflow}{if} (dis(gen) > 0.5f) \{ i3 = 1.0; \}
-377         \textcolor{keywordflow}{else} \{ i3 = 0.0; \}
-378 
-379         \textcolor{keywordflow}{if} (i1 == 1.0 && i2 == 1.0 && i3 == 0.0)
-380         \{
-381             o1 = 1.0;
-382             o2 = -1.0;
-383         \}
-384         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (i1 == 0.0 && i2 == 0.0 && i3 == 1.0)
-385         \{
-386             o1 = 1.0;
-387             o2 = -1.0;
-388         \}
-389         \textcolor{keywordflow}{else}
-390         \{
-391             o1 = -1.0;
-392             o2 = 1.0;
-393         \}
-394 
-395         \hyperlink{_soil_math_types_8h_a7567e521c2b2c408dcb62dbff72390f7}{ComplexVect\_t} inputTemp;
-396         inputTemp.push\_back(\hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(i1, 0));
-397         inputTemp.push\_back(\hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(i2, 0));
-398         inputTemp.push\_back(\hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(i3, 0));
-399         inputVect.push\_back(inputTemp);
-400 
-401         \hyperlink{struct_predict__struct}{Predict\_t} outputTemp;
-402         outputTemp.\hyperlink{struct_predict__struct_aa0708cae93baa061f21452537e86d3bd}{OutputNeurons}.push\_back(o1);
-403         outputTemp.\hyperlink{struct_predict__struct_aa0708cae93baa061f21452537e86d3bd}{OutputNeurons}.push\_back(o2);
-404         outputVect.push\_back(outputTemp);
-405     \}
-406 
-407     Test.Learn(inputVect, outputVect, 0);
-408     Test.SaveState(\textcolor{stringliteral}{"NN.xml"});
-409 
-410     \hyperlink{class_soil_math_1_1_n_n}{SoilMath::NN} loadTest;
-411     loadTest.\hyperlink{class_soil_math_1_1_n_n_a69c00e336b11531e25d51262da10fea0}{LoadState}(\textcolor{stringliteral}{"NN.xml"});
-412 
-413     std::vector<float> test\_out = Test.Predict(inputVect[0]).OutputNeurons;
-414     std::vector<float> loadtest\_out = loadTest.\hyperlink{class_soil_math_1_1_n_n_aa7f23fcdb8383a74586c9c30b8bc0af7}{Predict}(inputVect[0]).
+370     \textcolor{comment}{//Population\_t pop;}
+371     \textcolor{keywordtype}{unsigned} seed = std::chrono::system\_clock::now().time\_since\_epoch().count();
+372     std::default\_random\_engine gen(seed);
+373     std::uniform\_real\_distribution<float> dis(0.0, 1.0);
+374 
+375     \textcolor{keywordtype}{float} i1 = 0.0, i2 = 0.0, i3 = 0.0;
+376     \textcolor{keywordtype}{float} o1 = 0.0, o2 = 0.0;
+377 
+378     \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < 200; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++)
+379     \{
+380         \textcolor{keywordflow}{if} (dis(gen) > 0.5f) \{ i1 = 1.0; \}
+381         \textcolor{keywordflow}{else} \{ i1 = 0.0; \}
+382         \textcolor{keywordflow}{if} (dis(gen) > 0.5f) \{ i2 = 1.0; \}
+383         \textcolor{keywordflow}{else} \{ i2 = 0.0; \}
+384         \textcolor{keywordflow}{if} (dis(gen) > 0.5f) \{ i3 = 1.0; \}
+385         \textcolor{keywordflow}{else} \{ i3 = 0.0; \}
+386 
+387         \textcolor{keywordflow}{if} (i1 == 1.0 && i2 == 1.0 && i3 == 0.0)
+388         \{
+389             o1 = 1.0;
+390             o2 = -1.0;
+391         \}
+392         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (i1 == 0.0 && i2 == 0.0 && i3 == 1.0)
+393         \{
+394             o1 = 1.0;
+395             o2 = -1.0;
+396         \}
+397         \textcolor{keywordflow}{else}
+398         \{
+399             o1 = -1.0;
+400             o2 = 1.0;
+401         \}
+402 
+403         \hyperlink{_soil_math_types_8h_a7567e521c2b2c408dcb62dbff72390f7}{ComplexVect\_t} inputTemp;
+404         inputTemp.push\_back(\hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(i1, 0));
+405         inputTemp.push\_back(\hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(i2, 0));
+406         inputTemp.push\_back(\hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(i3, 0));
+407         inputVect.push\_back(inputTemp);
+408 
+409         \hyperlink{struct_predict__struct}{Predict\_t} outputTemp;
+410         outputTemp.\hyperlink{struct_predict__struct_aa0708cae93baa061f21452537e86d3bd}{OutputNeurons}.push\_back(o1);
+411         outputTemp.\hyperlink{struct_predict__struct_aa0708cae93baa061f21452537e86d3bd}{OutputNeurons}.push\_back(o2);
+412         outputVect.push\_back(outputTemp);
+413     \}
+414 
+415     Test.Learn(inputVect, outputVect, 0);
+416     Test.SaveState(\textcolor{stringliteral}{"NN.xml"});
+417 
+418     \hyperlink{class_soil_math_1_1_n_n}{SoilMath::NN} loadTest;
+419     loadTest.\hyperlink{class_soil_math_1_1_n_n_a69c00e336b11531e25d51262da10fea0}{LoadState}(\textcolor{stringliteral}{"NN.xml"});
+420 
+421     std::vector<float> test\_out = Test.Predict(inputVect[0]).OutputNeurons;
+422     std::vector<float> loadtest\_out = loadTest.\hyperlink{class_soil_math_1_1_n_n_aa7f23fcdb8383a74586c9c30b8bc0af7}{Predict}(inputVect[0]).
       \hyperlink{struct_predict__struct_aa0708cae93baa061f21452537e86d3bd}{OutputNeurons};
-415 
-416     BOOST\_REQUIRE\_EQUAL\_COLLECTIONS(Test.hWeights.begin(), Test.hWeights.end(), loadTest.
+423 
+424     BOOST\_REQUIRE\_EQUAL\_COLLECTIONS(Test.hWeights.begin(), Test.hWeights.end(), loadTest.
       \hyperlink{class_soil_math_1_1_n_n_a46db1b2814215509a7345fccc8928efe}{hWeights}.begin(), loadTest.\hyperlink{class_soil_math_1_1_n_n_a46db1b2814215509a7345fccc8928efe}{hWeights}.end());
-417     BOOST\_REQUIRE\_EQUAL\_COLLECTIONS(Test.iWeights.begin(), Test.iWeights.end(), loadTest.
+425     BOOST\_REQUIRE\_EQUAL\_COLLECTIONS(Test.iWeights.begin(), Test.iWeights.end(), loadTest.
       \hyperlink{class_soil_math_1_1_n_n_a96b0fe3caeed3d285204a6b4506075c9}{iWeights}.begin(), loadTest.\hyperlink{class_soil_math_1_1_n_n_a96b0fe3caeed3d285204a6b4506075c9}{iWeights}.end());
-418 \}
+426 \}
 \end{DoxyCode}
 
 
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -542,7 +543,7 @@ Here is the call graph for this function\+:\nopagebreak
 )}\label{_v_s_a___u_t_8cpp_a263aa84d3f19580145cc036b2a247353}
 
 
-Definition at line 420 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
+Definition at line 428 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
 
 
 
@@ -550,73 +551,74 @@ References i, j, Soil\+Math\+::\+N\+N\+::\+Load\+State(), Predict\+\_\+struct\+:
 
 
 \begin{DoxyCode}
-421 \{
-422     \hyperlink{class_soil_math_1_1_n_n}{SoilMath::NN} Test;
-423     Test.\hyperlink{class_soil_math_1_1_n_n_a69c00e336b11531e25d51262da10fea0}{LoadState}(\textcolor{stringliteral}{"../ComparisionPictures/NN\_Test.xml"});
-424 
-425     \hyperlink{_soil_math_types_8h_a45aa81992bf0ddf272907bd4fa0b96cf}{InputLearnVector\_t} inputVect;
-426     \hyperlink{_soil_math_types_8h_a2d8b5a261688166d724b68addd8561e6}{OutputLearnVector\_t} outputVect;
-427     \hyperlink{_soil_math_types_8h_a2d8b5a261688166d724b68addd8561e6}{OutputLearnVector\_t} outputPredictVect;
-428 
-429     \textcolor{keywordtype}{unsigned} seed = std::chrono::system\_clock::now().time\_since\_epoch().count();
-430     std::default\_random\_engine gen(seed);
-431     std::uniform\_real\_distribution<float> dis(0.0, 1.0);
+429 \{
+430     \hyperlink{class_soil_math_1_1_n_n}{SoilMath::NN} Test;
+431     Test.\hyperlink{class_soil_math_1_1_n_n_a69c00e336b11531e25d51262da10fea0}{LoadState}(\textcolor{stringliteral}{"../ComparisionPictures/NN\_Test.xml"});
 432 
-433     \textcolor{keywordtype}{float} i1 = 0.0, i2 = 0.0, i3 = 0.0;
-434     \textcolor{keywordtype}{float} o1 = 0.0, o2 = 0.0;
-435 
-436     \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < 10; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++)
-437     \{
-438         \textcolor{keywordflow}{if} (dis(gen) > 0.5f) \{ i1 = 1.0; \}
-439         \textcolor{keywordflow}{else} \{ i1 = 0.0; \}
-440         \textcolor{keywordflow}{if} (dis(gen) > 0.5f) \{ i2 = 1.0; \}
-441         \textcolor{keywordflow}{else} \{ i2 = 0.0; \}
-442         \textcolor{keywordflow}{if} (dis(gen) > 0.5f) \{ i3 = 1.0; \}
-443         \textcolor{keywordflow}{else} \{ i3 = 0.0; \}
-444 
-445         \textcolor{keywordflow}{if} (i1 == 1.0 && i2 == 1.0 && i3 == 0.0)
-446         \{
-447             o1 = 1.0;
-448             o2 = -1.0;
-449         \}
-450         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (i1 == 0.0 && i2 == 0.0 && i3 == 1.0)
-451         \{
-452             o1 = 1.0;
-453             o2 = -1.0;
-454         \}
-455         \textcolor{keywordflow}{else}
-456         \{
-457             o1 = -1.0;
-458             o2 = 1.0;
-459         \}
-460 
-461         \hyperlink{_soil_math_types_8h_a7567e521c2b2c408dcb62dbff72390f7}{ComplexVect\_t} inputTemp;
-462         inputTemp.push\_back(\hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(i1, 0));
-463         inputTemp.push\_back(\hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(i2, 0));
-464         inputTemp.push\_back(\hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(i3, 0));
-465         inputVect.push\_back(inputTemp);
-466 
-467         \hyperlink{struct_predict__struct}{Predict\_t} outputTemp;
-468         outputTemp.\hyperlink{struct_predict__struct_aa0708cae93baa061f21452537e86d3bd}{OutputNeurons}.push\_back(o1);
-469         outputTemp.\hyperlink{struct_predict__struct_aa0708cae93baa061f21452537e86d3bd}{OutputNeurons}.push\_back(o2);
-470         outputVect.push\_back(outputTemp);
-471 
-472         \hyperlink{struct_predict__struct}{Predict\_t} outputPredictTemp;
-473         outputPredictTemp.\hyperlink{struct_predict__struct_aa0708cae93baa061f21452537e86d3bd}{OutputNeurons} = Test.\hyperlink{class_soil_math_1_1_n_n_aa7f23fcdb8383a74586c9c30b8bc0af7}{Predict}(inputTemp).
-      \hyperlink{struct_predict__struct_aa0708cae93baa061f21452537e86d3bd}{OutputNeurons};
+433     \hyperlink{_soil_math_types_8h_a45aa81992bf0ddf272907bd4fa0b96cf}{InputLearnVector\_t} inputVect;
+434     \hyperlink{_soil_math_types_8h_a2d8b5a261688166d724b68addd8561e6}{OutputLearnVector\_t} outputVect;
+435     \hyperlink{_soil_math_types_8h_a2d8b5a261688166d724b68addd8561e6}{OutputLearnVector\_t} outputPredictVect;
+436 
+437     \textcolor{keywordtype}{unsigned} seed = std::chrono::system\_clock::now().time\_since\_epoch().count();
+438     std::default\_random\_engine gen(seed);
+439     std::uniform\_real\_distribution<float> dis(0.0, 1.0);
+440 
+441     \textcolor{keywordtype}{float} i1 = 0.0, i2 = 0.0, i3 = 0.0;
+442     \textcolor{keywordtype}{float} o1 = 0.0, o2 = 0.0;
+443 
+444     \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < 10; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++)
+445     \{
+446         \textcolor{keywordflow}{if} (dis(gen) > 0.5f) \{ i1 = 1.0; \}
+447         \textcolor{keywordflow}{else} \{ i1 = 0.0; \}
+448         \textcolor{keywordflow}{if} (dis(gen) > 0.5f) \{ i2 = 1.0; \}
+449         \textcolor{keywordflow}{else} \{ i2 = 0.0; \}
+450         \textcolor{keywordflow}{if} (dis(gen) > 0.5f) \{ i3 = 1.0; \}
+451         \textcolor{keywordflow}{else} \{ i3 = 0.0; \}
+452 
+453         \textcolor{keywordflow}{if} (i1 == 1.0 && i2 == 1.0 && i3 == 0.0)
+454         \{
+455             o1 = 1.0;
+456             o2 = -1.0;
+457         \}
+458         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (i1 == 0.0 && i2 == 0.0 && i3 == 1.0)
+459         \{
+460             o1 = 1.0;
+461             o2 = -1.0;
+462         \}
+463         \textcolor{keywordflow}{else}
+464         \{
+465             o1 = -1.0;
+466             o2 = 1.0;
+467         \}
+468 
+469         \hyperlink{_soil_math_types_8h_a7567e521c2b2c408dcb62dbff72390f7}{ComplexVect\_t} inputTemp;
+470         inputTemp.push\_back(\hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(i1, 0));
+471         inputTemp.push\_back(\hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(i2, 0));
+472         inputTemp.push\_back(\hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(i3, 0));
+473         inputVect.push\_back(inputTemp);
 474 
-475         \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} < outputTemp.\hyperlink{struct_predict__struct_aa0708cae93baa061f21452537e86d3bd}{OutputNeurons}.size(); 
+475         \hyperlink{struct_predict__struct}{Predict\_t} outputTemp;
+476         outputTemp.\hyperlink{struct_predict__struct_aa0708cae93baa061f21452537e86d3bd}{OutputNeurons}.push\_back(o1);
+477         outputTemp.\hyperlink{struct_predict__struct_aa0708cae93baa061f21452537e86d3bd}{OutputNeurons}.push\_back(o2);
+478         outputVect.push\_back(outputTemp);
+479 
+480         \hyperlink{struct_predict__struct}{Predict\_t} outputPredictTemp;
+481         outputPredictTemp.\hyperlink{struct_predict__struct_aa0708cae93baa061f21452537e86d3bd}{OutputNeurons} = Test.\hyperlink{class_soil_math_1_1_n_n_aa7f23fcdb8383a74586c9c30b8bc0af7}{Predict}(inputTemp).
+      \hyperlink{struct_predict__struct_aa0708cae93baa061f21452537e86d3bd}{OutputNeurons};
+482 
+483         \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} < outputTemp.\hyperlink{struct_predict__struct_aa0708cae93baa061f21452537e86d3bd}{OutputNeurons}.size(); 
       \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}++)
-476         \{
-477             BOOST\_CHECK\_CLOSE(outputPredictTemp.\hyperlink{struct_predict__struct_aa0708cae93baa061f21452537e86d3bd}{OutputNeurons}[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}], outputTemp.
+484         \{
+485             BOOST\_CHECK\_CLOSE(outputPredictTemp.\hyperlink{struct_predict__struct_aa0708cae93baa061f21452537e86d3bd}{OutputNeurons}[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}], outputTemp.
       \hyperlink{struct_predict__struct_aa0708cae93baa061f21452537e86d3bd}{OutputNeurons}[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}], 5);
-478         \}
-479     \}
-480 \}
+486         \}
+487     \}
+488 \}
 \end{DoxyCode}
 
 
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -634,7 +636,7 @@ Here is the call graph for this function\+:\nopagebreak
 )}\label{_v_s_a___u_t_8cpp_a78eae4bee379e7fe638d66ef1b35ecd7}
 
 
-Definition at line 658 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
+Definition at line 666 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
 
 
 
@@ -642,17 +644,17 @@ References mask.
 
 
 \begin{DoxyCode}
-659 \{
-660     Mat RGB\_crop = imread(\textcolor{stringliteral}{"../ComparisionPictures/RGB\_crop.ppm"}, 1);
-661     Mat \hyperlink{_gen_blob_8m_a5d76cc2129e79ba1941d2cc2f53b9e8e}{mask} = imread(\textcolor{stringliteral}{"../ComparisionPictures/mask.ppm"}, 0);
-662     Mat RGB\_res = imread(\textcolor{stringliteral}{"../ComparisionPictures/RGB\_res.ppm"}, 1);
-663 
-664     Mat copiedMat = Vision::ImageProcessing::CopyMat<uchar>(RGB\_crop, \hyperlink{_gen_blob_8m_a5d76cc2129e79ba1941d2cc2f53b9e8e}{mask}, CV\_8UC1);
-665 
-666     BOOST\_CHECK\_EQUAL\_COLLECTIONS(copiedMat.begin<cv::Vec3b>(), copiedMat.end<cv::Vec3b>(), RGB\_res.begin<
+667 \{
+668     Mat RGB\_crop = imread(\textcolor{stringliteral}{"../ComparisionPictures/RGB\_crop.ppm"}, 1);
+669     Mat \hyperlink{_gen_blob_8m_a5d76cc2129e79ba1941d2cc2f53b9e8e}{mask} = imread(\textcolor{stringliteral}{"../ComparisionPictures/mask.ppm"}, 0);
+670     Mat RGB\_res = imread(\textcolor{stringliteral}{"../ComparisionPictures/RGB\_res.ppm"}, 1);
+671 
+672     Mat copiedMat = Vision::ImageProcessing::CopyMat<uchar>(RGB\_crop, \hyperlink{_gen_blob_8m_a5d76cc2129e79ba1941d2cc2f53b9e8e}{mask}, CV\_8UC1);
+673 
+674     BOOST\_CHECK\_EQUAL\_COLLECTIONS(copiedMat.begin<cv::Vec3b>(), copiedMat.end<cv::Vec3b>(), RGB\_res.begin<
       cv::Vec3b>(), RGB\_res.end<cv::Vec3b>());
-667     cv::imwrite(\textcolor{stringliteral}{"Copy\_with\_Mask.ppm"}, copiedMat);
-668 \}
+675     cv::imwrite(\textcolor{stringliteral}{"Copy\_with\_Mask.ppm"}, copiedMat);
+676 \}
 \end{DoxyCode}
 \hypertarget{_v_s_a___u_t_8cpp_a935fa6efb589edcb661433aae778a8d1}{}\index{V\+S\+A\+\_\+\+U\+T.\+cpp@{V\+S\+A\+\_\+\+U\+T.\+cpp}!B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E@{B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E}}
 \index{B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E@{B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E}!V\+S\+A\+\_\+\+U\+T.\+cpp@{V\+S\+A\+\_\+\+U\+T.\+cpp}}
@@ -663,7 +665,7 @@ References mask.
 )}\label{_v_s_a___u_t_8cpp_a935fa6efb589edcb661433aae778a8d1}
 
 
-Definition at line 670 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
+Definition at line 678 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
 
 
 
@@ -671,17 +673,17 @@ References mask.
 
 
 \begin{DoxyCode}
-671 \{
-672     Mat Int = imread(\textcolor{stringliteral}{"../ComparisionPictures/RGB\_crop.ppm"}, 0);
-673     Mat \hyperlink{_gen_blob_8m_a5d76cc2129e79ba1941d2cc2f53b9e8e}{mask} = imread(\textcolor{stringliteral}{"../ComparisionPictures/mask.ppm"}, 0);
-674     Mat Int\_res = imread(\textcolor{stringliteral}{"../ComparisionPictures/RGB\_res.ppm"}, 0);
-675 
-676     Mat copiedMat = Vision::ImageProcessing::CopyMat<uchar>(Int, \hyperlink{_gen_blob_8m_a5d76cc2129e79ba1941d2cc2f53b9e8e}{mask}, CV\_8UC1);
-677 
-678     BOOST\_CHECK\_EQUAL\_COLLECTIONS(copiedMat.begin<\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}>(), copiedMat.end<
+679 \{
+680     Mat Int = imread(\textcolor{stringliteral}{"../ComparisionPictures/RGB\_crop.ppm"}, 0);
+681     Mat \hyperlink{_gen_blob_8m_a5d76cc2129e79ba1941d2cc2f53b9e8e}{mask} = imread(\textcolor{stringliteral}{"../ComparisionPictures/mask.ppm"}, 0);
+682     Mat Int\_res = imread(\textcolor{stringliteral}{"../ComparisionPictures/RGB\_res.ppm"}, 0);
+683 
+684     Mat copiedMat = Vision::ImageProcessing::CopyMat<uchar>(Int, \hyperlink{_gen_blob_8m_a5d76cc2129e79ba1941d2cc2f53b9e8e}{mask}, CV\_8UC1);
+685 
+686     BOOST\_CHECK\_EQUAL\_COLLECTIONS(copiedMat.begin<\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}>(), copiedMat.end<
       \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}>(), Int\_res.begin<\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}>(), Int\_res.end<\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}>());
-679     cv::imwrite(\textcolor{stringliteral}{"Copy\_with\_Mask.ppm"}, copiedMat);
-680 \}
+687     cv::imwrite(\textcolor{stringliteral}{"Copy\_with\_Mask.ppm"}, copiedMat);
+688 \}
 \end{DoxyCode}
 \hypertarget{_v_s_a___u_t_8cpp_ac77747efc814e9152e530991b5c256c7}{}\index{V\+S\+A\+\_\+\+U\+T.\+cpp@{V\+S\+A\+\_\+\+U\+T.\+cpp}!B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E@{B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E}}
 \index{B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E@{B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E}!V\+S\+A\+\_\+\+U\+T.\+cpp@{V\+S\+A\+\_\+\+U\+T.\+cpp}}
@@ -692,7 +694,7 @@ References mask.
 )}\label{_v_s_a___u_t_8cpp_ac77747efc814e9152e530991b5c256c7}
 
 
-Definition at line 682 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
+Definition at line 690 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
 
 
 
@@ -700,31 +702,31 @@ References mask.
 
 
 \begin{DoxyCode}
-683 \{
-684     Mat floatTest = (Mat\_<float>(5, 5) <<   0.1, 0.2, 0.3, 0.4, 0.5,
-685                                             1.1, 1.2, 1.3, 1.4, 1.5,
-686                                             2.1, 2.2, 2.3, 2.4, 2.5,
-687                                             3.1, 3.2, 3.3, 3.4, 3.5,
-688                                             4.1, 4.2, 4.3, 4.4, 4.5,
-689                                             5.1, 5.2, 5.3, 5.4, 5.5);
-690 
-691     Mat \hyperlink{_gen_blob_8m_a5d76cc2129e79ba1941d2cc2f53b9e8e}{mask} = (Mat\_<float>(5, 5) <<        0, 0, 0, 0, 0,
-692                                             0, 1, 1, 0, 0,
-693                                             1, 1, 1, 1, 0,
-694                                             0, 0, 0, 1, 1,
-695                                             0, 0, 0, 0, 0,
-696                                             0, 0, 0, 0, 0);
-697 
-698     Mat floatres = (Mat\_<float>(5, 5) <<    0, 0, 0, 0, 0,
-699                                             0, 1.2, 1.3,0, 0,
-700                                             2.1, 2.2, 2.3, 2.4,0,
-701                                             0, 0, 0, 3.4, 3.5,
-702                                             0, 0, 0, 0, 0,
-703                                             0, 0, 0, 0, 0);
-704     Mat copiedMat = Vision::ImageProcessing::CopyMat<float>(floatTest, \hyperlink{_gen_blob_8m_a5d76cc2129e79ba1941d2cc2f53b9e8e}{mask}, CV\_32F);
-705     BOOST\_CHECK\_EQUAL\_COLLECTIONS(copiedMat.begin<\textcolor{keywordtype}{float}>(), copiedMat.end<\textcolor{keywordtype}{float}>(), floatres.begin<\textcolor{keywordtype}{float}>()
+691 \{
+692     Mat floatTest = (Mat\_<float>(5, 5) <<   0.1, 0.2, 0.3, 0.4, 0.5,
+693                                             1.1, 1.2, 1.3, 1.4, 1.5,
+694                                             2.1, 2.2, 2.3, 2.4, 2.5,
+695                                             3.1, 3.2, 3.3, 3.4, 3.5,
+696                                             4.1, 4.2, 4.3, 4.4, 4.5,
+697                                             5.1, 5.2, 5.3, 5.4, 5.5);
+698 
+699     Mat \hyperlink{_gen_blob_8m_a5d76cc2129e79ba1941d2cc2f53b9e8e}{mask} = (Mat\_<float>(5, 5) <<        0, 0, 0, 0, 0,
+700                                             0, 1, 1, 0, 0,
+701                                             1, 1, 1, 1, 0,
+702                                             0, 0, 0, 1, 1,
+703                                             0, 0, 0, 0, 0,
+704                                             0, 0, 0, 0, 0);
+705 
+706     Mat floatres = (Mat\_<float>(5, 5) <<    0, 0, 0, 0, 0,
+707                                             0, 1.2, 1.3,0, 0,
+708                                             2.1, 2.2, 2.3, 2.4,0,
+709                                             0, 0, 0, 3.4, 3.5,
+710                                             0, 0, 0, 0, 0,
+711                                             0, 0, 0, 0, 0);
+712     Mat copiedMat = Vision::ImageProcessing::CopyMat<float>(floatTest, \hyperlink{_gen_blob_8m_a5d76cc2129e79ba1941d2cc2f53b9e8e}{mask}, CV\_32F);
+713     BOOST\_CHECK\_EQUAL\_COLLECTIONS(copiedMat.begin<\textcolor{keywordtype}{float}>(), copiedMat.end<\textcolor{keywordtype}{float}>(), floatres.begin<\textcolor{keywordtype}{float}>()
       , floatres.end<\textcolor{keywordtype}{float}>());
-706 \}
+714 \}
 \end{DoxyCode}
 \hypertarget{_v_s_a___u_t_8cpp_adabbe96fc34f1eb6db9a53c0182b2b94}{}\index{V\+S\+A\+\_\+\+U\+T.\+cpp@{V\+S\+A\+\_\+\+U\+T.\+cpp}!B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E@{B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E}}
 \index{B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E@{B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E}!V\+S\+A\+\_\+\+U\+T.\+cpp@{V\+S\+A\+\_\+\+U\+T.\+cpp}}
@@ -735,22 +737,22 @@ References mask.
 )}\label{_v_s_a___u_t_8cpp_adabbe96fc34f1eb6db9a53c0182b2b94}
 
 
-Definition at line 708 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
+Definition at line 716 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
 
 
 \begin{DoxyCode}
-709 \{
-710     Mat BW\_res = imread(\textcolor{stringliteral}{"../ComparisionPictures/mask.ppm"}, 0);
-711     Mat Label = imread(\textcolor{stringliteral}{"../ComparisionPictures/label.ppm"}, 0);
-712     uint8\_t *LUT = \textcolor{keyword}{new} uint8\_t[300]\{\};
-713     LUT[255] = 1;
-714 
-715     Mat copiedMat = Vision::ImageProcessing::CopyMat<uint8\_t, uint8\_t>(Label, LUT, CV\_8UC1);
-716     imwrite(\textcolor{stringliteral}{"copiedMat.ppm"}, copiedMat);
-717     BOOST\_CHECK\_EQUAL\_COLLECTIONS(copiedMat.data, copiedMat.data + (copiedMat.rows * copiedMat.cols), 
+717 \{
+718     Mat BW\_res = imread(\textcolor{stringliteral}{"../ComparisionPictures/mask.ppm"}, 0);
+719     Mat Label = imread(\textcolor{stringliteral}{"../ComparisionPictures/label.ppm"}, 0);
+720     uint8\_t *LUT = \textcolor{keyword}{new} uint8\_t[300]\{\};
+721     LUT[255] = 1;
+722 
+723     Mat copiedMat = Vision::ImageProcessing::CopyMat<uint8\_t, uint8\_t>(Label, LUT, CV\_8UC1);
+724     imwrite(\textcolor{stringliteral}{"copiedMat.ppm"}, copiedMat);
+725     BOOST\_CHECK\_EQUAL\_COLLECTIONS(copiedMat.data, copiedMat.data + (copiedMat.rows * copiedMat.cols), 
       BW\_res.data, BW\_res.data + (BW\_res.rows * BW\_res.cols));
-718     \textcolor{keyword}{delete}[] LUT;
-719 \}
+726     \textcolor{keyword}{delete}[] LUT;
+727 \}
 \end{DoxyCode}
 \hypertarget{_v_s_a___u_t_8cpp_adc5e685b0097406d7163a5541f819658}{}\index{V\+S\+A\+\_\+\+U\+T.\+cpp@{V\+S\+A\+\_\+\+U\+T.\+cpp}!B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E@{B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E}}
 \index{B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E@{B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E}!V\+S\+A\+\_\+\+U\+T.\+cpp@{V\+S\+A\+\_\+\+U\+T.\+cpp}}
@@ -761,7 +763,7 @@ Definition at line 708 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
 )}\label{_v_s_a___u_t_8cpp_adc5e685b0097406d7163a5541f819658}
 
 
-Definition at line 721 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
+Definition at line 729 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
 
 
 
@@ -769,16 +771,16 @@ References Vision\+::\+Image\+Processing\+::\+Processed\+Img, and Vision\+::\+Se
 
 
 \begin{DoxyCode}
-722 \{
-723     cv::Mat Border = imread(\textcolor{stringliteral}{"../ComparisionPictures/Border.ppm"}, 0);
-724     cv::Mat noBorderComp = imread(\textcolor{stringliteral}{"../ComparisionPictures/noBorder.ppm"}, 0);
-725     
-726     \hyperlink{class_vision_1_1_segment}{Vision::Segment} Test(Border);
-727     Test.RemoveBorderBlobs(1);
-728     imwrite(\textcolor{stringliteral}{"noBorder.ppm"}, Test.ProcessedImg);
-729     BOOST\_CHECK\_EQUAL\_COLLECTIONS(Test.ProcessedImg.data, Test.ProcessedImg.data + (Test.ProcessedImg.rows 
+730 \{
+731     cv::Mat Border = imread(\textcolor{stringliteral}{"../ComparisionPictures/Border.ppm"}, 0);
+732     cv::Mat noBorderComp = imread(\textcolor{stringliteral}{"../ComparisionPictures/noBorder.ppm"}, 0);
+733     
+734     \hyperlink{class_vision_1_1_segment}{Vision::Segment} Test(Border);
+735     Test.RemoveBorderBlobs(1);
+736     imwrite(\textcolor{stringliteral}{"noBorder.ppm"}, Test.ProcessedImg);
+737     BOOST\_CHECK\_EQUAL\_COLLECTIONS(Test.ProcessedImg.data, Test.ProcessedImg.data + (Test.ProcessedImg.rows 
       * Test.ProcessedImg.cols), noBorderComp.data, noBorderComp.data + (noBorderComp.rows * noBorderComp.cols));
-730 \}
+738 \}
 \end{DoxyCode}
 
 
@@ -800,7 +802,7 @@ Here is the call graph for this function\+:\nopagebreak
 )}\label{_v_s_a___u_t_8cpp_adc051f54dff4a40bbe7134bb05e7ae01}
 
 
-Definition at line 732 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
+Definition at line 740 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
 
 
 
@@ -808,19 +810,19 @@ References Vision\+::\+Segment\+::\+Bright, Vision\+::\+Segment\+::\+Convert\+To
 
 
 \begin{DoxyCode}
-733 \{
-734     cv::Mat Border = imread(\textcolor{stringliteral}{"../ComparisionPictures/Border.ppm"}, 0);
-735     cv::Mat noBorderComp = imread(\textcolor{stringliteral}{"../ComparisionPictures/noBorder.ppm"}, 0);
-736     Border *= 255;
-737 
-738     \hyperlink{class_vision_1_1_segment}{Vision::Segment} Test(Border);
-739     Test.ConvertToBW(\hyperlink{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7ddad37a09a08a5a4fdf88cb15f21e5ff28b}{Vision::Segment::Bright});
-740     Test.FillHoles(\textcolor{keyword}{true});
-741     Test.RemoveBorderBlobs(1, \textcolor{keyword}{true});
-742     imwrite(\textcolor{stringliteral}{"noBorder.ppm"}, Test.ProcessedImg);
-743     BOOST\_CHECK\_EQUAL\_COLLECTIONS(Test.ProcessedImg.data, Test.ProcessedImg.data + (Test.ProcessedImg.rows 
+741 \{
+742     cv::Mat Border = imread(\textcolor{stringliteral}{"../ComparisionPictures/Border.ppm"}, 0);
+743     cv::Mat noBorderComp = imread(\textcolor{stringliteral}{"../ComparisionPictures/noBorder.ppm"}, 0);
+744     Border *= 255;
+745 
+746     \hyperlink{class_vision_1_1_segment}{Vision::Segment} Test(Border);
+747     Test.ConvertToBW(\hyperlink{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7ddad37a09a08a5a4fdf88cb15f21e5ff28b}{Vision::Segment::Bright});
+748     Test.FillHoles(\textcolor{keyword}{true});
+749     Test.RemoveBorderBlobs(1, \textcolor{keyword}{true});
+750     imwrite(\textcolor{stringliteral}{"noBorder.ppm"}, Test.ProcessedImg);
+751     BOOST\_CHECK\_EQUAL\_COLLECTIONS(Test.ProcessedImg.data, Test.ProcessedImg.data + (Test.ProcessedImg.rows 
       * Test.ProcessedImg.cols), noBorderComp.data, noBorderComp.data + (noBorderComp.rows * noBorderComp.cols));
-744 \}
+752 \}
 \end{DoxyCode}
 
 
@@ -842,7 +844,7 @@ Here is the call graph for this function\+:\nopagebreak
 )}\label{_v_s_a___u_t_8cpp_ac8374436bd65723cf7435e28f2f8479a}
 
 
-Definition at line 746 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
+Definition at line 754 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
 
 
 
@@ -850,16 +852,16 @@ References Vision\+::\+Morphological\+Filter\+::\+Erosion(), mask, and Vision\+:
 
 
 \begin{DoxyCode}
-747 \{
-748     cv::Mat FilterImg = imread(\textcolor{stringliteral}{"../ComparisionPictures/FilterImg.ppm"}, 0);
-749     cv::Mat ErosionComp = imread(\textcolor{stringliteral}{"../ComparisionPictures/erodedResult.ppm"}, 0);
-750     Mat \hyperlink{_gen_blob_8m_a5d76cc2129e79ba1941d2cc2f53b9e8e}{mask} = imread(\textcolor{stringliteral}{"../ComparisionPictures/MorphMask.ppm"}, 0);
-751     \hyperlink{class_vision_1_1_morphological_filter}{Vision::MorphologicalFilter} Test(FilterImg);
-752     Test.Erosion(mask);
-753 
-754     BOOST\_CHECK\_EQUAL\_COLLECTIONS(Test.ProcessedImg.begin<\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}>(), Test.ProcessedImg.end<
+755 \{
+756     cv::Mat FilterImg = imread(\textcolor{stringliteral}{"../ComparisionPictures/FilterImg.ppm"}, 0);
+757     cv::Mat ErosionComp = imread(\textcolor{stringliteral}{"../ComparisionPictures/erodedResult.ppm"}, 0);
+758     Mat \hyperlink{_gen_blob_8m_a5d76cc2129e79ba1941d2cc2f53b9e8e}{mask} = imread(\textcolor{stringliteral}{"../ComparisionPictures/MorphMask.ppm"}, 0);
+759     \hyperlink{class_vision_1_1_morphological_filter}{Vision::MorphologicalFilter} Test(FilterImg);
+760     Test.Erosion(mask);
+761 
+762     BOOST\_CHECK\_EQUAL\_COLLECTIONS(Test.ProcessedImg.begin<\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}>(), Test.ProcessedImg.end<
       \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}>(), ErosionComp.begin<\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}>(), ErosionComp.end<\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}>());
-755 \}
+763 \}
 \end{DoxyCode}
 
 
@@ -881,7 +883,7 @@ Here is the call graph for this function\+:\nopagebreak
 )}\label{_v_s_a___u_t_8cpp_af957734a2f5522d28b285705bec672d9}
 
 
-Definition at line 757 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
+Definition at line 765 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
 
 
 
@@ -889,16 +891,16 @@ References Vision\+::\+Morphological\+Filter\+::\+Dilation(), mask, and Vision\+
 
 
 \begin{DoxyCode}
-758 \{
-759     cv::Mat FilterImg = imread(\textcolor{stringliteral}{"../ComparisionPictures/FilterImg.ppm"}, 0);
-760     cv::Mat DilateComp = imread(\textcolor{stringliteral}{"../ComparisionPictures/DilatedResult.ppm"}, 0);
-761     Mat \hyperlink{_gen_blob_8m_a5d76cc2129e79ba1941d2cc2f53b9e8e}{mask} = imread(\textcolor{stringliteral}{"../ComparisionPictures/MorphMask.ppm"}, 0);
-762     \hyperlink{class_vision_1_1_morphological_filter}{Vision::MorphologicalFilter} Test(FilterImg);
-763     Test.Dilation(mask);
-764 
-765     BOOST\_CHECK\_EQUAL\_COLLECTIONS(Test.ProcessedImg.begin<\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}>(), Test.ProcessedImg.end<
+766 \{
+767     cv::Mat FilterImg = imread(\textcolor{stringliteral}{"../ComparisionPictures/FilterImg.ppm"}, 0);
+768     cv::Mat DilateComp = imread(\textcolor{stringliteral}{"../ComparisionPictures/DilatedResult.ppm"}, 0);
+769     Mat \hyperlink{_gen_blob_8m_a5d76cc2129e79ba1941d2cc2f53b9e8e}{mask} = imread(\textcolor{stringliteral}{"../ComparisionPictures/MorphMask.ppm"}, 0);
+770     \hyperlink{class_vision_1_1_morphological_filter}{Vision::MorphologicalFilter} Test(FilterImg);
+771     Test.Dilation(mask);
+772 
+773     BOOST\_CHECK\_EQUAL\_COLLECTIONS(Test.ProcessedImg.begin<\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}>(), Test.ProcessedImg.end<
       \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}>(), DilateComp.begin<\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}>(), DilateComp.end<\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}>());
-766 \}
+774 \}
 \end{DoxyCode}
 
 
@@ -920,7 +922,7 @@ Here is the call graph for this function\+:\nopagebreak
 )}\label{_v_s_a___u_t_8cpp_ab31eb918f965c29e8bd789d7a25ed312}
 
 
-Definition at line 768 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
+Definition at line 776 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
 
 
 
@@ -928,16 +930,16 @@ References mask, Vision\+::\+Morphological\+Filter\+::\+Open(), and Vision\+::\+
 
 
 \begin{DoxyCode}
-769 \{
-770     cv::Mat FilterImg = imread(\textcolor{stringliteral}{"../ComparisionPictures/FilterImg.ppm"}, 0);
-771     cv::Mat OpenComp = imread(\textcolor{stringliteral}{"../ComparisionPictures/openResult.ppm"}, 0);
-772     Mat \hyperlink{_gen_blob_8m_a5d76cc2129e79ba1941d2cc2f53b9e8e}{mask} = imread(\textcolor{stringliteral}{"../ComparisionPictures/MorphMask.ppm"}, 0);
-773     \hyperlink{class_vision_1_1_morphological_filter}{Vision::MorphologicalFilter} Test(FilterImg);
-774     Test.Open(mask);
-775 
-776     BOOST\_CHECK\_EQUAL\_COLLECTIONS(Test.ProcessedImg.begin<\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}>(), Test.ProcessedImg.end<
+777 \{
+778     cv::Mat FilterImg = imread(\textcolor{stringliteral}{"../ComparisionPictures/FilterImg.ppm"}, 0);
+779     cv::Mat OpenComp = imread(\textcolor{stringliteral}{"../ComparisionPictures/openResult.ppm"}, 0);
+780     Mat \hyperlink{_gen_blob_8m_a5d76cc2129e79ba1941d2cc2f53b9e8e}{mask} = imread(\textcolor{stringliteral}{"../ComparisionPictures/MorphMask.ppm"}, 0);
+781     \hyperlink{class_vision_1_1_morphological_filter}{Vision::MorphologicalFilter} Test(FilterImg);
+782     Test.Open(mask);
+783 
+784     BOOST\_CHECK\_EQUAL\_COLLECTIONS(Test.ProcessedImg.begin<\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}>(), Test.ProcessedImg.end<
       \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}>(), OpenComp.begin<\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}>(), OpenComp.end<\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}>());
-777 \}
+785 \}
 \end{DoxyCode}
 
 
@@ -959,7 +961,7 @@ Here is the call graph for this function\+:\nopagebreak
 )}\label{_v_s_a___u_t_8cpp_ad1ed610e7b39a4d4e880781d4582a4e8}
 
 
-Definition at line 779 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
+Definition at line 787 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
 
 
 
@@ -967,15 +969,15 @@ References Vision\+::\+Morphological\+Filter\+::\+Close(), mask, and Vision\+::\
 
 
 \begin{DoxyCode}
-780 \{
-781     cv::Mat FilterImg = imread(\textcolor{stringliteral}{"../ComparisionPictures/FilterImg.ppm"}, 0);
-782     cv::Mat CloseComp = imread(\textcolor{stringliteral}{"../ComparisionPictures/closeResult.ppm"}, 0);
-783     Mat \hyperlink{_gen_blob_8m_a5d76cc2129e79ba1941d2cc2f53b9e8e}{mask} = imread(\textcolor{stringliteral}{"../ComparisionPictures/MorphMask.ppm"}, 0);
-784     \hyperlink{class_vision_1_1_morphological_filter}{Vision::MorphologicalFilter} Test(FilterImg);
-785     Test.Close(mask);
-786     BOOST\_CHECK\_EQUAL\_COLLECTIONS(Test.ProcessedImg.begin<\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}>(), Test.ProcessedImg.end<
+788 \{
+789     cv::Mat FilterImg = imread(\textcolor{stringliteral}{"../ComparisionPictures/FilterImg.ppm"}, 0);
+790     cv::Mat CloseComp = imread(\textcolor{stringliteral}{"../ComparisionPictures/closeResult.ppm"}, 0);
+791     Mat \hyperlink{_gen_blob_8m_a5d76cc2129e79ba1941d2cc2f53b9e8e}{mask} = imread(\textcolor{stringliteral}{"../ComparisionPictures/MorphMask.ppm"}, 0);
+792     \hyperlink{class_vision_1_1_morphological_filter}{Vision::MorphologicalFilter} Test(FilterImg);
+793     Test.Close(mask);
+794     BOOST\_CHECK\_EQUAL\_COLLECTIONS(Test.ProcessedImg.begin<\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}>(), Test.ProcessedImg.end<
       \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}>(), CloseComp.begin<\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}>(), CloseComp.end<\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}>());
-787 \}
+795 \}
 \end{DoxyCode}
 
 
@@ -997,7 +999,7 @@ Here is the call graph for this function\+:\nopagebreak
 )}\label{_v_s_a___u_t_8cpp_ad6af362d268fddd36507d1d265e25040}
 
 
-Definition at line 789 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
+Definition at line 797 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
 
 
 
@@ -1005,15 +1007,15 @@ References Vision\+::\+Segment\+::\+Get\+Edges\+Eroding(), and Vision\+::\+Image
 
 
 \begin{DoxyCode}
-790 \{
-791     cv::Mat BlobImg = imread(\textcolor{stringliteral}{"../ComparisionPictures/FilterImg.ppm"}, 0);
-792     cv::Mat EdgeComp = imread(\textcolor{stringliteral}{"../ComparisionPictures/BlobTestEdgeResult.ppm"}, 0);
-793 
-794     \hyperlink{class_vision_1_1_segment}{Vision::Segment} Test(BlobImg);
-795     Test.GetEdgesEroding();
-796     BOOST\_CHECK\_EQUAL\_COLLECTIONS(Test.ProcessedImg.begin<\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}>(), Test.ProcessedImg.end<
+798 \{
+799     cv::Mat BlobImg = imread(\textcolor{stringliteral}{"../ComparisionPictures/FilterImg.ppm"}, 0);
+800     cv::Mat EdgeComp = imread(\textcolor{stringliteral}{"../ComparisionPictures/BlobTestEdgeResult.ppm"}, 0);
+801 
+802     \hyperlink{class_vision_1_1_segment}{Vision::Segment} Test(BlobImg);
+803     Test.GetEdgesEroding();
+804     BOOST\_CHECK\_EQUAL\_COLLECTIONS(Test.ProcessedImg.begin<\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}>(), Test.ProcessedImg.end<
       \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}>(), EdgeComp.begin<\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}>(), EdgeComp.end<\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}>());
-797 \}
+805 \}
 \end{DoxyCode}
 
 
@@ -1036,7 +1038,7 @@ Here is the call graph for this function\+:\nopagebreak
 )}\label{_v_s_a___u_t_8cpp_a518c08dc0ab0c1ca5e402c12a5837a9b}
 
 
-Definition at line 126 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
+Definition at line 134 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
 
 
 
@@ -1044,42 +1046,42 @@ References imshow().
 
 
 \begin{DoxyCode}
-127 \{
-128     SoilPlot::Label TestR(\textcolor{stringliteral}{"RED"}, \textcolor{stringliteral}{"times"}, 30, cv::Scalar(255, 0, 0, 255), cv::Scalar(0,0,0,0), \textcolor{keyword}{false}, \textcolor{keyword}{true})
+135 \{
+136     SoilPlot::Label TestR(\textcolor{stringliteral}{"RED"}, \textcolor{stringliteral}{"times"}, 30, cv::Scalar(255, 0, 0, 255), cv::Scalar(0,0,0,0), \textcolor{keyword}{false}, \textcolor{keyword}{true})
       ;
-129     SoilPlot::Label TestG(\textcolor{stringliteral}{"GREEN"}, \textcolor{stringliteral}{"times"}, 30, cv::Scalar(0, 255, 0, 255), cv::Scalar(0, 0, 0, 0), \textcolor{keyword}{false}, \textcolor{keyword}{
+137     SoilPlot::Label TestG(\textcolor{stringliteral}{"GREEN"}, \textcolor{stringliteral}{"times"}, 30, cv::Scalar(0, 255, 0, 255), cv::Scalar(0, 0, 0, 0), \textcolor{keyword}{false}, \textcolor{keyword}{
       true});
-130     SoilPlot::Label TestB(\textcolor{stringliteral}{"BLUE"}, \textcolor{stringliteral}{"times"}, 30, cv::Scalar(0, 0, 255, 255), cv::Scalar(0, 0, 0, 0), \textcolor{keyword}{false}, \textcolor{keyword}{
+138     SoilPlot::Label TestB(\textcolor{stringliteral}{"BLUE"}, \textcolor{stringliteral}{"times"}, 30, cv::Scalar(0, 0, 255, 255), cv::Scalar(0, 0, 0, 0), \textcolor{keyword}{false}, \textcolor{keyword}{
       true});
-131     SoilPlot::Label TestA(\textcolor{stringliteral}{"ALPHA"}, \textcolor{stringliteral}{"times"}, 30, cv::Scalar(255, 125, 0, 10), cv::Scalar(0, 0, 0, 0), \textcolor{keyword}{false},
+139     SoilPlot::Label TestA(\textcolor{stringliteral}{"ALPHA"}, \textcolor{stringliteral}{"times"}, 30, cv::Scalar(255, 125, 0, 10), cv::Scalar(0, 0, 0, 0), \textcolor{keyword}{false},
        \textcolor{keyword}{true});
-132     namedWindow(TestWindow, cv::WINDOW\_NORMAL);
-133 
-134     TestR.TopLeftCorner = cv::Point(50, 10);
-135     TestR.Draw();
-136     \hyperlink{_comparision_pictures_2_createtest_image_8m_ab203292116da4a8a72763ec58b04da8f}{imshow}(TestWindow, TestR.Figure);
-137     cv::waitKey(0);
-138     TestR.DrawOnTop(RGBchecker);
-139     TestG.TopLeftCorner = cv::Point(50, TestR.Figure.rows + 30);
-140     TestG.Draw();
-141     \hyperlink{_comparision_pictures_2_createtest_image_8m_ab203292116da4a8a72763ec58b04da8f}{imshow}(TestWindow, TestG.Figure);
-142     cv::waitKey(0);
-143     TestG.DrawOnTop(RGBchecker);
-144     TestB.TopLeftCorner = cv::Point(50, TestG.TopLeftCorner.y + TestG.Figure.rows + 20);
-145     TestB.Draw();
-146     \hyperlink{_comparision_pictures_2_createtest_image_8m_ab203292116da4a8a72763ec58b04da8f}{imshow}(TestWindow, TestB.Figure);
-147     cv::waitKey(0);
-148     TestB.DrawOnTop(RGBchecker);
-149     TestA.TopLeftCorner = cv::Point(50, TestB.TopLeftCorner.y + TestB.Figure.rows + 20);
-150     TestA.Draw();
-151     \hyperlink{_comparision_pictures_2_createtest_image_8m_ab203292116da4a8a72763ec58b04da8f}{imshow}(TestWindow, TestA.Figure);
-152     cv::waitKey(0);
-153     TestA.DrawOnTop(RGBchecker);
-154 
-155 
-156     \hyperlink{_comparision_pictures_2_createtest_image_8m_ab203292116da4a8a72763ec58b04da8f}{imshow}(TestWindow, RGBchecker);
-157     cv::waitKey(0);
-158 \}
+140     namedWindow(TestWindow, cv::WINDOW\_NORMAL);
+141 
+142     TestR.TopLeftCorner = cv::Point(50, 10);
+143     TestR.Draw();
+144     \hyperlink{_comparision_pictures_2_createtest_image_8m_ab203292116da4a8a72763ec58b04da8f}{imshow}(TestWindow, TestR.Figure);
+145     cv::waitKey(0);
+146     TestR.DrawOnTop(RGBchecker);
+147     TestG.TopLeftCorner = cv::Point(50, TestR.Figure.rows + 30);
+148     TestG.Draw();
+149     \hyperlink{_comparision_pictures_2_createtest_image_8m_ab203292116da4a8a72763ec58b04da8f}{imshow}(TestWindow, TestG.Figure);
+150     cv::waitKey(0);
+151     TestG.DrawOnTop(RGBchecker);
+152     TestB.TopLeftCorner = cv::Point(50, TestG.TopLeftCorner.y + TestG.Figure.rows + 20);
+153     TestB.Draw();
+154     \hyperlink{_comparision_pictures_2_createtest_image_8m_ab203292116da4a8a72763ec58b04da8f}{imshow}(TestWindow, TestB.Figure);
+155     cv::waitKey(0);
+156     TestB.DrawOnTop(RGBchecker);
+157     TestA.TopLeftCorner = cv::Point(50, TestB.TopLeftCorner.y + TestB.Figure.rows + 20);
+158     TestA.Draw();
+159     \hyperlink{_comparision_pictures_2_createtest_image_8m_ab203292116da4a8a72763ec58b04da8f}{imshow}(TestWindow, TestA.Figure);
+160     cv::waitKey(0);
+161     TestA.DrawOnTop(RGBchecker);
+162 
+163 
+164     \hyperlink{_comparision_pictures_2_createtest_image_8m_ab203292116da4a8a72763ec58b04da8f}{imshow}(TestWindow, RGBchecker);
+165     cv::waitKey(0);
+166 \}
 \end{DoxyCode}
 
 
@@ -1102,7 +1104,7 @@ Here is the call graph for this function\+:\nopagebreak
 )}\label{_v_s_a___u_t_8cpp_a6336c7327a0163b5c13fef7c19a3d9ba}
 
 
-Definition at line 160 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
+Definition at line 168 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
 
 
 
@@ -1110,26 +1112,26 @@ References imshow().
 
 
 \begin{DoxyCode}
-161 \{
-162     std::vector<SoilPlot::Line> Lines;
-163     Lines.push\_back(SoilPlot::Line(cv::Point(80, 80), cv::Point(150, 150), 1, cv::Scalar(255, 0, 0, 255)));
-164     Lines.push\_back(SoilPlot::Line(cv::Point(80, 80), cv::Point(10, 150), 2, cv::Scalar(0, 255, 0, 255)));
-165     Lines.push\_back(SoilPlot::Line(cv::Point(80, 80), cv::Point(10, 10), 3, cv::Scalar(0, 0,255, 255)));
-166     Lines.push\_back(SoilPlot::Line(cv::Point(80, 80), cv::Point(150, 10), 4, cv::Scalar(255, 0, 0, 255)));
-167     Lines.push\_back(SoilPlot::Line(cv::Point(80, 10), cv::Point(80, 150), 5, cv::Scalar(255, 0, 255, 255)))
+169 \{
+170     std::vector<SoilPlot::Line> Lines;
+171     Lines.push\_back(SoilPlot::Line(cv::Point(80, 80), cv::Point(150, 150), 1, cv::Scalar(255, 0, 0, 255)));
+172     Lines.push\_back(SoilPlot::Line(cv::Point(80, 80), cv::Point(10, 150), 2, cv::Scalar(0, 255, 0, 255)));
+173     Lines.push\_back(SoilPlot::Line(cv::Point(80, 80), cv::Point(10, 10), 3, cv::Scalar(0, 0,255, 255)));
+174     Lines.push\_back(SoilPlot::Line(cv::Point(80, 80), cv::Point(150, 10), 4, cv::Scalar(255, 0, 0, 255)));
+175     Lines.push\_back(SoilPlot::Line(cv::Point(80, 10), cv::Point(80, 150), 5, cv::Scalar(255, 0, 255, 255)))
       ;
-168     Lines.push\_back(SoilPlot::Line(cv::Point(10, 80), cv::Point(150, 80), 10, cv::Scalar(255, 255, 0, 200))
+176     Lines.push\_back(SoilPlot::Line(cv::Point(10, 80), cv::Point(150, 80), 10, cv::Scalar(255, 255, 0, 200))
       );
-169     for\_each(Lines.begin(), Lines.end(), [&](SoilPlot::Line &L) 
-170     \{
-171         L.Draw();
-172         L.DrawOnTop(RGBchecker);
-173     \});
-174 
-175     namedWindow(TestWindow, cv::WINDOW\_NORMAL);
-176     \hyperlink{_comparision_pictures_2_createtest_image_8m_ab203292116da4a8a72763ec58b04da8f}{imshow}(TestWindow, RGBchecker);
-177     cv::waitKey(0);
-178 \}
+177     for\_each(Lines.begin(), Lines.end(), [&](SoilPlot::Line &L) 
+178     \{
+179         L.Draw();
+180         L.DrawOnTop(RGBchecker);
+181     \});
+182 
+183     namedWindow(TestWindow, cv::WINDOW\_NORMAL);
+184     \hyperlink{_comparision_pictures_2_createtest_image_8m_ab203292116da4a8a72763ec58b04da8f}{imshow}(TestWindow, RGBchecker);
+185     cv::waitKey(0);
+186 \}
 \end{DoxyCode}
 
 
@@ -1152,31 +1154,31 @@ Here is the call graph for this function\+:\nopagebreak
 )}\label{_v_s_a___u_t_8cpp_a3db49f0d3c201122e8e6ef08d14bf5a9}
 
 
-Definition at line 180 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
+Definition at line 188 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
 
 
 \begin{DoxyCode}
-181 \{
-182     std::vector<SoilPlot::Axis> axes;
-183     SoilPlot::Label axisLabel(\textcolor{stringliteral}{"Horizontal"}, \textcolor{stringliteral}{"times"}, 30, cv::Scalar(200, 80, 80, 255), cv::Scalar(0, 0, 0, 
+189 \{
+190     std::vector<SoilPlot::Axis> axes;
+191     SoilPlot::Label axisLabel(\textcolor{stringliteral}{"Horizontal"}, \textcolor{stringliteral}{"times"}, 30, cv::Scalar(200, 80, 80, 255), cv::Scalar(0, 0, 0, 
       0), \textcolor{keyword}{true}, \textcolor{keyword}{true});
-184     
-185     std::vector<SoilPlot::Label> Values;
-186     Values.push\_back(SoilPlot::Label(\textcolor{stringliteral}{"1"}, \textcolor{stringliteral}{"times"}, 16, cv::Scalar(200,80,3,255), cv::Scalar(0,0,0,0), \textcolor{keyword}{false}
+192     
+193     std::vector<SoilPlot::Label> Values;
+194     Values.push\_back(SoilPlot::Label(\textcolor{stringliteral}{"1"}, \textcolor{stringliteral}{"times"}, 16, cv::Scalar(200,80,3,255), cv::Scalar(0,0,0,0), \textcolor{keyword}{false}
       , \textcolor{keyword}{true}));
-187     Values.push\_back(SoilPlot::Label(\textcolor{stringliteral}{"2"}, \textcolor{stringliteral}{"times"}, 16, cv::Scalar(200,80,3,255), cv::Scalar(0,0,0,0), \textcolor{keyword}{false}
+195     Values.push\_back(SoilPlot::Label(\textcolor{stringliteral}{"2"}, \textcolor{stringliteral}{"times"}, 16, cv::Scalar(200,80,3,255), cv::Scalar(0,0,0,0), \textcolor{keyword}{false}
       , \textcolor{keyword}{true}));
-188     Values.push\_back(SoilPlot::Label(\textcolor{stringliteral}{"3"}, \textcolor{stringliteral}{"times"}, 16, cv::Scalar(200,80,3,255), cv::Scalar(0,0,0,0), \textcolor{keyword}{false}
+196     Values.push\_back(SoilPlot::Label(\textcolor{stringliteral}{"3"}, \textcolor{stringliteral}{"times"}, 16, cv::Scalar(200,80,3,255), cv::Scalar(0,0,0,0), \textcolor{keyword}{false}
       , \textcolor{keyword}{true}));
-189     
-190     axes.push\_back(SoilPlot::Axis(cv::Point(20,140), 120, SoilPlot::Axis::Orientation\_enum::Horizontal, 
+197     
+198     axes.push\_back(SoilPlot::Axis(cv::Point(20,140), 120, SoilPlot::Axis::Orientation\_enum::Horizontal, 
       Values, axisLabel, SoilPlot::Axis::ValuePosition::UnderTick, \textcolor{keyword}{false}));
-191     for\_each(axes.begin(), axes.end(), [&](SoilPlot::Axis &A)
-192     \{
-193         A.Draw();
-194         A.DrawOnTop(RGBchecker);
-195     \});
-196 \}
+199     for\_each(axes.begin(), axes.end(), [&](SoilPlot::Axis &A)
+200     \{
+201         A.Draw();
+202         A.DrawOnTop(RGBchecker);
+203     \});
+204 \}
 \end{DoxyCode}
 \hypertarget{_v_s_a___u_t_8cpp_a1d0460f61780a595cb03b92f501f8c0b}{}\index{V\+S\+A\+\_\+\+U\+T.\+cpp@{V\+S\+A\+\_\+\+U\+T.\+cpp}!B\+O\+O\+S\+T\+\_\+\+F\+I\+X\+T\+U\+R\+E\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E@{B\+O\+O\+S\+T\+\_\+\+F\+I\+X\+T\+U\+R\+E\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E}}
 \index{B\+O\+O\+S\+T\+\_\+\+F\+I\+X\+T\+U\+R\+E\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E@{B\+O\+O\+S\+T\+\_\+\+F\+I\+X\+T\+U\+R\+E\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E}!V\+S\+A\+\_\+\+U\+T.\+cpp@{V\+S\+A\+\_\+\+U\+T.\+cpp}}
@@ -1188,7 +1190,7 @@ Definition at line 180 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
 )}\label{_v_s_a___u_t_8cpp_a1d0460f61780a595cb03b92f501f8c0b}
 
 
-Definition at line 222 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
+Definition at line 230 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
 
 
 
@@ -1196,20 +1198,20 @@ References Vision\+::\+Segment\+::\+Blob\+List, Vision\+::\+Segment\+::\+Bright,
 
 
 \begin{DoxyCode}
-223 \{
-224     \hyperlink{class_vision_1_1_segment}{Vision::Segment} Test(src);
-225     Test.ConvertToBW(\hyperlink{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7ddad37a09a08a5a4fdf88cb15f21e5ff28b}{Vision::Segment::Bright});
-226     Test.GetBlobList(\textcolor{keyword}{true});
-227     imwrite(\textcolor{stringliteral}{"LabeledBlobsMany.ppm"}, Test.LabelledImg);
-228     BOOST\_CHECK\_EQUAL(370, Test.BlobList.size());
-229     for\_each(Test.BlobList.begin(), Test.BlobList.end(), [](
+231 \{
+232     \hyperlink{class_vision_1_1_segment}{Vision::Segment} Test(src);
+233     Test.ConvertToBW(\hyperlink{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7ddad37a09a08a5a4fdf88cb15f21e5ff28b}{Vision::Segment::Bright});
+234     Test.GetBlobList(\textcolor{keyword}{true});
+235     imwrite(\textcolor{stringliteral}{"LabeledBlobsMany.ppm"}, Test.LabelledImg);
+236     BOOST\_CHECK\_EQUAL(370, Test.BlobList.size());
+237     for\_each(Test.BlobList.begin(), Test.BlobList.end(), [](
       \hyperlink{struct_vision_1_1_segment_1_1_blob}{Vision::Segment::Blob\_t} &b)
-230     \{
-231         stringstream ss;
-232         ss << b.Label << \textcolor{stringliteral}{"\_many\_.ppm"};
-233         imwrite(ss.str(), b.Img);
-234     \});
-235 \}
+238     \{
+239         stringstream ss;
+240         ss << b.Label << \textcolor{stringliteral}{"\_many\_.ppm"};
+241         imwrite(ss.str(), b.Img);
+242     \});
+243 \}
 \end{DoxyCode}
 
 
@@ -1232,7 +1234,7 @@ Here is the call graph for this function\+:\nopagebreak
 )}\label{_v_s_a___u_t_8cpp_a96f0fbfca04b6a0099c10889371d3e6f}
 
 
-Definition at line 484 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
+Definition at line 492 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
 
 
 
@@ -1240,28 +1242,28 @@ References Vision\+::\+Conversion\+::\+Convert(), Vision\+::\+Conversion\+::\+In
 
 
 \begin{DoxyCode}
-485 \{
-486     \textcolor{comment}{// Convert the RGB picture to an intensity picture}
-487     \hyperlink{class_vision_1_1_conversion}{Vision::Conversion} Test;
-488     Test.\hyperlink{class_vision_1_1_conversion_ac78b687a5b6cdf4c0ae812b5d76b13fc}{Convert}(src, dst, \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388af3fab43e1e6d8ffab1bf27050866a8d5}{Vision::Conversion::RGB}, 
+493 \{
+494     \textcolor{comment}{// Convert the RGB picture to an intensity picture}
+495     \hyperlink{class_vision_1_1_conversion}{Vision::Conversion} Test;
+496     Test.\hyperlink{class_vision_1_1_conversion_ac78b687a5b6cdf4c0ae812b5d76b13fc}{Convert}(src, dst, \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388af3fab43e1e6d8ffab1bf27050866a8d5}{Vision::Conversion::RGB}, 
       \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388abfa5e56d2444f73ce850195468885fdd}{Vision::Conversion::Intensity});
-489 
-490     \textcolor{comment}{// Read in the Matlab converted intensity picture converted with the Matlab command:}
-491     \textcolor{comment}{// Matlab\_int=0.2126*RGB(:,:,1)+0.7152*RGB(:,:,2)+0.0722*RGB(:,:,3);}
-492     comp = imread(\textcolor{stringliteral}{"../ComparisionPictures/Matlab\_int.ppm"}, 0);
-493 
-494     \textcolor{comment}{// Calculate the statistics of the two images}
-495     \hyperlink{class_soil_math_1_1_stats}{ucharStat\_t} statDst(dst.data, dst.rows, dst.cols);
-496     \hyperlink{class_soil_math_1_1_stats}{ucharStat\_t} statComp(comp.data, comp.rows, comp.cols);
 497 
-498     \textcolor{comment}{// Simple comparison}
-499     BOOST\_CHECK\_CLOSE(statDst.Mean, statComp.Mean, 0.5);
-500     BOOST\_CHECK\_CLOSE(statDst.Std, statComp.Std, 0.5);
-501     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDst.Range, (\textcolor{keywordtype}{double})statComp.Range, 0.5);
-502     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDst.min, (\textcolor{keywordtype}{double})statComp.min, 0.5);
-503     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDst.max, (\textcolor{keywordtype}{double})statComp.max, 0.5);
-504     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDst.Sum, (\textcolor{keywordtype}{double})statComp.Sum, 0.5);
-505 \}
+498     \textcolor{comment}{// Read in the Matlab converted intensity picture converted with the Matlab command:}
+499     \textcolor{comment}{// Matlab\_int=0.2126*RGB(:,:,1)+0.7152*RGB(:,:,2)+0.0722*RGB(:,:,3);}
+500     comp = imread(\textcolor{stringliteral}{"../ComparisionPictures/Matlab\_int.ppm"}, 0);
+501 
+502     \textcolor{comment}{// Calculate the statistics of the two images}
+503     \hyperlink{class_soil_math_1_1_stats}{ucharStat\_t} statDst(dst.data, dst.rows, dst.cols);
+504     \hyperlink{class_soil_math_1_1_stats}{ucharStat\_t} statComp(comp.data, comp.rows, comp.cols);
+505 
+506     \textcolor{comment}{// Simple comparison}
+507     BOOST\_CHECK\_CLOSE(statDst.Mean, statComp.Mean, 0.5);
+508     BOOST\_CHECK\_CLOSE(statDst.Std, statComp.Std, 0.5);
+509     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDst.Range, (\textcolor{keywordtype}{double})statComp.Range, 0.5);
+510     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDst.min, (\textcolor{keywordtype}{double})statComp.min, 0.5);
+511     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDst.max, (\textcolor{keywordtype}{double})statComp.max, 0.5);
+512     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDst.Sum, (\textcolor{keywordtype}{double})statComp.Sum, 0.5);
+513 \}
 \end{DoxyCode}
 
 
@@ -1284,7 +1286,7 @@ Here is the call graph for this function\+:\nopagebreak
 )}\label{_v_s_a___u_t_8cpp_a52c9683d4134723aa032930cc42ee6a8}
 
 
-Definition at line 507 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
+Definition at line 515 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
 
 
 
@@ -1292,67 +1294,67 @@ References Vision\+::\+Conversion\+::\+C\+I\+E\+\_\+\+X\+Y\+Z, Vision\+::\+Conve
 
 
 \begin{DoxyCode}
-508 \{
-509     \textcolor{comment}{// Convert the RGB to an CIElab}
-510     \hyperlink{class_vision_1_1_conversion}{Vision::Conversion} Test;
-511     Test.\hyperlink{class_vision_1_1_conversion_ac78b687a5b6cdf4c0ae812b5d76b13fc}{Convert}(src, dst, \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388af3fab43e1e6d8ffab1bf27050866a8d5}{Vision::Conversion::RGB}, 
+516 \{
+517     \textcolor{comment}{// Convert the RGB to an CIElab}
+518     \hyperlink{class_vision_1_1_conversion}{Vision::Conversion} Test;
+519     Test.\hyperlink{class_vision_1_1_conversion_ac78b687a5b6cdf4c0ae812b5d76b13fc}{Convert}(src, dst, \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388af3fab43e1e6d8ffab1bf27050866a8d5}{Vision::Conversion::RGB}, 
       \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388ad4dfd3a535a86b69dd0e32ae7598b590}{Vision::Conversion::CIE\_XYZ});
-512     vector<Mat> LAB = Test.\hyperlink{class_vision_1_1_image_processing_ad5fa51caaabb8cb0fc2c15f645695a3c}{extractChannel}(dst);
-513 
-514     \hyperlink{class_soil_math_1_1_stats}{floatStat\_t} statDstX((\textcolor{keywordtype}{float} *)LAB[0].data, src.rows, src.cols);
-515     \hyperlink{class_soil_math_1_1_stats}{floatStat\_t} statCompX;
-516     statCompX.\hyperlink{class_soil_math_1_1_stats_a6af590b7d033d882d5428c0d7a1f5e59}{Std} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a4e7149f41a05675366168ab4daa40dd7}{X\_STD};
-517     statCompX.\hyperlink{class_soil_math_1_1_stats_a7bc57af334b68253832ebac17f85d091}{n} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a584b453204b02829d0157dadff0b120d}{N\_MAT};
-518     statCompX.\hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{Mean} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a25d81e59ec5b2bdd84d5ba2f663ff7e0}{X\_MEAN};
-519     statCompX.\hyperlink{class_soil_math_1_1_stats_a7154ac6c97dc2e83bdff7fef3cbdac5b}{Range} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a06c617ee7323ed045ddffe728a20e665}{X\_RANGE};
-520     statCompX.\hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_aecb4dd17977d6a5bd0b4f9c4ce9e8fb0}{X\_MIN};
-521     statCompX.\hyperlink{class_soil_math_1_1_stats_ad49ee1f533564ec587cf98a094b8c564}{max} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a4fcc42e3f93581eb0459cb359adebc54}{X\_MAX};
-522     statCompX.\hyperlink{class_soil_math_1_1_stats_af326fa61048522fc146b799759e345f9}{Sum} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a81cc2747aa4769af1fa035bbc69431bb}{X\_SUM};
-523 
-524     \textcolor{comment}{// Simple comparison}
-525     BOOST\_CHECK\_CLOSE(statDstX.Mean, statCompX.\hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{Mean}, 0.5);
-526     BOOST\_CHECK\_CLOSE(statDstX.Std, statCompX.\hyperlink{class_soil_math_1_1_stats_a6af590b7d033d882d5428c0d7a1f5e59}{Std}, 0.5);
-527     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstX.Range, (\textcolor{keywordtype}{double})statCompX.\hyperlink{class_soil_math_1_1_stats_a7154ac6c97dc2e83bdff7fef3cbdac5b}{Range}, 0.5);
-528     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstX.min, (\textcolor{keywordtype}{double})statCompX.\hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min}, 0.5);
-529     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstX.max, (\textcolor{keywordtype}{double})statCompX.\hyperlink{class_soil_math_1_1_stats_ad49ee1f533564ec587cf98a094b8c564}{max}, 0.5);
-530     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstX.Sum, (\textcolor{keywordtype}{double})statCompX.\hyperlink{class_soil_math_1_1_stats_af326fa61048522fc146b799759e345f9}{Sum}, 0.5);
+520     vector<Mat> LAB = Test.\hyperlink{class_vision_1_1_image_processing_ad5fa51caaabb8cb0fc2c15f645695a3c}{extractChannel}(dst);
+521 
+522     \hyperlink{class_soil_math_1_1_stats}{floatStat\_t} statDstX((\textcolor{keywordtype}{float} *)LAB[0].data, src.rows, src.cols);
+523     \hyperlink{class_soil_math_1_1_stats}{floatStat\_t} statCompX;
+524     statCompX.\hyperlink{class_soil_math_1_1_stats_a6af590b7d033d882d5428c0d7a1f5e59}{Std} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a4e7149f41a05675366168ab4daa40dd7}{X\_STD};
+525     statCompX.\hyperlink{class_soil_math_1_1_stats_a7bc57af334b68253832ebac17f85d091}{n} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a584b453204b02829d0157dadff0b120d}{N\_MAT};
+526     statCompX.\hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{Mean} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a25d81e59ec5b2bdd84d5ba2f663ff7e0}{X\_MEAN};
+527     statCompX.\hyperlink{class_soil_math_1_1_stats_a7154ac6c97dc2e83bdff7fef3cbdac5b}{Range} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a06c617ee7323ed045ddffe728a20e665}{X\_RANGE};
+528     statCompX.\hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_aecb4dd17977d6a5bd0b4f9c4ce9e8fb0}{X\_MIN};
+529     statCompX.\hyperlink{class_soil_math_1_1_stats_ad49ee1f533564ec587cf98a094b8c564}{max} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a4fcc42e3f93581eb0459cb359adebc54}{X\_MAX};
+530     statCompX.\hyperlink{class_soil_math_1_1_stats_af326fa61048522fc146b799759e345f9}{Sum} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a81cc2747aa4769af1fa035bbc69431bb}{X\_SUM};
 531 
-532     \hyperlink{class_soil_math_1_1_stats}{floatStat\_t} statDstY((\textcolor{keywordtype}{float} *)LAB[1].data, src.rows, src.cols);
-533     \hyperlink{class_soil_math_1_1_stats}{floatStat\_t} statCompY;
-534     statCompY.\hyperlink{class_soil_math_1_1_stats_a6af590b7d033d882d5428c0d7a1f5e59}{Std} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a98402208b820e824bfcec991c05bc8d9}{Y\_STD};
-535     statCompY.\hyperlink{class_soil_math_1_1_stats_a7bc57af334b68253832ebac17f85d091}{n} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a584b453204b02829d0157dadff0b120d}{N\_MAT};
-536     statCompY.\hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{Mean} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a5d49b558ebf58b612b1218a98dc31d84}{Y\_MEAN};
-537     statCompY.\hyperlink{class_soil_math_1_1_stats_a7154ac6c97dc2e83bdff7fef3cbdac5b}{Range} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_ae6bed5cf9c2321c856d3c86ab23943c5}{Y\_RANGE};
-538     statCompY.\hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a68db164f44a0f1a010fefb729e6f95da}{Y\_MIN};
-539     statCompY.\hyperlink{class_soil_math_1_1_stats_ad49ee1f533564ec587cf98a094b8c564}{max} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a7296ba9091427ae54bab4bcbb1dc87e1}{Y\_MAX};
-540     statCompY.\hyperlink{class_soil_math_1_1_stats_af326fa61048522fc146b799759e345f9}{Sum} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a49495e01d2960c1389f8148d3e74bdbf}{Y\_SUM};
-541 
-542     \textcolor{comment}{// Simple comparison}
-543     BOOST\_CHECK\_CLOSE(statDstY.Mean, statCompY.\hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{Mean}, 0.5);
-544     BOOST\_CHECK\_CLOSE(statDstY.Std, statCompY.\hyperlink{class_soil_math_1_1_stats_a6af590b7d033d882d5428c0d7a1f5e59}{Std}, 0.5);
-545     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstY.Range, (\textcolor{keywordtype}{double})statCompY.\hyperlink{class_soil_math_1_1_stats_a7154ac6c97dc2e83bdff7fef3cbdac5b}{Range}, 0.5);
-546     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstY.min, (\textcolor{keywordtype}{double})statCompY.\hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min}, 0.5);
-547     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstY.max, (\textcolor{keywordtype}{double})statCompY.\hyperlink{class_soil_math_1_1_stats_ad49ee1f533564ec587cf98a094b8c564}{max}, 0.5);
-548     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstY.Sum, (\textcolor{keywordtype}{double})statCompY.\hyperlink{class_soil_math_1_1_stats_af326fa61048522fc146b799759e345f9}{Sum}, 0.5);
+532     \textcolor{comment}{// Simple comparison}
+533     BOOST\_CHECK\_CLOSE(statDstX.Mean, statCompX.\hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{Mean}, 0.5);
+534     BOOST\_CHECK\_CLOSE(statDstX.Std, statCompX.\hyperlink{class_soil_math_1_1_stats_a6af590b7d033d882d5428c0d7a1f5e59}{Std}, 0.5);
+535     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstX.Range, (\textcolor{keywordtype}{double})statCompX.\hyperlink{class_soil_math_1_1_stats_a7154ac6c97dc2e83bdff7fef3cbdac5b}{Range}, 0.5);
+536     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstX.min, (\textcolor{keywordtype}{double})statCompX.\hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min}, 0.5);
+537     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstX.max, (\textcolor{keywordtype}{double})statCompX.\hyperlink{class_soil_math_1_1_stats_ad49ee1f533564ec587cf98a094b8c564}{max}, 0.5);
+538     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstX.Sum, (\textcolor{keywordtype}{double})statCompX.\hyperlink{class_soil_math_1_1_stats_af326fa61048522fc146b799759e345f9}{Sum}, 0.5);
+539 
+540     \hyperlink{class_soil_math_1_1_stats}{floatStat\_t} statDstY((\textcolor{keywordtype}{float} *)LAB[1].data, src.rows, src.cols);
+541     \hyperlink{class_soil_math_1_1_stats}{floatStat\_t} statCompY;
+542     statCompY.\hyperlink{class_soil_math_1_1_stats_a6af590b7d033d882d5428c0d7a1f5e59}{Std} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a98402208b820e824bfcec991c05bc8d9}{Y\_STD};
+543     statCompY.\hyperlink{class_soil_math_1_1_stats_a7bc57af334b68253832ebac17f85d091}{n} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a584b453204b02829d0157dadff0b120d}{N\_MAT};
+544     statCompY.\hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{Mean} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a5d49b558ebf58b612b1218a98dc31d84}{Y\_MEAN};
+545     statCompY.\hyperlink{class_soil_math_1_1_stats_a7154ac6c97dc2e83bdff7fef3cbdac5b}{Range} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_ae6bed5cf9c2321c856d3c86ab23943c5}{Y\_RANGE};
+546     statCompY.\hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a68db164f44a0f1a010fefb729e6f95da}{Y\_MIN};
+547     statCompY.\hyperlink{class_soil_math_1_1_stats_ad49ee1f533564ec587cf98a094b8c564}{max} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a7296ba9091427ae54bab4bcbb1dc87e1}{Y\_MAX};
+548     statCompY.\hyperlink{class_soil_math_1_1_stats_af326fa61048522fc146b799759e345f9}{Sum} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a49495e01d2960c1389f8148d3e74bdbf}{Y\_SUM};
 549 
-550     \hyperlink{class_soil_math_1_1_stats}{floatStat\_t} statDstZ((\textcolor{keywordtype}{float} *)LAB[2].data, src.rows, src.cols);
-551     \hyperlink{class_soil_math_1_1_stats}{floatStat\_t} statCompZ;
-552     statCompZ.\hyperlink{class_soil_math_1_1_stats_a6af590b7d033d882d5428c0d7a1f5e59}{Std} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_ae78b9d74bece93b316de41fa4e8afe0d}{Z\_STD};
-553     statCompZ.\hyperlink{class_soil_math_1_1_stats_a7bc57af334b68253832ebac17f85d091}{n} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a584b453204b02829d0157dadff0b120d}{N\_MAT};
-554     statCompZ.\hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{Mean} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a6816fbeeb1e1ab6c206ab0664b42a61b}{Z\_MEAN};
-555     statCompZ.\hyperlink{class_soil_math_1_1_stats_a7154ac6c97dc2e83bdff7fef3cbdac5b}{Range} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a71c719b6d677bc06cb3affccfbb680b9}{Z\_RANGE};
-556     statCompZ.\hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_aa8a93152646fa4880ebb582309c88295}{Z\_MIN};
-557     statCompZ.\hyperlink{class_soil_math_1_1_stats_ad49ee1f533564ec587cf98a094b8c564}{max} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a2b2421c0b742d2b73cabc025830826a3}{Z\_MAX};
-558     statCompZ.\hyperlink{class_soil_math_1_1_stats_af326fa61048522fc146b799759e345f9}{Sum} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a43d0a5208c6cb518c65fdfef7ee6cc26}{Z\_SUM};
-559 
-560     \textcolor{comment}{// Simple comparison}
-561     BOOST\_CHECK\_CLOSE(statDstZ.Mean, statCompZ.\hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{Mean}, 0.5);
-562     BOOST\_CHECK\_CLOSE(statDstZ.Std, statCompZ.\hyperlink{class_soil_math_1_1_stats_a6af590b7d033d882d5428c0d7a1f5e59}{Std}, 0.5);
-563     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstZ.Range, (\textcolor{keywordtype}{double})statCompZ.\hyperlink{class_soil_math_1_1_stats_a7154ac6c97dc2e83bdff7fef3cbdac5b}{Range}, 0.5);
-564     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstZ.min, (\textcolor{keywordtype}{double})statCompZ.\hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min}, 0.5);
-565     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstZ.max, (\textcolor{keywordtype}{double})statCompZ.\hyperlink{class_soil_math_1_1_stats_ad49ee1f533564ec587cf98a094b8c564}{max}, 0.5);
-566     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstZ.Sum, (\textcolor{keywordtype}{double})statCompZ.\hyperlink{class_soil_math_1_1_stats_af326fa61048522fc146b799759e345f9}{Sum}, 0.5);
-567 \}
+550     \textcolor{comment}{// Simple comparison}
+551     BOOST\_CHECK\_CLOSE(statDstY.Mean, statCompY.\hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{Mean}, 0.5);
+552     BOOST\_CHECK\_CLOSE(statDstY.Std, statCompY.\hyperlink{class_soil_math_1_1_stats_a6af590b7d033d882d5428c0d7a1f5e59}{Std}, 0.5);
+553     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstY.Range, (\textcolor{keywordtype}{double})statCompY.\hyperlink{class_soil_math_1_1_stats_a7154ac6c97dc2e83bdff7fef3cbdac5b}{Range}, 0.5);
+554     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstY.min, (\textcolor{keywordtype}{double})statCompY.\hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min}, 0.5);
+555     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstY.max, (\textcolor{keywordtype}{double})statCompY.\hyperlink{class_soil_math_1_1_stats_ad49ee1f533564ec587cf98a094b8c564}{max}, 0.5);
+556     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstY.Sum, (\textcolor{keywordtype}{double})statCompY.\hyperlink{class_soil_math_1_1_stats_af326fa61048522fc146b799759e345f9}{Sum}, 0.5);
+557 
+558     \hyperlink{class_soil_math_1_1_stats}{floatStat\_t} statDstZ((\textcolor{keywordtype}{float} *)LAB[2].data, src.rows, src.cols);
+559     \hyperlink{class_soil_math_1_1_stats}{floatStat\_t} statCompZ;
+560     statCompZ.\hyperlink{class_soil_math_1_1_stats_a6af590b7d033d882d5428c0d7a1f5e59}{Std} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_ae78b9d74bece93b316de41fa4e8afe0d}{Z\_STD};
+561     statCompZ.\hyperlink{class_soil_math_1_1_stats_a7bc57af334b68253832ebac17f85d091}{n} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a584b453204b02829d0157dadff0b120d}{N\_MAT};
+562     statCompZ.\hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{Mean} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a6816fbeeb1e1ab6c206ab0664b42a61b}{Z\_MEAN};
+563     statCompZ.\hyperlink{class_soil_math_1_1_stats_a7154ac6c97dc2e83bdff7fef3cbdac5b}{Range} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a71c719b6d677bc06cb3affccfbb680b9}{Z\_RANGE};
+564     statCompZ.\hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_aa8a93152646fa4880ebb582309c88295}{Z\_MIN};
+565     statCompZ.\hyperlink{class_soil_math_1_1_stats_ad49ee1f533564ec587cf98a094b8c564}{max} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a2b2421c0b742d2b73cabc025830826a3}{Z\_MAX};
+566     statCompZ.\hyperlink{class_soil_math_1_1_stats_af326fa61048522fc146b799759e345f9}{Sum} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a43d0a5208c6cb518c65fdfef7ee6cc26}{Z\_SUM};
+567 
+568     \textcolor{comment}{// Simple comparison}
+569     BOOST\_CHECK\_CLOSE(statDstZ.Mean, statCompZ.\hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{Mean}, 0.5);
+570     BOOST\_CHECK\_CLOSE(statDstZ.Std, statCompZ.\hyperlink{class_soil_math_1_1_stats_a6af590b7d033d882d5428c0d7a1f5e59}{Std}, 0.5);
+571     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstZ.Range, (\textcolor{keywordtype}{double})statCompZ.\hyperlink{class_soil_math_1_1_stats_a7154ac6c97dc2e83bdff7fef3cbdac5b}{Range}, 0.5);
+572     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstZ.min, (\textcolor{keywordtype}{double})statCompZ.\hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min}, 0.5);
+573     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstZ.max, (\textcolor{keywordtype}{double})statCompZ.\hyperlink{class_soil_math_1_1_stats_ad49ee1f533564ec587cf98a094b8c564}{max}, 0.5);
+574     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstZ.Sum, (\textcolor{keywordtype}{double})statCompZ.\hyperlink{class_soil_math_1_1_stats_af326fa61048522fc146b799759e345f9}{Sum}, 0.5);
+575 \}
 \end{DoxyCode}
 
 
@@ -1375,7 +1377,7 @@ Here is the call graph for this function\+:\nopagebreak
 )}\label{_v_s_a___u_t_8cpp_aa16cbba41a4bff2cad547e54bf8cc898}
 
 
-Definition at line 569 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
+Definition at line 577 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
 
 
 
@@ -1383,67 +1385,67 @@ References A\+\_\+\+M\+A\+X, A\+\_\+\+M\+E\+A\+N, A\+\_\+\+M\+I\+N, A\+\_\+\+R\+
 
 
 \begin{DoxyCode}
-570 \{
-571     \textcolor{comment}{// Convert the RGB to an CIElab}
-572     \hyperlink{class_vision_1_1_conversion}{Vision::Conversion} Test;
-573     Test.\hyperlink{class_vision_1_1_conversion_ac78b687a5b6cdf4c0ae812b5d76b13fc}{Convert}(src, dst, \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388af3fab43e1e6d8ffab1bf27050866a8d5}{Vision::Conversion::RGB}, 
+578 \{
+579     \textcolor{comment}{// Convert the RGB to an CIElab}
+580     \hyperlink{class_vision_1_1_conversion}{Vision::Conversion} Test;
+581     Test.\hyperlink{class_vision_1_1_conversion_ac78b687a5b6cdf4c0ae812b5d76b13fc}{Convert}(src, dst, \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388af3fab43e1e6d8ffab1bf27050866a8d5}{Vision::Conversion::RGB}, 
       \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388afd9ec9933d500e5eeec6ce3359321b0e}{Vision::Conversion::CIE\_lab});
-574     vector<Mat> LAB = Test.\hyperlink{class_vision_1_1_image_processing_ad5fa51caaabb8cb0fc2c15f645695a3c}{extractChannel}(dst);
-575 
-576     \hyperlink{class_soil_math_1_1_stats}{floatStat\_t} statDstL((\textcolor{keywordtype}{float} *)LAB[0].data, src.rows, src.cols);
-577     \hyperlink{class_soil_math_1_1_stats}{floatStat\_t} statCompL;
-578     statCompL.\hyperlink{class_soil_math_1_1_stats_a6af590b7d033d882d5428c0d7a1f5e59}{Std} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_ad9349198f0347aedc0e3be6d5370a91c}{L\_STD};
-579     statCompL.\hyperlink{class_soil_math_1_1_stats_a7bc57af334b68253832ebac17f85d091}{n} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a584b453204b02829d0157dadff0b120d}{N\_MAT};
-580     statCompL.\hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{Mean} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_ad359e6e0410dfeab955063dfc2ef2210}{L\_MEAN};
-581     statCompL.\hyperlink{class_soil_math_1_1_stats_a7154ac6c97dc2e83bdff7fef3cbdac5b}{Range} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a4de63e4556e9d3eff9838d5c15fb37cf}{L\_RANGE};
-582     statCompL.\hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a031fa71002d09f1144c7237a4653312c}{L\_MIN};
-583     statCompL.\hyperlink{class_soil_math_1_1_stats_ad49ee1f533564ec587cf98a094b8c564}{max} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_ad0dec0ae332d6eaac4b48b3caec998c0}{L\_MAX};
-584     statCompL.\hyperlink{class_soil_math_1_1_stats_af326fa61048522fc146b799759e345f9}{Sum} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a20023b33415a91e2702716dd5b8a8871}{L\_SUM};
-585 
-586     \textcolor{comment}{// Simple comparison}
-587     BOOST\_CHECK\_CLOSE(statDstL.Mean, statCompL.\hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{Mean}, 0.5);
-588     BOOST\_CHECK\_CLOSE(statDstL.Std, statCompL.\hyperlink{class_soil_math_1_1_stats_a6af590b7d033d882d5428c0d7a1f5e59}{Std}, 0.5);
-589     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstL.Range, (\textcolor{keywordtype}{double})statCompL.\hyperlink{class_soil_math_1_1_stats_a7154ac6c97dc2e83bdff7fef3cbdac5b}{Range}, 0.5);
-590     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstL.min, (\textcolor{keywordtype}{double})statCompL.\hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min}, 0.5);
-591     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstL.max, (\textcolor{keywordtype}{double})statCompL.\hyperlink{class_soil_math_1_1_stats_ad49ee1f533564ec587cf98a094b8c564}{max}, 0.5);
-592     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstL.Sum, (\textcolor{keywordtype}{double})statCompL.\hyperlink{class_soil_math_1_1_stats_af326fa61048522fc146b799759e345f9}{Sum}, 0.5);
+582     vector<Mat> LAB = Test.\hyperlink{class_vision_1_1_image_processing_ad5fa51caaabb8cb0fc2c15f645695a3c}{extractChannel}(dst);
+583 
+584     \hyperlink{class_soil_math_1_1_stats}{floatStat\_t} statDstL((\textcolor{keywordtype}{float} *)LAB[0].data, src.rows, src.cols);
+585     \hyperlink{class_soil_math_1_1_stats}{floatStat\_t} statCompL;
+586     statCompL.\hyperlink{class_soil_math_1_1_stats_a6af590b7d033d882d5428c0d7a1f5e59}{Std} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_ad9349198f0347aedc0e3be6d5370a91c}{L\_STD};
+587     statCompL.\hyperlink{class_soil_math_1_1_stats_a7bc57af334b68253832ebac17f85d091}{n} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a584b453204b02829d0157dadff0b120d}{N\_MAT};
+588     statCompL.\hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{Mean} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_ad359e6e0410dfeab955063dfc2ef2210}{L\_MEAN};
+589     statCompL.\hyperlink{class_soil_math_1_1_stats_a7154ac6c97dc2e83bdff7fef3cbdac5b}{Range} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a4de63e4556e9d3eff9838d5c15fb37cf}{L\_RANGE};
+590     statCompL.\hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a031fa71002d09f1144c7237a4653312c}{L\_MIN};
+591     statCompL.\hyperlink{class_soil_math_1_1_stats_ad49ee1f533564ec587cf98a094b8c564}{max} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_ad0dec0ae332d6eaac4b48b3caec998c0}{L\_MAX};
+592     statCompL.\hyperlink{class_soil_math_1_1_stats_af326fa61048522fc146b799759e345f9}{Sum} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a20023b33415a91e2702716dd5b8a8871}{L\_SUM};
 593 
-594     \hyperlink{class_soil_math_1_1_stats}{floatStat\_t} statDstA((\textcolor{keywordtype}{float} *)LAB[1].data, src.rows, src.cols);
-595     \hyperlink{class_soil_math_1_1_stats}{floatStat\_t} statCompA;
-596     statCompA.\hyperlink{class_soil_math_1_1_stats_a6af590b7d033d882d5428c0d7a1f5e59}{Std} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_aee14327c4f2facfab73d362c9367f475}{A\_STD};
-597     statCompA.\hyperlink{class_soil_math_1_1_stats_a7bc57af334b68253832ebac17f85d091}{n} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a584b453204b02829d0157dadff0b120d}{N\_MAT};
-598     statCompA.\hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{Mean} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a80729f6f798b49ac8762d9423ed2412f}{A\_MEAN};
-599     statCompA.\hyperlink{class_soil_math_1_1_stats_a7154ac6c97dc2e83bdff7fef3cbdac5b}{Range} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a049bc0e85e383b0deacb9511f3835685}{A\_RANGE};
-600     statCompA.\hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a59f48ccd6bbde5c1702afc27b2574b62}{A\_MIN};
-601     statCompA.\hyperlink{class_soil_math_1_1_stats_ad49ee1f533564ec587cf98a094b8c564}{max} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a8f8289cfc29e0bb2a2626262bfeedf21}{A\_MAX};
-602     statCompA.\hyperlink{class_soil_math_1_1_stats_af326fa61048522fc146b799759e345f9}{Sum} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_afb1e8b8c49f61340b2b6aee354cee15d}{A\_SUM};
-603 
-604     \textcolor{comment}{// Simple comparison}
-605     BOOST\_CHECK\_CLOSE(statDstA.Mean, statCompA.\hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{Mean}, 0.5);
-606     BOOST\_CHECK\_CLOSE(statDstA.Std, statCompA.\hyperlink{class_soil_math_1_1_stats_a6af590b7d033d882d5428c0d7a1f5e59}{Std}, 0.5);
-607     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstA.Range, (\textcolor{keywordtype}{double})statCompA.\hyperlink{class_soil_math_1_1_stats_a7154ac6c97dc2e83bdff7fef3cbdac5b}{Range}, 0.5);
-608     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstA.min, (\textcolor{keywordtype}{double})statCompA.\hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min}, 0.5);
-609     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstA.max, (\textcolor{keywordtype}{double})statCompA.\hyperlink{class_soil_math_1_1_stats_ad49ee1f533564ec587cf98a094b8c564}{max}, 0.5);
-610     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstA.Sum, (\textcolor{keywordtype}{double})statCompA.\hyperlink{class_soil_math_1_1_stats_af326fa61048522fc146b799759e345f9}{Sum}, 0.5);
+594     \textcolor{comment}{// Simple comparison}
+595     BOOST\_CHECK\_CLOSE(statDstL.Mean, statCompL.\hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{Mean}, 0.5);
+596     BOOST\_CHECK\_CLOSE(statDstL.Std, statCompL.\hyperlink{class_soil_math_1_1_stats_a6af590b7d033d882d5428c0d7a1f5e59}{Std}, 0.5);
+597     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstL.Range, (\textcolor{keywordtype}{double})statCompL.\hyperlink{class_soil_math_1_1_stats_a7154ac6c97dc2e83bdff7fef3cbdac5b}{Range}, 0.5);
+598     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstL.min, (\textcolor{keywordtype}{double})statCompL.\hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min}, 0.5);
+599     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstL.max, (\textcolor{keywordtype}{double})statCompL.\hyperlink{class_soil_math_1_1_stats_ad49ee1f533564ec587cf98a094b8c564}{max}, 0.5);
+600     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstL.Sum, (\textcolor{keywordtype}{double})statCompL.\hyperlink{class_soil_math_1_1_stats_af326fa61048522fc146b799759e345f9}{Sum}, 0.5);
+601 
+602     \hyperlink{class_soil_math_1_1_stats}{floatStat\_t} statDstA((\textcolor{keywordtype}{float} *)LAB[1].data, src.rows, src.cols);
+603     \hyperlink{class_soil_math_1_1_stats}{floatStat\_t} statCompA;
+604     statCompA.\hyperlink{class_soil_math_1_1_stats_a6af590b7d033d882d5428c0d7a1f5e59}{Std} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_aee14327c4f2facfab73d362c9367f475}{A\_STD};
+605     statCompA.\hyperlink{class_soil_math_1_1_stats_a7bc57af334b68253832ebac17f85d091}{n} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a584b453204b02829d0157dadff0b120d}{N\_MAT};
+606     statCompA.\hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{Mean} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a80729f6f798b49ac8762d9423ed2412f}{A\_MEAN};
+607     statCompA.\hyperlink{class_soil_math_1_1_stats_a7154ac6c97dc2e83bdff7fef3cbdac5b}{Range} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a049bc0e85e383b0deacb9511f3835685}{A\_RANGE};
+608     statCompA.\hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a59f48ccd6bbde5c1702afc27b2574b62}{A\_MIN};
+609     statCompA.\hyperlink{class_soil_math_1_1_stats_ad49ee1f533564ec587cf98a094b8c564}{max} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a8f8289cfc29e0bb2a2626262bfeedf21}{A\_MAX};
+610     statCompA.\hyperlink{class_soil_math_1_1_stats_af326fa61048522fc146b799759e345f9}{Sum} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_afb1e8b8c49f61340b2b6aee354cee15d}{A\_SUM};
 611 
-612     \hyperlink{class_soil_math_1_1_stats}{floatStat\_t} statDstB((\textcolor{keywordtype}{float} *)LAB[2].data, src.rows, src.cols);
-613     \hyperlink{class_soil_math_1_1_stats}{floatStat\_t} statCompB;
-614     statCompB.\hyperlink{class_soil_math_1_1_stats_a6af590b7d033d882d5428c0d7a1f5e59}{Std} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_aa53b995da340eddd79e5054a99952719}{B\_STD};
-615     statCompB.\hyperlink{class_soil_math_1_1_stats_a7bc57af334b68253832ebac17f85d091}{n} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a584b453204b02829d0157dadff0b120d}{N\_MAT};
-616     statCompB.\hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{Mean} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a90ee2d7f2e879233f69fe2fe36fa5d55}{B\_MEAN};
-617     statCompB.\hyperlink{class_soil_math_1_1_stats_a7154ac6c97dc2e83bdff7fef3cbdac5b}{Range} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a0ed7688bfd8317736aeb7f299c48e391}{B\_RANGE};
-618     statCompB.\hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_aee79048b157ba88e895ec7aa6fbfcd53}{B\_MIN};
-619     statCompB.\hyperlink{class_soil_math_1_1_stats_ad49ee1f533564ec587cf98a094b8c564}{max} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a91f9fc76288a0520677dfbe3dfc952a6}{B\_MAX};
-620     statCompB.\hyperlink{class_soil_math_1_1_stats_af326fa61048522fc146b799759e345f9}{Sum} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_aafb369e39311d3a7ce9e0d7afed65253}{B\_SUM};
-621 
-622     \textcolor{comment}{// Simple comparison}
-623     BOOST\_CHECK\_CLOSE(statDstB.Mean, statCompB.\hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{Mean}, 0.5);
-624     BOOST\_CHECK\_CLOSE(statDstB.Std, statCompB.\hyperlink{class_soil_math_1_1_stats_a6af590b7d033d882d5428c0d7a1f5e59}{Std}, 0.5);
-625     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstB.Range, (\textcolor{keywordtype}{double})statCompB.\hyperlink{class_soil_math_1_1_stats_a7154ac6c97dc2e83bdff7fef3cbdac5b}{Range}, 0.5);
-626     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstB.min, (\textcolor{keywordtype}{double})statCompB.\hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min}, 0.5);
-627     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstB.max, (\textcolor{keywordtype}{double})statCompB.\hyperlink{class_soil_math_1_1_stats_ad49ee1f533564ec587cf98a094b8c564}{max}, 0.5);
-628     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstB.Sum, (\textcolor{keywordtype}{double})statCompB.\hyperlink{class_soil_math_1_1_stats_af326fa61048522fc146b799759e345f9}{Sum}, 0.5);
-629 \}
+612     \textcolor{comment}{// Simple comparison}
+613     BOOST\_CHECK\_CLOSE(statDstA.Mean, statCompA.\hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{Mean}, 0.5);
+614     BOOST\_CHECK\_CLOSE(statDstA.Std, statCompA.\hyperlink{class_soil_math_1_1_stats_a6af590b7d033d882d5428c0d7a1f5e59}{Std}, 0.5);
+615     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstA.Range, (\textcolor{keywordtype}{double})statCompA.\hyperlink{class_soil_math_1_1_stats_a7154ac6c97dc2e83bdff7fef3cbdac5b}{Range}, 0.5);
+616     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstA.min, (\textcolor{keywordtype}{double})statCompA.\hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min}, 0.5);
+617     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstA.max, (\textcolor{keywordtype}{double})statCompA.\hyperlink{class_soil_math_1_1_stats_ad49ee1f533564ec587cf98a094b8c564}{max}, 0.5);
+618     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstA.Sum, (\textcolor{keywordtype}{double})statCompA.\hyperlink{class_soil_math_1_1_stats_af326fa61048522fc146b799759e345f9}{Sum}, 0.5);
+619 
+620     \hyperlink{class_soil_math_1_1_stats}{floatStat\_t} statDstB((\textcolor{keywordtype}{float} *)LAB[2].data, src.rows, src.cols);
+621     \hyperlink{class_soil_math_1_1_stats}{floatStat\_t} statCompB;
+622     statCompB.\hyperlink{class_soil_math_1_1_stats_a6af590b7d033d882d5428c0d7a1f5e59}{Std} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_aa53b995da340eddd79e5054a99952719}{B\_STD};
+623     statCompB.\hyperlink{class_soil_math_1_1_stats_a7bc57af334b68253832ebac17f85d091}{n} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a584b453204b02829d0157dadff0b120d}{N\_MAT};
+624     statCompB.\hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{Mean} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a90ee2d7f2e879233f69fe2fe36fa5d55}{B\_MEAN};
+625     statCompB.\hyperlink{class_soil_math_1_1_stats_a7154ac6c97dc2e83bdff7fef3cbdac5b}{Range} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a0ed7688bfd8317736aeb7f299c48e391}{B\_RANGE};
+626     statCompB.\hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_aee79048b157ba88e895ec7aa6fbfcd53}{B\_MIN};
+627     statCompB.\hyperlink{class_soil_math_1_1_stats_ad49ee1f533564ec587cf98a094b8c564}{max} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a91f9fc76288a0520677dfbe3dfc952a6}{B\_MAX};
+628     statCompB.\hyperlink{class_soil_math_1_1_stats_af326fa61048522fc146b799759e345f9}{Sum} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_aafb369e39311d3a7ce9e0d7afed65253}{B\_SUM};
+629 
+630     \textcolor{comment}{// Simple comparison}
+631     BOOST\_CHECK\_CLOSE(statDstB.Mean, statCompB.\hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{Mean}, 0.5);
+632     BOOST\_CHECK\_CLOSE(statDstB.Std, statCompB.\hyperlink{class_soil_math_1_1_stats_a6af590b7d033d882d5428c0d7a1f5e59}{Std}, 0.5);
+633     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstB.Range, (\textcolor{keywordtype}{double})statCompB.\hyperlink{class_soil_math_1_1_stats_a7154ac6c97dc2e83bdff7fef3cbdac5b}{Range}, 0.5);
+634     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstB.min, (\textcolor{keywordtype}{double})statCompB.\hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min}, 0.5);
+635     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstB.max, (\textcolor{keywordtype}{double})statCompB.\hyperlink{class_soil_math_1_1_stats_ad49ee1f533564ec587cf98a094b8c564}{max}, 0.5);
+636     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstB.Sum, (\textcolor{keywordtype}{double})statCompB.\hyperlink{class_soil_math_1_1_stats_af326fa61048522fc146b799759e345f9}{Sum}, 0.5);
+637 \}
 \end{DoxyCode}
 
 
@@ -1466,7 +1468,7 @@ Here is the call graph for this function\+:\nopagebreak
 )}\label{_v_s_a___u_t_8cpp_ab461a601ff0c0294a8d59c35a35f46c0}
 
 
-Definition at line 631 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
+Definition at line 639 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
 
 
 
@@ -1474,33 +1476,33 @@ References Vision\+::\+Conversion\+::\+C\+I\+E\+\_\+lab, Vision\+::\+Conversion\
 
 
 \begin{DoxyCode}
-632 \{
-633     \textcolor{comment}{// Convert the RGB to an CIElab}
-634     \hyperlink{class_vision_1_1_conversion}{Vision::Conversion} Test;
-635     Test.\hyperlink{class_vision_1_1_conversion_ac78b687a5b6cdf4c0ae812b5d76b13fc}{Convert}(src, src, \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388af3fab43e1e6d8ffab1bf27050866a8d5}{Vision::Conversion::RGB}, 
+640 \{
+641     \textcolor{comment}{// Convert the RGB to an CIElab}
+642     \hyperlink{class_vision_1_1_conversion}{Vision::Conversion} Test;
+643     Test.\hyperlink{class_vision_1_1_conversion_ac78b687a5b6cdf4c0ae812b5d76b13fc}{Convert}(src, src, \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388af3fab43e1e6d8ffab1bf27050866a8d5}{Vision::Conversion::RGB}, 
       \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388afd9ec9933d500e5eeec6ce3359321b0e}{Vision::Conversion::CIE\_lab});
-636 
-637     Test.\hyperlink{class_vision_1_1_conversion_ac78b687a5b6cdf4c0ae812b5d76b13fc}{Convert}(src, dst, \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388afd9ec9933d500e5eeec6ce3359321b0e}{Vision::Conversion::CIE\_lab}, 
+644 
+645     Test.\hyperlink{class_vision_1_1_conversion_ac78b687a5b6cdf4c0ae812b5d76b13fc}{Convert}(src, dst, \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388afd9ec9933d500e5eeec6ce3359321b0e}{Vision::Conversion::CIE\_lab}, 
       \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388addf2a4063c4fe27e2675fafccdcdd9c1}{Vision::Conversion::RI});
-638 
-639     \hyperlink{class_soil_math_1_1_stats}{floatStat\_t} statDstRI((\textcolor{keywordtype}{float} *)dst.data, src.rows, src.cols);
-640     \hyperlink{class_soil_math_1_1_stats}{floatStat\_t} statCompRI;
-641     statCompRI.\hyperlink{class_soil_math_1_1_stats_a6af590b7d033d882d5428c0d7a1f5e59}{Std} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a7f738afe747dd2b938260f50607770fa}{RI\_STD};
-642     statCompRI.\hyperlink{class_soil_math_1_1_stats_a7bc57af334b68253832ebac17f85d091}{n} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a584b453204b02829d0157dadff0b120d}{N\_MAT};
-643     statCompRI.\hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{Mean} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_af57fec96d216b09ac322413487b76ac6}{RI\_MEAN};
-644     statCompRI.\hyperlink{class_soil_math_1_1_stats_a7154ac6c97dc2e83bdff7fef3cbdac5b}{Range} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_add55d693c4ea62b2f21ef0785966363d}{RI\_RANGE};
-645     statCompRI.\hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a8f9e591735dafec30029ab70008cb978}{RI\_MIN};
-646     statCompRI.\hyperlink{class_soil_math_1_1_stats_ad49ee1f533564ec587cf98a094b8c564}{max} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a1c6127344ddbc7a878a696721731fe20}{RI\_MAX};
-647     statCompRI.\hyperlink{class_soil_math_1_1_stats_af326fa61048522fc146b799759e345f9}{Sum} = \hyperlink{_v_s_a___u_t_8cpp_a82b14f5fb6975ddc95c5244b2d8d7fa6}{RI\_SUM};
-648 
-649     \textcolor{comment}{// Simple comparison}
-650     BOOST\_CHECK\_CLOSE(statDstRI.Mean, statCompRI.\hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{Mean}, 1.25);
-651     BOOST\_CHECK\_CLOSE(statDstRI.Std, statCompRI.\hyperlink{class_soil_math_1_1_stats_a6af590b7d033d882d5428c0d7a1f5e59}{Std}, 1.25);
-652     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstRI.Range, (\textcolor{keywordtype}{double})statCompRI.\hyperlink{class_soil_math_1_1_stats_a7154ac6c97dc2e83bdff7fef3cbdac5b}{Range}, 1.25);
-653     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstRI.min, (\textcolor{keywordtype}{double})statCompRI.\hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min}, 1.25);
-654     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstRI.max, (\textcolor{keywordtype}{double})statCompRI.\hyperlink{class_soil_math_1_1_stats_ad49ee1f533564ec587cf98a094b8c564}{max}, 1.25);
-655     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstRI.Sum, (\textcolor{keywordtype}{double})statCompRI.\hyperlink{class_soil_math_1_1_stats_af326fa61048522fc146b799759e345f9}{Sum}, 1.25);
-656 \}
+646 
+647     \hyperlink{class_soil_math_1_1_stats}{floatStat\_t} statDstRI((\textcolor{keywordtype}{float} *)dst.data, src.rows, src.cols);
+648     \hyperlink{class_soil_math_1_1_stats}{floatStat\_t} statCompRI;
+649     statCompRI.\hyperlink{class_soil_math_1_1_stats_a6af590b7d033d882d5428c0d7a1f5e59}{Std} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a7f738afe747dd2b938260f50607770fa}{RI\_STD};
+650     statCompRI.\hyperlink{class_soil_math_1_1_stats_a7bc57af334b68253832ebac17f85d091}{n} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a584b453204b02829d0157dadff0b120d}{N\_MAT};
+651     statCompRI.\hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{Mean} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_af57fec96d216b09ac322413487b76ac6}{RI\_MEAN};
+652     statCompRI.\hyperlink{class_soil_math_1_1_stats_a7154ac6c97dc2e83bdff7fef3cbdac5b}{Range} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_add55d693c4ea62b2f21ef0785966363d}{RI\_RANGE};
+653     statCompRI.\hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a8f9e591735dafec30029ab70008cb978}{RI\_MIN};
+654     statCompRI.\hyperlink{class_soil_math_1_1_stats_ad49ee1f533564ec587cf98a094b8c564}{max} = \hyperlink{_soil_math___test_2_statistical_comparison_definition_8h_a1c6127344ddbc7a878a696721731fe20}{RI\_MAX};
+655     statCompRI.\hyperlink{class_soil_math_1_1_stats_af326fa61048522fc146b799759e345f9}{Sum} = \hyperlink{_v_s_a___u_t_8cpp_a82b14f5fb6975ddc95c5244b2d8d7fa6}{RI\_SUM};
+656 
+657     \textcolor{comment}{// Simple comparison}
+658     BOOST\_CHECK\_CLOSE(statDstRI.Mean, statCompRI.\hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{Mean}, 1.25);
+659     BOOST\_CHECK\_CLOSE(statDstRI.Std, statCompRI.\hyperlink{class_soil_math_1_1_stats_a6af590b7d033d882d5428c0d7a1f5e59}{Std}, 1.25);
+660     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstRI.Range, (\textcolor{keywordtype}{double})statCompRI.\hyperlink{class_soil_math_1_1_stats_a7154ac6c97dc2e83bdff7fef3cbdac5b}{Range}, 1.25);
+661     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstRI.min, (\textcolor{keywordtype}{double})statCompRI.\hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min}, 1.25);
+662     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstRI.max, (\textcolor{keywordtype}{double})statCompRI.\hyperlink{class_soil_math_1_1_stats_ad49ee1f533564ec587cf98a094b8c564}{max}, 1.25);
+663     BOOST\_CHECK\_CLOSE((\textcolor{keywordtype}{double})statDstRI.Sum, (\textcolor{keywordtype}{double})statCompRI.\hyperlink{class_soil_math_1_1_stats_af326fa61048522fc146b799759e345f9}{Sum}, 1.25);
+664 \}
 \end{DoxyCode}
 
 
@@ -1523,7 +1525,7 @@ Here is the call graph for this function\+:\nopagebreak
 )}\label{_v_s_a___u_t_8cpp_afe37d763ff3c17b551b9739ec9bf34ef}
 
 
-Definition at line 801 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
+Definition at line 809 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
 
 
 
@@ -1531,34 +1533,35 @@ References Soil\+Analyzer\+::\+Sample\+::\+Analyse(), Soil\+Analyzer\+::\+Soil\+
 
 
 \begin{DoxyCode}
-802 \{
-803     \hyperlink{class_soil_math_1_1_n_n}{SoilMath::NN} nn;
-804     nn.\hyperlink{class_soil_math_1_1_n_n_a69c00e336b11531e25d51262da10fea0}{LoadState}(\textcolor{stringliteral}{"../ComparisionPictures/NN\_Test.xml"});
-805 
-806     \hyperlink{class_soil_analyzer_1_1_sample}{SoilAnalyzer::Sample} Test(src);
-807     Test.Analyse(nn);
-808 
-809     std::string filename = \textcolor{stringliteral}{"SoilSample.vsa"};
-810     Test.Save(filename);
-811 
-812     imwrite(\textcolor{stringliteral}{"BW.ppm"}, Test.BW);
-813 \textcolor{comment}{//  imwrite("Edge.ppm", Test.Edge);}
-814 
-815     \textcolor{comment}{//uint32\_t i = 0;}
-816     \textcolor{comment}{//for\_each(Test.Population.begin(), Test.Population.end(), [&](SoilAnalyzer::Particle &p) }
-817     \textcolor{comment}{//\{ }
-818     \textcolor{comment}{//  stringstream ss\_edge;}
-819     \textcolor{comment}{//  stringstream ss\_RGB;}
-820     \textcolor{comment}{//  ss\_edge << i << "\_edge.ppm";}
-821     \textcolor{comment}{//  ss\_RGB << i << "\_RGB.ppm";}
-822     \textcolor{comment}{//  imwrite(ss\_edge.str(), p.Edge);}
-823     \textcolor{comment}{//  imwrite(ss\_RGB.str(), p.RGB);}
-824     \textcolor{comment}{//\});}
-825 \}
+810 \{
+811     \hyperlink{class_soil_math_1_1_n_n}{SoilMath::NN} nn;
+812     nn.\hyperlink{class_soil_math_1_1_n_n_a69c00e336b11531e25d51262da10fea0}{LoadState}(\textcolor{stringliteral}{"../ComparisionPictures/NN\_Test.xml"});
+813 
+814     \hyperlink{class_soil_analyzer_1_1_sample}{SoilAnalyzer::Sample} Test(src);
+815     Test.Analyse(nn);
+816 
+817     std::string filename = \textcolor{stringliteral}{"SoilSample.vsa"};
+818     Test.Save(filename);
+819 
+820     imwrite(\textcolor{stringliteral}{"BW.ppm"}, Test.BW);
+821 \textcolor{comment}{//  imwrite("Edge.ppm", Test.Edge);}
+822 
+823     \textcolor{comment}{//uint32\_t i = 0;}
+824     \textcolor{comment}{//for\_each(Test.Population.begin(), Test.Population.end(), [&](SoilAnalyzer::Particle &p) }
+825     \textcolor{comment}{//\{ }
+826     \textcolor{comment}{//  stringstream ss\_edge;}
+827     \textcolor{comment}{//  stringstream ss\_RGB;}
+828     \textcolor{comment}{//  ss\_edge << i << "\_edge.ppm";}
+829     \textcolor{comment}{//  ss\_RGB << i << "\_RGB.ppm";}
+830     \textcolor{comment}{//  imwrite(ss\_edge.str(), p.Edge);}
+831     \textcolor{comment}{//  imwrite(ss\_RGB.str(), p.RGB);}
+832     \textcolor{comment}{//\});}
+833 \}
 \end{DoxyCode}
 
 
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -1577,7 +1580,7 @@ Here is the call graph for this function\+:\nopagebreak
 )}\label{_v_s_a___u_t_8cpp_a081c2a32d729573ff7b6ea11c83f6378}
 
 
-Definition at line 827 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
+Definition at line 835 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
 
 
 
@@ -1585,17 +1588,17 @@ References Soil\+Analyzer\+::\+Sample\+::\+Load(), Soil\+Analyzer\+::\+Sample\+:
 
 
 \begin{DoxyCode}
-828 \{
-829     \hyperlink{class_soil_analyzer_1_1_sample}{SoilAnalyzer::Sample} Test(src);
-830     std::string filename = \textcolor{stringliteral}{"SoilSample.vsa"};
-831     Test.Save(filename);
-832 
-833     \hyperlink{class_soil_analyzer_1_1_sample}{SoilAnalyzer::Sample} TestLoad;
-834     TestLoad.\hyperlink{class_soil_analyzer_1_1_sample_a88f29d8ee3fad37cdad6cb88b2c8a288}{Load}(filename);
-835 
-836     BOOST\_CHECK\_EQUAL\_COLLECTIONS(Test.OriginalImage.data, Test.OriginalImage.data + 1000, TestLoad.
+836 \{
+837     \hyperlink{class_soil_analyzer_1_1_sample}{SoilAnalyzer::Sample} Test(src);
+838     std::string filename = \textcolor{stringliteral}{"SoilSample.vsa"};
+839     Test.Save(filename);
+840 
+841     \hyperlink{class_soil_analyzer_1_1_sample}{SoilAnalyzer::Sample} TestLoad;
+842     TestLoad.\hyperlink{class_soil_analyzer_1_1_sample_a88f29d8ee3fad37cdad6cb88b2c8a288}{Load}(filename);
+843 
+844     BOOST\_CHECK\_EQUAL\_COLLECTIONS(Test.OriginalImage.data, Test.OriginalImage.data + 1000, TestLoad.
       \hyperlink{class_soil_analyzer_1_1_sample_a0d6e6fca9e232a77329daf0b4b29c634}{OriginalImage}.data, TestLoad.\hyperlink{class_soil_analyzer_1_1_sample_a0d6e6fca9e232a77329daf0b4b29c634}{OriginalImage}.data + 1000);
-837 \}
+845 \}
 \end{DoxyCode}
 
 
@@ -1618,31 +1621,31 @@ Here is the call graph for this function\+:\nopagebreak
 )}\label{_v_s_a___u_t_8cpp_a37cc8c085f9e6852128e3420661ebe30}
 
 
-Definition at line 839 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
+Definition at line 847 of file V\+S\+A\+\_\+\+U\+T.\+cpp.
 
 
 \begin{DoxyCode}
-840 \{
-841     \textcolor{comment}{//SoilAnalyzer::Sample Test(src);}
-842     \textcolor{comment}{//Test.Analyse();}
-843 
-844     \textcolor{comment}{//imwrite("A\_BW.ppm", Test.BW);}
-845     \textcolor{comment}{//imwrite("A\_Edge.ppm", Test.Edge);}
-846     \textcolor{comment}{//imwrite("A\_Int.ppm", Test.Intensity);}
-847     \textcolor{comment}{//}
-848     \textcolor{comment}{//for (uint32\_t i = 0; i < Test.Population.size(); i++)}
-849     \textcolor{comment}{//\{}
-850     \textcolor{comment}{//  std::stringstream ss;}
-851     \textcolor{comment}{//  ss << i << "\_BW.ppm";}
-852     \textcolor{comment}{//  imwrite(ss.str(), Test.Population[i].BW);}
-853     \textcolor{comment}{//  std::stringstream sss;}
-854     \textcolor{comment}{//  sss << i << "\_Edge.ppm";}
-855     \textcolor{comment}{//  imwrite(sss.str(), Test.Population[i].Edge);}
-856     \textcolor{comment}{//  std::stringstream ssss;}
-857     \textcolor{comment}{//  ssss << i << "\_RGB.ppm";}
-858     \textcolor{comment}{//  imwrite(ssss.str(), Test.Population[i].RGB);}
-859     \textcolor{comment}{//\}}
-860 \}
+848 \{
+849     \textcolor{comment}{//SoilAnalyzer::Sample Test(src);}
+850     \textcolor{comment}{//Test.Analyse();}
+851 
+852     \textcolor{comment}{//imwrite("A\_BW.ppm", Test.BW);}
+853     \textcolor{comment}{//imwrite("A\_Edge.ppm", Test.Edge);}
+854     \textcolor{comment}{//imwrite("A\_Int.ppm", Test.Intensity);}
+855     \textcolor{comment}{//}
+856     \textcolor{comment}{//for (uint32\_t i = 0; i < Test.Population.size(); i++)}
+857     \textcolor{comment}{//\{}
+858     \textcolor{comment}{//  std::stringstream ss;}
+859     \textcolor{comment}{//  ss << i << "\_BW.ppm";}
+860     \textcolor{comment}{//  imwrite(ss.str(), Test.Population[i].BW);}
+861     \textcolor{comment}{//  std::stringstream sss;}
+862     \textcolor{comment}{//  sss << i << "\_Edge.ppm";}
+863     \textcolor{comment}{//  imwrite(sss.str(), Test.Population[i].Edge);}
+864     \textcolor{comment}{//  std::stringstream ssss;}
+865     \textcolor{comment}{//  ssss << i << "\_RGB.ppm";}
+866     \textcolor{comment}{//  imwrite(ssss.str(), Test.Population[i].RGB);}
+867     \textcolor{comment}{//\}}
+868 \}
 \end{DoxyCode}
 \hypertarget{_v_s_a___u_t_8cpp_ae6361112264e2f7cbc4949b6fe2440a6}{}\index{V\+S\+A\+\_\+\+U\+T.\+cpp@{V\+S\+A\+\_\+\+U\+T.\+cpp}!B\+O\+O\+S\+T\+\_\+\+G\+L\+O\+B\+A\+L\+\_\+\+F\+I\+X\+T\+U\+R\+E@{B\+O\+O\+S\+T\+\_\+\+G\+L\+O\+B\+A\+L\+\_\+\+F\+I\+X\+T\+U\+R\+E}}
 \index{B\+O\+O\+S\+T\+\_\+\+G\+L\+O\+B\+A\+L\+\_\+\+F\+I\+X\+T\+U\+R\+E@{B\+O\+O\+S\+T\+\_\+\+G\+L\+O\+B\+A\+L\+\_\+\+F\+I\+X\+T\+U\+R\+E}!V\+S\+A\+\_\+\+U\+T.\+cpp@{V\+S\+A\+\_\+\+U\+T.\+cpp}}

@@ -1,5 +1,10 @@
 \hypertarget{namespace_soil_math}{}\section{Soil\+Math Namespace Reference}
 \label{namespace_soil_math}\index{Soil\+Math@{Soil\+Math}}
+
+
+Genetic Algorithmes used for optimization problems.  
+
+
 \subsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
@@ -9,11 +14,11 @@
 \begin{DoxyCompactItemize}
 \item 
 class \hyperlink{class_soil_math_1_1_f_f_t}{F\+F\+T}
-\item 
+\begin{DoxyCompactList}\small\item\em Fast Fourier Transform class. \end{DoxyCompactList}\item 
 class \hyperlink{class_soil_math_1_1_g_a}{G\+A}
 \item 
 class \hyperlink{class_soil_math_1_1_n_n}{N\+N}
-\item 
+\begin{DoxyCompactList}\small\item\em The Neural Network class. \end{DoxyCompactList}\item 
 class \hyperlink{class_soil_math_1_1_sort}{Sort}
 \item 
 class \hyperlink{class_soil_math_1_1_stats}{Stats}
@@ -42,7 +47,9 @@ static long \hyperlink{namespace_soil_math_a5b0b4bcf1fecd0f3eefc2520c624f9f4}{fl
 
 
 \subsection{Detailed Description}
-Use this class to transform a black and white blob presented as a cv\+::\+Mat with values 0 or 1 to a vector of complex values representing the Fourier Descriptors. 
+Genetic Algorithmes used for optimization problems. 
+
+Use this class for optimization problems. It\textquotesingle{}s currently optimized for Neural Network optimzation 
 
 \subsection{Function Documentation}
 \hypertarget{namespace_soil_math_ab3886ae2a670a717bbe01f94543922a0}{}\index{Soil\+Math@{Soil\+Math}!fast\+Pow@{fast\+Pow}}
@@ -55,7 +62,7 @@ Use this class to transform a black and white blob presented as a cv\+::\+Mat wi
 )\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{namespace_soil_math_ab3886ae2a670a717bbe01f94543922a0}
 
 
-Definition at line 39 of file Common\+Operations.\+h.
+Definition at line 46 of file Common\+Operations.\+h.
 
 
 
@@ -67,15 +74,15 @@ Referenced by Vision\+::\+Enhance\+::\+Calculate\+Std\+Of\+Neighboring\+Pixels()
 
 
 \begin{DoxyCode}
-39                                                  \{
-40   \textcolor{keyword}{union }\{
-41     \textcolor{keywordtype}{double} d;
-42     \textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a9336ebf25087d91c818ee6e9ec29f8c1}{x}[2];
-43   \} u = \{a\};
-44   u.x[1] = (int)(b * (u.x[1] - 1072632447) + 1072632447);
-45   u.x[0] = 0;
-46   \textcolor{keywordflow}{return} u.d;
-47 \}
+46                                                  \{
+47   \textcolor{keyword}{union }\{
+48     \textcolor{keywordtype}{double} d;
+49     \textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a9336ebf25087d91c818ee6e9ec29f8c1}{x}[2];
+50   \} u = \{a\};
+51   u.x[1] = (int)(b * (u.x[1] - 1072632447) + 1072632447);
+52   u.x[0] = 0;
+53   \textcolor{keywordflow}{return} u.d;
+54 \}
 \end{DoxyCode}
 
 
@@ -97,7 +104,7 @@ Here is the caller graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{namespace_soil_math_a5b0b4bcf1fecd0f3eefc2520c624f9f4}
 
 
-Definition at line 80 of file Common\+Operations.\+h.
+Definition at line 87 of file Common\+Operations.\+h.
 
 
 
@@ -105,10 +112,10 @@ Referenced by Soil\+Math\+\_\+\+Test\+::test\+Case\+\_\+benchmark\+\_\+float2int
 
 
 \begin{DoxyCode}
-80                                             \{
-81   d += 6755399441055744.0;
-82   \textcolor{keywordflow}{return} \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{int} &\textcolor{keyword}{>}(d);
-83 \}
+87                                             \{
+88   d += 6755399441055744.0;
+89   \textcolor{keywordflow}{return} \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{int} &\textcolor{keyword}{>}(d);
+90 \}
 \end{DoxyCode}
 
 
@@ -131,7 +138,7 @@ Here is the caller graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [inline]}}\label{namespace_soil_math_a9d385c44fb7e60a278a6eee8446f7b64}
 
 
-Definition at line 16 of file Common\+Operations.\+h.
+Definition at line 23 of file Common\+Operations.\+h.
 
 
 
@@ -139,7 +146,7 @@ Referenced by Vision\+::\+Segment\+::\+Label\+Blobs(), and Max().
 
 
 \begin{DoxyCode}
-16 \{ \textcolor{keywordflow}{return} (a > b) ? a : b; \}
+23 \{ \textcolor{keywordflow}{return} (a > b) ? a : b; \}
 \end{DoxyCode}
 
 
@@ -164,7 +171,7 @@ Here is the caller graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [inline]}}\label{namespace_soil_math_a4b71f10349d360c1d7c6313bb01c988f}
 
 
-Definition at line 18 of file Common\+Operations.\+h.
+Definition at line 25 of file Common\+Operations.\+h.
 
 
 
@@ -172,9 +179,9 @@ References Max().
 
 
 \begin{DoxyCode}
-18                                                                     \{
-19   \textcolor{keywordflow}{return} (\hyperlink{namespace_soil_math_a4b71f10349d360c1d7c6313bb01c988f}{Max}(a, b) > \hyperlink{namespace_soil_math_a4b71f10349d360c1d7c6313bb01c988f}{Max}(\hyperlink{_comparision_pictures_2_createtest_image_8m_ae0323a9039add2978bf5b49550572c7c}{c}, d)) ? \hyperlink{namespace_soil_math_a4b71f10349d360c1d7c6313bb01c988f}{Max}(a, b) : \hyperlink{namespace_soil_math_a4b71f10349d360c1d7c6313bb01c988f}{Max}(\hyperlink{_comparision_pictures_2_createtest_image_8m_ae0323a9039add2978bf5b49550572c7c}{c}, d);
-20 \}
+25                                                                     \{
+26   \textcolor{keywordflow}{return} (\hyperlink{namespace_soil_math_a4b71f10349d360c1d7c6313bb01c988f}{Max}(a, b) > \hyperlink{namespace_soil_math_a4b71f10349d360c1d7c6313bb01c988f}{Max}(\hyperlink{_comparision_pictures_2_createtest_image_8m_ae0323a9039add2978bf5b49550572c7c}{c}, d)) ? \hyperlink{namespace_soil_math_a4b71f10349d360c1d7c6313bb01c988f}{Max}(a, b) : \hyperlink{namespace_soil_math_a4b71f10349d360c1d7c6313bb01c988f}{Max}(\hyperlink{_comparision_pictures_2_createtest_image_8m_ae0323a9039add2978bf5b49550572c7c}{c}, d);
+27 \}
 \end{DoxyCode}
 
 
@@ -197,7 +204,7 @@ Here is the call graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [inline]}}\label{namespace_soil_math_ad458fb6889451aa72a4a7097d10490a5}
 
 
-Definition at line 22 of file Common\+Operations.\+h.
+Definition at line 29 of file Common\+Operations.\+h.
 
 
 
@@ -205,7 +212,7 @@ Referenced by Vision\+::\+Segment\+::\+Label\+Blobs(), and Min().
 
 
 \begin{DoxyCode}
-22 \{ \textcolor{keywordflow}{return} (a < b) ? a : b; \}
+29 \{ \textcolor{keywordflow}{return} (a < b) ? a : b; \}
 \end{DoxyCode}
 
 
@@ -230,7 +237,7 @@ Here is the caller graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [inline]}}\label{namespace_soil_math_a80286ce6881c7adacfba832254a8c91b}
 
 
-Definition at line 24 of file Common\+Operations.\+h.
+Definition at line 31 of file Common\+Operations.\+h.
 
 
 
@@ -238,9 +245,9 @@ References Min().
 
 
 \begin{DoxyCode}
-24                                                                     \{
-25   \textcolor{keywordflow}{return} (\hyperlink{namespace_soil_math_a80286ce6881c7adacfba832254a8c91b}{Min}(a, b) > \hyperlink{namespace_soil_math_a80286ce6881c7adacfba832254a8c91b}{Min}(\hyperlink{_comparision_pictures_2_createtest_image_8m_ae0323a9039add2978bf5b49550572c7c}{c}, d)) ? \hyperlink{namespace_soil_math_a80286ce6881c7adacfba832254a8c91b}{Min}(a, b) : \hyperlink{namespace_soil_math_a80286ce6881c7adacfba832254a8c91b}{Min}(\hyperlink{_comparision_pictures_2_createtest_image_8m_ae0323a9039add2978bf5b49550572c7c}{c}, d);
-26 \}
+31                                                                     \{
+32   \textcolor{keywordflow}{return} (\hyperlink{namespace_soil_math_a80286ce6881c7adacfba832254a8c91b}{Min}(a, b) > \hyperlink{namespace_soil_math_a80286ce6881c7adacfba832254a8c91b}{Min}(\hyperlink{_comparision_pictures_2_createtest_image_8m_ae0323a9039add2978bf5b49550572c7c}{c}, d)) ? \hyperlink{namespace_soil_math_a80286ce6881c7adacfba832254a8c91b}{Min}(a, b) : \hyperlink{namespace_soil_math_a80286ce6881c7adacfba832254a8c91b}{Min}(\hyperlink{_comparision_pictures_2_createtest_image_8m_ae0323a9039add2978bf5b49550572c7c}{c}, d);
+33 \}
 \end{DoxyCode}
 
 
@@ -263,17 +270,17 @@ Here is the call graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [inline]}}\label{namespace_soil_math_add4ac871cc7f2ece16e716a5cfa61847}
 
 
-Definition at line 8 of file Common\+Operations.\+h.
+Definition at line 15 of file Common\+Operations.\+h.
 
 
 \begin{DoxyCode}
-8                                                    \{
-9   \textcolor{keywordflow}{if} (a != 0 && b != 0) \{
-10     \textcolor{keywordflow}{return} (a < b) ? a : b;
-11   \} \textcolor{keywordflow}{else} \{
-12     \textcolor{keywordflow}{return} (a > b) ? a : b;
-13   \}
-14 \}
+15                                                    \{
+16   \textcolor{keywordflow}{if} (a != 0 && b != 0) \{
+17     \textcolor{keywordflow}{return} (a < b) ? a : b;
+18   \} \textcolor{keywordflow}{else} \{
+19     \textcolor{keywordflow}{return} (a > b) ? a : b;
+20   \}
+21 \}
 \end{DoxyCode}
 \hypertarget{namespace_soil_math_a1e4cf56fbcab8b4c623d6976868fbaf3}{}\index{Soil\+Math@{Soil\+Math}!quick\+\_\+pow10@{quick\+\_\+pow10}}
 \index{quick\+\_\+pow10@{quick\+\_\+pow10}!Soil\+Math@{Soil\+Math}}
@@ -284,7 +291,7 @@ Definition at line 8 of file Common\+Operations.\+h.
 )\hspace{0.3cm}{\ttfamily [static]}}\label{namespace_soil_math_a1e4cf56fbcab8b4c623d6976868fbaf3}
 
 
-Definition at line 28 of file Common\+Operations.\+h.
+Definition at line 35 of file Common\+Operations.\+h.
 
 
 
@@ -292,14 +299,14 @@ References n.
 
 
 \begin{DoxyCode}
-28                                  \{
-29   \textcolor{keyword}{static} \textcolor{keywordtype}{double} pow10[19] = \{1, 10, 100, 1000, 10000, 100000, 1000000, 10000000,
-30                              100000000, 1000000000, 10000000000, 100000000000,
-31                              1000000000000, 10000000000000, 100000000000000,
-32                              1000000000000000, 10000000000000000,
-33                              100000000000000000, 1000000000000000000\};
-34   \textcolor{keywordflow}{return} pow10[\hyperlink{_comparision_pictures_2_createtest_image_8m_aeab71244afb687f16d8c4f5ee9d6ef0e}{n}];
-35 \}
+35                                  \{
+36   \textcolor{keyword}{static} \textcolor{keywordtype}{double} pow10[19] = \{1, 10, 100, 1000, 10000, 100000, 1000000, 10000000,
+37                              100000000, 1000000000, 10000000000, 100000000000,
+38                              1000000000000, 10000000000000, 100000000000000,
+39                              1000000000000000, 10000000000000000,
+40                              100000000000000000, 1000000000000000000\};
+41   \textcolor{keywordflow}{return} pow10[\hyperlink{_comparision_pictures_2_createtest_image_8m_aeab71244afb687f16d8c4f5ee9d6ef0e}{n}];
+42 \}
 \end{DoxyCode}
 \hypertarget{namespace_soil_math_a69d186af0e164a5f98c42985aabec919}{}\index{Soil\+Math@{Soil\+Math}!quick\+\_\+pow2@{quick\+\_\+pow2}}
 \index{quick\+\_\+pow2@{quick\+\_\+pow2}!Soil\+Math@{Soil\+Math}}
@@ -310,7 +317,7 @@ References n.
 )\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{namespace_soil_math_a69d186af0e164a5f98c42985aabec919}
 
 
-Definition at line 49 of file Common\+Operations.\+h.
+Definition at line 56 of file Common\+Operations.\+h.
 
 
 
@@ -318,36 +325,36 @@ Referenced by Vision\+::\+Enhance\+::\+Calculate\+Std\+Of\+Neighboring\+Pixels()
 
 
 \begin{DoxyCode}
-49                                        \{
-50   \textcolor{keyword}{static} \textcolor{keywordtype}{double} pow2[256] = \{
-51       0,     1,     4,     9,     16,    25,    36,    49,    64,    81,
-52       100,   121,   144,   169,   196,   225,   256,   289,   324,   361,
-53       400,   441,   484,   529,   576,   625,   676,   729,   784,   841,
-54       900,   961,   1024,  1089,  1156,  1225,  1296,  1369,  1444,  1521,
-55       1600,  1681,  1764,  1849,  1936,  2025,  2116,  2209,  2304,  2401,
-56       2500,  2601,  2704,  2809,  2916,  3025,  3136,  3249,  3364,  3481,
-57       3600,  3721,  3844,  3969,  4096,  4225,  4356,  4489,  4624,  4761,
-58       4900,  5041,  5184,  5329,  5476,  5625,  5776,  5929,  6084,  6241,
-59       6400,  6561,  6724,  6889,  7056,  7225,  7396,  7569,  7744,  7921,
-60       8100,  8281,  8464,  8649,  8836,  9025,  9216,  9409,  9604,  9801,
-61       10000, 10201, 10404, 10609, 10816, 11025, 11236, 11449, 11664, 11881,
-62       12100, 12321, 12544, 12769, 12996, 13225, 13456, 13689, 13924, 14161,
-63       14400, 14641, 14884, 15129, 15376, 15625, 15876, 16129, 16384, 16641,
-64       16900, 17161, 17424, 17689, 17956, 18225, 18496, 18769, 19044, 19321,
-65       19600, 19881, 20164, 20449, 20736, 21025, 21316, 21609, 21904, 22201,
-66       22500, 22801, 23104, 23409, 23716, 24025, 24336, 24649, 24964, 25281,
-67       25600, 25921, 26244, 26569, 26896, 27225, 27556, 27889, 28224, 28561,
-68       28900, 29241, 29584, 29929, 30276, 30625, 30976, 31329, 31684, 32041,
-69       32400, 32761, 33124, 33489, 33856, 34225, 34596, 34969, 35344, 35721,
-70       36100, 36481, 36864, 37249, 37636, 38025, 38416, 38809, 39204, 39601,
-71       40000, 40401, 40804, 41209, 41616, 42025, 42436, 42849, 43264, 43681,
-72       44100, 44521, 44944, 45369, 45796, 46225, 46656, 47089, 47524, 47961,
-73       48400, 48841, 49284, 49729, 50176, 50625, 51076, 51529, 51984, 52441,
-74       52900, 53361, 53824, 54289, 54756, 55225, 55696, 56169, 56644, 57121,
-75       57600, 58081, 58564, 59049, 59536, 60025, 60516, 61009, 61504, 62001,
-76       62500, 63001, 63504, 64009, 64516, 65025\};
-77   \textcolor{keywordflow}{return} pow2[(\hyperlink{_comparision_pictures_2_createtest_image_8m_aeab71244afb687f16d8c4f5ee9d6ef0e}{n} >= 0) ? n : -n];
-78 \}
+56                                        \{
+57   \textcolor{keyword}{static} \textcolor{keywordtype}{double} pow2[256] = \{
+58       0,     1,     4,     9,     16,    25,    36,    49,    64,    81,
+59       100,   121,   144,   169,   196,   225,   256,   289,   324,   361,
+60       400,   441,   484,   529,   576,   625,   676,   729,   784,   841,
+61       900,   961,   1024,  1089,  1156,  1225,  1296,  1369,  1444,  1521,
+62       1600,  1681,  1764,  1849,  1936,  2025,  2116,  2209,  2304,  2401,
+63       2500,  2601,  2704,  2809,  2916,  3025,  3136,  3249,  3364,  3481,
+64       3600,  3721,  3844,  3969,  4096,  4225,  4356,  4489,  4624,  4761,
+65       4900,  5041,  5184,  5329,  5476,  5625,  5776,  5929,  6084,  6241,
+66       6400,  6561,  6724,  6889,  7056,  7225,  7396,  7569,  7744,  7921,
+67       8100,  8281,  8464,  8649,  8836,  9025,  9216,  9409,  9604,  9801,
+68       10000, 10201, 10404, 10609, 10816, 11025, 11236, 11449, 11664, 11881,
+69       12100, 12321, 12544, 12769, 12996, 13225, 13456, 13689, 13924, 14161,
+70       14400, 14641, 14884, 15129, 15376, 15625, 15876, 16129, 16384, 16641,
+71       16900, 17161, 17424, 17689, 17956, 18225, 18496, 18769, 19044, 19321,
+72       19600, 19881, 20164, 20449, 20736, 21025, 21316, 21609, 21904, 22201,
+73       22500, 22801, 23104, 23409, 23716, 24025, 24336, 24649, 24964, 25281,
+74       25600, 25921, 26244, 26569, 26896, 27225, 27556, 27889, 28224, 28561,
+75       28900, 29241, 29584, 29929, 30276, 30625, 30976, 31329, 31684, 32041,
+76       32400, 32761, 33124, 33489, 33856, 34225, 34596, 34969, 35344, 35721,
+77       36100, 36481, 36864, 37249, 37636, 38025, 38416, 38809, 39204, 39601,
+78       40000, 40401, 40804, 41209, 41616, 42025, 42436, 42849, 43264, 43681,
+79       44100, 44521, 44944, 45369, 45796, 46225, 46656, 47089, 47524, 47961,
+80       48400, 48841, 49284, 49729, 50176, 50625, 51076, 51529, 51984, 52441,
+81       52900, 53361, 53824, 54289, 54756, 55225, 55696, 56169, 56644, 57121,
+82       57600, 58081, 58564, 59049, 59536, 60025, 60516, 61009, 61504, 62001,
+83       62500, 63001, 63504, 64009, 64516, 65025\};
+84   \textcolor{keywordflow}{return} pow2[(\hyperlink{_comparision_pictures_2_createtest_image_8m_aeab71244afb687f16d8c4f5ee9d6ef0e}{n} >= 0) ? n : -n];
+85 \}
 \end{DoxyCode}
 
 

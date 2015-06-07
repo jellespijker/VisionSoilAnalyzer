@@ -26,7 +26,7 @@ enum \hyperlink{namespace_q_c_p_ae55dbe315d41fe80f29ba88100843a0c}{Antialiased\+
 \\*
 \hyperlink{namespace_q_c_p_ae55dbe315d41fe80f29ba88100843a0ca9dcf3882cb321bb305f71fdc0f09f63d}{ae\+Error\+Bars} = 0x0100, 
 \hyperlink{namespace_q_c_p_ae55dbe315d41fe80f29ba88100843a0ca788810f0aa930137de6ad6cc6d83d354}{ae\+Fills} = 0x0200, 
-\hyperlink{namespace_q_c_p_ae55dbe315d41fe80f29ba88100843a0ca261f8ea78cf3c9561726223ffa33dc12}{ae\+Zero\+Line} = 0x0400, 
+\hyperlink{namespace_q_c_p_ae55dbe315d41fe80f29ba88100843a0ca261f8ea78cf3c9561726223ffa33dc12}{ae\+Zero\+Line}, 
 \hyperlink{namespace_q_c_p_ae55dbe315d41fe80f29ba88100843a0caa897c232a0ffc8368e7c100ffc59ef31}{ae\+All} = 0x\+F\+F\+F\+F, 
 \\*
 \hyperlink{namespace_q_c_p_ae55dbe315d41fe80f29ba88100843a0caa9e90d81896358757d94275aeaa58f6a}{ae\+None} = 0x0000
@@ -110,24 +110,38 @@ Defines what objects of a plot can be forcibly drawn antialiased/not antialiased
 \end{Desc}
 
 
-Definition at line 118 of file qcustomplot.\+h.
+Definition at line 126 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-118                         \{ \hyperlink{namespace_q_c_p_ae55dbe315d41fe80f29ba88100843a0caefa92e89cd37f8a081fd2075aa1af73f}{aeAxes}           = 0x0001 
-119                           ,\hyperlink{namespace_q_c_p_ae55dbe315d41fe80f29ba88100843a0ca4fbb37118d62288af0ca601ff2b07a2f}{aeGrid}          = 0x0002 
-120                           ,\hyperlink{namespace_q_c_p_ae55dbe315d41fe80f29ba88100843a0caaedf83369188a15a69f92bb1d85ca97b}{aeSubGrid}       = 0x0004 
-121                           ,\hyperlink{namespace_q_c_p_ae55dbe315d41fe80f29ba88100843a0ca9e0127a6361b5d0596b031a482c5cf97}{aeLegend}        = 0x0008 
-122                           ,\hyperlink{namespace_q_c_p_ae55dbe315d41fe80f29ba88100843a0ca1aca7a50c1b95403958733a4acafe773}{aeLegendItems}   = 0x0010 
-123                           ,\hyperlink{namespace_q_c_p_ae55dbe315d41fe80f29ba88100843a0ca4145e4251b0cf2dbedabeea0a38f84f6}{aePlottables}    = 0x0020 
-124                           ,\hyperlink{namespace_q_c_p_ae55dbe315d41fe80f29ba88100843a0caf7712a85d6b0c75b24301d2fe9484db3}{aeItems}         = 0x0040 
-125                           ,\hyperlink{namespace_q_c_p_ae55dbe315d41fe80f29ba88100843a0cae45ed8cd167bffe27d7f40da4bc17e9c}{aeScatters}      = 0x0080 
-126                           ,\hyperlink{namespace_q_c_p_ae55dbe315d41fe80f29ba88100843a0ca9dcf3882cb321bb305f71fdc0f09f63d}{aeErrorBars}     = 0x0100 
-127                           ,\hyperlink{namespace_q_c_p_ae55dbe315d41fe80f29ba88100843a0ca788810f0aa930137de6ad6cc6d83d354}{aeFills}         = 0x0200 
-128                           ,\hyperlink{namespace_q_c_p_ae55dbe315d41fe80f29ba88100843a0ca261f8ea78cf3c9561726223ffa33dc12}{aeZeroLine}      = 0x0400 
-129                           ,\hyperlink{namespace_q_c_p_ae55dbe315d41fe80f29ba88100843a0caa897c232a0ffc8368e7c100ffc59ef31}{aeAll}           = 0xFFFF 
-130                           ,\hyperlink{namespace_q_c_p_ae55dbe315d41fe80f29ba88100843a0caa9e90d81896358757d94275aeaa58f6a}{aeNone}          = 0x0000 
-131                         \};
+126                         \{
+127   \hyperlink{namespace_q_c_p_ae55dbe315d41fe80f29ba88100843a0caefa92e89cd37f8a081fd2075aa1af73f}{aeAxes} = 0x0001 
+128   ,
+129   \hyperlink{namespace_q_c_p_ae55dbe315d41fe80f29ba88100843a0ca4fbb37118d62288af0ca601ff2b07a2f}{aeGrid} = 0x0002 
+130   ,
+131   \hyperlink{namespace_q_c_p_ae55dbe315d41fe80f29ba88100843a0caaedf83369188a15a69f92bb1d85ca97b}{aeSubGrid} = 0x0004 
+132   ,
+133   \hyperlink{namespace_q_c_p_ae55dbe315d41fe80f29ba88100843a0ca9e0127a6361b5d0596b031a482c5cf97}{aeLegend} = 0x0008 
+134   ,
+135   \hyperlink{namespace_q_c_p_ae55dbe315d41fe80f29ba88100843a0ca1aca7a50c1b95403958733a4acafe773}{aeLegendItems} = 0x0010 
+136   ,
+137   \hyperlink{namespace_q_c_p_ae55dbe315d41fe80f29ba88100843a0ca4145e4251b0cf2dbedabeea0a38f84f6}{aePlottables} = 0x0020 
+138   ,
+140   \hyperlink{namespace_q_c_p_ae55dbe315d41fe80f29ba88100843a0caf7712a85d6b0c75b24301d2fe9484db3}{aeItems} = 0x0040 
+141   ,
+142   \hyperlink{namespace_q_c_p_ae55dbe315d41fe80f29ba88100843a0cae45ed8cd167bffe27d7f40da4bc17e9c}{aeScatters} = 0x0080 
+143   ,
+145   \hyperlink{namespace_q_c_p_ae55dbe315d41fe80f29ba88100843a0ca9dcf3882cb321bb305f71fdc0f09f63d}{aeErrorBars} = 0x0100 
+146   ,
+147   \hyperlink{namespace_q_c_p_ae55dbe315d41fe80f29ba88100843a0ca788810f0aa930137de6ad6cc6d83d354}{aeFills} = 0x0200 
+148   ,
+150   \hyperlink{namespace_q_c_p_ae55dbe315d41fe80f29ba88100843a0ca261f8ea78cf3c9561726223ffa33dc12}{aeZeroLine} =
+151       0x0400 
+152   ,
+153   \hyperlink{namespace_q_c_p_ae55dbe315d41fe80f29ba88100843a0caa897c232a0ffc8368e7c100ffc59ef31}{aeAll} = 0xFFFF 
+154   ,
+155   \hyperlink{namespace_q_c_p_ae55dbe315d41fe80f29ba88100843a0caa9e90d81896358757d94275aeaa58f6a}{aeNone} = 0x0000 
+156 \};
 \end{DoxyCode}
 \hypertarget{namespace_q_c_p_a2ad6bb6281c7c2d593d4277b44c2b037}{}\index{Q\+C\+P@{Q\+C\+P}!Interaction@{Interaction}}
 \index{Interaction@{Interaction}!Q\+C\+P@{Q\+C\+P}}
@@ -162,19 +176,27 @@ Defines the mouse interactions possible with \hyperlink{class_q_custom_plot}{Q\+
 \end{Desc}
 
 
-Definition at line 155 of file qcustomplot.\+h.
+Definition at line 192 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-155                  \{ \hyperlink{namespace_q_c_p_a2ad6bb6281c7c2d593d4277b44c2b037a2c4432b9aceafb94000be8d1b589ef18}{iRangeDrag}         = 0x001 
-156                    ,\hyperlink{namespace_q_c_p_a2ad6bb6281c7c2d593d4277b44c2b037abee1e94353525a636aeaf0ba32b72e14}{iRangeZoom}        = 0x002 
-157                    ,\hyperlink{namespace_q_c_p_a2ad6bb6281c7c2d593d4277b44c2b037aef673112c5067c3cf4cfddb62da7265d}{iMultiSelect}      = 0x004 
-158                    ,\hyperlink{namespace_q_c_p_a2ad6bb6281c7c2d593d4277b44c2b037a67148c8227b4155eca49135fc274c7ec}{iSelectPlottables} = 0x008 
-159                    ,\hyperlink{namespace_q_c_p_a2ad6bb6281c7c2d593d4277b44c2b037ad6644ac55bef621645326e9dd7469caa}{iSelectAxes}       = 0x010 
-160                    ,\hyperlink{namespace_q_c_p_a2ad6bb6281c7c2d593d4277b44c2b037a269c9af298e257d1108edec0432b5513}{iSelectLegend}     = 0x020 
-161                    ,\hyperlink{namespace_q_c_p_a2ad6bb6281c7c2d593d4277b44c2b037aea2f7c105d674e76d9b187b02ef29260}{iSelectItems}      = 0x040 
-162                    ,\hyperlink{namespace_q_c_p_a2ad6bb6281c7c2d593d4277b44c2b037af67a50bc26147a13b551b3a625374949}{iSelectOther}      = 0x080 
-163                  \};
+192                  \{
+193   \hyperlink{namespace_q_c_p_a2ad6bb6281c7c2d593d4277b44c2b037a2c4432b9aceafb94000be8d1b589ef18}{iRangeDrag} = 0x001 
+194   ,
+197   \hyperlink{namespace_q_c_p_a2ad6bb6281c7c2d593d4277b44c2b037abee1e94353525a636aeaf0ba32b72e14}{iRangeZoom} = 0x002 
+198   ,
+201   \hyperlink{namespace_q_c_p_a2ad6bb6281c7c2d593d4277b44c2b037aef673112c5067c3cf4cfddb62da7265d}{iMultiSelect} = 0x004 
+202   ,
+205   \hyperlink{namespace_q_c_p_a2ad6bb6281c7c2d593d4277b44c2b037a67148c8227b4155eca49135fc274c7ec}{iSelectPlottables} = 0x008 
+206   ,
+209   \hyperlink{namespace_q_c_p_a2ad6bb6281c7c2d593d4277b44c2b037ad6644ac55bef621645326e9dd7469caa}{iSelectAxes} = 0x010 
+210   ,
+212   \hyperlink{namespace_q_c_p_a2ad6bb6281c7c2d593d4277b44c2b037a269c9af298e257d1108edec0432b5513}{iSelectLegend} = 0x020 
+213   ,
+215   \hyperlink{namespace_q_c_p_a2ad6bb6281c7c2d593d4277b44c2b037aea2f7c105d674e76d9b187b02ef29260}{iSelectItems} = 0x040 
+216   ,
+218   \hyperlink{namespace_q_c_p_a2ad6bb6281c7c2d593d4277b44c2b037af67a50bc26147a13b551b3a625374949}{iSelectOther} = 0x080 
+219 \};
 \end{DoxyCode}
 \hypertarget{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54}{}\index{Q\+C\+P@{Q\+C\+P}!Margin\+Side@{Margin\+Side}}
 \index{Margin\+Side@{Margin\+Side}!Q\+C\+P@{Q\+C\+P}}
@@ -203,17 +225,23 @@ Defines the sides of a rectangular entity to which margins can be applied.
 \end{Desc}
 
 
-Definition at line 100 of file qcustomplot.\+h.
+Definition at line 98 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-100                 \{ \hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a9500c8bfcc9e80b9dff0a8e00e867f07}{msLeft}     = 0x01 
-101                   ,\hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a93c719593bb2b94ed244d52c86d83b65}{msRight}   = 0x02 
-102                   ,\hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a5db8fb0d0b0ecf0d611c2602a348e8a0}{msTop}     = 0x04 
-103                   ,\hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a5241d8eac2bab9524a38889f576179cc}{msBottom}  = 0x08 
-104                   ,\hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a43d7361cb0c5244eabdc962021bffebc}{msAll}     = 0xFF 
-105                   ,\hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a80aa4149f16dabd538f8b2e3d42c42d5}{msNone}    = 0x00 
-106                 \};
+98                 \{
+99   \hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a9500c8bfcc9e80b9dff0a8e00e867f07}{msLeft} = 0x01 
+100   ,
+101   \hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a93c719593bb2b94ed244d52c86d83b65}{msRight} = 0x02 
+102   ,
+103   \hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a5db8fb0d0b0ecf0d611c2602a348e8a0}{msTop} = 0x04 
+104   ,
+105   \hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a5241d8eac2bab9524a38889f576179cc}{msBottom} = 0x08 
+106   ,
+107   \hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a43d7361cb0c5244eabdc962021bffebc}{msAll} = 0xFF 
+108   ,
+109   \hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a80aa4149f16dabd538f8b2e3d42c42d5}{msNone} = 0x00 
+110 \};
 \end{DoxyCode}
 \hypertarget{namespace_q_c_p_a5400e5fcb9528d92002ddb938c1f4ef4}{}\index{Q\+C\+P@{Q\+C\+P}!Plotting\+Hint@{Plotting\+Hint}}
 \index{Plotting\+Hint@{Plotting\+Hint}!Q\+C\+P@{Q\+C\+P}}
@@ -238,15 +266,19 @@ Defines plotting hints that control various aspects of the quality and speed of 
 \end{Desc}
 
 
-Definition at line 139 of file qcustomplot.\+h.
+Definition at line 165 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-139                   \{ \hyperlink{namespace_q_c_p_a5400e5fcb9528d92002ddb938c1f4ef4ab7283c5bfc1ba9e597015389880bda42}{phNone}            = 0x000 
-140                     ,\hyperlink{namespace_q_c_p_a5400e5fcb9528d92002ddb938c1f4ef4aa5fd227bc878c56ad2a87ea32c74ee4d}{phFastPolylines}  = 0x001 
-141                     ,\hyperlink{namespace_q_c_p_a5400e5fcb9528d92002ddb938c1f4ef4aa3090dafa0e0f9a28c579c79d6c2d283}{phForceRepaint}   = 0x002 
-143                     ,\hyperlink{namespace_q_c_p_a5400e5fcb9528d92002ddb938c1f4ef4a8e9cfe5ee0c5cd36dd7accf9739aff65}{phCacheLabels}    = 0x004 
-145                   \};
+165                   \{
+166   \hyperlink{namespace_q_c_p_a5400e5fcb9528d92002ddb938c1f4ef4ab7283c5bfc1ba9e597015389880bda42}{phNone} = 0x000 
+167   ,
+168   \hyperlink{namespace_q_c_p_a5400e5fcb9528d92002ddb938c1f4ef4aa5fd227bc878c56ad2a87ea32c74ee4d}{phFastPolylines} = 0x001 
+169   ,
+173   \hyperlink{namespace_q_c_p_a5400e5fcb9528d92002ddb938c1f4ef4aa3090dafa0e0f9a28c579c79d6c2d283}{phForceRepaint} = 0x002 
+174   ,
+180   \hyperlink{namespace_q_c_p_a5400e5fcb9528d92002ddb938c1f4ef4a8e9cfe5ee0c5cd36dd7accf9739aff65}{phCacheLabels} = 0x004 
+181 \};
 \end{DoxyCode}
 
 
@@ -261,7 +293,7 @@ Definition at line 139 of file qcustomplot.\+h.
 )\hspace{0.3cm}{\ttfamily [inline]}}\label{namespace_q_c_p_a23a2679d3495c444acc26acc61e35b5b}
 
 
-Definition at line 213 of file qcustomplot.\+h.
+Definition at line 280 of file qcustomplot.\+h.
 
 
 
@@ -273,17 +305,21 @@ Referenced by Q\+C\+P\+Layout\+Element\+::calculate\+Auto\+Margin(), Q\+C\+P\+Ma
 
 
 \begin{DoxyCode}
-214 \{
-215   \textcolor{keywordflow}{switch} (side)
-216   \{
-217     \textcolor{keywordflow}{case} \hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a9500c8bfcc9e80b9dff0a8e00e867f07}{QCP::msLeft}: \textcolor{keywordflow}{return} margins.left();
-218     \textcolor{keywordflow}{case} \hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a93c719593bb2b94ed244d52c86d83b65}{QCP::msRight}: \textcolor{keywordflow}{return} margins.right();
-219     \textcolor{keywordflow}{case} \hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a5db8fb0d0b0ecf0d611c2602a348e8a0}{QCP::msTop}: \textcolor{keywordflow}{return} margins.top();
-220     \textcolor{keywordflow}{case} \hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a5241d8eac2bab9524a38889f576179cc}{QCP::msBottom}: \textcolor{keywordflow}{return} margins.bottom();
-221     \textcolor{keywordflow}{default}: \textcolor{keywordflow}{break};
-222   \}
-223   \textcolor{keywordflow}{return} 0;
-224 \}
+280                                                                        \{
+281   \textcolor{keywordflow}{switch} (side) \{
+282   \textcolor{keywordflow}{case} \hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a9500c8bfcc9e80b9dff0a8e00e867f07}{QCP::msLeft}:
+283     \textcolor{keywordflow}{return} margins.left();
+284   \textcolor{keywordflow}{case} \hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a93c719593bb2b94ed244d52c86d83b65}{QCP::msRight}:
+285     \textcolor{keywordflow}{return} margins.right();
+286   \textcolor{keywordflow}{case} \hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a5db8fb0d0b0ecf0d611c2602a348e8a0}{QCP::msTop}:
+287     \textcolor{keywordflow}{return} margins.top();
+288   \textcolor{keywordflow}{case} \hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a5241d8eac2bab9524a38889f576179cc}{QCP::msBottom}:
+289     \textcolor{keywordflow}{return} margins.bottom();
+290   \textcolor{keywordflow}{default}:
+291     \textcolor{keywordflow}{break};
+292   \}
+293   \textcolor{keywordflow}{return} 0;
+294 \}
 \end{DoxyCode}
 
 
@@ -305,7 +341,7 @@ Here is the caller graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [inline]}}\label{namespace_q_c_p_a07ab701c05329089f933b9cae2638a63}
 
 
-Definition at line 172 of file qcustomplot.\+h.
+Definition at line 231 of file qcustomplot.\+h.
 
 
 
@@ -313,9 +349,9 @@ Referenced by Q\+C\+P\+Graph\+::draw(), Q\+C\+P\+Curve\+::draw(), Q\+C\+P\+Bars\
 
 
 \begin{DoxyCode}
-173 \{
-174   \textcolor{keywordflow}{return} qIsNaN(value) || qIsInf(value);
-175 \}
+231                                         \{
+232   \textcolor{keywordflow}{return} qIsNaN(value) || qIsInf(value);
+233 \}
 \end{DoxyCode}
 
 
@@ -338,7 +374,7 @@ Here is the caller graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [inline]}}\label{namespace_q_c_p_a728903e5c3dd17847bee280f4005496f}
 
 
-Definition at line 182 of file qcustomplot.\+h.
+Definition at line 240 of file qcustomplot.\+h.
 
 
 
@@ -346,9 +382,9 @@ References is\+Invalid\+Data().
 
 
 \begin{DoxyCode}
-183 \{
-184   \textcolor{keywordflow}{return} \hyperlink{namespace_q_c_p_a728903e5c3dd17847bee280f4005496f}{isInvalidData}(value1) || \hyperlink{namespace_q_c_p_a728903e5c3dd17847bee280f4005496f}{isInvalidData}(value2);
-185 \}
+240                                                         \{
+241   \textcolor{keywordflow}{return} \hyperlink{namespace_q_c_p_a728903e5c3dd17847bee280f4005496f}{isInvalidData}(value1) || \hyperlink{namespace_q_c_p_a728903e5c3dd17847bee280f4005496f}{isInvalidData}(value2);
+242 \}
 \end{DoxyCode}
 
 
@@ -372,7 +408,7 @@ Here is the call graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [inline]}}\label{namespace_q_c_p_afbf6e3084c108f2bb4372107945ee82f}
 
 
-Definition at line 193 of file qcustomplot.\+h.
+Definition at line 250 of file qcustomplot.\+h.
 
 
 
@@ -384,17 +420,27 @@ Referenced by Q\+C\+P\+Layout\+Element\+::update().
 
 
 \begin{DoxyCode}
-194 \{
-195   \textcolor{keywordflow}{switch} (side)
-196   \{
-197     \textcolor{keywordflow}{case} \hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a9500c8bfcc9e80b9dff0a8e00e867f07}{QCP::msLeft}: margins.setLeft(value); \textcolor{keywordflow}{break};
-198     \textcolor{keywordflow}{case} \hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a93c719593bb2b94ed244d52c86d83b65}{QCP::msRight}: margins.setRight(value); \textcolor{keywordflow}{break};
-199     \textcolor{keywordflow}{case} \hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a5db8fb0d0b0ecf0d611c2602a348e8a0}{QCP::msTop}: margins.setTop(value); \textcolor{keywordflow}{break};
-200     \textcolor{keywordflow}{case} \hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a5241d8eac2bab9524a38889f576179cc}{QCP::msBottom}: margins.setBottom(value); \textcolor{keywordflow}{break};
-201     \textcolor{keywordflow}{case} \hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a43d7361cb0c5244eabdc962021bffebc}{QCP::msAll}: margins = QMargins(value, value, value, value); \textcolor{keywordflow}{break};
-202     \textcolor{keywordflow}{default}: \textcolor{keywordflow}{break};
-203   \}
-204 \}
+250                                                                              \{
+251   \textcolor{keywordflow}{switch} (side) \{
+252   \textcolor{keywordflow}{case} \hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a9500c8bfcc9e80b9dff0a8e00e867f07}{QCP::msLeft}:
+253     margins.setLeft(value);
+254     \textcolor{keywordflow}{break};
+255   \textcolor{keywordflow}{case} \hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a93c719593bb2b94ed244d52c86d83b65}{QCP::msRight}:
+256     margins.setRight(value);
+257     \textcolor{keywordflow}{break};
+258   \textcolor{keywordflow}{case} \hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a5db8fb0d0b0ecf0d611c2602a348e8a0}{QCP::msTop}:
+259     margins.setTop(value);
+260     \textcolor{keywordflow}{break};
+261   \textcolor{keywordflow}{case} \hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a5241d8eac2bab9524a38889f576179cc}{QCP::msBottom}:
+262     margins.setBottom(value);
+263     \textcolor{keywordflow}{break};
+264   \textcolor{keywordflow}{case} \hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a43d7361cb0c5244eabdc962021bffebc}{QCP::msAll}:
+265     margins = QMargins(value, value, value, value);
+266     \textcolor{keywordflow}{break};
+267   \textcolor{keywordflow}{default}:
+268     \textcolor{keywordflow}{break};
+269   \}
+270 \}
 \end{DoxyCode}
 
 

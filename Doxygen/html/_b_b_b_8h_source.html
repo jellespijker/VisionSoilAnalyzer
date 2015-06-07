@@ -35,7 +35,7 @@
    <div id="projectname">Vision Soil Analyzer
    &#160;<span id="projectnumber">1.0.0</span>
    </div>
-   <div id="projectbrief">The Soil Analyzer is a portable lab that can analyse soil samples and tells the user about it&#39;s optical properties. It looks at the texture and describe it as a Particle Size Distribution. This information is presented as a Cumulative Distribution Function (CDF). It also describes the structure of the soil sample and gives information on the sphericity and roundness / angularity. It does so by analysing the contour of particles, describing them as Fourier Descriptors and using a Neural Network to describe it&#39;s properties. Finally it gives the color properties in a histogram in the CIE La*b* colorspace, which show correlations with the fertility of the soil. and a histogram of the Redness Index, which gives has a correlation on the iron content.</div>
+   <div id="projectbrief">Soil analyzer using an USB microscope - for Linux PC and Beaglebone Black</div>
   </td>
  </tr>
  </tbody>
@@ -111,82 +111,86 @@ $(document).ready(function(){initNavTree('_b_b_b_8h_source.html','');});
 <div class="title">BBB.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="_b_b_b_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
-<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="_b_b_b_8h.html#a3de26a5dbd2276c1486afbba5fc8de59">    7</a></span>&#160;<span class="preprocessor">#define SLOTS &quot;/sys/devices/bone_capemgr.9/slots&quot; </span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;sys/stat.h&gt;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;pthread.h&gt;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;unistd.h&gt;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;sys/epoll.h&gt;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;fcntl.h&gt;</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;regex&gt;</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_g_p_i_o_read_exception_8h.html">GPIOReadException.h</a>&quot;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_failed_to_create_g_p_i_o_polling_thread_exception_8h.html">FailedToCreateGPIOPollingThreadException.h</a>&quot;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_value_out_of_bounds_exception_8h.html">ValueOutOfBoundsException.h</a>&quot;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_hardware.html">Hardware</a></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;{</div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="namespace_hardware.html#a5ba2e4bdfa2bbd8b551b1d5b2a0c61fd">   28</a></span>&#160;    <span class="keyword">typedef</span> int(*<a class="code" href="namespace_hardware.html#a5ba2e4bdfa2bbd8b551b1d5b2a0c61fd">CallbackType</a>)(int); </div>
-<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="class_hardware_1_1_b_b_b.html">   30</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_hardware_1_1_b_b_b.html">BBB</a></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="class_hardware_1_1_b_b_b.html#a353a2d7d4fbade337e5173b484b20b22">   33</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="class_hardware_1_1_b_b_b.html#a353a2d7d4fbade337e5173b484b20b22">debounceTime</a>; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <a class="code" href="class_hardware_1_1_b_b_b.html">BBB</a>();</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        ~<a class="code" href="class_hardware_1_1_b_b_b.html">BBB</a>();</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="class_hardware_1_1_b_b_b.html#a0d9d8c56afb37955e0d0c6baf0f418df">   39</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_hardware_1_1_b_b_b.html#a0d9d8c56afb37955e0d0c6baf0f418df">threadRunning</a>;             </div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="class_hardware_1_1_b_b_b.html#a3ad3fe886705bfc242ef58dc5329166e">   40</a></span>&#160;        pthread_t <a class="code" href="class_hardware_1_1_b_b_b.html#a3ad3fe886705bfc242ef58dc5329166e">thread</a>;               </div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="class_hardware_1_1_b_b_b.html#a66d583952f3949a732ee15eea81e80e5">   41</a></span>&#160;        <a class="code" href="namespace_hardware.html#a5ba2e4bdfa2bbd8b551b1d5b2a0c61fd">CallbackType</a> <a class="code" href="class_hardware_1_1_b_b_b.html#a66d583952f3949a732ee15eea81e80e5">callbackFunction</a>;  </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordtype">bool</span> DirectoryExist(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;path);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordtype">bool</span> CapeLoaded(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;shield);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordtype">string</span> Read(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;path);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordtype">void</span> Write(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;path, <span class="keyword">const</span> <span class="keywordtype">string</span> &amp;value);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="class_hardware_1_1_b_b_b.html#ab2fc876590e3b9b482e3224ba617afba">   53</a></span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;   <span class="keywordtype">string</span> <a class="code" href="class_hardware_1_1_b_b_b.html#ab2fc876590e3b9b482e3224ba617afba">NumberToString</a>(T Number)</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            ostringstream ss;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            ss &lt;&lt; Number;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="keywordflow">return</span> ss.str();</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        };</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="class_hardware_1_1_b_b_b.html#a7484c095027594aa5bfde8b56b73be7b">   64</a></span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;   T <a class="code" href="class_hardware_1_1_b_b_b.html#a7484c095027594aa5bfde8b56b73be7b">StringToNumber</a>(<span class="keywordtype">string</span> Text)</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            stringstream ss(Text);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            T result;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="keywordflow">return</span> ss &gt;&gt; result ? result : 0;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        };</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    };</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}</div>
-<div class="ttc" id="class_hardware_1_1_b_b_b_html_a3ad3fe886705bfc242ef58dc5329166e"><div class="ttname"><a href="class_hardware_1_1_b_b_b.html#a3ad3fe886705bfc242ef58dc5329166e">Hardware::BBB::thread</a></div><div class="ttdeci">pthread_t thread</div><div class="ttdef"><b>Definition:</b> <a href="_b_b_b_8h_source.html#l00040">BBB.h:40</a></div></div>
+<a href="_b_b_b_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright (C) Jelle Spijker - All Rights Reserved</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Unauthorized copying of this file, via any medium is strictly prohibited</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * and only allowed with the written consent of the author (Jelle Spijker)</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * This software is proprietary and confidential</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * Written by Jelle Spijker &lt;spijker.jelle@gmail.com&gt;, 2015</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="_b_b_b_8h.html#a3de26a5dbd2276c1486afbba5fc8de59">   16</a></span>&#160;<span class="preprocessor">#define SLOTS                                                                  \</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">  &quot;/sys/devices/bone_capemgr.9/slots&quot; </span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;sys/stat.h&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;pthread.h&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;unistd.h&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;sys/epoll.h&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;fcntl.h&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;regex&gt;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_g_p_i_o_read_exception_8h.html">GPIOReadException.h</a>&quot;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_failed_to_create_g_p_i_o_polling_thread_exception_8h.html">FailedToCreateGPIOPollingThreadException.h</a>&quot;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_value_out_of_bounds_exception_8h.html">ValueOutOfBoundsException.h</a>&quot;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_hardware.html">Hardware</a> {</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="namespace_hardware.html#a5ba2e4bdfa2bbd8b551b1d5b2a0c61fd">   37</a></span>&#160;<span class="keyword">typedef</span> int (*<a class="code" href="namespace_hardware.html#a5ba2e4bdfa2bbd8b551b1d5b2a0c61fd">CallbackType</a>)(</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    int); </div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="class_hardware_1_1_b_b_b.html">   40</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_hardware_1_1_b_b_b.html">BBB</a> {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="class_hardware_1_1_b_b_b.html#a353a2d7d4fbade337e5173b484b20b22">   42</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="class_hardware_1_1_b_b_b.html#a353a2d7d4fbade337e5173b484b20b22">debounceTime</a>; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <a class="code" href="class_hardware_1_1_b_b_b.html">BBB</a>();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  ~<a class="code" href="class_hardware_1_1_b_b_b.html">BBB</a>();</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="class_hardware_1_1_b_b_b.html#a0d9d8c56afb37955e0d0c6baf0f418df">   48</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="class_hardware_1_1_b_b_b.html#a0d9d8c56afb37955e0d0c6baf0f418df">threadRunning</a>;            </div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="class_hardware_1_1_b_b_b.html#a3ad3fe886705bfc242ef58dc5329166e">   49</a></span>&#160;  pthread_t <a class="code" href="class_hardware_1_1_b_b_b.html#a3ad3fe886705bfc242ef58dc5329166e">thread</a>;              </div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="class_hardware_1_1_b_b_b.html#a66d583952f3949a732ee15eea81e80e5">   50</a></span>&#160;  <a class="code" href="namespace_hardware.html#a5ba2e4bdfa2bbd8b551b1d5b2a0c61fd">CallbackType</a> <a class="code" href="class_hardware_1_1_b_b_b.html#a66d583952f3949a732ee15eea81e80e5">callbackFunction</a>; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keywordtype">bool</span> DirectoryExist(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;path);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="keywordtype">bool</span> CapeLoaded(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;shield);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="keywordtype">string</span> Read(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;path);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keywordtype">void</span> Write(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;path, <span class="keyword">const</span> <span class="keywordtype">string</span> &amp;value);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="class_hardware_1_1_b_b_b.html#ab2fc876590e3b9b482e3224ba617afba">   62</a></span>&#160;  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="keywordtype">string</span> <a class="code" href="class_hardware_1_1_b_b_b.html#ab2fc876590e3b9b482e3224ba617afba">NumberToString</a>(T Number) {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    ostringstream ss;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    ss &lt;&lt; Number;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">return</span> ss.str();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  };</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="class_hardware_1_1_b_b_b.html#a7484c095027594aa5bfde8b56b73be7b">   72</a></span>&#160;  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; T <a class="code" href="class_hardware_1_1_b_b_b.html#a7484c095027594aa5bfde8b56b73be7b">StringToNumber</a>(<span class="keywordtype">string</span> Text) {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    stringstream ss(Text);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    T result;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">return</span> ss &gt;&gt; result ? result : 0;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  };</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;};</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
+<div class="ttc" id="class_hardware_1_1_b_b_b_html_a3ad3fe886705bfc242ef58dc5329166e"><div class="ttname"><a href="class_hardware_1_1_b_b_b.html#a3ad3fe886705bfc242ef58dc5329166e">Hardware::BBB::thread</a></div><div class="ttdeci">pthread_t thread</div><div class="ttdef"><b>Definition:</b> <a href="_b_b_b_8h_source.html#l00049">BBB.h:49</a></div></div>
 <div class="ttc" id="namespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div></div>
-<div class="ttc" id="class_hardware_1_1_b_b_b_html_a66d583952f3949a732ee15eea81e80e5"><div class="ttname"><a href="class_hardware_1_1_b_b_b.html#a66d583952f3949a732ee15eea81e80e5">Hardware::BBB::callbackFunction</a></div><div class="ttdeci">CallbackType callbackFunction</div><div class="ttdef"><b>Definition:</b> <a href="_b_b_b_8h_source.html#l00041">BBB.h:41</a></div></div>
-<div class="ttc" id="class_hardware_1_1_b_b_b_html_a0d9d8c56afb37955e0d0c6baf0f418df"><div class="ttname"><a href="class_hardware_1_1_b_b_b.html#a0d9d8c56afb37955e0d0c6baf0f418df">Hardware::BBB::threadRunning</a></div><div class="ttdeci">bool threadRunning</div><div class="ttdef"><b>Definition:</b> <a href="_b_b_b_8h_source.html#l00039">BBB.h:39</a></div></div>
-<div class="ttc" id="class_hardware_1_1_b_b_b_html"><div class="ttname"><a href="class_hardware_1_1_b_b_b.html">Hardware::BBB</a></div><div class="ttdef"><b>Definition:</b> <a href="_b_b_b_8h_source.html#l00030">BBB.h:30</a></div></div>
-<div class="ttc" id="class_hardware_1_1_b_b_b_html_ab2fc876590e3b9b482e3224ba617afba"><div class="ttname"><a href="class_hardware_1_1_b_b_b.html#ab2fc876590e3b9b482e3224ba617afba">Hardware::BBB::NumberToString</a></div><div class="ttdeci">string NumberToString(T Number)</div><div class="ttdef"><b>Definition:</b> <a href="_b_b_b_8h_source.html#l00053">BBB.h:53</a></div></div>
-<div class="ttc" id="namespace_hardware_html_a5ba2e4bdfa2bbd8b551b1d5b2a0c61fd"><div class="ttname"><a href="namespace_hardware.html#a5ba2e4bdfa2bbd8b551b1d5b2a0c61fd">Hardware::CallbackType</a></div><div class="ttdeci">int(* CallbackType)(int)</div><div class="ttdef"><b>Definition:</b> <a href="_b_b_b_8h_source.html#l00028">BBB.h:28</a></div></div>
+<div class="ttc" id="class_hardware_1_1_b_b_b_html_a66d583952f3949a732ee15eea81e80e5"><div class="ttname"><a href="class_hardware_1_1_b_b_b.html#a66d583952f3949a732ee15eea81e80e5">Hardware::BBB::callbackFunction</a></div><div class="ttdeci">CallbackType callbackFunction</div><div class="ttdef"><b>Definition:</b> <a href="_b_b_b_8h_source.html#l00050">BBB.h:50</a></div></div>
+<div class="ttc" id="class_hardware_1_1_b_b_b_html_a0d9d8c56afb37955e0d0c6baf0f418df"><div class="ttname"><a href="class_hardware_1_1_b_b_b.html#a0d9d8c56afb37955e0d0c6baf0f418df">Hardware::BBB::threadRunning</a></div><div class="ttdeci">bool threadRunning</div><div class="ttdef"><b>Definition:</b> <a href="_b_b_b_8h_source.html#l00048">BBB.h:48</a></div></div>
+<div class="ttc" id="class_hardware_1_1_b_b_b_html"><div class="ttname"><a href="class_hardware_1_1_b_b_b.html">Hardware::BBB</a></div><div class="ttdef"><b>Definition:</b> <a href="_b_b_b_8h_source.html#l00040">BBB.h:40</a></div></div>
+<div class="ttc" id="class_hardware_1_1_b_b_b_html_ab2fc876590e3b9b482e3224ba617afba"><div class="ttname"><a href="class_hardware_1_1_b_b_b.html#ab2fc876590e3b9b482e3224ba617afba">Hardware::BBB::NumberToString</a></div><div class="ttdeci">string NumberToString(T Number)</div><div class="ttdef"><b>Definition:</b> <a href="_b_b_b_8h_source.html#l00062">BBB.h:62</a></div></div>
+<div class="ttc" id="namespace_hardware_html_a5ba2e4bdfa2bbd8b551b1d5b2a0c61fd"><div class="ttname"><a href="namespace_hardware.html#a5ba2e4bdfa2bbd8b551b1d5b2a0c61fd">Hardware::CallbackType</a></div><div class="ttdeci">int(* CallbackType)(int)</div><div class="ttdef"><b>Definition:</b> <a href="_b_b_b_8h_source.html#l00037">BBB.h:37</a></div></div>
 <div class="ttc" id="_failed_to_create_g_p_i_o_polling_thread_exception_8h_html"><div class="ttname"><a href="_failed_to_create_g_p_i_o_polling_thread_exception_8h.html">FailedToCreateGPIOPollingThreadException.h</a></div></div>
-<div class="ttc" id="class_hardware_1_1_b_b_b_html_a353a2d7d4fbade337e5173b484b20b22"><div class="ttname"><a href="class_hardware_1_1_b_b_b.html#a353a2d7d4fbade337e5173b484b20b22">Hardware::BBB::debounceTime</a></div><div class="ttdeci">int debounceTime</div><div class="ttdef"><b>Definition:</b> <a href="_b_b_b_8h_source.html#l00033">BBB.h:33</a></div></div>
-<div class="ttc" id="class_hardware_1_1_b_b_b_html_a7484c095027594aa5bfde8b56b73be7b"><div class="ttname"><a href="class_hardware_1_1_b_b_b.html#a7484c095027594aa5bfde8b56b73be7b">Hardware::BBB::StringToNumber</a></div><div class="ttdeci">T StringToNumber(string Text)</div><div class="ttdef"><b>Definition:</b> <a href="_b_b_b_8h_source.html#l00064">BBB.h:64</a></div></div>
+<div class="ttc" id="class_hardware_1_1_b_b_b_html_a353a2d7d4fbade337e5173b484b20b22"><div class="ttname"><a href="class_hardware_1_1_b_b_b.html#a353a2d7d4fbade337e5173b484b20b22">Hardware::BBB::debounceTime</a></div><div class="ttdeci">int debounceTime</div><div class="ttdef"><b>Definition:</b> <a href="_b_b_b_8h_source.html#l00042">BBB.h:42</a></div></div>
+<div class="ttc" id="class_hardware_1_1_b_b_b_html_a7484c095027594aa5bfde8b56b73be7b"><div class="ttname"><a href="class_hardware_1_1_b_b_b.html#a7484c095027594aa5bfde8b56b73be7b">Hardware::BBB::StringToNumber</a></div><div class="ttdeci">T StringToNumber(string Text)</div><div class="ttdef"><b>Definition:</b> <a href="_b_b_b_8h_source.html#l00072">BBB.h:72</a></div></div>
 <div class="ttc" id="_value_out_of_bounds_exception_8h_html"><div class="ttname"><a href="_value_out_of_bounds_exception_8h.html">ValueOutOfBoundsException.h</a></div></div>
 <div class="ttc" id="_g_p_i_o_read_exception_8h_html"><div class="ttname"><a href="_g_p_i_o_read_exception_8h.html">GPIOReadException.h</a></div></div>
-<div class="ttc" id="namespace_hardware_html"><div class="ttname"><a href="namespace_hardware.html">Hardware</a></div><div class="ttdef"><b>Definition:</b> <a href="_a_d_c_8cpp_source.html#l00003">ADC.cpp:3</a></div></div>
+<div class="ttc" id="namespace_hardware_html"><div class="ttname"><a href="namespace_hardware.html">Hardware</a></div><div class="ttdef"><b>Definition:</b> <a href="_a_d_c_8cpp_source.html#l00010">ADC.cpp:10</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_7d1931b727af368c927c89b2ad19148d.html">SoilHardware</a></li><li class="navelem"><a class="el" href="_b_b_b_8h.html">BBB.h</a></li>
-    <li class="footer">Generated on Sat Jun 6 2015 21:25:29 for Vision Soil Analyzer by
+    <li class="footer">Generated on Sun Jun 7 2015 21:06:33 for Vision Soil Analyzer by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

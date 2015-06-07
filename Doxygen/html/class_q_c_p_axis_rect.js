@@ -58,7 +58,7 @@ var class_q_c_p_axis_rect =
     [ "width", "class_q_c_p_axis_rect.html#a45bf5c17f4ca29131b7eb0db06efc259", null ],
     [ "QCustomPlot", "class_q_c_p_axis_rect.html#a1cdf9df76adcfae45261690aa0ca2198", null ],
     [ "mAADragBackup", "class_q_c_p_axis_rect.html#aa4a24f76360cfebe1bcf17a77fa7521b", null ],
-    [ "mAxes", "class_q_c_p_axis_rect.html#afe7a24d2a2bea98fc552fa826350ba81", null ],
+    [ "mAxes", "class_q_c_p_axis_rect.html#ac2cb3ba9a25b733883afc3bd25f7d82b", null ],
     [ "mBackgroundBrush", "class_q_c_p_axis_rect.html#a5748e1a37f63c428e38b0a7724b46259", null ],
     [ "mBackgroundPixmap", "class_q_c_p_axis_rect.html#a38fb1a15f43228a0c124553649303722", null ],
     [ "mBackgroundScaled", "class_q_c_p_axis_rect.html#a5ad835f0fae5d7cc5ada9e063641dbf1", null ],

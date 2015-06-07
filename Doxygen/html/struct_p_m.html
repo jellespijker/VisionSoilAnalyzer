@@ -35,7 +35,7 @@
    <div id="projectname">Vision Soil Analyzer
    &#160;<span id="projectnumber">1.0.0</span>
    </div>
-   <div id="projectbrief">The Soil Analyzer is a portable lab that can analyse soil samples and tells the user about it&#39;s optical properties. It looks at the texture and describe it as a Particle Size Distribution. This information is presented as a Cumulative Distribution Function (CDF). It also describes the structure of the soil sample and gives information on the sphericity and roundness / angularity. It does so by analysing the contour of particles, describing them as Fourier Descriptors and using a Neural Network to describe it&#39;s properties. Finally it gives the color properties in a histogram in the CIE La*b* colorspace, which show correlations with the fertility of the soil. and a histogram of the Redness Index, which gives has a correlation on the iron content.</div>
+   <div id="projectbrief">Soil analyzer using an USB microscope - for Linux PC and Beaglebone Black</div>
   </td>
  </tr>
  </tbody>
@@ -143,7 +143,7 @@ Public Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p>Definition at line <a class="el" href="_v_s_a___u_t_8cpp_source.html#l00102">102</a> of file <a class="el" href="_v_s_a___u_t_8cpp_source.html">VSA_UT.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_v_s_a___u_t_8cpp_source.html#l00110">110</a> of file <a class="el" href="_v_s_a___u_t_8cpp_source.html">VSA_UT.cpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="ae343317fc853de250cca312180eb303f"></a>
 <div class="memitem">
@@ -166,24 +166,24 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_v_s_a___u_t_8cpp_source.html#l00103">103</a> of file <a class="el" href="_v_s_a___u_t_8cpp_source.html">VSA_UT.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_v_s_a___u_t_8cpp_source.html#l00111">111</a> of file <a class="el" href="_v_s_a___u_t_8cpp_source.html">VSA_UT.cpp</a>.</p>
 
 <p>References <a class="el" href="_comparision_pictures_2_createtest_image_8m_source.html#l00006">i</a>.</p>
-<div class="fragment"><div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    {</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        BOOST_TEST_MESSAGE(<span class="stringliteral">&quot;Setup fixture&quot;</span>);</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <a class="code" href="struct_p_m.html#ae661c05678d510d3bc4a5ed7ddb4bac8">checker</a> = imread(<span class="stringliteral">&quot;../ComparisionPictures/checker.ppm&quot;</span>, 0);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        std::vector&lt;cv::Mat&gt; RGB;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keywordflow">for</span> (uint32_t <a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> = 0; <a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> &lt; 3; <a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a>++)</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        {</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            RGB.push_back(<a class="code" href="struct_p_m.html#ae661c05678d510d3bc4a5ed7ddb4bac8">checker</a>);</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        }</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        cv::Mat alpha(<a class="code" href="struct_p_m.html#ae661c05678d510d3bc4a5ed7ddb4bac8">checker</a>.rows, <a class="code" href="struct_p_m.html#ae661c05678d510d3bc4a5ed7ddb4bac8">checker</a>.cols, CV_8UC1);</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        alpha.setTo(255);</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        RGB.push_back(alpha);</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        merge(RGB, <a class="code" href="struct_p_m.html#a536041e64b62e33d2136365842f32d95">RGBchecker</a>);</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    }</div>
-<div class="ttc" id="struct_p_m_html_a536041e64b62e33d2136365842f32d95"><div class="ttname"><a href="struct_p_m.html#a536041e64b62e33d2136365842f32d95">PM::RGBchecker</a></div><div class="ttdeci">Mat RGBchecker</div><div class="ttdef"><b>Definition:</b> <a href="_v_s_a___u_t_8cpp_source.html#l00121">VSA_UT.cpp:121</a></div></div>
-<div class="ttc" id="struct_p_m_html_ae661c05678d510d3bc4a5ed7ddb4bac8"><div class="ttname"><a href="struct_p_m.html#ae661c05678d510d3bc4a5ed7ddb4bac8">PM::checker</a></div><div class="ttdeci">Mat checker</div><div class="ttdef"><b>Definition:</b> <a href="_v_s_a___u_t_8cpp_source.html#l00120">VSA_UT.cpp:120</a></div></div>
+<div class="fragment"><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    {</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        BOOST_TEST_MESSAGE(<span class="stringliteral">&quot;Setup fixture&quot;</span>);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <a class="code" href="struct_p_m.html#ae661c05678d510d3bc4a5ed7ddb4bac8">checker</a> = imread(<span class="stringliteral">&quot;../ComparisionPictures/checker.ppm&quot;</span>, 0);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        std::vector&lt;cv::Mat&gt; RGB;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <span class="keywordflow">for</span> (uint32_t <a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> = 0; <a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> &lt; 3; <a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a>++)</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            RGB.push_back(<a class="code" href="struct_p_m.html#ae661c05678d510d3bc4a5ed7ddb4bac8">checker</a>);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        }</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        cv::Mat alpha(<a class="code" href="struct_p_m.html#ae661c05678d510d3bc4a5ed7ddb4bac8">checker</a>.rows, <a class="code" href="struct_p_m.html#ae661c05678d510d3bc4a5ed7ddb4bac8">checker</a>.cols, CV_8UC1);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        alpha.setTo(255);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        RGB.push_back(alpha);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        merge(RGB, <a class="code" href="struct_p_m.html#a536041e64b62e33d2136365842f32d95">RGBchecker</a>);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    }</div>
+<div class="ttc" id="struct_p_m_html_a536041e64b62e33d2136365842f32d95"><div class="ttname"><a href="struct_p_m.html#a536041e64b62e33d2136365842f32d95">PM::RGBchecker</a></div><div class="ttdeci">Mat RGBchecker</div><div class="ttdef"><b>Definition:</b> <a href="_v_s_a___u_t_8cpp_source.html#l00129">VSA_UT.cpp:129</a></div></div>
+<div class="ttc" id="struct_p_m_html_ae661c05678d510d3bc4a5ed7ddb4bac8"><div class="ttname"><a href="struct_p_m.html#ae661c05678d510d3bc4a5ed7ddb4bac8">PM::checker</a></div><div class="ttdeci">Mat checker</div><div class="ttdef"><b>Definition:</b> <a href="_v_s_a___u_t_8cpp_source.html#l00128">VSA_UT.cpp:128</a></div></div>
 <div class="ttc" id="_comparision_pictures_2_createtest_image_8m_html_a6f6ccfcf58b31cb6412107d9d5281426"><div class="ttname"><a href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a></div><div class="ttdeci">for i</div><div class="ttdef"><b>Definition:</b> <a href="_comparision_pictures_2_createtest_image_8m_source.html#l00006">CreatetestImage.m:6</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -209,8 +209,8 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_v_s_a___u_t_8cpp_source.html#l00117">117</a> of file <a class="el" href="_v_s_a___u_t_8cpp_source.html">VSA_UT.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;{ BOOST_TEST_MESSAGE(<span class="stringliteral">&quot;teardown fixture&quot;</span>); }</div>
+<p>Definition at line <a class="el" href="_v_s_a___u_t_8cpp_source.html#l00125">125</a> of file <a class="el" href="_v_s_a___u_t_8cpp_source.html">VSA_UT.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;{ BOOST_TEST_MESSAGE(<span class="stringliteral">&quot;teardown fixture&quot;</span>); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -225,7 +225,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_v_s_a___u_t_8cpp_source.html#l00120">120</a> of file <a class="el" href="_v_s_a___u_t_8cpp_source.html">VSA_UT.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_v_s_a___u_t_8cpp_source.html#l00128">128</a> of file <a class="el" href="_v_s_a___u_t_8cpp_source.html">VSA_UT.cpp</a>.</p>
 
 </div>
 </div>
@@ -239,7 +239,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_v_s_a___u_t_8cpp_source.html#l00122">122</a> of file <a class="el" href="_v_s_a___u_t_8cpp_source.html">VSA_UT.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_v_s_a___u_t_8cpp_source.html#l00130">130</a> of file <a class="el" href="_v_s_a___u_t_8cpp_source.html">VSA_UT.cpp</a>.</p>
 
 </div>
 </div>
@@ -253,7 +253,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_v_s_a___u_t_8cpp_source.html#l00121">121</a> of file <a class="el" href="_v_s_a___u_t_8cpp_source.html">VSA_UT.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_v_s_a___u_t_8cpp_source.html#l00129">129</a> of file <a class="el" href="_v_s_a___u_t_8cpp_source.html">VSA_UT.cpp</a>.</p>
 
 </div>
 </div>
@@ -267,7 +267,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_v_s_a___u_t_8cpp_source.html#l00119">119</a> of file <a class="el" href="_v_s_a___u_t_8cpp_source.html">VSA_UT.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_v_s_a___u_t_8cpp_source.html#l00127">127</a> of file <a class="el" href="_v_s_a___u_t_8cpp_source.html">VSA_UT.cpp</a>.</p>
 
 </div>
 </div>
@@ -280,7 +280,7 @@ Public Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="struct_p_m.html">PM</a></li>
-    <li class="footer">Generated on Sat Jun 6 2015 21:25:31 for Vision Soil Analyzer by
+    <li class="footer">Generated on Sun Jun 7 2015 21:06:35 for Vision Soil Analyzer by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

@@ -88,7 +88,7 @@ double \hyperlink{class_q_c_p_bars_group_a0beccd41bc3841a4c5b284823bc7d2de}{get\
 \item 
 double \hyperlink{class_q_c_p_bars_group_a56471d7f548ca6141b7a5bf9629f7ece}{m\+Spacing}
 \item 
-Q\+List$<$ \hyperlink{class_q_c_p_bars}{Q\+C\+P\+Bars} $\ast$ $>$ \hyperlink{class_q_c_p_bars_group_affdb1e9233c277ff5a4c0a1121cf1fc0}{m\+Bars}
+Q\+List$<$ \hyperlink{class_q_c_p_bars}{Q\+C\+P\+Bars} $\ast$ $>$ \hyperlink{class_q_c_p_bars_group_aa5affa0639c13e05bda9d23f16dd1393}{m\+Bars}
 \end{DoxyCompactItemize}
 \subsection*{Friends}
 \begin{DoxyCompactItemize}
@@ -118,7 +118,7 @@ The image above is generated with the following code\+:
 \end{DoxyCodeInclude}
 
 
-Definition at line 2740 of file qcustomplot.\+h.
+Definition at line 3162 of file qcustomplot.\+h.
 
 
 
@@ -138,20 +138,23 @@ Defines the ways the spacing between bars in the group can be specified. Thus it
 \hypertarget{class_q_c_p_bars_group_a4c0521120a97e60bbca37677a37075b6ab53fa3efaf14867dd0f14d41d64e42ac}{}st\+Absolute\label{class_q_c_p_bars_group_a4c0521120a97e60bbca37677a37075b6ab53fa3efaf14867dd0f14d41d64e42ac}
 }]Bar spacing is in absolute pixels. \index{st\+Axis\+Rect\+Ratio@{st\+Axis\+Rect\+Ratio}!Q\+C\+P\+Bars\+Group@{Q\+C\+P\+Bars\+Group}}\index{Q\+C\+P\+Bars\+Group@{Q\+C\+P\+Bars\+Group}!st\+Axis\+Rect\+Ratio@{st\+Axis\+Rect\+Ratio}}\item[{\em 
 \hypertarget{class_q_c_p_bars_group_a4c0521120a97e60bbca37677a37075b6ae94b05c27bc985dcdd8b1e1b7f163d26}{}st\+Axis\+Rect\+Ratio\label{class_q_c_p_bars_group_a4c0521120a97e60bbca37677a37075b6ae94b05c27bc985dcdd8b1e1b7f163d26}
-}]Bar spacing is given by a fraction of the axis rect size. \index{st\+Plot\+Coords@{st\+Plot\+Coords}!Q\+C\+P\+Bars\+Group@{Q\+C\+P\+Bars\+Group}}\index{Q\+C\+P\+Bars\+Group@{Q\+C\+P\+Bars\+Group}!st\+Plot\+Coords@{st\+Plot\+Coords}}\item[{\em 
+}]Bar spacing is given by a fraction of the axis rect size \index{st\+Plot\+Coords@{st\+Plot\+Coords}!Q\+C\+P\+Bars\+Group@{Q\+C\+P\+Bars\+Group}}\index{Q\+C\+P\+Bars\+Group@{Q\+C\+P\+Bars\+Group}!st\+Plot\+Coords@{st\+Plot\+Coords}}\item[{\em 
 \hypertarget{class_q_c_p_bars_group_a4c0521120a97e60bbca37677a37075b6ad369cee6287e0a86e8c2b643a3168c54}{}st\+Plot\+Coords\label{class_q_c_p_bars_group_a4c0521120a97e60bbca37677a37075b6ad369cee6287e0a86e8c2b643a3168c54}
-}]Bar spacing is in key coordinates and thus scales with the key axis range. \end{description}
+}]Bar spacing is in key coordinates and thus scales with the key axis range \end{description}
 \end{Desc}
 
 
-Definition at line 2754 of file qcustomplot.\+h.
+Definition at line 3176 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-2754                    \{ \hyperlink{class_q_c_p_bars_group_a4c0521120a97e60bbca37677a37075b6ab53fa3efaf14867dd0f14d41d64e42ac}{stAbsolute}       
-2755                      ,\hyperlink{class_q_c_p_bars_group_a4c0521120a97e60bbca37677a37075b6ae94b05c27bc985dcdd8b1e1b7f163d26}{stAxisRectRatio} 
-2756                      ,\hyperlink{class_q_c_p_bars_group_a4c0521120a97e60bbca37677a37075b6ad369cee6287e0a86e8c2b643a3168c54}{stPlotCoords}    
-2757                  \};
+3176                    \{
+3177     \hyperlink{class_q_c_p_bars_group_a4c0521120a97e60bbca37677a37075b6ab53fa3efaf14867dd0f14d41d64e42ac}{stAbsolute} 
+3178     ,
+3179     \hyperlink{class_q_c_p_bars_group_a4c0521120a97e60bbca37677a37075b6ae94b05c27bc985dcdd8b1e1b7f163d26}{stAxisRectRatio} 
+3180     ,
+3182     \hyperlink{class_q_c_p_bars_group_a4c0521120a97e60bbca37677a37075b6ad369cee6287e0a86e8c2b643a3168c54}{stPlotCoords} 
+3183   \};
 \end{DoxyCode}
 
 
@@ -165,17 +168,13 @@ Definition at line 2754 of file qcustomplot.\+h.
 )}\label{class_q_c_p_bars_group_aa4e043b9a22c6c5ea0f93740aca063e1}
 Constructs a new bars group for the specified \hyperlink{class_q_custom_plot}{Q\+Custom\+Plot} instance. 
 
-Definition at line 18074 of file qcustomplot.\+cpp.
+Definition at line 20226 of file qcustomplot.\+cpp.
 
 
 \begin{DoxyCode}
-18074                                                   :
-18075   QObject(parentPlot),
-18076   \hyperlink{class_q_c_p_bars_group_a973d408cfbf88db95115aec71877f9e7}{mParentPlot}(parentPlot),
-18077   \hyperlink{class_q_c_p_bars_group_a6794ee1a9c81864d627bff6a4b2d64ec}{mSpacingType}(\hyperlink{class_q_c_p_bars_group_a4c0521120a97e60bbca37677a37075b6ab53fa3efaf14867dd0f14d41d64e42ac}{stAbsolute}),
-18078   \hyperlink{class_q_c_p_bars_group_a56471d7f548ca6141b7a5bf9629f7ece}{mSpacing}(4)
-18079 \{
-18080 \}
+20227     : QObject(parentPlot), \hyperlink{class_q_c_p_bars_group_a973d408cfbf88db95115aec71877f9e7}{mParentPlot}(parentPlot), \hyperlink{class_q_c_p_bars_group_a6794ee1a9c81864d627bff6a4b2d64ec}{mSpacingType}(
+      \hyperlink{class_q_c_p_bars_group_a4c0521120a97e60bbca37677a37075b6ab53fa3efaf14867dd0f14d41d64e42ac}{stAbsolute}),
+20228       \hyperlink{class_q_c_p_bars_group_a56471d7f548ca6141b7a5bf9629f7ece}{mSpacing}(4) \{\}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_bars_group_adb9475bcb6a5f18c8918e17d939d8dbd}{}\index{Q\+C\+P\+Bars\+Group@{Q\+C\+P\+Bars\+Group}!````~Q\+C\+P\+Bars\+Group@{$\sim$\+Q\+C\+P\+Bars\+Group}}
 \index{````~Q\+C\+P\+Bars\+Group@{$\sim$\+Q\+C\+P\+Bars\+Group}!Q\+C\+P\+Bars\+Group@{Q\+C\+P\+Bars\+Group}}
@@ -186,7 +185,7 @@ Definition at line 18074 of file qcustomplot.\+cpp.
 )}\label{class_q_c_p_bars_group_adb9475bcb6a5f18c8918e17d939d8dbd}
 
 
-Definition at line 18082 of file qcustomplot.\+cpp.
+Definition at line 20230 of file qcustomplot.\+cpp.
 
 
 
@@ -194,9 +193,7 @@ References clear().
 
 
 \begin{DoxyCode}
-18083 \{
-18084   \hyperlink{class_q_c_p_bars_group_a3ddf23928c6cd89530bd34ab7ba7b177}{clear}();
-18085 \}
+20230 \{ \hyperlink{class_q_c_p_bars_group_a3ddf23928c6cd89530bd34ab7ba7b177}{clear}(); \}
 \end{DoxyCode}
 
 
@@ -226,7 +223,7 @@ Adds the specified {\itshape bars} plottable to this group. Alternatively, you c
 \end{DoxySeeAlso}
 
 
-Definition at line 18145 of file qcustomplot.\+cpp.
+Definition at line 20289 of file qcustomplot.\+cpp.
 
 
 
@@ -234,19 +231,18 @@ References bars(), m\+Bars, and Q\+C\+P\+Bars\+::set\+Bars\+Group().
 
 
 \begin{DoxyCode}
-18146 \{
-18147   \textcolor{keywordflow}{if} (!bars)
-18148   \{
-18149     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"bars is 0"};
-18150     \textcolor{keywordflow}{return};
-18151   \}
-18152     
-18153   \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_bars_group_affdb1e9233c277ff5a4c0a1121cf1fc0}{mBars}.contains(bars))
-18154     bars->\hyperlink{class_q_c_p_bars_aedd1709061f0b307c47ddb45e172ef9a}{setBarsGroup}(\textcolor{keyword}{this});
-18155   \textcolor{keywordflow}{else}
-18156     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"bars plottable is already in this bars group:"} << \textcolor{keyword}{reinterpret\_cast<}quintptr\textcolor{keyword}{
-      >}(\hyperlink{class_q_c_p_bars_group_a7c72ed1f8cd962c93b8c42ab96cd91ec}{bars});
-18157 \}
+20289                                        \{
+20290   \textcolor{keywordflow}{if} (!bars) \{
+20291     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"bars is 0"};
+20292     \textcolor{keywordflow}{return};
+20293   \}
+20294 
+20295   \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_bars_group_aa5affa0639c13e05bda9d23f16dd1393}{mBars}.contains(bars))
+20296     bars->\hyperlink{class_q_c_p_bars_aedd1709061f0b307c47ddb45e172ef9a}{setBarsGroup}(\textcolor{keyword}{this});
+20297   \textcolor{keywordflow}{else}
+20298     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"bars plottable is already in this bars group:"}
+20299              << \textcolor{keyword}{reinterpret\_cast<}quintptr\textcolor{keyword}{>}(\hyperlink{class_q_c_p_bars_group_a7c72ed1f8cd962c93b8c42ab96cd91ec}{bars});
+20300 \}
 \end{DoxyCode}
 
 
@@ -273,7 +269,7 @@ bars(int index)
 \end{DoxySeeAlso}
 
 
-Definition at line 2770 of file qcustomplot.\+h.
+Definition at line 3197 of file qcustomplot.\+h.
 
 
 
@@ -281,7 +277,7 @@ Referenced by append(), clear(), key\+Pixel\+Offset(), and remove().
 
 
 \begin{DoxyCode}
-2770 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_bars_group_affdb1e9233c277ff5a4c0a1121cf1fc0}{mBars}; \}
+3197 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_bars_group_aa5affa0639c13e05bda9d23f16dd1393}{mBars}; \}
 \end{DoxyCode}
 
 
@@ -308,7 +304,7 @@ Returns the \hyperlink{class_q_c_p_bars}{Q\+C\+P\+Bars} instance with the specif
 \end{DoxySeeAlso}
 
 
-Definition at line 18116 of file qcustomplot.\+cpp.
+Definition at line 20261 of file qcustomplot.\+cpp.
 
 
 
@@ -316,16 +312,14 @@ References m\+Bars.
 
 
 \begin{DoxyCode}
-18117 \{
-18118   \textcolor{keywordflow}{if} (index >= 0 && index < \hyperlink{class_q_c_p_bars_group_affdb1e9233c277ff5a4c0a1121cf1fc0}{mBars}.size())
-18119   \{
-18120     \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_bars_group_affdb1e9233c277ff5a4c0a1121cf1fc0}{mBars}.at(index);
-18121   \} \textcolor{keywordflow}{else}
-18122   \{
-18123     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"index out of bounds:"} << index;
-18124     \textcolor{keywordflow}{return} 0;
-18125   \}
-18126 \}
+20261                                            \{
+20262   \textcolor{keywordflow}{if} (index >= 0 && index < \hyperlink{class_q_c_p_bars_group_aa5affa0639c13e05bda9d23f16dd1393}{mBars}.size()) \{
+20263     \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_bars_group_aa5affa0639c13e05bda9d23f16dd1393}{mBars}.at(index);
+20264   \} \textcolor{keywordflow}{else} \{
+20265     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"index out of bounds:"} << index;
+20266     \textcolor{keywordflow}{return} 0;
+20267   \}
+20268 \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_bars_group_a3ddf23928c6cd89530bd34ab7ba7b177}{}\index{Q\+C\+P\+Bars\+Group@{Q\+C\+P\+Bars\+Group}!clear@{clear}}
 \index{clear@{clear}!Q\+C\+P\+Bars\+Group@{Q\+C\+P\+Bars\+Group}}
@@ -341,7 +335,7 @@ Removes all \hyperlink{class_q_c_p_bars}{Q\+C\+P\+Bars} plottables from this gro
 \end{DoxySeeAlso}
 
 
-Definition at line 18133 of file qcustomplot.\+cpp.
+Definition at line 20275 of file qcustomplot.\+cpp.
 
 
 
@@ -353,11 +347,12 @@ Referenced by $\sim$\+Q\+C\+P\+Bars\+Group().
 
 
 \begin{DoxyCode}
-18134 \{
-18135   \textcolor{keywordflow}{foreach} (\hyperlink{class_q_c_p_bars}{QCPBars} *\hyperlink{class_q_c_p_bars_group_a7c72ed1f8cd962c93b8c42ab96cd91ec}{bars}, \hyperlink{class_q_c_p_bars_group_affdb1e9233c277ff5a4c0a1121cf1fc0}{mBars}) \textcolor{comment}{// since foreach takes a copy, removing bars in the loop
-       is okay}
-18136     bars->\hyperlink{class_q_c_p_bars_aedd1709061f0b307c47ddb45e172ef9a}{setBarsGroup}(0); \textcolor{comment}{// removes itself via removeBars}
-18137 \}
+20275                          \{
+20276   \textcolor{keywordflow}{foreach} (
+20277       \hyperlink{class_q_c_p_bars}{QCPBars} *\hyperlink{class_q_c_p_bars_group_a7c72ed1f8cd962c93b8c42ab96cd91ec}{bars},
+20278       \hyperlink{class_q_c_p_bars_group_aa5affa0639c13e05bda9d23f16dd1393}{mBars}) \textcolor{comment}{// since foreach takes a copy, removing bars in the loop is okay}
+20279     bars->\hyperlink{class_q_c_p_bars_aedd1709061f0b307c47ddb45e172ef9a}{setBarsGroup}(0); \textcolor{comment}{// removes itself via removeBars}
+20280 \}
 \end{DoxyCode}
 
 
@@ -390,11 +385,11 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_bars_group_adb4837894167e629e42e200db056fac3}
 Returns whether the specified {\itshape bars} plottable is part of this group. 
 
-Definition at line 2775 of file qcustomplot.\+h.
+Definition at line 3202 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-2775 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_bars_group_affdb1e9233c277ff5a4c0a1121cf1fc0}{mBars}.contains(bars); \}
+3202 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_bars_group_aa5affa0639c13e05bda9d23f16dd1393}{mBars}.contains(bars); \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_bars_group_a0beccd41bc3841a4c5b284823bc7d2de}{}\index{Q\+C\+P\+Bars\+Group@{Q\+C\+P\+Bars\+Group}!get\+Pixel\+Spacing@{get\+Pixel\+Spacing}}
 \index{get\+Pixel\+Spacing@{get\+Pixel\+Spacing}!Q\+C\+P\+Bars\+Group@{Q\+C\+P\+Bars\+Group}}
@@ -406,7 +401,7 @@ Definition at line 2775 of file qcustomplot.\+h.
 )\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_bars_group_a0beccd41bc3841a4c5b284823bc7d2de}
 
 
-Definition at line 18318 of file qcustomplot.\+cpp.
+Definition at line 20482 of file qcustomplot.\+cpp.
 
 
 
@@ -418,29 +413,25 @@ Referenced by key\+Pixel\+Offset().
 
 
 \begin{DoxyCode}
-18319 \{
-18320   \textcolor{keywordflow}{switch} (\hyperlink{class_q_c_p_bars_group_a6794ee1a9c81864d627bff6a4b2d64ec}{mSpacingType})
-18321   \{
-18322     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_bars_group_a4c0521120a97e60bbca37677a37075b6ab53fa3efaf14867dd0f14d41d64e42ac}{stAbsolute}:
-18323     \{
-18324       \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_bars_group_a56471d7f548ca6141b7a5bf9629f7ece}{mSpacing};
-18325     \}
-18326     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_bars_group_a4c0521120a97e60bbca37677a37075b6ae94b05c27bc985dcdd8b1e1b7f163d26}{stAxisRectRatio}:
-18327     \{
-18328       \textcolor{keywordflow}{if} (bars->\hyperlink{class_q_c_p_abstract_plottable_a72c7a09c22963f2c943f07112b311103}{keyAxis}()->\hyperlink{class_q_c_p_axis_a57483f2f60145ddc9e63f3af53959265}{orientation}() == Qt::Horizontal)
-18329         \textcolor{keywordflow}{return} bars->\hyperlink{class_q_c_p_abstract_plottable_a72c7a09c22963f2c943f07112b311103}{keyAxis}()->\hyperlink{class_q_c_p_axis_aada3102af43b029e3879bcbf2bddfabb}{axisRect}()->\hyperlink{class_q_c_p_axis_rect_a45bf5c17f4ca29131b7eb0db06efc259}{width}()*\hyperlink{class_q_c_p_bars_group_a56471d7f548ca6141b7a5bf9629f7ece}{mSpacing};
-18330       \textcolor{keywordflow}{else}
-18331         \textcolor{keywordflow}{return} bars->\hyperlink{class_q_c_p_abstract_plottable_a72c7a09c22963f2c943f07112b311103}{keyAxis}()->\hyperlink{class_q_c_p_axis_aada3102af43b029e3879bcbf2bddfabb}{axisRect}()->\hyperlink{class_q_c_p_axis_rect_a1c55c4f3bef40cf01b21820316c8469e}{height}()*
+20482                                                                          \{
+20483   \textcolor{keywordflow}{switch} (\hyperlink{class_q_c_p_bars_group_a6794ee1a9c81864d627bff6a4b2d64ec}{mSpacingType}) \{
+20484   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_bars_group_a4c0521120a97e60bbca37677a37075b6ab53fa3efaf14867dd0f14d41d64e42ac}{stAbsolute}: \{
+20485     \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_bars_group_a56471d7f548ca6141b7a5bf9629f7ece}{mSpacing};
+20486   \}
+20487   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_bars_group_a4c0521120a97e60bbca37677a37075b6ae94b05c27bc985dcdd8b1e1b7f163d26}{stAxisRectRatio}: \{
+20488     \textcolor{keywordflow}{if} (bars->\hyperlink{class_q_c_p_abstract_plottable_a72c7a09c22963f2c943f07112b311103}{keyAxis}()->\hyperlink{class_q_c_p_axis_a57483f2f60145ddc9e63f3af53959265}{orientation}() == Qt::Horizontal)
+20489       \textcolor{keywordflow}{return} bars->\hyperlink{class_q_c_p_abstract_plottable_a72c7a09c22963f2c943f07112b311103}{keyAxis}()->\hyperlink{class_q_c_p_axis_aada3102af43b029e3879bcbf2bddfabb}{axisRect}()->\hyperlink{class_q_c_p_axis_rect_a45bf5c17f4ca29131b7eb0db06efc259}{width}() * \hyperlink{class_q_c_p_bars_group_a56471d7f548ca6141b7a5bf9629f7ece}{mSpacing};
+20490     \textcolor{keywordflow}{else}
+20491       \textcolor{keywordflow}{return} bars->\hyperlink{class_q_c_p_abstract_plottable_a72c7a09c22963f2c943f07112b311103}{keyAxis}()->\hyperlink{class_q_c_p_axis_aada3102af43b029e3879bcbf2bddfabb}{axisRect}()->\hyperlink{class_q_c_p_axis_rect_a1c55c4f3bef40cf01b21820316c8469e}{height}() * 
       \hyperlink{class_q_c_p_bars_group_a56471d7f548ca6141b7a5bf9629f7ece}{mSpacing};
-18332     \}
-18333     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_bars_group_a4c0521120a97e60bbca37677a37075b6ad369cee6287e0a86e8c2b643a3168c54}{stPlotCoords}:
-18334     \{
-18335       \textcolor{keywordtype}{double} keyPixel = bars->\hyperlink{class_q_c_p_abstract_plottable_a72c7a09c22963f2c943f07112b311103}{keyAxis}()->\hyperlink{class_q_c_p_axis_a985ae693b842fb0422b4390fe36d299a}{coordToPixel}(keyCoord);
-18336       \textcolor{keywordflow}{return} bars->\hyperlink{class_q_c_p_abstract_plottable_a72c7a09c22963f2c943f07112b311103}{keyAxis}()->\hyperlink{class_q_c_p_axis_a985ae693b842fb0422b4390fe36d299a}{coordToPixel}(keyCoord+\hyperlink{class_q_c_p_bars_group_a56471d7f548ca6141b7a5bf9629f7ece}{mSpacing})-keyPixel;
-18337     \}
-18338   \}
-18339   \textcolor{keywordflow}{return} 0;
-18340 \}
+20492   \}
+20493   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_bars_group_a4c0521120a97e60bbca37677a37075b6ad369cee6287e0a86e8c2b643a3168c54}{stPlotCoords}: \{
+20494     \textcolor{keywordtype}{double} keyPixel = bars->\hyperlink{class_q_c_p_abstract_plottable_a72c7a09c22963f2c943f07112b311103}{keyAxis}()->\hyperlink{class_q_c_p_axis_a985ae693b842fb0422b4390fe36d299a}{coordToPixel}(keyCoord);
+20495     \textcolor{keywordflow}{return} bars->\hyperlink{class_q_c_p_abstract_plottable_a72c7a09c22963f2c943f07112b311103}{keyAxis}()->\hyperlink{class_q_c_p_axis_a985ae693b842fb0422b4390fe36d299a}{coordToPixel}(keyCoord + \hyperlink{class_q_c_p_bars_group_a56471d7f548ca6141b7a5bf9629f7ece}{mSpacing}) - keyPixel;
+20496   \}
+20497   \}
+20498   \textcolor{keywordflow}{return} 0;
+20499 \}
 \end{DoxyCode}
 
 
@@ -481,7 +472,7 @@ Inserts the specified {\itshape bars} plottable into this group at the specified
 \end{DoxySeeAlso}
 
 
-Definition at line 18168 of file qcustomplot.\+cpp.
+Definition at line 20313 of file qcustomplot.\+cpp.
 
 
 
@@ -489,19 +480,18 @@ References m\+Bars, and Q\+C\+P\+Bars\+::set\+Bars\+Group().
 
 
 \begin{DoxyCode}
-18169 \{
-18170   \textcolor{keywordflow}{if} (!bars)
-18171   \{
-18172     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"bars is 0"};
-18173     \textcolor{keywordflow}{return};
-18174   \}
-18175   
-18176   \textcolor{comment}{// first append to bars list normally:}
-18177   \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_bars_group_affdb1e9233c277ff5a4c0a1121cf1fc0}{mBars}.contains(bars))
-18178     bars->\hyperlink{class_q_c_p_bars_aedd1709061f0b307c47ddb45e172ef9a}{setBarsGroup}(\textcolor{keyword}{this});
-18179   \textcolor{comment}{// then move to according position:}
-18180   \hyperlink{class_q_c_p_bars_group_affdb1e9233c277ff5a4c0a1121cf1fc0}{mBars}.move(\hyperlink{class_q_c_p_bars_group_affdb1e9233c277ff5a4c0a1121cf1fc0}{mBars}.indexOf(bars), qBound(0, \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}, \hyperlink{class_q_c_p_bars_group_affdb1e9233c277ff5a4c0a1121cf1fc0}{mBars}.size()-1));
-18181 \}
+20313                                               \{
+20314   \textcolor{keywordflow}{if} (!bars) \{
+20315     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"bars is 0"};
+20316     \textcolor{keywordflow}{return};
+20317   \}
+20318 
+20319   \textcolor{comment}{// first append to bars list normally:}
+20320   \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_bars_group_aa5affa0639c13e05bda9d23f16dd1393}{mBars}.contains(bars))
+20321     bars->\hyperlink{class_q_c_p_bars_aedd1709061f0b307c47ddb45e172ef9a}{setBarsGroup}(\textcolor{keyword}{this});
+20322   \textcolor{comment}{// then move to according position:}
+20323   \hyperlink{class_q_c_p_bars_group_aa5affa0639c13e05bda9d23f16dd1393}{mBars}.move(\hyperlink{class_q_c_p_bars_group_aa5affa0639c13e05bda9d23f16dd1393}{mBars}.indexOf(bars), qBound(0, \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}, \hyperlink{class_q_c_p_bars_group_aa5affa0639c13e05bda9d23f16dd1393}{mBars}.size() - 1));
+20324 \}
 \end{DoxyCode}
 
 
@@ -528,11 +518,11 @@ Returns whether this bars group is empty.
 \end{DoxySeeAlso}
 
 
-Definition at line 2773 of file qcustomplot.\+h.
+Definition at line 3200 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-2773 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_bars_group_affdb1e9233c277ff5a4c0a1121cf1fc0}{mBars}.isEmpty(); \}
+3200 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_bars_group_aa5affa0639c13e05bda9d23f16dd1393}{mBars}.isEmpty(); \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_bars_group_a8e2ca6002e7bab49670144d048a2bcc9}{}\index{Q\+C\+P\+Bars\+Group@{Q\+C\+P\+Bars\+Group}!key\+Pixel\+Offset@{key\+Pixel\+Offset}}
 \index{key\+Pixel\+Offset@{key\+Pixel\+Offset}!Q\+C\+P\+Bars\+Group@{Q\+C\+P\+Bars\+Group}}
@@ -544,7 +534,7 @@ Definition at line 2773 of file qcustomplot.\+h.
 )\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_bars_group_a8e2ca6002e7bab49670144d048a2bcc9}
 
 
-Definition at line 18233 of file qcustomplot.\+cpp.
+Definition at line 20375 of file qcustomplot.\+cpp.
 
 
 
@@ -556,86 +546,98 @@ Referenced by Q\+C\+P\+Bars\+::get\+Bar\+Polygon(), and Q\+C\+P\+Bars\+::get\+Ke
 
 
 \begin{DoxyCode}
-18234 \{
-18235   \textcolor{comment}{// find list of all base bars in case some mBars are stacked:}
-18236   QList<const QCPBars*> baseBars;
-18237   \textcolor{keywordflow}{foreach} (\textcolor{keyword}{const} \hyperlink{class_q_c_p_bars}{QCPBars} *b, \hyperlink{class_q_c_p_bars_group_affdb1e9233c277ff5a4c0a1121cf1fc0}{mBars})
-18238   \{
-18239     \textcolor{keywordflow}{while} (b->\hyperlink{class_q_c_p_bars_a2c46a686cbad95f180ca3c2e88263961}{barBelow}())
-18240       b = b->\hyperlink{class_q_c_p_bars_a2c46a686cbad95f180ca3c2e88263961}{barBelow}();
-18241     \textcolor{keywordflow}{if} (!baseBars.contains(b))
-18242       baseBars.append(b);
-18243   \}
-18244   \textcolor{comment}{// find base bar this "bars" is stacked on:}
-18245   \textcolor{keyword}{const} \hyperlink{class_q_c_p_bars}{QCPBars} *thisBase = \hyperlink{class_q_c_p_bars_group_a7c72ed1f8cd962c93b8c42ab96cd91ec}{bars};
-18246   \textcolor{keywordflow}{while} (thisBase->\hyperlink{class_q_c_p_bars_a2c46a686cbad95f180ca3c2e88263961}{barBelow}())
-18247     thisBase = thisBase->\hyperlink{class_q_c_p_bars_a2c46a686cbad95f180ca3c2e88263961}{barBelow}();
-18248   
-18249   \textcolor{comment}{// determine key pixel offset of this base bars considering all other base bars in this barsgroup:}
-18250   \textcolor{keywordtype}{double} result = 0;
-18251   \textcolor{keywordtype}{int} index = baseBars.indexOf(thisBase);
-18252   \textcolor{keywordflow}{if} (index >= 0)
-18253   \{
-18254     \textcolor{keywordtype}{int} startIndex;
-18255     \textcolor{keywordtype}{double} lowerPixelWidth, upperPixelWidth;
-18256     \textcolor{keywordflow}{if} (baseBars.size() % 2 == 1 && index == (baseBars.size()-1)/2) \textcolor{comment}{// is center bar (int division on
-       purpose)}
-18257     \{
-18258       \textcolor{keywordflow}{return} result;
-18259     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (index < (baseBars.size()-1)/2.0) \textcolor{comment}{// bar is to the left of center}
-18260     \{
-18261       \textcolor{keywordflow}{if} (baseBars.size() % 2 == 0) \textcolor{comment}{// even number of bars}
-18262       \{
-18263         startIndex = baseBars.size()/2-1;
-18264         result -= \hyperlink{class_q_c_p_bars_group_a0beccd41bc3841a4c5b284823bc7d2de}{getPixelSpacing}(baseBars.at(startIndex), keyCoord)*0.5; \textcolor{comment}{// half of middle
-       spacing}
-18265       \} \textcolor{keywordflow}{else} \textcolor{comment}{// uneven number of bars}
-18266       \{
-18267         startIndex = (baseBars.size()-1)/2-1;
-18268         baseBars.at((baseBars.size()-1)/2)->getPixelWidth(keyCoord, lowerPixelWidth, upperPixelWidth);
-18269         result -= qAbs(upperPixelWidth-lowerPixelWidth)*0.5; \textcolor{comment}{// half of center bar}
-18270         result -= \hyperlink{class_q_c_p_bars_group_a0beccd41bc3841a4c5b284823bc7d2de}{getPixelSpacing}(baseBars.at((baseBars.size()-1)/2), keyCoord); \textcolor{comment}{// center
-       bar spacing}
-18271       \}
-18272       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=startIndex; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}>index; --\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) \textcolor{comment}{// add widths and spacings of bars in between center and our
-       bars}
-18273       \{
-18274         baseBars.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->getPixelWidth(keyCoord, lowerPixelWidth, upperPixelWidth);
-18275         result -= qAbs(upperPixelWidth-lowerPixelWidth);
-18276         result -= \hyperlink{class_q_c_p_bars_group_a0beccd41bc3841a4c5b284823bc7d2de}{getPixelSpacing}(baseBars.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}), keyCoord);
-18277       \}
-18278       \textcolor{comment}{// finally half of our bars width:}
-18279       baseBars.at(index)->getPixelWidth(keyCoord, lowerPixelWidth, upperPixelWidth);
-18280       result -= qAbs(upperPixelWidth-lowerPixelWidth)*0.5;
-18281     \} \textcolor{keywordflow}{else} \textcolor{comment}{// bar is to the right of center}
-18282     \{
-18283       \textcolor{keywordflow}{if} (baseBars.size() % 2 == 0) \textcolor{comment}{// even number of bars}
-18284       \{
-18285         startIndex = baseBars.size()/2;
-18286         result += \hyperlink{class_q_c_p_bars_group_a0beccd41bc3841a4c5b284823bc7d2de}{getPixelSpacing}(baseBars.at(startIndex), keyCoord)*0.5; \textcolor{comment}{// half of middle
-       spacing}
-18287       \} \textcolor{keywordflow}{else} \textcolor{comment}{// uneven number of bars}
-18288       \{
-18289         startIndex = (baseBars.size()-1)/2+1;
-18290         baseBars.at((baseBars.size()-1)/2)->getPixelWidth(keyCoord, lowerPixelWidth, upperPixelWidth);
-18291         result += qAbs(upperPixelWidth-lowerPixelWidth)*0.5; \textcolor{comment}{// half of center bar}
-18292         result += \hyperlink{class_q_c_p_bars_group_a0beccd41bc3841a4c5b284823bc7d2de}{getPixelSpacing}(baseBars.at((baseBars.size()-1)/2), keyCoord); \textcolor{comment}{// center
-       bar spacing}
-18293       \}
-18294       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=startIndex; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}<index; ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) \textcolor{comment}{// add widths and spacings of bars in between center and our
-       bars}
-18295       \{
-18296         baseBars.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->getPixelWidth(keyCoord, lowerPixelWidth, upperPixelWidth);
-18297         result += qAbs(upperPixelWidth-lowerPixelWidth);
-18298         result += \hyperlink{class_q_c_p_bars_group_a0beccd41bc3841a4c5b284823bc7d2de}{getPixelSpacing}(baseBars.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}), keyCoord);
-18299       \}
-18300       \textcolor{comment}{// finally half of our bars width:}
-18301       baseBars.at(index)->getPixelWidth(keyCoord, lowerPixelWidth, upperPixelWidth);
-18302       result += qAbs(upperPixelWidth-lowerPixelWidth)*0.5;
-18303     \}
-18304   \}
-18305   \textcolor{keywordflow}{return} result;
-18306 \}
+20375                                                                         \{
+20376   \textcolor{comment}{// find list of all base bars in case some mBars are stacked:}
+20377   QList<const QCPBars *> baseBars;
+20378   \textcolor{keywordflow}{foreach} (\textcolor{keyword}{const} \hyperlink{class_q_c_p_bars}{QCPBars} *b, \hyperlink{class_q_c_p_bars_group_aa5affa0639c13e05bda9d23f16dd1393}{mBars}) \{
+20379     \textcolor{keywordflow}{while} (b->\hyperlink{class_q_c_p_bars_a2c46a686cbad95f180ca3c2e88263961}{barBelow}())
+20380       b = b->\hyperlink{class_q_c_p_bars_a2c46a686cbad95f180ca3c2e88263961}{barBelow}();
+20381     \textcolor{keywordflow}{if} (!baseBars.contains(b))
+20382       baseBars.append(b);
+20383   \}
+20384   \textcolor{comment}{// find base bar this "bars" is stacked on:}
+20385   \textcolor{keyword}{const} \hyperlink{class_q_c_p_bars}{QCPBars} *thisBase = \hyperlink{class_q_c_p_bars_group_a7c72ed1f8cd962c93b8c42ab96cd91ec}{bars};
+20386   \textcolor{keywordflow}{while} (thisBase->\hyperlink{class_q_c_p_bars_a2c46a686cbad95f180ca3c2e88263961}{barBelow}())
+20387     thisBase = thisBase->\hyperlink{class_q_c_p_bars_a2c46a686cbad95f180ca3c2e88263961}{barBelow}();
+20388 
+20389   \textcolor{comment}{// determine key pixel offset of this base bars considering all other base}
+20390   \textcolor{comment}{// bars in this barsgroup:}
+20391   \textcolor{keywordtype}{double} result = 0;
+20392   \textcolor{keywordtype}{int} index = baseBars.indexOf(thisBase);
+20393   \textcolor{keywordflow}{if} (index >= 0) \{
+20394     \textcolor{keywordtype}{int} startIndex;
+20395     \textcolor{keywordtype}{double} lowerPixelWidth, upperPixelWidth;
+20396     \textcolor{keywordflow}{if} (baseBars.size() % 2 == 1 &&
+20397         index ==
+20398             (baseBars.size() - 1) /
+20399                 2) \textcolor{comment}{// is center bar (int division on purpose)}
+20400     \{
+20401       \textcolor{keywordflow}{return} result;
+20402     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (index <
+20403                (baseBars.size() - 1) / 2.0) \textcolor{comment}{// bar is to the left of center}
+20404     \{
+20405       \textcolor{keywordflow}{if} (baseBars.size() % 2 == 0) \textcolor{comment}{// even number of bars}
+20406       \{
+20407         startIndex = baseBars.size() / 2 - 1;
+20408         result -= \hyperlink{class_q_c_p_bars_group_a0beccd41bc3841a4c5b284823bc7d2de}{getPixelSpacing}(baseBars.at(startIndex), keyCoord) *
+20409                   0.5; \textcolor{comment}{// half of middle spacing}
+20410       \} \textcolor{keywordflow}{else}           \textcolor{comment}{// uneven number of bars}
+20411       \{
+20412         startIndex = (baseBars.size() - 1) / 2 - 1;
+20413         baseBars.at((baseBars.size() - 1) / 2)
+20414             ->getPixelWidth(keyCoord, lowerPixelWidth, upperPixelWidth);
+20415         result -=
+20416             qAbs(upperPixelWidth - lowerPixelWidth) * 0.5; \textcolor{comment}{// half of center bar}
+20417         result -= \hyperlink{class_q_c_p_bars_group_a0beccd41bc3841a4c5b284823bc7d2de}{getPixelSpacing}(baseBars.at((baseBars.size() - 1) / 2),
+20418                                   keyCoord); \textcolor{comment}{// center bar spacing}
+20419       \}
+20420       \textcolor{keywordflow}{for} (
+20421           \textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = startIndex; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} > index;
+20422           --\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) \textcolor{comment}{// add widths and spacings of bars in between center and our bars}
+20423       \{
+20424         baseBars.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
+20425             ->getPixelWidth(keyCoord, lowerPixelWidth, upperPixelWidth);
+20426         result -= qAbs(upperPixelWidth - lowerPixelWidth);
+20427         result -= \hyperlink{class_q_c_p_bars_group_a0beccd41bc3841a4c5b284823bc7d2de}{getPixelSpacing}(baseBars.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}), keyCoord);
+20428       \}
+20429       \textcolor{comment}{// finally half of our bars width:}
+20430       baseBars.at(index)
+20431           ->getPixelWidth(keyCoord, lowerPixelWidth, upperPixelWidth);
+20432       result -= qAbs(upperPixelWidth - lowerPixelWidth) * 0.5;
+20433     \} \textcolor{keywordflow}{else} \textcolor{comment}{// bar is to the right of center}
+20434     \{
+20435       \textcolor{keywordflow}{if} (baseBars.size() % 2 == 0) \textcolor{comment}{// even number of bars}
+20436       \{
+20437         startIndex = baseBars.size() / 2;
+20438         result += \hyperlink{class_q_c_p_bars_group_a0beccd41bc3841a4c5b284823bc7d2de}{getPixelSpacing}(baseBars.at(startIndex), keyCoord) *
+20439                   0.5; \textcolor{comment}{// half of middle spacing}
+20440       \} \textcolor{keywordflow}{else}           \textcolor{comment}{// uneven number of bars}
+20441       \{
+20442         startIndex = (baseBars.size() - 1) / 2 + 1;
+20443         baseBars.at((baseBars.size() - 1) / 2)
+20444             ->getPixelWidth(keyCoord, lowerPixelWidth, upperPixelWidth);
+20445         result +=
+20446             qAbs(upperPixelWidth - lowerPixelWidth) * 0.5; \textcolor{comment}{// half of center bar}
+20447         result += \hyperlink{class_q_c_p_bars_group_a0beccd41bc3841a4c5b284823bc7d2de}{getPixelSpacing}(baseBars.at((baseBars.size() - 1) / 2),
+20448                                   keyCoord); \textcolor{comment}{// center bar spacing}
+20449       \}
+20450       \textcolor{keywordflow}{for} (
+20451           \textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = startIndex; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < index;
+20452           ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) \textcolor{comment}{// add widths and spacings of bars in between center and our bars}
+20453       \{
+20454         baseBars.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
+20455             ->getPixelWidth(keyCoord, lowerPixelWidth, upperPixelWidth);
+20456         result += qAbs(upperPixelWidth - lowerPixelWidth);
+20457         result += \hyperlink{class_q_c_p_bars_group_a0beccd41bc3841a4c5b284823bc7d2de}{getPixelSpacing}(baseBars.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}), keyCoord);
+20458       \}
+20459       \textcolor{comment}{// finally half of our bars width:}
+20460       baseBars.at(index)
+20461           ->getPixelWidth(keyCoord, lowerPixelWidth, upperPixelWidth);
+20462       result += qAbs(upperPixelWidth - lowerPixelWidth) * 0.5;
+20463     \}
+20464   \}
+20465   \textcolor{keywordflow}{return} result;
+20466 \}
 \end{DoxyCode}
 
 
@@ -668,7 +670,7 @@ Here is the caller graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_bars_group_a7b00514f19ad58d0bb3fd5246a67fae2}
 
 
-Definition at line 18209 of file qcustomplot.\+cpp.
+Definition at line 20352 of file qcustomplot.\+cpp.
 
 
 
@@ -680,10 +682,10 @@ Referenced by Q\+C\+P\+Bars\+::set\+Bars\+Group().
 
 
 \begin{DoxyCode}
-18210 \{
-18211   \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_bars_group_affdb1e9233c277ff5a4c0a1121cf1fc0}{mBars}.contains(bars))
-18212     \hyperlink{class_q_c_p_bars_group_affdb1e9233c277ff5a4c0a1121cf1fc0}{mBars}.append(bars);
-18213 \}
+20352                                              \{
+20353   \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_bars_group_aa5affa0639c13e05bda9d23f16dd1393}{mBars}.contains(bars))
+20354     \hyperlink{class_q_c_p_bars_group_aa5affa0639c13e05bda9d23f16dd1393}{mBars}.append(bars);
+20355 \}
 \end{DoxyCode}
 
 
@@ -710,7 +712,7 @@ Removes the specified {\itshape bars} plottable from this group.
 \end{DoxySeeAlso}
 
 
-Definition at line 18188 of file qcustomplot.\+cpp.
+Definition at line 20331 of file qcustomplot.\+cpp.
 
 
 
@@ -718,19 +720,18 @@ References bars(), m\+Bars, and Q\+C\+P\+Bars\+::set\+Bars\+Group().
 
 
 \begin{DoxyCode}
-18189 \{
-18190   \textcolor{keywordflow}{if} (!bars)
-18191   \{
-18192     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"bars is 0"};
-18193     \textcolor{keywordflow}{return};
-18194   \}
-18195   
-18196   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_bars_group_affdb1e9233c277ff5a4c0a1121cf1fc0}{mBars}.contains(bars))
-18197     bars->\hyperlink{class_q_c_p_bars_aedd1709061f0b307c47ddb45e172ef9a}{setBarsGroup}(0);
-18198   \textcolor{keywordflow}{else}
-18199     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"bars plottable is not in this bars group:"} << \textcolor{keyword}{reinterpret\_cast<}quintptr\textcolor{keyword}{>}(
-      \hyperlink{class_q_c_p_bars_group_a7c72ed1f8cd962c93b8c42ab96cd91ec}{bars});
-18200 \}
+20331                                        \{
+20332   \textcolor{keywordflow}{if} (!bars) \{
+20333     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"bars is 0"};
+20334     \textcolor{keywordflow}{return};
+20335   \}
+20336 
+20337   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_bars_group_aa5affa0639c13e05bda9d23f16dd1393}{mBars}.contains(bars))
+20338     bars->\hyperlink{class_q_c_p_bars_aedd1709061f0b307c47ddb45e172ef9a}{setBarsGroup}(0);
+20339   \textcolor{keywordflow}{else}
+20340     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"bars plottable is not in this bars group:"}
+20341              << \textcolor{keyword}{reinterpret\_cast<}quintptr\textcolor{keyword}{>}(\hyperlink{class_q_c_p_bars_group_a7c72ed1f8cd962c93b8c42ab96cd91ec}{bars});
+20342 \}
 \end{DoxyCode}
 
 
@@ -757,7 +758,7 @@ Sets the spacing between adjacent bars. What the number passed as {\itshape spac
 \end{DoxySeeAlso}
 
 
-Definition at line 18105 of file qcustomplot.\+cpp.
+Definition at line 20252 of file qcustomplot.\+cpp.
 
 
 
@@ -765,9 +766,7 @@ References m\+Spacing, and spacing().
 
 
 \begin{DoxyCode}
-18106 \{
-18107   \hyperlink{class_q_c_p_bars_group_a56471d7f548ca6141b7a5bf9629f7ece}{mSpacing} = \hyperlink{class_q_c_p_bars_group_a730bffefcac6c97aaf60e6f64dd3bcd9}{spacing};
-18108 \}
+20252 \{ \hyperlink{class_q_c_p_bars_group_a56471d7f548ca6141b7a5bf9629f7ece}{mSpacing} = \hyperlink{class_q_c_p_bars_group_a730bffefcac6c97aaf60e6f64dd3bcd9}{spacing}; \}
 \end{DoxyCode}
 
 
@@ -796,7 +795,7 @@ The actual spacing can then be specified with \hyperlink{class_q_c_p_bars_group_
 \end{DoxySeeAlso}
 
 
-Definition at line 18094 of file qcustomplot.\+cpp.
+Definition at line 20240 of file qcustomplot.\+cpp.
 
 
 
@@ -804,9 +803,9 @@ References m\+Spacing\+Type, and spacing\+Type().
 
 
 \begin{DoxyCode}
-18095 \{
-18096   \hyperlink{class_q_c_p_bars_group_a6794ee1a9c81864d627bff6a4b2d64ec}{mSpacingType} = \hyperlink{class_q_c_p_bars_group_a1bb562f669d47bd7d3cdd2da1f7d8f00}{spacingType};
-18097 \}
+20240                                                          \{
+20241   \hyperlink{class_q_c_p_bars_group_a6794ee1a9c81864d627bff6a4b2d64ec}{mSpacingType} = \hyperlink{class_q_c_p_bars_group_a1bb562f669d47bd7d3cdd2da1f7d8f00}{spacingType};
+20242 \}
 \end{DoxyCode}
 
 
@@ -828,11 +827,11 @@ Here is the call graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_bars_group_af07364189c5717a158ec95b609687532}
 Returns the number of \hyperlink{class_q_c_p_bars}{Q\+C\+P\+Bars} plottables that are part of this group. 
 
-Definition at line 2772 of file qcustomplot.\+h.
+Definition at line 3199 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-2772 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_bars_group_affdb1e9233c277ff5a4c0a1121cf1fc0}{mBars}.size(); \}
+3199 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_bars_group_aa5affa0639c13e05bda9d23f16dd1393}{mBars}.size(); \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_bars_group_a730bffefcac6c97aaf60e6f64dd3bcd9}{}\index{Q\+C\+P\+Bars\+Group@{Q\+C\+P\+Bars\+Group}!spacing@{spacing}}
 \index{spacing@{spacing}!Q\+C\+P\+Bars\+Group@{Q\+C\+P\+Bars\+Group}}
@@ -843,7 +842,7 @@ Definition at line 2772 of file qcustomplot.\+h.
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_bars_group_a730bffefcac6c97aaf60e6f64dd3bcd9}
 
 
-Definition at line 2763 of file qcustomplot.\+h.
+Definition at line 3190 of file qcustomplot.\+h.
 
 
 
@@ -851,7 +850,7 @@ Referenced by set\+Spacing().
 
 
 \begin{DoxyCode}
-2763 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_bars_group_a56471d7f548ca6141b7a5bf9629f7ece}{mSpacing}; \}
+3190 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_bars_group_a56471d7f548ca6141b7a5bf9629f7ece}{mSpacing}; \}
 \end{DoxyCode}
 
 
@@ -873,7 +872,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_bars_group_a1bb562f669d47bd7d3cdd2da1f7d8f00}
 
 
-Definition at line 2762 of file qcustomplot.\+h.
+Definition at line 3189 of file qcustomplot.\+h.
 
 
 
@@ -881,7 +880,7 @@ Referenced by set\+Spacing\+Type().
 
 
 \begin{DoxyCode}
-2762 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_bars_group_a6794ee1a9c81864d627bff6a4b2d64ec}{mSpacingType}; \}
+3189 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_bars_group_a6794ee1a9c81864d627bff6a4b2d64ec}{mSpacingType}; \}
 \end{DoxyCode}
 
 
@@ -903,7 +902,7 @@ Here is the caller graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_bars_group_ac7073cdd7b1a40c6cb4b5f908145f8c4}
 
 
-Definition at line 18222 of file qcustomplot.\+cpp.
+Definition at line 20365 of file qcustomplot.\+cpp.
 
 
 
@@ -915,9 +914,7 @@ Referenced by Q\+C\+P\+Bars\+::set\+Bars\+Group().
 
 
 \begin{DoxyCode}
-18223 \{
-18224   \hyperlink{class_q_c_p_bars_group_affdb1e9233c277ff5a4c0a1121cf1fc0}{mBars}.removeOne(bars);
-18225 \}
+20365 \{ \hyperlink{class_q_c_p_bars_group_aa5affa0639c13e05bda9d23f16dd1393}{mBars}.removeOne(bars); \}
 \end{DoxyCode}
 
 
@@ -938,17 +935,17 @@ Here is the caller graph for this function\+:\nopagebreak
 \subsubsection[{Q\+C\+P\+Bars}]{\setlength{\rightskip}{0pt plus 5cm}friend class {\bf Q\+C\+P\+Bars}\hspace{0.3cm}{\ttfamily [friend]}}\label{class_q_c_p_bars_group_a721b87c7cdb8e83a90d77fc8a22e7195}
 
 
-Definition at line 2798 of file qcustomplot.\+h.
+Definition at line 3225 of file qcustomplot.\+h.
 
 
 
 \subsection{Member Data Documentation}
-\hypertarget{class_q_c_p_bars_group_affdb1e9233c277ff5a4c0a1121cf1fc0}{}\index{Q\+C\+P\+Bars\+Group@{Q\+C\+P\+Bars\+Group}!m\+Bars@{m\+Bars}}
+\hypertarget{class_q_c_p_bars_group_aa5affa0639c13e05bda9d23f16dd1393}{}\index{Q\+C\+P\+Bars\+Group@{Q\+C\+P\+Bars\+Group}!m\+Bars@{m\+Bars}}
 \index{m\+Bars@{m\+Bars}!Q\+C\+P\+Bars\+Group@{Q\+C\+P\+Bars\+Group}}
-\subsubsection[{m\+Bars}]{\setlength{\rightskip}{0pt plus 5cm}Q\+List$<${\bf Q\+C\+P\+Bars}$\ast$$>$ Q\+C\+P\+Bars\+Group\+::m\+Bars\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_bars_group_affdb1e9233c277ff5a4c0a1121cf1fc0}
+\subsubsection[{m\+Bars}]{\setlength{\rightskip}{0pt plus 5cm}Q\+List$<${\bf Q\+C\+P\+Bars} $\ast$$>$ Q\+C\+P\+Bars\+Group\+::m\+Bars\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_bars_group_aa5affa0639c13e05bda9d23f16dd1393}
 
 
-Definition at line 2785 of file qcustomplot.\+h.
+Definition at line 3212 of file qcustomplot.\+h.
 
 
 
@@ -959,14 +956,14 @@ Referenced by append(), bars(), clear(), insert(), key\+Pixel\+Offset(), registe
 \subsubsection[{m\+Parent\+Plot}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+Custom\+Plot}$\ast$ Q\+C\+P\+Bars\+Group\+::m\+Parent\+Plot\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_bars_group_a973d408cfbf88db95115aec71877f9e7}
 
 
-Definition at line 2782 of file qcustomplot.\+h.
+Definition at line 3209 of file qcustomplot.\+h.
 
 \hypertarget{class_q_c_p_bars_group_a56471d7f548ca6141b7a5bf9629f7ece}{}\index{Q\+C\+P\+Bars\+Group@{Q\+C\+P\+Bars\+Group}!m\+Spacing@{m\+Spacing}}
 \index{m\+Spacing@{m\+Spacing}!Q\+C\+P\+Bars\+Group@{Q\+C\+P\+Bars\+Group}}
 \subsubsection[{m\+Spacing}]{\setlength{\rightskip}{0pt plus 5cm}double Q\+C\+P\+Bars\+Group\+::m\+Spacing\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_bars_group_a56471d7f548ca6141b7a5bf9629f7ece}
 
 
-Definition at line 2784 of file qcustomplot.\+h.
+Definition at line 3211 of file qcustomplot.\+h.
 
 
 
@@ -977,7 +974,7 @@ Referenced by get\+Pixel\+Spacing(), and set\+Spacing().
 \subsubsection[{m\+Spacing\+Type}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Spacing\+Type} Q\+C\+P\+Bars\+Group\+::m\+Spacing\+Type\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_bars_group_a6794ee1a9c81864d627bff6a4b2d64ec}
 
 
-Definition at line 2783 of file qcustomplot.\+h.
+Definition at line 3210 of file qcustomplot.\+h.
 
 
 

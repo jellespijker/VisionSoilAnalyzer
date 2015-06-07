@@ -124,11 +124,13 @@ Q\+Pen \hyperlink{class_q_c_p_item_pixmap_a0949e5bb6a261fc4e9668e28e2effcfa}{m\+
 \subsection{Detailed Description}
 An arbitrary pixmap. 
 
- It has two positions, {\itshape top\+Left} and {\itshape bottom\+Right}, which define the rectangle the pixmap will be drawn in. Depending on the scale setting (\hyperlink{class_q_c_p_item_pixmap_ab4d44529a1c6c8d37d0ea7560e042777}{set\+Scaled}), the pixmap will be either scaled to fit the rectangle or be drawn aligned to the top\+Left position.
+ anchors, solid blue discs are positions."
+
+It has two positions, {\itshape top\+Left} and {\itshape bottom\+Right}, which define the rectangle the pixmap will be drawn in. Depending on the scale setting (\hyperlink{class_q_c_p_item_pixmap_ab4d44529a1c6c8d37d0ea7560e042777}{set\+Scaled}), the pixmap will be either scaled to fit the rectangle or be drawn aligned to the top\+Left position.
 
 If scaling is enabled and {\itshape top\+Left} is further to the bottom/right than {\itshape bottom\+Right} (as shown on the right side of the example image), the pixmap will be flipped in the respective orientations. 
 
-Definition at line 3570 of file qcustomplot.\+h.
+Definition at line 4056 of file qcustomplot.\+h.
 
 
 
@@ -155,12 +157,18 @@ Definition at line 3570 of file qcustomplot.\+h.
 \end{Desc}
 
 
-Definition at line 3612 of file qcustomplot.\+h.
+Definition at line 4102 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-3612 \{\hyperlink{class_q_c_p_item_pixmap_a0ea7f65edb7395e02de521915f221174a90e523ebaed7921ca90cf1b08944ece5}{aiTop}, \hyperlink{class_q_c_p_item_pixmap_a0ea7f65edb7395e02de521915f221174a33c256cdec46fa1587534fcd6e776799}{aiTopRight}, \hyperlink{class_q_c_p_item_pixmap_a0ea7f65edb7395e02de521915f221174ab22d91dae59c0d4a65416a0d677b2d05}{aiRight}, \hyperlink{class_q_c_p_item_pixmap_a0ea7f65edb7395e02de521915f221174a04b5e041b4dd0def2b60c5cfea2bc1a4}{aiBottom}, 
-      \hyperlink{class_q_c_p_item_pixmap_a0ea7f65edb7395e02de521915f221174ae14886b381136898e37e89af5046a1cc}{aiBottomLeft}, \hyperlink{class_q_c_p_item_pixmap_a0ea7f65edb7395e02de521915f221174a9efe71239b9409ebe1c2813a37807f2a}{aiLeft}\};
+4102                    \{
+4103     \hyperlink{class_q_c_p_item_pixmap_a0ea7f65edb7395e02de521915f221174a90e523ebaed7921ca90cf1b08944ece5}{aiTop},
+4104     \hyperlink{class_q_c_p_item_pixmap_a0ea7f65edb7395e02de521915f221174a33c256cdec46fa1587534fcd6e776799}{aiTopRight},
+4105     \hyperlink{class_q_c_p_item_pixmap_a0ea7f65edb7395e02de521915f221174ab22d91dae59c0d4a65416a0d677b2d05}{aiRight},
+4106     \hyperlink{class_q_c_p_item_pixmap_a0ea7f65edb7395e02de521915f221174a04b5e041b4dd0def2b60c5cfea2bc1a4}{aiBottom},
+4107     \hyperlink{class_q_c_p_item_pixmap_a0ea7f65edb7395e02de521915f221174ae14886b381136898e37e89af5046a1cc}{aiBottomLeft},
+4108     \hyperlink{class_q_c_p_item_pixmap_a0ea7f65edb7395e02de521915f221174a9efe71239b9409ebe1c2813a37807f2a}{aiLeft}
+4109   \};
 \end{DoxyCode}
 
 
@@ -176,7 +184,7 @@ Creates a rectangle item and sets default values.
 
 The constructed item can be added to the plot with \hyperlink{class_q_custom_plot_aa500620379262321685cb7a7674cbd2a}{Q\+Custom\+Plot\+::add\+Item}. 
 
-Definition at line 22720 of file qcustomplot.\+cpp.
+Definition at line 25239 of file qcustomplot.\+cpp.
 
 
 
@@ -184,26 +192,24 @@ References bottom\+Right, Q\+C\+P\+Item\+Position\+::set\+Coords(), set\+Pen(), 
 
 
 \begin{DoxyCode}
-22720                                                     :
-22721   \hyperlink{class_q_c_p_abstract_item_a9922507d8b4503a1fe1ed0b1030e23b6}{QCPAbstractItem}(parentPlot),
-22722   \hyperlink{class_q_c_p_item_pixmap_a43c281ef6ad46f3cf04f365289abe51a}{topLeft}(\hyperlink{class_q_c_p_abstract_item_a75036d39c4d4e2e1a7dd145fff915d32}{createPosition}(QLatin1String(\textcolor{stringliteral}{"topLeft"}))),
-22723   \hyperlink{class_q_c_p_item_pixmap_abcc38063f9502b876bf6615c45cc0994}{bottomRight}(\hyperlink{class_q_c_p_abstract_item_a75036d39c4d4e2e1a7dd145fff915d32}{createPosition}(QLatin1String(\textcolor{stringliteral}{"bottomRight"}))),
-22724   \hyperlink{class_q_c_p_item_pixmap_af7a156590b1d59ab21b453c430c56a7c}{top}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"top"}), \hyperlink{class_q_c_p_item_pixmap_a0ea7f65edb7395e02de521915f221174a90e523ebaed7921ca90cf1b08944ece5}{aiTop})),
-22725   \hyperlink{class_q_c_p_item_pixmap_a72eabd0010be41a4ec1b22aa983d2aa1}{topRight}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"topRight"}), 
+25240     : \hyperlink{class_q_c_p_abstract_item_a9922507d8b4503a1fe1ed0b1030e23b6}{QCPAbstractItem}(parentPlot),
+25241       \hyperlink{class_q_c_p_item_pixmap_a43c281ef6ad46f3cf04f365289abe51a}{topLeft}(\hyperlink{class_q_c_p_abstract_item_a75036d39c4d4e2e1a7dd145fff915d32}{createPosition}(QLatin1String(\textcolor{stringliteral}{"topLeft"}))),
+25242       \hyperlink{class_q_c_p_item_pixmap_abcc38063f9502b876bf6615c45cc0994}{bottomRight}(\hyperlink{class_q_c_p_abstract_item_a75036d39c4d4e2e1a7dd145fff915d32}{createPosition}(QLatin1String(\textcolor{stringliteral}{"bottomRight"}))),
+25243       \hyperlink{class_q_c_p_item_pixmap_af7a156590b1d59ab21b453c430c56a7c}{top}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"top"}), \hyperlink{class_q_c_p_item_pixmap_a0ea7f65edb7395e02de521915f221174a90e523ebaed7921ca90cf1b08944ece5}{aiTop})),
+25244       \hyperlink{class_q_c_p_item_pixmap_a72eabd0010be41a4ec1b22aa983d2aa1}{topRight}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"topRight"}), 
       \hyperlink{class_q_c_p_item_pixmap_a0ea7f65edb7395e02de521915f221174a33c256cdec46fa1587534fcd6e776799}{aiTopRight})),
-22726   \hyperlink{class_q_c_p_item_pixmap_ac9c0fd231f9e285765978a05d13f8280}{right}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"right"}), \hyperlink{class_q_c_p_item_pixmap_a0ea7f65edb7395e02de521915f221174ab22d91dae59c0d4a65416a0d677b2d05}{aiRight})),
-22727   \hyperlink{class_q_c_p_item_pixmap_ad7da77f530868e846151eff8a28fb948}{bottom}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"bottom"}), \hyperlink{class_q_c_p_item_pixmap_a0ea7f65edb7395e02de521915f221174a04b5e041b4dd0def2b60c5cfea2bc1a4}{aiBottom})),
-22728   \hyperlink{class_q_c_p_item_pixmap_a01943e569233382b3627e24636b0fff2}{bottomLeft}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"bottomLeft"}), 
+25245       \hyperlink{class_q_c_p_item_pixmap_ac9c0fd231f9e285765978a05d13f8280}{right}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"right"}), \hyperlink{class_q_c_p_item_pixmap_a0ea7f65edb7395e02de521915f221174ab22d91dae59c0d4a65416a0d677b2d05}{aiRight})),
+25246       \hyperlink{class_q_c_p_item_pixmap_ad7da77f530868e846151eff8a28fb948}{bottom}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"bottom"}), \hyperlink{class_q_c_p_item_pixmap_a0ea7f65edb7395e02de521915f221174a04b5e041b4dd0def2b60c5cfea2bc1a4}{aiBottom})),
+25247       \hyperlink{class_q_c_p_item_pixmap_a01943e569233382b3627e24636b0fff2}{bottomLeft}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"bottomLeft"}), 
       \hyperlink{class_q_c_p_item_pixmap_a0ea7f65edb7395e02de521915f221174ae14886b381136898e37e89af5046a1cc}{aiBottomLeft})),
-22729   \hyperlink{class_q_c_p_item_pixmap_a8c85fcb8cb8ce292859a0499d16539b1}{left}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"left"}), \hyperlink{class_q_c_p_item_pixmap_a0ea7f65edb7395e02de521915f221174a9efe71239b9409ebe1c2813a37807f2a}{aiLeft}))
-22730 \{
-22731   \hyperlink{class_q_c_p_item_pixmap_a43c281ef6ad46f3cf04f365289abe51a}{topLeft}->\hyperlink{class_q_c_p_item_position_aa988ba4e87ab684c9021017dcaba945f}{setCoords}(0, 1);
-22732   \hyperlink{class_q_c_p_item_pixmap_abcc38063f9502b876bf6615c45cc0994}{bottomRight}->\hyperlink{class_q_c_p_item_position_aa988ba4e87ab684c9021017dcaba945f}{setCoords}(1, 0);
-22733   
-22734   \hyperlink{class_q_c_p_item_pixmap_acdade1305edb4b5cae14f97fd132065f}{setPen}(Qt::NoPen);
-22735   \hyperlink{class_q_c_p_item_pixmap_afc5e479e88e53740176ce77cb70dd67a}{setSelectedPen}(QPen(Qt::blue));
-22736   \hyperlink{class_q_c_p_item_pixmap_ab4d44529a1c6c8d37d0ea7560e042777}{setScaled}(\textcolor{keyword}{false}, Qt::KeepAspectRatio, Qt::SmoothTransformation);
-22737 \}
+25248       \hyperlink{class_q_c_p_item_pixmap_a8c85fcb8cb8ce292859a0499d16539b1}{left}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"left"}), \hyperlink{class_q_c_p_item_pixmap_a0ea7f65edb7395e02de521915f221174a9efe71239b9409ebe1c2813a37807f2a}{aiLeft})) \{
+25249   \hyperlink{class_q_c_p_item_pixmap_a43c281ef6ad46f3cf04f365289abe51a}{topLeft}->\hyperlink{class_q_c_p_item_position_aa988ba4e87ab684c9021017dcaba945f}{setCoords}(0, 1);
+25250   \hyperlink{class_q_c_p_item_pixmap_abcc38063f9502b876bf6615c45cc0994}{bottomRight}->\hyperlink{class_q_c_p_item_position_aa988ba4e87ab684c9021017dcaba945f}{setCoords}(1, 0);
+25251 
+25252   \hyperlink{class_q_c_p_item_pixmap_acdade1305edb4b5cae14f97fd132065f}{setPen}(Qt::NoPen);
+25253   \hyperlink{class_q_c_p_item_pixmap_afc5e479e88e53740176ce77cb70dd67a}{setSelectedPen}(QPen(Qt::blue));
+25254   \hyperlink{class_q_c_p_item_pixmap_ab4d44529a1c6c8d37d0ea7560e042777}{setScaled}(\textcolor{keyword}{false}, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+25255 \}
 \end{DoxyCode}
 
 
@@ -225,12 +231,11 @@ Here is the call graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_q_c_p_item_pixmap_a810cac6a409d963cda6ea2d3152f1fd0}
 
 
-Definition at line 22739 of file qcustomplot.\+cpp.
+Definition at line 25257 of file qcustomplot.\+cpp.
 
 
 \begin{DoxyCode}
-22740 \{
-22741 \}
+25257 \{\}
 \end{DoxyCode}
 
 
@@ -248,7 +253,7 @@ Reimplemented from \hyperlink{class_q_c_p_abstract_item_a94bde62b8a2fc133666dcbb
 
 
 
-Definition at line 22818 of file qcustomplot.\+cpp.
+Definition at line 25326 of file qcustomplot.\+cpp.
 
 
 
@@ -256,30 +261,36 @@ References ai\+Bottom, ai\+Bottom\+Left, ai\+Left, ai\+Right, ai\+Top, ai\+Top\+
 
 
 \begin{DoxyCode}
-22819 \{
-22820   \textcolor{keywordtype}{bool} flipHorz;
-22821   \textcolor{keywordtype}{bool} flipVert;
-22822   QRect \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect} = \hyperlink{class_q_c_p_item_pixmap_a245ef0c626cab7096a810442f2f6a2d9}{getFinalRect}(&flipHorz, &flipVert);
-22823   \textcolor{comment}{// we actually want denormal rects (negative width/height) here, so restore}
-22824   \textcolor{comment}{// the flipped state:}
-22825   \textcolor{keywordflow}{if} (flipHorz)
-22826     rect.adjust(rect.width(), 0, -rect.width(), 0);
-22827   \textcolor{keywordflow}{if} (flipVert)
-22828     rect.adjust(0, rect.height(), 0, -rect.height());
-22829   
-22830   \textcolor{keywordflow}{switch} (anchorId)
-22831   \{
-22832     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_pixmap_a0ea7f65edb7395e02de521915f221174a90e523ebaed7921ca90cf1b08944ece5}{aiTop}:         \textcolor{keywordflow}{return} (rect.topLeft()+rect.topRight())*0.5;
-22833     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_pixmap_a0ea7f65edb7395e02de521915f221174a33c256cdec46fa1587534fcd6e776799}{aiTopRight}:    \textcolor{keywordflow}{return} rect.topRight();
-22834     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_pixmap_a0ea7f65edb7395e02de521915f221174ab22d91dae59c0d4a65416a0d677b2d05}{aiRight}:       \textcolor{keywordflow}{return} (rect.topRight()+rect.bottomRight())*0.5;
-22835     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_pixmap_a0ea7f65edb7395e02de521915f221174a04b5e041b4dd0def2b60c5cfea2bc1a4}{aiBottom}:      \textcolor{keywordflow}{return} (rect.bottomLeft()+rect.bottomRight())*0.5;
-22836     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_pixmap_a0ea7f65edb7395e02de521915f221174ae14886b381136898e37e89af5046a1cc}{aiBottomLeft}:  \textcolor{keywordflow}{return} rect.bottomLeft();
-22837     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_pixmap_a0ea7f65edb7395e02de521915f221174a9efe71239b9409ebe1c2813a37807f2a}{aiLeft}:        \textcolor{keywordflow}{return} (rect.topLeft()+rect.bottomLeft())*0.5;;
-22838   \}
-22839   
-22840   qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"invalid anchorId"} << anchorId;
-22841   \textcolor{keywordflow}{return} QPointF();
-22842 \}
+25326                                                           \{
+25327   \textcolor{keywordtype}{bool} flipHorz;
+25328   \textcolor{keywordtype}{bool} flipVert;
+25329   QRect \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect} = \hyperlink{class_q_c_p_item_pixmap_a245ef0c626cab7096a810442f2f6a2d9}{getFinalRect}(&flipHorz, &flipVert);
+25330   \textcolor{comment}{// we actually want denormal rects (negative width/height) here, so restore}
+25331   \textcolor{comment}{// the flipped state:}
+25332   \textcolor{keywordflow}{if} (flipHorz)
+25333     rect.adjust(rect.width(), 0, -rect.width(), 0);
+25334   \textcolor{keywordflow}{if} (flipVert)
+25335     rect.adjust(0, rect.height(), 0, -rect.height());
+25336 
+25337   \textcolor{keywordflow}{switch} (anchorId) \{
+25338   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_pixmap_a0ea7f65edb7395e02de521915f221174a90e523ebaed7921ca90cf1b08944ece5}{aiTop}:
+25339     \textcolor{keywordflow}{return} (rect.topLeft() + rect.topRight()) * 0.5;
+25340   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_pixmap_a0ea7f65edb7395e02de521915f221174a33c256cdec46fa1587534fcd6e776799}{aiTopRight}:
+25341     \textcolor{keywordflow}{return} rect.topRight();
+25342   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_pixmap_a0ea7f65edb7395e02de521915f221174ab22d91dae59c0d4a65416a0d677b2d05}{aiRight}:
+25343     \textcolor{keywordflow}{return} (rect.topRight() + rect.bottomRight()) * 0.5;
+25344   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_pixmap_a0ea7f65edb7395e02de521915f221174a04b5e041b4dd0def2b60c5cfea2bc1a4}{aiBottom}:
+25345     \textcolor{keywordflow}{return} (rect.bottomLeft() + rect.bottomRight()) * 0.5;
+25346   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_pixmap_a0ea7f65edb7395e02de521915f221174ae14886b381136898e37e89af5046a1cc}{aiBottomLeft}:
+25347     \textcolor{keywordflow}{return} rect.bottomLeft();
+25348   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_pixmap_a0ea7f65edb7395e02de521915f221174a9efe71239b9409ebe1c2813a37807f2a}{aiLeft}:
+25349     \textcolor{keywordflow}{return} (rect.topLeft() + rect.bottomLeft()) * 0.5;
+25350     ;
+25351   \}
+25352 
+25353   qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"invalid anchorId"} << anchorId;
+25354   \textcolor{keywordflow}{return} QPointF();
+25355 \}
 \end{DoxyCode}
 
 
@@ -301,7 +312,7 @@ Here is the call graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_item_pixmap_ac5b95c097169e107a61eebbb7c77523c}
 
 
-Definition at line 3588 of file qcustomplot.\+h.
+Definition at line 4073 of file qcustomplot.\+h.
 
 
 
@@ -309,7 +320,7 @@ Referenced by set\+Scaled().
 
 
 \begin{DoxyCode}
-3588 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_pixmap_a8dc6b6c1e106ac523efae22d5fe55bab}{mAspectRatioMode}; \}
+4073 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_pixmap_a8dc6b6c1e106ac523efae22d5fe55bab}{mAspectRatioMode}; \}
 \end{DoxyCode}
 
 
@@ -335,7 +346,7 @@ Implements \hyperlink{class_q_c_p_abstract_item_ad0dc056f650c3ca73414e6b4f01674e
 
 
 
-Definition at line 22796 of file qcustomplot.\+cpp.
+Definition at line 25307 of file qcustomplot.\+cpp.
 
 
 
@@ -343,26 +354,24 @@ References Q\+C\+P\+Abstract\+Item\+::clip\+Rect(), get\+Final\+Rect(), main\+Pe
 
 
 \begin{DoxyCode}
-22797 \{
-22798   \textcolor{keywordtype}{bool} flipHorz = \textcolor{keyword}{false};
-22799   \textcolor{keywordtype}{bool} flipVert = \textcolor{keyword}{false};
-22800   QRect \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect} = \hyperlink{class_q_c_p_item_pixmap_a245ef0c626cab7096a810442f2f6a2d9}{getFinalRect}(&flipHorz, &flipVert);
-22801   \textcolor{keywordtype}{double} clipPad = \hyperlink{class_q_c_p_item_pixmap_af21085516585c475dc9d839e7f377233}{mainPen}().style() == Qt::NoPen ? 0 : \hyperlink{class_q_c_p_item_pixmap_af21085516585c475dc9d839e7f377233}{mainPen}().widthF();
-22802   QRect boundingRect = rect.adjusted(-clipPad, -clipPad, clipPad, clipPad);
-22803   \textcolor{keywordflow}{if} (boundingRect.intersects(\hyperlink{class_q_c_p_abstract_item_a538e25ff8856534582f5b2b400a46405}{clipRect}()))
-22804   \{
-22805     \hyperlink{class_q_c_p_item_pixmap_a8bced3027b326b290726cd1979c7cfc6}{updateScaledPixmap}(rect, flipHorz, flipVert);
-22806     painter->drawPixmap(rect.topLeft(), \hyperlink{class_q_c_p_item_pixmap_a8fe670a529cd46a9b8afd9fc1203bc3f}{mScaled} ? \hyperlink{class_q_c_p_item_pixmap_a2ebc66e15b9f1264563d58f29ba1bc00}{mScaledPixmap} : 
+25307                                             \{
+25308   \textcolor{keywordtype}{bool} flipHorz = \textcolor{keyword}{false};
+25309   \textcolor{keywordtype}{bool} flipVert = \textcolor{keyword}{false};
+25310   QRect \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect} = \hyperlink{class_q_c_p_item_pixmap_a245ef0c626cab7096a810442f2f6a2d9}{getFinalRect}(&flipHorz, &flipVert);
+25311   \textcolor{keywordtype}{double} clipPad = \hyperlink{class_q_c_p_item_pixmap_af21085516585c475dc9d839e7f377233}{mainPen}().style() == Qt::NoPen ? 0 : \hyperlink{class_q_c_p_item_pixmap_af21085516585c475dc9d839e7f377233}{mainPen}().widthF();
+25312   QRect boundingRect = rect.adjusted(-clipPad, -clipPad, clipPad, clipPad);
+25313   \textcolor{keywordflow}{if} (boundingRect.intersects(\hyperlink{class_q_c_p_abstract_item_a538e25ff8856534582f5b2b400a46405}{clipRect}())) \{
+25314     \hyperlink{class_q_c_p_item_pixmap_a8bced3027b326b290726cd1979c7cfc6}{updateScaledPixmap}(rect, flipHorz, flipVert);
+25315     painter->drawPixmap(rect.topLeft(), \hyperlink{class_q_c_p_item_pixmap_a8fe670a529cd46a9b8afd9fc1203bc3f}{mScaled} ? \hyperlink{class_q_c_p_item_pixmap_a2ebc66e15b9f1264563d58f29ba1bc00}{mScaledPixmap} : 
       \hyperlink{class_q_c_p_item_pixmap_a1396cce7f26c7b8e9512906284380c4d}{mPixmap});
-22807     QPen \hyperlink{class_q_c_p_item_pixmap_ab2b821c80cfade589472e933b9c4361f}{pen} = \hyperlink{class_q_c_p_item_pixmap_af21085516585c475dc9d839e7f377233}{mainPen}();
-22808     \textcolor{keywordflow}{if} (pen.style() != Qt::NoPen)
-22809     \{
-22810       painter->\hyperlink{class_q_c_p_painter_af9c7a4cd1791403901f8c5b82a150195}{setPen}(pen);
-22811       painter->setBrush(Qt::NoBrush);
-22812       painter->drawRect(rect);
-22813     \}
-22814   \}
-22815 \}
+25316     QPen \hyperlink{class_q_c_p_item_pixmap_ab2b821c80cfade589472e933b9c4361f}{pen} = \hyperlink{class_q_c_p_item_pixmap_af21085516585c475dc9d839e7f377233}{mainPen}();
+25317     \textcolor{keywordflow}{if} (pen.style() != Qt::NoPen) \{
+25318       painter->\hyperlink{class_q_c_p_painter_af9c7a4cd1791403901f8c5b82a150195}{setPen}(pen);
+25319       painter->setBrush(Qt::NoBrush);
+25320       painter->drawRect(rect);
+25321     \}
+25322   \}
+25323 \}
 \end{DoxyCode}
 
 
@@ -385,7 +394,7 @@ Here is the call graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_pixmap_a245ef0c626cab7096a810442f2f6a2d9}
 
 
-Definition at line 22890 of file qcustomplot.\+cpp.
+Definition at line 25415 of file qcustomplot.\+cpp.
 
 
 
@@ -397,43 +406,39 @@ Referenced by anchor\+Pixel\+Point(), draw(), select\+Test(), and update\+Scaled
 
 
 \begin{DoxyCode}
-22891 \{
-22892   QRect result;
-22893   \textcolor{keywordtype}{bool} flipHorz = \textcolor{keyword}{false};
-22894   \textcolor{keywordtype}{bool} flipVert = \textcolor{keyword}{false};
-22895   QPoint p1 = \hyperlink{class_q_c_p_item_pixmap_a43c281ef6ad46f3cf04f365289abe51a}{topLeft}->\hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}().toPoint();
-22896   QPoint p2 = \hyperlink{class_q_c_p_item_pixmap_abcc38063f9502b876bf6615c45cc0994}{bottomRight}->\hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}().toPoint();
-22897   \textcolor{keywordflow}{if} (p1 == p2)
-22898     \textcolor{keywordflow}{return} QRect(p1, QSize(0, 0));
-22899   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_pixmap_a8fe670a529cd46a9b8afd9fc1203bc3f}{mScaled})
-22900   \{
-22901     QSize newSize = QSize(p2.x()-p1.x(), p2.y()-p1.y());
-22902     QPoint \hyperlink{class_q_c_p_item_pixmap_a43c281ef6ad46f3cf04f365289abe51a}{topLeft} = p1;
-22903     \textcolor{keywordflow}{if} (newSize.width() < 0)
-22904     \{
-22905       flipHorz = \textcolor{keyword}{true};
-22906       newSize.rwidth() *= -1;
-22907       topLeft.setX(p2.x());
-22908     \}
-22909     \textcolor{keywordflow}{if} (newSize.height() < 0)
-22910     \{
-22911       flipVert = \textcolor{keyword}{true};
-22912       newSize.rheight() *= -1;
-22913       topLeft.setY(p2.y());
-22914     \}
-22915     QSize scaledSize = \hyperlink{class_q_c_p_item_pixmap_a1396cce7f26c7b8e9512906284380c4d}{mPixmap}.size();
-22916     scaledSize.scale(newSize, \hyperlink{class_q_c_p_item_pixmap_a8dc6b6c1e106ac523efae22d5fe55bab}{mAspectRatioMode});
-22917     result = QRect(topLeft, scaledSize);
-22918   \} \textcolor{keywordflow}{else}
-22919   \{
-22920     result = QRect(p1, \hyperlink{class_q_c_p_item_pixmap_a1396cce7f26c7b8e9512906284380c4d}{mPixmap}.size());
-22921   \}
-22922   \textcolor{keywordflow}{if} (flippedHorz)
-22923     *flippedHorz = flipHorz;
-22924   \textcolor{keywordflow}{if} (flippedVert)
-22925     *flippedVert = flipVert;
-22926   \textcolor{keywordflow}{return} result;
-22927 \}
+25415                                                                             \{
+25416   QRect result;
+25417   \textcolor{keywordtype}{bool} flipHorz = \textcolor{keyword}{false};
+25418   \textcolor{keywordtype}{bool} flipVert = \textcolor{keyword}{false};
+25419   QPoint p1 = \hyperlink{class_q_c_p_item_pixmap_a43c281ef6ad46f3cf04f365289abe51a}{topLeft}->\hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}().toPoint();
+25420   QPoint p2 = \hyperlink{class_q_c_p_item_pixmap_abcc38063f9502b876bf6615c45cc0994}{bottomRight}->\hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}().toPoint();
+25421   \textcolor{keywordflow}{if} (p1 == p2)
+25422     \textcolor{keywordflow}{return} QRect(p1, QSize(0, 0));
+25423   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_pixmap_a8fe670a529cd46a9b8afd9fc1203bc3f}{mScaled}) \{
+25424     QSize newSize = QSize(p2.x() - p1.x(), p2.y() - p1.y());
+25425     QPoint \hyperlink{class_q_c_p_item_pixmap_a43c281ef6ad46f3cf04f365289abe51a}{topLeft} = p1;
+25426     \textcolor{keywordflow}{if} (newSize.width() < 0) \{
+25427       flipHorz = \textcolor{keyword}{true};
+25428       newSize.rwidth() *= -1;
+25429       topLeft.setX(p2.x());
+25430     \}
+25431     \textcolor{keywordflow}{if} (newSize.height() < 0) \{
+25432       flipVert = \textcolor{keyword}{true};
+25433       newSize.rheight() *= -1;
+25434       topLeft.setY(p2.y());
+25435     \}
+25436     QSize scaledSize = \hyperlink{class_q_c_p_item_pixmap_a1396cce7f26c7b8e9512906284380c4d}{mPixmap}.size();
+25437     scaledSize.scale(newSize, \hyperlink{class_q_c_p_item_pixmap_a8dc6b6c1e106ac523efae22d5fe55bab}{mAspectRatioMode});
+25438     result = QRect(topLeft, scaledSize);
+25439   \} \textcolor{keywordflow}{else} \{
+25440     result = QRect(p1, \hyperlink{class_q_c_p_item_pixmap_a1396cce7f26c7b8e9512906284380c4d}{mPixmap}.size());
+25441   \}
+25442   \textcolor{keywordflow}{if} (flippedHorz)
+25443     *flippedHorz = flipHorz;
+25444   \textcolor{keywordflow}{if} (flippedVert)
+25445     *flippedVert = flipVert;
+25446   \textcolor{keywordflow}{return} result;
+25447 \}
 \end{DoxyCode}
 
 
@@ -466,7 +471,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_pixmap_af21085516585c475dc9d839e7f377233}
 
 
-Definition at line 22934 of file qcustomplot.\+cpp.
+Definition at line 25455 of file qcustomplot.\+cpp.
 
 
 
@@ -478,9 +483,7 @@ Referenced by draw().
 
 
 \begin{DoxyCode}
-22935 \{
-22936   \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_abstract_item_a4bdb3457dad1d268c0f78a44152b9645}{mSelected} ? \hyperlink{class_q_c_p_item_pixmap_a0949e5bb6a261fc4e9668e28e2effcfa}{mSelectedPen} : \hyperlink{class_q_c_p_item_pixmap_acfee1124eb51a1887aaf8de10777c7a1}{mPen};
-22937 \}
+25455 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_abstract_item_a4bdb3457dad1d268c0f78a44152b9645}{mSelected} ? \hyperlink{class_q_c_p_item_pixmap_a0949e5bb6a261fc4e9668e28e2effcfa}{mSelectedPen} : \hyperlink{class_q_c_p_item_pixmap_acfee1124eb51a1887aaf8de10777c7a1}{mPen}; \}
 \end{DoxyCode}
 
 
@@ -502,7 +505,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_item_pixmap_ab2b821c80cfade589472e933b9c4361f}
 
 
-Definition at line 3590 of file qcustomplot.\+h.
+Definition at line 4077 of file qcustomplot.\+h.
 
 
 
@@ -510,7 +513,7 @@ Referenced by draw(), set\+Pen(), and set\+Selected\+Pen().
 
 
 \begin{DoxyCode}
-3590 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_pixmap_acfee1124eb51a1887aaf8de10777c7a1}{mPen}; \}
+4077 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_pixmap_acfee1124eb51a1887aaf8de10777c7a1}{mPen}; \}
 \end{DoxyCode}
 
 
@@ -532,7 +535,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_item_pixmap_a73dea89e0eb45127a2705e2c7991b8d8}
 
 
-Definition at line 3586 of file qcustomplot.\+h.
+Definition at line 4071 of file qcustomplot.\+h.
 
 
 
@@ -540,7 +543,7 @@ Referenced by set\+Pixmap().
 
 
 \begin{DoxyCode}
-3586 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_pixmap_a1396cce7f26c7b8e9512906284380c4d}{mPixmap}; \}
+4071 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_pixmap_a1396cce7f26c7b8e9512906284380c4d}{mPixmap}; \}
 \end{DoxyCode}
 
 
@@ -562,7 +565,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_item_pixmap_a54026b89dff3c60376c2360f01b6fb83}
 
 
-Definition at line 3587 of file qcustomplot.\+h.
+Definition at line 4072 of file qcustomplot.\+h.
 
 
 
@@ -570,7 +573,7 @@ Referenced by set\+Scaled().
 
 
 \begin{DoxyCode}
-3587 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_pixmap_a8fe670a529cd46a9b8afd9fc1203bc3f}{mScaled}; \}
+4072 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_pixmap_a8fe670a529cd46a9b8afd9fc1203bc3f}{mScaled}; \}
 \end{DoxyCode}
 
 
@@ -592,11 +595,11 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_item_pixmap_af8e839d7c7b84e214608feda3caec2bc}
 
 
-Definition at line 3591 of file qcustomplot.\+h.
+Definition at line 4078 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-3591 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_pixmap_a0949e5bb6a261fc4e9668e28e2effcfa}{mSelectedPen}; \}
+4078 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_pixmap_a0949e5bb6a261fc4e9668e28e2effcfa}{mSelectedPen}; \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_item_pixmap_a9f8436aa141fa0fb504191c882c2f4d9}{}\index{Q\+C\+P\+Item\+Pixmap@{Q\+C\+P\+Item\+Pixmap}!select\+Test@{select\+Test}}
 \index{select\+Test@{select\+Test}!Q\+C\+P\+Item\+Pixmap@{Q\+C\+P\+Item\+Pixmap}}
@@ -630,7 +633,7 @@ Implements \hyperlink{class_q_c_p_abstract_item_a96d522d10ffc0413b9a366c6f7f0476
 
 
 
-Definition at line 22786 of file qcustomplot.\+cpp.
+Definition at line 25297 of file qcustomplot.\+cpp.
 
 
 
@@ -638,13 +641,13 @@ References get\+Final\+Rect(), Q\+C\+P\+Abstract\+Item\+::m\+Selectable, and Q\+
 
 
 \begin{DoxyCode}
-22787 \{
-22788   Q\_UNUSED(details)
-22789   if (onlySelectable && !\hyperlink{class_q_c_p_abstract_item_ad81eb35c8726a0f458db9df9732e0e41}{mSelectable})
-22790     return -1;
-22791   
-22792   return \hyperlink{class_q_c_p_abstract_item_a4c0e14c4e92df91174cb7183fb363069}{rectSelectTest}(\hyperlink{class_q_c_p_item_pixmap_a245ef0c626cab7096a810442f2f6a2d9}{getFinalRect}(), pos, true);
-22793 \}
+25298                                                           \{
+25299   Q\_UNUSED(details)
+25300   if (onlySelectable && !\hyperlink{class_q_c_p_abstract_item_ad81eb35c8726a0f458db9df9732e0e41}{mSelectable})
+25301     return -1;
+25302 
+25303   return \hyperlink{class_q_c_p_abstract_item_a4c0e14c4e92df91174cb7183fb363069}{rectSelectTest}(\hyperlink{class_q_c_p_item_pixmap_a245ef0c626cab7096a810442f2f6a2d9}{getFinalRect}(), pos, true);
+25304 \}
 \end{DoxyCode}
 
 
@@ -671,7 +674,7 @@ Sets the pen that will be used to draw a border around the pixmap.
 \end{DoxySeeAlso}
 
 
-Definition at line 22770 of file qcustomplot.\+cpp.
+Definition at line 25286 of file qcustomplot.\+cpp.
 
 
 
@@ -683,9 +686,7 @@ Referenced by Q\+C\+P\+Item\+Pixmap().
 
 
 \begin{DoxyCode}
-22771 \{
-22772   \hyperlink{class_q_c_p_item_pixmap_acfee1124eb51a1887aaf8de10777c7a1}{mPen} = \hyperlink{class_q_c_p_item_pixmap_ab2b821c80cfade589472e933b9c4361f}{pen};
-22773 \}
+25286 \{ \hyperlink{class_q_c_p_item_pixmap_acfee1124eb51a1887aaf8de10777c7a1}{mPen} = \hyperlink{class_q_c_p_item_pixmap_ab2b821c80cfade589472e933b9c4361f}{pen}; \}
 \end{DoxyCode}
 
 
@@ -718,7 +719,7 @@ Here is the caller graph for this function\+:\nopagebreak
 )}\label{class_q_c_p_item_pixmap_a726b69ea4025edf48f9b29b6450548a7}
 Sets the pixmap that will be displayed. 
 
-Definition at line 22746 of file qcustomplot.\+cpp.
+Definition at line 25262 of file qcustomplot.\+cpp.
 
 
 
@@ -726,11 +727,11 @@ References m\+Pixmap, and pixmap().
 
 
 \begin{DoxyCode}
-22747 \{
-22748   \hyperlink{class_q_c_p_item_pixmap_a1396cce7f26c7b8e9512906284380c4d}{mPixmap} = \hyperlink{class_q_c_p_item_pixmap_a73dea89e0eb45127a2705e2c7991b8d8}{pixmap};
-22749   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_pixmap_a1396cce7f26c7b8e9512906284380c4d}{mPixmap}.isNull())
-22750     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"pixmap is null"};
-22751 \}
+25262                                                    \{
+25263   \hyperlink{class_q_c_p_item_pixmap_a1396cce7f26c7b8e9512906284380c4d}{mPixmap} = \hyperlink{class_q_c_p_item_pixmap_a73dea89e0eb45127a2705e2c7991b8d8}{pixmap};
+25264   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_pixmap_a1396cce7f26c7b8e9512906284380c4d}{mPixmap}.isNull())
+25265     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"pixmap is null"};
+25266 \}
 \end{DoxyCode}
 
 
@@ -754,7 +755,7 @@ Here is the call graph for this function\+:\nopagebreak
 )}\label{class_q_c_p_item_pixmap_ab4d44529a1c6c8d37d0ea7560e042777}
 Sets whether the pixmap will be scaled to fit the rectangle defined by the {\itshape top\+Left} and {\itshape bottom\+Right} positions. 
 
-Definition at line 22757 of file qcustomplot.\+cpp.
+Definition at line 25273 of file qcustomplot.\+cpp.
 
 
 
@@ -766,12 +767,12 @@ Referenced by Q\+C\+P\+Item\+Pixmap().
 
 
 \begin{DoxyCode}
-22758 \{
-22759   \hyperlink{class_q_c_p_item_pixmap_a8fe670a529cd46a9b8afd9fc1203bc3f}{mScaled} = \hyperlink{class_q_c_p_item_pixmap_a54026b89dff3c60376c2360f01b6fb83}{scaled};
-22760   \hyperlink{class_q_c_p_item_pixmap_a8dc6b6c1e106ac523efae22d5fe55bab}{mAspectRatioMode} = \hyperlink{class_q_c_p_item_pixmap_ac5b95c097169e107a61eebbb7c77523c}{aspectRatioMode};
-22761   \hyperlink{class_q_c_p_item_pixmap_ac9ecad3b9842363754e32eda2cf821bd}{mTransformationMode} = \hyperlink{class_q_c_p_item_pixmap_a1d4751a7b9588354fc8e726d891153f7}{transformationMode};
-22762   \hyperlink{class_q_c_p_item_pixmap_a8bced3027b326b290726cd1979c7cfc6}{updateScaledPixmap}();
-22763 \}
+25274                                                                        \{
+25275   \hyperlink{class_q_c_p_item_pixmap_a8fe670a529cd46a9b8afd9fc1203bc3f}{mScaled} = \hyperlink{class_q_c_p_item_pixmap_a54026b89dff3c60376c2360f01b6fb83}{scaled};
+25276   \hyperlink{class_q_c_p_item_pixmap_a8dc6b6c1e106ac523efae22d5fe55bab}{mAspectRatioMode} = \hyperlink{class_q_c_p_item_pixmap_ac5b95c097169e107a61eebbb7c77523c}{aspectRatioMode};
+25277   \hyperlink{class_q_c_p_item_pixmap_ac9ecad3b9842363754e32eda2cf821bd}{mTransformationMode} = \hyperlink{class_q_c_p_item_pixmap_a1d4751a7b9588354fc8e726d891153f7}{transformationMode};
+25278   \hyperlink{class_q_c_p_item_pixmap_a8bced3027b326b290726cd1979c7cfc6}{updateScaledPixmap}();
+25279 \}
 \end{DoxyCode}
 
 
@@ -809,7 +810,7 @@ Sets the pen that will be used to draw a border around the pixmap when selected
 \end{DoxySeeAlso}
 
 
-Definition at line 22780 of file qcustomplot.\+cpp.
+Definition at line 25294 of file qcustomplot.\+cpp.
 
 
 
@@ -821,9 +822,7 @@ Referenced by Q\+C\+P\+Item\+Pixmap().
 
 
 \begin{DoxyCode}
-22781 \{
-22782   \hyperlink{class_q_c_p_item_pixmap_a0949e5bb6a261fc4e9668e28e2effcfa}{mSelectedPen} = \hyperlink{class_q_c_p_item_pixmap_ab2b821c80cfade589472e933b9c4361f}{pen};
-22783 \}
+25294 \{ \hyperlink{class_q_c_p_item_pixmap_a0949e5bb6a261fc4e9668e28e2effcfa}{mSelectedPen} = \hyperlink{class_q_c_p_item_pixmap_ab2b821c80cfade589472e933b9c4361f}{pen}; \}
 \end{DoxyCode}
 
 
@@ -856,7 +855,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_item_pixmap_a1d4751a7b9588354fc8e726d891153f7}
 
 
-Definition at line 3589 of file qcustomplot.\+h.
+Definition at line 4074 of file qcustomplot.\+h.
 
 
 
@@ -864,7 +863,9 @@ Referenced by set\+Scaled().
 
 
 \begin{DoxyCode}
-3589 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_pixmap_ac9ecad3b9842363754e32eda2cf821bd}{mTransformationMode}; \}
+4074                                                   \{
+4075     \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_pixmap_ac9ecad3b9842363754e32eda2cf821bd}{mTransformationMode};
+4076   \}
 \end{DoxyCode}
 
 
@@ -888,7 +889,7 @@ Here is the caller graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_pixmap_a8bced3027b326b290726cd1979c7cfc6}
 
 
-Definition at line 22857 of file qcustomplot.\+cpp.
+Definition at line 25375 of file qcustomplot.\+cpp.
 
 
 
@@ -900,25 +901,24 @@ Referenced by draw(), and set\+Scaled().
 
 
 \begin{DoxyCode}
-22858 \{
-22859   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_pixmap_a1396cce7f26c7b8e9512906284380c4d}{mPixmap}.isNull())
-22860     \textcolor{keywordflow}{return};
-22861   
-22862   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_pixmap_a8fe670a529cd46a9b8afd9fc1203bc3f}{mScaled})
-22863   \{
-22864     \textcolor{keywordflow}{if} (finalRect.isNull())
-22865       finalRect = \hyperlink{class_q_c_p_item_pixmap_a245ef0c626cab7096a810442f2f6a2d9}{getFinalRect}(&flipHorz, &flipVert);
-22866     \textcolor{keywordflow}{if} (finalRect.size() != \hyperlink{class_q_c_p_item_pixmap_a2ebc66e15b9f1264563d58f29ba1bc00}{mScaledPixmap}.size())
-22867     \{
-22868       \hyperlink{class_q_c_p_item_pixmap_a2ebc66e15b9f1264563d58f29ba1bc00}{mScaledPixmap} = \hyperlink{class_q_c_p_item_pixmap_a1396cce7f26c7b8e9512906284380c4d}{mPixmap}.scaled(finalRect.size(), 
-      \hyperlink{class_q_c_p_item_pixmap_a8dc6b6c1e106ac523efae22d5fe55bab}{mAspectRatioMode}, \hyperlink{class_q_c_p_item_pixmap_ac9ecad3b9842363754e32eda2cf821bd}{mTransformationMode});
-22869       \textcolor{keywordflow}{if} (flipHorz || flipVert)
-22870         \hyperlink{class_q_c_p_item_pixmap_a2ebc66e15b9f1264563d58f29ba1bc00}{mScaledPixmap} = QPixmap::fromImage(\hyperlink{class_q_c_p_item_pixmap_a2ebc66e15b9f1264563d58f29ba1bc00}{mScaledPixmap}.toImage().mirrored(
-      flipHorz, flipVert));
-22871     \}
-22872   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_item_pixmap_a2ebc66e15b9f1264563d58f29ba1bc00}{mScaledPixmap}.isNull())
-22873     \hyperlink{class_q_c_p_item_pixmap_a2ebc66e15b9f1264563d58f29ba1bc00}{mScaledPixmap} = QPixmap();
-22874 \}
+25376                                                       \{
+25377   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_pixmap_a1396cce7f26c7b8e9512906284380c4d}{mPixmap}.isNull())
+25378     \textcolor{keywordflow}{return};
+25379 
+25380   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_pixmap_a8fe670a529cd46a9b8afd9fc1203bc3f}{mScaled}) \{
+25381     \textcolor{keywordflow}{if} (finalRect.isNull())
+25382       finalRect = \hyperlink{class_q_c_p_item_pixmap_a245ef0c626cab7096a810442f2f6a2d9}{getFinalRect}(&flipHorz, &flipVert);
+25383     \textcolor{keywordflow}{if} (finalRect.size() != \hyperlink{class_q_c_p_item_pixmap_a2ebc66e15b9f1264563d58f29ba1bc00}{mScaledPixmap}.size()) \{
+25384       \hyperlink{class_q_c_p_item_pixmap_a2ebc66e15b9f1264563d58f29ba1bc00}{mScaledPixmap} = \hyperlink{class_q_c_p_item_pixmap_a1396cce7f26c7b8e9512906284380c4d}{mPixmap}.scaled(finalRect.size(), 
+      \hyperlink{class_q_c_p_item_pixmap_a8dc6b6c1e106ac523efae22d5fe55bab}{mAspectRatioMode},
+25385                                      \hyperlink{class_q_c_p_item_pixmap_ac9ecad3b9842363754e32eda2cf821bd}{mTransformationMode});
+25386       \textcolor{keywordflow}{if} (flipHorz || flipVert)
+25387         \hyperlink{class_q_c_p_item_pixmap_a2ebc66e15b9f1264563d58f29ba1bc00}{mScaledPixmap} = QPixmap::fromImage(
+25388             \hyperlink{class_q_c_p_item_pixmap_a2ebc66e15b9f1264563d58f29ba1bc00}{mScaledPixmap}.toImage().mirrored(flipHorz, flipVert));
+25389     \}
+25390   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_item_pixmap_a2ebc66e15b9f1264563d58f29ba1bc00}{mScaledPixmap}.isNull())
+25391     \hyperlink{class_q_c_p_item_pixmap_a2ebc66e15b9f1264563d58f29ba1bc00}{mScaledPixmap} = QPixmap();
+25392 \}
 \end{DoxyCode}
 
 
@@ -950,21 +950,21 @@ Here is the caller graph for this function\+:\nopagebreak
 \subsubsection[{bottom}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Item\+Anchor}$\ast$ const Q\+C\+P\+Item\+Pixmap\+::bottom}\label{class_q_c_p_item_pixmap_ad7da77f530868e846151eff8a28fb948}
 
 
-Definition at line 3607 of file qcustomplot.\+h.
+Definition at line 4097 of file qcustomplot.\+h.
 
 \hypertarget{class_q_c_p_item_pixmap_a01943e569233382b3627e24636b0fff2}{}\index{Q\+C\+P\+Item\+Pixmap@{Q\+C\+P\+Item\+Pixmap}!bottom\+Left@{bottom\+Left}}
 \index{bottom\+Left@{bottom\+Left}!Q\+C\+P\+Item\+Pixmap@{Q\+C\+P\+Item\+Pixmap}}
 \subsubsection[{bottom\+Left}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Item\+Anchor}$\ast$ const Q\+C\+P\+Item\+Pixmap\+::bottom\+Left}\label{class_q_c_p_item_pixmap_a01943e569233382b3627e24636b0fff2}
 
 
-Definition at line 3608 of file qcustomplot.\+h.
+Definition at line 4098 of file qcustomplot.\+h.
 
 \hypertarget{class_q_c_p_item_pixmap_abcc38063f9502b876bf6615c45cc0994}{}\index{Q\+C\+P\+Item\+Pixmap@{Q\+C\+P\+Item\+Pixmap}!bottom\+Right@{bottom\+Right}}
 \index{bottom\+Right@{bottom\+Right}!Q\+C\+P\+Item\+Pixmap@{Q\+C\+P\+Item\+Pixmap}}
 \subsubsection[{bottom\+Right}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Item\+Position}$\ast$ const Q\+C\+P\+Item\+Pixmap\+::bottom\+Right}\label{class_q_c_p_item_pixmap_abcc38063f9502b876bf6615c45cc0994}
 
 
-Definition at line 3603 of file qcustomplot.\+h.
+Definition at line 4093 of file qcustomplot.\+h.
 
 
 
@@ -975,14 +975,14 @@ Referenced by get\+Final\+Rect(), and Q\+C\+P\+Item\+Pixmap().
 \subsubsection[{left}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Item\+Anchor}$\ast$ const Q\+C\+P\+Item\+Pixmap\+::left}\label{class_q_c_p_item_pixmap_a8c85fcb8cb8ce292859a0499d16539b1}
 
 
-Definition at line 3609 of file qcustomplot.\+h.
+Definition at line 4099 of file qcustomplot.\+h.
 
 \hypertarget{class_q_c_p_item_pixmap_a8dc6b6c1e106ac523efae22d5fe55bab}{}\index{Q\+C\+P\+Item\+Pixmap@{Q\+C\+P\+Item\+Pixmap}!m\+Aspect\+Ratio\+Mode@{m\+Aspect\+Ratio\+Mode}}
 \index{m\+Aspect\+Ratio\+Mode@{m\+Aspect\+Ratio\+Mode}!Q\+C\+P\+Item\+Pixmap@{Q\+C\+P\+Item\+Pixmap}}
 \subsubsection[{m\+Aspect\+Ratio\+Mode}]{\setlength{\rightskip}{0pt plus 5cm}Qt\+::\+Aspect\+Ratio\+Mode Q\+C\+P\+Item\+Pixmap\+::m\+Aspect\+Ratio\+Mode\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_pixmap_a8dc6b6c1e106ac523efae22d5fe55bab}
 
 
-Definition at line 3618 of file qcustomplot.\+h.
+Definition at line 4115 of file qcustomplot.\+h.
 
 
 
@@ -993,7 +993,7 @@ Referenced by get\+Final\+Rect(), set\+Scaled(), and update\+Scaled\+Pixmap().
 \subsubsection[{m\+Pen}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Pen Q\+C\+P\+Item\+Pixmap\+::m\+Pen\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_pixmap_acfee1124eb51a1887aaf8de10777c7a1}
 
 
-Definition at line 3620 of file qcustomplot.\+h.
+Definition at line 4117 of file qcustomplot.\+h.
 
 
 
@@ -1004,7 +1004,7 @@ Referenced by main\+Pen(), and set\+Pen().
 \subsubsection[{m\+Pixmap}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Pixmap Q\+C\+P\+Item\+Pixmap\+::m\+Pixmap\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_pixmap_a1396cce7f26c7b8e9512906284380c4d}
 
 
-Definition at line 3615 of file qcustomplot.\+h.
+Definition at line 4112 of file qcustomplot.\+h.
 
 
 
@@ -1015,7 +1015,7 @@ Referenced by draw(), get\+Final\+Rect(), set\+Pixmap(), and update\+Scaled\+Pix
 \subsubsection[{m\+Scaled}]{\setlength{\rightskip}{0pt plus 5cm}bool Q\+C\+P\+Item\+Pixmap\+::m\+Scaled\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_pixmap_a8fe670a529cd46a9b8afd9fc1203bc3f}
 
 
-Definition at line 3617 of file qcustomplot.\+h.
+Definition at line 4114 of file qcustomplot.\+h.
 
 
 
@@ -1026,7 +1026,7 @@ Referenced by draw(), get\+Final\+Rect(), set\+Scaled(), and update\+Scaled\+Pix
 \subsubsection[{m\+Scaled\+Pixmap}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Pixmap Q\+C\+P\+Item\+Pixmap\+::m\+Scaled\+Pixmap\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_pixmap_a2ebc66e15b9f1264563d58f29ba1bc00}
 
 
-Definition at line 3616 of file qcustomplot.\+h.
+Definition at line 4113 of file qcustomplot.\+h.
 
 
 
@@ -1037,7 +1037,7 @@ Referenced by draw(), and update\+Scaled\+Pixmap().
 \subsubsection[{m\+Selected\+Pen}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Pen Q\+C\+P\+Item\+Pixmap\+::m\+Selected\+Pen\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_pixmap_a0949e5bb6a261fc4e9668e28e2effcfa}
 
 
-Definition at line 3620 of file qcustomplot.\+h.
+Definition at line 4117 of file qcustomplot.\+h.
 
 
 
@@ -1048,7 +1048,7 @@ Referenced by main\+Pen(), and set\+Selected\+Pen().
 \subsubsection[{m\+Transformation\+Mode}]{\setlength{\rightskip}{0pt plus 5cm}Qt\+::\+Transformation\+Mode Q\+C\+P\+Item\+Pixmap\+::m\+Transformation\+Mode\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_pixmap_ac9ecad3b9842363754e32eda2cf821bd}
 
 
-Definition at line 3619 of file qcustomplot.\+h.
+Definition at line 4116 of file qcustomplot.\+h.
 
 
 
@@ -1059,21 +1059,21 @@ Referenced by set\+Scaled(), and update\+Scaled\+Pixmap().
 \subsubsection[{right}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Item\+Anchor}$\ast$ const Q\+C\+P\+Item\+Pixmap\+::right}\label{class_q_c_p_item_pixmap_ac9c0fd231f9e285765978a05d13f8280}
 
 
-Definition at line 3606 of file qcustomplot.\+h.
+Definition at line 4096 of file qcustomplot.\+h.
 
 \hypertarget{class_q_c_p_item_pixmap_af7a156590b1d59ab21b453c430c56a7c}{}\index{Q\+C\+P\+Item\+Pixmap@{Q\+C\+P\+Item\+Pixmap}!top@{top}}
 \index{top@{top}!Q\+C\+P\+Item\+Pixmap@{Q\+C\+P\+Item\+Pixmap}}
 \subsubsection[{top}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Item\+Anchor}$\ast$ const Q\+C\+P\+Item\+Pixmap\+::top}\label{class_q_c_p_item_pixmap_af7a156590b1d59ab21b453c430c56a7c}
 
 
-Definition at line 3604 of file qcustomplot.\+h.
+Definition at line 4094 of file qcustomplot.\+h.
 
 \hypertarget{class_q_c_p_item_pixmap_a43c281ef6ad46f3cf04f365289abe51a}{}\index{Q\+C\+P\+Item\+Pixmap@{Q\+C\+P\+Item\+Pixmap}!top\+Left@{top\+Left}}
 \index{top\+Left@{top\+Left}!Q\+C\+P\+Item\+Pixmap@{Q\+C\+P\+Item\+Pixmap}}
 \subsubsection[{top\+Left}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Item\+Position}$\ast$ const Q\+C\+P\+Item\+Pixmap\+::top\+Left}\label{class_q_c_p_item_pixmap_a43c281ef6ad46f3cf04f365289abe51a}
 
 
-Definition at line 3602 of file qcustomplot.\+h.
+Definition at line 4092 of file qcustomplot.\+h.
 
 
 
@@ -1084,7 +1084,7 @@ Referenced by get\+Final\+Rect(), and Q\+C\+P\+Item\+Pixmap().
 \subsubsection[{top\+Right}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Item\+Anchor}$\ast$ const Q\+C\+P\+Item\+Pixmap\+::top\+Right}\label{class_q_c_p_item_pixmap_a72eabd0010be41a4ec1b22aa983d2aa1}
 
 
-Definition at line 3605 of file qcustomplot.\+h.
+Definition at line 4095 of file qcustomplot.\+h.
 
 
 

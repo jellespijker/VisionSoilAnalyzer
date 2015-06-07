@@ -132,7 +132,7 @@ Note that every \hyperlink{class_q_c_p_item_position}{Q\+C\+P\+Item\+Position} i
 
 To set the apparent pixel position on the \hyperlink{class_q_custom_plot}{Q\+Custom\+Plot} surface directly, use \hyperlink{class_q_c_p_item_position_ab404e56d9ac2ac2df0382c57933a71ef}{set\+Pixel\+Point}. This works no matter what type this \hyperlink{class_q_c_p_item_position}{Q\+C\+P\+Item\+Position} is or what parent-\/child situation it is in, as \hyperlink{class_q_c_p_item_position_ab404e56d9ac2ac2df0382c57933a71ef}{set\+Pixel\+Point} transforms the coordinates appropriately, to make the position appear at the specified pixel values. 
 
-Definition at line 1540 of file qcustomplot.\+h.
+Definition at line 1762 of file qcustomplot.\+h.
 
 
 
@@ -160,15 +160,19 @@ Defines the ways an item position can be specified. Thus it defines what the num
 \end{Desc}
 
 
-Definition at line 1549 of file qcustomplot.\+h.
+Definition at line 1771 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-1549                     \{ \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8a564f5e53e550ead1ec5fc7fc7d0b73e0}{ptAbsolute}        
-1550                       ,\hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8ac7d6aa89ceacb39658b0d6da061c789a}{ptViewportRatio}  
-1551                       ,\hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8a01080fd00eaf09fa238ef6b73bbfef75}{ptAxisRectRatio}  
-1554                       ,\hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8ad5ffb8dc99ad73263f7010c77342294c}{ptPlotCoords}     
-1557                     \};
+1771                     \{
+1772     \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8a564f5e53e550ead1ec5fc7fc7d0b73e0}{ptAbsolute} 
+1773     ,
+1775     \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8ac7d6aa89ceacb39658b0d6da061c789a}{ptViewportRatio} 
+1776     ,
+1782     \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8a01080fd00eaf09fa238ef6b73bbfef75}{ptAxisRectRatio} 
+1783     ,
+1790     \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8ad5ffb8dc99ad73263f7010c77342294c}{ptPlotCoords} 
+1791   \};
 \end{DoxyCode}
 
 
@@ -184,20 +188,15 @@ Definition at line 1549 of file qcustomplot.\+h.
 )}\label{class_q_c_p_item_position_a3efc524f37fdcd22907545eb77555ce4}
 Creates a new \hyperlink{class_q_c_p_item_position}{Q\+C\+P\+Item\+Position}. You shouldn\textquotesingle{}t create \hyperlink{class_q_c_p_item_position}{Q\+C\+P\+Item\+Position} instances directly, even if you want to make a new item subclass. Use \hyperlink{class_q_c_p_abstract_item_a75036d39c4d4e2e1a7dd145fff915d32}{Q\+C\+P\+Abstract\+Item\+::create\+Position} instead, as explained in the subclassing section of the \hyperlink{class_q_c_p_abstract_item}{Q\+C\+P\+Abstract\+Item} documentation. 
 
-Definition at line 7623 of file qcustomplot.\+cpp.
+Definition at line 8399 of file qcustomplot.\+cpp.
 
 
 \begin{DoxyCode}
-7623                                                                                                          :
-7624   \hyperlink{class_q_c_p_item_anchor_aeb6b681d2bf324db40a915d32ec5624f}{QCPItemAnchor}(parentPlot, parentItem, \hyperlink{class_q_c_p_item_anchor_ac93984042a58c875e76847dc3e5f75fe}{name}),
-7625   \hyperlink{class_q_c_p_item_position_ae2a617dce057c5f3ec6878c1823aa291}{mPositionTypeX}(\hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8a564f5e53e550ead1ec5fc7fc7d0b73e0}{ptAbsolute}),
-7626   \hyperlink{class_q_c_p_item_position_a47c96c0ef4380e1af4aaa7c2265c260b}{mPositionTypeY}(\hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8a564f5e53e550ead1ec5fc7fc7d0b73e0}{ptAbsolute}),
-7627   \hyperlink{class_q_c_p_item_position_a4ff3931ad115603dfb4c7000b24bb415}{mKey}(0),
-7628   \hyperlink{class_q_c_p_item_position_a67bf5df69f587d53731724a7d61c6c3f}{mValue}(0),
-7629   \hyperlink{class_q_c_p_item_position_a41b4641d18c90997b9c01bf304181bf0}{mParentAnchorX}(0),
-7630   \hyperlink{class_q_c_p_item_position_afc6142a6a09c8fa41c44d3d54fadd737}{mParentAnchorY}(0)
-7631 \{
-7632 \}
+8402     : \hyperlink{class_q_c_p_item_anchor_aeb6b681d2bf324db40a915d32ec5624f}{QCPItemAnchor}(parentPlot, parentItem, \hyperlink{class_q_c_p_item_anchor_ac93984042a58c875e76847dc3e5f75fe}{name}), 
+      \hyperlink{class_q_c_p_item_position_ae2a617dce057c5f3ec6878c1823aa291}{mPositionTypeX}(\hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8a564f5e53e550ead1ec5fc7fc7d0b73e0}{ptAbsolute}),
+8403       \hyperlink{class_q_c_p_item_position_a47c96c0ef4380e1af4aaa7c2265c260b}{mPositionTypeY}(\hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8a564f5e53e550ead1ec5fc7fc7d0b73e0}{ptAbsolute}), \hyperlink{class_q_c_p_item_position_a4ff3931ad115603dfb4c7000b24bb415}{mKey}(0), \hyperlink{class_q_c_p_item_position_a67bf5df69f587d53731724a7d61c6c3f}{mValue}(0), 
+      \hyperlink{class_q_c_p_item_position_a41b4641d18c90997b9c01bf304181bf0}{mParentAnchorX}(0),
+8404       \hyperlink{class_q_c_p_item_position_afc6142a6a09c8fa41c44d3d54fadd737}{mParentAnchorY}(0) \{\}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_item_position_ad8a289016f7a62332f9c865c39ab2047}{}\index{Q\+C\+P\+Item\+Position@{Q\+C\+P\+Item\+Position}!````~Q\+C\+P\+Item\+Position@{$\sim$\+Q\+C\+P\+Item\+Position}}
 \index{````~Q\+C\+P\+Item\+Position@{$\sim$\+Q\+C\+P\+Item\+Position}!Q\+C\+P\+Item\+Position@{Q\+C\+P\+Item\+Position}}
@@ -208,7 +207,7 @@ Definition at line 7623 of file qcustomplot.\+cpp.
 )\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_q_c_p_item_position_ad8a289016f7a62332f9c865c39ab2047}
 
 
-Definition at line 7634 of file qcustomplot.\+cpp.
+Definition at line 8406 of file qcustomplot.\+cpp.
 
 
 
@@ -216,30 +215,28 @@ References Q\+C\+P\+Item\+Anchor\+::m\+Children\+X, Q\+C\+P\+Item\+Anchor\+::m\+
 
 
 \begin{DoxyCode}
-7635 \{
-7636   \textcolor{comment}{// unregister as parent at children:}
-7637   \textcolor{comment}{// Note: this is done in ~QCPItemAnchor again, but it's important QCPItemPosition does it itself, because
-       only then}
-7638   \textcolor{comment}{//       the setParentAnchor(0) call the correct QCPItemPosition::pixelPoint function instead of
-       QCPItemAnchor::pixelPoint}
-7639   \textcolor{keywordflow}{foreach} (\hyperlink{class_q_c_p_item_position}{QCPItemPosition} *child, \hyperlink{class_q_c_p_item_anchor_a3c0bfd6e50f3b48e2a9b3824695b20f7}{mChildrenX}.toList())
-7640   \{
-7641     \textcolor{keywordflow}{if} (child->\hyperlink{class_q_c_p_item_position_a485abba71c8552086c5f68e95dca7f9a}{parentAnchorX}() == \textcolor{keyword}{this})
-7642       child->\hyperlink{class_q_c_p_item_position_add71461a973927c74e42179480916d9c}{setParentAnchorX}(0); \textcolor{comment}{// this acts back on this anchor and child removes itself
-       from mChildrenX}
-7643   \}
-7644   \textcolor{keywordflow}{foreach} (\hyperlink{class_q_c_p_item_position}{QCPItemPosition} *child, \hyperlink{class_q_c_p_item_anchor_a3abe4eebd0683454d81c8341df6f7115}{mChildrenY}.toList())
-7645   \{
-7646     \textcolor{keywordflow}{if} (child->\hyperlink{class_q_c_p_item_position_a1502dba801cb20424b7e097399e372de}{parentAnchorY}() == \textcolor{keyword}{this})
-7647       child->\hyperlink{class_q_c_p_item_position_add5ec1db9d19cec58a3b5c9e0a0c3f9d}{setParentAnchorY}(0); \textcolor{comment}{// this acts back on this anchor and child removes itself
-       from mChildrenY}
-7648   \}
-7649   \textcolor{comment}{// unregister as child in parent:}
-7650   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_a41b4641d18c90997b9c01bf304181bf0}{mParentAnchorX})
-7651     \hyperlink{class_q_c_p_item_position_a41b4641d18c90997b9c01bf304181bf0}{mParentAnchorX}->\hyperlink{class_q_c_p_item_anchor_a230b1d494cda63458e289bbe1b642599}{removeChildX}(\textcolor{keyword}{this});
-7652   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_afc6142a6a09c8fa41c44d3d54fadd737}{mParentAnchorY})
-7653     \hyperlink{class_q_c_p_item_position_afc6142a6a09c8fa41c44d3d54fadd737}{mParentAnchorY}->\hyperlink{class_q_c_p_item_anchor_aa2394911d8fff3bd958b9f4f1994b64d}{removeChildY}(\textcolor{keyword}{this});
-7654 \}
+8406                                   \{
+8407   \textcolor{comment}{// unregister as parent at children:}
+8408   \textcolor{comment}{// Note: this is done in ~QCPItemAnchor again, but it's important}
+8409   \textcolor{comment}{// QCPItemPosition does it itself, because only then}
+8410   \textcolor{comment}{//       the setParentAnchor(0) call the correct QCPItemPosition::pixelPoint}
+8411   \textcolor{comment}{//       function instead of QCPItemAnchor::pixelPoint}
+8412   \textcolor{keywordflow}{foreach} (\hyperlink{class_q_c_p_item_position}{QCPItemPosition} *child, \hyperlink{class_q_c_p_item_anchor_ab8fd931923357898286ae604e1380fa7}{mChildrenX}.toList()) \{
+8413     \textcolor{keywordflow}{if} (child->\hyperlink{class_q_c_p_item_position_a485abba71c8552086c5f68e95dca7f9a}{parentAnchorX}() == \textcolor{keyword}{this})
+8414       child->\hyperlink{class_q_c_p_item_position_add71461a973927c74e42179480916d9c}{setParentAnchorX}(0); \textcolor{comment}{// this acts back on this anchor and child}
+8415                                   \textcolor{comment}{// removes itself from mChildrenX}
+8416   \}
+8417   \textcolor{keywordflow}{foreach} (\hyperlink{class_q_c_p_item_position}{QCPItemPosition} *child, \hyperlink{class_q_c_p_item_anchor_a6d58eb782eda4d96a95067354305b139}{mChildrenY}.toList()) \{
+8418     \textcolor{keywordflow}{if} (child->\hyperlink{class_q_c_p_item_position_a1502dba801cb20424b7e097399e372de}{parentAnchorY}() == \textcolor{keyword}{this})
+8419       child->\hyperlink{class_q_c_p_item_position_add5ec1db9d19cec58a3b5c9e0a0c3f9d}{setParentAnchorY}(0); \textcolor{comment}{// this acts back on this anchor and child}
+8420                                   \textcolor{comment}{// removes itself from mChildrenY}
+8421   \}
+8422   \textcolor{comment}{// unregister as child in parent:}
+8423   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_a41b4641d18c90997b9c01bf304181bf0}{mParentAnchorX})
+8424     \hyperlink{class_q_c_p_item_position_a41b4641d18c90997b9c01bf304181bf0}{mParentAnchorX}->\hyperlink{class_q_c_p_item_anchor_a230b1d494cda63458e289bbe1b642599}{removeChildX}(\textcolor{keyword}{this});
+8425   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_afc6142a6a09c8fa41c44d3d54fadd737}{mParentAnchorY})
+8426     \hyperlink{class_q_c_p_item_position_afc6142a6a09c8fa41c44d3d54fadd737}{mParentAnchorY}->\hyperlink{class_q_c_p_item_anchor_aa2394911d8fff3bd958b9f4f1994b64d}{removeChildY}(\textcolor{keyword}{this});
+8427 \}
 \end{DoxyCode}
 
 
@@ -264,7 +261,7 @@ Here is the call graph for this function\+:\nopagebreak
 ) const}\label{class_q_c_p_item_position_a7f10fa702a324880cc4de958f434cec7}
 
 
-Definition at line 7657 of file qcustomplot.\+cpp.
+Definition at line 8431 of file qcustomplot.\+cpp.
 
 
 
@@ -276,9 +273,7 @@ Referenced by set\+Axis\+Rect().
 
 
 \begin{DoxyCode}
-7658 \{
-7659   \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_position_add40fcb8994c247d85f42a126286b740}{mAxisRect}.data();
-7660 \}
+8431 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_position_add40fcb8994c247d85f42a126286b740}{mAxisRect}.data(); \}
 \end{DoxyCode}
 
 
@@ -300,7 +295,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_item_position_a253d7adbb6d46299bd6cbc31aa8819f1}
 
 
-Definition at line 1571 of file qcustomplot.\+h.
+Definition at line 1807 of file qcustomplot.\+h.
 
 
 
@@ -308,7 +303,7 @@ Referenced by set\+Parent\+Anchor\+X(), and set\+Parent\+Anchor\+Y().
 
 
 \begin{DoxyCode}
-1571 \{ \textcolor{keywordflow}{return} QPointF(\hyperlink{class_q_c_p_item_position_a4ff3931ad115603dfb4c7000b24bb415}{mKey}, \hyperlink{class_q_c_p_item_position_a67bf5df69f587d53731724a7d61c6c3f}{mValue}); \}
+1807 \{ \textcolor{keywordflow}{return} QPointF(\hyperlink{class_q_c_p_item_position_a4ff3931ad115603dfb4c7000b24bb415}{mKey}, \hyperlink{class_q_c_p_item_position_a67bf5df69f587d53731724a7d61c6c3f}{mValue}); \}
 \end{DoxyCode}
 
 
@@ -330,7 +325,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_item_position_ac3cb2bddf5f89e5181830be30b93d090}
 
 
-Definition at line 1569 of file qcustomplot.\+h.
+Definition at line 1805 of file qcustomplot.\+h.
 
 
 
@@ -338,7 +333,7 @@ Referenced by set\+Coords().
 
 
 \begin{DoxyCode}
-1569 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_position_a4ff3931ad115603dfb4c7000b24bb415}{mKey}; \}
+1805 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_position_a4ff3931ad115603dfb4c7000b24bb415}{mKey}; \}
 \end{DoxyCode}
 
 
@@ -360,7 +355,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_item_position_ab99de7ae5766d246defb2de9f47eaf51}
 
 
-Definition at line 1572 of file qcustomplot.\+h.
+Definition at line 1808 of file qcustomplot.\+h.
 
 
 
@@ -368,7 +363,7 @@ Referenced by set\+Axes().
 
 
 \begin{DoxyCode}
-1572 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_position_a63967a33933231e92f68c8ce06bfc37e}{mKeyAxis}.data(); \}
+1808 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_position_a63967a33933231e92f68c8ce06bfc37e}{mKeyAxis}.data(); \}
 \end{DoxyCode}
 
 
@@ -397,7 +392,7 @@ If different parent anchors were set for X and Y (\hyperlink{class_q_c_p_item_po
 \end{DoxySeeAlso}
 
 
-Definition at line 1566 of file qcustomplot.\+h.
+Definition at line 1802 of file qcustomplot.\+h.
 
 
 
@@ -405,7 +400,7 @@ Referenced by set\+Parent\+Anchor\+X(), and set\+Parent\+Anchor\+Y().
 
 
 \begin{DoxyCode}
-1566 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_position_a485abba71c8552086c5f68e95dca7f9a}{parentAnchorX}(); \}
+1802 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_position_a485abba71c8552086c5f68e95dca7f9a}{parentAnchorX}(); \}
 \end{DoxyCode}
 
 
@@ -427,7 +422,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_item_position_a485abba71c8552086c5f68e95dca7f9a}
 
 
-Definition at line 1567 of file qcustomplot.\+h.
+Definition at line 1803 of file qcustomplot.\+h.
 
 
 
@@ -435,7 +430,7 @@ Referenced by Q\+C\+P\+Item\+Anchor\+::$\sim$\+Q\+C\+P\+Item\+Anchor(), and $\si
 
 
 \begin{DoxyCode}
-1567 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_position_a41b4641d18c90997b9c01bf304181bf0}{mParentAnchorX}; \}
+1803 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_position_a41b4641d18c90997b9c01bf304181bf0}{mParentAnchorX}; \}
 \end{DoxyCode}
 
 
@@ -457,7 +452,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_item_position_a1502dba801cb20424b7e097399e372de}
 
 
-Definition at line 1568 of file qcustomplot.\+h.
+Definition at line 1804 of file qcustomplot.\+h.
 
 
 
@@ -465,7 +460,7 @@ Referenced by Q\+C\+P\+Item\+Anchor\+::$\sim$\+Q\+C\+P\+Item\+Anchor(), and $\si
 
 
 \begin{DoxyCode}
-1568 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_position_afc6142a6a09c8fa41c44d3d54fadd737}{mParentAnchorY}; \}
+1804 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_position_afc6142a6a09c8fa41c44d3d54fadd737}{mParentAnchorY}; \}
 \end{DoxyCode}
 
 
@@ -496,7 +491,7 @@ Reimplemented from \hyperlink{class_q_c_p_item_anchor_ae92def8f9297c5d73f5806c58
 
 
 
-Definition at line 7947 of file qcustomplot.\+cpp.
+Definition at line 8762 of file qcustomplot.\+cpp.
 
 
 
@@ -508,99 +503,93 @@ Referenced by Q\+C\+P\+Item\+Rect\+::anchor\+Pixel\+Point(), Q\+C\+P\+Item\+Text
 
 
 \begin{DoxyCode}
-7948 \{
-7949   QPointF result;
-7950   
-7951   \textcolor{comment}{// determine X:}
-7952   \textcolor{keywordflow}{switch} (\hyperlink{class_q_c_p_item_position_ae2a617dce057c5f3ec6878c1823aa291}{mPositionTypeX})
-7953   \{
-7954     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8a564f5e53e550ead1ec5fc7fc7d0b73e0}{ptAbsolute}:
-7955     \{
-7956       result.rx() = \hyperlink{class_q_c_p_item_position_a4ff3931ad115603dfb4c7000b24bb415}{mKey};
-7957       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_a41b4641d18c90997b9c01bf304181bf0}{mParentAnchorX})
-7958         result.rx() += \hyperlink{class_q_c_p_item_position_a41b4641d18c90997b9c01bf304181bf0}{mParentAnchorX}->\hyperlink{class_q_c_p_item_anchor_ae92def8f9297c5d73f5806c586517bb3}{pixelPoint}().x();
-7959       \textcolor{keywordflow}{break};
-7960     \}
-7961     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8ac7d6aa89ceacb39658b0d6da061c789a}{ptViewportRatio}:
-7962     \{
-7963       result.rx() = \hyperlink{class_q_c_p_item_position_a4ff3931ad115603dfb4c7000b24bb415}{mKey}*\hyperlink{class_q_c_p_item_anchor_a59b968410831ba91a25cc75a77dde6f5}{mParentPlot}->\hyperlink{class_q_custom_plot_a953ecdbc28018e7e84cb6213ad3d88c2}{viewport}().width();
-7964       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_a41b4641d18c90997b9c01bf304181bf0}{mParentAnchorX})
-7965         result.rx() += \hyperlink{class_q_c_p_item_position_a41b4641d18c90997b9c01bf304181bf0}{mParentAnchorX}->\hyperlink{class_q_c_p_item_anchor_ae92def8f9297c5d73f5806c586517bb3}{pixelPoint}().x();
-7966       \textcolor{keywordflow}{else}
-7967         result.rx() += \hyperlink{class_q_c_p_item_anchor_a59b968410831ba91a25cc75a77dde6f5}{mParentPlot}->\hyperlink{class_q_custom_plot_a953ecdbc28018e7e84cb6213ad3d88c2}{viewport}().left();
-7968       \textcolor{keywordflow}{break};
-7969     \}
-7970     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8a01080fd00eaf09fa238ef6b73bbfef75}{ptAxisRectRatio}:
-7971     \{
-7972       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_add40fcb8994c247d85f42a126286b740}{mAxisRect})
-7973       \{
-7974         result.rx() = \hyperlink{class_q_c_p_item_position_a4ff3931ad115603dfb4c7000b24bb415}{mKey}*\hyperlink{class_q_c_p_item_position_add40fcb8994c247d85f42a126286b740}{mAxisRect}.data()->width();
-7975         \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_a41b4641d18c90997b9c01bf304181bf0}{mParentAnchorX})
-7976           result.rx() += \hyperlink{class_q_c_p_item_position_a41b4641d18c90997b9c01bf304181bf0}{mParentAnchorX}->\hyperlink{class_q_c_p_item_anchor_ae92def8f9297c5d73f5806c586517bb3}{pixelPoint}().x();
-7977         \textcolor{keywordflow}{else}
-7978           result.rx() += \hyperlink{class_q_c_p_item_position_add40fcb8994c247d85f42a126286b740}{mAxisRect}.data()->left();
-7979       \} \textcolor{keywordflow}{else}
-7980         qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Item position type x is ptAxisRectRatio, but no axis rect was defined"};
-7981       \textcolor{keywordflow}{break};
-7982     \}
-7983     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8ad5ffb8dc99ad73263f7010c77342294c}{ptPlotCoords}:
-7984     \{
-7985       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_a63967a33933231e92f68c8ce06bfc37e}{mKeyAxis} && \hyperlink{class_q_c_p_item_position_a63967a33933231e92f68c8ce06bfc37e}{mKeyAxis}.data()->orientation() == Qt::Horizontal)
-7986         result.rx() = \hyperlink{class_q_c_p_item_position_a63967a33933231e92f68c8ce06bfc37e}{mKeyAxis}.data()->coordToPixel(\hyperlink{class_q_c_p_item_position_a4ff3931ad115603dfb4c7000b24bb415}{mKey});
-7987       \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_a505dc2da24ba274452c1c817fcaba011}{mValueAxis} && \hyperlink{class_q_c_p_item_position_a505dc2da24ba274452c1c817fcaba011}{mValueAxis}.data()->orientation() == Qt::Horizontal)
-7988         result.rx() = \hyperlink{class_q_c_p_item_position_a505dc2da24ba274452c1c817fcaba011}{mValueAxis}.data()->coordToPixel(\hyperlink{class_q_c_p_item_position_a67bf5df69f587d53731724a7d61c6c3f}{mValue});
-7989       \textcolor{keywordflow}{else}
-7990         qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Item position type x is ptPlotCoords, but no axes were defined"};
-7991       \textcolor{keywordflow}{break};
-7992     \}
-7993   \}
-7994   
-7995   \textcolor{comment}{// determine Y:}
-7996   \textcolor{keywordflow}{switch} (\hyperlink{class_q_c_p_item_position_a47c96c0ef4380e1af4aaa7c2265c260b}{mPositionTypeY})
-7997   \{
-7998     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8a564f5e53e550ead1ec5fc7fc7d0b73e0}{ptAbsolute}:
-7999     \{
-8000       result.ry() = \hyperlink{class_q_c_p_item_position_a67bf5df69f587d53731724a7d61c6c3f}{mValue};
-8001       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_afc6142a6a09c8fa41c44d3d54fadd737}{mParentAnchorY})
-8002         result.ry() += \hyperlink{class_q_c_p_item_position_afc6142a6a09c8fa41c44d3d54fadd737}{mParentAnchorY}->\hyperlink{class_q_c_p_item_anchor_ae92def8f9297c5d73f5806c586517bb3}{pixelPoint}().y();
-8003       \textcolor{keywordflow}{break};
-8004     \}
-8005     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8ac7d6aa89ceacb39658b0d6da061c789a}{ptViewportRatio}:
-8006     \{
-8007       result.ry() = \hyperlink{class_q_c_p_item_position_a67bf5df69f587d53731724a7d61c6c3f}{mValue}*\hyperlink{class_q_c_p_item_anchor_a59b968410831ba91a25cc75a77dde6f5}{mParentPlot}->\hyperlink{class_q_custom_plot_a953ecdbc28018e7e84cb6213ad3d88c2}{viewport}().height();
-8008       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_afc6142a6a09c8fa41c44d3d54fadd737}{mParentAnchorY})
-8009         result.ry() += \hyperlink{class_q_c_p_item_position_afc6142a6a09c8fa41c44d3d54fadd737}{mParentAnchorY}->\hyperlink{class_q_c_p_item_anchor_ae92def8f9297c5d73f5806c586517bb3}{pixelPoint}().y();
-8010       \textcolor{keywordflow}{else}
-8011         result.ry() += \hyperlink{class_q_c_p_item_anchor_a59b968410831ba91a25cc75a77dde6f5}{mParentPlot}->\hyperlink{class_q_custom_plot_a953ecdbc28018e7e84cb6213ad3d88c2}{viewport}().top();
-8012       \textcolor{keywordflow}{break};
-8013     \}
-8014     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8a01080fd00eaf09fa238ef6b73bbfef75}{ptAxisRectRatio}:
-8015     \{
-8016       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_add40fcb8994c247d85f42a126286b740}{mAxisRect})
-8017       \{
-8018         result.ry() = \hyperlink{class_q_c_p_item_position_a67bf5df69f587d53731724a7d61c6c3f}{mValue}*\hyperlink{class_q_c_p_item_position_add40fcb8994c247d85f42a126286b740}{mAxisRect}.data()->height();
-8019         \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_afc6142a6a09c8fa41c44d3d54fadd737}{mParentAnchorY})
-8020           result.ry() += \hyperlink{class_q_c_p_item_position_afc6142a6a09c8fa41c44d3d54fadd737}{mParentAnchorY}->\hyperlink{class_q_c_p_item_anchor_ae92def8f9297c5d73f5806c586517bb3}{pixelPoint}().y();
-8021         \textcolor{keywordflow}{else}
-8022           result.ry() += \hyperlink{class_q_c_p_item_position_add40fcb8994c247d85f42a126286b740}{mAxisRect}.data()->top();
-8023       \} \textcolor{keywordflow}{else}
-8024         qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Item position type y is ptAxisRectRatio, but no axis rect was defined"};
-8025       \textcolor{keywordflow}{break};
-8026     \}
-8027     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8ad5ffb8dc99ad73263f7010c77342294c}{ptPlotCoords}:
-8028     \{
-8029       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_a63967a33933231e92f68c8ce06bfc37e}{mKeyAxis} && \hyperlink{class_q_c_p_item_position_a63967a33933231e92f68c8ce06bfc37e}{mKeyAxis}.data()->orientation() == Qt::Vertical)
-8030         result.ry() = \hyperlink{class_q_c_p_item_position_a63967a33933231e92f68c8ce06bfc37e}{mKeyAxis}.data()->coordToPixel(\hyperlink{class_q_c_p_item_position_a4ff3931ad115603dfb4c7000b24bb415}{mKey});
-8031       \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_a505dc2da24ba274452c1c817fcaba011}{mValueAxis} && \hyperlink{class_q_c_p_item_position_a505dc2da24ba274452c1c817fcaba011}{mValueAxis}.data()->orientation() == Qt::Vertical)
-8032         result.ry() = \hyperlink{class_q_c_p_item_position_a505dc2da24ba274452c1c817fcaba011}{mValueAxis}.data()->coordToPixel(\hyperlink{class_q_c_p_item_position_a67bf5df69f587d53731724a7d61c6c3f}{mValue});
-8033       \textcolor{keywordflow}{else}
-8034         qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Item position type y is ptPlotCoords, but no axes were defined"};
-8035       \textcolor{keywordflow}{break};
-8036     \}
-8037   \}
-8038   
-8039   \textcolor{keywordflow}{return} result;
-8040 \}
+8762                                           \{
+8763   QPointF result;
+8764 
+8765   \textcolor{comment}{// determine X:}
+8766   \textcolor{keywordflow}{switch} (\hyperlink{class_q_c_p_item_position_ae2a617dce057c5f3ec6878c1823aa291}{mPositionTypeX}) \{
+8767   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8a564f5e53e550ead1ec5fc7fc7d0b73e0}{ptAbsolute}: \{
+8768     result.rx() = \hyperlink{class_q_c_p_item_position_a4ff3931ad115603dfb4c7000b24bb415}{mKey};
+8769     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_a41b4641d18c90997b9c01bf304181bf0}{mParentAnchorX})
+8770       result.rx() += \hyperlink{class_q_c_p_item_position_a41b4641d18c90997b9c01bf304181bf0}{mParentAnchorX}->\hyperlink{class_q_c_p_item_anchor_ae92def8f9297c5d73f5806c586517bb3}{pixelPoint}().x();
+8771     \textcolor{keywordflow}{break};
+8772   \}
+8773   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8ac7d6aa89ceacb39658b0d6da061c789a}{ptViewportRatio}: \{
+8774     result.rx() = \hyperlink{class_q_c_p_item_position_a4ff3931ad115603dfb4c7000b24bb415}{mKey} * \hyperlink{class_q_c_p_item_anchor_a59b968410831ba91a25cc75a77dde6f5}{mParentPlot}->\hyperlink{class_q_custom_plot_a953ecdbc28018e7e84cb6213ad3d88c2}{viewport}().width();
+8775     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_a41b4641d18c90997b9c01bf304181bf0}{mParentAnchorX})
+8776       result.rx() += \hyperlink{class_q_c_p_item_position_a41b4641d18c90997b9c01bf304181bf0}{mParentAnchorX}->\hyperlink{class_q_c_p_item_anchor_ae92def8f9297c5d73f5806c586517bb3}{pixelPoint}().x();
+8777     \textcolor{keywordflow}{else}
+8778       result.rx() += \hyperlink{class_q_c_p_item_anchor_a59b968410831ba91a25cc75a77dde6f5}{mParentPlot}->\hyperlink{class_q_custom_plot_a953ecdbc28018e7e84cb6213ad3d88c2}{viewport}().left();
+8779     \textcolor{keywordflow}{break};
+8780   \}
+8781   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8a01080fd00eaf09fa238ef6b73bbfef75}{ptAxisRectRatio}: \{
+8782     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_add40fcb8994c247d85f42a126286b740}{mAxisRect}) \{
+8783       result.rx() = \hyperlink{class_q_c_p_item_position_a4ff3931ad115603dfb4c7000b24bb415}{mKey} * \hyperlink{class_q_c_p_item_position_add40fcb8994c247d85f42a126286b740}{mAxisRect}.data()->width();
+8784       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_a41b4641d18c90997b9c01bf304181bf0}{mParentAnchorX})
+8785         result.rx() += \hyperlink{class_q_c_p_item_position_a41b4641d18c90997b9c01bf304181bf0}{mParentAnchorX}->\hyperlink{class_q_c_p_item_anchor_ae92def8f9297c5d73f5806c586517bb3}{pixelPoint}().x();
+8786       \textcolor{keywordflow}{else}
+8787         result.rx() += \hyperlink{class_q_c_p_item_position_add40fcb8994c247d85f42a126286b740}{mAxisRect}.data()->left();
+8788     \} \textcolor{keywordflow}{else}
+8789       qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Item position type x is ptAxisRectRatio, but "}
+8790                                  \textcolor{stringliteral}{"no axis rect was defined"};
+8791     \textcolor{keywordflow}{break};
+8792   \}
+8793   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8ad5ffb8dc99ad73263f7010c77342294c}{ptPlotCoords}: \{
+8794     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_a63967a33933231e92f68c8ce06bfc37e}{mKeyAxis} && \hyperlink{class_q_c_p_item_position_a63967a33933231e92f68c8ce06bfc37e}{mKeyAxis}.data()->orientation() == Qt::Horizontal)
+8795       result.rx() = \hyperlink{class_q_c_p_item_position_a63967a33933231e92f68c8ce06bfc37e}{mKeyAxis}.data()->coordToPixel(\hyperlink{class_q_c_p_item_position_a4ff3931ad115603dfb4c7000b24bb415}{mKey});
+8796     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_a505dc2da24ba274452c1c817fcaba011}{mValueAxis} && \hyperlink{class_q_c_p_item_position_a505dc2da24ba274452c1c817fcaba011}{mValueAxis}.data()->orientation() == Qt::Horizontal)
+8797       result.rx() = \hyperlink{class_q_c_p_item_position_a505dc2da24ba274452c1c817fcaba011}{mValueAxis}.data()->coordToPixel(\hyperlink{class_q_c_p_item_position_a67bf5df69f587d53731724a7d61c6c3f}{mValue});
+8798     \textcolor{keywordflow}{else}
+8799       qDebug()
+8800           << Q\_FUNC\_INFO
+8801           << \textcolor{stringliteral}{"Item position type x is ptPlotCoords, but no axes were defined"};
+8802     \textcolor{keywordflow}{break};
+8803   \}
+8804   \}
+8805 
+8806   \textcolor{comment}{// determine Y:}
+8807   \textcolor{keywordflow}{switch} (\hyperlink{class_q_c_p_item_position_a47c96c0ef4380e1af4aaa7c2265c260b}{mPositionTypeY}) \{
+8808   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8a564f5e53e550ead1ec5fc7fc7d0b73e0}{ptAbsolute}: \{
+8809     result.ry() = \hyperlink{class_q_c_p_item_position_a67bf5df69f587d53731724a7d61c6c3f}{mValue};
+8810     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_afc6142a6a09c8fa41c44d3d54fadd737}{mParentAnchorY})
+8811       result.ry() += \hyperlink{class_q_c_p_item_position_afc6142a6a09c8fa41c44d3d54fadd737}{mParentAnchorY}->\hyperlink{class_q_c_p_item_anchor_ae92def8f9297c5d73f5806c586517bb3}{pixelPoint}().y();
+8812     \textcolor{keywordflow}{break};
+8813   \}
+8814   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8ac7d6aa89ceacb39658b0d6da061c789a}{ptViewportRatio}: \{
+8815     result.ry() = \hyperlink{class_q_c_p_item_position_a67bf5df69f587d53731724a7d61c6c3f}{mValue} * \hyperlink{class_q_c_p_item_anchor_a59b968410831ba91a25cc75a77dde6f5}{mParentPlot}->\hyperlink{class_q_custom_plot_a953ecdbc28018e7e84cb6213ad3d88c2}{viewport}().height();
+8816     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_afc6142a6a09c8fa41c44d3d54fadd737}{mParentAnchorY})
+8817       result.ry() += \hyperlink{class_q_c_p_item_position_afc6142a6a09c8fa41c44d3d54fadd737}{mParentAnchorY}->\hyperlink{class_q_c_p_item_anchor_ae92def8f9297c5d73f5806c586517bb3}{pixelPoint}().y();
+8818     \textcolor{keywordflow}{else}
+8819       result.ry() += \hyperlink{class_q_c_p_item_anchor_a59b968410831ba91a25cc75a77dde6f5}{mParentPlot}->\hyperlink{class_q_custom_plot_a953ecdbc28018e7e84cb6213ad3d88c2}{viewport}().top();
+8820     \textcolor{keywordflow}{break};
+8821   \}
+8822   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8a01080fd00eaf09fa238ef6b73bbfef75}{ptAxisRectRatio}: \{
+8823     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_add40fcb8994c247d85f42a126286b740}{mAxisRect}) \{
+8824       result.ry() = \hyperlink{class_q_c_p_item_position_a67bf5df69f587d53731724a7d61c6c3f}{mValue} * \hyperlink{class_q_c_p_item_position_add40fcb8994c247d85f42a126286b740}{mAxisRect}.data()->height();
+8825       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_afc6142a6a09c8fa41c44d3d54fadd737}{mParentAnchorY})
+8826         result.ry() += \hyperlink{class_q_c_p_item_position_afc6142a6a09c8fa41c44d3d54fadd737}{mParentAnchorY}->\hyperlink{class_q_c_p_item_anchor_ae92def8f9297c5d73f5806c586517bb3}{pixelPoint}().y();
+8827       \textcolor{keywordflow}{else}
+8828         result.ry() += \hyperlink{class_q_c_p_item_position_add40fcb8994c247d85f42a126286b740}{mAxisRect}.data()->top();
+8829     \} \textcolor{keywordflow}{else}
+8830       qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Item position type y is ptAxisRectRatio, but "}
+8831                                  \textcolor{stringliteral}{"no axis rect was defined"};
+8832     \textcolor{keywordflow}{break};
+8833   \}
+8834   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8ad5ffb8dc99ad73263f7010c77342294c}{ptPlotCoords}: \{
+8835     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_a63967a33933231e92f68c8ce06bfc37e}{mKeyAxis} && \hyperlink{class_q_c_p_item_position_a63967a33933231e92f68c8ce06bfc37e}{mKeyAxis}.data()->orientation() == Qt::Vertical)
+8836       result.ry() = \hyperlink{class_q_c_p_item_position_a63967a33933231e92f68c8ce06bfc37e}{mKeyAxis}.data()->coordToPixel(\hyperlink{class_q_c_p_item_position_a4ff3931ad115603dfb4c7000b24bb415}{mKey});
+8837     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_a505dc2da24ba274452c1c817fcaba011}{mValueAxis} && \hyperlink{class_q_c_p_item_position_a505dc2da24ba274452c1c817fcaba011}{mValueAxis}.data()->orientation() == Qt::Vertical)
+8838       result.ry() = \hyperlink{class_q_c_p_item_position_a505dc2da24ba274452c1c817fcaba011}{mValueAxis}.data()->coordToPixel(\hyperlink{class_q_c_p_item_position_a67bf5df69f587d53731724a7d61c6c3f}{mValue});
+8839     \textcolor{keywordflow}{else}
+8840       qDebug()
+8841           << Q\_FUNC\_INFO
+8842           << \textcolor{stringliteral}{"Item position type y is ptPlotCoords, but no axes were defined"};
+8843     \textcolor{keywordflow}{break};
+8844   \}
+8845   \}
+8846 
+8847   \textcolor{keywordflow}{return} result;
+8848 \}
 \end{DoxyCode}
 
 
@@ -634,7 +623,7 @@ Here is the caller graph for this function\+:\nopagebreak
 )}\label{class_q_c_p_item_position_a2185f45c75ac8cb9be89daeaaad50e37}
 When \hyperlink{class_q_c_p_item_position_aa476abf71ed8fa4c537457ebb1a754ad}{set\+Type} is \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8ad5ffb8dc99ad73263f7010c77342294c}{pt\+Plot\+Coords}, this function may be used to specify the axes the coordinates set with \hyperlink{class_q_c_p_item_position_aa988ba4e87ab684c9021017dcaba945f}{set\+Coords} relate to. By default they are set to the initial x\+Axis and y\+Axis of the \hyperlink{class_q_custom_plot}{Q\+Custom\+Plot}. 
 
-Definition at line 8047 of file qcustomplot.\+cpp.
+Definition at line 8857 of file qcustomplot.\+cpp.
 
 
 
@@ -646,10 +635,10 @@ Referenced by Q\+C\+P\+Abstract\+Item\+::create\+Position(), and Q\+C\+P\+Item\+
 
 
 \begin{DoxyCode}
-8048 \{
-8049   \hyperlink{class_q_c_p_item_position_a63967a33933231e92f68c8ce06bfc37e}{mKeyAxis} = \hyperlink{class_q_c_p_item_position_ab99de7ae5766d246defb2de9f47eaf51}{keyAxis};
-8050   \hyperlink{class_q_c_p_item_position_a505dc2da24ba274452c1c817fcaba011}{mValueAxis} = \hyperlink{class_q_c_p_item_position_a8d3a039fb2e69df86b4015daa30dfd2d}{valueAxis};
-8051 \}
+8857                                                                   \{
+8858   \hyperlink{class_q_c_p_item_position_a63967a33933231e92f68c8ce06bfc37e}{mKeyAxis} = \hyperlink{class_q_c_p_item_position_ab99de7ae5766d246defb2de9f47eaf51}{keyAxis};
+8859   \hyperlink{class_q_c_p_item_position_a505dc2da24ba274452c1c817fcaba011}{mValueAxis} = \hyperlink{class_q_c_p_item_position_a8d3a039fb2e69df86b4015daa30dfd2d}{valueAxis};
+8860 \}
 \end{DoxyCode}
 
 
@@ -682,7 +671,7 @@ Here is the caller graph for this function\+:\nopagebreak
 )}\label{class_q_c_p_item_position_a0cd9b326fb324710169e92e8ca0041c2}
 When \hyperlink{class_q_c_p_item_position_aa476abf71ed8fa4c537457ebb1a754ad}{set\+Type} is \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8a01080fd00eaf09fa238ef6b73bbfef75}{pt\+Axis\+Rect\+Ratio}, this function may be used to specify the axis rect the coordinates set with \hyperlink{class_q_c_p_item_position_aa988ba4e87ab684c9021017dcaba945f}{set\+Coords} relate to. By default this is set to the main axis rect of the \hyperlink{class_q_custom_plot}{Q\+Custom\+Plot}. 
 
-Definition at line 8058 of file qcustomplot.\+cpp.
+Definition at line 8869 of file qcustomplot.\+cpp.
 
 
 
@@ -694,9 +683,9 @@ Referenced by Q\+C\+P\+Abstract\+Item\+::create\+Position().
 
 
 \begin{DoxyCode}
-8059 \{
-8060   \hyperlink{class_q_c_p_item_position_add40fcb8994c247d85f42a126286b740}{mAxisRect} = \hyperlink{class_q_c_p_item_position_a7f10fa702a324880cc4de958f434cec7}{axisRect};
-8061 \}
+8869                                                        \{
+8870   \hyperlink{class_q_c_p_item_position_add40fcb8994c247d85f42a126286b740}{mAxisRect} = \hyperlink{class_q_c_p_item_position_a7f10fa702a324880cc4de958f434cec7}{axisRect};
+8871 \}
 \end{DoxyCode}
 
 
@@ -739,7 +728,7 @@ If different types were configured for X and Y (\hyperlink{class_q_c_p_item_posi
 \end{DoxySeeAlso}
 
 
-Definition at line 7925 of file qcustomplot.\+cpp.
+Definition at line 8739 of file qcustomplot.\+cpp.
 
 
 
@@ -751,10 +740,10 @@ Referenced by Q\+C\+P\+Abstract\+Item\+::create\+Position(), Q\+C\+P\+Item\+Brac
 
 
 \begin{DoxyCode}
-7926 \{
-7927   \hyperlink{class_q_c_p_item_position_a4ff3931ad115603dfb4c7000b24bb415}{mKey} = \hyperlink{class_q_c_p_item_position_ac3cb2bddf5f89e5181830be30b93d090}{key};
-7928   \hyperlink{class_q_c_p_item_position_a67bf5df69f587d53731724a7d61c6c3f}{mValue} = \hyperlink{class_q_c_p_item_position_a6817f7356d3a2b63e8446c6b6106dae1}{value};
-7929 \}
+8739                                                         \{
+8740   \hyperlink{class_q_c_p_item_position_a4ff3931ad115603dfb4c7000b24bb415}{mKey} = \hyperlink{class_q_c_p_item_position_ac3cb2bddf5f89e5181830be30b93d090}{key};
+8741   \hyperlink{class_q_c_p_item_position_a67bf5df69f587d53731724a7d61c6c3f}{mValue} = \hyperlink{class_q_c_p_item_position_a6817f7356d3a2b63e8446c6b6106dae1}{value};
+8742 \}
 \end{DoxyCode}
 
 
@@ -789,7 +778,7 @@ This is an overloaded member function, provided for convenience. It differs from
 
 Sets the coordinates as a Q\+Point\+F {\itshape pos} where pos.\+x has the meaning of {\itshape key} and pos.\+y the meaning of {\itshape value} of the \hyperlink{class_q_c_p_item_position_aa988ba4e87ab684c9021017dcaba945f}{set\+Coords(double key, double value)} method. 
 
-Definition at line 7936 of file qcustomplot.\+cpp.
+Definition at line 8750 of file qcustomplot.\+cpp.
 
 
 
@@ -797,9 +786,9 @@ References set\+Coords().
 
 
 \begin{DoxyCode}
-7937 \{
-7938   \hyperlink{class_q_c_p_item_position_aa988ba4e87ab684c9021017dcaba945f}{setCoords}(pos.x(), pos.y());
-7939 \}
+8750                                                   \{
+8751   \hyperlink{class_q_c_p_item_position_aa988ba4e87ab684c9021017dcaba945f}{setCoords}(pos.x(), pos.y());
+8752 \}
 \end{DoxyCode}
 
 
@@ -830,7 +819,7 @@ If the \hyperlink{class_q_c_p_item_position}{Q\+C\+P\+Item\+Position} previously
 
 This method sets the parent anchor for both X and Y directions. It is also possible to set different parents for X and Y, see \hyperlink{class_q_c_p_item_position_add71461a973927c74e42179480916d9c}{set\+Parent\+Anchor\+X}, \hyperlink{class_q_c_p_item_position_add5ec1db9d19cec58a3b5c9e0a0c3f9d}{set\+Parent\+Anchor\+Y}. 
 
-Definition at line 7771 of file qcustomplot.\+cpp.
+Definition at line 8569 of file qcustomplot.\+cpp.
 
 
 
@@ -838,11 +827,11 @@ References set\+Parent\+Anchor\+X(), and set\+Parent\+Anchor\+Y().
 
 
 \begin{DoxyCode}
-7772 \{
-7773   \textcolor{keywordtype}{bool} successX = \hyperlink{class_q_c_p_item_position_add71461a973927c74e42179480916d9c}{setParentAnchorX}(parentAnchor, keepPixelPosition);
-7774   \textcolor{keywordtype}{bool} successY = \hyperlink{class_q_c_p_item_position_add5ec1db9d19cec58a3b5c9e0a0c3f9d}{setParentAnchorY}(parentAnchor, keepPixelPosition);
-7775   \textcolor{keywordflow}{return} successX && successY;
-7776 \}
+8570                                                               \{
+8571   \textcolor{keywordtype}{bool} successX = \hyperlink{class_q_c_p_item_position_add71461a973927c74e42179480916d9c}{setParentAnchorX}(parentAnchor, keepPixelPosition);
+8572   \textcolor{keywordtype}{bool} successY = \hyperlink{class_q_c_p_item_position_add5ec1db9d19cec58a3b5c9e0a0c3f9d}{setParentAnchorY}(parentAnchor, keepPixelPosition);
+8573   \textcolor{keywordflow}{return} successX && successY;
+8574 \}
 \end{DoxyCode}
 
 
@@ -872,7 +861,7 @@ For a detailed description of what a parent anchor is, see the documentation of 
 \end{DoxySeeAlso}
 
 
-Definition at line 7785 of file qcustomplot.\+cpp.
+Definition at line 8584 of file qcustomplot.\+cpp.
 
 
 
@@ -884,67 +873,66 @@ Referenced by set\+Parent\+Anchor(), Q\+C\+P\+Item\+Anchor\+::$\sim$\+Q\+C\+P\+I
 
 
 \begin{DoxyCode}
-7786 \{
-7787   \textcolor{comment}{// make sure self is not assigned as parent:}
-7788   \textcolor{keywordflow}{if} (parentAnchor == \textcolor{keyword}{this})
-7789   \{
-7790     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"can't set self as parent anchor"} << \textcolor{keyword}{reinterpret\_cast<}quintptr\textcolor{keyword}{>}(
-      \hyperlink{class_q_c_p_item_position_a7b4ffab9946945c0e11cd2352dc2e042}{parentAnchor});
-7791     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
-7792   \}
-7793   \textcolor{comment}{// make sure no recursive parent-child-relationships are created:}
-7794   \hyperlink{class_q_c_p_item_anchor}{QCPItemAnchor} *currentParent = \hyperlink{class_q_c_p_item_position_a7b4ffab9946945c0e11cd2352dc2e042}{parentAnchor};
-7795   \textcolor{keywordflow}{while} (currentParent)
-7796   \{
-7797     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position}{QCPItemPosition} *currentParentPos = currentParent->
-      \hyperlink{class_q_c_p_item_anchor_ac54b20120669950255a63587193dbb86}{toQCPItemPosition}())
-7798     \{
-7799       \textcolor{comment}{// is a QCPItemPosition, might have further parent, so keep iterating}
-7800       \textcolor{keywordflow}{if} (currentParentPos == \textcolor{keyword}{this})
-7801       \{
-7802         qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"can't create recursive parent-child-relationship"} << \textcolor{keyword}{reinterpret\_cast<}
-      quintptr\textcolor{keyword}{>}(\hyperlink{class_q_c_p_item_position_a7b4ffab9946945c0e11cd2352dc2e042}{parentAnchor});
-7803         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
-7804       \}
-7805       currentParent = currentParentPos->parentAnchorX();
-7806     \} \textcolor{keywordflow}{else}
-7807     \{
-7808       \textcolor{comment}{// is a QCPItemAnchor, can't have further parent. Now make sure the parent items aren't the}
-7809       \textcolor{comment}{// same, to prevent a position being child of an anchor which itself depends on the position,}
-7810       \textcolor{comment}{// because they're both on the same item:}
-7811       \textcolor{keywordflow}{if} (currentParent->\hyperlink{class_q_c_p_item_anchor_a80fad480ad3bb980446ed6ebc00818ae}{mParentItem} == \hyperlink{class_q_c_p_item_anchor_a80fad480ad3bb980446ed6ebc00818ae}{mParentItem})
-7812       \{
-7813         qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"can't set parent to be an anchor which itself depends on this position"}
-       << \textcolor{keyword}{reinterpret\_cast<}quintptr\textcolor{keyword}{>}(\hyperlink{class_q_c_p_item_position_a7b4ffab9946945c0e11cd2352dc2e042}{parentAnchor});
-7814         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
-7815       \}
-7816       \textcolor{keywordflow}{break};
-7817     \}
-7818   \}
-7819   
-7820   \textcolor{comment}{// if previously no parent set and PosType is still ptPlotCoords, set to ptAbsolute:}
-7821   \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_item_position_a41b4641d18c90997b9c01bf304181bf0}{mParentAnchorX} && \hyperlink{class_q_c_p_item_position_ae2a617dce057c5f3ec6878c1823aa291}{mPositionTypeX} == 
+8585                                                                \{
+8586   \textcolor{comment}{// make sure self is not assigned as parent:}
+8587   \textcolor{keywordflow}{if} (parentAnchor == \textcolor{keyword}{this}) \{
+8588     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"can't set self as parent anchor"}
+8589              << \textcolor{keyword}{reinterpret\_cast<}quintptr\textcolor{keyword}{>}(\hyperlink{class_q_c_p_item_position_a7b4ffab9946945c0e11cd2352dc2e042}{parentAnchor});
+8590     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+8591   \}
+8592   \textcolor{comment}{// make sure no recursive parent-child-relationships are created:}
+8593   \hyperlink{class_q_c_p_item_anchor}{QCPItemAnchor} *currentParent = \hyperlink{class_q_c_p_item_position_a7b4ffab9946945c0e11cd2352dc2e042}{parentAnchor};
+8594   \textcolor{keywordflow}{while} (currentParent) \{
+8595     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position}{QCPItemPosition} *currentParentPos =
+8596             currentParent->\hyperlink{class_q_c_p_item_anchor_ac54b20120669950255a63587193dbb86}{toQCPItemPosition}()) \{
+8597       \textcolor{comment}{// is a QCPItemPosition, might have further parent, so keep iterating}
+8598       \textcolor{keywordflow}{if} (currentParentPos == \textcolor{keyword}{this}) \{
+8599         qDebug() << Q\_FUNC\_INFO
+8600                  << \textcolor{stringliteral}{"can't create recursive parent-child-relationship"}
+8601                  << \textcolor{keyword}{reinterpret\_cast<}quintptr\textcolor{keyword}{>}(\hyperlink{class_q_c_p_item_position_a7b4ffab9946945c0e11cd2352dc2e042}{parentAnchor});
+8602         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+8603       \}
+8604       currentParent = currentParentPos->parentAnchorX();
+8605     \} \textcolor{keywordflow}{else} \{
+8606       \textcolor{comment}{// is a QCPItemAnchor, can't have further parent. Now make sure the parent}
+8607       \textcolor{comment}{// items aren't the}
+8608       \textcolor{comment}{// same, to prevent a position being child of an anchor which itself}
+8609       \textcolor{comment}{// depends on the position,}
+8610       \textcolor{comment}{// because they're both on the same item:}
+8611       \textcolor{keywordflow}{if} (currentParent->\hyperlink{class_q_c_p_item_anchor_a80fad480ad3bb980446ed6ebc00818ae}{mParentItem} == \hyperlink{class_q_c_p_item_anchor_a80fad480ad3bb980446ed6ebc00818ae}{mParentItem}) \{
+8612         qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"can't set parent to be an anchor which "}
+8613                                    \textcolor{stringliteral}{"itself depends on this position"}
+8614                  << \textcolor{keyword}{reinterpret\_cast<}quintptr\textcolor{keyword}{>}(\hyperlink{class_q_c_p_item_position_a7b4ffab9946945c0e11cd2352dc2e042}{parentAnchor});
+8615         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+8616       \}
+8617       \textcolor{keywordflow}{break};
+8618     \}
+8619   \}
+8620 
+8621   \textcolor{comment}{// if previously no parent set and PosType is still ptPlotCoords, set to}
+8622   \textcolor{comment}{// ptAbsolute:}
+8623   \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_item_position_a41b4641d18c90997b9c01bf304181bf0}{mParentAnchorX} && \hyperlink{class_q_c_p_item_position_ae2a617dce057c5f3ec6878c1823aa291}{mPositionTypeX} == 
       \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8ad5ffb8dc99ad73263f7010c77342294c}{ptPlotCoords})
-7822     \hyperlink{class_q_c_p_item_position_a2113b2351d6d00457fb3559a4e20c3ea}{setTypeX}(\hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8a564f5e53e550ead1ec5fc7fc7d0b73e0}{ptAbsolute});
-7823   
-7824   \textcolor{comment}{// save pixel position:}
-7825   QPointF pixelP;
-7826   \textcolor{keywordflow}{if} (keepPixelPosition)
-7827     pixelP = \hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}();
-7828   \textcolor{comment}{// unregister at current parent anchor:}
-7829   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_a41b4641d18c90997b9c01bf304181bf0}{mParentAnchorX})
-7830     \hyperlink{class_q_c_p_item_position_a41b4641d18c90997b9c01bf304181bf0}{mParentAnchorX}->\hyperlink{class_q_c_p_item_anchor_a230b1d494cda63458e289bbe1b642599}{removeChildX}(\textcolor{keyword}{this});
-7831   \textcolor{comment}{// register at new parent anchor:}
-7832   \textcolor{keywordflow}{if} (parentAnchor)
-7833     parentAnchor->\hyperlink{class_q_c_p_item_anchor_aef15daa640debfb11b0aeaa2116c6fbc}{addChildX}(\textcolor{keyword}{this});
-7834   \hyperlink{class_q_c_p_item_position_a41b4641d18c90997b9c01bf304181bf0}{mParentAnchorX} = \hyperlink{class_q_c_p_item_position_a7b4ffab9946945c0e11cd2352dc2e042}{parentAnchor};
-7835   \textcolor{comment}{// restore pixel position under new parent:}
-7836   \textcolor{keywordflow}{if} (keepPixelPosition)
-7837     \hyperlink{class_q_c_p_item_position_ab404e56d9ac2ac2df0382c57933a71ef}{setPixelPoint}(pixelP);
-7838   \textcolor{keywordflow}{else}
-7839     \hyperlink{class_q_c_p_item_position_aa988ba4e87ab684c9021017dcaba945f}{setCoords}(0, \hyperlink{class_q_c_p_item_position_a253d7adbb6d46299bd6cbc31aa8819f1}{coords}().\hyperlink{_comparision_pictures_2_createtest_image_8m_a2fb1c5cf58867b5bbc9a1b145a86f3a0}{y}());
-7840   \textcolor{keywordflow}{return} \textcolor{keyword}{true};
-7841 \}
+8624     \hyperlink{class_q_c_p_item_position_a2113b2351d6d00457fb3559a4e20c3ea}{setTypeX}(\hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8a564f5e53e550ead1ec5fc7fc7d0b73e0}{ptAbsolute});
+8625 
+8626   \textcolor{comment}{// save pixel position:}
+8627   QPointF pixelP;
+8628   \textcolor{keywordflow}{if} (keepPixelPosition)
+8629     pixelP = \hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}();
+8630   \textcolor{comment}{// unregister at current parent anchor:}
+8631   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_a41b4641d18c90997b9c01bf304181bf0}{mParentAnchorX})
+8632     \hyperlink{class_q_c_p_item_position_a41b4641d18c90997b9c01bf304181bf0}{mParentAnchorX}->\hyperlink{class_q_c_p_item_anchor_a230b1d494cda63458e289bbe1b642599}{removeChildX}(\textcolor{keyword}{this});
+8633   \textcolor{comment}{// register at new parent anchor:}
+8634   \textcolor{keywordflow}{if} (parentAnchor)
+8635     parentAnchor->\hyperlink{class_q_c_p_item_anchor_aef15daa640debfb11b0aeaa2116c6fbc}{addChildX}(\textcolor{keyword}{this});
+8636   \hyperlink{class_q_c_p_item_position_a41b4641d18c90997b9c01bf304181bf0}{mParentAnchorX} = \hyperlink{class_q_c_p_item_position_a7b4ffab9946945c0e11cd2352dc2e042}{parentAnchor};
+8637   \textcolor{comment}{// restore pixel position under new parent:}
+8638   \textcolor{keywordflow}{if} (keepPixelPosition)
+8639     \hyperlink{class_q_c_p_item_position_ab404e56d9ac2ac2df0382c57933a71ef}{setPixelPoint}(pixelP);
+8640   \textcolor{keywordflow}{else}
+8641     \hyperlink{class_q_c_p_item_position_aa988ba4e87ab684c9021017dcaba945f}{setCoords}(0, \hyperlink{class_q_c_p_item_position_a253d7adbb6d46299bd6cbc31aa8819f1}{coords}().\hyperlink{_comparision_pictures_2_createtest_image_8m_a2fb1c5cf58867b5bbc9a1b145a86f3a0}{y}());
+8642   \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+8643 \}
 \end{DoxyCode}
 
 
@@ -985,7 +973,7 @@ For a detailed description of what a parent anchor is, see the documentation of 
 \end{DoxySeeAlso}
 
 
-Definition at line 7850 of file qcustomplot.\+cpp.
+Definition at line 8653 of file qcustomplot.\+cpp.
 
 
 
@@ -997,67 +985,66 @@ Referenced by set\+Parent\+Anchor(), Q\+C\+P\+Item\+Anchor\+::$\sim$\+Q\+C\+P\+I
 
 
 \begin{DoxyCode}
-7851 \{
-7852   \textcolor{comment}{// make sure self is not assigned as parent:}
-7853   \textcolor{keywordflow}{if} (parentAnchor == \textcolor{keyword}{this})
-7854   \{
-7855     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"can't set self as parent anchor"} << \textcolor{keyword}{reinterpret\_cast<}quintptr\textcolor{keyword}{>}(
-      \hyperlink{class_q_c_p_item_position_a7b4ffab9946945c0e11cd2352dc2e042}{parentAnchor});
-7856     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
-7857   \}
-7858   \textcolor{comment}{// make sure no recursive parent-child-relationships are created:}
-7859   \hyperlink{class_q_c_p_item_anchor}{QCPItemAnchor} *currentParent = \hyperlink{class_q_c_p_item_position_a7b4ffab9946945c0e11cd2352dc2e042}{parentAnchor};
-7860   \textcolor{keywordflow}{while} (currentParent)
-7861   \{
-7862     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position}{QCPItemPosition} *currentParentPos = currentParent->
-      \hyperlink{class_q_c_p_item_anchor_ac54b20120669950255a63587193dbb86}{toQCPItemPosition}())
-7863     \{
-7864       \textcolor{comment}{// is a QCPItemPosition, might have further parent, so keep iterating}
-7865       \textcolor{keywordflow}{if} (currentParentPos == \textcolor{keyword}{this})
-7866       \{
-7867         qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"can't create recursive parent-child-relationship"} << \textcolor{keyword}{reinterpret\_cast<}
-      quintptr\textcolor{keyword}{>}(\hyperlink{class_q_c_p_item_position_a7b4ffab9946945c0e11cd2352dc2e042}{parentAnchor});
-7868         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
-7869       \}
-7870       currentParent = currentParentPos->parentAnchorY();
-7871     \} \textcolor{keywordflow}{else}
-7872     \{
-7873       \textcolor{comment}{// is a QCPItemAnchor, can't have further parent. Now make sure the parent items aren't the}
-7874       \textcolor{comment}{// same, to prevent a position being child of an anchor which itself depends on the position,}
-7875       \textcolor{comment}{// because they're both on the same item:}
-7876       \textcolor{keywordflow}{if} (currentParent->\hyperlink{class_q_c_p_item_anchor_a80fad480ad3bb980446ed6ebc00818ae}{mParentItem} == \hyperlink{class_q_c_p_item_anchor_a80fad480ad3bb980446ed6ebc00818ae}{mParentItem})
-7877       \{
-7878         qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"can't set parent to be an anchor which itself depends on this position"}
-       << \textcolor{keyword}{reinterpret\_cast<}quintptr\textcolor{keyword}{>}(\hyperlink{class_q_c_p_item_position_a7b4ffab9946945c0e11cd2352dc2e042}{parentAnchor});
-7879         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
-7880       \}
-7881       \textcolor{keywordflow}{break};
-7882     \}
-7883   \}
-7884   
-7885   \textcolor{comment}{// if previously no parent set and PosType is still ptPlotCoords, set to ptAbsolute:}
-7886   \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_item_position_afc6142a6a09c8fa41c44d3d54fadd737}{mParentAnchorY} && \hyperlink{class_q_c_p_item_position_a47c96c0ef4380e1af4aaa7c2265c260b}{mPositionTypeY} == 
+8654                                                                \{
+8655   \textcolor{comment}{// make sure self is not assigned as parent:}
+8656   \textcolor{keywordflow}{if} (parentAnchor == \textcolor{keyword}{this}) \{
+8657     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"can't set self as parent anchor"}
+8658              << \textcolor{keyword}{reinterpret\_cast<}quintptr\textcolor{keyword}{>}(\hyperlink{class_q_c_p_item_position_a7b4ffab9946945c0e11cd2352dc2e042}{parentAnchor});
+8659     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+8660   \}
+8661   \textcolor{comment}{// make sure no recursive parent-child-relationships are created:}
+8662   \hyperlink{class_q_c_p_item_anchor}{QCPItemAnchor} *currentParent = \hyperlink{class_q_c_p_item_position_a7b4ffab9946945c0e11cd2352dc2e042}{parentAnchor};
+8663   \textcolor{keywordflow}{while} (currentParent) \{
+8664     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position}{QCPItemPosition} *currentParentPos =
+8665             currentParent->\hyperlink{class_q_c_p_item_anchor_ac54b20120669950255a63587193dbb86}{toQCPItemPosition}()) \{
+8666       \textcolor{comment}{// is a QCPItemPosition, might have further parent, so keep iterating}
+8667       \textcolor{keywordflow}{if} (currentParentPos == \textcolor{keyword}{this}) \{
+8668         qDebug() << Q\_FUNC\_INFO
+8669                  << \textcolor{stringliteral}{"can't create recursive parent-child-relationship"}
+8670                  << \textcolor{keyword}{reinterpret\_cast<}quintptr\textcolor{keyword}{>}(\hyperlink{class_q_c_p_item_position_a7b4ffab9946945c0e11cd2352dc2e042}{parentAnchor});
+8671         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+8672       \}
+8673       currentParent = currentParentPos->parentAnchorY();
+8674     \} \textcolor{keywordflow}{else} \{
+8675       \textcolor{comment}{// is a QCPItemAnchor, can't have further parent. Now make sure the parent}
+8676       \textcolor{comment}{// items aren't the}
+8677       \textcolor{comment}{// same, to prevent a position being child of an anchor which itself}
+8678       \textcolor{comment}{// depends on the position,}
+8679       \textcolor{comment}{// because they're both on the same item:}
+8680       \textcolor{keywordflow}{if} (currentParent->\hyperlink{class_q_c_p_item_anchor_a80fad480ad3bb980446ed6ebc00818ae}{mParentItem} == \hyperlink{class_q_c_p_item_anchor_a80fad480ad3bb980446ed6ebc00818ae}{mParentItem}) \{
+8681         qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"can't set parent to be an anchor which "}
+8682                                    \textcolor{stringliteral}{"itself depends on this position"}
+8683                  << \textcolor{keyword}{reinterpret\_cast<}quintptr\textcolor{keyword}{>}(\hyperlink{class_q_c_p_item_position_a7b4ffab9946945c0e11cd2352dc2e042}{parentAnchor});
+8684         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+8685       \}
+8686       \textcolor{keywordflow}{break};
+8687     \}
+8688   \}
+8689 
+8690   \textcolor{comment}{// if previously no parent set and PosType is still ptPlotCoords, set to}
+8691   \textcolor{comment}{// ptAbsolute:}
+8692   \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_item_position_afc6142a6a09c8fa41c44d3d54fadd737}{mParentAnchorY} && \hyperlink{class_q_c_p_item_position_a47c96c0ef4380e1af4aaa7c2265c260b}{mPositionTypeY} == 
       \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8ad5ffb8dc99ad73263f7010c77342294c}{ptPlotCoords})
-7887     \hyperlink{class_q_c_p_item_position_ac2a454aa5a54c1615c50686601ec4510}{setTypeY}(\hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8a564f5e53e550ead1ec5fc7fc7d0b73e0}{ptAbsolute});
-7888   
-7889   \textcolor{comment}{// save pixel position:}
-7890   QPointF pixelP;
-7891   \textcolor{keywordflow}{if} (keepPixelPosition)
-7892     pixelP = \hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}();
-7893   \textcolor{comment}{// unregister at current parent anchor:}
-7894   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_afc6142a6a09c8fa41c44d3d54fadd737}{mParentAnchorY})
-7895     \hyperlink{class_q_c_p_item_position_afc6142a6a09c8fa41c44d3d54fadd737}{mParentAnchorY}->\hyperlink{class_q_c_p_item_anchor_aa2394911d8fff3bd958b9f4f1994b64d}{removeChildY}(\textcolor{keyword}{this});
-7896   \textcolor{comment}{// register at new parent anchor:}
-7897   \textcolor{keywordflow}{if} (parentAnchor)
-7898     parentAnchor->\hyperlink{class_q_c_p_item_anchor_af05dc56f24536f0c7a9a0f57b58cea67}{addChildY}(\textcolor{keyword}{this});
-7899   \hyperlink{class_q_c_p_item_position_afc6142a6a09c8fa41c44d3d54fadd737}{mParentAnchorY} = \hyperlink{class_q_c_p_item_position_a7b4ffab9946945c0e11cd2352dc2e042}{parentAnchor};
-7900   \textcolor{comment}{// restore pixel position under new parent:}
-7901   \textcolor{keywordflow}{if} (keepPixelPosition)
-7902     \hyperlink{class_q_c_p_item_position_ab404e56d9ac2ac2df0382c57933a71ef}{setPixelPoint}(pixelP);
-7903   \textcolor{keywordflow}{else}
-7904     \hyperlink{class_q_c_p_item_position_aa988ba4e87ab684c9021017dcaba945f}{setCoords}(\hyperlink{class_q_c_p_item_position_a253d7adbb6d46299bd6cbc31aa8819f1}{coords}().\hyperlink{_comparision_pictures_2_createtest_image_8m_a9336ebf25087d91c818ee6e9ec29f8c1}{x}(), 0);
-7905   \textcolor{keywordflow}{return} \textcolor{keyword}{true};
-7906 \}
+8693     \hyperlink{class_q_c_p_item_position_ac2a454aa5a54c1615c50686601ec4510}{setTypeY}(\hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8a564f5e53e550ead1ec5fc7fc7d0b73e0}{ptAbsolute});
+8694 
+8695   \textcolor{comment}{// save pixel position:}
+8696   QPointF pixelP;
+8697   \textcolor{keywordflow}{if} (keepPixelPosition)
+8698     pixelP = \hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}();
+8699   \textcolor{comment}{// unregister at current parent anchor:}
+8700   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_afc6142a6a09c8fa41c44d3d54fadd737}{mParentAnchorY})
+8701     \hyperlink{class_q_c_p_item_position_afc6142a6a09c8fa41c44d3d54fadd737}{mParentAnchorY}->\hyperlink{class_q_c_p_item_anchor_aa2394911d8fff3bd958b9f4f1994b64d}{removeChildY}(\textcolor{keyword}{this});
+8702   \textcolor{comment}{// register at new parent anchor:}
+8703   \textcolor{keywordflow}{if} (parentAnchor)
+8704     parentAnchor->\hyperlink{class_q_c_p_item_anchor_af05dc56f24536f0c7a9a0f57b58cea67}{addChildY}(\textcolor{keyword}{this});
+8705   \hyperlink{class_q_c_p_item_position_afc6142a6a09c8fa41c44d3d54fadd737}{mParentAnchorY} = \hyperlink{class_q_c_p_item_position_a7b4ffab9946945c0e11cd2352dc2e042}{parentAnchor};
+8706   \textcolor{comment}{// restore pixel position under new parent:}
+8707   \textcolor{keywordflow}{if} (keepPixelPosition)
+8708     \hyperlink{class_q_c_p_item_position_ab404e56d9ac2ac2df0382c57933a71ef}{setPixelPoint}(pixelP);
+8709   \textcolor{keywordflow}{else}
+8710     \hyperlink{class_q_c_p_item_position_aa988ba4e87ab684c9021017dcaba945f}{setCoords}(\hyperlink{class_q_c_p_item_position_a253d7adbb6d46299bd6cbc31aa8819f1}{coords}().\hyperlink{_comparision_pictures_2_createtest_image_8m_a9336ebf25087d91c818ee6e9ec29f8c1}{x}(), 0);
+8711   \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+8712 \}
 \end{DoxyCode}
 
 
@@ -1097,7 +1084,7 @@ Only if the type is \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552
 \end{DoxySeeAlso}
 
 
-Definition at line 8073 of file qcustomplot.\+cpp.
+Definition at line 8887 of file qcustomplot.\+cpp.
 
 
 
@@ -1109,96 +1096,90 @@ Referenced by set\+Parent\+Anchor\+X(), set\+Parent\+Anchor\+Y(), set\+Type\+X()
 
 
 \begin{DoxyCode}
-8074 \{
-8075   \textcolor{keywordtype}{double} \hyperlink{_comparision_pictures_2_createtest_image_8m_a9336ebf25087d91c818ee6e9ec29f8c1}{x} = \hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}.x();
-8076   \textcolor{keywordtype}{double} \hyperlink{_comparision_pictures_2_createtest_image_8m_a2fb1c5cf58867b5bbc9a1b145a86f3a0}{y} = \hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}.y();
-8077   
-8078   \textcolor{keywordflow}{switch} (\hyperlink{class_q_c_p_item_position_ae2a617dce057c5f3ec6878c1823aa291}{mPositionTypeX})
-8079   \{
-8080     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8a564f5e53e550ead1ec5fc7fc7d0b73e0}{ptAbsolute}:
-8081     \{
-8082       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_a41b4641d18c90997b9c01bf304181bf0}{mParentAnchorX})
-8083         x -= \hyperlink{class_q_c_p_item_position_a41b4641d18c90997b9c01bf304181bf0}{mParentAnchorX}->\hyperlink{class_q_c_p_item_anchor_ae92def8f9297c5d73f5806c586517bb3}{pixelPoint}().x();
-8084       \textcolor{keywordflow}{break};
-8085     \}
-8086     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8ac7d6aa89ceacb39658b0d6da061c789a}{ptViewportRatio}:
-8087     \{
-8088       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_a41b4641d18c90997b9c01bf304181bf0}{mParentAnchorX})
-8089         x -= \hyperlink{class_q_c_p_item_position_a41b4641d18c90997b9c01bf304181bf0}{mParentAnchorX}->\hyperlink{class_q_c_p_item_anchor_ae92def8f9297c5d73f5806c586517bb3}{pixelPoint}().x();
-8090       \textcolor{keywordflow}{else}
-8091         x -= \hyperlink{class_q_c_p_item_anchor_a59b968410831ba91a25cc75a77dde6f5}{mParentPlot}->\hyperlink{class_q_custom_plot_a953ecdbc28018e7e84cb6213ad3d88c2}{viewport}().left();
-8092       x /= (double)\hyperlink{class_q_c_p_item_anchor_a59b968410831ba91a25cc75a77dde6f5}{mParentPlot}->\hyperlink{class_q_custom_plot_a953ecdbc28018e7e84cb6213ad3d88c2}{viewport}().width();
-8093       \textcolor{keywordflow}{break};
-8094     \}
-8095     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8a01080fd00eaf09fa238ef6b73bbfef75}{ptAxisRectRatio}:
-8096     \{
-8097       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_add40fcb8994c247d85f42a126286b740}{mAxisRect})
-8098       \{
-8099         \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_a41b4641d18c90997b9c01bf304181bf0}{mParentAnchorX})
-8100           x -= \hyperlink{class_q_c_p_item_position_a41b4641d18c90997b9c01bf304181bf0}{mParentAnchorX}->\hyperlink{class_q_c_p_item_anchor_ae92def8f9297c5d73f5806c586517bb3}{pixelPoint}().x();
-8101         \textcolor{keywordflow}{else}
-8102           x -= \hyperlink{class_q_c_p_item_position_add40fcb8994c247d85f42a126286b740}{mAxisRect}.data()->left();
-8103         x /= (double)\hyperlink{class_q_c_p_item_position_add40fcb8994c247d85f42a126286b740}{mAxisRect}.data()->width();
-8104       \} \textcolor{keywordflow}{else}
-8105         qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Item position type x is ptAxisRectRatio, but no axis rect was defined"};
-8106       \textcolor{keywordflow}{break};
-8107     \}
-8108     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8ad5ffb8dc99ad73263f7010c77342294c}{ptPlotCoords}:
-8109     \{
-8110       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_a63967a33933231e92f68c8ce06bfc37e}{mKeyAxis} && \hyperlink{class_q_c_p_item_position_a63967a33933231e92f68c8ce06bfc37e}{mKeyAxis}.data()->orientation() == Qt::Horizontal)
-8111         x = \hyperlink{class_q_c_p_item_position_a63967a33933231e92f68c8ce06bfc37e}{mKeyAxis}.data()->pixelToCoord(x);
-8112       \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_a505dc2da24ba274452c1c817fcaba011}{mValueAxis} && \hyperlink{class_q_c_p_item_position_a505dc2da24ba274452c1c817fcaba011}{mValueAxis}.data()->orientation() == Qt::Horizontal)
-8113         y = \hyperlink{class_q_c_p_item_position_a505dc2da24ba274452c1c817fcaba011}{mValueAxis}.data()->pixelToCoord(x);
-8114       \textcolor{keywordflow}{else}
-8115         qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Item position type x is ptPlotCoords, but no axes were defined"};
-8116       \textcolor{keywordflow}{break};
-8117     \}
-8118   \}
-8119   
-8120   \textcolor{keywordflow}{switch} (\hyperlink{class_q_c_p_item_position_a47c96c0ef4380e1af4aaa7c2265c260b}{mPositionTypeY})
-8121   \{
-8122     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8a564f5e53e550ead1ec5fc7fc7d0b73e0}{ptAbsolute}:
-8123     \{
-8124       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_afc6142a6a09c8fa41c44d3d54fadd737}{mParentAnchorY})
-8125         y -= \hyperlink{class_q_c_p_item_position_afc6142a6a09c8fa41c44d3d54fadd737}{mParentAnchorY}->\hyperlink{class_q_c_p_item_anchor_ae92def8f9297c5d73f5806c586517bb3}{pixelPoint}().y();
-8126       \textcolor{keywordflow}{break};
-8127     \}
-8128     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8ac7d6aa89ceacb39658b0d6da061c789a}{ptViewportRatio}:
-8129     \{
-8130       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_afc6142a6a09c8fa41c44d3d54fadd737}{mParentAnchorY})
-8131         y -= \hyperlink{class_q_c_p_item_position_afc6142a6a09c8fa41c44d3d54fadd737}{mParentAnchorY}->\hyperlink{class_q_c_p_item_anchor_ae92def8f9297c5d73f5806c586517bb3}{pixelPoint}().y();
-8132       \textcolor{keywordflow}{else}
-8133         y -= \hyperlink{class_q_c_p_item_anchor_a59b968410831ba91a25cc75a77dde6f5}{mParentPlot}->\hyperlink{class_q_custom_plot_a953ecdbc28018e7e84cb6213ad3d88c2}{viewport}().top();
-8134       y /= (double)\hyperlink{class_q_c_p_item_anchor_a59b968410831ba91a25cc75a77dde6f5}{mParentPlot}->\hyperlink{class_q_custom_plot_a953ecdbc28018e7e84cb6213ad3d88c2}{viewport}().height();
-8135       \textcolor{keywordflow}{break};
-8136     \}
-8137     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8a01080fd00eaf09fa238ef6b73bbfef75}{ptAxisRectRatio}:
-8138     \{
-8139       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_add40fcb8994c247d85f42a126286b740}{mAxisRect})
-8140       \{
-8141         \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_afc6142a6a09c8fa41c44d3d54fadd737}{mParentAnchorY})
-8142           y -= \hyperlink{class_q_c_p_item_position_afc6142a6a09c8fa41c44d3d54fadd737}{mParentAnchorY}->\hyperlink{class_q_c_p_item_anchor_ae92def8f9297c5d73f5806c586517bb3}{pixelPoint}().y();
-8143         \textcolor{keywordflow}{else}
-8144           y -= \hyperlink{class_q_c_p_item_position_add40fcb8994c247d85f42a126286b740}{mAxisRect}.data()->top();
-8145         y /= (double)\hyperlink{class_q_c_p_item_position_add40fcb8994c247d85f42a126286b740}{mAxisRect}.data()->height();
-8146       \} \textcolor{keywordflow}{else}
-8147         qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Item position type y is ptAxisRectRatio, but no axis rect was defined"};
-8148       \textcolor{keywordflow}{break};
-8149     \}
-8150     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8ad5ffb8dc99ad73263f7010c77342294c}{ptPlotCoords}:
-8151     \{
-8152       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_a63967a33933231e92f68c8ce06bfc37e}{mKeyAxis} && \hyperlink{class_q_c_p_item_position_a63967a33933231e92f68c8ce06bfc37e}{mKeyAxis}.data()->orientation() == Qt::Vertical)
-8153         x = \hyperlink{class_q_c_p_item_position_a63967a33933231e92f68c8ce06bfc37e}{mKeyAxis}.data()->pixelToCoord(y);
-8154       \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_a505dc2da24ba274452c1c817fcaba011}{mValueAxis} && \hyperlink{class_q_c_p_item_position_a505dc2da24ba274452c1c817fcaba011}{mValueAxis}.data()->orientation() == Qt::Vertical)
-8155         y = \hyperlink{class_q_c_p_item_position_a505dc2da24ba274452c1c817fcaba011}{mValueAxis}.data()->pixelToCoord(y);
-8156       \textcolor{keywordflow}{else}
-8157         qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Item position type y is ptPlotCoords, but no axes were defined"};
-8158       \textcolor{keywordflow}{break};
-8159     \}
-8160   \}
-8161   
-8162   \hyperlink{class_q_c_p_item_position_aa988ba4e87ab684c9021017dcaba945f}{setCoords}(x, y);
-8163 \}
+8887                                                              \{
+8888   \textcolor{keywordtype}{double} \hyperlink{_comparision_pictures_2_createtest_image_8m_a9336ebf25087d91c818ee6e9ec29f8c1}{x} = \hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}.x();
+8889   \textcolor{keywordtype}{double} \hyperlink{_comparision_pictures_2_createtest_image_8m_a2fb1c5cf58867b5bbc9a1b145a86f3a0}{y} = \hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}.y();
+8890 
+8891   \textcolor{keywordflow}{switch} (\hyperlink{class_q_c_p_item_position_ae2a617dce057c5f3ec6878c1823aa291}{mPositionTypeX}) \{
+8892   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8a564f5e53e550ead1ec5fc7fc7d0b73e0}{ptAbsolute}: \{
+8893     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_a41b4641d18c90997b9c01bf304181bf0}{mParentAnchorX})
+8894       x -= \hyperlink{class_q_c_p_item_position_a41b4641d18c90997b9c01bf304181bf0}{mParentAnchorX}->\hyperlink{class_q_c_p_item_anchor_ae92def8f9297c5d73f5806c586517bb3}{pixelPoint}().x();
+8895     \textcolor{keywordflow}{break};
+8896   \}
+8897   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8ac7d6aa89ceacb39658b0d6da061c789a}{ptViewportRatio}: \{
+8898     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_a41b4641d18c90997b9c01bf304181bf0}{mParentAnchorX})
+8899       x -= \hyperlink{class_q_c_p_item_position_a41b4641d18c90997b9c01bf304181bf0}{mParentAnchorX}->\hyperlink{class_q_c_p_item_anchor_ae92def8f9297c5d73f5806c586517bb3}{pixelPoint}().x();
+8900     \textcolor{keywordflow}{else}
+8901       x -= \hyperlink{class_q_c_p_item_anchor_a59b968410831ba91a25cc75a77dde6f5}{mParentPlot}->\hyperlink{class_q_custom_plot_a953ecdbc28018e7e84cb6213ad3d88c2}{viewport}().left();
+8902     x /= (double)\hyperlink{class_q_c_p_item_anchor_a59b968410831ba91a25cc75a77dde6f5}{mParentPlot}->\hyperlink{class_q_custom_plot_a953ecdbc28018e7e84cb6213ad3d88c2}{viewport}().width();
+8903     \textcolor{keywordflow}{break};
+8904   \}
+8905   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8a01080fd00eaf09fa238ef6b73bbfef75}{ptAxisRectRatio}: \{
+8906     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_add40fcb8994c247d85f42a126286b740}{mAxisRect}) \{
+8907       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_a41b4641d18c90997b9c01bf304181bf0}{mParentAnchorX})
+8908         x -= \hyperlink{class_q_c_p_item_position_a41b4641d18c90997b9c01bf304181bf0}{mParentAnchorX}->\hyperlink{class_q_c_p_item_anchor_ae92def8f9297c5d73f5806c586517bb3}{pixelPoint}().x();
+8909       \textcolor{keywordflow}{else}
+8910         x -= \hyperlink{class_q_c_p_item_position_add40fcb8994c247d85f42a126286b740}{mAxisRect}.data()->left();
+8911       x /= (double)\hyperlink{class_q_c_p_item_position_add40fcb8994c247d85f42a126286b740}{mAxisRect}.data()->width();
+8912     \} \textcolor{keywordflow}{else}
+8913       qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Item position type x is ptAxisRectRatio, but "}
+8914                                  \textcolor{stringliteral}{"no axis rect was defined"};
+8915     \textcolor{keywordflow}{break};
+8916   \}
+8917   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8ad5ffb8dc99ad73263f7010c77342294c}{ptPlotCoords}: \{
+8918     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_a63967a33933231e92f68c8ce06bfc37e}{mKeyAxis} && \hyperlink{class_q_c_p_item_position_a63967a33933231e92f68c8ce06bfc37e}{mKeyAxis}.data()->orientation() == Qt::Horizontal)
+8919       x = \hyperlink{class_q_c_p_item_position_a63967a33933231e92f68c8ce06bfc37e}{mKeyAxis}.data()->pixelToCoord(x);
+8920     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_a505dc2da24ba274452c1c817fcaba011}{mValueAxis} && \hyperlink{class_q_c_p_item_position_a505dc2da24ba274452c1c817fcaba011}{mValueAxis}.data()->orientation() == Qt::Horizontal)
+8921       y = \hyperlink{class_q_c_p_item_position_a505dc2da24ba274452c1c817fcaba011}{mValueAxis}.data()->pixelToCoord(x);
+8922     \textcolor{keywordflow}{else}
+8923       qDebug()
+8924           << Q\_FUNC\_INFO
+8925           << \textcolor{stringliteral}{"Item position type x is ptPlotCoords, but no axes were defined"};
+8926     \textcolor{keywordflow}{break};
+8927   \}
+8928   \}
+8929 
+8930   \textcolor{keywordflow}{switch} (\hyperlink{class_q_c_p_item_position_a47c96c0ef4380e1af4aaa7c2265c260b}{mPositionTypeY}) \{
+8931   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8a564f5e53e550ead1ec5fc7fc7d0b73e0}{ptAbsolute}: \{
+8932     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_afc6142a6a09c8fa41c44d3d54fadd737}{mParentAnchorY})
+8933       y -= \hyperlink{class_q_c_p_item_position_afc6142a6a09c8fa41c44d3d54fadd737}{mParentAnchorY}->\hyperlink{class_q_c_p_item_anchor_ae92def8f9297c5d73f5806c586517bb3}{pixelPoint}().y();
+8934     \textcolor{keywordflow}{break};
+8935   \}
+8936   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8ac7d6aa89ceacb39658b0d6da061c789a}{ptViewportRatio}: \{
+8937     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_afc6142a6a09c8fa41c44d3d54fadd737}{mParentAnchorY})
+8938       y -= \hyperlink{class_q_c_p_item_position_afc6142a6a09c8fa41c44d3d54fadd737}{mParentAnchorY}->\hyperlink{class_q_c_p_item_anchor_ae92def8f9297c5d73f5806c586517bb3}{pixelPoint}().y();
+8939     \textcolor{keywordflow}{else}
+8940       y -= \hyperlink{class_q_c_p_item_anchor_a59b968410831ba91a25cc75a77dde6f5}{mParentPlot}->\hyperlink{class_q_custom_plot_a953ecdbc28018e7e84cb6213ad3d88c2}{viewport}().top();
+8941     y /= (double)\hyperlink{class_q_c_p_item_anchor_a59b968410831ba91a25cc75a77dde6f5}{mParentPlot}->\hyperlink{class_q_custom_plot_a953ecdbc28018e7e84cb6213ad3d88c2}{viewport}().height();
+8942     \textcolor{keywordflow}{break};
+8943   \}
+8944   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8a01080fd00eaf09fa238ef6b73bbfef75}{ptAxisRectRatio}: \{
+8945     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_add40fcb8994c247d85f42a126286b740}{mAxisRect}) \{
+8946       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_afc6142a6a09c8fa41c44d3d54fadd737}{mParentAnchorY})
+8947         y -= \hyperlink{class_q_c_p_item_position_afc6142a6a09c8fa41c44d3d54fadd737}{mParentAnchorY}->\hyperlink{class_q_c_p_item_anchor_ae92def8f9297c5d73f5806c586517bb3}{pixelPoint}().y();
+8948       \textcolor{keywordflow}{else}
+8949         y -= \hyperlink{class_q_c_p_item_position_add40fcb8994c247d85f42a126286b740}{mAxisRect}.data()->top();
+8950       y /= (double)\hyperlink{class_q_c_p_item_position_add40fcb8994c247d85f42a126286b740}{mAxisRect}.data()->height();
+8951     \} \textcolor{keywordflow}{else}
+8952       qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Item position type y is ptAxisRectRatio, but "}
+8953                                  \textcolor{stringliteral}{"no axis rect was defined"};
+8954     \textcolor{keywordflow}{break};
+8955   \}
+8956   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8ad5ffb8dc99ad73263f7010c77342294c}{ptPlotCoords}: \{
+8957     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_a63967a33933231e92f68c8ce06bfc37e}{mKeyAxis} && \hyperlink{class_q_c_p_item_position_a63967a33933231e92f68c8ce06bfc37e}{mKeyAxis}.data()->orientation() == Qt::Vertical)
+8958       x = \hyperlink{class_q_c_p_item_position_a63967a33933231e92f68c8ce06bfc37e}{mKeyAxis}.data()->pixelToCoord(y);
+8959     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_a505dc2da24ba274452c1c817fcaba011}{mValueAxis} && \hyperlink{class_q_c_p_item_position_a505dc2da24ba274452c1c817fcaba011}{mValueAxis}.data()->orientation() == Qt::Vertical)
+8960       y = \hyperlink{class_q_c_p_item_position_a505dc2da24ba274452c1c817fcaba011}{mValueAxis}.data()->pixelToCoord(y);
+8961     \textcolor{keywordflow}{else}
+8962       qDebug()
+8963           << Q\_FUNC\_INFO
+8964           << \textcolor{stringliteral}{"Item position type y is ptPlotCoords, but no axes were defined"};
+8965     \textcolor{keywordflow}{break};
+8966   \}
+8967   \}
+8968 
+8969   \hyperlink{class_q_c_p_item_position_aa988ba4e87ab684c9021017dcaba945f}{setCoords}(x, y);
+8970 \}
 \end{DoxyCode}
 
 
@@ -1243,7 +1224,7 @@ If the type is changed, the apparent pixel position on the plot is preserved. Th
 
 This method sets the type for both X and Y directions. It is also possible to set different types for X and Y, see \hyperlink{class_q_c_p_item_position_a2113b2351d6d00457fb3559a4e20c3ea}{set\+Type\+X}, \hyperlink{class_q_c_p_item_position_ac2a454aa5a54c1615c50686601ec4510}{set\+Type\+Y}. 
 
-Definition at line 7687 of file qcustomplot.\+cpp.
+Definition at line 8470 of file qcustomplot.\+cpp.
 
 
 
@@ -1255,10 +1236,10 @@ Referenced by Q\+C\+P\+Abstract\+Item\+::create\+Position(), and Q\+C\+P\+Item\+
 
 
 \begin{DoxyCode}
-7688 \{
-7689   \hyperlink{class_q_c_p_item_position_a2113b2351d6d00457fb3559a4e20c3ea}{setTypeX}(\hyperlink{class_q_c_p_item_position_aecb709d72c9aa334a7f62e2c9e0b5d60}{type});
-7690   \hyperlink{class_q_c_p_item_position_ac2a454aa5a54c1615c50686601ec4510}{setTypeY}(\hyperlink{class_q_c_p_item_position_aecb709d72c9aa334a7f62e2c9e0b5d60}{type});
-7691 \}
+8470                                                               \{
+8471   \hyperlink{class_q_c_p_item_position_a2113b2351d6d00457fb3559a4e20c3ea}{setTypeX}(\hyperlink{class_q_c_p_item_position_aecb709d72c9aa334a7f62e2c9e0b5d60}{type});
+8472   \hyperlink{class_q_c_p_item_position_ac2a454aa5a54c1615c50686601ec4510}{setTypeY}(\hyperlink{class_q_c_p_item_position_aecb709d72c9aa334a7f62e2c9e0b5d60}{type});
+8473 \}
 \end{DoxyCode}
 
 
@@ -1298,7 +1279,7 @@ For a detailed description of what a position type is, see the documentation of 
 \end{DoxySeeAlso}
 
 
-Definition at line 7700 of file qcustomplot.\+cpp.
+Definition at line 8483 of file qcustomplot.\+cpp.
 
 
 
@@ -1310,29 +1291,32 @@ Referenced by set\+Parent\+Anchor\+X(), and set\+Type().
 
 
 \begin{DoxyCode}
-7701 \{
-7702   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_ae2a617dce057c5f3ec6878c1823aa291}{mPositionTypeX} != \hyperlink{class_q_c_p_item_position_aecb709d72c9aa334a7f62e2c9e0b5d60}{type})
-7703   \{
-7704     \textcolor{comment}{// if switching from or to coordinate type that isn't valid (e.g. because axes or axis rect}
-7705     \textcolor{comment}{// were deleted), don't try to recover the pixelPoint() because it would output a qDebug warning.}
-7706     \textcolor{keywordtype}{bool} retainPixelPosition = \textcolor{keyword}{true};
-7707     \textcolor{keywordflow}{if} ((\hyperlink{class_q_c_p_item_position_ae2a617dce057c5f3ec6878c1823aa291}{mPositionTypeX} == \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8ad5ffb8dc99ad73263f7010c77342294c}{ptPlotCoords} || \hyperlink{class_q_c_p_item_position_aecb709d72c9aa334a7f62e2c9e0b5d60}{type} == 
-      \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8ad5ffb8dc99ad73263f7010c77342294c}{ptPlotCoords}) && (!\hyperlink{class_q_c_p_item_position_a63967a33933231e92f68c8ce06bfc37e}{mKeyAxis} || !\hyperlink{class_q_c_p_item_position_a505dc2da24ba274452c1c817fcaba011}{mValueAxis}))
-7708       retainPixelPosition = \textcolor{keyword}{false};
-7709     \textcolor{keywordflow}{if} ((\hyperlink{class_q_c_p_item_position_ae2a617dce057c5f3ec6878c1823aa291}{mPositionTypeX} == \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8a01080fd00eaf09fa238ef6b73bbfef75}{ptAxisRectRatio} || \hyperlink{class_q_c_p_item_position_aecb709d72c9aa334a7f62e2c9e0b5d60}{type} == 
-      \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8a01080fd00eaf09fa238ef6b73bbfef75}{ptAxisRectRatio}) && (!\hyperlink{class_q_c_p_item_position_add40fcb8994c247d85f42a126286b740}{mAxisRect}))
-7710       retainPixelPosition = \textcolor{keyword}{false};
-7711     
-7712     QPointF pixel;
-7713     \textcolor{keywordflow}{if} (retainPixelPosition)
-7714       pixel = \hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}();
-7715     
-7716     \hyperlink{class_q_c_p_item_position_ae2a617dce057c5f3ec6878c1823aa291}{mPositionTypeX} = \hyperlink{class_q_c_p_item_position_aecb709d72c9aa334a7f62e2c9e0b5d60}{type};
-7717     
-7718     \textcolor{keywordflow}{if} (retainPixelPosition)
-7719       \hyperlink{class_q_c_p_item_position_ab404e56d9ac2ac2df0382c57933a71ef}{setPixelPoint}(pixel);
-7720   \}
-7721 \}
+8483                                                                \{
+8484   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_ae2a617dce057c5f3ec6878c1823aa291}{mPositionTypeX} != \hyperlink{class_q_c_p_item_position_aecb709d72c9aa334a7f62e2c9e0b5d60}{type}) \{
+8485     \textcolor{comment}{// if switching from or to coordinate type that isn't valid (e.g. because}
+8486     \textcolor{comment}{// axes or axis rect}
+8487     \textcolor{comment}{// were deleted), don't try to recover the pixelPoint() because it would}
+8488     \textcolor{comment}{// output a qDebug warning.}
+8489     \textcolor{keywordtype}{bool} retainPixelPosition = \textcolor{keyword}{true};
+8490     \textcolor{keywordflow}{if} ((\hyperlink{class_q_c_p_item_position_ae2a617dce057c5f3ec6878c1823aa291}{mPositionTypeX} == \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8ad5ffb8dc99ad73263f7010c77342294c}{ptPlotCoords} || \hyperlink{class_q_c_p_item_position_aecb709d72c9aa334a7f62e2c9e0b5d60}{type} == 
+      \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8ad5ffb8dc99ad73263f7010c77342294c}{ptPlotCoords}) &&
+8491         (!\hyperlink{class_q_c_p_item_position_a63967a33933231e92f68c8ce06bfc37e}{mKeyAxis} || !\hyperlink{class_q_c_p_item_position_a505dc2da24ba274452c1c817fcaba011}{mValueAxis}))
+8492       retainPixelPosition = \textcolor{keyword}{false};
+8493     \textcolor{keywordflow}{if} ((\hyperlink{class_q_c_p_item_position_ae2a617dce057c5f3ec6878c1823aa291}{mPositionTypeX} == \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8a01080fd00eaf09fa238ef6b73bbfef75}{ptAxisRectRatio} || \hyperlink{class_q_c_p_item_position_aecb709d72c9aa334a7f62e2c9e0b5d60}{type} == 
+      \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8a01080fd00eaf09fa238ef6b73bbfef75}{ptAxisRectRatio}) &&
+8494         (!\hyperlink{class_q_c_p_item_position_add40fcb8994c247d85f42a126286b740}{mAxisRect}))
+8495       retainPixelPosition = \textcolor{keyword}{false};
+8496 
+8497     QPointF pixel;
+8498     \textcolor{keywordflow}{if} (retainPixelPosition)
+8499       pixel = \hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}();
+8500 
+8501     \hyperlink{class_q_c_p_item_position_ae2a617dce057c5f3ec6878c1823aa291}{mPositionTypeX} = \hyperlink{class_q_c_p_item_position_aecb709d72c9aa334a7f62e2c9e0b5d60}{type};
+8502 
+8503     \textcolor{keywordflow}{if} (retainPixelPosition)
+8504       \hyperlink{class_q_c_p_item_position_ab404e56d9ac2ac2df0382c57933a71ef}{setPixelPoint}(pixel);
+8505   \}
+8506 \}
 \end{DoxyCode}
 
 
@@ -1372,7 +1356,7 @@ For a detailed description of what a position type is, see the documentation of 
 \end{DoxySeeAlso}
 
 
-Definition at line 7730 of file qcustomplot.\+cpp.
+Definition at line 8516 of file qcustomplot.\+cpp.
 
 
 
@@ -1384,29 +1368,32 @@ Referenced by set\+Parent\+Anchor\+Y(), and set\+Type().
 
 
 \begin{DoxyCode}
-7731 \{
-7732   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_a47c96c0ef4380e1af4aaa7c2265c260b}{mPositionTypeY} != \hyperlink{class_q_c_p_item_position_aecb709d72c9aa334a7f62e2c9e0b5d60}{type})
-7733   \{
-7734     \textcolor{comment}{// if switching from or to coordinate type that isn't valid (e.g. because axes or axis rect}
-7735     \textcolor{comment}{// were deleted), don't try to recover the pixelPoint() because it would output a qDebug warning.}
-7736     \textcolor{keywordtype}{bool} retainPixelPosition = \textcolor{keyword}{true};
-7737     \textcolor{keywordflow}{if} ((\hyperlink{class_q_c_p_item_position_a47c96c0ef4380e1af4aaa7c2265c260b}{mPositionTypeY} == \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8ad5ffb8dc99ad73263f7010c77342294c}{ptPlotCoords} || \hyperlink{class_q_c_p_item_position_aecb709d72c9aa334a7f62e2c9e0b5d60}{type} == 
-      \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8ad5ffb8dc99ad73263f7010c77342294c}{ptPlotCoords}) && (!\hyperlink{class_q_c_p_item_position_a63967a33933231e92f68c8ce06bfc37e}{mKeyAxis} || !\hyperlink{class_q_c_p_item_position_a505dc2da24ba274452c1c817fcaba011}{mValueAxis}))
-7738       retainPixelPosition = \textcolor{keyword}{false};
-7739     \textcolor{keywordflow}{if} ((\hyperlink{class_q_c_p_item_position_a47c96c0ef4380e1af4aaa7c2265c260b}{mPositionTypeY} == \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8a01080fd00eaf09fa238ef6b73bbfef75}{ptAxisRectRatio} || \hyperlink{class_q_c_p_item_position_aecb709d72c9aa334a7f62e2c9e0b5d60}{type} == 
-      \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8a01080fd00eaf09fa238ef6b73bbfef75}{ptAxisRectRatio}) && (!\hyperlink{class_q_c_p_item_position_add40fcb8994c247d85f42a126286b740}{mAxisRect}))
-7740       retainPixelPosition = \textcolor{keyword}{false};
-7741     
-7742     QPointF pixel;
-7743     \textcolor{keywordflow}{if} (retainPixelPosition)
-7744       pixel = \hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}();
-7745     
-7746     \hyperlink{class_q_c_p_item_position_a47c96c0ef4380e1af4aaa7c2265c260b}{mPositionTypeY} = \hyperlink{class_q_c_p_item_position_aecb709d72c9aa334a7f62e2c9e0b5d60}{type};
-7747     
-7748     \textcolor{keywordflow}{if} (retainPixelPosition)
-7749       \hyperlink{class_q_c_p_item_position_ab404e56d9ac2ac2df0382c57933a71ef}{setPixelPoint}(pixel);
-7750   \}
-7751 \}
+8516                                                                \{
+8517   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_position_a47c96c0ef4380e1af4aaa7c2265c260b}{mPositionTypeY} != \hyperlink{class_q_c_p_item_position_aecb709d72c9aa334a7f62e2c9e0b5d60}{type}) \{
+8518     \textcolor{comment}{// if switching from or to coordinate type that isn't valid (e.g. because}
+8519     \textcolor{comment}{// axes or axis rect}
+8520     \textcolor{comment}{// were deleted), don't try to recover the pixelPoint() because it would}
+8521     \textcolor{comment}{// output a qDebug warning.}
+8522     \textcolor{keywordtype}{bool} retainPixelPosition = \textcolor{keyword}{true};
+8523     \textcolor{keywordflow}{if} ((\hyperlink{class_q_c_p_item_position_a47c96c0ef4380e1af4aaa7c2265c260b}{mPositionTypeY} == \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8ad5ffb8dc99ad73263f7010c77342294c}{ptPlotCoords} || \hyperlink{class_q_c_p_item_position_aecb709d72c9aa334a7f62e2c9e0b5d60}{type} == 
+      \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8ad5ffb8dc99ad73263f7010c77342294c}{ptPlotCoords}) &&
+8524         (!\hyperlink{class_q_c_p_item_position_a63967a33933231e92f68c8ce06bfc37e}{mKeyAxis} || !\hyperlink{class_q_c_p_item_position_a505dc2da24ba274452c1c817fcaba011}{mValueAxis}))
+8525       retainPixelPosition = \textcolor{keyword}{false};
+8526     \textcolor{keywordflow}{if} ((\hyperlink{class_q_c_p_item_position_a47c96c0ef4380e1af4aaa7c2265c260b}{mPositionTypeY} == \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8a01080fd00eaf09fa238ef6b73bbfef75}{ptAxisRectRatio} || \hyperlink{class_q_c_p_item_position_aecb709d72c9aa334a7f62e2c9e0b5d60}{type} == 
+      \hyperlink{class_q_c_p_item_position_aad9936c22bf43e3d358552f6e86dbdc8a01080fd00eaf09fa238ef6b73bbfef75}{ptAxisRectRatio}) &&
+8527         (!\hyperlink{class_q_c_p_item_position_add40fcb8994c247d85f42a126286b740}{mAxisRect}))
+8528       retainPixelPosition = \textcolor{keyword}{false};
+8529 
+8530     QPointF pixel;
+8531     \textcolor{keywordflow}{if} (retainPixelPosition)
+8532       pixel = \hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}();
+8533 
+8534     \hyperlink{class_q_c_p_item_position_a47c96c0ef4380e1af4aaa7c2265c260b}{mPositionTypeY} = \hyperlink{class_q_c_p_item_position_aecb709d72c9aa334a7f62e2c9e0b5d60}{type};
+8535 
+8536     \textcolor{keywordflow}{if} (retainPixelPosition)
+8537       \hyperlink{class_q_c_p_item_position_ab404e56d9ac2ac2df0382c57933a71ef}{setPixelPoint}(pixel);
+8538   \}
+8539 \}
 \end{DoxyCode}
 
 
@@ -1445,11 +1432,11 @@ Reimplemented from \hyperlink{class_q_c_p_item_anchor_ac54b20120669950255a635871
 
 
 
-Definition at line 1599 of file qcustomplot.\+h.
+Definition at line 1838 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-1599 \{ \textcolor{keywordflow}{return} \textcolor{keyword}{this}; \}
+1838 \{ \textcolor{keywordflow}{return} \textcolor{keyword}{this}; \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_item_position_aecb709d72c9aa334a7f62e2c9e0b5d60}{}\index{Q\+C\+P\+Item\+Position@{Q\+C\+P\+Item\+Position}!type@{type}}
 \index{type@{type}!Q\+C\+P\+Item\+Position@{Q\+C\+P\+Item\+Position}}
@@ -1467,7 +1454,7 @@ If different types were set for X and Y (\hyperlink{class_q_c_p_item_position_a2
 \end{DoxySeeAlso}
 
 
-Definition at line 1563 of file qcustomplot.\+h.
+Definition at line 1799 of file qcustomplot.\+h.
 
 
 
@@ -1475,7 +1462,7 @@ Referenced by set\+Type\+X(), and set\+Type\+Y().
 
 
 \begin{DoxyCode}
-1563 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_position_a3cb68cf9c95be05c66a0f47448e328e5}{typeX}(); \}
+1799 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_position_a3cb68cf9c95be05c66a0f47448e328e5}{typeX}(); \}
 \end{DoxyCode}
 
 
@@ -1497,11 +1484,11 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_item_position_a3cb68cf9c95be05c66a0f47448e328e5}
 
 
-Definition at line 1564 of file qcustomplot.\+h.
+Definition at line 1800 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-1564 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_position_ae2a617dce057c5f3ec6878c1823aa291}{mPositionTypeX}; \}
+1800 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_position_ae2a617dce057c5f3ec6878c1823aa291}{mPositionTypeX}; \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_item_position_a8a2fec9dec1ce006a598b32685fd7ab3}{}\index{Q\+C\+P\+Item\+Position@{Q\+C\+P\+Item\+Position}!type\+Y@{type\+Y}}
 \index{type\+Y@{type\+Y}!Q\+C\+P\+Item\+Position@{Q\+C\+P\+Item\+Position}}
@@ -1512,11 +1499,11 @@ Definition at line 1564 of file qcustomplot.\+h.
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_item_position_a8a2fec9dec1ce006a598b32685fd7ab3}
 
 
-Definition at line 1565 of file qcustomplot.\+h.
+Definition at line 1801 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-1565 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_position_a47c96c0ef4380e1af4aaa7c2265c260b}{mPositionTypeY}; \}
+1801 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_position_a47c96c0ef4380e1af4aaa7c2265c260b}{mPositionTypeY}; \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_item_position_a6817f7356d3a2b63e8446c6b6106dae1}{}\index{Q\+C\+P\+Item\+Position@{Q\+C\+P\+Item\+Position}!value@{value}}
 \index{value@{value}!Q\+C\+P\+Item\+Position@{Q\+C\+P\+Item\+Position}}
@@ -1527,7 +1514,7 @@ Definition at line 1565 of file qcustomplot.\+h.
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_item_position_a6817f7356d3a2b63e8446c6b6106dae1}
 
 
-Definition at line 1570 of file qcustomplot.\+h.
+Definition at line 1806 of file qcustomplot.\+h.
 
 
 
@@ -1535,7 +1522,7 @@ Referenced by set\+Coords().
 
 
 \begin{DoxyCode}
-1570 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_position_a67bf5df69f587d53731724a7d61c6c3f}{mValue}; \}
+1806 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_position_a67bf5df69f587d53731724a7d61c6c3f}{mValue}; \}
 \end{DoxyCode}
 
 
@@ -1557,7 +1544,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_item_position_a8d3a039fb2e69df86b4015daa30dfd2d}
 
 
-Definition at line 1573 of file qcustomplot.\+h.
+Definition at line 1809 of file qcustomplot.\+h.
 
 
 
@@ -1565,7 +1552,7 @@ Referenced by set\+Axes().
 
 
 \begin{DoxyCode}
-1573 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_position_a505dc2da24ba274452c1c817fcaba011}{mValueAxis}.data(); \}
+1809 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_position_a505dc2da24ba274452c1c817fcaba011}{mValueAxis}.data(); \}
 \end{DoxyCode}
 
 
@@ -1586,7 +1573,7 @@ Here is the caller graph for this function\+:\nopagebreak
 \subsubsection[{m\+Axis\+Rect}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Pointer$<${\bf Q\+C\+P\+Axis\+Rect}$>$ Q\+C\+P\+Item\+Position\+::m\+Axis\+Rect\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_position_add40fcb8994c247d85f42a126286b740}
 
 
-Definition at line 1594 of file qcustomplot.\+h.
+Definition at line 1833 of file qcustomplot.\+h.
 
 
 
@@ -1597,7 +1584,7 @@ Referenced by axis\+Rect(), pixel\+Point(), set\+Axis\+Rect(), set\+Pixel\+Point
 \subsubsection[{m\+Key}]{\setlength{\rightskip}{0pt plus 5cm}double Q\+C\+P\+Item\+Position\+::m\+Key\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_position_a4ff3931ad115603dfb4c7000b24bb415}
 
 
-Definition at line 1595 of file qcustomplot.\+h.
+Definition at line 1834 of file qcustomplot.\+h.
 
 
 
@@ -1608,7 +1595,7 @@ Referenced by pixel\+Point(), and set\+Coords().
 \subsubsection[{m\+Key\+Axis}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Pointer$<${\bf Q\+C\+P\+Axis}$>$ Q\+C\+P\+Item\+Position\+::m\+Key\+Axis\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_position_a63967a33933231e92f68c8ce06bfc37e}
 
 
-Definition at line 1593 of file qcustomplot.\+h.
+Definition at line 1832 of file qcustomplot.\+h.
 
 
 
@@ -1619,7 +1606,7 @@ Referenced by pixel\+Point(), set\+Axes(), set\+Pixel\+Point(), set\+Type\+X(), 
 \subsubsection[{m\+Parent\+Anchor\+X}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Item\+Anchor}$\ast$ Q\+C\+P\+Item\+Position\+::m\+Parent\+Anchor\+X\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_position_a41b4641d18c90997b9c01bf304181bf0}
 
 
-Definition at line 1596 of file qcustomplot.\+h.
+Definition at line 1835 of file qcustomplot.\+h.
 
 
 
@@ -1630,7 +1617,7 @@ Referenced by pixel\+Point(), set\+Parent\+Anchor\+X(), set\+Pixel\+Point(), and
 \subsubsection[{m\+Parent\+Anchor\+Y}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Item\+Anchor} $\ast$ Q\+C\+P\+Item\+Position\+::m\+Parent\+Anchor\+Y\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_position_afc6142a6a09c8fa41c44d3d54fadd737}
 
 
-Definition at line 1596 of file qcustomplot.\+h.
+Definition at line 1835 of file qcustomplot.\+h.
 
 
 
@@ -1641,7 +1628,7 @@ Referenced by pixel\+Point(), set\+Parent\+Anchor\+Y(), set\+Pixel\+Point(), and
 \subsubsection[{m\+Position\+Type\+X}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Position\+Type} Q\+C\+P\+Item\+Position\+::m\+Position\+Type\+X\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_position_ae2a617dce057c5f3ec6878c1823aa291}
 
 
-Definition at line 1592 of file qcustomplot.\+h.
+Definition at line 1831 of file qcustomplot.\+h.
 
 
 
@@ -1652,7 +1639,7 @@ Referenced by pixel\+Point(), set\+Parent\+Anchor\+X(), set\+Pixel\+Point(), and
 \subsubsection[{m\+Position\+Type\+Y}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Position\+Type} Q\+C\+P\+Item\+Position\+::m\+Position\+Type\+Y\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_position_a47c96c0ef4380e1af4aaa7c2265c260b}
 
 
-Definition at line 1592 of file qcustomplot.\+h.
+Definition at line 1831 of file qcustomplot.\+h.
 
 
 
@@ -1663,7 +1650,7 @@ Referenced by pixel\+Point(), set\+Parent\+Anchor\+Y(), set\+Pixel\+Point(), and
 \subsubsection[{m\+Value}]{\setlength{\rightskip}{0pt plus 5cm}double Q\+C\+P\+Item\+Position\+::m\+Value\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_position_a67bf5df69f587d53731724a7d61c6c3f}
 
 
-Definition at line 1595 of file qcustomplot.\+h.
+Definition at line 1834 of file qcustomplot.\+h.
 
 
 
@@ -1674,7 +1661,7 @@ Referenced by pixel\+Point(), and set\+Coords().
 \subsubsection[{m\+Value\+Axis}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Pointer$<${\bf Q\+C\+P\+Axis}$>$ Q\+C\+P\+Item\+Position\+::m\+Value\+Axis\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_position_a505dc2da24ba274452c1c817fcaba011}
 
 
-Definition at line 1593 of file qcustomplot.\+h.
+Definition at line 1832 of file qcustomplot.\+h.
 
 
 

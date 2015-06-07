@@ -101,7 +101,7 @@ contains a {\itshape lower} and {\itshape upper} double value and provides conve
 \end{DoxySeeAlso}
 
 
-Definition at line 476 of file qcustomplot.\+h.
+Definition at line 592 of file qcustomplot.\+h.
 
 
 
@@ -115,15 +115,11 @@ Definition at line 476 of file qcustomplot.\+h.
 )}\label{class_q_c_p_range_aca158d7e69702cee5d77d10a269b01e2}
 Constructs a range with {\itshape lower} and {\itshape upper} set to zero. 
 
-Definition at line 1298 of file qcustomplot.\+cpp.
+Definition at line 1437 of file qcustomplot.\+cpp.
 
 
 \begin{DoxyCode}
-1298                    :
-1299   \hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}(0),
-1300   \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper}(0)
-1301 \{
-1302 \}
+1437 : \hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}(0), \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper}(0) \{\}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_range_a1d9d84d084c8f368fdedd42e0978d405}{}\index{Q\+C\+P\+Range@{Q\+C\+P\+Range}!Q\+C\+P\+Range@{Q\+C\+P\+Range}}
 \index{Q\+C\+P\+Range@{Q\+C\+P\+Range}!Q\+C\+P\+Range@{Q\+C\+P\+Range}}
@@ -135,7 +131,7 @@ Definition at line 1298 of file qcustomplot.\+cpp.
 )}\label{class_q_c_p_range_a1d9d84d084c8f368fdedd42e0978d405}
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. Constructs a range with the specified {\itshape lower} and {\itshape upper} values. 
 
-Definition at line 1307 of file qcustomplot.\+cpp.
+Definition at line 1442 of file qcustomplot.\+cpp.
 
 
 
@@ -143,12 +139,10 @@ References normalize().
 
 
 \begin{DoxyCode}
-1307                                              :
-1308   \hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}(\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}),
-1309   \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper}(\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper})
-1310 \{
-1311   \hyperlink{class_q_c_p_range_af914a7740269b0604d0827c634a878a9}{normalize}();
-1312 \}
+1442                                              : \hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}(\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}), \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper}(
+      \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper}) \{
+1443   \hyperlink{class_q_c_p_range_af914a7740269b0604d0827c634a878a9}{normalize}();
+1444 \}
 \end{DoxyCode}
 
 
@@ -173,7 +167,7 @@ Here is the call graph for this function\+:\nopagebreak
 ) const}\label{class_q_c_p_range_a3825b53cf17da5de0843c1f3baad07db}
 Returns the center of the range, i.\+e. ({\itshape upper+{\itshape lower})$\ast$0}.5 
 
-Definition at line 1325 of file qcustomplot.\+cpp.
+Definition at line 1454 of file qcustomplot.\+cpp.
 
 
 
@@ -181,9 +175,7 @@ References lower, and upper.
 
 
 \begin{DoxyCode}
-1326 \{
-1327   \textcolor{keywordflow}{return} (\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper}+\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower})*0.5;
-1328 \}
+1454 \{ \textcolor{keywordflow}{return} (\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} + \hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}) * 0.5; \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_range_a030ce95b527c32e01414d0351347b46d}{}\index{Q\+C\+P\+Range@{Q\+C\+P\+Range}!contains@{contains}}
 \index{contains@{contains}!Q\+C\+P\+Range@{Q\+C\+P\+Range}}
@@ -194,7 +186,7 @@ References lower, and upper.
 ) const}\label{class_q_c_p_range_a030ce95b527c32e01414d0351347b46d}
 Returns true when {\itshape value} lies within or exactly on the borders of the range. 
 
-Definition at line 1441 of file qcustomplot.\+cpp.
+Definition at line 1572 of file qcustomplot.\+cpp.
 
 
 
@@ -206,9 +198,9 @@ Referenced by Q\+C\+P\+Financial\+::candlestick\+Select\+Test(), Q\+C\+P\+Statis
 
 
 \begin{DoxyCode}
-1442 \{
-1443   \textcolor{keywordflow}{return} value >= \hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} && value <= \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper};
-1444 \}
+1572                                           \{
+1573   \textcolor{keywordflow}{return} value >= \hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} && value <= \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper};
+1574 \}
 \end{DoxyCode}
 
 
@@ -237,7 +229,7 @@ If {\itshape other\+Range} is already inside the current range, this function do
 \end{DoxySeeAlso}
 
 
-Definition at line 1348 of file qcustomplot.\+cpp.
+Definition at line 1476 of file qcustomplot.\+cpp.
 
 
 
@@ -249,12 +241,12 @@ Referenced by expanded(), Q\+C\+P\+Axis\+::rescale(), Q\+C\+P\+Color\+Scale\+::r
 
 
 \begin{DoxyCode}
-1349 \{
-1350   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} > otherRange.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower})
-1351     \hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} = otherRange.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower};
-1352   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} < otherRange.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper})
-1353     \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} = otherRange.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper};
-1354 \}
+1476                                                 \{
+1477   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} > otherRange.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower})
+1478     \hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} = otherRange.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower};
+1479   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} < otherRange.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper})
+1480     \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} = otherRange.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper};
+1481 \}
 \end{DoxyCode}
 
 
@@ -281,7 +273,7 @@ Returns an expanded range that contains this and {\itshape other\+Range}. It is 
 \end{DoxySeeAlso}
 
 
-Definition at line 1363 of file qcustomplot.\+cpp.
+Definition at line 1490 of file qcustomplot.\+cpp.
 
 
 
@@ -289,11 +281,11 @@ References expand().
 
 
 \begin{DoxyCode}
-1364 \{
-1365   \hyperlink{class_q_c_p_range}{QCPRange} result = *\textcolor{keyword}{this};
-1366   result.\hyperlink{class_q_c_p_range_a0fa1bc8048be50d52bea93a8caf08305}{expand}(otherRange);
-1367   \textcolor{keywordflow}{return} result;
-1368 \}
+1490                                                             \{
+1491   \hyperlink{class_q_c_p_range}{QCPRange} result = *\textcolor{keyword}{this};
+1492   result.\hyperlink{class_q_c_p_range_a0fa1bc8048be50d52bea93a8caf08305}{expand}(otherRange);
+1493   \textcolor{keywordflow}{return} result;
+1494 \}
 \end{DoxyCode}
 
 
@@ -315,7 +307,7 @@ Here is the call graph for this function\+:\nopagebreak
 )}\label{class_q_c_p_range_af914a7740269b0604d0827c634a878a9}
 Makes sure {\itshape lower} is numerically smaller than {\itshape upper}. If this is not the case, the values are swapped. 
 
-Definition at line 1334 of file qcustomplot.\+cpp.
+Definition at line 1461 of file qcustomplot.\+cpp.
 
 
 
@@ -327,10 +319,10 @@ Referenced by Q\+C\+P\+Color\+Map\+::get\+Key\+Range(), Q\+C\+P\+Color\+Map\+::g
 
 
 \begin{DoxyCode}
-1335 \{
-1336   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} > \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper})
-1337     qSwap(\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}, \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper});
-1338 \}
+1461                          \{
+1462   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} > \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper})
+1463     qSwap(\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}, \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper});
+1464 \}
 \end{DoxyCode}
 
 
@@ -352,11 +344,11 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_range_a9b9016ee83dea60573abb9a5ef4cdbcb}
 
 
-Definition at line 485 of file qcustomplot.\+h.
+Definition at line 602 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-485 \{ \textcolor{keywordflow}{return} !(*\textcolor{keyword}{this} == other); \}
+602 \{ \textcolor{keywordflow}{return} !(*\textcolor{keyword}{this} == other); \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_range_a6876aa9620ff2f0f7f1873f998372cef}{}\index{Q\+C\+P\+Range@{Q\+C\+P\+Range}!operator$\ast$=@{operator$\ast$=}}
 \index{operator$\ast$=@{operator$\ast$=}!Q\+C\+P\+Range@{Q\+C\+P\+Range}}
@@ -367,11 +359,15 @@ Definition at line 485 of file qcustomplot.\+h.
 )\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_range_a6876aa9620ff2f0f7f1873f998372cef}
 Multiplies both boundaries of the range by {\itshape value}. 
 
-Definition at line 489 of file qcustomplot.\+h.
+Definition at line 614 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-489 \{ \hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}*=value; \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper}*=value; \textcolor{keywordflow}{return} *\textcolor{keyword}{this}; \}
+614                                             \{
+615     \hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} *= value;
+616     \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} *= value;
+617     \textcolor{keywordflow}{return} *\textcolor{keyword}{this};
+618   \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_range_afea7c1aa7d08f061cd9bd8832f957df8}{}\index{Q\+C\+P\+Range@{Q\+C\+P\+Range}!operator+=@{operator+=}}
 \index{operator+=@{operator+=}!Q\+C\+P\+Range@{Q\+C\+P\+Range}}
@@ -382,11 +378,15 @@ Definition at line 489 of file qcustomplot.\+h.
 )\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_range_afea7c1aa7d08f061cd9bd8832f957df8}
 Adds {\itshape value} to both boundaries of the range. 
 
-Definition at line 487 of file qcustomplot.\+h.
+Definition at line 604 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-487 \{ \hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}+=value; \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper}+=value; \textcolor{keywordflow}{return} *\textcolor{keyword}{this}; \}
+604                                             \{
+605     \hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} += value;
+606     \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} += value;
+607     \textcolor{keywordflow}{return} *\textcolor{keyword}{this};
+608   \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_range_a95894bcb15a16a75ca564091374e2191}{}\index{Q\+C\+P\+Range@{Q\+C\+P\+Range}!operator-\/=@{operator-\/=}}
 \index{operator-\/=@{operator-\/=}!Q\+C\+P\+Range@{Q\+C\+P\+Range}}
@@ -397,11 +397,15 @@ Definition at line 487 of file qcustomplot.\+h.
 )\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_range_a95894bcb15a16a75ca564091374e2191}
 Subtracts {\itshape value} from both boundaries of the range. 
 
-Definition at line 488 of file qcustomplot.\+h.
+Definition at line 609 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-488 \{ \hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}-=value; \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper}-=value; \textcolor{keywordflow}{return} *\textcolor{keyword}{this}; \}
+609                                             \{
+610     \hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} -= value;
+611     \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} -= value;
+612     \textcolor{keywordflow}{return} *\textcolor{keyword}{this};
+613   \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_range_a6137d8682b6835ace840730b4c1e2d63}{}\index{Q\+C\+P\+Range@{Q\+C\+P\+Range}!operator/=@{operator/=}}
 \index{operator/=@{operator/=}!Q\+C\+P\+Range@{Q\+C\+P\+Range}}
@@ -412,11 +416,15 @@ Definition at line 488 of file qcustomplot.\+h.
 )\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_range_a6137d8682b6835ace840730b4c1e2d63}
 Divides both boundaries of the range by {\itshape value}. 
 
-Definition at line 490 of file qcustomplot.\+h.
+Definition at line 619 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-490 \{ \hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}/=value; \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper}/=value; \textcolor{keywordflow}{return} *\textcolor{keyword}{this}; \}
+619                                             \{
+620     \hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} /= value;
+621     \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} /= value;
+622     \textcolor{keywordflow}{return} *\textcolor{keyword}{this};
+623   \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_range_aa20f91509687505e25bd2ef10d2f0e15}{}\index{Q\+C\+P\+Range@{Q\+C\+P\+Range}!operator==@{operator==}}
 \index{operator==@{operator==}!Q\+C\+P\+Range@{Q\+C\+P\+Range}}
@@ -427,7 +435,7 @@ Definition at line 490 of file qcustomplot.\+h.
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_range_aa20f91509687505e25bd2ef10d2f0e15}
 
 
-Definition at line 484 of file qcustomplot.\+h.
+Definition at line 599 of file qcustomplot.\+h.
 
 
 
@@ -435,7 +443,9 @@ References lower, and upper.
 
 
 \begin{DoxyCode}
-484 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} == other.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} && \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} == other.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper}; \}
+599                                                \{
+600     \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} == other.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} && \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} == other.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper};
+601   \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_range_a1ff029704c29a75adbc1dc36cecaf44c}{}\index{Q\+C\+P\+Range@{Q\+C\+P\+Range}!sanitized\+For\+Lin\+Scale@{sanitized\+For\+Lin\+Scale}}
 \index{sanitized\+For\+Lin\+Scale@{sanitized\+For\+Lin\+Scale}!Q\+C\+P\+Range@{Q\+C\+P\+Range}}
@@ -446,7 +456,7 @@ References lower, and upper.
 ) const}\label{class_q_c_p_range_a1ff029704c29a75adbc1dc36cecaf44c}
 Returns a sanitized version of the range. Sanitized means for linear scales, that {\itshape lower} will always be numerically smaller (or equal) to {\itshape upper}. 
 
-Definition at line 1431 of file qcustomplot.\+cpp.
+Definition at line 1563 of file qcustomplot.\+cpp.
 
 
 
@@ -458,11 +468,11 @@ Referenced by Q\+C\+P\+Axis\+::scale\+Range(), Q\+C\+P\+Color\+Map\+::set\+Data\
 
 
 \begin{DoxyCode}
-1432 \{
-1433   \hyperlink{class_q_c_p_range}{QCPRange} sanitizedRange(\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}, \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper});
-1434   sanitizedRange.normalize();
-1435   \textcolor{keywordflow}{return} sanitizedRange;
-1436 \}
+1563                                               \{
+1564   \hyperlink{class_q_c_p_range}{QCPRange} sanitizedRange(\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}, \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper});
+1565   sanitizedRange.normalize();
+1566   \textcolor{keywordflow}{return} sanitizedRange;
+1567 \}
 \end{DoxyCode}
 
 
@@ -497,7 +507,7 @@ Returns a sanitized version of the range. Sanitized means for logarithmic scales
 
 If the original range does span positive and negative sign domains or contains zero, the returned range will try to approximate the original range as good as possible. If the positive interval of the original range is wider than the negative interval, the returned range will only contain the positive interval, with lower bound set to {\itshape range\+Fac} or {\itshape range\+Fac} $\ast${\itshape upper}, whichever is closer to zero. Same procedure is used if the negative interval is wider than the positive interval, this time by changing the {\itshape upper} bound. 
 
-Definition at line 1382 of file qcustomplot.\+cpp.
+Definition at line 1515 of file qcustomplot.\+cpp.
 
 
 
@@ -509,49 +519,48 @@ Referenced by Q\+C\+P\+Axis\+::scale\+Range(), Q\+C\+P\+Color\+Map\+::set\+Data\
 
 
 \begin{DoxyCode}
-1383 \{
-1384   \textcolor{keywordtype}{double} rangeFac = 1e-3;
-1385   \hyperlink{class_q_c_p_range}{QCPRange} sanitizedRange(\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}, \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper});
-1386   sanitizedRange.normalize();
-1387   \textcolor{comment}{// can't have range spanning negative and positive values in log plot, so change range to fix it}
-1388   \textcolor{comment}{//if (qFuzzyCompare(sanitizedRange.lower+1, 1) && !qFuzzyCompare(sanitizedRange.upper+1, 1))}
-1389   \textcolor{keywordflow}{if} (sanitizedRange.lower == 0.0 && sanitizedRange.upper != 0.0)
-1390   \{
-1391     \textcolor{comment}{// case lower is 0}
-1392     \textcolor{keywordflow}{if} (rangeFac < sanitizedRange.upper*rangeFac)
-1393       sanitizedRange.lower = rangeFac;
-1394     \textcolor{keywordflow}{else}
-1395       sanitizedRange.lower = sanitizedRange.upper*rangeFac;
-1396   \} \textcolor{comment}{//else if (!qFuzzyCompare(lower+1, 1) && qFuzzyCompare(upper+1, 1))}
-1397   \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (sanitizedRange.lower != 0.0 && sanitizedRange.upper == 0.0)
-1398   \{
-1399     \textcolor{comment}{// case upper is 0}
-1400     \textcolor{keywordflow}{if} (-rangeFac > sanitizedRange.lower*rangeFac)
-1401       sanitizedRange.upper = -rangeFac;
-1402     \textcolor{keywordflow}{else}
-1403       sanitizedRange.upper = sanitizedRange.lower*rangeFac;
-1404   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (sanitizedRange.lower < 0 && sanitizedRange.upper > 0)
-1405   \{
-1406     \textcolor{comment}{// find out whether negative or positive interval is wider to decide which sign domain will be chosen}
-1407     \textcolor{keywordflow}{if} (-sanitizedRange.lower > sanitizedRange.upper)
-1408     \{
-1409       \textcolor{comment}{// negative is wider, do same as in case upper is 0}
-1410       \textcolor{keywordflow}{if} (-rangeFac > sanitizedRange.lower*rangeFac)
-1411         sanitizedRange.upper = -rangeFac;
-1412       \textcolor{keywordflow}{else}
-1413         sanitizedRange.upper = sanitizedRange.lower*rangeFac;
-1414     \} \textcolor{keywordflow}{else}
-1415     \{
-1416       \textcolor{comment}{// positive is wider, do same as in case lower is 0}
-1417       \textcolor{keywordflow}{if} (rangeFac < sanitizedRange.upper*rangeFac)
-1418         sanitizedRange.lower = rangeFac;
-1419       \textcolor{keywordflow}{else}
-1420         sanitizedRange.lower = sanitizedRange.upper*rangeFac;
-1421     \}
-1422   \}
-1423   \textcolor{comment}{// due to normalization, case lower>0 && upper<0 should never occur, because that implies upper<lower}
-1424   \textcolor{keywordflow}{return} sanitizedRange;
-1425 \}
+1515                                               \{
+1516   \textcolor{keywordtype}{double} rangeFac = 1e-3;
+1517   \hyperlink{class_q_c_p_range}{QCPRange} sanitizedRange(\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}, \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper});
+1518   sanitizedRange.normalize();
+1519   \textcolor{comment}{// can't have range spanning negative and positive values in log plot, so}
+1520   \textcolor{comment}{// change range to fix it}
+1521   \textcolor{comment}{// if (qFuzzyCompare(sanitizedRange.lower+1, 1) &&}
+1522   \textcolor{comment}{// !qFuzzyCompare(sanitizedRange.upper+1, 1))}
+1523   \textcolor{keywordflow}{if} (sanitizedRange.lower == 0.0 && sanitizedRange.upper != 0.0) \{
+1524     \textcolor{comment}{// case lower is 0}
+1525     \textcolor{keywordflow}{if} (rangeFac < sanitizedRange.upper * rangeFac)
+1526       sanitizedRange.lower = rangeFac;
+1527     \textcolor{keywordflow}{else}
+1528       sanitizedRange.lower = sanitizedRange.upper * rangeFac;
+1529   \} \textcolor{comment}{// else if (!qFuzzyCompare(lower+1, 1) && qFuzzyCompare(upper+1, 1))}
+1530   \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (sanitizedRange.lower != 0.0 && sanitizedRange.upper == 0.0) \{
+1531     \textcolor{comment}{// case upper is 0}
+1532     \textcolor{keywordflow}{if} (-rangeFac > sanitizedRange.lower * rangeFac)
+1533       sanitizedRange.upper = -rangeFac;
+1534     \textcolor{keywordflow}{else}
+1535       sanitizedRange.upper = sanitizedRange.lower * rangeFac;
+1536   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (sanitizedRange.lower < 0 && sanitizedRange.upper > 0) \{
+1537     \textcolor{comment}{// find out whether negative or positive interval is wider to decide which}
+1538     \textcolor{comment}{// sign domain will be chosen}
+1539     \textcolor{keywordflow}{if} (-sanitizedRange.lower > sanitizedRange.upper) \{
+1540       \textcolor{comment}{// negative is wider, do same as in case upper is 0}
+1541       \textcolor{keywordflow}{if} (-rangeFac > sanitizedRange.lower * rangeFac)
+1542         sanitizedRange.upper = -rangeFac;
+1543       \textcolor{keywordflow}{else}
+1544         sanitizedRange.upper = sanitizedRange.lower * rangeFac;
+1545     \} \textcolor{keywordflow}{else} \{
+1546       \textcolor{comment}{// positive is wider, do same as in case lower is 0}
+1547       \textcolor{keywordflow}{if} (rangeFac < sanitizedRange.upper * rangeFac)
+1548         sanitizedRange.lower = rangeFac;
+1549       \textcolor{keywordflow}{else}
+1550         sanitizedRange.lower = sanitizedRange.upper * rangeFac;
+1551     \}
+1552   \}
+1553   \textcolor{comment}{// due to normalization, case lower>0 && upper<0 should never occur, because}
+1554   \textcolor{comment}{// that implies upper<lower}
+1555   \textcolor{keywordflow}{return} sanitizedRange;
+1556 \}
 \end{DoxyCode}
 
 
@@ -584,7 +593,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const}\label{class_q_c_p_range_afa57c13049b965edb6fd1c00ac56338a}
 Returns the size of the range, i.\+e. {\itshape upper-\/{\itshape lower} } 
 
-Definition at line 1317 of file qcustomplot.\+cpp.
+Definition at line 1449 of file qcustomplot.\+cpp.
 
 
 
@@ -596,9 +605,7 @@ Referenced by Q\+C\+P\+Color\+Gradient\+::color(), Q\+C\+P\+Color\+Gradient\+::c
 
 
 \begin{DoxyCode}
-1318 \{
-1319   \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper}-\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower};
-1320 \}
+1449 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} - \hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}; \}
 \end{DoxyCode}
 
 
@@ -623,7 +630,7 @@ Checks, whether the specified range is within valid bounds, which are defined as
 \item range bounds within -\/max\+Range and max\+Range \item range size above min\+Range \item range size below max\+Range \end{DoxyItemize}
 
 
-Definition at line 1454 of file qcustomplot.\+cpp.
+Definition at line 1584 of file qcustomplot.\+cpp.
 
 
 
@@ -635,19 +642,18 @@ Referenced by Q\+C\+P\+Axis\+::rescale(), Q\+C\+P\+Color\+Scale\+::rescale\+Data
 
 
 \begin{DoxyCode}
-1455 \{
-1456   \textcolor{comment}{/*}
-1457 \textcolor{comment}{  return (lower > -maxRange &&}
-1458 \textcolor{comment}{          upper < maxRange &&}
-1459 \textcolor{comment}{          qAbs(lower-upper) > minRange &&}
-1460 \textcolor{comment}{          (lower < -minRange || lower > minRange) &&}
-1461 \textcolor{comment}{          (upper < -minRange || upper > minRange));}
-1462 \textcolor{comment}{          */}
-1463   \textcolor{keywordflow}{return} (\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} > -\hyperlink{class_q_c_p_range_a5ca51e7a2dc5dc0d49527ab171fe1f4f}{maxRange} &&
-1464           \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} < \hyperlink{class_q_c_p_range_a5ca51e7a2dc5dc0d49527ab171fe1f4f}{maxRange} &&
-1465           qAbs(\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}-\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper}) > \hyperlink{class_q_c_p_range_ab46d3bc95030ee25efda41b89e2b616b}{minRange} &&
-1466           qAbs(\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}-\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper}) < \hyperlink{class_q_c_p_range_a5ca51e7a2dc5dc0d49527ab171fe1f4f}{maxRange});
-1467 \}
+1584                                                     \{
+1585   \textcolor{comment}{/*}
+1586 \textcolor{comment}{  return (lower > -maxRange &&}
+1587 \textcolor{comment}{          upper < maxRange &&}
+1588 \textcolor{comment}{          qAbs(lower-upper) > minRange &&}
+1589 \textcolor{comment}{          (lower < -minRange || lower > minRange) &&}
+1590 \textcolor{comment}{          (upper < -minRange || upper > minRange));}
+1591 \textcolor{comment}{          */}
+1592   \textcolor{keywordflow}{return} (\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} > -\hyperlink{class_q_c_p_range_a5ca51e7a2dc5dc0d49527ab171fe1f4f}{maxRange} && \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} < \hyperlink{class_q_c_p_range_a5ca51e7a2dc5dc0d49527ab171fe1f4f}{maxRange} &&
+1593           qAbs(\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} - \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper}) > \hyperlink{class_q_c_p_range_ab46d3bc95030ee25efda41b89e2b616b}{minRange} && qAbs(\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} - 
+      \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper}) < \hyperlink{class_q_c_p_range_a5ca51e7a2dc5dc0d49527ab171fe1f4f}{maxRange});
+1594 \}
 \end{DoxyCode}
 
 
@@ -671,7 +677,7 @@ This is an overloaded member function, provided for convenience. It differs from
 \item range bounds within -\/max\+Range and max\+Range \item range size above min\+Range \item range size below max\+Range \end{DoxyItemize}
 
 
-Definition at line 1478 of file qcustomplot.\+cpp.
+Definition at line 1605 of file qcustomplot.\+cpp.
 
 
 
@@ -679,20 +685,19 @@ References lower, max\+Range, min\+Range, and upper.
 
 
 \begin{DoxyCode}
-1479 \{
-1480   \textcolor{comment}{/*}
-1481 \textcolor{comment}{  return (range.lower > -maxRange &&}
-1482 \textcolor{comment}{          range.upper < maxRange &&}
-1483 \textcolor{comment}{          qAbs(range.lower-range.upper) > minRange &&}
-1484 \textcolor{comment}{          qAbs(range.lower-range.upper) < maxRange &&}
-1485 \textcolor{comment}{          (range.lower < -minRange || range.lower > minRange) &&}
-1486 \textcolor{comment}{          (range.upper < -minRange || range.upper > minRange));}
-1487 \textcolor{comment}{          */}
-1488   \textcolor{keywordflow}{return} (range.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} > -\hyperlink{class_q_c_p_range_a5ca51e7a2dc5dc0d49527ab171fe1f4f}{maxRange} &&
-1489           range.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} < \hyperlink{class_q_c_p_range_a5ca51e7a2dc5dc0d49527ab171fe1f4f}{maxRange} &&
-1490           qAbs(range.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}-range.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper}) > \hyperlink{class_q_c_p_range_ab46d3bc95030ee25efda41b89e2b616b}{minRange} &&
-1491           qAbs(range.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}-range.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper}) < \hyperlink{class_q_c_p_range_a5ca51e7a2dc5dc0d49527ab171fe1f4f}{maxRange});
-1492 \}
+1605                                                \{
+1606   \textcolor{comment}{/*}
+1607 \textcolor{comment}{  return (range.lower > -maxRange &&}
+1608 \textcolor{comment}{          range.upper < maxRange &&}
+1609 \textcolor{comment}{          qAbs(range.lower-range.upper) > minRange &&}
+1610 \textcolor{comment}{          qAbs(range.lower-range.upper) < maxRange &&}
+1611 \textcolor{comment}{          (range.lower < -minRange || range.lower > minRange) &&}
+1612 \textcolor{comment}{          (range.upper < -minRange || range.upper > minRange));}
+1613 \textcolor{comment}{          */}
+1614   \textcolor{keywordflow}{return} (range.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} > -\hyperlink{class_q_c_p_range_a5ca51e7a2dc5dc0d49527ab171fe1f4f}{maxRange} && range.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} < \hyperlink{class_q_c_p_range_a5ca51e7a2dc5dc0d49527ab171fe1f4f}{maxRange} &&
+1615           qAbs(range.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} - range.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper}) > \hyperlink{class_q_c_p_range_ab46d3bc95030ee25efda41b89e2b616b}{minRange} &&
+1616           qAbs(range.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} - range.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper}) < \hyperlink{class_q_c_p_range_a5ca51e7a2dc5dc0d49527ab171fe1f4f}{maxRange});
+1617 \}
 \end{DoxyCode}
 
 
@@ -707,15 +712,15 @@ References lower, max\+Range, min\+Range, and upper.
 )\hspace{0.3cm}{\ttfamily [friend]}}\label{class_q_c_p_range_a558b1248ff6a9e41fd5b2630555a8acc}
 Multiplies both boundaries of the range by {\itshape value}. 
 
-Definition at line 572 of file qcustomplot.\+h.
+Definition at line 701 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-573 \{
-574   \hyperlink{class_q_c_p_range}{QCPRange} result(range);
-575   result *= value;
-576   \textcolor{keywordflow}{return} result;
-577 \}
+701                                                                      \{
+702   \hyperlink{class_q_c_p_range}{QCPRange} result(range);
+703   result *= value;
+704   \textcolor{keywordflow}{return} result;
+705 \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_range_a5cb2332f6957021f47cc768089f4f090}{}\index{Q\+C\+P\+Range@{Q\+C\+P\+Range}!operator$\ast$@{operator$\ast$}}
 \index{operator$\ast$@{operator$\ast$}!Q\+C\+P\+Range@{Q\+C\+P\+Range}}
@@ -727,15 +732,15 @@ Definition at line 572 of file qcustomplot.\+h.
 )\hspace{0.3cm}{\ttfamily [friend]}}\label{class_q_c_p_range_a5cb2332f6957021f47cc768089f4f090}
 Multiplies both boundaries of the range by {\itshape value}. 
 
-Definition at line 582 of file qcustomplot.\+h.
+Definition at line 710 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-583 \{
-584   \hyperlink{class_q_c_p_range}{QCPRange} result(range);
-585   result *= value;
-586   \textcolor{keywordflow}{return} result;
-587 \}
+710                                                                      \{
+711   \hyperlink{class_q_c_p_range}{QCPRange} result(range);
+712   result *= value;
+713   \textcolor{keywordflow}{return} result;
+714 \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_range_af53ea6fb823a4a5897162b865841de04}{}\index{Q\+C\+P\+Range@{Q\+C\+P\+Range}!operator+@{operator+}}
 \index{operator+@{operator+}!Q\+C\+P\+Range@{Q\+C\+P\+Range}}
@@ -747,15 +752,15 @@ Definition at line 582 of file qcustomplot.\+h.
 )\hspace{0.3cm}{\ttfamily [friend]}}\label{class_q_c_p_range_af53ea6fb823a4a5897162b865841de04}
 Adds {\itshape value} to both boundaries of the range. 
 
-Definition at line 542 of file qcustomplot.\+h.
+Definition at line 674 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-543 \{
-544   \hyperlink{class_q_c_p_range}{QCPRange} result(range);
-545   result += value;
-546   \textcolor{keywordflow}{return} result;
-547 \}
+674                                                                      \{
+675   \hyperlink{class_q_c_p_range}{QCPRange} result(range);
+676   result += value;
+677   \textcolor{keywordflow}{return} result;
+678 \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_range_a9fb2e9941d32001482df670c0d704977}{}\index{Q\+C\+P\+Range@{Q\+C\+P\+Range}!operator+@{operator+}}
 \index{operator+@{operator+}!Q\+C\+P\+Range@{Q\+C\+P\+Range}}
@@ -767,15 +772,15 @@ Definition at line 542 of file qcustomplot.\+h.
 )\hspace{0.3cm}{\ttfamily [friend]}}\label{class_q_c_p_range_a9fb2e9941d32001482df670c0d704977}
 Adds {\itshape value} to both boundaries of the range. 
 
-Definition at line 552 of file qcustomplot.\+h.
+Definition at line 683 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-553 \{
-554   \hyperlink{class_q_c_p_range}{QCPRange} result(range);
-555   result += value;
-556   \textcolor{keywordflow}{return} result;
-557 \}
+683                                                                      \{
+684   \hyperlink{class_q_c_p_range}{QCPRange} result(range);
+685   result += value;
+686   \textcolor{keywordflow}{return} result;
+687 \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_range_a797f82830b516646da8873f82e39e356}{}\index{Q\+C\+P\+Range@{Q\+C\+P\+Range}!operator-\/@{operator-\/}}
 \index{operator-\/@{operator-\/}!Q\+C\+P\+Range@{Q\+C\+P\+Range}}
@@ -787,15 +792,15 @@ Definition at line 552 of file qcustomplot.\+h.
 )\hspace{0.3cm}{\ttfamily [friend]}}\label{class_q_c_p_range_a797f82830b516646da8873f82e39e356}
 Subtracts {\itshape value} from both boundaries of the range. 
 
-Definition at line 562 of file qcustomplot.\+h.
+Definition at line 692 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-563 \{
-564   \hyperlink{class_q_c_p_range}{QCPRange} result(range);
-565   result -= value;
-566   \textcolor{keywordflow}{return} result;
-567 \}
+692                                                                      \{
+693   \hyperlink{class_q_c_p_range}{QCPRange} result(range);
+694   result -= value;
+695   \textcolor{keywordflow}{return} result;
+696 \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_range_a4b366a3a21974c88e09b0d39d4a24a4b}{}\index{Q\+C\+P\+Range@{Q\+C\+P\+Range}!operator/@{operator/}}
 \index{operator/@{operator/}!Q\+C\+P\+Range@{Q\+C\+P\+Range}}
@@ -807,15 +812,15 @@ Definition at line 562 of file qcustomplot.\+h.
 )\hspace{0.3cm}{\ttfamily [friend]}}\label{class_q_c_p_range_a4b366a3a21974c88e09b0d39d4a24a4b}
 Divides both boundaries of the range by {\itshape value}. 
 
-Definition at line 592 of file qcustomplot.\+h.
+Definition at line 719 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-593 \{
-594   \hyperlink{class_q_c_p_range}{QCPRange} result(range);
-595   result /= value;
-596   \textcolor{keywordflow}{return} result;
-597 \}
+719                                                                      \{
+720   \hyperlink{class_q_c_p_range}{QCPRange} result(range);
+721   result /= value;
+722   \textcolor{keywordflow}{return} result;
+723 \}
 \end{DoxyCode}
 
 
@@ -825,7 +830,7 @@ Definition at line 592 of file qcustomplot.\+h.
 \subsubsection[{lower}]{\setlength{\rightskip}{0pt plus 5cm}double Q\+C\+P\+Range\+::lower}\label{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}
 
 
-Definition at line 479 of file qcustomplot.\+h.
+Definition at line 594 of file qcustomplot.\+h.
 
 
 
@@ -839,7 +844,7 @@ Maximum values (negative and positive) the range will accept in range-\/changing
 \end{DoxySeeAlso}
 
 
-Definition at line 510 of file qcustomplot.\+h.
+Definition at line 643 of file qcustomplot.\+h.
 
 
 
@@ -853,7 +858,7 @@ Minimum range size ({\itshape upper} -\/ {\itshape lower}) the range changing fu
 \end{DoxySeeAlso}
 
 
-Definition at line 509 of file qcustomplot.\+h.
+Definition at line 642 of file qcustomplot.\+h.
 
 
 
@@ -864,7 +869,7 @@ Referenced by valid\+Range().
 \subsubsection[{upper}]{\setlength{\rightskip}{0pt plus 5cm}double Q\+C\+P\+Range\+::upper}\label{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}
 
 
-Definition at line 479 of file qcustomplot.\+h.
+Definition at line 594 of file qcustomplot.\+h.
 
 
 

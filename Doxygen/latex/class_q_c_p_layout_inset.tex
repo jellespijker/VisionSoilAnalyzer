@@ -74,7 +74,7 @@ void \hyperlink{class_q_c_p_layout_inset_a8ff61fbee4a1f0ff45c398009d9f1e56}{add\
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-Q\+List$<$ \hyperlink{class_q_c_p_layout_element}{Q\+C\+P\+Layout\+Element} $\ast$ $>$ \hyperlink{class_q_c_p_layout_inset_a8fff7eae9a1be9a5c1e544fb379f682f}{m\+Elements}
+Q\+List$<$ \hyperlink{class_q_c_p_layout_element}{Q\+C\+P\+Layout\+Element} $\ast$ $>$ \hyperlink{class_q_c_p_layout_inset_a7e618ac870f69f2fe2eae2a04500e763}{m\+Elements}
 \item 
 Q\+List$<$ \hyperlink{class_q_c_p_layout_inset_a8b9e17d9a2768293d2a7d72f5e298192}{Inset\+Placement} $>$ \hyperlink{class_q_c_p_layout_inset_a57a0a4e445cc78eada29765ecf092abe}{m\+Inset\+Placement}
 \item 
@@ -90,13 +90,13 @@ A layout that places child elements aligned to the border or arbitrarily positio
 
 Elements are placed either aligned to the border or at arbitrary position in the area of the layout. Which placement applies is controlled with the \hyperlink{class_q_c_p_layout_inset_a8b9e17d9a2768293d2a7d72f5e298192}{Inset\+Placement} (\hyperlink{class_q_c_p_layout_inset_a63298830744d5d8c5345511c00fd2144}{set\+Inset\+Placement}).
 
-Elements are added via \hyperlink{class_q_c_p_layout_inset_ad61529eb576af7f04dff94abb10c745a}{add\+Element(\+Q\+C\+P\+Layout\+Element $\ast$element, Qt\+::\+Alignment alignment)} or \hyperlink{class_q_c_p_layout_inset_a8ff61fbee4a1f0ff45c398009d9f1e56}{add\+Element(\+Q\+C\+P\+Layout\+Element $\ast$element, const Q\+Rect\+F \&rect)}. If the first method is used, the inset placement will default to \hyperlink{class_q_c_p_layout_inset_a8b9e17d9a2768293d2a7d72f5e298192aa81e7df4a785ddee2229a8f47c46e817}{ip\+Border\+Aligned} and the element will be aligned according to the {\itshape alignment} parameter. The second method defaults to \hyperlink{class_q_c_p_layout_inset_a8b9e17d9a2768293d2a7d72f5e298192aa4802986ea2cea457f932b115acba59e}{ip\+Free} and allows placing elements at arbitrary position and size, defined by {\itshape rect}.
+Elements are added via \hyperlink{class_q_c_p_layout_inset_ad61529eb576af7f04dff94abb10c745a}{add\+Element}(\hyperlink{class_q_c_p_layout_element}{Q\+C\+P\+Layout\+Element} $\ast$element, Qt\+::\+Alignment alignment) or \hyperlink{class_q_c_p_layout_inset_a8ff61fbee4a1f0ff45c398009d9f1e56}{add\+Element(\+Q\+C\+P\+Layout\+Element $\ast$element, const Q\+Rect\+F \&rect)}. If the first method is used, the inset placement will default to \hyperlink{class_q_c_p_layout_inset_a8b9e17d9a2768293d2a7d72f5e298192aa81e7df4a785ddee2229a8f47c46e817}{ip\+Border\+Aligned} and the element will be aligned according to the {\itshape alignment} parameter. The second method defaults to \hyperlink{class_q_c_p_layout_inset_a8b9e17d9a2768293d2a7d72f5e298192aa4802986ea2cea457f932b115acba59e}{ip\+Free} and allows placing elements at arbitrary position and size, defined by {\itshape rect}.
 
 The alignment or rect can be set via \hyperlink{class_q_c_p_layout_inset_a62882a4f9ad58bb0f53da12fde022abe}{set\+Inset\+Alignment} or \hyperlink{class_q_c_p_layout_inset_aa487c8378a6f9533567a2e6430099dc3}{set\+Inset\+Rect}, respectively.
 
 This is the layout that every \hyperlink{class_q_c_p_axis_rect}{Q\+C\+P\+Axis\+Rect} has as \hyperlink{class_q_c_p_axis_rect_a4114887c7141b59650b7488f930993e5}{Q\+C\+P\+Axis\+Rect\+::inset\+Layout}. 
 
-Definition at line 823 of file qcustomplot.\+h.
+Definition at line 962 of file qcustomplot.\+h.
 
 
 
@@ -109,19 +109,21 @@ Defines how the placement and sizing is handled for a certain element in a \hype
 \begin{description}
 \index{ip\+Free@{ip\+Free}!Q\+C\+P\+Layout\+Inset@{Q\+C\+P\+Layout\+Inset}}\index{Q\+C\+P\+Layout\+Inset@{Q\+C\+P\+Layout\+Inset}!ip\+Free@{ip\+Free}}\item[{\em 
 \hypertarget{class_q_c_p_layout_inset_a8b9e17d9a2768293d2a7d72f5e298192aa4802986ea2cea457f932b115acba59e}{}ip\+Free\label{class_q_c_p_layout_inset_a8b9e17d9a2768293d2a7d72f5e298192aa4802986ea2cea457f932b115acba59e}
-}]The element may be positioned/sized arbitrarily, see \hyperlink{class_q_c_p_layout_inset_aa487c8378a6f9533567a2e6430099dc3}{set\+Inset\+Rect}. \index{ip\+Border\+Aligned@{ip\+Border\+Aligned}!Q\+C\+P\+Layout\+Inset@{Q\+C\+P\+Layout\+Inset}}\index{Q\+C\+P\+Layout\+Inset@{Q\+C\+P\+Layout\+Inset}!ip\+Border\+Aligned@{ip\+Border\+Aligned}}\item[{\em 
+}]The element may be positioned/sized arbitrarily, see \hyperlink{class_q_c_p_layout_inset_aa487c8378a6f9533567a2e6430099dc3}{set\+Inset\+Rect} \index{ip\+Border\+Aligned@{ip\+Border\+Aligned}!Q\+C\+P\+Layout\+Inset@{Q\+C\+P\+Layout\+Inset}}\index{Q\+C\+P\+Layout\+Inset@{Q\+C\+P\+Layout\+Inset}!ip\+Border\+Aligned@{ip\+Border\+Aligned}}\item[{\em 
 \hypertarget{class_q_c_p_layout_inset_a8b9e17d9a2768293d2a7d72f5e298192aa81e7df4a785ddee2229a8f47c46e817}{}ip\+Border\+Aligned\label{class_q_c_p_layout_inset_a8b9e17d9a2768293d2a7d72f5e298192aa81e7df4a785ddee2229a8f47c46e817}
-}]The element is aligned to one of the layout sides, see \hyperlink{class_q_c_p_layout_inset_a62882a4f9ad58bb0f53da12fde022abe}{set\+Inset\+Alignment}. \end{description}
+}]The element is aligned to one of the layout sides, see \hyperlink{class_q_c_p_layout_inset_a62882a4f9ad58bb0f53da12fde022abe}{set\+Inset\+Alignment} \end{description}
 \end{Desc}
 
 
-Definition at line 830 of file qcustomplot.\+h.
+Definition at line 969 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-830                       \{ \hyperlink{class_q_c_p_layout_inset_a8b9e17d9a2768293d2a7d72f5e298192aa4802986ea2cea457f932b115acba59e}{ipFree}            
-831                         ,\hyperlink{class_q_c_p_layout_inset_a8b9e17d9a2768293d2a7d72f5e298192aa81e7df4a785ddee2229a8f47c46e817}{ipBorderAligned}  
-832                       \};
+969                       \{
+970     \hyperlink{class_q_c_p_layout_inset_a8b9e17d9a2768293d2a7d72f5e298192aa4802986ea2cea457f932b115acba59e}{ipFree} 
+971     ,
+973     \hyperlink{class_q_c_p_layout_inset_a8b9e17d9a2768293d2a7d72f5e298192aa81e7df4a785ddee2229a8f47c46e817}{ipBorderAligned} 
+974   \};
 \end{DoxyCode}
 
 
@@ -135,12 +137,11 @@ Definition at line 830 of file qcustomplot.\+h.
 )\hspace{0.3cm}{\ttfamily [explicit]}}\label{class_q_c_p_layout_inset_a3ad984f3221735374cc5dee14356a7dd}
 Creates an instance of \hyperlink{class_q_c_p_layout_inset}{Q\+C\+P\+Layout\+Inset} and sets default values. 
 
-Definition at line 3085 of file qcustomplot.\+cpp.
+Definition at line 3361 of file qcustomplot.\+cpp.
 
 
 \begin{DoxyCode}
-3086 \{
-3087 \}
+3361 \{\}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_layout_inset_a7d0e5647b2e92df92abab532441db112}{}\index{Q\+C\+P\+Layout\+Inset@{Q\+C\+P\+Layout\+Inset}!````~Q\+C\+P\+Layout\+Inset@{$\sim$\+Q\+C\+P\+Layout\+Inset}}
 \index{````~Q\+C\+P\+Layout\+Inset@{$\sim$\+Q\+C\+P\+Layout\+Inset}!Q\+C\+P\+Layout\+Inset@{Q\+C\+P\+Layout\+Inset}}
@@ -151,7 +152,7 @@ Definition at line 3085 of file qcustomplot.\+cpp.
 )\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_q_c_p_layout_inset_a7d0e5647b2e92df92abab532441db112}
 
 
-Definition at line 3089 of file qcustomplot.\+cpp.
+Definition at line 3363 of file qcustomplot.\+cpp.
 
 
 
@@ -159,11 +160,13 @@ References Q\+C\+P\+Layout\+::clear().
 
 
 \begin{DoxyCode}
-3090 \{
-3091   \textcolor{comment}{// clear all child layout elements. This is important because only the specific layouts know how}
-3092   \textcolor{comment}{// to handle removing elements (clear calls virtual removeAt method to do that).}
-3093   \hyperlink{class_q_c_p_layout_a02883bdf2769b5b227f0232dba1ac4ee}{clear}();
-3094 \}
+3363                                 \{
+3364   \textcolor{comment}{// clear all child layout elements. This is important because only the}
+3365   \textcolor{comment}{// specific layouts know how}
+3366   \textcolor{comment}{// to handle removing elements (clear calls virtual removeAt method to do}
+3367   \textcolor{comment}{// that).}
+3368   \hyperlink{class_q_c_p_layout_a02883bdf2769b5b227f0232dba1ac4ee}{clear}();
+3369 \}
 \end{DoxyCode}
 
 
@@ -196,7 +199,7 @@ Adds the specified {\itshape element} to the layout as an inset aligned at the b
 \end{DoxySeeAlso}
 
 
-Definition at line 3318 of file qcustomplot.\+cpp.
+Definition at line 3612 of file qcustomplot.\+cpp.
 
 
 
@@ -208,19 +211,18 @@ Referenced by Q\+Custom\+Plot\+::\+Q\+Custom\+Plot().
 
 
 \begin{DoxyCode}
-3319 \{
-3320   \textcolor{keywordflow}{if} (element)
-3321   \{
-3322     \textcolor{keywordflow}{if} (element->\hyperlink{class_q_c_p_layout_element_a6235f5384db871fc6e3387a1bc558b0d}{layout}()) \textcolor{comment}{// remove from old layout first}
-3323       element->\hyperlink{class_q_c_p_layout_element_a6235f5384db871fc6e3387a1bc558b0d}{layout}()->\hyperlink{class_q_c_p_layout_ada26cd17e56472b0b4d7fbbc96873e4c}{take}(element);
-3324     \hyperlink{class_q_c_p_layout_inset_a8fff7eae9a1be9a5c1e544fb379f682f}{mElements}.append(element);
-3325     \hyperlink{class_q_c_p_layout_inset_a57a0a4e445cc78eada29765ecf092abe}{mInsetPlacement}.append(\hyperlink{class_q_c_p_layout_inset_a8b9e17d9a2768293d2a7d72f5e298192aa81e7df4a785ddee2229a8f47c46e817}{ipBorderAligned});
-3326     \hyperlink{class_q_c_p_layout_inset_a55e9b84c310136ff985a6544184ab64a}{mInsetAlignment}.append(alignment);
-3327     \hyperlink{class_q_c_p_layout_inset_aaa8f6b5029458f3d97a65239524a2b33}{mInsetRect}.append(QRectF(0.6, 0.6, 0.4, 0.4));
-3328     \hyperlink{class_q_c_p_layout_af6dbbc24156a808da29cd1ec031729a3}{adoptElement}(element);
-3329   \} \textcolor{keywordflow}{else}
-3330     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Can't add null element"};
-3331 \}
+3613                                                        \{
+3614   \textcolor{keywordflow}{if} (element) \{
+3615     \textcolor{keywordflow}{if} (element->\hyperlink{class_q_c_p_layout_element_a6235f5384db871fc6e3387a1bc558b0d}{layout}()) \textcolor{comment}{// remove from old layout first}
+3616       element->\hyperlink{class_q_c_p_layout_element_a6235f5384db871fc6e3387a1bc558b0d}{layout}()->\hyperlink{class_q_c_p_layout_ada26cd17e56472b0b4d7fbbc96873e4c}{take}(element);
+3617     \hyperlink{class_q_c_p_layout_inset_a7e618ac870f69f2fe2eae2a04500e763}{mElements}.append(element);
+3618     \hyperlink{class_q_c_p_layout_inset_a57a0a4e445cc78eada29765ecf092abe}{mInsetPlacement}.append(\hyperlink{class_q_c_p_layout_inset_a8b9e17d9a2768293d2a7d72f5e298192aa81e7df4a785ddee2229a8f47c46e817}{ipBorderAligned});
+3619     \hyperlink{class_q_c_p_layout_inset_a55e9b84c310136ff985a6544184ab64a}{mInsetAlignment}.append(alignment);
+3620     \hyperlink{class_q_c_p_layout_inset_aaa8f6b5029458f3d97a65239524a2b33}{mInsetRect}.append(QRectF(0.6, 0.6, 0.4, 0.4));
+3621     \hyperlink{class_q_c_p_layout_af6dbbc24156a808da29cd1ec031729a3}{adoptElement}(element);
+3622   \} \textcolor{keywordflow}{else}
+3623     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Can't add null element"};
+3624 \}
 \end{DoxyCode}
 
 
@@ -261,7 +263,7 @@ Adds the specified {\itshape element} to the layout as an inset with free positi
 \end{DoxySeeAlso}
 
 
-Definition at line 3344 of file qcustomplot.\+cpp.
+Definition at line 3641 of file qcustomplot.\+cpp.
 
 
 
@@ -269,19 +271,18 @@ References Q\+C\+P\+Layout\+::adopt\+Element(), ip\+Free, Q\+C\+P\+Layout\+Eleme
 
 
 \begin{DoxyCode}
-3345 \{
-3346   \textcolor{keywordflow}{if} (element)
-3347   \{
-3348     \textcolor{keywordflow}{if} (element->\hyperlink{class_q_c_p_layout_element_a6235f5384db871fc6e3387a1bc558b0d}{layout}()) \textcolor{comment}{// remove from old layout first}
-3349       element->\hyperlink{class_q_c_p_layout_element_a6235f5384db871fc6e3387a1bc558b0d}{layout}()->\hyperlink{class_q_c_p_layout_ada26cd17e56472b0b4d7fbbc96873e4c}{take}(element);
-3350     \hyperlink{class_q_c_p_layout_inset_a8fff7eae9a1be9a5c1e544fb379f682f}{mElements}.append(element);
-3351     \hyperlink{class_q_c_p_layout_inset_a57a0a4e445cc78eada29765ecf092abe}{mInsetPlacement}.append(\hyperlink{class_q_c_p_layout_inset_a8b9e17d9a2768293d2a7d72f5e298192aa4802986ea2cea457f932b115acba59e}{ipFree});
-3352     \hyperlink{class_q_c_p_layout_inset_a55e9b84c310136ff985a6544184ab64a}{mInsetAlignment}.append(Qt::AlignRight|Qt::AlignTop);
-3353     \hyperlink{class_q_c_p_layout_inset_aaa8f6b5029458f3d97a65239524a2b33}{mInsetRect}.append(\hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect});
-3354     \hyperlink{class_q_c_p_layout_af6dbbc24156a808da29cd1ec031729a3}{adoptElement}(element);
-3355   \} \textcolor{keywordflow}{else}
-3356     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Can't add null element"};
-3357 \}
+3641                                                                              \{
+3642   \textcolor{keywordflow}{if} (element) \{
+3643     \textcolor{keywordflow}{if} (element->\hyperlink{class_q_c_p_layout_element_a6235f5384db871fc6e3387a1bc558b0d}{layout}()) \textcolor{comment}{// remove from old layout first}
+3644       element->\hyperlink{class_q_c_p_layout_element_a6235f5384db871fc6e3387a1bc558b0d}{layout}()->\hyperlink{class_q_c_p_layout_ada26cd17e56472b0b4d7fbbc96873e4c}{take}(element);
+3645     \hyperlink{class_q_c_p_layout_inset_a7e618ac870f69f2fe2eae2a04500e763}{mElements}.append(element);
+3646     \hyperlink{class_q_c_p_layout_inset_a57a0a4e445cc78eada29765ecf092abe}{mInsetPlacement}.append(\hyperlink{class_q_c_p_layout_inset_a8b9e17d9a2768293d2a7d72f5e298192aa4802986ea2cea457f932b115acba59e}{ipFree});
+3647     \hyperlink{class_q_c_p_layout_inset_a55e9b84c310136ff985a6544184ab64a}{mInsetAlignment}.append(Qt::AlignRight | Qt::AlignTop);
+3648     \hyperlink{class_q_c_p_layout_inset_aaa8f6b5029458f3d97a65239524a2b33}{mInsetRect}.append(\hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect});
+3649     \hyperlink{class_q_c_p_layout_af6dbbc24156a808da29cd1ec031729a3}{adoptElement}(element);
+3650   \} \textcolor{keywordflow}{else}
+3651     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Can't add null element"};
+3652 \}
 \end{DoxyCode}
 
 
@@ -314,7 +315,7 @@ Implements \hyperlink{class_q_c_p_layout_afa73ca7d859f8a3ee5c73c9b353d2a56}{Q\+C
 
 
 
-Definition at line 3237 of file qcustomplot.\+cpp.
+Definition at line 3529 of file qcustomplot.\+cpp.
 
 
 
@@ -326,12 +327,12 @@ Referenced by inset\+Alignment(), inset\+Placement(), inset\+Rect(), set\+Inset\
 
 
 \begin{DoxyCode}
-3238 \{
-3239   \textcolor{keywordflow}{if} (index >= 0 && index < \hyperlink{class_q_c_p_layout_inset_a8fff7eae9a1be9a5c1e544fb379f682f}{mElements}.size())
-3240     \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_inset_a8fff7eae9a1be9a5c1e544fb379f682f}{mElements}.at(index);
-3241   \textcolor{keywordflow}{else}
-3242     \textcolor{keywordflow}{return} 0;
-3243 \}
+3529                                                            \{
+3530   \textcolor{keywordflow}{if} (index >= 0 && index < \hyperlink{class_q_c_p_layout_inset_a7e618ac870f69f2fe2eae2a04500e763}{mElements}.size())
+3531     \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_inset_a7e618ac870f69f2fe2eae2a04500e763}{mElements}.at(index);
+3532   \textcolor{keywordflow}{else}
+3533     \textcolor{keywordflow}{return} 0;
+3534 \}
 \end{DoxyCode}
 
 
@@ -362,7 +363,7 @@ Implements \hyperlink{class_q_c_p_layout_a39d3e9ef5d9b82ab1885ba1cb9597e56}{Q\+C
 
 
 
-Definition at line 3231 of file qcustomplot.\+cpp.
+Definition at line 3526 of file qcustomplot.\+cpp.
 
 
 
@@ -374,9 +375,7 @@ Referenced by take().
 
 
 \begin{DoxyCode}
-3232 \{
-3233   \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_inset_a8fff7eae9a1be9a5c1e544fb379f682f}{mElements}.size();
-3234 \}
+3526 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_inset_a7e618ac870f69f2fe2eae2a04500e763}{mElements}.size(); \}
 \end{DoxyCode}
 
 
@@ -398,7 +397,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const}\label{class_q_c_p_layout_inset_a78c0c494bb5728237cebb63ae8ef5c58}
 Returns the alignment of the element with the specified {\itshape index}. The alignment only has a meaning, if the inset placement (\hyperlink{class_q_c_p_layout_inset_a63298830744d5d8c5345511c00fd2144}{set\+Inset\+Placement}) is \hyperlink{class_q_c_p_layout_inset_a8b9e17d9a2768293d2a7d72f5e298192aa81e7df4a785ddee2229a8f47c46e817}{ip\+Border\+Aligned}. 
 
-Definition at line 3114 of file qcustomplot.\+cpp.
+Definition at line 3389 of file qcustomplot.\+cpp.
 
 
 
@@ -406,15 +405,14 @@ References element\+At(), and m\+Inset\+Alignment.
 
 
 \begin{DoxyCode}
-3115 \{
-3116   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_inset_ab096d07b08f9b5455647f3ba7ff60e27}{elementAt}(index))
-3117     \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_inset_a55e9b84c310136ff985a6544184ab64a}{mInsetAlignment}.at(index);
-3118   \textcolor{keywordflow}{else}
-3119   \{
-3120     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Invalid element index:"} << index;
-3121     \textcolor{keywordflow}{return} 0;
-3122   \}
-3123 \}
+3389                                                           \{
+3390   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_inset_ab096d07b08f9b5455647f3ba7ff60e27}{elementAt}(index))
+3391     \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_inset_a55e9b84c310136ff985a6544184ab64a}{mInsetAlignment}.at(index);
+3392   \textcolor{keywordflow}{else} \{
+3393     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Invalid element index:"} << index;
+3394     \textcolor{keywordflow}{return} 0;
+3395   \}
+3396 \}
 \end{DoxyCode}
 
 
@@ -436,7 +434,7 @@ Here is the call graph for this function\+:\nopagebreak
 ) const}\label{class_q_c_p_layout_inset_a8472ff2508807513e4cb0ce0c1d652b3}
 Returns the placement type of the element with the specified {\itshape index}. 
 
-Definition at line 3099 of file qcustomplot.\+cpp.
+Definition at line 3374 of file qcustomplot.\+cpp.
 
 
 
@@ -444,15 +442,14 @@ References element\+At(), ip\+Free, and m\+Inset\+Placement.
 
 
 \begin{DoxyCode}
-3100 \{
-3101   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_inset_ab096d07b08f9b5455647f3ba7ff60e27}{elementAt}(index))
-3102     \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_inset_a57a0a4e445cc78eada29765ecf092abe}{mInsetPlacement}.at(index);
-3103   \textcolor{keywordflow}{else}
-3104   \{
-3105     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Invalid element index:"} << index;
-3106     \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_inset_a8b9e17d9a2768293d2a7d72f5e298192aa4802986ea2cea457f932b115acba59e}{ipFree};
-3107   \}
-3108 \}
+3374                                                                            \{
+3375   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_inset_ab096d07b08f9b5455647f3ba7ff60e27}{elementAt}(index))
+3376     \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_inset_a57a0a4e445cc78eada29765ecf092abe}{mInsetPlacement}.at(index);
+3377   \textcolor{keywordflow}{else} \{
+3378     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Invalid element index:"} << index;
+3379     \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_inset_a8b9e17d9a2768293d2a7d72f5e298192aa4802986ea2cea457f932b115acba59e}{ipFree};
+3380   \}
+3381 \}
 \end{DoxyCode}
 
 
@@ -474,7 +471,7 @@ Here is the call graph for this function\+:\nopagebreak
 ) const}\label{class_q_c_p_layout_inset_a5ec7037b3b8d20fbf9560e01779b1442}
 Returns the rect of the element with the specified {\itshape index}. The rect only has a meaning, if the inset placement (\hyperlink{class_q_c_p_layout_inset_a63298830744d5d8c5345511c00fd2144}{set\+Inset\+Placement}) is \hyperlink{class_q_c_p_layout_inset_a8b9e17d9a2768293d2a7d72f5e298192aa4802986ea2cea457f932b115acba59e}{ip\+Free}. 
 
-Definition at line 3129 of file qcustomplot.\+cpp.
+Definition at line 3403 of file qcustomplot.\+cpp.
 
 
 
@@ -486,15 +483,14 @@ Referenced by update\+Layout().
 
 
 \begin{DoxyCode}
-3130 \{
-3131   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_inset_ab096d07b08f9b5455647f3ba7ff60e27}{elementAt}(index))
-3132     \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_inset_aaa8f6b5029458f3d97a65239524a2b33}{mInsetRect}.at(index);
-3133   \textcolor{keywordflow}{else}
-3134   \{
-3135     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Invalid element index:"} << index;
-3136     \textcolor{keywordflow}{return} QRectF();
-3137   \}
-3138 \}
+3403                                                 \{
+3404   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_inset_ab096d07b08f9b5455647f3ba7ff60e27}{elementAt}(index))
+3405     \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_inset_aaa8f6b5029458f3d97a65239524a2b33}{mInsetRect}.at(index);
+3406   \textcolor{keywordflow}{else} \{
+3407     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Invalid element index:"} << index;
+3408     \textcolor{keywordflow}{return} QRectF();
+3409   \}
+3410 \}
 \end{DoxyCode}
 
 
@@ -535,7 +531,7 @@ Reimplemented from \hyperlink{class_q_c_p_layout_element_a9fcf5d0ea19f2c23b2b528
 
 
 
-Definition at line 3291 of file qcustomplot.\+cpp.
+Definition at line 3580 of file qcustomplot.\+cpp.
 
 
 
@@ -543,21 +539,21 @@ References i, m\+Elements, Q\+C\+P\+Layerable\+::m\+Parent\+Plot, and Q\+Custom\
 
 
 \begin{DoxyCode}
-3292 \{
-3293   Q\_UNUSED(details)
-3294   if (onlySelectable)
-3295     return -1;
-3296   
-3297   for (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=0; i<\hyperlink{class_q_c_p_layout_inset_a8fff7eae9a1be9a5c1e544fb379f682f}{mElements}.size(); ++i)
-3298   \{
-3299     \textcolor{comment}{// inset layout shall only return positive selectTest, if actually an inset object is at pos}
-3300     \textcolor{comment}{// else it would block the entire underlying QCPAxisRect with its surface.}
-3301     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_inset_a8fff7eae9a1be9a5c1e544fb379f682f}{mElements}.at(i)->realVisibility() && \hyperlink{class_q_c_p_layout_inset_a8fff7eae9a1be9a5c1e544fb379f682f}{mElements}.at(i)->selectTest(pos, 
-      onlySelectable) >= 0)
-3302       \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_a7b738074c75e80070ef6a10263c6cd69}{selectionTolerance}()*0.99;
-3303   \}
-3304   \textcolor{keywordflow}{return} -1;
-3305 \}
+3581                                                            \{
+3582   Q\_UNUSED(details)
+3583   if (onlySelectable)
+3584     return -1;
+3585 
+3586   for (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; i < \hyperlink{class_q_c_p_layout_inset_a7e618ac870f69f2fe2eae2a04500e763}{mElements}.size(); ++i) \{
+3587     \textcolor{comment}{// inset layout shall only return positive selectTest, if actually an inset}
+3588     \textcolor{comment}{// object is at pos}
+3589     \textcolor{comment}{// else it would block the entire underlying QCPAxisRect with its surface.}
+3590     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_inset_a7e618ac870f69f2fe2eae2a04500e763}{mElements}.at(i)->realVisibility() &&
+3591         \hyperlink{class_q_c_p_layout_inset_a7e618ac870f69f2fe2eae2a04500e763}{mElements}.at(i)->selectTest(pos, onlySelectable) >= 0)
+3592       \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_a7b738074c75e80070ef6a10263c6cd69}{selectionTolerance}() * 0.99;
+3593   \}
+3594   \textcolor{keywordflow}{return} -1;
+3595 \}
 \end{DoxyCode}
 
 
@@ -582,7 +578,7 @@ If the inset placement (\hyperlink{class_q_c_p_layout_inset_a63298830744d5d8c534
 
 {\itshape alignment} is an or combination of the following alignment flags\+: Qt\+::\+Align\+Left, Qt\+::\+Align\+H\+Center, Qt\+::\+Aligh\+Right, Qt\+::\+Align\+Top, Qt\+::\+Align\+V\+Center, Qt\+::\+Align\+Bottom. Any other alignment flags will be ignored. 
 
-Definition at line 3161 of file qcustomplot.\+cpp.
+Definition at line 3438 of file qcustomplot.\+cpp.
 
 
 
@@ -590,12 +586,12 @@ References element\+At(), and m\+Inset\+Alignment.
 
 
 \begin{DoxyCode}
-3162 \{
-3163   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_inset_ab096d07b08f9b5455647f3ba7ff60e27}{elementAt}(index))
-3164     \hyperlink{class_q_c_p_layout_inset_a55e9b84c310136ff985a6544184ab64a}{mInsetAlignment}[index] = alignment;
-3165   \textcolor{keywordflow}{else}
-3166     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Invalid element index:"} << index;
-3167 \}
+3438                                                                        \{
+3439   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_inset_ab096d07b08f9b5455647f3ba7ff60e27}{elementAt}(index))
+3440     \hyperlink{class_q_c_p_layout_inset_a55e9b84c310136ff985a6544184ab64a}{mInsetAlignment}[index] = alignment;
+3441   \textcolor{keywordflow}{else}
+3442     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Invalid element index:"} << index;
+3443 \}
 \end{DoxyCode}
 
 
@@ -623,7 +619,7 @@ Sets the inset placement type of the element with the specified {\itshape index}
 \end{DoxySeeAlso}
 
 
-Definition at line 3145 of file qcustomplot.\+cpp.
+Definition at line 3418 of file qcustomplot.\+cpp.
 
 
 
@@ -631,12 +627,12 @@ References element\+At(), and m\+Inset\+Placement.
 
 
 \begin{DoxyCode}
-3146 \{
-3147   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_inset_ab096d07b08f9b5455647f3ba7ff60e27}{elementAt}(index))
-3148     \hyperlink{class_q_c_p_layout_inset_a57a0a4e445cc78eada29765ecf092abe}{mInsetPlacement}[index] = placement;
-3149   \textcolor{keywordflow}{else}
-3150     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Invalid element index:"} << index;
-3151 \}
+3419                                                        \{
+3420   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_inset_ab096d07b08f9b5455647f3ba7ff60e27}{elementAt}(index))
+3421     \hyperlink{class_q_c_p_layout_inset_a57a0a4e445cc78eada29765ecf092abe}{mInsetPlacement}[index] = placement;
+3422   \textcolor{keywordflow}{else}
+3423     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Invalid element index:"} << index;
+3424 \}
 \end{DoxyCode}
 
 
@@ -663,7 +659,7 @@ If the inset placement (\hyperlink{class_q_c_p_layout_inset_a63298830744d5d8c534
 
 Note that the minimum and maximum sizes of the embedded element (\hyperlink{class_q_c_p_layout_element_a5dd29a3c8bc88440c97c06b67be7886b}{Q\+C\+P\+Layout\+Element\+::set\+Minimum\+Size}, \hyperlink{class_q_c_p_layout_element_a74eb5280a737ab44833d506db65efd95}{Q\+C\+P\+Layout\+Element\+::set\+Maximum\+Size}) are enforced. 
 
-Definition at line 3180 of file qcustomplot.\+cpp.
+Definition at line 3460 of file qcustomplot.\+cpp.
 
 
 
@@ -671,12 +667,12 @@ References element\+At(), m\+Inset\+Rect, and Q\+C\+P\+Layout\+Element\+::rect()
 
 
 \begin{DoxyCode}
-3181 \{
-3182   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_inset_ab096d07b08f9b5455647f3ba7ff60e27}{elementAt}(index))
-3183     \hyperlink{class_q_c_p_layout_inset_aaa8f6b5029458f3d97a65239524a2b33}{mInsetRect}[index] = \hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect};
-3184   \textcolor{keywordflow}{else}
-3185     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Invalid element index:"} << index;
-3186 \}
+3460                                                                \{
+3461   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_inset_ab096d07b08f9b5455647f3ba7ff60e27}{elementAt}(index))
+3462     \hyperlink{class_q_c_p_layout_inset_aaa8f6b5029458f3d97a65239524a2b33}{mInsetRect}[index] = \hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect};
+3463   \textcolor{keywordflow}{else}
+3464     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Invalid element index:"} << index;
+3465 \}
 \end{DoxyCode}
 
 
@@ -702,11 +698,11 @@ Reimplemented from \hyperlink{class_q_c_p_layout_a41e6ac049143866e8f8b4964efab01
 
 
 
-Definition at line 853 of file qcustomplot.\+h.
+Definition at line 996 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-853 \{\}
+996 \{\}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_layout_inset_a9ac707ccff650633b97f52dd5cddcf49}{}\index{Q\+C\+P\+Layout\+Inset@{Q\+C\+P\+Layout\+Inset}!take@{take}}
 \index{take@{take}!Q\+C\+P\+Layout\+Inset@{Q\+C\+P\+Layout\+Inset}}
@@ -730,7 +726,7 @@ Implements \hyperlink{class_q_c_p_layout_ada26cd17e56472b0b4d7fbbc96873e4c}{Q\+C
 
 
 
-Definition at line 3264 of file qcustomplot.\+cpp.
+Definition at line 3552 of file qcustomplot.\+cpp.
 
 
 
@@ -738,22 +734,19 @@ References element\+At(), element\+Count(), i, and take\+At().
 
 
 \begin{DoxyCode}
-3265 \{
-3266   \textcolor{keywordflow}{if} (element)
-3267   \{
-3268     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}<\hyperlink{class_q_c_p_layout_inset_a2087b97b9266fd9e0f571a8d3cf709f9}{elementCount}(); ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
-3269     \{
-3270       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_inset_ab096d07b08f9b5455647f3ba7ff60e27}{elementAt}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) == element)
-3271       \{
-3272         \hyperlink{class_q_c_p_layout_inset_ad6756a3b507e20496aaf7f5ca16c47d1}{takeAt}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i});
-3273         \textcolor{keywordflow}{return} \textcolor{keyword}{true};
-3274       \}
-3275     \}
-3276     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Element not in this layout, couldn't take"};
-3277   \} \textcolor{keywordflow}{else}
-3278     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Can't take null element"};
-3279   \textcolor{keywordflow}{return} \textcolor{keyword}{false};
-3280 \}
+3552                                                    \{
+3553   \textcolor{keywordflow}{if} (element) \{
+3554     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < \hyperlink{class_q_c_p_layout_inset_a2087b97b9266fd9e0f571a8d3cf709f9}{elementCount}(); ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) \{
+3555       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_inset_ab096d07b08f9b5455647f3ba7ff60e27}{elementAt}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) == element) \{
+3556         \hyperlink{class_q_c_p_layout_inset_ad6756a3b507e20496aaf7f5ca16c47d1}{takeAt}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i});
+3557         \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+3558       \}
+3559     \}
+3560     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Element not in this layout, couldn't take"};
+3561   \} \textcolor{keywordflow}{else}
+3562     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Can't take null element"};
+3563   \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+3564 \}
 \end{DoxyCode}
 
 
@@ -788,7 +781,7 @@ Implements \hyperlink{class_q_c_p_layout_a5a79621fa0a6eabb8b520cfc04fb601a}{Q\+C
 
 
 
-Definition at line 3246 of file qcustomplot.\+cpp.
+Definition at line 3537 of file qcustomplot.\+cpp.
 
 
 
@@ -800,21 +793,19 @@ Referenced by take().
 
 
 \begin{DoxyCode}
-3247 \{
-3248   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_element}{QCPLayoutElement} *el = \hyperlink{class_q_c_p_layout_inset_ab096d07b08f9b5455647f3ba7ff60e27}{elementAt}(index))
-3249   \{
-3250     \hyperlink{class_q_c_p_layout_a4afbb4bef0071f72f91afdac4433a18e}{releaseElement}(el);
-3251     \hyperlink{class_q_c_p_layout_inset_a8fff7eae9a1be9a5c1e544fb379f682f}{mElements}.removeAt(index);
-3252     \hyperlink{class_q_c_p_layout_inset_a57a0a4e445cc78eada29765ecf092abe}{mInsetPlacement}.removeAt(index);
-3253     \hyperlink{class_q_c_p_layout_inset_a55e9b84c310136ff985a6544184ab64a}{mInsetAlignment}.removeAt(index);
-3254     \hyperlink{class_q_c_p_layout_inset_aaa8f6b5029458f3d97a65239524a2b33}{mInsetRect}.removeAt(index);
-3255     \textcolor{keywordflow}{return} el;
-3256   \} \textcolor{keywordflow}{else}
-3257   \{
-3258     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Attempt to take invalid index:"} << index;
-3259     \textcolor{keywordflow}{return} 0;
-3260   \}
-3261 \}
+3537                                                   \{
+3538   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_element}{QCPLayoutElement} *el = \hyperlink{class_q_c_p_layout_inset_ab096d07b08f9b5455647f3ba7ff60e27}{elementAt}(index)) \{
+3539     \hyperlink{class_q_c_p_layout_a4afbb4bef0071f72f91afdac4433a18e}{releaseElement}(el);
+3540     \hyperlink{class_q_c_p_layout_inset_a7e618ac870f69f2fe2eae2a04500e763}{mElements}.removeAt(index);
+3541     \hyperlink{class_q_c_p_layout_inset_a57a0a4e445cc78eada29765ecf092abe}{mInsetPlacement}.removeAt(index);
+3542     \hyperlink{class_q_c_p_layout_inset_a55e9b84c310136ff985a6544184ab64a}{mInsetAlignment}.removeAt(index);
+3543     \hyperlink{class_q_c_p_layout_inset_aaa8f6b5029458f3d97a65239524a2b33}{mInsetRect}.removeAt(index);
+3544     \textcolor{keywordflow}{return} el;
+3545   \} \textcolor{keywordflow}{else} \{
+3546     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Attempt to take invalid index:"} << index;
+3547     \textcolor{keywordflow}{return} 0;
+3548   \}
+3549 \}
 \end{DoxyCode}
 
 
@@ -851,7 +842,7 @@ Reimplemented from \hyperlink{class_q_c_p_layout_a165c77f6287ac92e8d03017ad91337
 
 
 
-Definition at line 3189 of file qcustomplot.\+cpp.
+Definition at line 3468 of file qcustomplot.\+cpp.
 
 
 
@@ -859,55 +850,64 @@ References i, inset\+Rect(), ip\+Border\+Aligned, ip\+Free, m\+Elements, m\+Inse
 
 
 \begin{DoxyCode}
-3190 \{
-3191   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}<\hyperlink{class_q_c_p_layout_inset_a8fff7eae9a1be9a5c1e544fb379f682f}{mElements}.size(); ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
-3192   \{
-3193     QRect \hyperlink{class_q_c_p_layout_inset_a5ec7037b3b8d20fbf9560e01779b1442}{insetRect};
-3194     QSize finalMinSize, finalMaxSize;
-3195     QSize minSizeHint = \hyperlink{class_q_c_p_layout_inset_a8fff7eae9a1be9a5c1e544fb379f682f}{mElements}.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->minimumSizeHint();
-3196     QSize maxSizeHint = \hyperlink{class_q_c_p_layout_inset_a8fff7eae9a1be9a5c1e544fb379f682f}{mElements}.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->maximumSizeHint();
-3197     finalMinSize.setWidth(\hyperlink{class_q_c_p_layout_inset_a8fff7eae9a1be9a5c1e544fb379f682f}{mElements}.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->minimumSize().width() > 0 ? 
-      \hyperlink{class_q_c_p_layout_inset_a8fff7eae9a1be9a5c1e544fb379f682f}{mElements}.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->minimumSize().width() : minSizeHint.width());
-3198     finalMinSize.setHeight(\hyperlink{class_q_c_p_layout_inset_a8fff7eae9a1be9a5c1e544fb379f682f}{mElements}.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->minimumSize().height() > 0 ? 
-      \hyperlink{class_q_c_p_layout_inset_a8fff7eae9a1be9a5c1e544fb379f682f}{mElements}.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->minimumSize().height() : minSizeHint.height());
-3199     finalMaxSize.setWidth(\hyperlink{class_q_c_p_layout_inset_a8fff7eae9a1be9a5c1e544fb379f682f}{mElements}.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->maximumSize().width() < QWIDGETSIZE\_MAX ? 
-      \hyperlink{class_q_c_p_layout_inset_a8fff7eae9a1be9a5c1e544fb379f682f}{mElements}.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->maximumSize().width() : maxSizeHint.width());
-3200     finalMaxSize.setHeight(\hyperlink{class_q_c_p_layout_inset_a8fff7eae9a1be9a5c1e544fb379f682f}{mElements}.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->maximumSize().height() < QWIDGETSIZE\_MAX ? 
-      \hyperlink{class_q_c_p_layout_inset_a8fff7eae9a1be9a5c1e544fb379f682f}{mElements}.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->maximumSize().height() : maxSizeHint.height());
-3201     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_inset_a57a0a4e445cc78eada29765ecf092abe}{mInsetPlacement}.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) == \hyperlink{class_q_c_p_layout_inset_a8b9e17d9a2768293d2a7d72f5e298192aa4802986ea2cea457f932b115acba59e}{ipFree})
-3202     \{
-3203       insetRect = QRect(\hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}().\hyperlink{_comparision_pictures_2_createtest_image_8m_a9336ebf25087d91c818ee6e9ec29f8c1}{x}()+\hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}().width()*\hyperlink{class_q_c_p_layout_inset_aaa8f6b5029458f3d97a65239524a2b33}{mInsetRect}.at(
+3468                                   \{
+3469   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < \hyperlink{class_q_c_p_layout_inset_a7e618ac870f69f2fe2eae2a04500e763}{mElements}.size(); ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) \{
+3470     QRect \hyperlink{class_q_c_p_layout_inset_a5ec7037b3b8d20fbf9560e01779b1442}{insetRect};
+3471     QSize finalMinSize, finalMaxSize;
+3472     QSize minSizeHint = \hyperlink{class_q_c_p_layout_inset_a7e618ac870f69f2fe2eae2a04500e763}{mElements}.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->minimumSizeHint();
+3473     QSize maxSizeHint = \hyperlink{class_q_c_p_layout_inset_a7e618ac870f69f2fe2eae2a04500e763}{mElements}.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->maximumSizeHint();
+3474     finalMinSize.setWidth(\hyperlink{class_q_c_p_layout_inset_a7e618ac870f69f2fe2eae2a04500e763}{mElements}.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->minimumSize().width() > 0
+3475                               ? \hyperlink{class_q_c_p_layout_inset_a7e618ac870f69f2fe2eae2a04500e763}{mElements}.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->minimumSize().width()
+3476                               : minSizeHint.width());
+3477     finalMinSize.setHeight(\hyperlink{class_q_c_p_layout_inset_a7e618ac870f69f2fe2eae2a04500e763}{mElements}.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->minimumSize().height() > 0
+3478                                ? \hyperlink{class_q_c_p_layout_inset_a7e618ac870f69f2fe2eae2a04500e763}{mElements}.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->minimumSize().height()
+3479                                : minSizeHint.height());
+3480     finalMaxSize.setWidth(\hyperlink{class_q_c_p_layout_inset_a7e618ac870f69f2fe2eae2a04500e763}{mElements}.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->maximumSize().width() <
+3481                                   QWIDGETSIZE\_MAX
+3482                               ? \hyperlink{class_q_c_p_layout_inset_a7e618ac870f69f2fe2eae2a04500e763}{mElements}.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->maximumSize().width()
+3483                               : maxSizeHint.width());
+3484     finalMaxSize.setHeight(\hyperlink{class_q_c_p_layout_inset_a7e618ac870f69f2fe2eae2a04500e763}{mElements}.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->maximumSize().height() <
+3485                                    QWIDGETSIZE\_MAX
+3486                                ? \hyperlink{class_q_c_p_layout_inset_a7e618ac870f69f2fe2eae2a04500e763}{mElements}.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->maximumSize().height()
+3487                                : maxSizeHint.height());
+3488     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_inset_a57a0a4e445cc78eada29765ecf092abe}{mInsetPlacement}.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) == \hyperlink{class_q_c_p_layout_inset_a8b9e17d9a2768293d2a7d72f5e298192aa4802986ea2cea457f932b115acba59e}{ipFree}) \{
+3489       insetRect = QRect(\hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}().\hyperlink{_comparision_pictures_2_createtest_image_8m_a9336ebf25087d91c818ee6e9ec29f8c1}{x}() + \hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}().width() * \hyperlink{class_q_c_p_layout_inset_aaa8f6b5029458f3d97a65239524a2b33}{mInsetRect}.at(
       \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}).x(),
-3204                         \hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}().y()+\hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}().height()*\hyperlink{class_q_c_p_layout_inset_aaa8f6b5029458f3d97a65239524a2b33}{mInsetRect}.at(
+3490                         \hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}().y() + \hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}().height() * \hyperlink{class_q_c_p_layout_inset_aaa8f6b5029458f3d97a65239524a2b33}{mInsetRect}.at(
       \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}).y(),
-3205                         \hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}().width()*\hyperlink{class_q_c_p_layout_inset_aaa8f6b5029458f3d97a65239524a2b33}{mInsetRect}.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}).width(),
-3206                         \hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}().height()*\hyperlink{class_q_c_p_layout_inset_aaa8f6b5029458f3d97a65239524a2b33}{mInsetRect}.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}).height());
-3207       \textcolor{keywordflow}{if} (insetRect.size().width() < finalMinSize.width())
-3208         insetRect.setWidth(finalMinSize.width());
-3209       \textcolor{keywordflow}{if} (insetRect.size().height() < finalMinSize.height())
-3210         insetRect.setHeight(finalMinSize.height());
-3211       \textcolor{keywordflow}{if} (insetRect.size().width() > finalMaxSize.width())
-3212         insetRect.setWidth(finalMaxSize.width());
-3213       \textcolor{keywordflow}{if} (insetRect.size().height() > finalMaxSize.height())
-3214         insetRect.setHeight(finalMaxSize.height());
-3215     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_inset_a57a0a4e445cc78eada29765ecf092abe}{mInsetPlacement}.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) == \hyperlink{class_q_c_p_layout_inset_a8b9e17d9a2768293d2a7d72f5e298192aa81e7df4a785ddee2229a8f47c46e817}{ipBorderAligned})
-3216     \{
-3217       insetRect.setSize(finalMinSize);
-3218       Qt::Alignment al = \hyperlink{class_q_c_p_layout_inset_a55e9b84c310136ff985a6544184ab64a}{mInsetAlignment}.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i});
-3219       \textcolor{keywordflow}{if} (al.testFlag(Qt::AlignLeft)) insetRect.moveLeft(\hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}().\hyperlink{_comparision_pictures_2_createtest_image_8m_a9336ebf25087d91c818ee6e9ec29f8c1}{x}());
-3220       \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (al.testFlag(Qt::AlignRight)) insetRect.moveRight(\hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}().\hyperlink{_comparision_pictures_2_createtest_image_8m_a9336ebf25087d91c818ee6e9ec29f8c1}{x}()+
-      \hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}().width());
-3221       \textcolor{keywordflow}{else} insetRect.moveLeft(\hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}().\hyperlink{_comparision_pictures_2_createtest_image_8m_a9336ebf25087d91c818ee6e9ec29f8c1}{x}()+\hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}().width()*0.5-finalMinSize.width()*0.5); \textcolor{comment}{// default
-       to Qt::AlignHCenter}
-3222       \textcolor{keywordflow}{if} (al.testFlag(Qt::AlignTop)) insetRect.moveTop(\hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}().\hyperlink{_comparision_pictures_2_createtest_image_8m_a2fb1c5cf58867b5bbc9a1b145a86f3a0}{y}());
-3223       \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (al.testFlag(Qt::AlignBottom)) insetRect.moveBottom(\hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}().\hyperlink{_comparision_pictures_2_createtest_image_8m_a2fb1c5cf58867b5bbc9a1b145a86f3a0}{y}()+
-      \hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}().height());
-3224       \textcolor{keywordflow}{else} insetRect.moveTop(\hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}().\hyperlink{_comparision_pictures_2_createtest_image_8m_a2fb1c5cf58867b5bbc9a1b145a86f3a0}{y}()+\hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}().height()*0.5-finalMinSize.height()*0.5); \textcolor{comment}{// default
-       to Qt::AlignVCenter}
-3225     \}
-3226     \hyperlink{class_q_c_p_layout_inset_a8fff7eae9a1be9a5c1e544fb379f682f}{mElements}.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->setOuterRect(insetRect);
-3227   \}
-3228 \}
+3491                         \hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}().width() * \hyperlink{class_q_c_p_layout_inset_aaa8f6b5029458f3d97a65239524a2b33}{mInsetRect}.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}).width(),
+3492                         \hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}().height() * \hyperlink{class_q_c_p_layout_inset_aaa8f6b5029458f3d97a65239524a2b33}{mInsetRect}.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}).height());
+3493       \textcolor{keywordflow}{if} (insetRect.size().width() < finalMinSize.width())
+3494         insetRect.setWidth(finalMinSize.width());
+3495       \textcolor{keywordflow}{if} (insetRect.size().height() < finalMinSize.height())
+3496         insetRect.setHeight(finalMinSize.height());
+3497       \textcolor{keywordflow}{if} (insetRect.size().width() > finalMaxSize.width())
+3498         insetRect.setWidth(finalMaxSize.width());
+3499       \textcolor{keywordflow}{if} (insetRect.size().height() > finalMaxSize.height())
+3500         insetRect.setHeight(finalMaxSize.height());
+3501     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_inset_a57a0a4e445cc78eada29765ecf092abe}{mInsetPlacement}.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) == \hyperlink{class_q_c_p_layout_inset_a8b9e17d9a2768293d2a7d72f5e298192aa81e7df4a785ddee2229a8f47c46e817}{ipBorderAligned}) \{
+3502       insetRect.setSize(finalMinSize);
+3503       Qt::Alignment al = \hyperlink{class_q_c_p_layout_inset_a55e9b84c310136ff985a6544184ab64a}{mInsetAlignment}.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i});
+3504       \textcolor{keywordflow}{if} (al.testFlag(Qt::AlignLeft))
+3505         insetRect.moveLeft(\hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}().\hyperlink{_comparision_pictures_2_createtest_image_8m_a9336ebf25087d91c818ee6e9ec29f8c1}{x}());
+3506       \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (al.testFlag(Qt::AlignRight))
+3507         insetRect.moveRight(\hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}().\hyperlink{_comparision_pictures_2_createtest_image_8m_a9336ebf25087d91c818ee6e9ec29f8c1}{x}() + \hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}().width());
+3508       \textcolor{keywordflow}{else}
+3509         insetRect.moveLeft(\hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}().\hyperlink{_comparision_pictures_2_createtest_image_8m_a9336ebf25087d91c818ee6e9ec29f8c1}{x}() + \hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}().width() * 0.5 -
+3510                            finalMinSize.width() *
+3511                                0.5); \textcolor{comment}{// default to Qt::AlignHCenter}
+3512       \textcolor{keywordflow}{if} (al.testFlag(Qt::AlignTop))
+3513         insetRect.moveTop(\hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}().\hyperlink{_comparision_pictures_2_createtest_image_8m_a2fb1c5cf58867b5bbc9a1b145a86f3a0}{y}());
+3514       \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (al.testFlag(Qt::AlignBottom))
+3515         insetRect.moveBottom(\hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}().\hyperlink{_comparision_pictures_2_createtest_image_8m_a2fb1c5cf58867b5bbc9a1b145a86f3a0}{y}() + \hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}().height());
+3516       \textcolor{keywordflow}{else}
+3517         insetRect.moveTop(\hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}().\hyperlink{_comparision_pictures_2_createtest_image_8m_a2fb1c5cf58867b5bbc9a1b145a86f3a0}{y}() + \hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}().height() * 0.5 -
+3518                           finalMinSize.height() *
+3519                               0.5); \textcolor{comment}{// default to Qt::AlignVCenter}
+3520     \}
+3521     \hyperlink{class_q_c_p_layout_inset_a7e618ac870f69f2fe2eae2a04500e763}{mElements}.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->setOuterRect(insetRect);
+3522   \}
+3523 \}
 \end{DoxyCode}
 
 
@@ -923,12 +923,12 @@ Here is the call graph for this function\+:\nopagebreak
 
 
 \subsection{Member Data Documentation}
-\hypertarget{class_q_c_p_layout_inset_a8fff7eae9a1be9a5c1e544fb379f682f}{}\index{Q\+C\+P\+Layout\+Inset@{Q\+C\+P\+Layout\+Inset}!m\+Elements@{m\+Elements}}
+\hypertarget{class_q_c_p_layout_inset_a7e618ac870f69f2fe2eae2a04500e763}{}\index{Q\+C\+P\+Layout\+Inset@{Q\+C\+P\+Layout\+Inset}!m\+Elements@{m\+Elements}}
 \index{m\+Elements@{m\+Elements}!Q\+C\+P\+Layout\+Inset@{Q\+C\+P\+Layout\+Inset}}
-\subsubsection[{m\+Elements}]{\setlength{\rightskip}{0pt plus 5cm}Q\+List$<${\bf Q\+C\+P\+Layout\+Element}$\ast$$>$ Q\+C\+P\+Layout\+Inset\+::m\+Elements\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_layout_inset_a8fff7eae9a1be9a5c1e544fb379f682f}
+\subsubsection[{m\+Elements}]{\setlength{\rightskip}{0pt plus 5cm}Q\+List$<${\bf Q\+C\+P\+Layout\+Element} $\ast$$>$ Q\+C\+P\+Layout\+Inset\+::m\+Elements\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_layout_inset_a7e618ac870f69f2fe2eae2a04500e763}
 
 
-Definition at line 862 of file qcustomplot.\+h.
+Definition at line 1006 of file qcustomplot.\+h.
 
 
 
@@ -939,7 +939,7 @@ Referenced by add\+Element(), element\+At(), element\+Count(), select\+Test(), t
 \subsubsection[{m\+Inset\+Alignment}]{\setlength{\rightskip}{0pt plus 5cm}Q\+List$<$Qt\+::\+Alignment$>$ Q\+C\+P\+Layout\+Inset\+::m\+Inset\+Alignment\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_layout_inset_a55e9b84c310136ff985a6544184ab64a}
 
 
-Definition at line 864 of file qcustomplot.\+h.
+Definition at line 1008 of file qcustomplot.\+h.
 
 
 
@@ -950,7 +950,7 @@ Referenced by add\+Element(), inset\+Alignment(), set\+Inset\+Alignment(), take\
 \subsubsection[{m\+Inset\+Placement}]{\setlength{\rightskip}{0pt plus 5cm}Q\+List$<${\bf Inset\+Placement}$>$ Q\+C\+P\+Layout\+Inset\+::m\+Inset\+Placement\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_layout_inset_a57a0a4e445cc78eada29765ecf092abe}
 
 
-Definition at line 863 of file qcustomplot.\+h.
+Definition at line 1007 of file qcustomplot.\+h.
 
 
 
@@ -961,7 +961,7 @@ Referenced by add\+Element(), inset\+Placement(), set\+Inset\+Placement(), take\
 \subsubsection[{m\+Inset\+Rect}]{\setlength{\rightskip}{0pt plus 5cm}Q\+List$<$Q\+Rect\+F$>$ Q\+C\+P\+Layout\+Inset\+::m\+Inset\+Rect\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_layout_inset_aaa8f6b5029458f3d97a65239524a2b33}
 
 
-Definition at line 865 of file qcustomplot.\+h.
+Definition at line 1009 of file qcustomplot.\+h.
 
 
 

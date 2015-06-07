@@ -2,6 +2,11 @@
 \label{class_soil_math_1_1_f_f_t}\index{Soil\+Math\+::\+F\+F\+T@{Soil\+Math\+::\+F\+F\+T}}
 
 
+Fast Fourier Transform class.  
+
+
+
+
 {\ttfamily \#include $<$F\+F\+T.\+h$>$}
 
 
@@ -45,9 +50,11 @@ cv\+::\+Mat \hyperlink{class_soil_math_1_1_f_f_t_a2efda8f90cd255a2c1835263635204
 
 
 \subsection{Detailed Description}
+Fast Fourier Transform class. 
 
+Use this class to transform a black and white blob presented as a cv\+::\+Mat with values 0 or 1 to a vector of complex values representing the Fourier Descriptors. 
 
-Definition at line 24 of file F\+F\+T.\+h.
+Definition at line 31 of file F\+F\+T.\+h.
 
 
 
@@ -65,11 +72,11 @@ Standard constructor.
 
 
 
-Definition at line 4 of file F\+F\+T.\+cpp.
+Definition at line 11 of file F\+F\+T.\+cpp.
 
 
 \begin{DoxyCode}
-4 \{\}
+11 \{\}
 \end{DoxyCode}
 \hypertarget{class_soil_math_1_1_f_f_t_a279862b286d865ebc5aa707f94f19d73}{}\index{Soil\+Math\+::\+F\+F\+T@{Soil\+Math\+::\+F\+F\+T}!````~F\+F\+T@{$\sim$\+F\+F\+T}}
 \index{````~F\+F\+T@{$\sim$\+F\+F\+T}!Soil\+Math\+::\+F\+F\+T@{Soil\+Math\+::\+F\+F\+T}}
@@ -84,11 +91,11 @@ Standard deconstructor.
 
 
 
-Definition at line 6 of file F\+F\+T.\+cpp.
+Definition at line 13 of file F\+F\+T.\+cpp.
 
 
 \begin{DoxyCode}
-6 \{\}
+13 \{\}
 \end{DoxyCode}
 
 
@@ -120,7 +127,7 @@ a vector with complex values, represing the contour as a function
 \end{DoxyReturn}
 
 
-Definition at line 57 of file F\+F\+T.\+cpp.
+Definition at line 64 of file F\+F\+T.\+cpp.
 
 
 
@@ -132,88 +139,88 @@ Referenced by Get\+Descriptors().
 
 
 \begin{DoxyCode}
-58                                                     \{
-59   \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *O = img.data;
-60   uint32\_t pEnd = img.cols * img.rows;
-61 
-62   std::deque<std::deque<uint32\_t>> sCont;
-63   std::deque<uint32\_t> eList;
-64 
-65   \textcolor{comment}{// Initialize the queue}
-66   \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < pEnd; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++) \{
-67     \textcolor{keywordflow}{if} (O[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] == 1) \{
-68       std::deque<uint32\_t> tmpQ;
-69       tmpQ.push\_back(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i});
-70       sCont.push\_back(tmpQ);
-71       \textcolor{keywordflow}{break};
-72     \}
-73   \}
-74 
-75   \textcolor{keywordflow}{if} (sCont.front().size() < 1) \{
-76     \textcolor{keywordflow}{throw} Exception::MathException(\textcolor{stringliteral}{"No contour found in image!"});
-77   \} \textcolor{comment}{// Exception handling}
-78 
-79   uint32\_t prev = -1;
-80 
-81   \textcolor{comment}{// Extend path on queue}
-82   \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = sCont.front().front(); \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < pEnd;) \{
-83     \hyperlink{_soil_math_types_8h_a1ade796add2f13888dfa9e6bde0bdc37}{iContour\_t} nBors =
-84         \hyperlink{class_soil_math_1_1_f_f_t_a45b32ad009154112d2fc4e467fc7c5ac}{Neighbors}(O, \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}, img.cols, img.rows); \textcolor{comment}{// find neighboring pixels}
-85     std::deque<uint32\_t> cQ = sCont.front(); \textcolor{comment}{// store first queue;}
-86     sCont.erase(sCont.begin()); \textcolor{comment}{// erase first queue from beginning}
-87     \textcolor{keywordflow}{if} (cQ.size() > 1) \{
-88       prev = cQ.size() - 2;
-89     \} \textcolor{keywordflow}{else} \{
-90       prev = 0;
-91     \}
-92     \textcolor{comment}{// Loop through each neighbor}
-93     \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} < nBors.size(); \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}++) \{
-94       \textcolor{keywordflow}{if} (nBors[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}] != cQ[prev]) \textcolor{comment}{// No backtracking}
-95       \{
-96         \textcolor{keywordflow}{if} (nBors[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}] == cQ.front() && cQ.size() > 8) \{
-97           \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = pEnd;
-98         \} \textcolor{comment}{// Back at first node}
-99         \textcolor{keywordflow}{if} (std::find(eList.begin(), eList.end(), nBors[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}]) ==
-100             eList.end()) \textcolor{comment}{// Check if this current route is extended elsewhere}
-101         \{
-102           std::deque<uint32\_t> nQ = cQ;
-103           nQ.push\_back(nBors[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}]); \textcolor{comment}{// Add the neighbor to the queue}
-104           sCont.push\_front(nQ);   \textcolor{comment}{// add the sequence to the front of the queue}
-105         \}
-106       \}
-107     \}
-108     \textcolor{keywordflow}{if} (nBors.size() > 2) \{
-109       eList.push\_back(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i});
-110     \} \textcolor{comment}{// if there are multiple choices put current node in extension List}
-111     \textcolor{keywordflow}{if} (\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} != pEnd) \{
-112       \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = sCont.front().back();
-113     \} \textcolor{comment}{// If it isn't the end set i to the last node of the first queue}
-114     \textcolor{keywordflow}{if} (sCont.size() == 0) \{
-115       \textcolor{keywordflow}{throw} Exception::MathException(
-116           \textcolor{stringliteral}{"No continuous contour found, or less then 8 pixels long!"});
-117     \}
-118   \}
-119 
-120   \textcolor{comment}{// convert the first queue to a complex normalized vector}
-121   \hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t} cPoint;
-122   \hyperlink{_soil_math_types_8h_a7567e521c2b2c408dcb62dbff72390f7}{ComplexVect\_t} contour;
-123   \textcolor{keywordtype}{float} col = 0.0;
-124   \textcolor{comment}{// Normalize and convert the complex function}
-125   for\_each(
-126       sCont.front().begin(), sCont.front().end(),
-127       [&img, &cPoint, &contour, &centerCol, &centerRow, &col](uint32\_t &e) \{
-128         col = (float)((e % img.cols) - centerCol);
-129         \textcolor{keywordflow}{if} (col == 0.0) \{
-130           cPoint.real(1.0);
-131         \} \textcolor{keywordflow}{else} \{
-132           cPoint.real((\textcolor{keywordtype}{float})(col / centerCol));
-133         \}
-134         cPoint.imag((\textcolor{keywordtype}{float})((floorf(e / img.cols) - centerRow) / centerRow));
-135         contour.push\_back(cPoint);
-136       \});
-137 
-138   \textcolor{keywordflow}{return} contour;
-139 \}
+65                                                     \{
+66   \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *O = img.data;
+67   uint32\_t pEnd = img.cols * img.rows;
+68 
+69   std::deque<std::deque<uint32\_t>> sCont;
+70   std::deque<uint32\_t> eList;
+71 
+72   \textcolor{comment}{// Initialize the queue}
+73   \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < pEnd; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++) \{
+74     \textcolor{keywordflow}{if} (O[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] == 1) \{
+75       std::deque<uint32\_t> tmpQ;
+76       tmpQ.push\_back(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i});
+77       sCont.push\_back(tmpQ);
+78       \textcolor{keywordflow}{break};
+79     \}
+80   \}
+81 
+82   \textcolor{keywordflow}{if} (sCont.front().size() < 1) \{
+83     \textcolor{keywordflow}{throw} Exception::MathException(\textcolor{stringliteral}{"No contour found in image!"});
+84   \} \textcolor{comment}{// Exception handling}
+85 
+86   uint32\_t prev = -1;
+87 
+88   \textcolor{comment}{// Extend path on queue}
+89   \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = sCont.front().front(); \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < pEnd;) \{
+90     \hyperlink{_soil_math_types_8h_a1ade796add2f13888dfa9e6bde0bdc37}{iContour\_t} nBors =
+91         \hyperlink{class_soil_math_1_1_f_f_t_a45b32ad009154112d2fc4e467fc7c5ac}{Neighbors}(O, \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}, img.cols, img.rows); \textcolor{comment}{// find neighboring pixels}
+92     std::deque<uint32\_t> cQ = sCont.front(); \textcolor{comment}{// store first queue;}
+93     sCont.erase(sCont.begin());              \textcolor{comment}{// erase first queue from beginning}
+94     \textcolor{keywordflow}{if} (cQ.size() > 1) \{
+95       prev = cQ.size() - 2;
+96     \} \textcolor{keywordflow}{else} \{
+97       prev = 0;
+98     \}
+99     \textcolor{comment}{// Loop through each neighbor}
+100     \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} < nBors.size(); \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}++) \{
+101       \textcolor{keywordflow}{if} (nBors[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}] != cQ[prev]) \textcolor{comment}{// No backtracking}
+102       \{
+103         \textcolor{keywordflow}{if} (nBors[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}] == cQ.front() && cQ.size() > 8) \{
+104           \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = pEnd;
+105         \} \textcolor{comment}{// Back at first node}
+106         \textcolor{keywordflow}{if} (std::find(eList.begin(), eList.end(), nBors[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}]) ==
+107             eList.end()) \textcolor{comment}{// Check if this current route is extended elsewhere}
+108         \{
+109           std::deque<uint32\_t> nQ = cQ;
+110           nQ.push\_back(nBors[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}]); \textcolor{comment}{// Add the neighbor to the queue}
+111           sCont.push\_front(nQ);   \textcolor{comment}{// add the sequence to the front of the queue}
+112         \}
+113       \}
+114     \}
+115     \textcolor{keywordflow}{if} (nBors.size() > 2) \{
+116       eList.push\_back(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i});
+117     \} \textcolor{comment}{// if there are multiple choices put current node in extension List}
+118     \textcolor{keywordflow}{if} (\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} != pEnd) \{
+119       \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = sCont.front().back();
+120     \} \textcolor{comment}{// If it isn't the end set i to the last node of the first queue}
+121     \textcolor{keywordflow}{if} (sCont.size() == 0) \{
+122       \textcolor{keywordflow}{throw} Exception::MathException(
+123           \textcolor{stringliteral}{"No continuous contour found, or less then 8 pixels long!"});
+124     \}
+125   \}
+126 
+127   \textcolor{comment}{// convert the first queue to a complex normalized vector}
+128   \hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t} cPoint;
+129   \hyperlink{_soil_math_types_8h_a7567e521c2b2c408dcb62dbff72390f7}{ComplexVect\_t} contour;
+130   \textcolor{keywordtype}{float} col = 0.0;
+131   \textcolor{comment}{// Normalize and convert the complex function}
+132   for\_each(
+133       sCont.front().begin(), sCont.front().end(),
+134       [&img, &cPoint, &contour, &centerCol, &centerRow, &col](uint32\_t &e) \{
+135         col = (float)((e % img.cols) - centerCol);
+136         \textcolor{keywordflow}{if} (col == 0.0) \{
+137           cPoint.real(1.0);
+138         \} \textcolor{keywordflow}{else} \{
+139           cPoint.real((\textcolor{keywordtype}{float})(col / centerCol));
+140         \}
+141         cPoint.imag((\textcolor{keywordtype}{float})((floorf(e / img.cols) - centerRow) / centerRow));
+142         contour.push\_back(cPoint);
+143       \});
+144 
+145   \textcolor{keywordflow}{return} contour;
+146 \}
 \end{DoxyCode}
 
 
@@ -255,7 +262,7 @@ fft a private function calculating the Fast Fourier Transform let $ m $ be an in
 \end{DoxyParams}
 
 
-Definition at line 141 of file F\+F\+T.\+cpp.
+Definition at line 148 of file F\+F\+T.\+cpp.
 
 
 
@@ -263,24 +270,24 @@ Referenced by Get\+Descriptors(), and ifft().
 
 
 \begin{DoxyCode}
-141                                 \{
-142   \textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} N = CA.size();
-143   \textcolor{keywordflow}{if} (N <= 1) \{
-144     \textcolor{keywordflow}{return};
-145   \}
-146 
-148   \hyperlink{_soil_math_types_8h_a5118c9f6b02a06945c93a3893e51febe}{ComplexArray\_t} even = CA[std::slice(0, N / 2, 2)];
-149   \hyperlink{_soil_math_types_8h_a5118c9f6b02a06945c93a3893e51febe}{ComplexArray\_t} odd = CA[std::slice(1, N / 2, 2)];
-150 
-151   \hyperlink{class_soil_math_1_1_f_f_t_a48bc7ad948d820d6f87b3e353b6d1cd4}{fft}(even);
-152   \hyperlink{class_soil_math_1_1_f_f_t_a48bc7ad948d820d6f87b3e353b6d1cd4}{fft}(odd);
+148                                 \{
+149   \textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} N = CA.size();
+150   \textcolor{keywordflow}{if} (N <= 1) \{
+151     \textcolor{keywordflow}{return};
+152   \}
 153 
-154   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} k = 0; k < N / 2; ++k) \{
-155     \hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t} ct = std::polar(1.0, -2 * M\_PI * k / N) * odd[k];
-156     CA[k] = even[k] + ct;
-157     CA[k + N / 2] = even[k] - ct;
-158   \}
-159 \}
+155   \hyperlink{_soil_math_types_8h_a5118c9f6b02a06945c93a3893e51febe}{ComplexArray\_t} even = CA[std::slice(0, N / 2, 2)];
+156   \hyperlink{_soil_math_types_8h_a5118c9f6b02a06945c93a3893e51febe}{ComplexArray\_t} odd = CA[std::slice(1, N / 2, 2)];
+157 
+158   \hyperlink{class_soil_math_1_1_f_f_t_a48bc7ad948d820d6f87b3e353b6d1cd4}{fft}(even);
+159   \hyperlink{class_soil_math_1_1_f_f_t_a48bc7ad948d820d6f87b3e353b6d1cd4}{fft}(odd);
+160 
+161   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} k = 0; k < N / 2; ++k) \{
+162     \hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t} ct = std::polar(1.0, -2 * M\_PI * k / N) * odd[k];
+163     CA[k] = even[k] + ct;
+164     CA[k + N / 2] = even[k] - ct;
+165   \}
+166 \}
 \end{DoxyCode}
 
 
@@ -314,7 +321,7 @@ a vector with complex values, represing the contour in the frequency domain, exp
 \end{DoxyReturn}
 
 
-Definition at line 8 of file F\+F\+T.\+cpp.
+Definition at line 15 of file F\+F\+T.\+cpp.
 
 
 
@@ -326,34 +333,34 @@ Referenced by Soil\+Analyzer\+::\+Particle\+::\+Analyze(), and B\+O\+O\+S\+T\+\_
 
 
 \begin{DoxyCode}
-8                                                   \{
-9   \textcolor{keywordflow}{if} (!\hyperlink{class_soil_math_1_1_f_f_t_a466b360529319d0e6e3220f446f703be}{fftDescriptors}.empty()) \{
-10     \textcolor{keywordflow}{return} \hyperlink{class_soil_math_1_1_f_f_t_a466b360529319d0e6e3220f446f703be}{fftDescriptors};
-11   \}
-12 
-13   \hyperlink{class_soil_math_1_1_f_f_t_a48141f0c777ca86f2e536f88b509b639}{complexcontour} = \hyperlink{class_soil_math_1_1_f_f_t_a18a95490ea8e929584c2af6569dec3b6}{Contour2Complex}(img, img.cols / 2, img.rows / 2);
-14 
-15   \textcolor{comment}{// Supplement the vector of complex numbers so that N = 2^m}
-16   uint32\_t N = \hyperlink{class_soil_math_1_1_f_f_t_a48141f0c777ca86f2e536f88b509b639}{complexcontour}.size();
-17   \textcolor{keywordtype}{double} logN = log(static\_cast<double>(N)) / log(2.0);
-18   \textcolor{keywordflow}{if} (floor(logN) != logN) \{
-19     \textcolor{comment}{// Get the next power of 2}
-20     \textcolor{keywordtype}{double} nextLogN = floor(logN + 1.0);
-21     N = \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(pow(2, nextLogN));
-22 
-23     uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = \hyperlink{class_soil_math_1_1_f_f_t_a48141f0c777ca86f2e536f88b509b639}{complexcontour}.size();
-24     \textcolor{comment}{// Append the vector with zeros}
-25     \textcolor{keywordflow}{while} (i++ < N) \{
-26       \hyperlink{class_soil_math_1_1_f_f_t_a48141f0c777ca86f2e536f88b509b639}{complexcontour}.push\_back(\hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(0.0, 0.0));
-27     \}
-28   \}
+15                                                   \{
+16   \textcolor{keywordflow}{if} (!\hyperlink{class_soil_math_1_1_f_f_t_a466b360529319d0e6e3220f446f703be}{fftDescriptors}.empty()) \{
+17     \textcolor{keywordflow}{return} \hyperlink{class_soil_math_1_1_f_f_t_a466b360529319d0e6e3220f446f703be}{fftDescriptors};
+18   \}
+19 
+20   \hyperlink{class_soil_math_1_1_f_f_t_a48141f0c777ca86f2e536f88b509b639}{complexcontour} = \hyperlink{class_soil_math_1_1_f_f_t_a18a95490ea8e929584c2af6569dec3b6}{Contour2Complex}(img, img.cols / 2, img.rows / 2);
+21 
+22   \textcolor{comment}{// Supplement the vector of complex numbers so that N = 2^m}
+23   uint32\_t N = \hyperlink{class_soil_math_1_1_f_f_t_a48141f0c777ca86f2e536f88b509b639}{complexcontour}.size();
+24   \textcolor{keywordtype}{double} logN = log(static\_cast<double>(N)) / log(2.0);
+25   \textcolor{keywordflow}{if} (floor(logN) != logN) \{
+26     \textcolor{comment}{// Get the next power of 2}
+27     \textcolor{keywordtype}{double} nextLogN = floor(logN + 1.0);
+28     N = \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(pow(2, nextLogN));
 29 
-30   \hyperlink{_soil_math_types_8h_a5118c9f6b02a06945c93a3893e51febe}{ComplexArray\_t} ca(\hyperlink{class_soil_math_1_1_f_f_t_a48141f0c777ca86f2e536f88b509b639}{complexcontour}.data(), 
+30     uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = \hyperlink{class_soil_math_1_1_f_f_t_a48141f0c777ca86f2e536f88b509b639}{complexcontour}.size();
+31     \textcolor{comment}{// Append the vector with zeros}
+32     \textcolor{keywordflow}{while} (i++ < N) \{
+33       \hyperlink{class_soil_math_1_1_f_f_t_a48141f0c777ca86f2e536f88b509b639}{complexcontour}.push\_back(\hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t}(0.0, 0.0));
+34     \}
+35   \}
+36 
+37   \hyperlink{_soil_math_types_8h_a5118c9f6b02a06945c93a3893e51febe}{ComplexArray\_t} ca(\hyperlink{class_soil_math_1_1_f_f_t_a48141f0c777ca86f2e536f88b509b639}{complexcontour}.data(), 
       \hyperlink{class_soil_math_1_1_f_f_t_a48141f0c777ca86f2e536f88b509b639}{complexcontour}.size());
-31   \hyperlink{class_soil_math_1_1_f_f_t_a48bc7ad948d820d6f87b3e353b6d1cd4}{fft}(ca);
-32   \hyperlink{class_soil_math_1_1_f_f_t_a466b360529319d0e6e3220f446f703be}{fftDescriptors}.assign(std::begin(ca), std::end(ca));
-33   \textcolor{keywordflow}{return} \hyperlink{class_soil_math_1_1_f_f_t_a466b360529319d0e6e3220f446f703be}{fftDescriptors};
-34 \}
+38   \hyperlink{class_soil_math_1_1_f_f_t_a48bc7ad948d820d6f87b3e353b6d1cd4}{fft}(ca);
+39   \hyperlink{class_soil_math_1_1_f_f_t_a466b360529319d0e6e3220f446f703be}{fftDescriptors}.assign(std::begin(ca), std::end(ca));
+40   \textcolor{keywordflow}{return} \hyperlink{class_soil_math_1_1_f_f_t_a466b360529319d0e6e3220f446f703be}{fftDescriptors};
+41 \}
 \end{DoxyCode}
 
 
@@ -395,7 +402,7 @@ ifft
 \end{DoxyParams}
 
 
-Definition at line 161 of file F\+F\+T.\+cpp.
+Definition at line 168 of file F\+F\+T.\+cpp.
 
 
 
@@ -403,12 +410,12 @@ References fft().
 
 
 \begin{DoxyCode}
-161                                  \{
-162   CA = CA.apply(std::conj);
-163   \hyperlink{class_soil_math_1_1_f_f_t_a48bc7ad948d820d6f87b3e353b6d1cd4}{fft}(CA);
-164   CA = CA.apply(std::conj);
-165   CA /= CA.size();
-166 \}
+168                                  \{
+169   CA = CA.apply(std::conj);
+170   \hyperlink{class_soil_math_1_1_f_f_t_a48bc7ad948d820d6f87b3e353b6d1cd4}{fft}(CA);
+171   CA = CA.apply(std::conj);
+172   CA /= CA.size();
+173 \}
 \end{DoxyCode}
 
 
@@ -451,7 +458,7 @@ Neighbors a private function returning the neighboring pixels which belong to a 
 \end{DoxyReturn}
 
 
-Definition at line 36 of file F\+F\+T.\+cpp.
+Definition at line 43 of file F\+F\+T.\+cpp.
 
 
 
@@ -463,25 +470,25 @@ Referenced by Contour2\+Complex().
 
 
 \begin{DoxyCode}
-37                                          \{
-38   \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} LUT\_nBore[8] = \{-columns + 1, -columns, -columns - 1, -1,
-39                            columns - 1,  columns,  1 + columns,  1\};
-40   \hyperlink{_soil_math_types_8h_a1ade796add2f13888dfa9e6bde0bdc37}{iContour\_t} neighbors;
-41   uint32\_t pEnd = rows * columns;
-42   uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_ae11b3deb3de3df7dc48e439074023e35}{count} = 0;
-43   \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < 8; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++) \{
-44     count = pixel + LUT\_nBore[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}];
-45     \textcolor{keywordflow}{while} (count >= pEnd && \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < 8) \{
-46       count = pixel + LUT\_nBore[++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}];
-47     \}
-48     \textcolor{keywordflow}{if} (\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} >= 8) \{
-49       \textcolor{keywordflow}{break};
-50     \}
-51     \textcolor{keywordflow}{if} (O[count] == 1)
-52       neighbors.push\_back(count);
-53   \}
-54   \textcolor{keywordflow}{return} neighbors;
-55 \}
+44                                          \{
+45   \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} LUT\_nBore[8] = \{-columns + 1, -columns, -columns - 1, -1,
+46                            columns - 1,  columns,  1 + columns,  1\};
+47   \hyperlink{_soil_math_types_8h_a1ade796add2f13888dfa9e6bde0bdc37}{iContour\_t} neighbors;
+48   uint32\_t pEnd = rows * columns;
+49   uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_ae11b3deb3de3df7dc48e439074023e35}{count} = 0;
+50   \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < 8; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++) \{
+51     count = pixel + LUT\_nBore[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}];
+52     \textcolor{keywordflow}{while} (count >= pEnd && \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < 8) \{
+53       count = pixel + LUT\_nBore[++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}];
+54     \}
+55     \textcolor{keywordflow}{if} (\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} >= 8) \{
+56       \textcolor{keywordflow}{break};
+57     \}
+58     \textcolor{keywordflow}{if} (O[count] == 1)
+59       neighbors.push\_back(count);
+60   \}
+61   \textcolor{keywordflow}{return} neighbors;
+62 \}
 \end{DoxyCode}
 
 
@@ -502,7 +509,7 @@ Here is the caller graph for this function\+:\nopagebreak
 \subsubsection[{complexcontour}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Complex\+Vect\+\_\+t} Soil\+Math\+::\+F\+F\+T\+::complexcontour\hspace{0.3cm}{\ttfamily [private]}}\label{class_soil_math_1_1_f_f_t_a48141f0c777ca86f2e536f88b509b639}
 Vector with complex values which represent the contour 
 
-Definition at line 52 of file F\+F\+T.\+h.
+Definition at line 59 of file F\+F\+T.\+h.
 
 
 
@@ -513,7 +520,7 @@ Referenced by Get\+Descriptors().
 \subsubsection[{fft\+Descriptors}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Complex\+Vect\+\_\+t} Soil\+Math\+::\+F\+F\+T\+::fft\+Descriptors\hspace{0.3cm}{\ttfamily [private]}}\label{class_soil_math_1_1_f_f_t_a466b360529319d0e6e3220f446f703be}
 Vector with complex values which represent the descriptors 
 
-Definition at line 49 of file F\+F\+T.\+h.
+Definition at line 56 of file F\+F\+T.\+h.
 
 
 
@@ -524,7 +531,7 @@ Referenced by Get\+Descriptors().
 \subsubsection[{Img}]{\setlength{\rightskip}{0pt plus 5cm}cv\+::\+Mat Soil\+Math\+::\+F\+F\+T\+::\+Img\hspace{0.3cm}{\ttfamily [private]}}\label{class_soil_math_1_1_f_f_t_a2efda8f90cd255a2c18352636352044f}
 Img which will be analysed 
 
-Definition at line 54 of file F\+F\+T.\+h.
+Definition at line 61 of file F\+F\+T.\+h.
 
 
 

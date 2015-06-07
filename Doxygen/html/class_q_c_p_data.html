@@ -35,7 +35,7 @@
    <div id="projectname">Vision Soil Analyzer
    &#160;<span id="projectnumber">1.0.0</span>
    </div>
-   <div id="projectbrief">The Soil Analyzer is a portable lab that can analyse soil samples and tells the user about it&#39;s optical properties. It looks at the texture and describe it as a Particle Size Distribution. This information is presented as a Cumulative Distribution Function (CDF). It also describes the structure of the soil sample and gives information on the sphericity and roundness / angularity. It does so by analysing the contour of particles, describing them as Fourier Descriptors and using a Neural Network to describe it&#39;s properties. Finally it gives the color properties in a histogram in the CIE La*b* colorspace, which show correlations with the fertility of the soil. and a histogram of the Redness Index, which gives has a correlation on the iron content.</div>
+   <div id="projectbrief">Soil analyzer using an USB microscope - for Linux PC and Beaglebone Black</div>
   </td>
  </tr>
  </tbody>
@@ -163,7 +163,7 @@ Public Attributes</h2></td></tr>
 </ul>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="qcustomplot_8h.html#a84a9c4a4c2216ccfdcb5f3067cda76e3">QCPDataMap</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l02467">2467</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l02809">2809</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a1f06d624e36ba0ed72ac36d42aa5c7ee"></a>
 <div class="memitem">
@@ -179,22 +179,15 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Constructs a data point with key, value and all errors set to zero. </p>
 
-<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l14389">14389</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l14389"></a><span class="lineno">14389</span>&#160;                 :</div>
-<div class="line"><a name="l14390"></a><span class="lineno">14390</span>&#160;  <a class="code" href="class_q_c_p_data.html#a2f5ba9aca61bb74f88516e148a4cf71b">key</a>(0),</div>
-<div class="line"><a name="l14391"></a><span class="lineno">14391</span>&#160;  <a class="code" href="class_q_c_p_data.html#aefe1ecf8fa2e34ed875b67523e542373">value</a>(0),</div>
-<div class="line"><a name="l14392"></a><span class="lineno">14392</span>&#160;  <a class="code" href="class_q_c_p_data.html#ae468c3808107c2fd23052481156ab5b5">keyErrorPlus</a>(0),</div>
-<div class="line"><a name="l14393"></a><span class="lineno">14393</span>&#160;  <a class="code" href="class_q_c_p_data.html#af107d650b8ee5c3b2961ecddcfb1bccb">keyErrorMinus</a>(0),</div>
-<div class="line"><a name="l14394"></a><span class="lineno">14394</span>&#160;  <a class="code" href="class_q_c_p_data.html#ad26912552d03485ea20d91dcad16aa8f">valueErrorPlus</a>(0),</div>
-<div class="line"><a name="l14395"></a><span class="lineno">14395</span>&#160;  <a class="code" href="class_q_c_p_data.html#a51d8f42bf4d49a1f263531e70cadd6a3">valueErrorMinus</a>(0)</div>
-<div class="line"><a name="l14396"></a><span class="lineno">14396</span>&#160;{</div>
-<div class="line"><a name="l14397"></a><span class="lineno">14397</span>&#160;}</div>
-<div class="ttc" id="class_q_c_p_data_html_a2f5ba9aca61bb74f88516e148a4cf71b"><div class="ttname"><a href="class_q_c_p_data.html#a2f5ba9aca61bb74f88516e148a4cf71b">QCPData::key</a></div><div class="ttdeci">double key</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l02472">qcustomplot.h:2472</a></div></div>
-<div class="ttc" id="class_q_c_p_data_html_aefe1ecf8fa2e34ed875b67523e542373"><div class="ttname"><a href="class_q_c_p_data.html#aefe1ecf8fa2e34ed875b67523e542373">QCPData::value</a></div><div class="ttdeci">double value</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l02472">qcustomplot.h:2472</a></div></div>
-<div class="ttc" id="class_q_c_p_data_html_ad26912552d03485ea20d91dcad16aa8f"><div class="ttname"><a href="class_q_c_p_data.html#ad26912552d03485ea20d91dcad16aa8f">QCPData::valueErrorPlus</a></div><div class="ttdeci">double valueErrorPlus</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l02474">qcustomplot.h:2474</a></div></div>
-<div class="ttc" id="class_q_c_p_data_html_a51d8f42bf4d49a1f263531e70cadd6a3"><div class="ttname"><a href="class_q_c_p_data.html#a51d8f42bf4d49a1f263531e70cadd6a3">QCPData::valueErrorMinus</a></div><div class="ttdeci">double valueErrorMinus</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l02474">qcustomplot.h:2474</a></div></div>
-<div class="ttc" id="class_q_c_p_data_html_ae468c3808107c2fd23052481156ab5b5"><div class="ttname"><a href="class_q_c_p_data.html#ae468c3808107c2fd23052481156ab5b5">QCPData::keyErrorPlus</a></div><div class="ttdeci">double keyErrorPlus</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l02473">qcustomplot.h:2473</a></div></div>
-<div class="ttc" id="class_q_c_p_data_html_af107d650b8ee5c3b2961ecddcfb1bccb"><div class="ttname"><a href="class_q_c_p_data.html#af107d650b8ee5c3b2961ecddcfb1bccb">QCPData::keyErrorMinus</a></div><div class="ttdeci">double keyErrorMinus</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l02473">qcustomplot.h:2473</a></div></div>
+<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l15741">15741</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l15742"></a><span class="lineno">15742</span>&#160;    : <a class="code" href="class_q_c_p_data.html#a2f5ba9aca61bb74f88516e148a4cf71b">key</a>(0), <a class="code" href="class_q_c_p_data.html#aefe1ecf8fa2e34ed875b67523e542373">value</a>(0), <a class="code" href="class_q_c_p_data.html#ae468c3808107c2fd23052481156ab5b5">keyErrorPlus</a>(0), <a class="code" href="class_q_c_p_data.html#af107d650b8ee5c3b2961ecddcfb1bccb">keyErrorMinus</a>(0), <a class="code" href="class_q_c_p_data.html#ad26912552d03485ea20d91dcad16aa8f">valueErrorPlus</a>(0),</div>
+<div class="line"><a name="l15743"></a><span class="lineno">15743</span>&#160;      <a class="code" href="class_q_c_p_data.html#a51d8f42bf4d49a1f263531e70cadd6a3">valueErrorMinus</a>(0) {}</div>
+<div class="ttc" id="class_q_c_p_data_html_a2f5ba9aca61bb74f88516e148a4cf71b"><div class="ttname"><a href="class_q_c_p_data.html#a2f5ba9aca61bb74f88516e148a4cf71b">QCPData::key</a></div><div class="ttdeci">double key</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l02813">qcustomplot.h:2813</a></div></div>
+<div class="ttc" id="class_q_c_p_data_html_aefe1ecf8fa2e34ed875b67523e542373"><div class="ttname"><a href="class_q_c_p_data.html#aefe1ecf8fa2e34ed875b67523e542373">QCPData::value</a></div><div class="ttdeci">double value</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l02813">qcustomplot.h:2813</a></div></div>
+<div class="ttc" id="class_q_c_p_data_html_ad26912552d03485ea20d91dcad16aa8f"><div class="ttname"><a href="class_q_c_p_data.html#ad26912552d03485ea20d91dcad16aa8f">QCPData::valueErrorPlus</a></div><div class="ttdeci">double valueErrorPlus</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l02815">qcustomplot.h:2815</a></div></div>
+<div class="ttc" id="class_q_c_p_data_html_a51d8f42bf4d49a1f263531e70cadd6a3"><div class="ttname"><a href="class_q_c_p_data.html#a51d8f42bf4d49a1f263531e70cadd6a3">QCPData::valueErrorMinus</a></div><div class="ttdeci">double valueErrorMinus</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l02815">qcustomplot.h:2815</a></div></div>
+<div class="ttc" id="class_q_c_p_data_html_ae468c3808107c2fd23052481156ab5b5"><div class="ttname"><a href="class_q_c_p_data.html#ae468c3808107c2fd23052481156ab5b5">QCPData::keyErrorPlus</a></div><div class="ttdeci">double keyErrorPlus</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l02814">qcustomplot.h:2814</a></div></div>
+<div class="ttc" id="class_q_c_p_data_html_af107d650b8ee5c3b2961ecddcfb1bccb"><div class="ttname"><a href="class_q_c_p_data.html#af107d650b8ee5c3b2961ecddcfb1bccb">QCPData::keyErrorMinus</a></div><div class="ttdeci">double keyErrorMinus</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l02814">qcustomplot.h:2814</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -223,22 +216,15 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Constructs a data point with the specified <em>key</em> and <em>value</em>. All errors are set to zero. </p>
 
-<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l14402">14402</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l14402"></a><span class="lineno">14402</span>&#160;                                         :</div>
-<div class="line"><a name="l14403"></a><span class="lineno">14403</span>&#160;  <a class="code" href="class_q_c_p_data.html#a2f5ba9aca61bb74f88516e148a4cf71b">key</a>(<a class="code" href="class_q_c_p_data.html#a2f5ba9aca61bb74f88516e148a4cf71b">key</a>),</div>
-<div class="line"><a name="l14404"></a><span class="lineno">14404</span>&#160;  <a class="code" href="class_q_c_p_data.html#aefe1ecf8fa2e34ed875b67523e542373">value</a>(<a class="code" href="class_q_c_p_data.html#aefe1ecf8fa2e34ed875b67523e542373">value</a>),</div>
-<div class="line"><a name="l14405"></a><span class="lineno">14405</span>&#160;  <a class="code" href="class_q_c_p_data.html#ae468c3808107c2fd23052481156ab5b5">keyErrorPlus</a>(0),</div>
-<div class="line"><a name="l14406"></a><span class="lineno">14406</span>&#160;  <a class="code" href="class_q_c_p_data.html#af107d650b8ee5c3b2961ecddcfb1bccb">keyErrorMinus</a>(0),</div>
-<div class="line"><a name="l14407"></a><span class="lineno">14407</span>&#160;  <a class="code" href="class_q_c_p_data.html#ad26912552d03485ea20d91dcad16aa8f">valueErrorPlus</a>(0),</div>
-<div class="line"><a name="l14408"></a><span class="lineno">14408</span>&#160;  <a class="code" href="class_q_c_p_data.html#a51d8f42bf4d49a1f263531e70cadd6a3">valueErrorMinus</a>(0)</div>
-<div class="line"><a name="l14409"></a><span class="lineno">14409</span>&#160;{</div>
-<div class="line"><a name="l14410"></a><span class="lineno">14410</span>&#160;}</div>
-<div class="ttc" id="class_q_c_p_data_html_a2f5ba9aca61bb74f88516e148a4cf71b"><div class="ttname"><a href="class_q_c_p_data.html#a2f5ba9aca61bb74f88516e148a4cf71b">QCPData::key</a></div><div class="ttdeci">double key</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l02472">qcustomplot.h:2472</a></div></div>
-<div class="ttc" id="class_q_c_p_data_html_aefe1ecf8fa2e34ed875b67523e542373"><div class="ttname"><a href="class_q_c_p_data.html#aefe1ecf8fa2e34ed875b67523e542373">QCPData::value</a></div><div class="ttdeci">double value</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l02472">qcustomplot.h:2472</a></div></div>
-<div class="ttc" id="class_q_c_p_data_html_ad26912552d03485ea20d91dcad16aa8f"><div class="ttname"><a href="class_q_c_p_data.html#ad26912552d03485ea20d91dcad16aa8f">QCPData::valueErrorPlus</a></div><div class="ttdeci">double valueErrorPlus</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l02474">qcustomplot.h:2474</a></div></div>
-<div class="ttc" id="class_q_c_p_data_html_a51d8f42bf4d49a1f263531e70cadd6a3"><div class="ttname"><a href="class_q_c_p_data.html#a51d8f42bf4d49a1f263531e70cadd6a3">QCPData::valueErrorMinus</a></div><div class="ttdeci">double valueErrorMinus</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l02474">qcustomplot.h:2474</a></div></div>
-<div class="ttc" id="class_q_c_p_data_html_ae468c3808107c2fd23052481156ab5b5"><div class="ttname"><a href="class_q_c_p_data.html#ae468c3808107c2fd23052481156ab5b5">QCPData::keyErrorPlus</a></div><div class="ttdeci">double keyErrorPlus</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l02473">qcustomplot.h:2473</a></div></div>
-<div class="ttc" id="class_q_c_p_data_html_af107d650b8ee5c3b2961ecddcfb1bccb"><div class="ttname"><a href="class_q_c_p_data.html#af107d650b8ee5c3b2961ecddcfb1bccb">QCPData::keyErrorMinus</a></div><div class="ttdeci">double keyErrorMinus</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l02473">qcustomplot.h:2473</a></div></div>
+<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l15749">15749</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l15750"></a><span class="lineno">15750</span>&#160;    : <a class="code" href="class_q_c_p_data.html#a2f5ba9aca61bb74f88516e148a4cf71b">key</a>(<a class="code" href="class_q_c_p_data.html#a2f5ba9aca61bb74f88516e148a4cf71b">key</a>), <a class="code" href="class_q_c_p_data.html#aefe1ecf8fa2e34ed875b67523e542373">value</a>(<a class="code" href="class_q_c_p_data.html#aefe1ecf8fa2e34ed875b67523e542373">value</a>), <a class="code" href="class_q_c_p_data.html#ae468c3808107c2fd23052481156ab5b5">keyErrorPlus</a>(0), <a class="code" href="class_q_c_p_data.html#af107d650b8ee5c3b2961ecddcfb1bccb">keyErrorMinus</a>(0),</div>
+<div class="line"><a name="l15751"></a><span class="lineno">15751</span>&#160;      <a class="code" href="class_q_c_p_data.html#ad26912552d03485ea20d91dcad16aa8f">valueErrorPlus</a>(0), <a class="code" href="class_q_c_p_data.html#a51d8f42bf4d49a1f263531e70cadd6a3">valueErrorMinus</a>(0) {}</div>
+<div class="ttc" id="class_q_c_p_data_html_a2f5ba9aca61bb74f88516e148a4cf71b"><div class="ttname"><a href="class_q_c_p_data.html#a2f5ba9aca61bb74f88516e148a4cf71b">QCPData::key</a></div><div class="ttdeci">double key</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l02813">qcustomplot.h:2813</a></div></div>
+<div class="ttc" id="class_q_c_p_data_html_aefe1ecf8fa2e34ed875b67523e542373"><div class="ttname"><a href="class_q_c_p_data.html#aefe1ecf8fa2e34ed875b67523e542373">QCPData::value</a></div><div class="ttdeci">double value</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l02813">qcustomplot.h:2813</a></div></div>
+<div class="ttc" id="class_q_c_p_data_html_ad26912552d03485ea20d91dcad16aa8f"><div class="ttname"><a href="class_q_c_p_data.html#ad26912552d03485ea20d91dcad16aa8f">QCPData::valueErrorPlus</a></div><div class="ttdeci">double valueErrorPlus</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l02815">qcustomplot.h:2815</a></div></div>
+<div class="ttc" id="class_q_c_p_data_html_a51d8f42bf4d49a1f263531e70cadd6a3"><div class="ttname"><a href="class_q_c_p_data.html#a51d8f42bf4d49a1f263531e70cadd6a3">QCPData::valueErrorMinus</a></div><div class="ttdeci">double valueErrorMinus</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l02815">qcustomplot.h:2815</a></div></div>
+<div class="ttc" id="class_q_c_p_data_html_ae468c3808107c2fd23052481156ab5b5"><div class="ttname"><a href="class_q_c_p_data.html#ae468c3808107c2fd23052481156ab5b5">QCPData::keyErrorPlus</a></div><div class="ttdeci">double keyErrorPlus</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l02814">qcustomplot.h:2814</a></div></div>
+<div class="ttc" id="class_q_c_p_data_html_af107d650b8ee5c3b2961ecddcfb1bccb"><div class="ttname"><a href="class_q_c_p_data.html#af107d650b8ee5c3b2961ecddcfb1bccb">QCPData::keyErrorMinus</a></div><div class="ttdeci">double keyErrorMinus</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l02814">qcustomplot.h:2814</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -253,9 +239,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l02472">2472</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l02813">2813</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l14869">QCPGraph::addData()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l15842">QCPGraph::drawError()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l14534">QCPGraph::setData()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l14663">QCPGraph::setDataBothError()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l14610">QCPGraph::setDataKeyError()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l14557">QCPGraph::setDataValueError()</a>.</p>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l16264">QCPGraph::addData()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l17458">QCPGraph::drawError()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l15893">QCPGraph::setData()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l16040">QCPGraph::setDataBothError()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l15979">QCPGraph::setDataKeyError()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l15919">QCPGraph::setDataValueError()</a>.</p>
 
 </div>
 </div>
@@ -269,9 +255,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l02473">2473</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l02814">2814</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l15842">QCPGraph::drawError()</a>.</p>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l17458">QCPGraph::drawError()</a>.</p>
 
 </div>
 </div>
@@ -285,9 +271,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l02473">2473</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l02814">2814</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l15842">QCPGraph::drawError()</a>.</p>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l17458">QCPGraph::drawError()</a>.</p>
 
 </div>
 </div>
@@ -301,9 +287,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l02472">2472</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l02813">2813</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l14882">QCPGraph::addData()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l15842">QCPGraph::drawError()</a>.</p>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l16278">QCPGraph::addData()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l17458">QCPGraph::drawError()</a>.</p>
 
 </div>
 </div>
@@ -317,9 +303,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l02474">2474</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l02815">2815</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l15842">QCPGraph::drawError()</a>.</p>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l17458">QCPGraph::drawError()</a>.</p>
 
 </div>
 </div>
@@ -333,9 +319,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l02474">2474</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l02815">2815</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l15842">QCPGraph::drawError()</a>.</p>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l17458">QCPGraph::drawError()</a>.</p>
 
 </div>
 </div>
@@ -349,7 +335,7 @@ Public Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_q_c_p_data.html">QCPData</a></li>
-    <li class="footer">Generated on Sat Jun 6 2015 21:25:34 for Vision Soil Analyzer by
+    <li class="footer">Generated on Sun Jun 7 2015 21:06:42 for Vision Soil Analyzer by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

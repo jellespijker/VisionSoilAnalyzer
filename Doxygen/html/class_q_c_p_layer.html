@@ -35,7 +35,7 @@
    <div id="projectname">Vision Soil Analyzer
    &#160;<span id="projectnumber">1.0.0</span>
    </div>
-   <div id="projectbrief">The Soil Analyzer is a portable lab that can analyse soil samples and tells the user about it&#39;s optical properties. It looks at the texture and describe it as a Particle Size Distribution. This information is presented as a Cumulative Distribution Function (CDF). It also describes the structure of the soil sample and gives information on the sphericity and roundness / angularity. It does so by analysing the contour of particles, describing them as Fourier Descriptors and using a Neural Network to describe it&#39;s properties. Finally it gives the color properties in a histogram in the CIE La*b* colorspace, which show correlations with the fertility of the soil. and a histogram of the Redness Index, which gives has a correlation on the iron content.</div>
+   <div id="projectbrief">Soil analyzer using an USB microscope - for Linux PC and Beaglebone Black</div>
   </td>
  </tr>
  </tbody>
@@ -171,8 +171,8 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a91e6298183cb4b9dfd4efdfaf1ecc220"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a122088bcab6cec76a52b75ce8606605b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_c_p_layer.html#a122088bcab6cec76a52b75ce8606605b">mIndex</a></td></tr>
 <tr class="separator:a122088bcab6cec76a52b75ce8606605b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a704aa71bba469383c3a3c598c1ec0d28"><td class="memItemLeft" align="right" valign="top">QList&lt; <a class="el" href="class_q_c_p_layerable.html">QCPLayerable</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_c_p_layer.html#a704aa71bba469383c3a3c598c1ec0d28">mChildren</a></td></tr>
-<tr class="separator:a704aa71bba469383c3a3c598c1ec0d28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05045efb8a9694e892b71808bd7433f9"><td class="memItemLeft" align="right" valign="top">QList&lt; <a class="el" href="class_q_c_p_layerable.html">QCPLayerable</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_c_p_layer.html#a05045efb8a9694e892b71808bd7433f9">mChildren</a></td></tr>
+<tr class="separator:a05045efb8a9694e892b71808bd7433f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a264950deb08e589460c126c895a1e2b5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_c_p_layer.html#a264950deb08e589460c126c895a1e2b5">mVisible</a></td></tr>
 <tr class="separator:a264950deb08e589460c126c895a1e2b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -194,7 +194,7 @@ Friends</h2></td></tr>
 <p>The rendering order within one layer is simply by order of creation or insertion. The item created last (or added last to the layer), is drawn on top of all other objects on that layer.</p>
 <p>When a layer is deleted, the objects on it are not deleted with it, but fall on the layer below the deleted layer, see <a class="el" href="class_q_custom_plot.html#a40f75e342c5eaab6a86066a42a0e2a94">QCustomPlot::removeLayer</a>. </p>
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l00365">365</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l00479">479</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a5d0657fc86d624e5efbe930ef21af718"></a>
 <div class="memitem">
@@ -223,21 +223,18 @@ Friends</h2></td></tr>
 <p>Normally you shouldn't directly instantiate layers, use <a class="el" href="class_q_custom_plot.html#ad5255393df078448bb6ac83fa5db5f52">QCustomPlot::addLayer</a> instead.</p>
 <dl class="section warning"><dt>Warning</dt><dd>It is not checked that <em>layerName</em> is actually a unique layer name in <em>parentPlot</em>. This check is only performed by <a class="el" href="class_q_custom_plot.html#ad5255393df078448bb6ac83fa5db5f52">QCustomPlot::addLayer</a>. </dd></dl>
 
-<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l00739">739</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;                                                                    :</div>
-<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;  QObject(parentPlot),</div>
-<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;  <a class="code" href="class_q_c_p_layer.html#a2f3374a7884bf403720cd1cf6f7ad1bb">mParentPlot</a>(parentPlot),</div>
-<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;  <a class="code" href="class_q_c_p_layer.html#a91e6298183cb4b9dfd4efdfaf1ecc220">mName</a>(layerName),</div>
-<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;  <a class="code" href="class_q_c_p_layer.html#a122088bcab6cec76a52b75ce8606605b">mIndex</a>(-1), <span class="comment">// will be set to a proper value by the QCustomPlot layer creation function</span></div>
-<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;  <a class="code" href="class_q_c_p_layer.html#a264950deb08e589460c126c895a1e2b5">mVisible</a>(<span class="keyword">true</span>)</div>
-<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;{</div>
-<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;  <span class="comment">// Note: no need to make sure layerName is unique, because layer</span></div>
-<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;  <span class="comment">// management is done with QCustomPlot functions.</span></div>
-<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;}</div>
-<div class="ttc" id="class_q_c_p_layer_html_a2f3374a7884bf403720cd1cf6f7ad1bb"><div class="ttname"><a href="class_q_c_p_layer.html#a2f3374a7884bf403720cd1cf6f7ad1bb">QCPLayer::mParentPlot</a></div><div class="ttdeci">QCustomPlot * mParentPlot</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l00391">qcustomplot.h:391</a></div></div>
-<div class="ttc" id="class_q_c_p_layer_html_a91e6298183cb4b9dfd4efdfaf1ecc220"><div class="ttname"><a href="class_q_c_p_layer.html#a91e6298183cb4b9dfd4efdfaf1ecc220">QCPLayer::mName</a></div><div class="ttdeci">QString mName</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l00392">qcustomplot.h:392</a></div></div>
-<div class="ttc" id="class_q_c_p_layer_html_a122088bcab6cec76a52b75ce8606605b"><div class="ttname"><a href="class_q_c_p_layer.html#a122088bcab6cec76a52b75ce8606605b">QCPLayer::mIndex</a></div><div class="ttdeci">int mIndex</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l00393">qcustomplot.h:393</a></div></div>
-<div class="ttc" id="class_q_c_p_layer_html_a264950deb08e589460c126c895a1e2b5"><div class="ttname"><a href="class_q_c_p_layer.html#a264950deb08e589460c126c895a1e2b5">QCPLayer::mVisible</a></div><div class="ttdeci">bool mVisible</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l00395">qcustomplot.h:395</a></div></div>
+<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l00775">775</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;    : QObject(parentPlot), <a class="code" href="class_q_c_p_layer.html#a2f3374a7884bf403720cd1cf6f7ad1bb">mParentPlot</a>(parentPlot), <a class="code" href="class_q_c_p_layer.html#a91e6298183cb4b9dfd4efdfaf1ecc220">mName</a>(layerName),</div>
+<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;      <a class="code" href="class_q_c_p_layer.html#a122088bcab6cec76a52b75ce8606605b">mIndex</a>(-1), <span class="comment">// will be set to a proper value by the QCustomPlot layer</span></div>
+<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;                  <span class="comment">// creation function</span></div>
+<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;      <a class="code" href="class_q_c_p_layer.html#a264950deb08e589460c126c895a1e2b5">mVisible</a>(<span class="keyword">true</span>) {</div>
+<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160;  <span class="comment">// Note: no need to make sure layerName is unique, because layer</span></div>
+<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;  <span class="comment">// management is done with QCustomPlot functions.</span></div>
+<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;}</div>
+<div class="ttc" id="class_q_c_p_layer_html_a2f3374a7884bf403720cd1cf6f7ad1bb"><div class="ttname"><a href="class_q_c_p_layer.html#a2f3374a7884bf403720cd1cf6f7ad1bb">QCPLayer::mParentPlot</a></div><div class="ttdeci">QCustomPlot * mParentPlot</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l00504">qcustomplot.h:504</a></div></div>
+<div class="ttc" id="class_q_c_p_layer_html_a91e6298183cb4b9dfd4efdfaf1ecc220"><div class="ttname"><a href="class_q_c_p_layer.html#a91e6298183cb4b9dfd4efdfaf1ecc220">QCPLayer::mName</a></div><div class="ttdeci">QString mName</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l00505">qcustomplot.h:505</a></div></div>
+<div class="ttc" id="class_q_c_p_layer_html_a122088bcab6cec76a52b75ce8606605b"><div class="ttname"><a href="class_q_c_p_layer.html#a122088bcab6cec76a52b75ce8606605b">QCPLayer::mIndex</a></div><div class="ttdeci">int mIndex</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l00506">qcustomplot.h:506</a></div></div>
+<div class="ttc" id="class_q_c_p_layer_html_a264950deb08e589460c126c895a1e2b5"><div class="ttname"><a href="class_q_c_p_layer.html#a264950deb08e589460c126c895a1e2b5">QCPLayer::mVisible</a></div><div class="ttdeci">bool mVisible</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l00508">qcustomplot.h:508</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -254,24 +251,31 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l00750">750</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l00784">784</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
 
-<p>References <a class="el" href="qcustomplot_8cpp_source.html#l10011">QCustomPlot::currentLayer()</a>, <a class="el" href="qcustomplot_8h_source.html#l00394">mChildren</a>, and <a class="el" href="qcustomplot_8h_source.html#l00391">mParentPlot</a>.</p>
-<div class="fragment"><div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;{</div>
-<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;  <span class="comment">// If child layerables are still on this layer, detach them, so they don&#39;t try to reach back to this</span></div>
-<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;  <span class="comment">// then invalid layer once they get deleted/moved themselves. This only happens when layers are deleted</span></div>
-<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;  <span class="comment">// directly, like in the QCustomPlot destructor. (The regular layer removal procedure for the user is to</span></div>
-<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;  <span class="comment">// call QCustomPlot::removeLayer, which moves all layerables off this layer before deleting it.)</span></div>
-<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;  </div>
-<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;  <span class="keywordflow">while</span> (!<a class="code" href="class_q_c_p_layer.html#a704aa71bba469383c3a3c598c1ec0d28">mChildren</a>.isEmpty())</div>
-<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;    <a class="code" href="class_q_c_p_layer.html#a704aa71bba469383c3a3c598c1ec0d28">mChildren</a>.last()-&gt;setLayer(0); <span class="comment">// removes itself from mChildren via removeChild()</span></div>
-<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;  </div>
-<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="class_q_c_p_layer.html#a2f3374a7884bf403720cd1cf6f7ad1bb">mParentPlot</a>-&gt;<a class="code" href="class_q_custom_plot.html#af73057345656cbd1463454982d808b00">currentLayer</a>() == <span class="keyword">this</span>)</div>
-<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;    qDebug() &lt;&lt; Q_FUNC_INFO &lt;&lt; <span class="stringliteral">&quot;The parent plot&#39;s mCurrentLayer will be a dangling pointer. Should have been set to a valid layer or 0 beforehand.&quot;</span>;</div>
-<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;}</div>
-<div class="ttc" id="class_q_c_p_layer_html_a2f3374a7884bf403720cd1cf6f7ad1bb"><div class="ttname"><a href="class_q_c_p_layer.html#a2f3374a7884bf403720cd1cf6f7ad1bb">QCPLayer::mParentPlot</a></div><div class="ttdeci">QCustomPlot * mParentPlot</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l00391">qcustomplot.h:391</a></div></div>
-<div class="ttc" id="class_q_c_p_layer_html_a704aa71bba469383c3a3c598c1ec0d28"><div class="ttname"><a href="class_q_c_p_layer.html#a704aa71bba469383c3a3c598c1ec0d28">QCPLayer::mChildren</a></div><div class="ttdeci">QList&lt; QCPLayerable * &gt; mChildren</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l00394">qcustomplot.h:394</a></div></div>
-<div class="ttc" id="class_q_custom_plot_html_af73057345656cbd1463454982d808b00"><div class="ttname"><a href="class_q_custom_plot.html#af73057345656cbd1463454982d808b00">QCustomPlot::currentLayer</a></div><div class="ttdeci">QCPLayer * currentLayer() const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l10011">qcustomplot.cpp:10011</a></div></div>
+<p>References <a class="el" href="qcustomplot_8cpp_source.html#l11044">QCustomPlot::currentLayer()</a>, <a class="el" href="qcustomplot_8h_source.html#l00507">mChildren</a>, and <a class="el" href="qcustomplot_8h_source.html#l00504">mParentPlot</a>.</p>
+<div class="fragment"><div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160;                    {</div>
+<div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;  <span class="comment">// If child layerables are still on this layer, detach them, so they don&#39;t try</span></div>
+<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;  <span class="comment">// to reach back to this</span></div>
+<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;  <span class="comment">// then invalid layer once they get deleted/moved themselves. This only</span></div>
+<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;  <span class="comment">// happens when layers are deleted</span></div>
+<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;  <span class="comment">// directly, like in the QCustomPlot destructor. (The regular layer removal</span></div>
+<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;  <span class="comment">// procedure for the user is to</span></div>
+<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;  <span class="comment">// call QCustomPlot::removeLayer, which moves all layerables off this layer</span></div>
+<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;  <span class="comment">// before deleting it.)</span></div>
+<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;</div>
+<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;  <span class="keywordflow">while</span> (!<a class="code" href="class_q_c_p_layer.html#a05045efb8a9694e892b71808bd7433f9">mChildren</a>.isEmpty())</div>
+<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;    <a class="code" href="class_q_c_p_layer.html#a05045efb8a9694e892b71808bd7433f9">mChildren</a>.last()-&gt;setLayer(</div>
+<div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;        0); <span class="comment">// removes itself from mChildren via removeChild()</span></div>
+<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;</div>
+<div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="class_q_c_p_layer.html#a2f3374a7884bf403720cd1cf6f7ad1bb">mParentPlot</a>-&gt;<a class="code" href="class_q_custom_plot.html#af73057345656cbd1463454982d808b00">currentLayer</a>() == <span class="keyword">this</span>)</div>
+<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;    qDebug() &lt;&lt; Q_FUNC_INFO &lt;&lt; <span class="stringliteral">&quot;The parent plot&#39;s mCurrentLayer will be a &quot;</span></div>
+<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;                               <span class="stringliteral">&quot;dangling pointer. Should have been set to a &quot;</span></div>
+<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;                               <span class="stringliteral">&quot;valid layer or 0 beforehand.&quot;</span>;</div>
+<div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160;}</div>
+<div class="ttc" id="class_q_c_p_layer_html_a05045efb8a9694e892b71808bd7433f9"><div class="ttname"><a href="class_q_c_p_layer.html#a05045efb8a9694e892b71808bd7433f9">QCPLayer::mChildren</a></div><div class="ttdeci">QList&lt; QCPLayerable * &gt; mChildren</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l00507">qcustomplot.h:507</a></div></div>
+<div class="ttc" id="class_q_c_p_layer_html_a2f3374a7884bf403720cd1cf6f7ad1bb"><div class="ttname"><a href="class_q_c_p_layer.html#a2f3374a7884bf403720cd1cf6f7ad1bb">QCPLayer::mParentPlot</a></div><div class="ttdeci">QCustomPlot * mParentPlot</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l00504">qcustomplot.h:504</a></div></div>
+<div class="ttc" id="class_q_custom_plot_html_af73057345656cbd1463454982d808b00"><div class="ttname"><a href="class_q_custom_plot.html#af73057345656cbd1463454982d808b00">QCustomPlot::currentLayer</a></div><div class="ttdeci">QCPLayer * currentLayer() const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l11044">qcustomplot.cpp:11044</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -317,22 +321,22 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l00787">787</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l00829">829</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
 
-<p>References <a class="el" href="qcustomplot_8h_source.html#l00394">mChildren</a>.</p>
+<p>References <a class="el" href="qcustomplot_8h_source.html#l00507">mChildren</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l01116">QCPLayerable::moveToLayer()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;{</div>
-<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;  <span class="keywordflow">if</span> (!<a class="code" href="class_q_c_p_layer.html#a704aa71bba469383c3a3c598c1ec0d28">mChildren</a>.contains(layerable))</div>
-<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;  {</div>
-<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;    <span class="keywordflow">if</span> (prepend)</div>
-<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;      <a class="code" href="class_q_c_p_layer.html#a704aa71bba469383c3a3c598c1ec0d28">mChildren</a>.prepend(layerable);</div>
-<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;      <a class="code" href="class_q_c_p_layer.html#a704aa71bba469383c3a3c598c1ec0d28">mChildren</a>.append(layerable);</div>
-<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;  } <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;    qDebug() &lt;&lt; Q_FUNC_INFO &lt;&lt; <span class="stringliteral">&quot;layerable is already child of this layer&quot;</span> &lt;&lt; <span class="keyword">reinterpret_cast&lt;</span>quintptr<span class="keyword">&gt;</span>(layerable);</div>
-<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;}</div>
-<div class="ttc" id="class_q_c_p_layer_html_a704aa71bba469383c3a3c598c1ec0d28"><div class="ttname"><a href="class_q_c_p_layer.html#a704aa71bba469383c3a3c598c1ec0d28">QCPLayer::mChildren</a></div><div class="ttdeci">QList&lt; QCPLayerable * &gt; mChildren</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l00394">qcustomplot.h:394</a></div></div>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l01218">QCPLayerable::moveToLayer()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;                                                             {</div>
+<div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;  <span class="keywordflow">if</span> (!<a class="code" href="class_q_c_p_layer.html#a05045efb8a9694e892b71808bd7433f9">mChildren</a>.contains(layerable)) {</div>
+<div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160;    <span class="keywordflow">if</span> (prepend)</div>
+<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160;      <a class="code" href="class_q_c_p_layer.html#a05045efb8a9694e892b71808bd7433f9">mChildren</a>.prepend(layerable);</div>
+<div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;      <a class="code" href="class_q_c_p_layer.html#a05045efb8a9694e892b71808bd7433f9">mChildren</a>.append(layerable);</div>
+<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;  } <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;    qDebug() &lt;&lt; Q_FUNC_INFO &lt;&lt; <span class="stringliteral">&quot;layerable is already child of this layer&quot;</span></div>
+<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;             &lt;&lt; <span class="keyword">reinterpret_cast&lt;</span>quintptr<span class="keyword">&gt;</span>(layerable);</div>
+<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;}</div>
+<div class="ttc" id="class_q_c_p_layer_html_a05045efb8a9694e892b71808bd7433f9"><div class="ttname"><a href="class_q_c_p_layer.html#a05045efb8a9694e892b71808bd7433f9">QCPLayer::mChildren</a></div><div class="ttdeci">QList&lt; QCPLayerable * &gt; mChildren</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l00507">qcustomplot.h:507</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -367,11 +371,11 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <p>Returns a list of all layerables on this layer. The order corresponds to the rendering order: layerables with higher indices are drawn above layerables with lower indices. </p>
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l00383">383</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l00496">496</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l10338">QCustomPlot::deselectAll()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l10868">QCustomPlot::draw()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l10770">QCustomPlot::mouseReleaseEvent()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l10116">QCustomPlot::removeLayer()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="class_q_c_p_layer.html#a704aa71bba469383c3a3c598c1ec0d28">mChildren</a>; }</div>
-<div class="ttc" id="class_q_c_p_layer_html_a704aa71bba469383c3a3c598c1ec0d28"><div class="ttname"><a href="class_q_c_p_layer.html#a704aa71bba469383c3a3c598c1ec0d28">QCPLayer::mChildren</a></div><div class="ttdeci">QList&lt; QCPLayerable * &gt; mChildren</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l00394">qcustomplot.h:394</a></div></div>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l11371">QCustomPlot::deselectAll()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l12014">QCustomPlot::draw()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l11908">QCustomPlot::mouseReleaseEvent()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l11150">QCustomPlot::removeLayer()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="class_q_c_p_layer.html#a05045efb8a9694e892b71808bd7433f9">mChildren</a>; }</div>
+<div class="ttc" id="class_q_c_p_layer_html_a05045efb8a9694e892b71808bd7433f9"><div class="ttname"><a href="class_q_c_p_layer.html#a05045efb8a9694e892b71808bd7433f9">QCPLayer::mChildren</a></div><div class="ttdeci">QList&lt; QCPLayerable * &gt; mChildren</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l00507">qcustomplot.h:507</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -407,11 +411,11 @@ Here is the caller graph for this function:</div>
 <p>Returns the index this layer has in the <a class="el" href="class_q_custom_plot.html" title="The central class of the library. This is the QWidget which displays the plot and interacts with the ...">QCustomPlot</a>. The index is the integer number by which this layer can be accessed via <a class="el" href="class_q_custom_plot.html#aac492da01782820454e9136a8db28182">QCustomPlot::layer</a>.</p>
 <p>Layers with higher indices will be drawn above layers with lower indices. </p>
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l00382">382</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l00495">495</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l10081">QCustomPlot::addLayer()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l10162">QCustomPlot::moveLayer()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l10116">QCustomPlot::removeLayer()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="class_q_c_p_layer.html#a122088bcab6cec76a52b75ce8606605b">mIndex</a>; }</div>
-<div class="ttc" id="class_q_c_p_layer_html_a122088bcab6cec76a52b75ce8606605b"><div class="ttname"><a href="class_q_c_p_layer.html#a122088bcab6cec76a52b75ce8606605b">QCPLayer::mIndex</a></div><div class="ttdeci">int mIndex</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l00393">qcustomplot.h:393</a></div></div>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l11111">QCustomPlot::addLayer()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l11200">QCustomPlot::moveLayer()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l11150">QCustomPlot::removeLayer()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="class_q_c_p_layer.html#a122088bcab6cec76a52b75ce8606605b">mIndex</a>; }</div>
+<div class="ttc" id="class_q_c_p_layer_html_a122088bcab6cec76a52b75ce8606605b"><div class="ttname"><a href="class_q_c_p_layer.html#a122088bcab6cec76a52b75ce8606605b">QCPLayer::mIndex</a></div><div class="ttdeci">int mIndex</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l00506">qcustomplot.h:506</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -445,11 +449,11 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l00381">381</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l00494">494</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l09980">QCustomPlot::layer()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l01116">QCPLayerable::moveToLayer()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="class_q_c_p_layer.html#a91e6298183cb4b9dfd4efdfaf1ecc220">mName</a>; }</div>
-<div class="ttc" id="class_q_c_p_layer_html_a91e6298183cb4b9dfd4efdfaf1ecc220"><div class="ttname"><a href="class_q_c_p_layer.html#a91e6298183cb4b9dfd4efdfaf1ecc220">QCPLayer::mName</a></div><div class="ttdeci">QString mName</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l00392">qcustomplot.h:392</a></div></div>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l11018">QCustomPlot::layer()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l01218">QCPLayerable::moveToLayer()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="class_q_c_p_layer.html#a91e6298183cb4b9dfd4efdfaf1ecc220">mName</a>; }</div>
+<div class="ttc" id="class_q_c_p_layer_html_a91e6298183cb4b9dfd4efdfaf1ecc220"><div class="ttname"><a href="class_q_c_p_layer.html#a91e6298183cb4b9dfd4efdfaf1ecc220">QCPLayer::mName</a></div><div class="ttdeci">QString mName</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l00505">qcustomplot.h:505</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -483,11 +487,11 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l00380">380</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l00493">493</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l01116">QCPLayerable::moveToLayer()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="class_q_c_p_layer.html#a2f3374a7884bf403720cd1cf6f7ad1bb">mParentPlot</a>; }</div>
-<div class="ttc" id="class_q_c_p_layer_html_a2f3374a7884bf403720cd1cf6f7ad1bb"><div class="ttname"><a href="class_q_c_p_layer.html#a2f3374a7884bf403720cd1cf6f7ad1bb">QCPLayer::mParentPlot</a></div><div class="ttdeci">QCustomPlot * mParentPlot</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l00391">qcustomplot.h:391</a></div></div>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l01218">QCPLayerable::moveToLayer()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="class_q_c_p_layer.html#a2f3374a7884bf403720cd1cf6f7ad1bb">mParentPlot</a>; }</div>
+<div class="ttc" id="class_q_c_p_layer_html_a2f3374a7884bf403720cd1cf6f7ad1bb"><div class="ttname"><a href="class_q_c_p_layer.html#a2f3374a7884bf403720cd1cf6f7ad1bb">QCPLayer::mParentPlot</a></div><div class="ttdeci">QCustomPlot * mParentPlot</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l00504">qcustomplot.h:504</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -522,16 +526,17 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l00808">808</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l00850">850</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
 
-<p>References <a class="el" href="qcustomplot_8h_source.html#l00394">mChildren</a>.</p>
+<p>References <a class="el" href="qcustomplot_8h_source.html#l00507">mChildren</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l01116">QCPLayerable::moveToLayer()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l00937">QCPLayerable::~QCPLayerable()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;{</div>
-<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;  <span class="keywordflow">if</span> (!<a class="code" href="class_q_c_p_layer.html#a704aa71bba469383c3a3c598c1ec0d28">mChildren</a>.removeOne(layerable))</div>
-<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;    qDebug() &lt;&lt; Q_FUNC_INFO &lt;&lt; <span class="stringliteral">&quot;layerable is not child of this layer&quot;</span> &lt;&lt; <span class="keyword">reinterpret_cast&lt;</span>quintptr<span class="keyword">&gt;</span>(layerable);</div>
-<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;}</div>
-<div class="ttc" id="class_q_c_p_layer_html_a704aa71bba469383c3a3c598c1ec0d28"><div class="ttname"><a href="class_q_c_p_layer.html#a704aa71bba469383c3a3c598c1ec0d28">QCPLayer::mChildren</a></div><div class="ttdeci">QList&lt; QCPLayerable * &gt; mChildren</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l00394">qcustomplot.h:394</a></div></div>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l01218">QCPLayerable::moveToLayer()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l01012">QCPLayerable::~QCPLayerable()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;                                                  {</div>
+<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;  <span class="keywordflow">if</span> (!<a class="code" href="class_q_c_p_layer.html#a05045efb8a9694e892b71808bd7433f9">mChildren</a>.removeOne(layerable))</div>
+<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;    qDebug() &lt;&lt; Q_FUNC_INFO &lt;&lt; <span class="stringliteral">&quot;layerable is not child of this layer&quot;</span></div>
+<div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;             &lt;&lt; <span class="keyword">reinterpret_cast&lt;</span>quintptr<span class="keyword">&gt;</span>(layerable);</div>
+<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;}</div>
+<div class="ttc" id="class_q_c_p_layer_html_a05045efb8a9694e892b71808bd7433f9"><div class="ttname"><a href="class_q_c_p_layer.html#a05045efb8a9694e892b71808bd7433f9">QCPLayer::mChildren</a></div><div class="ttdeci">QList&lt; QCPLayerable * &gt; mChildren</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l00507">qcustomplot.h:507</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -560,14 +565,12 @@ Here is the caller graph for this function:</div>
 <p>Sets whether this layer is visible or not. If <em>visible</em> is set to false, all layerables on this layer will be invisible.</p>
 <p>This function doesn't change the visibility property of the layerables (<a class="el" href="class_q_c_p_layerable.html#a3bed99ddc396b48ce3ebfdc0418744f8">QCPLayerable::setVisible</a>), but the <a class="el" href="class_q_c_p_layerable.html#a30809f7455e9794bca7b6c737622fa63">QCPLayerable::realVisibility</a> of each layerable takes the visibility of the parent layer into account. </p>
 
-<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l00772">772</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l00814">814</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
 
-<p>References <a class="el" href="qcustomplot_8h_source.html#l00395">mVisible</a>, and <a class="el" href="qcustomplot_8h_source.html#l00384">visible()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;{</div>
-<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;  <a class="code" href="class_q_c_p_layer.html#a264950deb08e589460c126c895a1e2b5">mVisible</a> = <a class="code" href="class_q_c_p_layer.html#a9efca636e4dcad721999a6282f296016">visible</a>;</div>
-<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;}</div>
-<div class="ttc" id="class_q_c_p_layer_html_a9efca636e4dcad721999a6282f296016"><div class="ttname"><a href="class_q_c_p_layer.html#a9efca636e4dcad721999a6282f296016">QCPLayer::visible</a></div><div class="ttdeci">bool visible() const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l00384">qcustomplot.h:384</a></div></div>
-<div class="ttc" id="class_q_c_p_layer_html_a264950deb08e589460c126c895a1e2b5"><div class="ttname"><a href="class_q_c_p_layer.html#a264950deb08e589460c126c895a1e2b5">QCPLayer::mVisible</a></div><div class="ttdeci">bool mVisible</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l00395">qcustomplot.h:395</a></div></div>
+<p>References <a class="el" href="qcustomplot_8h_source.html#l00508">mVisible</a>, and <a class="el" href="qcustomplot_8h_source.html#l00497">visible()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;{ <a class="code" href="class_q_c_p_layer.html#a264950deb08e589460c126c895a1e2b5">mVisible</a> = <a class="code" href="class_q_c_p_layer.html#a9efca636e4dcad721999a6282f296016">visible</a>; }</div>
+<div class="ttc" id="class_q_c_p_layer_html_a9efca636e4dcad721999a6282f296016"><div class="ttname"><a href="class_q_c_p_layer.html#a9efca636e4dcad721999a6282f296016">QCPLayer::visible</a></div><div class="ttdeci">bool visible() const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l00497">qcustomplot.h:497</a></div></div>
+<div class="ttc" id="class_q_c_p_layer_html_a264950deb08e589460c126c895a1e2b5"><div class="ttname"><a href="class_q_c_p_layer.html#a264950deb08e589460c126c895a1e2b5">QCPLayer::mVisible</a></div><div class="ttdeci">bool mVisible</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l00508">qcustomplot.h:508</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -601,11 +604,11 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l00384">384</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l00497">497</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l01013">QCPLayerable::realVisibility()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l00772">setVisible()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="class_q_c_p_layer.html#a264950deb08e589460c126c895a1e2b5">mVisible</a>; }</div>
-<div class="ttc" id="class_q_c_p_layer_html_a264950deb08e589460c126c895a1e2b5"><div class="ttname"><a href="class_q_c_p_layer.html#a264950deb08e589460c126c895a1e2b5">QCPLayer::mVisible</a></div><div class="ttdeci">bool mVisible</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l00395">qcustomplot.h:395</a></div></div>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l01085">QCPLayerable::realVisibility()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l00814">setVisible()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="class_q_c_p_layer.html#a264950deb08e589460c126c895a1e2b5">mVisible</a>; }</div>
+<div class="ttc" id="class_q_c_p_layer_html_a264950deb08e589460c126c895a1e2b5"><div class="ttname"><a href="class_q_c_p_layer.html#a264950deb08e589460c126c895a1e2b5">QCPLayer::mVisible</a></div><div class="ttdeci">bool mVisible</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l00508">qcustomplot.h:508</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -637,7 +640,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l00405">405</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l00518">518</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
 </div>
 </div>
@@ -659,12 +662,12 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l00404">404</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l00517">517</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a class="anchor" id="a704aa71bba469383c3a3c598c1ec0d28"></a>
+<a class="anchor" id="a05045efb8a9694e892b71808bd7433f9"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -672,7 +675,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">QList&lt;<a class="el" href="class_q_c_p_layerable.html">QCPLayerable</a>*&gt; QCPLayer::mChildren</td>
+          <td class="memname">QList&lt;<a class="el" href="class_q_c_p_layerable.html">QCPLayerable</a> *&gt; QCPLayer::mChildren</td>
         </tr>
       </table>
   </td>
@@ -682,9 +685,9 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l00394">394</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l00507">507</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l00787">addChild()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l00808">removeChild()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l00750">~QCPLayer()</a>.</p>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l00829">addChild()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l00850">removeChild()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l00784">~QCPLayer()</a>.</p>
 
 </div>
 </div>
@@ -706,7 +709,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l00393">393</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l00506">506</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
 </div>
 </div>
@@ -728,7 +731,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l00392">392</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l00505">505</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
 </div>
 </div>
@@ -750,9 +753,9 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l00391">391</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l00504">504</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l00750">~QCPLayer()</a>.</p>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l00784">~QCPLayer()</a>.</p>
 
 </div>
 </div>
@@ -774,9 +777,9 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l00395">395</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l00508">508</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l00772">setVisible()</a>.</p>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l00814">setVisible()</a>.</p>
 
 </div>
 </div>
@@ -790,7 +793,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_q_c_p_layer.html">QCPLayer</a></li>
-    <li class="footer">Generated on Sat Jun 6 2015 21:25:37 for Vision Soil Analyzer by
+    <li class="footer">Generated on Sun Jun 7 2015 21:06:49 for Vision Soil Analyzer by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

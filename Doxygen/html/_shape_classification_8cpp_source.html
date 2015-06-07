@@ -35,7 +35,7 @@
    <div id="projectname">Vision Soil Analyzer
    &#160;<span id="projectnumber">1.0.0</span>
    </div>
-   <div id="projectbrief">The Soil Analyzer is a portable lab that can analyse soil samples and tells the user about it&#39;s optical properties. It looks at the texture and describe it as a Particle Size Distribution. This information is presented as a Cumulative Distribution Function (CDF). It also describes the structure of the soil sample and gives information on the sphericity and roundness / angularity. It does so by analysing the contour of particles, describing them as Fourier Descriptors and using a Neural Network to describe it&#39;s properties. Finally it gives the color properties in a histogram in the CIE La*b* colorspace, which show correlations with the fertility of the soil. and a histogram of the Redness Index, which gives has a correlation on the iron content.</div>
+   <div id="projectbrief">Soil analyzer using an USB microscope - for Linux PC and Beaglebone Black</div>
   </td>
  </tr>
  </tbody>
@@ -111,19 +111,20 @@ $(document).ready(function(){initNavTree('_shape_classification_8cpp_source.html
 <div class="title">ShapeClassification.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="_shape_classification_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_shape_classification_8h.html">ShapeClassification.h</a>&quot;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
-<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="class_shape_classification.html#a53cff8a411773e7e36c5afabe3ad5ec3">    4</a></span>&#160;<a class="code" href="class_shape_classification.html#a53cff8a411773e7e36c5afabe3ad5ec3">ShapeClassification::ShapeClassification</a>()</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;{</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;}</div>
+<a href="_shape_classification_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright (C) Jelle Spijker - All Rights Reserved</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Unauthorized copying of this file, via any medium is strictly prohibited</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * and only allowed with the written consent of the author (Jelle Spijker)</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * This software is proprietary and confidential</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * Written by Jelle Spijker &lt;spijker.jelle@gmail.com&gt;, 2015</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="class_shape_classification.html#a9e5cdfa2409f961494ac2e8e444712e6">    9</a></span>&#160;<a class="code" href="class_shape_classification.html#a9e5cdfa2409f961494ac2e8e444712e6">ShapeClassification::~ShapeClassification</a>()</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;{</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;}</div>
-<div class="ttc" id="class_shape_classification_html_a53cff8a411773e7e36c5afabe3ad5ec3"><div class="ttname"><a href="class_shape_classification.html#a53cff8a411773e7e36c5afabe3ad5ec3">ShapeClassification::ShapeClassification</a></div><div class="ttdeci">ShapeClassification()</div><div class="ttdef"><b>Definition:</b> <a href="_shape_classification_8cpp_source.html#l00004">ShapeClassification.cpp:4</a></div></div>
-<div class="ttc" id="class_shape_classification_html_a9e5cdfa2409f961494ac2e8e444712e6"><div class="ttname"><a href="class_shape_classification.html#a9e5cdfa2409f961494ac2e8e444712e6">ShapeClassification::~ShapeClassification</a></div><div class="ttdeci">~ShapeClassification()</div><div class="ttdef"><b>Definition:</b> <a href="_shape_classification_8cpp_source.html#l00009">ShapeClassification.cpp:9</a></div></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_shape_classification_8h.html">ShapeClassification.h</a>&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="class_shape_classification.html#a53cff8a411773e7e36c5afabe3ad5ec3">   10</a></span>&#160;<a class="code" href="class_shape_classification.html#a53cff8a411773e7e36c5afabe3ad5ec3">ShapeClassification::ShapeClassification</a>() {}</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="class_shape_classification.html#a9e5cdfa2409f961494ac2e8e444712e6">   12</a></span>&#160;<a class="code" href="class_shape_classification.html#a9e5cdfa2409f961494ac2e8e444712e6">ShapeClassification::~ShapeClassification</a>() {}</div>
+<div class="ttc" id="class_shape_classification_html_a53cff8a411773e7e36c5afabe3ad5ec3"><div class="ttname"><a href="class_shape_classification.html#a53cff8a411773e7e36c5afabe3ad5ec3">ShapeClassification::ShapeClassification</a></div><div class="ttdeci">ShapeClassification()</div><div class="ttdef"><b>Definition:</b> <a href="_shape_classification_8cpp_source.html#l00010">ShapeClassification.cpp:10</a></div></div>
+<div class="ttc" id="class_shape_classification_html_a9e5cdfa2409f961494ac2e8e444712e6"><div class="ttname"><a href="class_shape_classification.html#a9e5cdfa2409f961494ac2e8e444712e6">ShapeClassification::~ShapeClassification</a></div><div class="ttdeci">~ShapeClassification()</div><div class="ttdef"><b>Definition:</b> <a href="_shape_classification_8cpp_source.html#l00012">ShapeClassification.cpp:12</a></div></div>
 <div class="ttc" id="_shape_classification_8h_html"><div class="ttname"><a href="_shape_classification_8h.html">ShapeClassification.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -131,7 +132,7 @@ $(document).ready(function(){initNavTree('_shape_classification_8cpp_source.html
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_eec0018002c35b3e5fb3f95156be8464.html">Soil</a></li><li class="navelem"><a class="el" href="_shape_classification_8cpp.html">ShapeClassification.cpp</a></li>
-    <li class="footer">Generated on Sat Jun 6 2015 21:25:29 for Vision Soil Analyzer by
+    <li class="footer">Generated on Sun Jun 7 2015 21:06:33 for Vision Soil Analyzer by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

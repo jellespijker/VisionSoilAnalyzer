@@ -25,7 +25,7 @@ var class_q_c_p_bars_group =
     [ "spacingType", "class_q_c_p_bars_group.html#a1bb562f669d47bd7d3cdd2da1f7d8f00", null ],
     [ "unregisterBars", "class_q_c_p_bars_group.html#ac7073cdd7b1a40c6cb4b5f908145f8c4", null ],
     [ "QCPBars", "class_q_c_p_bars_group.html#a721b87c7cdb8e83a90d77fc8a22e7195", null ],
-    [ "mBars", "class_q_c_p_bars_group.html#affdb1e9233c277ff5a4c0a1121cf1fc0", null ],
+    [ "mBars", "class_q_c_p_bars_group.html#aa5affa0639c13e05bda9d23f16dd1393", null ],
     [ "mParentPlot", "class_q_c_p_bars_group.html#a973d408cfbf88db95115aec71877f9e7", null ],
     [ "mSpacing", "class_q_c_p_bars_group.html#a56471d7f548ca6141b7a5bf9629f7ece", null ],
     [ "mSpacingType", "class_q_c_p_bars_group.html#a6794ee1a9c81864d627bff6a4b2d64ec", null ]

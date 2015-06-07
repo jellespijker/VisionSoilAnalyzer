@@ -31,10 +31,10 @@ var class_q_c_p_abstract_item =
     [ "setSelected", "class_q_c_p_abstract_item.html#a203de94ad586cc44d16c9565f49d3378", null ],
     [ "QCPItemAnchor", "class_q_c_p_abstract_item.html#a61767d414fd57af9eb1741b34268c7fc", null ],
     [ "QCustomPlot", "class_q_c_p_abstract_item.html#a1cdf9df76adcfae45261690aa0ca2198", null ],
-    [ "mAnchors", "class_q_c_p_abstract_item.html#a909a3abab783de302ebf0a0e6f2bbc15", null ],
+    [ "mAnchors", "class_q_c_p_abstract_item.html#a0e1e082dc04ef832411a23905d83cc02", null ],
     [ "mClipAxisRect", "class_q_c_p_abstract_item.html#a3e57cfe7da4b1ac3d6fa7281ea437361", null ],
     [ "mClipToAxisRect", "class_q_c_p_abstract_item.html#ad2a70ff6b658fcb84a9427f69d3f587d", null ],
-    [ "mPositions", "class_q_c_p_abstract_item.html#af94ff71b6a15ea6d028ab8bd8eccd012", null ],
+    [ "mPositions", "class_q_c_p_abstract_item.html#a96cab718644f27490f9d967c49fcd18c", null ],
     [ "mSelectable", "class_q_c_p_abstract_item.html#ad81eb35c8726a0f458db9df9732e0e41", null ],
     [ "mSelected", "class_q_c_p_abstract_item.html#a4bdb3457dad1d268c0f78a44152b9645", null ]
 ];

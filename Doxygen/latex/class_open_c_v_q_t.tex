@@ -28,7 +28,7 @@ static Q\+Image \hyperlink{class_open_c_v_q_t_aed2deb7932b122f110cb651747d6d81b}
 \subsection{Detailed Description}
 
 
-Definition at line 7 of file opencvqt.\+h.
+Definition at line 14 of file opencvqt.\+h.
 
 
 
@@ -52,7 +52,7 @@ Definition at line 7 of file opencvqt.\+h.
 )\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{class_open_c_v_q_t_aed2deb7932b122f110cb651747d6d81b}
 
 
-Definition at line 11 of file opencvqt.\+h.
+Definition at line 17 of file opencvqt.\+h.
 
 
 
@@ -60,23 +60,21 @@ Referenced by V\+S\+A\+G\+U\+I\+::\+Set\+Mat\+To\+Main\+View().
 
 
 \begin{DoxyCode}
-12     \{
-13        QImage dest ;
-14        \textcolor{keywordflow}{if} (src.channels() == 1)
-15        \{
-16            cv::Mat destRGB;
-17            std::vector<cv::Mat> grayRGB(3, src);
-18            cv::merge(grayRGB, destRGB);
-19            dest = QImage((\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *)destRGB.data, destRGB.cols, destRGB.rows, destRGB.step, 
-      QImage::Format\_RGB888);
-20        \}
-21        \textcolor{keywordflow}{else}
-22        \{
-23            dest = QImage((\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *)src.data, src.cols, src.rows, src.step, QImage::Format\_RGB888);
-24            dest = dest.rgbSwapped();
-25        \}
-26        \textcolor{keywordflow}{return} dest;
-27     \}
+17                                              \{
+18     QImage dest;
+19     \textcolor{keywordflow}{if} (src.channels() == 1) \{
+20       cv::Mat destRGB;
+21       std::vector<cv::Mat> grayRGB(3, src);
+22       cv::merge(grayRGB, destRGB);
+23       dest = QImage((\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *)destRGB.data, destRGB.cols, destRGB.rows,
+24                     destRGB.step, QImage::Format\_RGB888);
+25     \} \textcolor{keywordflow}{else} \{
+26       dest = QImage((\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *)src.data, src.cols, src.rows, src.step,
+27                     QImage::Format\_RGB888);
+28       dest = dest.rgbSwapped();
+29     \}
+30     \textcolor{keywordflow}{return} dest;
+31   \}
 \end{DoxyCode}
 
 

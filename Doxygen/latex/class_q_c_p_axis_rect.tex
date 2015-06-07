@@ -188,7 +188,7 @@ Q\+Point \hyperlink{class_q_c_p_axis_rect_a032896b28f83a58010d8d533b78c49df}{m\+
 \item 
 bool \hyperlink{class_q_c_p_axis_rect_ab49a6698194cf0e9e38a1d734c0888a8}{m\+Dragging}
 \item 
-Q\+Hash$<$ \hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18a}{Q\+C\+P\+Axis\+::\+Axis\+Type}, Q\+List$<$ \hyperlink{class_q_c_p_axis}{Q\+C\+P\+Axis} $\ast$ $>$ $>$ \hyperlink{class_q_c_p_axis_rect_afe7a24d2a2bea98fc552fa826350ba81}{m\+Axes}
+Q\+Hash$<$ \hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18a}{Q\+C\+P\+Axis\+::\+Axis\+Type}, Q\+List$<$ \hyperlink{class_q_c_p_axis}{Q\+C\+P\+Axis} $\ast$ $>$ $>$ \hyperlink{class_q_c_p_axis_rect_ac2cb3ba9a25b733883afc3bd25f7d82b}{m\+Axes}
 \end{DoxyCompactItemize}
 \subsection*{Friends}
 \begin{DoxyCompactItemize}
@@ -215,7 +215,7 @@ If an axis rect is clicked and dragged, it processes this by moving certain axis
 
  \begin{center}Overview of the spacings and paddings that define the geometry of an axis. The dashed line on the far left indicates the viewport/widget border.\end{center}  
 
-Definition at line 1972 of file qcustomplot.\+h.
+Definition at line 2294 of file qcustomplot.\+h.
 
 
 
@@ -230,7 +230,7 @@ Definition at line 1972 of file qcustomplot.\+h.
 )\hspace{0.3cm}{\ttfamily [explicit]}}\label{class_q_c_p_axis_rect_a60b31dece805462c1b82eea2e69ba042}
 Creates a \hyperlink{class_q_c_p_axis_rect}{Q\+C\+P\+Axis\+Rect} instance and sets default values. An axis is added for each of the four sides, the top and right axes are set invisible initially. 
 
-Definition at line 11720 of file qcustomplot.\+cpp.
+Definition at line 12945 of file qcustomplot.\+cpp.
 
 
 
@@ -238,49 +238,43 @@ References add\+Axis(), Q\+C\+P\+Axis\+::at\+Bottom, Q\+C\+P\+Axis\+::at\+Left, 
 
 
 \begin{DoxyCode}
-11720                                                                        :
-11721   \hyperlink{class_q_c_p_layout_element_a8947f0ada17e672aaba3d424cbbb67e3}{QCPLayoutElement}(parentPlot),
-11722   \hyperlink{class_q_c_p_axis_rect_a5748e1a37f63c428e38b0a7724b46259}{mBackgroundBrush}(Qt::NoBrush),
-11723   \hyperlink{class_q_c_p_axis_rect_a5ad835f0fae5d7cc5ada9e063641dbf1}{mBackgroundScaled}(\textcolor{keyword}{true}),
-11724   \hyperlink{class_q_c_p_axis_rect_a859fd368e794663e346b4f53f35078e9}{mBackgroundScaledMode}(Qt::KeepAspectRatioByExpanding),
-11725   \hyperlink{class_q_c_p_axis_rect_a255240399e0fd24baad80cbbe46f698a}{mInsetLayout}(\textcolor{keyword}{new} \hyperlink{class_q_c_p_layout_inset}{QCPLayoutInset}),
-11726   \hyperlink{class_q_c_p_axis_rect_aa9f107f66ca3469ad50ee6cea7c9e237}{mRangeDrag}(Qt::Horizontal|Qt::Vertical),
-11727   \hyperlink{class_q_c_p_axis_rect_a215eff671d48df2edccc36e7f976f28c}{mRangeZoom}(Qt::Horizontal|Qt::Vertical),
-11728   \hyperlink{class_q_c_p_axis_rect_ad08d0250ed7b99de387d0ea6c7fd4dc1}{mRangeZoomFactorHorz}(0.85),
-11729   \hyperlink{class_q_c_p_axis_rect_a32f063629581d5bf82b12769940b34ad}{mRangeZoomFactorVert}(0.85),
-11730   \hyperlink{class_q_c_p_axis_rect_ab49a6698194cf0e9e38a1d734c0888a8}{mDragging}(\textcolor{keyword}{false})
-11731 \{
-11732   \hyperlink{class_q_c_p_axis_rect_a255240399e0fd24baad80cbbe46f698a}{mInsetLayout}->\hyperlink{class_q_c_p_layerable_a8cbe5a0c9a5674249982f5ca5f8e02bc}{initializeParentPlot}(\hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot});
-11733   \hyperlink{class_q_c_p_axis_rect_a255240399e0fd24baad80cbbe46f698a}{mInsetLayout}->\hyperlink{class_q_c_p_layerable_aa23c893671f1f6744ac235cf2204cf3a}{setParentLayerable}(\textcolor{keyword}{this});
-11734   \hyperlink{class_q_c_p_axis_rect_a255240399e0fd24baad80cbbe46f698a}{mInsetLayout}->setParent(\textcolor{keyword}{this});
-11735   
-11736   \hyperlink{class_q_c_p_layout_element_a5dd29a3c8bc88440c97c06b67be7886b}{setMinimumSize}(50, 50);
-11737   \hyperlink{class_q_c_p_layout_element_a0a8a17abc16b7923159fcc7608f94673}{setMinimumMargins}(QMargins(15, 15, 15, 15));
-11738   \hyperlink{class_q_c_p_axis_rect_afe7a24d2a2bea98fc552fa826350ba81}{mAxes}.insert(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aaf84aa6cac6fb6099f54a2cbf7546b730}{QCPAxis::atLeft}, QList<QCPAxis*>());
-11739   \hyperlink{class_q_c_p_axis_rect_afe7a24d2a2bea98fc552fa826350ba81}{mAxes}.insert(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aadf5509f7d29199ef2f263b1dd224b345}{QCPAxis::atRight}, QList<QCPAxis*>());
-11740   \hyperlink{class_q_c_p_axis_rect_afe7a24d2a2bea98fc552fa826350ba81}{mAxes}.insert(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aac0ece2b680d3f545e701f75af1655977}{QCPAxis::atTop}, QList<QCPAxis*>());
-11741   \hyperlink{class_q_c_p_axis_rect_afe7a24d2a2bea98fc552fa826350ba81}{mAxes}.insert(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aa220d68888516b6c3b493d144f1ba438f}{QCPAxis::atBottom}, QList<QCPAxis*>());
-11742   
-11743   \textcolor{keywordflow}{if} (setupDefaultAxes)
-11744   \{
-11745     \hyperlink{class_q_c_p_axis}{QCPAxis} *xAxis = \hyperlink{class_q_c_p_axis_rect_a2dc336092ccc57d44a46194c8a23e4f4}{addAxis}(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aa220d68888516b6c3b493d144f1ba438f}{QCPAxis::atBottom});
-11746     \hyperlink{class_q_c_p_axis}{QCPAxis} *yAxis = \hyperlink{class_q_c_p_axis_rect_a2dc336092ccc57d44a46194c8a23e4f4}{addAxis}(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aaf84aa6cac6fb6099f54a2cbf7546b730}{QCPAxis::atLeft});
-11747     \hyperlink{class_q_c_p_axis}{QCPAxis} *xAxis2 = \hyperlink{class_q_c_p_axis_rect_a2dc336092ccc57d44a46194c8a23e4f4}{addAxis}(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aac0ece2b680d3f545e701f75af1655977}{QCPAxis::atTop});
-11748     \hyperlink{class_q_c_p_axis}{QCPAxis} *yAxis2 = \hyperlink{class_q_c_p_axis_rect_a2dc336092ccc57d44a46194c8a23e4f4}{addAxis}(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aadf5509f7d29199ef2f263b1dd224b345}{QCPAxis::atRight});
-11749     \hyperlink{class_q_c_p_axis_rect_a648cce336bd99daac4a5ca3e5743775d}{setRangeDragAxes}(xAxis, yAxis);
-11750     \hyperlink{class_q_c_p_axis_rect_a9442cca2aa358405f39a64d51eca13d2}{setRangeZoomAxes}(xAxis, yAxis);
-11751     xAxis2->\hyperlink{class_q_c_p_layerable_a3bed99ddc396b48ce3ebfdc0418744f8}{setVisible}(\textcolor{keyword}{false});
-11752     yAxis2->\hyperlink{class_q_c_p_layerable_a3bed99ddc396b48ce3ebfdc0418744f8}{setVisible}(\textcolor{keyword}{false});
-11753     xAxis->\hyperlink{class_q_c_p_axis_ac4fb913cce3072b5e75a4635e0f6cd04}{grid}()->\hyperlink{class_q_c_p_layerable_a3bed99ddc396b48ce3ebfdc0418744f8}{setVisible}(\textcolor{keyword}{true});
-11754     yAxis->\hyperlink{class_q_c_p_axis_ac4fb913cce3072b5e75a4635e0f6cd04}{grid}()->\hyperlink{class_q_c_p_layerable_a3bed99ddc396b48ce3ebfdc0418744f8}{setVisible}(\textcolor{keyword}{true});
-11755     xAxis2->\hyperlink{class_q_c_p_axis_ac4fb913cce3072b5e75a4635e0f6cd04}{grid}()->\hyperlink{class_q_c_p_layerable_a3bed99ddc396b48ce3ebfdc0418744f8}{setVisible}(\textcolor{keyword}{false});
-11756     yAxis2->\hyperlink{class_q_c_p_axis_ac4fb913cce3072b5e75a4635e0f6cd04}{grid}()->\hyperlink{class_q_c_p_layerable_a3bed99ddc396b48ce3ebfdc0418744f8}{setVisible}(\textcolor{keyword}{false});
-11757     xAxis2->\hyperlink{class_q_c_p_axis_ac4fb913cce3072b5e75a4635e0f6cd04}{grid}()->\hyperlink{class_q_c_p_grid_a209f40fdb252397b418b82d3494d8ea0}{setZeroLinePen}(Qt::NoPen);
-11758     yAxis2->\hyperlink{class_q_c_p_axis_ac4fb913cce3072b5e75a4635e0f6cd04}{grid}()->\hyperlink{class_q_c_p_grid_a209f40fdb252397b418b82d3494d8ea0}{setZeroLinePen}(Qt::NoPen);
-11759     xAxis2->\hyperlink{class_q_c_p_axis_ac4fb913cce3072b5e75a4635e0f6cd04}{grid}()->\hyperlink{class_q_c_p_layerable_a3bed99ddc396b48ce3ebfdc0418744f8}{setVisible}(\textcolor{keyword}{false});
-11760     yAxis2->\hyperlink{class_q_c_p_axis_ac4fb913cce3072b5e75a4635e0f6cd04}{grid}()->\hyperlink{class_q_c_p_layerable_a3bed99ddc396b48ce3ebfdc0418744f8}{setVisible}(\textcolor{keyword}{false});
-11761   \}
-11762 \}
+12946     : \hyperlink{class_q_c_p_layout_element_a8947f0ada17e672aaba3d424cbbb67e3}{QCPLayoutElement}(parentPlot), \hyperlink{class_q_c_p_axis_rect_a5748e1a37f63c428e38b0a7724b46259}{mBackgroundBrush}(Qt::NoBrush),
+12947       \hyperlink{class_q_c_p_axis_rect_a5ad835f0fae5d7cc5ada9e063641dbf1}{mBackgroundScaled}(\textcolor{keyword}{true}),
+12948       \hyperlink{class_q_c_p_axis_rect_a859fd368e794663e346b4f53f35078e9}{mBackgroundScaledMode}(Qt::KeepAspectRatioByExpanding),
+12949       \hyperlink{class_q_c_p_axis_rect_a255240399e0fd24baad80cbbe46f698a}{mInsetLayout}(\textcolor{keyword}{new} \hyperlink{class_q_c_p_layout_inset}{QCPLayoutInset}),
+12950       \hyperlink{class_q_c_p_axis_rect_aa9f107f66ca3469ad50ee6cea7c9e237}{mRangeDrag}(Qt::Horizontal | Qt::Vertical),
+12951       \hyperlink{class_q_c_p_axis_rect_a215eff671d48df2edccc36e7f976f28c}{mRangeZoom}(Qt::Horizontal | Qt::Vertical), \hyperlink{class_q_c_p_axis_rect_ad08d0250ed7b99de387d0ea6c7fd4dc1}{mRangeZoomFactorHorz}(0.85),
+12952       \hyperlink{class_q_c_p_axis_rect_a32f063629581d5bf82b12769940b34ad}{mRangeZoomFactorVert}(0.85), \hyperlink{class_q_c_p_axis_rect_ab49a6698194cf0e9e38a1d734c0888a8}{mDragging}(\textcolor{keyword}{false}) \{
+12953   \hyperlink{class_q_c_p_axis_rect_a255240399e0fd24baad80cbbe46f698a}{mInsetLayout}->\hyperlink{class_q_c_p_layerable_a8cbe5a0c9a5674249982f5ca5f8e02bc}{initializeParentPlot}(\hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot});
+12954   \hyperlink{class_q_c_p_axis_rect_a255240399e0fd24baad80cbbe46f698a}{mInsetLayout}->\hyperlink{class_q_c_p_layerable_aa23c893671f1f6744ac235cf2204cf3a}{setParentLayerable}(\textcolor{keyword}{this});
+12955   \hyperlink{class_q_c_p_axis_rect_a255240399e0fd24baad80cbbe46f698a}{mInsetLayout}->setParent(\textcolor{keyword}{this});
+12956 
+12957   \hyperlink{class_q_c_p_layout_element_a5dd29a3c8bc88440c97c06b67be7886b}{setMinimumSize}(50, 50);
+12958   \hyperlink{class_q_c_p_layout_element_a0a8a17abc16b7923159fcc7608f94673}{setMinimumMargins}(QMargins(15, 15, 15, 15));
+12959   \hyperlink{class_q_c_p_axis_rect_ac2cb3ba9a25b733883afc3bd25f7d82b}{mAxes}.insert(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aaf84aa6cac6fb6099f54a2cbf7546b730}{QCPAxis::atLeft}, QList<QCPAxis *>());
+12960   \hyperlink{class_q_c_p_axis_rect_ac2cb3ba9a25b733883afc3bd25f7d82b}{mAxes}.insert(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aadf5509f7d29199ef2f263b1dd224b345}{QCPAxis::atRight}, QList<QCPAxis *>());
+12961   \hyperlink{class_q_c_p_axis_rect_ac2cb3ba9a25b733883afc3bd25f7d82b}{mAxes}.insert(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aac0ece2b680d3f545e701f75af1655977}{QCPAxis::atTop}, QList<QCPAxis *>());
+12962   \hyperlink{class_q_c_p_axis_rect_ac2cb3ba9a25b733883afc3bd25f7d82b}{mAxes}.insert(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aa220d68888516b6c3b493d144f1ba438f}{QCPAxis::atBottom}, QList<QCPAxis *>());
+12963 
+12964   \textcolor{keywordflow}{if} (setupDefaultAxes) \{
+12965     \hyperlink{class_q_c_p_axis}{QCPAxis} *xAxis = \hyperlink{class_q_c_p_axis_rect_a2dc336092ccc57d44a46194c8a23e4f4}{addAxis}(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aa220d68888516b6c3b493d144f1ba438f}{QCPAxis::atBottom});
+12966     \hyperlink{class_q_c_p_axis}{QCPAxis} *yAxis = \hyperlink{class_q_c_p_axis_rect_a2dc336092ccc57d44a46194c8a23e4f4}{addAxis}(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aaf84aa6cac6fb6099f54a2cbf7546b730}{QCPAxis::atLeft});
+12967     \hyperlink{class_q_c_p_axis}{QCPAxis} *xAxis2 = \hyperlink{class_q_c_p_axis_rect_a2dc336092ccc57d44a46194c8a23e4f4}{addAxis}(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aac0ece2b680d3f545e701f75af1655977}{QCPAxis::atTop});
+12968     \hyperlink{class_q_c_p_axis}{QCPAxis} *yAxis2 = \hyperlink{class_q_c_p_axis_rect_a2dc336092ccc57d44a46194c8a23e4f4}{addAxis}(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aadf5509f7d29199ef2f263b1dd224b345}{QCPAxis::atRight});
+12969     \hyperlink{class_q_c_p_axis_rect_a648cce336bd99daac4a5ca3e5743775d}{setRangeDragAxes}(xAxis, yAxis);
+12970     \hyperlink{class_q_c_p_axis_rect_a9442cca2aa358405f39a64d51eca13d2}{setRangeZoomAxes}(xAxis, yAxis);
+12971     xAxis2->\hyperlink{class_q_c_p_layerable_a3bed99ddc396b48ce3ebfdc0418744f8}{setVisible}(\textcolor{keyword}{false});
+12972     yAxis2->\hyperlink{class_q_c_p_layerable_a3bed99ddc396b48ce3ebfdc0418744f8}{setVisible}(\textcolor{keyword}{false});
+12973     xAxis->\hyperlink{class_q_c_p_axis_ac4fb913cce3072b5e75a4635e0f6cd04}{grid}()->\hyperlink{class_q_c_p_layerable_a3bed99ddc396b48ce3ebfdc0418744f8}{setVisible}(\textcolor{keyword}{true});
+12974     yAxis->\hyperlink{class_q_c_p_axis_ac4fb913cce3072b5e75a4635e0f6cd04}{grid}()->\hyperlink{class_q_c_p_layerable_a3bed99ddc396b48ce3ebfdc0418744f8}{setVisible}(\textcolor{keyword}{true});
+12975     xAxis2->\hyperlink{class_q_c_p_axis_ac4fb913cce3072b5e75a4635e0f6cd04}{grid}()->\hyperlink{class_q_c_p_layerable_a3bed99ddc396b48ce3ebfdc0418744f8}{setVisible}(\textcolor{keyword}{false});
+12976     yAxis2->\hyperlink{class_q_c_p_axis_ac4fb913cce3072b5e75a4635e0f6cd04}{grid}()->\hyperlink{class_q_c_p_layerable_a3bed99ddc396b48ce3ebfdc0418744f8}{setVisible}(\textcolor{keyword}{false});
+12977     xAxis2->\hyperlink{class_q_c_p_axis_ac4fb913cce3072b5e75a4635e0f6cd04}{grid}()->\hyperlink{class_q_c_p_grid_a209f40fdb252397b418b82d3494d8ea0}{setZeroLinePen}(Qt::NoPen);
+12978     yAxis2->\hyperlink{class_q_c_p_axis_ac4fb913cce3072b5e75a4635e0f6cd04}{grid}()->\hyperlink{class_q_c_p_grid_a209f40fdb252397b418b82d3494d8ea0}{setZeroLinePen}(Qt::NoPen);
+12979     xAxis2->\hyperlink{class_q_c_p_axis_ac4fb913cce3072b5e75a4635e0f6cd04}{grid}()->\hyperlink{class_q_c_p_layerable_a3bed99ddc396b48ce3ebfdc0418744f8}{setVisible}(\textcolor{keyword}{false});
+12980     yAxis2->\hyperlink{class_q_c_p_axis_ac4fb913cce3072b5e75a4635e0f6cd04}{grid}()->\hyperlink{class_q_c_p_layerable_a3bed99ddc396b48ce3ebfdc0418744f8}{setVisible}(\textcolor{keyword}{false});
+12981   \}
+12982 \}
 \end{DoxyCode}
 
 
@@ -302,7 +296,7 @@ Here is the call graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_q_c_p_axis_rect_a463c44b1856ddbf82eb3f7b582839cd0}
 
 
-Definition at line 11764 of file qcustomplot.\+cpp.
+Definition at line 12984 of file qcustomplot.\+cpp.
 
 
 
@@ -310,14 +304,14 @@ References axes(), i, m\+Inset\+Layout, and remove\+Axis().
 
 
 \begin{DoxyCode}
-11765 \{
-11766   \textcolor{keyword}{delete} \hyperlink{class_q_c_p_axis_rect_a255240399e0fd24baad80cbbe46f698a}{mInsetLayout};
-11767   \hyperlink{class_q_c_p_axis_rect_a255240399e0fd24baad80cbbe46f698a}{mInsetLayout} = 0;
-11768   
-11769   QList<QCPAxis*> axesList = \hyperlink{class_q_c_p_axis_rect_a18dcdc0dd6c7520bc9f3d15a7a3feec2}{axes}();
-11770   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}<axesList.size(); ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
-11771     \hyperlink{class_q_c_p_axis_rect_a03c39cd9704f0d36fb6cf980cdddcbaa}{removeAxis}(axesList.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}));
-11772 \}
+12984                           \{
+12985   \textcolor{keyword}{delete} \hyperlink{class_q_c_p_axis_rect_a255240399e0fd24baad80cbbe46f698a}{mInsetLayout};
+12986   \hyperlink{class_q_c_p_axis_rect_a255240399e0fd24baad80cbbe46f698a}{mInsetLayout} = 0;
+12987 
+12988   QList<QCPAxis *> axesList = \hyperlink{class_q_c_p_axis_rect_a18dcdc0dd6c7520bc9f3d15a7a3feec2}{axes}();
+12989   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < axesList.size(); ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
+12990     \hyperlink{class_q_c_p_axis_rect_a03c39cd9704f0d36fb6cf980cdddcbaa}{removeAxis}(axesList.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}));
+12991 \}
 \end{DoxyCode}
 
 
@@ -349,7 +343,7 @@ Returns a list of the added axes.
 \end{DoxySeeAlso}
 
 
-Definition at line 11901 of file qcustomplot.\+cpp.
+Definition at line 13127 of file qcustomplot.\+cpp.
 
 
 
@@ -357,18 +351,18 @@ References add\+Axis(), Q\+C\+P\+Axis\+::at\+Bottom, Q\+C\+P\+Axis\+::at\+Left, 
 
 
 \begin{DoxyCode}
-11902 \{
-11903   QList<QCPAxis*> result;
-11904   \textcolor{keywordflow}{if} (types.testFlag(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aaf84aa6cac6fb6099f54a2cbf7546b730}{QCPAxis::atLeft}))
-11905     result << \hyperlink{class_q_c_p_axis_rect_a2dc336092ccc57d44a46194c8a23e4f4}{addAxis}(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aaf84aa6cac6fb6099f54a2cbf7546b730}{QCPAxis::atLeft});
-11906   \textcolor{keywordflow}{if} (types.testFlag(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aadf5509f7d29199ef2f263b1dd224b345}{QCPAxis::atRight}))
-11907     result << \hyperlink{class_q_c_p_axis_rect_a2dc336092ccc57d44a46194c8a23e4f4}{addAxis}(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aadf5509f7d29199ef2f263b1dd224b345}{QCPAxis::atRight});
-11908   \textcolor{keywordflow}{if} (types.testFlag(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aac0ece2b680d3f545e701f75af1655977}{QCPAxis::atTop}))
-11909     result << \hyperlink{class_q_c_p_axis_rect_a2dc336092ccc57d44a46194c8a23e4f4}{addAxis}(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aac0ece2b680d3f545e701f75af1655977}{QCPAxis::atTop});
-11910   \textcolor{keywordflow}{if} (types.testFlag(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aa220d68888516b6c3b493d144f1ba438f}{QCPAxis::atBottom}))
-11911     result << \hyperlink{class_q_c_p_axis_rect_a2dc336092ccc57d44a46194c8a23e4f4}{addAxis}(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aa220d68888516b6c3b493d144f1ba438f}{QCPAxis::atBottom});
-11912   \textcolor{keywordflow}{return} result;
-11913 \}
+13127                                                             \{
+13128   QList<QCPAxis *> result;
+13129   \textcolor{keywordflow}{if} (types.testFlag(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aaf84aa6cac6fb6099f54a2cbf7546b730}{QCPAxis::atLeft}))
+13130     result << \hyperlink{class_q_c_p_axis_rect_a2dc336092ccc57d44a46194c8a23e4f4}{addAxis}(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aaf84aa6cac6fb6099f54a2cbf7546b730}{QCPAxis::atLeft});
+13131   \textcolor{keywordflow}{if} (types.testFlag(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aadf5509f7d29199ef2f263b1dd224b345}{QCPAxis::atRight}))
+13132     result << \hyperlink{class_q_c_p_axis_rect_a2dc336092ccc57d44a46194c8a23e4f4}{addAxis}(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aadf5509f7d29199ef2f263b1dd224b345}{QCPAxis::atRight});
+13133   \textcolor{keywordflow}{if} (types.testFlag(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aac0ece2b680d3f545e701f75af1655977}{QCPAxis::atTop}))
+13134     result << \hyperlink{class_q_c_p_axis_rect_a2dc336092ccc57d44a46194c8a23e4f4}{addAxis}(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aac0ece2b680d3f545e701f75af1655977}{QCPAxis::atTop});
+13135   \textcolor{keywordflow}{if} (types.testFlag(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aa220d68888516b6c3b493d144f1ba438f}{QCPAxis::atBottom}))
+13136     result << \hyperlink{class_q_c_p_axis_rect_a2dc336092ccc57d44a46194c8a23e4f4}{addAxis}(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aa220d68888516b6c3b493d144f1ba438f}{QCPAxis::atBottom});
+13137   \textcolor{keywordflow}{return} result;
+13138 \}
 \end{DoxyCode}
 
 
@@ -402,7 +396,7 @@ If an axis rect side already contains one or more axes, the lower and upper endi
 \end{DoxySeeAlso}
 
 
-Definition at line 11859 of file qcustomplot.\+cpp.
+Definition at line 13082 of file qcustomplot.\+cpp.
 
 
 
@@ -414,42 +408,41 @@ Referenced by add\+Axes(), Q\+C\+P\+Axis\+Rect(), and setup\+Full\+Axes\+Box().
 
 
 \begin{DoxyCode}
-11860 \{
-11861   \hyperlink{class_q_c_p_axis}{QCPAxis} *newAxis = \hyperlink{class_q_c_p_axis_rect_a560de44e47a4af0f86c59102a094b1e4}{axis};
-11862   \textcolor{keywordflow}{if} (!newAxis)
-11863   \{
-11864     newAxis = \textcolor{keyword}{new} \hyperlink{class_q_c_p_axis}{QCPAxis}(\textcolor{keyword}{this}, type);
-11865   \} \textcolor{keywordflow}{else} \textcolor{comment}{// user provided existing axis instance, do some sanity checks}
-11866   \{
-11867     \textcolor{keywordflow}{if} (newAxis->\hyperlink{class_q_c_p_axis_a593c37bf6aa4990326dc09e24f45db7f}{axisType}() != type)
-11868     \{
-11869       qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"passed axis has different axis type than specified in type parameter"};
-11870       \textcolor{keywordflow}{return} 0;
-11871     \}
-11872     \textcolor{keywordflow}{if} (newAxis->\hyperlink{class_q_c_p_axis_aada3102af43b029e3879bcbf2bddfabb}{axisRect}() != \textcolor{keyword}{this})
-11873     \{
-11874       qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"passed axis doesn't have this axis rect as parent axis rect"};
-11875       \textcolor{keywordflow}{return} 0;
-11876     \}
-11877     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis_rect_a18dcdc0dd6c7520bc9f3d15a7a3feec2}{axes}().contains(newAxis))
-11878     \{
-11879       qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"passed axis is already owned by this axis rect"};
-11880       \textcolor{keywordflow}{return} 0;
-11881     \}
-11882   \}
-11883   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis_rect_afe7a24d2a2bea98fc552fa826350ba81}{mAxes}[type].\hyperlink{class_q_c_p_axis_rect_a871b9fe49e92b39a3cbe29a59e458536}{size}() > 0) \textcolor{comment}{// multiple axes on one side, add half-bar axis ending to additional
-       axes with offset}
-11884   \{
-11885     \textcolor{keywordtype}{bool} invert = (type == \hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aadf5509f7d29199ef2f263b1dd224b345}{QCPAxis::atRight}) || (type == 
+13082                                                                  \{
+13083   \hyperlink{class_q_c_p_axis}{QCPAxis} *newAxis = \hyperlink{class_q_c_p_axis_rect_a560de44e47a4af0f86c59102a094b1e4}{axis};
+13084   \textcolor{keywordflow}{if} (!newAxis) \{
+13085     newAxis = \textcolor{keyword}{new} \hyperlink{class_q_c_p_axis}{QCPAxis}(\textcolor{keyword}{this}, type);
+13086   \} \textcolor{keywordflow}{else} \textcolor{comment}{// user provided existing axis instance, do some sanity checks}
+13087   \{
+13088     \textcolor{keywordflow}{if} (newAxis->\hyperlink{class_q_c_p_axis_a593c37bf6aa4990326dc09e24f45db7f}{axisType}() != type) \{
+13089       qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"passed axis has different axis type than "}
+13090                                  \textcolor{stringliteral}{"specified in type parameter"};
+13091       \textcolor{keywordflow}{return} 0;
+13092     \}
+13093     \textcolor{keywordflow}{if} (newAxis->\hyperlink{class_q_c_p_axis_aada3102af43b029e3879bcbf2bddfabb}{axisRect}() != \textcolor{keyword}{this}) \{
+13094       qDebug() << Q\_FUNC\_INFO
+13095                << \textcolor{stringliteral}{"passed axis doesn't have this axis rect as parent axis rect"};
+13096       \textcolor{keywordflow}{return} 0;
+13097     \}
+13098     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis_rect_a18dcdc0dd6c7520bc9f3d15a7a3feec2}{axes}().contains(newAxis)) \{
+13099       qDebug() << Q\_FUNC\_INFO
+13100                << \textcolor{stringliteral}{"passed axis is already owned by this axis rect"};
+13101       \textcolor{keywordflow}{return} 0;
+13102     \}
+13103   \}
+13104   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis_rect_ac2cb3ba9a25b733883afc3bd25f7d82b}{mAxes}[type].\hyperlink{class_q_c_p_axis_rect_a871b9fe49e92b39a3cbe29a59e458536}{size}() > 0) \textcolor{comment}{// multiple axes on one side, add half-bar axis}
+13105                               \textcolor{comment}{// ending to additional axes with offset}
+13106   \{
+13107     \textcolor{keywordtype}{bool} invert = (type == \hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aadf5509f7d29199ef2f263b1dd224b345}{QCPAxis::atRight}) || (type == 
       \hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aa220d68888516b6c3b493d144f1ba438f}{QCPAxis::atBottom});
-11886     newAxis->\hyperlink{class_q_c_p_axis_a08af1c72db9ae4dc8cb8a973d44405ab}{setLowerEnding}(\hyperlink{class_q_c_p_line_ending}{QCPLineEnding}(
-      \hyperlink{class_q_c_p_line_ending_a5ef16e6876b4b74959c7261d8d4c2cd5a126c390f0c359fcd8df1fc5e38d26d5b}{QCPLineEnding::esHalfBar}, 6, 10, !invert));
-11887     newAxis->\hyperlink{class_q_c_p_axis_a69119b892fc306f651763596685aa377}{setUpperEnding}(\hyperlink{class_q_c_p_line_ending}{QCPLineEnding}(
-      \hyperlink{class_q_c_p_line_ending_a5ef16e6876b4b74959c7261d8d4c2cd5a126c390f0c359fcd8df1fc5e38d26d5b}{QCPLineEnding::esHalfBar}, 6, 10, invert));
-11888   \}
-11889   \hyperlink{class_q_c_p_axis_rect_afe7a24d2a2bea98fc552fa826350ba81}{mAxes}[type].append(newAxis);
-11890   \textcolor{keywordflow}{return} newAxis;
-11891 \}
+13108     newAxis->\hyperlink{class_q_c_p_axis_a08af1c72db9ae4dc8cb8a973d44405ab}{setLowerEnding}(
+13109         \hyperlink{class_q_c_p_line_ending}{QCPLineEnding}(\hyperlink{class_q_c_p_line_ending_a5ef16e6876b4b74959c7261d8d4c2cd5a126c390f0c359fcd8df1fc5e38d26d5b}{QCPLineEnding::esHalfBar}, 6, 10, !invert));
+13110     newAxis->\hyperlink{class_q_c_p_axis_a69119b892fc306f651763596685aa377}{setUpperEnding}(
+13111         \hyperlink{class_q_c_p_line_ending}{QCPLineEnding}(\hyperlink{class_q_c_p_line_ending_a5ef16e6876b4b74959c7261d8d4c2cd5a126c390f0c359fcd8df1fc5e38d26d5b}{QCPLineEnding::esHalfBar}, 6, 10, invert));
+13112   \}
+13113   \hyperlink{class_q_c_p_axis_rect_ac2cb3ba9a25b733883afc3bd25f7d82b}{mAxes}[type].append(newAxis);
+13114   \textcolor{keywordflow}{return} newAxis;
+13115 \}
 \end{DoxyCode}
 
 
@@ -486,7 +479,7 @@ Reimplemented from \hyperlink{class_q_c_p_layout_element_ad6d2b4bb0291c2441b2e1c
 
 
 
-Definition at line 12161 of file qcustomplot.\+cpp.
+Definition at line 13394 of file qcustomplot.\+cpp.
 
 
 
@@ -494,9 +487,9 @@ References Q\+C\+P\+Painter\+::set\+Antialiasing().
 
 
 \begin{DoxyCode}
-12162 \{
-12163   painter->\hyperlink{class_q_c_p_painter_aaba1deb9188244d9ea65b035112b4d05}{setAntialiasing}(\textcolor{keyword}{false});
-12164 \}
+13394                                                                         \{
+13395   painter->\hyperlink{class_q_c_p_painter_aaba1deb9188244d9ea65b035112b4d05}{setAntialiasing}(\textcolor{keyword}{false});
+13396 \}
 \end{DoxyCode}
 
 
@@ -525,7 +518,7 @@ Returns all axes on the axis rect sides specified with {\itshape types}.
 \end{DoxySeeAlso}
 
 
-Definition at line 11810 of file qcustomplot.\+cpp.
+Definition at line 13027 of file qcustomplot.\+cpp.
 
 
 
@@ -537,18 +530,18 @@ Referenced by Q\+Custom\+Plot\+::rescale\+Axes(), and Q\+Custom\+Plot\+::selecte
 
 
 \begin{DoxyCode}
-11811 \{
-11812   QList<QCPAxis*> result;
-11813   \textcolor{keywordflow}{if} (types.testFlag(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aaf84aa6cac6fb6099f54a2cbf7546b730}{QCPAxis::atLeft}))
-11814     result << \hyperlink{class_q_c_p_axis_rect_afe7a24d2a2bea98fc552fa826350ba81}{mAxes}.value(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aaf84aa6cac6fb6099f54a2cbf7546b730}{QCPAxis::atLeft});
-11815   \textcolor{keywordflow}{if} (types.testFlag(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aadf5509f7d29199ef2f263b1dd224b345}{QCPAxis::atRight}))
-11816     result << \hyperlink{class_q_c_p_axis_rect_afe7a24d2a2bea98fc552fa826350ba81}{mAxes}.value(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aadf5509f7d29199ef2f263b1dd224b345}{QCPAxis::atRight});
-11817   \textcolor{keywordflow}{if} (types.testFlag(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aac0ece2b680d3f545e701f75af1655977}{QCPAxis::atTop}))
-11818     result << \hyperlink{class_q_c_p_axis_rect_afe7a24d2a2bea98fc552fa826350ba81}{mAxes}.value(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aac0ece2b680d3f545e701f75af1655977}{QCPAxis::atTop});
-11819   \textcolor{keywordflow}{if} (types.testFlag(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aa220d68888516b6c3b493d144f1ba438f}{QCPAxis::atBottom}))
-11820     result << \hyperlink{class_q_c_p_axis_rect_afe7a24d2a2bea98fc552fa826350ba81}{mAxes}.value(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aa220d68888516b6c3b493d144f1ba438f}{QCPAxis::atBottom});
-11821   \textcolor{keywordflow}{return} result;
-11822 \}
+13027                                                                \{
+13028   QList<QCPAxis *> result;
+13029   \textcolor{keywordflow}{if} (types.testFlag(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aaf84aa6cac6fb6099f54a2cbf7546b730}{QCPAxis::atLeft}))
+13030     result << \hyperlink{class_q_c_p_axis_rect_ac2cb3ba9a25b733883afc3bd25f7d82b}{mAxes}.value(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aaf84aa6cac6fb6099f54a2cbf7546b730}{QCPAxis::atLeft});
+13031   \textcolor{keywordflow}{if} (types.testFlag(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aadf5509f7d29199ef2f263b1dd224b345}{QCPAxis::atRight}))
+13032     result << \hyperlink{class_q_c_p_axis_rect_ac2cb3ba9a25b733883afc3bd25f7d82b}{mAxes}.value(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aadf5509f7d29199ef2f263b1dd224b345}{QCPAxis::atRight});
+13033   \textcolor{keywordflow}{if} (types.testFlag(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aac0ece2b680d3f545e701f75af1655977}{QCPAxis::atTop}))
+13034     result << \hyperlink{class_q_c_p_axis_rect_ac2cb3ba9a25b733883afc3bd25f7d82b}{mAxes}.value(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aac0ece2b680d3f545e701f75af1655977}{QCPAxis::atTop});
+13035   \textcolor{keywordflow}{if} (types.testFlag(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aa220d68888516b6c3b493d144f1ba438f}{QCPAxis::atBottom}))
+13036     result << \hyperlink{class_q_c_p_axis_rect_ac2cb3ba9a25b733883afc3bd25f7d82b}{mAxes}.value(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aa220d68888516b6c3b493d144f1ba438f}{QCPAxis::atBottom});
+13037   \textcolor{keywordflow}{return} result;
+13038 \}
 \end{DoxyCode}
 
 
@@ -572,7 +565,7 @@ This is an overloaded member function, provided for convenience. It differs from
 
 Returns all axes of this axis rect. 
 
-Definition at line 11828 of file qcustomplot.\+cpp.
+Definition at line 13044 of file qcustomplot.\+cpp.
 
 
 
@@ -584,16 +577,15 @@ Referenced by add\+Axis(), update(), and $\sim$\+Q\+C\+P\+Axis\+Rect().
 
 
 \begin{DoxyCode}
-11829 \{
-11830   QList<QCPAxis*> result;
-11831   QHashIterator<QCPAxis::AxisType, QList<QCPAxis*> > it(\hyperlink{class_q_c_p_axis_rect_afe7a24d2a2bea98fc552fa826350ba81}{mAxes});
-11832   \textcolor{keywordflow}{while} (it.hasNext())
-11833   \{
-11834     it.next();
-11835     result << it.value();
-11836   \}
-11837   \textcolor{keywordflow}{return} result;
-11838 \}
+13044                                          \{
+13045   QList<QCPAxis *> result;
+13046   QHashIterator<QCPAxis::AxisType, QList<QCPAxis *>> it(\hyperlink{class_q_c_p_axis_rect_ac2cb3ba9a25b733883afc3bd25f7d82b}{mAxes});
+13047   \textcolor{keywordflow}{while} (it.hasNext()) \{
+13048     it.next();
+13049     result << it.value();
+13050   \}
+13051   \textcolor{keywordflow}{return} result;
+13052 \}
 \end{DoxyCode}
 
 
@@ -621,7 +613,7 @@ Returns the axis with the given {\itshape index} on the axis rect side specified
 \end{DoxySeeAlso}
 
 
-Definition at line 11789 of file qcustomplot.\+cpp.
+Definition at line 13008 of file qcustomplot.\+cpp.
 
 
 
@@ -633,17 +625,15 @@ Referenced by add\+Axis(), Q\+C\+P\+Color\+Scale\+Axis\+Rect\+Private\+::axis\+S
 
 
 \begin{DoxyCode}
-11790 \{
-11791   QList<QCPAxis*> ax(\hyperlink{class_q_c_p_axis_rect_afe7a24d2a2bea98fc552fa826350ba81}{mAxes}.value(type));
-11792   \textcolor{keywordflow}{if} (index >= 0 && index < ax.size())
-11793   \{
-11794     \textcolor{keywordflow}{return} ax.at(index);
-11795   \} \textcolor{keywordflow}{else}
-11796   \{
-11797     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Axis index out of bounds:"} << index;
-11798     \textcolor{keywordflow}{return} 0;
-11799   \}
-11800 \}
+13008                                                                 \{
+13009   QList<QCPAxis *> ax(\hyperlink{class_q_c_p_axis_rect_ac2cb3ba9a25b733883afc3bd25f7d82b}{mAxes}.value(type));
+13010   \textcolor{keywordflow}{if} (index >= 0 && index < ax.size()) \{
+13011     \textcolor{keywordflow}{return} ax.at(index);
+13012   \} \textcolor{keywordflow}{else} \{
+13013     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Axis index out of bounds:"} << index;
+13014     \textcolor{keywordflow}{return} 0;
+13015   \}
+13016 \}
 \end{DoxyCode}
 
 
@@ -670,7 +660,7 @@ Returns the number of axes on the axis rect side specified with {\itshape type}.
 \end{DoxySeeAlso}
 
 
-Definition at line 11779 of file qcustomplot.\+cpp.
+Definition at line 12998 of file qcustomplot.\+cpp.
 
 
 
@@ -682,9 +672,9 @@ Referenced by setup\+Full\+Axes\+Box().
 
 
 \begin{DoxyCode}
-11780 \{
-11781   \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_axis_rect_afe7a24d2a2bea98fc552fa826350ba81}{mAxes}.value(type).size();
-11782 \}
+12998                                                      \{
+12999   \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_axis_rect_ac2cb3ba9a25b733883afc3bd25f7d82b}{mAxes}.value(type).size();
+13000 \}
 \end{DoxyCode}
 
 
@@ -706,11 +696,11 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_axis_rect_a0daa1dadd2a62dbfa37b7f742edd0059}
 
 
-Definition at line 1987 of file qcustomplot.\+h.
+Definition at line 2310 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-1987 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_axis_rect_a38fb1a15f43228a0c124553649303722}{mBackgroundPixmap}; \}
+2310 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_axis_rect_a38fb1a15f43228a0c124553649303722}{mBackgroundPixmap}; \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_axis_rect_a67c18777b88fe9c81dee3dd2b5f50e5c}{}\index{Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}!background\+Scaled@{background\+Scaled}}
 \index{background\+Scaled@{background\+Scaled}!Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}}
@@ -721,11 +711,11 @@ Definition at line 1987 of file qcustomplot.\+h.
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_axis_rect_a67c18777b88fe9c81dee3dd2b5f50e5c}
 
 
-Definition at line 1988 of file qcustomplot.\+h.
+Definition at line 2311 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-1988 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_axis_rect_a5ad835f0fae5d7cc5ada9e063641dbf1}{mBackgroundScaled}; \}
+2311 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_axis_rect_a5ad835f0fae5d7cc5ada9e063641dbf1}{mBackgroundScaled}; \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_axis_rect_a3d0f42d6be11a0b3d4576402a2b0032d}{}\index{Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}!background\+Scaled\+Mode@{background\+Scaled\+Mode}}
 \index{background\+Scaled\+Mode@{background\+Scaled\+Mode}!Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}}
@@ -736,11 +726,13 @@ Definition at line 1988 of file qcustomplot.\+h.
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_axis_rect_a3d0f42d6be11a0b3d4576402a2b0032d}
 
 
-Definition at line 1989 of file qcustomplot.\+h.
+Definition at line 2312 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-1989 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_axis_rect_a859fd368e794663e346b4f53f35078e9}{mBackgroundScaledMode}; \}
+2312                                                  \{
+2313     \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_axis_rect_a859fd368e794663e346b4f53f35078e9}{mBackgroundScaledMode};
+2314   \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_axis_rect_af2b5982ebe7e6f781b9bf1cc371a60d8}{}\index{Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}!bottom@{bottom}}
 \index{bottom@{bottom}!Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}}
@@ -751,7 +743,7 @@ Definition at line 1989 of file qcustomplot.\+h.
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_axis_rect_af2b5982ebe7e6f781b9bf1cc371a60d8}
 Returns the pixel position of the bottom border of this axis rect. Margins are not taken into account here, so the returned value is with respect to the inner \hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}. 
 
-Definition at line 2028 of file qcustomplot.\+h.
+Definition at line 2354 of file qcustomplot.\+h.
 
 
 
@@ -759,7 +751,7 @@ Referenced by Q\+C\+P\+Axis\+::coord\+To\+Pixel(), Q\+C\+P\+Grid\+::draw\+Grid\+
 
 
 \begin{DoxyCode}
-2028 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}.bottom(); \}
+2354 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}.bottom(); \}
 \end{DoxyCode}
 
 
@@ -781,11 +773,11 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_axis_rect_a724b0333971ea6a338f0dbd814dc97ae}
 Returns the bottom left corner of this axis rect in pixels. Margins are not taken into account here, so the returned value is with respect to the inner \hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}. 
 
-Definition at line 2034 of file qcustomplot.\+h.
+Definition at line 2360 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-2034 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}.bottomLeft(); \}
+2360 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}.bottomLeft(); \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_axis_rect_a49ea3c7dff834b47e266cbf3d79f78b9}{}\index{Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}!bottom\+Right@{bottom\+Right}}
 \index{bottom\+Right@{bottom\+Right}!Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}}
@@ -796,11 +788,11 @@ Definition at line 2034 of file qcustomplot.\+h.
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_axis_rect_a49ea3c7dff834b47e266cbf3d79f78b9}
 Returns the bottom right corner of this axis rect in pixels. Margins are not taken into account here, so the returned value is with respect to the inner \hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}. 
 
-Definition at line 2035 of file qcustomplot.\+h.
+Definition at line 2361 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-2035 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}.bottomRight(); \}
+2361 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}.bottomRight(); \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_axis_rect_ae79f18302e6507586aa8c032a5f9ed1c}{}\index{Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}!calculate\+Auto\+Margin@{calculate\+Auto\+Margin}}
 \index{calculate\+Auto\+Margin@{calculate\+Auto\+Margin}!Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}}
@@ -815,7 +807,7 @@ Reimplemented from \hyperlink{class_q_c_p_layout_element_a005c9f0fe84bc1591a2cf2
 
 
 
-Definition at line 12446 of file qcustomplot.\+cpp.
+Definition at line 13720 of file qcustomplot.\+cpp.
 
 
 
@@ -823,21 +815,22 @@ References Q\+C\+P\+Axis\+::margin\+Side\+To\+Axis\+Type(), Q\+C\+P\+Layout\+Ele
 
 
 \begin{DoxyCode}
-12447 \{
-12448   \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_layout_element_af61c70354d1275778d68206b2a1b2d36}{mAutoMargins}.testFlag(side))
-12449     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Called with side that isn't specified as auto margin"};
-12450   
-12451   \hyperlink{class_q_c_p_axis_rect_a6024ccdc74f5dc0e8a0fe482e5b28a20}{updateAxesOffset}(\hyperlink{class_q_c_p_axis_ac0a6b77bd52bec6c81cd62d167cfeba6}{QCPAxis::marginSideToAxisType}(side));
-12452   
-12453   \textcolor{comment}{// note: only need to look at the last (outer most) axis to determine the total margin, due to
-       updateAxisOffset call}
-12454   \textcolor{keyword}{const} QList<QCPAxis*> axesList = \hyperlink{class_q_c_p_axis_rect_afe7a24d2a2bea98fc552fa826350ba81}{mAxes}.value(
-      \hyperlink{class_q_c_p_axis_ac0a6b77bd52bec6c81cd62d167cfeba6}{QCPAxis::marginSideToAxisType}(side));
-12455   \textcolor{keywordflow}{if} (axesList.size() > 0)
-12456     \textcolor{keywordflow}{return} axesList.last()->offset() + axesList.last()->calculateMargin();
-12457   \textcolor{keywordflow}{else}
-12458     \textcolor{keywordflow}{return} 0;
-12459 \}
+13720                                                        \{
+13721   \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_layout_element_af61c70354d1275778d68206b2a1b2d36}{mAutoMargins}.testFlag(side))
+13722     qDebug() << Q\_FUNC\_INFO
+13723              << \textcolor{stringliteral}{"Called with side that isn't specified as auto margin"};
+13724 
+13725   \hyperlink{class_q_c_p_axis_rect_a6024ccdc74f5dc0e8a0fe482e5b28a20}{updateAxesOffset}(\hyperlink{class_q_c_p_axis_ac0a6b77bd52bec6c81cd62d167cfeba6}{QCPAxis::marginSideToAxisType}(side));
+13726 
+13727   \textcolor{comment}{// note: only need to look at the last (outer most) axis to determine the}
+13728   \textcolor{comment}{// total margin, due to updateAxisOffset call}
+13729   \textcolor{keyword}{const} QList<QCPAxis *> axesList =
+13730       \hyperlink{class_q_c_p_axis_rect_ac2cb3ba9a25b733883afc3bd25f7d82b}{mAxes}.value(\hyperlink{class_q_c_p_axis_ac0a6b77bd52bec6c81cd62d167cfeba6}{QCPAxis::marginSideToAxisType}(side));
+13731   \textcolor{keywordflow}{if} (axesList.size() > 0)
+13732     \textcolor{keywordflow}{return} axesList.last()->offset() + axesList.last()->calculateMargin();
+13733   \textcolor{keywordflow}{else}
+13734     \textcolor{keywordflow}{return} 0;
+13735 \}
 \end{DoxyCode}
 
 
@@ -859,11 +852,11 @@ Here is the call graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_axis_rect_aea5e6042bca198424fa1bc02fc282e59}
 Returns the center of this axis rect in pixels. Margins are not taken into account here, so the returned value is with respect to the inner \hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}. 
 
-Definition at line 2036 of file qcustomplot.\+h.
+Definition at line 2362 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-2036 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}.center(); \}
+2362 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}.center(); \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_axis_rect_afb1bbbbda8345cd2710d92ee48440b53}{}\index{Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}!draw@{draw}}
 \index{draw@{draw}!Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}}
@@ -882,7 +875,7 @@ Reimplemented in \hyperlink{class_q_c_p_color_scale_axis_rect_private_adb67bfe90
 
 
 
-Definition at line 12167 of file qcustomplot.\+cpp.
+Definition at line 13399 of file qcustomplot.\+cpp.
 
 
 
@@ -894,9 +887,7 @@ Referenced by Q\+C\+P\+Color\+Scale\+Axis\+Rect\+Private\+::draw().
 
 
 \begin{DoxyCode}
-12168 \{
-12169   \hyperlink{class_q_c_p_axis_rect_ab49d338d1ce74b476fcead5b32cf06dc}{drawBackground}(painter);
-12170 \}
+13399 \{ \hyperlink{class_q_c_p_axis_rect_ab49d338d1ce74b476fcead5b32cf06dc}{drawBackground}(painter); \}
 \end{DoxyCode}
 
 
@@ -929,7 +920,7 @@ Here is the caller graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_axis_rect_ab49d338d1ce74b476fcead5b32cf06dc}
 
 
-Definition at line 12391 of file qcustomplot.\+cpp.
+Definition at line 13655 of file qcustomplot.\+cpp.
 
 
 
@@ -941,32 +932,31 @@ Referenced by draw().
 
 
 \begin{DoxyCode}
-12392 \{
-12393   \textcolor{comment}{// draw background fill:}
-12394   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis_rect_a5748e1a37f63c428e38b0a7724b46259}{mBackgroundBrush} != Qt::NoBrush)
-12395     painter->fillRect(\hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}, \hyperlink{class_q_c_p_axis_rect_a5748e1a37f63c428e38b0a7724b46259}{mBackgroundBrush});
-12396   
-12397   \textcolor{comment}{// draw background pixmap (on top of fill, if brush specified):}
-12398   \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_axis_rect_a38fb1a15f43228a0c124553649303722}{mBackgroundPixmap}.isNull())
-12399   \{
-12400     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis_rect_a5ad835f0fae5d7cc5ada9e063641dbf1}{mBackgroundScaled})
-12401     \{
-12402       \textcolor{comment}{// check whether mScaledBackground needs to be updated:}
-12403       QSize scaledSize(\hyperlink{class_q_c_p_axis_rect_a38fb1a15f43228a0c124553649303722}{mBackgroundPixmap}.size());
-12404       scaledSize.scale(\hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}.size(), \hyperlink{class_q_c_p_axis_rect_a859fd368e794663e346b4f53f35078e9}{mBackgroundScaledMode});
-12405       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis_rect_aa74b9415598d59b49290e41e42d7ee27}{mScaledBackgroundPixmap}.size() != scaledSize)
-12406         \hyperlink{class_q_c_p_axis_rect_aa74b9415598d59b49290e41e42d7ee27}{mScaledBackgroundPixmap} = \hyperlink{class_q_c_p_axis_rect_a38fb1a15f43228a0c124553649303722}{mBackgroundPixmap}.scaled(
-      \hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}.size(), \hyperlink{class_q_c_p_axis_rect_a859fd368e794663e346b4f53f35078e9}{mBackgroundScaledMode}, Qt::SmoothTransformation);
-12407       painter->drawPixmap(\hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}.topLeft()+QPoint(0, -1), 
-      \hyperlink{class_q_c_p_axis_rect_aa74b9415598d59b49290e41e42d7ee27}{mScaledBackgroundPixmap}, QRect(0, 0, \hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}.width(), 
-      \hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}.height()) & \hyperlink{class_q_c_p_axis_rect_aa74b9415598d59b49290e41e42d7ee27}{mScaledBackgroundPixmap}.rect());
-12408     \} \textcolor{keywordflow}{else}
-12409     \{
-12410       painter->drawPixmap(\hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}.topLeft()+QPoint(0, -1), \hyperlink{class_q_c_p_axis_rect_a38fb1a15f43228a0c124553649303722}{mBackgroundPixmap}, QRect(0, 
-      0, \hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}.width(), \hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}.height()));
-12411     \}
-12412   \}
-12413 \}
+13655                                                     \{
+13656   \textcolor{comment}{// draw background fill:}
+13657   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis_rect_a5748e1a37f63c428e38b0a7724b46259}{mBackgroundBrush} != Qt::NoBrush)
+13658     painter->fillRect(\hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}, \hyperlink{class_q_c_p_axis_rect_a5748e1a37f63c428e38b0a7724b46259}{mBackgroundBrush});
+13659 
+13660   \textcolor{comment}{// draw background pixmap (on top of fill, if brush specified):}
+13661   \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_axis_rect_a38fb1a15f43228a0c124553649303722}{mBackgroundPixmap}.isNull()) \{
+13662     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis_rect_a5ad835f0fae5d7cc5ada9e063641dbf1}{mBackgroundScaled}) \{
+13663       \textcolor{comment}{// check whether mScaledBackground needs to be updated:}
+13664       QSize scaledSize(\hyperlink{class_q_c_p_axis_rect_a38fb1a15f43228a0c124553649303722}{mBackgroundPixmap}.size());
+13665       scaledSize.scale(\hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}.size(), \hyperlink{class_q_c_p_axis_rect_a859fd368e794663e346b4f53f35078e9}{mBackgroundScaledMode});
+13666       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis_rect_aa74b9415598d59b49290e41e42d7ee27}{mScaledBackgroundPixmap}.size() != scaledSize)
+13667         \hyperlink{class_q_c_p_axis_rect_aa74b9415598d59b49290e41e42d7ee27}{mScaledBackgroundPixmap} = \hyperlink{class_q_c_p_axis_rect_a38fb1a15f43228a0c124553649303722}{mBackgroundPixmap}.scaled(
+13668             \hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}.size(), \hyperlink{class_q_c_p_axis_rect_a859fd368e794663e346b4f53f35078e9}{mBackgroundScaledMode}, Qt::SmoothTransformation);
+13669       painter->drawPixmap(\hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}.topLeft() + QPoint(0, -1),
+13670                           \hyperlink{class_q_c_p_axis_rect_aa74b9415598d59b49290e41e42d7ee27}{mScaledBackgroundPixmap},
+13671                           QRect(0, 0, \hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}.width(), \hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}.height()) &
+13672                               \hyperlink{class_q_c_p_axis_rect_aa74b9415598d59b49290e41e42d7ee27}{mScaledBackgroundPixmap}.rect());
+13673     \} \textcolor{keywordflow}{else} \{
+13674       painter->drawPixmap(\hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}.topLeft() + QPoint(0, -1), 
+      \hyperlink{class_q_c_p_axis_rect_a38fb1a15f43228a0c124553649303722}{mBackgroundPixmap},
+13675                           QRect(0, 0, \hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}.width(), \hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}.height()));
+13676     \}
+13677   \}
+13678 \}
 \end{DoxyCode}
 
 
@@ -997,7 +987,7 @@ Reimplemented from \hyperlink{class_q_c_p_layout_element_a311d60d78e62ef8eaaedb1
 
 
 
-Definition at line 12148 of file qcustomplot.\+cpp.
+Definition at line 13383 of file qcustomplot.\+cpp.
 
 
 
@@ -1005,16 +995,15 @@ References Q\+C\+P\+Layout\+::elements(), and m\+Inset\+Layout.
 
 
 \begin{DoxyCode}
-12149 \{
-12150   QList<QCPLayoutElement*> result;
-12151   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis_rect_a255240399e0fd24baad80cbbe46f698a}{mInsetLayout})
-12152   \{
-12153     result << \hyperlink{class_q_c_p_axis_rect_a255240399e0fd24baad80cbbe46f698a}{mInsetLayout};
-12154     \textcolor{keywordflow}{if} (recursive)
-12155       result << mInsetLayout->\hyperlink{class_q_c_p_layout_a51fe2675b53e829130b229bc1f7b0f99}{elements}(recursive);
-12156   \}
-12157   \textcolor{keywordflow}{return} result;
-12158 \}
+13383                                                                     \{
+13384   QList<QCPLayoutElement *> result;
+13385   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis_rect_a255240399e0fd24baad80cbbe46f698a}{mInsetLayout}) \{
+13386     result << \hyperlink{class_q_c_p_axis_rect_a255240399e0fd24baad80cbbe46f698a}{mInsetLayout};
+13387     \textcolor{keywordflow}{if} (recursive)
+13388       result << mInsetLayout->\hyperlink{class_q_c_p_layout_a51fe2675b53e829130b229bc1f7b0f99}{elements}(recursive);
+13389   \}
+13390   \textcolor{keywordflow}{return} result;
+13391 \}
 \end{DoxyCode}
 
 
@@ -1043,7 +1032,7 @@ A graph is considered associated with an axis rect if its key or value axis (or 
 \end{DoxySeeAlso}
 
 
-Definition at line 12065 of file qcustomplot.\+cpp.
+Definition at line 13300 of file qcustomplot.\+cpp.
 
 
 
@@ -1051,17 +1040,17 @@ References i, Q\+Custom\+Plot\+::m\+Graphs, and Q\+C\+P\+Layerable\+::m\+Parent\
 
 
 \begin{DoxyCode}
-12066 \{
-12067   \textcolor{comment}{// Note: don't append all QCPAxis::graphs() into a list, because we might get duplicate entries}
-12068   QList<QCPGraph*> result;
-12069   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}<\hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_adaf8d407d72a725169d7dbed2ee386bb}{mGraphs}.size(); ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
-12070   \{
-12071     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_adaf8d407d72a725169d7dbed2ee386bb}{mGraphs}.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->keyAxis()->axisRect() == \textcolor{keyword}{this} || 
-      \hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_adaf8d407d72a725169d7dbed2ee386bb}{mGraphs}.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->valueAxis()->axisRect() == \textcolor{keyword}{this})
-12072       result.append(\hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_adaf8d407d72a725169d7dbed2ee386bb}{mGraphs}.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}));
-12073   \}
-12074   \textcolor{keywordflow}{return} result;
-12075 \}
+13300                                             \{
+13301   \textcolor{comment}{// Note: don't append all QCPAxis::graphs() into a list, because we might get}
+13302   \textcolor{comment}{// duplicate entries}
+13303   QList<QCPGraph *> result;
+13304   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < \hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_a38676b141ac8005fca4882a73ddfaf59}{mGraphs}.size(); ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) \{
+13305     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_a38676b141ac8005fca4882a73ddfaf59}{mGraphs}.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->keyAxis()->axisRect() == \textcolor{keyword}{this} ||
+13306         \hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_a38676b141ac8005fca4882a73ddfaf59}{mGraphs}.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->valueAxis()->axisRect() == \textcolor{keyword}{this})
+13307       result.append(\hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_a38676b141ac8005fca4882a73ddfaf59}{mGraphs}.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}));
+13308   \}
+13309   \textcolor{keywordflow}{return} result;
+13310 \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_axis_rect_a1c55c4f3bef40cf01b21820316c8469e}{}\index{Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}!height@{height}}
 \index{height@{height}!Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}}
@@ -1072,7 +1061,7 @@ References i, Q\+Custom\+Plot\+::m\+Graphs, and Q\+C\+P\+Layerable\+::m\+Parent\
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_axis_rect_a1c55c4f3bef40cf01b21820316c8469e}
 Returns the pixel height of this axis rect. Margins are not taken into account here, so the returned value is with respect to the inner \hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}. 
 
-Definition at line 2030 of file qcustomplot.\+h.
+Definition at line 2356 of file qcustomplot.\+h.
 
 
 
@@ -1080,7 +1069,7 @@ Referenced by Q\+C\+P\+Axis\+::coord\+To\+Pixel(), Q\+C\+P\+Bars\+Group\+::get\+
 
 
 \begin{DoxyCode}
-2030 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}.height(); \}
+2356 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}.height(); \}
 \end{DoxyCode}
 
 
@@ -1107,7 +1096,7 @@ Returns the inset layout of this axis rect. It can be used to place other layout
 \end{DoxySeeAlso}
 
 
-Definition at line 2017 of file qcustomplot.\+h.
+Definition at line 2343 of file qcustomplot.\+h.
 
 
 
@@ -1115,7 +1104,7 @@ Referenced by Q\+Custom\+Plot\+::\+Q\+Custom\+Plot().
 
 
 \begin{DoxyCode}
-2017 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_axis_rect_a255240399e0fd24baad80cbbe46f698a}{mInsetLayout}; \}
+2343 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_axis_rect_a255240399e0fd24baad80cbbe46f698a}{mInsetLayout}; \}
 \end{DoxyCode}
 
 
@@ -1144,7 +1133,7 @@ An item is considered associated with an axis rect if any of its positions has k
 \end{DoxySeeAlso}
 
 
-Definition at line 12087 of file qcustomplot.\+cpp.
+Definition at line 13324 of file qcustomplot.\+cpp.
 
 
 
@@ -1152,31 +1141,29 @@ References Q\+Custom\+Plot\+::m\+Items, and Q\+C\+P\+Layerable\+::m\+Parent\+Plo
 
 
 \begin{DoxyCode}
-12088 \{
-12089   \textcolor{comment}{// Note: don't just append all QCPAxis::items() into a list, because we might get duplicate entries}
-12090   \textcolor{comment}{//       and miss those items that have this axis rect as clipAxisRect.}
-12091   QList<QCPAbstractItem*> result;
-12092   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} itemId=0; itemId<\hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_a6a93905372326e31e98d6c3bc8953ec8}{mItems}.size(); ++itemId)
-12093   \{
-12094     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_a6a93905372326e31e98d6c3bc8953ec8}{mItems}.at(itemId)->clipAxisRect() == \textcolor{keyword}{this})
-12095     \{
-12096       result.append(\hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_a6a93905372326e31e98d6c3bc8953ec8}{mItems}.at(itemId));
-12097       \textcolor{keywordflow}{continue};
-12098     \}
-12099     QList<QCPItemPosition*> positions = \hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_a6a93905372326e31e98d6c3bc8953ec8}{mItems}.at(itemId)->positions();
-12100     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} posId=0; posId<positions.size(); ++posId)
-12101     \{
-12102       \textcolor{keywordflow}{if} (positions.at(posId)->axisRect() == \textcolor{keyword}{this} ||
-12103           positions.at(posId)->keyAxis()->axisRect() == \textcolor{keyword}{this} ||
-12104           positions.at(posId)->valueAxis()->axisRect() == \textcolor{keyword}{this})
-12105       \{
-12106         result.append(\hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_a6a93905372326e31e98d6c3bc8953ec8}{mItems}.at(itemId));
-12107         \textcolor{keywordflow}{break};
-12108       \}
-12109     \}
-12110   \}
-12111   \textcolor{keywordflow}{return} result;
-12112 \}
+13324                                                   \{
+13325   \textcolor{comment}{// Note: don't just append all QCPAxis::items() into a list, because we might}
+13326   \textcolor{comment}{// get duplicate entries}
+13327   \textcolor{comment}{//       and miss those items that have this axis rect as clipAxisRect.}
+13328   QList<QCPAbstractItem *> result;
+13329   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} itemId = 0; itemId < \hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_afa5fd6957169dfef2e4e7815a04c36e0}{mItems}.size(); ++itemId) \{
+13330     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_afa5fd6957169dfef2e4e7815a04c36e0}{mItems}.at(itemId)->clipAxisRect() == \textcolor{keyword}{this}) \{
+13331       result.append(\hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_afa5fd6957169dfef2e4e7815a04c36e0}{mItems}.at(itemId));
+13332       \textcolor{keywordflow}{continue};
+13333     \}
+13334     QList<QCPItemPosition *> positions =
+13335         \hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_afa5fd6957169dfef2e4e7815a04c36e0}{mItems}.at(itemId)->positions();
+13336     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} posId = 0; posId < positions.size(); ++posId) \{
+13337       \textcolor{keywordflow}{if} (positions.at(posId)->axisRect() == \textcolor{keyword}{this} ||
+13338           positions.at(posId)->keyAxis()->axisRect() == \textcolor{keyword}{this} ||
+13339           positions.at(posId)->valueAxis()->axisRect() == \textcolor{keyword}{this}) \{
+13340         result.append(\hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_afa5fd6957169dfef2e4e7815a04c36e0}{mItems}.at(itemId));
+13341         \textcolor{keywordflow}{break};
+13342       \}
+13343     \}
+13344   \}
+13345   \textcolor{keywordflow}{return} result;
+13346 \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_axis_rect_a55b3ecf72a3a65b053f7651b88db458d}{}\index{Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}!left@{left}}
 \index{left@{left}!Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}}
@@ -1187,7 +1174,7 @@ References Q\+Custom\+Plot\+::m\+Items, and Q\+C\+P\+Layerable\+::m\+Parent\+Plo
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_axis_rect_a55b3ecf72a3a65b053f7651b88db458d}
 Returns the pixel position of the left border of this axis rect. Margins are not taken into account here, so the returned value is with respect to the inner \hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}. 
 
-Definition at line 2025 of file qcustomplot.\+h.
+Definition at line 2351 of file qcustomplot.\+h.
 
 
 
@@ -1195,7 +1182,7 @@ Referenced by Q\+C\+P\+Axis\+::coord\+To\+Pixel(), Q\+C\+P\+Grid\+::draw\+Grid\+
 
 
 \begin{DoxyCode}
-2025 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}.left(); \}
+2351 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}.left(); \}
 \end{DoxyCode}
 
 
@@ -1221,7 +1208,7 @@ Reimplemented from \hyperlink{class_q_c_p_layout_element_a14f4acf58cdb8dd2c6c571
 
 
 
-Definition at line 12502 of file qcustomplot.\+cpp.
+Definition at line 13781 of file qcustomplot.\+cpp.
 
 
 
@@ -1229,58 +1216,58 @@ References Q\+C\+P\+::ae\+All, Q\+Custom\+Plot\+::interactions(), Q\+C\+P\+::i\+
 
 
 \begin{DoxyCode}
-12503 \{
-12504   \textcolor{comment}{// Mouse range dragging interaction:}
-12505   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis_rect_ab49a6698194cf0e9e38a1d734c0888a8}{mDragging} && \hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_a12401c02b6949a717f5749bb28c62983}{interactions}().testFlag(
-      \hyperlink{namespace_q_c_p_a2ad6bb6281c7c2d593d4277b44c2b037a2c4432b9aceafb94000be8d1b589ef18}{QCP::iRangeDrag}))
-12506   \{
-12507     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis_rect_aa9f107f66ca3469ad50ee6cea7c9e237}{mRangeDrag}.testFlag(Qt::Horizontal))
-12508     \{
-12509       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis}{QCPAxis} *rangeDragHorzAxis = \hyperlink{class_q_c_p_axis_rect_aeaaa38c6d2030dd5f84461e2596e41e3}{mRangeDragHorzAxis}.data())
-12510       \{
-12511         \textcolor{keywordflow}{if} (rangeDragHorzAxis->mScaleType == \hyperlink{class_q_c_p_axis_a36d8e8658dbaa179bf2aeb973db2d6f0aff6e30a11a828bc850caffab0ff994f6}{QCPAxis::stLinear})
-12512         \{
-12513           \textcolor{keywordtype}{double} diff = rangeDragHorzAxis->pixelToCoord(\hyperlink{class_q_c_p_axis_rect_a032896b28f83a58010d8d533b78c49df}{mDragStart}.x()) - rangeDragHorzAxis->
-      pixelToCoord(event->pos().x());
-12514           rangeDragHorzAxis->setRange(\hyperlink{class_q_c_p_axis_rect_a41936cf473ec638bec382f5a40cdb1f3}{mDragStartHorzRange}.
-      \hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}+diff, \hyperlink{class_q_c_p_axis_rect_a41936cf473ec638bec382f5a40cdb1f3}{mDragStartHorzRange}.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper}+diff);
-12515         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (rangeDragHorzAxis->mScaleType == \hyperlink{class_q_c_p_axis_a36d8e8658dbaa179bf2aeb973db2d6f0abf5b785ad976618816dc6f79b73216d4}{QCPAxis::stLogarithmic})
-12516         \{
-12517           \textcolor{keywordtype}{double} diff = rangeDragHorzAxis->pixelToCoord(\hyperlink{class_q_c_p_axis_rect_a032896b28f83a58010d8d533b78c49df}{mDragStart}.x()) / rangeDragHorzAxis->
-      pixelToCoord(event->pos().x());
-12518           rangeDragHorzAxis->setRange(\hyperlink{class_q_c_p_axis_rect_a41936cf473ec638bec382f5a40cdb1f3}{mDragStartHorzRange}.
-      \hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}*diff, \hyperlink{class_q_c_p_axis_rect_a41936cf473ec638bec382f5a40cdb1f3}{mDragStartHorzRange}.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper}*diff);
-12519         \}
-12520       \}
-12521     \}
-12522     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis_rect_aa9f107f66ca3469ad50ee6cea7c9e237}{mRangeDrag}.testFlag(Qt::Vertical))
-12523     \{
-12524       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis}{QCPAxis} *rangeDragVertAxis = \hyperlink{class_q_c_p_axis_rect_a3e41dffec18987366f2a8ffd80689c12}{mRangeDragVertAxis}.data())
-12525       \{
-12526         \textcolor{keywordflow}{if} (rangeDragVertAxis->mScaleType == \hyperlink{class_q_c_p_axis_a36d8e8658dbaa179bf2aeb973db2d6f0aff6e30a11a828bc850caffab0ff994f6}{QCPAxis::stLinear})
-12527         \{
-12528           \textcolor{keywordtype}{double} diff = rangeDragVertAxis->pixelToCoord(\hyperlink{class_q_c_p_axis_rect_a032896b28f83a58010d8d533b78c49df}{mDragStart}.y()) - rangeDragVertAxis->
-      pixelToCoord(event->pos().y());
-12529           rangeDragVertAxis->setRange(\hyperlink{class_q_c_p_axis_rect_a1a5ae4c74b8bd46baf91bf4e4f4165f0}{mDragStartVertRange}.
-      \hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}+diff, \hyperlink{class_q_c_p_axis_rect_a1a5ae4c74b8bd46baf91bf4e4f4165f0}{mDragStartVertRange}.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper}+diff);
-12530         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (rangeDragVertAxis->mScaleType == \hyperlink{class_q_c_p_axis_a36d8e8658dbaa179bf2aeb973db2d6f0abf5b785ad976618816dc6f79b73216d4}{QCPAxis::stLogarithmic})
-12531         \{
-12532           \textcolor{keywordtype}{double} diff = rangeDragVertAxis->pixelToCoord(\hyperlink{class_q_c_p_axis_rect_a032896b28f83a58010d8d533b78c49df}{mDragStart}.y()) / rangeDragVertAxis->
-      pixelToCoord(event->pos().y());
-12533           rangeDragVertAxis->setRange(\hyperlink{class_q_c_p_axis_rect_a1a5ae4c74b8bd46baf91bf4e4f4165f0}{mDragStartVertRange}.
-      \hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}*diff, \hyperlink{class_q_c_p_axis_rect_a1a5ae4c74b8bd46baf91bf4e4f4165f0}{mDragStartVertRange}.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper}*diff);
-12534         \}
-12535       \}
-12536     \}
-12537     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis_rect_aa9f107f66ca3469ad50ee6cea7c9e237}{mRangeDrag} != 0) \textcolor{comment}{// if either vertical or horizontal drag was enabled, do a replot}
-12538     \{
-12539       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_ae07f2895a34d13a97a10cae4d8e17a36}{noAntialiasingOnDrag}())
-12540         \hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_ae10d685b5eabea2999fb8775ca173c24}{setNotAntialiasedElements}(
+13781                                                    \{
+13782   \textcolor{comment}{// Mouse range dragging interaction:}
+13783   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis_rect_ab49a6698194cf0e9e38a1d734c0888a8}{mDragging} && \hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_a12401c02b6949a717f5749bb28c62983}{interactions}().testFlag(
+      \hyperlink{namespace_q_c_p_a2ad6bb6281c7c2d593d4277b44c2b037a2c4432b9aceafb94000be8d1b589ef18}{QCP::iRangeDrag})) \{
+13784     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis_rect_aa9f107f66ca3469ad50ee6cea7c9e237}{mRangeDrag}.testFlag(Qt::Horizontal)) \{
+13785       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis}{QCPAxis} *rangeDragHorzAxis = \hyperlink{class_q_c_p_axis_rect_aeaaa38c6d2030dd5f84461e2596e41e3}{mRangeDragHorzAxis}.data()) \{
+13786         \textcolor{keywordflow}{if} (rangeDragHorzAxis->mScaleType == \hyperlink{class_q_c_p_axis_a36d8e8658dbaa179bf2aeb973db2d6f0aff6e30a11a828bc850caffab0ff994f6}{QCPAxis::stLinear}) \{
+13787           \textcolor{keywordtype}{double} diff = rangeDragHorzAxis->pixelToCoord(\hyperlink{class_q_c_p_axis_rect_a032896b28f83a58010d8d533b78c49df}{mDragStart}.x()) -
+13788                         rangeDragHorzAxis->pixelToCoord(event->pos().x());
+13789           rangeDragHorzAxis->setRange(\hyperlink{class_q_c_p_axis_rect_a41936cf473ec638bec382f5a40cdb1f3}{mDragStartHorzRange}.
+      \hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} + diff,
+13790                                       \hyperlink{class_q_c_p_axis_rect_a41936cf473ec638bec382f5a40cdb1f3}{mDragStartHorzRange}.
+      \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} + diff);
+13791         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (rangeDragHorzAxis->mScaleType == \hyperlink{class_q_c_p_axis_a36d8e8658dbaa179bf2aeb973db2d6f0abf5b785ad976618816dc6f79b73216d4}{QCPAxis::stLogarithmic}) \{
+13792           \textcolor{keywordtype}{double} diff = rangeDragHorzAxis->pixelToCoord(\hyperlink{class_q_c_p_axis_rect_a032896b28f83a58010d8d533b78c49df}{mDragStart}.x()) /
+13793                         rangeDragHorzAxis->pixelToCoord(event->pos().x());
+13794           rangeDragHorzAxis->setRange(\hyperlink{class_q_c_p_axis_rect_a41936cf473ec638bec382f5a40cdb1f3}{mDragStartHorzRange}.
+      \hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} * diff,
+13795                                       \hyperlink{class_q_c_p_axis_rect_a41936cf473ec638bec382f5a40cdb1f3}{mDragStartHorzRange}.
+      \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} * diff);
+13796         \}
+13797       \}
+13798     \}
+13799     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis_rect_aa9f107f66ca3469ad50ee6cea7c9e237}{mRangeDrag}.testFlag(Qt::Vertical)) \{
+13800       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis}{QCPAxis} *rangeDragVertAxis = \hyperlink{class_q_c_p_axis_rect_a3e41dffec18987366f2a8ffd80689c12}{mRangeDragVertAxis}.data()) \{
+13801         \textcolor{keywordflow}{if} (rangeDragVertAxis->mScaleType == \hyperlink{class_q_c_p_axis_a36d8e8658dbaa179bf2aeb973db2d6f0aff6e30a11a828bc850caffab0ff994f6}{QCPAxis::stLinear}) \{
+13802           \textcolor{keywordtype}{double} diff = rangeDragVertAxis->pixelToCoord(\hyperlink{class_q_c_p_axis_rect_a032896b28f83a58010d8d533b78c49df}{mDragStart}.y()) -
+13803                         rangeDragVertAxis->pixelToCoord(event->pos().y());
+13804           rangeDragVertAxis->setRange(\hyperlink{class_q_c_p_axis_rect_a1a5ae4c74b8bd46baf91bf4e4f4165f0}{mDragStartVertRange}.
+      \hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} + diff,
+13805                                       \hyperlink{class_q_c_p_axis_rect_a1a5ae4c74b8bd46baf91bf4e4f4165f0}{mDragStartVertRange}.
+      \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} + diff);
+13806         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (rangeDragVertAxis->mScaleType == \hyperlink{class_q_c_p_axis_a36d8e8658dbaa179bf2aeb973db2d6f0abf5b785ad976618816dc6f79b73216d4}{QCPAxis::stLogarithmic}) \{
+13807           \textcolor{keywordtype}{double} diff = rangeDragVertAxis->pixelToCoord(\hyperlink{class_q_c_p_axis_rect_a032896b28f83a58010d8d533b78c49df}{mDragStart}.y()) /
+13808                         rangeDragVertAxis->pixelToCoord(event->pos().y());
+13809           rangeDragVertAxis->setRange(\hyperlink{class_q_c_p_axis_rect_a1a5ae4c74b8bd46baf91bf4e4f4165f0}{mDragStartVertRange}.
+      \hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} * diff,
+13810                                       \hyperlink{class_q_c_p_axis_rect_a1a5ae4c74b8bd46baf91bf4e4f4165f0}{mDragStartVertRange}.
+      \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} * diff);
+13811         \}
+13812       \}
+13813     \}
+13814     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis_rect_aa9f107f66ca3469ad50ee6cea7c9e237}{mRangeDrag} !=
+13815         0) \textcolor{comment}{// if either vertical or horizontal drag was enabled, do a replot}
+13816     \{
+13817       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_ae07f2895a34d13a97a10cae4d8e17a36}{noAntialiasingOnDrag}())
+13818         \hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_ae10d685b5eabea2999fb8775ca173c24}{setNotAntialiasedElements}(
       \hyperlink{namespace_q_c_p_ae55dbe315d41fe80f29ba88100843a0caa897c232a0ffc8368e7c100ffc59ef31}{QCP::aeAll});
-12541       \hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_a606fd384b2a637ce2c24899bcbde77d6}{replot}();
-12542     \}
-12543   \}
-12544 \}
+13819       \hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_a606fd384b2a637ce2c24899bcbde77d6}{replot}();
+13820     \}
+13821   \}
+13822 \}
 \end{DoxyCode}
 
 
@@ -1306,7 +1293,7 @@ Reimplemented from \hyperlink{class_q_c_p_layout_element_a2d82ea21fe0ee628f177bd
 
 
 
-Definition at line 12472 of file qcustomplot.\+cpp.
+Definition at line 13751 of file qcustomplot.\+cpp.
 
 
 
@@ -1314,30 +1301,29 @@ References Q\+Custom\+Plot\+::antialiased\+Elements(), Q\+Custom\+Plot\+::intera
 
 
 \begin{DoxyCode}
-12473 \{
-12474   \hyperlink{class_q_c_p_axis_rect_a032896b28f83a58010d8d533b78c49df}{mDragStart} = \textcolor{keyword}{event}->pos(); \textcolor{comment}{// need this even when not LeftButton is pressed, to determine in
-       releaseEvent whether it was a full click (no position change between press and release)}
-12475   \textcolor{keywordflow}{if} (event->buttons() & Qt::LeftButton)
-12476   \{
-12477     \hyperlink{class_q_c_p_axis_rect_ab49a6698194cf0e9e38a1d734c0888a8}{mDragging} = \textcolor{keyword}{true};
-12478     \textcolor{comment}{// initialize antialiasing backup in case we start dragging:}
-12479     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_ae07f2895a34d13a97a10cae4d8e17a36}{noAntialiasingOnDrag}())
-12480     \{
-12481       \hyperlink{class_q_c_p_axis_rect_aa4a24f76360cfebe1bcf17a77fa7521b}{mAADragBackup} = \hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_a81e954fbb485bb44c609e5707f0067b3}{antialiasedElements}();
-12482       \hyperlink{class_q_c_p_axis_rect_a6fcb12e052e276d57efbb128be31d6f5}{mNotAADragBackup} = \hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->
+13751                                                     \{
+13752   \hyperlink{class_q_c_p_axis_rect_a032896b28f83a58010d8d533b78c49df}{mDragStart} = \textcolor{keyword}{event}->pos(); \textcolor{comment}{// need this even when not LeftButton is pressed,}
+13753                              \textcolor{comment}{// to determine in releaseEvent whether it was a}
+13754                              \textcolor{comment}{// full click (no position change between press and}
+13755                              \textcolor{comment}{// release)}
+13756   \textcolor{keywordflow}{if} (event->buttons() & Qt::LeftButton) \{
+13757     \hyperlink{class_q_c_p_axis_rect_ab49a6698194cf0e9e38a1d734c0888a8}{mDragging} = \textcolor{keyword}{true};
+13758     \textcolor{comment}{// initialize antialiasing backup in case we start dragging:}
+13759     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_ae07f2895a34d13a97a10cae4d8e17a36}{noAntialiasingOnDrag}()) \{
+13760       \hyperlink{class_q_c_p_axis_rect_aa4a24f76360cfebe1bcf17a77fa7521b}{mAADragBackup} = \hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_a81e954fbb485bb44c609e5707f0067b3}{antialiasedElements}();
+13761       \hyperlink{class_q_c_p_axis_rect_a6fcb12e052e276d57efbb128be31d6f5}{mNotAADragBackup} = \hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->
       \hyperlink{class_q_custom_plot_a8060cee59757213764382a78d3196189}{notAntialiasedElements}();
-12483     \}
-12484     \textcolor{comment}{// Mouse range dragging interaction:}
-12485     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_a12401c02b6949a717f5749bb28c62983}{interactions}().testFlag(
-      \hyperlink{namespace_q_c_p_a2ad6bb6281c7c2d593d4277b44c2b037a2c4432b9aceafb94000be8d1b589ef18}{QCP::iRangeDrag}))
-12486     \{
-12487       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis_rect_aeaaa38c6d2030dd5f84461e2596e41e3}{mRangeDragHorzAxis})
-12488         \hyperlink{class_q_c_p_axis_rect_a41936cf473ec638bec382f5a40cdb1f3}{mDragStartHorzRange} = \hyperlink{class_q_c_p_axis_rect_aeaaa38c6d2030dd5f84461e2596e41e3}{mRangeDragHorzAxis}.data()->range();
-12489       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis_rect_a3e41dffec18987366f2a8ffd80689c12}{mRangeDragVertAxis})
-12490         \hyperlink{class_q_c_p_axis_rect_a1a5ae4c74b8bd46baf91bf4e4f4165f0}{mDragStartVertRange} = \hyperlink{class_q_c_p_axis_rect_a3e41dffec18987366f2a8ffd80689c12}{mRangeDragVertAxis}.data()->range();
-12491     \}
-12492   \}
-12493 \}
+13762     \}
+13763     \textcolor{comment}{// Mouse range dragging interaction:}
+13764     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_a12401c02b6949a717f5749bb28c62983}{interactions}().testFlag(
+      \hyperlink{namespace_q_c_p_a2ad6bb6281c7c2d593d4277b44c2b037a2c4432b9aceafb94000be8d1b589ef18}{QCP::iRangeDrag})) \{
+13765       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis_rect_aeaaa38c6d2030dd5f84461e2596e41e3}{mRangeDragHorzAxis})
+13766         \hyperlink{class_q_c_p_axis_rect_a41936cf473ec638bec382f5a40cdb1f3}{mDragStartHorzRange} = \hyperlink{class_q_c_p_axis_rect_aeaaa38c6d2030dd5f84461e2596e41e3}{mRangeDragHorzAxis}.data()->range();
+13767       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis_rect_a3e41dffec18987366f2a8ffd80689c12}{mRangeDragVertAxis})
+13768         \hyperlink{class_q_c_p_axis_rect_a1a5ae4c74b8bd46baf91bf4e4f4165f0}{mDragStartVertRange} = \hyperlink{class_q_c_p_axis_rect_a3e41dffec18987366f2a8ffd80689c12}{mRangeDragVertAxis}.data()->range();
+13769     \}
+13770   \}
+13771 \}
 \end{DoxyCode}
 
 
@@ -1363,7 +1349,7 @@ Reimplemented from \hyperlink{class_q_c_p_layout_element_ae526ac828cce1e5bb94eaa
 
 
 
-Definition at line 12547 of file qcustomplot.\+cpp.
+Definition at line 13825 of file qcustomplot.\+cpp.
 
 
 
@@ -1371,17 +1357,16 @@ References m\+A\+A\+Drag\+Backup, m\+Dragging, m\+Not\+A\+A\+Drag\+Backup, Q\+C\
 
 
 \begin{DoxyCode}
-12548 \{
-12549   Q\_UNUSED(event)
-12550   \hyperlink{class_q_c_p_axis_rect_ab49a6698194cf0e9e38a1d734c0888a8}{mDragging} = false;
-12551   if (\hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->noAntialiasingOnDrag())
-12552   \{
-12553     \hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_af6f91e5eab1be85f67c556e98c3745e8}{setAntialiasedElements}(
+13825                                                       \{
+13826   Q\_UNUSED(event)
+13827   \hyperlink{class_q_c_p_axis_rect_ab49a6698194cf0e9e38a1d734c0888a8}{mDragging} = false;
+13828   if (\hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->noAntialiasingOnDrag()) \{
+13829     \hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_af6f91e5eab1be85f67c556e98c3745e8}{setAntialiasedElements}(
       \hyperlink{class_q_c_p_axis_rect_aa4a24f76360cfebe1bcf17a77fa7521b}{mAADragBackup});
-12554     \hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_ae10d685b5eabea2999fb8775ca173c24}{setNotAntialiasedElements}(
+13830     \hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_ae10d685b5eabea2999fb8775ca173c24}{setNotAntialiasedElements}(
       \hyperlink{class_q_c_p_axis_rect_a6fcb12e052e276d57efbb128be31d6f5}{mNotAADragBackup});
-12555   \}
-12556 \}
+13831   \}
+13832 \}
 \end{DoxyCode}
 
 
@@ -1410,7 +1395,7 @@ A plottable is considered associated with an axis rect if its key or value axis 
 \end{DoxySeeAlso}
 
 
-Definition at line 12045 of file qcustomplot.\+cpp.
+Definition at line 13279 of file qcustomplot.\+cpp.
 
 
 
@@ -1418,17 +1403,18 @@ References i, Q\+C\+P\+Layerable\+::m\+Parent\+Plot, and Q\+Custom\+Plot\+::m\+P
 
 
 \begin{DoxyCode}
-12046 \{
-12047   \textcolor{comment}{// Note: don't append all QCPAxis::plottables() into a list, because we might get duplicate entries}
-12048   QList<QCPAbstractPlottable*> result;
-12049   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}<\hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_a62bf8e4e7f8d23fc1e9301ba0148269f}{mPlottables}.size(); ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
-12050   \{
-12051     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_a62bf8e4e7f8d23fc1e9301ba0148269f}{mPlottables}.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->keyAxis()->axisRect() == \textcolor{keyword}{this} ||
-      \hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_a62bf8e4e7f8d23fc1e9301ba0148269f}{mPlottables}.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->valueAxis()->axisRect() == \textcolor{keyword}{this})
-12052       result.append(\hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_a62bf8e4e7f8d23fc1e9301ba0148269f}{mPlottables}.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}));
-12053   \}
-12054   \textcolor{keywordflow}{return} result;
-12055 \}
+13279                                                             \{
+13280   \textcolor{comment}{// Note: don't append all QCPAxis::plottables() into a list, because we might}
+13281   \textcolor{comment}{// get duplicate entries}
+13282   QList<QCPAbstractPlottable *> result;
+13283   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < \hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_a4b6c694fbdb2f201626f71eff2d1694e}{mPlottables}.size(); ++
+      \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) \{
+13284     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_a4b6c694fbdb2f201626f71eff2d1694e}{mPlottables}.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->keyAxis()->axisRect() == \textcolor{keyword}{this} ||
+13285         \hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_a4b6c694fbdb2f201626f71eff2d1694e}{mPlottables}.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->valueAxis()->axisRect() == \textcolor{keyword}{this})
+13286       result.append(\hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_a4b6c694fbdb2f201626f71eff2d1694e}{mPlottables}.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}));
+13287   \}
+13288   \textcolor{keywordflow}{return} result;
+13289 \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_axis_rect_af24b46954ce27a26b23770cdb8319080}{}\index{Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}!range\+Drag@{range\+Drag}}
 \index{range\+Drag@{range\+Drag}!Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}}
@@ -1439,11 +1425,11 @@ References i, Q\+C\+P\+Layerable\+::m\+Parent\+Plot, and Q\+Custom\+Plot\+::m\+P
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_axis_rect_af24b46954ce27a26b23770cdb8319080}
 
 
-Definition at line 1990 of file qcustomplot.\+h.
+Definition at line 2315 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-1990 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_axis_rect_aa9f107f66ca3469ad50ee6cea7c9e237}{mRangeDrag}; \}
+2315 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_axis_rect_aa9f107f66ca3469ad50ee6cea7c9e237}{mRangeDrag}; \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_axis_rect_a6d7c22cfc54fac7a3d6ef80b133a8574}{}\index{Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}!range\+Drag\+Axis@{range\+Drag\+Axis}}
 \index{range\+Drag\+Axis@{range\+Drag\+Axis}!Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}}
@@ -1459,7 +1445,7 @@ Returns the range drag axis of the {\itshape orientation} provided.
 \end{DoxySeeAlso}
 
 
-Definition at line 12256 of file qcustomplot.\+cpp.
+Definition at line 13499 of file qcustomplot.\+cpp.
 
 
 
@@ -1467,10 +1453,10 @@ References m\+Range\+Drag\+Horz\+Axis, and m\+Range\+Drag\+Vert\+Axis.
 
 
 \begin{DoxyCode}
-12257 \{
-12258   \textcolor{keywordflow}{return} (orientation == Qt::Horizontal ? \hyperlink{class_q_c_p_axis_rect_aeaaa38c6d2030dd5f84461e2596e41e3}{mRangeDragHorzAxis}.data() : 
-      \hyperlink{class_q_c_p_axis_rect_a3e41dffec18987366f2a8ffd80689c12}{mRangeDragVertAxis}.data());
-12259 \}
+13499                                                              \{
+13500   \textcolor{keywordflow}{return} (orientation == Qt::Horizontal ? \hyperlink{class_q_c_p_axis_rect_aeaaa38c6d2030dd5f84461e2596e41e3}{mRangeDragHorzAxis}.data()
+13501                                         : \hyperlink{class_q_c_p_axis_rect_a3e41dffec18987366f2a8ffd80689c12}{mRangeDragVertAxis}.data());
+13502 \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_axis_rect_a3397fc60e5df29089090bc236e9f05f6}{}\index{Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}!range\+Zoom@{range\+Zoom}}
 \index{range\+Zoom@{range\+Zoom}!Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}}
@@ -1481,11 +1467,11 @@ References m\+Range\+Drag\+Horz\+Axis, and m\+Range\+Drag\+Vert\+Axis.
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_axis_rect_a3397fc60e5df29089090bc236e9f05f6}
 
 
-Definition at line 1991 of file qcustomplot.\+h.
+Definition at line 2316 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-1991 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_axis_rect_a215eff671d48df2edccc36e7f976f28c}{mRangeZoom}; \}
+2316 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_axis_rect_a215eff671d48df2edccc36e7f976f28c}{mRangeZoom}; \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_axis_rect_a679c63f2b8daccfe6ec5110dce3dd3b6}{}\index{Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}!range\+Zoom\+Axis@{range\+Zoom\+Axis}}
 \index{range\+Zoom\+Axis@{range\+Zoom\+Axis}!Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}}
@@ -1501,7 +1487,7 @@ Returns the range zoom axis of the {\itshape orientation} provided.
 \end{DoxySeeAlso}
 
 
-Definition at line 12266 of file qcustomplot.\+cpp.
+Definition at line 13509 of file qcustomplot.\+cpp.
 
 
 
@@ -1509,10 +1495,10 @@ References m\+Range\+Zoom\+Horz\+Axis, and m\+Range\+Zoom\+Vert\+Axis.
 
 
 \begin{DoxyCode}
-12267 \{
-12268   \textcolor{keywordflow}{return} (orientation == Qt::Horizontal ? \hyperlink{class_q_c_p_axis_rect_ae22f882bab20518559f3fbb84243d0ab}{mRangeZoomHorzAxis}.data() : 
-      \hyperlink{class_q_c_p_axis_rect_a8b9acd16a203a9692bd35a9465f54bc1}{mRangeZoomVertAxis}.data());
-12269 \}
+13509                                                              \{
+13510   \textcolor{keywordflow}{return} (orientation == Qt::Horizontal ? \hyperlink{class_q_c_p_axis_rect_ae22f882bab20518559f3fbb84243d0ab}{mRangeZoomHorzAxis}.data()
+13511                                         : \hyperlink{class_q_c_p_axis_rect_a8b9acd16a203a9692bd35a9465f54bc1}{mRangeZoomVertAxis}.data());
+13512 \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_axis_rect_ae4e6c4d143aacc88d2d3c56f117c2fe1}{}\index{Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}!range\+Zoom\+Factor@{range\+Zoom\+Factor}}
 \index{range\+Zoom\+Factor@{range\+Zoom\+Factor}!Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}}
@@ -1528,7 +1514,7 @@ Returns the range zoom factor of the {\itshape orientation} provided.
 \end{DoxySeeAlso}
 
 
-Definition at line 12276 of file qcustomplot.\+cpp.
+Definition at line 13519 of file qcustomplot.\+cpp.
 
 
 
@@ -1536,10 +1522,10 @@ References m\+Range\+Zoom\+Factor\+Horz, and m\+Range\+Zoom\+Factor\+Vert.
 
 
 \begin{DoxyCode}
-12277 \{
-12278   \textcolor{keywordflow}{return} (orientation == Qt::Horizontal ? \hyperlink{class_q_c_p_axis_rect_ad08d0250ed7b99de387d0ea6c7fd4dc1}{mRangeZoomFactorHorz} : 
-      \hyperlink{class_q_c_p_axis_rect_a32f063629581d5bf82b12769940b34ad}{mRangeZoomFactorVert});
-12279 \}
+13519                                                              \{
+13520   \textcolor{keywordflow}{return} (orientation == Qt::Horizontal ? \hyperlink{class_q_c_p_axis_rect_ad08d0250ed7b99de387d0ea6c7fd4dc1}{mRangeZoomFactorHorz}
+13521                                         : \hyperlink{class_q_c_p_axis_rect_a32f063629581d5bf82b12769940b34ad}{mRangeZoomFactorVert});
+13522 \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_axis_rect_a03c39cd9704f0d36fb6cf980cdddcbaa}{}\index{Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}!remove\+Axis@{remove\+Axis}}
 \index{remove\+Axis@{remove\+Axis}!Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}}
@@ -1557,7 +1543,7 @@ Returns true on success, i.\+e. if {\itshape axis} was a valid axis in this axis
 \end{DoxySeeAlso}
 
 
-Definition at line 11922 of file qcustomplot.\+cpp.
+Definition at line 13147 of file qcustomplot.\+cpp.
 
 
 
@@ -1569,28 +1555,28 @@ Referenced by $\sim$\+Q\+C\+P\+Axis\+Rect().
 
 
 \begin{DoxyCode}
-11923 \{
-11924   \textcolor{comment}{// don't access axis->axisType() to provide safety when axis is an invalid pointer, rather go through all
-       axis containers:}
-11925   QHashIterator<QCPAxis::AxisType, QList<QCPAxis*> > it(\hyperlink{class_q_c_p_axis_rect_afe7a24d2a2bea98fc552fa826350ba81}{mAxes});
-11926   \textcolor{keywordflow}{while} (it.hasNext())
-11927   \{
-11928     it.next();
-11929     \textcolor{keywordflow}{if} (it.value().contains(axis))
-11930     \{
-11931       \hyperlink{class_q_c_p_axis_rect_afe7a24d2a2bea98fc552fa826350ba81}{mAxes}[it.key()].removeOne(axis);
-11932       \textcolor{keywordflow}{if} (qobject\_cast<QCustomPlot*>(\hyperlink{class_q_c_p_layerable_ab7e0e94461566093d36ffc0f5312b109}{parentPlot}())) \textcolor{comment}{// make sure this isn't called from QObject
-       dtor when QCustomPlot is already destructed (happens when the axis rect is not in any layout and thus
-       QObject-child of QCustomPlot)}
-11933         \hyperlink{class_q_c_p_layerable_ab7e0e94461566093d36ffc0f5312b109}{parentPlot}()->\hyperlink{class_q_custom_plot_a8b46607021c463c94709d3504951cb47}{axisRemoved}(axis);
-11934       \textcolor{keyword}{delete} \hyperlink{class_q_c_p_axis_rect_a560de44e47a4af0f86c59102a094b1e4}{axis};
-11935       \textcolor{keywordflow}{return} \textcolor{keyword}{true};
-11936     \}
-11937   \}
-11938   qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Axis isn't in axis rect:"} << \textcolor{keyword}{reinterpret\_cast<}quintptr\textcolor{keyword}{>}(
-      \hyperlink{class_q_c_p_axis_rect_a560de44e47a4af0f86c59102a094b1e4}{axis});
-11939   \textcolor{keywordflow}{return} \textcolor{keyword}{false};
-11940 \}
+13147                                           \{
+13148   \textcolor{comment}{// don't access axis->axisType() to provide safety when axis is an invalid}
+13149   \textcolor{comment}{// pointer, rather go through all axis containers:}
+13150   QHashIterator<QCPAxis::AxisType, QList<QCPAxis *>> it(\hyperlink{class_q_c_p_axis_rect_ac2cb3ba9a25b733883afc3bd25f7d82b}{mAxes});
+13151   \textcolor{keywordflow}{while} (it.hasNext()) \{
+13152     it.next();
+13153     \textcolor{keywordflow}{if} (it.value().contains(axis)) \{
+13154       \hyperlink{class_q_c_p_axis_rect_ac2cb3ba9a25b733883afc3bd25f7d82b}{mAxes}[it.key()].removeOne(axis);
+13155       \textcolor{keywordflow}{if} (qobject\_cast<QCustomPlot *>(
+13156               \hyperlink{class_q_c_p_layerable_ab7e0e94461566093d36ffc0f5312b109}{parentPlot}())) \textcolor{comment}{// make sure this isn't called from QObject dtor}
+13157                              \textcolor{comment}{// when QCustomPlot is already destructed (happens}
+13158                              \textcolor{comment}{// when the axis rect is not in any layout and thus}
+13159                              \textcolor{comment}{// QObject-child of QCustomPlot)}
+13160         \hyperlink{class_q_c_p_layerable_ab7e0e94461566093d36ffc0f5312b109}{parentPlot}()->\hyperlink{class_q_custom_plot_a8b46607021c463c94709d3504951cb47}{axisRemoved}(axis);
+13161       \textcolor{keyword}{delete} \hyperlink{class_q_c_p_axis_rect_a560de44e47a4af0f86c59102a094b1e4}{axis};
+13162       \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+13163     \}
+13164   \}
+13165   qDebug() << Q\_FUNC\_INFO
+13166            << \textcolor{stringliteral}{"Axis isn't in axis rect:"} << \textcolor{keyword}{reinterpret\_cast<}quintptr\textcolor{keyword}{>}(\hyperlink{class_q_c_p_axis_rect_a560de44e47a4af0f86c59102a094b1e4}{axis});
+13167   \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+13168 \}
 \end{DoxyCode}
 
 
@@ -1623,7 +1609,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_axis_rect_a6d0f989fc552aa2b563cf82f8fc81e61}
 Returns the pixel position of the right border of this axis rect. Margins are not taken into account here, so the returned value is with respect to the inner \hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}. 
 
-Definition at line 2026 of file qcustomplot.\+h.
+Definition at line 2352 of file qcustomplot.\+h.
 
 
 
@@ -1631,7 +1617,7 @@ Referenced by Q\+C\+P\+Axis\+::coord\+To\+Pixel(), Q\+C\+P\+Grid\+::draw\+Grid\+
 
 
 \begin{DoxyCode}
-2026 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}.right(); \}
+2352 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}.right(); \}
 \end{DoxyCode}
 
 
@@ -1658,11 +1644,11 @@ For cases where the provided pixmap doesn\textquotesingle{}t have the same size 
 Below the pixmap, the axis rect may be optionally filled with a brush, if specified with \hyperlink{class_q_c_p_axis_rect_a22a22b8668735438dc06f9a55fe46b33}{set\+Background(const Q\+Brush \&brush)}.
 
 \begin{DoxySeeAlso}{See also}
-\hyperlink{class_q_c_p_axis_rect_ae6d36c3e0e968ffb991170a018e7b503}{set\+Background\+Scaled}, \hyperlink{class_q_c_p_axis_rect_a5ef77ea829c9de7ba248e473f48f7305}{set\+Background\+Scaled\+Mode}, \hyperlink{class_q_c_p_axis_rect_a22a22b8668735438dc06f9a55fe46b33}{set\+Background(const Q\+Brush \&brush)} 
+\hyperlink{class_q_c_p_axis_rect_ae6d36c3e0e968ffb991170a018e7b503}{set\+Background\+Scaled}, \hyperlink{class_q_c_p_axis_rect_a5ef77ea829c9de7ba248e473f48f7305}{set\+Background\+Scaled\+Mode}, \hyperlink{class_q_c_p_axis_rect_af615ab5e52b8e0a9a0eff415b6559db5}{set\+Background}(const Q\+Brush \&brush) 
 \end{DoxySeeAlso}
 
 
-Definition at line 12187 of file qcustomplot.\+cpp.
+Definition at line 13423 of file qcustomplot.\+cpp.
 
 
 
@@ -1670,10 +1656,10 @@ References m\+Background\+Pixmap, and m\+Scaled\+Background\+Pixmap.
 
 
 \begin{DoxyCode}
-12188 \{
-12189   \hyperlink{class_q_c_p_axis_rect_a38fb1a15f43228a0c124553649303722}{mBackgroundPixmap} = pm;
-12190   \hyperlink{class_q_c_p_axis_rect_aa74b9415598d59b49290e41e42d7ee27}{mScaledBackgroundPixmap} = QPixmap();
-12191 \}
+13423                                                  \{
+13424   \hyperlink{class_q_c_p_axis_rect_a38fb1a15f43228a0c124553649303722}{mBackgroundPixmap} = pm;
+13425   \hyperlink{class_q_c_p_axis_rect_aa74b9415598d59b49290e41e42d7ee27}{mScaledBackgroundPixmap} = QPixmap();
+13426 \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_axis_rect_ac48a2d5d9b7732e73b86605c69c5e4c1}{}\index{Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}!set\+Background@{set\+Background}}
 \index{set\+Background@{set\+Background}!Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}}
@@ -1693,7 +1679,7 @@ Allows setting the background pixmap of the axis rect, whether it shall be scale
 \end{DoxySeeAlso}
 
 
-Definition at line 12218 of file qcustomplot.\+cpp.
+Definition at line 13457 of file qcustomplot.\+cpp.
 
 
 
@@ -1701,12 +1687,12 @@ References m\+Background\+Pixmap, m\+Background\+Scaled, m\+Background\+Scaled\+
 
 
 \begin{DoxyCode}
-12219 \{
-12220   \hyperlink{class_q_c_p_axis_rect_a38fb1a15f43228a0c124553649303722}{mBackgroundPixmap} = pm;
-12221   \hyperlink{class_q_c_p_axis_rect_aa74b9415598d59b49290e41e42d7ee27}{mScaledBackgroundPixmap} = QPixmap();
-12222   \hyperlink{class_q_c_p_axis_rect_a5ad835f0fae5d7cc5ada9e063641dbf1}{mBackgroundScaled} = scaled;
-12223   \hyperlink{class_q_c_p_axis_rect_a859fd368e794663e346b4f53f35078e9}{mBackgroundScaledMode} = mode;
-12224 \}
+13458                                                         \{
+13459   \hyperlink{class_q_c_p_axis_rect_a38fb1a15f43228a0c124553649303722}{mBackgroundPixmap} = pm;
+13460   \hyperlink{class_q_c_p_axis_rect_aa74b9415598d59b49290e41e42d7ee27}{mScaledBackgroundPixmap} = QPixmap();
+13461   \hyperlink{class_q_c_p_axis_rect_a5ad835f0fae5d7cc5ada9e063641dbf1}{mBackgroundScaled} = scaled;
+13462   \hyperlink{class_q_c_p_axis_rect_a859fd368e794663e346b4f53f35078e9}{mBackgroundScaledMode} = mode;
+13463 \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_axis_rect_a22a22b8668735438dc06f9a55fe46b33}{}\index{Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}!set\+Background@{set\+Background}}
 \index{set\+Background@{set\+Background}!Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}}
@@ -1728,7 +1714,7 @@ To disable drawing of a background brush, set {\itshape brush} to Qt\+::\+No\+Br
 \end{DoxySeeAlso}
 
 
-Definition at line 12206 of file qcustomplot.\+cpp.
+Definition at line 13444 of file qcustomplot.\+cpp.
 
 
 
@@ -1736,9 +1722,9 @@ References m\+Background\+Brush.
 
 
 \begin{DoxyCode}
-12207 \{
-12208   \hyperlink{class_q_c_p_axis_rect_a5748e1a37f63c428e38b0a7724b46259}{mBackgroundBrush} = brush;
-12209 \}
+13444                                                    \{
+13445   \hyperlink{class_q_c_p_axis_rect_a5748e1a37f63c428e38b0a7724b46259}{mBackgroundBrush} = brush;
+13446 \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_axis_rect_ae6d36c3e0e968ffb991170a018e7b503}{}\index{Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}!set\+Background\+Scaled@{set\+Background\+Scaled}}
 \index{set\+Background\+Scaled@{set\+Background\+Scaled}!Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}}
@@ -1756,7 +1742,7 @@ Note that the scaled version of the original pixmap is buffered, so there is no 
 \end{DoxySeeAlso}
 
 
-Definition at line 12236 of file qcustomplot.\+cpp.
+Definition at line 13479 of file qcustomplot.\+cpp.
 
 
 
@@ -1764,9 +1750,9 @@ References m\+Background\+Scaled.
 
 
 \begin{DoxyCode}
-12237 \{
-12238   \hyperlink{class_q_c_p_axis_rect_a5ad835f0fae5d7cc5ada9e063641dbf1}{mBackgroundScaled} = scaled;
-12239 \}
+13479                                                  \{
+13480   \hyperlink{class_q_c_p_axis_rect_a5ad835f0fae5d7cc5ada9e063641dbf1}{mBackgroundScaled} = scaled;
+13481 \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_axis_rect_a5ef77ea829c9de7ba248e473f48f7305}{}\index{Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}!set\+Background\+Scaled\+Mode@{set\+Background\+Scaled\+Mode}}
 \index{set\+Background\+Scaled\+Mode@{set\+Background\+Scaled\+Mode}!Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}}
@@ -1780,7 +1766,7 @@ If scaling of the axis background pixmap is enabled (\hyperlink{class_q_c_p_axis
 \end{DoxySeeAlso}
 
 
-Definition at line 12246 of file qcustomplot.\+cpp.
+Definition at line 13490 of file qcustomplot.\+cpp.
 
 
 
@@ -1788,9 +1774,9 @@ References m\+Background\+Scaled\+Mode.
 
 
 \begin{DoxyCode}
-12247 \{
-12248   \hyperlink{class_q_c_p_axis_rect_a859fd368e794663e346b4f53f35078e9}{mBackgroundScaledMode} = mode;
-12249 \}
+13490                                                                 \{
+13491   \hyperlink{class_q_c_p_axis_rect_a859fd368e794663e346b4f53f35078e9}{mBackgroundScaledMode} = mode;
+13492 \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_axis_rect_ae6aef2f7211ba6097c925dcd26008418}{}\index{Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}!set\+Range\+Drag@{set\+Range\+Drag}}
 \index{set\+Range\+Drag@{set\+Range\+Drag}!Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}}
@@ -1810,7 +1796,7 @@ In addition to setting {\itshape orientations} to a non-\/zero value, make sure 
 \end{DoxySeeAlso}
 
 
-Definition at line 12297 of file qcustomplot.\+cpp.
+Definition at line 13544 of file qcustomplot.\+cpp.
 
 
 
@@ -1818,9 +1804,9 @@ References m\+Range\+Drag.
 
 
 \begin{DoxyCode}
-12298 \{
-12299   \hyperlink{class_q_c_p_axis_rect_aa9f107f66ca3469ad50ee6cea7c9e237}{mRangeDrag} = orientations;
-12300 \}
+13544                                                           \{
+13545   \hyperlink{class_q_c_p_axis_rect_aa9f107f66ca3469ad50ee6cea7c9e237}{mRangeDrag} = orientations;
+13546 \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_axis_rect_a648cce336bd99daac4a5ca3e5743775d}{}\index{Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}!set\+Range\+Drag\+Axes@{set\+Range\+Drag\+Axes}}
 \index{set\+Range\+Drag\+Axes@{set\+Range\+Drag\+Axes}!Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}}
@@ -1837,7 +1823,7 @@ Sets the axes whose range will be dragged when \hyperlink{class_q_c_p_axis_rect_
 \end{DoxySeeAlso}
 
 
-Definition at line 12328 of file qcustomplot.\+cpp.
+Definition at line 13580 of file qcustomplot.\+cpp.
 
 
 
@@ -1849,10 +1835,10 @@ Referenced by Q\+C\+P\+Axis\+Rect().
 
 
 \begin{DoxyCode}
-12329 \{
-12330   \hyperlink{class_q_c_p_axis_rect_aeaaa38c6d2030dd5f84461e2596e41e3}{mRangeDragHorzAxis} = horizontal;
-12331   \hyperlink{class_q_c_p_axis_rect_a3e41dffec18987366f2a8ffd80689c12}{mRangeDragVertAxis} = vertical;
-12332 \}
+13580                                                                          \{
+13581   \hyperlink{class_q_c_p_axis_rect_aeaaa38c6d2030dd5f84461e2596e41e3}{mRangeDragHorzAxis} = horizontal;
+13582   \hyperlink{class_q_c_p_axis_rect_a3e41dffec18987366f2a8ffd80689c12}{mRangeDragVertAxis} = vertical;
+13583 \}
 \end{DoxyCode}
 
 
@@ -1883,7 +1869,7 @@ In addition to setting {\itshape orientations} to a non-\/zero value, make sure 
 \end{DoxySeeAlso}
 
 
-Definition at line 12317 of file qcustomplot.\+cpp.
+Definition at line 13569 of file qcustomplot.\+cpp.
 
 
 
@@ -1891,9 +1877,9 @@ References m\+Range\+Zoom.
 
 
 \begin{DoxyCode}
-12318 \{
-12319   \hyperlink{class_q_c_p_axis_rect_a215eff671d48df2edccc36e7f976f28c}{mRangeZoom} = orientations;
-12320 \}
+13569                                                           \{
+13570   \hyperlink{class_q_c_p_axis_rect_a215eff671d48df2edccc36e7f976f28c}{mRangeZoom} = orientations;
+13571 \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_axis_rect_a9442cca2aa358405f39a64d51eca13d2}{}\index{Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}!set\+Range\+Zoom\+Axes@{set\+Range\+Zoom\+Axes}}
 \index{set\+Range\+Zoom\+Axes@{set\+Range\+Zoom\+Axes}!Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}}
@@ -1903,14 +1889,14 @@ References m\+Range\+Zoom.
 \item[{{\bf Q\+C\+P\+Axis} $\ast$}]{vertical}
 \end{DoxyParamCaption}
 )}\label{class_q_c_p_axis_rect_a9442cca2aa358405f39a64d51eca13d2}
-Sets the axes whose range will be zoomed when \hyperlink{class_q_c_p_axis_rect_a7960a9d222f1c31d558b064b60f86a31}{set\+Range\+Zoom} enables mouse wheel zooming on the \hyperlink{class_q_custom_plot}{Q\+Custom\+Plot} widget. The two axes can be zoomed with different strengths, when different factors are passed to \hyperlink{class_q_c_p_axis_rect_a895d7ac745ea614e04056244b3c138ac}{set\+Range\+Zoom\+Factor(double horizontal\+Factor, double vertical\+Factor)}.
+Sets the axes whose range will be zoomed when \hyperlink{class_q_c_p_axis_rect_a7960a9d222f1c31d558b064b60f86a31}{set\+Range\+Zoom} enables mouse wheel zooming on the \hyperlink{class_q_custom_plot}{Q\+Custom\+Plot} widget. The two axes can be zoomed with different strengths, when different factors are passed to \hyperlink{class_q_c_p_axis_rect_a895d7ac745ea614e04056244b3c138ac}{set\+Range\+Zoom\+Factor}(double horizontal\+Factor, double vertical\+Factor).
 
 \begin{DoxySeeAlso}{See also}
 \hyperlink{class_q_c_p_axis_rect_a648cce336bd99daac4a5ca3e5743775d}{set\+Range\+Drag\+Axes} 
 \end{DoxySeeAlso}
 
 
-Definition at line 12341 of file qcustomplot.\+cpp.
+Definition at line 13595 of file qcustomplot.\+cpp.
 
 
 
@@ -1922,10 +1908,10 @@ Referenced by Q\+C\+P\+Axis\+Rect().
 
 
 \begin{DoxyCode}
-12342 \{
-12343   \hyperlink{class_q_c_p_axis_rect_ae22f882bab20518559f3fbb84243d0ab}{mRangeZoomHorzAxis} = horizontal;
-12344   \hyperlink{class_q_c_p_axis_rect_a8b9acd16a203a9692bd35a9465f54bc1}{mRangeZoomVertAxis} = vertical;
-12345 \}
+13595                                                                          \{
+13596   \hyperlink{class_q_c_p_axis_rect_ae22f882bab20518559f3fbb84243d0ab}{mRangeZoomHorzAxis} = horizontal;
+13597   \hyperlink{class_q_c_p_axis_rect_a8b9acd16a203a9692bd35a9465f54bc1}{mRangeZoomVertAxis} = vertical;
+13598 \}
 \end{DoxyCode}
 
 
@@ -1950,7 +1936,7 @@ Sets how strong one rotation step of the mouse wheel zooms, when range zoom was 
 
 When the zoom factor is greater than one, scrolling the mouse wheel backwards (towards the user) will zoom in (make the currently visible range smaller). For zoom factors smaller than one, the same scrolling direction will zoom out. 
 
-Definition at line 12357 of file qcustomplot.\+cpp.
+Definition at line 13615 of file qcustomplot.\+cpp.
 
 
 
@@ -1958,10 +1944,10 @@ References m\+Range\+Zoom\+Factor\+Horz, and m\+Range\+Zoom\+Factor\+Vert.
 
 
 \begin{DoxyCode}
-12358 \{
-12359   \hyperlink{class_q_c_p_axis_rect_ad08d0250ed7b99de387d0ea6c7fd4dc1}{mRangeZoomFactorHorz} = horizontalFactor;
-12360   \hyperlink{class_q_c_p_axis_rect_a32f063629581d5bf82b12769940b34ad}{mRangeZoomFactorVert} = verticalFactor;
-12361 \}
+13616                                                             \{
+13617   \hyperlink{class_q_c_p_axis_rect_ad08d0250ed7b99de387d0ea6c7fd4dc1}{mRangeZoomFactorHorz} = horizontalFactor;
+13618   \hyperlink{class_q_c_p_axis_rect_a32f063629581d5bf82b12769940b34ad}{mRangeZoomFactorVert} = verticalFactor;
+13619 \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_axis_rect_ae83d187b03fc6fa4f00765ad50cd3fc3}{}\index{Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}!set\+Range\+Zoom\+Factor@{set\+Range\+Zoom\+Factor}}
 \index{set\+Range\+Zoom\+Factor@{set\+Range\+Zoom\+Factor}!Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}}
@@ -1974,7 +1960,7 @@ This is an overloaded member function, provided for convenience. It differs from
 
 Sets both the horizontal and vertical zoom {\itshape factor}. 
 
-Definition at line 12367 of file qcustomplot.\+cpp.
+Definition at line 13625 of file qcustomplot.\+cpp.
 
 
 
@@ -1982,10 +1968,10 @@ References m\+Range\+Zoom\+Factor\+Horz, and m\+Range\+Zoom\+Factor\+Vert.
 
 
 \begin{DoxyCode}
-12368 \{
-12369   \hyperlink{class_q_c_p_axis_rect_ad08d0250ed7b99de387d0ea6c7fd4dc1}{mRangeZoomFactorHorz} = factor;
-12370   \hyperlink{class_q_c_p_axis_rect_a32f063629581d5bf82b12769940b34ad}{mRangeZoomFactorVert} = factor;
-12371 \}
+13625                                                   \{
+13626   \hyperlink{class_q_c_p_axis_rect_ad08d0250ed7b99de387d0ea6c7fd4dc1}{mRangeZoomFactorHorz} = factor;
+13627   \hyperlink{class_q_c_p_axis_rect_a32f063629581d5bf82b12769940b34ad}{mRangeZoomFactorVert} = factor;
+13628 \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_axis_rect_a5fa906175447b14206954f77fc7f1ef4}{}\index{Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}!setup\+Full\+Axes\+Box@{setup\+Full\+Axes\+Box}}
 \index{setup\+Full\+Axes\+Box@{setup\+Full\+Axes\+Box}!Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}}
@@ -2002,7 +1988,7 @@ Tick labels (\hyperlink{class_q_c_p_axis_a04ba16e1f6f78d70f938519576ed32c8}{Q\+C
 
 If {\itshape connect\+Ranges} is true, the \hyperlink{class_q_c_p_axis_a0894084e4c16a1736534c4095746f910}{range\+Changed} signals of the bottom and left axes are connected to the \hyperlink{class_q_c_p_axis_aebdfea5d44c3a0ad2b4700cd4d25b641}{Q\+C\+P\+Axis\+::set\+Range} slots of the top and right axes. 
 
-Definition at line 11968 of file qcustomplot.\+cpp.
+Definition at line 13201 of file qcustomplot.\+cpp.
 
 
 
@@ -2010,75 +1996,74 @@ References add\+Axis(), Q\+C\+P\+Axis\+::at\+Bottom, Q\+C\+P\+Axis\+::at\+Left, 
 
 
 \begin{DoxyCode}
-11969 \{
-11970   \hyperlink{class_q_c_p_axis}{QCPAxis} *xAxis, *yAxis, *xAxis2, *yAxis2;
-11971   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis_rect_a16e3e4646e52e4b5d5b865076c29ae58}{axisCount}(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aa220d68888516b6c3b493d144f1ba438f}{QCPAxis::atBottom}) == 0)
-11972     xAxis = \hyperlink{class_q_c_p_axis_rect_a2dc336092ccc57d44a46194c8a23e4f4}{addAxis}(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aa220d68888516b6c3b493d144f1ba438f}{QCPAxis::atBottom});
-11973   \textcolor{keywordflow}{else}
-11974     xAxis = \hyperlink{class_q_c_p_axis_rect_a560de44e47a4af0f86c59102a094b1e4}{axis}(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aa220d68888516b6c3b493d144f1ba438f}{QCPAxis::atBottom});
-11975   
-11976   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis_rect_a16e3e4646e52e4b5d5b865076c29ae58}{axisCount}(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aaf84aa6cac6fb6099f54a2cbf7546b730}{QCPAxis::atLeft}) == 0)
-11977     yAxis = \hyperlink{class_q_c_p_axis_rect_a2dc336092ccc57d44a46194c8a23e4f4}{addAxis}(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aaf84aa6cac6fb6099f54a2cbf7546b730}{QCPAxis::atLeft});
-11978   \textcolor{keywordflow}{else}
-11979     yAxis = \hyperlink{class_q_c_p_axis_rect_a560de44e47a4af0f86c59102a094b1e4}{axis}(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aaf84aa6cac6fb6099f54a2cbf7546b730}{QCPAxis::atLeft});
-11980   
-11981   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis_rect_a16e3e4646e52e4b5d5b865076c29ae58}{axisCount}(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aac0ece2b680d3f545e701f75af1655977}{QCPAxis::atTop}) == 0)
-11982     xAxis2 = \hyperlink{class_q_c_p_axis_rect_a2dc336092ccc57d44a46194c8a23e4f4}{addAxis}(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aac0ece2b680d3f545e701f75af1655977}{QCPAxis::atTop});
-11983   \textcolor{keywordflow}{else}
-11984     xAxis2 = \hyperlink{class_q_c_p_axis_rect_a560de44e47a4af0f86c59102a094b1e4}{axis}(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aac0ece2b680d3f545e701f75af1655977}{QCPAxis::atTop});
-11985   
-11986   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis_rect_a16e3e4646e52e4b5d5b865076c29ae58}{axisCount}(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aadf5509f7d29199ef2f263b1dd224b345}{QCPAxis::atRight}) == 0)
-11987     yAxis2 = \hyperlink{class_q_c_p_axis_rect_a2dc336092ccc57d44a46194c8a23e4f4}{addAxis}(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aadf5509f7d29199ef2f263b1dd224b345}{QCPAxis::atRight});
-11988   \textcolor{keywordflow}{else}
-11989     yAxis2 = \hyperlink{class_q_c_p_axis_rect_a560de44e47a4af0f86c59102a094b1e4}{axis}(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aadf5509f7d29199ef2f263b1dd224b345}{QCPAxis::atRight});
-11990   
-11991   xAxis->\hyperlink{class_q_c_p_layerable_a3bed99ddc396b48ce3ebfdc0418744f8}{setVisible}(\textcolor{keyword}{true});
-11992   yAxis->\hyperlink{class_q_c_p_layerable_a3bed99ddc396b48ce3ebfdc0418744f8}{setVisible}(\textcolor{keyword}{true});
-11993   xAxis2->\hyperlink{class_q_c_p_layerable_a3bed99ddc396b48ce3ebfdc0418744f8}{setVisible}(\textcolor{keyword}{true});
-11994   yAxis2->\hyperlink{class_q_c_p_layerable_a3bed99ddc396b48ce3ebfdc0418744f8}{setVisible}(\textcolor{keyword}{true});
-11995   xAxis2->\hyperlink{class_q_c_p_axis_a04ba16e1f6f78d70f938519576ed32c8}{setTickLabels}(\textcolor{keyword}{false});
-11996   yAxis2->\hyperlink{class_q_c_p_axis_a04ba16e1f6f78d70f938519576ed32c8}{setTickLabels}(\textcolor{keyword}{false});
-11997   
-11998   xAxis2->\hyperlink{class_q_c_p_axis_aebdfea5d44c3a0ad2b4700cd4d25b641}{setRange}(xAxis->\hyperlink{class_q_c_p_axis_ab1ea79a4f5ea4cf42620f8f51c477ac4}{range}());
-11999   xAxis2->\hyperlink{class_q_c_p_axis_a2172fdb196b1a0dc3f40992fcad8e9e1}{setRangeReversed}(xAxis->\hyperlink{class_q_c_p_axis_ade26dc7994ccd8a11f64fd83377ee021}{rangeReversed}());
-12000   xAxis2->\hyperlink{class_q_c_p_axis_adef29cae617af4f519f6c40d1a866ca6}{setScaleType}(xAxis->\hyperlink{class_q_c_p_axis_a8563e13407bc0616da7f7c84e02de170}{scaleType}());
-12001   xAxis2->\hyperlink{class_q_c_p_axis_a726186054be90487885a748aa1b42188}{setScaleLogBase}(xAxis->\hyperlink{class_q_c_p_axis_ac937d2a602f865aff2ab6c1e288739f6}{scaleLogBase}());
-12002   xAxis2->\hyperlink{class_q_c_p_axis_ac891409315bc379e3b1abdb162c1a011}{setTicks}(xAxis->\hyperlink{class_q_c_p_axis_a61c504ec7c5bed9a63edf45345995d10}{ticks}());
-12003   xAxis2->\hyperlink{class_q_c_p_axis_a7c7111cbeac9ec5fcb40f93a1ef51a0b}{setAutoTickCount}(xAxis->\hyperlink{class_q_c_p_axis_ac87454a1342f5d2939ab59e68b4d515b}{autoTickCount}());
-12004   xAxis2->\hyperlink{class_q_c_p_axis_a4b1554ead9d7f9799650d51383e326dd}{setSubTickCount}(xAxis->\hyperlink{class_q_c_p_axis_a290b4c1375476826daa10e914cb71dab}{subTickCount}());
-12005   xAxis2->\hyperlink{class_q_c_p_axis_adcbdec7a60054b88571e89599f4a45bf}{setAutoSubTicks}(xAxis->\hyperlink{class_q_c_p_axis_ab9a950e16f373fe5c4b79078bb97c171}{autoSubTicks}());
-12006   xAxis2->\hyperlink{class_q_c_p_axis_af727db0acc6492c4c774c0700e738205}{setTickStep}(xAxis->\hyperlink{class_q_c_p_axis_a0e6120d24266544441ab691f316a1b03}{tickStep}());
-12007   xAxis2->\hyperlink{class_q_c_p_axis_a99fe77b034e06f5b723995beab96e741}{setAutoTickStep}(xAxis->\hyperlink{class_q_c_p_axis_ae762920261b0c24beb56b893e5a2471d}{autoTickStep}());
-12008   xAxis2->\hyperlink{class_q_c_p_axis_ae585a54dc2aac662e90a2ca82f002590}{setNumberFormat}(xAxis->\hyperlink{class_q_c_p_axis_ae6729b40845b29ffa5a440aa53cec215}{numberFormat}());
-12009   xAxis2->\hyperlink{class_q_c_p_axis_a21dc8023ad7500382ad9574b48137e63}{setNumberPrecision}(xAxis->\hyperlink{class_q_c_p_axis_a91cb2825060ac79a889296377fe0c7c1}{numberPrecision}());
-12010   xAxis2->\hyperlink{class_q_c_p_axis_a54f24f5ce8feea25209388a863d7e448}{setTickLabelType}(xAxis->\hyperlink{class_q_c_p_axis_a8a6f58a1ce12cfc4fadd379167668e8d}{tickLabelType}());
-12011   xAxis2->\hyperlink{class_q_c_p_axis_a2ee0191daa03524a682113e63e05f7a7}{setDateTimeFormat}(xAxis->\hyperlink{class_q_c_p_axis_a132b54ae184a12ed24c9af24f53dc70b}{dateTimeFormat}());
-12012   xAxis2->\hyperlink{class_q_c_p_axis_a262e06731debed7eee11fa6a81d67eaf}{setDateTimeSpec}(xAxis->\hyperlink{class_q_c_p_axis_afdd04c56ed29a9d948f840fc76f0d383}{dateTimeSpec}());
-12013 
-12014   yAxis2->\hyperlink{class_q_c_p_axis_aebdfea5d44c3a0ad2b4700cd4d25b641}{setRange}(yAxis->\hyperlink{class_q_c_p_axis_ab1ea79a4f5ea4cf42620f8f51c477ac4}{range}());
-12015   yAxis2->\hyperlink{class_q_c_p_axis_a2172fdb196b1a0dc3f40992fcad8e9e1}{setRangeReversed}(yAxis->\hyperlink{class_q_c_p_axis_ade26dc7994ccd8a11f64fd83377ee021}{rangeReversed}());
-12016   yAxis2->\hyperlink{class_q_c_p_axis_adef29cae617af4f519f6c40d1a866ca6}{setScaleType}(yAxis->\hyperlink{class_q_c_p_axis_a8563e13407bc0616da7f7c84e02de170}{scaleType}());
-12017   yAxis2->\hyperlink{class_q_c_p_axis_a726186054be90487885a748aa1b42188}{setScaleLogBase}(yAxis->\hyperlink{class_q_c_p_axis_ac937d2a602f865aff2ab6c1e288739f6}{scaleLogBase}());
-12018   yAxis2->\hyperlink{class_q_c_p_axis_ac891409315bc379e3b1abdb162c1a011}{setTicks}(yAxis->\hyperlink{class_q_c_p_axis_a61c504ec7c5bed9a63edf45345995d10}{ticks}());
-12019   yAxis2->\hyperlink{class_q_c_p_axis_a7c7111cbeac9ec5fcb40f93a1ef51a0b}{setAutoTickCount}(yAxis->\hyperlink{class_q_c_p_axis_ac87454a1342f5d2939ab59e68b4d515b}{autoTickCount}());
-12020   yAxis2->\hyperlink{class_q_c_p_axis_a4b1554ead9d7f9799650d51383e326dd}{setSubTickCount}(yAxis->\hyperlink{class_q_c_p_axis_a290b4c1375476826daa10e914cb71dab}{subTickCount}());
-12021   yAxis2->\hyperlink{class_q_c_p_axis_adcbdec7a60054b88571e89599f4a45bf}{setAutoSubTicks}(yAxis->\hyperlink{class_q_c_p_axis_ab9a950e16f373fe5c4b79078bb97c171}{autoSubTicks}());
-12022   yAxis2->\hyperlink{class_q_c_p_axis_af727db0acc6492c4c774c0700e738205}{setTickStep}(yAxis->\hyperlink{class_q_c_p_axis_a0e6120d24266544441ab691f316a1b03}{tickStep}());
-12023   yAxis2->\hyperlink{class_q_c_p_axis_a99fe77b034e06f5b723995beab96e741}{setAutoTickStep}(yAxis->\hyperlink{class_q_c_p_axis_ae762920261b0c24beb56b893e5a2471d}{autoTickStep}());
-12024   yAxis2->\hyperlink{class_q_c_p_axis_ae585a54dc2aac662e90a2ca82f002590}{setNumberFormat}(yAxis->\hyperlink{class_q_c_p_axis_ae6729b40845b29ffa5a440aa53cec215}{numberFormat}());
-12025   yAxis2->\hyperlink{class_q_c_p_axis_a21dc8023ad7500382ad9574b48137e63}{setNumberPrecision}(yAxis->\hyperlink{class_q_c_p_axis_a91cb2825060ac79a889296377fe0c7c1}{numberPrecision}());
-12026   yAxis2->\hyperlink{class_q_c_p_axis_a54f24f5ce8feea25209388a863d7e448}{setTickLabelType}(yAxis->\hyperlink{class_q_c_p_axis_a8a6f58a1ce12cfc4fadd379167668e8d}{tickLabelType}());
-12027   yAxis2->\hyperlink{class_q_c_p_axis_a2ee0191daa03524a682113e63e05f7a7}{setDateTimeFormat}(yAxis->\hyperlink{class_q_c_p_axis_a132b54ae184a12ed24c9af24f53dc70b}{dateTimeFormat}());
-12028   yAxis2->\hyperlink{class_q_c_p_axis_a262e06731debed7eee11fa6a81d67eaf}{setDateTimeSpec}(yAxis->\hyperlink{class_q_c_p_axis_afdd04c56ed29a9d948f840fc76f0d383}{dateTimeSpec}());
-12029   
-12030   \textcolor{keywordflow}{if} (connectRanges)
-12031   \{
-12032     connect(xAxis, SIGNAL(rangeChanged(\hyperlink{class_q_c_p_range}{QCPRange})), xAxis2, SLOT(setRange(
-      \hyperlink{class_q_c_p_range}{QCPRange})));
-12033     connect(yAxis, SIGNAL(rangeChanged(\hyperlink{class_q_c_p_range}{QCPRange})), yAxis2, SLOT(setRange(
-      \hyperlink{class_q_c_p_range}{QCPRange})));
-12034   \}
-12035 \}
+13201                                                      \{
+13202   \hyperlink{class_q_c_p_axis}{QCPAxis} *xAxis, *yAxis, *xAxis2, *yAxis2;
+13203   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis_rect_a16e3e4646e52e4b5d5b865076c29ae58}{axisCount}(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aa220d68888516b6c3b493d144f1ba438f}{QCPAxis::atBottom}) == 0)
+13204     xAxis = \hyperlink{class_q_c_p_axis_rect_a2dc336092ccc57d44a46194c8a23e4f4}{addAxis}(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aa220d68888516b6c3b493d144f1ba438f}{QCPAxis::atBottom});
+13205   \textcolor{keywordflow}{else}
+13206     xAxis = \hyperlink{class_q_c_p_axis_rect_a560de44e47a4af0f86c59102a094b1e4}{axis}(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aa220d68888516b6c3b493d144f1ba438f}{QCPAxis::atBottom});
+13207 
+13208   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis_rect_a16e3e4646e52e4b5d5b865076c29ae58}{axisCount}(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aaf84aa6cac6fb6099f54a2cbf7546b730}{QCPAxis::atLeft}) == 0)
+13209     yAxis = \hyperlink{class_q_c_p_axis_rect_a2dc336092ccc57d44a46194c8a23e4f4}{addAxis}(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aaf84aa6cac6fb6099f54a2cbf7546b730}{QCPAxis::atLeft});
+13210   \textcolor{keywordflow}{else}
+13211     yAxis = \hyperlink{class_q_c_p_axis_rect_a560de44e47a4af0f86c59102a094b1e4}{axis}(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aaf84aa6cac6fb6099f54a2cbf7546b730}{QCPAxis::atLeft});
+13212 
+13213   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis_rect_a16e3e4646e52e4b5d5b865076c29ae58}{axisCount}(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aac0ece2b680d3f545e701f75af1655977}{QCPAxis::atTop}) == 0)
+13214     xAxis2 = \hyperlink{class_q_c_p_axis_rect_a2dc336092ccc57d44a46194c8a23e4f4}{addAxis}(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aac0ece2b680d3f545e701f75af1655977}{QCPAxis::atTop});
+13215   \textcolor{keywordflow}{else}
+13216     xAxis2 = \hyperlink{class_q_c_p_axis_rect_a560de44e47a4af0f86c59102a094b1e4}{axis}(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aac0ece2b680d3f545e701f75af1655977}{QCPAxis::atTop});
+13217 
+13218   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis_rect_a16e3e4646e52e4b5d5b865076c29ae58}{axisCount}(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aadf5509f7d29199ef2f263b1dd224b345}{QCPAxis::atRight}) == 0)
+13219     yAxis2 = \hyperlink{class_q_c_p_axis_rect_a2dc336092ccc57d44a46194c8a23e4f4}{addAxis}(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aadf5509f7d29199ef2f263b1dd224b345}{QCPAxis::atRight});
+13220   \textcolor{keywordflow}{else}
+13221     yAxis2 = \hyperlink{class_q_c_p_axis_rect_a560de44e47a4af0f86c59102a094b1e4}{axis}(\hyperlink{class_q_c_p_axis_ae2bcc1728b382f10f064612b368bc18aadf5509f7d29199ef2f263b1dd224b345}{QCPAxis::atRight});
+13222 
+13223   xAxis->\hyperlink{class_q_c_p_layerable_a3bed99ddc396b48ce3ebfdc0418744f8}{setVisible}(\textcolor{keyword}{true});
+13224   yAxis->\hyperlink{class_q_c_p_layerable_a3bed99ddc396b48ce3ebfdc0418744f8}{setVisible}(\textcolor{keyword}{true});
+13225   xAxis2->\hyperlink{class_q_c_p_layerable_a3bed99ddc396b48ce3ebfdc0418744f8}{setVisible}(\textcolor{keyword}{true});
+13226   yAxis2->\hyperlink{class_q_c_p_layerable_a3bed99ddc396b48ce3ebfdc0418744f8}{setVisible}(\textcolor{keyword}{true});
+13227   xAxis2->\hyperlink{class_q_c_p_axis_a04ba16e1f6f78d70f938519576ed32c8}{setTickLabels}(\textcolor{keyword}{false});
+13228   yAxis2->\hyperlink{class_q_c_p_axis_a04ba16e1f6f78d70f938519576ed32c8}{setTickLabels}(\textcolor{keyword}{false});
+13229 
+13230   xAxis2->\hyperlink{class_q_c_p_axis_aebdfea5d44c3a0ad2b4700cd4d25b641}{setRange}(xAxis->\hyperlink{class_q_c_p_axis_ab1ea79a4f5ea4cf42620f8f51c477ac4}{range}());
+13231   xAxis2->\hyperlink{class_q_c_p_axis_a2172fdb196b1a0dc3f40992fcad8e9e1}{setRangeReversed}(xAxis->\hyperlink{class_q_c_p_axis_ade26dc7994ccd8a11f64fd83377ee021}{rangeReversed}());
+13232   xAxis2->\hyperlink{class_q_c_p_axis_adef29cae617af4f519f6c40d1a866ca6}{setScaleType}(xAxis->\hyperlink{class_q_c_p_axis_a8563e13407bc0616da7f7c84e02de170}{scaleType}());
+13233   xAxis2->\hyperlink{class_q_c_p_axis_a726186054be90487885a748aa1b42188}{setScaleLogBase}(xAxis->\hyperlink{class_q_c_p_axis_ac937d2a602f865aff2ab6c1e288739f6}{scaleLogBase}());
+13234   xAxis2->\hyperlink{class_q_c_p_axis_ac891409315bc379e3b1abdb162c1a011}{setTicks}(xAxis->\hyperlink{class_q_c_p_axis_a61c504ec7c5bed9a63edf45345995d10}{ticks}());
+13235   xAxis2->\hyperlink{class_q_c_p_axis_a7c7111cbeac9ec5fcb40f93a1ef51a0b}{setAutoTickCount}(xAxis->\hyperlink{class_q_c_p_axis_ac87454a1342f5d2939ab59e68b4d515b}{autoTickCount}());
+13236   xAxis2->\hyperlink{class_q_c_p_axis_a4b1554ead9d7f9799650d51383e326dd}{setSubTickCount}(xAxis->\hyperlink{class_q_c_p_axis_a290b4c1375476826daa10e914cb71dab}{subTickCount}());
+13237   xAxis2->\hyperlink{class_q_c_p_axis_adcbdec7a60054b88571e89599f4a45bf}{setAutoSubTicks}(xAxis->\hyperlink{class_q_c_p_axis_ab9a950e16f373fe5c4b79078bb97c171}{autoSubTicks}());
+13238   xAxis2->\hyperlink{class_q_c_p_axis_af727db0acc6492c4c774c0700e738205}{setTickStep}(xAxis->\hyperlink{class_q_c_p_axis_a0e6120d24266544441ab691f316a1b03}{tickStep}());
+13239   xAxis2->\hyperlink{class_q_c_p_axis_a99fe77b034e06f5b723995beab96e741}{setAutoTickStep}(xAxis->\hyperlink{class_q_c_p_axis_ae762920261b0c24beb56b893e5a2471d}{autoTickStep}());
+13240   xAxis2->\hyperlink{class_q_c_p_axis_ae585a54dc2aac662e90a2ca82f002590}{setNumberFormat}(xAxis->\hyperlink{class_q_c_p_axis_ae6729b40845b29ffa5a440aa53cec215}{numberFormat}());
+13241   xAxis2->\hyperlink{class_q_c_p_axis_a21dc8023ad7500382ad9574b48137e63}{setNumberPrecision}(xAxis->\hyperlink{class_q_c_p_axis_a91cb2825060ac79a889296377fe0c7c1}{numberPrecision}());
+13242   xAxis2->\hyperlink{class_q_c_p_axis_a54f24f5ce8feea25209388a863d7e448}{setTickLabelType}(xAxis->\hyperlink{class_q_c_p_axis_a8a6f58a1ce12cfc4fadd379167668e8d}{tickLabelType}());
+13243   xAxis2->\hyperlink{class_q_c_p_axis_a2ee0191daa03524a682113e63e05f7a7}{setDateTimeFormat}(xAxis->\hyperlink{class_q_c_p_axis_a132b54ae184a12ed24c9af24f53dc70b}{dateTimeFormat}());
+13244   xAxis2->\hyperlink{class_q_c_p_axis_a262e06731debed7eee11fa6a81d67eaf}{setDateTimeSpec}(xAxis->\hyperlink{class_q_c_p_axis_afdd04c56ed29a9d948f840fc76f0d383}{dateTimeSpec}());
+13245 
+13246   yAxis2->\hyperlink{class_q_c_p_axis_aebdfea5d44c3a0ad2b4700cd4d25b641}{setRange}(yAxis->\hyperlink{class_q_c_p_axis_ab1ea79a4f5ea4cf42620f8f51c477ac4}{range}());
+13247   yAxis2->\hyperlink{class_q_c_p_axis_a2172fdb196b1a0dc3f40992fcad8e9e1}{setRangeReversed}(yAxis->\hyperlink{class_q_c_p_axis_ade26dc7994ccd8a11f64fd83377ee021}{rangeReversed}());
+13248   yAxis2->\hyperlink{class_q_c_p_axis_adef29cae617af4f519f6c40d1a866ca6}{setScaleType}(yAxis->\hyperlink{class_q_c_p_axis_a8563e13407bc0616da7f7c84e02de170}{scaleType}());
+13249   yAxis2->\hyperlink{class_q_c_p_axis_a726186054be90487885a748aa1b42188}{setScaleLogBase}(yAxis->\hyperlink{class_q_c_p_axis_ac937d2a602f865aff2ab6c1e288739f6}{scaleLogBase}());
+13250   yAxis2->\hyperlink{class_q_c_p_axis_ac891409315bc379e3b1abdb162c1a011}{setTicks}(yAxis->\hyperlink{class_q_c_p_axis_a61c504ec7c5bed9a63edf45345995d10}{ticks}());
+13251   yAxis2->\hyperlink{class_q_c_p_axis_a7c7111cbeac9ec5fcb40f93a1ef51a0b}{setAutoTickCount}(yAxis->\hyperlink{class_q_c_p_axis_ac87454a1342f5d2939ab59e68b4d515b}{autoTickCount}());
+13252   yAxis2->\hyperlink{class_q_c_p_axis_a4b1554ead9d7f9799650d51383e326dd}{setSubTickCount}(yAxis->\hyperlink{class_q_c_p_axis_a290b4c1375476826daa10e914cb71dab}{subTickCount}());
+13253   yAxis2->\hyperlink{class_q_c_p_axis_adcbdec7a60054b88571e89599f4a45bf}{setAutoSubTicks}(yAxis->\hyperlink{class_q_c_p_axis_ab9a950e16f373fe5c4b79078bb97c171}{autoSubTicks}());
+13254   yAxis2->\hyperlink{class_q_c_p_axis_af727db0acc6492c4c774c0700e738205}{setTickStep}(yAxis->\hyperlink{class_q_c_p_axis_a0e6120d24266544441ab691f316a1b03}{tickStep}());
+13255   yAxis2->\hyperlink{class_q_c_p_axis_a99fe77b034e06f5b723995beab96e741}{setAutoTickStep}(yAxis->\hyperlink{class_q_c_p_axis_ae762920261b0c24beb56b893e5a2471d}{autoTickStep}());
+13256   yAxis2->\hyperlink{class_q_c_p_axis_ae585a54dc2aac662e90a2ca82f002590}{setNumberFormat}(yAxis->\hyperlink{class_q_c_p_axis_ae6729b40845b29ffa5a440aa53cec215}{numberFormat}());
+13257   yAxis2->\hyperlink{class_q_c_p_axis_a21dc8023ad7500382ad9574b48137e63}{setNumberPrecision}(yAxis->\hyperlink{class_q_c_p_axis_a91cb2825060ac79a889296377fe0c7c1}{numberPrecision}());
+13258   yAxis2->\hyperlink{class_q_c_p_axis_a54f24f5ce8feea25209388a863d7e448}{setTickLabelType}(yAxis->\hyperlink{class_q_c_p_axis_a8a6f58a1ce12cfc4fadd379167668e8d}{tickLabelType}());
+13259   yAxis2->\hyperlink{class_q_c_p_axis_a2ee0191daa03524a682113e63e05f7a7}{setDateTimeFormat}(yAxis->\hyperlink{class_q_c_p_axis_a132b54ae184a12ed24c9af24f53dc70b}{dateTimeFormat}());
+13260   yAxis2->\hyperlink{class_q_c_p_axis_a262e06731debed7eee11fa6a81d67eaf}{setDateTimeSpec}(yAxis->\hyperlink{class_q_c_p_axis_afdd04c56ed29a9d948f840fc76f0d383}{dateTimeSpec}());
+13261 
+13262   \textcolor{keywordflow}{if} (connectRanges) \{
+13263     connect(xAxis, SIGNAL(rangeChanged(\hyperlink{class_q_c_p_range}{QCPRange})), xAxis2,
+13264             SLOT(setRange(\hyperlink{class_q_c_p_range}{QCPRange})));
+13265     connect(yAxis, SIGNAL(rangeChanged(\hyperlink{class_q_c_p_range}{QCPRange})), yAxis2,
+13266             SLOT(setRange(\hyperlink{class_q_c_p_range}{QCPRange})));
+13267   \}
+13268 \}
 \end{DoxyCode}
 
 
@@ -2100,7 +2085,7 @@ Here is the call graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_axis_rect_a871b9fe49e92b39a3cbe29a59e458536}
 Returns the pixel size of this axis rect. Margins are not taken into account here, so the returned value is with respect to the inner \hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}. 
 
-Definition at line 2031 of file qcustomplot.\+h.
+Definition at line 2357 of file qcustomplot.\+h.
 
 
 
@@ -2108,7 +2093,7 @@ Referenced by add\+Axis().
 
 
 \begin{DoxyCode}
-2031 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}.size(); \}
+2357 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}.size(); \}
 \end{DoxyCode}
 
 
@@ -2130,7 +2115,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_axis_rect_ac45aef1eb75cea46b241b6303028a607}
 Returns the pixel position of the top border of this axis rect. Margins are not taken into account here, so the returned value is with respect to the inner \hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}. 
 
-Definition at line 2027 of file qcustomplot.\+h.
+Definition at line 2353 of file qcustomplot.\+h.
 
 
 
@@ -2138,7 +2123,7 @@ Referenced by Q\+C\+P\+Axis\+::coord\+To\+Pixel(), Q\+C\+P\+Grid\+::draw\+Grid\+
 
 
 \begin{DoxyCode}
-2027 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}.top(); \}
+2353 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}.top(); \}
 \end{DoxyCode}
 
 
@@ -2160,11 +2145,11 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_axis_rect_a88acbe716bcf5072790a6f95637c40d8}
 Returns the top left corner of this axis rect in pixels. Margins are not taken into account here, so the returned value is with respect to the inner \hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}. 
 
-Definition at line 2032 of file qcustomplot.\+h.
+Definition at line 2358 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-2032 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}.topLeft(); \}
+2358 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}.topLeft(); \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_axis_rect_a232409546394c23b59407bc62fa460a8}{}\index{Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}!top\+Right@{top\+Right}}
 \index{top\+Right@{top\+Right}!Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}}
@@ -2175,11 +2160,11 @@ Definition at line 2032 of file qcustomplot.\+h.
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_axis_rect_a232409546394c23b59407bc62fa460a8}
 Returns the top right corner of this axis rect in pixels. Margins are not taken into account here, so the returned value is with respect to the inner \hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}. 
 
-Definition at line 2033 of file qcustomplot.\+h.
+Definition at line 2359 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-2033 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}.topRight(); \}
+2359 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}.topRight(); \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_axis_rect_a255080a017df9083a60a321ef2ba9ed8}{}\index{Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}!update@{update}}
 \index{update@{update}!Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}}
@@ -2196,7 +2181,7 @@ Reimplemented from \hyperlink{class_q_c_p_layout_element_a929c2ec62e0e0e1d8418ea
 
 
 
-Definition at line 12122 of file qcustomplot.\+cpp.
+Definition at line 13359 of file qcustomplot.\+cpp.
 
 
 
@@ -2204,30 +2189,28 @@ References axes(), i, m\+Inset\+Layout, Q\+C\+P\+Layout\+Element\+::rect(), Q\+C
 
 
 \begin{DoxyCode}
-12123 \{
-12124   \hyperlink{class_q_c_p_layout_element_a929c2ec62e0e0e1d8418eaa802e2af9b}{QCPLayoutElement::update}(phase);
-12125   
-12126   \textcolor{keywordflow}{switch} (phase)
-12127   \{
-12128     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_layout_element_a0d83360e05735735aaf6d7983c56374dad6119882eba136357c2f627992e527d3}{upPreparation}:
-12129     \{
-12130       QList<QCPAxis*> allAxes = \hyperlink{class_q_c_p_axis_rect_a18dcdc0dd6c7520bc9f3d15a7a3feec2}{axes}();
-12131       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}<allAxes.size(); ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
-12132         allAxes.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->setupTickVectors();
-12133       \textcolor{keywordflow}{break};
-12134     \}
-12135     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_layout_element_a0d83360e05735735aaf6d7983c56374da5d1ccf5d79967c232c3c511796860045}{upLayout}:
-12136     \{
-12137       \hyperlink{class_q_c_p_axis_rect_a255240399e0fd24baad80cbbe46f698a}{mInsetLayout}->\hyperlink{class_q_c_p_layout_element_a38975ea13e36de8e53391ce41d94bc0f}{setOuterRect}(\hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}());
-12138       \textcolor{keywordflow}{break};
-12139     \}
-12140     \textcolor{keywordflow}{default}: \textcolor{keywordflow}{break};
-12141   \}
-12142   
-12143   \textcolor{comment}{// pass update call on to inset layout (doesn't happen automatically, because QCPAxisRect doesn't derive
-       from QCPLayout):}
-12144   \hyperlink{class_q_c_p_axis_rect_a255240399e0fd24baad80cbbe46f698a}{mInsetLayout}->\hyperlink{class_q_c_p_layout_a34ab477e820537ded7bade4399c482fd}{update}(phase);
-12145 \}
+13359                                           \{
+13360   \hyperlink{class_q_c_p_layout_element_a929c2ec62e0e0e1d8418eaa802e2af9b}{QCPLayoutElement::update}(phase);
+13361 
+13362   \textcolor{keywordflow}{switch} (phase) \{
+13363   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_layout_element_a0d83360e05735735aaf6d7983c56374dad6119882eba136357c2f627992e527d3}{upPreparation}: \{
+13364     QList<QCPAxis *> allAxes = \hyperlink{class_q_c_p_axis_rect_a18dcdc0dd6c7520bc9f3d15a7a3feec2}{axes}();
+13365     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < allAxes.size(); ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
+13366       allAxes.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->setupTickVectors();
+13367     \textcolor{keywordflow}{break};
+13368   \}
+13369   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_layout_element_a0d83360e05735735aaf6d7983c56374da5d1ccf5d79967c232c3c511796860045}{upLayout}: \{
+13370     \hyperlink{class_q_c_p_axis_rect_a255240399e0fd24baad80cbbe46f698a}{mInsetLayout}->\hyperlink{class_q_c_p_layout_element_a38975ea13e36de8e53391ce41d94bc0f}{setOuterRect}(\hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}());
+13371     \textcolor{keywordflow}{break};
+13372   \}
+13373   \textcolor{keywordflow}{default}:
+13374     \textcolor{keywordflow}{break};
+13375   \}
+13376 
+13377   \textcolor{comment}{// pass update call on to inset layout (doesn't happen automatically, because}
+13378   \textcolor{comment}{// QCPAxisRect doesn't derive from QCPLayout):}
+13379   \hyperlink{class_q_c_p_axis_rect_a255240399e0fd24baad80cbbe46f698a}{mInsetLayout}->\hyperlink{class_q_c_p_layout_a34ab477e820537ded7bade4399c482fd}{update}(phase);
+13380 \}
 \end{DoxyCode}
 
 
@@ -2249,7 +2232,7 @@ Here is the call graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_axis_rect_a6024ccdc74f5dc0e8a0fe482e5b28a20}
 
 
-Definition at line 12425 of file qcustomplot.\+cpp.
+Definition at line 13693 of file qcustomplot.\+cpp.
 
 
 
@@ -2261,26 +2244,31 @@ Referenced by calculate\+Auto\+Margin().
 
 
 \begin{DoxyCode}
-12426 \{
-12427   \textcolor{keyword}{const} QList<QCPAxis*> axesList = \hyperlink{class_q_c_p_axis_rect_afe7a24d2a2bea98fc552fa826350ba81}{mAxes}.value(type);
-12428   \textcolor{keywordflow}{if} (axesList.isEmpty())
-12429     \textcolor{keywordflow}{return};
-12430   
-12431   \textcolor{keywordtype}{bool} isFirstVisible = !axesList.first()->visible(); \textcolor{comment}{// if the first axis is visible, the second axis
-       (which is where the loop starts) isn't the first visible axis, so initialize with false}
-12432   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=1; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}<axesList.size(); ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
-12433   \{
-12434     \textcolor{keywordtype}{int} offset = axesList.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}-1)->offset() + axesList.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}-1)->calculateMargin();
-12435     \textcolor{keywordflow}{if} (axesList.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->visible()) \textcolor{comment}{// only add inner tick length to offset if this axis is visible and
-       it's not the first visible one (might happen if true first axis is invisible)}
-12436     \{
-12437       \textcolor{keywordflow}{if} (!isFirstVisible)
-12438         offset += axesList.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->tickLengthIn();
-12439       isFirstVisible = \textcolor{keyword}{false};
-12440     \}
-12441     axesList.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->setOffset(offset);
-12442   \}
-12443 \}
+13693                                                        \{
+13694   \textcolor{keyword}{const} QList<QCPAxis *> axesList = \hyperlink{class_q_c_p_axis_rect_ac2cb3ba9a25b733883afc3bd25f7d82b}{mAxes}.value(type);
+13695   \textcolor{keywordflow}{if} (axesList.isEmpty())
+13696     \textcolor{keywordflow}{return};
+13697 
+13698   \textcolor{keywordtype}{bool} isFirstVisible =
+13699       !axesList.first()->visible(); \textcolor{comment}{// if the first axis is visible, the second}
+13700                                     \textcolor{comment}{// axis (which is where the loop starts)}
+13701                                     \textcolor{comment}{// isn't the first visible axis, so}
+13702                                     \textcolor{comment}{// initialize with false}
+13703   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 1; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < axesList.size(); ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) \{
+13704     \textcolor{keywordtype}{int} offset =
+13705         axesList.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} - 1)->offset() + axesList.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} - 1)->calculateMargin();
+13706     \textcolor{keywordflow}{if} (axesList.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->visible()) \textcolor{comment}{// only add inner tick length to offset if}
+13707                                    \textcolor{comment}{// this axis is visible and it's not the}
+13708                                    \textcolor{comment}{// first visible one (might happen if true}
+13709                                    \textcolor{comment}{// first axis is invisible)}
+13710     \{
+13711       \textcolor{keywordflow}{if} (!isFirstVisible)
+13712         offset += axesList.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->tickLengthIn();
+13713       isFirstVisible = \textcolor{keyword}{false};
+13714     \}
+13715     axesList.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})->setOffset(offset);
+13716   \}
+13717 \}
 \end{DoxyCode}
 
 
@@ -2306,7 +2294,7 @@ Reimplemented from \hyperlink{class_q_c_p_layout_element_a300521d2fd18a893c1b85f
 
 
 
-Definition at line 12572 of file qcustomplot.\+cpp.
+Definition at line 13857 of file qcustomplot.\+cpp.
 
 
 
@@ -2314,33 +2302,32 @@ References Q\+Custom\+Plot\+::interactions(), Q\+C\+P\+::i\+Range\+Zoom, Q\+C\+P
 
 
 \begin{DoxyCode}
-12573 \{
-12574   \textcolor{comment}{// Mouse range zooming interaction:}
-12575   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_a12401c02b6949a717f5749bb28c62983}{interactions}().testFlag(
-      \hyperlink{namespace_q_c_p_a2ad6bb6281c7c2d593d4277b44c2b037abee1e94353525a636aeaf0ba32b72e14}{QCP::iRangeZoom}))
-12576   \{
-12577     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis_rect_a215eff671d48df2edccc36e7f976f28c}{mRangeZoom} != 0)
-12578     \{
-12579       \textcolor{keywordtype}{double} factor;
-12580       \textcolor{keywordtype}{double} wheelSteps = \textcolor{keyword}{event}->delta()/120.0; \textcolor{comment}{// a single step delta is +/-120 usually}
-12581       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis_rect_a215eff671d48df2edccc36e7f976f28c}{mRangeZoom}.testFlag(Qt::Horizontal))
-12582       \{
-12583         factor = qPow(\hyperlink{class_q_c_p_axis_rect_ad08d0250ed7b99de387d0ea6c7fd4dc1}{mRangeZoomFactorHorz}, wheelSteps);
-12584         \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis_rect_ae22f882bab20518559f3fbb84243d0ab}{mRangeZoomHorzAxis}.data())
-12585           \hyperlink{class_q_c_p_axis_rect_ae22f882bab20518559f3fbb84243d0ab}{mRangeZoomHorzAxis}.data()->scaleRange(factor, 
-      \hyperlink{class_q_c_p_axis_rect_ae22f882bab20518559f3fbb84243d0ab}{mRangeZoomHorzAxis}.data()->pixelToCoord(event->pos().x()));
-12586       \}
-12587       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis_rect_a215eff671d48df2edccc36e7f976f28c}{mRangeZoom}.testFlag(Qt::Vertical))
-12588       \{
-12589         factor = qPow(\hyperlink{class_q_c_p_axis_rect_a32f063629581d5bf82b12769940b34ad}{mRangeZoomFactorVert}, wheelSteps);
-12590         \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis_rect_a8b9acd16a203a9692bd35a9465f54bc1}{mRangeZoomVertAxis}.data())
-12591           \hyperlink{class_q_c_p_axis_rect_a8b9acd16a203a9692bd35a9465f54bc1}{mRangeZoomVertAxis}.data()->scaleRange(factor, 
-      \hyperlink{class_q_c_p_axis_rect_a8b9acd16a203a9692bd35a9465f54bc1}{mRangeZoomVertAxis}.data()->pixelToCoord(event->pos().y()));
-12592       \}
-12593       \hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_a606fd384b2a637ce2c24899bcbde77d6}{replot}();
-12594     \}
-12595   \}
-12596 \}
+13857                                                \{
+13858   \textcolor{comment}{// Mouse range zooming interaction:}
+13859   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_a12401c02b6949a717f5749bb28c62983}{interactions}().testFlag(
+      \hyperlink{namespace_q_c_p_a2ad6bb6281c7c2d593d4277b44c2b037abee1e94353525a636aeaf0ba32b72e14}{QCP::iRangeZoom})) \{
+13860     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis_rect_a215eff671d48df2edccc36e7f976f28c}{mRangeZoom} != 0) \{
+13861       \textcolor{keywordtype}{double} factor;
+13862       \textcolor{keywordtype}{double} wheelSteps =
+13863           \textcolor{keyword}{event}->delta() / 120.0; \textcolor{comment}{// a single step delta is +/-120 usually}
+13864       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis_rect_a215eff671d48df2edccc36e7f976f28c}{mRangeZoom}.testFlag(Qt::Horizontal)) \{
+13865         factor = qPow(\hyperlink{class_q_c_p_axis_rect_ad08d0250ed7b99de387d0ea6c7fd4dc1}{mRangeZoomFactorHorz}, wheelSteps);
+13866         \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis_rect_ae22f882bab20518559f3fbb84243d0ab}{mRangeZoomHorzAxis}.data())
+13867           \hyperlink{class_q_c_p_axis_rect_ae22f882bab20518559f3fbb84243d0ab}{mRangeZoomHorzAxis}.data()->scaleRange(
+13868               factor,
+13869               \hyperlink{class_q_c_p_axis_rect_ae22f882bab20518559f3fbb84243d0ab}{mRangeZoomHorzAxis}.data()->pixelToCoord(event->pos().x()));
+13870       \}
+13871       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis_rect_a215eff671d48df2edccc36e7f976f28c}{mRangeZoom}.testFlag(Qt::Vertical)) \{
+13872         factor = qPow(\hyperlink{class_q_c_p_axis_rect_a32f063629581d5bf82b12769940b34ad}{mRangeZoomFactorVert}, wheelSteps);
+13873         \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_axis_rect_a8b9acd16a203a9692bd35a9465f54bc1}{mRangeZoomVertAxis}.data())
+13874           \hyperlink{class_q_c_p_axis_rect_a8b9acd16a203a9692bd35a9465f54bc1}{mRangeZoomVertAxis}.data()->scaleRange(
+13875               factor,
+13876               \hyperlink{class_q_c_p_axis_rect_a8b9acd16a203a9692bd35a9465f54bc1}{mRangeZoomVertAxis}.data()->pixelToCoord(event->pos().y()));
+13877       \}
+13878       \hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_a606fd384b2a637ce2c24899bcbde77d6}{replot}();
+13879     \}
+13880   \}
+13881 \}
 \end{DoxyCode}
 
 
@@ -2362,7 +2349,7 @@ Here is the call graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_axis_rect_a45bf5c17f4ca29131b7eb0db06efc259}
 Returns the pixel width of this axis rect. Margins are not taken into account here, so the returned value is with respect to the inner \hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}. 
 
-Definition at line 2029 of file qcustomplot.\+h.
+Definition at line 2355 of file qcustomplot.\+h.
 
 
 
@@ -2370,7 +2357,7 @@ Referenced by Q\+C\+P\+Axis\+::coord\+To\+Pixel(), Q\+C\+P\+Bars\+Group\+::get\+
 
 
 \begin{DoxyCode}
-2029 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}.width(); \}
+2355 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}.width(); \}
 \end{DoxyCode}
 
 
@@ -2391,7 +2378,7 @@ Here is the caller graph for this function\+:\nopagebreak
 \subsubsection[{Q\+Custom\+Plot}]{\setlength{\rightskip}{0pt plus 5cm}friend class {\bf Q\+Custom\+Plot}\hspace{0.3cm}{\ttfamily [friend]}}\label{class_q_c_p_axis_rect_a1cdf9df76adcfae45261690aa0ca2198}
 
 
-Definition at line 2077 of file qcustomplot.\+h.
+Definition at line 2404 of file qcustomplot.\+h.
 
 
 
@@ -2401,18 +2388,18 @@ Definition at line 2077 of file qcustomplot.\+h.
 \subsubsection[{m\+A\+A\+Drag\+Backup}]{\setlength{\rightskip}{0pt plus 5cm}Q\+C\+P\+::\+Antialiased\+Elements Q\+C\+P\+Axis\+Rect\+::m\+A\+A\+Drag\+Backup\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_axis_rect_aa4a24f76360cfebe1bcf17a77fa7521b}
 
 
-Definition at line 2055 of file qcustomplot.\+h.
+Definition at line 2382 of file qcustomplot.\+h.
 
 
 
 Referenced by mouse\+Press\+Event(), and mouse\+Release\+Event().
 
-\hypertarget{class_q_c_p_axis_rect_afe7a24d2a2bea98fc552fa826350ba81}{}\index{Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}!m\+Axes@{m\+Axes}}
+\hypertarget{class_q_c_p_axis_rect_ac2cb3ba9a25b733883afc3bd25f7d82b}{}\index{Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}!m\+Axes@{m\+Axes}}
 \index{m\+Axes@{m\+Axes}!Q\+C\+P\+Axis\+Rect@{Q\+C\+P\+Axis\+Rect}}
-\subsubsection[{m\+Axes}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Hash$<${\bf Q\+C\+P\+Axis\+::\+Axis\+Type}, Q\+List$<${\bf Q\+C\+P\+Axis}$\ast$$>$ $>$ Q\+C\+P\+Axis\+Rect\+::m\+Axes\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_axis_rect_afe7a24d2a2bea98fc552fa826350ba81}
+\subsubsection[{m\+Axes}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Hash$<${\bf Q\+C\+P\+Axis\+::\+Axis\+Type}, Q\+List$<${\bf Q\+C\+P\+Axis} $\ast$$>$ $>$ Q\+C\+P\+Axis\+Rect\+::m\+Axes\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_axis_rect_ac2cb3ba9a25b733883afc3bd25f7d82b}
 
 
-Definition at line 2058 of file qcustomplot.\+h.
+Definition at line 2385 of file qcustomplot.\+h.
 
 
 
@@ -2423,7 +2410,7 @@ Referenced by add\+Axis(), axes(), axis(), axis\+Count(), calculate\+Auto\+Margi
 \subsubsection[{m\+Background\+Brush}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Brush Q\+C\+P\+Axis\+Rect\+::m\+Background\+Brush\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_axis_rect_a5748e1a37f63c428e38b0a7724b46259}
 
 
-Definition at line 2044 of file qcustomplot.\+h.
+Definition at line 2370 of file qcustomplot.\+h.
 
 
 
@@ -2434,7 +2421,7 @@ Referenced by draw\+Background(), and set\+Background().
 \subsubsection[{m\+Background\+Pixmap}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Pixmap Q\+C\+P\+Axis\+Rect\+::m\+Background\+Pixmap\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_axis_rect_a38fb1a15f43228a0c124553649303722}
 
 
-Definition at line 2045 of file qcustomplot.\+h.
+Definition at line 2371 of file qcustomplot.\+h.
 
 
 
@@ -2445,7 +2432,7 @@ Referenced by draw\+Background(), and set\+Background().
 \subsubsection[{m\+Background\+Scaled}]{\setlength{\rightskip}{0pt plus 5cm}bool Q\+C\+P\+Axis\+Rect\+::m\+Background\+Scaled\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_axis_rect_a5ad835f0fae5d7cc5ada9e063641dbf1}
 
 
-Definition at line 2047 of file qcustomplot.\+h.
+Definition at line 2373 of file qcustomplot.\+h.
 
 
 
@@ -2456,7 +2443,7 @@ Referenced by draw\+Background(), set\+Background(), and set\+Background\+Scaled
 \subsubsection[{m\+Background\+Scaled\+Mode}]{\setlength{\rightskip}{0pt plus 5cm}Qt\+::\+Aspect\+Ratio\+Mode Q\+C\+P\+Axis\+Rect\+::m\+Background\+Scaled\+Mode\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_axis_rect_a859fd368e794663e346b4f53f35078e9}
 
 
-Definition at line 2048 of file qcustomplot.\+h.
+Definition at line 2374 of file qcustomplot.\+h.
 
 
 
@@ -2467,7 +2454,7 @@ Referenced by draw\+Background(), set\+Background(), and set\+Background\+Scaled
 \subsubsection[{m\+Dragging}]{\setlength{\rightskip}{0pt plus 5cm}bool Q\+C\+P\+Axis\+Rect\+::m\+Dragging\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_axis_rect_ab49a6698194cf0e9e38a1d734c0888a8}
 
 
-Definition at line 2057 of file qcustomplot.\+h.
+Definition at line 2384 of file qcustomplot.\+h.
 
 
 
@@ -2478,7 +2465,7 @@ Referenced by mouse\+Move\+Event(), mouse\+Press\+Event(), and mouse\+Release\+E
 \subsubsection[{m\+Drag\+Start}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Point Q\+C\+P\+Axis\+Rect\+::m\+Drag\+Start\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_axis_rect_a032896b28f83a58010d8d533b78c49df}
 
 
-Definition at line 2056 of file qcustomplot.\+h.
+Definition at line 2383 of file qcustomplot.\+h.
 
 
 
@@ -2489,7 +2476,7 @@ Referenced by mouse\+Move\+Event(), and mouse\+Press\+Event().
 \subsubsection[{m\+Drag\+Start\+Horz\+Range}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Range} Q\+C\+P\+Axis\+Rect\+::m\+Drag\+Start\+Horz\+Range\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_axis_rect_a41936cf473ec638bec382f5a40cdb1f3}
 
 
-Definition at line 2054 of file qcustomplot.\+h.
+Definition at line 2381 of file qcustomplot.\+h.
 
 
 
@@ -2500,7 +2487,7 @@ Referenced by mouse\+Move\+Event(), and mouse\+Press\+Event().
 \subsubsection[{m\+Drag\+Start\+Vert\+Range}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Range} Q\+C\+P\+Axis\+Rect\+::m\+Drag\+Start\+Vert\+Range\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_axis_rect_a1a5ae4c74b8bd46baf91bf4e4f4165f0}
 
 
-Definition at line 2054 of file qcustomplot.\+h.
+Definition at line 2381 of file qcustomplot.\+h.
 
 
 
@@ -2511,7 +2498,7 @@ Referenced by mouse\+Move\+Event(), and mouse\+Press\+Event().
 \subsubsection[{m\+Inset\+Layout}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Layout\+Inset}$\ast$ Q\+C\+P\+Axis\+Rect\+::m\+Inset\+Layout\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_axis_rect_a255240399e0fd24baad80cbbe46f698a}
 
 
-Definition at line 2049 of file qcustomplot.\+h.
+Definition at line 2375 of file qcustomplot.\+h.
 
 
 
@@ -2522,7 +2509,7 @@ Referenced by elements(), Q\+C\+P\+Axis\+Rect(), update(), and $\sim$\+Q\+C\+P\+
 \subsubsection[{m\+Not\+A\+A\+Drag\+Backup}]{\setlength{\rightskip}{0pt plus 5cm}Q\+C\+P\+::\+Antialiased\+Elements Q\+C\+P\+Axis\+Rect\+::m\+Not\+A\+A\+Drag\+Backup\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_axis_rect_a6fcb12e052e276d57efbb128be31d6f5}
 
 
-Definition at line 2055 of file qcustomplot.\+h.
+Definition at line 2382 of file qcustomplot.\+h.
 
 
 
@@ -2533,7 +2520,7 @@ Referenced by mouse\+Press\+Event(), and mouse\+Release\+Event().
 \subsubsection[{m\+Range\+Drag}]{\setlength{\rightskip}{0pt plus 5cm}Qt\+::\+Orientations Q\+C\+P\+Axis\+Rect\+::m\+Range\+Drag\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_axis_rect_aa9f107f66ca3469ad50ee6cea7c9e237}
 
 
-Definition at line 2050 of file qcustomplot.\+h.
+Definition at line 2376 of file qcustomplot.\+h.
 
 
 
@@ -2544,7 +2531,7 @@ Referenced by mouse\+Move\+Event(), and set\+Range\+Drag().
 \subsubsection[{m\+Range\+Drag\+Horz\+Axis}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Pointer$<${\bf Q\+C\+P\+Axis}$>$ Q\+C\+P\+Axis\+Rect\+::m\+Range\+Drag\+Horz\+Axis\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_axis_rect_aeaaa38c6d2030dd5f84461e2596e41e3}
 
 
-Definition at line 2051 of file qcustomplot.\+h.
+Definition at line 2377 of file qcustomplot.\+h.
 
 
 
@@ -2555,7 +2542,7 @@ Referenced by mouse\+Move\+Event(), mouse\+Press\+Event(), range\+Drag\+Axis(), 
 \subsubsection[{m\+Range\+Drag\+Vert\+Axis}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Pointer$<${\bf Q\+C\+P\+Axis}$>$ Q\+C\+P\+Axis\+Rect\+::m\+Range\+Drag\+Vert\+Axis\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_axis_rect_a3e41dffec18987366f2a8ffd80689c12}
 
 
-Definition at line 2051 of file qcustomplot.\+h.
+Definition at line 2377 of file qcustomplot.\+h.
 
 
 
@@ -2566,7 +2553,7 @@ Referenced by mouse\+Move\+Event(), mouse\+Press\+Event(), range\+Drag\+Axis(), 
 \subsubsection[{m\+Range\+Zoom}]{\setlength{\rightskip}{0pt plus 5cm}Qt\+::\+Orientations Q\+C\+P\+Axis\+Rect\+::m\+Range\+Zoom\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_axis_rect_a215eff671d48df2edccc36e7f976f28c}
 
 
-Definition at line 2050 of file qcustomplot.\+h.
+Definition at line 2376 of file qcustomplot.\+h.
 
 
 
@@ -2577,7 +2564,7 @@ Referenced by set\+Range\+Zoom(), and wheel\+Event().
 \subsubsection[{m\+Range\+Zoom\+Factor\+Horz}]{\setlength{\rightskip}{0pt plus 5cm}double Q\+C\+P\+Axis\+Rect\+::m\+Range\+Zoom\+Factor\+Horz\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_axis_rect_ad08d0250ed7b99de387d0ea6c7fd4dc1}
 
 
-Definition at line 2052 of file qcustomplot.\+h.
+Definition at line 2379 of file qcustomplot.\+h.
 
 
 
@@ -2588,7 +2575,7 @@ Referenced by range\+Zoom\+Factor(), set\+Range\+Zoom\+Factor(), and wheel\+Even
 \subsubsection[{m\+Range\+Zoom\+Factor\+Vert}]{\setlength{\rightskip}{0pt plus 5cm}double Q\+C\+P\+Axis\+Rect\+::m\+Range\+Zoom\+Factor\+Vert\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_axis_rect_a32f063629581d5bf82b12769940b34ad}
 
 
-Definition at line 2052 of file qcustomplot.\+h.
+Definition at line 2379 of file qcustomplot.\+h.
 
 
 
@@ -2599,7 +2586,7 @@ Referenced by range\+Zoom\+Factor(), set\+Range\+Zoom\+Factor(), and wheel\+Even
 \subsubsection[{m\+Range\+Zoom\+Horz\+Axis}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Pointer$<${\bf Q\+C\+P\+Axis}$>$ Q\+C\+P\+Axis\+Rect\+::m\+Range\+Zoom\+Horz\+Axis\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_axis_rect_ae22f882bab20518559f3fbb84243d0ab}
 
 
-Definition at line 2051 of file qcustomplot.\+h.
+Definition at line 2377 of file qcustomplot.\+h.
 
 
 
@@ -2610,7 +2597,7 @@ Referenced by range\+Zoom\+Axis(), set\+Range\+Zoom\+Axes(), and wheel\+Event().
 \subsubsection[{m\+Range\+Zoom\+Vert\+Axis}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Pointer$<${\bf Q\+C\+P\+Axis}$>$ Q\+C\+P\+Axis\+Rect\+::m\+Range\+Zoom\+Vert\+Axis\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_axis_rect_a8b9acd16a203a9692bd35a9465f54bc1}
 
 
-Definition at line 2051 of file qcustomplot.\+h.
+Definition at line 2377 of file qcustomplot.\+h.
 
 
 
@@ -2621,7 +2608,7 @@ Referenced by range\+Zoom\+Axis(), set\+Range\+Zoom\+Axes(), and wheel\+Event().
 \subsubsection[{m\+Scaled\+Background\+Pixmap}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Pixmap Q\+C\+P\+Axis\+Rect\+::m\+Scaled\+Background\+Pixmap\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_axis_rect_aa74b9415598d59b49290e41e42d7ee27}
 
 
-Definition at line 2046 of file qcustomplot.\+h.
+Definition at line 2372 of file qcustomplot.\+h.
 
 
 
