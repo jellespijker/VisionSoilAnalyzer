@@ -35,8 +35,6 @@ ComplexVect_t FFT::GetDescriptors(const cv::Mat &img) {
 
 iContour_t FFT::Neighbors(uchar *O, int pixel, uint32_t columns,
                           uint32_t rows) {
-  // long int LUT_nBore[8] = { 1, 1 + columns, columns, columns - 1, -1,
-  // -columns - 1, -columns, -columns + 1 };
   long int LUT_nBore[8] = {-columns + 1, -columns, -columns - 1, -1,
                            columns - 1,  columns,  1 + columns,  1};
   iContour_t neighbors;
@@ -56,9 +54,6 @@ iContour_t FFT::Neighbors(uchar *O, int pixel, uint32_t columns,
   return neighbors;
 }
 
-// Depth first search with extension list,
-// based upon:
-// http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-034-artificial-intelligence-fall-2010/lecture-videos/lecture-4-search-depth-first-hill-climbing-beam/
 ComplexVect_t FFT::Contour2Complex(const cv::Mat &img, float centerCol,
                                    float centerRow) {
   uchar *O = img.data;
@@ -149,6 +144,7 @@ void FFT::fft(ComplexArray_t &CA) {
     return;
   }
 
+  //!< Divide and conquor
   ComplexArray_t even = CA[std::slice(0, N / 2, 2)];
   ComplexArray_t odd = CA[std::slice(1, N / 2, 2)];
 
