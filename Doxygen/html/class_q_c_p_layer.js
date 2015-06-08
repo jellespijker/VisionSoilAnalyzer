@@ -12,7 +12,7 @@ var class_q_c_p_layer =
     [ "visible", "class_q_c_p_layer.html#a9efca636e4dcad721999a6282f296016", null ],
     [ "QCPLayerable", "class_q_c_p_layer.html#ad655f55cccf49ba14d5172ec517e07ae", null ],
     [ "QCustomPlot", "class_q_c_p_layer.html#a1cdf9df76adcfae45261690aa0ca2198", null ],
-    [ "mChildren", "class_q_c_p_layer.html#a704aa71bba469383c3a3c598c1ec0d28", null ],
+    [ "mChildren", "class_q_c_p_layer.html#a05045efb8a9694e892b71808bd7433f9", null ],
     [ "mIndex", "class_q_c_p_layer.html#a122088bcab6cec76a52b75ce8606605b", null ],
     [ "mName", "class_q_c_p_layer.html#a91e6298183cb4b9dfd4efdfaf1ecc220", null ],
     [ "mParentPlot", "class_q_c_p_layer.html#a2f3374a7884bf403720cd1cf6f7ad1bb", null ],

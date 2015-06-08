@@ -35,7 +35,7 @@
    <div id="projectname">Vision Soil Analyzer
    &#160;<span id="projectnumber">1.0.0</span>
    </div>
-   <div id="projectbrief">The Soil Analyzer is a portable lab that can analyse soil samples and tells the user about it&#39;s optical properties. It looks at the texture and describe it as a Particle Size Distribution. This information is presented as a Cumulative Distribution Function (CDF). It also describes the structure of the soil sample and gives information on the sphericity and roundness / angularity. It does so by analysing the contour of particles, describing them as Fourier Descriptors and using a Neural Network to describe it&#39;s properties. Finally it gives the color properties in a histogram in the CIE La*b* colorspace, which show correlations with the fertility of the soil. and a histogram of the Redness Index, which gives has a correlation on the iron content.</div>
+   <div id="projectbrief">Soil analyzer using an USB microscope - for Linux PC and Beaglebone Black</div>
   </td>
  </tr>
  </tbody>
@@ -300,10 +300,10 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:ad2a70ff6b658fcb84a9427f69d3f587d inherit pro_attribs_class_q_c_p_abstract_item"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e57cfe7da4b1ac3d6fa7281ea437361 inherit pro_attribs_class_q_c_p_abstract_item"><td class="memItemLeft" align="right" valign="top">QPointer&lt; <a class="el" href="class_q_c_p_axis_rect.html">QCPAxisRect</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_c_p_abstract_item.html#a3e57cfe7da4b1ac3d6fa7281ea437361">mClipAxisRect</a></td></tr>
 <tr class="separator:a3e57cfe7da4b1ac3d6fa7281ea437361 inherit pro_attribs_class_q_c_p_abstract_item"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af94ff71b6a15ea6d028ab8bd8eccd012 inherit pro_attribs_class_q_c_p_abstract_item"><td class="memItemLeft" align="right" valign="top">QList&lt; <a class="el" href="class_q_c_p_item_position.html">QCPItemPosition</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_c_p_abstract_item.html#af94ff71b6a15ea6d028ab8bd8eccd012">mPositions</a></td></tr>
-<tr class="separator:af94ff71b6a15ea6d028ab8bd8eccd012 inherit pro_attribs_class_q_c_p_abstract_item"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a909a3abab783de302ebf0a0e6f2bbc15 inherit pro_attribs_class_q_c_p_abstract_item"><td class="memItemLeft" align="right" valign="top">QList&lt; <a class="el" href="class_q_c_p_item_anchor.html">QCPItemAnchor</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_c_p_abstract_item.html#a909a3abab783de302ebf0a0e6f2bbc15">mAnchors</a></td></tr>
-<tr class="separator:a909a3abab783de302ebf0a0e6f2bbc15 inherit pro_attribs_class_q_c_p_abstract_item"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96cab718644f27490f9d967c49fcd18c inherit pro_attribs_class_q_c_p_abstract_item"><td class="memItemLeft" align="right" valign="top">QList&lt; <a class="el" href="class_q_c_p_item_position.html">QCPItemPosition</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_c_p_abstract_item.html#a96cab718644f27490f9d967c49fcd18c">mPositions</a></td></tr>
+<tr class="separator:a96cab718644f27490f9d967c49fcd18c inherit pro_attribs_class_q_c_p_abstract_item"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e1e082dc04ef832411a23905d83cc02 inherit pro_attribs_class_q_c_p_abstract_item"><td class="memItemLeft" align="right" valign="top">QList&lt; <a class="el" href="class_q_c_p_item_anchor.html">QCPItemAnchor</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_c_p_abstract_item.html#a0e1e082dc04ef832411a23905d83cc02">mAnchors</a></td></tr>
+<tr class="separator:a0e1e082dc04ef832411a23905d83cc02 inherit pro_attribs_class_q_c_p_abstract_item"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad81eb35c8726a0f458db9df9732e0e41 inherit pro_attribs_class_q_c_p_abstract_item"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_c_p_abstract_item.html#ad81eb35c8726a0f458db9df9732e0e41">mSelectable</a></td></tr>
 <tr class="separator:ad81eb35c8726a0f458db9df9732e0e41 inherit pro_attribs_class_q_c_p_abstract_item"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4bdb3457dad1d268c0f78a44152b9645 inherit pro_attribs_class_q_c_p_abstract_item"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_c_p_abstract_item.html#a4bdb3457dad1d268c0f78a44152b9645">mSelected</a></td></tr>
@@ -336,15 +336,16 @@ Additional Inherited Members</h2></td></tr>
 <div class="image">
 <img src="QCPItemBracket.png" alt="QCPItemBracket.png"/>
 <div class="caption">
-Bracket example. Blue dotted circles are anchors, solid blue discs are positions.</div></div>
-<p> It has two positions, <em>left</em> and <em>right</em>, which define the span of the bracket. If <em>left</em> is actually farther to the left than <em>right</em>, the bracket is opened to the bottom, as shown in the example image.</p>
+Bracket example. Blue dotted circles are</div></div>
+<p> anchors, solid blue discs are positions."</p>
+<p>It has two positions, <em>left</em> and <em>right</em>, which define the span of the bracket. If <em>left</em> is actually farther to the left than <em>right</em>, the bracket is opened to the bottom, as shown in the example image.</p>
 <p>The bracket supports multiple styles via <a class="el" href="class_q_c_p_item_bracket.html#a612dffa2373422eef8754d690add3703">setStyle</a>. The length, i.e. how far the bracket stretches away from the embraced span, can be controlled with <a class="el" href="class_q_c_p_item_bracket.html#ac7cfc3da7da9b5c5ac5dfbe4f0351b2a">setLength</a>.</p>
 <div class="image">
 <img src="QCPItemBracket-length.png" alt="QCPItemBracket-length.png"/>
 </div>
  <center>Demonstrating the effect of different values for <a class="el" href="class_q_c_p_item_bracket.html#ac7cfc3da7da9b5c5ac5dfbe4f0351b2a">setLength</a>, for styles <a class="el" href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda8f29f5ef754e2dc9a9efdedb2face0f3">bsCalligraphic</a> and <a class="el" href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda7f9df4a7359bfe3dac1dbe4ccf5d220c">bsSquare</a>. Anchors and positions are displayed for reference.</center><p>It provides an anchor <em>center</em>, to allow connection of other items, e.g. an arrow (<a class="el" href="class_q_c_p_item_line.html" title="A line from one point to another. ">QCPItemLine</a> or <a class="el" href="class_q_c_p_item_curve.html" title="A curved line from one point to another. ">QCPItemCurve</a>) or a text label (<a class="el" href="class_q_c_p_item_text.html" title="A text label. ">QCPItemText</a>), to the bracket. </p>
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03713">3713</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l04215">4215</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 </div><h2 class="groupheader">Member Enumeration Documentation</h2>
 <a class="anchor" id="a7f3a6a56d67f71219ed220553f3dd861"></a>
 <div class="memitem">
@@ -368,9 +369,9 @@ Bracket example. Blue dotted circles are anchors, solid blue discs are positions
 </td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03753">3753</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l03753"></a><span class="lineno"> 3753</span>&#160;{<a class="code" href="class_q_c_p_item_bracket.html#a7f3a6a56d67f71219ed220553f3dd861a17b57ef34cc05eadfe9becd1ad5b5242">aiCenter</a>};</div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_a7f3a6a56d67f71219ed220553f3dd861a17b57ef34cc05eadfe9becd1ad5b5242"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a7f3a6a56d67f71219ed220553f3dd861a17b57ef34cc05eadfe9becd1ad5b5242">QCPItemBracket::aiCenter</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03753">qcustomplot.h:3753</a></div></div>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l04260">4260</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l04260"></a><span class="lineno"> 4260</span>&#160;{ <a class="code" href="class_q_c_p_item_bracket.html#a7f3a6a56d67f71219ed220553f3dd861a17b57ef34cc05eadfe9becd1ad5b5242">aiCenter</a> };</div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_a7f3a6a56d67f71219ed220553f3dd861a17b57ef34cc05eadfe9becd1ad5b5242"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a7f3a6a56d67f71219ed220553f3dd861a17b57ef34cc05eadfe9becd1ad5b5242">QCPItemBracket::aiCenter</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l04260">qcustomplot.h:4260</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -394,20 +395,24 @@ Bracket example. Blue dotted circles are anchors, solid blue discs are positions
 <p>A curly brace. </p>
 </td></tr>
 <tr><td class="fieldname"><a class="anchor" id="a7ac3afd0b24a607054e7212047d59dbda8f29f5ef754e2dc9a9efdedb2face0f3"></a>bsCalligraphic&#160;</td><td class="fielddoc">
-<p>A curly brace with varying stroke width giving a calligraphic impression. </p>
+<p>A curly brace with varying stroke width giving a calligraphic impression </p>
 </td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03723">3723</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l03723"></a><span class="lineno"> 3723</span>&#160;                    { <a class="code" href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda7f9df4a7359bfe3dac1dbe4ccf5d220c">bsSquare</a>  </div>
-<div class="line"><a name="l03724"></a><span class="lineno"> 3724</span>&#160;                      ,<a class="code" href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda394627b0830a26ee3e0a02ca67a9f918">bsRound</a>  </div>
-<div class="line"><a name="l03725"></a><span class="lineno"> 3725</span>&#160;                      ,<a class="code" href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda5024ce4023c2d8de4221f1cd4816acd8">bsCurly</a>  </div>
-<div class="line"><a name="l03726"></a><span class="lineno"> 3726</span>&#160;                      ,<a class="code" href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda8f29f5ef754e2dc9a9efdedb2face0f3">bsCalligraphic</a> </div>
-<div class="line"><a name="l03727"></a><span class="lineno"> 3727</span>&#160;  };</div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_a7ac3afd0b24a607054e7212047d59dbda7f9df4a7359bfe3dac1dbe4ccf5d220c"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda7f9df4a7359bfe3dac1dbe4ccf5d220c">QCPItemBracket::bsSquare</a></div><div class="ttdoc">A brace with angled edges. </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03723">qcustomplot.h:3723</a></div></div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_a7ac3afd0b24a607054e7212047d59dbda394627b0830a26ee3e0a02ca67a9f918"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda394627b0830a26ee3e0a02ca67a9f918">QCPItemBracket::bsRound</a></div><div class="ttdoc">A brace with round edges. </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03724">qcustomplot.h:3724</a></div></div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_a7ac3afd0b24a607054e7212047d59dbda5024ce4023c2d8de4221f1cd4816acd8"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda5024ce4023c2d8de4221f1cd4816acd8">QCPItemBracket::bsCurly</a></div><div class="ttdoc">A curly brace. </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03725">qcustomplot.h:3725</a></div></div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_a7ac3afd0b24a607054e7212047d59dbda8f29f5ef754e2dc9a9efdedb2face0f3"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda8f29f5ef754e2dc9a9efdedb2face0f3">QCPItemBracket::bsCalligraphic</a></div><div class="ttdoc">A curly brace with varying stroke width giving a calligraphic impression. </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03726">qcustomplot.h:3726</a></div></div>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l04224">4224</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l04224"></a><span class="lineno"> 4224</span>&#160;                    {</div>
+<div class="line"><a name="l04225"></a><span class="lineno"> 4225</span>&#160;    <a class="code" href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda7f9df4a7359bfe3dac1dbe4ccf5d220c">bsSquare</a> </div>
+<div class="line"><a name="l04226"></a><span class="lineno"> 4226</span>&#160;    ,</div>
+<div class="line"><a name="l04227"></a><span class="lineno"> 4227</span>&#160;    <a class="code" href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda394627b0830a26ee3e0a02ca67a9f918">bsRound</a> </div>
+<div class="line"><a name="l04228"></a><span class="lineno"> 4228</span>&#160;    ,</div>
+<div class="line"><a name="l04229"></a><span class="lineno"> 4229</span>&#160;    <a class="code" href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda5024ce4023c2d8de4221f1cd4816acd8">bsCurly</a> </div>
+<div class="line"><a name="l04230"></a><span class="lineno"> 4230</span>&#160;    ,</div>
+<div class="line"><a name="l04231"></a><span class="lineno"> 4231</span>&#160;    <a class="code" href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda8f29f5ef754e2dc9a9efdedb2face0f3">bsCalligraphic</a> </div>
+<div class="line"><a name="l04232"></a><span class="lineno"> 4232</span>&#160;  };</div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_a7ac3afd0b24a607054e7212047d59dbda7f9df4a7359bfe3dac1dbe4ccf5d220c"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda7f9df4a7359bfe3dac1dbe4ccf5d220c">QCPItemBracket::bsSquare</a></div><div class="ttdoc">A brace with angled edges. </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l04225">qcustomplot.h:4225</a></div></div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_a7ac3afd0b24a607054e7212047d59dbda394627b0830a26ee3e0a02ca67a9f918"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda394627b0830a26ee3e0a02ca67a9f918">QCPItemBracket::bsRound</a></div><div class="ttdoc">A brace with round edges. </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l04227">qcustomplot.h:4227</a></div></div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_a7ac3afd0b24a607054e7212047d59dbda5024ce4023c2d8de4221f1cd4816acd8"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda5024ce4023c2d8de4221f1cd4816acd8">QCPItemBracket::bsCurly</a></div><div class="ttdoc">A curly brace. </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l04229">qcustomplot.h:4229</a></div></div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_a7ac3afd0b24a607054e7212047d59dbda8f29f5ef754e2dc9a9efdedb2face0f3"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda8f29f5ef754e2dc9a9efdedb2face0f3">QCPItemBracket::bsCalligraphic</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l04231">qcustomplot.h:4231</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -428,36 +433,33 @@ Bracket example. Blue dotted circles are anchors, solid blue discs are positions
 <p>Creates a bracket item and sets default values.</p>
 <p>The constructed item can be added to the plot with <a class="el" href="class_q_custom_plot.html#aa500620379262321685cb7a7674cbd2a">QCustomPlot::addItem</a>. </p>
 
-<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l23332">23332</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l25860">25860</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
 
-<p>References <a class="el" href="qcustomplot_8h_source.html#l03726">bsCalligraphic</a>, <a class="el" href="qcustomplot_8h_source.html#l03747">left</a>, <a class="el" href="qcustomplot_8h_source.html#l03748">right</a>, <a class="el" href="qcustomplot_8cpp_source.html#l07925">QCPItemPosition::setCoords()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l23383">setLength()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l23360">setPen()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l23370">setSelectedPen()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l23393">setStyle()</a>.</p>
-<div class="fragment"><div class="line"><a name="l23332"></a><span class="lineno">23332</span>&#160;                                                      :</div>
-<div class="line"><a name="l23333"></a><span class="lineno">23333</span>&#160;  <a class="code" href="class_q_c_p_abstract_item.html#a9922507d8b4503a1fe1ed0b1030e23b6">QCPAbstractItem</a>(parentPlot),</div>
-<div class="line"><a name="l23334"></a><span class="lineno">23334</span>&#160;  <a class="code" href="class_q_c_p_item_bracket.html#af6cc6d27d96171778c6927d6edce48b0">left</a>(<a class="code" href="class_q_c_p_abstract_item.html#a75036d39c4d4e2e1a7dd145fff915d32">createPosition</a>(QLatin1String(<span class="stringliteral">&quot;left&quot;</span>))),</div>
-<div class="line"><a name="l23335"></a><span class="lineno">23335</span>&#160;  <a class="code" href="class_q_c_p_item_bracket.html#afa6c1360b05a50c4e0df37b3cebab6be">right</a>(<a class="code" href="class_q_c_p_abstract_item.html#a75036d39c4d4e2e1a7dd145fff915d32">createPosition</a>(QLatin1String(<span class="stringliteral">&quot;right&quot;</span>))),</div>
-<div class="line"><a name="l23336"></a><span class="lineno">23336</span>&#160;  <a class="code" href="class_q_c_p_item_bracket.html#a2dbcabdf5f467f28be12a7b25962ffca">center</a>(<a class="code" href="class_q_c_p_abstract_item.html#af3fc92527802078ca395138748b629a7">createAnchor</a>(QLatin1String(<span class="stringliteral">&quot;center&quot;</span>), <a class="code" href="class_q_c_p_item_bracket.html#a7f3a6a56d67f71219ed220553f3dd861a17b57ef34cc05eadfe9becd1ad5b5242">aiCenter</a>))</div>
-<div class="line"><a name="l23337"></a><span class="lineno">23337</span>&#160;{</div>
-<div class="line"><a name="l23338"></a><span class="lineno">23338</span>&#160;  <a class="code" href="class_q_c_p_item_bracket.html#af6cc6d27d96171778c6927d6edce48b0">left</a>-&gt;<a class="code" href="class_q_c_p_item_position.html#aa988ba4e87ab684c9021017dcaba945f">setCoords</a>(0, 0);</div>
-<div class="line"><a name="l23339"></a><span class="lineno">23339</span>&#160;  <a class="code" href="class_q_c_p_item_bracket.html#afa6c1360b05a50c4e0df37b3cebab6be">right</a>-&gt;<a class="code" href="class_q_c_p_item_position.html#aa988ba4e87ab684c9021017dcaba945f">setCoords</a>(1, 1);</div>
-<div class="line"><a name="l23340"></a><span class="lineno">23340</span>&#160;  </div>
-<div class="line"><a name="l23341"></a><span class="lineno">23341</span>&#160;  <a class="code" href="class_q_c_p_item_bracket.html#ab13001d9cc5d8f9e56ea15bdda682acb">setPen</a>(QPen(Qt::black));</div>
-<div class="line"><a name="l23342"></a><span class="lineno">23342</span>&#160;  <a class="code" href="class_q_c_p_item_bracket.html#a349785c31122778a520c64891fa204c5">setSelectedPen</a>(QPen(Qt::blue, 2));</div>
-<div class="line"><a name="l23343"></a><span class="lineno">23343</span>&#160;  <a class="code" href="class_q_c_p_item_bracket.html#ac7cfc3da7da9b5c5ac5dfbe4f0351b2a">setLength</a>(8);</div>
-<div class="line"><a name="l23344"></a><span class="lineno">23344</span>&#160;  <a class="code" href="class_q_c_p_item_bracket.html#a612dffa2373422eef8754d690add3703">setStyle</a>(<a class="code" href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda8f29f5ef754e2dc9a9efdedb2face0f3">bsCalligraphic</a>);</div>
-<div class="line"><a name="l23345"></a><span class="lineno">23345</span>&#160;}</div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_a612dffa2373422eef8754d690add3703"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a612dffa2373422eef8754d690add3703">QCPItemBracket::setStyle</a></div><div class="ttdeci">void setStyle(BracketStyle style)</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l23393">qcustomplot.cpp:23393</a></div></div>
-<div class="ttc" id="class_q_c_p_abstract_item_html_af3fc92527802078ca395138748b629a7"><div class="ttname"><a href="class_q_c_p_abstract_item.html#af3fc92527802078ca395138748b629a7">QCPAbstractItem::createAnchor</a></div><div class="ttdeci">QCPItemAnchor * createAnchor(const QString &amp;name, int anchorId)</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l08664">qcustomplot.cpp:8664</a></div></div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_afa6c1360b05a50c4e0df37b3cebab6be"><div class="ttname"><a href="class_q_c_p_item_bracket.html#afa6c1360b05a50c4e0df37b3cebab6be">QCPItemBracket::right</a></div><div class="ttdeci">QCPItemPosition *const right</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03748">qcustomplot.h:3748</a></div></div>
-<div class="ttc" id="class_q_c_p_item_position_html_aa988ba4e87ab684c9021017dcaba945f"><div class="ttname"><a href="class_q_c_p_item_position.html#aa988ba4e87ab684c9021017dcaba945f">QCPItemPosition::setCoords</a></div><div class="ttdeci">void setCoords(double key, double value)</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l07925">qcustomplot.cpp:7925</a></div></div>
-<div class="ttc" id="class_q_c_p_abstract_item_html_a75036d39c4d4e2e1a7dd145fff915d32"><div class="ttname"><a href="class_q_c_p_abstract_item.html#a75036d39c4d4e2e1a7dd145fff915d32">QCPAbstractItem::createPosition</a></div><div class="ttdeci">QCPItemPosition * createPosition(const QString &amp;name)</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l08630">qcustomplot.cpp:8630</a></div></div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_a2dbcabdf5f467f28be12a7b25962ffca"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a2dbcabdf5f467f28be12a7b25962ffca">QCPItemBracket::center</a></div><div class="ttdeci">QCPItemAnchor *const center</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03749">qcustomplot.h:3749</a></div></div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_ab13001d9cc5d8f9e56ea15bdda682acb"><div class="ttname"><a href="class_q_c_p_item_bracket.html#ab13001d9cc5d8f9e56ea15bdda682acb">QCPItemBracket::setPen</a></div><div class="ttdeci">void setPen(const QPen &amp;pen)</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l23360">qcustomplot.cpp:23360</a></div></div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_ac7cfc3da7da9b5c5ac5dfbe4f0351b2a"><div class="ttname"><a href="class_q_c_p_item_bracket.html#ac7cfc3da7da9b5c5ac5dfbe4f0351b2a">QCPItemBracket::setLength</a></div><div class="ttdeci">void setLength(double length)</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l23383">qcustomplot.cpp:23383</a></div></div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_a349785c31122778a520c64891fa204c5"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a349785c31122778a520c64891fa204c5">QCPItemBracket::setSelectedPen</a></div><div class="ttdeci">void setSelectedPen(const QPen &amp;pen)</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l23370">qcustomplot.cpp:23370</a></div></div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_a7f3a6a56d67f71219ed220553f3dd861a17b57ef34cc05eadfe9becd1ad5b5242"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a7f3a6a56d67f71219ed220553f3dd861a17b57ef34cc05eadfe9becd1ad5b5242">QCPItemBracket::aiCenter</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03753">qcustomplot.h:3753</a></div></div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_a7ac3afd0b24a607054e7212047d59dbda8f29f5ef754e2dc9a9efdedb2face0f3"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda8f29f5ef754e2dc9a9efdedb2face0f3">QCPItemBracket::bsCalligraphic</a></div><div class="ttdoc">A curly brace with varying stroke width giving a calligraphic impression. </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03726">qcustomplot.h:3726</a></div></div>
-<div class="ttc" id="class_q_c_p_abstract_item_html_a9922507d8b4503a1fe1ed0b1030e23b6"><div class="ttname"><a href="class_q_c_p_abstract_item.html#a9922507d8b4503a1fe1ed0b1030e23b6">QCPAbstractItem::QCPAbstractItem</a></div><div class="ttdeci">QCPAbstractItem(QCustomPlot *parentPlot)</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l08338">qcustomplot.cpp:8338</a></div></div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_af6cc6d27d96171778c6927d6edce48b0"><div class="ttname"><a href="class_q_c_p_item_bracket.html#af6cc6d27d96171778c6927d6edce48b0">QCPItemBracket::left</a></div><div class="ttdeci">QCPItemPosition *const left</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03747">qcustomplot.h:3747</a></div></div>
+<p>References <a class="el" href="qcustomplot_8h_source.html#l04231">bsCalligraphic</a>, <a class="el" href="qcustomplot_8h_source.html#l04254">left</a>, <a class="el" href="qcustomplot_8h_source.html#l04255">right</a>, <a class="el" href="qcustomplot_8cpp_source.html#l08739">QCPItemPosition::setCoords()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l25907">setLength()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l25886">setPen()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l25893">setSelectedPen()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l25914">setStyle()</a>.</p>
+<div class="fragment"><div class="line"><a name="l25861"></a><span class="lineno">25861</span>&#160;    : <a class="code" href="class_q_c_p_abstract_item.html#a9922507d8b4503a1fe1ed0b1030e23b6">QCPAbstractItem</a>(parentPlot), <a class="code" href="class_q_c_p_item_bracket.html#af6cc6d27d96171778c6927d6edce48b0">left</a>(<a class="code" href="class_q_c_p_abstract_item.html#a75036d39c4d4e2e1a7dd145fff915d32">createPosition</a>(QLatin1String(<span class="stringliteral">&quot;left&quot;</span>))),</div>
+<div class="line"><a name="l25862"></a><span class="lineno">25862</span>&#160;      <a class="code" href="class_q_c_p_item_bracket.html#afa6c1360b05a50c4e0df37b3cebab6be">right</a>(<a class="code" href="class_q_c_p_abstract_item.html#a75036d39c4d4e2e1a7dd145fff915d32">createPosition</a>(QLatin1String(<span class="stringliteral">&quot;right&quot;</span>))),</div>
+<div class="line"><a name="l25863"></a><span class="lineno">25863</span>&#160;      <a class="code" href="class_q_c_p_item_bracket.html#a2dbcabdf5f467f28be12a7b25962ffca">center</a>(<a class="code" href="class_q_c_p_abstract_item.html#af3fc92527802078ca395138748b629a7">createAnchor</a>(QLatin1String(<span class="stringliteral">&quot;center&quot;</span>), <a class="code" href="class_q_c_p_item_bracket.html#a7f3a6a56d67f71219ed220553f3dd861a17b57ef34cc05eadfe9becd1ad5b5242">aiCenter</a>)) {</div>
+<div class="line"><a name="l25864"></a><span class="lineno">25864</span>&#160;  <a class="code" href="class_q_c_p_item_bracket.html#af6cc6d27d96171778c6927d6edce48b0">left</a>-&gt;<a class="code" href="class_q_c_p_item_position.html#aa988ba4e87ab684c9021017dcaba945f">setCoords</a>(0, 0);</div>
+<div class="line"><a name="l25865"></a><span class="lineno">25865</span>&#160;  <a class="code" href="class_q_c_p_item_bracket.html#afa6c1360b05a50c4e0df37b3cebab6be">right</a>-&gt;<a class="code" href="class_q_c_p_item_position.html#aa988ba4e87ab684c9021017dcaba945f">setCoords</a>(1, 1);</div>
+<div class="line"><a name="l25866"></a><span class="lineno">25866</span>&#160;</div>
+<div class="line"><a name="l25867"></a><span class="lineno">25867</span>&#160;  <a class="code" href="class_q_c_p_item_bracket.html#ab13001d9cc5d8f9e56ea15bdda682acb">setPen</a>(QPen(Qt::black));</div>
+<div class="line"><a name="l25868"></a><span class="lineno">25868</span>&#160;  <a class="code" href="class_q_c_p_item_bracket.html#a349785c31122778a520c64891fa204c5">setSelectedPen</a>(QPen(Qt::blue, 2));</div>
+<div class="line"><a name="l25869"></a><span class="lineno">25869</span>&#160;  <a class="code" href="class_q_c_p_item_bracket.html#ac7cfc3da7da9b5c5ac5dfbe4f0351b2a">setLength</a>(8);</div>
+<div class="line"><a name="l25870"></a><span class="lineno">25870</span>&#160;  <a class="code" href="class_q_c_p_item_bracket.html#a612dffa2373422eef8754d690add3703">setStyle</a>(<a class="code" href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda8f29f5ef754e2dc9a9efdedb2face0f3">bsCalligraphic</a>);</div>
+<div class="line"><a name="l25871"></a><span class="lineno">25871</span>&#160;}</div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_a612dffa2373422eef8754d690add3703"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a612dffa2373422eef8754d690add3703">QCPItemBracket::setStyle</a></div><div class="ttdeci">void setStyle(BracketStyle style)</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l25914">qcustomplot.cpp:25914</a></div></div>
+<div class="ttc" id="class_q_c_p_abstract_item_html_af3fc92527802078ca395138748b629a7"><div class="ttname"><a href="class_q_c_p_abstract_item.html#af3fc92527802078ca395138748b629a7">QCPAbstractItem::createAnchor</a></div><div class="ttdeci">QCPItemAnchor * createAnchor(const QString &amp;name, int anchorId)</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l09548">qcustomplot.cpp:9548</a></div></div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_afa6c1360b05a50c4e0df37b3cebab6be"><div class="ttname"><a href="class_q_c_p_item_bracket.html#afa6c1360b05a50c4e0df37b3cebab6be">QCPItemBracket::right</a></div><div class="ttdeci">QCPItemPosition *const right</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l04255">qcustomplot.h:4255</a></div></div>
+<div class="ttc" id="class_q_c_p_item_position_html_aa988ba4e87ab684c9021017dcaba945f"><div class="ttname"><a href="class_q_c_p_item_position.html#aa988ba4e87ab684c9021017dcaba945f">QCPItemPosition::setCoords</a></div><div class="ttdeci">void setCoords(double key, double value)</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l08739">qcustomplot.cpp:8739</a></div></div>
+<div class="ttc" id="class_q_c_p_abstract_item_html_a75036d39c4d4e2e1a7dd145fff915d32"><div class="ttname"><a href="class_q_c_p_abstract_item.html#a75036d39c4d4e2e1a7dd145fff915d32">QCPAbstractItem::createPosition</a></div><div class="ttdeci">QCPItemPosition * createPosition(const QString &amp;name)</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l09505">qcustomplot.cpp:9505</a></div></div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_a2dbcabdf5f467f28be12a7b25962ffca"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a2dbcabdf5f467f28be12a7b25962ffca">QCPItemBracket::center</a></div><div class="ttdeci">QCPItemAnchor *const center</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l04256">qcustomplot.h:4256</a></div></div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_ab13001d9cc5d8f9e56ea15bdda682acb"><div class="ttname"><a href="class_q_c_p_item_bracket.html#ab13001d9cc5d8f9e56ea15bdda682acb">QCPItemBracket::setPen</a></div><div class="ttdeci">void setPen(const QPen &amp;pen)</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l25886">qcustomplot.cpp:25886</a></div></div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_ac7cfc3da7da9b5c5ac5dfbe4f0351b2a"><div class="ttname"><a href="class_q_c_p_item_bracket.html#ac7cfc3da7da9b5c5ac5dfbe4f0351b2a">QCPItemBracket::setLength</a></div><div class="ttdeci">void setLength(double length)</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l25907">qcustomplot.cpp:25907</a></div></div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_a349785c31122778a520c64891fa204c5"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a349785c31122778a520c64891fa204c5">QCPItemBracket::setSelectedPen</a></div><div class="ttdeci">void setSelectedPen(const QPen &amp;pen)</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l25893">qcustomplot.cpp:25893</a></div></div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_a7f3a6a56d67f71219ed220553f3dd861a17b57ef34cc05eadfe9becd1ad5b5242"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a7f3a6a56d67f71219ed220553f3dd861a17b57ef34cc05eadfe9becd1ad5b5242">QCPItemBracket::aiCenter</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l04260">qcustomplot.h:4260</a></div></div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_a7ac3afd0b24a607054e7212047d59dbda8f29f5ef754e2dc9a9efdedb2face0f3"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda8f29f5ef754e2dc9a9efdedb2face0f3">QCPItemBracket::bsCalligraphic</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l04231">qcustomplot.h:4231</a></div></div>
+<div class="ttc" id="class_q_c_p_abstract_item_html_a9922507d8b4503a1fe1ed0b1030e23b6"><div class="ttname"><a href="class_q_c_p_abstract_item.html#a9922507d8b4503a1fe1ed0b1030e23b6">QCPAbstractItem::QCPAbstractItem</a></div><div class="ttdeci">QCPAbstractItem(QCustomPlot *parentPlot)</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l09195">qcustomplot.cpp:9195</a></div></div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_af6cc6d27d96171778c6927d6edce48b0"><div class="ttname"><a href="class_q_c_p_item_bracket.html#af6cc6d27d96171778c6927d6edce48b0">QCPItemBracket::left</a></div><div class="ttdeci">QCPItemPosition *const left</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l04254">qcustomplot.h:4254</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -491,9 +493,8 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l23347">23347</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l23348"></a><span class="lineno">23348</span>&#160;{</div>
-<div class="line"><a name="l23349"></a><span class="lineno">23349</span>&#160;}</div>
+<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l25873">25873</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l25873"></a><span class="lineno">25873</span>&#160;{}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -522,33 +523,32 @@ Here is the call graph for this function:</div>
 
 <p>Reimplemented from <a class="el" href="class_q_c_p_abstract_item.html#a94bde62b8a2fc133666dcbb8035deeed">QCPAbstractItem</a>.</p>
 
-<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l23508">23508</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l26049">26049</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
 
-<p>References <a class="el" href="qcustomplot_8h_source.html#l03753">aiCenter</a>, <a class="el" href="qcustomplot_8h_source.html#l03747">left</a>, <a class="el" href="qcustomplot_8h_source.html#l03755">mLength</a>, <a class="el" href="qcustomplot_8cpp_source.html#l07947">QCPItemPosition::pixelPoint()</a>, and <a class="el" href="qcustomplot_8h_source.html#l03748">right</a>.</p>
-<div class="fragment"><div class="line"><a name="l23509"></a><span class="lineno">23509</span>&#160;{</div>
-<div class="line"><a name="l23510"></a><span class="lineno">23510</span>&#160;  QVector2D leftVec(<a class="code" href="class_q_c_p_item_bracket.html#af6cc6d27d96171778c6927d6edce48b0">left</a>-&gt;<a class="code" href="class_q_c_p_item_position.html#ae490f9c76ee2ba33752c495d3b6e8fb5">pixelPoint</a>());</div>
-<div class="line"><a name="l23511"></a><span class="lineno">23511</span>&#160;  QVector2D rightVec(<a class="code" href="class_q_c_p_item_bracket.html#afa6c1360b05a50c4e0df37b3cebab6be">right</a>-&gt;<a class="code" href="class_q_c_p_item_position.html#ae490f9c76ee2ba33752c495d3b6e8fb5">pixelPoint</a>());</div>
-<div class="line"><a name="l23512"></a><span class="lineno">23512</span>&#160;  <span class="keywordflow">if</span> (leftVec.toPoint() == rightVec.toPoint())</div>
-<div class="line"><a name="l23513"></a><span class="lineno">23513</span>&#160;    <span class="keywordflow">return</span> leftVec.toPointF();</div>
-<div class="line"><a name="l23514"></a><span class="lineno">23514</span>&#160;  </div>
-<div class="line"><a name="l23515"></a><span class="lineno">23515</span>&#160;  QVector2D widthVec = (rightVec-leftVec)*0.5f;</div>
-<div class="line"><a name="l23516"></a><span class="lineno">23516</span>&#160;  QVector2D lengthVec(-widthVec.y(), widthVec.x());</div>
-<div class="line"><a name="l23517"></a><span class="lineno">23517</span>&#160;  lengthVec = lengthVec.normalized()*<a class="code" href="class_q_c_p_item_bracket.html#ab3d99bba8da18eb4d0e0cb23dded33b2">mLength</a>;</div>
-<div class="line"><a name="l23518"></a><span class="lineno">23518</span>&#160;  QVector2D centerVec = (rightVec+leftVec)*0.5f-lengthVec;</div>
-<div class="line"><a name="l23519"></a><span class="lineno">23519</span>&#160;  </div>
-<div class="line"><a name="l23520"></a><span class="lineno">23520</span>&#160;  <span class="keywordflow">switch</span> (anchorId)</div>
-<div class="line"><a name="l23521"></a><span class="lineno">23521</span>&#160;  {</div>
-<div class="line"><a name="l23522"></a><span class="lineno">23522</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="class_q_c_p_item_bracket.html#a7f3a6a56d67f71219ed220553f3dd861a17b57ef34cc05eadfe9becd1ad5b5242">aiCenter</a>:</div>
-<div class="line"><a name="l23523"></a><span class="lineno">23523</span>&#160;      <span class="keywordflow">return</span> centerVec.toPointF();</div>
-<div class="line"><a name="l23524"></a><span class="lineno">23524</span>&#160;  }</div>
-<div class="line"><a name="l23525"></a><span class="lineno">23525</span>&#160;  qDebug() &lt;&lt; Q_FUNC_INFO &lt;&lt; <span class="stringliteral">&quot;invalid anchorId&quot;</span> &lt;&lt; anchorId;</div>
-<div class="line"><a name="l23526"></a><span class="lineno">23526</span>&#160;  <span class="keywordflow">return</span> QPointF();</div>
-<div class="line"><a name="l23527"></a><span class="lineno">23527</span>&#160;}</div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_ab3d99bba8da18eb4d0e0cb23dded33b2"><div class="ttname"><a href="class_q_c_p_item_bracket.html#ab3d99bba8da18eb4d0e0cb23dded33b2">QCPItemBracket::mLength</a></div><div class="ttdeci">double mLength</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03755">qcustomplot.h:3755</a></div></div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_afa6c1360b05a50c4e0df37b3cebab6be"><div class="ttname"><a href="class_q_c_p_item_bracket.html#afa6c1360b05a50c4e0df37b3cebab6be">QCPItemBracket::right</a></div><div class="ttdeci">QCPItemPosition *const right</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03748">qcustomplot.h:3748</a></div></div>
-<div class="ttc" id="class_q_c_p_item_position_html_ae490f9c76ee2ba33752c495d3b6e8fb5"><div class="ttname"><a href="class_q_c_p_item_position.html#ae490f9c76ee2ba33752c495d3b6e8fb5">QCPItemPosition::pixelPoint</a></div><div class="ttdeci">virtual QPointF pixelPoint() const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l07947">qcustomplot.cpp:7947</a></div></div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_a7f3a6a56d67f71219ed220553f3dd861a17b57ef34cc05eadfe9becd1ad5b5242"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a7f3a6a56d67f71219ed220553f3dd861a17b57ef34cc05eadfe9becd1ad5b5242">QCPItemBracket::aiCenter</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03753">qcustomplot.h:3753</a></div></div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_af6cc6d27d96171778c6927d6edce48b0"><div class="ttname"><a href="class_q_c_p_item_bracket.html#af6cc6d27d96171778c6927d6edce48b0">QCPItemBracket::left</a></div><div class="ttdeci">QCPItemPosition *const left</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03747">qcustomplot.h:3747</a></div></div>
+<p>References <a class="el" href="qcustomplot_8h_source.html#l04260">aiCenter</a>, <a class="el" href="qcustomplot_8h_source.html#l04254">left</a>, <a class="el" href="qcustomplot_8h_source.html#l04262">mLength</a>, <a class="el" href="qcustomplot_8cpp_source.html#l08762">QCPItemPosition::pixelPoint()</a>, and <a class="el" href="qcustomplot_8h_source.html#l04255">right</a>.</p>
+<div class="fragment"><div class="line"><a name="l26049"></a><span class="lineno">26049</span>&#160;                                                           {</div>
+<div class="line"><a name="l26050"></a><span class="lineno">26050</span>&#160;  QVector2D leftVec(<a class="code" href="class_q_c_p_item_bracket.html#af6cc6d27d96171778c6927d6edce48b0">left</a>-&gt;<a class="code" href="class_q_c_p_item_position.html#ae490f9c76ee2ba33752c495d3b6e8fb5">pixelPoint</a>());</div>
+<div class="line"><a name="l26051"></a><span class="lineno">26051</span>&#160;  QVector2D rightVec(<a class="code" href="class_q_c_p_item_bracket.html#afa6c1360b05a50c4e0df37b3cebab6be">right</a>-&gt;<a class="code" href="class_q_c_p_item_position.html#ae490f9c76ee2ba33752c495d3b6e8fb5">pixelPoint</a>());</div>
+<div class="line"><a name="l26052"></a><span class="lineno">26052</span>&#160;  <span class="keywordflow">if</span> (leftVec.toPoint() == rightVec.toPoint())</div>
+<div class="line"><a name="l26053"></a><span class="lineno">26053</span>&#160;    <span class="keywordflow">return</span> leftVec.toPointF();</div>
+<div class="line"><a name="l26054"></a><span class="lineno">26054</span>&#160;</div>
+<div class="line"><a name="l26055"></a><span class="lineno">26055</span>&#160;  QVector2D widthVec = (rightVec - leftVec) * 0.5f;</div>
+<div class="line"><a name="l26056"></a><span class="lineno">26056</span>&#160;  QVector2D lengthVec(-widthVec.y(), widthVec.x());</div>
+<div class="line"><a name="l26057"></a><span class="lineno">26057</span>&#160;  lengthVec = lengthVec.normalized() * <a class="code" href="class_q_c_p_item_bracket.html#ab3d99bba8da18eb4d0e0cb23dded33b2">mLength</a>;</div>
+<div class="line"><a name="l26058"></a><span class="lineno">26058</span>&#160;  QVector2D centerVec = (rightVec + leftVec) * 0.5f - lengthVec;</div>
+<div class="line"><a name="l26059"></a><span class="lineno">26059</span>&#160;</div>
+<div class="line"><a name="l26060"></a><span class="lineno">26060</span>&#160;  <span class="keywordflow">switch</span> (anchorId) {</div>
+<div class="line"><a name="l26061"></a><span class="lineno">26061</span>&#160;  <span class="keywordflow">case</span> <a class="code" href="class_q_c_p_item_bracket.html#a7f3a6a56d67f71219ed220553f3dd861a17b57ef34cc05eadfe9becd1ad5b5242">aiCenter</a>:</div>
+<div class="line"><a name="l26062"></a><span class="lineno">26062</span>&#160;    <span class="keywordflow">return</span> centerVec.toPointF();</div>
+<div class="line"><a name="l26063"></a><span class="lineno">26063</span>&#160;  }</div>
+<div class="line"><a name="l26064"></a><span class="lineno">26064</span>&#160;  qDebug() &lt;&lt; Q_FUNC_INFO &lt;&lt; <span class="stringliteral">&quot;invalid anchorId&quot;</span> &lt;&lt; anchorId;</div>
+<div class="line"><a name="l26065"></a><span class="lineno">26065</span>&#160;  <span class="keywordflow">return</span> QPointF();</div>
+<div class="line"><a name="l26066"></a><span class="lineno">26066</span>&#160;}</div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_ab3d99bba8da18eb4d0e0cb23dded33b2"><div class="ttname"><a href="class_q_c_p_item_bracket.html#ab3d99bba8da18eb4d0e0cb23dded33b2">QCPItemBracket::mLength</a></div><div class="ttdeci">double mLength</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l04262">qcustomplot.h:4262</a></div></div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_afa6c1360b05a50c4e0df37b3cebab6be"><div class="ttname"><a href="class_q_c_p_item_bracket.html#afa6c1360b05a50c4e0df37b3cebab6be">QCPItemBracket::right</a></div><div class="ttdeci">QCPItemPosition *const right</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l04255">qcustomplot.h:4255</a></div></div>
+<div class="ttc" id="class_q_c_p_item_position_html_ae490f9c76ee2ba33752c495d3b6e8fb5"><div class="ttname"><a href="class_q_c_p_item_position.html#ae490f9c76ee2ba33752c495d3b6e8fb5">QCPItemPosition::pixelPoint</a></div><div class="ttdeci">virtual QPointF pixelPoint() const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l08762">qcustomplot.cpp:8762</a></div></div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_a7f3a6a56d67f71219ed220553f3dd861a17b57ef34cc05eadfe9becd1ad5b5242"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a7f3a6a56d67f71219ed220553f3dd861a17b57ef34cc05eadfe9becd1ad5b5242">QCPItemBracket::aiCenter</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l04260">qcustomplot.h:4260</a></div></div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_af6cc6d27d96171778c6927d6edce48b0"><div class="ttname"><a href="class_q_c_p_item_bracket.html#af6cc6d27d96171778c6927d6edce48b0">QCPItemBracket::left</a></div><div class="ttdeci">QCPItemPosition *const left</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l04254">qcustomplot.h:4254</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -585,88 +585,102 @@ Here is the call graph for this function:</div>
 
 <p>Implements <a class="el" href="class_q_c_p_abstract_item.html#ad0dc056f650c3ca73414e6b4f01674ef">QCPAbstractItem</a>.</p>
 
-<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l23439">23439</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l25967">25967</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
 
-<p>References <a class="el" href="qcustomplot_8h_source.html#l03726">bsCalligraphic</a>, <a class="el" href="qcustomplot_8h_source.html#l03725">bsCurly</a>, <a class="el" href="qcustomplot_8h_source.html#l03724">bsRound</a>, <a class="el" href="qcustomplot_8h_source.html#l03723">bsSquare</a>, <a class="el" href="qcustomplot_8cpp_source.html#l08500">QCPAbstractItem::clipRect()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l00129">QCPPainter::drawLine()</a>, <a class="el" href="qcustomplot_8h_source.html#l03747">left</a>, <a class="el" href="qcustomplot_8cpp_source.html#l23534">mainPen()</a>, <a class="el" href="qcustomplot_8h_source.html#l03755">mLength</a>, <a class="el" href="qcustomplot_8h_source.html#l03756">mStyle</a>, <a class="el" href="qcustomplot_8cpp_source.html#l07947">QCPItemPosition::pixelPoint()</a>, <a class="el" href="qcustomplot_8h_source.html#l03748">right</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l00086">QCPPainter::setPen()</a>.</p>
-<div class="fragment"><div class="line"><a name="l23440"></a><span class="lineno">23440</span>&#160;{</div>
-<div class="line"><a name="l23441"></a><span class="lineno">23441</span>&#160;  QVector2D leftVec(<a class="code" href="class_q_c_p_item_bracket.html#af6cc6d27d96171778c6927d6edce48b0">left</a>-&gt;<a class="code" href="class_q_c_p_item_position.html#ae490f9c76ee2ba33752c495d3b6e8fb5">pixelPoint</a>());</div>
-<div class="line"><a name="l23442"></a><span class="lineno">23442</span>&#160;  QVector2D rightVec(<a class="code" href="class_q_c_p_item_bracket.html#afa6c1360b05a50c4e0df37b3cebab6be">right</a>-&gt;<a class="code" href="class_q_c_p_item_position.html#ae490f9c76ee2ba33752c495d3b6e8fb5">pixelPoint</a>());</div>
-<div class="line"><a name="l23443"></a><span class="lineno">23443</span>&#160;  <span class="keywordflow">if</span> (leftVec.toPoint() == rightVec.toPoint())</div>
-<div class="line"><a name="l23444"></a><span class="lineno">23444</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l23445"></a><span class="lineno">23445</span>&#160;  </div>
-<div class="line"><a name="l23446"></a><span class="lineno">23446</span>&#160;  QVector2D widthVec = (rightVec-leftVec)*0.5f;</div>
-<div class="line"><a name="l23447"></a><span class="lineno">23447</span>&#160;  QVector2D lengthVec(-widthVec.y(), widthVec.x());</div>
-<div class="line"><a name="l23448"></a><span class="lineno">23448</span>&#160;  lengthVec = lengthVec.normalized()*<a class="code" href="class_q_c_p_item_bracket.html#ab3d99bba8da18eb4d0e0cb23dded33b2">mLength</a>;</div>
-<div class="line"><a name="l23449"></a><span class="lineno">23449</span>&#160;  QVector2D centerVec = (rightVec+leftVec)*0.5f-lengthVec;</div>
-<div class="line"><a name="l23450"></a><span class="lineno">23450</span>&#160;</div>
-<div class="line"><a name="l23451"></a><span class="lineno">23451</span>&#160;  QPolygon boundingPoly;</div>
-<div class="line"><a name="l23452"></a><span class="lineno">23452</span>&#160;  boundingPoly &lt;&lt; leftVec.toPoint() &lt;&lt; rightVec.toPoint()</div>
-<div class="line"><a name="l23453"></a><span class="lineno">23453</span>&#160;               &lt;&lt; (rightVec-lengthVec).toPoint() &lt;&lt; (leftVec-lengthVec).toPoint();</div>
-<div class="line"><a name="l23454"></a><span class="lineno">23454</span>&#160;  QRect clip = <a class="code" href="class_q_c_p_abstract_item.html#a538e25ff8856534582f5b2b400a46405">clipRect</a>().adjusted(-<a class="code" href="class_q_c_p_item_bracket.html#a8df4ad873bf88a4a7bfb9bbbd490e495">mainPen</a>().widthF(), -<a class="code" href="class_q_c_p_item_bracket.html#a8df4ad873bf88a4a7bfb9bbbd490e495">mainPen</a>().widthF(), <a class="code" href="class_q_c_p_item_bracket.html#a8df4ad873bf88a4a7bfb9bbbd490e495">mainPen</a>().widthF(), <a class="code" href="class_q_c_p_item_bracket.html#a8df4ad873bf88a4a7bfb9bbbd490e495">mainPen</a>().widthF());</div>
-<div class="line"><a name="l23455"></a><span class="lineno">23455</span>&#160;  <span class="keywordflow">if</span> (clip.intersects(boundingPoly.boundingRect()))</div>
-<div class="line"><a name="l23456"></a><span class="lineno">23456</span>&#160;  {</div>
-<div class="line"><a name="l23457"></a><span class="lineno">23457</span>&#160;    painter-&gt;<a class="code" href="class_q_c_p_painter.html#af9c7a4cd1791403901f8c5b82a150195">setPen</a>(<a class="code" href="class_q_c_p_item_bracket.html#a8df4ad873bf88a4a7bfb9bbbd490e495">mainPen</a>());</div>
-<div class="line"><a name="l23458"></a><span class="lineno">23458</span>&#160;    <span class="keywordflow">switch</span> (<a class="code" href="class_q_c_p_item_bracket.html#ac911907184c824d621f274f8e0990080">mStyle</a>)</div>
-<div class="line"><a name="l23459"></a><span class="lineno">23459</span>&#160;    {</div>
-<div class="line"><a name="l23460"></a><span class="lineno">23460</span>&#160;      <span class="keywordflow">case</span> <a class="code" href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda7f9df4a7359bfe3dac1dbe4ccf5d220c">bsSquare</a>:</div>
-<div class="line"><a name="l23461"></a><span class="lineno">23461</span>&#160;      {</div>
-<div class="line"><a name="l23462"></a><span class="lineno">23462</span>&#160;        painter-&gt;<a class="code" href="class_q_c_p_painter.html#a0b4b1b9bd495e182c731774dc800e6e0">drawLine</a>((centerVec+widthVec).toPointF(), (centerVec-widthVec).toPointF());</div>
-<div class="line"><a name="l23463"></a><span class="lineno">23463</span>&#160;        painter-&gt;<a class="code" href="class_q_c_p_painter.html#a0b4b1b9bd495e182c731774dc800e6e0">drawLine</a>((centerVec+widthVec).toPointF(), (centerVec+widthVec+lengthVec).toPointF());</div>
-<div class="line"><a name="l23464"></a><span class="lineno">23464</span>&#160;        painter-&gt;<a class="code" href="class_q_c_p_painter.html#a0b4b1b9bd495e182c731774dc800e6e0">drawLine</a>((centerVec-widthVec).toPointF(), (centerVec-widthVec+lengthVec).toPointF());</div>
-<div class="line"><a name="l23465"></a><span class="lineno">23465</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l23466"></a><span class="lineno">23466</span>&#160;      }</div>
-<div class="line"><a name="l23467"></a><span class="lineno">23467</span>&#160;      <span class="keywordflow">case</span> <a class="code" href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda394627b0830a26ee3e0a02ca67a9f918">bsRound</a>:</div>
-<div class="line"><a name="l23468"></a><span class="lineno">23468</span>&#160;      {</div>
-<div class="line"><a name="l23469"></a><span class="lineno">23469</span>&#160;        painter-&gt;setBrush(Qt::NoBrush);</div>
-<div class="line"><a name="l23470"></a><span class="lineno">23470</span>&#160;        QPainterPath path;</div>
-<div class="line"><a name="l23471"></a><span class="lineno">23471</span>&#160;        path.moveTo((centerVec+widthVec+lengthVec).toPointF());</div>
-<div class="line"><a name="l23472"></a><span class="lineno">23472</span>&#160;        path.cubicTo((centerVec+widthVec).toPointF(), (centerVec+widthVec).toPointF(), centerVec.toPointF());</div>
-<div class="line"><a name="l23473"></a><span class="lineno">23473</span>&#160;        path.cubicTo((centerVec-widthVec).toPointF(), (centerVec-widthVec).toPointF(), (centerVec-widthVec+lengthVec).toPointF());</div>
-<div class="line"><a name="l23474"></a><span class="lineno">23474</span>&#160;        painter-&gt;drawPath(path);</div>
-<div class="line"><a name="l23475"></a><span class="lineno">23475</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l23476"></a><span class="lineno">23476</span>&#160;      }</div>
-<div class="line"><a name="l23477"></a><span class="lineno">23477</span>&#160;      <span class="keywordflow">case</span> <a class="code" href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda5024ce4023c2d8de4221f1cd4816acd8">bsCurly</a>:</div>
-<div class="line"><a name="l23478"></a><span class="lineno">23478</span>&#160;      {</div>
-<div class="line"><a name="l23479"></a><span class="lineno">23479</span>&#160;        painter-&gt;setBrush(Qt::NoBrush);</div>
-<div class="line"><a name="l23480"></a><span class="lineno">23480</span>&#160;        QPainterPath path;</div>
-<div class="line"><a name="l23481"></a><span class="lineno">23481</span>&#160;        path.moveTo((centerVec+widthVec+lengthVec).toPointF());</div>
-<div class="line"><a name="l23482"></a><span class="lineno">23482</span>&#160;        path.cubicTo((centerVec+widthVec-lengthVec*0.8f).toPointF(), (centerVec+0.4f*widthVec+lengthVec).toPointF(), centerVec.toPointF());</div>
-<div class="line"><a name="l23483"></a><span class="lineno">23483</span>&#160;        path.cubicTo((centerVec-0.4f*widthVec+lengthVec).toPointF(), (centerVec-widthVec-lengthVec*0.8f).toPointF(), (centerVec-widthVec+lengthVec).toPointF());</div>
-<div class="line"><a name="l23484"></a><span class="lineno">23484</span>&#160;        painter-&gt;drawPath(path);</div>
-<div class="line"><a name="l23485"></a><span class="lineno">23485</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l23486"></a><span class="lineno">23486</span>&#160;      }</div>
-<div class="line"><a name="l23487"></a><span class="lineno">23487</span>&#160;      <span class="keywordflow">case</span> <a class="code" href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda8f29f5ef754e2dc9a9efdedb2face0f3">bsCalligraphic</a>:</div>
-<div class="line"><a name="l23488"></a><span class="lineno">23488</span>&#160;      {</div>
-<div class="line"><a name="l23489"></a><span class="lineno">23489</span>&#160;        painter-&gt;<a class="code" href="class_q_c_p_painter.html#af9c7a4cd1791403901f8c5b82a150195">setPen</a>(Qt::NoPen);</div>
-<div class="line"><a name="l23490"></a><span class="lineno">23490</span>&#160;        painter-&gt;setBrush(QBrush(<a class="code" href="class_q_c_p_item_bracket.html#a8df4ad873bf88a4a7bfb9bbbd490e495">mainPen</a>().color()));</div>
-<div class="line"><a name="l23491"></a><span class="lineno">23491</span>&#160;        QPainterPath path;</div>
-<div class="line"><a name="l23492"></a><span class="lineno">23492</span>&#160;        path.moveTo((centerVec+widthVec+lengthVec).toPointF());</div>
-<div class="line"><a name="l23493"></a><span class="lineno">23493</span>&#160;        </div>
-<div class="line"><a name="l23494"></a><span class="lineno">23494</span>&#160;        path.cubicTo((centerVec+widthVec-lengthVec*0.8f).toPointF(), (centerVec+0.4f*widthVec+0.8f*lengthVec).toPointF(), centerVec.toPointF());</div>
-<div class="line"><a name="l23495"></a><span class="lineno">23495</span>&#160;        path.cubicTo((centerVec-0.4f*widthVec+0.8f*lengthVec).toPointF(), (centerVec-widthVec-lengthVec*0.8f).toPointF(), (centerVec-widthVec+lengthVec).toPointF());</div>
-<div class="line"><a name="l23496"></a><span class="lineno">23496</span>&#160;        </div>
-<div class="line"><a name="l23497"></a><span class="lineno">23497</span>&#160;        path.cubicTo((centerVec-widthVec-lengthVec*0.5f).toPointF(), (centerVec-0.2f*widthVec+1.2f*lengthVec).toPointF(), (centerVec+lengthVec*0.2f).toPointF());</div>
-<div class="line"><a name="l23498"></a><span class="lineno">23498</span>&#160;        path.cubicTo((centerVec+0.2f*widthVec+1.2f*lengthVec).toPointF(), (centerVec+widthVec-lengthVec*0.5f).toPointF(), (centerVec+widthVec+lengthVec).toPointF());</div>
-<div class="line"><a name="l23499"></a><span class="lineno">23499</span>&#160;        </div>
-<div class="line"><a name="l23500"></a><span class="lineno">23500</span>&#160;        painter-&gt;drawPath(path);</div>
-<div class="line"><a name="l23501"></a><span class="lineno">23501</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l23502"></a><span class="lineno">23502</span>&#160;      }</div>
-<div class="line"><a name="l23503"></a><span class="lineno">23503</span>&#160;    }</div>
-<div class="line"><a name="l23504"></a><span class="lineno">23504</span>&#160;  }</div>
-<div class="line"><a name="l23505"></a><span class="lineno">23505</span>&#160;}</div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_ab3d99bba8da18eb4d0e0cb23dded33b2"><div class="ttname"><a href="class_q_c_p_item_bracket.html#ab3d99bba8da18eb4d0e0cb23dded33b2">QCPItemBracket::mLength</a></div><div class="ttdeci">double mLength</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03755">qcustomplot.h:3755</a></div></div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_a7ac3afd0b24a607054e7212047d59dbda7f9df4a7359bfe3dac1dbe4ccf5d220c"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda7f9df4a7359bfe3dac1dbe4ccf5d220c">QCPItemBracket::bsSquare</a></div><div class="ttdoc">A brace with angled edges. </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03723">qcustomplot.h:3723</a></div></div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_afa6c1360b05a50c4e0df37b3cebab6be"><div class="ttname"><a href="class_q_c_p_item_bracket.html#afa6c1360b05a50c4e0df37b3cebab6be">QCPItemBracket::right</a></div><div class="ttdeci">QCPItemPosition *const right</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03748">qcustomplot.h:3748</a></div></div>
-<div class="ttc" id="class_q_c_p_painter_html_a0b4b1b9bd495e182c731774dc800e6e0"><div class="ttname"><a href="class_q_c_p_painter.html#a0b4b1b9bd495e182c731774dc800e6e0">QCPPainter::drawLine</a></div><div class="ttdeci">void drawLine(const QLineF &amp;line)</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l00129">qcustomplot.cpp:129</a></div></div>
-<div class="ttc" id="class_q_c_p_painter_html_af9c7a4cd1791403901f8c5b82a150195"><div class="ttname"><a href="class_q_c_p_painter.html#af9c7a4cd1791403901f8c5b82a150195">QCPPainter::setPen</a></div><div class="ttdeci">void setPen(const QPen &amp;pen)</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l00086">qcustomplot.cpp:86</a></div></div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_a7ac3afd0b24a607054e7212047d59dbda394627b0830a26ee3e0a02ca67a9f918"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda394627b0830a26ee3e0a02ca67a9f918">QCPItemBracket::bsRound</a></div><div class="ttdoc">A brace with round edges. </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03724">qcustomplot.h:3724</a></div></div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_ac911907184c824d621f274f8e0990080"><div class="ttname"><a href="class_q_c_p_item_bracket.html#ac911907184c824d621f274f8e0990080">QCPItemBracket::mStyle</a></div><div class="ttdeci">BracketStyle mStyle</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03756">qcustomplot.h:3756</a></div></div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_a7ac3afd0b24a607054e7212047d59dbda5024ce4023c2d8de4221f1cd4816acd8"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda5024ce4023c2d8de4221f1cd4816acd8">QCPItemBracket::bsCurly</a></div><div class="ttdoc">A curly brace. </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03725">qcustomplot.h:3725</a></div></div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_a8df4ad873bf88a4a7bfb9bbbd490e495"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a8df4ad873bf88a4a7bfb9bbbd490e495">QCPItemBracket::mainPen</a></div><div class="ttdeci">QPen mainPen() const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l23534">qcustomplot.cpp:23534</a></div></div>
-<div class="ttc" id="class_q_c_p_item_position_html_ae490f9c76ee2ba33752c495d3b6e8fb5"><div class="ttname"><a href="class_q_c_p_item_position.html#ae490f9c76ee2ba33752c495d3b6e8fb5">QCPItemPosition::pixelPoint</a></div><div class="ttdeci">virtual QPointF pixelPoint() const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l07947">qcustomplot.cpp:7947</a></div></div>
-<div class="ttc" id="class_q_c_p_abstract_item_html_a538e25ff8856534582f5b2b400a46405"><div class="ttname"><a href="class_q_c_p_abstract_item.html#a538e25ff8856534582f5b2b400a46405">QCPAbstractItem::clipRect</a></div><div class="ttdeci">virtual QRect clipRect() const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l08500">qcustomplot.cpp:8500</a></div></div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_a7ac3afd0b24a607054e7212047d59dbda8f29f5ef754e2dc9a9efdedb2face0f3"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda8f29f5ef754e2dc9a9efdedb2face0f3">QCPItemBracket::bsCalligraphic</a></div><div class="ttdoc">A curly brace with varying stroke width giving a calligraphic impression. </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03726">qcustomplot.h:3726</a></div></div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_af6cc6d27d96171778c6927d6edce48b0"><div class="ttname"><a href="class_q_c_p_item_bracket.html#af6cc6d27d96171778c6927d6edce48b0">QCPItemBracket::left</a></div><div class="ttdeci">QCPItemPosition *const left</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03747">qcustomplot.h:3747</a></div></div>
+<p>References <a class="el" href="qcustomplot_8h_source.html#l04231">bsCalligraphic</a>, <a class="el" href="qcustomplot_8h_source.html#l04229">bsCurly</a>, <a class="el" href="qcustomplot_8h_source.html#l04227">bsRound</a>, <a class="el" href="qcustomplot_8h_source.html#l04225">bsSquare</a>, <a class="el" href="qcustomplot_8cpp_source.html#l09359">QCPAbstractItem::clipRect()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l00134">QCPPainter::drawLine()</a>, <a class="el" href="qcustomplot_8h_source.html#l04254">left</a>, <a class="el" href="qcustomplot_8cpp_source.html#l26073">mainPen()</a>, <a class="el" href="qcustomplot_8h_source.html#l04262">mLength</a>, <a class="el" href="qcustomplot_8h_source.html#l04263">mStyle</a>, <a class="el" href="qcustomplot_8cpp_source.html#l08762">QCPItemPosition::pixelPoint()</a>, <a class="el" href="qcustomplot_8h_source.html#l04255">right</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l00090">QCPPainter::setPen()</a>.</p>
+<div class="fragment"><div class="line"><a name="l25967"></a><span class="lineno">25967</span>&#160;                                             {</div>
+<div class="line"><a name="l25968"></a><span class="lineno">25968</span>&#160;  QVector2D leftVec(<a class="code" href="class_q_c_p_item_bracket.html#af6cc6d27d96171778c6927d6edce48b0">left</a>-&gt;<a class="code" href="class_q_c_p_item_position.html#ae490f9c76ee2ba33752c495d3b6e8fb5">pixelPoint</a>());</div>
+<div class="line"><a name="l25969"></a><span class="lineno">25969</span>&#160;  QVector2D rightVec(<a class="code" href="class_q_c_p_item_bracket.html#afa6c1360b05a50c4e0df37b3cebab6be">right</a>-&gt;<a class="code" href="class_q_c_p_item_position.html#ae490f9c76ee2ba33752c495d3b6e8fb5">pixelPoint</a>());</div>
+<div class="line"><a name="l25970"></a><span class="lineno">25970</span>&#160;  <span class="keywordflow">if</span> (leftVec.toPoint() == rightVec.toPoint())</div>
+<div class="line"><a name="l25971"></a><span class="lineno">25971</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l25972"></a><span class="lineno">25972</span>&#160;</div>
+<div class="line"><a name="l25973"></a><span class="lineno">25973</span>&#160;  QVector2D widthVec = (rightVec - leftVec) * 0.5f;</div>
+<div class="line"><a name="l25974"></a><span class="lineno">25974</span>&#160;  QVector2D lengthVec(-widthVec.y(), widthVec.x());</div>
+<div class="line"><a name="l25975"></a><span class="lineno">25975</span>&#160;  lengthVec = lengthVec.normalized() * <a class="code" href="class_q_c_p_item_bracket.html#ab3d99bba8da18eb4d0e0cb23dded33b2">mLength</a>;</div>
+<div class="line"><a name="l25976"></a><span class="lineno">25976</span>&#160;  QVector2D centerVec = (rightVec + leftVec) * 0.5f - lengthVec;</div>
+<div class="line"><a name="l25977"></a><span class="lineno">25977</span>&#160;</div>
+<div class="line"><a name="l25978"></a><span class="lineno">25978</span>&#160;  QPolygon boundingPoly;</div>
+<div class="line"><a name="l25979"></a><span class="lineno">25979</span>&#160;  boundingPoly &lt;&lt; leftVec.toPoint() &lt;&lt; rightVec.toPoint()</div>
+<div class="line"><a name="l25980"></a><span class="lineno">25980</span>&#160;               &lt;&lt; (rightVec - lengthVec).toPoint()</div>
+<div class="line"><a name="l25981"></a><span class="lineno">25981</span>&#160;               &lt;&lt; (leftVec - lengthVec).toPoint();</div>
+<div class="line"><a name="l25982"></a><span class="lineno">25982</span>&#160;  QRect clip = <a class="code" href="class_q_c_p_abstract_item.html#a538e25ff8856534582f5b2b400a46405">clipRect</a>().adjusted(-<a class="code" href="class_q_c_p_item_bracket.html#a8df4ad873bf88a4a7bfb9bbbd490e495">mainPen</a>().widthF(), -<a class="code" href="class_q_c_p_item_bracket.html#a8df4ad873bf88a4a7bfb9bbbd490e495">mainPen</a>().widthF(),</div>
+<div class="line"><a name="l25983"></a><span class="lineno">25983</span>&#160;                                   <a class="code" href="class_q_c_p_item_bracket.html#a8df4ad873bf88a4a7bfb9bbbd490e495">mainPen</a>().widthF(), <a class="code" href="class_q_c_p_item_bracket.html#a8df4ad873bf88a4a7bfb9bbbd490e495">mainPen</a>().widthF());</div>
+<div class="line"><a name="l25984"></a><span class="lineno">25984</span>&#160;  <span class="keywordflow">if</span> (clip.intersects(boundingPoly.boundingRect())) {</div>
+<div class="line"><a name="l25985"></a><span class="lineno">25985</span>&#160;    painter-&gt;<a class="code" href="class_q_c_p_painter.html#af9c7a4cd1791403901f8c5b82a150195">setPen</a>(<a class="code" href="class_q_c_p_item_bracket.html#a8df4ad873bf88a4a7bfb9bbbd490e495">mainPen</a>());</div>
+<div class="line"><a name="l25986"></a><span class="lineno">25986</span>&#160;    <span class="keywordflow">switch</span> (<a class="code" href="class_q_c_p_item_bracket.html#ac911907184c824d621f274f8e0990080">mStyle</a>) {</div>
+<div class="line"><a name="l25987"></a><span class="lineno">25987</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda7f9df4a7359bfe3dac1dbe4ccf5d220c">bsSquare</a>: {</div>
+<div class="line"><a name="l25988"></a><span class="lineno">25988</span>&#160;      painter-&gt;<a class="code" href="class_q_c_p_painter.html#a0b4b1b9bd495e182c731774dc800e6e0">drawLine</a>((centerVec + widthVec).toPointF(),</div>
+<div class="line"><a name="l25989"></a><span class="lineno">25989</span>&#160;                        (centerVec - widthVec).toPointF());</div>
+<div class="line"><a name="l25990"></a><span class="lineno">25990</span>&#160;      painter-&gt;<a class="code" href="class_q_c_p_painter.html#a0b4b1b9bd495e182c731774dc800e6e0">drawLine</a>((centerVec + widthVec).toPointF(),</div>
+<div class="line"><a name="l25991"></a><span class="lineno">25991</span>&#160;                        (centerVec + widthVec + lengthVec).toPointF());</div>
+<div class="line"><a name="l25992"></a><span class="lineno">25992</span>&#160;      painter-&gt;<a class="code" href="class_q_c_p_painter.html#a0b4b1b9bd495e182c731774dc800e6e0">drawLine</a>((centerVec - widthVec).toPointF(),</div>
+<div class="line"><a name="l25993"></a><span class="lineno">25993</span>&#160;                        (centerVec - widthVec + lengthVec).toPointF());</div>
+<div class="line"><a name="l25994"></a><span class="lineno">25994</span>&#160;      <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l25995"></a><span class="lineno">25995</span>&#160;    }</div>
+<div class="line"><a name="l25996"></a><span class="lineno">25996</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda394627b0830a26ee3e0a02ca67a9f918">bsRound</a>: {</div>
+<div class="line"><a name="l25997"></a><span class="lineno">25997</span>&#160;      painter-&gt;setBrush(Qt::NoBrush);</div>
+<div class="line"><a name="l25998"></a><span class="lineno">25998</span>&#160;      QPainterPath path;</div>
+<div class="line"><a name="l25999"></a><span class="lineno">25999</span>&#160;      path.moveTo((centerVec + widthVec + lengthVec).toPointF());</div>
+<div class="line"><a name="l26000"></a><span class="lineno">26000</span>&#160;      path.cubicTo((centerVec + widthVec).toPointF(),</div>
+<div class="line"><a name="l26001"></a><span class="lineno">26001</span>&#160;                   (centerVec + widthVec).toPointF(), centerVec.toPointF());</div>
+<div class="line"><a name="l26002"></a><span class="lineno">26002</span>&#160;      path.cubicTo((centerVec - widthVec).toPointF(),</div>
+<div class="line"><a name="l26003"></a><span class="lineno">26003</span>&#160;                   (centerVec - widthVec).toPointF(),</div>
+<div class="line"><a name="l26004"></a><span class="lineno">26004</span>&#160;                   (centerVec - widthVec + lengthVec).toPointF());</div>
+<div class="line"><a name="l26005"></a><span class="lineno">26005</span>&#160;      painter-&gt;drawPath(path);</div>
+<div class="line"><a name="l26006"></a><span class="lineno">26006</span>&#160;      <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l26007"></a><span class="lineno">26007</span>&#160;    }</div>
+<div class="line"><a name="l26008"></a><span class="lineno">26008</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda5024ce4023c2d8de4221f1cd4816acd8">bsCurly</a>: {</div>
+<div class="line"><a name="l26009"></a><span class="lineno">26009</span>&#160;      painter-&gt;setBrush(Qt::NoBrush);</div>
+<div class="line"><a name="l26010"></a><span class="lineno">26010</span>&#160;      QPainterPath path;</div>
+<div class="line"><a name="l26011"></a><span class="lineno">26011</span>&#160;      path.moveTo((centerVec + widthVec + lengthVec).toPointF());</div>
+<div class="line"><a name="l26012"></a><span class="lineno">26012</span>&#160;      path.cubicTo((centerVec + widthVec - lengthVec * 0.8f).toPointF(),</div>
+<div class="line"><a name="l26013"></a><span class="lineno">26013</span>&#160;                   (centerVec + 0.4f * widthVec + lengthVec).toPointF(),</div>
+<div class="line"><a name="l26014"></a><span class="lineno">26014</span>&#160;                   centerVec.toPointF());</div>
+<div class="line"><a name="l26015"></a><span class="lineno">26015</span>&#160;      path.cubicTo((centerVec - 0.4f * widthVec + lengthVec).toPointF(),</div>
+<div class="line"><a name="l26016"></a><span class="lineno">26016</span>&#160;                   (centerVec - widthVec - lengthVec * 0.8f).toPointF(),</div>
+<div class="line"><a name="l26017"></a><span class="lineno">26017</span>&#160;                   (centerVec - widthVec + lengthVec).toPointF());</div>
+<div class="line"><a name="l26018"></a><span class="lineno">26018</span>&#160;      painter-&gt;drawPath(path);</div>
+<div class="line"><a name="l26019"></a><span class="lineno">26019</span>&#160;      <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l26020"></a><span class="lineno">26020</span>&#160;    }</div>
+<div class="line"><a name="l26021"></a><span class="lineno">26021</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda8f29f5ef754e2dc9a9efdedb2face0f3">bsCalligraphic</a>: {</div>
+<div class="line"><a name="l26022"></a><span class="lineno">26022</span>&#160;      painter-&gt;<a class="code" href="class_q_c_p_painter.html#af9c7a4cd1791403901f8c5b82a150195">setPen</a>(Qt::NoPen);</div>
+<div class="line"><a name="l26023"></a><span class="lineno">26023</span>&#160;      painter-&gt;setBrush(QBrush(<a class="code" href="class_q_c_p_item_bracket.html#a8df4ad873bf88a4a7bfb9bbbd490e495">mainPen</a>().color()));</div>
+<div class="line"><a name="l26024"></a><span class="lineno">26024</span>&#160;      QPainterPath path;</div>
+<div class="line"><a name="l26025"></a><span class="lineno">26025</span>&#160;      path.moveTo((centerVec + widthVec + lengthVec).toPointF());</div>
+<div class="line"><a name="l26026"></a><span class="lineno">26026</span>&#160;</div>
+<div class="line"><a name="l26027"></a><span class="lineno">26027</span>&#160;      path.cubicTo((centerVec + widthVec - lengthVec * 0.8f).toPointF(),</div>
+<div class="line"><a name="l26028"></a><span class="lineno">26028</span>&#160;                   (centerVec + 0.4f * widthVec + 0.8f * lengthVec).toPointF(),</div>
+<div class="line"><a name="l26029"></a><span class="lineno">26029</span>&#160;                   centerVec.toPointF());</div>
+<div class="line"><a name="l26030"></a><span class="lineno">26030</span>&#160;      path.cubicTo((centerVec - 0.4f * widthVec + 0.8f * lengthVec).toPointF(),</div>
+<div class="line"><a name="l26031"></a><span class="lineno">26031</span>&#160;                   (centerVec - widthVec - lengthVec * 0.8f).toPointF(),</div>
+<div class="line"><a name="l26032"></a><span class="lineno">26032</span>&#160;                   (centerVec - widthVec + lengthVec).toPointF());</div>
+<div class="line"><a name="l26033"></a><span class="lineno">26033</span>&#160;</div>
+<div class="line"><a name="l26034"></a><span class="lineno">26034</span>&#160;      path.cubicTo((centerVec - widthVec - lengthVec * 0.5f).toPointF(),</div>
+<div class="line"><a name="l26035"></a><span class="lineno">26035</span>&#160;                   (centerVec - 0.2f * widthVec + 1.2f * lengthVec).toPointF(),</div>
+<div class="line"><a name="l26036"></a><span class="lineno">26036</span>&#160;                   (centerVec + lengthVec * 0.2f).toPointF());</div>
+<div class="line"><a name="l26037"></a><span class="lineno">26037</span>&#160;      path.cubicTo((centerVec + 0.2f * widthVec + 1.2f * lengthVec).toPointF(),</div>
+<div class="line"><a name="l26038"></a><span class="lineno">26038</span>&#160;                   (centerVec + widthVec - lengthVec * 0.5f).toPointF(),</div>
+<div class="line"><a name="l26039"></a><span class="lineno">26039</span>&#160;                   (centerVec + widthVec + lengthVec).toPointF());</div>
+<div class="line"><a name="l26040"></a><span class="lineno">26040</span>&#160;</div>
+<div class="line"><a name="l26041"></a><span class="lineno">26041</span>&#160;      painter-&gt;drawPath(path);</div>
+<div class="line"><a name="l26042"></a><span class="lineno">26042</span>&#160;      <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l26043"></a><span class="lineno">26043</span>&#160;    }</div>
+<div class="line"><a name="l26044"></a><span class="lineno">26044</span>&#160;    }</div>
+<div class="line"><a name="l26045"></a><span class="lineno">26045</span>&#160;  }</div>
+<div class="line"><a name="l26046"></a><span class="lineno">26046</span>&#160;}</div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_ab3d99bba8da18eb4d0e0cb23dded33b2"><div class="ttname"><a href="class_q_c_p_item_bracket.html#ab3d99bba8da18eb4d0e0cb23dded33b2">QCPItemBracket::mLength</a></div><div class="ttdeci">double mLength</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l04262">qcustomplot.h:4262</a></div></div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_a7ac3afd0b24a607054e7212047d59dbda7f9df4a7359bfe3dac1dbe4ccf5d220c"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda7f9df4a7359bfe3dac1dbe4ccf5d220c">QCPItemBracket::bsSquare</a></div><div class="ttdoc">A brace with angled edges. </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l04225">qcustomplot.h:4225</a></div></div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_afa6c1360b05a50c4e0df37b3cebab6be"><div class="ttname"><a href="class_q_c_p_item_bracket.html#afa6c1360b05a50c4e0df37b3cebab6be">QCPItemBracket::right</a></div><div class="ttdeci">QCPItemPosition *const right</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l04255">qcustomplot.h:4255</a></div></div>
+<div class="ttc" id="class_q_c_p_painter_html_a0b4b1b9bd495e182c731774dc800e6e0"><div class="ttname"><a href="class_q_c_p_painter.html#a0b4b1b9bd495e182c731774dc800e6e0">QCPPainter::drawLine</a></div><div class="ttdeci">void drawLine(const QLineF &amp;line)</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l00134">qcustomplot.cpp:134</a></div></div>
+<div class="ttc" id="class_q_c_p_painter_html_af9c7a4cd1791403901f8c5b82a150195"><div class="ttname"><a href="class_q_c_p_painter.html#af9c7a4cd1791403901f8c5b82a150195">QCPPainter::setPen</a></div><div class="ttdeci">void setPen(const QPen &amp;pen)</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l00090">qcustomplot.cpp:90</a></div></div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_a7ac3afd0b24a607054e7212047d59dbda394627b0830a26ee3e0a02ca67a9f918"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda394627b0830a26ee3e0a02ca67a9f918">QCPItemBracket::bsRound</a></div><div class="ttdoc">A brace with round edges. </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l04227">qcustomplot.h:4227</a></div></div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_ac911907184c824d621f274f8e0990080"><div class="ttname"><a href="class_q_c_p_item_bracket.html#ac911907184c824d621f274f8e0990080">QCPItemBracket::mStyle</a></div><div class="ttdeci">BracketStyle mStyle</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l04263">qcustomplot.h:4263</a></div></div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_a7ac3afd0b24a607054e7212047d59dbda5024ce4023c2d8de4221f1cd4816acd8"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda5024ce4023c2d8de4221f1cd4816acd8">QCPItemBracket::bsCurly</a></div><div class="ttdoc">A curly brace. </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l04229">qcustomplot.h:4229</a></div></div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_a8df4ad873bf88a4a7bfb9bbbd490e495"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a8df4ad873bf88a4a7bfb9bbbd490e495">QCPItemBracket::mainPen</a></div><div class="ttdeci">QPen mainPen() const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l26073">qcustomplot.cpp:26073</a></div></div>
+<div class="ttc" id="class_q_c_p_item_position_html_ae490f9c76ee2ba33752c495d3b6e8fb5"><div class="ttname"><a href="class_q_c_p_item_position.html#ae490f9c76ee2ba33752c495d3b6e8fb5">QCPItemPosition::pixelPoint</a></div><div class="ttdeci">virtual QPointF pixelPoint() const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l08762">qcustomplot.cpp:8762</a></div></div>
+<div class="ttc" id="class_q_c_p_abstract_item_html_a538e25ff8856534582f5b2b400a46405"><div class="ttname"><a href="class_q_c_p_abstract_item.html#a538e25ff8856534582f5b2b400a46405">QCPAbstractItem::clipRect</a></div><div class="ttdeci">virtual QRect clipRect() const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l09359">qcustomplot.cpp:9359</a></div></div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_a7ac3afd0b24a607054e7212047d59dbda8f29f5ef754e2dc9a9efdedb2face0f3"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda8f29f5ef754e2dc9a9efdedb2face0f3">QCPItemBracket::bsCalligraphic</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l04231">qcustomplot.h:4231</a></div></div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_af6cc6d27d96171778c6927d6edce48b0"><div class="ttname"><a href="class_q_c_p_item_bracket.html#af6cc6d27d96171778c6927d6edce48b0">QCPItemBracket::left</a></div><div class="ttdeci">QCPItemPosition *const left</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l04254">qcustomplot.h:4254</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -700,11 +714,11 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03735">3735</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l04241">4241</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l23383">setLength()</a>.</p>
-<div class="fragment"><div class="line"><a name="l03735"></a><span class="lineno"> 3735</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="class_q_c_p_item_bracket.html#ab3d99bba8da18eb4d0e0cb23dded33b2">mLength</a>; }</div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_ab3d99bba8da18eb4d0e0cb23dded33b2"><div class="ttname"><a href="class_q_c_p_item_bracket.html#ab3d99bba8da18eb4d0e0cb23dded33b2">QCPItemBracket::mLength</a></div><div class="ttdeci">double mLength</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03755">qcustomplot.h:3755</a></div></div>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l25907">setLength()</a>.</p>
+<div class="fragment"><div class="line"><a name="l04241"></a><span class="lineno"> 4241</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="class_q_c_p_item_bracket.html#ab3d99bba8da18eb4d0e0cb23dded33b2">mLength</a>; }</div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_ab3d99bba8da18eb4d0e0cb23dded33b2"><div class="ttname"><a href="class_q_c_p_item_bracket.html#ab3d99bba8da18eb4d0e0cb23dded33b2">QCPItemBracket::mLength</a></div><div class="ttdeci">double mLength</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l04262">qcustomplot.h:4262</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -738,17 +752,15 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l23534">23534</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l26073">26073</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
 
-<p>References <a class="el" href="qcustomplot_8h_source.html#l03754">mPen</a>, <a class="el" href="qcustomplot_8h_source.html#l01652">QCPAbstractItem::mSelected</a>, and <a class="el" href="qcustomplot_8h_source.html#l03754">mSelectedPen</a>.</p>
+<p>References <a class="el" href="qcustomplot_8h_source.html#l04261">mPen</a>, <a class="el" href="qcustomplot_8h_source.html#l01891">QCPAbstractItem::mSelected</a>, and <a class="el" href="qcustomplot_8h_source.html#l04261">mSelectedPen</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l23439">draw()</a>.</p>
-<div class="fragment"><div class="line"><a name="l23535"></a><span class="lineno">23535</span>&#160;{</div>
-<div class="line"><a name="l23536"></a><span class="lineno">23536</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_q_c_p_abstract_item.html#a4bdb3457dad1d268c0f78a44152b9645">mSelected</a> ? <a class="code" href="class_q_c_p_item_bracket.html#adcfb53602d1802d00e2de4fd6df6b291">mSelectedPen</a> : <a class="code" href="class_q_c_p_item_bracket.html#a350c864a5853b04343719f5a8be6b675">mPen</a>;</div>
-<div class="line"><a name="l23537"></a><span class="lineno">23537</span>&#160;}</div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_adcfb53602d1802d00e2de4fd6df6b291"><div class="ttname"><a href="class_q_c_p_item_bracket.html#adcfb53602d1802d00e2de4fd6df6b291">QCPItemBracket::mSelectedPen</a></div><div class="ttdeci">QPen mSelectedPen</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03754">qcustomplot.h:3754</a></div></div>
-<div class="ttc" id="class_q_c_p_abstract_item_html_a4bdb3457dad1d268c0f78a44152b9645"><div class="ttname"><a href="class_q_c_p_abstract_item.html#a4bdb3457dad1d268c0f78a44152b9645">QCPAbstractItem::mSelected</a></div><div class="ttdeci">bool mSelected</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l01652">qcustomplot.h:1652</a></div></div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_a350c864a5853b04343719f5a8be6b675"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a350c864a5853b04343719f5a8be6b675">QCPItemBracket::mPen</a></div><div class="ttdeci">QPen mPen</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03754">qcustomplot.h:3754</a></div></div>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l25967">draw()</a>.</p>
+<div class="fragment"><div class="line"><a name="l26073"></a><span class="lineno">26073</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="class_q_c_p_abstract_item.html#a4bdb3457dad1d268c0f78a44152b9645">mSelected</a> ? <a class="code" href="class_q_c_p_item_bracket.html#adcfb53602d1802d00e2de4fd6df6b291">mSelectedPen</a> : <a class="code" href="class_q_c_p_item_bracket.html#a350c864a5853b04343719f5a8be6b675">mPen</a>; }</div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_adcfb53602d1802d00e2de4fd6df6b291"><div class="ttname"><a href="class_q_c_p_item_bracket.html#adcfb53602d1802d00e2de4fd6df6b291">QCPItemBracket::mSelectedPen</a></div><div class="ttdeci">QPen mSelectedPen</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l04261">qcustomplot.h:4261</a></div></div>
+<div class="ttc" id="class_q_c_p_abstract_item_html_a4bdb3457dad1d268c0f78a44152b9645"><div class="ttname"><a href="class_q_c_p_abstract_item.html#a4bdb3457dad1d268c0f78a44152b9645">QCPAbstractItem::mSelected</a></div><div class="ttdeci">bool mSelected</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l01891">qcustomplot.h:1891</a></div></div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_a350c864a5853b04343719f5a8be6b675"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a350c864a5853b04343719f5a8be6b675">QCPItemBracket::mPen</a></div><div class="ttdeci">QPen mPen</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l04261">qcustomplot.h:4261</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -782,11 +794,11 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03733">3733</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l04239">4239</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l23360">setPen()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l23370">setSelectedPen()</a>.</p>
-<div class="fragment"><div class="line"><a name="l03733"></a><span class="lineno"> 3733</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="class_q_c_p_item_bracket.html#a350c864a5853b04343719f5a8be6b675">mPen</a>; }</div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_a350c864a5853b04343719f5a8be6b675"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a350c864a5853b04343719f5a8be6b675">QCPItemBracket::mPen</a></div><div class="ttdeci">QPen mPen</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03754">qcustomplot.h:3754</a></div></div>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l25886">setPen()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l25893">setSelectedPen()</a>.</p>
+<div class="fragment"><div class="line"><a name="l04239"></a><span class="lineno"> 4239</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="class_q_c_p_item_bracket.html#a350c864a5853b04343719f5a8be6b675">mPen</a>; }</div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_a350c864a5853b04343719f5a8be6b675"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a350c864a5853b04343719f5a8be6b675">QCPItemBracket::mPen</a></div><div class="ttdeci">QPen mPen</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l04261">qcustomplot.h:4261</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -820,9 +832,9 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03734">3734</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l03734"></a><span class="lineno"> 3734</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="class_q_c_p_item_bracket.html#adcfb53602d1802d00e2de4fd6df6b291">mSelectedPen</a>; }</div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_adcfb53602d1802d00e2de4fd6df6b291"><div class="ttname"><a href="class_q_c_p_item_bracket.html#adcfb53602d1802d00e2de4fd6df6b291">QCPItemBracket::mSelectedPen</a></div><div class="ttdeci">QPen mSelectedPen</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03754">qcustomplot.h:3754</a></div></div>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l04240">4240</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l04240"></a><span class="lineno"> 4240</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="class_q_c_p_item_bracket.html#adcfb53602d1802d00e2de4fd6df6b291">mSelectedPen</a>; }</div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_adcfb53602d1802d00e2de4fd6df6b291"><div class="ttname"><a href="class_q_c_p_item_bracket.html#adcfb53602d1802d00e2de4fd6df6b291">QCPItemBracket::mSelectedPen</a></div><div class="ttdeci">QPen mSelectedPen</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l04261">qcustomplot.h:4261</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -874,59 +886,67 @@ Here is the caller graph for this function:</div>
 
 <p>Implements <a class="el" href="class_q_c_p_abstract_item.html#a96d522d10ffc0413b9a366c6f7f0476b">QCPAbstractItem</a>.</p>
 
-<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l23399">23399</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l25919">25919</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
 
-<p>References <a class="el" href="qcustomplot_8h_source.html#l03726">bsCalligraphic</a>, <a class="el" href="qcustomplot_8h_source.html#l03725">bsCurly</a>, <a class="el" href="qcustomplot_8h_source.html#l03724">bsRound</a>, <a class="el" href="qcustomplot_8h_source.html#l03723">bsSquare</a>, <a class="el" href="_comparision_pictures_2_createtest_image_8m_source.html#l00017">c</a>, <a class="el" href="qcustomplot_8cpp_source.html#l08538">QCPAbstractItem::distSqrToLine()</a>, <a class="el" href="qcustomplot_8h_source.html#l03747">left</a>, <a class="el" href="qcustomplot_8h_source.html#l03755">mLength</a>, <a class="el" href="qcustomplot_8h_source.html#l01652">QCPAbstractItem::mSelectable</a>, <a class="el" href="qcustomplot_8h_source.html#l03756">mStyle</a>, <a class="el" href="qcustomplot_8cpp_source.html#l07947">QCPItemPosition::pixelPoint()</a>, and <a class="el" href="qcustomplot_8h_source.html#l03748">right</a>.</p>
-<div class="fragment"><div class="line"><a name="l23400"></a><span class="lineno">23400</span>&#160;{</div>
-<div class="line"><a name="l23401"></a><span class="lineno">23401</span>&#160;  Q_UNUSED(details)</div>
-<div class="line"><a name="l23402"></a><span class="lineno">23402</span>&#160;  if (onlySelectable &amp;&amp; !<a class="code" href="class_q_c_p_abstract_item.html#ad81eb35c8726a0f458db9df9732e0e41">mSelectable</a>)</div>
-<div class="line"><a name="l23403"></a><span class="lineno">23403</span>&#160;    return -1;</div>
-<div class="line"><a name="l23404"></a><span class="lineno">23404</span>&#160;  </div>
-<div class="line"><a name="l23405"></a><span class="lineno">23405</span>&#160;  QVector2D leftVec(<a class="code" href="class_q_c_p_item_bracket.html#af6cc6d27d96171778c6927d6edce48b0">left</a>-&gt;pixelPoint());</div>
-<div class="line"><a name="l23406"></a><span class="lineno">23406</span>&#160;  QVector2D rightVec(<a class="code" href="class_q_c_p_item_bracket.html#afa6c1360b05a50c4e0df37b3cebab6be">right</a>-&gt;pixelPoint());</div>
-<div class="line"><a name="l23407"></a><span class="lineno">23407</span>&#160;  if (leftVec.toPoint() == rightVec.toPoint())</div>
-<div class="line"><a name="l23408"></a><span class="lineno">23408</span>&#160;    return -1;</div>
-<div class="line"><a name="l23409"></a><span class="lineno">23409</span>&#160;  </div>
-<div class="line"><a name="l23410"></a><span class="lineno">23410</span>&#160;  QVector2D widthVec = (rightVec-leftVec)*0.5f;</div>
-<div class="line"><a name="l23411"></a><span class="lineno">23411</span>&#160;  QVector2D lengthVec(-widthVec.<a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a2fb1c5cf58867b5bbc9a1b145a86f3a0">y</a>(), widthVec.<a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a9336ebf25087d91c818ee6e9ec29f8c1">x</a>());</div>
-<div class="line"><a name="l23412"></a><span class="lineno">23412</span>&#160;  lengthVec = lengthVec.normalized()*<a class="code" href="class_q_c_p_item_bracket.html#ab3d99bba8da18eb4d0e0cb23dded33b2">mLength</a>;</div>
-<div class="line"><a name="l23413"></a><span class="lineno">23413</span>&#160;  QVector2D centerVec = (rightVec+leftVec)*0.5f-lengthVec;</div>
-<div class="line"><a name="l23414"></a><span class="lineno">23414</span>&#160;  </div>
-<div class="line"><a name="l23415"></a><span class="lineno">23415</span>&#160;  switch (<a class="code" href="class_q_c_p_item_bracket.html#ac911907184c824d621f274f8e0990080">mStyle</a>)</div>
-<div class="line"><a name="l23416"></a><span class="lineno">23416</span>&#160;  {</div>
-<div class="line"><a name="l23417"></a><span class="lineno">23417</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda7f9df4a7359bfe3dac1dbe4ccf5d220c">QCPItemBracket::bsSquare</a>:</div>
-<div class="line"><a name="l23418"></a><span class="lineno">23418</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda394627b0830a26ee3e0a02ca67a9f918">QCPItemBracket::bsRound</a>:</div>
-<div class="line"><a name="l23419"></a><span class="lineno">23419</span>&#160;    {</div>
-<div class="line"><a name="l23420"></a><span class="lineno">23420</span>&#160;      <span class="keywordtype">double</span> a = <a class="code" href="class_q_c_p_abstract_item.html#acdca343717d625b8abb3c3e38c0ed39d">distSqrToLine</a>((centerVec-widthVec).toPointF(), (centerVec+widthVec).toPointF(), pos);</div>
-<div class="line"><a name="l23421"></a><span class="lineno">23421</span>&#160;      <span class="keywordtype">double</span> b = <a class="code" href="class_q_c_p_abstract_item.html#acdca343717d625b8abb3c3e38c0ed39d">distSqrToLine</a>((centerVec-widthVec+lengthVec).toPointF(), (centerVec-widthVec).toPointF(), pos);</div>
-<div class="line"><a name="l23422"></a><span class="lineno">23422</span>&#160;      <span class="keywordtype">double</span> <a class="code" href="_comparision_pictures_2_createtest_image_8m.html#ae0323a9039add2978bf5b49550572c7c">c</a> = <a class="code" href="class_q_c_p_abstract_item.html#acdca343717d625b8abb3c3e38c0ed39d">distSqrToLine</a>((centerVec+widthVec+lengthVec).toPointF(), (centerVec+widthVec).toPointF(), pos);</div>
-<div class="line"><a name="l23423"></a><span class="lineno">23423</span>&#160;      <span class="keywordflow">return</span> qSqrt(qMin(qMin(a, b), c));</div>
-<div class="line"><a name="l23424"></a><span class="lineno">23424</span>&#160;    }</div>
-<div class="line"><a name="l23425"></a><span class="lineno">23425</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda5024ce4023c2d8de4221f1cd4816acd8">QCPItemBracket::bsCurly</a>:</div>
-<div class="line"><a name="l23426"></a><span class="lineno">23426</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda8f29f5ef754e2dc9a9efdedb2face0f3">QCPItemBracket::bsCalligraphic</a>:</div>
-<div class="line"><a name="l23427"></a><span class="lineno">23427</span>&#160;    {</div>
-<div class="line"><a name="l23428"></a><span class="lineno">23428</span>&#160;      <span class="keywordtype">double</span> a = <a class="code" href="class_q_c_p_abstract_item.html#acdca343717d625b8abb3c3e38c0ed39d">distSqrToLine</a>((centerVec-widthVec*0.75f+lengthVec*0.15f).toPointF(), (centerVec+lengthVec*0.3f).toPointF(), pos);</div>
-<div class="line"><a name="l23429"></a><span class="lineno">23429</span>&#160;      <span class="keywordtype">double</span> b = <a class="code" href="class_q_c_p_abstract_item.html#acdca343717d625b8abb3c3e38c0ed39d">distSqrToLine</a>((centerVec-widthVec+lengthVec*0.7f).toPointF(), (centerVec-widthVec*0.75f+lengthVec*0.15f).toPointF(), pos);</div>
-<div class="line"><a name="l23430"></a><span class="lineno">23430</span>&#160;      <span class="keywordtype">double</span> c = <a class="code" href="class_q_c_p_abstract_item.html#acdca343717d625b8abb3c3e38c0ed39d">distSqrToLine</a>((centerVec+widthVec*0.75f+lengthVec*0.15f).toPointF(), (centerVec+lengthVec*0.3f).toPointF(), pos);</div>
-<div class="line"><a name="l23431"></a><span class="lineno">23431</span>&#160;      <span class="keywordtype">double</span> d = <a class="code" href="class_q_c_p_abstract_item.html#acdca343717d625b8abb3c3e38c0ed39d">distSqrToLine</a>((centerVec+widthVec+lengthVec*0.7f).toPointF(), (centerVec+widthVec*0.75f+lengthVec*0.15f).toPointF(), pos);</div>
-<div class="line"><a name="l23432"></a><span class="lineno">23432</span>&#160;      <span class="keywordflow">return</span> qSqrt(qMin(qMin(a, b), qMin(c, d)));</div>
-<div class="line"><a name="l23433"></a><span class="lineno">23433</span>&#160;    }</div>
-<div class="line"><a name="l23434"></a><span class="lineno">23434</span>&#160;  }</div>
-<div class="line"><a name="l23435"></a><span class="lineno">23435</span>&#160;  <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l23436"></a><span class="lineno">23436</span>&#160;}</div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_ab3d99bba8da18eb4d0e0cb23dded33b2"><div class="ttname"><a href="class_q_c_p_item_bracket.html#ab3d99bba8da18eb4d0e0cb23dded33b2">QCPItemBracket::mLength</a></div><div class="ttdeci">double mLength</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03755">qcustomplot.h:3755</a></div></div>
-<div class="ttc" id="class_q_c_p_abstract_item_html_ad81eb35c8726a0f458db9df9732e0e41"><div class="ttname"><a href="class_q_c_p_abstract_item.html#ad81eb35c8726a0f458db9df9732e0e41">QCPAbstractItem::mSelectable</a></div><div class="ttdeci">bool mSelectable</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l01652">qcustomplot.h:1652</a></div></div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_a7ac3afd0b24a607054e7212047d59dbda7f9df4a7359bfe3dac1dbe4ccf5d220c"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda7f9df4a7359bfe3dac1dbe4ccf5d220c">QCPItemBracket::bsSquare</a></div><div class="ttdoc">A brace with angled edges. </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03723">qcustomplot.h:3723</a></div></div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_afa6c1360b05a50c4e0df37b3cebab6be"><div class="ttname"><a href="class_q_c_p_item_bracket.html#afa6c1360b05a50c4e0df37b3cebab6be">QCPItemBracket::right</a></div><div class="ttdeci">QCPItemPosition *const right</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03748">qcustomplot.h:3748</a></div></div>
+<p>References <a class="el" href="qcustomplot_8h_source.html#l04231">bsCalligraphic</a>, <a class="el" href="qcustomplot_8h_source.html#l04229">bsCurly</a>, <a class="el" href="qcustomplot_8h_source.html#l04227">bsRound</a>, <a class="el" href="qcustomplot_8h_source.html#l04225">bsSquare</a>, <a class="el" href="_comparision_pictures_2_createtest_image_8m_source.html#l00017">c</a>, <a class="el" href="qcustomplot_8cpp_source.html#l09400">QCPAbstractItem::distSqrToLine()</a>, <a class="el" href="qcustomplot_8h_source.html#l04254">left</a>, <a class="el" href="qcustomplot_8h_source.html#l04262">mLength</a>, <a class="el" href="qcustomplot_8h_source.html#l01891">QCPAbstractItem::mSelectable</a>, <a class="el" href="qcustomplot_8h_source.html#l04263">mStyle</a>, <a class="el" href="qcustomplot_8cpp_source.html#l08762">QCPItemPosition::pixelPoint()</a>, and <a class="el" href="qcustomplot_8h_source.html#l04255">right</a>.</p>
+<div class="fragment"><div class="line"><a name="l25920"></a><span class="lineno">25920</span>&#160;                                                           {</div>
+<div class="line"><a name="l25921"></a><span class="lineno">25921</span>&#160;  Q_UNUSED(details)</div>
+<div class="line"><a name="l25922"></a><span class="lineno">25922</span>&#160;  if (onlySelectable &amp;&amp; !<a class="code" href="class_q_c_p_abstract_item.html#ad81eb35c8726a0f458db9df9732e0e41">mSelectable</a>)</div>
+<div class="line"><a name="l25923"></a><span class="lineno">25923</span>&#160;    return -1;</div>
+<div class="line"><a name="l25924"></a><span class="lineno">25924</span>&#160;</div>
+<div class="line"><a name="l25925"></a><span class="lineno">25925</span>&#160;  QVector2D leftVec(<a class="code" href="class_q_c_p_item_bracket.html#af6cc6d27d96171778c6927d6edce48b0">left</a>-&gt;pixelPoint());</div>
+<div class="line"><a name="l25926"></a><span class="lineno">25926</span>&#160;  QVector2D rightVec(<a class="code" href="class_q_c_p_item_bracket.html#afa6c1360b05a50c4e0df37b3cebab6be">right</a>-&gt;pixelPoint());</div>
+<div class="line"><a name="l25927"></a><span class="lineno">25927</span>&#160;  if (leftVec.toPoint() == rightVec.toPoint())</div>
+<div class="line"><a name="l25928"></a><span class="lineno">25928</span>&#160;    return -1;</div>
+<div class="line"><a name="l25929"></a><span class="lineno">25929</span>&#160;</div>
+<div class="line"><a name="l25930"></a><span class="lineno">25930</span>&#160;  QVector2D widthVec = (rightVec - leftVec) * 0.5f;</div>
+<div class="line"><a name="l25931"></a><span class="lineno">25931</span>&#160;  QVector2D lengthVec(-widthVec.<a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a2fb1c5cf58867b5bbc9a1b145a86f3a0">y</a>(), widthVec.<a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a9336ebf25087d91c818ee6e9ec29f8c1">x</a>());</div>
+<div class="line"><a name="l25932"></a><span class="lineno">25932</span>&#160;  lengthVec = lengthVec.normalized() * <a class="code" href="class_q_c_p_item_bracket.html#ab3d99bba8da18eb4d0e0cb23dded33b2">mLength</a>;</div>
+<div class="line"><a name="l25933"></a><span class="lineno">25933</span>&#160;  QVector2D centerVec = (rightVec + leftVec) * 0.5f - lengthVec;</div>
+<div class="line"><a name="l25934"></a><span class="lineno">25934</span>&#160;</div>
+<div class="line"><a name="l25935"></a><span class="lineno">25935</span>&#160;  switch (<a class="code" href="class_q_c_p_item_bracket.html#ac911907184c824d621f274f8e0990080">mStyle</a>) {</div>
+<div class="line"><a name="l25936"></a><span class="lineno">25936</span>&#160;  <span class="keywordflow">case</span> <a class="code" href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda7f9df4a7359bfe3dac1dbe4ccf5d220c">QCPItemBracket::bsSquare</a>:</div>
+<div class="line"><a name="l25937"></a><span class="lineno">25937</span>&#160;  <span class="keywordflow">case</span> <a class="code" href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda394627b0830a26ee3e0a02ca67a9f918">QCPItemBracket::bsRound</a>: {</div>
+<div class="line"><a name="l25938"></a><span class="lineno">25938</span>&#160;    <span class="keywordtype">double</span> a = <a class="code" href="class_q_c_p_abstract_item.html#acdca343717d625b8abb3c3e38c0ed39d">distSqrToLine</a>((centerVec - widthVec).toPointF(),</div>
+<div class="line"><a name="l25939"></a><span class="lineno">25939</span>&#160;                             (centerVec + widthVec).toPointF(), pos);</div>
+<div class="line"><a name="l25940"></a><span class="lineno">25940</span>&#160;    <span class="keywordtype">double</span> b = <a class="code" href="class_q_c_p_abstract_item.html#acdca343717d625b8abb3c3e38c0ed39d">distSqrToLine</a>((centerVec - widthVec + lengthVec).toPointF(),</div>
+<div class="line"><a name="l25941"></a><span class="lineno">25941</span>&#160;                             (centerVec - widthVec).toPointF(), pos);</div>
+<div class="line"><a name="l25942"></a><span class="lineno">25942</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="_comparision_pictures_2_createtest_image_8m.html#ae0323a9039add2978bf5b49550572c7c">c</a> = <a class="code" href="class_q_c_p_abstract_item.html#acdca343717d625b8abb3c3e38c0ed39d">distSqrToLine</a>((centerVec + widthVec + lengthVec).toPointF(),</div>
+<div class="line"><a name="l25943"></a><span class="lineno">25943</span>&#160;                             (centerVec + widthVec).toPointF(), pos);</div>
+<div class="line"><a name="l25944"></a><span class="lineno">25944</span>&#160;    <span class="keywordflow">return</span> qSqrt(qMin(qMin(a, b), c));</div>
+<div class="line"><a name="l25945"></a><span class="lineno">25945</span>&#160;  }</div>
+<div class="line"><a name="l25946"></a><span class="lineno">25946</span>&#160;  <span class="keywordflow">case</span> <a class="code" href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda5024ce4023c2d8de4221f1cd4816acd8">QCPItemBracket::bsCurly</a>:</div>
+<div class="line"><a name="l25947"></a><span class="lineno">25947</span>&#160;  <span class="keywordflow">case</span> <a class="code" href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda8f29f5ef754e2dc9a9efdedb2face0f3">QCPItemBracket::bsCalligraphic</a>: {</div>
+<div class="line"><a name="l25948"></a><span class="lineno">25948</span>&#160;    <span class="keywordtype">double</span> a = <a class="code" href="class_q_c_p_abstract_item.html#acdca343717d625b8abb3c3e38c0ed39d">distSqrToLine</a>(</div>
+<div class="line"><a name="l25949"></a><span class="lineno">25949</span>&#160;        (centerVec - widthVec * 0.75f + lengthVec * 0.15f).toPointF(),</div>
+<div class="line"><a name="l25950"></a><span class="lineno">25950</span>&#160;        (centerVec + lengthVec * 0.3f).toPointF(), pos);</div>
+<div class="line"><a name="l25951"></a><span class="lineno">25951</span>&#160;    <span class="keywordtype">double</span> b = <a class="code" href="class_q_c_p_abstract_item.html#acdca343717d625b8abb3c3e38c0ed39d">distSqrToLine</a>(</div>
+<div class="line"><a name="l25952"></a><span class="lineno">25952</span>&#160;        (centerVec - widthVec + lengthVec * 0.7f).toPointF(),</div>
+<div class="line"><a name="l25953"></a><span class="lineno">25953</span>&#160;        (centerVec - widthVec * 0.75f + lengthVec * 0.15f).toPointF(), pos);</div>
+<div class="line"><a name="l25954"></a><span class="lineno">25954</span>&#160;    <span class="keywordtype">double</span> c = <a class="code" href="class_q_c_p_abstract_item.html#acdca343717d625b8abb3c3e38c0ed39d">distSqrToLine</a>(</div>
+<div class="line"><a name="l25955"></a><span class="lineno">25955</span>&#160;        (centerVec + widthVec * 0.75f + lengthVec * 0.15f).toPointF(),</div>
+<div class="line"><a name="l25956"></a><span class="lineno">25956</span>&#160;        (centerVec + lengthVec * 0.3f).toPointF(), pos);</div>
+<div class="line"><a name="l25957"></a><span class="lineno">25957</span>&#160;    <span class="keywordtype">double</span> d = <a class="code" href="class_q_c_p_abstract_item.html#acdca343717d625b8abb3c3e38c0ed39d">distSqrToLine</a>(</div>
+<div class="line"><a name="l25958"></a><span class="lineno">25958</span>&#160;        (centerVec + widthVec + lengthVec * 0.7f).toPointF(),</div>
+<div class="line"><a name="l25959"></a><span class="lineno">25959</span>&#160;        (centerVec + widthVec * 0.75f + lengthVec * 0.15f).toPointF(), pos);</div>
+<div class="line"><a name="l25960"></a><span class="lineno">25960</span>&#160;    <span class="keywordflow">return</span> qSqrt(qMin(qMin(a, b), qMin(c, d)));</div>
+<div class="line"><a name="l25961"></a><span class="lineno">25961</span>&#160;  }</div>
+<div class="line"><a name="l25962"></a><span class="lineno">25962</span>&#160;  }</div>
+<div class="line"><a name="l25963"></a><span class="lineno">25963</span>&#160;  <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l25964"></a><span class="lineno">25964</span>&#160;}</div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_ab3d99bba8da18eb4d0e0cb23dded33b2"><div class="ttname"><a href="class_q_c_p_item_bracket.html#ab3d99bba8da18eb4d0e0cb23dded33b2">QCPItemBracket::mLength</a></div><div class="ttdeci">double mLength</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l04262">qcustomplot.h:4262</a></div></div>
+<div class="ttc" id="class_q_c_p_abstract_item_html_ad81eb35c8726a0f458db9df9732e0e41"><div class="ttname"><a href="class_q_c_p_abstract_item.html#ad81eb35c8726a0f458db9df9732e0e41">QCPAbstractItem::mSelectable</a></div><div class="ttdeci">bool mSelectable</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l01891">qcustomplot.h:1891</a></div></div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_a7ac3afd0b24a607054e7212047d59dbda7f9df4a7359bfe3dac1dbe4ccf5d220c"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda7f9df4a7359bfe3dac1dbe4ccf5d220c">QCPItemBracket::bsSquare</a></div><div class="ttdoc">A brace with angled edges. </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l04225">qcustomplot.h:4225</a></div></div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_afa6c1360b05a50c4e0df37b3cebab6be"><div class="ttname"><a href="class_q_c_p_item_bracket.html#afa6c1360b05a50c4e0df37b3cebab6be">QCPItemBracket::right</a></div><div class="ttdeci">QCPItemPosition *const right</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l04255">qcustomplot.h:4255</a></div></div>
 <div class="ttc" id="_comparision_pictures_2_createtest_image_8m_html_a9336ebf25087d91c818ee6e9ec29f8c1"><div class="ttname"><a href="_comparision_pictures_2_createtest_image_8m.html#a9336ebf25087d91c818ee6e9ec29f8c1">x</a></div><div class="ttdeci">x</div><div class="ttdef"><b>Definition:</b> <a href="_comparision_pictures_2_createtest_image_8m_source.html#l00010">CreatetestImage.m:10</a></div></div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_a7ac3afd0b24a607054e7212047d59dbda394627b0830a26ee3e0a02ca67a9f918"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda394627b0830a26ee3e0a02ca67a9f918">QCPItemBracket::bsRound</a></div><div class="ttdoc">A brace with round edges. </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03724">qcustomplot.h:3724</a></div></div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_ac911907184c824d621f274f8e0990080"><div class="ttname"><a href="class_q_c_p_item_bracket.html#ac911907184c824d621f274f8e0990080">QCPItemBracket::mStyle</a></div><div class="ttdeci">BracketStyle mStyle</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03756">qcustomplot.h:3756</a></div></div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_a7ac3afd0b24a607054e7212047d59dbda5024ce4023c2d8de4221f1cd4816acd8"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda5024ce4023c2d8de4221f1cd4816acd8">QCPItemBracket::bsCurly</a></div><div class="ttdoc">A curly brace. </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03725">qcustomplot.h:3725</a></div></div>
-<div class="ttc" id="class_q_c_p_abstract_item_html_acdca343717d625b8abb3c3e38c0ed39d"><div class="ttname"><a href="class_q_c_p_abstract_item.html#acdca343717d625b8abb3c3e38c0ed39d">QCPAbstractItem::distSqrToLine</a></div><div class="ttdeci">double distSqrToLine(const QPointF &amp;start, const QPointF &amp;end, const QPointF &amp;point) const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l08538">qcustomplot.cpp:8538</a></div></div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_a7ac3afd0b24a607054e7212047d59dbda8f29f5ef754e2dc9a9efdedb2face0f3"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda8f29f5ef754e2dc9a9efdedb2face0f3">QCPItemBracket::bsCalligraphic</a></div><div class="ttdoc">A curly brace with varying stroke width giving a calligraphic impression. </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03726">qcustomplot.h:3726</a></div></div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_a7ac3afd0b24a607054e7212047d59dbda394627b0830a26ee3e0a02ca67a9f918"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda394627b0830a26ee3e0a02ca67a9f918">QCPItemBracket::bsRound</a></div><div class="ttdoc">A brace with round edges. </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l04227">qcustomplot.h:4227</a></div></div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_ac911907184c824d621f274f8e0990080"><div class="ttname"><a href="class_q_c_p_item_bracket.html#ac911907184c824d621f274f8e0990080">QCPItemBracket::mStyle</a></div><div class="ttdeci">BracketStyle mStyle</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l04263">qcustomplot.h:4263</a></div></div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_a7ac3afd0b24a607054e7212047d59dbda5024ce4023c2d8de4221f1cd4816acd8"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda5024ce4023c2d8de4221f1cd4816acd8">QCPItemBracket::bsCurly</a></div><div class="ttdoc">A curly brace. </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l04229">qcustomplot.h:4229</a></div></div>
+<div class="ttc" id="class_q_c_p_abstract_item_html_acdca343717d625b8abb3c3e38c0ed39d"><div class="ttname"><a href="class_q_c_p_abstract_item.html#acdca343717d625b8abb3c3e38c0ed39d">QCPAbstractItem::distSqrToLine</a></div><div class="ttdeci">double distSqrToLine(const QPointF &amp;start, const QPointF &amp;end, const QPointF &amp;point) const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l09400">qcustomplot.cpp:9400</a></div></div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_a7ac3afd0b24a607054e7212047d59dbda8f29f5ef754e2dc9a9efdedb2face0f3"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda8f29f5ef754e2dc9a9efdedb2face0f3">QCPItemBracket::bsCalligraphic</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l04231">qcustomplot.h:4231</a></div></div>
 <div class="ttc" id="_comparision_pictures_2_createtest_image_8m_html_ae0323a9039add2978bf5b49550572c7c"><div class="ttname"><a href="_comparision_pictures_2_createtest_image_8m.html#ae0323a9039add2978bf5b49550572c7c">c</a></div><div class="ttdeci">c</div><div class="ttdef"><b>Definition:</b> <a href="_comparision_pictures_2_createtest_image_8m_source.html#l00017">CreatetestImage.m:17</a></div></div>
 <div class="ttc" id="_comparision_pictures_2_createtest_image_8m_html_a2fb1c5cf58867b5bbc9a1b145a86f3a0"><div class="ttname"><a href="_comparision_pictures_2_createtest_image_8m.html#a2fb1c5cf58867b5bbc9a1b145a86f3a0">y</a></div><div class="ttdeci">y</div><div class="ttdef"><b>Definition:</b> <a href="_comparision_pictures_2_createtest_image_8m_source.html#l00011">CreatetestImage.m:11</a></div></div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_af6cc6d27d96171778c6927d6edce48b0"><div class="ttname"><a href="class_q_c_p_item_bracket.html#af6cc6d27d96171778c6927d6edce48b0">QCPItemBracket::left</a></div><div class="ttdeci">QCPItemPosition *const left</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03747">qcustomplot.h:3747</a></div></div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_af6cc6d27d96171778c6927d6edce48b0"><div class="ttname"><a href="class_q_c_p_item_bracket.html#af6cc6d27d96171778c6927d6edce48b0">QCPItemBracket::left</a></div><div class="ttdeci">QCPItemPosition *const left</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l04254">qcustomplot.h:4254</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -957,16 +977,14 @@ Here is the call graph for this function:</div>
 <img src="QCPItemBracket-length.png" alt="QCPItemBracket-length.png"/>
 </div>
  <center>Demonstrating the effect of different values for <a class="el" href="class_q_c_p_item_bracket.html#ac7cfc3da7da9b5c5ac5dfbe4f0351b2a">setLength</a>, for styles <a class="el" href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda8f29f5ef754e2dc9a9efdedb2face0f3">bsCalligraphic</a> and <a class="el" href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda7f9df4a7359bfe3dac1dbe4ccf5d220c">bsSquare</a>. Anchors and positions are displayed for reference.</center> 
-<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l23383">23383</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l25907">25907</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
 
-<p>References <a class="el" href="qcustomplot_8h_source.html#l03735">length()</a>, and <a class="el" href="qcustomplot_8h_source.html#l03755">mLength</a>.</p>
+<p>References <a class="el" href="qcustomplot_8h_source.html#l04241">length()</a>, and <a class="el" href="qcustomplot_8h_source.html#l04262">mLength</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l23332">QCPItemBracket()</a>.</p>
-<div class="fragment"><div class="line"><a name="l23384"></a><span class="lineno">23384</span>&#160;{</div>
-<div class="line"><a name="l23385"></a><span class="lineno">23385</span>&#160;  <a class="code" href="class_q_c_p_item_bracket.html#ab3d99bba8da18eb4d0e0cb23dded33b2">mLength</a> = <a class="code" href="class_q_c_p_item_bracket.html#aed5126eafcb1381ee5718499c20ba023">length</a>;</div>
-<div class="line"><a name="l23386"></a><span class="lineno">23386</span>&#160;}</div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_ab3d99bba8da18eb4d0e0cb23dded33b2"><div class="ttname"><a href="class_q_c_p_item_bracket.html#ab3d99bba8da18eb4d0e0cb23dded33b2">QCPItemBracket::mLength</a></div><div class="ttdeci">double mLength</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03755">qcustomplot.h:3755</a></div></div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_aed5126eafcb1381ee5718499c20ba023"><div class="ttname"><a href="class_q_c_p_item_bracket.html#aed5126eafcb1381ee5718499c20ba023">QCPItemBracket::length</a></div><div class="ttdeci">double length() const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03735">qcustomplot.h:3735</a></div></div>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l25860">QCPItemBracket()</a>.</p>
+<div class="fragment"><div class="line"><a name="l25907"></a><span class="lineno">25907</span>&#160;{ <a class="code" href="class_q_c_p_item_bracket.html#ab3d99bba8da18eb4d0e0cb23dded33b2">mLength</a> = <a class="code" href="class_q_c_p_item_bracket.html#aed5126eafcb1381ee5718499c20ba023">length</a>; }</div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_ab3d99bba8da18eb4d0e0cb23dded33b2"><div class="ttname"><a href="class_q_c_p_item_bracket.html#ab3d99bba8da18eb4d0e0cb23dded33b2">QCPItemBracket::mLength</a></div><div class="ttdeci">double mLength</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l04262">qcustomplot.h:4262</a></div></div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_aed5126eafcb1381ee5718499c20ba023"><div class="ttname"><a href="class_q_c_p_item_bracket.html#aed5126eafcb1381ee5718499c20ba023">QCPItemBracket::length</a></div><div class="ttdeci">double length() const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l04241">qcustomplot.h:4241</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -1005,16 +1023,14 @@ Here is the caller graph for this function:</div>
 <p>Note that when the style is <a class="el" href="class_q_c_p_item_bracket.html#a7ac3afd0b24a607054e7212047d59dbda8f29f5ef754e2dc9a9efdedb2face0f3">bsCalligraphic</a>, only the color will be taken from the pen, the stroke and width are ignored. To change the apparent stroke width of a calligraphic bracket, use <a class="el" href="class_q_c_p_item_bracket.html#ac7cfc3da7da9b5c5ac5dfbe4f0351b2a">setLength</a>, which has a similar effect.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="class_q_c_p_item_bracket.html#a349785c31122778a520c64891fa204c5">setSelectedPen</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l23360">23360</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l25886">25886</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
 
-<p>References <a class="el" href="qcustomplot_8h_source.html#l03754">mPen</a>, and <a class="el" href="qcustomplot_8h_source.html#l03733">pen()</a>.</p>
+<p>References <a class="el" href="qcustomplot_8h_source.html#l04261">mPen</a>, and <a class="el" href="qcustomplot_8h_source.html#l04239">pen()</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l23332">QCPItemBracket()</a>.</p>
-<div class="fragment"><div class="line"><a name="l23361"></a><span class="lineno">23361</span>&#160;{</div>
-<div class="line"><a name="l23362"></a><span class="lineno">23362</span>&#160;  <a class="code" href="class_q_c_p_item_bracket.html#a350c864a5853b04343719f5a8be6b675">mPen</a> = <a class="code" href="class_q_c_p_item_bracket.html#a8963ff4a232b649c83d2461fd3c30d39">pen</a>;</div>
-<div class="line"><a name="l23363"></a><span class="lineno">23363</span>&#160;}</div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_a8963ff4a232b649c83d2461fd3c30d39"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a8963ff4a232b649c83d2461fd3c30d39">QCPItemBracket::pen</a></div><div class="ttdeci">QPen pen() const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03733">qcustomplot.h:3733</a></div></div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_a350c864a5853b04343719f5a8be6b675"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a350c864a5853b04343719f5a8be6b675">QCPItemBracket::mPen</a></div><div class="ttdeci">QPen mPen</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03754">qcustomplot.h:3754</a></div></div>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l25860">QCPItemBracket()</a>.</p>
+<div class="fragment"><div class="line"><a name="l25886"></a><span class="lineno">25886</span>&#160;{ <a class="code" href="class_q_c_p_item_bracket.html#a350c864a5853b04343719f5a8be6b675">mPen</a> = <a class="code" href="class_q_c_p_item_bracket.html#a8963ff4a232b649c83d2461fd3c30d39">pen</a>; }</div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_a8963ff4a232b649c83d2461fd3c30d39"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a8963ff4a232b649c83d2461fd3c30d39">QCPItemBracket::pen</a></div><div class="ttdeci">QPen pen() const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l04239">qcustomplot.h:4239</a></div></div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_a350c864a5853b04343719f5a8be6b675"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a350c864a5853b04343719f5a8be6b675">QCPItemBracket::mPen</a></div><div class="ttdeci">QPen mPen</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l04261">qcustomplot.h:4261</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -1052,16 +1068,14 @@ Here is the caller graph for this function:</div>
 <p>Sets the pen that will be used to draw the bracket when selected</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="class_q_c_p_item_bracket.html#ab13001d9cc5d8f9e56ea15bdda682acb">setPen</a>, <a class="el" href="class_q_c_p_abstract_item.html#a203de94ad586cc44d16c9565f49d3378">setSelected</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l23370">23370</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l25893">25893</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
 
-<p>References <a class="el" href="qcustomplot_8h_source.html#l03754">mSelectedPen</a>, and <a class="el" href="qcustomplot_8h_source.html#l03733">pen()</a>.</p>
+<p>References <a class="el" href="qcustomplot_8h_source.html#l04261">mSelectedPen</a>, and <a class="el" href="qcustomplot_8h_source.html#l04239">pen()</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l23332">QCPItemBracket()</a>.</p>
-<div class="fragment"><div class="line"><a name="l23371"></a><span class="lineno">23371</span>&#160;{</div>
-<div class="line"><a name="l23372"></a><span class="lineno">23372</span>&#160;  <a class="code" href="class_q_c_p_item_bracket.html#adcfb53602d1802d00e2de4fd6df6b291">mSelectedPen</a> = <a class="code" href="class_q_c_p_item_bracket.html#a8963ff4a232b649c83d2461fd3c30d39">pen</a>;</div>
-<div class="line"><a name="l23373"></a><span class="lineno">23373</span>&#160;}</div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_a8963ff4a232b649c83d2461fd3c30d39"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a8963ff4a232b649c83d2461fd3c30d39">QCPItemBracket::pen</a></div><div class="ttdeci">QPen pen() const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03733">qcustomplot.h:3733</a></div></div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_adcfb53602d1802d00e2de4fd6df6b291"><div class="ttname"><a href="class_q_c_p_item_bracket.html#adcfb53602d1802d00e2de4fd6df6b291">QCPItemBracket::mSelectedPen</a></div><div class="ttdeci">QPen mSelectedPen</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03754">qcustomplot.h:3754</a></div></div>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l25860">QCPItemBracket()</a>.</p>
+<div class="fragment"><div class="line"><a name="l25893"></a><span class="lineno">25893</span>&#160;{ <a class="code" href="class_q_c_p_item_bracket.html#adcfb53602d1802d00e2de4fd6df6b291">mSelectedPen</a> = <a class="code" href="class_q_c_p_item_bracket.html#a8963ff4a232b649c83d2461fd3c30d39">pen</a>; }</div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_a8963ff4a232b649c83d2461fd3c30d39"><div class="ttname"><a href="class_q_c_p_item_bracket.html#a8963ff4a232b649c83d2461fd3c30d39">QCPItemBracket::pen</a></div><div class="ttdeci">QPen pen() const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l04239">qcustomplot.h:4239</a></div></div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_adcfb53602d1802d00e2de4fd6df6b291"><div class="ttname"><a href="class_q_c_p_item_bracket.html#adcfb53602d1802d00e2de4fd6df6b291">QCPItemBracket::mSelectedPen</a></div><div class="ttdeci">QPen mSelectedPen</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l04261">qcustomplot.h:4261</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -1099,16 +1113,16 @@ Here is the caller graph for this function:</div>
 <p>Sets the style of the bracket, i.e. the shape/visual appearance.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="class_q_c_p_item_bracket.html#ab13001d9cc5d8f9e56ea15bdda682acb">setPen</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l23393">23393</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l25914">25914</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
 
-<p>References <a class="el" href="qcustomplot_8h_source.html#l03756">mStyle</a>, and <a class="el" href="qcustomplot_8h_source.html#l03736">style()</a>.</p>
+<p>References <a class="el" href="qcustomplot_8h_source.html#l04263">mStyle</a>, and <a class="el" href="qcustomplot_8h_source.html#l04242">style()</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l23332">QCPItemBracket()</a>.</p>
-<div class="fragment"><div class="line"><a name="l23394"></a><span class="lineno">23394</span>&#160;{</div>
-<div class="line"><a name="l23395"></a><span class="lineno">23395</span>&#160;  <a class="code" href="class_q_c_p_item_bracket.html#ac911907184c824d621f274f8e0990080">mStyle</a> = <a class="code" href="class_q_c_p_item_bracket.html#afad726f453f70fe77c0e9c2f260fff97">style</a>;</div>
-<div class="line"><a name="l23396"></a><span class="lineno">23396</span>&#160;}</div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_ac911907184c824d621f274f8e0990080"><div class="ttname"><a href="class_q_c_p_item_bracket.html#ac911907184c824d621f274f8e0990080">QCPItemBracket::mStyle</a></div><div class="ttdeci">BracketStyle mStyle</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03756">qcustomplot.h:3756</a></div></div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_afad726f453f70fe77c0e9c2f260fff97"><div class="ttname"><a href="class_q_c_p_item_bracket.html#afad726f453f70fe77c0e9c2f260fff97">QCPItemBracket::style</a></div><div class="ttdeci">BracketStyle style() const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03736">qcustomplot.h:3736</a></div></div>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l25860">QCPItemBracket()</a>.</p>
+<div class="fragment"><div class="line"><a name="l25914"></a><span class="lineno">25914</span>&#160;                                                              {</div>
+<div class="line"><a name="l25915"></a><span class="lineno">25915</span>&#160;  <a class="code" href="class_q_c_p_item_bracket.html#ac911907184c824d621f274f8e0990080">mStyle</a> = <a class="code" href="class_q_c_p_item_bracket.html#afad726f453f70fe77c0e9c2f260fff97">style</a>;</div>
+<div class="line"><a name="l25916"></a><span class="lineno">25916</span>&#160;}</div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_ac911907184c824d621f274f8e0990080"><div class="ttname"><a href="class_q_c_p_item_bracket.html#ac911907184c824d621f274f8e0990080">QCPItemBracket::mStyle</a></div><div class="ttdeci">BracketStyle mStyle</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l04263">qcustomplot.h:4263</a></div></div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_afad726f453f70fe77c0e9c2f260fff97"><div class="ttname"><a href="class_q_c_p_item_bracket.html#afad726f453f70fe77c0e9c2f260fff97">QCPItemBracket::style</a></div><div class="ttdeci">BracketStyle style() const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l04242">qcustomplot.h:4242</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -1151,11 +1165,11 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03736">3736</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l04242">4242</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l23393">setStyle()</a>.</p>
-<div class="fragment"><div class="line"><a name="l03736"></a><span class="lineno"> 3736</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="class_q_c_p_item_bracket.html#ac911907184c824d621f274f8e0990080">mStyle</a>; }</div>
-<div class="ttc" id="class_q_c_p_item_bracket_html_ac911907184c824d621f274f8e0990080"><div class="ttname"><a href="class_q_c_p_item_bracket.html#ac911907184c824d621f274f8e0990080">QCPItemBracket::mStyle</a></div><div class="ttdeci">BracketStyle mStyle</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03756">qcustomplot.h:3756</a></div></div>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l25914">setStyle()</a>.</p>
+<div class="fragment"><div class="line"><a name="l04242"></a><span class="lineno"> 4242</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="class_q_c_p_item_bracket.html#ac911907184c824d621f274f8e0990080">mStyle</a>; }</div>
+<div class="ttc" id="class_q_c_p_item_bracket_html_ac911907184c824d621f274f8e0990080"><div class="ttname"><a href="class_q_c_p_item_bracket.html#ac911907184c824d621f274f8e0990080">QCPItemBracket::mStyle</a></div><div class="ttdeci">BracketStyle mStyle</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l04263">qcustomplot.h:4263</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -1179,7 +1193,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03749">3749</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l04256">4256</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
 </div>
 </div>
@@ -1193,9 +1207,9 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03747">3747</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l04254">4254</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l23508">anchorPixelPoint()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l23439">draw()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l23332">QCPItemBracket()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l23399">selectTest()</a>.</p>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l26049">anchorPixelPoint()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l25967">draw()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l25860">QCPItemBracket()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l25919">selectTest()</a>.</p>
 
 </div>
 </div>
@@ -1217,9 +1231,9 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03755">3755</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l04262">4262</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l23508">anchorPixelPoint()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l23439">draw()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l23399">selectTest()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l23383">setLength()</a>.</p>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l26049">anchorPixelPoint()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l25967">draw()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l25919">selectTest()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l25907">setLength()</a>.</p>
 
 </div>
 </div>
@@ -1241,9 +1255,9 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03754">3754</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l04261">4261</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l23534">mainPen()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l23360">setPen()</a>.</p>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l26073">mainPen()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l25886">setPen()</a>.</p>
 
 </div>
 </div>
@@ -1265,9 +1279,9 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03754">3754</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l04261">4261</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l23534">mainPen()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l23370">setSelectedPen()</a>.</p>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l26073">mainPen()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l25893">setSelectedPen()</a>.</p>
 
 </div>
 </div>
@@ -1289,9 +1303,9 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03756">3756</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l04263">4263</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l23439">draw()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l23399">selectTest()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l23393">setStyle()</a>.</p>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l25967">draw()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l25919">selectTest()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l25914">setStyle()</a>.</p>
 
 </div>
 </div>
@@ -1305,9 +1319,9 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03748">3748</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l04255">4255</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l23508">anchorPixelPoint()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l23439">draw()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l23332">QCPItemBracket()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l23399">selectTest()</a>.</p>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l26049">anchorPixelPoint()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l25967">draw()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l25860">QCPItemBracket()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l25919">selectTest()</a>.</p>
 
 </div>
 </div>
@@ -1321,7 +1335,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_q_c_p_item_bracket.html">QCPItemBracket</a></li>
-    <li class="footer">Generated on Sat Jun 6 2015 21:25:35 for Vision Soil Analyzer by
+    <li class="footer">Generated on Sun Jun 7 2015 21:06:45 for Vision Soil Analyzer by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

@@ -35,7 +35,7 @@
    <div id="projectname">Vision Soil Analyzer
    &#160;<span id="projectnumber">1.0.0</span>
    </div>
-   <div id="projectbrief">The Soil Analyzer is a portable lab that can analyse soil samples and tells the user about it&#39;s optical properties. It looks at the texture and describe it as a Particle Size Distribution. This information is presented as a Cumulative Distribution Function (CDF). It also describes the structure of the soil sample and gives information on the sphericity and roundness / angularity. It does so by analysing the contour of particles, describing them as Fourier Descriptors and using a Neural Network to describe it&#39;s properties. Finally it gives the color properties in a histogram in the CIE La*b* colorspace, which show correlations with the fertility of the soil. and a histogram of the Redness Index, which gives has a correlation on the iron content.</div>
+   <div id="projectbrief">Soil analyzer using an USB microscope - for Linux PC and Beaglebone Black</div>
   </td>
  </tr>
  </tbody>
@@ -111,185 +111,183 @@ $(document).ready(function(){initNavTree('_microscope_8cpp_source.html','');});
 <div class="title">Microscope.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="_microscope_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_microscope_8h.html">Microscope.h</a>&quot;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//Custom exceptions</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_microscope_not_found_exception_8h.html">MicroscopeNotFoundException.h</a>&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_could_not_grab_image_exception_8h.html">CouldNotGrabImageException.h</a>&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacecv.html">cv</a>;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespaceboost_1_1filesystem.html">boost::filesystem</a>;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_hardware.html">Hardware</a></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<a href="_microscope_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright (C) Jelle Spijker - All Rights Reserved</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Unauthorized copying of this file, via any medium is strictly prohibited</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * and only allowed with the written consent of the author (Jelle Spijker)</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * This software is proprietary and confidential</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * Written by Jelle Spijker &lt;spijker.jelle@gmail.com&gt;, 2015</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_microscope_8h.html">Microscope.h</a>&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">// Custom exceptions</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_microscope_not_found_exception_8h.html">MicroscopeNotFoundException.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_could_not_grab_image_exception_8h.html">CouldNotGrabImageException.h</a>&quot;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_hardware_1_1_microscope.html#a335599c313acd6f5e2f94c09a3475620">   18</a></span>&#160;    Microscope::Microscope(uint8_t frameDelayTrigger, <a class="code" href="struct_hardware_1_1_microscope_1_1_resolution.html">Resolution</a> dimensions,  <span class="keywordtype">bool</span> firstdefault)</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    {</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        FrameDelayTrigger = frameDelayTrigger;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        Dimensions = dimensions;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        StartupSeq(firstdefault);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    }</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="class_hardware_1_1_microscope.html#ad045b565e258b1b3b68c2c55273b3058">   26</a></span>&#160;    <span class="keywordtype">void</span> Microscope::StartupSeq(<span class="keywordtype">bool</span> firstdefault)</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        std::vector&lt;std::string&gt; camNames = AvailableCams();</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordtype">int</span> videodev = find(camNames.begin(), camNames.end(), <span class="stringliteral">&quot;USB Microscope&quot;</span>) - camNames.begin();</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordflow">if</span> (videodev == camNames.size() &amp;&amp; !firstdefault) {<span class="keywordflow">throw</span> <a class="code" href="class_hardware_1_1_exception_1_1_microscope_not_found_exception.html">Exception::MicroscopeNotFoundException</a>(<span class="stringliteral">&quot;Microscope Not Found Exception!&quot;</span>);}</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (videodev == camNames.size() &amp;&amp; firstdefault) { videodev = 0; }</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keyword">struct </span>utsname unameData;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        uname(&amp;unameData);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        arch = <span class="keyword">static_cast&lt;</span>std::string<span class="keyword">&gt;</span>(unameData.machine);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordflow">try</span> { openCam(videodev); }</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordflow">catch</span> (<a class="code" href="class_hardware_1_1_exception_1_1_microscope_not_found_exception.html">Exception::MicroscopeNotFoundException</a>&amp; e)</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="comment">// Tries to soft reset the USB port. Haven&#39;t got this working yet</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <a class="code" href="class_hardware_1_1_u_s_b.html">USB</a> usbdev;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            usbdev.<a class="code" href="class_hardware_1_1_u_s_b.html#af387867ec84f4c709b55e3605f9e313e">ResetUSB</a>();</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            captureDevice.open(videodev);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="keywordflow">if</span> (!captureDevice.isOpened())</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                <span class="keywordflow">throw</span> <a class="code" href="class_hardware_1_1_exception_1_1_microscope_not_found_exception.html">Exception::MicroscopeNotFoundException</a>(<span class="stringliteral">&quot;USB Soft Reset Exception!&quot;</span>);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            }</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        }</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    }</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="class_hardware_1_1_microscope.html#afb6b20021157077feaf8df0e465a1f0e">   52</a></span>&#160;    Microscope::~Microscope()</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        captureDevice.~VideoCapture();</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    }</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="class_hardware_1_1_microscope.html#a1ec5c792320ae4db3f3b39830e74f880">   60</a></span>&#160;    <span class="keywordtype">void</span> Microscope::GetFrame(cv::Mat &amp;dst)</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="comment">//Work around for crappy cam retrival of the BBB</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">if</span> (arch.find(<span class="stringliteral">&quot;armv7l&quot;</span>) != string::npos)</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <span class="keywordflow">if</span> (!captureDevice.grab())  { <span class="keywordflow">throw</span> <a class="code" href="class_hardware_1_1_exception_1_1_could_not_grab_image_exception.html">Exception::CouldNotGrabImageException</a>(); }</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            sleep(FrameDelayTrigger); <span class="comment">// Needed otherwise scrambled picture</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keywordflow">if</span> (!captureDevice.grab())  { <span class="keywordflow">throw</span> <a class="code" href="class_hardware_1_1_exception_1_1_could_not_grab_image_exception.html">Exception::CouldNotGrabImageException</a>(); }</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            captureDevice.retrieve(dst);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        }</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            <span class="keywordflow">if</span> (!captureDevice.read(dst)) { <span class="keywordflow">throw</span> <a class="code" href="class_hardware_1_1_exception_1_1_could_not_grab_image_exception.html">Exception::CouldNotGrabImageException</a>(); }</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        }</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacecv.html">cv</a>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespaceboost_1_1filesystem.html">boost::filesystem</a>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_hardware.html">Hardware</a> {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="class_hardware_1_1_microscope.html#a335599c313acd6f5e2f94c09a3475620">   27</a></span>&#160;Microscope::Microscope(uint8_t frameDelayTrigger, <a class="code" href="struct_hardware_1_1_microscope_1_1_resolution.html">Resolution</a> dimensions,</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                       <span class="keywordtype">bool</span> firstdefault) {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  FrameDelayTrigger = frameDelayTrigger;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  Dimensions = dimensions;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  StartupSeq(firstdefault);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="class_hardware_1_1_microscope.html#ad045b565e258b1b3b68c2c55273b3058">   35</a></span>&#160;<span class="keywordtype">void</span> Microscope::StartupSeq(<span class="keywordtype">bool</span> firstdefault) {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  std::vector&lt;std::string&gt; camNames = AvailableCams();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="keywordtype">int</span> videodev = find(camNames.begin(), camNames.end(), <span class="stringliteral">&quot;USB Microscope&quot;</span>) -</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                 camNames.begin();</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="keywordflow">if</span> (videodev == camNames.size() &amp;&amp; !firstdefault) {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordflow">throw</span> <a class="code" href="class_hardware_1_1_exception_1_1_microscope_not_found_exception.html">Exception::MicroscopeNotFoundException</a>(</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="stringliteral">&quot;Microscope Not Found Exception!&quot;</span>);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (videodev == camNames.size() &amp;&amp; firstdefault) {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    videodev = 0;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="keyword">struct </span>utsname unameData;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  uname(&amp;unameData);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  arch = <span class="keyword">static_cast&lt;</span>std::string<span class="keyword">&gt;</span>(unameData.machine);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    openCam(videodev);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  } <span class="keywordflow">catch</span> (<a class="code" href="class_hardware_1_1_exception_1_1_microscope_not_found_exception.html">Exception::MicroscopeNotFoundException</a> &amp;e) {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="comment">// Tries to soft reset the USB port. Haven&#39;t got this working yet</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="class_hardware_1_1_u_s_b.html">USB</a> usbdev;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    usbdev.<a class="code" href="class_hardware_1_1_u_s_b.html#af387867ec84f4c709b55e3605f9e313e">ResetUSB</a>();</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    captureDevice.open(videodev);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">if</span> (!captureDevice.isOpened()) {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;      <span class="keywordflow">throw</span> <a class="code" href="class_hardware_1_1_exception_1_1_microscope_not_found_exception.html">Exception::MicroscopeNotFoundException</a>(<span class="stringliteral">&quot;USB Soft Reset Exception!&quot;</span>);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="class_hardware_1_1_microscope.html#afb6b20021157077feaf8df0e465a1f0e">   64</a></span>&#160;Microscope::~Microscope() { captureDevice.~VideoCapture(); }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="class_hardware_1_1_microscope.html#a1ec5c792320ae4db3f3b39830e74f880">   69</a></span>&#160;<span class="keywordtype">void</span> Microscope::GetFrame(cv::Mat &amp;dst) {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="comment">// Work around for crappy cam retrival of the BBB</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keywordflow">if</span> (arch.find(<span class="stringliteral">&quot;armv7l&quot;</span>) != string::npos) {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordflow">if</span> (!captureDevice.grab()) {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      <span class="keywordflow">throw</span> <a class="code" href="class_hardware_1_1_exception_1_1_could_not_grab_image_exception.html">Exception::CouldNotGrabImageException</a>();</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    }</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
-<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="class_hardware_1_1_microscope.html#a8cec2eacbd3f0ea164d16100a6078d5b">   80</a></span>&#160;    <span class="keywordtype">void</span> Microscope::GetHDRFrame(cv::Mat &amp;dst, uint32_t noframes)</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    {</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        prog_sig(0);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="comment">//create the brightness steps</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        int8_t brightnessStep = <span class="keyword">static_cast&lt;</span>int8_t<span class="keyword">&gt;</span>((<a class="code" href="_microscope_8h.html#a2134a5a06f0865c945543a1f07eba387">MAX_BRIGHTNESS</a> - <a class="code" href="_microscope_8h.html#a6a2272749c65f1491ef78f03201987d1">MIN_BRIGHTNESS</a>)/ noframes);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        int8_t currentBrightness = captureDevice.get(CV_CAP_PROP_BRIGHTNESS);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        int8_t currentContrast = captureDevice.get(CV_CAP_PROP_CONTRAST);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        captureDevice.set(CV_CAP_PROP_CONTRAST, <a class="code" href="_microscope_8h.html#a328501bf918536ed7b99f60400548a2d">MAX_CONTRAST</a>);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordtype">int</span> progStep = 70 / noframes;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        Mat currentImg;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="comment">// take the shots at different brightness levels</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordflow">for</span> (uint32_t <a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> = 1; <a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> &lt;= noframes; <a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a>++)</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        {</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            captureDevice.set(CV_CAP_PROP_BRIGHTNESS, (<a class="code" href="_microscope_8h.html#a6a2272749c65f1491ef78f03201987d1">MIN_BRIGHTNESS</a> + (<a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> * brightnessStep)));</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            GetFrame(currentImg);</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            HDRframes.push_back(currentImg);</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            prog_sig(<a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> * progStep);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        }</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="comment">// Set the brightness and back to the previous used level</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        captureDevice.set(CV_CAP_PROP_BRIGHTNESS, currentBrightness);</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        captureDevice.set(CV_CAP_PROP_CONTRAST, currentContrast);</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="comment">// Perform the exposure fusion</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        Mat fusion;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        Ptr&lt;MergeMertens&gt; merge_mertens = createMergeMertens();</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        merge_mertens-&gt;process(HDRframes, fusion);</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        prog_sig(80);</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        fusion *= 255;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        prog_sig(85);</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        fusion.convertTo(dst, CV_8UC1);</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        prog_sig(100);</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        fin_sig();</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    }</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
-<div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="class_hardware_1_1_microscope.html#ae799dbdff39787d3226e8e8ce25386de">  119</a></span>&#160;    <span class="keywordtype">bool</span> Microscope::IsOpened()</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    {</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="keywordflow">return</span> captureDevice.isOpened();</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    }</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
-<div class="line"><a name="l00125"></a><span class="lineno"><a class="line" href="class_hardware_1_1_microscope.html#a87119548948d7af1e3c38af2e2afa482">  125</a></span>&#160;    <span class="keywordtype">void</span> Microscope::Release()</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    {</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        captureDevice.release();</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    sleep(FrameDelayTrigger); <span class="comment">// Needed otherwise scrambled picture</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordflow">if</span> (!captureDevice.grab()) {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      <span class="keywordflow">throw</span> <a class="code" href="class_hardware_1_1_exception_1_1_could_not_grab_image_exception.html">Exception::CouldNotGrabImageException</a>();</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    captureDevice.retrieve(dst);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">if</span> (!captureDevice.read(dst)) {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;      <span class="keywordflow">throw</span> <a class="code" href="class_hardware_1_1_exception_1_1_could_not_grab_image_exception.html">Exception::CouldNotGrabImageException</a>();</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;}</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="class_hardware_1_1_microscope.html#a8cec2eacbd3f0ea164d16100a6078d5b">   94</a></span>&#160;<span class="keywordtype">void</span> Microscope::GetHDRFrame(cv::Mat &amp;dst, uint32_t noframes) {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  prog_sig(0);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <span class="comment">// create the brightness steps</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  int8_t brightnessStep =</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;      <span class="keyword">static_cast&lt;</span>int8_t<span class="keyword">&gt;</span>((<a class="code" href="_microscope_8h.html#a2134a5a06f0865c945543a1f07eba387">MAX_BRIGHTNESS</a> - <a class="code" href="_microscope_8h.html#a6a2272749c65f1491ef78f03201987d1">MIN_BRIGHTNESS</a>) / noframes);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  int8_t currentBrightness = captureDevice.get(CV_CAP_PROP_BRIGHTNESS);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  int8_t currentContrast = captureDevice.get(CV_CAP_PROP_CONTRAST);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  captureDevice.set(CV_CAP_PROP_CONTRAST, <a class="code" href="_microscope_8h.html#a328501bf918536ed7b99f60400548a2d">MAX_CONTRAST</a>);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  <span class="keywordtype">int</span> progStep = 70 / noframes;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  Mat currentImg;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  <span class="comment">// take the shots at different brightness levels</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <span class="keywordflow">for</span> (uint32_t <a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> = 1; <a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> &lt;= noframes; <a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a>++) {</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    captureDevice.set(CV_CAP_PROP_BRIGHTNESS,</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                      (<a class="code" href="_microscope_8h.html#a6a2272749c65f1491ef78f03201987d1">MIN_BRIGHTNESS</a> + (<a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> * brightnessStep)));</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    GetFrame(currentImg);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    HDRframes.push_back(currentImg);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    prog_sig(<a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> * progStep);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  }</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  <span class="comment">// Set the brightness and back to the previous used level</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  captureDevice.set(CV_CAP_PROP_BRIGHTNESS, currentBrightness);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  captureDevice.set(CV_CAP_PROP_CONTRAST, currentContrast);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  <span class="comment">// Perform the exposure fusion</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  Mat fusion;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  Ptr&lt;MergeMertens&gt; merge_mertens = createMergeMertens();</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  merge_mertens-&gt;process(HDRframes, fusion);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  prog_sig(80);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  fusion *= 255;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  prog_sig(85);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  fusion.convertTo(dst, CV_8UC1);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  prog_sig(100);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  fin_sig();</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;}</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
-<div class="line"><a name="l00131"></a><span class="lineno"><a class="line" href="class_hardware_1_1_microscope.html#abc753dfc72956ef7285d0e373fb7e1f1">  131</a></span>&#160;    <span class="keywordtype">void</span> Microscope::openCam(<span class="keywordtype">int</span> dev)</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    {</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        captureDevice.open(dev);</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="keywordflow">if</span> (!captureDevice.isOpened()) { <span class="keywordflow">throw</span> <a class="code" href="class_hardware_1_1_exception_1_1_microscope_not_found_exception.html">Exception::MicroscopeNotFoundException</a>(); }</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        captureDevice.set(CV_CAP_PROP_FRAME_WIDTH, Dimensions.Width);</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        captureDevice.set(CV_CAP_PROP_FRAME_HEIGHT, Dimensions.Height);</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    }</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;</div>
-<div class="line"><a name="l00139"></a><span class="lineno"><a class="line" href="class_hardware_1_1_microscope.html#a48c34d1597a9d90f61427cbd2a25bdb9">  139</a></span>&#160;    std::vector&lt;std::string&gt; Microscope::AvailableCams()</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    {</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        std::vector&lt;std::string&gt; cams;</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">string</span> path_ss = <span class="stringliteral">&quot;/sys/class/video4linux&quot;</span>;</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        <span class="keywordflow">if</span> (!exist(path_ss)) <span class="keywordflow">return</span> cams;</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        <span class="keywordflow">for</span> (directory_iterator itr(path_ss); itr!=directory_iterator(); ++itr)</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        {</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            <span class="keywordtype">string</span> videoln = itr-&gt;path().string();</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;            videoln.append(<span class="stringliteral">&quot;/name&quot;</span>);</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            <span class="keywordflow">if</span> (exist(videoln))</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            {</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                std::ifstream camName;</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                camName.open(videoln);</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                std::string name;</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                std::getline(camName, name);</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                cams.push_back(name);</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                camName.close();</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            }</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        }</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        <span class="keywordflow">return</span> cams;</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    }</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div>
-<div class="line"><a name="l00164"></a><span class="lineno"><a class="line" href="class_hardware_1_1_microscope.html#a44da9ff8054b51b4659238cc7eda2baf">  164</a></span>&#160;    <span class="keywordtype">bool</span> Microscope::exist(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;name)</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    {</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        <span class="keyword">struct </span>stat buffer;</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        <span class="keywordflow">return</span> (stat (name.c_str(), &amp;buffer) == 0);</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    }</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;</div>
-<div class="line"><a name="l00170"></a><span class="lineno"><a class="line" href="class_hardware_1_1_microscope.html#abc3f008ec7cf00e6ddf31b0a4ed392cb">  170</a></span>&#160;    boost::signals2::connection Microscope::connect_Finished(<span class="keyword">const</span> Finished_t::slot_type &amp;subscriber)</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    {</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        <span class="keywordflow">return</span> fin_sig.connect(subscriber);</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    }</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;</div>
-<div class="line"><a name="l00175"></a><span class="lineno"><a class="line" href="class_hardware_1_1_microscope.html#abc29f83a2f0ba536df3eb7ccc250b111">  175</a></span>&#160;    boost::signals2::connection Microscope::connect_Progress(<span class="keyword">const</span> Progress_t::slot_type &amp;subscriber)</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    {</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        <span class="keywordflow">return</span> prog_sig.connect(subscriber);</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    }</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;</div>
+<div class="line"><a name="l00133"></a><span class="lineno"><a class="line" href="class_hardware_1_1_microscope.html#ae799dbdff39787d3226e8e8ce25386de">  133</a></span>&#160;<span class="keywordtype">bool</span> Microscope::IsOpened() { <span class="keywordflow">return</span> captureDevice.isOpened(); }</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
+<div class="line"><a name="l00136"></a><span class="lineno"><a class="line" href="class_hardware_1_1_microscope.html#a87119548948d7af1e3c38af2e2afa482">  136</a></span>&#160;<span class="keywordtype">void</span> Microscope::Release() { captureDevice.release(); }</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
+<div class="line"><a name="l00139"></a><span class="lineno"><a class="line" href="class_hardware_1_1_microscope.html#abc753dfc72956ef7285d0e373fb7e1f1">  139</a></span>&#160;<span class="keywordtype">void</span> Microscope::openCam(<span class="keywordtype">int</span> dev) {</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;  captureDevice.open(dev);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;  <span class="keywordflow">if</span> (!captureDevice.isOpened()) {</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="keywordflow">throw</span> <a class="code" href="class_hardware_1_1_exception_1_1_microscope_not_found_exception.html">Exception::MicroscopeNotFoundException</a>();</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;  }</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;  captureDevice.set(CV_CAP_PROP_FRAME_WIDTH, Dimensions.Width);</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;  captureDevice.set(CV_CAP_PROP_FRAME_HEIGHT, Dimensions.Height);</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;}</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;</div>
+<div class="line"><a name="l00148"></a><span class="lineno"><a class="line" href="class_hardware_1_1_microscope.html#a48c34d1597a9d90f61427cbd2a25bdb9">  148</a></span>&#160;std::vector&lt;std::string&gt; Microscope::AvailableCams() {</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  std::vector&lt;std::string&gt; cams;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">string</span> path_ss = <span class="stringliteral">&quot;/sys/class/video4linux&quot;</span>;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  <span class="keywordflow">if</span> (!exist(path_ss))</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="keywordflow">return</span> cams;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;  <span class="keywordflow">for</span> (directory_iterator itr(path_ss); itr != directory_iterator(); ++itr) {</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keywordtype">string</span> videoln = itr-&gt;path().string();</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    videoln.append(<span class="stringliteral">&quot;/name&quot;</span>);</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <span class="keywordflow">if</span> (exist(videoln)) {</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;      std::ifstream camName;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;      camName.open(videoln);</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;      std::string name;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;      std::getline(camName, name);</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;      cams.push_back(name);</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;      camName.close();</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    }</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;  }</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  <span class="keywordflow">return</span> cams;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;}</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
+<div class="line"><a name="l00171"></a><span class="lineno"><a class="line" href="class_hardware_1_1_microscope.html#a44da9ff8054b51b4659238cc7eda2baf">  171</a></span>&#160;<span class="keywordtype">bool</span> Microscope::exist(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;name) {</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;  <span class="keyword">struct </span>stat buffer;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  <span class="keywordflow">return</span> (stat(name.c_str(), &amp;buffer) == 0);</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;}</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;boost::signals2::connection</div>
+<div class="line"><a name="l00177"></a><span class="lineno"><a class="line" href="class_hardware_1_1_microscope.html#abc3f008ec7cf00e6ddf31b0a4ed392cb">  177</a></span>&#160;Microscope::connect_Finished(<span class="keyword">const</span> Finished_t::slot_type &amp;subscriber) {</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;  <span class="keywordflow">return</span> fin_sig.connect(subscriber);</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;}</div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;}</div>
-<div class="ttc" id="struct_hardware_1_1_microscope_1_1_resolution_html"><div class="ttname"><a href="struct_hardware_1_1_microscope_1_1_resolution.html">Hardware::Microscope::Resolution</a></div><div class="ttdef"><b>Definition:</b> <a href="_microscope_8h_source.html#l00047">Microscope.h:47</a></div></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;boost::signals2::connection</div>
+<div class="line"><a name="l00182"></a><span class="lineno"><a class="line" href="class_hardware_1_1_microscope.html#abc29f83a2f0ba536df3eb7ccc250b111">  182</a></span>&#160;Microscope::connect_Progress(<span class="keyword">const</span> Progress_t::slot_type &amp;subscriber) {</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;  <span class="keywordflow">return</span> prog_sig.connect(subscriber);</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;}</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;}</div>
+<div class="ttc" id="struct_hardware_1_1_microscope_1_1_resolution_html"><div class="ttname"><a href="struct_hardware_1_1_microscope_1_1_resolution.html">Hardware::Microscope::Resolution</a></div><div class="ttdef"><b>Definition:</b> <a href="_microscope_8h_source.html#l00053">Microscope.h:53</a></div></div>
 <div class="ttc" id="_microscope_8h_html"><div class="ttname"><a href="_microscope_8h.html">Microscope.h</a></div></div>
 <div class="ttc" id="namespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div></div>
-<div class="ttc" id="_microscope_8h_html_a2134a5a06f0865c945543a1f07eba387"><div class="ttname"><a href="_microscope_8h.html#a2134a5a06f0865c945543a1f07eba387">MAX_BRIGHTNESS</a></div><div class="ttdeci">#define MAX_BRIGHTNESS</div><div class="ttdef"><b>Definition:</b> <a href="_microscope_8h_source.html#l00009">Microscope.h:9</a></div></div>
-<div class="ttc" id="class_hardware_1_1_exception_1_1_could_not_grab_image_exception_html"><div class="ttname"><a href="class_hardware_1_1_exception_1_1_could_not_grab_image_exception.html">Hardware::Exception::CouldNotGrabImageException</a></div><div class="ttdef"><b>Definition:</b> <a href="_could_not_grab_image_exception_8h_source.html#l00011">CouldNotGrabImageException.h:11</a></div></div>
+<div class="ttc" id="_microscope_8h_html_a2134a5a06f0865c945543a1f07eba387"><div class="ttname"><a href="_microscope_8h.html#a2134a5a06f0865c945543a1f07eba387">MAX_BRIGHTNESS</a></div><div class="ttdeci">#define MAX_BRIGHTNESS</div><div class="ttdef"><b>Definition:</b> <a href="_microscope_8h_source.html#l00016">Microscope.h:16</a></div></div>
+<div class="ttc" id="class_hardware_1_1_exception_1_1_could_not_grab_image_exception_html"><div class="ttname"><a href="class_hardware_1_1_exception_1_1_could_not_grab_image_exception.html">Hardware::Exception::CouldNotGrabImageException</a></div><div class="ttdef"><b>Definition:</b> <a href="_could_not_grab_image_exception_8h_source.html#l00016">CouldNotGrabImageException.h:16</a></div></div>
 <div class="ttc" id="namespacecv_html"><div class="ttname"><a href="namespacecv.html">cv</a></div></div>
-<div class="ttc" id="class_hardware_1_1_u_s_b_html"><div class="ttname"><a href="class_hardware_1_1_u_s_b.html">Hardware::USB</a></div><div class="ttdef"><b>Definition:</b> <a href="_u_s_b_8h_source.html#l00013">USB.h:13</a></div></div>
-<div class="ttc" id="_microscope_8h_html_a6a2272749c65f1491ef78f03201987d1"><div class="ttname"><a href="_microscope_8h.html#a6a2272749c65f1491ef78f03201987d1">MIN_BRIGHTNESS</a></div><div class="ttdeci">#define MIN_BRIGHTNESS</div><div class="ttdef"><b>Definition:</b> <a href="_microscope_8h_source.html#l00008">Microscope.h:8</a></div></div>
+<div class="ttc" id="class_hardware_1_1_u_s_b_html"><div class="ttname"><a href="class_hardware_1_1_u_s_b.html">Hardware::USB</a></div><div class="ttdef"><b>Definition:</b> <a href="_u_s_b_8h_source.html#l00019">USB.h:19</a></div></div>
+<div class="ttc" id="_microscope_8h_html_a6a2272749c65f1491ef78f03201987d1"><div class="ttname"><a href="_microscope_8h.html#a6a2272749c65f1491ef78f03201987d1">MIN_BRIGHTNESS</a></div><div class="ttdeci">#define MIN_BRIGHTNESS</div><div class="ttdef"><b>Definition:</b> <a href="_microscope_8h_source.html#l00015">Microscope.h:15</a></div></div>
 <div class="ttc" id="_comparision_pictures_2_createtest_image_8m_html_a6f6ccfcf58b31cb6412107d9d5281426"><div class="ttname"><a href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a></div><div class="ttdeci">for i</div><div class="ttdef"><b>Definition:</b> <a href="_comparision_pictures_2_createtest_image_8m_source.html#l00006">CreatetestImage.m:6</a></div></div>
 <div class="ttc" id="_microscope_not_found_exception_8h_html"><div class="ttname"><a href="_microscope_not_found_exception_8h.html">MicroscopeNotFoundException.h</a></div></div>
 <div class="ttc" id="namespaceboost_1_1filesystem_html"><div class="ttname"><a href="namespaceboost_1_1filesystem.html">filesystem</a></div></div>
-<div class="ttc" id="_microscope_8h_html_a328501bf918536ed7b99f60400548a2d"><div class="ttname"><a href="_microscope_8h.html#a328501bf918536ed7b99f60400548a2d">MAX_CONTRAST</a></div><div class="ttdeci">#define MAX_CONTRAST</div><div class="ttdef"><b>Definition:</b> <a href="_microscope_8h_source.html#l00011">Microscope.h:11</a></div></div>
-<div class="ttc" id="namespace_hardware_html"><div class="ttname"><a href="namespace_hardware.html">Hardware</a></div><div class="ttdef"><b>Definition:</b> <a href="_a_d_c_8cpp_source.html#l00003">ADC.cpp:3</a></div></div>
+<div class="ttc" id="_microscope_8h_html_a328501bf918536ed7b99f60400548a2d"><div class="ttname"><a href="_microscope_8h.html#a328501bf918536ed7b99f60400548a2d">MAX_CONTRAST</a></div><div class="ttdeci">#define MAX_CONTRAST</div><div class="ttdef"><b>Definition:</b> <a href="_microscope_8h_source.html#l00018">Microscope.h:18</a></div></div>
+<div class="ttc" id="namespace_hardware_html"><div class="ttname"><a href="namespace_hardware.html">Hardware</a></div><div class="ttdef"><b>Definition:</b> <a href="_a_d_c_8cpp_source.html#l00010">ADC.cpp:10</a></div></div>
 <div class="ttc" id="class_hardware_1_1_u_s_b_html_af387867ec84f4c709b55e3605f9e313e"><div class="ttname"><a href="class_hardware_1_1_u_s_b.html#af387867ec84f4c709b55e3605f9e313e">Hardware::USB::ResetUSB</a></div><div class="ttdeci">void ResetUSB()</div><div class="ttdef"><b>Definition:</b> <a href="_u_s_b_8cpp_source.html#l00015">USB.cpp:15</a></div></div>
-<div class="ttc" id="class_hardware_1_1_exception_1_1_microscope_not_found_exception_html"><div class="ttname"><a href="class_hardware_1_1_exception_1_1_microscope_not_found_exception.html">Hardware::Exception::MicroscopeNotFoundException</a></div><div class="ttdef"><b>Definition:</b> <a href="_microscope_not_found_exception_8h_source.html#l00011">MicroscopeNotFoundException.h:11</a></div></div>
+<div class="ttc" id="class_hardware_1_1_exception_1_1_microscope_not_found_exception_html"><div class="ttname"><a href="class_hardware_1_1_exception_1_1_microscope_not_found_exception.html">Hardware::Exception::MicroscopeNotFoundException</a></div><div class="ttdef"><b>Definition:</b> <a href="_microscope_not_found_exception_8h_source.html#l00016">MicroscopeNotFoundException.h:16</a></div></div>
 <div class="ttc" id="_could_not_grab_image_exception_8h_html"><div class="ttname"><a href="_could_not_grab_image_exception_8h.html">CouldNotGrabImageException.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -297,7 +295,7 @@ $(document).ready(function(){initNavTree('_microscope_8cpp_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_7d1931b727af368c927c89b2ad19148d.html">SoilHardware</a></li><li class="navelem"><a class="el" href="_microscope_8cpp.html">Microscope.cpp</a></li>
-    <li class="footer">Generated on Sat Jun 6 2015 21:25:29 for Vision Soil Analyzer by
+    <li class="footer">Generated on Sun Jun 7 2015 21:06:33 for Vision Soil Analyzer by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

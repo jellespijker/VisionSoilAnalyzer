@@ -112,9 +112,11 @@ Q\+Brush \hyperlink{class_q_c_p_item_rect_a21b70eee59b6e19ae0bbdf037b13508f}{m\+
 \subsection{Detailed Description}
 A rectangle. 
 
- It has two positions, {\itshape top\+Left} and {\itshape bottom\+Right}, which define the rectangle. 
+ anchors, solid blue discs are positions."
 
-Definition at line 3367 of file qcustomplot.\+h.
+It has two positions, {\itshape top\+Left} and {\itshape bottom\+Right}, which define the rectangle. 
+
+Definition at line 3827 of file qcustomplot.\+h.
 
 
 
@@ -141,12 +143,18 @@ Definition at line 3367 of file qcustomplot.\+h.
 \end{Desc}
 
 
-Definition at line 3405 of file qcustomplot.\+h.
+Definition at line 3865 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-3405 \{\hyperlink{class_q_c_p_item_rect_af0ebba58e6bca4851c4db726691ec0d3acaef33243034885d551dc9b8318ad326}{aiTop}, \hyperlink{class_q_c_p_item_rect_af0ebba58e6bca4851c4db726691ec0d3aa94843ce5935b36994005c1e1859ef60}{aiTopRight}, \hyperlink{class_q_c_p_item_rect_af0ebba58e6bca4851c4db726691ec0d3a69fa21fde2f44036381296a6f78b4eb4}{aiRight}, \hyperlink{class_q_c_p_item_rect_af0ebba58e6bca4851c4db726691ec0d3a2d294551e07179c4ac0c4e37364a1468}{aiBottom}, 
-      \hyperlink{class_q_c_p_item_rect_af0ebba58e6bca4851c4db726691ec0d3ab3c42dbb1709a04ba9b03dcbf5a2537a}{aiBottomLeft}, \hyperlink{class_q_c_p_item_rect_af0ebba58e6bca4851c4db726691ec0d3a8a095c6d6b2e7665a15d9f40c94b47dc}{aiLeft}\};
+3865                    \{
+3866     \hyperlink{class_q_c_p_item_rect_af0ebba58e6bca4851c4db726691ec0d3acaef33243034885d551dc9b8318ad326}{aiTop},
+3867     \hyperlink{class_q_c_p_item_rect_af0ebba58e6bca4851c4db726691ec0d3aa94843ce5935b36994005c1e1859ef60}{aiTopRight},
+3868     \hyperlink{class_q_c_p_item_rect_af0ebba58e6bca4851c4db726691ec0d3a69fa21fde2f44036381296a6f78b4eb4}{aiRight},
+3869     \hyperlink{class_q_c_p_item_rect_af0ebba58e6bca4851c4db726691ec0d3a2d294551e07179c4ac0c4e37364a1468}{aiBottom},
+3870     \hyperlink{class_q_c_p_item_rect_af0ebba58e6bca4851c4db726691ec0d3ab3c42dbb1709a04ba9b03dcbf5a2537a}{aiBottomLeft},
+3871     \hyperlink{class_q_c_p_item_rect_af0ebba58e6bca4851c4db726691ec0d3a8a095c6d6b2e7665a15d9f40c94b47dc}{aiLeft}
+3872   \};
 \end{DoxyCode}
 
 
@@ -162,7 +170,7 @@ Creates a rectangle item and sets default values.
 
 The constructed item can be added to the plot with \hyperlink{class_q_custom_plot_aa500620379262321685cb7a7674cbd2a}{Q\+Custom\+Plot\+::add\+Item}. 
 
-Definition at line 22034 of file qcustomplot.\+cpp.
+Definition at line 24554 of file qcustomplot.\+cpp.
 
 
 
@@ -170,27 +178,25 @@ References bottom\+Right, set\+Brush(), Q\+C\+P\+Item\+Position\+::set\+Coords()
 
 
 \begin{DoxyCode}
-22034                                                 :
-22035   \hyperlink{class_q_c_p_abstract_item_a9922507d8b4503a1fe1ed0b1030e23b6}{QCPAbstractItem}(parentPlot),
-22036   \hyperlink{class_q_c_p_item_rect_aa70feeef173489b03c3fbe906a5023c4}{topLeft}(\hyperlink{class_q_c_p_abstract_item_a75036d39c4d4e2e1a7dd145fff915d32}{createPosition}(QLatin1String(\textcolor{stringliteral}{"topLeft"}))),
-22037   \hyperlink{class_q_c_p_item_rect_a409f3bfe615a7e322bb3d4d193d85b26}{bottomRight}(\hyperlink{class_q_c_p_abstract_item_a75036d39c4d4e2e1a7dd145fff915d32}{createPosition}(QLatin1String(\textcolor{stringliteral}{"bottomRight"}))),
-22038   \hyperlink{class_q_c_p_item_rect_a96e50db552fb297d6fb62614676217bc}{top}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"top"}), \hyperlink{class_q_c_p_item_rect_af0ebba58e6bca4851c4db726691ec0d3acaef33243034885d551dc9b8318ad326}{aiTop})),
-22039   \hyperlink{class_q_c_p_item_rect_a77e0eb6e4aa6efee620d35e2c21bdad7}{topRight}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"topRight"}), 
+24555     : \hyperlink{class_q_c_p_abstract_item_a9922507d8b4503a1fe1ed0b1030e23b6}{QCPAbstractItem}(parentPlot),
+24556       \hyperlink{class_q_c_p_item_rect_aa70feeef173489b03c3fbe906a5023c4}{topLeft}(\hyperlink{class_q_c_p_abstract_item_a75036d39c4d4e2e1a7dd145fff915d32}{createPosition}(QLatin1String(\textcolor{stringliteral}{"topLeft"}))),
+24557       \hyperlink{class_q_c_p_item_rect_a409f3bfe615a7e322bb3d4d193d85b26}{bottomRight}(\hyperlink{class_q_c_p_abstract_item_a75036d39c4d4e2e1a7dd145fff915d32}{createPosition}(QLatin1String(\textcolor{stringliteral}{"bottomRight"}))),
+24558       \hyperlink{class_q_c_p_item_rect_a96e50db552fb297d6fb62614676217bc}{top}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"top"}), \hyperlink{class_q_c_p_item_rect_af0ebba58e6bca4851c4db726691ec0d3acaef33243034885d551dc9b8318ad326}{aiTop})),
+24559       \hyperlink{class_q_c_p_item_rect_a77e0eb6e4aa6efee620d35e2c21bdad7}{topRight}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"topRight"}), 
       \hyperlink{class_q_c_p_item_rect_af0ebba58e6bca4851c4db726691ec0d3aa94843ce5935b36994005c1e1859ef60}{aiTopRight})),
-22040   \hyperlink{class_q_c_p_item_rect_a7979c1915f61ad2609a9cc179c2e445e}{right}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"right"}), \hyperlink{class_q_c_p_item_rect_af0ebba58e6bca4851c4db726691ec0d3a69fa21fde2f44036381296a6f78b4eb4}{aiRight})),
-22041   \hyperlink{class_q_c_p_item_rect_a99313bf2b338d9f81e19bd38082038aa}{bottom}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"bottom"}), \hyperlink{class_q_c_p_item_rect_af0ebba58e6bca4851c4db726691ec0d3a2d294551e07179c4ac0c4e37364a1468}{aiBottom})),
-22042   \hyperlink{class_q_c_p_item_rect_abd8ee63fdf81f0c74bf7ccadee8603da}{bottomLeft}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"bottomLeft"}), 
+24560       \hyperlink{class_q_c_p_item_rect_a7979c1915f61ad2609a9cc179c2e445e}{right}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"right"}), \hyperlink{class_q_c_p_item_rect_af0ebba58e6bca4851c4db726691ec0d3a69fa21fde2f44036381296a6f78b4eb4}{aiRight})),
+24561       \hyperlink{class_q_c_p_item_rect_a99313bf2b338d9f81e19bd38082038aa}{bottom}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"bottom"}), \hyperlink{class_q_c_p_item_rect_af0ebba58e6bca4851c4db726691ec0d3a2d294551e07179c4ac0c4e37364a1468}{aiBottom})),
+24562       \hyperlink{class_q_c_p_item_rect_abd8ee63fdf81f0c74bf7ccadee8603da}{bottomLeft}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"bottomLeft"}), 
       \hyperlink{class_q_c_p_item_rect_af0ebba58e6bca4851c4db726691ec0d3ab3c42dbb1709a04ba9b03dcbf5a2537a}{aiBottomLeft})),
-22043   \hyperlink{class_q_c_p_item_rect_aad0ca1af0c8debfc20d7b47fc942764d}{left}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"left"}), \hyperlink{class_q_c_p_item_rect_af0ebba58e6bca4851c4db726691ec0d3a8a095c6d6b2e7665a15d9f40c94b47dc}{aiLeft}))
-22044 \{
-22045   \hyperlink{class_q_c_p_item_rect_aa70feeef173489b03c3fbe906a5023c4}{topLeft}->\hyperlink{class_q_c_p_item_position_aa988ba4e87ab684c9021017dcaba945f}{setCoords}(0, 1);
-22046   \hyperlink{class_q_c_p_item_rect_a409f3bfe615a7e322bb3d4d193d85b26}{bottomRight}->\hyperlink{class_q_c_p_item_position_aa988ba4e87ab684c9021017dcaba945f}{setCoords}(1, 0);
-22047   
-22048   \hyperlink{class_q_c_p_item_rect_a483c0da5a17e1646cd17ddea2c124e7d}{setPen}(QPen(Qt::black));
-22049   \hyperlink{class_q_c_p_item_rect_a52a1bcb2dc753a538e406a2ba3cf21ce}{setSelectedPen}(QPen(Qt::blue,2));
-22050   \hyperlink{class_q_c_p_item_rect_abbd4e346a03513ee466afc25d9c75446}{setBrush}(Qt::NoBrush);
-22051   \hyperlink{class_q_c_p_item_rect_abd1792859844118dedee86223cede7af}{setSelectedBrush}(Qt::NoBrush);
-22052 \}
+24563       \hyperlink{class_q_c_p_item_rect_aad0ca1af0c8debfc20d7b47fc942764d}{left}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"left"}), \hyperlink{class_q_c_p_item_rect_af0ebba58e6bca4851c4db726691ec0d3a8a095c6d6b2e7665a15d9f40c94b47dc}{aiLeft})) \{
+24564   \hyperlink{class_q_c_p_item_rect_aa70feeef173489b03c3fbe906a5023c4}{topLeft}->\hyperlink{class_q_c_p_item_position_aa988ba4e87ab684c9021017dcaba945f}{setCoords}(0, 1);
+24565   \hyperlink{class_q_c_p_item_rect_a409f3bfe615a7e322bb3d4d193d85b26}{bottomRight}->\hyperlink{class_q_c_p_item_position_aa988ba4e87ab684c9021017dcaba945f}{setCoords}(1, 0);
+24566 
+24567   \hyperlink{class_q_c_p_item_rect_a483c0da5a17e1646cd17ddea2c124e7d}{setPen}(QPen(Qt::black));
+24568   \hyperlink{class_q_c_p_item_rect_a52a1bcb2dc753a538e406a2ba3cf21ce}{setSelectedPen}(QPen(Qt::blue, 2));
+24569   \hyperlink{class_q_c_p_item_rect_abbd4e346a03513ee466afc25d9c75446}{setBrush}(Qt::NoBrush);
+24570   \hyperlink{class_q_c_p_item_rect_abd1792859844118dedee86223cede7af}{setSelectedBrush}(Qt::NoBrush);
+24571 \}
 \end{DoxyCode}
 
 
@@ -212,12 +218,11 @@ Here is the call graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_q_c_p_item_rect_af9e89f80457afc2d0fd2c6527b40a5f2}
 
 
-Definition at line 22054 of file qcustomplot.\+cpp.
+Definition at line 24573 of file qcustomplot.\+cpp.
 
 
 \begin{DoxyCode}
-22055 \{
-22056 \}
+24573 \{\}
 \end{DoxyCode}
 
 
@@ -235,7 +240,7 @@ Reimplemented from \hyperlink{class_q_c_p_abstract_item_a94bde62b8a2fc133666dcbb
 
 
 
-Definition at line 22131 of file qcustomplot.\+cpp.
+Definition at line 24642 of file qcustomplot.\+cpp.
 
 
 
@@ -243,22 +248,27 @@ References ai\+Bottom, ai\+Bottom\+Left, ai\+Left, ai\+Right, ai\+Top, ai\+Top\+
 
 
 \begin{DoxyCode}
-22132 \{
-22133   QRectF \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect} = QRectF(\hyperlink{class_q_c_p_item_rect_aa70feeef173489b03c3fbe906a5023c4}{topLeft}->\hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}(), \hyperlink{class_q_c_p_item_rect_a409f3bfe615a7e322bb3d4d193d85b26}{bottomRight}->
+24642                                                         \{
+24643   QRectF \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect} = QRectF(\hyperlink{class_q_c_p_item_rect_aa70feeef173489b03c3fbe906a5023c4}{topLeft}->\hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}(), \hyperlink{class_q_c_p_item_rect_a409f3bfe615a7e322bb3d4d193d85b26}{bottomRight}->
       \hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}());
-22134   \textcolor{keywordflow}{switch} (anchorId)
-22135   \{
-22136     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_rect_af0ebba58e6bca4851c4db726691ec0d3acaef33243034885d551dc9b8318ad326}{aiTop}:         \textcolor{keywordflow}{return} (rect.topLeft()+rect.topRight())*0.5;
-22137     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_rect_af0ebba58e6bca4851c4db726691ec0d3aa94843ce5935b36994005c1e1859ef60}{aiTopRight}:    \textcolor{keywordflow}{return} rect.topRight();
-22138     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_rect_af0ebba58e6bca4851c4db726691ec0d3a69fa21fde2f44036381296a6f78b4eb4}{aiRight}:       \textcolor{keywordflow}{return} (rect.topRight()+rect.bottomRight())*0.5;
-22139     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_rect_af0ebba58e6bca4851c4db726691ec0d3a2d294551e07179c4ac0c4e37364a1468}{aiBottom}:      \textcolor{keywordflow}{return} (rect.bottomLeft()+rect.bottomRight())*0.5;
-22140     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_rect_af0ebba58e6bca4851c4db726691ec0d3ab3c42dbb1709a04ba9b03dcbf5a2537a}{aiBottomLeft}:  \textcolor{keywordflow}{return} rect.bottomLeft();
-22141     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_rect_af0ebba58e6bca4851c4db726691ec0d3a8a095c6d6b2e7665a15d9f40c94b47dc}{aiLeft}:        \textcolor{keywordflow}{return} (rect.topLeft()+rect.bottomLeft())*0.5;
-22142   \}
-22143   
-22144   qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"invalid anchorId"} << anchorId;
-22145   \textcolor{keywordflow}{return} QPointF();
-22146 \}
+24644   \textcolor{keywordflow}{switch} (anchorId) \{
+24645   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_rect_af0ebba58e6bca4851c4db726691ec0d3acaef33243034885d551dc9b8318ad326}{aiTop}:
+24646     \textcolor{keywordflow}{return} (rect.topLeft() + rect.topRight()) * 0.5;
+24647   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_rect_af0ebba58e6bca4851c4db726691ec0d3aa94843ce5935b36994005c1e1859ef60}{aiTopRight}:
+24648     \textcolor{keywordflow}{return} rect.topRight();
+24649   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_rect_af0ebba58e6bca4851c4db726691ec0d3a69fa21fde2f44036381296a6f78b4eb4}{aiRight}:
+24650     \textcolor{keywordflow}{return} (rect.topRight() + rect.bottomRight()) * 0.5;
+24651   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_rect_af0ebba58e6bca4851c4db726691ec0d3a2d294551e07179c4ac0c4e37364a1468}{aiBottom}:
+24652     \textcolor{keywordflow}{return} (rect.bottomLeft() + rect.bottomRight()) * 0.5;
+24653   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_rect_af0ebba58e6bca4851c4db726691ec0d3ab3c42dbb1709a04ba9b03dcbf5a2537a}{aiBottomLeft}:
+24654     \textcolor{keywordflow}{return} rect.bottomLeft();
+24655   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_rect_af0ebba58e6bca4851c4db726691ec0d3a8a095c6d6b2e7665a15d9f40c94b47dc}{aiLeft}:
+24656     \textcolor{keywordflow}{return} (rect.topLeft() + rect.bottomLeft()) * 0.5;
+24657   \}
+24658 
+24659   qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"invalid anchorId"} << anchorId;
+24660   \textcolor{keywordflow}{return} QPointF();
+24661 \}
 \end{DoxyCode}
 
 
@@ -280,7 +290,7 @@ Here is the call graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_item_rect_a03d2d26ffcac78b25b8e90915f9c4abe}
 
 
-Definition at line 3383 of file qcustomplot.\+h.
+Definition at line 3842 of file qcustomplot.\+h.
 
 
 
@@ -288,7 +298,7 @@ Referenced by set\+Brush(), and set\+Selected\+Brush().
 
 
 \begin{DoxyCode}
-3383 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_rect_a2d7f207fada27588b3a52b19234d3c2e}{mBrush}; \}
+3842 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_rect_a2d7f207fada27588b3a52b19234d3c2e}{mBrush}; \}
 \end{DoxyCode}
 
 
@@ -314,7 +324,7 @@ Implements \hyperlink{class_q_c_p_abstract_item_ad0dc056f650c3ca73414e6b4f01674e
 
 
 
-Definition at line 22113 of file qcustomplot.\+cpp.
+Definition at line 24624 of file qcustomplot.\+cpp.
 
 
 
@@ -322,22 +332,22 @@ References bottom\+Right, Q\+C\+P\+Abstract\+Item\+::clip\+Rect(), main\+Brush()
 
 
 \begin{DoxyCode}
-22114 \{
-22115   QPointF p1 = \hyperlink{class_q_c_p_item_rect_aa70feeef173489b03c3fbe906a5023c4}{topLeft}->\hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}();
-22116   QPointF p2 = \hyperlink{class_q_c_p_item_rect_a409f3bfe615a7e322bb3d4d193d85b26}{bottomRight}->\hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}();
-22117   \textcolor{keywordflow}{if} (p1.toPoint() == p2.toPoint())
-22118     \textcolor{keywordflow}{return};
-22119   QRectF \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect} = QRectF(p1, p2).normalized();
-22120   \textcolor{keywordtype}{double} clipPad = \hyperlink{class_q_c_p_item_rect_afa0fb7c6328a1e197ecd537de36daf8f}{mainPen}().widthF();
-22121   QRectF boundingRect = rect.adjusted(-clipPad, -clipPad, clipPad, clipPad);
-22122   \textcolor{keywordflow}{if} (boundingRect.intersects(\hyperlink{class_q_c_p_abstract_item_a538e25ff8856534582f5b2b400a46405}{clipRect}())) \textcolor{comment}{// only draw if bounding rect of rect item is visible in
-       cliprect}
-22123   \{
-22124     painter->\hyperlink{class_q_c_p_painter_af9c7a4cd1791403901f8c5b82a150195}{setPen}(\hyperlink{class_q_c_p_item_rect_afa0fb7c6328a1e197ecd537de36daf8f}{mainPen}());
-22125     painter->setBrush(\hyperlink{class_q_c_p_item_rect_ab0bd8e272e822ec851ba5b0c20e9200e}{mainBrush}());
-22126     painter->drawRect(rect);
-22127   \}
-22128 \}
+24624                                           \{
+24625   QPointF p1 = \hyperlink{class_q_c_p_item_rect_aa70feeef173489b03c3fbe906a5023c4}{topLeft}->\hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}();
+24626   QPointF p2 = \hyperlink{class_q_c_p_item_rect_a409f3bfe615a7e322bb3d4d193d85b26}{bottomRight}->\hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}();
+24627   \textcolor{keywordflow}{if} (p1.toPoint() == p2.toPoint())
+24628     \textcolor{keywordflow}{return};
+24629   QRectF \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect} = QRectF(p1, p2).normalized();
+24630   \textcolor{keywordtype}{double} clipPad = \hyperlink{class_q_c_p_item_rect_afa0fb7c6328a1e197ecd537de36daf8f}{mainPen}().widthF();
+24631   QRectF boundingRect = rect.adjusted(-clipPad, -clipPad, clipPad, clipPad);
+24632   \textcolor{keywordflow}{if} (boundingRect.intersects(\hyperlink{class_q_c_p_abstract_item_a538e25ff8856534582f5b2b400a46405}{clipRect}())) \textcolor{comment}{// only draw if bounding rect of rect}
+24633                                            \textcolor{comment}{// item is visible in cliprect}
+24634   \{
+24635     painter->\hyperlink{class_q_c_p_painter_af9c7a4cd1791403901f8c5b82a150195}{setPen}(\hyperlink{class_q_c_p_item_rect_afa0fb7c6328a1e197ecd537de36daf8f}{mainPen}());
+24636     painter->setBrush(\hyperlink{class_q_c_p_item_rect_ab0bd8e272e822ec851ba5b0c20e9200e}{mainBrush}());
+24637     painter->drawRect(rect);
+24638   \}
+24639 \}
 \end{DoxyCode}
 
 
@@ -359,7 +369,7 @@ Here is the call graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_rect_ab0bd8e272e822ec851ba5b0c20e9200e}
 
 
-Definition at line 22163 of file qcustomplot.\+cpp.
+Definition at line 24677 of file qcustomplot.\+cpp.
 
 
 
@@ -371,9 +381,9 @@ Referenced by draw().
 
 
 \begin{DoxyCode}
-22164 \{
-22165   \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_abstract_item_a4bdb3457dad1d268c0f78a44152b9645}{mSelected} ? \hyperlink{class_q_c_p_item_rect_a21b70eee59b6e19ae0bbdf037b13508f}{mSelectedBrush} : \hyperlink{class_q_c_p_item_rect_a2d7f207fada27588b3a52b19234d3c2e}{mBrush};
-22166 \}
+24677                                     \{
+24678   \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_abstract_item_a4bdb3457dad1d268c0f78a44152b9645}{mSelected} ? \hyperlink{class_q_c_p_item_rect_a21b70eee59b6e19ae0bbdf037b13508f}{mSelectedBrush} : \hyperlink{class_q_c_p_item_rect_a2d7f207fada27588b3a52b19234d3c2e}{mBrush};
+24679 \}
 \end{DoxyCode}
 
 
@@ -395,7 +405,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_rect_afa0fb7c6328a1e197ecd537de36daf8f}
 
 
-Definition at line 22153 of file qcustomplot.\+cpp.
+Definition at line 24669 of file qcustomplot.\+cpp.
 
 
 
@@ -407,9 +417,7 @@ Referenced by draw().
 
 
 \begin{DoxyCode}
-22154 \{
-22155   \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_abstract_item_a4bdb3457dad1d268c0f78a44152b9645}{mSelected} ? \hyperlink{class_q_c_p_item_rect_a73cc0bee61de3c67221ec8c7a76a29ed}{mSelectedPen} : \hyperlink{class_q_c_p_item_rect_aa0d49323628d6752026056bfb52afd86}{mPen};
-22156 \}
+24669 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_abstract_item_a4bdb3457dad1d268c0f78a44152b9645}{mSelected} ? \hyperlink{class_q_c_p_item_rect_a73cc0bee61de3c67221ec8c7a76a29ed}{mSelectedPen} : \hyperlink{class_q_c_p_item_rect_aa0d49323628d6752026056bfb52afd86}{mPen}; \}
 \end{DoxyCode}
 
 
@@ -431,7 +439,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_item_rect_a3cb7b6de5e82cc5a3c99e9de919a55e6}
 
 
-Definition at line 3381 of file qcustomplot.\+h.
+Definition at line 3840 of file qcustomplot.\+h.
 
 
 
@@ -439,7 +447,7 @@ Referenced by set\+Pen(), and set\+Selected\+Pen().
 
 
 \begin{DoxyCode}
-3381 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_rect_aa0d49323628d6752026056bfb52afd86}{mPen}; \}
+3840 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_rect_aa0d49323628d6752026056bfb52afd86}{mPen}; \}
 \end{DoxyCode}
 
 
@@ -461,11 +469,11 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_item_rect_a3b586228393f5c8efa78c4d2a4b25cbf}
 
 
-Definition at line 3384 of file qcustomplot.\+h.
+Definition at line 3843 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-3384 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_rect_a21b70eee59b6e19ae0bbdf037b13508f}{mSelectedBrush}; \}
+3843 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_rect_a21b70eee59b6e19ae0bbdf037b13508f}{mSelectedBrush}; \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_item_rect_a7e701c34e72a4c25647e93fa369f395c}{}\index{Q\+C\+P\+Item\+Rect@{Q\+C\+P\+Item\+Rect}!selected\+Pen@{selected\+Pen}}
 \index{selected\+Pen@{selected\+Pen}!Q\+C\+P\+Item\+Rect@{Q\+C\+P\+Item\+Rect}}
@@ -476,11 +484,11 @@ Definition at line 3384 of file qcustomplot.\+h.
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_item_rect_a7e701c34e72a4c25647e93fa369f395c}
 
 
-Definition at line 3382 of file qcustomplot.\+h.
+Definition at line 3841 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-3382 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_rect_a73cc0bee61de3c67221ec8c7a76a29ed}{mSelectedPen}; \}
+3841 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_rect_a73cc0bee61de3c67221ec8c7a76a29ed}{mSelectedPen}; \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_item_rect_af13b0797079b40b73d1c7286b76f18ac}{}\index{Q\+C\+P\+Item\+Rect@{Q\+C\+P\+Item\+Rect}!select\+Test@{select\+Test}}
 \index{select\+Test@{select\+Test}!Q\+C\+P\+Item\+Rect@{Q\+C\+P\+Item\+Rect}}
@@ -514,7 +522,7 @@ Implements \hyperlink{class_q_c_p_abstract_item_a96d522d10ffc0413b9a366c6f7f0476
 
 
 
-Definition at line 22101 of file qcustomplot.\+cpp.
+Definition at line 24610 of file qcustomplot.\+cpp.
 
 
 
@@ -522,16 +530,17 @@ References bottom\+Right, m\+Brush, Q\+C\+P\+Abstract\+Item\+::m\+Selectable, Q\
 
 
 \begin{DoxyCode}
-22102 \{
-22103   Q\_UNUSED(details)
-22104   if (onlySelectable && !\hyperlink{class_q_c_p_abstract_item_ad81eb35c8726a0f458db9df9732e0e41}{mSelectable})
-22105     return -1;
-22106   
-22107   QRectF \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect} = QRectF(\hyperlink{class_q_c_p_item_rect_aa70feeef173489b03c3fbe906a5023c4}{topLeft}->pixelPoint(), \hyperlink{class_q_c_p_item_rect_a409f3bfe615a7e322bb3d4d193d85b26}{bottomRight}->pixelPoint()).normalized()
-      ;
-22108   \textcolor{keywordtype}{bool} filledRect = \hyperlink{class_q_c_p_item_rect_a2d7f207fada27588b3a52b19234d3c2e}{mBrush}.style() != Qt::NoBrush && \hyperlink{class_q_c_p_item_rect_a2d7f207fada27588b3a52b19234d3c2e}{mBrush}.color().alpha() != 0;
-22109   return \hyperlink{class_q_c_p_abstract_item_a4c0e14c4e92df91174cb7183fb363069}{rectSelectTest}(\hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}, pos, filledRect);
-22110 \}
+24611                                                         \{
+24612   Q\_UNUSED(details)
+24613   if (onlySelectable && !\hyperlink{class_q_c_p_abstract_item_ad81eb35c8726a0f458db9df9732e0e41}{mSelectable})
+24614     return -1;
+24615 
+24616   QRectF \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect} =
+24617       QRectF(\hyperlink{class_q_c_p_item_rect_aa70feeef173489b03c3fbe906a5023c4}{topLeft}->pixelPoint(), \hyperlink{class_q_c_p_item_rect_a409f3bfe615a7e322bb3d4d193d85b26}{bottomRight}->pixelPoint()).normalized();
+24618   \textcolor{keywordtype}{bool} filledRect =
+24619       \hyperlink{class_q_c_p_item_rect_a2d7f207fada27588b3a52b19234d3c2e}{mBrush}.style() != Qt::NoBrush && \hyperlink{class_q_c_p_item_rect_a2d7f207fada27588b3a52b19234d3c2e}{mBrush}.color().alpha() != 0;
+24620   return \hyperlink{class_q_c_p_abstract_item_a4c0e14c4e92df91174cb7183fb363069}{rectSelectTest}(\hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}, pos, filledRect);
+24621 \}
 \end{DoxyCode}
 
 
@@ -558,7 +567,7 @@ Sets the brush that will be used to fill the rectangle. To disable filling, set 
 \end{DoxySeeAlso}
 
 
-Definition at line 22084 of file qcustomplot.\+cpp.
+Definition at line 24596 of file qcustomplot.\+cpp.
 
 
 
@@ -570,9 +579,7 @@ Referenced by Q\+C\+P\+Item\+Rect().
 
 
 \begin{DoxyCode}
-22085 \{
-22086   \hyperlink{class_q_c_p_item_rect_a2d7f207fada27588b3a52b19234d3c2e}{mBrush} = \hyperlink{class_q_c_p_item_rect_a03d2d26ffcac78b25b8e90915f9c4abe}{brush};
-22087 \}
+24596 \{ \hyperlink{class_q_c_p_item_rect_a2d7f207fada27588b3a52b19234d3c2e}{mBrush} = \hyperlink{class_q_c_p_item_rect_a03d2d26ffcac78b25b8e90915f9c4abe}{brush}; \}
 \end{DoxyCode}
 
 
@@ -610,7 +617,7 @@ Sets the pen that will be used to draw the line of the rectangle
 \end{DoxySeeAlso}
 
 
-Definition at line 22063 of file qcustomplot.\+cpp.
+Definition at line 24580 of file qcustomplot.\+cpp.
 
 
 
@@ -622,9 +629,7 @@ Referenced by Q\+C\+P\+Item\+Rect().
 
 
 \begin{DoxyCode}
-22064 \{
-22065   \hyperlink{class_q_c_p_item_rect_aa0d49323628d6752026056bfb52afd86}{mPen} = \hyperlink{class_q_c_p_item_rect_a3cb7b6de5e82cc5a3c99e9de919a55e6}{pen};
-22066 \}
+24580 \{ \hyperlink{class_q_c_p_item_rect_aa0d49323628d6752026056bfb52afd86}{mPen} = \hyperlink{class_q_c_p_item_rect_a3cb7b6de5e82cc5a3c99e9de919a55e6}{pen}; \}
 \end{DoxyCode}
 
 
@@ -662,7 +667,7 @@ Sets the brush that will be used to fill the rectangle when selected. To disable
 \end{DoxySeeAlso}
 
 
-Definition at line 22095 of file qcustomplot.\+cpp.
+Definition at line 24605 of file qcustomplot.\+cpp.
 
 
 
@@ -674,9 +679,9 @@ Referenced by Q\+C\+P\+Item\+Rect().
 
 
 \begin{DoxyCode}
-22096 \{
-22097   \hyperlink{class_q_c_p_item_rect_a21b70eee59b6e19ae0bbdf037b13508f}{mSelectedBrush} = \hyperlink{class_q_c_p_item_rect_a03d2d26ffcac78b25b8e90915f9c4abe}{brush};
-22098 \}
+24605                                                       \{
+24606   \hyperlink{class_q_c_p_item_rect_a21b70eee59b6e19ae0bbdf037b13508f}{mSelectedBrush} = \hyperlink{class_q_c_p_item_rect_a03d2d26ffcac78b25b8e90915f9c4abe}{brush};
+24607 \}
 \end{DoxyCode}
 
 
@@ -714,7 +719,7 @@ Sets the pen that will be used to draw the line of the rectangle when selected
 \end{DoxySeeAlso}
 
 
-Definition at line 22073 of file qcustomplot.\+cpp.
+Definition at line 24587 of file qcustomplot.\+cpp.
 
 
 
@@ -726,9 +731,7 @@ Referenced by Q\+C\+P\+Item\+Rect().
 
 
 \begin{DoxyCode}
-22074 \{
-22075   \hyperlink{class_q_c_p_item_rect_a73cc0bee61de3c67221ec8c7a76a29ed}{mSelectedPen} = \hyperlink{class_q_c_p_item_rect_a3cb7b6de5e82cc5a3c99e9de919a55e6}{pen};
-22076 \}
+24587 \{ \hyperlink{class_q_c_p_item_rect_a73cc0bee61de3c67221ec8c7a76a29ed}{mSelectedPen} = \hyperlink{class_q_c_p_item_rect_a3cb7b6de5e82cc5a3c99e9de919a55e6}{pen}; \}
 \end{DoxyCode}
 
 
@@ -760,21 +763,21 @@ Here is the caller graph for this function\+:\nopagebreak
 \subsubsection[{bottom}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Item\+Anchor}$\ast$ const Q\+C\+P\+Item\+Rect\+::bottom}\label{class_q_c_p_item_rect_a99313bf2b338d9f81e19bd38082038aa}
 
 
-Definition at line 3400 of file qcustomplot.\+h.
+Definition at line 3860 of file qcustomplot.\+h.
 
 \hypertarget{class_q_c_p_item_rect_abd8ee63fdf81f0c74bf7ccadee8603da}{}\index{Q\+C\+P\+Item\+Rect@{Q\+C\+P\+Item\+Rect}!bottom\+Left@{bottom\+Left}}
 \index{bottom\+Left@{bottom\+Left}!Q\+C\+P\+Item\+Rect@{Q\+C\+P\+Item\+Rect}}
 \subsubsection[{bottom\+Left}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Item\+Anchor}$\ast$ const Q\+C\+P\+Item\+Rect\+::bottom\+Left}\label{class_q_c_p_item_rect_abd8ee63fdf81f0c74bf7ccadee8603da}
 
 
-Definition at line 3401 of file qcustomplot.\+h.
+Definition at line 3861 of file qcustomplot.\+h.
 
 \hypertarget{class_q_c_p_item_rect_a409f3bfe615a7e322bb3d4d193d85b26}{}\index{Q\+C\+P\+Item\+Rect@{Q\+C\+P\+Item\+Rect}!bottom\+Right@{bottom\+Right}}
 \index{bottom\+Right@{bottom\+Right}!Q\+C\+P\+Item\+Rect@{Q\+C\+P\+Item\+Rect}}
 \subsubsection[{bottom\+Right}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Item\+Position}$\ast$ const Q\+C\+P\+Item\+Rect\+::bottom\+Right}\label{class_q_c_p_item_rect_a409f3bfe615a7e322bb3d4d193d85b26}
 
 
-Definition at line 3396 of file qcustomplot.\+h.
+Definition at line 3856 of file qcustomplot.\+h.
 
 
 
@@ -785,14 +788,14 @@ Referenced by anchor\+Pixel\+Point(), draw(), Q\+C\+P\+Item\+Rect(), and select\
 \subsubsection[{left}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Item\+Anchor}$\ast$ const Q\+C\+P\+Item\+Rect\+::left}\label{class_q_c_p_item_rect_aad0ca1af0c8debfc20d7b47fc942764d}
 
 
-Definition at line 3402 of file qcustomplot.\+h.
+Definition at line 3862 of file qcustomplot.\+h.
 
 \hypertarget{class_q_c_p_item_rect_a2d7f207fada27588b3a52b19234d3c2e}{}\index{Q\+C\+P\+Item\+Rect@{Q\+C\+P\+Item\+Rect}!m\+Brush@{m\+Brush}}
 \index{m\+Brush@{m\+Brush}!Q\+C\+P\+Item\+Rect@{Q\+C\+P\+Item\+Rect}}
 \subsubsection[{m\+Brush}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Brush Q\+C\+P\+Item\+Rect\+::m\+Brush\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_rect_a2d7f207fada27588b3a52b19234d3c2e}
 
 
-Definition at line 3409 of file qcustomplot.\+h.
+Definition at line 3876 of file qcustomplot.\+h.
 
 
 
@@ -803,7 +806,7 @@ Referenced by main\+Brush(), select\+Test(), and set\+Brush().
 \subsubsection[{m\+Pen}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Pen Q\+C\+P\+Item\+Rect\+::m\+Pen\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_rect_aa0d49323628d6752026056bfb52afd86}
 
 
-Definition at line 3408 of file qcustomplot.\+h.
+Definition at line 3875 of file qcustomplot.\+h.
 
 
 
@@ -814,7 +817,7 @@ Referenced by main\+Pen(), and set\+Pen().
 \subsubsection[{m\+Selected\+Brush}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Brush Q\+C\+P\+Item\+Rect\+::m\+Selected\+Brush\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_rect_a21b70eee59b6e19ae0bbdf037b13508f}
 
 
-Definition at line 3409 of file qcustomplot.\+h.
+Definition at line 3876 of file qcustomplot.\+h.
 
 
 
@@ -825,7 +828,7 @@ Referenced by main\+Brush(), and set\+Selected\+Brush().
 \subsubsection[{m\+Selected\+Pen}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Pen Q\+C\+P\+Item\+Rect\+::m\+Selected\+Pen\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_rect_a73cc0bee61de3c67221ec8c7a76a29ed}
 
 
-Definition at line 3408 of file qcustomplot.\+h.
+Definition at line 3875 of file qcustomplot.\+h.
 
 
 
@@ -836,21 +839,21 @@ Referenced by main\+Pen(), and set\+Selected\+Pen().
 \subsubsection[{right}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Item\+Anchor}$\ast$ const Q\+C\+P\+Item\+Rect\+::right}\label{class_q_c_p_item_rect_a7979c1915f61ad2609a9cc179c2e445e}
 
 
-Definition at line 3399 of file qcustomplot.\+h.
+Definition at line 3859 of file qcustomplot.\+h.
 
 \hypertarget{class_q_c_p_item_rect_a96e50db552fb297d6fb62614676217bc}{}\index{Q\+C\+P\+Item\+Rect@{Q\+C\+P\+Item\+Rect}!top@{top}}
 \index{top@{top}!Q\+C\+P\+Item\+Rect@{Q\+C\+P\+Item\+Rect}}
 \subsubsection[{top}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Item\+Anchor}$\ast$ const Q\+C\+P\+Item\+Rect\+::top}\label{class_q_c_p_item_rect_a96e50db552fb297d6fb62614676217bc}
 
 
-Definition at line 3397 of file qcustomplot.\+h.
+Definition at line 3857 of file qcustomplot.\+h.
 
 \hypertarget{class_q_c_p_item_rect_aa70feeef173489b03c3fbe906a5023c4}{}\index{Q\+C\+P\+Item\+Rect@{Q\+C\+P\+Item\+Rect}!top\+Left@{top\+Left}}
 \index{top\+Left@{top\+Left}!Q\+C\+P\+Item\+Rect@{Q\+C\+P\+Item\+Rect}}
 \subsubsection[{top\+Left}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Item\+Position}$\ast$ const Q\+C\+P\+Item\+Rect\+::top\+Left}\label{class_q_c_p_item_rect_aa70feeef173489b03c3fbe906a5023c4}
 
 
-Definition at line 3395 of file qcustomplot.\+h.
+Definition at line 3855 of file qcustomplot.\+h.
 
 
 
@@ -861,7 +864,7 @@ Referenced by anchor\+Pixel\+Point(), draw(), Q\+C\+P\+Item\+Rect(), and select\
 \subsubsection[{top\+Right}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Item\+Anchor}$\ast$ const Q\+C\+P\+Item\+Rect\+::top\+Right}\label{class_q_c_p_item_rect_a77e0eb6e4aa6efee620d35e2c21bdad7}
 
 
-Definition at line 3398 of file qcustomplot.\+h.
+Definition at line 3858 of file qcustomplot.\+h.
 
 
 

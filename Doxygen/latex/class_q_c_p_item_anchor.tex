@@ -62,9 +62,9 @@ Q\+String \hyperlink{class_q_c_p_item_anchor_a23ad4d0ab0d2cbb41a7baf05bcf996ec}{
 \item 
 int \hyperlink{class_q_c_p_item_anchor_a00c62070333e8345976b579676ad3997}{m\+Anchor\+Id}
 \item 
-Q\+Set$<$ \hyperlink{class_q_c_p_item_position}{Q\+C\+P\+Item\+Position} $\ast$ $>$ \hyperlink{class_q_c_p_item_anchor_a3c0bfd6e50f3b48e2a9b3824695b20f7}{m\+Children\+X}
+Q\+Set$<$ \hyperlink{class_q_c_p_item_position}{Q\+C\+P\+Item\+Position} $\ast$ $>$ \hyperlink{class_q_c_p_item_anchor_ab8fd931923357898286ae604e1380fa7}{m\+Children\+X}
 \item 
-Q\+Set$<$ \hyperlink{class_q_c_p_item_position}{Q\+C\+P\+Item\+Position} $\ast$ $>$ \hyperlink{class_q_c_p_item_anchor_a3abe4eebd0683454d81c8341df6f7115}{m\+Children\+Y}
+Q\+Set$<$ \hyperlink{class_q_c_p_item_position}{Q\+C\+P\+Item\+Position} $\ast$ $>$ \hyperlink{class_q_c_p_item_anchor_a6d58eb782eda4d96a95067354305b139}{m\+Children\+Y}
 \end{DoxyCompactItemize}
 \subsection*{Friends}
 \begin{DoxyCompactItemize}
@@ -84,7 +84,7 @@ Note that \hyperlink{class_q_c_p_item_position}{Q\+C\+P\+Item\+Position} derives
 
 To learn how to provide anchors in your own item subclasses, see the subclassing section of the \hyperlink{class_q_c_p_abstract_item}{Q\+C\+P\+Abstract\+Item} documentation. 
 
-Definition at line 1503 of file qcustomplot.\+h.
+Definition at line 1723 of file qcustomplot.\+h.
 
 
 
@@ -101,18 +101,12 @@ Definition at line 1503 of file qcustomplot.\+h.
 )}\label{class_q_c_p_item_anchor_aeb6b681d2bf324db40a915d32ec5624f}
 Creates a new \hyperlink{class_q_c_p_item_anchor}{Q\+C\+P\+Item\+Anchor}. You shouldn\textquotesingle{}t create \hyperlink{class_q_c_p_item_anchor}{Q\+C\+P\+Item\+Anchor} instances directly, even if you want to make a new item subclass. Use \hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{Q\+C\+P\+Abstract\+Item\+::create\+Anchor} instead, as explained in the subclassing section of the \hyperlink{class_q_c_p_abstract_item}{Q\+C\+P\+Abstract\+Item} documentation. 
 
-Definition at line 7450 of file qcustomplot.\+cpp.
+Definition at line 8204 of file qcustomplot.\+cpp.
 
 
 \begin{DoxyCode}
-7450                                                                                                            
-              :
-7451   \hyperlink{class_q_c_p_item_anchor_a23ad4d0ab0d2cbb41a7baf05bcf996ec}{mName}(\hyperlink{class_q_c_p_item_anchor_ac93984042a58c875e76847dc3e5f75fe}{name}),
-7452   \hyperlink{class_q_c_p_item_anchor_a59b968410831ba91a25cc75a77dde6f5}{mParentPlot}(parentPlot),
-7453   \hyperlink{class_q_c_p_item_anchor_a80fad480ad3bb980446ed6ebc00818ae}{mParentItem}(parentItem),
-7454   \hyperlink{class_q_c_p_item_anchor_a00c62070333e8345976b579676ad3997}{mAnchorId}(anchorId)
-7455 \{
-7456 \}
+8207     : \hyperlink{class_q_c_p_item_anchor_a23ad4d0ab0d2cbb41a7baf05bcf996ec}{mName}(\hyperlink{class_q_c_p_item_anchor_ac93984042a58c875e76847dc3e5f75fe}{name}), \hyperlink{class_q_c_p_item_anchor_a59b968410831ba91a25cc75a77dde6f5}{mParentPlot}(parentPlot), \hyperlink{class_q_c_p_item_anchor_a80fad480ad3bb980446ed6ebc00818ae}{mParentItem}(parentItem),
+8208       \hyperlink{class_q_c_p_item_anchor_a00c62070333e8345976b579676ad3997}{mAnchorId}(anchorId) \{\}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_item_anchor_a1868559407600688ee4d1a4621e81ceb}{}\index{Q\+C\+P\+Item\+Anchor@{Q\+C\+P\+Item\+Anchor}!````~Q\+C\+P\+Item\+Anchor@{$\sim$\+Q\+C\+P\+Item\+Anchor}}
 \index{````~Q\+C\+P\+Item\+Anchor@{$\sim$\+Q\+C\+P\+Item\+Anchor}!Q\+C\+P\+Item\+Anchor@{Q\+C\+P\+Item\+Anchor}}
@@ -123,7 +117,7 @@ Definition at line 7450 of file qcustomplot.\+cpp.
 )\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_q_c_p_item_anchor_a1868559407600688ee4d1a4621e81ceb}
 
 
-Definition at line 7458 of file qcustomplot.\+cpp.
+Definition at line 8210 of file qcustomplot.\+cpp.
 
 
 
@@ -131,21 +125,19 @@ References m\+Children\+X, m\+Children\+Y, Q\+C\+P\+Item\+Position\+::parent\+An
 
 
 \begin{DoxyCode}
-7459 \{
-7460   \textcolor{comment}{// unregister as parent at children:}
-7461   \textcolor{keywordflow}{foreach} (\hyperlink{class_q_c_p_item_position}{QCPItemPosition} *child, \hyperlink{class_q_c_p_item_anchor_a3c0bfd6e50f3b48e2a9b3824695b20f7}{mChildrenX}.toList())
-7462   \{
-7463     \textcolor{keywordflow}{if} (child->\hyperlink{class_q_c_p_item_position_a485abba71c8552086c5f68e95dca7f9a}{parentAnchorX}() == \textcolor{keyword}{this})
-7464       child->\hyperlink{class_q_c_p_item_position_add71461a973927c74e42179480916d9c}{setParentAnchorX}(0); \textcolor{comment}{// this acts back on this anchor and child removes itself
-       from mChildrenX}
-7465   \}
-7466   \textcolor{keywordflow}{foreach} (\hyperlink{class_q_c_p_item_position}{QCPItemPosition} *child, \hyperlink{class_q_c_p_item_anchor_a3abe4eebd0683454d81c8341df6f7115}{mChildrenY}.toList())
-7467   \{
-7468     \textcolor{keywordflow}{if} (child->\hyperlink{class_q_c_p_item_position_a1502dba801cb20424b7e097399e372de}{parentAnchorY}() == \textcolor{keyword}{this})
-7469       child->\hyperlink{class_q_c_p_item_position_add5ec1db9d19cec58a3b5c9e0a0c3f9d}{setParentAnchorY}(0); \textcolor{comment}{// this acts back on this anchor and child removes itself
-       from mChildrenY}
-7470   \}
-7471 \}
+8210                               \{
+8211   \textcolor{comment}{// unregister as parent at children:}
+8212   \textcolor{keywordflow}{foreach} (\hyperlink{class_q_c_p_item_position}{QCPItemPosition} *child, \hyperlink{class_q_c_p_item_anchor_ab8fd931923357898286ae604e1380fa7}{mChildrenX}.toList()) \{
+8213     \textcolor{keywordflow}{if} (child->\hyperlink{class_q_c_p_item_position_a485abba71c8552086c5f68e95dca7f9a}{parentAnchorX}() == \textcolor{keyword}{this})
+8214       child->\hyperlink{class_q_c_p_item_position_add71461a973927c74e42179480916d9c}{setParentAnchorX}(0); \textcolor{comment}{// this acts back on this anchor and child}
+8215                                   \textcolor{comment}{// removes itself from mChildrenX}
+8216   \}
+8217   \textcolor{keywordflow}{foreach} (\hyperlink{class_q_c_p_item_position}{QCPItemPosition} *child, \hyperlink{class_q_c_p_item_anchor_a6d58eb782eda4d96a95067354305b139}{mChildrenY}.toList()) \{
+8218     \textcolor{keywordflow}{if} (child->\hyperlink{class_q_c_p_item_position_a1502dba801cb20424b7e097399e372de}{parentAnchorY}() == \textcolor{keyword}{this})
+8219       child->\hyperlink{class_q_c_p_item_position_add5ec1db9d19cec58a3b5c9e0a0c3f9d}{setParentAnchorY}(0); \textcolor{comment}{// this acts back on this anchor and child}
+8220                                   \textcolor{comment}{// removes itself from mChildrenY}
+8221   \}
+8222 \}
 \end{DoxyCode}
 
 
@@ -170,7 +162,7 @@ Here is the call graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_anchor_aef15daa640debfb11b0aeaa2116c6fbc}
 
 
-Definition at line 7506 of file qcustomplot.\+cpp.
+Definition at line 8256 of file qcustomplot.\+cpp.
 
 
 
@@ -182,12 +174,13 @@ Referenced by Q\+C\+P\+Item\+Position\+::set\+Parent\+Anchor\+X().
 
 
 \begin{DoxyCode}
-7507 \{
-7508   \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_item_anchor_a3c0bfd6e50f3b48e2a9b3824695b20f7}{mChildrenX}.contains(pos))
-7509     \hyperlink{class_q_c_p_item_anchor_a3c0bfd6e50f3b48e2a9b3824695b20f7}{mChildrenX}.insert(pos);
-7510   \textcolor{keywordflow}{else}
-7511     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"provided pos is child already"} << \textcolor{keyword}{reinterpret\_cast<}quintptr\textcolor{keyword}{>}(pos);
-7512 \}
+8256                                                   \{
+8257   \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_item_anchor_ab8fd931923357898286ae604e1380fa7}{mChildrenX}.contains(pos))
+8258     \hyperlink{class_q_c_p_item_anchor_ab8fd931923357898286ae604e1380fa7}{mChildrenX}.insert(pos);
+8259   \textcolor{keywordflow}{else}
+8260     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"provided pos is child already"}
+8261              << \textcolor{keyword}{reinterpret\_cast<}quintptr\textcolor{keyword}{>}(pos);
+8262 \}
 \end{DoxyCode}
 
 
@@ -209,7 +202,7 @@ Here is the caller graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_anchor_af05dc56f24536f0c7a9a0f57b58cea67}
 
 
-Definition at line 7534 of file qcustomplot.\+cpp.
+Definition at line 8286 of file qcustomplot.\+cpp.
 
 
 
@@ -221,12 +214,13 @@ Referenced by Q\+C\+P\+Item\+Position\+::set\+Parent\+Anchor\+Y().
 
 
 \begin{DoxyCode}
-7535 \{
-7536   \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_item_anchor_a3abe4eebd0683454d81c8341df6f7115}{mChildrenY}.contains(pos))
-7537     \hyperlink{class_q_c_p_item_anchor_a3abe4eebd0683454d81c8341df6f7115}{mChildrenY}.insert(pos);
-7538   \textcolor{keywordflow}{else}
-7539     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"provided pos is child already"} << \textcolor{keyword}{reinterpret\_cast<}quintptr\textcolor{keyword}{>}(pos);
-7540 \}
+8286                                                   \{
+8287   \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_item_anchor_a6d58eb782eda4d96a95067354305b139}{mChildrenY}.contains(pos))
+8288     \hyperlink{class_q_c_p_item_anchor_a6d58eb782eda4d96a95067354305b139}{mChildrenY}.insert(pos);
+8289   \textcolor{keywordflow}{else}
+8290     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"provided pos is child already"}
+8291              << \textcolor{keyword}{reinterpret\_cast<}quintptr\textcolor{keyword}{>}(pos);
+8292 \}
 \end{DoxyCode}
 
 
@@ -248,11 +242,11 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_item_anchor_ac93984042a58c875e76847dc3e5f75fe}
 
 
-Definition at line 1510 of file qcustomplot.\+h.
+Definition at line 1730 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-1510 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_anchor_a23ad4d0ab0d2cbb41a7baf05bcf996ec}{mName}; \}
+1730 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_anchor_a23ad4d0ab0d2cbb41a7baf05bcf996ec}{mName}; \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_item_anchor_ae92def8f9297c5d73f5806c586517bb3}{}\index{Q\+C\+P\+Item\+Anchor@{Q\+C\+P\+Item\+Anchor}!pixel\+Point@{pixel\+Point}}
 \index{pixel\+Point@{pixel\+Point}!Q\+C\+P\+Item\+Anchor@{Q\+C\+P\+Item\+Anchor}}
@@ -269,7 +263,7 @@ Reimplemented in \hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3
 
 
 
-Definition at line 7479 of file qcustomplot.\+cpp.
+Definition at line 8232 of file qcustomplot.\+cpp.
 
 
 
@@ -281,23 +275,19 @@ Referenced by Q\+C\+P\+Item\+Position\+::pixel\+Point(), and Q\+C\+P\+Item\+Posi
 
 
 \begin{DoxyCode}
-7480 \{
-7481   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_anchor_a80fad480ad3bb980446ed6ebc00818ae}{mParentItem})
-7482   \{
-7483     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_anchor_a00c62070333e8345976b579676ad3997}{mAnchorId} > -1)
-7484     \{
-7485       \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_anchor_a80fad480ad3bb980446ed6ebc00818ae}{mParentItem}->\hyperlink{class_q_c_p_abstract_item_a94bde62b8a2fc133666dcbb8035deeed}{anchorPixelPoint}(\hyperlink{class_q_c_p_item_anchor_a00c62070333e8345976b579676ad3997}{mAnchorId});
-7486     \} \textcolor{keywordflow}{else}
-7487     \{
-7488       qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"no valid anchor id set:"} << \hyperlink{class_q_c_p_item_anchor_a00c62070333e8345976b579676ad3997}{mAnchorId};
-7489       \textcolor{keywordflow}{return} QPointF();
-7490     \}
-7491   \} \textcolor{keywordflow}{else}
-7492   \{
-7493     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"no parent item set"};
-7494     \textcolor{keywordflow}{return} QPointF();
-7495   \}
-7496 \}
+8232                                         \{
+8233   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_anchor_a80fad480ad3bb980446ed6ebc00818ae}{mParentItem}) \{
+8234     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_anchor_a00c62070333e8345976b579676ad3997}{mAnchorId} > -1) \{
+8235       \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_anchor_a80fad480ad3bb980446ed6ebc00818ae}{mParentItem}->\hyperlink{class_q_c_p_abstract_item_a94bde62b8a2fc133666dcbb8035deeed}{anchorPixelPoint}(\hyperlink{class_q_c_p_item_anchor_a00c62070333e8345976b579676ad3997}{mAnchorId});
+8236     \} \textcolor{keywordflow}{else} \{
+8237       qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"no valid anchor id set:"} << \hyperlink{class_q_c_p_item_anchor_a00c62070333e8345976b579676ad3997}{mAnchorId};
+8238       \textcolor{keywordflow}{return} QPointF();
+8239     \}
+8240   \} \textcolor{keywordflow}{else} \{
+8241     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"no parent item set"};
+8242     \textcolor{keywordflow}{return} QPointF();
+8243   \}
+8244 \}
 \end{DoxyCode}
 
 
@@ -330,7 +320,7 @@ Here is the caller graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_anchor_a230b1d494cda63458e289bbe1b642599}
 
 
-Definition at line 7520 of file qcustomplot.\+cpp.
+Definition at line 8270 of file qcustomplot.\+cpp.
 
 
 
@@ -342,10 +332,11 @@ Referenced by Q\+C\+P\+Item\+Position\+::set\+Parent\+Anchor\+X(), and Q\+C\+P\+
 
 
 \begin{DoxyCode}
-7521 \{
-7522   \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_item_anchor_a3c0bfd6e50f3b48e2a9b3824695b20f7}{mChildrenX}.remove(pos))
-7523     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"provided pos isn't child"} << \textcolor{keyword}{reinterpret\_cast<}quintptr\textcolor{keyword}{>}(pos);
-7524 \}
+8270                                                      \{
+8271   \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_item_anchor_ab8fd931923357898286ae604e1380fa7}{mChildrenX}.remove(pos))
+8272     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"provided pos isn't child"}
+8273              << \textcolor{keyword}{reinterpret\_cast<}quintptr\textcolor{keyword}{>}(pos);
+8274 \}
 \end{DoxyCode}
 
 
@@ -367,7 +358,7 @@ Here is the caller graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_anchor_aa2394911d8fff3bd958b9f4f1994b64d}
 
 
-Definition at line 7548 of file qcustomplot.\+cpp.
+Definition at line 8300 of file qcustomplot.\+cpp.
 
 
 
@@ -379,10 +370,11 @@ Referenced by Q\+C\+P\+Item\+Position\+::set\+Parent\+Anchor\+Y(), and Q\+C\+P\+
 
 
 \begin{DoxyCode}
-7549 \{
-7550   \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_item_anchor_a3abe4eebd0683454d81c8341df6f7115}{mChildrenY}.remove(pos))
-7551     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"provided pos isn't child"} << \textcolor{keyword}{reinterpret\_cast<}quintptr\textcolor{keyword}{>}(pos);
-7552 \}
+8300                                                      \{
+8301   \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_item_anchor_a6d58eb782eda4d96a95067354305b139}{mChildrenY}.remove(pos))
+8302     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"provided pos isn't child"}
+8303              << \textcolor{keyword}{reinterpret\_cast<}quintptr\textcolor{keyword}{>}(pos);
+8304 \}
 \end{DoxyCode}
 
 
@@ -410,7 +402,7 @@ Reimplemented in \hyperlink{class_q_c_p_item_position_a577a7efc601df85a20b3e709d
 
 
 
-Definition at line 1524 of file qcustomplot.\+h.
+Definition at line 1744 of file qcustomplot.\+h.
 
 
 
@@ -418,7 +410,7 @@ Referenced by Q\+C\+P\+Item\+Position\+::set\+Parent\+Anchor\+X(), and Q\+C\+P\+
 
 
 \begin{DoxyCode}
-1524 \{ \textcolor{keywordflow}{return} 0; \}
+1744 \{ \textcolor{keywordflow}{return} 0; \}
 \end{DoxyCode}
 
 
@@ -439,7 +431,7 @@ Here is the caller graph for this function\+:\nopagebreak
 \subsubsection[{Q\+C\+P\+Item\+Position}]{\setlength{\rightskip}{0pt plus 5cm}friend class {\bf Q\+C\+P\+Item\+Position}\hspace{0.3cm}{\ttfamily [friend]}}\label{class_q_c_p_item_anchor_aa9b8ddc062778e202a0be06a57d18d17}
 
 
-Definition at line 1535 of file qcustomplot.\+h.
+Definition at line 1759 of file qcustomplot.\+h.
 
 
 
@@ -449,29 +441,29 @@ Definition at line 1535 of file qcustomplot.\+h.
 \subsubsection[{m\+Anchor\+Id}]{\setlength{\rightskip}{0pt plus 5cm}int Q\+C\+P\+Item\+Anchor\+::m\+Anchor\+Id\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_anchor_a00c62070333e8345976b579676ad3997}
 
 
-Definition at line 1520 of file qcustomplot.\+h.
+Definition at line 1740 of file qcustomplot.\+h.
 
 
 
 Referenced by pixel\+Point().
 
-\hypertarget{class_q_c_p_item_anchor_a3c0bfd6e50f3b48e2a9b3824695b20f7}{}\index{Q\+C\+P\+Item\+Anchor@{Q\+C\+P\+Item\+Anchor}!m\+Children\+X@{m\+Children\+X}}
+\hypertarget{class_q_c_p_item_anchor_ab8fd931923357898286ae604e1380fa7}{}\index{Q\+C\+P\+Item\+Anchor@{Q\+C\+P\+Item\+Anchor}!m\+Children\+X@{m\+Children\+X}}
 \index{m\+Children\+X@{m\+Children\+X}!Q\+C\+P\+Item\+Anchor@{Q\+C\+P\+Item\+Anchor}}
-\subsubsection[{m\+Children\+X}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Set$<${\bf Q\+C\+P\+Item\+Position}$\ast$$>$ Q\+C\+P\+Item\+Anchor\+::m\+Children\+X\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_anchor_a3c0bfd6e50f3b48e2a9b3824695b20f7}
+\subsubsection[{m\+Children\+X}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Set$<${\bf Q\+C\+P\+Item\+Position} $\ast$$>$ Q\+C\+P\+Item\+Anchor\+::m\+Children\+X\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_anchor_ab8fd931923357898286ae604e1380fa7}
 
 
-Definition at line 1521 of file qcustomplot.\+h.
+Definition at line 1741 of file qcustomplot.\+h.
 
 
 
 Referenced by add\+Child\+X(), remove\+Child\+X(), $\sim$\+Q\+C\+P\+Item\+Anchor(), and Q\+C\+P\+Item\+Position\+::$\sim$\+Q\+C\+P\+Item\+Position().
 
-\hypertarget{class_q_c_p_item_anchor_a3abe4eebd0683454d81c8341df6f7115}{}\index{Q\+C\+P\+Item\+Anchor@{Q\+C\+P\+Item\+Anchor}!m\+Children\+Y@{m\+Children\+Y}}
+\hypertarget{class_q_c_p_item_anchor_a6d58eb782eda4d96a95067354305b139}{}\index{Q\+C\+P\+Item\+Anchor@{Q\+C\+P\+Item\+Anchor}!m\+Children\+Y@{m\+Children\+Y}}
 \index{m\+Children\+Y@{m\+Children\+Y}!Q\+C\+P\+Item\+Anchor@{Q\+C\+P\+Item\+Anchor}}
-\subsubsection[{m\+Children\+Y}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Set$<${\bf Q\+C\+P\+Item\+Position}$\ast$$>$ Q\+C\+P\+Item\+Anchor\+::m\+Children\+Y\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_anchor_a3abe4eebd0683454d81c8341df6f7115}
+\subsubsection[{m\+Children\+Y}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Set$<${\bf Q\+C\+P\+Item\+Position} $\ast$$>$ Q\+C\+P\+Item\+Anchor\+::m\+Children\+Y\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_anchor_a6d58eb782eda4d96a95067354305b139}
 
 
-Definition at line 1521 of file qcustomplot.\+h.
+Definition at line 1741 of file qcustomplot.\+h.
 
 
 
@@ -482,14 +474,14 @@ Referenced by add\+Child\+Y(), remove\+Child\+Y(), $\sim$\+Q\+C\+P\+Item\+Anchor
 \subsubsection[{m\+Name}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String Q\+C\+P\+Item\+Anchor\+::m\+Name\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_anchor_a23ad4d0ab0d2cbb41a7baf05bcf996ec}
 
 
-Definition at line 1515 of file qcustomplot.\+h.
+Definition at line 1735 of file qcustomplot.\+h.
 
 \hypertarget{class_q_c_p_item_anchor_a80fad480ad3bb980446ed6ebc00818ae}{}\index{Q\+C\+P\+Item\+Anchor@{Q\+C\+P\+Item\+Anchor}!m\+Parent\+Item@{m\+Parent\+Item}}
 \index{m\+Parent\+Item@{m\+Parent\+Item}!Q\+C\+P\+Item\+Anchor@{Q\+C\+P\+Item\+Anchor}}
 \subsubsection[{m\+Parent\+Item}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Abstract\+Item}$\ast$ Q\+C\+P\+Item\+Anchor\+::m\+Parent\+Item\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_anchor_a80fad480ad3bb980446ed6ebc00818ae}
 
 
-Definition at line 1519 of file qcustomplot.\+h.
+Definition at line 1739 of file qcustomplot.\+h.
 
 
 
@@ -500,7 +492,7 @@ Referenced by pixel\+Point(), Q\+C\+P\+Item\+Position\+::set\+Parent\+Anchor\+X(
 \subsubsection[{m\+Parent\+Plot}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+Custom\+Plot}$\ast$ Q\+C\+P\+Item\+Anchor\+::m\+Parent\+Plot\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_anchor_a59b968410831ba91a25cc75a77dde6f5}
 
 
-Definition at line 1518 of file qcustomplot.\+h.
+Definition at line 1738 of file qcustomplot.\+h.
 
 
 

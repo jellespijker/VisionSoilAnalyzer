@@ -157,7 +157,7 @@ The \hyperlink{class_q_c_p_color_map}{Q\+C\+P\+Color\+Map} always displays the d
 \end{DoxyNote}
 
 
-Definition at line 3046 of file qcustomplot.\+h.
+Definition at line 3481 of file qcustomplot.\+h.
 
 
 
@@ -174,20 +174,16 @@ Constructs a color map with the specified {\itshape key\+Axis} and {\itshape val
 
 The constructed \hyperlink{class_q_c_p_color_map}{Q\+C\+P\+Color\+Map} can be added to the plot with \hyperlink{class_q_custom_plot_ab7ad9174f701f9c6f64e378df77927a6}{Q\+Custom\+Plot\+::add\+Plottable}, \hyperlink{class_q_custom_plot}{Q\+Custom\+Plot} then takes ownership of the color map. 
 
-Definition at line 20067 of file qcustomplot.\+cpp.
+Definition at line 22345 of file qcustomplot.\+cpp.
 
 
 \begin{DoxyCode}
-20067                                                              :
-20068   \hyperlink{class_q_c_p_abstract_plottable_af78a036e40db6f53a31abadc5323715a}{QCPAbstractPlottable}(keyAxis, valueAxis),
-20069   \hyperlink{class_q_c_p_color_map_ab28a4b2def408f83b9818799d5f18446}{mDataScaleType}(\hyperlink{class_q_c_p_axis_a36d8e8658dbaa179bf2aeb973db2d6f0aff6e30a11a828bc850caffab0ff994f6}{QCPAxis::stLinear}),
-20070   \hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}(\textcolor{keyword}{new} \hyperlink{class_q_c_p_color_map_data}{QCPColorMapData}(10, 10, \hyperlink{class_q_c_p_range}{QCPRange}(0, 5), 
+22346     : \hyperlink{class_q_c_p_abstract_plottable_af78a036e40db6f53a31abadc5323715a}{QCPAbstractPlottable}(keyAxis, valueAxis),
+22347       \hyperlink{class_q_c_p_color_map_ab28a4b2def408f83b9818799d5f18446}{mDataScaleType}(\hyperlink{class_q_c_p_axis_a36d8e8658dbaa179bf2aeb973db2d6f0aff6e30a11a828bc850caffab0ff994f6}{QCPAxis::stLinear}),
+22348       \hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}(\textcolor{keyword}{new} \hyperlink{class_q_c_p_color_map_data}{QCPColorMapData}(10, 10, \hyperlink{class_q_c_p_range}{QCPRange}(0, 5), 
       \hyperlink{class_q_c_p_range}{QCPRange}(0, 5))),
-20071   \hyperlink{class_q_c_p_color_map_af77e5eba9a844592648edeb6fbe834f1}{mInterpolate}(\textcolor{keyword}{true}),
-20072   \hyperlink{class_q_c_p_color_map_ac2e9425fe4381b496726e1c09f978302}{mTightBoundary}(\textcolor{keyword}{false}),
-20073   \hyperlink{class_q_c_p_color_map_ac9aea6a5c193d7fa866bc7b26e79ef2c}{mMapImageInvalidated}(\textcolor{keyword}{true})
-20074 \{
-20075 \}
+22349       \hyperlink{class_q_c_p_color_map_af77e5eba9a844592648edeb6fbe834f1}{mInterpolate}(\textcolor{keyword}{true}), \hyperlink{class_q_c_p_color_map_ac2e9425fe4381b496726e1c09f978302}{mTightBoundary}(\textcolor{keyword}{false}), 
+      \hyperlink{class_q_c_p_color_map_ac9aea6a5c193d7fa866bc7b26e79ef2c}{mMapImageInvalidated}(\textcolor{keyword}{true}) \{\}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_color_map_ac8a952a40fed62dcee33405b0f4d47ad}{}\index{Q\+C\+P\+Color\+Map@{Q\+C\+P\+Color\+Map}!````~Q\+C\+P\+Color\+Map@{$\sim$\+Q\+C\+P\+Color\+Map}}
 \index{````~Q\+C\+P\+Color\+Map@{$\sim$\+Q\+C\+P\+Color\+Map}!Q\+C\+P\+Color\+Map@{Q\+C\+P\+Color\+Map}}
@@ -198,7 +194,7 @@ Definition at line 20067 of file qcustomplot.\+cpp.
 )\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_q_c_p_color_map_ac8a952a40fed62dcee33405b0f4d47ad}
 
 
-Definition at line 20077 of file qcustomplot.\+cpp.
+Definition at line 22351 of file qcustomplot.\+cpp.
 
 
 
@@ -206,9 +202,7 @@ References m\+Map\+Data.
 
 
 \begin{DoxyCode}
-20078 \{
-20079   \textcolor{keyword}{delete} \hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData};
-20080 \}
+22351 \{ \textcolor{keyword}{delete} \hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}; \}
 \end{DoxyCode}
 
 
@@ -226,7 +220,7 @@ Implements \hyperlink{class_q_c_p_abstract_plottable_a86e5b8fd4b6ff4f4084e7ea4c5
 
 
 
-Definition at line 20293 of file qcustomplot.\+cpp.
+Definition at line 22617 of file qcustomplot.\+cpp.
 
 
 
@@ -234,9 +228,7 @@ References Q\+C\+P\+Color\+Map\+Data\+::clear(), and m\+Map\+Data.
 
 
 \begin{DoxyCode}
-20294 \{
-20295   \hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_a9910ba830e96955bd5c8e5bef1e77ef3}{clear}();
-20296 \}
+22617 \{ \hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_a9910ba830e96955bd5c8e5bef1e77ef3}{clear}(); \}
 \end{DoxyCode}
 
 
@@ -258,7 +250,7 @@ Here is the call graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_color_map_a6bd82e0b042a2ec4d64f40853a3b05e3}
 
 
-Definition at line 3068 of file qcustomplot.\+h.
+Definition at line 3505 of file qcustomplot.\+h.
 
 
 
@@ -266,7 +258,7 @@ Referenced by set\+Color\+Scale().
 
 
 \begin{DoxyCode}
-3068 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_color_map_a95b4100bacc3387652c988b071ec9db7}{mColorScale}.data(); \}
+3505 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_color_map_a95b4100bacc3387652c988b071ec9db7}{mColorScale}.data(); \}
 \end{DoxyCode}
 
 
@@ -293,7 +285,7 @@ Returns a pointer to the internal data storage of type \hyperlink{class_q_c_p_co
 \end{DoxySeeAlso}
 
 
-Definition at line 3062 of file qcustomplot.\+h.
+Definition at line 3499 of file qcustomplot.\+h.
 
 
 
@@ -301,7 +293,7 @@ Referenced by set\+Data(), and update\+Legend\+Icon().
 
 
 \begin{DoxyCode}
-3062 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}; \}
+3499 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}; \}
 \end{DoxyCode}
 
 
@@ -323,11 +315,11 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_color_map_a37cc8e821e070697e15652f6419fab48}
 
 
-Definition at line 3063 of file qcustomplot.\+h.
+Definition at line 3500 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-3063 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_color_map_ab87609621d16cd3e9d52ad070b327b08}{mDataRange}; \}
+3500 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_color_map_ab87609621d16cd3e9d52ad070b327b08}{mDataRange}; \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_color_map_a482980f2335d09cfb36dd95ba9663197}{}\index{Q\+C\+P\+Color\+Map@{Q\+C\+P\+Color\+Map}!data\+Range\+Changed@{data\+Range\+Changed}}
 \index{data\+Range\+Changed@{data\+Range\+Changed}!Q\+C\+P\+Color\+Map@{Q\+C\+P\+Color\+Map}}
@@ -365,11 +357,11 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_color_map_a5ffc703dc603c4fd942f36ea51b8c48d}
 
 
-Definition at line 3064 of file qcustomplot.\+h.
+Definition at line 3501 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-3064 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_color_map_ab28a4b2def408f83b9818799d5f18446}{mDataScaleType}; \}
+3501 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_color_map_ab28a4b2def408f83b9818799d5f18446}{mDataScaleType}; \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_color_map_a978d5d5c9f68cffef8c902b855c04490}{}\index{Q\+C\+P\+Color\+Map@{Q\+C\+P\+Color\+Map}!data\+Scale\+Type\+Changed@{data\+Scale\+Type\+Changed}}
 \index{data\+Scale\+Type\+Changed@{data\+Scale\+Type\+Changed}!Q\+C\+P\+Color\+Map@{Q\+C\+P\+Color\+Map}}
@@ -411,7 +403,7 @@ Implements \hyperlink{class_q_c_p_abstract_plottable_acbab5e30dcd04fd302b4a5902a
 
 
 
-Definition at line 20392 of file qcustomplot.\+cpp.
+Definition at line 22767 of file qcustomplot.\+cpp.
 
 
 
@@ -419,82 +411,99 @@ References Q\+C\+P\+Abstract\+Plottable\+::apply\+Default\+Antialiasing\+Hint(),
 
 
 \begin{DoxyCode}
-20393 \{
-20394   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_a986009324aee1fc5f696db46bd03dde5}{isEmpty}()) \textcolor{keywordflow}{return};
-20395   \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_abstract_plottable_a426f42e254d0f8ce5436a868c61a6827}{mKeyAxis} || !\hyperlink{class_q_c_p_abstract_plottable_a2901452ca4aea911a1827717934a4bda}{mValueAxis}) \textcolor{keywordflow}{return};
-20396   \hyperlink{class_q_c_p_abstract_plottable_a76e9d6cc7972dc1528f526d163766aca}{applyDefaultAntialiasingHint}(painter);
-20397   
-20398   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_ad3cc682da2ac14e5acdbc05cf4d3d93b}{mDataModified} || \hyperlink{class_q_c_p_color_map_ac9aea6a5c193d7fa866bc7b26e79ef2c}{mMapImageInvalidated})
-20399     \hyperlink{class_q_c_p_color_map_a5efcea591bb5486d968af520a4d43c3a}{updateMapImage}();
-20400   
-20401   \textcolor{comment}{// use buffer if painting vectorized (PDF):}
-20402   \textcolor{keywordtype}{bool} useBuffer = painter->\hyperlink{class_q_c_p_painter_a99b89eaf5363faaa1e1e6162856f436c}{modes}().testFlag(\hyperlink{class_q_c_p_painter_a156cf16444ff5e0d81a73c615fdb156daeda679cd55dcd468341d07d48a30b6ab}{QCPPainter::pmVectorized});
-20403   \hyperlink{class_q_c_p_painter}{QCPPainter} *localPainter = painter; \textcolor{comment}{// will be redirected to paint on mapBuffer if painting
-       vectorized}
-20404   QRectF mapBufferTarget; \textcolor{comment}{// the rect in absolute widget coordinates where the visible map portion/buffer
-       will end up in}
-20405   QPixmap mapBuffer;
-20406   \textcolor{keywordtype}{double} mapBufferPixelRatio = 3; \textcolor{comment}{// factor by which DPI is increased in embedded bitmaps}
-20407   \textcolor{keywordflow}{if} (useBuffer)
-20408   \{
-20409     mapBufferTarget = painter->clipRegion().boundingRect();
-20410     mapBuffer = QPixmap((mapBufferTarget.size()*mapBufferPixelRatio).toSize());
-20411     mapBuffer.fill(Qt::transparent);
-20412     localPainter = \textcolor{keyword}{new} \hyperlink{class_q_c_p_painter}{QCPPainter}(&mapBuffer);
-20413     localPainter->scale(mapBufferPixelRatio, mapBufferPixelRatio);
-20414     localPainter->translate(-mapBufferTarget.topLeft());
-20415   \}
-20416   
-20417   QRectF imageRect = QRectF(\hyperlink{class_q_c_p_abstract_plottable_ade710a776104b14c1c835168ce1bfc5c}{coordsToPixels}(\hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->
-      \hyperlink{class_q_c_p_color_map_data_a4765180639742460f64ab6c97c745c08}{keyRange}().\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}, \hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_a025be4d7ba0494fd7b38a5a56c737f2a}{valueRange}().\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}),
-20418                             \hyperlink{class_q_c_p_abstract_plottable_ade710a776104b14c1c835168ce1bfc5c}{coordsToPixels}(\hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->
-      \hyperlink{class_q_c_p_color_map_data_a4765180639742460f64ab6c97c745c08}{keyRange}().\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper}, \hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_a025be4d7ba0494fd7b38a5a56c737f2a}{valueRange}().\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper})).normalized();
-20419   \textcolor{comment}{// extend imageRect to contain outer halves/quarters of bordering/cornering pixels (cells are centered on
-       map range boundary):}
-20420   \textcolor{keywordtype}{double} halfCellWidth = 0; \textcolor{comment}{// in pixels}
-20421   \textcolor{keywordtype}{double} halfCellHeight = 0; \textcolor{comment}{// in pixels}
-20422   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_abstract_plottable_a72c7a09c22963f2c943f07112b311103}{keyAxis}()->orientation() == Qt::Horizontal)
-20423   \{
-20424     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_aa8d7811686fdfea964947715210c4af8}{keySize}() > 1)
-20425       halfCellWidth = 0.5*imageRect.width()/(double)(\hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_aa8d7811686fdfea964947715210c4af8}{keySize}()-1);
-20426     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_ab880be6bc587f34e8d22fe77ef6b57e9}{valueSize}() > 1)
-20427       halfCellHeight = 0.5*imageRect.height()/(double)(\hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->
-      \hyperlink{class_q_c_p_color_map_data_ab880be6bc587f34e8d22fe77ef6b57e9}{valueSize}()-1);
-20428   \} \textcolor{keywordflow}{else} \textcolor{comment}{// keyAxis orientation is Qt::Vertical}
-20429   \{
-20430     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_aa8d7811686fdfea964947715210c4af8}{keySize}() > 1)
-20431       halfCellHeight = 0.5*imageRect.height()/(double)(\hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_aa8d7811686fdfea964947715210c4af8}{keySize}()-1);
-20432     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_ab880be6bc587f34e8d22fe77ef6b57e9}{valueSize}() > 1)
-20433       halfCellWidth = 0.5*imageRect.width()/(double)(\hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_ab880be6bc587f34e8d22fe77ef6b57e9}{valueSize}()-1);
-20434   \}
-20435   imageRect.adjust(-halfCellWidth, -halfCellHeight, halfCellWidth, halfCellHeight);
-20436   \textcolor{keywordtype}{bool} mirrorX = (\hyperlink{class_q_c_p_abstract_plottable_a72c7a09c22963f2c943f07112b311103}{keyAxis}()->\hyperlink{class_q_c_p_axis_a57483f2f60145ddc9e63f3af53959265}{orientation}() == Qt::Horizontal ? 
-      \hyperlink{class_q_c_p_abstract_plottable_a72c7a09c22963f2c943f07112b311103}{keyAxis}() : \hyperlink{class_q_c_p_abstract_plottable_a3106f9d34d330a6097a8ec5905e5b519}{valueAxis}())->rangeReversed();
-20437   \textcolor{keywordtype}{bool} mirrorY = (\hyperlink{class_q_c_p_abstract_plottable_a3106f9d34d330a6097a8ec5905e5b519}{valueAxis}()->\hyperlink{class_q_c_p_axis_a57483f2f60145ddc9e63f3af53959265}{orientation}() == Qt::Vertical ? 
-      \hyperlink{class_q_c_p_abstract_plottable_a3106f9d34d330a6097a8ec5905e5b519}{valueAxis}() : keyAxis())->rangeReversed();
-20438   \textcolor{keywordtype}{bool} smoothBackup = localPainter->renderHints().testFlag(QPainter::SmoothPixmapTransform);
-20439   localPainter->setRenderHint(QPainter::SmoothPixmapTransform, \hyperlink{class_q_c_p_color_map_af77e5eba9a844592648edeb6fbe834f1}{mInterpolate});
-20440   QRegion clipBackup;
-20441   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_ac2e9425fe4381b496726e1c09f978302}{mTightBoundary})
-20442   \{
-20443     clipBackup = localPainter->clipRegion();
-20444     QRectF tightClipRect = QRectF(\hyperlink{class_q_c_p_abstract_plottable_ade710a776104b14c1c835168ce1bfc5c}{coordsToPixels}(\hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->
-      \hyperlink{class_q_c_p_color_map_data_a4765180639742460f64ab6c97c745c08}{keyRange}().\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}, \hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_a025be4d7ba0494fd7b38a5a56c737f2a}{valueRange}().\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}),
-20445                                   \hyperlink{class_q_c_p_abstract_plottable_ade710a776104b14c1c835168ce1bfc5c}{coordsToPixels}(\hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->
-      \hyperlink{class_q_c_p_color_map_data_a4765180639742460f64ab6c97c745c08}{keyRange}().\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper}, \hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_a025be4d7ba0494fd7b38a5a56c737f2a}{valueRange}().\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper})).normalized();
-20446     localPainter->setClipRect(tightClipRect, Qt::IntersectClip);
-20447   \}
-20448   localPainter->drawImage(imageRect, \hyperlink{class_q_c_p_color_map_a66110813b42eca78b64095b2a1f285a0}{mMapImage}.mirrored(mirrorX, mirrorY));
-20449   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_ac2e9425fe4381b496726e1c09f978302}{mTightBoundary})
-20450     localPainter->setClipRegion(clipBackup);
-20451   localPainter->setRenderHint(QPainter::SmoothPixmapTransform, smoothBackup);
-20452   
-20453   \textcolor{keywordflow}{if} (useBuffer) \textcolor{comment}{// localPainter painted to mapBuffer, so now draw buffer with original painter}
-20454   \{
-20455     \textcolor{keyword}{delete} localPainter;
-20456     painter->drawPixmap(mapBufferTarget.toRect(), mapBuffer);
-20457   \}
-20458 \}
+22767                                           \{
+22768   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_a986009324aee1fc5f696db46bd03dde5}{isEmpty}())
+22769     \textcolor{keywordflow}{return};
+22770   \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_abstract_plottable_a426f42e254d0f8ce5436a868c61a6827}{mKeyAxis} || !\hyperlink{class_q_c_p_abstract_plottable_a2901452ca4aea911a1827717934a4bda}{mValueAxis})
+22771     \textcolor{keywordflow}{return};
+22772   \hyperlink{class_q_c_p_abstract_plottable_a76e9d6cc7972dc1528f526d163766aca}{applyDefaultAntialiasingHint}(painter);
+22773 
+22774   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_ad3cc682da2ac14e5acdbc05cf4d3d93b}{mDataModified} || \hyperlink{class_q_c_p_color_map_ac9aea6a5c193d7fa866bc7b26e79ef2c}{mMapImageInvalidated})
+22775     \hyperlink{class_q_c_p_color_map_a5efcea591bb5486d968af520a4d43c3a}{updateMapImage}();
+22776 
+22777   \textcolor{comment}{// use buffer if painting vectorized (PDF):}
+22778   \textcolor{keywordtype}{bool} useBuffer = painter->\hyperlink{class_q_c_p_painter_a99b89eaf5363faaa1e1e6162856f436c}{modes}().testFlag(\hyperlink{class_q_c_p_painter_a156cf16444ff5e0d81a73c615fdb156daeda679cd55dcd468341d07d48a30b6ab}{QCPPainter::pmVectorized});
+22779   \hyperlink{class_q_c_p_painter}{QCPPainter} *localPainter = painter; \textcolor{comment}{// will be redirected to paint on}
+22780                                       \textcolor{comment}{// mapBuffer if painting vectorized}
+22781   QRectF mapBufferTarget; \textcolor{comment}{// the rect in absolute widget coordinates where the}
+22782                           \textcolor{comment}{// visible map portion/buffer will end up in}
+22783   QPixmap mapBuffer;
+22784   \textcolor{keywordtype}{double} mapBufferPixelRatio =
+22785       3; \textcolor{comment}{// factor by which DPI is increased in embedded bitmaps}
+22786   \textcolor{keywordflow}{if} (useBuffer) \{
+22787     mapBufferTarget = painter->clipRegion().boundingRect();
+22788     mapBuffer =
+22789         QPixmap((mapBufferTarget.size() * mapBufferPixelRatio).toSize());
+22790     mapBuffer.fill(Qt::transparent);
+22791     localPainter = \textcolor{keyword}{new} \hyperlink{class_q_c_p_painter}{QCPPainter}(&mapBuffer);
+22792     localPainter->scale(mapBufferPixelRatio, mapBufferPixelRatio);
+22793     localPainter->translate(-mapBufferTarget.topLeft());
+22794   \}
+22795 
+22796   QRectF imageRect =
+22797       QRectF(\hyperlink{class_q_c_p_abstract_plottable_ade710a776104b14c1c835168ce1bfc5c}{coordsToPixels}(\hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_a4765180639742460f64ab6c97c745c08}{keyRange}().
+      \hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower},
+22798                             \hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_a025be4d7ba0494fd7b38a5a56c737f2a}{valueRange}().\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}),
+22799              \hyperlink{class_q_c_p_abstract_plottable_ade710a776104b14c1c835168ce1bfc5c}{coordsToPixels}(\hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_a4765180639742460f64ab6c97c745c08}{keyRange}().
+      \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper},
+22800                             \hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_a025be4d7ba0494fd7b38a5a56c737f2a}{valueRange}().\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper})).normalized();
+22801   \textcolor{comment}{// extend imageRect to contain outer halves/quarters of bordering/cornering}
+22802   \textcolor{comment}{// pixels (cells are centered on map range boundary):}
+22803   \textcolor{keywordtype}{double} halfCellWidth = 0;  \textcolor{comment}{// in pixels}
+22804   \textcolor{keywordtype}{double} halfCellHeight = 0; \textcolor{comment}{// in pixels}
+22805   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_abstract_plottable_a72c7a09c22963f2c943f07112b311103}{keyAxis}()->orientation() == Qt::Horizontal) \{
+22806     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_aa8d7811686fdfea964947715210c4af8}{keySize}() > 1)
+22807       halfCellWidth =
+22808           0.5 * imageRect.width() / (double)(\hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_aa8d7811686fdfea964947715210c4af8}{keySize}() - 1);
+22809     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_ab880be6bc587f34e8d22fe77ef6b57e9}{valueSize}() > 1)
+22810       halfCellHeight =
+22811           0.5 * imageRect.height() / (double)(\hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_ab880be6bc587f34e8d22fe77ef6b57e9}{valueSize}() - 1);
+22812   \} \textcolor{keywordflow}{else} \textcolor{comment}{// keyAxis orientation is Qt::Vertical}
+22813   \{
+22814     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_aa8d7811686fdfea964947715210c4af8}{keySize}() > 1)
+22815       halfCellHeight =
+22816           0.5 * imageRect.height() / (double)(\hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_aa8d7811686fdfea964947715210c4af8}{keySize}() - 1);
+22817     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_ab880be6bc587f34e8d22fe77ef6b57e9}{valueSize}() > 1)
+22818       halfCellWidth =
+22819           0.5 * imageRect.width() / (double)(\hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_ab880be6bc587f34e8d22fe77ef6b57e9}{valueSize}() - 1);
+22820   \}
+22821   imageRect.adjust(-halfCellWidth, -halfCellHeight, halfCellWidth,
+22822                    halfCellHeight);
+22823   \textcolor{keywordtype}{bool} mirrorX =
+22824       (\hyperlink{class_q_c_p_abstract_plottable_a72c7a09c22963f2c943f07112b311103}{keyAxis}()->\hyperlink{class_q_c_p_axis_a57483f2f60145ddc9e63f3af53959265}{orientation}() == Qt::Horizontal ? \hyperlink{class_q_c_p_abstract_plottable_a72c7a09c22963f2c943f07112b311103}{keyAxis}() : 
+      \hyperlink{class_q_c_p_abstract_plottable_a3106f9d34d330a6097a8ec5905e5b519}{valueAxis}())
+22825           ->rangeReversed();
+22826   \textcolor{keywordtype}{bool} mirrorY =
+22827       (\hyperlink{class_q_c_p_abstract_plottable_a3106f9d34d330a6097a8ec5905e5b519}{valueAxis}()->\hyperlink{class_q_c_p_axis_a57483f2f60145ddc9e63f3af53959265}{orientation}() == Qt::Vertical ? 
+      \hyperlink{class_q_c_p_abstract_plottable_a3106f9d34d330a6097a8ec5905e5b519}{valueAxis}() : keyAxis())
+22828           ->rangeReversed();
+22829   \textcolor{keywordtype}{bool} smoothBackup =
+22830       localPainter->renderHints().testFlag(QPainter::SmoothPixmapTransform);
+22831   localPainter->setRenderHint(QPainter::SmoothPixmapTransform, \hyperlink{class_q_c_p_color_map_af77e5eba9a844592648edeb6fbe834f1}{mInterpolate});
+22832   QRegion clipBackup;
+22833   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_ac2e9425fe4381b496726e1c09f978302}{mTightBoundary}) \{
+22834     clipBackup = localPainter->clipRegion();
+22835     QRectF tightClipRect =
+22836         QRectF(\hyperlink{class_q_c_p_abstract_plottable_ade710a776104b14c1c835168ce1bfc5c}{coordsToPixels}(\hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_a4765180639742460f64ab6c97c745c08}{keyRange}().
+      \hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower},
+22837                               \hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_a025be4d7ba0494fd7b38a5a56c737f2a}{valueRange}().\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}),
+22838                \hyperlink{class_q_c_p_abstract_plottable_ade710a776104b14c1c835168ce1bfc5c}{coordsToPixels}(\hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_a4765180639742460f64ab6c97c745c08}{keyRange}().
+      \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper},
+22839                               \hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_a025be4d7ba0494fd7b38a5a56c737f2a}{valueRange}().\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper})).normalized();
+22840     localPainter->setClipRect(tightClipRect, Qt::IntersectClip);
+22841   \}
+22842   localPainter->drawImage(imageRect, \hyperlink{class_q_c_p_color_map_a66110813b42eca78b64095b2a1f285a0}{mMapImage}.mirrored(mirrorX, mirrorY));
+22843   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_ac2e9425fe4381b496726e1c09f978302}{mTightBoundary})
+22844     localPainter->setClipRegion(clipBackup);
+22845   localPainter->setRenderHint(QPainter::SmoothPixmapTransform, smoothBackup);
+22846 
+22847   \textcolor{keywordflow}{if} (useBuffer) \textcolor{comment}{// localPainter painted to mapBuffer, so now draw buffer with}
+22848                  \textcolor{comment}{// original painter}
+22849   \{
+22850     \textcolor{keyword}{delete} localPainter;
+22851     painter->drawPixmap(mapBufferTarget.toRect(), mapBuffer);
+22852   \}
+22853 \}
 \end{DoxyCode}
 
 
@@ -521,7 +530,7 @@ Implements \hyperlink{class_q_c_p_abstract_plottable_a9a450783fd9ed539e589999fd3
 
 
 
-Definition at line 20461 of file qcustomplot.\+cpp.
+Definition at line 22856 of file qcustomplot.\+cpp.
 
 
 
@@ -529,24 +538,23 @@ References Q\+C\+P\+Abstract\+Plottable\+::apply\+Default\+Antialiasing\+Hint(),
 
 
 \begin{DoxyCode}
-20462 \{
-20463   \hyperlink{class_q_c_p_abstract_plottable_a76e9d6cc7972dc1528f526d163766aca}{applyDefaultAntialiasingHint}(painter);
-20464   \textcolor{comment}{// draw map thumbnail:}
-20465   \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_color_map_ada522988db02cb531767d38c5029ef60}{mLegendIcon}.isNull())
-20466   \{
-20467     QPixmap scaledIcon = \hyperlink{class_q_c_p_color_map_ada522988db02cb531767d38c5029ef60}{mLegendIcon}.scaled(\hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.size().toSize(), Qt::KeepAspectRatio, 
-      Qt::FastTransformation);
-20468     QRectF iconRect = QRectF(0, 0, scaledIcon.width(), scaledIcon.height());
-20469     iconRect.moveCenter(\hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.center());
-20470     painter->drawPixmap(iconRect.topLeft(), scaledIcon);
-20471   \}
-20472   \textcolor{comment}{/*}
-20473 \textcolor{comment}{  // draw frame:}
-20474 \textcolor{comment}{  painter->setBrush(Qt::NoBrush);}
-20475 \textcolor{comment}{  painter->setPen(Qt::black);}
-20476 \textcolor{comment}{  painter->drawRect(rect.adjusted(1, 1, 0, 0));}
-20477 \textcolor{comment}{  */}
-20478 \}
+22857                                                            \{
+22858   \hyperlink{class_q_c_p_abstract_plottable_a76e9d6cc7972dc1528f526d163766aca}{applyDefaultAntialiasingHint}(painter);
+22859   \textcolor{comment}{// draw map thumbnail:}
+22860   \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_color_map_ada522988db02cb531767d38c5029ef60}{mLegendIcon}.isNull()) \{
+22861     QPixmap scaledIcon = \hyperlink{class_q_c_p_color_map_ada522988db02cb531767d38c5029ef60}{mLegendIcon}.scaled(
+22862         \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.size().toSize(), Qt::KeepAspectRatio, Qt::FastTransformation);
+22863     QRectF iconRect = QRectF(0, 0, scaledIcon.width(), scaledIcon.height());
+22864     iconRect.moveCenter(\hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.center());
+22865     painter->drawPixmap(iconRect.topLeft(), scaledIcon);
+22866   \}
+22867   \textcolor{comment}{/*}
+22868 \textcolor{comment}{  // draw frame:}
+22869 \textcolor{comment}{  painter->setBrush(Qt::NoBrush);}
+22870 \textcolor{comment}{  painter->setPen(Qt::black);}
+22871 \textcolor{comment}{  painter->drawRect(rect.adjusted(1, 1, 0, 0));}
+22872 \textcolor{comment}{  */}
+22873 \}
 \end{DoxyCode}
 
 
@@ -573,7 +581,7 @@ Implements \hyperlink{class_q_c_p_abstract_plottable_a345d702b2e7e12c8cfdddff65b
 
 
 
-Definition at line 20481 of file qcustomplot.\+cpp.
+Definition at line 22876 of file qcustomplot.\+cpp.
 
 
 
@@ -581,25 +589,23 @@ References Q\+C\+P\+Color\+Map\+Data\+::key\+Range(), Q\+C\+P\+Range\+::lower, m
 
 
 \begin{DoxyCode}
-20482 \{
-20483   foundRange = \textcolor{keyword}{true};
-20484   \hyperlink{class_q_c_p_range}{QCPRange} result = \hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_a4765180639742460f64ab6c97c745c08}{keyRange}();
-20485   result.\hyperlink{class_q_c_p_range_af914a7740269b0604d0827c634a878a9}{normalize}();
-20486   \textcolor{keywordflow}{if} (inSignDomain == \hyperlink{class_q_c_p_abstract_plottable_a661743478a1d3c09d28ec2711d7653d8a02951859f243a4d24e779cfbb5471030}{QCPAbstractPlottable::sdPositive})
-20487   \{
-20488     \textcolor{keywordflow}{if} (result.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} <= 0 && result.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} > 0)
-20489       result.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} = result.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper}*1e-3;
-20490     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (result.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} <= 0 && result.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} <= 0)
-20491       foundRange = \textcolor{keyword}{false};
-20492   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (inSignDomain == \hyperlink{class_q_c_p_abstract_plottable_a661743478a1d3c09d28ec2711d7653d8a0fc9a70796ef60ad18ddd18056e6dc63}{QCPAbstractPlottable::sdNegative})
-20493   \{
-20494     \textcolor{keywordflow}{if} (result.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} >= 0 && result.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} < 0)
-20495       result.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} = result.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}*1e-3;
-20496     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (result.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} >= 0 && result.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} >= 0)
-20497       foundRange = \textcolor{keyword}{false};
-20498   \}
-20499   \textcolor{keywordflow}{return} result;
-20500 \}
+22877                                                                  \{
+22878   foundRange = \textcolor{keyword}{true};
+22879   \hyperlink{class_q_c_p_range}{QCPRange} result = \hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_a4765180639742460f64ab6c97c745c08}{keyRange}();
+22880   result.\hyperlink{class_q_c_p_range_af914a7740269b0604d0827c634a878a9}{normalize}();
+22881   \textcolor{keywordflow}{if} (inSignDomain == \hyperlink{class_q_c_p_abstract_plottable_a661743478a1d3c09d28ec2711d7653d8a02951859f243a4d24e779cfbb5471030}{QCPAbstractPlottable::sdPositive}) \{
+22882     \textcolor{keywordflow}{if} (result.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} <= 0 && result.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} > 0)
+22883       result.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} = result.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} * 1e-3;
+22884     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (result.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} <= 0 && result.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} <= 0)
+22885       foundRange = \textcolor{keyword}{false};
+22886   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (inSignDomain == \hyperlink{class_q_c_p_abstract_plottable_a661743478a1d3c09d28ec2711d7653d8a0fc9a70796ef60ad18ddd18056e6dc63}{QCPAbstractPlottable::sdNegative}) \{
+22887     \textcolor{keywordflow}{if} (result.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} >= 0 && result.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} < 0)
+22888       result.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} = result.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} * 1e-3;
+22889     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (result.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} >= 0 && result.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} >= 0)
+22890       foundRange = \textcolor{keyword}{false};
+22891   \}
+22892   \textcolor{keywordflow}{return} result;
+22893 \}
 \end{DoxyCode}
 
 
@@ -626,7 +632,7 @@ Implements \hyperlink{class_q_c_p_abstract_plottable_aa3331b415b5939fe4df60b7883
 
 
 
-Definition at line 20503 of file qcustomplot.\+cpp.
+Definition at line 22896 of file qcustomplot.\+cpp.
 
 
 
@@ -634,25 +640,23 @@ References Q\+C\+P\+Range\+::lower, m\+Map\+Data, Q\+C\+P\+Range\+::normalize(),
 
 
 \begin{DoxyCode}
-20504 \{
-20505   foundRange = \textcolor{keyword}{true};
-20506   \hyperlink{class_q_c_p_range}{QCPRange} result = \hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_a025be4d7ba0494fd7b38a5a56c737f2a}{valueRange}();
-20507   result.\hyperlink{class_q_c_p_range_af914a7740269b0604d0827c634a878a9}{normalize}();
-20508   \textcolor{keywordflow}{if} (inSignDomain == \hyperlink{class_q_c_p_abstract_plottable_a661743478a1d3c09d28ec2711d7653d8a02951859f243a4d24e779cfbb5471030}{QCPAbstractPlottable::sdPositive})
-20509   \{
-20510     \textcolor{keywordflow}{if} (result.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} <= 0 && result.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} > 0)
-20511       result.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} = result.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper}*1e-3;
-20512     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (result.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} <= 0 && result.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} <= 0)
-20513       foundRange = \textcolor{keyword}{false};
-20514   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (inSignDomain == \hyperlink{class_q_c_p_abstract_plottable_a661743478a1d3c09d28ec2711d7653d8a0fc9a70796ef60ad18ddd18056e6dc63}{QCPAbstractPlottable::sdNegative})
-20515   \{
-20516     \textcolor{keywordflow}{if} (result.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} >= 0 && result.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} < 0)
-20517       result.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} = result.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}*1e-3;
-20518     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (result.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} >= 0 && result.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} >= 0)
-20519       foundRange = \textcolor{keyword}{false};
-20520   \}
-20521   \textcolor{keywordflow}{return} result;
-20522 \}
+22897                                                                    \{
+22898   foundRange = \textcolor{keyword}{true};
+22899   \hyperlink{class_q_c_p_range}{QCPRange} result = \hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_a025be4d7ba0494fd7b38a5a56c737f2a}{valueRange}();
+22900   result.\hyperlink{class_q_c_p_range_af914a7740269b0604d0827c634a878a9}{normalize}();
+22901   \textcolor{keywordflow}{if} (inSignDomain == \hyperlink{class_q_c_p_abstract_plottable_a661743478a1d3c09d28ec2711d7653d8a02951859f243a4d24e779cfbb5471030}{QCPAbstractPlottable::sdPositive}) \{
+22902     \textcolor{keywordflow}{if} (result.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} <= 0 && result.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} > 0)
+22903       result.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} = result.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} * 1e-3;
+22904     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (result.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} <= 0 && result.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} <= 0)
+22905       foundRange = \textcolor{keyword}{false};
+22906   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (inSignDomain == \hyperlink{class_q_c_p_abstract_plottable_a661743478a1d3c09d28ec2711d7653d8a0fc9a70796ef60ad18ddd18056e6dc63}{QCPAbstractPlottable::sdNegative}) \{
+22907     \textcolor{keywordflow}{if} (result.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} >= 0 && result.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} < 0)
+22908       result.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} = result.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} * 1e-3;
+22909     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (result.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} >= 0 && result.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} >= 0)
+22910       foundRange = \textcolor{keyword}{false};
+22911   \}
+22912   \textcolor{keywordflow}{return} result;
+22913 \}
 \end{DoxyCode}
 
 
@@ -674,7 +678,7 @@ Here is the call graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_color_map_a9f967a971474e32345290b79cf107809}
 
 
-Definition at line 3067 of file qcustomplot.\+h.
+Definition at line 3504 of file qcustomplot.\+h.
 
 
 
@@ -682,7 +686,7 @@ Referenced by set\+Gradient().
 
 
 \begin{DoxyCode}
-3067 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_color_map_aab77fe9a8df6f0486ab3507cc5f278fa}{mGradient}; \}
+3504 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_color_map_aab77fe9a8df6f0486ab3507cc5f278fa}{mGradient}; \}
 \end{DoxyCode}
 
 
@@ -731,11 +735,11 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_color_map_a39019675a7ad00efad7212b96c0ccc95}
 
 
-Definition at line 3065 of file qcustomplot.\+h.
+Definition at line 3502 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-3065 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_color_map_af77e5eba9a844592648edeb6fbe834f1}{mInterpolate}; \}
+3502 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_color_map_af77e5eba9a844592648edeb6fbe834f1}{mInterpolate}; \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_color_map_a856608fa3dd1cc290bcd5f29a5575774}{}\index{Q\+C\+P\+Color\+Map@{Q\+C\+P\+Color\+Map}!rescale\+Data\+Range@{rescale\+Data\+Range}}
 \index{rescale\+Data\+Range@{rescale\+Data\+Range}!Q\+C\+P\+Color\+Map@{Q\+C\+P\+Color\+Map}}
@@ -753,7 +757,7 @@ The minimum and maximum values of the data set are buffered in the internal \hyp
 \end{DoxySeeAlso}
 
 
-Definition at line 20255 of file qcustomplot.\+cpp.
+Definition at line 22566 of file qcustomplot.\+cpp.
 
 
 
@@ -761,11 +765,11 @@ References Q\+C\+P\+Color\+Map\+Data\+::data\+Bounds(), m\+Map\+Data, Q\+C\+P\+C
 
 
 \begin{DoxyCode}
-20256 \{
-20257   \textcolor{keywordflow}{if} (recalculateDataBounds)
-20258     \hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_ab235ade8a4d64bd3adb26a99b3dd57ee}{recalculateDataBounds}();
-20259   \hyperlink{class_q_c_p_color_map_a980b42837821159786a85b4b7dcb8774}{setDataRange}(\hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_a9ff433248ee226ea0c469ae6cc2489fd}{dataBounds}());
-20260 \}
+22566                                                              \{
+22567   \textcolor{keywordflow}{if} (recalculateDataBounds)
+22568     \hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_ab235ade8a4d64bd3adb26a99b3dd57ee}{recalculateDataBounds}();
+22569   \hyperlink{class_q_c_p_color_map_a980b42837821159786a85b4b7dcb8774}{setDataRange}(\hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_a9ff433248ee226ea0c469ae6cc2489fd}{dataBounds}());
+22570 \}
 \end{DoxyCode}
 
 
@@ -810,7 +814,7 @@ Implements \hyperlink{class_q_c_p_abstract_plottable_a38efe9641d972992a3d44204bc
 
 
 
-Definition at line 20299 of file qcustomplot.\+cpp.
+Definition at line 22620 of file qcustomplot.\+cpp.
 
 
 
@@ -818,23 +822,24 @@ References Q\+C\+P\+Range\+::contains(), Q\+C\+P\+Color\+Map\+Data\+::key\+Range
 
 
 \begin{DoxyCode}
-20300 \{
-20301   Q\_UNUSED(details)
-20302   if (onlySelectable && !\hyperlink{class_q_c_p_abstract_plottable_aceee52342c8e75727abcbd164986fdcb}{mSelectable})
-20303     return -1;
-20304   if (!\hyperlink{class_q_c_p_abstract_plottable_a426f42e254d0f8ce5436a868c61a6827}{mKeyAxis} || !\hyperlink{class_q_c_p_abstract_plottable_a2901452ca4aea911a1827717934a4bda}{mValueAxis}) \{ qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"invalid key or value axis"};
-       \textcolor{keywordflow}{return} -1; \}
-20305   
-20306   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_abstract_plottable_a426f42e254d0f8ce5436a868c61a6827}{mKeyAxis}.data()->axisRect()->rect().contains(pos.toPoint()))
-20307   \{
-20308     \textcolor{keywordtype}{double} posKey, posValue;
-20309     \hyperlink{class_q_c_p_abstract_plottable_a10408828446e9e0681c46d65120f382e}{pixelsToCoords}(pos, posKey, posValue);
-20310     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_a4765180639742460f64ab6c97c745c08}{keyRange}().\hyperlink{class_q_c_p_range_a030ce95b527c32e01414d0351347b46d}{contains}(posKey) && 
-      \hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_a025be4d7ba0494fd7b38a5a56c737f2a}{valueRange}().\hyperlink{class_q_c_p_range_a030ce95b527c32e01414d0351347b46d}{contains}(posValue))
-20311       \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_a7b738074c75e80070ef6a10263c6cd69}{selectionTolerance}()*0.99;
-20312   \}
-20313   \textcolor{keywordflow}{return} -1;
-20314 \}
+22621                                                         \{
+22622   Q\_UNUSED(details)
+22623   if (onlySelectable && !\hyperlink{class_q_c_p_abstract_plottable_aceee52342c8e75727abcbd164986fdcb}{mSelectable})
+22624     return -1;
+22625   if (!\hyperlink{class_q_c_p_abstract_plottable_a426f42e254d0f8ce5436a868c61a6827}{mKeyAxis} || !\hyperlink{class_q_c_p_abstract_plottable_a2901452ca4aea911a1827717934a4bda}{mValueAxis}) \{
+22626     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"invalid key or value axis"};
+22627     \textcolor{keywordflow}{return} -1;
+22628   \}
+22629 
+22630   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_abstract_plottable_a426f42e254d0f8ce5436a868c61a6827}{mKeyAxis}.data()->axisRect()->rect().contains(pos.toPoint())) \{
+22631     \textcolor{keywordtype}{double} posKey, posValue;
+22632     \hyperlink{class_q_c_p_abstract_plottable_a10408828446e9e0681c46d65120f382e}{pixelsToCoords}(pos, posKey, posValue);
+22633     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_a4765180639742460f64ab6c97c745c08}{keyRange}().\hyperlink{class_q_c_p_range_a030ce95b527c32e01414d0351347b46d}{contains}(posKey) &&
+22634         \hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_a025be4d7ba0494fd7b38a5a56c737f2a}{valueRange}().\hyperlink{class_q_c_p_range_a030ce95b527c32e01414d0351347b46d}{contains}(posValue))
+22635       \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_a7b738074c75e80070ef6a10263c6cd69}{selectionTolerance}() * 0.99;
+22636   \}
+22637   \textcolor{keywordflow}{return} -1;
+22638 \}
 \end{DoxyCode}
 
 
@@ -862,7 +867,7 @@ This function causes the color map to adopt the current color gradient, data ran
 
 Pass 0 as {\itshape color\+Scale} to disconnect the color scale from this color map again. 
 
-Definition at line 20209 of file qcustomplot.\+cpp.
+Definition at line 22495 of file qcustomplot.\+cpp.
 
 
 
@@ -870,48 +875,57 @@ References color\+Scale(), data\+Range\+Changed(), data\+Scale\+Type\+Changed(),
 
 
 \begin{DoxyCode}
-20210 \{
-20211   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_a95b4100bacc3387652c988b071ec9db7}{mColorScale}) \textcolor{comment}{// unconnect signals from old color scale}
-20212   \{
-20213     disconnect(\textcolor{keyword}{this}, SIGNAL(\hyperlink{class_q_c_p_color_map_a482980f2335d09cfb36dd95ba9663197}{dataRangeChanged}(\hyperlink{class_q_c_p_range}{QCPRange})), 
-      \hyperlink{class_q_c_p_color_map_a95b4100bacc3387652c988b071ec9db7}{mColorScale}.data(), SLOT(\hyperlink{class_q_c_p_color_map_a980b42837821159786a85b4b7dcb8774}{setDataRange}(\hyperlink{class_q_c_p_range}{QCPRange})));
-20214     disconnect(\textcolor{keyword}{this}, SIGNAL(\hyperlink{class_q_c_p_color_map_a978d5d5c9f68cffef8c902b855c04490}{dataScaleTypeChanged}(
-      \hyperlink{class_q_c_p_axis_a36d8e8658dbaa179bf2aeb973db2d6f0}{QCPAxis::ScaleType})), \hyperlink{class_q_c_p_color_map_a95b4100bacc3387652c988b071ec9db7}{mColorScale}.data(), SLOT(
-      \hyperlink{class_q_c_p_color_map_a9d20aa08e3c1f20f22908c45b9c06511}{setDataScaleType}(\hyperlink{class_q_c_p_axis_a36d8e8658dbaa179bf2aeb973db2d6f0}{QCPAxis::ScaleType})));
-20215     disconnect(\textcolor{keyword}{this}, SIGNAL(\hyperlink{class_q_c_p_color_map_abf4797f86e422ac6e0f732c4ff1a4d49}{gradientChanged}(\hyperlink{class_q_c_p_color_gradient}{QCPColorGradient})), 
-      \hyperlink{class_q_c_p_color_map_a95b4100bacc3387652c988b071ec9db7}{mColorScale}.data(), SLOT(\hyperlink{class_q_c_p_color_map_a7313c78360471cead3576341a2c50377}{setGradient}(\hyperlink{class_q_c_p_color_gradient}{QCPColorGradient})));
-20216     disconnect(\hyperlink{class_q_c_p_color_map_a95b4100bacc3387652c988b071ec9db7}{mColorScale}.data(), SIGNAL(\hyperlink{class_q_c_p_color_map_a482980f2335d09cfb36dd95ba9663197}{dataRangeChanged}(
-      \hyperlink{class_q_c_p_range}{QCPRange})), \textcolor{keyword}{this}, SLOT(\hyperlink{class_q_c_p_color_map_a980b42837821159786a85b4b7dcb8774}{setDataRange}(\hyperlink{class_q_c_p_range}{QCPRange})));
-20217     disconnect(\hyperlink{class_q_c_p_color_map_a95b4100bacc3387652c988b071ec9db7}{mColorScale}.data(), SIGNAL(\hyperlink{class_q_c_p_color_map_abf4797f86e422ac6e0f732c4ff1a4d49}{gradientChanged}(
-      \hyperlink{class_q_c_p_color_gradient}{QCPColorGradient})), \textcolor{keyword}{this}, SLOT(\hyperlink{class_q_c_p_color_map_a7313c78360471cead3576341a2c50377}{setGradient}(
-      \hyperlink{class_q_c_p_color_gradient}{QCPColorGradient})));
-20218     disconnect(\hyperlink{class_q_c_p_color_map_a95b4100bacc3387652c988b071ec9db7}{mColorScale}.data(), SIGNAL(\hyperlink{class_q_c_p_color_map_a978d5d5c9f68cffef8c902b855c04490}{dataScaleTypeChanged}(
-      \hyperlink{class_q_c_p_axis_a36d8e8658dbaa179bf2aeb973db2d6f0}{QCPAxis::ScaleType})), \textcolor{keyword}{this}, SLOT(\hyperlink{class_q_c_p_color_map_a9d20aa08e3c1f20f22908c45b9c06511}{setDataScaleType}(
+22495                                                          \{
+22496   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_a95b4100bacc3387652c988b071ec9db7}{mColorScale}) \textcolor{comment}{// unconnect signals from old color scale}
+22497   \{
+22498     disconnect(\textcolor{keyword}{this}, SIGNAL(\hyperlink{class_q_c_p_color_map_a482980f2335d09cfb36dd95ba9663197}{dataRangeChanged}(\hyperlink{class_q_c_p_range}{QCPRange})), 
+      \hyperlink{class_q_c_p_color_map_a95b4100bacc3387652c988b071ec9db7}{mColorScale}.data(),
+22499                SLOT(\hyperlink{class_q_c_p_color_map_a980b42837821159786a85b4b7dcb8774}{setDataRange}(\hyperlink{class_q_c_p_range}{QCPRange})));
+22500     disconnect(\textcolor{keyword}{this}, SIGNAL(\hyperlink{class_q_c_p_color_map_a978d5d5c9f68cffef8c902b855c04490}{dataScaleTypeChanged}(
+      \hyperlink{class_q_c_p_axis_a36d8e8658dbaa179bf2aeb973db2d6f0}{QCPAxis::ScaleType})),
+22501                \hyperlink{class_q_c_p_color_map_a95b4100bacc3387652c988b071ec9db7}{mColorScale}.data(), SLOT(\hyperlink{class_q_c_p_color_map_a9d20aa08e3c1f20f22908c45b9c06511}{setDataScaleType}(
       \hyperlink{class_q_c_p_axis_a36d8e8658dbaa179bf2aeb973db2d6f0}{QCPAxis::ScaleType})));
-20219   \}
-20220   \hyperlink{class_q_c_p_color_map_a95b4100bacc3387652c988b071ec9db7}{mColorScale} = \hyperlink{class_q_c_p_color_map_a6bd82e0b042a2ec4d64f40853a3b05e3}{colorScale};
-20221   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_a95b4100bacc3387652c988b071ec9db7}{mColorScale}) \textcolor{comment}{// connect signals to new color scale}
-20222   \{
-20223     \hyperlink{class_q_c_p_color_map_a7313c78360471cead3576341a2c50377}{setGradient}(\hyperlink{class_q_c_p_color_map_a95b4100bacc3387652c988b071ec9db7}{mColorScale}.data()->gradient());
-20224     \hyperlink{class_q_c_p_color_map_a980b42837821159786a85b4b7dcb8774}{setDataRange}(\hyperlink{class_q_c_p_color_map_a95b4100bacc3387652c988b071ec9db7}{mColorScale}.data()->dataRange());
-20225     \hyperlink{class_q_c_p_color_map_a9d20aa08e3c1f20f22908c45b9c06511}{setDataScaleType}(\hyperlink{class_q_c_p_color_map_a95b4100bacc3387652c988b071ec9db7}{mColorScale}.data()->dataScaleType());
-20226     connect(\textcolor{keyword}{this}, SIGNAL(\hyperlink{class_q_c_p_color_map_a482980f2335d09cfb36dd95ba9663197}{dataRangeChanged}(\hyperlink{class_q_c_p_range}{QCPRange})), 
-      \hyperlink{class_q_c_p_color_map_a95b4100bacc3387652c988b071ec9db7}{mColorScale}.data(), SLOT(\hyperlink{class_q_c_p_color_map_a980b42837821159786a85b4b7dcb8774}{setDataRange}(\hyperlink{class_q_c_p_range}{QCPRange})));
-20227     connect(\textcolor{keyword}{this}, SIGNAL(\hyperlink{class_q_c_p_color_map_a978d5d5c9f68cffef8c902b855c04490}{dataScaleTypeChanged}(
-      \hyperlink{class_q_c_p_axis_a36d8e8658dbaa179bf2aeb973db2d6f0}{QCPAxis::ScaleType})), \hyperlink{class_q_c_p_color_map_a95b4100bacc3387652c988b071ec9db7}{mColorScale}.data(), SLOT(
-      \hyperlink{class_q_c_p_color_map_a9d20aa08e3c1f20f22908c45b9c06511}{setDataScaleType}(\hyperlink{class_q_c_p_axis_a36d8e8658dbaa179bf2aeb973db2d6f0}{QCPAxis::ScaleType})));
-20228     connect(\textcolor{keyword}{this}, SIGNAL(\hyperlink{class_q_c_p_color_map_abf4797f86e422ac6e0f732c4ff1a4d49}{gradientChanged}(\hyperlink{class_q_c_p_color_gradient}{QCPColorGradient})), 
-      \hyperlink{class_q_c_p_color_map_a95b4100bacc3387652c988b071ec9db7}{mColorScale}.data(), SLOT(\hyperlink{class_q_c_p_color_map_a7313c78360471cead3576341a2c50377}{setGradient}(\hyperlink{class_q_c_p_color_gradient}{QCPColorGradient})));
-20229     connect(\hyperlink{class_q_c_p_color_map_a95b4100bacc3387652c988b071ec9db7}{mColorScale}.data(), SIGNAL(\hyperlink{class_q_c_p_color_map_a482980f2335d09cfb36dd95ba9663197}{dataRangeChanged}(
-      \hyperlink{class_q_c_p_range}{QCPRange})), \textcolor{keyword}{this}, SLOT(\hyperlink{class_q_c_p_color_map_a980b42837821159786a85b4b7dcb8774}{setDataRange}(\hyperlink{class_q_c_p_range}{QCPRange})));
-20230     connect(\hyperlink{class_q_c_p_color_map_a95b4100bacc3387652c988b071ec9db7}{mColorScale}.data(), SIGNAL(\hyperlink{class_q_c_p_color_map_abf4797f86e422ac6e0f732c4ff1a4d49}{gradientChanged}(
-      \hyperlink{class_q_c_p_color_gradient}{QCPColorGradient})), \textcolor{keyword}{this}, SLOT(\hyperlink{class_q_c_p_color_map_a7313c78360471cead3576341a2c50377}{setGradient}(
+22502     disconnect(\textcolor{keyword}{this}, SIGNAL(\hyperlink{class_q_c_p_color_map_abf4797f86e422ac6e0f732c4ff1a4d49}{gradientChanged}(\hyperlink{class_q_c_p_color_gradient}{QCPColorGradient})),
+22503                \hyperlink{class_q_c_p_color_map_a95b4100bacc3387652c988b071ec9db7}{mColorScale}.data(), SLOT(\hyperlink{class_q_c_p_color_map_a7313c78360471cead3576341a2c50377}{setGradient}(
       \hyperlink{class_q_c_p_color_gradient}{QCPColorGradient})));
-20231     connect(\hyperlink{class_q_c_p_color_map_a95b4100bacc3387652c988b071ec9db7}{mColorScale}.data(), SIGNAL(\hyperlink{class_q_c_p_color_map_a978d5d5c9f68cffef8c902b855c04490}{dataScaleTypeChanged}(
-      \hyperlink{class_q_c_p_axis_a36d8e8658dbaa179bf2aeb973db2d6f0}{QCPAxis::ScaleType})), \textcolor{keyword}{this}, SLOT(\hyperlink{class_q_c_p_color_map_a9d20aa08e3c1f20f22908c45b9c06511}{setDataScaleType}(
+22504     disconnect(\hyperlink{class_q_c_p_color_map_a95b4100bacc3387652c988b071ec9db7}{mColorScale}.data(), SIGNAL(\hyperlink{class_q_c_p_color_map_a482980f2335d09cfb36dd95ba9663197}{dataRangeChanged}(
+      \hyperlink{class_q_c_p_range}{QCPRange})), \textcolor{keyword}{this},
+22505                SLOT(\hyperlink{class_q_c_p_color_map_a980b42837821159786a85b4b7dcb8774}{setDataRange}(\hyperlink{class_q_c_p_range}{QCPRange})));
+22506     disconnect(\hyperlink{class_q_c_p_color_map_a95b4100bacc3387652c988b071ec9db7}{mColorScale}.data(), SIGNAL(\hyperlink{class_q_c_p_color_map_abf4797f86e422ac6e0f732c4ff1a4d49}{gradientChanged}(
+      \hyperlink{class_q_c_p_color_gradient}{QCPColorGradient})),
+22507                \textcolor{keyword}{this}, SLOT(\hyperlink{class_q_c_p_color_map_a7313c78360471cead3576341a2c50377}{setGradient}(\hyperlink{class_q_c_p_color_gradient}{QCPColorGradient})));
+22508     disconnect(\hyperlink{class_q_c_p_color_map_a95b4100bacc3387652c988b071ec9db7}{mColorScale}.data(),
+22509                SIGNAL(\hyperlink{class_q_c_p_color_map_a978d5d5c9f68cffef8c902b855c04490}{dataScaleTypeChanged}(
+      \hyperlink{class_q_c_p_axis_a36d8e8658dbaa179bf2aeb973db2d6f0}{QCPAxis::ScaleType})), \textcolor{keyword}{this},
+22510                SLOT(\hyperlink{class_q_c_p_color_map_a9d20aa08e3c1f20f22908c45b9c06511}{setDataScaleType}(\hyperlink{class_q_c_p_axis_a36d8e8658dbaa179bf2aeb973db2d6f0}{QCPAxis::ScaleType})));
+22511   \}
+22512   \hyperlink{class_q_c_p_color_map_a95b4100bacc3387652c988b071ec9db7}{mColorScale} = \hyperlink{class_q_c_p_color_map_a6bd82e0b042a2ec4d64f40853a3b05e3}{colorScale};
+22513   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_a95b4100bacc3387652c988b071ec9db7}{mColorScale}) \textcolor{comment}{// connect signals to new color scale}
+22514   \{
+22515     \hyperlink{class_q_c_p_color_map_a7313c78360471cead3576341a2c50377}{setGradient}(\hyperlink{class_q_c_p_color_map_a95b4100bacc3387652c988b071ec9db7}{mColorScale}.data()->gradient());
+22516     \hyperlink{class_q_c_p_color_map_a980b42837821159786a85b4b7dcb8774}{setDataRange}(\hyperlink{class_q_c_p_color_map_a95b4100bacc3387652c988b071ec9db7}{mColorScale}.data()->dataRange());
+22517     \hyperlink{class_q_c_p_color_map_a9d20aa08e3c1f20f22908c45b9c06511}{setDataScaleType}(\hyperlink{class_q_c_p_color_map_a95b4100bacc3387652c988b071ec9db7}{mColorScale}.data()->dataScaleType());
+22518     connect(\textcolor{keyword}{this}, SIGNAL(\hyperlink{class_q_c_p_color_map_a482980f2335d09cfb36dd95ba9663197}{dataRangeChanged}(\hyperlink{class_q_c_p_range}{QCPRange})), 
+      \hyperlink{class_q_c_p_color_map_a95b4100bacc3387652c988b071ec9db7}{mColorScale}.data(),
+22519             SLOT(\hyperlink{class_q_c_p_color_map_a980b42837821159786a85b4b7dcb8774}{setDataRange}(\hyperlink{class_q_c_p_range}{QCPRange})));
+22520     connect(\textcolor{keyword}{this}, SIGNAL(\hyperlink{class_q_c_p_color_map_a978d5d5c9f68cffef8c902b855c04490}{dataScaleTypeChanged}(
+      \hyperlink{class_q_c_p_axis_a36d8e8658dbaa179bf2aeb973db2d6f0}{QCPAxis::ScaleType})),
+22521             \hyperlink{class_q_c_p_color_map_a95b4100bacc3387652c988b071ec9db7}{mColorScale}.data(), SLOT(\hyperlink{class_q_c_p_color_map_a9d20aa08e3c1f20f22908c45b9c06511}{setDataScaleType}(
       \hyperlink{class_q_c_p_axis_a36d8e8658dbaa179bf2aeb973db2d6f0}{QCPAxis::ScaleType})));
-20232   \}
-20233 \}
+22522     connect(\textcolor{keyword}{this}, SIGNAL(\hyperlink{class_q_c_p_color_map_abf4797f86e422ac6e0f732c4ff1a4d49}{gradientChanged}(\hyperlink{class_q_c_p_color_gradient}{QCPColorGradient})), 
+      \hyperlink{class_q_c_p_color_map_a95b4100bacc3387652c988b071ec9db7}{mColorScale}.data(),
+22523             SLOT(\hyperlink{class_q_c_p_color_map_a7313c78360471cead3576341a2c50377}{setGradient}(\hyperlink{class_q_c_p_color_gradient}{QCPColorGradient})));
+22524     connect(\hyperlink{class_q_c_p_color_map_a95b4100bacc3387652c988b071ec9db7}{mColorScale}.data(), SIGNAL(\hyperlink{class_q_c_p_color_map_a482980f2335d09cfb36dd95ba9663197}{dataRangeChanged}(
+      \hyperlink{class_q_c_p_range}{QCPRange})), \textcolor{keyword}{this},
+22525             SLOT(\hyperlink{class_q_c_p_color_map_a980b42837821159786a85b4b7dcb8774}{setDataRange}(\hyperlink{class_q_c_p_range}{QCPRange})));
+22526     connect(\hyperlink{class_q_c_p_color_map_a95b4100bacc3387652c988b071ec9db7}{mColorScale}.data(), SIGNAL(\hyperlink{class_q_c_p_color_map_abf4797f86e422ac6e0f732c4ff1a4d49}{gradientChanged}(
+      \hyperlink{class_q_c_p_color_gradient}{QCPColorGradient})), \textcolor{keyword}{this},
+22527             SLOT(\hyperlink{class_q_c_p_color_map_a7313c78360471cead3576341a2c50377}{setGradient}(\hyperlink{class_q_c_p_color_gradient}{QCPColorGradient})));
+22528     connect(\hyperlink{class_q_c_p_color_map_a95b4100bacc3387652c988b071ec9db7}{mColorScale}.data(),
+22529             SIGNAL(\hyperlink{class_q_c_p_color_map_a978d5d5c9f68cffef8c902b855c04490}{dataScaleTypeChanged}(\hyperlink{class_q_c_p_axis_a36d8e8658dbaa179bf2aeb973db2d6f0}{QCPAxis::ScaleType})), \textcolor{keyword}{this},
+22530             SLOT(\hyperlink{class_q_c_p_color_map_a9d20aa08e3c1f20f22908c45b9c06511}{setDataScaleType}(\hyperlink{class_q_c_p_axis_a36d8e8658dbaa179bf2aeb973db2d6f0}{QCPAxis::ScaleType})));
+22531   \}
+22532 \}
 \end{DoxyCode}
 
 
@@ -936,7 +950,7 @@ Replaces the current \hyperlink{class_q_c_p_color_map_a3ae12c9ce842352037cd20ea5
 
 If {\itshape copy} is set to true, the {\itshape data} object will only be copied. if false, the color map takes ownership of the passed data and replaces the internal data pointer with it. This is significantly faster than copying for large datasets. 
 
-Definition at line 20089 of file qcustomplot.\+cpp.
+Definition at line 22362 of file qcustomplot.\+cpp.
 
 
 
@@ -944,23 +958,21 @@ References data(), m\+Map\+Data, and m\+Map\+Image\+Invalidated.
 
 
 \begin{DoxyCode}
-20090 \{
-20091   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData} == data)
-20092   \{
-20093     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"The data pointer is already in (and owned by) this plottable"} << \textcolor{keyword}{
-      reinterpret\_cast<}quintptr\textcolor{keyword}{>}(\hyperlink{class_q_c_p_color_map_a3ae12c9ce842352037cd20ea5267414f}{data});
-20094     \textcolor{keywordflow}{return};
-20095   \}
-20096   \textcolor{keywordflow}{if} (copy)
-20097   \{
-20098     *\hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData} = *\hyperlink{class_q_c_p_color_map_a3ae12c9ce842352037cd20ea5267414f}{data};
-20099   \} \textcolor{keywordflow}{else}
-20100   \{
-20101     \textcolor{keyword}{delete} \hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData};
-20102     \hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData} = \hyperlink{class_q_c_p_color_map_a3ae12c9ce842352037cd20ea5267414f}{data};
-20103   \}
-20104   \hyperlink{class_q_c_p_color_map_ac9aea6a5c193d7fa866bc7b26e79ef2c}{mMapImageInvalidated} = \textcolor{keyword}{true};
-20105 \}
+22362                                                           \{
+22363   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData} == data) \{
+22364     qDebug() << Q\_FUNC\_INFO
+22365              << \textcolor{stringliteral}{"The data pointer is already in (and owned by) this plottable"}
+22366              << \textcolor{keyword}{reinterpret\_cast<}quintptr\textcolor{keyword}{>}(\hyperlink{class_q_c_p_color_map_a3ae12c9ce842352037cd20ea5267414f}{data});
+22367     \textcolor{keywordflow}{return};
+22368   \}
+22369   \textcolor{keywordflow}{if} (copy) \{
+22370     *\hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData} = *\hyperlink{class_q_c_p_color_map_a3ae12c9ce842352037cd20ea5267414f}{data};
+22371   \} \textcolor{keywordflow}{else} \{
+22372     \textcolor{keyword}{delete} \hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData};
+22373     \hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData} = \hyperlink{class_q_c_p_color_map_a3ae12c9ce842352037cd20ea5267414f}{data};
+22374   \}
+22375   \hyperlink{class_q_c_p_color_map_ac9aea6a5c193d7fa866bc7b26e79ef2c}{mMapImageInvalidated} = \textcolor{keyword}{true};
+22376 \}
 \end{DoxyCode}
 
 
@@ -989,7 +1001,7 @@ To make the data range span the full range of the data set, use \hyperlink{class
 \end{DoxySeeAlso}
 
 
-Definition at line 20115 of file qcustomplot.\+cpp.
+Definition at line 22388 of file qcustomplot.\+cpp.
 
 
 
@@ -1001,19 +1013,19 @@ Referenced by rescale\+Data\+Range(), set\+Color\+Scale(), and set\+Data\+Scale\
 
 
 \begin{DoxyCode}
-20116 \{
-20117   \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_range_ab38bd4841c77c7bb86c9eea0f142dcc0}{QCPRange::validRange}(dataRange)) \textcolor{keywordflow}{return};
-20118   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_ab87609621d16cd3e9d52ad070b327b08}{mDataRange}.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} != dataRange.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} || \hyperlink{class_q_c_p_color_map_ab87609621d16cd3e9d52ad070b327b08}{mDataRange}.
-      \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} != dataRange.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper})
-20119   \{
-20120     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_ab28a4b2def408f83b9818799d5f18446}{mDataScaleType} == \hyperlink{class_q_c_p_axis_a36d8e8658dbaa179bf2aeb973db2d6f0abf5b785ad976618816dc6f79b73216d4}{QCPAxis::stLogarithmic})
-20121       \hyperlink{class_q_c_p_color_map_ab87609621d16cd3e9d52ad070b327b08}{mDataRange} = dataRange.\hyperlink{class_q_c_p_range_aaf6a9046e78d91eeb8e89584fe46b034}{sanitizedForLogScale}();
-20122     \textcolor{keywordflow}{else}
-20123       \hyperlink{class_q_c_p_color_map_ab87609621d16cd3e9d52ad070b327b08}{mDataRange} = dataRange.\hyperlink{class_q_c_p_range_a1ff029704c29a75adbc1dc36cecaf44c}{sanitizedForLinScale}();
-20124     \hyperlink{class_q_c_p_color_map_ac9aea6a5c193d7fa866bc7b26e79ef2c}{mMapImageInvalidated} = \textcolor{keyword}{true};
-20125     emit \hyperlink{class_q_c_p_color_map_a482980f2335d09cfb36dd95ba9663197}{dataRangeChanged}(\hyperlink{class_q_c_p_color_map_ab87609621d16cd3e9d52ad070b327b08}{mDataRange});
-20126   \}
-20127 \}
+22388                                                         \{
+22389   \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_range_ab38bd4841c77c7bb86c9eea0f142dcc0}{QCPRange::validRange}(dataRange))
+22390     \textcolor{keywordflow}{return};
+22391   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_ab87609621d16cd3e9d52ad070b327b08}{mDataRange}.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} != dataRange.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} ||
+22392       \hyperlink{class_q_c_p_color_map_ab87609621d16cd3e9d52ad070b327b08}{mDataRange}.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} != dataRange.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper}) \{
+22393     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_ab28a4b2def408f83b9818799d5f18446}{mDataScaleType} == \hyperlink{class_q_c_p_axis_a36d8e8658dbaa179bf2aeb973db2d6f0abf5b785ad976618816dc6f79b73216d4}{QCPAxis::stLogarithmic})
+22394       \hyperlink{class_q_c_p_color_map_ab87609621d16cd3e9d52ad070b327b08}{mDataRange} = dataRange.\hyperlink{class_q_c_p_range_aaf6a9046e78d91eeb8e89584fe46b034}{sanitizedForLogScale}();
+22395     \textcolor{keywordflow}{else}
+22396       \hyperlink{class_q_c_p_color_map_ab87609621d16cd3e9d52ad070b327b08}{mDataRange} = dataRange.\hyperlink{class_q_c_p_range_a1ff029704c29a75adbc1dc36cecaf44c}{sanitizedForLinScale}();
+22397     \hyperlink{class_q_c_p_color_map_ac9aea6a5c193d7fa866bc7b26e79ef2c}{mMapImageInvalidated} = \textcolor{keyword}{true};
+22398     emit \hyperlink{class_q_c_p_color_map_a482980f2335d09cfb36dd95ba9663197}{dataRangeChanged}(\hyperlink{class_q_c_p_color_map_ab87609621d16cd3e9d52ad070b327b08}{mDataRange});
+22399   \}
+22400 \}
 \end{DoxyCode}
 
 
@@ -1051,7 +1063,7 @@ Sets whether the data is correlated with the color gradient linearly or logarith
 \end{DoxySeeAlso}
 
 
-Definition at line 20134 of file qcustomplot.\+cpp.
+Definition at line 22408 of file qcustomplot.\+cpp.
 
 
 
@@ -1063,16 +1075,15 @@ Referenced by set\+Color\+Scale().
 
 
 \begin{DoxyCode}
-20135 \{
-20136   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_ab28a4b2def408f83b9818799d5f18446}{mDataScaleType} != scaleType)
-20137   \{
-20138     \hyperlink{class_q_c_p_color_map_ab28a4b2def408f83b9818799d5f18446}{mDataScaleType} = scaleType;
-20139     \hyperlink{class_q_c_p_color_map_ac9aea6a5c193d7fa866bc7b26e79ef2c}{mMapImageInvalidated} = \textcolor{keyword}{true};
-20140     emit \hyperlink{class_q_c_p_color_map_a978d5d5c9f68cffef8c902b855c04490}{dataScaleTypeChanged}(\hyperlink{class_q_c_p_color_map_ab28a4b2def408f83b9818799d5f18446}{mDataScaleType});
-20141     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_ab28a4b2def408f83b9818799d5f18446}{mDataScaleType} == \hyperlink{class_q_c_p_axis_a36d8e8658dbaa179bf2aeb973db2d6f0abf5b785ad976618816dc6f79b73216d4}{QCPAxis::stLogarithmic})
-20142       \hyperlink{class_q_c_p_color_map_a980b42837821159786a85b4b7dcb8774}{setDataRange}(\hyperlink{class_q_c_p_color_map_ab87609621d16cd3e9d52ad070b327b08}{mDataRange}.\hyperlink{class_q_c_p_range_aaf6a9046e78d91eeb8e89584fe46b034}{sanitizedForLogScale}());
-20143   \}
-20144 \}
+22408                                                              \{
+22409   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_ab28a4b2def408f83b9818799d5f18446}{mDataScaleType} != scaleType) \{
+22410     \hyperlink{class_q_c_p_color_map_ab28a4b2def408f83b9818799d5f18446}{mDataScaleType} = scaleType;
+22411     \hyperlink{class_q_c_p_color_map_ac9aea6a5c193d7fa866bc7b26e79ef2c}{mMapImageInvalidated} = \textcolor{keyword}{true};
+22412     emit \hyperlink{class_q_c_p_color_map_a978d5d5c9f68cffef8c902b855c04490}{dataScaleTypeChanged}(\hyperlink{class_q_c_p_color_map_ab28a4b2def408f83b9818799d5f18446}{mDataScaleType});
+22413     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_ab28a4b2def408f83b9818799d5f18446}{mDataScaleType} == \hyperlink{class_q_c_p_axis_a36d8e8658dbaa179bf2aeb973db2d6f0abf5b785ad976618816dc6f79b73216d4}{QCPAxis::stLogarithmic})
+22414       \hyperlink{class_q_c_p_color_map_a980b42837821159786a85b4b7dcb8774}{setDataRange}(\hyperlink{class_q_c_p_color_map_ab87609621d16cd3e9d52ad070b327b08}{mDataRange}.\hyperlink{class_q_c_p_range_aaf6a9046e78d91eeb8e89584fe46b034}{sanitizedForLogScale}());
+22415   \}
+22416 \}
 \end{DoxyCode}
 
 
@@ -1112,7 +1123,7 @@ The colors defined by the gradient will be used to represent data values in the 
 \end{DoxySeeAlso}
 
 
-Definition at line 20157 of file qcustomplot.\+cpp.
+Definition at line 22433 of file qcustomplot.\+cpp.
 
 
 
@@ -1124,14 +1135,13 @@ Referenced by set\+Color\+Scale().
 
 
 \begin{DoxyCode}
-20158 \{
-20159   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_aab77fe9a8df6f0486ab3507cc5f278fa}{mGradient} != gradient)
-20160   \{
-20161     \hyperlink{class_q_c_p_color_map_aab77fe9a8df6f0486ab3507cc5f278fa}{mGradient} = \hyperlink{class_q_c_p_color_map_a9f967a971474e32345290b79cf107809}{gradient};
-20162     \hyperlink{class_q_c_p_color_map_ac9aea6a5c193d7fa866bc7b26e79ef2c}{mMapImageInvalidated} = \textcolor{keyword}{true};
-20163     emit \hyperlink{class_q_c_p_color_map_abf4797f86e422ac6e0f732c4ff1a4d49}{gradientChanged}(\hyperlink{class_q_c_p_color_map_aab77fe9a8df6f0486ab3507cc5f278fa}{mGradient});
-20164   \}
-20165 \}
+22433                                                               \{
+22434   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_aab77fe9a8df6f0486ab3507cc5f278fa}{mGradient} != gradient) \{
+22435     \hyperlink{class_q_c_p_color_map_aab77fe9a8df6f0486ab3507cc5f278fa}{mGradient} = \hyperlink{class_q_c_p_color_map_a9f967a971474e32345290b79cf107809}{gradient};
+22436     \hyperlink{class_q_c_p_color_map_ac9aea6a5c193d7fa866bc7b26e79ef2c}{mMapImageInvalidated} = \textcolor{keyword}{true};
+22437     emit \hyperlink{class_q_c_p_color_map_abf4797f86e422ac6e0f732c4ff1a4d49}{gradientChanged}(\hyperlink{class_q_c_p_color_map_aab77fe9a8df6f0486ab3507cc5f278fa}{mGradient});
+22438   \}
+22439 \}
 \end{DoxyCode}
 
 
@@ -1164,9 +1174,9 @@ Here is the caller graph for this function\+:\nopagebreak
 )}\label{class_q_c_p_color_map_a484eaa8a5065cfc386b15375bf98b964}
 Sets whether the color map image shall use bicubic interpolation when displaying the color map shrinked or expanded, and not at a 1\+:1 pixel-\/to-\/data scale.
 
+ and without interpolation enabled" 
 
-
-Definition at line 20173 of file qcustomplot.\+cpp.
+Definition at line 22449 of file qcustomplot.\+cpp.
 
 
 
@@ -1174,10 +1184,11 @@ References m\+Interpolate, and m\+Map\+Image\+Invalidated.
 
 
 \begin{DoxyCode}
-20174 \{
-20175   \hyperlink{class_q_c_p_color_map_af77e5eba9a844592648edeb6fbe834f1}{mInterpolate} = enabled;
-20176   \hyperlink{class_q_c_p_color_map_ac9aea6a5c193d7fa866bc7b26e79ef2c}{mMapImageInvalidated} = \textcolor{keyword}{true}; \textcolor{comment}{// because oversampling factors might need to change}
-20177 \}
+22449                                              \{
+22450   \hyperlink{class_q_c_p_color_map_af77e5eba9a844592648edeb6fbe834f1}{mInterpolate} = enabled;
+22451   \hyperlink{class_q_c_p_color_map_ac9aea6a5c193d7fa866bc7b26e79ef2c}{mMapImageInvalidated} =
+22452       \textcolor{keyword}{true}; \textcolor{comment}{// because oversampling factors might need to change}
+22453 \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_color_map_ad03221cc285e5f562a0b13d684b5576d}{}\index{Q\+C\+P\+Color\+Map@{Q\+C\+P\+Color\+Map}!set\+Tight\+Boundary@{set\+Tight\+Boundary}}
 \index{set\+Tight\+Boundary@{set\+Tight\+Boundary}!Q\+C\+P\+Color\+Map@{Q\+C\+P\+Color\+Map}}
@@ -1190,9 +1201,9 @@ Sets whether the outer most data rows and columns are clipped to the specified k
 
 if {\itshape enabled} is set to false, the data points at the border of the color map are drawn with the same width and height as all other data points. Since the data points are represented by rectangles of one color centered on the data coordinate, this means that the shown color map extends by half a data point over the specified key/value range in each direction.
 
+ enabled and disabled" 
 
-
-Definition at line 20190 of file qcustomplot.\+cpp.
+Definition at line 22473 of file qcustomplot.\+cpp.
 
 
 
@@ -1200,9 +1211,7 @@ References m\+Tight\+Boundary.
 
 
 \begin{DoxyCode}
-20191 \{
-20192   \hyperlink{class_q_c_p_color_map_ac2e9425fe4381b496726e1c09f978302}{mTightBoundary} = enabled;
-20193 \}
+22473 \{ \hyperlink{class_q_c_p_color_map_ac2e9425fe4381b496726e1c09f978302}{mTightBoundary} = enabled; \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_color_map_aa1d9aa8db73a5942881f6f6c5afdbb0f}{}\index{Q\+C\+P\+Color\+Map@{Q\+C\+P\+Color\+Map}!tight\+Boundary@{tight\+Boundary}}
 \index{tight\+Boundary@{tight\+Boundary}!Q\+C\+P\+Color\+Map@{Q\+C\+P\+Color\+Map}}
@@ -1213,11 +1222,11 @@ References m\+Tight\+Boundary.
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_color_map_aa1d9aa8db73a5942881f6f6c5afdbb0f}
 
 
-Definition at line 3066 of file qcustomplot.\+h.
+Definition at line 3503 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-3066 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_color_map_ac2e9425fe4381b496726e1c09f978302}{mTightBoundary}; \}
+3503 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_color_map_ac2e9425fe4381b496726e1c09f978302}{mTightBoundary}; \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_color_map_a5d8158b62d55fcfeaabcb68ce0083e87}{}\index{Q\+C\+P\+Color\+Map@{Q\+C\+P\+Color\+Map}!update\+Legend\+Icon@{update\+Legend\+Icon}}
 \index{update\+Legend\+Icon@{update\+Legend\+Icon}!Q\+C\+P\+Color\+Map@{Q\+C\+P\+Color\+Map}}
@@ -1238,7 +1247,7 @@ The current color map appearance is scaled down to {\itshape thumb\+Size}. Ideal
 \end{DoxySeeAlso}
 
 
-Definition at line 20276 of file qcustomplot.\+cpp.
+Definition at line 22592 of file qcustomplot.\+cpp.
 
 
 
@@ -1246,21 +1255,26 @@ References data(), Q\+C\+P\+Color\+Map\+Data\+::is\+Empty(), Q\+C\+P\+Abstract\+
 
 
 \begin{DoxyCode}
-20277 \{
-20278   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_a66110813b42eca78b64095b2a1f285a0}{mMapImage}.isNull() && !\hyperlink{class_q_c_p_color_map_a3ae12c9ce842352037cd20ea5267414f}{data}()->\hyperlink{class_q_c_p_color_map_data_a986009324aee1fc5f696db46bd03dde5}{isEmpty}())
-20279     \hyperlink{class_q_c_p_color_map_a5efcea591bb5486d968af520a4d43c3a}{updateMapImage}(); \textcolor{comment}{// try to update map image if it's null (happens if no draw has
-       happened yet)}
-20280   
-20281   \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_color_map_a66110813b42eca78b64095b2a1f285a0}{mMapImage}.isNull()) \textcolor{comment}{// might still be null, e.g. if data is empty, so check here again}
-20282   \{
-20283     \textcolor{keywordtype}{bool} mirrorX = (\hyperlink{class_q_c_p_abstract_plottable_a72c7a09c22963f2c943f07112b311103}{keyAxis}()->\hyperlink{class_q_c_p_axis_a57483f2f60145ddc9e63f3af53959265}{orientation}() == Qt::Horizontal ? 
-      \hyperlink{class_q_c_p_abstract_plottable_a72c7a09c22963f2c943f07112b311103}{keyAxis}() : \hyperlink{class_q_c_p_abstract_plottable_a3106f9d34d330a6097a8ec5905e5b519}{valueAxis}())->rangeReversed();
-20284     \textcolor{keywordtype}{bool} mirrorY = (\hyperlink{class_q_c_p_abstract_plottable_a3106f9d34d330a6097a8ec5905e5b519}{valueAxis}()->\hyperlink{class_q_c_p_axis_a57483f2f60145ddc9e63f3af53959265}{orientation}() == Qt::Vertical ? 
-      \hyperlink{class_q_c_p_abstract_plottable_a3106f9d34d330a6097a8ec5905e5b519}{valueAxis}() : keyAxis())->rangeReversed();
-20285     \hyperlink{class_q_c_p_color_map_ada522988db02cb531767d38c5029ef60}{mLegendIcon} = QPixmap::fromImage(\hyperlink{class_q_c_p_color_map_a66110813b42eca78b64095b2a1f285a0}{mMapImage}.mirrored(mirrorX, mirrorY)).scaled(
-      thumbSize, Qt::KeepAspectRatio, transformMode);
-20286   \}
-20287 \}
+22593                                                            \{
+22594   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_a66110813b42eca78b64095b2a1f285a0}{mMapImage}.isNull() && !\hyperlink{class_q_c_p_color_map_a3ae12c9ce842352037cd20ea5267414f}{data}()->\hyperlink{class_q_c_p_color_map_data_a986009324aee1fc5f696db46bd03dde5}{isEmpty}())
+22595     \hyperlink{class_q_c_p_color_map_a5efcea591bb5486d968af520a4d43c3a}{updateMapImage}(); \textcolor{comment}{// try to update map image if it's null (happens if no}
+22596                       \textcolor{comment}{// draw has happened yet)}
+22597 
+22598   \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_color_map_a66110813b42eca78b64095b2a1f285a0}{mMapImage}.isNull()) \textcolor{comment}{// might still be null, e.g. if data is empty, so}
+22599                            \textcolor{comment}{// check here again}
+22600   \{
+22601     \textcolor{keywordtype}{bool} mirrorX =
+22602         (\hyperlink{class_q_c_p_abstract_plottable_a72c7a09c22963f2c943f07112b311103}{keyAxis}()->\hyperlink{class_q_c_p_axis_a57483f2f60145ddc9e63f3af53959265}{orientation}() == Qt::Horizontal ? \hyperlink{class_q_c_p_abstract_plottable_a72c7a09c22963f2c943f07112b311103}{keyAxis}() : 
+      \hyperlink{class_q_c_p_abstract_plottable_a3106f9d34d330a6097a8ec5905e5b519}{valueAxis}())
+22603             ->rangeReversed();
+22604     \textcolor{keywordtype}{bool} mirrorY =
+22605         (\hyperlink{class_q_c_p_abstract_plottable_a3106f9d34d330a6097a8ec5905e5b519}{valueAxis}()->\hyperlink{class_q_c_p_axis_a57483f2f60145ddc9e63f3af53959265}{orientation}() == Qt::Vertical ? 
+      \hyperlink{class_q_c_p_abstract_plottable_a3106f9d34d330a6097a8ec5905e5b519}{valueAxis}() : keyAxis())
+22606             ->rangeReversed();
+22607     \hyperlink{class_q_c_p_color_map_ada522988db02cb531767d38c5029ef60}{mLegendIcon} = QPixmap::fromImage(\hyperlink{class_q_c_p_color_map_a66110813b42eca78b64095b2a1f285a0}{mMapImage}.mirrored(mirrorX, mirrorY))
+22608                       .scaled(thumbSize, Qt::KeepAspectRatio, transformMode);
+22609   \}
+22610 \}
 \end{DoxyCode}
 
 
@@ -1282,7 +1296,7 @@ Here is the call graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}\label{class_q_c_p_color_map_a5efcea591bb5486d968af520a4d43c3a}
 
 
-Definition at line 20330 of file qcustomplot.\+cpp.
+Definition at line 22661 of file qcustomplot.\+cpp.
 
 
 
@@ -1294,87 +1308,112 @@ Referenced by draw(), and update\+Legend\+Icon().
 
 
 \begin{DoxyCode}
-20331 \{
-20332   \hyperlink{class_q_c_p_axis}{QCPAxis} *\hyperlink{class_q_c_p_abstract_plottable_a72c7a09c22963f2c943f07112b311103}{keyAxis} = \hyperlink{class_q_c_p_abstract_plottable_a426f42e254d0f8ce5436a868c61a6827}{mKeyAxis}.data();
-20333   \textcolor{keywordflow}{if} (!keyAxis) \textcolor{keywordflow}{return};
-20334   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_a986009324aee1fc5f696db46bd03dde5}{isEmpty}()) \textcolor{keywordflow}{return};
-20335   
-20336   \textcolor{keyword}{const} \textcolor{keywordtype}{int} keySize = \hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_aa8d7811686fdfea964947715210c4af8}{keySize}();
-20337   \textcolor{keyword}{const} \textcolor{keywordtype}{int} valueSize = \hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_ab880be6bc587f34e8d22fe77ef6b57e9}{valueSize}();
-20338   \textcolor{keywordtype}{int} keyOversamplingFactor = \hyperlink{class_q_c_p_color_map_af77e5eba9a844592648edeb6fbe834f1}{mInterpolate} ? 1 : (int)(1.0+100.0/(\textcolor{keywordtype}{double})keySize); \textcolor{comment}{// make
-       mMapImage have at least size 100, factor becomes 1 if size > 200 or interpolation is on}
-20339   \textcolor{keywordtype}{int} valueOversamplingFactor = \hyperlink{class_q_c_p_color_map_af77e5eba9a844592648edeb6fbe834f1}{mInterpolate} ? 1 : (int)(1.0+100.0/(\textcolor{keywordtype}{double})valueSize); \textcolor{comment}{// make
-       mMapImage have at least size 100, factor becomes 1 if size > 200 or interpolation is on}
-20340   
-20341   \textcolor{comment}{// resize mMapImage to correct dimensions including possible oversampling factors, according to key/value
-       axes orientation:}
-20342   \textcolor{keywordflow}{if} (keyAxis->\hyperlink{class_q_c_p_axis_a57483f2f60145ddc9e63f3af53959265}{orientation}() == Qt::Horizontal && (\hyperlink{class_q_c_p_color_map_a66110813b42eca78b64095b2a1f285a0}{mMapImage}.width() != keySize*
-      keyOversamplingFactor || \hyperlink{class_q_c_p_color_map_a66110813b42eca78b64095b2a1f285a0}{mMapImage}.height() != valueSize*valueOversamplingFactor))
-20343     \hyperlink{class_q_c_p_color_map_a66110813b42eca78b64095b2a1f285a0}{mMapImage} = QImage(QSize(keySize*keyOversamplingFactor, valueSize*valueOversamplingFactor), 
-      QImage::Format\_RGB32);
-20344   \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (keyAxis->\hyperlink{class_q_c_p_axis_a57483f2f60145ddc9e63f3af53959265}{orientation}() == Qt::Vertical && (\hyperlink{class_q_c_p_color_map_a66110813b42eca78b64095b2a1f285a0}{mMapImage}.width() != valueSize*
-      valueOversamplingFactor || \hyperlink{class_q_c_p_color_map_a66110813b42eca78b64095b2a1f285a0}{mMapImage}.height() != keySize*keyOversamplingFactor))
-20345     \hyperlink{class_q_c_p_color_map_a66110813b42eca78b64095b2a1f285a0}{mMapImage} = QImage(QSize(valueSize*valueOversamplingFactor, keySize*keyOversamplingFactor), 
-      QImage::Format\_RGB32);
-20346   
-20347   QImage *localMapImage = &\hyperlink{class_q_c_p_color_map_a66110813b42eca78b64095b2a1f285a0}{mMapImage}; \textcolor{comment}{// this is the image on which the colorization operates.
-       Either the final mMapImage, or if we need oversampling, mUndersampledMapImage}
-20348   \textcolor{keywordflow}{if} (keyOversamplingFactor > 1 || valueOversamplingFactor > 1)
-20349   \{
-20350     \textcolor{comment}{// resize undersampled map image to actual key/value cell sizes:}
-20351     \textcolor{keywordflow}{if} (keyAxis->\hyperlink{class_q_c_p_axis_a57483f2f60145ddc9e63f3af53959265}{orientation}() == Qt::Horizontal && (
-      \hyperlink{class_q_c_p_color_map_acad3d52f3572436d5f2e4057911ea8d3}{mUndersampledMapImage}.width() != keySize || 
-      \hyperlink{class_q_c_p_color_map_acad3d52f3572436d5f2e4057911ea8d3}{mUndersampledMapImage}.height() != valueSize))
-20352       \hyperlink{class_q_c_p_color_map_acad3d52f3572436d5f2e4057911ea8d3}{mUndersampledMapImage} = QImage(QSize(keySize, valueSize), QImage::Format\_RGB32);
-20353     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (keyAxis->\hyperlink{class_q_c_p_axis_a57483f2f60145ddc9e63f3af53959265}{orientation}() == Qt::Vertical && (
-      \hyperlink{class_q_c_p_color_map_acad3d52f3572436d5f2e4057911ea8d3}{mUndersampledMapImage}.width() != valueSize || 
-      \hyperlink{class_q_c_p_color_map_acad3d52f3572436d5f2e4057911ea8d3}{mUndersampledMapImage}.height() != keySize))
-20354       \hyperlink{class_q_c_p_color_map_acad3d52f3572436d5f2e4057911ea8d3}{mUndersampledMapImage} = QImage(QSize(valueSize, keySize), QImage::Format\_RGB32);
-20355     localMapImage = &\hyperlink{class_q_c_p_color_map_acad3d52f3572436d5f2e4057911ea8d3}{mUndersampledMapImage}; \textcolor{comment}{// make the colorization run on the
-       undersampled image}
-20356   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_color_map_acad3d52f3572436d5f2e4057911ea8d3}{mUndersampledMapImage}.isNull())
-20357     \hyperlink{class_q_c_p_color_map_acad3d52f3572436d5f2e4057911ea8d3}{mUndersampledMapImage} = QImage(); \textcolor{comment}{// don't need oversampling mechanism anymore
-       (map size has changed) but mUndersampledMapImage still has nonzero size, free it}
-20358   
-20359   \textcolor{keyword}{const} \textcolor{keywordtype}{double} *rawData = \hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData};
-20360   \textcolor{keywordflow}{if} (keyAxis->\hyperlink{class_q_c_p_axis_a57483f2f60145ddc9e63f3af53959265}{orientation}() == Qt::Horizontal)
-20361   \{
-20362     \textcolor{keyword}{const} \textcolor{keywordtype}{int} lineCount = valueSize;
-20363     \textcolor{keyword}{const} \textcolor{keywordtype}{int} rowCount = keySize;
-20364     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} line=0; line<lineCount; ++line)
-20365     \{
-20366       QRgb* pixels = \textcolor{keyword}{reinterpret\_cast<}QRgb*\textcolor{keyword}{>}(localMapImage->scanLine(lineCount-1-line)); \textcolor{comment}{// invert scanline
-       index because QImage counts scanlines from top, but our vertical index counts from bottom (mathematical
-       coordinate system)}
-20367       \hyperlink{class_q_c_p_color_map_aab77fe9a8df6f0486ab3507cc5f278fa}{mGradient}.\hyperlink{class_q_c_p_color_gradient_aaf423ceb943e177b0ed2c48c811d83dc}{colorize}(rawData+line*rowCount, \hyperlink{class_q_c_p_color_map_ab87609621d16cd3e9d52ad070b327b08}{mDataRange}, pixels, rowCount, 1,
-       \hyperlink{class_q_c_p_color_map_ab28a4b2def408f83b9818799d5f18446}{mDataScaleType}==\hyperlink{class_q_c_p_axis_a36d8e8658dbaa179bf2aeb973db2d6f0abf5b785ad976618816dc6f79b73216d4}{QCPAxis::stLogarithmic});
-20368     \}
-20369   \} \textcolor{keywordflow}{else} \textcolor{comment}{// keyAxis->orientation() == Qt::Vertical}
-20370   \{
-20371     \textcolor{keyword}{const} \textcolor{keywordtype}{int} lineCount = keySize;
-20372     \textcolor{keyword}{const} \textcolor{keywordtype}{int} rowCount = valueSize;
-20373     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} line=0; line<lineCount; ++line)
-20374     \{
-20375       QRgb* pixels = \textcolor{keyword}{reinterpret\_cast<}QRgb*\textcolor{keyword}{>}(localMapImage->scanLine(lineCount-1-line)); \textcolor{comment}{// invert scanline
-       index because QImage counts scanlines from top, but our vertical index counts from bottom (mathematical
-       coordinate system)}
-20376       \hyperlink{class_q_c_p_color_map_aab77fe9a8df6f0486ab3507cc5f278fa}{mGradient}.\hyperlink{class_q_c_p_color_gradient_aaf423ceb943e177b0ed2c48c811d83dc}{colorize}(rawData+line, \hyperlink{class_q_c_p_color_map_ab87609621d16cd3e9d52ad070b327b08}{mDataRange}, pixels, rowCount, lineCount, 
-      \hyperlink{class_q_c_p_color_map_ab28a4b2def408f83b9818799d5f18446}{mDataScaleType}==\hyperlink{class_q_c_p_axis_a36d8e8658dbaa179bf2aeb973db2d6f0abf5b785ad976618816dc6f79b73216d4}{QCPAxis::stLogarithmic});
-20377     \}
-20378   \}
-20379   
-20380   \textcolor{keywordflow}{if} (keyOversamplingFactor > 1 || valueOversamplingFactor > 1)
-20381   \{
-20382     \textcolor{keywordflow}{if} (keyAxis->\hyperlink{class_q_c_p_axis_a57483f2f60145ddc9e63f3af53959265}{orientation}() == Qt::Horizontal)
-20383       \hyperlink{class_q_c_p_color_map_a66110813b42eca78b64095b2a1f285a0}{mMapImage} = \hyperlink{class_q_c_p_color_map_acad3d52f3572436d5f2e4057911ea8d3}{mUndersampledMapImage}.scaled(keySize*keyOversamplingFactor,
-       valueSize*valueOversamplingFactor, Qt::IgnoreAspectRatio, Qt::FastTransformation);
-20384     \textcolor{keywordflow}{else}
-20385       \hyperlink{class_q_c_p_color_map_a66110813b42eca78b64095b2a1f285a0}{mMapImage} = \hyperlink{class_q_c_p_color_map_acad3d52f3572436d5f2e4057911ea8d3}{mUndersampledMapImage}.scaled(valueSize*
-      valueOversamplingFactor, keySize*keyOversamplingFactor, Qt::IgnoreAspectRatio, Qt::FastTransformation);
-20386   \}
-20387   \hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_ad3cc682da2ac14e5acdbc05cf4d3d93b}{mDataModified} = \textcolor{keyword}{false};
-20388   \hyperlink{class_q_c_p_color_map_ac9aea6a5c193d7fa866bc7b26e79ef2c}{mMapImageInvalidated} = \textcolor{keyword}{false};
-20389 \}
+22661                                  \{
+22662   \hyperlink{class_q_c_p_axis}{QCPAxis} *\hyperlink{class_q_c_p_abstract_plottable_a72c7a09c22963f2c943f07112b311103}{keyAxis} = \hyperlink{class_q_c_p_abstract_plottable_a426f42e254d0f8ce5436a868c61a6827}{mKeyAxis}.data();
+22663   \textcolor{keywordflow}{if} (!keyAxis)
+22664     \textcolor{keywordflow}{return};
+22665   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_a986009324aee1fc5f696db46bd03dde5}{isEmpty}())
+22666     \textcolor{keywordflow}{return};
+22667 
+22668   \textcolor{keyword}{const} \textcolor{keywordtype}{int} keySize = \hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_aa8d7811686fdfea964947715210c4af8}{keySize}();
+22669   \textcolor{keyword}{const} \textcolor{keywordtype}{int} valueSize = \hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_ab880be6bc587f34e8d22fe77ef6b57e9}{valueSize}();
+22670   \textcolor{keywordtype}{int} keyOversamplingFactor =
+22671       \hyperlink{class_q_c_p_color_map_af77e5eba9a844592648edeb6fbe834f1}{mInterpolate}
+22672           ? 1
+22673           : (int)(1.0 + 100.0 / (\textcolor{keywordtype}{double})keySize); \textcolor{comment}{// make mMapImage have at}
+22674                                                   \textcolor{comment}{// least size 100, factor}
+22675                                                   \textcolor{comment}{// becomes 1 if size > 200 or}
+22676                                                   \textcolor{comment}{// interpolation is on}
+22677   \textcolor{keywordtype}{int} valueOversamplingFactor =
+22678       \hyperlink{class_q_c_p_color_map_af77e5eba9a844592648edeb6fbe834f1}{mInterpolate}
+22679           ? 1
+22680           : (int)(1.0 + 100.0 / (\textcolor{keywordtype}{double})valueSize); \textcolor{comment}{// make mMapImage have at}
+22681                                                     \textcolor{comment}{// least size 100, factor}
+22682                                                     \textcolor{comment}{// becomes 1 if size > 200}
+22683                                                     \textcolor{comment}{// or interpolation is on}
+22684 
+22685   \textcolor{comment}{// resize mMapImage to correct dimensions including possible oversampling}
+22686   \textcolor{comment}{// factors, according to key/value axes orientation:}
+22687   \textcolor{keywordflow}{if} (keyAxis->\hyperlink{class_q_c_p_axis_a57483f2f60145ddc9e63f3af53959265}{orientation}() == Qt::Horizontal &&
+22688       (\hyperlink{class_q_c_p_color_map_a66110813b42eca78b64095b2a1f285a0}{mMapImage}.width() != keySize * keyOversamplingFactor ||
+22689        \hyperlink{class_q_c_p_color_map_a66110813b42eca78b64095b2a1f285a0}{mMapImage}.height() != valueSize * valueOversamplingFactor))
+22690     \hyperlink{class_q_c_p_color_map_a66110813b42eca78b64095b2a1f285a0}{mMapImage} = QImage(QSize(keySize * keyOversamplingFactor,
+22691                              valueSize * valueOversamplingFactor),
+22692                        QImage::Format\_RGB32);
+22693   \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (keyAxis->\hyperlink{class_q_c_p_axis_a57483f2f60145ddc9e63f3af53959265}{orientation}() == Qt::Vertical &&
+22694            (\hyperlink{class_q_c_p_color_map_a66110813b42eca78b64095b2a1f285a0}{mMapImage}.width() != valueSize * valueOversamplingFactor ||
+22695             \hyperlink{class_q_c_p_color_map_a66110813b42eca78b64095b2a1f285a0}{mMapImage}.height() != keySize * keyOversamplingFactor))
+22696     \hyperlink{class_q_c_p_color_map_a66110813b42eca78b64095b2a1f285a0}{mMapImage} = QImage(QSize(valueSize * valueOversamplingFactor,
+22697                              keySize * keyOversamplingFactor),
+22698                        QImage::Format\_RGB32);
+22699 
+22700   QImage *localMapImage = &\hyperlink{class_q_c_p_color_map_a66110813b42eca78b64095b2a1f285a0}{mMapImage}; \textcolor{comment}{// this is the image on which the}
+22701                                       \textcolor{comment}{// colorization operates. Either the final}
+22702                                       \textcolor{comment}{// mMapImage, or if we need oversampling,}
+22703                                       \textcolor{comment}{// mUndersampledMapImage}
+22704   \textcolor{keywordflow}{if} (keyOversamplingFactor > 1 || valueOversamplingFactor > 1) \{
+22705     \textcolor{comment}{// resize undersampled map image to actual key/value cell sizes:}
+22706     \textcolor{keywordflow}{if} (keyAxis->\hyperlink{class_q_c_p_axis_a57483f2f60145ddc9e63f3af53959265}{orientation}() == Qt::Horizontal &&
+22707         (\hyperlink{class_q_c_p_color_map_acad3d52f3572436d5f2e4057911ea8d3}{mUndersampledMapImage}.width() != keySize ||
+22708          \hyperlink{class_q_c_p_color_map_acad3d52f3572436d5f2e4057911ea8d3}{mUndersampledMapImage}.height() != valueSize))
+22709       \hyperlink{class_q_c_p_color_map_acad3d52f3572436d5f2e4057911ea8d3}{mUndersampledMapImage} =
+22710           QImage(QSize(keySize, valueSize), QImage::Format\_RGB32);
+22711     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (keyAxis->\hyperlink{class_q_c_p_axis_a57483f2f60145ddc9e63f3af53959265}{orientation}() == Qt::Vertical &&
+22712              (\hyperlink{class_q_c_p_color_map_acad3d52f3572436d5f2e4057911ea8d3}{mUndersampledMapImage}.width() != valueSize ||
+22713               \hyperlink{class_q_c_p_color_map_acad3d52f3572436d5f2e4057911ea8d3}{mUndersampledMapImage}.height() != keySize))
+22714       \hyperlink{class_q_c_p_color_map_acad3d52f3572436d5f2e4057911ea8d3}{mUndersampledMapImage} =
+22715           QImage(QSize(valueSize, keySize), QImage::Format\_RGB32);
+22716     localMapImage = &\hyperlink{class_q_c_p_color_map_acad3d52f3572436d5f2e4057911ea8d3}{mUndersampledMapImage}; \textcolor{comment}{// make the colorization run on the}
+22717                                             \textcolor{comment}{// undersampled image}
+22718   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_color_map_acad3d52f3572436d5f2e4057911ea8d3}{mUndersampledMapImage}.isNull())
+22719     \hyperlink{class_q_c_p_color_map_acad3d52f3572436d5f2e4057911ea8d3}{mUndersampledMapImage} = QImage(); \textcolor{comment}{// don't need oversampling mechanism}
+22720                                       \textcolor{comment}{// anymore (map size has changed) but}
+22721                                       \textcolor{comment}{// mUndersampledMapImage still has nonzero}
+22722                                       \textcolor{comment}{// size, free it}
+22723 
+22724   \textcolor{keyword}{const} \textcolor{keywordtype}{double} *rawData = \hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData};
+22725   \textcolor{keywordflow}{if} (keyAxis->\hyperlink{class_q_c_p_axis_a57483f2f60145ddc9e63f3af53959265}{orientation}() == Qt::Horizontal) \{
+22726     \textcolor{keyword}{const} \textcolor{keywordtype}{int} lineCount = valueSize;
+22727     \textcolor{keyword}{const} \textcolor{keywordtype}{int} rowCount = keySize;
+22728     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} line = 0; line < lineCount; ++line) \{
+22729       QRgb *pixels = \textcolor{keyword}{reinterpret\_cast<}QRgb *\textcolor{keyword}{>}(localMapImage->scanLine(
+22730           lineCount - 1 - line)); \textcolor{comment}{// invert scanline index because QImage counts}
+22731                                   \textcolor{comment}{// scanlines from top, but our vertical index}
+22732                                   \textcolor{comment}{// counts from bottom (mathematical coordinate}
+22733                                   \textcolor{comment}{// system)}
+22734       \hyperlink{class_q_c_p_color_map_aab77fe9a8df6f0486ab3507cc5f278fa}{mGradient}.\hyperlink{class_q_c_p_color_gradient_aaf423ceb943e177b0ed2c48c811d83dc}{colorize}(rawData + line * rowCount, \hyperlink{class_q_c_p_color_map_ab87609621d16cd3e9d52ad070b327b08}{mDataRange}, pixels,
+22735                          rowCount, 1, \hyperlink{class_q_c_p_color_map_ab28a4b2def408f83b9818799d5f18446}{mDataScaleType} == 
+      \hyperlink{class_q_c_p_axis_a36d8e8658dbaa179bf2aeb973db2d6f0abf5b785ad976618816dc6f79b73216d4}{QCPAxis::stLogarithmic});
+22736     \}
+22737   \} \textcolor{keywordflow}{else} \textcolor{comment}{// keyAxis->orientation() == Qt::Vertical}
+22738   \{
+22739     \textcolor{keyword}{const} \textcolor{keywordtype}{int} lineCount = keySize;
+22740     \textcolor{keyword}{const} \textcolor{keywordtype}{int} rowCount = valueSize;
+22741     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} line = 0; line < lineCount; ++line) \{
+22742       QRgb *pixels = \textcolor{keyword}{reinterpret\_cast<}QRgb *\textcolor{keyword}{>}(localMapImage->scanLine(
+22743           lineCount - 1 - line)); \textcolor{comment}{// invert scanline index because QImage counts}
+22744                                   \textcolor{comment}{// scanlines from top, but our vertical index}
+22745                                   \textcolor{comment}{// counts from bottom (mathematical coordinate}
+22746                                   \textcolor{comment}{// system)}
+22747       \hyperlink{class_q_c_p_color_map_aab77fe9a8df6f0486ab3507cc5f278fa}{mGradient}.\hyperlink{class_q_c_p_color_gradient_aaf423ceb943e177b0ed2c48c811d83dc}{colorize}(rawData + line, \hyperlink{class_q_c_p_color_map_ab87609621d16cd3e9d52ad070b327b08}{mDataRange}, pixels, rowCount,
+22748                          lineCount, \hyperlink{class_q_c_p_color_map_ab28a4b2def408f83b9818799d5f18446}{mDataScaleType} == 
+      \hyperlink{class_q_c_p_axis_a36d8e8658dbaa179bf2aeb973db2d6f0abf5b785ad976618816dc6f79b73216d4}{QCPAxis::stLogarithmic});
+22749     \}
+22750   \}
+22751 
+22752   \textcolor{keywordflow}{if} (keyOversamplingFactor > 1 || valueOversamplingFactor > 1) \{
+22753     \textcolor{keywordflow}{if} (keyAxis->\hyperlink{class_q_c_p_axis_a57483f2f60145ddc9e63f3af53959265}{orientation}() == Qt::Horizontal)
+22754       \hyperlink{class_q_c_p_color_map_a66110813b42eca78b64095b2a1f285a0}{mMapImage} = \hyperlink{class_q_c_p_color_map_acad3d52f3572436d5f2e4057911ea8d3}{mUndersampledMapImage}.scaled(
+22755           keySize * keyOversamplingFactor, valueSize * valueOversamplingFactor,
+22756           Qt::IgnoreAspectRatio, Qt::FastTransformation);
+22757     \textcolor{keywordflow}{else}
+22758       \hyperlink{class_q_c_p_color_map_a66110813b42eca78b64095b2a1f285a0}{mMapImage} = \hyperlink{class_q_c_p_color_map_acad3d52f3572436d5f2e4057911ea8d3}{mUndersampledMapImage}.scaled(
+22759           valueSize * valueOversamplingFactor, keySize * keyOversamplingFactor,
+22760           Qt::IgnoreAspectRatio, Qt::FastTransformation);
+22761   \}
+22762   \hyperlink{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}{mMapData}->\hyperlink{class_q_c_p_color_map_data_ad3cc682da2ac14e5acdbc05cf4d3d93b}{mDataModified} = \textcolor{keyword}{false};
+22763   \hyperlink{class_q_c_p_color_map_ac9aea6a5c193d7fa866bc7b26e79ef2c}{mMapImageInvalidated} = \textcolor{keyword}{false};
+22764 \}
 \end{DoxyCode}
 
 
@@ -1406,14 +1445,14 @@ Here is the caller graph for this function\+:\nopagebreak
 \subsubsection[{Q\+C\+P\+Legend}]{\setlength{\rightskip}{0pt plus 5cm}friend class {\bf Q\+C\+P\+Legend}\hspace{0.3cm}{\ttfamily [friend]}}\label{class_q_c_p_color_map_a8429035e7adfbd7f05805a6530ad5e3b}
 
 
-Definition at line 3116 of file qcustomplot.\+h.
+Definition at line 3558 of file qcustomplot.\+h.
 
 \hypertarget{class_q_c_p_color_map_a1cdf9df76adcfae45261690aa0ca2198}{}\index{Q\+C\+P\+Color\+Map@{Q\+C\+P\+Color\+Map}!Q\+Custom\+Plot@{Q\+Custom\+Plot}}
 \index{Q\+Custom\+Plot@{Q\+Custom\+Plot}!Q\+C\+P\+Color\+Map@{Q\+C\+P\+Color\+Map}}
 \subsubsection[{Q\+Custom\+Plot}]{\setlength{\rightskip}{0pt plus 5cm}friend class {\bf Q\+Custom\+Plot}\hspace{0.3cm}{\ttfamily [friend]}}\label{class_q_c_p_color_map_a1cdf9df76adcfae45261690aa0ca2198}
 
 
-Definition at line 3115 of file qcustomplot.\+h.
+Definition at line 3557 of file qcustomplot.\+h.
 
 
 
@@ -1423,7 +1462,7 @@ Definition at line 3115 of file qcustomplot.\+h.
 \subsubsection[{m\+Color\+Scale}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Pointer$<${\bf Q\+C\+P\+Color\+Scale}$>$ Q\+C\+P\+Color\+Map\+::m\+Color\+Scale\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_color_map_a95b4100bacc3387652c988b071ec9db7}
 
 
-Definition at line 3100 of file qcustomplot.\+h.
+Definition at line 3540 of file qcustomplot.\+h.
 
 
 
@@ -1434,7 +1473,7 @@ Referenced by set\+Color\+Scale().
 \subsubsection[{m\+Data\+Range}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Range} Q\+C\+P\+Color\+Map\+::m\+Data\+Range\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_color_map_ab87609621d16cd3e9d52ad070b327b08}
 
 
-Definition at line 3094 of file qcustomplot.\+h.
+Definition at line 3534 of file qcustomplot.\+h.
 
 
 
@@ -1445,7 +1484,7 @@ Referenced by set\+Data\+Range(), set\+Data\+Scale\+Type(), and update\+Map\+Ima
 \subsubsection[{m\+Data\+Scale\+Type}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Axis\+::\+Scale\+Type} Q\+C\+P\+Color\+Map\+::m\+Data\+Scale\+Type\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_color_map_ab28a4b2def408f83b9818799d5f18446}
 
 
-Definition at line 3095 of file qcustomplot.\+h.
+Definition at line 3535 of file qcustomplot.\+h.
 
 
 
@@ -1456,7 +1495,7 @@ Referenced by set\+Data\+Range(), set\+Data\+Scale\+Type(), and update\+Map\+Ima
 \subsubsection[{m\+Gradient}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Color\+Gradient} Q\+C\+P\+Color\+Map\+::m\+Gradient\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_color_map_aab77fe9a8df6f0486ab3507cc5f278fa}
 
 
-Definition at line 3097 of file qcustomplot.\+h.
+Definition at line 3537 of file qcustomplot.\+h.
 
 
 
@@ -1467,7 +1506,7 @@ Referenced by set\+Gradient(), and update\+Map\+Image().
 \subsubsection[{m\+Interpolate}]{\setlength{\rightskip}{0pt plus 5cm}bool Q\+C\+P\+Color\+Map\+::m\+Interpolate\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_color_map_af77e5eba9a844592648edeb6fbe834f1}
 
 
-Definition at line 3098 of file qcustomplot.\+h.
+Definition at line 3538 of file qcustomplot.\+h.
 
 
 
@@ -1478,7 +1517,7 @@ Referenced by draw(), set\+Interpolate(), and update\+Map\+Image().
 \subsubsection[{m\+Legend\+Icon}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Pixmap Q\+C\+P\+Color\+Map\+::m\+Legend\+Icon\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_color_map_ada522988db02cb531767d38c5029ef60}
 
 
-Definition at line 3103 of file qcustomplot.\+h.
+Definition at line 3543 of file qcustomplot.\+h.
 
 
 
@@ -1489,7 +1528,7 @@ Referenced by draw\+Legend\+Icon(), and update\+Legend\+Icon().
 \subsubsection[{m\+Map\+Data}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Color\+Map\+Data}$\ast$ Q\+C\+P\+Color\+Map\+::m\+Map\+Data\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_color_map_a8709272aa8f0be3ca111bf3866806f8b}
 
 
-Definition at line 3096 of file qcustomplot.\+h.
+Definition at line 3536 of file qcustomplot.\+h.
 
 
 
@@ -1500,7 +1539,7 @@ Referenced by clear\+Data(), draw(), get\+Key\+Range(), get\+Value\+Range(), res
 \subsubsection[{m\+Map\+Image}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Image Q\+C\+P\+Color\+Map\+::m\+Map\+Image\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_color_map_a66110813b42eca78b64095b2a1f285a0}
 
 
-Definition at line 3102 of file qcustomplot.\+h.
+Definition at line 3542 of file qcustomplot.\+h.
 
 
 
@@ -1511,7 +1550,7 @@ Referenced by draw(), update\+Legend\+Icon(), and update\+Map\+Image().
 \subsubsection[{m\+Map\+Image\+Invalidated}]{\setlength{\rightskip}{0pt plus 5cm}bool Q\+C\+P\+Color\+Map\+::m\+Map\+Image\+Invalidated\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_color_map_ac9aea6a5c193d7fa866bc7b26e79ef2c}
 
 
-Definition at line 3104 of file qcustomplot.\+h.
+Definition at line 3544 of file qcustomplot.\+h.
 
 
 
@@ -1522,7 +1561,7 @@ Referenced by draw(), set\+Data(), set\+Data\+Range(), set\+Data\+Scale\+Type(),
 \subsubsection[{m\+Tight\+Boundary}]{\setlength{\rightskip}{0pt plus 5cm}bool Q\+C\+P\+Color\+Map\+::m\+Tight\+Boundary\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_color_map_ac2e9425fe4381b496726e1c09f978302}
 
 
-Definition at line 3099 of file qcustomplot.\+h.
+Definition at line 3539 of file qcustomplot.\+h.
 
 
 
@@ -1533,7 +1572,7 @@ Referenced by draw(), and set\+Tight\+Boundary().
 \subsubsection[{m\+Undersampled\+Map\+Image}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Image Q\+C\+P\+Color\+Map\+::m\+Undersampled\+Map\+Image\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_color_map_acad3d52f3572436d5f2e4057911ea8d3}
 
 
-Definition at line 3102 of file qcustomplot.\+h.
+Definition at line 3542 of file qcustomplot.\+h.
 
 
 

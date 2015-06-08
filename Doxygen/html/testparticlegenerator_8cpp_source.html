@@ -35,7 +35,7 @@
    <div id="projectname">Vision Soil Analyzer
    &#160;<span id="projectnumber">1.0.0</span>
    </div>
-   <div id="projectbrief">The Soil Analyzer is a portable lab that can analyse soil samples and tells the user about it&#39;s optical properties. It looks at the texture and describe it as a Particle Size Distribution. This information is presented as a Cumulative Distribution Function (CDF). It also describes the structure of the soil sample and gives information on the sphericity and roundness / angularity. It does so by analysing the contour of particles, describing them as Fourier Descriptors and using a Neural Network to describe it&#39;s properties. Finally it gives the color properties in a histogram in the CIE La*b* colorspace, which show correlations with the fertility of the soil. and a histogram of the Redness Index, which gives has a correlation on the iron content.</div>
+   <div id="projectbrief">Soil analyzer using an USB microscope - for Linux PC and Beaglebone Black</div>
   </td>
  </tr>
  </tbody>
@@ -111,33 +111,41 @@ $(document).ready(function(){initNavTree('testparticlegenerator_8cpp_source.html
 <div class="title">testparticlegenerator.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="testparticlegenerator_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="testparticlegenerator_8h.html">testparticlegenerator.h</a>&quot;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
-<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="class_test_particle_generator.html#a9caab4b3afc670e80408824c288172da">    4</a></span>&#160;<a class="code" href="class_test_particle_generator.html#a9caab4b3afc670e80408824c288172da">TestParticleGenerator::TestParticleGenerator</a>()</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;{</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;}</div>
+<a href="testparticlegenerator_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright (C) Jelle Spijker - All Rights Reserved</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Unauthorized copying of this file, via any medium is strictly prohibited</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * and only allowed with the written consent of the author (Jelle Spijker)</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * This software is proprietary and confidential</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * Written by Jelle Spijker &lt;spijker.jelle@gmail.com&gt;, 2015</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
-<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="class_test_particle_generator.html#a426ee00dfeb668fd44a1d2c070d47e49">    8</a></span>&#160;cv::Mat <a class="code" href="class_test_particle_generator.html#a426ee00dfeb668fd44a1d2c070d47e49">TestParticleGenerator::GenParticle</a>(uint32_t size, <span class="keywordtype">float</span> ellipseratio, cv::Vec3b meanColor, cv::Vec3f stdColor, <span class="keywordtype">float</span> roughness, <span class="keywordtype">float</span> angle)</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;{</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    uint32_t height, width;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    height =</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    cv::Mat img(<a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a9336ebf25087d91c818ee6e9ec29f8c1">x</a> ? <a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a9336ebf25087d91c818ee6e9ec29f8c1">x</a> : <a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a2fb1c5cf58867b5bbc9a1b145a86f3a0">y</a>, );</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    cv::ellipse(img, cv::Point(img.cols/2, img.rows/2), cv::Size(size, size * ellipseratio), angle, 0 360, cv::Scalar(1,1,1), -1);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;}</div>
-<div class="ttc" id="class_test_particle_generator_html_a426ee00dfeb668fd44a1d2c070d47e49"><div class="ttname"><a href="class_test_particle_generator.html#a426ee00dfeb668fd44a1d2c070d47e49">TestParticleGenerator::GenParticle</a></div><div class="ttdeci">cv::Mat GenParticle(uint32_t size, float ellipseratio, cv::Vec3b meanColor, cv::Vec3f stdColor, float roughness, float angle)</div><div class="ttdef"><b>Definition:</b> <a href="testparticlegenerator_8cpp_source.html#l00008">testparticlegenerator.cpp:8</a></div></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="testparticlegenerator_8h.html">testparticlegenerator.h</a>&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="class_test_particle_generator.html#a9caab4b3afc670e80408824c288172da">   12</a></span>&#160;<a class="code" href="class_test_particle_generator.html#a9caab4b3afc670e80408824c288172da">TestParticleGenerator::TestParticleGenerator</a>()</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;}</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_test_particle_generator.html#a426ee00dfeb668fd44a1d2c070d47e49">   16</a></span>&#160;cv::Mat <a class="code" href="class_test_particle_generator.html#a426ee00dfeb668fd44a1d2c070d47e49">TestParticleGenerator::GenParticle</a>(uint32_t size, <span class="keywordtype">float</span> ellipseratio, cv::Vec3b meanColor, cv::Vec3f stdColor, <span class="keywordtype">float</span> roughness, <span class="keywordtype">float</span> angle)</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    uint32_t height, width;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    height =</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    cv::Mat img(<a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a9336ebf25087d91c818ee6e9ec29f8c1">x</a> ? <a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a9336ebf25087d91c818ee6e9ec29f8c1">x</a> : <a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a2fb1c5cf58867b5bbc9a1b145a86f3a0">y</a>, );</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    cv::ellipse(img, cv::Point(img.cols/2, img.rows/2), cv::Size(size, size * ellipseratio), angle, 0 360, cv::Scalar(1,1,1), -1);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}</div>
+<div class="ttc" id="class_test_particle_generator_html_a426ee00dfeb668fd44a1d2c070d47e49"><div class="ttname"><a href="class_test_particle_generator.html#a426ee00dfeb668fd44a1d2c070d47e49">TestParticleGenerator::GenParticle</a></div><div class="ttdeci">cv::Mat GenParticle(uint32_t size, float ellipseratio, cv::Vec3b meanColor, cv::Vec3f stdColor, float roughness, float angle)</div><div class="ttdef"><b>Definition:</b> <a href="testparticlegenerator_8cpp_source.html#l00016">testparticlegenerator.cpp:16</a></div></div>
 <div class="ttc" id="_comparision_pictures_2_createtest_image_8m_html_a9336ebf25087d91c818ee6e9ec29f8c1"><div class="ttname"><a href="_comparision_pictures_2_createtest_image_8m.html#a9336ebf25087d91c818ee6e9ec29f8c1">x</a></div><div class="ttdeci">x</div><div class="ttdef"><b>Definition:</b> <a href="_comparision_pictures_2_createtest_image_8m_source.html#l00010">CreatetestImage.m:10</a></div></div>
 <div class="ttc" id="testparticlegenerator_8h_html"><div class="ttname"><a href="testparticlegenerator_8h.html">testparticlegenerator.h</a></div></div>
 <div class="ttc" id="_comparision_pictures_2_createtest_image_8m_html_a2fb1c5cf58867b5bbc9a1b145a86f3a0"><div class="ttname"><a href="_comparision_pictures_2_createtest_image_8m.html#a2fb1c5cf58867b5bbc9a1b145a86f3a0">y</a></div><div class="ttdeci">y</div><div class="ttdef"><b>Definition:</b> <a href="_comparision_pictures_2_createtest_image_8m_source.html#l00011">CreatetestImage.m:11</a></div></div>
-<div class="ttc" id="class_test_particle_generator_html_a9caab4b3afc670e80408824c288172da"><div class="ttname"><a href="class_test_particle_generator.html#a9caab4b3afc670e80408824c288172da">TestParticleGenerator::TestParticleGenerator</a></div><div class="ttdeci">TestParticleGenerator()</div><div class="ttdef"><b>Definition:</b> <a href="testparticlegenerator_8cpp_source.html#l00004">testparticlegenerator.cpp:4</a></div></div>
+<div class="ttc" id="class_test_particle_generator_html_a9caab4b3afc670e80408824c288172da"><div class="ttname"><a href="class_test_particle_generator.html#a9caab4b3afc670e80408824c288172da">TestParticleGenerator::TestParticleGenerator</a></div><div class="ttdeci">TestParticleGenerator()</div><div class="ttdef"><b>Definition:</b> <a href="testparticlegenerator_8cpp_source.html#l00012">testparticlegenerator.cpp:12</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_a0d713cea12394a4c028036c439896df.html">Tests</a></li><li class="navelem"><a class="el" href="dir_58af7abfab6d9cdb958216297cdc2558.html">TestParticleGenerator</a></li><li class="navelem"><a class="el" href="testparticlegenerator_8cpp.html">testparticlegenerator.cpp</a></li>
-    <li class="footer">Generated on Sat Jun 6 2015 21:25:29 for Vision Soil Analyzer by
+    <li class="footer">Generated on Sun Jun 7 2015 21:06:33 for Vision Soil Analyzer by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

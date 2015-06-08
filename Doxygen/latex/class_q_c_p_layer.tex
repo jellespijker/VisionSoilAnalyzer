@@ -62,7 +62,7 @@ Q\+String \hyperlink{class_q_c_p_layer_a91e6298183cb4b9dfd4efdfaf1ecc220}{m\+Nam
 \item 
 int \hyperlink{class_q_c_p_layer_a122088bcab6cec76a52b75ce8606605b}{m\+Index}
 \item 
-Q\+List$<$ \hyperlink{class_q_c_p_layerable}{Q\+C\+P\+Layerable} $\ast$ $>$ \hyperlink{class_q_c_p_layer_a704aa71bba469383c3a3c598c1ec0d28}{m\+Children}
+Q\+List$<$ \hyperlink{class_q_c_p_layerable}{Q\+C\+P\+Layerable} $\ast$ $>$ \hyperlink{class_q_c_p_layer_a05045efb8a9694e892b71808bd7433f9}{m\+Children}
 \item 
 bool \hyperlink{class_q_c_p_layer_a264950deb08e589460c126c895a1e2b5}{m\+Visible}
 \end{DoxyCompactItemize}
@@ -94,7 +94,7 @@ The rendering order within one layer is simply by order of creation or insertion
 
 When a layer is deleted, the objects on it are not deleted with it, but fall on the layer below the deleted layer, see \hyperlink{class_q_custom_plot_a40f75e342c5eaab6a86066a42a0e2a94}{Q\+Custom\+Plot\+::remove\+Layer}. 
 
-Definition at line 365 of file qcustomplot.\+h.
+Definition at line 479 of file qcustomplot.\+h.
 
 
 
@@ -116,20 +116,17 @@ It is not checked that {\itshape layer\+Name} is actually a unique layer name in
 \end{DoxyWarning}
 
 
-Definition at line 739 of file qcustomplot.\+cpp.
+Definition at line 775 of file qcustomplot.\+cpp.
 
 
 \begin{DoxyCode}
-739                                                                     :
-740   QObject(parentPlot),
-741   \hyperlink{class_q_c_p_layer_a2f3374a7884bf403720cd1cf6f7ad1bb}{mParentPlot}(parentPlot),
-742   \hyperlink{class_q_c_p_layer_a91e6298183cb4b9dfd4efdfaf1ecc220}{mName}(layerName),
-743   \hyperlink{class_q_c_p_layer_a122088bcab6cec76a52b75ce8606605b}{mIndex}(-1), \textcolor{comment}{// will be set to a proper value by the QCustomPlot layer creation function}
-744   \hyperlink{class_q_c_p_layer_a264950deb08e589460c126c895a1e2b5}{mVisible}(\textcolor{keyword}{true})
-745 \{
-746   \textcolor{comment}{// Note: no need to make sure layerName is unique, because layer}
-747   \textcolor{comment}{// management is done with QCustomPlot functions.}
-748 \}
+776     : QObject(parentPlot), \hyperlink{class_q_c_p_layer_a2f3374a7884bf403720cd1cf6f7ad1bb}{mParentPlot}(parentPlot), \hyperlink{class_q_c_p_layer_a91e6298183cb4b9dfd4efdfaf1ecc220}{mName}(layerName),
+777       \hyperlink{class_q_c_p_layer_a122088bcab6cec76a52b75ce8606605b}{mIndex}(-1), \textcolor{comment}{// will be set to a proper value by the QCustomPlot layer}
+778                   \textcolor{comment}{// creation function}
+779       \hyperlink{class_q_c_p_layer_a264950deb08e589460c126c895a1e2b5}{mVisible}(\textcolor{keyword}{true}) \{
+780   \textcolor{comment}{// Note: no need to make sure layerName is unique, because layer}
+781   \textcolor{comment}{// management is done with QCustomPlot functions.}
+782 \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_layer_afc1a8940f8e34c9f25ead9dfd4828cae}{}\index{Q\+C\+P\+Layer@{Q\+C\+P\+Layer}!````~Q\+C\+P\+Layer@{$\sim$\+Q\+C\+P\+Layer}}
 \index{````~Q\+C\+P\+Layer@{$\sim$\+Q\+C\+P\+Layer}!Q\+C\+P\+Layer@{Q\+C\+P\+Layer}}
@@ -140,7 +137,7 @@ Definition at line 739 of file qcustomplot.\+cpp.
 )}\label{class_q_c_p_layer_afc1a8940f8e34c9f25ead9dfd4828cae}
 
 
-Definition at line 750 of file qcustomplot.\+cpp.
+Definition at line 784 of file qcustomplot.\+cpp.
 
 
 
@@ -148,19 +145,25 @@ References Q\+Custom\+Plot\+::current\+Layer(), m\+Children, and m\+Parent\+Plot
 
 
 \begin{DoxyCode}
-751 \{
-752   \textcolor{comment}{// If child layerables are still on this layer, detach them, so they don't try to reach back to this}
-753   \textcolor{comment}{// then invalid layer once they get deleted/moved themselves. This only happens when layers are deleted}
-754   \textcolor{comment}{// directly, like in the QCustomPlot destructor. (The regular layer removal procedure for the user is to}
-755   \textcolor{comment}{// call QCustomPlot::removeLayer, which moves all layerables off this layer before deleting it.)}
-756   
-757   \textcolor{keywordflow}{while} (!\hyperlink{class_q_c_p_layer_a704aa71bba469383c3a3c598c1ec0d28}{mChildren}.isEmpty())
-758     \hyperlink{class_q_c_p_layer_a704aa71bba469383c3a3c598c1ec0d28}{mChildren}.last()->setLayer(0); \textcolor{comment}{// removes itself from mChildren via removeChild()}
-759   
-760   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layer_a2f3374a7884bf403720cd1cf6f7ad1bb}{mParentPlot}->\hyperlink{class_q_custom_plot_af73057345656cbd1463454982d808b00}{currentLayer}() == \textcolor{keyword}{this})
-761     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"The parent plot's mCurrentLayer will be a dangling pointer. Should have
-       been set to a valid layer or 0 beforehand."};
-762 \}
+784                     \{
+785   \textcolor{comment}{// If child layerables are still on this layer, detach them, so they don't try}
+786   \textcolor{comment}{// to reach back to this}
+787   \textcolor{comment}{// then invalid layer once they get deleted/moved themselves. This only}
+788   \textcolor{comment}{// happens when layers are deleted}
+789   \textcolor{comment}{// directly, like in the QCustomPlot destructor. (The regular layer removal}
+790   \textcolor{comment}{// procedure for the user is to}
+791   \textcolor{comment}{// call QCustomPlot::removeLayer, which moves all layerables off this layer}
+792   \textcolor{comment}{// before deleting it.)}
+793 
+794   \textcolor{keywordflow}{while} (!\hyperlink{class_q_c_p_layer_a05045efb8a9694e892b71808bd7433f9}{mChildren}.isEmpty())
+795     \hyperlink{class_q_c_p_layer_a05045efb8a9694e892b71808bd7433f9}{mChildren}.last()->setLayer(
+796         0); \textcolor{comment}{// removes itself from mChildren via removeChild()}
+797 
+798   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layer_a2f3374a7884bf403720cd1cf6f7ad1bb}{mParentPlot}->\hyperlink{class_q_custom_plot_af73057345656cbd1463454982d808b00}{currentLayer}() == \textcolor{keyword}{this})
+799     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"The parent plot's mCurrentLayer will be a "}
+800                                \textcolor{stringliteral}{"dangling pointer. Should have been set to a "}
+801                                \textcolor{stringliteral}{"valid layer or 0 beforehand."};
+802 \}
 \end{DoxyCode}
 
 
@@ -186,7 +189,7 @@ Here is the call graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_layer_a57ce5e49364aa9122276d5df3b4a0ddc}
 
 
-Definition at line 787 of file qcustomplot.\+cpp.
+Definition at line 829 of file qcustomplot.\+cpp.
 
 
 
@@ -198,17 +201,16 @@ Referenced by Q\+C\+P\+Layerable\+::move\+To\+Layer().
 
 
 \begin{DoxyCode}
-788 \{
-789   \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_layer_a704aa71bba469383c3a3c598c1ec0d28}{mChildren}.contains(layerable))
-790   \{
-791     \textcolor{keywordflow}{if} (prepend)
-792       \hyperlink{class_q_c_p_layer_a704aa71bba469383c3a3c598c1ec0d28}{mChildren}.prepend(layerable);
-793     \textcolor{keywordflow}{else}
-794       \hyperlink{class_q_c_p_layer_a704aa71bba469383c3a3c598c1ec0d28}{mChildren}.append(layerable);
-795   \} \textcolor{keywordflow}{else}
-796     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"layerable is already child of this layer"} << \textcolor{keyword}{reinterpret\_cast<}quintptr\textcolor{keyword}{>}(
-      layerable);
-797 \}
+829                                                              \{
+830   \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_layer_a05045efb8a9694e892b71808bd7433f9}{mChildren}.contains(layerable)) \{
+831     \textcolor{keywordflow}{if} (prepend)
+832       \hyperlink{class_q_c_p_layer_a05045efb8a9694e892b71808bd7433f9}{mChildren}.prepend(layerable);
+833     \textcolor{keywordflow}{else}
+834       \hyperlink{class_q_c_p_layer_a05045efb8a9694e892b71808bd7433f9}{mChildren}.append(layerable);
+835   \} \textcolor{keywordflow}{else}
+836     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"layerable is already child of this layer"}
+837              << \textcolor{keyword}{reinterpret\_cast<}quintptr\textcolor{keyword}{>}(layerable);
+838 \}
 \end{DoxyCode}
 
 
@@ -230,7 +232,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_layer_a94c2f0100e48cefad2de8fe0fbb03c27}
 Returns a list of all layerables on this layer. The order corresponds to the rendering order\+: layerables with higher indices are drawn above layerables with lower indices. 
 
-Definition at line 383 of file qcustomplot.\+h.
+Definition at line 496 of file qcustomplot.\+h.
 
 
 
@@ -238,7 +240,7 @@ Referenced by Q\+Custom\+Plot\+::deselect\+All(), Q\+Custom\+Plot\+::draw(), Q\+
 
 
 \begin{DoxyCode}
-383 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layer_a704aa71bba469383c3a3c598c1ec0d28}{mChildren}; \}
+496 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layer_a05045efb8a9694e892b71808bd7433f9}{mChildren}; \}
 \end{DoxyCode}
 
 
@@ -262,7 +264,7 @@ Returns the index this layer has in the \hyperlink{class_q_custom_plot}{Q\+Custo
 
 Layers with higher indices will be drawn above layers with lower indices. 
 
-Definition at line 382 of file qcustomplot.\+h.
+Definition at line 495 of file qcustomplot.\+h.
 
 
 
@@ -270,7 +272,7 @@ Referenced by Q\+Custom\+Plot\+::add\+Layer(), Q\+Custom\+Plot\+::move\+Layer(),
 
 
 \begin{DoxyCode}
-382 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layer_a122088bcab6cec76a52b75ce8606605b}{mIndex}; \}
+495 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layer_a122088bcab6cec76a52b75ce8606605b}{mIndex}; \}
 \end{DoxyCode}
 
 
@@ -292,7 +294,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_layer_a96ebd1e436f3813938cb9cd4a59a60be}
 
 
-Definition at line 381 of file qcustomplot.\+h.
+Definition at line 494 of file qcustomplot.\+h.
 
 
 
@@ -300,7 +302,7 @@ Referenced by Q\+Custom\+Plot\+::layer(), and Q\+C\+P\+Layerable\+::move\+To\+La
 
 
 \begin{DoxyCode}
-381 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layer_a91e6298183cb4b9dfd4efdfaf1ecc220}{mName}; \}
+494 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layer_a91e6298183cb4b9dfd4efdfaf1ecc220}{mName}; \}
 \end{DoxyCode}
 
 
@@ -322,7 +324,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_layer_a3958c9a938c2d05a7378c41484acee08}
 
 
-Definition at line 380 of file qcustomplot.\+h.
+Definition at line 493 of file qcustomplot.\+h.
 
 
 
@@ -330,7 +332,7 @@ Referenced by Q\+C\+P\+Layerable\+::move\+To\+Layer().
 
 
 \begin{DoxyCode}
-380 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layer_a2f3374a7884bf403720cd1cf6f7ad1bb}{mParentPlot}; \}
+493 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layer_a2f3374a7884bf403720cd1cf6f7ad1bb}{mParentPlot}; \}
 \end{DoxyCode}
 
 
@@ -352,7 +354,7 @@ Here is the caller graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_layer_ac2f64ac7761650582d968d86670ef362}
 
 
-Definition at line 808 of file qcustomplot.\+cpp.
+Definition at line 850 of file qcustomplot.\+cpp.
 
 
 
@@ -364,11 +366,11 @@ Referenced by Q\+C\+P\+Layerable\+::move\+To\+Layer(), and Q\+C\+P\+Layerable\+:
 
 
 \begin{DoxyCode}
-809 \{
-810   \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_layer_a704aa71bba469383c3a3c598c1ec0d28}{mChildren}.removeOne(layerable))
-811     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"layerable is not child of this layer"} << \textcolor{keyword}{reinterpret\_cast<}quintptr\textcolor{keyword}{>}(
-      layerable);
-812 \}
+850                                                   \{
+851   \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_layer_a05045efb8a9694e892b71808bd7433f9}{mChildren}.removeOne(layerable))
+852     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"layerable is not child of this layer"}
+853              << \textcolor{keyword}{reinterpret\_cast<}quintptr\textcolor{keyword}{>}(layerable);
+854 \}
 \end{DoxyCode}
 
 
@@ -392,7 +394,7 @@ Sets whether this layer is visible or not. If {\itshape visible} is set to false
 
 This function doesn\textquotesingle{}t change the visibility property of the layerables (\hyperlink{class_q_c_p_layerable_a3bed99ddc396b48ce3ebfdc0418744f8}{Q\+C\+P\+Layerable\+::set\+Visible}), but the \hyperlink{class_q_c_p_layerable_a30809f7455e9794bca7b6c737622fa63}{Q\+C\+P\+Layerable\+::real\+Visibility} of each layerable takes the visibility of the parent layer into account. 
 
-Definition at line 772 of file qcustomplot.\+cpp.
+Definition at line 814 of file qcustomplot.\+cpp.
 
 
 
@@ -400,9 +402,7 @@ References m\+Visible, and visible().
 
 
 \begin{DoxyCode}
-773 \{
-774   \hyperlink{class_q_c_p_layer_a264950deb08e589460c126c895a1e2b5}{mVisible} = \hyperlink{class_q_c_p_layer_a9efca636e4dcad721999a6282f296016}{visible};
-775 \}
+814 \{ \hyperlink{class_q_c_p_layer_a264950deb08e589460c126c895a1e2b5}{mVisible} = \hyperlink{class_q_c_p_layer_a9efca636e4dcad721999a6282f296016}{visible}; \}
 \end{DoxyCode}
 
 
@@ -424,7 +424,7 @@ Here is the call graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_layer_a9efca636e4dcad721999a6282f296016}
 
 
-Definition at line 384 of file qcustomplot.\+h.
+Definition at line 497 of file qcustomplot.\+h.
 
 
 
@@ -432,7 +432,7 @@ Referenced by Q\+C\+P\+Layerable\+::real\+Visibility(), and set\+Visible().
 
 
 \begin{DoxyCode}
-384 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layer_a264950deb08e589460c126c895a1e2b5}{mVisible}; \}
+497 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layer_a264950deb08e589460c126c895a1e2b5}{mVisible}; \}
 \end{DoxyCode}
 
 
@@ -453,24 +453,24 @@ Here is the caller graph for this function\+:\nopagebreak
 \subsubsection[{Q\+C\+P\+Layerable}]{\setlength{\rightskip}{0pt plus 5cm}friend class {\bf Q\+C\+P\+Layerable}\hspace{0.3cm}{\ttfamily [friend]}}\label{class_q_c_p_layer_ad655f55cccf49ba14d5172ec517e07ae}
 
 
-Definition at line 405 of file qcustomplot.\+h.
+Definition at line 518 of file qcustomplot.\+h.
 
 \hypertarget{class_q_c_p_layer_a1cdf9df76adcfae45261690aa0ca2198}{}\index{Q\+C\+P\+Layer@{Q\+C\+P\+Layer}!Q\+Custom\+Plot@{Q\+Custom\+Plot}}
 \index{Q\+Custom\+Plot@{Q\+Custom\+Plot}!Q\+C\+P\+Layer@{Q\+C\+P\+Layer}}
 \subsubsection[{Q\+Custom\+Plot}]{\setlength{\rightskip}{0pt plus 5cm}friend class {\bf Q\+Custom\+Plot}\hspace{0.3cm}{\ttfamily [friend]}}\label{class_q_c_p_layer_a1cdf9df76adcfae45261690aa0ca2198}
 
 
-Definition at line 404 of file qcustomplot.\+h.
+Definition at line 517 of file qcustomplot.\+h.
 
 
 
 \subsection{Member Data Documentation}
-\hypertarget{class_q_c_p_layer_a704aa71bba469383c3a3c598c1ec0d28}{}\index{Q\+C\+P\+Layer@{Q\+C\+P\+Layer}!m\+Children@{m\+Children}}
+\hypertarget{class_q_c_p_layer_a05045efb8a9694e892b71808bd7433f9}{}\index{Q\+C\+P\+Layer@{Q\+C\+P\+Layer}!m\+Children@{m\+Children}}
 \index{m\+Children@{m\+Children}!Q\+C\+P\+Layer@{Q\+C\+P\+Layer}}
-\subsubsection[{m\+Children}]{\setlength{\rightskip}{0pt plus 5cm}Q\+List$<${\bf Q\+C\+P\+Layerable}$\ast$$>$ Q\+C\+P\+Layer\+::m\+Children\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_layer_a704aa71bba469383c3a3c598c1ec0d28}
+\subsubsection[{m\+Children}]{\setlength{\rightskip}{0pt plus 5cm}Q\+List$<${\bf Q\+C\+P\+Layerable} $\ast$$>$ Q\+C\+P\+Layer\+::m\+Children\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_layer_a05045efb8a9694e892b71808bd7433f9}
 
 
-Definition at line 394 of file qcustomplot.\+h.
+Definition at line 507 of file qcustomplot.\+h.
 
 
 
@@ -481,21 +481,21 @@ Referenced by add\+Child(), remove\+Child(), and $\sim$\+Q\+C\+P\+Layer().
 \subsubsection[{m\+Index}]{\setlength{\rightskip}{0pt plus 5cm}int Q\+C\+P\+Layer\+::m\+Index\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_layer_a122088bcab6cec76a52b75ce8606605b}
 
 
-Definition at line 393 of file qcustomplot.\+h.
+Definition at line 506 of file qcustomplot.\+h.
 
 \hypertarget{class_q_c_p_layer_a91e6298183cb4b9dfd4efdfaf1ecc220}{}\index{Q\+C\+P\+Layer@{Q\+C\+P\+Layer}!m\+Name@{m\+Name}}
 \index{m\+Name@{m\+Name}!Q\+C\+P\+Layer@{Q\+C\+P\+Layer}}
 \subsubsection[{m\+Name}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String Q\+C\+P\+Layer\+::m\+Name\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_layer_a91e6298183cb4b9dfd4efdfaf1ecc220}
 
 
-Definition at line 392 of file qcustomplot.\+h.
+Definition at line 505 of file qcustomplot.\+h.
 
 \hypertarget{class_q_c_p_layer_a2f3374a7884bf403720cd1cf6f7ad1bb}{}\index{Q\+C\+P\+Layer@{Q\+C\+P\+Layer}!m\+Parent\+Plot@{m\+Parent\+Plot}}
 \index{m\+Parent\+Plot@{m\+Parent\+Plot}!Q\+C\+P\+Layer@{Q\+C\+P\+Layer}}
 \subsubsection[{m\+Parent\+Plot}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+Custom\+Plot}$\ast$ Q\+C\+P\+Layer\+::m\+Parent\+Plot\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_layer_a2f3374a7884bf403720cd1cf6f7ad1bb}
 
 
-Definition at line 391 of file qcustomplot.\+h.
+Definition at line 504 of file qcustomplot.\+h.
 
 
 
@@ -506,7 +506,7 @@ Referenced by $\sim$\+Q\+C\+P\+Layer().
 \subsubsection[{m\+Visible}]{\setlength{\rightskip}{0pt plus 5cm}bool Q\+C\+P\+Layer\+::m\+Visible\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_layer_a264950deb08e589460c126c895a1e2b5}
 
 
-Definition at line 395 of file qcustomplot.\+h.
+Definition at line 508 of file qcustomplot.\+h.
 
 
 

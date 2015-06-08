@@ -35,7 +35,7 @@
    <div id="projectname">Vision Soil Analyzer
    &#160;<span id="projectnumber">1.0.0</span>
    </div>
-   <div id="projectbrief">The Soil Analyzer is a portable lab that can analyse soil samples and tells the user about it&#39;s optical properties. It looks at the texture and describe it as a Particle Size Distribution. This information is presented as a Cumulative Distribution Function (CDF). It also describes the structure of the soil sample and gives information on the sphericity and roundness / angularity. It does so by analysing the contour of particles, describing them as Fourier Descriptors and using a Neural Network to describe it&#39;s properties. Finally it gives the color properties in a histogram in the CIE La*b* colorspace, which show correlations with the fertility of the soil. and a histogram of the Redness Index, which gives has a correlation on the iron content.</div>
+   <div id="projectbrief">Soil analyzer using an USB microscope - for Linux PC and Beaglebone Black</div>
   </td>
  </tr>
  </tbody>
@@ -151,7 +151,7 @@ Public Attributes</h2></td></tr>
 </ul>
 <dl class="section see"><dt>See also</dt><dd>QCPBarDataaMap </dd></dl>
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l02802">2802</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03228">3228</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a8d214eda9ef41bc6da2a908a09623836"></a>
 <div class="memitem">
@@ -167,14 +167,10 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Constructs a bar data point with key and value set to zero. </p>
 
-<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l18362">18362</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l18362"></a><span class="lineno">18362</span>&#160;                       :</div>
-<div class="line"><a name="l18363"></a><span class="lineno">18363</span>&#160;  <a class="code" href="class_q_c_p_bar_data.html#afe544b035ef19027ea3d65adeaf81b42">key</a>(0),</div>
-<div class="line"><a name="l18364"></a><span class="lineno">18364</span>&#160;  <a class="code" href="class_q_c_p_bar_data.html#acab57005d8916d61b64e9ddef6113b60">value</a>(0)</div>
-<div class="line"><a name="l18365"></a><span class="lineno">18365</span>&#160;{</div>
-<div class="line"><a name="l18366"></a><span class="lineno">18366</span>&#160;}</div>
-<div class="ttc" id="class_q_c_p_bar_data_html_afe544b035ef19027ea3d65adeaf81b42"><div class="ttname"><a href="class_q_c_p_bar_data.html#afe544b035ef19027ea3d65adeaf81b42">QCPBarData::key</a></div><div class="ttdeci">double key</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l02807">qcustomplot.h:2807</a></div></div>
-<div class="ttc" id="class_q_c_p_bar_data_html_acab57005d8916d61b64e9ddef6113b60"><div class="ttname"><a href="class_q_c_p_bar_data.html#acab57005d8916d61b64e9ddef6113b60">QCPBarData::value</a></div><div class="ttdeci">double value</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l02807">qcustomplot.h:2807</a></div></div>
+<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l20520">20520</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l20520"></a><span class="lineno">20520</span>&#160;: <a class="code" href="class_q_c_p_bar_data.html#afe544b035ef19027ea3d65adeaf81b42">key</a>(0), <a class="code" href="class_q_c_p_bar_data.html#acab57005d8916d61b64e9ddef6113b60">value</a>(0) {}</div>
+<div class="ttc" id="class_q_c_p_bar_data_html_afe544b035ef19027ea3d65adeaf81b42"><div class="ttname"><a href="class_q_c_p_bar_data.html#afe544b035ef19027ea3d65adeaf81b42">QCPBarData::key</a></div><div class="ttdeci">double key</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03232">qcustomplot.h:3232</a></div></div>
+<div class="ttc" id="class_q_c_p_bar_data_html_acab57005d8916d61b64e9ddef6113b60"><div class="ttname"><a href="class_q_c_p_bar_data.html#acab57005d8916d61b64e9ddef6113b60">QCPBarData::value</a></div><div class="ttdeci">double value</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03232">qcustomplot.h:3232</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -203,14 +199,10 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Constructs a bar data point with the specified <em>key</em> and <em>value</em>. </p>
 
-<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l18371">18371</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l18371"></a><span class="lineno">18371</span>&#160;                                               :</div>
-<div class="line"><a name="l18372"></a><span class="lineno">18372</span>&#160;  <a class="code" href="class_q_c_p_bar_data.html#afe544b035ef19027ea3d65adeaf81b42">key</a>(<a class="code" href="class_q_c_p_bar_data.html#afe544b035ef19027ea3d65adeaf81b42">key</a>),</div>
-<div class="line"><a name="l18373"></a><span class="lineno">18373</span>&#160;  <a class="code" href="class_q_c_p_bar_data.html#acab57005d8916d61b64e9ddef6113b60">value</a>(<a class="code" href="class_q_c_p_bar_data.html#acab57005d8916d61b64e9ddef6113b60">value</a>)</div>
-<div class="line"><a name="l18374"></a><span class="lineno">18374</span>&#160;{</div>
-<div class="line"><a name="l18375"></a><span class="lineno">18375</span>&#160;}</div>
-<div class="ttc" id="class_q_c_p_bar_data_html_afe544b035ef19027ea3d65adeaf81b42"><div class="ttname"><a href="class_q_c_p_bar_data.html#afe544b035ef19027ea3d65adeaf81b42">QCPBarData::key</a></div><div class="ttdeci">double key</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l02807">qcustomplot.h:2807</a></div></div>
-<div class="ttc" id="class_q_c_p_bar_data_html_acab57005d8916d61b64e9ddef6113b60"><div class="ttname"><a href="class_q_c_p_bar_data.html#acab57005d8916d61b64e9ddef6113b60">QCPBarData::value</a></div><div class="ttdeci">double value</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l02807">qcustomplot.h:2807</a></div></div>
+<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l20525">20525</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l20525"></a><span class="lineno">20525</span>&#160;: <a class="code" href="class_q_c_p_bar_data.html#afe544b035ef19027ea3d65adeaf81b42">key</a>(<a class="code" href="class_q_c_p_bar_data.html#afe544b035ef19027ea3d65adeaf81b42">key</a>), <a class="code" href="class_q_c_p_bar_data.html#acab57005d8916d61b64e9ddef6113b60">value</a>(<a class="code" href="class_q_c_p_bar_data.html#acab57005d8916d61b64e9ddef6113b60">value</a>) {}</div>
+<div class="ttc" id="class_q_c_p_bar_data_html_afe544b035ef19027ea3d65adeaf81b42"><div class="ttname"><a href="class_q_c_p_bar_data.html#afe544b035ef19027ea3d65adeaf81b42">QCPBarData::key</a></div><div class="ttdeci">double key</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03232">qcustomplot.h:3232</a></div></div>
+<div class="ttc" id="class_q_c_p_bar_data_html_acab57005d8916d61b64e9ddef6113b60"><div class="ttname"><a href="class_q_c_p_bar_data.html#acab57005d8916d61b64e9ddef6113b60">QCPBarData::value</a></div><div class="ttdeci">double value</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03232">qcustomplot.h:3232</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -225,9 +217,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l02807">2807</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03232">3232</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l18652">QCPBars::addData()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l18559">QCPBars::setData()</a>.</p>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l20817">QCPBars::addData()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l20714">QCPBars::setData()</a>.</p>
 
 </div>
 </div>
@@ -241,9 +233,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l02807">2807</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03232">3232</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l18661">QCPBars::addData()</a>.</p>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l20826">QCPBars::addData()</a>.</p>
 
 </div>
 </div>
@@ -257,7 +249,7 @@ Public Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_q_c_p_bar_data.html">QCPBarData</a></li>
-    <li class="footer">Generated on Sat Jun 6 2015 21:25:32 for Vision Soil Analyzer by
+    <li class="footer">Generated on Sun Jun 7 2015 21:06:38 for Vision Soil Analyzer by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

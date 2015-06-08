@@ -35,7 +35,7 @@
    <div id="projectname">Vision Soil Analyzer
    &#160;<span id="projectnumber">1.0.0</span>
    </div>
-   <div id="projectbrief">The Soil Analyzer is a portable lab that can analyse soil samples and tells the user about it&#39;s optical properties. It looks at the texture and describe it as a Particle Size Distribution. This information is presented as a Cumulative Distribution Function (CDF). It also describes the structure of the soil sample and gives information on the sphericity and roundness / angularity. It does so by analysing the contour of particles, describing them as Fourier Descriptors and using a Neural Network to describe it&#39;s properties. Finally it gives the color properties in a histogram in the CIE La*b* colorspace, which show correlations with the fertility of the soil. and a histogram of the Redness Index, which gives has a correlation on the iron content.</div>
+   <div id="projectbrief">Soil analyzer using an USB microscope - for Linux PC and Beaglebone Black</div>
   </td>
  </tr>
  </tbody>
@@ -174,7 +174,7 @@ Protected Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p>Definition at line <a class="el" href="_b_b_b_8h_source.html#l00030">30</a> of file <a class="el" href="_b_b_b_8h_source.html">BBB.h</a>.</p>
+<p>Definition at line <a class="el" href="_b_b_b_8h_source.html#l00040">40</a> of file <a class="el" href="_b_b_b_8h_source.html">BBB.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="ab26c0f13cc9488b757e309495ef398d7"></a>
 <div class="memitem">
@@ -190,19 +190,19 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Constructor </p>
 
-<p>Definition at line <a class="el" href="_b_b_b_8cpp_source.html#l00006">6</a> of file <a class="el" href="_b_b_b_8cpp_source.html">BBB.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_b_b_b_8cpp_source.html#l00012">12</a> of file <a class="el" href="_b_b_b_8cpp_source.html">BBB.cpp</a>.</p>
 
-<p>References <a class="el" href="_b_b_b_8h_source.html#l00041">callbackFunction</a>, <a class="el" href="_b_b_b_8h_source.html#l00033">debounceTime</a>, <a class="el" href="_b_b_b_8h_source.html#l00040">thread</a>, and <a class="el" href="_b_b_b_8h_source.html#l00039">threadRunning</a>.</p>
-<div class="fragment"><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    {</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        <a class="code" href="class_hardware_1_1_b_b_b.html#a0d9d8c56afb37955e0d0c6baf0f418df">threadRunning</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        <a class="code" href="class_hardware_1_1_b_b_b.html#a66d583952f3949a732ee15eea81e80e5">callbackFunction</a> = NULL;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <a class="code" href="class_hardware_1_1_b_b_b.html#a353a2d7d4fbade337e5173b484b20b22">debounceTime</a> = 0;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <a class="code" href="class_hardware_1_1_b_b_b.html#a3ad3fe886705bfc242ef58dc5329166e">thread</a> = (pthread_t)NULL;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    }</div>
-<div class="ttc" id="class_hardware_1_1_b_b_b_html_a3ad3fe886705bfc242ef58dc5329166e"><div class="ttname"><a href="class_hardware_1_1_b_b_b.html#a3ad3fe886705bfc242ef58dc5329166e">Hardware::BBB::thread</a></div><div class="ttdeci">pthread_t thread</div><div class="ttdef"><b>Definition:</b> <a href="_b_b_b_8h_source.html#l00040">BBB.h:40</a></div></div>
-<div class="ttc" id="class_hardware_1_1_b_b_b_html_a66d583952f3949a732ee15eea81e80e5"><div class="ttname"><a href="class_hardware_1_1_b_b_b.html#a66d583952f3949a732ee15eea81e80e5">Hardware::BBB::callbackFunction</a></div><div class="ttdeci">CallbackType callbackFunction</div><div class="ttdef"><b>Definition:</b> <a href="_b_b_b_8h_source.html#l00041">BBB.h:41</a></div></div>
-<div class="ttc" id="class_hardware_1_1_b_b_b_html_a0d9d8c56afb37955e0d0c6baf0f418df"><div class="ttname"><a href="class_hardware_1_1_b_b_b.html#a0d9d8c56afb37955e0d0c6baf0f418df">Hardware::BBB::threadRunning</a></div><div class="ttdeci">bool threadRunning</div><div class="ttdef"><b>Definition:</b> <a href="_b_b_b_8h_source.html#l00039">BBB.h:39</a></div></div>
-<div class="ttc" id="class_hardware_1_1_b_b_b_html_a353a2d7d4fbade337e5173b484b20b22"><div class="ttname"><a href="class_hardware_1_1_b_b_b.html#a353a2d7d4fbade337e5173b484b20b22">Hardware::BBB::debounceTime</a></div><div class="ttdeci">int debounceTime</div><div class="ttdef"><b>Definition:</b> <a href="_b_b_b_8h_source.html#l00033">BBB.h:33</a></div></div>
+<p>References <a class="el" href="_b_b_b_8h_source.html#l00050">callbackFunction</a>, <a class="el" href="_b_b_b_8h_source.html#l00042">debounceTime</a>, <a class="el" href="_b_b_b_8h_source.html#l00049">thread</a>, and <a class="el" href="_b_b_b_8h_source.html#l00048">threadRunning</a>.</p>
+<div class="fragment"><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;         {</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  <a class="code" href="class_hardware_1_1_b_b_b.html#a0d9d8c56afb37955e0d0c6baf0f418df">threadRunning</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  <a class="code" href="class_hardware_1_1_b_b_b.html#a66d583952f3949a732ee15eea81e80e5">callbackFunction</a> = NULL;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  <a class="code" href="class_hardware_1_1_b_b_b.html#a353a2d7d4fbade337e5173b484b20b22">debounceTime</a> = 0;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <a class="code" href="class_hardware_1_1_b_b_b.html#a3ad3fe886705bfc242ef58dc5329166e">thread</a> = (pthread_t)NULL;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;}</div>
+<div class="ttc" id="class_hardware_1_1_b_b_b_html_a3ad3fe886705bfc242ef58dc5329166e"><div class="ttname"><a href="class_hardware_1_1_b_b_b.html#a3ad3fe886705bfc242ef58dc5329166e">Hardware::BBB::thread</a></div><div class="ttdeci">pthread_t thread</div><div class="ttdef"><b>Definition:</b> <a href="_b_b_b_8h_source.html#l00049">BBB.h:49</a></div></div>
+<div class="ttc" id="class_hardware_1_1_b_b_b_html_a66d583952f3949a732ee15eea81e80e5"><div class="ttname"><a href="class_hardware_1_1_b_b_b.html#a66d583952f3949a732ee15eea81e80e5">Hardware::BBB::callbackFunction</a></div><div class="ttdeci">CallbackType callbackFunction</div><div class="ttdef"><b>Definition:</b> <a href="_b_b_b_8h_source.html#l00050">BBB.h:50</a></div></div>
+<div class="ttc" id="class_hardware_1_1_b_b_b_html_a0d9d8c56afb37955e0d0c6baf0f418df"><div class="ttname"><a href="class_hardware_1_1_b_b_b.html#a0d9d8c56afb37955e0d0c6baf0f418df">Hardware::BBB::threadRunning</a></div><div class="ttdeci">bool threadRunning</div><div class="ttdef"><b>Definition:</b> <a href="_b_b_b_8h_source.html#l00048">BBB.h:48</a></div></div>
+<div class="ttc" id="class_hardware_1_1_b_b_b_html_a353a2d7d4fbade337e5173b484b20b22"><div class="ttname"><a href="class_hardware_1_1_b_b_b.html#a353a2d7d4fbade337e5173b484b20b22">Hardware::BBB::debounceTime</a></div><div class="ttdeci">int debounceTime</div><div class="ttdef"><b>Definition:</b> <a href="_b_b_b_8h_source.html#l00042">BBB.h:42</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -220,8 +220,8 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>De-constructor </p>
 
-<p>Definition at line <a class="el" href="_b_b_b_8cpp_source.html#l00015">15</a> of file <a class="el" href="_b_b_b_8cpp_source.html">BBB.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{   }</div>
+<p>Definition at line <a class="el" href="_b_b_b_8cpp_source.html#l00020">20</a> of file <a class="el" href="_b_b_b_8cpp_source.html">BBB.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -255,27 +255,31 @@ Protected Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the search string is found otherwise false </dd></dl>
 
-<p>Definition at line <a class="el" href="_b_b_b_8cpp_source.html#l00059">59</a> of file <a class="el" href="_b_b_b_8cpp_source.html">BBB.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_b_b_b_8cpp_source.html#l00067">67</a> of file <a class="el" href="_b_b_b_8cpp_source.html">BBB.cpp</a>.</p>
 
-<p>References <a class="el" href="_b_b_b_8h_source.html#l00007">SLOTS</a>.</p>
+<p>References <a class="el" href="_b_b_b_8h_source.html#l00016">SLOTS</a>.</p>
 
-<p>Referenced by <a class="el" href="eqep_8cpp_source.html#l00040">Hardware::eQEP::eQEP()</a>, and <a class="el" href="_p_w_m_8cpp_source.html#l00009">Hardware::PWM::PWM()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordtype">bool</span> shieldFound = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        ifstream fs;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        fs.open(<a class="code" href="_b_b_b_8h.html#a3de26a5dbd2276c1486afbba5fc8de59">SLOTS</a>);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordflow">if</span> (!fs.is_open()) { <span class="keywordflow">throw</span> Exception::GPIOReadException(<span class="stringliteral">&quot;Can&#39;t open SLOTS&quot;</span>); }</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordtype">string</span> line;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordflow">while</span> (getline(fs, line))</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        {</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keywordflow">if</span> (line.find(shield) != string::npos) { shieldFound = <span class="keyword">true</span>; <span class="keywordflow">break</span>; }</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        }</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        fs.close();</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordflow">return</span> shieldFound;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    }</div>
-<div class="ttc" id="_b_b_b_8h_html_a3de26a5dbd2276c1486afbba5fc8de59"><div class="ttname"><a href="_b_b_b_8h.html#a3de26a5dbd2276c1486afbba5fc8de59">SLOTS</a></div><div class="ttdeci">#define SLOTS</div><div class="ttdef"><b>Definition:</b> <a href="_b_b_b_8h_source.html#l00007">BBB.h:7</a></div></div>
+<p>Referenced by <a class="el" href="eqep_8cpp_source.html#l00042">Hardware::eQEP::eQEP()</a>, and <a class="el" href="_p_w_m_8cpp_source.html#l00015">Hardware::PWM::PWM()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                                         {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="keywordtype">bool</span> shieldFound = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  ifstream fs;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  fs.open(<a class="code" href="_b_b_b_8h.html#a3de26a5dbd2276c1486afbba5fc8de59">SLOTS</a>);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="keywordflow">if</span> (!fs.is_open()) {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">throw</span> Exception::GPIOReadException(<span class="stringliteral">&quot;Can&#39;t open SLOTS&quot;</span>);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keywordtype">string</span> line;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keywordflow">while</span> (getline(fs, line)) {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordflow">if</span> (line.find(shield) != string::npos) {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      shieldFound = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  fs.close();</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="keywordflow">return</span> shieldFound;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;}</div>
+<div class="ttc" id="_b_b_b_8h_html_a3de26a5dbd2276c1486afbba5fc8de59"><div class="ttname"><a href="_b_b_b_8h.html#a3de26a5dbd2276c1486afbba5fc8de59">SLOTS</a></div><div class="ttdeci">#define SLOTS</div><div class="ttdef"><b>Definition:</b> <a href="_b_b_b_8h_source.html#l00016">BBB.h:16</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -311,14 +315,16 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <p>Checks if a directory exist </p><dl class="section return"><dt>Returns</dt><dd>true if the directory exists and false if not </dd></dl>
 
-<p>Definition at line <a class="el" href="_b_b_b_8cpp_source.html#l00048">48</a> of file <a class="el" href="_b_b_b_8cpp_source.html">BBB.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_b_b_b_8cpp_source.html#l00055">55</a> of file <a class="el" href="_b_b_b_8cpp_source.html">BBB.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="_g_p_i_o_8cpp_source.html#l00095">Hardware::GPIO::isExported()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keyword">struct </span>stat st;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">if</span> (stat((<span class="keywordtype">char</span> *)path.c_str(), &amp;st) != 0) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    }</div>
+<p>Referenced by <a class="el" href="_g_p_i_o_8cpp_source.html#l00089">Hardware::GPIO::isExported()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                                           {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keyword">struct </span>stat st;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keywordflow">if</span> (stat((<span class="keywordtype">char</span> *)path.c_str(), &amp;st) != 0) {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -362,12 +368,12 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the number as a string </dd></dl>
 
-<p>Definition at line <a class="el" href="_b_b_b_8h_source.html#l00053">53</a> of file <a class="el" href="_b_b_b_8h_source.html">BBB.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            ostringstream ss;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            ss &lt;&lt; Number;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="keywordflow">return</span> ss.str();</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        };</div>
+<p>Definition at line <a class="el" href="_b_b_b_8h_source.html#l00062">62</a> of file <a class="el" href="_b_b_b_8h_source.html">BBB.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                                                        {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    ostringstream ss;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    ss &lt;&lt; Number;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">return</span> ss.str();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  };</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -400,18 +406,20 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>this first line </dd></dl>
 
-<p>Definition at line <a class="el" href="_b_b_b_8cpp_source.html#l00021">21</a> of file <a class="el" href="_b_b_b_8cpp_source.html">BBB.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_b_b_b_8cpp_source.html#l00026">26</a> of file <a class="el" href="_b_b_b_8cpp_source.html">BBB.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="_a_d_c_8cpp_source.html#l00049">Hardware::ADC::GetCurrentValue()</a>, <a class="el" href="_p_w_m_8cpp_source.html#l00009">Hardware::PWM::PWM()</a>, <a class="el" href="_g_p_i_o_8cpp_source.html#l00118">Hardware::GPIO::ReadsDirection()</a>, <a class="el" href="_g_p_i_o_8cpp_source.html#l00137">Hardware::GPIO::ReadsEdge()</a>, <a class="el" href="_g_p_i_o_8cpp_source.html#l00167">Hardware::GPIO::ReadsValue()</a>, <a class="el" href="_a_d_c_8cpp_source.html#l00062">Hardware::ADC::SetMaxIntensity()</a>, <a class="el" href="_a_d_c_8cpp_source.html#l00057">Hardware::ADC::SetMinIntensity()</a>, and <a class="el" href="_a_d_c_8cpp_source.html#l00086">Hardware::ADC::WaitForValueChange()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        ifstream fs;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        fs.open(path.c_str());</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordflow">if</span> (!fs.is_open())  { <span class="keywordflow">throw</span> Exception::GPIOReadException((<span class="stringliteral">&quot;Can&#39;t open: &quot;</span> + path).c_str());  }</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keywordtype">string</span> input;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        getline(fs, input);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        fs.close();</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordflow">return</span> input;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    }</div>
+<p>Referenced by <a class="el" href="_a_d_c_8cpp_source.html#l00053">Hardware::ADC::GetCurrentValue()</a>, <a class="el" href="_p_w_m_8cpp_source.html#l00015">Hardware::PWM::PWM()</a>, <a class="el" href="_g_p_i_o_8cpp_source.html#l00110">Hardware::GPIO::ReadsDirection()</a>, <a class="el" href="_g_p_i_o_8cpp_source.html#l00129">Hardware::GPIO::ReadsEdge()</a>, <a class="el" href="_g_p_i_o_8cpp_source.html#l00161">Hardware::GPIO::ReadsValue()</a>, <a class="el" href="_a_d_c_8cpp_source.html#l00065">Hardware::ADC::SetMaxIntensity()</a>, <a class="el" href="_a_d_c_8cpp_source.html#l00061">Hardware::ADC::SetMinIntensity()</a>, and <a class="el" href="_a_d_c_8cpp_source.html#l00088">Hardware::ADC::WaitForValueChange()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                                   {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  ifstream fs;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  fs.open(path.c_str());</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <span class="keywordflow">if</span> (!fs.is_open()) {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordflow">throw</span> Exception::GPIOReadException((<span class="stringliteral">&quot;Can&#39;t open: &quot;</span> + path).c_str());</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  }</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <span class="keywordtype">string</span> input;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  getline(fs, input);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  fs.close();</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keywordflow">return</span> input;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -455,12 +463,12 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the number as typename </dd></dl>
 
-<p>Definition at line <a class="el" href="_b_b_b_8h_source.html#l00064">64</a> of file <a class="el" href="_b_b_b_8h_source.html">BBB.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            stringstream ss(Text);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            T result;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="keywordflow">return</span> ss &gt;&gt; result ? result : 0;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        };</div>
+<p>Definition at line <a class="el" href="_b_b_b_8h_source.html#l00072">72</a> of file <a class="el" href="_b_b_b_8h_source.html">BBB.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                                                      {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    stringstream ss(Text);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    T result;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">return</span> ss &gt;&gt; result ? result : 0;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  };</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -503,16 +511,18 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_b_b_b_8cpp_source.html#l00036">36</a> of file <a class="el" href="_b_b_b_8cpp_source.html">BBB.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_b_b_b_8cpp_source.html#l00042">42</a> of file <a class="el" href="_b_b_b_8cpp_source.html">BBB.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="eqep_8cpp_source.html#l00040">Hardware::eQEP::eQEP()</a>, <a class="el" href="_g_p_i_o_8cpp_source.html#l00106">Hardware::GPIO::ExportPin()</a>, <a class="el" href="_p_w_m_8cpp_source.html#l00009">Hardware::PWM::PWM()</a>, <a class="el" href="_p_w_m_8cpp_source.html#l00123">Hardware::PWM::SetDuty()</a>, <a class="el" href="_p_w_m_8cpp_source.html#l00110">Hardware::PWM::SetPeriod()</a>, <a class="el" href="_p_w_m_8cpp_source.html#l00148">Hardware::PWM::SetPolarity()</a>, <a class="el" href="_p_w_m_8cpp_source.html#l00136">Hardware::PWM::SetRun()</a>, <a class="el" href="_g_p_i_o_8cpp_source.html#l00112">Hardware::GPIO::UnexportPin()</a>, <a class="el" href="_g_p_i_o_8cpp_source.html#l00124">Hardware::GPIO::WritesDirection()</a>, <a class="el" href="_g_p_i_o_8cpp_source.html#l00146">Hardware::GPIO::WritesEdge()</a>, and <a class="el" href="_g_p_i_o_8cpp_source.html#l00174">Hardware::GPIO::WritesValue()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    {</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        ofstream fs;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        fs.open(path.c_str());</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordflow">if</span> (!fs.is_open()){ <span class="keywordflow">throw</span> Exception::GPIOReadException((<span class="stringliteral">&quot;Can&#39;t open: &quot;</span> + path).c_str()); }</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        fs &lt;&lt; value;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        fs.close();</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
+<p>Referenced by <a class="el" href="eqep_8cpp_source.html#l00042">Hardware::eQEP::eQEP()</a>, <a class="el" href="_g_p_i_o_8cpp_source.html#l00101">Hardware::GPIO::ExportPin()</a>, <a class="el" href="_p_w_m_8cpp_source.html#l00015">Hardware::PWM::PWM()</a>, <a class="el" href="_p_w_m_8cpp_source.html#l00132">Hardware::PWM::SetDuty()</a>, <a class="el" href="_p_w_m_8cpp_source.html#l00120">Hardware::PWM::SetPeriod()</a>, <a class="el" href="_p_w_m_8cpp_source.html#l00155">Hardware::PWM::SetPolarity()</a>, <a class="el" href="_p_w_m_8cpp_source.html#l00144">Hardware::PWM::SetRun()</a>, <a class="el" href="_g_p_i_o_8cpp_source.html#l00106">Hardware::GPIO::UnexportPin()</a>, <a class="el" href="_g_p_i_o_8cpp_source.html#l00118">Hardware::GPIO::WritesDirection()</a>, <a class="el" href="_g_p_i_o_8cpp_source.html#l00142">Hardware::GPIO::WritesEdge()</a>, and <a class="el" href="_g_p_i_o_8cpp_source.html#l00167">Hardware::GPIO::WritesValue()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                                                       {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  ofstream fs;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  fs.open(path.c_str());</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="keywordflow">if</span> (!fs.is_open()) {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">throw</span> Exception::GPIOReadException((<span class="stringliteral">&quot;Can&#39;t open: &quot;</span> + path).c_str());</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  }</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  fs &lt;&lt; value;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  fs.close();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -545,9 +555,9 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <p>the callbakcfunction </p>
 
-<p>Definition at line <a class="el" href="_b_b_b_8h_source.html#l00041">41</a> of file <a class="el" href="_b_b_b_8h_source.html">BBB.h</a>.</p>
+<p>Definition at line <a class="el" href="_b_b_b_8h_source.html#l00050">50</a> of file <a class="el" href="_b_b_b_8h_source.html">BBB.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_b_b_b_8cpp_source.html#l00006">BBB()</a>, <a class="el" href="_a_d_c_8cpp_source.html#l00116">Hardware::threadedPollADC()</a>, <a class="el" href="eqep_8cpp_source.html#l00250">Hardware::threadedPolleqep()</a>, <a class="el" href="_g_p_i_o_8cpp_source.html#l00180">Hardware::threadedPollGPIO()</a>, <a class="el" href="_g_p_i_o_8cpp_source.html#l00025">Hardware::GPIO::WaitForEdge()</a>, <a class="el" href="eqep_8cpp_source.html#l00126">Hardware::eQEP::WaitForPositionChange()</a>, and <a class="el" href="_a_d_c_8cpp_source.html#l00071">Hardware::ADC::WaitForValueChange()</a>.</p>
+<p>Referenced by <a class="el" href="_b_b_b_8cpp_source.html#l00012">BBB()</a>, <a class="el" href="_a_d_c_8cpp_source.html#l00121">Hardware::threadedPollADC()</a>, <a class="el" href="eqep_8cpp_source.html#l00242">Hardware::threadedPolleqep()</a>, <a class="el" href="_g_p_i_o_8cpp_source.html#l00171">Hardware::threadedPollGPIO()</a>, <a class="el" href="_g_p_i_o_8cpp_source.html#l00026">Hardware::GPIO::WaitForEdge()</a>, <a class="el" href="eqep_8cpp_source.html#l00124">Hardware::eQEP::WaitForPositionChange()</a>, and <a class="el" href="_a_d_c_8cpp_source.html#l00074">Hardware::ADC::WaitForValueChange()</a>.</p>
 
 </div>
 </div>
@@ -562,9 +572,9 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <p>debounce time for a button in milliseconds </p>
 
-<p>Definition at line <a class="el" href="_b_b_b_8h_source.html#l00033">33</a> of file <a class="el" href="_b_b_b_8h_source.html">BBB.h</a>.</p>
+<p>Definition at line <a class="el" href="_b_b_b_8h_source.html#l00042">42</a> of file <a class="el" href="_b_b_b_8h_source.html">BBB.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_b_b_b_8cpp_source.html#l00006">BBB()</a>, <a class="el" href="eqep_8cpp_source.html#l00250">Hardware::threadedPolleqep()</a>, and <a class="el" href="_g_p_i_o_8cpp_source.html#l00180">Hardware::threadedPollGPIO()</a>.</p>
+<p>Referenced by <a class="el" href="_b_b_b_8cpp_source.html#l00012">BBB()</a>, <a class="el" href="eqep_8cpp_source.html#l00242">Hardware::threadedPolleqep()</a>, and <a class="el" href="_g_p_i_o_8cpp_source.html#l00171">Hardware::threadedPollGPIO()</a>.</p>
 
 </div>
 </div>
@@ -587,9 +597,9 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <p>The thread </p>
 
-<p>Definition at line <a class="el" href="_b_b_b_8h_source.html#l00040">40</a> of file <a class="el" href="_b_b_b_8h_source.html">BBB.h</a>.</p>
+<p>Definition at line <a class="el" href="_b_b_b_8h_source.html#l00049">49</a> of file <a class="el" href="_b_b_b_8h_source.html">BBB.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_b_b_b_8cpp_source.html#l00006">BBB()</a>, <a class="el" href="_g_p_i_o_8cpp_source.html#l00025">Hardware::GPIO::WaitForEdge()</a>, <a class="el" href="eqep_8cpp_source.html#l00126">Hardware::eQEP::WaitForPositionChange()</a>, and <a class="el" href="_a_d_c_8cpp_source.html#l00071">Hardware::ADC::WaitForValueChange()</a>.</p>
+<p>Referenced by <a class="el" href="_b_b_b_8cpp_source.html#l00012">BBB()</a>, <a class="el" href="_g_p_i_o_8cpp_source.html#l00026">Hardware::GPIO::WaitForEdge()</a>, <a class="el" href="eqep_8cpp_source.html#l00124">Hardware::eQEP::WaitForPositionChange()</a>, and <a class="el" href="_a_d_c_8cpp_source.html#l00074">Hardware::ADC::WaitForValueChange()</a>.</p>
 
 </div>
 </div>
@@ -612,9 +622,9 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 <p>used to stop the thread </p>
 
-<p>Definition at line <a class="el" href="_b_b_b_8h_source.html#l00039">39</a> of file <a class="el" href="_b_b_b_8h_source.html">BBB.h</a>.</p>
+<p>Definition at line <a class="el" href="_b_b_b_8h_source.html#l00048">48</a> of file <a class="el" href="_b_b_b_8h_source.html">BBB.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_b_b_b_8cpp_source.html#l00006">BBB()</a>, <a class="el" href="_a_d_c_8cpp_source.html#l00116">Hardware::threadedPollADC()</a>, <a class="el" href="eqep_8cpp_source.html#l00250">Hardware::threadedPolleqep()</a>, <a class="el" href="_g_p_i_o_8cpp_source.html#l00180">Hardware::threadedPollGPIO()</a>, <a class="el" href="_g_p_i_o_8cpp_source.html#l00025">Hardware::GPIO::WaitForEdge()</a>, <a class="el" href="eqep_8cpp_source.html#l00126">Hardware::eQEP::WaitForPositionChange()</a>, <a class="el" href="eqep_8h_source.html#l00070">Hardware::eQEP::WaitForPositionChangeCancel()</a>, and <a class="el" href="_a_d_c_8cpp_source.html#l00071">Hardware::ADC::WaitForValueChange()</a>.</p>
+<p>Referenced by <a class="el" href="_b_b_b_8cpp_source.html#l00012">BBB()</a>, <a class="el" href="_a_d_c_8cpp_source.html#l00121">Hardware::threadedPollADC()</a>, <a class="el" href="eqep_8cpp_source.html#l00242">Hardware::threadedPolleqep()</a>, <a class="el" href="_g_p_i_o_8cpp_source.html#l00171">Hardware::threadedPollGPIO()</a>, <a class="el" href="_g_p_i_o_8cpp_source.html#l00026">Hardware::GPIO::WaitForEdge()</a>, <a class="el" href="eqep_8cpp_source.html#l00124">Hardware::eQEP::WaitForPositionChange()</a>, <a class="el" href="eqep_8h_source.html#l00068">Hardware::eQEP::WaitForPositionChangeCancel()</a>, and <a class="el" href="_a_d_c_8cpp_source.html#l00074">Hardware::ADC::WaitForValueChange()</a>.</p>
 
 </div>
 </div>
@@ -628,7 +638,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_hardware.html">Hardware</a></li><li class="navelem"><a class="el" href="class_hardware_1_1_b_b_b.html">BBB</a></li>
-    <li class="footer">Generated on Sat Jun 6 2015 21:25:40 for Vision Soil Analyzer by
+    <li class="footer">Generated on Sun Jun 7 2015 21:06:54 for Vision Soil Analyzer by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

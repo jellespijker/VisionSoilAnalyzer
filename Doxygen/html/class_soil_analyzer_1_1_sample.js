@@ -1,6 +1,6 @@
 var class_soil_analyzer_1_1_sample =
 [
-    [ "Progress_t", "class_soil_analyzer_1_1_sample.html#a745151be7222e75b39268c46b16a9899", null ],
+    [ "Progress_t", "class_soil_analyzer_1_1_sample.html#a28ace3c6ddde646d05a7771b715777d2", null ],
     [ "Sample", "class_soil_analyzer_1_1_sample.html#aa132beeb85f46a9d14f7ed0903eda595", null ],
     [ "Sample", "class_soil_analyzer_1_1_sample.html#a8d469b55b6af5c3e9283665df8430926", null ],
     [ "~Sample", "class_soil_analyzer_1_1_sample.html#a26f964ba39721002cbb182f3834ebb3c", null ],

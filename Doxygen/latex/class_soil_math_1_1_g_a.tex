@@ -17,39 +17,39 @@ Collaboration diagram for Soil\+Math\+:\+:G\+A\+:\nopagebreak
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{class_soil_math_1_1_g_a_a759b77fbe44fa1d5df5bcbdee9d97c4e}{G\+A} ()
-\item 
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_soil_math_1_1_g_a}{G\+A} Standard constructor. \end{DoxyCompactList}\item 
 \hyperlink{class_soil_math_1_1_g_a_a6fed498b99290a5218cc3ecd9537fc74}{G\+A} (\hyperlink{_soil_math_types_8h_a7791f1b8f92a964847637c5d657c1b10}{N\+Nfunction\+Type} nnfunction, uint32\+\_\+t \hyperlink{class_soil_math_1_1_g_a_ac32591e30dde5ac854ae57a7b9e33298}{inputneurons}, uint32\+\_\+t \hyperlink{class_soil_math_1_1_g_a_a3f1eee7492f68a05b9b06ee8afb2ec20}{hiddenneurons}, uint32\+\_\+t \hyperlink{class_soil_math_1_1_g_a_ab454f9968d5ce2a294b89f85c9d3a74f}{outputneurons})
-\item 
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_soil_math_1_1_g_a}{G\+A} Construction with a Neural Network initializers. \end{DoxyCompactList}\item 
 \hyperlink{class_soil_math_1_1_g_a_a7a7087b2c5a268a1a9bccc04600537f6}{$\sim$\+G\+A} ()
-\item 
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_soil_math_1_1_g_a}{G\+A} standard de constructor. \end{DoxyCompactList}\item 
 void \hyperlink{class_soil_math_1_1_g_a_a4290310d89064946c645673840591540}{Evolve} (const \hyperlink{_soil_math_types_8h_a7567e521c2b2c408dcb62dbff72390f7}{Complex\+Vect\+\_\+t} \&input\+Values, \hyperlink{_soil_math_types_8h_ac56ad2b88186620fd0de0d213aa715dd}{Weight\+\_\+t} \&weights, std\+::vector$<$ \hyperlink{_soil_math_types_8h_ac56ad2b88186620fd0de0d213aa715dd}{Weight\+\_\+t} $>$ \&prev\+Weights, \hyperlink{_soil_math_types_8h_aaa919636507bcd52b19efa301aa80b9a}{Min\+Max\+Weight\+\_\+t} rangeweights, \hyperlink{_soil_math_types_8h_aaeba766195a440b2539f0438d3d41f95}{Predict\+\_\+t} goal, uint32\+\_\+t max\+Generations=200, uint32\+\_\+t pop\+Size=30)
-\item 
+\begin{DoxyCompactList}\small\item\em Evolve Darwin would be proud!!! This function creates a population and itterates through the generation till the maximum number off itterations has been reached of the error is acceptable. \end{DoxyCompactList}\item 
 void \hyperlink{class_soil_math_1_1_g_a_aca448f36c1f98b4906d0754cf354cccf}{Evolve} (const \hyperlink{_soil_math_types_8h_a45aa81992bf0ddf272907bd4fa0b96cf}{Input\+Learn\+Vector\+\_\+t} \&input\+Values, \hyperlink{_soil_math_types_8h_ac56ad2b88186620fd0de0d213aa715dd}{Weight\+\_\+t} \&weights, \hyperlink{_soil_math_types_8h_aaa919636507bcd52b19efa301aa80b9a}{Min\+Max\+Weight\+\_\+t} rangeweights, \hyperlink{_soil_math_types_8h_a2d8b5a261688166d724b68addd8561e6}{Output\+Learn\+Vector\+\_\+t} \&goal, uint32\+\_\+t max\+Generations=200, uint32\+\_\+t pop\+Size=30)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Evolve Darwin would be proud!!! This function creates a population and itterates through the generation till the maximum number off itterations has been reached of the error is acceptable. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{_soil_math_types_8h_a8d2d4c736cf817d048a2d66dec8b12ec}{Population\+\_\+t} \hyperlink{class_soil_math_1_1_g_a_a96cfe7cc5b3028a66b0136e72ea38cbc}{Genesis} (const \hyperlink{_soil_math_types_8h_ac56ad2b88186620fd0de0d213aa715dd}{Weight\+\_\+t} \&weights, \hyperlink{_soil_math_types_8h_aaa919636507bcd52b19efa301aa80b9a}{Min\+Max\+Weight\+\_\+t} rangeweights, uint32\+\_\+t pop\+Size)
-\item 
+\begin{DoxyCompactList}\small\item\em Genesis private function which is the spark of live, using a random seed. \end{DoxyCompactList}\item 
 void \hyperlink{class_soil_math_1_1_g_a_abf408d603b2afb188a6d265eb6309b69}{Cross\+Over} (\hyperlink{_soil_math_types_8h_a8d2d4c736cf817d048a2d66dec8b12ec}{Population\+\_\+t} \&pop)
-\item 
+\begin{DoxyCompactList}\small\item\em Cross\+Over a private function where the partners mate with each other The values or Pop\+Member\+\_\+t are expressed as bits or ar cut at the point C\+R\+O\+S\+S\+O\+V\+E\+R the population members are paired with the nearest neighbor and new members are created pairing the Genome\+\_\+t of each other at the C\+R\+O\+S\+S\+O\+V\+E\+R point. Afterwards all the top tiers partners are allowed to mate again. \end{DoxyCompactList}\item 
 void \hyperlink{class_soil_math_1_1_g_a_a489f2afd54086c14f45b654aeec0fe3c}{Mutate} (\hyperlink{_soil_math_types_8h_a8d2d4c736cf817d048a2d66dec8b12ec}{Population\+\_\+t} \&pop)
-\item 
+\begin{DoxyCompactList}\small\item\em Mutate a private function where individual bits from the Genome\+\_\+t are mutated at a random uniform distribution event defined by the M\+U\+T\+A\+T\+I\+O\+N\+R\+A\+T\+E. \end{DoxyCompactList}\item 
 void \hyperlink{class_soil_math_1_1_g_a_aff791f50f889beb74e854942f8883b58}{Grow\+To\+Adulthood} (\hyperlink{_soil_math_types_8h_a8d2d4c736cf817d048a2d66dec8b12ec}{Population\+\_\+t} \&pop, const \hyperlink{_soil_math_types_8h_a7567e521c2b2c408dcb62dbff72390f7}{Complex\+Vect\+\_\+t} \&input\+Values, \hyperlink{_soil_math_types_8h_aaa919636507bcd52b19efa301aa80b9a}{Min\+Max\+Weight\+\_\+t} rangeweights, \hyperlink{_soil_math_types_8h_aaeba766195a440b2539f0438d3d41f95}{Predict\+\_\+t} goal, float \&total\+Fitness)
-\item 
+\begin{DoxyCompactList}\small\item\em Grow\+To\+Adulthood a private function where the new population members serve as the the input for the Neural Network prediction function. The results are weight against the goal and this weight determine the fitness of the population member. \end{DoxyCompactList}\item 
 void \hyperlink{class_soil_math_1_1_g_a_aa39c76b7958bfc80b713389a6f0c6b97}{Grow\+To\+Adulthood} (\hyperlink{_soil_math_types_8h_a8d2d4c736cf817d048a2d66dec8b12ec}{Population\+\_\+t} \&pop, const \hyperlink{_soil_math_types_8h_a45aa81992bf0ddf272907bd4fa0b96cf}{Input\+Learn\+Vector\+\_\+t} \&input\+Values, \hyperlink{_soil_math_types_8h_aaa919636507bcd52b19efa301aa80b9a}{Min\+Max\+Weight\+\_\+t} rangeweights, \hyperlink{_soil_math_types_8h_a2d8b5a261688166d724b68addd8561e6}{Output\+Learn\+Vector\+\_\+t} \&goal, float \&total\+Fitness)
-\item 
+\begin{DoxyCompactList}\small\item\em Grow\+To\+Adulthood a private function where the new population members serve as the the input for the Neural Network prediction function. The results are weight against the goal and this weight determine the fitness of the population member. \end{DoxyCompactList}\item 
 bool \hyperlink{class_soil_math_1_1_g_a_ac2c10631815408d044738f678c67e98b}{Survival\+Of\+The\+Fittest} (\hyperlink{_soil_math_types_8h_a8d2d4c736cf817d048a2d66dec8b12ec}{Population\+\_\+t} \&pop, float \&total\+Fitness)
-\item 
+\begin{DoxyCompactList}\small\item\em Survival\+Of\+The\+Fittest a private function where a battle to the death commences The fittest population members have the best chance of survival. Death is instigated with a random uniform distibution. The elite members don\textquotesingle{}t partake in this desctruction The E\+L\+I\+T\+I\+S\+M\+E rate indicate how many top tier members survive this catastrophic event. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename T $>$ }\\\hyperlink{_soil_math_types_8h_a58f6ab36d2cb0527a73caec36d14a0e0}{Genome\+\_\+t} \hyperlink{class_soil_math_1_1_g_a_a360250150f348af461259baf41477899}{Convert\+To\+Genome} (T value, std\+::pair$<$ T, T $>$ range)
-\item 
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_conversion}{Conversion} of the value of type T to Genome\+\_\+t. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename T $>$ }\\T \hyperlink{class_soil_math_1_1_g_a_aa4a6f59bd2e88d432a94d0159b8e8914}{Convert\+To\+Value} (\hyperlink{_soil_math_types_8h_a58f6ab36d2cb0527a73caec36d14a0e0}{Genome\+\_\+t} gen, std\+::pair$<$ T, T $>$ range)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_conversion}{Conversion} of the Genome to a value. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Static Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 static bool \hyperlink{class_soil_math_1_1_g_a_a1e950022fa3ea792a36cbc62f9b8528b}{Pop\+Member\+Sort} (\hyperlink{_soil_math_types_8h_a7ded6c03705047ebe50207b22395dcd1}{Pop\+Member\+\_\+t} \hyperlink{_v_s_a___u_t_2_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}, \hyperlink{_soil_math_types_8h_a7ded6c03705047ebe50207b22395dcd1}{Pop\+Member\+\_\+t} \hyperlink{_v_s_a___u_t_2_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j})
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Pop\+Member\+Sort a private function where the members are sorted according to there fitness ranking. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -66,7 +66,7 @@ uint32\+\_\+t \hyperlink{class_soil_math_1_1_g_a_ab454f9968d5ce2a294b89f85c9d3a7
 \subsection{Detailed Description}
 
 
-Definition at line 15 of file G\+A.\+h.
+Definition at line 27 of file G\+A.\+h.
 
 
 
@@ -80,11 +80,15 @@ Definition at line 15 of file G\+A.\+h.
 )}\label{class_soil_math_1_1_g_a_a759b77fbe44fa1d5df5bcbdee9d97c4e}
 
 
-Definition at line 4 of file G\+A.\+cpp.
+\hyperlink{class_soil_math_1_1_g_a}{G\+A} Standard constructor. 
+
+
+
+Definition at line 11 of file G\+A.\+cpp.
 
 
 \begin{DoxyCode}
-4 \{\}
+11 \{\}
 \end{DoxyCode}
 \hypertarget{class_soil_math_1_1_g_a_a6fed498b99290a5218cc3ecd9537fc74}{}\index{Soil\+Math\+::\+G\+A@{Soil\+Math\+::\+G\+A}!G\+A@{G\+A}}
 \index{G\+A@{G\+A}!Soil\+Math\+::\+G\+A@{Soil\+Math\+::\+G\+A}}
@@ -98,7 +102,22 @@ Definition at line 4 of file G\+A.\+cpp.
 )}\label{class_soil_math_1_1_g_a_a6fed498b99290a5218cc3ecd9537fc74}
 
 
-Definition at line 6 of file G\+A.\+cpp.
+\hyperlink{class_soil_math_1_1_g_a}{G\+A} Construction with a Neural Network initializers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nnfunction} & the Neural Network prediction function which results will be optimized \\
+\hline
+{\em inputneurons} & the number of input neurons in the Neural Network don\textquotesingle{}t count the bias \\
+\hline
+{\em hiddenneurons} & the number of hidden neurons in the Neural Network don\textquotesingle{}t count the bias \\
+\hline
+{\em outputneurons} & the number of output neurons in the Neural Network \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 13 of file G\+A.\+cpp.
 
 
 
@@ -106,12 +125,12 @@ References hiddenneurons, inputneurons, N\+Nfuction, and outputneurons.
 
 
 \begin{DoxyCode}
-7                                \{
-8   this->\hyperlink{class_soil_math_1_1_g_a_a9b690048c89c32e3153457378b5e1c31}{NNfuction} = nnfunction;
-9   this->\hyperlink{class_soil_math_1_1_g_a_ac32591e30dde5ac854ae57a7b9e33298}{inputneurons} = \hyperlink{class_soil_math_1_1_g_a_ac32591e30dde5ac854ae57a7b9e33298}{inputneurons};
-10   this->\hyperlink{class_soil_math_1_1_g_a_a3f1eee7492f68a05b9b06ee8afb2ec20}{hiddenneurons} = \hyperlink{class_soil_math_1_1_g_a_a3f1eee7492f68a05b9b06ee8afb2ec20}{hiddenneurons};
-11   this->\hyperlink{class_soil_math_1_1_g_a_ab454f9968d5ce2a294b89f85c9d3a74f}{outputneurons} = \hyperlink{class_soil_math_1_1_g_a_ab454f9968d5ce2a294b89f85c9d3a74f}{outputneurons};
-12 \}
+14                                \{
+15   this->\hyperlink{class_soil_math_1_1_g_a_a9b690048c89c32e3153457378b5e1c31}{NNfuction} = nnfunction;
+16   this->\hyperlink{class_soil_math_1_1_g_a_ac32591e30dde5ac854ae57a7b9e33298}{inputneurons} = \hyperlink{class_soil_math_1_1_g_a_ac32591e30dde5ac854ae57a7b9e33298}{inputneurons};
+17   this->\hyperlink{class_soil_math_1_1_g_a_a3f1eee7492f68a05b9b06ee8afb2ec20}{hiddenneurons} = \hyperlink{class_soil_math_1_1_g_a_a3f1eee7492f68a05b9b06ee8afb2ec20}{hiddenneurons};
+18   this->\hyperlink{class_soil_math_1_1_g_a_ab454f9968d5ce2a294b89f85c9d3a74f}{outputneurons} = \hyperlink{class_soil_math_1_1_g_a_ab454f9968d5ce2a294b89f85c9d3a74f}{outputneurons};
+19 \}
 \end{DoxyCode}
 \hypertarget{class_soil_math_1_1_g_a_a7a7087b2c5a268a1a9bccc04600537f6}{}\index{Soil\+Math\+::\+G\+A@{Soil\+Math\+::\+G\+A}!````~G\+A@{$\sim$\+G\+A}}
 \index{````~G\+A@{$\sim$\+G\+A}!Soil\+Math\+::\+G\+A@{Soil\+Math\+::\+G\+A}}
@@ -122,11 +141,15 @@ References hiddenneurons, inputneurons, N\+Nfuction, and outputneurons.
 )}\label{class_soil_math_1_1_g_a_a7a7087b2c5a268a1a9bccc04600537f6}
 
 
-Definition at line 14 of file G\+A.\+cpp.
+\hyperlink{class_soil_math_1_1_g_a}{G\+A} standard de constructor. 
+
+
+
+Definition at line 21 of file G\+A.\+cpp.
 
 
 \begin{DoxyCode}
-14 \{\}
+21 \{\}
 \end{DoxyCode}
 
 
@@ -141,16 +164,27 @@ Definition at line 14 of file G\+A.\+cpp.
 )\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}\label{class_soil_math_1_1_g_a_a360250150f348af461259baf41477899}
 
 
-Definition at line 53 of file G\+A.\+h.
+\hyperlink{class_conversion}{Conversion} of the value of type T to Genome\+\_\+t. 
+
+Usage\+: Use {\ttfamily Convert\+To\+Genome$<$\+Type$>$(type, range)} 
+\begin{DoxyParams}{Parameters}
+{\em value} & The current value wich should be converted to a Genome\+\_\+t \\
+\hline
+{\em range} & the range in which the value should fall, this is to have a Genome\+\_\+t which utilizes the complete range 0000...n till 1111...n \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 189 of file G\+A.\+h.
 
 
 \begin{DoxyCode}
-53                                                                 \{
-54     uint32\_t intVal = \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(
-55         (UINT32\_MAX * (range.first + value)) / (range.second - range.first));
-56     \hyperlink{_soil_math_types_8h_a58f6ab36d2cb0527a73caec36d14a0e0}{Genome\_t} retVal(intVal);
-57     \textcolor{keywordflow}{return} retVal;
-58   \};
+189                                                                 \{
+190     uint32\_t intVal = \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(
+191         (UINT32\_MAX * (range.first + value)) / (range.second - range.first));
+192     \hyperlink{_soil_math_types_8h_a58f6ab36d2cb0527a73caec36d14a0e0}{Genome\_t} retVal(intVal);
+193     \textcolor{keywordflow}{return} retVal;
+194   \}
 \end{DoxyCode}
 \hypertarget{class_soil_math_1_1_g_a_aa4a6f59bd2e88d432a94d0159b8e8914}{}\index{Soil\+Math\+::\+G\+A@{Soil\+Math\+::\+G\+A}!Convert\+To\+Value@{Convert\+To\+Value}}
 \index{Convert\+To\+Value@{Convert\+To\+Value}!Soil\+Math\+::\+G\+A@{Soil\+Math\+::\+G\+A}}
@@ -162,17 +196,28 @@ Definition at line 53 of file G\+A.\+h.
 )\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}\label{class_soil_math_1_1_g_a_aa4a6f59bd2e88d432a94d0159b8e8914}
 
 
-Definition at line 61 of file G\+A.\+h.
+\hyperlink{class_conversion}{Conversion} of the Genome to a value. 
+
+Usage\+: use {\ttfamily Convert\+To\+Value$<$\+Type$>$(genome, range) 
+\begin{DoxyParams}{Parameters}
+{\em gen} & is the Genome which is to be converted \\
+\hline
+{\em range} & is the range in which the value should fall \\
+\hline
+\end{DoxyParams}
+}
+
+Definition at line 203 of file G\+A.\+h.
 
 
 \begin{DoxyCode}
-61                                                              \{
-62     T retVal =
-63         range.first +
-64         (((range.second - range.first) * static\_cast<T>(gen.to\_ulong())) /
-65          UINT32\_MAX);
-66     \textcolor{keywordflow}{return} retVal;
-67   \};
+203                                                              \{
+204     T retVal =
+205         range.first +
+206         (((range.second - range.first) * static\_cast<T>(gen.to\_ulong())) /
+207          UINT32\_MAX);
+208     \textcolor{keywordflow}{return} retVal;
+209   \}
 \end{DoxyCode}
 \hypertarget{class_soil_math_1_1_g_a_abf408d603b2afb188a6d265eb6309b69}{}\index{Soil\+Math\+::\+G\+A@{Soil\+Math\+::\+G\+A}!Cross\+Over@{Cross\+Over}}
 \index{Cross\+Over@{Cross\+Over}!Soil\+Math\+::\+G\+A@{Soil\+Math\+::\+G\+A}}
@@ -183,7 +228,16 @@ Definition at line 61 of file G\+A.\+h.
 )\hspace{0.3cm}{\ttfamily [private]}}\label{class_soil_math_1_1_g_a_abf408d603b2afb188a6d265eb6309b69}
 
 
-Definition at line 87 of file G\+A.\+cpp.
+Cross\+Over a private function where the partners mate with each other The values or Pop\+Member\+\_\+t are expressed as bits or ar cut at the point C\+R\+O\+S\+S\+O\+V\+E\+R the population members are paired with the nearest neighbor and new members are created pairing the Genome\+\_\+t of each other at the C\+R\+O\+S\+S\+O\+V\+E\+R point. Afterwards all the top tiers partners are allowed to mate again. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pop} & reference to the population \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 94 of file G\+A.\+cpp.
 
 
 
@@ -195,74 +249,75 @@ Referenced by Evolve().
 
 
 \begin{DoxyCode}
-87                                     \{
-88   \hyperlink{_soil_math_types_8h_a8d2d4c736cf817d048a2d66dec8b12ec}{Population\_t} newPop; \textcolor{comment}{// create a new population}
-89   \hyperlink{struct_pop_member_struct}{PopMember\_t} newPopMembers[2];
-90   \hyperlink{_soil_math_types_8h_a44bbe64bbeb237fd8918433d5f6f85b7}{SplitGenome\_t} Split[2];
-91 
-92   \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < pop.size(); \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} += 2) \{
-93 
-94     \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} < pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].weights.size(); \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}++) \{
-95       \textcolor{comment}{// Split A}
-96       Split[0].first = bitset<CROSSOVER>(
-97           pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].weightsGen[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}].to\_string().substr(0, \hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER}));
-98       Split[0].second =
-99           bitset<\hyperlink{_soil_math_types_8h_aa5e1eb1a998e5ed69af2076cf318df4b}{GENE\_MAX} - \hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER}>(pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].weightsGen[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}].to\_string().substr(
-100               \hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER}, \hyperlink{_soil_math_types_8h_aa5e1eb1a998e5ed69af2076cf318df4b}{GENE\_MAX} - \hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER}));
-101 
-102       \textcolor{comment}{// Split B}
-103       Split[1].first = bitset<CROSSOVER>(
-104           pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} + 1].weightsGen[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}].to\_string().substr(0, \hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER}));
-105       Split[1].second = bitset<\hyperlink{_soil_math_types_8h_aa5e1eb1a998e5ed69af2076cf318df4b}{GENE\_MAX} - \hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER}>(
-106           pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} + 1].weightsGen[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}].to\_string().substr(\hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER},
-107                                                       \hyperlink{_soil_math_types_8h_aa5e1eb1a998e5ed69af2076cf318df4b}{GENE\_MAX} - 
-      \hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER}));
+94                                     \{
+95   \hyperlink{_soil_math_types_8h_a8d2d4c736cf817d048a2d66dec8b12ec}{Population\_t} newPop; \textcolor{comment}{// create a new population}
+96   \hyperlink{struct_pop_member_struct}{PopMember\_t} newPopMembers[2];
+97   \hyperlink{_soil_math_types_8h_a44bbe64bbeb237fd8918433d5f6f85b7}{SplitGenome\_t} Split[2];
+98 
+99   \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < pop.size(); \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} += 2) \{
+100 
+101     \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} < pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].weights.size(); \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}++) \{
+102       \textcolor{comment}{// Split A}
+103       Split[0].first = bitset<CROSSOVER>(
+104           pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].weightsGen[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}].to\_string().substr(0, \hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER}));
+105       Split[0].second =
+106           bitset<\hyperlink{_soil_math_types_8h_aa5e1eb1a998e5ed69af2076cf318df4b}{GENE\_MAX} - \hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER}>(pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].weightsGen[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}].to\_string().substr(
+107               \hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER}, \hyperlink{_soil_math_types_8h_aa5e1eb1a998e5ed69af2076cf318df4b}{GENE\_MAX} - \hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER}));
 108 
-109       \textcolor{comment}{// Mate A and B to AB and BA}
-110       newPopMembers[0].\hyperlink{struct_pop_member_struct_a072fadb4863e0cf77b55ad3b46b62522}{weightsGen}.push\_back(
-111           \hyperlink{_soil_math_types_8h_a58f6ab36d2cb0527a73caec36d14a0e0}{Genome\_t}(Split[0].first.to\_string() + Split[1].second.to\_string()));
-112       newPopMembers[1].\hyperlink{struct_pop_member_struct_a072fadb4863e0cf77b55ad3b46b62522}{weightsGen}.push\_back(
-113           \hyperlink{_soil_math_types_8h_a58f6ab36d2cb0527a73caec36d14a0e0}{Genome\_t}(Split[1].first.to\_string() + Split[0].second.to\_string()));
-114     \}
-115     newPop.push\_back(newPopMembers[0]);
-116     newPop.push\_back(newPopMembers[1]);
-117     newPopMembers[0].\hyperlink{struct_pop_member_struct_a072fadb4863e0cf77b55ad3b46b62522}{weightsGen}.clear();
-118     newPopMembers[1].\hyperlink{struct_pop_member_struct_a072fadb4863e0cf77b55ad3b46b62522}{weightsGen}.clear();
-119   \}
-120 
-121   \textcolor{comment}{// Allow the top tiers population partners to mate again}
-122   uint32\_t halfN = pop.size() / 2;
-123   \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < halfN; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++) \{
-124     \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} < pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].weights.size(); \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}++) \{
-125       Split[0].first = bitset<CROSSOVER>(
-126           pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].weightsGen[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}].to\_string().substr(0, \hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER}));
-127       Split[0].second =
-128           bitset<\hyperlink{_soil_math_types_8h_aa5e1eb1a998e5ed69af2076cf318df4b}{GENE\_MAX} - \hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER}>(pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].weightsGen[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}].to\_string().substr(
-129               \hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER}, \hyperlink{_soil_math_types_8h_aa5e1eb1a998e5ed69af2076cf318df4b}{GENE\_MAX} - \hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER}));
-130 
-131       Split[1].first = bitset<CROSSOVER>(
-132           pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} + 2].weightsGen[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}].to\_string().substr(0, \hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER}));
-133       Split[1].second = bitset<\hyperlink{_soil_math_types_8h_aa5e1eb1a998e5ed69af2076cf318df4b}{GENE\_MAX} - \hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER}>(
-134           pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} + 2].weightsGen[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}].to\_string().substr(\hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER},
-135                                                       \hyperlink{_soil_math_types_8h_aa5e1eb1a998e5ed69af2076cf318df4b}{GENE\_MAX} - 
+109       \textcolor{comment}{// Split B}
+110       Split[1].first = bitset<CROSSOVER>(
+111           pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} + 1].weightsGen[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}].to\_string().substr(0, \hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER}));
+112       Split[1].second = bitset<\hyperlink{_soil_math_types_8h_aa5e1eb1a998e5ed69af2076cf318df4b}{GENE\_MAX} - \hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER}>(
+113           pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} + 1].weightsGen[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}].to\_string().substr(\hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER},
+114                                                       \hyperlink{_soil_math_types_8h_aa5e1eb1a998e5ed69af2076cf318df4b}{GENE\_MAX} - 
       \hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER}));
-136 
-137       newPopMembers[0].\hyperlink{struct_pop_member_struct_a072fadb4863e0cf77b55ad3b46b62522}{weightsGen}.push\_back(
-138           \hyperlink{_soil_math_types_8h_a58f6ab36d2cb0527a73caec36d14a0e0}{Genome\_t}(Split[0].first.to\_string() + Split[1].second.to\_string()));
-139       newPopMembers[1].\hyperlink{struct_pop_member_struct_a072fadb4863e0cf77b55ad3b46b62522}{weightsGen}.push\_back(
-140           \hyperlink{_soil_math_types_8h_a58f6ab36d2cb0527a73caec36d14a0e0}{Genome\_t}(Split[1].first.to\_string() + Split[0].second.to\_string()));
-141     \}
-142     newPop.push\_back(newPopMembers[0]);
-143     newPop.push\_back(newPopMembers[1]);
-144     newPopMembers[0].\hyperlink{struct_pop_member_struct_a072fadb4863e0cf77b55ad3b46b62522}{weightsGen}.clear();
-145     newPopMembers[1].\hyperlink{struct_pop_member_struct_a072fadb4863e0cf77b55ad3b46b62522}{weightsGen}.clear();
-146   \}
-147   pop = newPop;
-148 \}
+115 
+116       \textcolor{comment}{// Mate A and B to AB and BA}
+117       newPopMembers[0].\hyperlink{struct_pop_member_struct_a072fadb4863e0cf77b55ad3b46b62522}{weightsGen}.push\_back(
+118           \hyperlink{_soil_math_types_8h_a58f6ab36d2cb0527a73caec36d14a0e0}{Genome\_t}(Split[0].first.to\_string() + Split[1].second.to\_string()));
+119       newPopMembers[1].\hyperlink{struct_pop_member_struct_a072fadb4863e0cf77b55ad3b46b62522}{weightsGen}.push\_back(
+120           \hyperlink{_soil_math_types_8h_a58f6ab36d2cb0527a73caec36d14a0e0}{Genome\_t}(Split[1].first.to\_string() + Split[0].second.to\_string()));
+121     \}
+122     newPop.push\_back(newPopMembers[0]);
+123     newPop.push\_back(newPopMembers[1]);
+124     newPopMembers[0].\hyperlink{struct_pop_member_struct_a072fadb4863e0cf77b55ad3b46b62522}{weightsGen}.clear();
+125     newPopMembers[1].\hyperlink{struct_pop_member_struct_a072fadb4863e0cf77b55ad3b46b62522}{weightsGen}.clear();
+126   \}
+127 
+128   \textcolor{comment}{// Allow the top tiers population partners to mate again}
+129   uint32\_t halfN = pop.size() / 2;
+130   \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < halfN; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++) \{
+131     \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} < pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].weights.size(); \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}++) \{
+132       Split[0].first = bitset<CROSSOVER>(
+133           pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].weightsGen[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}].to\_string().substr(0, \hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER}));
+134       Split[0].second =
+135           bitset<\hyperlink{_soil_math_types_8h_aa5e1eb1a998e5ed69af2076cf318df4b}{GENE\_MAX} - \hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER}>(pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].weightsGen[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}].to\_string().substr(
+136               \hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER}, \hyperlink{_soil_math_types_8h_aa5e1eb1a998e5ed69af2076cf318df4b}{GENE\_MAX} - \hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER}));
+137 
+138       Split[1].first = bitset<CROSSOVER>(
+139           pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} + 2].weightsGen[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}].to\_string().substr(0, \hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER}));
+140       Split[1].second = bitset<\hyperlink{_soil_math_types_8h_aa5e1eb1a998e5ed69af2076cf318df4b}{GENE\_MAX} - \hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER}>(
+141           pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} + 2].weightsGen[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}].to\_string().substr(\hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER},
+142                                                       \hyperlink{_soil_math_types_8h_aa5e1eb1a998e5ed69af2076cf318df4b}{GENE\_MAX} - 
+      \hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER}));
+143 
+144       newPopMembers[0].\hyperlink{struct_pop_member_struct_a072fadb4863e0cf77b55ad3b46b62522}{weightsGen}.push\_back(
+145           \hyperlink{_soil_math_types_8h_a58f6ab36d2cb0527a73caec36d14a0e0}{Genome\_t}(Split[0].first.to\_string() + Split[1].second.to\_string()));
+146       newPopMembers[1].\hyperlink{struct_pop_member_struct_a072fadb4863e0cf77b55ad3b46b62522}{weightsGen}.push\_back(
+147           \hyperlink{_soil_math_types_8h_a58f6ab36d2cb0527a73caec36d14a0e0}{Genome\_t}(Split[1].first.to\_string() + Split[0].second.to\_string()));
+148     \}
+149     newPop.push\_back(newPopMembers[0]);
+150     newPop.push\_back(newPopMembers[1]);
+151     newPopMembers[0].\hyperlink{struct_pop_member_struct_a072fadb4863e0cf77b55ad3b46b62522}{weightsGen}.clear();
+152     newPopMembers[1].\hyperlink{struct_pop_member_struct_a072fadb4863e0cf77b55ad3b46b62522}{weightsGen}.clear();
+153   \}
+154   pop = newPop;
+155 \}
 \end{DoxyCode}
 
 
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -286,7 +341,28 @@ Here is the caller graph for this function\+:\nopagebreak
 )}\label{class_soil_math_1_1_g_a_a4290310d89064946c645673840591540}
 
 
-Definition at line 16 of file G\+A.\+cpp.
+Evolve Darwin would be proud!!! This function creates a population and itterates through the generation till the maximum number off itterations has been reached of the error is acceptable. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+Values} & complex vector with a reference to the inputvalues \\
+\hline
+{\em weights} & reference to the vector of weights which will be optimized \\
+\hline
+{\em prev\+Weights} & pointer to the pevious weight results \\
+\hline
+{\em rangeweights} & pointer to the range of weights, currently it doesn\textquotesingle{}t support indivudal ranges this is because of the crossing \\
+\hline
+{\em goal} & target value towards the Neural Network prediction function will be optimized \\
+\hline
+{\em max\+Generations} & maximum number of itterations default value is 200 \\
+\hline
+{\em pop\+Size} & maximum number of population, this should be an even number \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 23 of file G\+A.\+cpp.
 
 
 
@@ -298,37 +374,38 @@ Referenced by Soil\+Math\+::\+N\+N\+::\+Learn().
 
 
 \begin{DoxyCode}
-18                                                                            \{
-19   \textcolor{comment}{// Create the population}
-20   uint32\_t NOprevPopUsed =
-21       prevWeights.size() < popSize ? prevWeights.size() : popSize;
-22   \hyperlink{_soil_math_types_8h_a8d2d4c736cf817d048a2d66dec8b12ec}{Population\_t} pop = \hyperlink{class_soil_math_1_1_g_a_a96cfe7cc5b3028a66b0136e72ea38cbc}{Genesis}(weights, rangeweights, popSize - NOprevPopUsed);
-23   \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < NOprevPopUsed; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++) \{
-24     \hyperlink{struct_pop_member_struct}{PopMember\_t} newMember;
-25     newMember.\hyperlink{struct_pop_member_struct_aeba960170ef60a906c730cc24cd90367}{weights} = prevWeights[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}];
-26     \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} < newMember.\hyperlink{struct_pop_member_struct_aeba960170ef60a906c730cc24cd90367}{weights}.size(); \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}++) \{
-27       newMember.\hyperlink{struct_pop_member_struct_a072fadb4863e0cf77b55ad3b46b62522}{weightsGen}.push\_back(
-28           ConvertToGenome<float>(newMember.\hyperlink{struct_pop_member_struct_aeba960170ef60a906c730cc24cd90367}{weights}[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}], rangeweights));
-29     \}
-30     pop.push\_back(newMember);
-31   \}
-32   \textcolor{keywordtype}{float} totalFitness = 0.0;
-33   \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < maxGenerations; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++) \{
-34     \hyperlink{class_soil_math_1_1_g_a_abf408d603b2afb188a6d265eb6309b69}{CrossOver}(pop);
-35     \hyperlink{class_soil_math_1_1_g_a_a489f2afd54086c14f45b654aeec0fe3c}{Mutate}(pop);
-36     totalFitness = 0.0;
-37     \hyperlink{class_soil_math_1_1_g_a_aff791f50f889beb74e854942f8883b58}{GrowToAdulthood}(pop, inputValues, rangeweights, goal, totalFitness);
-38     \textcolor{keywordflow}{if} (\hyperlink{class_soil_math_1_1_g_a_ac2c10631815408d044738f678c67e98b}{SurvivalOfTheFittest}(pop, totalFitness)) \{
-39       \textcolor{keywordflow}{break};
-40     \}
-41   \}
-42 
-43   weights = pop[0].weights;
-44 \}
+25                                                                            \{
+26   \textcolor{comment}{// Create the population}
+27   uint32\_t NOprevPopUsed =
+28       prevWeights.size() < popSize ? prevWeights.size() : popSize;
+29   \hyperlink{_soil_math_types_8h_a8d2d4c736cf817d048a2d66dec8b12ec}{Population\_t} pop = \hyperlink{class_soil_math_1_1_g_a_a96cfe7cc5b3028a66b0136e72ea38cbc}{Genesis}(weights, rangeweights, popSize - NOprevPopUsed);
+30   \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < NOprevPopUsed; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++) \{
+31     \hyperlink{struct_pop_member_struct}{PopMember\_t} newMember;
+32     newMember.\hyperlink{struct_pop_member_struct_aeba960170ef60a906c730cc24cd90367}{weights} = prevWeights[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}];
+33     \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} < newMember.\hyperlink{struct_pop_member_struct_aeba960170ef60a906c730cc24cd90367}{weights}.size(); \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}++) \{
+34       newMember.\hyperlink{struct_pop_member_struct_a072fadb4863e0cf77b55ad3b46b62522}{weightsGen}.push\_back(
+35           ConvertToGenome<float>(newMember.\hyperlink{struct_pop_member_struct_aeba960170ef60a906c730cc24cd90367}{weights}[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}], rangeweights));
+36     \}
+37     pop.push\_back(newMember);
+38   \}
+39   \textcolor{keywordtype}{float} totalFitness = 0.0;
+40   \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < maxGenerations; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++) \{
+41     \hyperlink{class_soil_math_1_1_g_a_abf408d603b2afb188a6d265eb6309b69}{CrossOver}(pop);
+42     \hyperlink{class_soil_math_1_1_g_a_a489f2afd54086c14f45b654aeec0fe3c}{Mutate}(pop);
+43     totalFitness = 0.0;
+44     \hyperlink{class_soil_math_1_1_g_a_aff791f50f889beb74e854942f8883b58}{GrowToAdulthood}(pop, inputValues, rangeweights, goal, totalFitness);
+45     \textcolor{keywordflow}{if} (\hyperlink{class_soil_math_1_1_g_a_ac2c10631815408d044738f678c67e98b}{SurvivalOfTheFittest}(pop, totalFitness)) \{
+46       \textcolor{keywordflow}{break};
+47     \}
+48   \}
+49 
+50   weights = pop[0].weights;
+51 \}
 \end{DoxyCode}
 
 
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -339,7 +416,8 @@ Here is the call graph for this function\+:\nopagebreak
 
 
 
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -362,7 +440,26 @@ Here is the caller graph for this function\+:\nopagebreak
 )}\label{class_soil_math_1_1_g_a_aca448f36c1f98b4906d0754cf354cccf}
 
 
-Definition at line 46 of file G\+A.\+cpp.
+Evolve Darwin would be proud!!! This function creates a population and itterates through the generation till the maximum number off itterations has been reached of the error is acceptable. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+Values} & complex vector with a reference to the inputvalues \\
+\hline
+{\em weights} & reference to the vector of weights which will be optimized \\
+\hline
+{\em rangeweights} & reference to the range of weights, currently it doesn\textquotesingle{}t support indivudal ranges this is because of the crossing \\
+\hline
+{\em goal} & target value towards the Neural Network prediction function will be optimized \\
+\hline
+{\em max\+Generations} & maximum number of itterations default value is 200 \\
+\hline
+{\em pop\+Size} & maximum number of population, this should be an even number \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 53 of file G\+A.\+cpp.
 
 
 
@@ -370,25 +467,26 @@ References Cross\+Over(), Genesis(), Grow\+To\+Adulthood(), i, Mutate(), and Sur
 
 
 \begin{DoxyCode}
-48                                                            \{
-49   \textcolor{comment}{// Create the population}
-50   \hyperlink{_soil_math_types_8h_a8d2d4c736cf817d048a2d66dec8b12ec}{Population\_t} pop = \hyperlink{class_soil_math_1_1_g_a_a96cfe7cc5b3028a66b0136e72ea38cbc}{Genesis}(weights, rangeweights, popSize);
-51   \textcolor{keywordtype}{float} totalFitness = 0.0;
-52   \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < maxGenerations; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++) \{
-53     \hyperlink{class_soil_math_1_1_g_a_abf408d603b2afb188a6d265eb6309b69}{CrossOver}(pop);
-54     \hyperlink{class_soil_math_1_1_g_a_a489f2afd54086c14f45b654aeec0fe3c}{Mutate}(pop);
-55     totalFitness = 0.0;
-56     \hyperlink{class_soil_math_1_1_g_a_aff791f50f889beb74e854942f8883b58}{GrowToAdulthood}(pop, inputValues, rangeweights, goal, totalFitness);
-57     \textcolor{keywordflow}{if} (\hyperlink{class_soil_math_1_1_g_a_ac2c10631815408d044738f678c67e98b}{SurvivalOfTheFittest}(pop, totalFitness)) \{
-58       \textcolor{keywordflow}{break};
-59     \}
-60   \}
-61   weights = pop[0].weights;
-62 \}
+55                                                            \{
+56   \textcolor{comment}{// Create the population}
+57   \hyperlink{_soil_math_types_8h_a8d2d4c736cf817d048a2d66dec8b12ec}{Population\_t} pop = \hyperlink{class_soil_math_1_1_g_a_a96cfe7cc5b3028a66b0136e72ea38cbc}{Genesis}(weights, rangeweights, popSize);
+58   \textcolor{keywordtype}{float} totalFitness = 0.0;
+59   \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < maxGenerations; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++) \{
+60     \hyperlink{class_soil_math_1_1_g_a_abf408d603b2afb188a6d265eb6309b69}{CrossOver}(pop);
+61     \hyperlink{class_soil_math_1_1_g_a_a489f2afd54086c14f45b654aeec0fe3c}{Mutate}(pop);
+62     totalFitness = 0.0;
+63     \hyperlink{class_soil_math_1_1_g_a_aff791f50f889beb74e854942f8883b58}{GrowToAdulthood}(pop, inputValues, rangeweights, goal, totalFitness);
+64     \textcolor{keywordflow}{if} (\hyperlink{class_soil_math_1_1_g_a_ac2c10631815408d044738f678c67e98b}{SurvivalOfTheFittest}(pop, totalFitness)) \{
+65       \textcolor{keywordflow}{break};
+66     \}
+67   \}
+68   weights = pop[0].weights;
+69 \}
 \end{DoxyCode}
 
 
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -408,7 +506,23 @@ Here is the call graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [private]}}\label{class_soil_math_1_1_g_a_a96cfe7cc5b3028a66b0136e72ea38cbc}
 
 
-Definition at line 64 of file G\+A.\+cpp.
+Genesis private function which is the spark of live, using a random seed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em weights} & a reference to the used Weight\+\_\+t vector \\
+\hline
+{\em rangeweights} & pointer to the range of weights, currently it doesn\textquotesingle{}t support indivudal ranges \\
+\hline
+{\em pop\+Size} & maximum number of population, this should be an even number \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line 71 of file G\+A.\+cpp.
 
 
 
@@ -420,31 +534,32 @@ Referenced by Evolve().
 
 
 \begin{DoxyCode}
-65                                            \{
-66   \textcolor{keywordflow}{if} (popSize < 1)
-67     \textcolor{keywordflow}{return} \hyperlink{_soil_math_types_8h_a8d2d4c736cf817d048a2d66dec8b12ec}{Population\_t}();
-68 
-69   \hyperlink{_soil_math_types_8h_a8d2d4c736cf817d048a2d66dec8b12ec}{Population\_t} pop;
-70   \textcolor{keywordtype}{unsigned} seed = std::chrono::system\_clock::now().time\_since\_epoch().count();
-71   std::default\_random\_engine gen(seed);
-72   std::uniform\_real\_distribution<float> dis(rangeweights.first,
-73                                             rangeweights.second);
-74 
-75   \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < popSize; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++) \{
-76     \hyperlink{struct_pop_member_struct}{PopMember\_t} \hyperlink{_comparision_pictures_2_createtest_image_8m_aa7400a30a3cc1d4ef58923b44ecb7719}{I};
-77     \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} < weights.size(); \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}++) \{
-78       I.\hyperlink{struct_pop_member_struct_aeba960170ef60a906c730cc24cd90367}{weights}.push\_back(dis(gen));
-79       I.\hyperlink{struct_pop_member_struct_a072fadb4863e0cf77b55ad3b46b62522}{weightsGen}.push\_back(
-80           ConvertToGenome<float>(I.\hyperlink{struct_pop_member_struct_aeba960170ef60a906c730cc24cd90367}{weights}[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}], rangeweights));
-81     \}
-82     pop.push\_back(I);
-83   \}
-84   \textcolor{keywordflow}{return} pop;
-85 \}
+72                                            \{
+73   \textcolor{keywordflow}{if} (popSize < 1)
+74     \textcolor{keywordflow}{return} \hyperlink{_soil_math_types_8h_a8d2d4c736cf817d048a2d66dec8b12ec}{Population\_t}();
+75 
+76   \hyperlink{_soil_math_types_8h_a8d2d4c736cf817d048a2d66dec8b12ec}{Population\_t} pop;
+77   \textcolor{keywordtype}{unsigned} seed = std::chrono::system\_clock::now().time\_since\_epoch().count();
+78   std::default\_random\_engine gen(seed);
+79   std::uniform\_real\_distribution<float> dis(rangeweights.first,
+80                                             rangeweights.second);
+81 
+82   \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < popSize; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++) \{
+83     \hyperlink{struct_pop_member_struct}{PopMember\_t} \hyperlink{_comparision_pictures_2_createtest_image_8m_aa7400a30a3cc1d4ef58923b44ecb7719}{I};
+84     \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} < weights.size(); \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}++) \{
+85       I.\hyperlink{struct_pop_member_struct_aeba960170ef60a906c730cc24cd90367}{weights}.push\_back(dis(gen));
+86       I.\hyperlink{struct_pop_member_struct_a072fadb4863e0cf77b55ad3b46b62522}{weightsGen}.push\_back(
+87           ConvertToGenome<float>(I.\hyperlink{struct_pop_member_struct_aeba960170ef60a906c730cc24cd90367}{weights}[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}], rangeweights));
+88     \}
+89     pop.push\_back(I);
+90   \}
+91   \textcolor{keywordflow}{return} pop;
+92 \}
 \end{DoxyCode}
 
 
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -466,11 +581,28 @@ Here is the caller graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [private]}}\label{class_soil_math_1_1_g_a_aff791f50f889beb74e854942f8883b58}
 
 
-Definition at line 168 of file G\+A.\+cpp.
+Grow\+To\+Adulthood a private function where the new population members serve as the the input for the Neural Network prediction function. The results are weight against the goal and this weight determine the fitness of the population member. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pop} & reference to the population \\
+\hline
+{\em input\+Values} & complex vector with a reference to the inputvalues \\
+\hline
+{\em rangeweights} & pointer to the range of weights, currently it doesn\textquotesingle{}t support indivudal ranges \\
+\hline
+{\em goal} & a Predict\+\_\+t type with the expected value \\
+\hline
+{\em total\+Fitness} & a reference to the total population fitness \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 175 of file G\+A.\+cpp.
 
 
 
-References hiddenneurons, i, inputneurons, j, N\+Nfuction, outputneurons, and Predict\+\_\+struct\+::\+Output\+Neurons.
+References hiddenneurons, i, inputneurons, j, N\+Nfuction, Predict\+\_\+struct\+::\+Output\+Neurons, and outputneurons.
 
 
 
@@ -478,33 +610,34 @@ Referenced by Evolve().
 
 
 \begin{DoxyCode}
-170                                               \{
-171   \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < pop.size(); \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++) \{
-172     \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} < pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].weightsGen.size(); \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}++) \{
-173       pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].weights.push\_back(
-174           ConvertToValue<float>(pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].weightsGen[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}], rangeweights));
-175     \}
-176     \hyperlink{_soil_math_types_8h_ac56ad2b88186620fd0de0d213aa715dd}{Weight\_t} iWeight(pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].weights.begin(),
-177                      pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].weights.begin() +
-178                          ((\hyperlink{class_soil_math_1_1_g_a_ac32591e30dde5ac854ae57a7b9e33298}{inputneurons} + 1) * \hyperlink{class_soil_math_1_1_g_a_a3f1eee7492f68a05b9b06ee8afb2ec20}{hiddenneurons}));
-179     \hyperlink{_soil_math_types_8h_ac56ad2b88186620fd0de0d213aa715dd}{Weight\_t} hWeight(pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].weights.begin() +
-180                          ((\hyperlink{class_soil_math_1_1_g_a_ac32591e30dde5ac854ae57a7b9e33298}{inputneurons} + 1) * \hyperlink{class_soil_math_1_1_g_a_a3f1eee7492f68a05b9b06ee8afb2ec20}{hiddenneurons}),
-181                      pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].weights.end());
-182     \hyperlink{struct_predict__struct}{Predict\_t} results = \hyperlink{class_soil_math_1_1_g_a_a9b690048c89c32e3153457378b5e1c31}{NNfuction}(inputValues, iWeight, hWeight, 
+177                                               \{
+178   \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < pop.size(); \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++) \{
+179     \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} < pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].weightsGen.size(); \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}++) \{
+180       pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].weights.push\_back(
+181           ConvertToValue<float>(pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].weightsGen[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}], rangeweights));
+182     \}
+183     \hyperlink{_soil_math_types_8h_ac56ad2b88186620fd0de0d213aa715dd}{Weight\_t} iWeight(pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].weights.begin(),
+184                      pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].weights.begin() +
+185                          ((\hyperlink{class_soil_math_1_1_g_a_ac32591e30dde5ac854ae57a7b9e33298}{inputneurons} + 1) * \hyperlink{class_soil_math_1_1_g_a_a3f1eee7492f68a05b9b06ee8afb2ec20}{hiddenneurons}));
+186     \hyperlink{_soil_math_types_8h_ac56ad2b88186620fd0de0d213aa715dd}{Weight\_t} hWeight(pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].weights.begin() +
+187                          ((\hyperlink{class_soil_math_1_1_g_a_ac32591e30dde5ac854ae57a7b9e33298}{inputneurons} + 1) * \hyperlink{class_soil_math_1_1_g_a_a3f1eee7492f68a05b9b06ee8afb2ec20}{hiddenneurons}),
+188                      pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].weights.end());
+189     \hyperlink{struct_predict__struct}{Predict\_t} results = \hyperlink{class_soil_math_1_1_g_a_a9b690048c89c32e3153457378b5e1c31}{NNfuction}(inputValues, iWeight, hWeight, 
       \hyperlink{class_soil_math_1_1_g_a_ac32591e30dde5ac854ae57a7b9e33298}{inputneurons},
-183                                   \hyperlink{class_soil_math_1_1_g_a_a3f1eee7492f68a05b9b06ee8afb2ec20}{hiddenneurons}, \hyperlink{class_soil_math_1_1_g_a_ab454f9968d5ce2a294b89f85c9d3a74f}{outputneurons});
-184     \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} < results.OutputNeurons.size(); \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}++) \{
-185       pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].Fitness -= results.OutputNeurons[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}] / goal.\hyperlink{struct_predict__struct_aa0708cae93baa061f21452537e86d3bd}{OutputNeurons}[
+190                                   \hyperlink{class_soil_math_1_1_g_a_a3f1eee7492f68a05b9b06ee8afb2ec20}{hiddenneurons}, \hyperlink{class_soil_math_1_1_g_a_ab454f9968d5ce2a294b89f85c9d3a74f}{outputneurons});
+191     \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} < results.OutputNeurons.size(); \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}++) \{
+192       pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].Fitness -= results.OutputNeurons[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}] / goal.\hyperlink{struct_predict__struct_aa0708cae93baa061f21452537e86d3bd}{OutputNeurons}[
       \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}];
-186     \}
-187     pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].Fitness += results.OutputNeurons.size();
-188     totalFitness += pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].Fitness;
-189   \}
-190 \}
+193     \}
+194     pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].Fitness += results.OutputNeurons.size();
+195     totalFitness += pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].Fitness;
+196   \}
+197 \}
 \end{DoxyCode}
 
 
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -526,39 +659,56 @@ Here is the caller graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [private]}}\label{class_soil_math_1_1_g_a_aa39c76b7958bfc80b713389a6f0c6b97}
 
 
-Definition at line 192 of file G\+A.\+cpp.
+Grow\+To\+Adulthood a private function where the new population members serve as the the input for the Neural Network prediction function. The results are weight against the goal and this weight determine the fitness of the population member. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pop} & reference to the population \\
+\hline
+{\em input\+Values} & a Input\+Learn\+Vector\+\_\+t with a reference to the inputvalues \\
+\hline
+{\em rangeweights} & pointer to the range of weights, currently it doesn\textquotesingle{}t support indivudal ranges \\
+\hline
+{\em goal} & a Predict\+\_\+t type with the expected value \\
+\hline
+{\em total\+Fitness} & a reference to the total population fitness \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 199 of file G\+A.\+cpp.
 
 
 
-References hiddenneurons, i, inputneurons, j, N\+Nfuction, outputneurons, and Predict\+\_\+struct\+::\+Output\+Neurons.
+References hiddenneurons, i, inputneurons, j, N\+Nfuction, Predict\+\_\+struct\+::\+Output\+Neurons, and outputneurons.
 
 
 \begin{DoxyCode}
-195                                               \{
-196   \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < pop.size(); \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++) \{
-197     \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} < pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].weightsGen.size(); \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}++) \{
-198       pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].weights.push\_back(
-199           ConvertToValue<float>(pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].weightsGen[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}], rangeweights));
-200     \}
-201     \hyperlink{_soil_math_types_8h_ac56ad2b88186620fd0de0d213aa715dd}{Weight\_t} iWeight(pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].weights.begin(),
-202                      pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].weights.begin() +
-203                          ((\hyperlink{class_soil_math_1_1_g_a_ac32591e30dde5ac854ae57a7b9e33298}{inputneurons} + 1) * \hyperlink{class_soil_math_1_1_g_a_a3f1eee7492f68a05b9b06ee8afb2ec20}{hiddenneurons}));
-204     \hyperlink{_soil_math_types_8h_ac56ad2b88186620fd0de0d213aa715dd}{Weight\_t} hWeight(pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].weights.begin() +
-205                          ((\hyperlink{class_soil_math_1_1_g_a_ac32591e30dde5ac854ae57a7b9e33298}{inputneurons} + 1) * \hyperlink{class_soil_math_1_1_g_a_a3f1eee7492f68a05b9b06ee8afb2ec20}{hiddenneurons}),
-206                      pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].weights.end());
-207     \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} < inputValues.size(); \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}++) \{
-208       \hyperlink{struct_predict__struct}{Predict\_t} results = \hyperlink{class_soil_math_1_1_g_a_a9b690048c89c32e3153457378b5e1c31}{NNfuction}(inputValues[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}], iWeight, hWeight,
-209                                     \hyperlink{class_soil_math_1_1_g_a_ac32591e30dde5ac854ae57a7b9e33298}{inputneurons}, \hyperlink{class_soil_math_1_1_g_a_a3f1eee7492f68a05b9b06ee8afb2ec20}{hiddenneurons}, 
+202                                               \{
+203   \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < pop.size(); \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++) \{
+204     \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} < pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].weightsGen.size(); \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}++) \{
+205       pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].weights.push\_back(
+206           ConvertToValue<float>(pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].weightsGen[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}], rangeweights));
+207     \}
+208     \hyperlink{_soil_math_types_8h_ac56ad2b88186620fd0de0d213aa715dd}{Weight\_t} iWeight(pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].weights.begin(),
+209                      pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].weights.begin() +
+210                          ((\hyperlink{class_soil_math_1_1_g_a_ac32591e30dde5ac854ae57a7b9e33298}{inputneurons} + 1) * \hyperlink{class_soil_math_1_1_g_a_a3f1eee7492f68a05b9b06ee8afb2ec20}{hiddenneurons}));
+211     \hyperlink{_soil_math_types_8h_ac56ad2b88186620fd0de0d213aa715dd}{Weight\_t} hWeight(pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].weights.begin() +
+212                          ((\hyperlink{class_soil_math_1_1_g_a_ac32591e30dde5ac854ae57a7b9e33298}{inputneurons} + 1) * \hyperlink{class_soil_math_1_1_g_a_a3f1eee7492f68a05b9b06ee8afb2ec20}{hiddenneurons}),
+213                      pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].weights.end());
+214     \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} < inputValues.size(); \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}++) \{
+215       \hyperlink{struct_predict__struct}{Predict\_t} results = \hyperlink{class_soil_math_1_1_g_a_a9b690048c89c32e3153457378b5e1c31}{NNfuction}(inputValues[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}], iWeight, hWeight,
+216                                     \hyperlink{class_soil_math_1_1_g_a_ac32591e30dde5ac854ae57a7b9e33298}{inputneurons}, \hyperlink{class_soil_math_1_1_g_a_a3f1eee7492f68a05b9b06ee8afb2ec20}{hiddenneurons}, 
       \hyperlink{class_soil_math_1_1_g_a_ab454f9968d5ce2a294b89f85c9d3a74f}{outputneurons});
-210       \textcolor{keywordflow}{for} (uint32\_t k = 0; k < results.\hyperlink{struct_predict__struct_aa0708cae93baa061f21452537e86d3bd}{OutputNeurons}.size(); k++) \{
-211         pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].Fitness -= results.\hyperlink{struct_predict__struct_aa0708cae93baa061f21452537e86d3bd}{OutputNeurons}[k] / goal[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}].OutputNeurons[k];
-212       \}
-213       pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].Fitness += results.\hyperlink{struct_predict__struct_aa0708cae93baa061f21452537e86d3bd}{OutputNeurons}.size();
-214     \}
-215     pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].Fitness /= inputValues.size();
-216     totalFitness += pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].Fitness;
-217   \}
-218 \}
+217       \textcolor{keywordflow}{for} (uint32\_t k = 0; k < results.\hyperlink{struct_predict__struct_aa0708cae93baa061f21452537e86d3bd}{OutputNeurons}.size(); k++) \{
+218         pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].Fitness -= results.\hyperlink{struct_predict__struct_aa0708cae93baa061f21452537e86d3bd}{OutputNeurons}[k] / goal[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}].OutputNeurons[k];
+219       \}
+220       pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].Fitness += results.\hyperlink{struct_predict__struct_aa0708cae93baa061f21452537e86d3bd}{OutputNeurons}.size();
+221     \}
+222     pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].Fitness /= inputValues.size();
+223     totalFitness += pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].Fitness;
+224   \}
+225 \}
 \end{DoxyCode}
 \hypertarget{class_soil_math_1_1_g_a_a489f2afd54086c14f45b654aeec0fe3c}{}\index{Soil\+Math\+::\+G\+A@{Soil\+Math\+::\+G\+A}!Mutate@{Mutate}}
 \index{Mutate@{Mutate}!Soil\+Math\+::\+G\+A@{Soil\+Math\+::\+G\+A}}
@@ -569,7 +719,16 @@ References hiddenneurons, i, inputneurons, j, N\+Nfuction, outputneurons, and Pr
 )\hspace{0.3cm}{\ttfamily [private]}}\label{class_soil_math_1_1_g_a_a489f2afd54086c14f45b654aeec0fe3c}
 
 
-Definition at line 150 of file G\+A.\+cpp.
+Mutate a private function where individual bits from the Genome\+\_\+t are mutated at a random uniform distribution event defined by the M\+U\+T\+A\+T\+I\+O\+N\+R\+A\+T\+E. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pop} & reference to the population \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 157 of file G\+A.\+cpp.
 
 
 
@@ -581,27 +740,28 @@ Referenced by Evolve().
 
 
 \begin{DoxyCode}
-150                                  \{
-151   \textcolor{keywordtype}{unsigned} seed = std::chrono::system\_clock::now().time\_since\_epoch().count();
-152 
-153   std::default\_random\_engine gen(seed);
-154   std::uniform\_real\_distribution<float> dis(0, 1);
-155 
-156   std::default\_random\_engine genGen(seed);
-157   std::uniform\_int\_distribution<int> disGen(0, (\hyperlink{_soil_math_types_8h_aa5e1eb1a998e5ed69af2076cf318df4b}{GENE\_MAX} - 1));
-158 
-159   \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < pop.size(); \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++) \{
-160     \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} < pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].weightsGen.size(); \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}++) \{
-161       \textcolor{keywordflow}{if} (dis(gen) < \hyperlink{_soil_math_types_8h_a609754629b7669df73d7e8edda337162}{MUTATIONRATE}) \{
-162         pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].weightsGen[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}][disGen(genGen)].flip();
-163       \}
-164     \}
-165   \}
-166 \}
+157                                  \{
+158   \textcolor{keywordtype}{unsigned} seed = std::chrono::system\_clock::now().time\_since\_epoch().count();
+159 
+160   std::default\_random\_engine gen(seed);
+161   std::uniform\_real\_distribution<float> dis(0, 1);
+162 
+163   std::default\_random\_engine genGen(seed);
+164   std::uniform\_int\_distribution<int> disGen(0, (\hyperlink{_soil_math_types_8h_aa5e1eb1a998e5ed69af2076cf318df4b}{GENE\_MAX} - 1));
+165 
+166   \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < pop.size(); \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++) \{
+167     \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} < pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].weightsGen.size(); \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}++) \{
+168       \textcolor{keywordflow}{if} (dis(gen) < \hyperlink{_soil_math_types_8h_a609754629b7669df73d7e8edda337162}{MUTATIONRATE}) \{
+169         pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].weightsGen[\hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}][disGen(genGen)].flip();
+170       \}
+171     \}
+172   \}
+173 \}
 \end{DoxyCode}
 
 
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -620,7 +780,21 @@ Here is the caller graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}\label{class_soil_math_1_1_g_a_a1e950022fa3ea792a36cbc62f9b8528b}
 
 
-Definition at line 48 of file G\+A.\+h.
+Pop\+Member\+Sort a private function where the members are sorted according to there fitness ranking. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & left hand population member \\
+\hline
+{\em j} & right hand population member \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the left member is closser to the goal as the right member. 
+\end{DoxyReturn}
+
+
+Definition at line 177 of file G\+A.\+h.
 
 
 
@@ -632,13 +806,14 @@ Referenced by Survival\+Of\+The\+Fittest().
 
 
 \begin{DoxyCode}
-48                                                           \{
-49     \textcolor{keywordflow}{return} (i.\hyperlink{struct_pop_member_struct_a750ec8010731e3e2a876051475c31b14}{Fitness} < j.\hyperlink{struct_pop_member_struct_a750ec8010731e3e2a876051475c31b14}{Fitness});
-50   \}
+177                                                           \{
+178     \textcolor{keywordflow}{return} (i.\hyperlink{struct_pop_member_struct_a750ec8010731e3e2a876051475c31b14}{Fitness} < j.\hyperlink{struct_pop_member_struct_a750ec8010731e3e2a876051475c31b14}{Fitness});
+179   \}
 \end{DoxyCode}
 
 
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -657,7 +832,21 @@ Here is the caller graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [private]}}\label{class_soil_math_1_1_g_a_ac2c10631815408d044738f678c67e98b}
 
 
-Definition at line 220 of file G\+A.\+cpp.
+Survival\+Of\+The\+Fittest a private function where a battle to the death commences The fittest population members have the best chance of survival. Death is instigated with a random uniform distibution. The elite members don\textquotesingle{}t partake in this desctruction The E\+L\+I\+T\+I\+S\+M\+E rate indicate how many top tier members survive this catastrophic event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+Values} & a Input\+Learn\+Vector\+\_\+t with a reference to the inputvalues \\
+\hline
+{\em total\+Fitness} & a reference to the total population fitness \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line 227 of file G\+A.\+cpp.
 
 
 
@@ -669,37 +858,38 @@ Referenced by Evolve().
 
 
 \begin{DoxyCode}
-220                                                                     \{
-221   \textcolor{keywordtype}{bool} retVal = \textcolor{keyword}{false};
-222   uint32\_t decimationCount = pop.size() / 2;
-223 
-224   \textcolor{keywordtype}{unsigned} seed = std::chrono::system\_clock::now().time\_since\_epoch().count();
-225   std::default\_random\_engine gen(seed);
-226 
-227   std::sort(pop.begin(), pop.end(), \hyperlink{class_soil_math_1_1_g_a_a1e950022fa3ea792a36cbc62f9b8528b}{PopMemberSort});
-228 
-229   uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = \hyperlink{_soil_math_types_8h_aa2f6faf3ad4bc7b9d4df4f766203a2ff}{ELITISME};
-230   \textcolor{keywordflow}{while} (pop.size() > decimationCount) \{
-231     \textcolor{keywordflow}{if} (i >= pop.size()) \{
-232       i = \hyperlink{_soil_math_types_8h_aa2f6faf3ad4bc7b9d4df4f766203a2ff}{ELITISME};
-233     \}
-234     std::uniform\_real\_distribution<float> dis(0, totalFitness);
-235     \textcolor{keywordflow}{if} (dis(gen) < pop[i].Fitness) \{
-236       pop.erase(pop.begin() + i--);
-237       totalFitness -= pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].Fitness;
-238     \}
-239     i++;
-240   \}
-241 
-242   \textcolor{keywordflow}{if} (pop[0].Fitness < \hyperlink{_soil_math_types_8h_ae9ddcafe7b5c7bc5956b50623aa31747}{END\_ERROR}) \{
-243     retVal = \textcolor{keyword}{true};
-244   \}
-245   \textcolor{keywordflow}{return} retVal;
-246 \}
+227                                                                     \{
+228   \textcolor{keywordtype}{bool} retVal = \textcolor{keyword}{false};
+229   uint32\_t decimationCount = pop.size() / 2;
+230 
+231   \textcolor{keywordtype}{unsigned} seed = std::chrono::system\_clock::now().time\_since\_epoch().count();
+232   std::default\_random\_engine gen(seed);
+233 
+234   std::sort(pop.begin(), pop.end(), \hyperlink{class_soil_math_1_1_g_a_a1e950022fa3ea792a36cbc62f9b8528b}{PopMemberSort});
+235 
+236   uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = \hyperlink{_soil_math_types_8h_aa2f6faf3ad4bc7b9d4df4f766203a2ff}{ELITISME};
+237   \textcolor{keywordflow}{while} (pop.size() > decimationCount) \{
+238     \textcolor{keywordflow}{if} (i >= pop.size()) \{
+239       i = \hyperlink{_soil_math_types_8h_aa2f6faf3ad4bc7b9d4df4f766203a2ff}{ELITISME};
+240     \}
+241     std::uniform\_real\_distribution<float> dis(0, totalFitness);
+242     \textcolor{keywordflow}{if} (dis(gen) < pop[i].Fitness) \{
+243       pop.erase(pop.begin() + i--);
+244       totalFitness -= pop[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].Fitness;
+245     \}
+246     i++;
+247   \}
+248 
+249   \textcolor{keywordflow}{if} (pop[0].Fitness < \hyperlink{_soil_math_types_8h_ae9ddcafe7b5c7bc5956b50623aa31747}{END\_ERROR}) \{
+250     retVal = \textcolor{keyword}{true};
+251   \}
+252   \textcolor{keywordflow}{return} retVal;
+253 \}
 \end{DoxyCode}
 
 
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -710,7 +900,8 @@ Here is the call graph for this function\+:\nopagebreak
 
 
 
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -725,9 +916,9 @@ Here is the caller graph for this function\+:\nopagebreak
 \hypertarget{class_soil_math_1_1_g_a_a3f1eee7492f68a05b9b06ee8afb2ec20}{}\index{Soil\+Math\+::\+G\+A@{Soil\+Math\+::\+G\+A}!hiddenneurons@{hiddenneurons}}
 \index{hiddenneurons@{hiddenneurons}!Soil\+Math\+::\+G\+A@{Soil\+Math\+::\+G\+A}}
 \subsubsection[{hiddenneurons}]{\setlength{\rightskip}{0pt plus 5cm}uint32\+\_\+t Soil\+Math\+::\+G\+A\+::hiddenneurons\hspace{0.3cm}{\ttfamily [private]}}\label{class_soil_math_1_1_g_a_a3f1eee7492f68a05b9b06ee8afb2ec20}
+the total number of hidden neurons 
 
-
-Definition at line 33 of file G\+A.\+h.
+Definition at line 97 of file G\+A.\+h.
 
 
 
@@ -736,9 +927,9 @@ Referenced by G\+A(), and Grow\+To\+Adulthood().
 \hypertarget{class_soil_math_1_1_g_a_ac32591e30dde5ac854ae57a7b9e33298}{}\index{Soil\+Math\+::\+G\+A@{Soil\+Math\+::\+G\+A}!inputneurons@{inputneurons}}
 \index{inputneurons@{inputneurons}!Soil\+Math\+::\+G\+A@{Soil\+Math\+::\+G\+A}}
 \subsubsection[{inputneurons}]{\setlength{\rightskip}{0pt plus 5cm}uint32\+\_\+t Soil\+Math\+::\+G\+A\+::inputneurons\hspace{0.3cm}{\ttfamily [private]}}\label{class_soil_math_1_1_g_a_ac32591e30dde5ac854ae57a7b9e33298}
+the total number of input neurons 
 
-
-Definition at line 32 of file G\+A.\+h.
+Definition at line 96 of file G\+A.\+h.
 
 
 
@@ -747,9 +938,9 @@ Referenced by G\+A(), and Grow\+To\+Adulthood().
 \hypertarget{class_soil_math_1_1_g_a_a9b690048c89c32e3153457378b5e1c31}{}\index{Soil\+Math\+::\+G\+A@{Soil\+Math\+::\+G\+A}!N\+Nfuction@{N\+Nfuction}}
 \index{N\+Nfuction@{N\+Nfuction}!Soil\+Math\+::\+G\+A@{Soil\+Math\+::\+G\+A}}
 \subsubsection[{N\+Nfuction}]{\setlength{\rightskip}{0pt plus 5cm}{\bf N\+Nfunction\+Type} Soil\+Math\+::\+G\+A\+::\+N\+Nfuction\hspace{0.3cm}{\ttfamily [private]}}\label{class_soil_math_1_1_g_a_a9b690048c89c32e3153457378b5e1c31}
+The Neural Net work function 
 
-
-Definition at line 31 of file G\+A.\+h.
+Definition at line 95 of file G\+A.\+h.
 
 
 
@@ -758,9 +949,9 @@ Referenced by G\+A(), and Grow\+To\+Adulthood().
 \hypertarget{class_soil_math_1_1_g_a_ab454f9968d5ce2a294b89f85c9d3a74f}{}\index{Soil\+Math\+::\+G\+A@{Soil\+Math\+::\+G\+A}!outputneurons@{outputneurons}}
 \index{outputneurons@{outputneurons}!Soil\+Math\+::\+G\+A@{Soil\+Math\+::\+G\+A}}
 \subsubsection[{outputneurons}]{\setlength{\rightskip}{0pt plus 5cm}uint32\+\_\+t Soil\+Math\+::\+G\+A\+::outputneurons\hspace{0.3cm}{\ttfamily [private]}}\label{class_soil_math_1_1_g_a_ab454f9968d5ce2a294b89f85c9d3a74f}
+the total number of output neurons 
 
-
-Definition at line 34 of file G\+A.\+h.
+Definition at line 98 of file G\+A.\+h.
 
 
 

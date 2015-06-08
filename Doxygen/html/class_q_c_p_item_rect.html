@@ -35,7 +35,7 @@
    <div id="projectname">Vision Soil Analyzer
    &#160;<span id="projectnumber">1.0.0</span>
    </div>
-   <div id="projectbrief">The Soil Analyzer is a portable lab that can analyse soil samples and tells the user about it&#39;s optical properties. It looks at the texture and describe it as a Particle Size Distribution. This information is presented as a Cumulative Distribution Function (CDF). It also describes the structure of the soil sample and gives information on the sphericity and roundness / angularity. It does so by analysing the contour of particles, describing them as Fourier Descriptors and using a Neural Network to describe it&#39;s properties. Finally it gives the color properties in a histogram in the CIE La*b* colorspace, which show correlations with the fertility of the soil. and a histogram of the Redness Index, which gives has a correlation on the iron content.</div>
+   <div id="projectbrief">Soil analyzer using an USB microscope - for Linux PC and Beaglebone Black</div>
   </td>
  </tr>
  </tbody>
@@ -310,10 +310,10 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:ad2a70ff6b658fcb84a9427f69d3f587d inherit pro_attribs_class_q_c_p_abstract_item"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e57cfe7da4b1ac3d6fa7281ea437361 inherit pro_attribs_class_q_c_p_abstract_item"><td class="memItemLeft" align="right" valign="top">QPointer&lt; <a class="el" href="class_q_c_p_axis_rect.html">QCPAxisRect</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_c_p_abstract_item.html#a3e57cfe7da4b1ac3d6fa7281ea437361">mClipAxisRect</a></td></tr>
 <tr class="separator:a3e57cfe7da4b1ac3d6fa7281ea437361 inherit pro_attribs_class_q_c_p_abstract_item"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af94ff71b6a15ea6d028ab8bd8eccd012 inherit pro_attribs_class_q_c_p_abstract_item"><td class="memItemLeft" align="right" valign="top">QList&lt; <a class="el" href="class_q_c_p_item_position.html">QCPItemPosition</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_c_p_abstract_item.html#af94ff71b6a15ea6d028ab8bd8eccd012">mPositions</a></td></tr>
-<tr class="separator:af94ff71b6a15ea6d028ab8bd8eccd012 inherit pro_attribs_class_q_c_p_abstract_item"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a909a3abab783de302ebf0a0e6f2bbc15 inherit pro_attribs_class_q_c_p_abstract_item"><td class="memItemLeft" align="right" valign="top">QList&lt; <a class="el" href="class_q_c_p_item_anchor.html">QCPItemAnchor</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_c_p_abstract_item.html#a909a3abab783de302ebf0a0e6f2bbc15">mAnchors</a></td></tr>
-<tr class="separator:a909a3abab783de302ebf0a0e6f2bbc15 inherit pro_attribs_class_q_c_p_abstract_item"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96cab718644f27490f9d967c49fcd18c inherit pro_attribs_class_q_c_p_abstract_item"><td class="memItemLeft" align="right" valign="top">QList&lt; <a class="el" href="class_q_c_p_item_position.html">QCPItemPosition</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_c_p_abstract_item.html#a96cab718644f27490f9d967c49fcd18c">mPositions</a></td></tr>
+<tr class="separator:a96cab718644f27490f9d967c49fcd18c inherit pro_attribs_class_q_c_p_abstract_item"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e1e082dc04ef832411a23905d83cc02 inherit pro_attribs_class_q_c_p_abstract_item"><td class="memItemLeft" align="right" valign="top">QList&lt; <a class="el" href="class_q_c_p_item_anchor.html">QCPItemAnchor</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_c_p_abstract_item.html#a0e1e082dc04ef832411a23905d83cc02">mAnchors</a></td></tr>
+<tr class="separator:a0e1e082dc04ef832411a23905d83cc02 inherit pro_attribs_class_q_c_p_abstract_item"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad81eb35c8726a0f458db9df9732e0e41 inherit pro_attribs_class_q_c_p_abstract_item"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_c_p_abstract_item.html#ad81eb35c8726a0f458db9df9732e0e41">mSelectable</a></td></tr>
 <tr class="separator:ad81eb35c8726a0f458db9df9732e0e41 inherit pro_attribs_class_q_c_p_abstract_item"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4bdb3457dad1d268c0f78a44152b9645 inherit pro_attribs_class_q_c_p_abstract_item"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_c_p_abstract_item.html#a4bdb3457dad1d268c0f78a44152b9645">mSelected</a></td></tr>
@@ -346,10 +346,11 @@ Additional Inherited Members</h2></td></tr>
 <div class="image">
 <img src="QCPItemRect.png" alt="QCPItemRect.png"/>
 <div class="caption">
-Rectangle example. Blue dotted circles are anchors, solid blue discs are positions.</div></div>
-<p> It has two positions, <em>topLeft</em> and <em>bottomRight</em>, which define the rectangle. </p>
+Rectangle example. Blue dotted circles are</div></div>
+<p> anchors, solid blue discs are positions."</p>
+<p>It has two positions, <em>topLeft</em> and <em>bottomRight</em>, which define the rectangle. </p>
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03367">3367</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03827">3827</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 </div><h2 class="groupheader">Member Enumeration Documentation</h2>
 <a class="anchor" id="af0ebba58e6bca4851c4db726691ec0d3"></a>
 <div class="memitem">
@@ -383,14 +384,21 @@ Rectangle example. Blue dotted circles are anchors, solid blue discs are positio
 </td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03405">3405</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l03405"></a><span class="lineno"> 3405</span>&#160;{<a class="code" href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3acaef33243034885d551dc9b8318ad326">aiTop</a>, <a class="code" href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3aa94843ce5935b36994005c1e1859ef60">aiTopRight</a>, <a class="code" href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3a69fa21fde2f44036381296a6f78b4eb4">aiRight</a>, <a class="code" href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3a2d294551e07179c4ac0c4e37364a1468">aiBottom</a>, <a class="code" href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3ab3c42dbb1709a04ba9b03dcbf5a2537a">aiBottomLeft</a>, <a class="code" href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3a8a095c6d6b2e7665a15d9f40c94b47dc">aiLeft</a>};</div>
-<div class="ttc" id="class_q_c_p_item_rect_html_af0ebba58e6bca4851c4db726691ec0d3ab3c42dbb1709a04ba9b03dcbf5a2537a"><div class="ttname"><a href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3ab3c42dbb1709a04ba9b03dcbf5a2537a">QCPItemRect::aiBottomLeft</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03405">qcustomplot.h:3405</a></div></div>
-<div class="ttc" id="class_q_c_p_item_rect_html_af0ebba58e6bca4851c4db726691ec0d3a69fa21fde2f44036381296a6f78b4eb4"><div class="ttname"><a href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3a69fa21fde2f44036381296a6f78b4eb4">QCPItemRect::aiRight</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03405">qcustomplot.h:3405</a></div></div>
-<div class="ttc" id="class_q_c_p_item_rect_html_af0ebba58e6bca4851c4db726691ec0d3a8a095c6d6b2e7665a15d9f40c94b47dc"><div class="ttname"><a href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3a8a095c6d6b2e7665a15d9f40c94b47dc">QCPItemRect::aiLeft</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03405">qcustomplot.h:3405</a></div></div>
-<div class="ttc" id="class_q_c_p_item_rect_html_af0ebba58e6bca4851c4db726691ec0d3aa94843ce5935b36994005c1e1859ef60"><div class="ttname"><a href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3aa94843ce5935b36994005c1e1859ef60">QCPItemRect::aiTopRight</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03405">qcustomplot.h:3405</a></div></div>
-<div class="ttc" id="class_q_c_p_item_rect_html_af0ebba58e6bca4851c4db726691ec0d3acaef33243034885d551dc9b8318ad326"><div class="ttname"><a href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3acaef33243034885d551dc9b8318ad326">QCPItemRect::aiTop</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03405">qcustomplot.h:3405</a></div></div>
-<div class="ttc" id="class_q_c_p_item_rect_html_af0ebba58e6bca4851c4db726691ec0d3a2d294551e07179c4ac0c4e37364a1468"><div class="ttname"><a href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3a2d294551e07179c4ac0c4e37364a1468">QCPItemRect::aiBottom</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03405">qcustomplot.h:3405</a></div></div>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03865">3865</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l03865"></a><span class="lineno"> 3865</span>&#160;                   {</div>
+<div class="line"><a name="l03866"></a><span class="lineno"> 3866</span>&#160;    <a class="code" href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3acaef33243034885d551dc9b8318ad326">aiTop</a>,</div>
+<div class="line"><a name="l03867"></a><span class="lineno"> 3867</span>&#160;    <a class="code" href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3aa94843ce5935b36994005c1e1859ef60">aiTopRight</a>,</div>
+<div class="line"><a name="l03868"></a><span class="lineno"> 3868</span>&#160;    <a class="code" href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3a69fa21fde2f44036381296a6f78b4eb4">aiRight</a>,</div>
+<div class="line"><a name="l03869"></a><span class="lineno"> 3869</span>&#160;    <a class="code" href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3a2d294551e07179c4ac0c4e37364a1468">aiBottom</a>,</div>
+<div class="line"><a name="l03870"></a><span class="lineno"> 3870</span>&#160;    <a class="code" href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3ab3c42dbb1709a04ba9b03dcbf5a2537a">aiBottomLeft</a>,</div>
+<div class="line"><a name="l03871"></a><span class="lineno"> 3871</span>&#160;    <a class="code" href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3a8a095c6d6b2e7665a15d9f40c94b47dc">aiLeft</a></div>
+<div class="line"><a name="l03872"></a><span class="lineno"> 3872</span>&#160;  };</div>
+<div class="ttc" id="class_q_c_p_item_rect_html_af0ebba58e6bca4851c4db726691ec0d3ab3c42dbb1709a04ba9b03dcbf5a2537a"><div class="ttname"><a href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3ab3c42dbb1709a04ba9b03dcbf5a2537a">QCPItemRect::aiBottomLeft</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03870">qcustomplot.h:3870</a></div></div>
+<div class="ttc" id="class_q_c_p_item_rect_html_af0ebba58e6bca4851c4db726691ec0d3a69fa21fde2f44036381296a6f78b4eb4"><div class="ttname"><a href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3a69fa21fde2f44036381296a6f78b4eb4">QCPItemRect::aiRight</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03868">qcustomplot.h:3868</a></div></div>
+<div class="ttc" id="class_q_c_p_item_rect_html_af0ebba58e6bca4851c4db726691ec0d3a8a095c6d6b2e7665a15d9f40c94b47dc"><div class="ttname"><a href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3a8a095c6d6b2e7665a15d9f40c94b47dc">QCPItemRect::aiLeft</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03871">qcustomplot.h:3871</a></div></div>
+<div class="ttc" id="class_q_c_p_item_rect_html_af0ebba58e6bca4851c4db726691ec0d3aa94843ce5935b36994005c1e1859ef60"><div class="ttname"><a href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3aa94843ce5935b36994005c1e1859ef60">QCPItemRect::aiTopRight</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03867">qcustomplot.h:3867</a></div></div>
+<div class="ttc" id="class_q_c_p_item_rect_html_af0ebba58e6bca4851c4db726691ec0d3acaef33243034885d551dc9b8318ad326"><div class="ttname"><a href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3acaef33243034885d551dc9b8318ad326">QCPItemRect::aiTop</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03866">qcustomplot.h:3866</a></div></div>
+<div class="ttc" id="class_q_c_p_item_rect_html_af0ebba58e6bca4851c4db726691ec0d3a2d294551e07179c4ac0c4e37364a1468"><div class="ttname"><a href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3a2d294551e07179c4ac0c4e37364a1468">QCPItemRect::aiBottom</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03869">qcustomplot.h:3869</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -411,50 +419,48 @@ Rectangle example. Blue dotted circles are anchors, solid blue discs are positio
 <p>Creates a rectangle item and sets default values.</p>
 <p>The constructed item can be added to the plot with <a class="el" href="class_q_custom_plot.html#aa500620379262321685cb7a7674cbd2a">QCustomPlot::addItem</a>. </p>
 
-<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l22034">22034</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l24554">24554</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
 
-<p>References <a class="el" href="qcustomplot_8h_source.html#l03396">bottomRight</a>, <a class="el" href="qcustomplot_8cpp_source.html#l22084">setBrush()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l07925">QCPItemPosition::setCoords()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l22063">setPen()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l22095">setSelectedBrush()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l22073">setSelectedPen()</a>, and <a class="el" href="qcustomplot_8h_source.html#l03395">topLeft</a>.</p>
-<div class="fragment"><div class="line"><a name="l22034"></a><span class="lineno">22034</span>&#160;                                                :</div>
-<div class="line"><a name="l22035"></a><span class="lineno">22035</span>&#160;  <a class="code" href="class_q_c_p_abstract_item.html#a9922507d8b4503a1fe1ed0b1030e23b6">QCPAbstractItem</a>(parentPlot),</div>
-<div class="line"><a name="l22036"></a><span class="lineno">22036</span>&#160;  <a class="code" href="class_q_c_p_item_rect.html#aa70feeef173489b03c3fbe906a5023c4">topLeft</a>(<a class="code" href="class_q_c_p_abstract_item.html#a75036d39c4d4e2e1a7dd145fff915d32">createPosition</a>(QLatin1String(<span class="stringliteral">&quot;topLeft&quot;</span>))),</div>
-<div class="line"><a name="l22037"></a><span class="lineno">22037</span>&#160;  <a class="code" href="class_q_c_p_item_rect.html#a409f3bfe615a7e322bb3d4d193d85b26">bottomRight</a>(<a class="code" href="class_q_c_p_abstract_item.html#a75036d39c4d4e2e1a7dd145fff915d32">createPosition</a>(QLatin1String(<span class="stringliteral">&quot;bottomRight&quot;</span>))),</div>
-<div class="line"><a name="l22038"></a><span class="lineno">22038</span>&#160;  <a class="code" href="class_q_c_p_item_rect.html#a96e50db552fb297d6fb62614676217bc">top</a>(<a class="code" href="class_q_c_p_abstract_item.html#af3fc92527802078ca395138748b629a7">createAnchor</a>(QLatin1String(<span class="stringliteral">&quot;top&quot;</span>), <a class="code" href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3acaef33243034885d551dc9b8318ad326">aiTop</a>)),</div>
-<div class="line"><a name="l22039"></a><span class="lineno">22039</span>&#160;  <a class="code" href="class_q_c_p_item_rect.html#a77e0eb6e4aa6efee620d35e2c21bdad7">topRight</a>(<a class="code" href="class_q_c_p_abstract_item.html#af3fc92527802078ca395138748b629a7">createAnchor</a>(QLatin1String(<span class="stringliteral">&quot;topRight&quot;</span>), <a class="code" href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3aa94843ce5935b36994005c1e1859ef60">aiTopRight</a>)),</div>
-<div class="line"><a name="l22040"></a><span class="lineno">22040</span>&#160;  <a class="code" href="class_q_c_p_item_rect.html#a7979c1915f61ad2609a9cc179c2e445e">right</a>(<a class="code" href="class_q_c_p_abstract_item.html#af3fc92527802078ca395138748b629a7">createAnchor</a>(QLatin1String(<span class="stringliteral">&quot;right&quot;</span>), <a class="code" href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3a69fa21fde2f44036381296a6f78b4eb4">aiRight</a>)),</div>
-<div class="line"><a name="l22041"></a><span class="lineno">22041</span>&#160;  <a class="code" href="class_q_c_p_item_rect.html#a99313bf2b338d9f81e19bd38082038aa">bottom</a>(<a class="code" href="class_q_c_p_abstract_item.html#af3fc92527802078ca395138748b629a7">createAnchor</a>(QLatin1String(<span class="stringliteral">&quot;bottom&quot;</span>), <a class="code" href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3a2d294551e07179c4ac0c4e37364a1468">aiBottom</a>)),</div>
-<div class="line"><a name="l22042"></a><span class="lineno">22042</span>&#160;  <a class="code" href="class_q_c_p_item_rect.html#abd8ee63fdf81f0c74bf7ccadee8603da">bottomLeft</a>(<a class="code" href="class_q_c_p_abstract_item.html#af3fc92527802078ca395138748b629a7">createAnchor</a>(QLatin1String(<span class="stringliteral">&quot;bottomLeft&quot;</span>), <a class="code" href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3ab3c42dbb1709a04ba9b03dcbf5a2537a">aiBottomLeft</a>)),</div>
-<div class="line"><a name="l22043"></a><span class="lineno">22043</span>&#160;  <a class="code" href="class_q_c_p_item_rect.html#aad0ca1af0c8debfc20d7b47fc942764d">left</a>(<a class="code" href="class_q_c_p_abstract_item.html#af3fc92527802078ca395138748b629a7">createAnchor</a>(QLatin1String(<span class="stringliteral">&quot;left&quot;</span>), <a class="code" href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3a8a095c6d6b2e7665a15d9f40c94b47dc">aiLeft</a>))</div>
-<div class="line"><a name="l22044"></a><span class="lineno">22044</span>&#160;{</div>
-<div class="line"><a name="l22045"></a><span class="lineno">22045</span>&#160;  <a class="code" href="class_q_c_p_item_rect.html#aa70feeef173489b03c3fbe906a5023c4">topLeft</a>-&gt;<a class="code" href="class_q_c_p_item_position.html#aa988ba4e87ab684c9021017dcaba945f">setCoords</a>(0, 1);</div>
-<div class="line"><a name="l22046"></a><span class="lineno">22046</span>&#160;  <a class="code" href="class_q_c_p_item_rect.html#a409f3bfe615a7e322bb3d4d193d85b26">bottomRight</a>-&gt;<a class="code" href="class_q_c_p_item_position.html#aa988ba4e87ab684c9021017dcaba945f">setCoords</a>(1, 0);</div>
-<div class="line"><a name="l22047"></a><span class="lineno">22047</span>&#160;  </div>
-<div class="line"><a name="l22048"></a><span class="lineno">22048</span>&#160;  <a class="code" href="class_q_c_p_item_rect.html#a483c0da5a17e1646cd17ddea2c124e7d">setPen</a>(QPen(Qt::black));</div>
-<div class="line"><a name="l22049"></a><span class="lineno">22049</span>&#160;  <a class="code" href="class_q_c_p_item_rect.html#a52a1bcb2dc753a538e406a2ba3cf21ce">setSelectedPen</a>(QPen(Qt::blue,2));</div>
-<div class="line"><a name="l22050"></a><span class="lineno">22050</span>&#160;  <a class="code" href="class_q_c_p_item_rect.html#abbd4e346a03513ee466afc25d9c75446">setBrush</a>(Qt::NoBrush);</div>
-<div class="line"><a name="l22051"></a><span class="lineno">22051</span>&#160;  <a class="code" href="class_q_c_p_item_rect.html#abd1792859844118dedee86223cede7af">setSelectedBrush</a>(Qt::NoBrush);</div>
-<div class="line"><a name="l22052"></a><span class="lineno">22052</span>&#160;}</div>
-<div class="ttc" id="class_q_c_p_item_rect_html_aa70feeef173489b03c3fbe906a5023c4"><div class="ttname"><a href="class_q_c_p_item_rect.html#aa70feeef173489b03c3fbe906a5023c4">QCPItemRect::topLeft</a></div><div class="ttdeci">QCPItemPosition *const topLeft</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03395">qcustomplot.h:3395</a></div></div>
-<div class="ttc" id="class_q_c_p_abstract_item_html_af3fc92527802078ca395138748b629a7"><div class="ttname"><a href="class_q_c_p_abstract_item.html#af3fc92527802078ca395138748b629a7">QCPAbstractItem::createAnchor</a></div><div class="ttdeci">QCPItemAnchor * createAnchor(const QString &amp;name, int anchorId)</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l08664">qcustomplot.cpp:8664</a></div></div>
-<div class="ttc" id="class_q_c_p_item_rect_html_a52a1bcb2dc753a538e406a2ba3cf21ce"><div class="ttname"><a href="class_q_c_p_item_rect.html#a52a1bcb2dc753a538e406a2ba3cf21ce">QCPItemRect::setSelectedPen</a></div><div class="ttdeci">void setSelectedPen(const QPen &amp;pen)</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l22073">qcustomplot.cpp:22073</a></div></div>
-<div class="ttc" id="class_q_c_p_item_position_html_aa988ba4e87ab684c9021017dcaba945f"><div class="ttname"><a href="class_q_c_p_item_position.html#aa988ba4e87ab684c9021017dcaba945f">QCPItemPosition::setCoords</a></div><div class="ttdeci">void setCoords(double key, double value)</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l07925">qcustomplot.cpp:7925</a></div></div>
-<div class="ttc" id="class_q_c_p_item_rect_html_af0ebba58e6bca4851c4db726691ec0d3ab3c42dbb1709a04ba9b03dcbf5a2537a"><div class="ttname"><a href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3ab3c42dbb1709a04ba9b03dcbf5a2537a">QCPItemRect::aiBottomLeft</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03405">qcustomplot.h:3405</a></div></div>
-<div class="ttc" id="class_q_c_p_item_rect_html_abd1792859844118dedee86223cede7af"><div class="ttname"><a href="class_q_c_p_item_rect.html#abd1792859844118dedee86223cede7af">QCPItemRect::setSelectedBrush</a></div><div class="ttdeci">void setSelectedBrush(const QBrush &amp;brush)</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l22095">qcustomplot.cpp:22095</a></div></div>
-<div class="ttc" id="class_q_c_p_item_rect_html_a7979c1915f61ad2609a9cc179c2e445e"><div class="ttname"><a href="class_q_c_p_item_rect.html#a7979c1915f61ad2609a9cc179c2e445e">QCPItemRect::right</a></div><div class="ttdeci">QCPItemAnchor *const right</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03399">qcustomplot.h:3399</a></div></div>
-<div class="ttc" id="class_q_c_p_abstract_item_html_a75036d39c4d4e2e1a7dd145fff915d32"><div class="ttname"><a href="class_q_c_p_abstract_item.html#a75036d39c4d4e2e1a7dd145fff915d32">QCPAbstractItem::createPosition</a></div><div class="ttdeci">QCPItemPosition * createPosition(const QString &amp;name)</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l08630">qcustomplot.cpp:8630</a></div></div>
-<div class="ttc" id="class_q_c_p_item_rect_html_af0ebba58e6bca4851c4db726691ec0d3a69fa21fde2f44036381296a6f78b4eb4"><div class="ttname"><a href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3a69fa21fde2f44036381296a6f78b4eb4">QCPItemRect::aiRight</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03405">qcustomplot.h:3405</a></div></div>
-<div class="ttc" id="class_q_c_p_item_rect_html_af0ebba58e6bca4851c4db726691ec0d3a8a095c6d6b2e7665a15d9f40c94b47dc"><div class="ttname"><a href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3a8a095c6d6b2e7665a15d9f40c94b47dc">QCPItemRect::aiLeft</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03405">qcustomplot.h:3405</a></div></div>
-<div class="ttc" id="class_q_c_p_item_rect_html_abbd4e346a03513ee466afc25d9c75446"><div class="ttname"><a href="class_q_c_p_item_rect.html#abbd4e346a03513ee466afc25d9c75446">QCPItemRect::setBrush</a></div><div class="ttdeci">void setBrush(const QBrush &amp;brush)</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l22084">qcustomplot.cpp:22084</a></div></div>
-<div class="ttc" id="class_q_c_p_item_rect_html_a99313bf2b338d9f81e19bd38082038aa"><div class="ttname"><a href="class_q_c_p_item_rect.html#a99313bf2b338d9f81e19bd38082038aa">QCPItemRect::bottom</a></div><div class="ttdeci">QCPItemAnchor *const bottom</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03400">qcustomplot.h:3400</a></div></div>
-<div class="ttc" id="class_q_c_p_item_rect_html_af0ebba58e6bca4851c4db726691ec0d3aa94843ce5935b36994005c1e1859ef60"><div class="ttname"><a href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3aa94843ce5935b36994005c1e1859ef60">QCPItemRect::aiTopRight</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03405">qcustomplot.h:3405</a></div></div>
-<div class="ttc" id="class_q_c_p_item_rect_html_aad0ca1af0c8debfc20d7b47fc942764d"><div class="ttname"><a href="class_q_c_p_item_rect.html#aad0ca1af0c8debfc20d7b47fc942764d">QCPItemRect::left</a></div><div class="ttdeci">QCPItemAnchor *const left</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03402">qcustomplot.h:3402</a></div></div>
-<div class="ttc" id="class_q_c_p_item_rect_html_abd8ee63fdf81f0c74bf7ccadee8603da"><div class="ttname"><a href="class_q_c_p_item_rect.html#abd8ee63fdf81f0c74bf7ccadee8603da">QCPItemRect::bottomLeft</a></div><div class="ttdeci">QCPItemAnchor *const bottomLeft</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03401">qcustomplot.h:3401</a></div></div>
-<div class="ttc" id="class_q_c_p_item_rect_html_af0ebba58e6bca4851c4db726691ec0d3acaef33243034885d551dc9b8318ad326"><div class="ttname"><a href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3acaef33243034885d551dc9b8318ad326">QCPItemRect::aiTop</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03405">qcustomplot.h:3405</a></div></div>
-<div class="ttc" id="class_q_c_p_abstract_item_html_a9922507d8b4503a1fe1ed0b1030e23b6"><div class="ttname"><a href="class_q_c_p_abstract_item.html#a9922507d8b4503a1fe1ed0b1030e23b6">QCPAbstractItem::QCPAbstractItem</a></div><div class="ttdeci">QCPAbstractItem(QCustomPlot *parentPlot)</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l08338">qcustomplot.cpp:8338</a></div></div>
-<div class="ttc" id="class_q_c_p_item_rect_html_a483c0da5a17e1646cd17ddea2c124e7d"><div class="ttname"><a href="class_q_c_p_item_rect.html#a483c0da5a17e1646cd17ddea2c124e7d">QCPItemRect::setPen</a></div><div class="ttdeci">void setPen(const QPen &amp;pen)</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l22063">qcustomplot.cpp:22063</a></div></div>
-<div class="ttc" id="class_q_c_p_item_rect_html_a96e50db552fb297d6fb62614676217bc"><div class="ttname"><a href="class_q_c_p_item_rect.html#a96e50db552fb297d6fb62614676217bc">QCPItemRect::top</a></div><div class="ttdeci">QCPItemAnchor *const top</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03397">qcustomplot.h:3397</a></div></div>
-<div class="ttc" id="class_q_c_p_item_rect_html_a77e0eb6e4aa6efee620d35e2c21bdad7"><div class="ttname"><a href="class_q_c_p_item_rect.html#a77e0eb6e4aa6efee620d35e2c21bdad7">QCPItemRect::topRight</a></div><div class="ttdeci">QCPItemAnchor *const topRight</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03398">qcustomplot.h:3398</a></div></div>
-<div class="ttc" id="class_q_c_p_item_rect_html_af0ebba58e6bca4851c4db726691ec0d3a2d294551e07179c4ac0c4e37364a1468"><div class="ttname"><a href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3a2d294551e07179c4ac0c4e37364a1468">QCPItemRect::aiBottom</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03405">qcustomplot.h:3405</a></div></div>
-<div class="ttc" id="class_q_c_p_item_rect_html_a409f3bfe615a7e322bb3d4d193d85b26"><div class="ttname"><a href="class_q_c_p_item_rect.html#a409f3bfe615a7e322bb3d4d193d85b26">QCPItemRect::bottomRight</a></div><div class="ttdeci">QCPItemPosition *const bottomRight</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03396">qcustomplot.h:3396</a></div></div>
+<p>References <a class="el" href="qcustomplot_8h_source.html#l03856">bottomRight</a>, <a class="el" href="qcustomplot_8cpp_source.html#l24596">setBrush()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l08739">QCPItemPosition::setCoords()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l24580">setPen()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l24605">setSelectedBrush()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l24587">setSelectedPen()</a>, and <a class="el" href="qcustomplot_8h_source.html#l03855">topLeft</a>.</p>
+<div class="fragment"><div class="line"><a name="l24555"></a><span class="lineno">24555</span>&#160;    : <a class="code" href="class_q_c_p_abstract_item.html#a9922507d8b4503a1fe1ed0b1030e23b6">QCPAbstractItem</a>(parentPlot),</div>
+<div class="line"><a name="l24556"></a><span class="lineno">24556</span>&#160;      <a class="code" href="class_q_c_p_item_rect.html#aa70feeef173489b03c3fbe906a5023c4">topLeft</a>(<a class="code" href="class_q_c_p_abstract_item.html#a75036d39c4d4e2e1a7dd145fff915d32">createPosition</a>(QLatin1String(<span class="stringliteral">&quot;topLeft&quot;</span>))),</div>
+<div class="line"><a name="l24557"></a><span class="lineno">24557</span>&#160;      <a class="code" href="class_q_c_p_item_rect.html#a409f3bfe615a7e322bb3d4d193d85b26">bottomRight</a>(<a class="code" href="class_q_c_p_abstract_item.html#a75036d39c4d4e2e1a7dd145fff915d32">createPosition</a>(QLatin1String(<span class="stringliteral">&quot;bottomRight&quot;</span>))),</div>
+<div class="line"><a name="l24558"></a><span class="lineno">24558</span>&#160;      <a class="code" href="class_q_c_p_item_rect.html#a96e50db552fb297d6fb62614676217bc">top</a>(<a class="code" href="class_q_c_p_abstract_item.html#af3fc92527802078ca395138748b629a7">createAnchor</a>(QLatin1String(<span class="stringliteral">&quot;top&quot;</span>), <a class="code" href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3acaef33243034885d551dc9b8318ad326">aiTop</a>)),</div>
+<div class="line"><a name="l24559"></a><span class="lineno">24559</span>&#160;      <a class="code" href="class_q_c_p_item_rect.html#a77e0eb6e4aa6efee620d35e2c21bdad7">topRight</a>(<a class="code" href="class_q_c_p_abstract_item.html#af3fc92527802078ca395138748b629a7">createAnchor</a>(QLatin1String(<span class="stringliteral">&quot;topRight&quot;</span>), <a class="code" href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3aa94843ce5935b36994005c1e1859ef60">aiTopRight</a>)),</div>
+<div class="line"><a name="l24560"></a><span class="lineno">24560</span>&#160;      <a class="code" href="class_q_c_p_item_rect.html#a7979c1915f61ad2609a9cc179c2e445e">right</a>(<a class="code" href="class_q_c_p_abstract_item.html#af3fc92527802078ca395138748b629a7">createAnchor</a>(QLatin1String(<span class="stringliteral">&quot;right&quot;</span>), <a class="code" href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3a69fa21fde2f44036381296a6f78b4eb4">aiRight</a>)),</div>
+<div class="line"><a name="l24561"></a><span class="lineno">24561</span>&#160;      <a class="code" href="class_q_c_p_item_rect.html#a99313bf2b338d9f81e19bd38082038aa">bottom</a>(<a class="code" href="class_q_c_p_abstract_item.html#af3fc92527802078ca395138748b629a7">createAnchor</a>(QLatin1String(<span class="stringliteral">&quot;bottom&quot;</span>), <a class="code" href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3a2d294551e07179c4ac0c4e37364a1468">aiBottom</a>)),</div>
+<div class="line"><a name="l24562"></a><span class="lineno">24562</span>&#160;      <a class="code" href="class_q_c_p_item_rect.html#abd8ee63fdf81f0c74bf7ccadee8603da">bottomLeft</a>(<a class="code" href="class_q_c_p_abstract_item.html#af3fc92527802078ca395138748b629a7">createAnchor</a>(QLatin1String(<span class="stringliteral">&quot;bottomLeft&quot;</span>), <a class="code" href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3ab3c42dbb1709a04ba9b03dcbf5a2537a">aiBottomLeft</a>)),</div>
+<div class="line"><a name="l24563"></a><span class="lineno">24563</span>&#160;      <a class="code" href="class_q_c_p_item_rect.html#aad0ca1af0c8debfc20d7b47fc942764d">left</a>(<a class="code" href="class_q_c_p_abstract_item.html#af3fc92527802078ca395138748b629a7">createAnchor</a>(QLatin1String(<span class="stringliteral">&quot;left&quot;</span>), <a class="code" href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3a8a095c6d6b2e7665a15d9f40c94b47dc">aiLeft</a>)) {</div>
+<div class="line"><a name="l24564"></a><span class="lineno">24564</span>&#160;  <a class="code" href="class_q_c_p_item_rect.html#aa70feeef173489b03c3fbe906a5023c4">topLeft</a>-&gt;<a class="code" href="class_q_c_p_item_position.html#aa988ba4e87ab684c9021017dcaba945f">setCoords</a>(0, 1);</div>
+<div class="line"><a name="l24565"></a><span class="lineno">24565</span>&#160;  <a class="code" href="class_q_c_p_item_rect.html#a409f3bfe615a7e322bb3d4d193d85b26">bottomRight</a>-&gt;<a class="code" href="class_q_c_p_item_position.html#aa988ba4e87ab684c9021017dcaba945f">setCoords</a>(1, 0);</div>
+<div class="line"><a name="l24566"></a><span class="lineno">24566</span>&#160;</div>
+<div class="line"><a name="l24567"></a><span class="lineno">24567</span>&#160;  <a class="code" href="class_q_c_p_item_rect.html#a483c0da5a17e1646cd17ddea2c124e7d">setPen</a>(QPen(Qt::black));</div>
+<div class="line"><a name="l24568"></a><span class="lineno">24568</span>&#160;  <a class="code" href="class_q_c_p_item_rect.html#a52a1bcb2dc753a538e406a2ba3cf21ce">setSelectedPen</a>(QPen(Qt::blue, 2));</div>
+<div class="line"><a name="l24569"></a><span class="lineno">24569</span>&#160;  <a class="code" href="class_q_c_p_item_rect.html#abbd4e346a03513ee466afc25d9c75446">setBrush</a>(Qt::NoBrush);</div>
+<div class="line"><a name="l24570"></a><span class="lineno">24570</span>&#160;  <a class="code" href="class_q_c_p_item_rect.html#abd1792859844118dedee86223cede7af">setSelectedBrush</a>(Qt::NoBrush);</div>
+<div class="line"><a name="l24571"></a><span class="lineno">24571</span>&#160;}</div>
+<div class="ttc" id="class_q_c_p_item_rect_html_aa70feeef173489b03c3fbe906a5023c4"><div class="ttname"><a href="class_q_c_p_item_rect.html#aa70feeef173489b03c3fbe906a5023c4">QCPItemRect::topLeft</a></div><div class="ttdeci">QCPItemPosition *const topLeft</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03855">qcustomplot.h:3855</a></div></div>
+<div class="ttc" id="class_q_c_p_abstract_item_html_af3fc92527802078ca395138748b629a7"><div class="ttname"><a href="class_q_c_p_abstract_item.html#af3fc92527802078ca395138748b629a7">QCPAbstractItem::createAnchor</a></div><div class="ttdeci">QCPItemAnchor * createAnchor(const QString &amp;name, int anchorId)</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l09548">qcustomplot.cpp:9548</a></div></div>
+<div class="ttc" id="class_q_c_p_item_rect_html_a52a1bcb2dc753a538e406a2ba3cf21ce"><div class="ttname"><a href="class_q_c_p_item_rect.html#a52a1bcb2dc753a538e406a2ba3cf21ce">QCPItemRect::setSelectedPen</a></div><div class="ttdeci">void setSelectedPen(const QPen &amp;pen)</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l24587">qcustomplot.cpp:24587</a></div></div>
+<div class="ttc" id="class_q_c_p_item_position_html_aa988ba4e87ab684c9021017dcaba945f"><div class="ttname"><a href="class_q_c_p_item_position.html#aa988ba4e87ab684c9021017dcaba945f">QCPItemPosition::setCoords</a></div><div class="ttdeci">void setCoords(double key, double value)</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l08739">qcustomplot.cpp:8739</a></div></div>
+<div class="ttc" id="class_q_c_p_item_rect_html_af0ebba58e6bca4851c4db726691ec0d3ab3c42dbb1709a04ba9b03dcbf5a2537a"><div class="ttname"><a href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3ab3c42dbb1709a04ba9b03dcbf5a2537a">QCPItemRect::aiBottomLeft</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03870">qcustomplot.h:3870</a></div></div>
+<div class="ttc" id="class_q_c_p_item_rect_html_abd1792859844118dedee86223cede7af"><div class="ttname"><a href="class_q_c_p_item_rect.html#abd1792859844118dedee86223cede7af">QCPItemRect::setSelectedBrush</a></div><div class="ttdeci">void setSelectedBrush(const QBrush &amp;brush)</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l24605">qcustomplot.cpp:24605</a></div></div>
+<div class="ttc" id="class_q_c_p_item_rect_html_a7979c1915f61ad2609a9cc179c2e445e"><div class="ttname"><a href="class_q_c_p_item_rect.html#a7979c1915f61ad2609a9cc179c2e445e">QCPItemRect::right</a></div><div class="ttdeci">QCPItemAnchor *const right</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03859">qcustomplot.h:3859</a></div></div>
+<div class="ttc" id="class_q_c_p_abstract_item_html_a75036d39c4d4e2e1a7dd145fff915d32"><div class="ttname"><a href="class_q_c_p_abstract_item.html#a75036d39c4d4e2e1a7dd145fff915d32">QCPAbstractItem::createPosition</a></div><div class="ttdeci">QCPItemPosition * createPosition(const QString &amp;name)</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l09505">qcustomplot.cpp:9505</a></div></div>
+<div class="ttc" id="class_q_c_p_item_rect_html_af0ebba58e6bca4851c4db726691ec0d3a69fa21fde2f44036381296a6f78b4eb4"><div class="ttname"><a href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3a69fa21fde2f44036381296a6f78b4eb4">QCPItemRect::aiRight</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03868">qcustomplot.h:3868</a></div></div>
+<div class="ttc" id="class_q_c_p_item_rect_html_af0ebba58e6bca4851c4db726691ec0d3a8a095c6d6b2e7665a15d9f40c94b47dc"><div class="ttname"><a href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3a8a095c6d6b2e7665a15d9f40c94b47dc">QCPItemRect::aiLeft</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03871">qcustomplot.h:3871</a></div></div>
+<div class="ttc" id="class_q_c_p_item_rect_html_abbd4e346a03513ee466afc25d9c75446"><div class="ttname"><a href="class_q_c_p_item_rect.html#abbd4e346a03513ee466afc25d9c75446">QCPItemRect::setBrush</a></div><div class="ttdeci">void setBrush(const QBrush &amp;brush)</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l24596">qcustomplot.cpp:24596</a></div></div>
+<div class="ttc" id="class_q_c_p_item_rect_html_a99313bf2b338d9f81e19bd38082038aa"><div class="ttname"><a href="class_q_c_p_item_rect.html#a99313bf2b338d9f81e19bd38082038aa">QCPItemRect::bottom</a></div><div class="ttdeci">QCPItemAnchor *const bottom</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03860">qcustomplot.h:3860</a></div></div>
+<div class="ttc" id="class_q_c_p_item_rect_html_af0ebba58e6bca4851c4db726691ec0d3aa94843ce5935b36994005c1e1859ef60"><div class="ttname"><a href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3aa94843ce5935b36994005c1e1859ef60">QCPItemRect::aiTopRight</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03867">qcustomplot.h:3867</a></div></div>
+<div class="ttc" id="class_q_c_p_item_rect_html_aad0ca1af0c8debfc20d7b47fc942764d"><div class="ttname"><a href="class_q_c_p_item_rect.html#aad0ca1af0c8debfc20d7b47fc942764d">QCPItemRect::left</a></div><div class="ttdeci">QCPItemAnchor *const left</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03862">qcustomplot.h:3862</a></div></div>
+<div class="ttc" id="class_q_c_p_item_rect_html_abd8ee63fdf81f0c74bf7ccadee8603da"><div class="ttname"><a href="class_q_c_p_item_rect.html#abd8ee63fdf81f0c74bf7ccadee8603da">QCPItemRect::bottomLeft</a></div><div class="ttdeci">QCPItemAnchor *const bottomLeft</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03861">qcustomplot.h:3861</a></div></div>
+<div class="ttc" id="class_q_c_p_item_rect_html_af0ebba58e6bca4851c4db726691ec0d3acaef33243034885d551dc9b8318ad326"><div class="ttname"><a href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3acaef33243034885d551dc9b8318ad326">QCPItemRect::aiTop</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03866">qcustomplot.h:3866</a></div></div>
+<div class="ttc" id="class_q_c_p_abstract_item_html_a9922507d8b4503a1fe1ed0b1030e23b6"><div class="ttname"><a href="class_q_c_p_abstract_item.html#a9922507d8b4503a1fe1ed0b1030e23b6">QCPAbstractItem::QCPAbstractItem</a></div><div class="ttdeci">QCPAbstractItem(QCustomPlot *parentPlot)</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l09195">qcustomplot.cpp:9195</a></div></div>
+<div class="ttc" id="class_q_c_p_item_rect_html_a483c0da5a17e1646cd17ddea2c124e7d"><div class="ttname"><a href="class_q_c_p_item_rect.html#a483c0da5a17e1646cd17ddea2c124e7d">QCPItemRect::setPen</a></div><div class="ttdeci">void setPen(const QPen &amp;pen)</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l24580">qcustomplot.cpp:24580</a></div></div>
+<div class="ttc" id="class_q_c_p_item_rect_html_a96e50db552fb297d6fb62614676217bc"><div class="ttname"><a href="class_q_c_p_item_rect.html#a96e50db552fb297d6fb62614676217bc">QCPItemRect::top</a></div><div class="ttdeci">QCPItemAnchor *const top</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03857">qcustomplot.h:3857</a></div></div>
+<div class="ttc" id="class_q_c_p_item_rect_html_a77e0eb6e4aa6efee620d35e2c21bdad7"><div class="ttname"><a href="class_q_c_p_item_rect.html#a77e0eb6e4aa6efee620d35e2c21bdad7">QCPItemRect::topRight</a></div><div class="ttdeci">QCPItemAnchor *const topRight</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03858">qcustomplot.h:3858</a></div></div>
+<div class="ttc" id="class_q_c_p_item_rect_html_af0ebba58e6bca4851c4db726691ec0d3a2d294551e07179c4ac0c4e37364a1468"><div class="ttname"><a href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3a2d294551e07179c4ac0c4e37364a1468">QCPItemRect::aiBottom</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03869">qcustomplot.h:3869</a></div></div>
+<div class="ttc" id="class_q_c_p_item_rect_html_a409f3bfe615a7e322bb3d4d193d85b26"><div class="ttname"><a href="class_q_c_p_item_rect.html#a409f3bfe615a7e322bb3d4d193d85b26">QCPItemRect::bottomRight</a></div><div class="ttdeci">QCPItemPosition *const bottomRight</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03856">qcustomplot.h:3856</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -488,9 +494,8 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l22054">22054</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l22055"></a><span class="lineno">22055</span>&#160;{</div>
-<div class="line"><a name="l22056"></a><span class="lineno">22056</span>&#160;}</div>
+<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l24573">24573</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l24573"></a><span class="lineno">24573</span>&#160;{}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -519,34 +524,39 @@ Here is the call graph for this function:</div>
 
 <p>Reimplemented from <a class="el" href="class_q_c_p_abstract_item.html#a94bde62b8a2fc133666dcbb8035deeed">QCPAbstractItem</a>.</p>
 
-<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l22131">22131</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l24642">24642</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
 
-<p>References <a class="el" href="qcustomplot_8h_source.html#l03405">aiBottom</a>, <a class="el" href="qcustomplot_8h_source.html#l03405">aiBottomLeft</a>, <a class="el" href="qcustomplot_8h_source.html#l03405">aiLeft</a>, <a class="el" href="qcustomplot_8h_source.html#l03405">aiRight</a>, <a class="el" href="qcustomplot_8h_source.html#l03405">aiTop</a>, <a class="el" href="qcustomplot_8h_source.html#l03405">aiTopRight</a>, <a class="el" href="qcustomplot_8h_source.html#l03396">bottomRight</a>, <a class="el" href="qcustomplot_8cpp_source.html#l07947">QCPItemPosition::pixelPoint()</a>, <a class="el" href="_gen_blob_8m_source.html#l00028">rect</a>, and <a class="el" href="qcustomplot_8h_source.html#l03395">topLeft</a>.</p>
-<div class="fragment"><div class="line"><a name="l22132"></a><span class="lineno">22132</span>&#160;{</div>
-<div class="line"><a name="l22133"></a><span class="lineno">22133</span>&#160;  QRectF <a class="code" href="_gen_blob_8m.html#aea8f6815d9a63491fc422c5572c6b3c3">rect</a> = QRectF(<a class="code" href="class_q_c_p_item_rect.html#aa70feeef173489b03c3fbe906a5023c4">topLeft</a>-&gt;<a class="code" href="class_q_c_p_item_position.html#ae490f9c76ee2ba33752c495d3b6e8fb5">pixelPoint</a>(), <a class="code" href="class_q_c_p_item_rect.html#a409f3bfe615a7e322bb3d4d193d85b26">bottomRight</a>-&gt;<a class="code" href="class_q_c_p_item_position.html#ae490f9c76ee2ba33752c495d3b6e8fb5">pixelPoint</a>());</div>
-<div class="line"><a name="l22134"></a><span class="lineno">22134</span>&#160;  <span class="keywordflow">switch</span> (anchorId)</div>
-<div class="line"><a name="l22135"></a><span class="lineno">22135</span>&#160;  {</div>
-<div class="line"><a name="l22136"></a><span class="lineno">22136</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3acaef33243034885d551dc9b8318ad326">aiTop</a>:         <span class="keywordflow">return</span> (rect.topLeft()+rect.topRight())*0.5;</div>
-<div class="line"><a name="l22137"></a><span class="lineno">22137</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3aa94843ce5935b36994005c1e1859ef60">aiTopRight</a>:    <span class="keywordflow">return</span> rect.topRight();</div>
-<div class="line"><a name="l22138"></a><span class="lineno">22138</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3a69fa21fde2f44036381296a6f78b4eb4">aiRight</a>:       <span class="keywordflow">return</span> (rect.topRight()+rect.bottomRight())*0.5;</div>
-<div class="line"><a name="l22139"></a><span class="lineno">22139</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3a2d294551e07179c4ac0c4e37364a1468">aiBottom</a>:      <span class="keywordflow">return</span> (rect.bottomLeft()+rect.bottomRight())*0.5;</div>
-<div class="line"><a name="l22140"></a><span class="lineno">22140</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3ab3c42dbb1709a04ba9b03dcbf5a2537a">aiBottomLeft</a>:  <span class="keywordflow">return</span> rect.bottomLeft();</div>
-<div class="line"><a name="l22141"></a><span class="lineno">22141</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3a8a095c6d6b2e7665a15d9f40c94b47dc">aiLeft</a>:        <span class="keywordflow">return</span> (rect.topLeft()+rect.bottomLeft())*0.5;</div>
-<div class="line"><a name="l22142"></a><span class="lineno">22142</span>&#160;  }</div>
-<div class="line"><a name="l22143"></a><span class="lineno">22143</span>&#160;  </div>
-<div class="line"><a name="l22144"></a><span class="lineno">22144</span>&#160;  qDebug() &lt;&lt; Q_FUNC_INFO &lt;&lt; <span class="stringliteral">&quot;invalid anchorId&quot;</span> &lt;&lt; anchorId;</div>
-<div class="line"><a name="l22145"></a><span class="lineno">22145</span>&#160;  <span class="keywordflow">return</span> QPointF();</div>
-<div class="line"><a name="l22146"></a><span class="lineno">22146</span>&#160;}</div>
-<div class="ttc" id="class_q_c_p_item_rect_html_aa70feeef173489b03c3fbe906a5023c4"><div class="ttname"><a href="class_q_c_p_item_rect.html#aa70feeef173489b03c3fbe906a5023c4">QCPItemRect::topLeft</a></div><div class="ttdeci">QCPItemPosition *const topLeft</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03395">qcustomplot.h:3395</a></div></div>
-<div class="ttc" id="class_q_c_p_item_rect_html_af0ebba58e6bca4851c4db726691ec0d3ab3c42dbb1709a04ba9b03dcbf5a2537a"><div class="ttname"><a href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3ab3c42dbb1709a04ba9b03dcbf5a2537a">QCPItemRect::aiBottomLeft</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03405">qcustomplot.h:3405</a></div></div>
+<p>References <a class="el" href="qcustomplot_8h_source.html#l03869">aiBottom</a>, <a class="el" href="qcustomplot_8h_source.html#l03870">aiBottomLeft</a>, <a class="el" href="qcustomplot_8h_source.html#l03871">aiLeft</a>, <a class="el" href="qcustomplot_8h_source.html#l03868">aiRight</a>, <a class="el" href="qcustomplot_8h_source.html#l03866">aiTop</a>, <a class="el" href="qcustomplot_8h_source.html#l03867">aiTopRight</a>, <a class="el" href="qcustomplot_8h_source.html#l03856">bottomRight</a>, <a class="el" href="qcustomplot_8cpp_source.html#l08762">QCPItemPosition::pixelPoint()</a>, <a class="el" href="_gen_blob_8m_source.html#l00028">rect</a>, and <a class="el" href="qcustomplot_8h_source.html#l03855">topLeft</a>.</p>
+<div class="fragment"><div class="line"><a name="l24642"></a><span class="lineno">24642</span>&#160;                                                        {</div>
+<div class="line"><a name="l24643"></a><span class="lineno">24643</span>&#160;  QRectF <a class="code" href="_gen_blob_8m.html#aea8f6815d9a63491fc422c5572c6b3c3">rect</a> = QRectF(<a class="code" href="class_q_c_p_item_rect.html#aa70feeef173489b03c3fbe906a5023c4">topLeft</a>-&gt;<a class="code" href="class_q_c_p_item_position.html#ae490f9c76ee2ba33752c495d3b6e8fb5">pixelPoint</a>(), <a class="code" href="class_q_c_p_item_rect.html#a409f3bfe615a7e322bb3d4d193d85b26">bottomRight</a>-&gt;<a class="code" href="class_q_c_p_item_position.html#ae490f9c76ee2ba33752c495d3b6e8fb5">pixelPoint</a>());</div>
+<div class="line"><a name="l24644"></a><span class="lineno">24644</span>&#160;  <span class="keywordflow">switch</span> (anchorId) {</div>
+<div class="line"><a name="l24645"></a><span class="lineno">24645</span>&#160;  <span class="keywordflow">case</span> <a class="code" href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3acaef33243034885d551dc9b8318ad326">aiTop</a>:</div>
+<div class="line"><a name="l24646"></a><span class="lineno">24646</span>&#160;    <span class="keywordflow">return</span> (rect.topLeft() + rect.topRight()) * 0.5;</div>
+<div class="line"><a name="l24647"></a><span class="lineno">24647</span>&#160;  <span class="keywordflow">case</span> <a class="code" href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3aa94843ce5935b36994005c1e1859ef60">aiTopRight</a>:</div>
+<div class="line"><a name="l24648"></a><span class="lineno">24648</span>&#160;    <span class="keywordflow">return</span> rect.topRight();</div>
+<div class="line"><a name="l24649"></a><span class="lineno">24649</span>&#160;  <span class="keywordflow">case</span> <a class="code" href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3a69fa21fde2f44036381296a6f78b4eb4">aiRight</a>:</div>
+<div class="line"><a name="l24650"></a><span class="lineno">24650</span>&#160;    <span class="keywordflow">return</span> (rect.topRight() + rect.bottomRight()) * 0.5;</div>
+<div class="line"><a name="l24651"></a><span class="lineno">24651</span>&#160;  <span class="keywordflow">case</span> <a class="code" href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3a2d294551e07179c4ac0c4e37364a1468">aiBottom</a>:</div>
+<div class="line"><a name="l24652"></a><span class="lineno">24652</span>&#160;    <span class="keywordflow">return</span> (rect.bottomLeft() + rect.bottomRight()) * 0.5;</div>
+<div class="line"><a name="l24653"></a><span class="lineno">24653</span>&#160;  <span class="keywordflow">case</span> <a class="code" href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3ab3c42dbb1709a04ba9b03dcbf5a2537a">aiBottomLeft</a>:</div>
+<div class="line"><a name="l24654"></a><span class="lineno">24654</span>&#160;    <span class="keywordflow">return</span> rect.bottomLeft();</div>
+<div class="line"><a name="l24655"></a><span class="lineno">24655</span>&#160;  <span class="keywordflow">case</span> <a class="code" href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3a8a095c6d6b2e7665a15d9f40c94b47dc">aiLeft</a>:</div>
+<div class="line"><a name="l24656"></a><span class="lineno">24656</span>&#160;    <span class="keywordflow">return</span> (rect.topLeft() + rect.bottomLeft()) * 0.5;</div>
+<div class="line"><a name="l24657"></a><span class="lineno">24657</span>&#160;  }</div>
+<div class="line"><a name="l24658"></a><span class="lineno">24658</span>&#160;</div>
+<div class="line"><a name="l24659"></a><span class="lineno">24659</span>&#160;  qDebug() &lt;&lt; Q_FUNC_INFO &lt;&lt; <span class="stringliteral">&quot;invalid anchorId&quot;</span> &lt;&lt; anchorId;</div>
+<div class="line"><a name="l24660"></a><span class="lineno">24660</span>&#160;  <span class="keywordflow">return</span> QPointF();</div>
+<div class="line"><a name="l24661"></a><span class="lineno">24661</span>&#160;}</div>
+<div class="ttc" id="class_q_c_p_item_rect_html_aa70feeef173489b03c3fbe906a5023c4"><div class="ttname"><a href="class_q_c_p_item_rect.html#aa70feeef173489b03c3fbe906a5023c4">QCPItemRect::topLeft</a></div><div class="ttdeci">QCPItemPosition *const topLeft</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03855">qcustomplot.h:3855</a></div></div>
+<div class="ttc" id="class_q_c_p_item_rect_html_af0ebba58e6bca4851c4db726691ec0d3ab3c42dbb1709a04ba9b03dcbf5a2537a"><div class="ttname"><a href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3ab3c42dbb1709a04ba9b03dcbf5a2537a">QCPItemRect::aiBottomLeft</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03870">qcustomplot.h:3870</a></div></div>
 <div class="ttc" id="_gen_blob_8m_html_aea8f6815d9a63491fc422c5572c6b3c3"><div class="ttname"><a href="_gen_blob_8m.html#aea8f6815d9a63491fc422c5572c6b3c3">rect</a></div><div class="ttdeci">rect</div><div class="ttdef"><b>Definition:</b> <a href="_gen_blob_8m_source.html#l00028">GenBlob.m:28</a></div></div>
-<div class="ttc" id="class_q_c_p_item_rect_html_af0ebba58e6bca4851c4db726691ec0d3a69fa21fde2f44036381296a6f78b4eb4"><div class="ttname"><a href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3a69fa21fde2f44036381296a6f78b4eb4">QCPItemRect::aiRight</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03405">qcustomplot.h:3405</a></div></div>
-<div class="ttc" id="class_q_c_p_item_rect_html_af0ebba58e6bca4851c4db726691ec0d3a8a095c6d6b2e7665a15d9f40c94b47dc"><div class="ttname"><a href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3a8a095c6d6b2e7665a15d9f40c94b47dc">QCPItemRect::aiLeft</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03405">qcustomplot.h:3405</a></div></div>
-<div class="ttc" id="class_q_c_p_item_rect_html_af0ebba58e6bca4851c4db726691ec0d3aa94843ce5935b36994005c1e1859ef60"><div class="ttname"><a href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3aa94843ce5935b36994005c1e1859ef60">QCPItemRect::aiTopRight</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03405">qcustomplot.h:3405</a></div></div>
-<div class="ttc" id="class_q_c_p_item_position_html_ae490f9c76ee2ba33752c495d3b6e8fb5"><div class="ttname"><a href="class_q_c_p_item_position.html#ae490f9c76ee2ba33752c495d3b6e8fb5">QCPItemPosition::pixelPoint</a></div><div class="ttdeci">virtual QPointF pixelPoint() const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l07947">qcustomplot.cpp:7947</a></div></div>
-<div class="ttc" id="class_q_c_p_item_rect_html_af0ebba58e6bca4851c4db726691ec0d3acaef33243034885d551dc9b8318ad326"><div class="ttname"><a href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3acaef33243034885d551dc9b8318ad326">QCPItemRect::aiTop</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03405">qcustomplot.h:3405</a></div></div>
-<div class="ttc" id="class_q_c_p_item_rect_html_af0ebba58e6bca4851c4db726691ec0d3a2d294551e07179c4ac0c4e37364a1468"><div class="ttname"><a href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3a2d294551e07179c4ac0c4e37364a1468">QCPItemRect::aiBottom</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03405">qcustomplot.h:3405</a></div></div>
-<div class="ttc" id="class_q_c_p_item_rect_html_a409f3bfe615a7e322bb3d4d193d85b26"><div class="ttname"><a href="class_q_c_p_item_rect.html#a409f3bfe615a7e322bb3d4d193d85b26">QCPItemRect::bottomRight</a></div><div class="ttdeci">QCPItemPosition *const bottomRight</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03396">qcustomplot.h:3396</a></div></div>
+<div class="ttc" id="class_q_c_p_item_rect_html_af0ebba58e6bca4851c4db726691ec0d3a69fa21fde2f44036381296a6f78b4eb4"><div class="ttname"><a href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3a69fa21fde2f44036381296a6f78b4eb4">QCPItemRect::aiRight</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03868">qcustomplot.h:3868</a></div></div>
+<div class="ttc" id="class_q_c_p_item_rect_html_af0ebba58e6bca4851c4db726691ec0d3a8a095c6d6b2e7665a15d9f40c94b47dc"><div class="ttname"><a href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3a8a095c6d6b2e7665a15d9f40c94b47dc">QCPItemRect::aiLeft</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03871">qcustomplot.h:3871</a></div></div>
+<div class="ttc" id="class_q_c_p_item_rect_html_af0ebba58e6bca4851c4db726691ec0d3aa94843ce5935b36994005c1e1859ef60"><div class="ttname"><a href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3aa94843ce5935b36994005c1e1859ef60">QCPItemRect::aiTopRight</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03867">qcustomplot.h:3867</a></div></div>
+<div class="ttc" id="class_q_c_p_item_position_html_ae490f9c76ee2ba33752c495d3b6e8fb5"><div class="ttname"><a href="class_q_c_p_item_position.html#ae490f9c76ee2ba33752c495d3b6e8fb5">QCPItemPosition::pixelPoint</a></div><div class="ttdeci">virtual QPointF pixelPoint() const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l08762">qcustomplot.cpp:8762</a></div></div>
+<div class="ttc" id="class_q_c_p_item_rect_html_af0ebba58e6bca4851c4db726691ec0d3acaef33243034885d551dc9b8318ad326"><div class="ttname"><a href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3acaef33243034885d551dc9b8318ad326">QCPItemRect::aiTop</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03866">qcustomplot.h:3866</a></div></div>
+<div class="ttc" id="class_q_c_p_item_rect_html_af0ebba58e6bca4851c4db726691ec0d3a2d294551e07179c4ac0c4e37364a1468"><div class="ttname"><a href="class_q_c_p_item_rect.html#af0ebba58e6bca4851c4db726691ec0d3a2d294551e07179c4ac0c4e37364a1468">QCPItemRect::aiBottom</a></div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03869">qcustomplot.h:3869</a></div></div>
+<div class="ttc" id="class_q_c_p_item_rect_html_a409f3bfe615a7e322bb3d4d193d85b26"><div class="ttname"><a href="class_q_c_p_item_rect.html#a409f3bfe615a7e322bb3d4d193d85b26">QCPItemRect::bottomRight</a></div><div class="ttdeci">QCPItemPosition *const bottomRight</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03856">qcustomplot.h:3856</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -580,11 +590,11 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03383">3383</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03842">3842</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l22084">setBrush()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l22095">setSelectedBrush()</a>.</p>
-<div class="fragment"><div class="line"><a name="l03383"></a><span class="lineno"> 3383</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="class_q_c_p_item_rect.html#a2d7f207fada27588b3a52b19234d3c2e">mBrush</a>; }</div>
-<div class="ttc" id="class_q_c_p_item_rect_html_a2d7f207fada27588b3a52b19234d3c2e"><div class="ttname"><a href="class_q_c_p_item_rect.html#a2d7f207fada27588b3a52b19234d3c2e">QCPItemRect::mBrush</a></div><div class="ttdeci">QBrush mBrush</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03409">qcustomplot.h:3409</a></div></div>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l24596">setBrush()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l24605">setSelectedBrush()</a>.</p>
+<div class="fragment"><div class="line"><a name="l03842"></a><span class="lineno"> 3842</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="class_q_c_p_item_rect.html#a2d7f207fada27588b3a52b19234d3c2e">mBrush</a>; }</div>
+<div class="ttc" id="class_q_c_p_item_rect_html_a2d7f207fada27588b3a52b19234d3c2e"><div class="ttname"><a href="class_q_c_p_item_rect.html#a2d7f207fada27588b3a52b19234d3c2e">QCPItemRect::mBrush</a></div><div class="ttdeci">QBrush mBrush</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03876">qcustomplot.h:3876</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -621,32 +631,33 @@ Here is the caller graph for this function:</div>
 
 <p>Implements <a class="el" href="class_q_c_p_abstract_item.html#ad0dc056f650c3ca73414e6b4f01674ef">QCPAbstractItem</a>.</p>
 
-<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l22113">22113</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l24624">24624</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
 
-<p>References <a class="el" href="qcustomplot_8h_source.html#l03396">bottomRight</a>, <a class="el" href="qcustomplot_8cpp_source.html#l08500">QCPAbstractItem::clipRect()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l22163">mainBrush()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l22153">mainPen()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l07947">QCPItemPosition::pixelPoint()</a>, <a class="el" href="_gen_blob_8m_source.html#l00028">rect</a>, <a class="el" href="qcustomplot_8cpp_source.html#l00086">QCPPainter::setPen()</a>, and <a class="el" href="qcustomplot_8h_source.html#l03395">topLeft</a>.</p>
-<div class="fragment"><div class="line"><a name="l22114"></a><span class="lineno">22114</span>&#160;{</div>
-<div class="line"><a name="l22115"></a><span class="lineno">22115</span>&#160;  QPointF p1 = <a class="code" href="class_q_c_p_item_rect.html#aa70feeef173489b03c3fbe906a5023c4">topLeft</a>-&gt;<a class="code" href="class_q_c_p_item_position.html#ae490f9c76ee2ba33752c495d3b6e8fb5">pixelPoint</a>();</div>
-<div class="line"><a name="l22116"></a><span class="lineno">22116</span>&#160;  QPointF p2 = <a class="code" href="class_q_c_p_item_rect.html#a409f3bfe615a7e322bb3d4d193d85b26">bottomRight</a>-&gt;<a class="code" href="class_q_c_p_item_position.html#ae490f9c76ee2ba33752c495d3b6e8fb5">pixelPoint</a>();</div>
-<div class="line"><a name="l22117"></a><span class="lineno">22117</span>&#160;  <span class="keywordflow">if</span> (p1.toPoint() == p2.toPoint())</div>
-<div class="line"><a name="l22118"></a><span class="lineno">22118</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l22119"></a><span class="lineno">22119</span>&#160;  QRectF <a class="code" href="_gen_blob_8m.html#aea8f6815d9a63491fc422c5572c6b3c3">rect</a> = QRectF(p1, p2).normalized();</div>
-<div class="line"><a name="l22120"></a><span class="lineno">22120</span>&#160;  <span class="keywordtype">double</span> clipPad = <a class="code" href="class_q_c_p_item_rect.html#afa0fb7c6328a1e197ecd537de36daf8f">mainPen</a>().widthF();</div>
-<div class="line"><a name="l22121"></a><span class="lineno">22121</span>&#160;  QRectF boundingRect = rect.adjusted(-clipPad, -clipPad, clipPad, clipPad);</div>
-<div class="line"><a name="l22122"></a><span class="lineno">22122</span>&#160;  <span class="keywordflow">if</span> (boundingRect.intersects(<a class="code" href="class_q_c_p_abstract_item.html#a538e25ff8856534582f5b2b400a46405">clipRect</a>())) <span class="comment">// only draw if bounding rect of rect item is visible in cliprect</span></div>
-<div class="line"><a name="l22123"></a><span class="lineno">22123</span>&#160;  {</div>
-<div class="line"><a name="l22124"></a><span class="lineno">22124</span>&#160;    painter-&gt;<a class="code" href="class_q_c_p_painter.html#af9c7a4cd1791403901f8c5b82a150195">setPen</a>(<a class="code" href="class_q_c_p_item_rect.html#afa0fb7c6328a1e197ecd537de36daf8f">mainPen</a>());</div>
-<div class="line"><a name="l22125"></a><span class="lineno">22125</span>&#160;    painter-&gt;setBrush(<a class="code" href="class_q_c_p_item_rect.html#ab0bd8e272e822ec851ba5b0c20e9200e">mainBrush</a>());</div>
-<div class="line"><a name="l22126"></a><span class="lineno">22126</span>&#160;    painter-&gt;drawRect(rect);</div>
-<div class="line"><a name="l22127"></a><span class="lineno">22127</span>&#160;  }</div>
-<div class="line"><a name="l22128"></a><span class="lineno">22128</span>&#160;}</div>
-<div class="ttc" id="class_q_c_p_item_rect_html_aa70feeef173489b03c3fbe906a5023c4"><div class="ttname"><a href="class_q_c_p_item_rect.html#aa70feeef173489b03c3fbe906a5023c4">QCPItemRect::topLeft</a></div><div class="ttdeci">QCPItemPosition *const topLeft</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03395">qcustomplot.h:3395</a></div></div>
-<div class="ttc" id="class_q_c_p_item_rect_html_ab0bd8e272e822ec851ba5b0c20e9200e"><div class="ttname"><a href="class_q_c_p_item_rect.html#ab0bd8e272e822ec851ba5b0c20e9200e">QCPItemRect::mainBrush</a></div><div class="ttdeci">QBrush mainBrush() const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l22163">qcustomplot.cpp:22163</a></div></div>
+<p>References <a class="el" href="qcustomplot_8h_source.html#l03856">bottomRight</a>, <a class="el" href="qcustomplot_8cpp_source.html#l09359">QCPAbstractItem::clipRect()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l24677">mainBrush()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l24669">mainPen()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l08762">QCPItemPosition::pixelPoint()</a>, <a class="el" href="_gen_blob_8m_source.html#l00028">rect</a>, <a class="el" href="qcustomplot_8cpp_source.html#l00090">QCPPainter::setPen()</a>, and <a class="el" href="qcustomplot_8h_source.html#l03855">topLeft</a>.</p>
+<div class="fragment"><div class="line"><a name="l24624"></a><span class="lineno">24624</span>&#160;                                          {</div>
+<div class="line"><a name="l24625"></a><span class="lineno">24625</span>&#160;  QPointF p1 = <a class="code" href="class_q_c_p_item_rect.html#aa70feeef173489b03c3fbe906a5023c4">topLeft</a>-&gt;<a class="code" href="class_q_c_p_item_position.html#ae490f9c76ee2ba33752c495d3b6e8fb5">pixelPoint</a>();</div>
+<div class="line"><a name="l24626"></a><span class="lineno">24626</span>&#160;  QPointF p2 = <a class="code" href="class_q_c_p_item_rect.html#a409f3bfe615a7e322bb3d4d193d85b26">bottomRight</a>-&gt;<a class="code" href="class_q_c_p_item_position.html#ae490f9c76ee2ba33752c495d3b6e8fb5">pixelPoint</a>();</div>
+<div class="line"><a name="l24627"></a><span class="lineno">24627</span>&#160;  <span class="keywordflow">if</span> (p1.toPoint() == p2.toPoint())</div>
+<div class="line"><a name="l24628"></a><span class="lineno">24628</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l24629"></a><span class="lineno">24629</span>&#160;  QRectF <a class="code" href="_gen_blob_8m.html#aea8f6815d9a63491fc422c5572c6b3c3">rect</a> = QRectF(p1, p2).normalized();</div>
+<div class="line"><a name="l24630"></a><span class="lineno">24630</span>&#160;  <span class="keywordtype">double</span> clipPad = <a class="code" href="class_q_c_p_item_rect.html#afa0fb7c6328a1e197ecd537de36daf8f">mainPen</a>().widthF();</div>
+<div class="line"><a name="l24631"></a><span class="lineno">24631</span>&#160;  QRectF boundingRect = rect.adjusted(-clipPad, -clipPad, clipPad, clipPad);</div>
+<div class="line"><a name="l24632"></a><span class="lineno">24632</span>&#160;  <span class="keywordflow">if</span> (boundingRect.intersects(<a class="code" href="class_q_c_p_abstract_item.html#a538e25ff8856534582f5b2b400a46405">clipRect</a>())) <span class="comment">// only draw if bounding rect of rect</span></div>
+<div class="line"><a name="l24633"></a><span class="lineno">24633</span>&#160;                                           <span class="comment">// item is visible in cliprect</span></div>
+<div class="line"><a name="l24634"></a><span class="lineno">24634</span>&#160;  {</div>
+<div class="line"><a name="l24635"></a><span class="lineno">24635</span>&#160;    painter-&gt;<a class="code" href="class_q_c_p_painter.html#af9c7a4cd1791403901f8c5b82a150195">setPen</a>(<a class="code" href="class_q_c_p_item_rect.html#afa0fb7c6328a1e197ecd537de36daf8f">mainPen</a>());</div>
+<div class="line"><a name="l24636"></a><span class="lineno">24636</span>&#160;    painter-&gt;setBrush(<a class="code" href="class_q_c_p_item_rect.html#ab0bd8e272e822ec851ba5b0c20e9200e">mainBrush</a>());</div>
+<div class="line"><a name="l24637"></a><span class="lineno">24637</span>&#160;    painter-&gt;drawRect(rect);</div>
+<div class="line"><a name="l24638"></a><span class="lineno">24638</span>&#160;  }</div>
+<div class="line"><a name="l24639"></a><span class="lineno">24639</span>&#160;}</div>
+<div class="ttc" id="class_q_c_p_item_rect_html_aa70feeef173489b03c3fbe906a5023c4"><div class="ttname"><a href="class_q_c_p_item_rect.html#aa70feeef173489b03c3fbe906a5023c4">QCPItemRect::topLeft</a></div><div class="ttdeci">QCPItemPosition *const topLeft</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03855">qcustomplot.h:3855</a></div></div>
+<div class="ttc" id="class_q_c_p_item_rect_html_ab0bd8e272e822ec851ba5b0c20e9200e"><div class="ttname"><a href="class_q_c_p_item_rect.html#ab0bd8e272e822ec851ba5b0c20e9200e">QCPItemRect::mainBrush</a></div><div class="ttdeci">QBrush mainBrush() const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l24677">qcustomplot.cpp:24677</a></div></div>
 <div class="ttc" id="_gen_blob_8m_html_aea8f6815d9a63491fc422c5572c6b3c3"><div class="ttname"><a href="_gen_blob_8m.html#aea8f6815d9a63491fc422c5572c6b3c3">rect</a></div><div class="ttdeci">rect</div><div class="ttdef"><b>Definition:</b> <a href="_gen_blob_8m_source.html#l00028">GenBlob.m:28</a></div></div>
-<div class="ttc" id="class_q_c_p_item_rect_html_afa0fb7c6328a1e197ecd537de36daf8f"><div class="ttname"><a href="class_q_c_p_item_rect.html#afa0fb7c6328a1e197ecd537de36daf8f">QCPItemRect::mainPen</a></div><div class="ttdeci">QPen mainPen() const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l22153">qcustomplot.cpp:22153</a></div></div>
-<div class="ttc" id="class_q_c_p_painter_html_af9c7a4cd1791403901f8c5b82a150195"><div class="ttname"><a href="class_q_c_p_painter.html#af9c7a4cd1791403901f8c5b82a150195">QCPPainter::setPen</a></div><div class="ttdeci">void setPen(const QPen &amp;pen)</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l00086">qcustomplot.cpp:86</a></div></div>
-<div class="ttc" id="class_q_c_p_item_position_html_ae490f9c76ee2ba33752c495d3b6e8fb5"><div class="ttname"><a href="class_q_c_p_item_position.html#ae490f9c76ee2ba33752c495d3b6e8fb5">QCPItemPosition::pixelPoint</a></div><div class="ttdeci">virtual QPointF pixelPoint() const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l07947">qcustomplot.cpp:7947</a></div></div>
-<div class="ttc" id="class_q_c_p_abstract_item_html_a538e25ff8856534582f5b2b400a46405"><div class="ttname"><a href="class_q_c_p_abstract_item.html#a538e25ff8856534582f5b2b400a46405">QCPAbstractItem::clipRect</a></div><div class="ttdeci">virtual QRect clipRect() const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l08500">qcustomplot.cpp:8500</a></div></div>
-<div class="ttc" id="class_q_c_p_item_rect_html_a409f3bfe615a7e322bb3d4d193d85b26"><div class="ttname"><a href="class_q_c_p_item_rect.html#a409f3bfe615a7e322bb3d4d193d85b26">QCPItemRect::bottomRight</a></div><div class="ttdeci">QCPItemPosition *const bottomRight</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03396">qcustomplot.h:3396</a></div></div>
+<div class="ttc" id="class_q_c_p_item_rect_html_afa0fb7c6328a1e197ecd537de36daf8f"><div class="ttname"><a href="class_q_c_p_item_rect.html#afa0fb7c6328a1e197ecd537de36daf8f">QCPItemRect::mainPen</a></div><div class="ttdeci">QPen mainPen() const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l24669">qcustomplot.cpp:24669</a></div></div>
+<div class="ttc" id="class_q_c_p_painter_html_af9c7a4cd1791403901f8c5b82a150195"><div class="ttname"><a href="class_q_c_p_painter.html#af9c7a4cd1791403901f8c5b82a150195">QCPPainter::setPen</a></div><div class="ttdeci">void setPen(const QPen &amp;pen)</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l00090">qcustomplot.cpp:90</a></div></div>
+<div class="ttc" id="class_q_c_p_item_position_html_ae490f9c76ee2ba33752c495d3b6e8fb5"><div class="ttname"><a href="class_q_c_p_item_position.html#ae490f9c76ee2ba33752c495d3b6e8fb5">QCPItemPosition::pixelPoint</a></div><div class="ttdeci">virtual QPointF pixelPoint() const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l08762">qcustomplot.cpp:8762</a></div></div>
+<div class="ttc" id="class_q_c_p_abstract_item_html_a538e25ff8856534582f5b2b400a46405"><div class="ttname"><a href="class_q_c_p_abstract_item.html#a538e25ff8856534582f5b2b400a46405">QCPAbstractItem::clipRect</a></div><div class="ttdeci">virtual QRect clipRect() const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l09359">qcustomplot.cpp:9359</a></div></div>
+<div class="ttc" id="class_q_c_p_item_rect_html_a409f3bfe615a7e322bb3d4d193d85b26"><div class="ttname"><a href="class_q_c_p_item_rect.html#a409f3bfe615a7e322bb3d4d193d85b26">QCPItemRect::bottomRight</a></div><div class="ttdeci">QCPItemPosition *const bottomRight</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03856">qcustomplot.h:3856</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -680,17 +691,17 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l22163">22163</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l24677">24677</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
 
-<p>References <a class="el" href="qcustomplot_8h_source.html#l03409">mBrush</a>, <a class="el" href="qcustomplot_8h_source.html#l01652">QCPAbstractItem::mSelected</a>, and <a class="el" href="qcustomplot_8h_source.html#l03409">mSelectedBrush</a>.</p>
+<p>References <a class="el" href="qcustomplot_8h_source.html#l03876">mBrush</a>, <a class="el" href="qcustomplot_8h_source.html#l01891">QCPAbstractItem::mSelected</a>, and <a class="el" href="qcustomplot_8h_source.html#l03876">mSelectedBrush</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l22113">draw()</a>.</p>
-<div class="fragment"><div class="line"><a name="l22164"></a><span class="lineno">22164</span>&#160;{</div>
-<div class="line"><a name="l22165"></a><span class="lineno">22165</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="class_q_c_p_abstract_item.html#a4bdb3457dad1d268c0f78a44152b9645">mSelected</a> ? <a class="code" href="class_q_c_p_item_rect.html#a21b70eee59b6e19ae0bbdf037b13508f">mSelectedBrush</a> : <a class="code" href="class_q_c_p_item_rect.html#a2d7f207fada27588b3a52b19234d3c2e">mBrush</a>;</div>
-<div class="line"><a name="l22166"></a><span class="lineno">22166</span>&#160;}</div>
-<div class="ttc" id="class_q_c_p_item_rect_html_a2d7f207fada27588b3a52b19234d3c2e"><div class="ttname"><a href="class_q_c_p_item_rect.html#a2d7f207fada27588b3a52b19234d3c2e">QCPItemRect::mBrush</a></div><div class="ttdeci">QBrush mBrush</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03409">qcustomplot.h:3409</a></div></div>
-<div class="ttc" id="class_q_c_p_item_rect_html_a21b70eee59b6e19ae0bbdf037b13508f"><div class="ttname"><a href="class_q_c_p_item_rect.html#a21b70eee59b6e19ae0bbdf037b13508f">QCPItemRect::mSelectedBrush</a></div><div class="ttdeci">QBrush mSelectedBrush</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03409">qcustomplot.h:3409</a></div></div>
-<div class="ttc" id="class_q_c_p_abstract_item_html_a4bdb3457dad1d268c0f78a44152b9645"><div class="ttname"><a href="class_q_c_p_abstract_item.html#a4bdb3457dad1d268c0f78a44152b9645">QCPAbstractItem::mSelected</a></div><div class="ttdeci">bool mSelected</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l01652">qcustomplot.h:1652</a></div></div>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l24624">draw()</a>.</p>
+<div class="fragment"><div class="line"><a name="l24677"></a><span class="lineno">24677</span>&#160;                                    {</div>
+<div class="line"><a name="l24678"></a><span class="lineno">24678</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="class_q_c_p_abstract_item.html#a4bdb3457dad1d268c0f78a44152b9645">mSelected</a> ? <a class="code" href="class_q_c_p_item_rect.html#a21b70eee59b6e19ae0bbdf037b13508f">mSelectedBrush</a> : <a class="code" href="class_q_c_p_item_rect.html#a2d7f207fada27588b3a52b19234d3c2e">mBrush</a>;</div>
+<div class="line"><a name="l24679"></a><span class="lineno">24679</span>&#160;}</div>
+<div class="ttc" id="class_q_c_p_item_rect_html_a2d7f207fada27588b3a52b19234d3c2e"><div class="ttname"><a href="class_q_c_p_item_rect.html#a2d7f207fada27588b3a52b19234d3c2e">QCPItemRect::mBrush</a></div><div class="ttdeci">QBrush mBrush</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03876">qcustomplot.h:3876</a></div></div>
+<div class="ttc" id="class_q_c_p_item_rect_html_a21b70eee59b6e19ae0bbdf037b13508f"><div class="ttname"><a href="class_q_c_p_item_rect.html#a21b70eee59b6e19ae0bbdf037b13508f">QCPItemRect::mSelectedBrush</a></div><div class="ttdeci">QBrush mSelectedBrush</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03876">qcustomplot.h:3876</a></div></div>
+<div class="ttc" id="class_q_c_p_abstract_item_html_a4bdb3457dad1d268c0f78a44152b9645"><div class="ttname"><a href="class_q_c_p_abstract_item.html#a4bdb3457dad1d268c0f78a44152b9645">QCPAbstractItem::mSelected</a></div><div class="ttdeci">bool mSelected</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l01891">qcustomplot.h:1891</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -724,17 +735,15 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l22153">22153</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l24669">24669</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
 
-<p>References <a class="el" href="qcustomplot_8h_source.html#l03408">mPen</a>, <a class="el" href="qcustomplot_8h_source.html#l01652">QCPAbstractItem::mSelected</a>, and <a class="el" href="qcustomplot_8h_source.html#l03408">mSelectedPen</a>.</p>
+<p>References <a class="el" href="qcustomplot_8h_source.html#l03875">mPen</a>, <a class="el" href="qcustomplot_8h_source.html#l01891">QCPAbstractItem::mSelected</a>, and <a class="el" href="qcustomplot_8h_source.html#l03875">mSelectedPen</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l22113">draw()</a>.</p>
-<div class="fragment"><div class="line"><a name="l22154"></a><span class="lineno">22154</span>&#160;{</div>
-<div class="line"><a name="l22155"></a><span class="lineno">22155</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="class_q_c_p_abstract_item.html#a4bdb3457dad1d268c0f78a44152b9645">mSelected</a> ? <a class="code" href="class_q_c_p_item_rect.html#a73cc0bee61de3c67221ec8c7a76a29ed">mSelectedPen</a> : <a class="code" href="class_q_c_p_item_rect.html#aa0d49323628d6752026056bfb52afd86">mPen</a>;</div>
-<div class="line"><a name="l22156"></a><span class="lineno">22156</span>&#160;}</div>
-<div class="ttc" id="class_q_c_p_item_rect_html_a73cc0bee61de3c67221ec8c7a76a29ed"><div class="ttname"><a href="class_q_c_p_item_rect.html#a73cc0bee61de3c67221ec8c7a76a29ed">QCPItemRect::mSelectedPen</a></div><div class="ttdeci">QPen mSelectedPen</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03408">qcustomplot.h:3408</a></div></div>
-<div class="ttc" id="class_q_c_p_item_rect_html_aa0d49323628d6752026056bfb52afd86"><div class="ttname"><a href="class_q_c_p_item_rect.html#aa0d49323628d6752026056bfb52afd86">QCPItemRect::mPen</a></div><div class="ttdeci">QPen mPen</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03408">qcustomplot.h:3408</a></div></div>
-<div class="ttc" id="class_q_c_p_abstract_item_html_a4bdb3457dad1d268c0f78a44152b9645"><div class="ttname"><a href="class_q_c_p_abstract_item.html#a4bdb3457dad1d268c0f78a44152b9645">QCPAbstractItem::mSelected</a></div><div class="ttdeci">bool mSelected</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l01652">qcustomplot.h:1652</a></div></div>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l24624">draw()</a>.</p>
+<div class="fragment"><div class="line"><a name="l24669"></a><span class="lineno">24669</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="class_q_c_p_abstract_item.html#a4bdb3457dad1d268c0f78a44152b9645">mSelected</a> ? <a class="code" href="class_q_c_p_item_rect.html#a73cc0bee61de3c67221ec8c7a76a29ed">mSelectedPen</a> : <a class="code" href="class_q_c_p_item_rect.html#aa0d49323628d6752026056bfb52afd86">mPen</a>; }</div>
+<div class="ttc" id="class_q_c_p_item_rect_html_a73cc0bee61de3c67221ec8c7a76a29ed"><div class="ttname"><a href="class_q_c_p_item_rect.html#a73cc0bee61de3c67221ec8c7a76a29ed">QCPItemRect::mSelectedPen</a></div><div class="ttdeci">QPen mSelectedPen</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03875">qcustomplot.h:3875</a></div></div>
+<div class="ttc" id="class_q_c_p_item_rect_html_aa0d49323628d6752026056bfb52afd86"><div class="ttname"><a href="class_q_c_p_item_rect.html#aa0d49323628d6752026056bfb52afd86">QCPItemRect::mPen</a></div><div class="ttdeci">QPen mPen</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03875">qcustomplot.h:3875</a></div></div>
+<div class="ttc" id="class_q_c_p_abstract_item_html_a4bdb3457dad1d268c0f78a44152b9645"><div class="ttname"><a href="class_q_c_p_abstract_item.html#a4bdb3457dad1d268c0f78a44152b9645">QCPAbstractItem::mSelected</a></div><div class="ttdeci">bool mSelected</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l01891">qcustomplot.h:1891</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -768,11 +777,11 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03381">3381</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03840">3840</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l22063">setPen()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l22073">setSelectedPen()</a>.</p>
-<div class="fragment"><div class="line"><a name="l03381"></a><span class="lineno"> 3381</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="class_q_c_p_item_rect.html#aa0d49323628d6752026056bfb52afd86">mPen</a>; }</div>
-<div class="ttc" id="class_q_c_p_item_rect_html_aa0d49323628d6752026056bfb52afd86"><div class="ttname"><a href="class_q_c_p_item_rect.html#aa0d49323628d6752026056bfb52afd86">QCPItemRect::mPen</a></div><div class="ttdeci">QPen mPen</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03408">qcustomplot.h:3408</a></div></div>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l24580">setPen()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l24587">setSelectedPen()</a>.</p>
+<div class="fragment"><div class="line"><a name="l03840"></a><span class="lineno"> 3840</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="class_q_c_p_item_rect.html#aa0d49323628d6752026056bfb52afd86">mPen</a>; }</div>
+<div class="ttc" id="class_q_c_p_item_rect_html_aa0d49323628d6752026056bfb52afd86"><div class="ttname"><a href="class_q_c_p_item_rect.html#aa0d49323628d6752026056bfb52afd86">QCPItemRect::mPen</a></div><div class="ttdeci">QPen mPen</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03875">qcustomplot.h:3875</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -806,9 +815,9 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03384">3384</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l03384"></a><span class="lineno"> 3384</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="class_q_c_p_item_rect.html#a21b70eee59b6e19ae0bbdf037b13508f">mSelectedBrush</a>; }</div>
-<div class="ttc" id="class_q_c_p_item_rect_html_a21b70eee59b6e19ae0bbdf037b13508f"><div class="ttname"><a href="class_q_c_p_item_rect.html#a21b70eee59b6e19ae0bbdf037b13508f">QCPItemRect::mSelectedBrush</a></div><div class="ttdeci">QBrush mSelectedBrush</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03409">qcustomplot.h:3409</a></div></div>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03843">3843</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l03843"></a><span class="lineno"> 3843</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="class_q_c_p_item_rect.html#a21b70eee59b6e19ae0bbdf037b13508f">mSelectedBrush</a>; }</div>
+<div class="ttc" id="class_q_c_p_item_rect_html_a21b70eee59b6e19ae0bbdf037b13508f"><div class="ttname"><a href="class_q_c_p_item_rect.html#a21b70eee59b6e19ae0bbdf037b13508f">QCPItemRect::mSelectedBrush</a></div><div class="ttdeci">QBrush mSelectedBrush</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03876">qcustomplot.h:3876</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -833,9 +842,9 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03382">3382</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l03382"></a><span class="lineno"> 3382</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="class_q_c_p_item_rect.html#a73cc0bee61de3c67221ec8c7a76a29ed">mSelectedPen</a>; }</div>
-<div class="ttc" id="class_q_c_p_item_rect_html_a73cc0bee61de3c67221ec8c7a76a29ed"><div class="ttname"><a href="class_q_c_p_item_rect.html#a73cc0bee61de3c67221ec8c7a76a29ed">QCPItemRect::mSelectedPen</a></div><div class="ttdeci">QPen mSelectedPen</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03408">qcustomplot.h:3408</a></div></div>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03841">3841</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l03841"></a><span class="lineno"> 3841</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="class_q_c_p_item_rect.html#a73cc0bee61de3c67221ec8c7a76a29ed">mSelectedPen</a>; }</div>
+<div class="ttc" id="class_q_c_p_item_rect_html_a73cc0bee61de3c67221ec8c7a76a29ed"><div class="ttname"><a href="class_q_c_p_item_rect.html#a73cc0bee61de3c67221ec8c7a76a29ed">QCPItemRect::mSelectedPen</a></div><div class="ttdeci">QPen mSelectedPen</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03875">qcustomplot.h:3875</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -887,24 +896,26 @@ Here is the caller graph for this function:</div>
 
 <p>Implements <a class="el" href="class_q_c_p_abstract_item.html#a96d522d10ffc0413b9a366c6f7f0476b">QCPAbstractItem</a>.</p>
 
-<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l22101">22101</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l24610">24610</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
 
-<p>References <a class="el" href="qcustomplot_8h_source.html#l03396">bottomRight</a>, <a class="el" href="qcustomplot_8h_source.html#l03409">mBrush</a>, <a class="el" href="qcustomplot_8h_source.html#l01652">QCPAbstractItem::mSelectable</a>, <a class="el" href="qcustomplot_8cpp_source.html#l07947">QCPItemPosition::pixelPoint()</a>, <a class="el" href="_gen_blob_8m_source.html#l00028">rect</a>, <a class="el" href="qcustomplot_8cpp_source.html#l08574">QCPAbstractItem::rectSelectTest()</a>, and <a class="el" href="qcustomplot_8h_source.html#l03395">topLeft</a>.</p>
-<div class="fragment"><div class="line"><a name="l22102"></a><span class="lineno">22102</span>&#160;{</div>
-<div class="line"><a name="l22103"></a><span class="lineno">22103</span>&#160;  Q_UNUSED(details)</div>
-<div class="line"><a name="l22104"></a><span class="lineno">22104</span>&#160;  if (onlySelectable &amp;&amp; !<a class="code" href="class_q_c_p_abstract_item.html#ad81eb35c8726a0f458db9df9732e0e41">mSelectable</a>)</div>
-<div class="line"><a name="l22105"></a><span class="lineno">22105</span>&#160;    return -1;</div>
-<div class="line"><a name="l22106"></a><span class="lineno">22106</span>&#160;  </div>
-<div class="line"><a name="l22107"></a><span class="lineno">22107</span>&#160;  QRectF <a class="code" href="_gen_blob_8m.html#aea8f6815d9a63491fc422c5572c6b3c3">rect</a> = QRectF(<a class="code" href="class_q_c_p_item_rect.html#aa70feeef173489b03c3fbe906a5023c4">topLeft</a>-&gt;pixelPoint(), <a class="code" href="class_q_c_p_item_rect.html#a409f3bfe615a7e322bb3d4d193d85b26">bottomRight</a>-&gt;pixelPoint()).normalized();</div>
-<div class="line"><a name="l22108"></a><span class="lineno">22108</span>&#160;  <span class="keywordtype">bool</span> filledRect = <a class="code" href="class_q_c_p_item_rect.html#a2d7f207fada27588b3a52b19234d3c2e">mBrush</a>.style() != Qt::NoBrush &amp;&amp; <a class="code" href="class_q_c_p_item_rect.html#a2d7f207fada27588b3a52b19234d3c2e">mBrush</a>.color().alpha() != 0;</div>
-<div class="line"><a name="l22109"></a><span class="lineno">22109</span>&#160;  return <a class="code" href="class_q_c_p_abstract_item.html#a4c0e14c4e92df91174cb7183fb363069">rectSelectTest</a>(<a class="code" href="_gen_blob_8m.html#aea8f6815d9a63491fc422c5572c6b3c3">rect</a>, pos, filledRect);</div>
-<div class="line"><a name="l22110"></a><span class="lineno">22110</span>&#160;}</div>
-<div class="ttc" id="class_q_c_p_item_rect_html_aa70feeef173489b03c3fbe906a5023c4"><div class="ttname"><a href="class_q_c_p_item_rect.html#aa70feeef173489b03c3fbe906a5023c4">QCPItemRect::topLeft</a></div><div class="ttdeci">QCPItemPosition *const topLeft</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03395">qcustomplot.h:3395</a></div></div>
-<div class="ttc" id="class_q_c_p_item_rect_html_a2d7f207fada27588b3a52b19234d3c2e"><div class="ttname"><a href="class_q_c_p_item_rect.html#a2d7f207fada27588b3a52b19234d3c2e">QCPItemRect::mBrush</a></div><div class="ttdeci">QBrush mBrush</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03409">qcustomplot.h:3409</a></div></div>
-<div class="ttc" id="class_q_c_p_abstract_item_html_ad81eb35c8726a0f458db9df9732e0e41"><div class="ttname"><a href="class_q_c_p_abstract_item.html#ad81eb35c8726a0f458db9df9732e0e41">QCPAbstractItem::mSelectable</a></div><div class="ttdeci">bool mSelectable</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l01652">qcustomplot.h:1652</a></div></div>
+<p>References <a class="el" href="qcustomplot_8h_source.html#l03856">bottomRight</a>, <a class="el" href="qcustomplot_8h_source.html#l03876">mBrush</a>, <a class="el" href="qcustomplot_8h_source.html#l01891">QCPAbstractItem::mSelectable</a>, <a class="el" href="qcustomplot_8cpp_source.html#l08762">QCPItemPosition::pixelPoint()</a>, <a class="el" href="_gen_blob_8m_source.html#l00028">rect</a>, <a class="el" href="qcustomplot_8cpp_source.html#l09440">QCPAbstractItem::rectSelectTest()</a>, and <a class="el" href="qcustomplot_8h_source.html#l03855">topLeft</a>.</p>
+<div class="fragment"><div class="line"><a name="l24611"></a><span class="lineno">24611</span>&#160;                                                        {</div>
+<div class="line"><a name="l24612"></a><span class="lineno">24612</span>&#160;  Q_UNUSED(details)</div>
+<div class="line"><a name="l24613"></a><span class="lineno">24613</span>&#160;  if (onlySelectable &amp;&amp; !<a class="code" href="class_q_c_p_abstract_item.html#ad81eb35c8726a0f458db9df9732e0e41">mSelectable</a>)</div>
+<div class="line"><a name="l24614"></a><span class="lineno">24614</span>&#160;    return -1;</div>
+<div class="line"><a name="l24615"></a><span class="lineno">24615</span>&#160;</div>
+<div class="line"><a name="l24616"></a><span class="lineno">24616</span>&#160;  QRectF <a class="code" href="_gen_blob_8m.html#aea8f6815d9a63491fc422c5572c6b3c3">rect</a> =</div>
+<div class="line"><a name="l24617"></a><span class="lineno">24617</span>&#160;      QRectF(<a class="code" href="class_q_c_p_item_rect.html#aa70feeef173489b03c3fbe906a5023c4">topLeft</a>-&gt;pixelPoint(), <a class="code" href="class_q_c_p_item_rect.html#a409f3bfe615a7e322bb3d4d193d85b26">bottomRight</a>-&gt;pixelPoint()).normalized();</div>
+<div class="line"><a name="l24618"></a><span class="lineno">24618</span>&#160;  <span class="keywordtype">bool</span> filledRect =</div>
+<div class="line"><a name="l24619"></a><span class="lineno">24619</span>&#160;      <a class="code" href="class_q_c_p_item_rect.html#a2d7f207fada27588b3a52b19234d3c2e">mBrush</a>.style() != Qt::NoBrush &amp;&amp; <a class="code" href="class_q_c_p_item_rect.html#a2d7f207fada27588b3a52b19234d3c2e">mBrush</a>.color().alpha() != 0;</div>
+<div class="line"><a name="l24620"></a><span class="lineno">24620</span>&#160;  return <a class="code" href="class_q_c_p_abstract_item.html#a4c0e14c4e92df91174cb7183fb363069">rectSelectTest</a>(<a class="code" href="_gen_blob_8m.html#aea8f6815d9a63491fc422c5572c6b3c3">rect</a>, pos, filledRect);</div>
+<div class="line"><a name="l24621"></a><span class="lineno">24621</span>&#160;}</div>
+<div class="ttc" id="class_q_c_p_item_rect_html_aa70feeef173489b03c3fbe906a5023c4"><div class="ttname"><a href="class_q_c_p_item_rect.html#aa70feeef173489b03c3fbe906a5023c4">QCPItemRect::topLeft</a></div><div class="ttdeci">QCPItemPosition *const topLeft</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03855">qcustomplot.h:3855</a></div></div>
+<div class="ttc" id="class_q_c_p_item_rect_html_a2d7f207fada27588b3a52b19234d3c2e"><div class="ttname"><a href="class_q_c_p_item_rect.html#a2d7f207fada27588b3a52b19234d3c2e">QCPItemRect::mBrush</a></div><div class="ttdeci">QBrush mBrush</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03876">qcustomplot.h:3876</a></div></div>
+<div class="ttc" id="class_q_c_p_abstract_item_html_ad81eb35c8726a0f458db9df9732e0e41"><div class="ttname"><a href="class_q_c_p_abstract_item.html#ad81eb35c8726a0f458db9df9732e0e41">QCPAbstractItem::mSelectable</a></div><div class="ttdeci">bool mSelectable</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l01891">qcustomplot.h:1891</a></div></div>
 <div class="ttc" id="_gen_blob_8m_html_aea8f6815d9a63491fc422c5572c6b3c3"><div class="ttname"><a href="_gen_blob_8m.html#aea8f6815d9a63491fc422c5572c6b3c3">rect</a></div><div class="ttdeci">rect</div><div class="ttdef"><b>Definition:</b> <a href="_gen_blob_8m_source.html#l00028">GenBlob.m:28</a></div></div>
-<div class="ttc" id="class_q_c_p_abstract_item_html_a4c0e14c4e92df91174cb7183fb363069"><div class="ttname"><a href="class_q_c_p_abstract_item.html#a4c0e14c4e92df91174cb7183fb363069">QCPAbstractItem::rectSelectTest</a></div><div class="ttdeci">double rectSelectTest(const QRectF &amp;rect, const QPointF &amp;pos, bool filledRect) const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l08574">qcustomplot.cpp:8574</a></div></div>
-<div class="ttc" id="class_q_c_p_item_rect_html_a409f3bfe615a7e322bb3d4d193d85b26"><div class="ttname"><a href="class_q_c_p_item_rect.html#a409f3bfe615a7e322bb3d4d193d85b26">QCPItemRect::bottomRight</a></div><div class="ttdeci">QCPItemPosition *const bottomRight</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03396">qcustomplot.h:3396</a></div></div>
+<div class="ttc" id="class_q_c_p_abstract_item_html_a4c0e14c4e92df91174cb7183fb363069"><div class="ttname"><a href="class_q_c_p_abstract_item.html#a4c0e14c4e92df91174cb7183fb363069">QCPAbstractItem::rectSelectTest</a></div><div class="ttdeci">double rectSelectTest(const QRectF &amp;rect, const QPointF &amp;pos, bool filledRect) const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l09440">qcustomplot.cpp:9440</a></div></div>
+<div class="ttc" id="class_q_c_p_item_rect_html_a409f3bfe615a7e322bb3d4d193d85b26"><div class="ttname"><a href="class_q_c_p_item_rect.html#a409f3bfe615a7e322bb3d4d193d85b26">QCPItemRect::bottomRight</a></div><div class="ttdeci">QCPItemPosition *const bottomRight</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03856">qcustomplot.h:3856</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -933,16 +944,14 @@ Here is the call graph for this function:</div>
 <p>Sets the brush that will be used to fill the rectangle. To disable filling, set <em>brush</em> to Qt::NoBrush.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="class_q_c_p_item_rect.html#abd1792859844118dedee86223cede7af">setSelectedBrush</a>, <a class="el" href="class_q_c_p_item_rect.html#a483c0da5a17e1646cd17ddea2c124e7d">setPen</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l22084">22084</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l24596">24596</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
 
-<p>References <a class="el" href="qcustomplot_8h_source.html#l03383">brush()</a>, and <a class="el" href="qcustomplot_8h_source.html#l03409">mBrush</a>.</p>
+<p>References <a class="el" href="qcustomplot_8h_source.html#l03842">brush()</a>, and <a class="el" href="qcustomplot_8h_source.html#l03876">mBrush</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l22034">QCPItemRect()</a>.</p>
-<div class="fragment"><div class="line"><a name="l22085"></a><span class="lineno">22085</span>&#160;{</div>
-<div class="line"><a name="l22086"></a><span class="lineno">22086</span>&#160;  <a class="code" href="class_q_c_p_item_rect.html#a2d7f207fada27588b3a52b19234d3c2e">mBrush</a> = <a class="code" href="class_q_c_p_item_rect.html#a03d2d26ffcac78b25b8e90915f9c4abe">brush</a>;</div>
-<div class="line"><a name="l22087"></a><span class="lineno">22087</span>&#160;}</div>
-<div class="ttc" id="class_q_c_p_item_rect_html_a2d7f207fada27588b3a52b19234d3c2e"><div class="ttname"><a href="class_q_c_p_item_rect.html#a2d7f207fada27588b3a52b19234d3c2e">QCPItemRect::mBrush</a></div><div class="ttdeci">QBrush mBrush</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03409">qcustomplot.h:3409</a></div></div>
-<div class="ttc" id="class_q_c_p_item_rect_html_a03d2d26ffcac78b25b8e90915f9c4abe"><div class="ttname"><a href="class_q_c_p_item_rect.html#a03d2d26ffcac78b25b8e90915f9c4abe">QCPItemRect::brush</a></div><div class="ttdeci">QBrush brush() const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03383">qcustomplot.h:3383</a></div></div>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l24554">QCPItemRect()</a>.</p>
+<div class="fragment"><div class="line"><a name="l24596"></a><span class="lineno">24596</span>&#160;{ <a class="code" href="class_q_c_p_item_rect.html#a2d7f207fada27588b3a52b19234d3c2e">mBrush</a> = <a class="code" href="class_q_c_p_item_rect.html#a03d2d26ffcac78b25b8e90915f9c4abe">brush</a>; }</div>
+<div class="ttc" id="class_q_c_p_item_rect_html_a2d7f207fada27588b3a52b19234d3c2e"><div class="ttname"><a href="class_q_c_p_item_rect.html#a2d7f207fada27588b3a52b19234d3c2e">QCPItemRect::mBrush</a></div><div class="ttdeci">QBrush mBrush</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03876">qcustomplot.h:3876</a></div></div>
+<div class="ttc" id="class_q_c_p_item_rect_html_a03d2d26ffcac78b25b8e90915f9c4abe"><div class="ttname"><a href="class_q_c_p_item_rect.html#a03d2d26ffcac78b25b8e90915f9c4abe">QCPItemRect::brush</a></div><div class="ttdeci">QBrush brush() const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03842">qcustomplot.h:3842</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -980,16 +989,14 @@ Here is the caller graph for this function:</div>
 <p>Sets the pen that will be used to draw the line of the rectangle</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="class_q_c_p_item_rect.html#a52a1bcb2dc753a538e406a2ba3cf21ce">setSelectedPen</a>, <a class="el" href="class_q_c_p_item_rect.html#abbd4e346a03513ee466afc25d9c75446">setBrush</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l22063">22063</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l24580">24580</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
 
-<p>References <a class="el" href="qcustomplot_8h_source.html#l03408">mPen</a>, and <a class="el" href="qcustomplot_8h_source.html#l03381">pen()</a>.</p>
+<p>References <a class="el" href="qcustomplot_8h_source.html#l03875">mPen</a>, and <a class="el" href="qcustomplot_8h_source.html#l03840">pen()</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l22034">QCPItemRect()</a>.</p>
-<div class="fragment"><div class="line"><a name="l22064"></a><span class="lineno">22064</span>&#160;{</div>
-<div class="line"><a name="l22065"></a><span class="lineno">22065</span>&#160;  <a class="code" href="class_q_c_p_item_rect.html#aa0d49323628d6752026056bfb52afd86">mPen</a> = <a class="code" href="class_q_c_p_item_rect.html#a3cb7b6de5e82cc5a3c99e9de919a55e6">pen</a>;</div>
-<div class="line"><a name="l22066"></a><span class="lineno">22066</span>&#160;}</div>
-<div class="ttc" id="class_q_c_p_item_rect_html_aa0d49323628d6752026056bfb52afd86"><div class="ttname"><a href="class_q_c_p_item_rect.html#aa0d49323628d6752026056bfb52afd86">QCPItemRect::mPen</a></div><div class="ttdeci">QPen mPen</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03408">qcustomplot.h:3408</a></div></div>
-<div class="ttc" id="class_q_c_p_item_rect_html_a3cb7b6de5e82cc5a3c99e9de919a55e6"><div class="ttname"><a href="class_q_c_p_item_rect.html#a3cb7b6de5e82cc5a3c99e9de919a55e6">QCPItemRect::pen</a></div><div class="ttdeci">QPen pen() const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03381">qcustomplot.h:3381</a></div></div>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l24554">QCPItemRect()</a>.</p>
+<div class="fragment"><div class="line"><a name="l24580"></a><span class="lineno">24580</span>&#160;{ <a class="code" href="class_q_c_p_item_rect.html#aa0d49323628d6752026056bfb52afd86">mPen</a> = <a class="code" href="class_q_c_p_item_rect.html#a3cb7b6de5e82cc5a3c99e9de919a55e6">pen</a>; }</div>
+<div class="ttc" id="class_q_c_p_item_rect_html_aa0d49323628d6752026056bfb52afd86"><div class="ttname"><a href="class_q_c_p_item_rect.html#aa0d49323628d6752026056bfb52afd86">QCPItemRect::mPen</a></div><div class="ttdeci">QPen mPen</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03875">qcustomplot.h:3875</a></div></div>
+<div class="ttc" id="class_q_c_p_item_rect_html_a3cb7b6de5e82cc5a3c99e9de919a55e6"><div class="ttname"><a href="class_q_c_p_item_rect.html#a3cb7b6de5e82cc5a3c99e9de919a55e6">QCPItemRect::pen</a></div><div class="ttdeci">QPen pen() const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03840">qcustomplot.h:3840</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -1027,16 +1034,16 @@ Here is the caller graph for this function:</div>
 <p>Sets the brush that will be used to fill the rectangle when selected. To disable filling, set <em>brush</em> to Qt::NoBrush.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="class_q_c_p_item_rect.html#abbd4e346a03513ee466afc25d9c75446">setBrush</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l22095">22095</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l24605">24605</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
 
-<p>References <a class="el" href="qcustomplot_8h_source.html#l03383">brush()</a>, and <a class="el" href="qcustomplot_8h_source.html#l03409">mSelectedBrush</a>.</p>
+<p>References <a class="el" href="qcustomplot_8h_source.html#l03842">brush()</a>, and <a class="el" href="qcustomplot_8h_source.html#l03876">mSelectedBrush</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l22034">QCPItemRect()</a>.</p>
-<div class="fragment"><div class="line"><a name="l22096"></a><span class="lineno">22096</span>&#160;{</div>
-<div class="line"><a name="l22097"></a><span class="lineno">22097</span>&#160;  <a class="code" href="class_q_c_p_item_rect.html#a21b70eee59b6e19ae0bbdf037b13508f">mSelectedBrush</a> = <a class="code" href="class_q_c_p_item_rect.html#a03d2d26ffcac78b25b8e90915f9c4abe">brush</a>;</div>
-<div class="line"><a name="l22098"></a><span class="lineno">22098</span>&#160;}</div>
-<div class="ttc" id="class_q_c_p_item_rect_html_a21b70eee59b6e19ae0bbdf037b13508f"><div class="ttname"><a href="class_q_c_p_item_rect.html#a21b70eee59b6e19ae0bbdf037b13508f">QCPItemRect::mSelectedBrush</a></div><div class="ttdeci">QBrush mSelectedBrush</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03409">qcustomplot.h:3409</a></div></div>
-<div class="ttc" id="class_q_c_p_item_rect_html_a03d2d26ffcac78b25b8e90915f9c4abe"><div class="ttname"><a href="class_q_c_p_item_rect.html#a03d2d26ffcac78b25b8e90915f9c4abe">QCPItemRect::brush</a></div><div class="ttdeci">QBrush brush() const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03383">qcustomplot.h:3383</a></div></div>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l24554">QCPItemRect()</a>.</p>
+<div class="fragment"><div class="line"><a name="l24605"></a><span class="lineno">24605</span>&#160;                                                      {</div>
+<div class="line"><a name="l24606"></a><span class="lineno">24606</span>&#160;  <a class="code" href="class_q_c_p_item_rect.html#a21b70eee59b6e19ae0bbdf037b13508f">mSelectedBrush</a> = <a class="code" href="class_q_c_p_item_rect.html#a03d2d26ffcac78b25b8e90915f9c4abe">brush</a>;</div>
+<div class="line"><a name="l24607"></a><span class="lineno">24607</span>&#160;}</div>
+<div class="ttc" id="class_q_c_p_item_rect_html_a21b70eee59b6e19ae0bbdf037b13508f"><div class="ttname"><a href="class_q_c_p_item_rect.html#a21b70eee59b6e19ae0bbdf037b13508f">QCPItemRect::mSelectedBrush</a></div><div class="ttdeci">QBrush mSelectedBrush</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03876">qcustomplot.h:3876</a></div></div>
+<div class="ttc" id="class_q_c_p_item_rect_html_a03d2d26ffcac78b25b8e90915f9c4abe"><div class="ttname"><a href="class_q_c_p_item_rect.html#a03d2d26ffcac78b25b8e90915f9c4abe">QCPItemRect::brush</a></div><div class="ttdeci">QBrush brush() const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03842">qcustomplot.h:3842</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -1074,16 +1081,14 @@ Here is the caller graph for this function:</div>
 <p>Sets the pen that will be used to draw the line of the rectangle when selected</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="class_q_c_p_item_rect.html#a483c0da5a17e1646cd17ddea2c124e7d">setPen</a>, <a class="el" href="class_q_c_p_abstract_item.html#a203de94ad586cc44d16c9565f49d3378">setSelected</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l22073">22073</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l24587">24587</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
 
-<p>References <a class="el" href="qcustomplot_8h_source.html#l03408">mSelectedPen</a>, and <a class="el" href="qcustomplot_8h_source.html#l03381">pen()</a>.</p>
+<p>References <a class="el" href="qcustomplot_8h_source.html#l03875">mSelectedPen</a>, and <a class="el" href="qcustomplot_8h_source.html#l03840">pen()</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l22034">QCPItemRect()</a>.</p>
-<div class="fragment"><div class="line"><a name="l22074"></a><span class="lineno">22074</span>&#160;{</div>
-<div class="line"><a name="l22075"></a><span class="lineno">22075</span>&#160;  <a class="code" href="class_q_c_p_item_rect.html#a73cc0bee61de3c67221ec8c7a76a29ed">mSelectedPen</a> = <a class="code" href="class_q_c_p_item_rect.html#a3cb7b6de5e82cc5a3c99e9de919a55e6">pen</a>;</div>
-<div class="line"><a name="l22076"></a><span class="lineno">22076</span>&#160;}</div>
-<div class="ttc" id="class_q_c_p_item_rect_html_a73cc0bee61de3c67221ec8c7a76a29ed"><div class="ttname"><a href="class_q_c_p_item_rect.html#a73cc0bee61de3c67221ec8c7a76a29ed">QCPItemRect::mSelectedPen</a></div><div class="ttdeci">QPen mSelectedPen</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03408">qcustomplot.h:3408</a></div></div>
-<div class="ttc" id="class_q_c_p_item_rect_html_a3cb7b6de5e82cc5a3c99e9de919a55e6"><div class="ttname"><a href="class_q_c_p_item_rect.html#a3cb7b6de5e82cc5a3c99e9de919a55e6">QCPItemRect::pen</a></div><div class="ttdeci">QPen pen() const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03381">qcustomplot.h:3381</a></div></div>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l24554">QCPItemRect()</a>.</p>
+<div class="fragment"><div class="line"><a name="l24587"></a><span class="lineno">24587</span>&#160;{ <a class="code" href="class_q_c_p_item_rect.html#a73cc0bee61de3c67221ec8c7a76a29ed">mSelectedPen</a> = <a class="code" href="class_q_c_p_item_rect.html#a3cb7b6de5e82cc5a3c99e9de919a55e6">pen</a>; }</div>
+<div class="ttc" id="class_q_c_p_item_rect_html_a73cc0bee61de3c67221ec8c7a76a29ed"><div class="ttname"><a href="class_q_c_p_item_rect.html#a73cc0bee61de3c67221ec8c7a76a29ed">QCPItemRect::mSelectedPen</a></div><div class="ttdeci">QPen mSelectedPen</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03875">qcustomplot.h:3875</a></div></div>
+<div class="ttc" id="class_q_c_p_item_rect_html_a3cb7b6de5e82cc5a3c99e9de919a55e6"><div class="ttname"><a href="class_q_c_p_item_rect.html#a3cb7b6de5e82cc5a3c99e9de919a55e6">QCPItemRect::pen</a></div><div class="ttdeci">QPen pen() const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l03840">qcustomplot.h:3840</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -1116,7 +1121,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03400">3400</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03860">3860</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
 </div>
 </div>
@@ -1130,7 +1135,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03401">3401</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03861">3861</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
 </div>
 </div>
@@ -1144,9 +1149,9 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03396">3396</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03856">3856</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l22131">anchorPixelPoint()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l22113">draw()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l22034">QCPItemRect()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l22101">selectTest()</a>.</p>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l24642">anchorPixelPoint()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l24624">draw()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l24554">QCPItemRect()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l24610">selectTest()</a>.</p>
 
 </div>
 </div>
@@ -1160,7 +1165,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03402">3402</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03862">3862</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
 </div>
 </div>
@@ -1182,9 +1187,9 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03409">3409</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03876">3876</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l22163">mainBrush()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l22101">selectTest()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l22084">setBrush()</a>.</p>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l24677">mainBrush()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l24610">selectTest()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l24596">setBrush()</a>.</p>
 
 </div>
 </div>
@@ -1206,9 +1211,9 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03408">3408</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03875">3875</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l22153">mainPen()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l22063">setPen()</a>.</p>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l24669">mainPen()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l24580">setPen()</a>.</p>
 
 </div>
 </div>
@@ -1230,9 +1235,9 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03409">3409</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03876">3876</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l22163">mainBrush()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l22095">setSelectedBrush()</a>.</p>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l24677">mainBrush()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l24605">setSelectedBrush()</a>.</p>
 
 </div>
 </div>
@@ -1254,9 +1259,9 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03408">3408</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03875">3875</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l22153">mainPen()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l22073">setSelectedPen()</a>.</p>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l24669">mainPen()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l24587">setSelectedPen()</a>.</p>
 
 </div>
 </div>
@@ -1270,7 +1275,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03399">3399</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03859">3859</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
 </div>
 </div>
@@ -1284,7 +1289,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03397">3397</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03857">3857</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
 </div>
 </div>
@@ -1298,9 +1303,9 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03395">3395</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03855">3855</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l22131">anchorPixelPoint()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l22113">draw()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l22034">QCPItemRect()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l22101">selectTest()</a>.</p>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l24642">anchorPixelPoint()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l24624">draw()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l24554">QCPItemRect()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l24610">selectTest()</a>.</p>
 
 </div>
 </div>
@@ -1314,7 +1319,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03398">3398</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l03858">3858</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
 </div>
 </div>
@@ -1328,7 +1333,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_q_c_p_item_rect.html">QCPItemRect</a></li>
-    <li class="footer">Generated on Sat Jun 6 2015 21:25:36 for Vision Soil Analyzer by
+    <li class="footer">Generated on Sun Jun 7 2015 21:06:47 for Vision Soil Analyzer by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

@@ -1,8 +1,8 @@
 var class_hardware_1_1_microscope =
 [
     [ "Resolution", "struct_hardware_1_1_microscope_1_1_resolution.html", "struct_hardware_1_1_microscope_1_1_resolution" ],
-    [ "Finished_t", "class_hardware_1_1_microscope.html#a062b6c7876e05cc311a54bd85da459b2", null ],
-    [ "Progress_t", "class_hardware_1_1_microscope.html#a5288928044551054276042c402c5a6a1", null ],
+    [ "Finished_t", "class_hardware_1_1_microscope.html#a40676fa031cfc911b9b180f902f1e00d", null ],
+    [ "Progress_t", "class_hardware_1_1_microscope.html#a2b031f9b1c8b0294da0c989dbf728d79", null ],
     [ "Microscope", "class_hardware_1_1_microscope.html#a335599c313acd6f5e2f94c09a3475620", null ],
     [ "~Microscope", "class_hardware_1_1_microscope.html#afb6b20021157077feaf8df0e465a1f0e", null ],
     [ "AvailableCams", "class_hardware_1_1_microscope.html#a48c34d1597a9d90f61427cbd2a25bdb9", null ],

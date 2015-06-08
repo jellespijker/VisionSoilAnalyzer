@@ -5,12 +5,6 @@
  * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015
  */
 
-//*! Fast Fourier Transform class
-/*!
- * Use this class to transform a black and white blob presented as a cv::Mat
- * with values
- * 0 or 1 to a vector of complex values representing the Fourier Descriptors.
-*/
 #pragma once
 
 #include <vector>
@@ -28,6 +22,12 @@
 #include "MathException.h"
 
 namespace SoilMath {
+/*!
+ * \brief Fast Fourier Transform class
+ * \details Use this class to transform a black and white blob presented as a
+ * cv::Mat with values 0 or 1 to a vector of complex values representing the Fourier
+ * Descriptors.
+ */
 class FFT {
 public:
   /*!

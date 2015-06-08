@@ -27,7 +27,7 @@ void \hyperlink{class_hardware_1_1_u_s_b_af387867ec84f4c709b55e3605f9e313e}{Rese
 \subsection{Detailed Description}
 
 
-Definition at line 13 of file U\+S\+B.\+h.
+Definition at line 19 of file U\+S\+B.\+h.
 
 
 
@@ -41,12 +41,11 @@ Definition at line 13 of file U\+S\+B.\+h.
 )}\label{class_hardware_1_1_u_s_b_a225d2d24d36cc7c4e46f5c4d19f51fb8}
 
 
-Definition at line 5 of file U\+S\+B.\+cpp.
+Definition at line 11 of file U\+S\+B.\+cpp.
 
 
 \begin{DoxyCode}
-6     \{
-7     \}
+11 \{\}
 \end{DoxyCode}
 \hypertarget{class_hardware_1_1_u_s_b_a808f13d66ce9bdf66a043fd02b4b8cf2}{}\index{Hardware\+::\+U\+S\+B@{Hardware\+::\+U\+S\+B}!````~U\+S\+B@{$\sim$\+U\+S\+B}}
 \index{````~U\+S\+B@{$\sim$\+U\+S\+B}!Hardware\+::\+U\+S\+B@{Hardware\+::\+U\+S\+B}}
@@ -57,12 +56,11 @@ Definition at line 5 of file U\+S\+B.\+cpp.
 )}\label{class_hardware_1_1_u_s_b_a808f13d66ce9bdf66a043fd02b4b8cf2}
 
 
-Definition at line 10 of file U\+S\+B.\+cpp.
+Definition at line 13 of file U\+S\+B.\+cpp.
 
 
 \begin{DoxyCode}
-11     \{
-12     \}
+13 \{\}
 \end{DoxyCode}
 
 
@@ -84,17 +82,16 @@ Referenced by Hardware\+::\+Microscope\+::\+Startup\+Seq().
 
 
 \begin{DoxyCode}
-16     \{
-17         \textcolor{keywordtype}{int} fd, rc;
-18         
-19         fd = open(\textcolor{stringliteral}{"/dev/bus/usb/001/002"}, O\_WRONLY);
-20         rc = ioctl(fd, USBDEVFS\_RESET, 0);
-21         \textcolor{keywordflow}{if} (rc < 0)
-22         \{
-23             \textcolor{keywordflow}{throw} - 1;
-24         \}
-25         close(fd);
-26     \}
+15                    \{
+16   \textcolor{keywordtype}{int} fd, rc;
+17 
+18   fd = open(\textcolor{stringliteral}{"/dev/bus/usb/001/002"}, O\_WRONLY);
+19   rc = ioctl(fd, USBDEVFS\_RESET, 0);
+20   \textcolor{keywordflow}{if} (rc < 0) \{
+21     \textcolor{keywordflow}{throw} - 1;
+22   \}
+23   close(fd);
+24 \}
 \end{DoxyCode}
 
 

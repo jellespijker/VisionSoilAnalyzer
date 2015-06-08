@@ -9,6 +9,6 @@ var class_q_c_p_margin_group =
     [ "isEmpty", "class_q_c_p_margin_group.html#a28c8e87a0b87c01bd28c693faabddd7b", null ],
     [ "removeChild", "class_q_c_p_margin_group.html#a20ab3286062957d99b58db683fe725b0", null ],
     [ "QCPLayoutElement", "class_q_c_p_margin_group.html#a0790750c7e7f14fdbd960d172655b42b", null ],
-    [ "mChildren", "class_q_c_p_margin_group.html#a954bc89ff8958b9bb6a4a0d08ed5fc0f", null ],
+    [ "mChildren", "class_q_c_p_margin_group.html#ac16957e388687100bfd10f68fb7baac8", null ],
     [ "mParentPlot", "class_q_c_p_margin_group.html#a23cfa29e3cc0f33a59141b77d8c04edf", null ]
 ];

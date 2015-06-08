@@ -15,7 +15,8 @@ Inheritance diagram for V\+S\+A\+G\+U\+I\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for V\+S\+A\+G\+U\+I\+:\nopagebreak
+Collaboration diagram for V\+S\+A\+G\+U\+I\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -113,7 +114,7 @@ std\+::vector$<$ std\+::string $>$ \hyperlink{class_v_s_a_g_u_i_a1177641d1293c48
 \subsection{Detailed Description}
 
 
-Definition at line 45 of file vsagui.\+h.
+Definition at line 52 of file vsagui.\+h.
 
 
 
@@ -127,7 +128,7 @@ Definition at line 45 of file vsagui.\+h.
 )\hspace{0.3cm}{\ttfamily [explicit]}}\label{class_v_s_a_g_u_i_a987a20380023fe5985bd1fef0491af40}
 
 
-Definition at line 4 of file vsagui.\+cpp.
+Definition at line 11 of file vsagui.\+cpp.
 
 
 
@@ -135,99 +136,92 @@ References Hardware\+::\+Microscope\+::\+Available\+Cams(), Hardware\+::\+Micros
 
 
 \begin{DoxyCode}
-4                               :
-5     QMainWindow(parent),
-6     \hyperlink{class_v_s_a_g_u_i_a7a1d0cb3cf813ff9dce12f7f0ed6cd7a}{ui}(\textcolor{keyword}{new} Ui::VSAGUI)
-7 \{
-8     \textcolor{comment}{//Determine if the program is run from an ARM (BBB) device}
-9     \textcolor{keyword}{struct }utsname unameData;
-10     uname(&unameData);
-11     std::string arch = \textcolor{keyword}{static\_cast<}std::string\textcolor{keyword}{>}(unameData.machine);
-12     \textcolor{keywordflow}{if} (arch.find(\textcolor{stringliteral}{"armv7l"}) != string::npos) \{ \hyperlink{class_v_s_a_g_u_i_ad093d6fc67a6ad9e27948023ddba775d}{runFromBBB} = \textcolor{keyword}{true}; \}
-13 
-14     \textcolor{comment}{// Startup the UI}
-15     \hyperlink{class_v_s_a_g_u_i_a7a1d0cb3cf813ff9dce12f7f0ed6cd7a}{ui}->setupUi(\textcolor{keyword}{this});
-16     \hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample} = \textcolor{keyword}{new} \hyperlink{class_soil_analyzer_1_1_sample}{SoilAnalyzer::Sample};
-17     \hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample}->\hyperlink{class_soil_analyzer_1_1_sample_a472dfdde346375463c979e45eb75fbb7}{connect\_Progress}(boost::bind(&
-      \hyperlink{class_v_s_a_g_u_i_a8a5092f741e17c73b04850a6b30dda04}{VSAGUI::on\_vision\_update}, \textcolor{keyword}{this}, \_1, \_2));
-18     \hyperlink{class_v_s_a_g_u_i_aaf0cb2947a03baddcb811eaa07c299e3}{NeuralNet} = \textcolor{keyword}{new} \hyperlink{class_soil_math_1_1_n_n}{SoilMath::NN};
-19     \hyperlink{class_v_s_a_g_u_i_aaf0cb2947a03baddcb811eaa07c299e3}{NeuralNet}->\hyperlink{class_soil_math_1_1_n_n_a69c00e336b11531e25d51262da10fea0}{LoadState}(\textcolor{stringliteral}{"NeuralNet/Default.NN"});
-20     \hyperlink{class_v_s_a_g_u_i_a4a0358d00aa3cb520a9a1321962b0d4d}{sSettings} = \textcolor{keyword}{new} \hyperlink{class_soil_analyzer_1_1_soil_settings}{SoilAnalyzer::SoilSettings};
-21     \hyperlink{class_v_s_a_g_u_i_a4a0358d00aa3cb520a9a1321962b0d4d}{sSettings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a438bf660eeb7a49a676eef5da129f8d5}{LoadSettings}(\textcolor{stringliteral}{"Settings/Default.ini"});
-22     \hyperlink{class_v_s_a_g_u_i_a7a1d0cb3cf813ff9dce12f7f0ed6cd7a}{ui}->OffsetSlider->setValue(\hyperlink{class_v_s_a_g_u_i_a4a0358d00aa3cb520a9a1321962b0d4d}{sSettings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a48330eb812672b50a94483f264614e8f}{thresholdOffsetValue});
-23 
-24     \textcolor{comment}{// Init the status bar}
-25     \hyperlink{class_v_s_a_g_u_i_a17b71e08eeff21b28e3816ec5482473c}{progressBar} = \textcolor{keyword}{new} QProgressBar(\hyperlink{class_v_s_a_g_u_i_a7a1d0cb3cf813ff9dce12f7f0ed6cd7a}{ui}->statusBar);
-26     \hyperlink{class_v_s_a_g_u_i_a17b71e08eeff21b28e3816ec5482473c}{progressBar}->setAlignment(Qt::AlignLeft);
-27     \hyperlink{class_v_s_a_g_u_i_a17b71e08eeff21b28e3816ec5482473c}{progressBar}->setMaximumSize(640, 19);
-28     \hyperlink{class_v_s_a_g_u_i_a7a1d0cb3cf813ff9dce12f7f0ed6cd7a}{ui}->statusBar->addWidget(\hyperlink{class_v_s_a_g_u_i_a17b71e08eeff21b28e3816ec5482473c}{progressBar});
-29     \hyperlink{class_v_s_a_g_u_i_a17b71e08eeff21b28e3816ec5482473c}{progressBar}->setValue(0);
+11                               : QMainWindow(parent), \hyperlink{class_v_s_a_g_u_i_a7a1d0cb3cf813ff9dce12f7f0ed6cd7a}{ui}(\textcolor{keyword}{new} Ui::VSAGUI) \{
+12   \textcolor{comment}{// Determine if the program is run from an ARM (BBB) device}
+13   \textcolor{keyword}{struct }utsname unameData;
+14   uname(&unameData);
+15   std::string arch = \textcolor{keyword}{static\_cast<}std::string\textcolor{keyword}{>}(unameData.machine);
+16   \textcolor{keywordflow}{if} (arch.find(\textcolor{stringliteral}{"armv7l"}) != string::npos) \{
+17     \hyperlink{class_v_s_a_g_u_i_ad093d6fc67a6ad9e27948023ddba775d}{runFromBBB} = \textcolor{keyword}{true};
+18   \}
+19 
+20   \textcolor{comment}{// Startup the UI}
+21   \hyperlink{class_v_s_a_g_u_i_a7a1d0cb3cf813ff9dce12f7f0ed6cd7a}{ui}->setupUi(\textcolor{keyword}{this});
+22   \hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample} = \textcolor{keyword}{new} \hyperlink{class_soil_analyzer_1_1_sample}{SoilAnalyzer::Sample};
+23   \hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample}->\hyperlink{class_soil_analyzer_1_1_sample_a472dfdde346375463c979e45eb75fbb7}{connect\_Progress}(
+24       boost::bind(&\hyperlink{class_v_s_a_g_u_i_a8a5092f741e17c73b04850a6b30dda04}{VSAGUI::on\_vision\_update}, \textcolor{keyword}{this}, \_1, \_2));
+25   \hyperlink{class_v_s_a_g_u_i_aaf0cb2947a03baddcb811eaa07c299e3}{NeuralNet} = \textcolor{keyword}{new} \hyperlink{class_soil_math_1_1_n_n}{SoilMath::NN};
+26   \hyperlink{class_v_s_a_g_u_i_aaf0cb2947a03baddcb811eaa07c299e3}{NeuralNet}->\hyperlink{class_soil_math_1_1_n_n_a69c00e336b11531e25d51262da10fea0}{LoadState}(\textcolor{stringliteral}{"NeuralNet/Default.NN"});
+27   \hyperlink{class_v_s_a_g_u_i_a4a0358d00aa3cb520a9a1321962b0d4d}{sSettings} = \textcolor{keyword}{new} \hyperlink{class_soil_analyzer_1_1_soil_settings}{SoilAnalyzer::SoilSettings};
+28   \hyperlink{class_v_s_a_g_u_i_a4a0358d00aa3cb520a9a1321962b0d4d}{sSettings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a438bf660eeb7a49a676eef5da129f8d5}{LoadSettings}(\textcolor{stringliteral}{"Settings/Default.ini"});
+29   \hyperlink{class_v_s_a_g_u_i_a7a1d0cb3cf813ff9dce12f7f0ed6cd7a}{ui}->OffsetSlider->setValue(\hyperlink{class_v_s_a_g_u_i_a4a0358d00aa3cb520a9a1321962b0d4d}{sSettings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a48330eb812672b50a94483f264614e8f}{thresholdOffsetValue});
 30 
-31     \hyperlink{class_v_s_a_g_u_i_a8cbaaa3b5e0975b7a1101b9bef3c9b57}{statusLabel} = \textcolor{keyword}{new} QLabel(\hyperlink{class_v_s_a_g_u_i_a7a1d0cb3cf813ff9dce12f7f0ed6cd7a}{ui}->statusBar);
-32     \hyperlink{class_v_s_a_g_u_i_a8cbaaa3b5e0975b7a1101b9bef3c9b57}{statusLabel}->setAlignment(Qt::AlignRight);
-33     \hyperlink{class_v_s_a_g_u_i_a8cbaaa3b5e0975b7a1101b9bef3c9b57}{statusLabel}->setMinimumSize(600, 19);
-34     \hyperlink{class_v_s_a_g_u_i_a8cbaaa3b5e0975b7a1101b9bef3c9b57}{statusLabel}->setMaximumSize(600, 19);
-35     \hyperlink{class_v_s_a_g_u_i_a7a1d0cb3cf813ff9dce12f7f0ed6cd7a}{ui}->statusBar->addWidget(\hyperlink{class_v_s_a_g_u_i_a8cbaaa3b5e0975b7a1101b9bef3c9b57}{statusLabel});
-36     \hyperlink{class_v_s_a_g_u_i_a8cbaaa3b5e0975b7a1101b9bef3c9b57}{statusLabel}->setText(tr(\textcolor{stringliteral}{"First Grab"}));
+31   \textcolor{comment}{// Init the status bar}
+32   \hyperlink{class_v_s_a_g_u_i_a17b71e08eeff21b28e3816ec5482473c}{progressBar} = \textcolor{keyword}{new} QProgressBar(\hyperlink{class_v_s_a_g_u_i_a7a1d0cb3cf813ff9dce12f7f0ed6cd7a}{ui}->statusBar);
+33   \hyperlink{class_v_s_a_g_u_i_a17b71e08eeff21b28e3816ec5482473c}{progressBar}->setAlignment(Qt::AlignLeft);
+34   \hyperlink{class_v_s_a_g_u_i_a17b71e08eeff21b28e3816ec5482473c}{progressBar}->setMaximumSize(640, 19);
+35   \hyperlink{class_v_s_a_g_u_i_a7a1d0cb3cf813ff9dce12f7f0ed6cd7a}{ui}->statusBar->addWidget(\hyperlink{class_v_s_a_g_u_i_a17b71e08eeff21b28e3816ec5482473c}{progressBar});
+36   \hyperlink{class_v_s_a_g_u_i_a17b71e08eeff21b28e3816ec5482473c}{progressBar}->setValue(0);
 37 
-38     \textcolor{comment}{// Get HDR snapshot of the sample or normal shot when HDR grab faulters or test image if normal grab
-       falters}
-39     \hyperlink{class_hardware_1_1_microscope}{Hardware::Microscope} microscope;
-40 
-41     \hyperlink{class_v_s_a_g_u_i_a670325c6bab3874937f0a9b7e8e3b370}{finished\_sig} = microscope.\hyperlink{class_hardware_1_1_microscope_abc3f008ec7cf00e6ddf31b0a4ed392cb}{connect\_Finished}([&]() \{
-42         \hyperlink{class_v_s_a_g_u_i_a988508cf880e27fcd8a029b94e546bcc}{SetMatToMainView}(\hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample}->\hyperlink{class_soil_analyzer_1_1_sample_a0d6e6fca9e232a77329daf0b4b29c634}{OriginalImage});
-43         this->\hyperlink{class_v_s_a_g_u_i_a8cbaaa3b5e0975b7a1101b9bef3c9b57}{statusLabel}->setText(tr(\textcolor{stringliteral}{"New Image Grabbed"})); \});
-44     \hyperlink{class_v_s_a_g_u_i_a3503e0415ff202c93fc4d7ee5c6f4fb8}{progress\_sig} = microscope.\hyperlink{class_hardware_1_1_microscope_abc29f83a2f0ba536df3eb7ccc250b111}{connect\_Progress}([&](\textcolor{keywordtype}{int} &prog)\{ this->
-      \hyperlink{class_v_s_a_g_u_i_a17b71e08eeff21b28e3816ec5482473c}{progressBar}->setValue(prog); \});
-45 
-46     \textcolor{keywordflow}{try}
-47     \{
-48         \textcolor{keywordflow}{if} (microscope.\hyperlink{class_hardware_1_1_microscope_ae799dbdff39787d3226e8e8ce25386de}{IsOpened}()) \{ microscope.\hyperlink{class_hardware_1_1_microscope_a8cec2eacbd3f0ea164d16100a6078d5b}{GetHDRFrame}(
-      \hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample}->\hyperlink{class_soil_analyzer_1_1_sample_a0d6e6fca9e232a77329daf0b4b29c634}{OriginalImage}, \hyperlink{class_v_s_a_g_u_i_a4a0358d00aa3cb520a9a1321962b0d4d}{sSettings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a77e631ff44efe74762b5adaa2eb2cd11}{HDRframes});  \}
-49     \}
-50     \textcolor{keywordflow}{catch} (\hyperlink{class_hardware_1_1_exception_1_1_microscope_not_found_exception}{Hardware::Exception::MicroscopeNotFoundException}
-       &em)
-51     \{
-52         \textcolor{keywordflow}{try}
-53         \{
-54             \hyperlink{class_v_s_a_g_u_i_af01408e987e5df2ce336ee8447841c1f}{errorMessageDialog}->showMessage(tr(\textcolor{stringliteral}{"Microscope not found switching to first
-       default Cam!"}));
-55             \textcolor{keywordflow}{if} (microscope.\hyperlink{class_hardware_1_1_microscope_a48c34d1597a9d90f61427cbd2a25bdb9}{AvailableCams}().size() > 0) \{ microscope.
-      \hyperlink{class_hardware_1_1_microscope_abc753dfc72956ef7285d0e373fb7e1f1}{openCam}(0); \}
-56         \}
-57         \textcolor{keywordflow}{catch} (\hyperlink{class_hardware_1_1_exception_1_1_microscope_not_found_exception}{Hardware::Exception::MicroscopeNotFoundException}
-       &em2)
-58         \{
-59             \textcolor{comment}{// display error dialog no cam found and show default test image}
-60             \hyperlink{class_v_s_a_g_u_i_af01408e987e5df2ce336ee8447841c1f}{errorMessageDialog}->showMessage(tr(\textcolor{stringliteral}{"Microscope not found switching to test
-       image!"}));
-61             \hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample}->\hyperlink{class_soil_analyzer_1_1_sample_a0d6e6fca9e232a77329daf0b4b29c634}{OriginalImage} = cv::imread(\textcolor{stringliteral}{"/Images/SoilSample1.png"});
-62         \}
-63     \}
-64     \textcolor{keywordflow}{catch} (\hyperlink{class_hardware_1_1_exception_1_1_could_not_grab_image_exception}{Hardware::Exception::CouldNotGrabImageException} &
-      ei)
-65     \{
-66         \textcolor{comment}{// HDRFrame not working switching to normal grab}
-67         \textcolor{keywordflow}{try}
-68         \{
-69             \hyperlink{class_v_s_a_g_u_i_af01408e987e5df2ce336ee8447841c1f}{errorMessageDialog}->showMessage(tr(\textcolor{stringliteral}{"HDR Grab failed switching to normal grab!
-      "}));
-70             microscope.\hyperlink{class_hardware_1_1_microscope_a1ec5c792320ae4db3f3b39830e74f880}{GetFrame}(\hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample}->\hyperlink{class_soil_analyzer_1_1_sample_a0d6e6fca9e232a77329daf0b4b29c634}{OriginalImage});
-71         \}
-72         \textcolor{keywordflow}{catch} (\hyperlink{class_hardware_1_1_exception_1_1_could_not_grab_image_exception}{Hardware::Exception::CouldNotGrabImageException}
-       &ei2)
-73         \{
-74             \textcolor{comment}{// show default test image and error dialog}
-75             \hyperlink{class_v_s_a_g_u_i_af01408e987e5df2ce336ee8447841c1f}{errorMessageDialog}->showMessage(tr(\textcolor{stringliteral}{"Normal Grab failed switching to test
-       image!"}));
-76             \hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample}->\hyperlink{class_soil_analyzer_1_1_sample_a0d6e6fca9e232a77329daf0b4b29c634}{OriginalImage} = cv::imread(\textcolor{stringliteral}{"/Images/SoilSample1.png"});
-77         \}
-78     \}
-79 \}
+38   \hyperlink{class_v_s_a_g_u_i_a8cbaaa3b5e0975b7a1101b9bef3c9b57}{statusLabel} = \textcolor{keyword}{new} QLabel(\hyperlink{class_v_s_a_g_u_i_a7a1d0cb3cf813ff9dce12f7f0ed6cd7a}{ui}->statusBar);
+39   \hyperlink{class_v_s_a_g_u_i_a8cbaaa3b5e0975b7a1101b9bef3c9b57}{statusLabel}->setAlignment(Qt::AlignRight);
+40   \hyperlink{class_v_s_a_g_u_i_a8cbaaa3b5e0975b7a1101b9bef3c9b57}{statusLabel}->setMinimumSize(600, 19);
+41   \hyperlink{class_v_s_a_g_u_i_a8cbaaa3b5e0975b7a1101b9bef3c9b57}{statusLabel}->setMaximumSize(600, 19);
+42   \hyperlink{class_v_s_a_g_u_i_a7a1d0cb3cf813ff9dce12f7f0ed6cd7a}{ui}->statusBar->addWidget(\hyperlink{class_v_s_a_g_u_i_a8cbaaa3b5e0975b7a1101b9bef3c9b57}{statusLabel});
+43   \hyperlink{class_v_s_a_g_u_i_a8cbaaa3b5e0975b7a1101b9bef3c9b57}{statusLabel}->setText(tr(\textcolor{stringliteral}{"First Grab"}));
+44 
+45   \textcolor{comment}{// Get HDR snapshot of the sample or normal shot when HDR grab faulters or}
+46   \textcolor{comment}{// test image if normal grab falters}
+47   \hyperlink{class_hardware_1_1_microscope}{Hardware::Microscope} microscope;
+48 
+49   \hyperlink{class_v_s_a_g_u_i_a670325c6bab3874937f0a9b7e8e3b370}{finished\_sig} = microscope.\hyperlink{class_hardware_1_1_microscope_abc3f008ec7cf00e6ddf31b0a4ed392cb}{connect\_Finished}([&]() \{
+50     \hyperlink{class_v_s_a_g_u_i_a988508cf880e27fcd8a029b94e546bcc}{SetMatToMainView}(\hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample}->\hyperlink{class_soil_analyzer_1_1_sample_a0d6e6fca9e232a77329daf0b4b29c634}{OriginalImage});
+51     this->\hyperlink{class_v_s_a_g_u_i_a8cbaaa3b5e0975b7a1101b9bef3c9b57}{statusLabel}->setText(tr(\textcolor{stringliteral}{"New Image Grabbed"}));
+52   \});
+53   \hyperlink{class_v_s_a_g_u_i_a3503e0415ff202c93fc4d7ee5c6f4fb8}{progress\_sig} = microscope.\hyperlink{class_hardware_1_1_microscope_abc29f83a2f0ba536df3eb7ccc250b111}{connect\_Progress}(
+54       [&](\textcolor{keywordtype}{int} &prog) \{ this->\hyperlink{class_v_s_a_g_u_i_a17b71e08eeff21b28e3816ec5482473c}{progressBar}->setValue(prog); \});
+55 
+56   \textcolor{keywordflow}{try} \{
+57     \textcolor{keywordflow}{if} (microscope.\hyperlink{class_hardware_1_1_microscope_ae799dbdff39787d3226e8e8ce25386de}{IsOpened}()) \{
+58       microscope.\hyperlink{class_hardware_1_1_microscope_a8cec2eacbd3f0ea164d16100a6078d5b}{GetHDRFrame}(\hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample}->\hyperlink{class_soil_analyzer_1_1_sample_a0d6e6fca9e232a77329daf0b4b29c634}{OriginalImage}, 
+      \hyperlink{class_v_s_a_g_u_i_a4a0358d00aa3cb520a9a1321962b0d4d}{sSettings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a77e631ff44efe74762b5adaa2eb2cd11}{HDRframes});
+59     \}
+60   \} \textcolor{keywordflow}{catch} (\hyperlink{class_hardware_1_1_exception_1_1_microscope_not_found_exception}{Hardware::Exception::MicroscopeNotFoundException}
+       &em) \{
+61     \textcolor{keywordflow}{try} \{
+62       \hyperlink{class_v_s_a_g_u_i_af01408e987e5df2ce336ee8447841c1f}{errorMessageDialog}->showMessage(
+63           tr(\textcolor{stringliteral}{"Microscope not found switching to first default Cam!"}));
+64       \textcolor{keywordflow}{if} (microscope.\hyperlink{class_hardware_1_1_microscope_a48c34d1597a9d90f61427cbd2a25bdb9}{AvailableCams}().size() > 0) \{
+65         microscope.\hyperlink{class_hardware_1_1_microscope_abc753dfc72956ef7285d0e373fb7e1f1}{openCam}(0);
+66       \}
+67     \} \textcolor{keywordflow}{catch} (\hyperlink{class_hardware_1_1_exception_1_1_microscope_not_found_exception}{Hardware::Exception::MicroscopeNotFoundException}
+       &em2) \{
+68       \textcolor{comment}{// display error dialog no cam found and show default test image}
+69       \hyperlink{class_v_s_a_g_u_i_af01408e987e5df2ce336ee8447841c1f}{errorMessageDialog}->showMessage(
+70           tr(\textcolor{stringliteral}{"Microscope not found switching to test image!"}));
+71       \hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample}->\hyperlink{class_soil_analyzer_1_1_sample_a0d6e6fca9e232a77329daf0b4b29c634}{OriginalImage} = cv::imread(\textcolor{stringliteral}{"/Images/SoilSample1.png"});
+72     \}
+73   \} \textcolor{keywordflow}{catch} (\hyperlink{class_hardware_1_1_exception_1_1_could_not_grab_image_exception}{Hardware::Exception::CouldNotGrabImageException} &
+      ei) \{
+74     \textcolor{comment}{// HDRFrame not working switching to normal grab}
+75     \textcolor{keywordflow}{try} \{
+76       \hyperlink{class_v_s_a_g_u_i_af01408e987e5df2ce336ee8447841c1f}{errorMessageDialog}->showMessage(
+77           tr(\textcolor{stringliteral}{"HDR Grab failed switching to normal grab!"}));
+78       microscope.\hyperlink{class_hardware_1_1_microscope_a1ec5c792320ae4db3f3b39830e74f880}{GetFrame}(\hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample}->\hyperlink{class_soil_analyzer_1_1_sample_a0d6e6fca9e232a77329daf0b4b29c634}{OriginalImage});
+79     \} \textcolor{keywordflow}{catch} (\hyperlink{class_hardware_1_1_exception_1_1_could_not_grab_image_exception}{Hardware::Exception::CouldNotGrabImageException}
+       &ei2) \{
+80       \textcolor{comment}{// show default test image and error dialog}
+81       \hyperlink{class_v_s_a_g_u_i_af01408e987e5df2ce336ee8447841c1f}{errorMessageDialog}->showMessage(
+82           tr(\textcolor{stringliteral}{"Normal Grab failed switching to test image!"}));
+83       \hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample}->\hyperlink{class_soil_analyzer_1_1_sample_a0d6e6fca9e232a77329daf0b4b29c634}{OriginalImage} = cv::imread(\textcolor{stringliteral}{"/Images/SoilSample1.png"});
+84     \}
+85   \}
+86 \}
 \end{DoxyCode}
 
 
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -245,7 +239,7 @@ Here is the call graph for this function\+:\nopagebreak
 )}\label{class_v_s_a_g_u_i_ac68bb20d33069fc7f437e7daed3fcc0d}
 
 
-Definition at line 90 of file vsagui.\+cpp.
+Definition at line 96 of file vsagui.\+cpp.
 
 
 
@@ -253,9 +247,7 @@ References ui.
 
 
 \begin{DoxyCode}
-91 \{
-92     \textcolor{keyword}{delete} \hyperlink{class_v_s_a_g_u_i_a7a1d0cb3cf813ff9dce12f7f0ed6cd7a}{ui};
-93 \}
+96 \{ \textcolor{keyword}{delete} \hyperlink{class_v_s_a_g_u_i_a7a1d0cb3cf813ff9dce12f7f0ed6cd7a}{ui}; \}
 \end{DoxyCode}
 
 
@@ -276,7 +268,7 @@ References ui.
 )\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\label{class_v_s_a_g_u_i_a60b18d934478ce1c1ed58de028425e2e}
 
 
-Definition at line 164 of file vsagui.\+cpp.
+Definition at line 172 of file vsagui.\+cpp.
 
 
 
@@ -284,20 +276,25 @@ References Neural\+Net, and Soil\+Math\+::\+N\+N\+::\+Save\+State().
 
 
 \begin{DoxyCode}
-165 \{
-166     QString fn = QFileDialog::getSaveFileName(\textcolor{keyword}{this}, tr(\textcolor{stringliteral}{"Export Neural Network"}), tr(\textcolor{stringliteral}{"/home/"}), tr(\textcolor{stringliteral}{"Neural
-       Net (*.NN);;All Files (*)"}));
-167     \textcolor{keywordflow}{if} (!fn.isEmpty());
-168     \{
-169         \textcolor{keywordflow}{if} (!fn.contains(tr(\textcolor{stringliteral}{".NN"}))) \{ fn.append(tr(\textcolor{stringliteral}{".NN"})); \}
-170         std::string filename = fn.toStdString();
-171         \hyperlink{class_v_s_a_g_u_i_aaf0cb2947a03baddcb811eaa07c299e3}{NeuralNet}->\hyperlink{class_soil_math_1_1_n_n_ac01bcc755578095ebf1f1f0e951f2678}{SaveState}(filename);
-172     \}
-173 \}
+172                                        \{
+173   QString fn = QFileDialog::getSaveFileName(
+174       \textcolor{keyword}{this}, tr(\textcolor{stringliteral}{"Export Neural Network"}), tr(\textcolor{stringliteral}{"/home/"}),
+175       tr(\textcolor{stringliteral}{"Neural Net (*.NN);;All Files (*)"}));
+176   \textcolor{keywordflow}{if} (!fn.isEmpty())
+177     ;
+178   \{
+179     \textcolor{keywordflow}{if} (!fn.contains(tr(\textcolor{stringliteral}{".NN"}))) \{
+180       fn.append(tr(\textcolor{stringliteral}{".NN"}));
+181     \}
+182     std::string filename = fn.toStdString();
+183     \hyperlink{class_v_s_a_g_u_i_aaf0cb2947a03baddcb811eaa07c299e3}{NeuralNet}->\hyperlink{class_soil_math_1_1_n_n_ac01bcc755578095ebf1f1f0e951f2678}{SaveState}(filename);
+184   \}
+185 \}
 \end{DoxyCode}
 
 
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -315,7 +312,7 @@ Here is the call graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\label{class_v_s_a_g_u_i_a488d4269d1243e88f0e1372db813858f}
 
 
-Definition at line 232 of file vsagui.\+cpp.
+Definition at line 241 of file vsagui.\+cpp.
 
 
 
@@ -323,11 +320,11 @@ References hsettting\+Window, and s\+Settings.
 
 
 \begin{DoxyCode}
-233 \{
-234     \hyperlink{class_v_s_a_g_u_i_ad7a55217e7216e0badaa15e12a7654ff}{hsetttingWindow} = \textcolor{keyword}{new} \hyperlink{class_hardware_settings}{HardwareSettings}(0, 
+241                                                   \{
+242   \hyperlink{class_v_s_a_g_u_i_ad7a55217e7216e0badaa15e12a7654ff}{hsetttingWindow} = \textcolor{keyword}{new} \hyperlink{class_hardware_settings}{HardwareSettings}(0, 
       \hyperlink{class_v_s_a_g_u_i_a4a0358d00aa3cb520a9a1321962b0d4d}{sSettings});
-235     \hyperlink{class_v_s_a_g_u_i_ad7a55217e7216e0badaa15e12a7654ff}{hsetttingWindow}->exec();
-236 \}
+243   \hyperlink{class_v_s_a_g_u_i_ad7a55217e7216e0badaa15e12a7654ff}{hsetttingWindow}->exec();
+244 \}
 \end{DoxyCode}
 \hypertarget{class_v_s_a_g_u_i_a2a0f1c84b6897d726f1bff1e1fd007a6}{}\index{V\+S\+A\+G\+U\+I@{V\+S\+A\+G\+U\+I}!on\+\_\+action\+Import\+\_\+triggered@{on\+\_\+action\+Import\+\_\+triggered}}
 \index{on\+\_\+action\+Import\+\_\+triggered@{on\+\_\+action\+Import\+\_\+triggered}!V\+S\+A\+G\+U\+I@{V\+S\+A\+G\+U\+I}}
@@ -338,7 +335,7 @@ References hsettting\+Window, and s\+Settings.
 )\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\label{class_v_s_a_g_u_i_a2a0f1c84b6897d726f1bff1e1fd007a6}
 
 
-Definition at line 154 of file vsagui.\+cpp.
+Definition at line 160 of file vsagui.\+cpp.
 
 
 
@@ -346,19 +343,22 @@ References Soil\+Math\+::\+N\+N\+::\+Load\+State(), and Neural\+Net.
 
 
 \begin{DoxyCode}
-155 \{
-156     QString fn = QFileDialog::getOpenFileName(\textcolor{keyword}{this}, tr(\textcolor{stringliteral}{"Import Neural Network"}), tr(\textcolor{stringliteral}{"/home/"}), tr(\textcolor{stringliteral}{"Neural
-       Net (*.NN);;All Files (*)"}));
-157     \textcolor{keywordflow}{if} (!fn.isEmpty());
-158     \{
-159         std::string filename = fn.toStdString();
-160         \hyperlink{class_v_s_a_g_u_i_aaf0cb2947a03baddcb811eaa07c299e3}{NeuralNet}->\hyperlink{class_soil_math_1_1_n_n_a69c00e336b11531e25d51262da10fea0}{LoadState}(filename);
-161     \}
-162 \}
+160                                        \{
+161   QString fn = QFileDialog::getOpenFileName(
+162       \textcolor{keyword}{this}, tr(\textcolor{stringliteral}{"Import Neural Network"}), tr(\textcolor{stringliteral}{"/home/"}),
+163       tr(\textcolor{stringliteral}{"Neural Net (*.NN);;All Files (*)"}));
+164   \textcolor{keywordflow}{if} (!fn.isEmpty())
+165     ;
+166   \{
+167     std::string filename = fn.toStdString();
+168     \hyperlink{class_v_s_a_g_u_i_aaf0cb2947a03baddcb811eaa07c299e3}{NeuralNet}->\hyperlink{class_soil_math_1_1_n_n_a69c00e336b11531e25d51262da10fea0}{LoadState}(filename);
+169   \}
+170 \}
 \end{DoxyCode}
 
 
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -376,7 +376,7 @@ Here is the call graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\label{class_v_s_a_g_u_i_a27d11192fac9f1e8f15c6f5dc876e364}
 
 
-Definition at line 192 of file vsagui.\+cpp.
+Definition at line 207 of file vsagui.\+cpp.
 
 
 
@@ -384,15 +384,17 @@ References Soil\+Analyzer\+::\+Soil\+Settings\+::\+Load\+Settings(), and s\+Sett
 
 
 \begin{DoxyCode}
-193 \{
-194     QString fn = QFileDialog::getOpenFileName(\textcolor{keyword}{this}, tr(\textcolor{stringliteral}{"Load Settings"}), tr(\textcolor{stringliteral}{"/home/"}), tr(\textcolor{stringliteral}{"Settings
-       (*.ini);;All Files (*)"}));
-195     \textcolor{keywordflow}{if} (!fn.isEmpty());
-196     \{
-197         std::string filename = fn.toStdString();
-198         \hyperlink{class_v_s_a_g_u_i_a4a0358d00aa3cb520a9a1321962b0d4d}{sSettings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a438bf660eeb7a49a676eef5da129f8d5}{LoadSettings}(filename);
-199     \}
-200 \}
+207                                               \{
+208   QString fn =
+209       QFileDialog::getOpenFileName(\textcolor{keyword}{this}, tr(\textcolor{stringliteral}{"Load Settings"}), tr(\textcolor{stringliteral}{"/home/"}),
+210                                    tr(\textcolor{stringliteral}{"Settings (*.ini);;All Files (*)"}));
+211   \textcolor{keywordflow}{if} (!fn.isEmpty())
+212     ;
+213   \{
+214     std::string filename = fn.toStdString();
+215     \hyperlink{class_v_s_a_g_u_i_a4a0358d00aa3cb520a9a1321962b0d4d}{sSettings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a438bf660eeb7a49a676eef5da129f8d5}{LoadSettings}(filename);
+216   \}
+217 \}
 \end{DoxyCode}
 
 
@@ -414,7 +416,7 @@ Here is the call graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\label{class_v_s_a_g_u_i_a3a2577bbd366b5c1ffd89a8f605ab9cd}
 
 
-Definition at line 127 of file vsagui.\+cpp.
+Definition at line 133 of file vsagui.\+cpp.
 
 
 
@@ -422,20 +424,22 @@ References Soil\+Analyzer\+::\+Sample\+::connect\+\_\+\+Progress(), Soil\+Analyz
 
 
 \begin{DoxyCode}
-128 \{
-129     QString fn = QFileDialog::getOpenFileName(\textcolor{keyword}{this}, tr(\textcolor{stringliteral}{"Load Soil Sample"}), tr(\textcolor{stringliteral}{"/home/"}), tr(\textcolor{stringliteral}{"Soil Samples
-       (*.VSS);; Soil Particles (*.VPS);; All Files (*)"}));
-130     \textcolor{keywordflow}{if} (!fn.isEmpty() && fn.contains(tr(\textcolor{stringliteral}{"VSS"})));
-131     \{
-132         \textcolor{keyword}{delete} \hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample};
-133         \hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample} = \textcolor{keyword}{new} \hyperlink{class_soil_analyzer_1_1_sample}{SoilAnalyzer::Sample};
-134         std::string filename = fn.toStdString();
-135         \hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample}->\hyperlink{class_soil_analyzer_1_1_sample_a88f29d8ee3fad37cdad6cb88b2c8a288}{Load}(filename);
-136         \hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample}->\hyperlink{class_soil_analyzer_1_1_sample_a472dfdde346375463c979e45eb75fbb7}{connect\_Progress}(boost::bind(&
-      \hyperlink{class_v_s_a_g_u_i_a8a5092f741e17c73b04850a6b30dda04}{VSAGUI::on\_vision\_update}, \textcolor{keyword}{this}, \_1, \_2));
-137         \hyperlink{class_v_s_a_g_u_i_a988508cf880e27fcd8a029b94e546bcc}{SetMatToMainView}(\hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample}->\hyperlink{class_soil_analyzer_1_1_sample_a0d6e6fca9e232a77329daf0b4b29c634}{OriginalImage});
-138     \}
-139 \}
+133                                      \{
+134   QString fn = QFileDialog::getOpenFileName(
+135       \textcolor{keyword}{this}, tr(\textcolor{stringliteral}{"Load Soil Sample"}), tr(\textcolor{stringliteral}{"/home/"}),
+136       tr(\textcolor{stringliteral}{"Soil Samples (*.VSS);; Soil Particles (*.VPS);; All Files (*)"}));
+137   \textcolor{keywordflow}{if} (!fn.isEmpty() && fn.contains(tr(\textcolor{stringliteral}{"VSS"})))
+138     ;
+139   \{
+140     \textcolor{keyword}{delete} \hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample};
+141     \hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample} = \textcolor{keyword}{new} \hyperlink{class_soil_analyzer_1_1_sample}{SoilAnalyzer::Sample};
+142     std::string filename = fn.toStdString();
+143     \hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample}->\hyperlink{class_soil_analyzer_1_1_sample_a88f29d8ee3fad37cdad6cb88b2c8a288}{Load}(filename);
+144     \hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample}->\hyperlink{class_soil_analyzer_1_1_sample_a472dfdde346375463c979e45eb75fbb7}{connect\_Progress}(
+145         boost::bind(&\hyperlink{class_v_s_a_g_u_i_a8a5092f741e17c73b04850a6b30dda04}{VSAGUI::on\_vision\_update}, \textcolor{keyword}{this}, \_1, \_2));
+146     \hyperlink{class_v_s_a_g_u_i_a988508cf880e27fcd8a029b94e546bcc}{SetMatToMainView}(\hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample}->\hyperlink{class_soil_analyzer_1_1_sample_a0d6e6fca9e232a77329daf0b4b29c634}{OriginalImage});
+147   \}
+148 \}
 \end{DoxyCode}
 
 
@@ -457,7 +461,7 @@ Here is the call graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\label{class_v_s_a_g_u_i_a9695404e3f9a371a8ce182e3609b62f4}
 
 
-Definition at line 146 of file vsagui.\+cpp.
+Definition at line 152 of file vsagui.\+cpp.
 
 
 
@@ -465,13 +469,13 @@ References Soil\+Analyzer\+::\+Sample\+::connect\+\_\+\+Progress(), on\+\_\+\+Sn
 
 
 \begin{DoxyCode}
-147 \{
-148     \textcolor{keyword}{delete} \hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample};
-149     \hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample} = \textcolor{keyword}{new} \hyperlink{class_soil_analyzer_1_1_sample}{SoilAnalyzer::Sample};
-150     \hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample}->\hyperlink{class_soil_analyzer_1_1_sample_a472dfdde346375463c979e45eb75fbb7}{connect\_Progress}(boost::bind(&
-      \hyperlink{class_v_s_a_g_u_i_a8a5092f741e17c73b04850a6b30dda04}{VSAGUI::on\_vision\_update}, \textcolor{keyword}{this}, \_1, \_2));
-151     \hyperlink{class_v_s_a_g_u_i_a5e3ff078ad6165e40faa9cb9f21987b2}{on\_SnapshotButton\_clicked}();
-152 \}
+152                                     \{
+153   \textcolor{keyword}{delete} \hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample};
+154   \hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample} = \textcolor{keyword}{new} \hyperlink{class_soil_analyzer_1_1_sample}{SoilAnalyzer::Sample};
+155   \hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample}->\hyperlink{class_soil_analyzer_1_1_sample_a472dfdde346375463c979e45eb75fbb7}{connect\_Progress}(
+156       boost::bind(&\hyperlink{class_v_s_a_g_u_i_a8a5092f741e17c73b04850a6b30dda04}{VSAGUI::on\_vision\_update}, \textcolor{keyword}{this}, \_1, \_2));
+157   \hyperlink{class_v_s_a_g_u_i_a5e3ff078ad6165e40faa9cb9f21987b2}{on\_SnapshotButton\_clicked}();
+158 \}
 \end{DoxyCode}
 
 
@@ -493,7 +497,7 @@ Here is the call graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\label{class_v_s_a_g_u_i_a83ad26df88b8df9f3291b91dd6763e0c}
 
 
-Definition at line 202 of file vsagui.\+cpp.
+Definition at line 219 of file vsagui.\+cpp.
 
 
 
@@ -501,10 +505,10 @@ References Soil\+Analyzer\+::\+Soil\+Settings\+::\+Load\+Settings(), and s\+Sett
 
 
 \begin{DoxyCode}
-203 \{
-204     std::string filename = \textcolor{stringliteral}{"Settings/Default.ini"};
-205     \hyperlink{class_v_s_a_g_u_i_a4a0358d00aa3cb520a9a1321962b0d4d}{sSettings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a438bf660eeb7a49a676eef5da129f8d5}{LoadSettings}(filename);
-206 \}
+219                                                 \{
+220   std::string filename = \textcolor{stringliteral}{"Settings/Default.ini"};
+221   \hyperlink{class_v_s_a_g_u_i_a4a0358d00aa3cb520a9a1321962b0d4d}{sSettings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a438bf660eeb7a49a676eef5da129f8d5}{LoadSettings}(filename);
+222 \}
 \end{DoxyCode}
 
 
@@ -526,7 +530,7 @@ Here is the call graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\label{class_v_s_a_g_u_i_af385281e90a1a6652384eeb4f0f7d59b}
 
 
-Definition at line 181 of file vsagui.\+cpp.
+Definition at line 192 of file vsagui.\+cpp.
 
 
 
@@ -534,16 +538,20 @@ References Soil\+Analyzer\+::\+Soil\+Settings\+::\+Save\+Settings(), and s\+Sett
 
 
 \begin{DoxyCode}
-182 \{
-183     QString fn = QFileDialog::getSaveFileName(\textcolor{keyword}{this}, tr(\textcolor{stringliteral}{"Save Settings"}), tr(\textcolor{stringliteral}{"/home/"}), tr(\textcolor{stringliteral}{"Settings
-       (*.ini);;All Files (*)"}));
-184     \textcolor{keywordflow}{if} (!fn.isEmpty());
-185     \{
-186         \textcolor{keywordflow}{if} (!fn.contains(tr(\textcolor{stringliteral}{".ini"}))) \{ fn.append(tr(\textcolor{stringliteral}{".ini"})); \}
-187         std::string filename = fn.toStdString();
-188         \hyperlink{class_v_s_a_g_u_i_a4a0358d00aa3cb520a9a1321962b0d4d}{sSettings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_ab211c361df454e8e1e29a4bddedeba81}{SaveSettings}(filename);
-189     \}
-190 \}
+192                                               \{
+193   QString fn =
+194       QFileDialog::getSaveFileName(\textcolor{keyword}{this}, tr(\textcolor{stringliteral}{"Save Settings"}), tr(\textcolor{stringliteral}{"/home/"}),
+195                                    tr(\textcolor{stringliteral}{"Settings (*.ini);;All Files (*)"}));
+196   \textcolor{keywordflow}{if} (!fn.isEmpty())
+197     ;
+198   \{
+199     \textcolor{keywordflow}{if} (!fn.contains(tr(\textcolor{stringliteral}{".ini"}))) \{
+200       fn.append(tr(\textcolor{stringliteral}{".ini"}));
+201     \}
+202     std::string filename = fn.toStdString();
+203     \hyperlink{class_v_s_a_g_u_i_a4a0358d00aa3cb520a9a1321962b0d4d}{sSettings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_ab211c361df454e8e1e29a4bddedeba81}{SaveSettings}(filename);
+204   \}
+205 \}
 \end{DoxyCode}
 
 
@@ -565,7 +573,7 @@ Here is the call graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\label{class_v_s_a_g_u_i_aac9be9b68262411f701939efcc805696}
 
 
-Definition at line 116 of file vsagui.\+cpp.
+Definition at line 120 of file vsagui.\+cpp.
 
 
 
@@ -573,16 +581,18 @@ References Soil\+Analyzer\+::\+Sample\+::\+Save(), and Soil\+Sample.
 
 
 \begin{DoxyCode}
-117 \{
-118     QString fn = QFileDialog::getSaveFileName(\textcolor{keyword}{this}, tr(\textcolor{stringliteral}{"Save Soil Sample"}), tr(\textcolor{stringliteral}{"/home/"}), tr(\textcolor{stringliteral}{"Soil Samples
-       (*.VSS);; Soil Particles (*.VPS);; All Files (*)"}));
-119     \textcolor{keywordflow}{if} (!fn.isEmpty())
-120     \{
-121         \textcolor{keywordflow}{if} (!fn.contains(tr(\textcolor{stringliteral}{".VSS"}))) \{ fn.append(tr(\textcolor{stringliteral}{".VSS"})); \}
-122         std::string filename = fn.toStdString();
-123         \hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample}->\hyperlink{class_soil_analyzer_1_1_sample_a00fd0ec3bbea70454a6d8a6c1aaf34df}{Save}(filename);
-124     \}
-125 \}
+120                                      \{
+121   QString fn = QFileDialog::getSaveFileName(
+122       \textcolor{keyword}{this}, tr(\textcolor{stringliteral}{"Save Soil Sample"}), tr(\textcolor{stringliteral}{"/home/"}),
+123       tr(\textcolor{stringliteral}{"Soil Samples (*.VSS);; Soil Particles (*.VPS);; All Files (*)"}));
+124   \textcolor{keywordflow}{if} (!fn.isEmpty()) \{
+125     \textcolor{keywordflow}{if} (!fn.contains(tr(\textcolor{stringliteral}{".VSS"}))) \{
+126       fn.append(tr(\textcolor{stringliteral}{".VSS"}));
+127     \}
+128     std::string filename = fn.toStdString();
+129     \hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample}->\hyperlink{class_soil_analyzer_1_1_sample_a00fd0ec3bbea70454a6d8a6c1aaf34df}{Save}(filename);
+130   \}
+131 \}
 \end{DoxyCode}
 
 
@@ -604,7 +614,7 @@ Here is the call graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\label{class_v_s_a_g_u_i_aab2a8088bbb1cd89da8f90776b227566}
 
 
-Definition at line 175 of file vsagui.\+cpp.
+Definition at line 187 of file vsagui.\+cpp.
 
 
 
@@ -612,10 +622,10 @@ References setting\+Window, and s\+Settings.
 
 
 \begin{DoxyCode}
-176 \{
-177     \hyperlink{class_v_s_a_g_u_i_a76c2e60393e9a3d61bcc22fd02b80b87}{settingWindow} = \textcolor{keyword}{new} \hyperlink{class_vision_settings}{VisionSettings}(0, \hyperlink{class_v_s_a_g_u_i_a4a0358d00aa3cb520a9a1321962b0d4d}{sSettings});
-178     \hyperlink{class_v_s_a_g_u_i_a76c2e60393e9a3d61bcc22fd02b80b87}{settingWindow}->exec();
-179 \}
+187                                                       \{
+188   \hyperlink{class_v_s_a_g_u_i_a76c2e60393e9a3d61bcc22fd02b80b87}{settingWindow} = \textcolor{keyword}{new} \hyperlink{class_vision_settings}{VisionSettings}(0, \hyperlink{class_v_s_a_g_u_i_a4a0358d00aa3cb520a9a1321962b0d4d}{sSettings});
+189   \hyperlink{class_v_s_a_g_u_i_a76c2e60393e9a3d61bcc22fd02b80b87}{settingWindow}->exec();
+190 \}
 \end{DoxyCode}
 \hypertarget{class_v_s_a_g_u_i_aab3dd55cc1ac2bbd3d173ab1db3dda1e}{}\index{V\+S\+A\+G\+U\+I@{V\+S\+A\+G\+U\+I}!on\+\_\+\+Analyze\+Button\+\_\+clicked@{on\+\_\+\+Analyze\+Button\+\_\+clicked}}
 \index{on\+\_\+\+Analyze\+Button\+\_\+clicked@{on\+\_\+\+Analyze\+Button\+\_\+clicked}!V\+S\+A\+G\+U\+I@{V\+S\+A\+G\+U\+I}}
@@ -626,7 +636,7 @@ References setting\+Window, and s\+Settings.
 )\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\label{class_v_s_a_g_u_i_aab3dd55cc1ac2bbd3d173ab1db3dda1e}
 
 
-Definition at line 141 of file vsagui.\+cpp.
+Definition at line 150 of file vsagui.\+cpp.
 
 
 
@@ -634,9 +644,7 @@ References Soil\+Analyzer\+::\+Sample\+::\+Analyse(), Neural\+Net, and Soil\+Sam
 
 
 \begin{DoxyCode}
-142 \{
-143    \hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample}->\hyperlink{class_soil_analyzer_1_1_sample_aeb62e34de081b3f298e9b8ebf82df36d}{Analyse}(*\hyperlink{class_v_s_a_g_u_i_aaf0cb2947a03baddcb811eaa07c299e3}{NeuralNet});
-144 \}
+150 \{ \hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample}->\hyperlink{class_soil_analyzer_1_1_sample_aeb62e34de081b3f298e9b8ebf82df36d}{Analyse}(*\hyperlink{class_v_s_a_g_u_i_aaf0cb2947a03baddcb811eaa07c299e3}{NeuralNet}); \}
 \end{DoxyCode}
 
 
@@ -658,13 +666,11 @@ Here is the call graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\label{class_v_s_a_g_u_i_a71b162bbcc83d85b4aa8f5e44888b35e}
 
 
-Definition at line 227 of file vsagui.\+cpp.
+Definition at line 239 of file vsagui.\+cpp.
 
 
 \begin{DoxyCode}
-228 \{
-229 
-230 \}
+239 \{\}
 \end{DoxyCode}
 \hypertarget{class_v_s_a_g_u_i_adce0126d190e2c65437c9b030a54ad40}{}\index{V\+S\+A\+G\+U\+I@{V\+S\+A\+G\+U\+I}!on\+\_\+\+Offset\+Slider\+\_\+value\+Changed@{on\+\_\+\+Offset\+Slider\+\_\+value\+Changed}}
 \index{on\+\_\+\+Offset\+Slider\+\_\+value\+Changed@{on\+\_\+\+Offset\+Slider\+\_\+value\+Changed}!V\+S\+A\+G\+U\+I@{V\+S\+A\+G\+U\+I}}
@@ -675,7 +681,7 @@ Definition at line 227 of file vsagui.\+cpp.
 )\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\label{class_v_s_a_g_u_i_adce0126d190e2c65437c9b030a54ad40}
 
 
-Definition at line 222 of file vsagui.\+cpp.
+Definition at line 235 of file vsagui.\+cpp.
 
 
 
@@ -683,9 +689,9 @@ References s\+Settings, Soil\+Analyzer\+::\+Soil\+Settings\+::threshold\+Offset\
 
 
 \begin{DoxyCode}
-223 \{
-224     \hyperlink{class_v_s_a_g_u_i_a4a0358d00aa3cb520a9a1321962b0d4d}{sSettings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a48330eb812672b50a94483f264614e8f}{thresholdOffsetValue} = \hyperlink{class_v_s_a_g_u_i_a7a1d0cb3cf813ff9dce12f7f0ed6cd7a}{ui}->OffsetSlider->value();
-225 \}
+235                                                    \{
+236   \hyperlink{class_v_s_a_g_u_i_a4a0358d00aa3cb520a9a1321962b0d4d}{sSettings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a48330eb812672b50a94483f264614e8f}{thresholdOffsetValue} = \hyperlink{class_v_s_a_g_u_i_a7a1d0cb3cf813ff9dce12f7f0ed6cd7a}{ui}->OffsetSlider->value();
+237 \}
 \end{DoxyCode}
 \hypertarget{class_v_s_a_g_u_i_a231a3d41a13d0c59428db06cc445a34b}{}\index{V\+S\+A\+G\+U\+I@{V\+S\+A\+G\+U\+I}!on\+\_\+\+Segment\+Button\+\_\+clicked@{on\+\_\+\+Segment\+Button\+\_\+clicked}}
 \index{on\+\_\+\+Segment\+Button\+\_\+clicked@{on\+\_\+\+Segment\+Button\+\_\+clicked}!V\+S\+A\+G\+U\+I@{V\+S\+A\+G\+U\+I}}
@@ -696,7 +702,7 @@ References s\+Settings, Soil\+Analyzer\+::\+Soil\+Settings\+::threshold\+Offset\
 )\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\label{class_v_s_a_g_u_i_a231a3d41a13d0c59428db06cc445a34b}
 
 
-Definition at line 208 of file vsagui.\+cpp.
+Definition at line 224 of file vsagui.\+cpp.
 
 
 
@@ -704,10 +710,10 @@ References Soil\+Analyzer\+::\+Sample\+::\+Prep\+Img(), Soil\+Analyzer\+::\+Soil
 
 
 \begin{DoxyCode}
-209 \{
-210     \hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample}->\hyperlink{class_soil_analyzer_1_1_sample_a23050a1fff3e11e907657623756333b2}{PrepImg}(\hyperlink{class_v_s_a_g_u_i_a4a0358d00aa3cb520a9a1321962b0d4d}{sSettings});
-211     \hyperlink{class_v_s_a_g_u_i_a988508cf880e27fcd8a029b94e546bcc}{SetMatToMainView}(\hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample}->\hyperlink{class_soil_analyzer_1_1_soil_a4a328e0ebe7f1f3c5a1c4c581180d19e}{RGB});
-212 \}
+224                                       \{
+225   \hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample}->\hyperlink{class_soil_analyzer_1_1_sample_a23050a1fff3e11e907657623756333b2}{PrepImg}(\hyperlink{class_v_s_a_g_u_i_a4a0358d00aa3cb520a9a1321962b0d4d}{sSettings});
+226   \hyperlink{class_v_s_a_g_u_i_a988508cf880e27fcd8a029b94e546bcc}{SetMatToMainView}(\hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample}->\hyperlink{class_soil_analyzer_1_1_soil_a4a328e0ebe7f1f3c5a1c4c581180d19e}{RGB});
+227 \}
 \end{DoxyCode}
 
 
@@ -729,7 +735,7 @@ Here is the call graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\label{class_v_s_a_g_u_i_a5e3ff078ad6165e40faa9cb9f21987b2}
 
 
-Definition at line 95 of file vsagui.\+cpp.
+Definition at line 98 of file vsagui.\+cpp.
 
 
 
@@ -741,21 +747,22 @@ Referenced by on\+\_\+action\+New\+\_\+triggered().
 
 
 \begin{DoxyCode}
-96 \{
-97     \hyperlink{class_hardware_1_1_microscope}{Hardware::Microscope} microscope;
-98     \textcolor{keyword}{delete} \hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample};
-99     \hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample} = \textcolor{keyword}{new} \hyperlink{class_soil_analyzer_1_1_sample}{SoilAnalyzer::Sample};
-100     \hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample}->\hyperlink{class_soil_analyzer_1_1_sample_a472dfdde346375463c979e45eb75fbb7}{connect\_Progress}(boost::bind(&
-      \hyperlink{class_v_s_a_g_u_i_a8a5092f741e17c73b04850a6b30dda04}{VSAGUI::on\_vision\_update}, \textcolor{keyword}{this}, \_1, \_2));
-101     this->\hyperlink{class_v_s_a_g_u_i_a8cbaaa3b5e0975b7a1101b9bef3c9b57}{statusLabel}->setText(tr(\textcolor{stringliteral}{"Grabbing new Image!"}));
-102     \hyperlink{class_v_s_a_g_u_i_a670325c6bab3874937f0a9b7e8e3b370}{finished\_sig} = microscope.\hyperlink{class_hardware_1_1_microscope_abc3f008ec7cf00e6ddf31b0a4ed392cb}{connect\_Finished}([&]() \{
-103         \hyperlink{class_v_s_a_g_u_i_a988508cf880e27fcd8a029b94e546bcc}{SetMatToMainView}(\hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample}->\hyperlink{class_soil_analyzer_1_1_sample_a0d6e6fca9e232a77329daf0b4b29c634}{OriginalImage});
-104         this->\hyperlink{class_v_s_a_g_u_i_a8cbaaa3b5e0975b7a1101b9bef3c9b57}{statusLabel}->setText(tr(\textcolor{stringliteral}{"New Image Grabbed"})); \});
-105     \hyperlink{class_v_s_a_g_u_i_a3503e0415ff202c93fc4d7ee5c6f4fb8}{progress\_sig} = microscope.\hyperlink{class_hardware_1_1_microscope_abc29f83a2f0ba536df3eb7ccc250b111}{connect\_Progress}([&](\textcolor{keywordtype}{int} &prog)\{ this->
-      \hyperlink{class_v_s_a_g_u_i_a17b71e08eeff21b28e3816ec5482473c}{progressBar}->setValue(prog); \});
-106     microscope.\hyperlink{class_hardware_1_1_microscope_a8cec2eacbd3f0ea164d16100a6078d5b}{GetHDRFrame}(\hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample}->\hyperlink{class_soil_analyzer_1_1_sample_a0d6e6fca9e232a77329daf0b4b29c634}{OriginalImage}, 
+98                                        \{
+99   \hyperlink{class_hardware_1_1_microscope}{Hardware::Microscope} microscope;
+100   \textcolor{keyword}{delete} \hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample};
+101   \hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample} = \textcolor{keyword}{new} \hyperlink{class_soil_analyzer_1_1_sample}{SoilAnalyzer::Sample};
+102   \hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample}->\hyperlink{class_soil_analyzer_1_1_sample_a472dfdde346375463c979e45eb75fbb7}{connect\_Progress}(
+103       boost::bind(&\hyperlink{class_v_s_a_g_u_i_a8a5092f741e17c73b04850a6b30dda04}{VSAGUI::on\_vision\_update}, \textcolor{keyword}{this}, \_1, \_2));
+104   this->\hyperlink{class_v_s_a_g_u_i_a8cbaaa3b5e0975b7a1101b9bef3c9b57}{statusLabel}->setText(tr(\textcolor{stringliteral}{"Grabbing new Image!"}));
+105   \hyperlink{class_v_s_a_g_u_i_a670325c6bab3874937f0a9b7e8e3b370}{finished\_sig} = microscope.\hyperlink{class_hardware_1_1_microscope_abc3f008ec7cf00e6ddf31b0a4ed392cb}{connect\_Finished}([&]() \{
+106     \hyperlink{class_v_s_a_g_u_i_a988508cf880e27fcd8a029b94e546bcc}{SetMatToMainView}(\hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample}->\hyperlink{class_soil_analyzer_1_1_sample_a0d6e6fca9e232a77329daf0b4b29c634}{OriginalImage});
+107     this->\hyperlink{class_v_s_a_g_u_i_a8cbaaa3b5e0975b7a1101b9bef3c9b57}{statusLabel}->setText(tr(\textcolor{stringliteral}{"New Image Grabbed"}));
+108   \});
+109   \hyperlink{class_v_s_a_g_u_i_a3503e0415ff202c93fc4d7ee5c6f4fb8}{progress\_sig} = microscope.\hyperlink{class_hardware_1_1_microscope_abc29f83a2f0ba536df3eb7ccc250b111}{connect\_Progress}(
+110       [&](\textcolor{keywordtype}{int} &prog) \{ this->\hyperlink{class_v_s_a_g_u_i_a17b71e08eeff21b28e3816ec5482473c}{progressBar}->setValue(prog); \});
+111   microscope.\hyperlink{class_hardware_1_1_microscope_a8cec2eacbd3f0ea164d16100a6078d5b}{GetHDRFrame}(\hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample}->\hyperlink{class_soil_analyzer_1_1_sample_a0d6e6fca9e232a77329daf0b4b29c634}{OriginalImage}, 
       \hyperlink{class_v_s_a_g_u_i_a4a0358d00aa3cb520a9a1321962b0d4d}{sSettings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a77e631ff44efe74762b5adaa2eb2cd11}{HDRframes});
-107 \}
+112 \}
 \end{DoxyCode}
 
 
@@ -788,7 +795,7 @@ Here is the caller graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\label{class_v_s_a_g_u_i_a161ef77cd94b239874ea35079aec9eb4}
 
 
-Definition at line 214 of file vsagui.\+cpp.
+Definition at line 229 of file vsagui.\+cpp.
 
 
 
@@ -796,13 +803,12 @@ References Soil\+Analyzer\+::\+Sample\+::img\+Prepped, Soil\+Analyzer\+::\+Sampl
 
 
 \begin{DoxyCode}
-215 \{
-216     \hyperlink{class_v_s_a_g_u_i_a4a0358d00aa3cb520a9a1321962b0d4d}{sSettings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a48330eb812672b50a94483f264614e8f}{thresholdOffsetValue} = \hyperlink{class_v_s_a_g_u_i_a7a1d0cb3cf813ff9dce12f7f0ed6cd7a}{ui}->OffsetSlider->value();
-217     \textcolor{keywordflow}{if} (\hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample}->\hyperlink{class_soil_analyzer_1_1_sample_ab025a26f7276128a5a974cae15b51dfc}{imgPrepped})
-218     \{
-219         \hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample}->\hyperlink{class_soil_analyzer_1_1_sample_a23050a1fff3e11e907657623756333b2}{PrepImg}(\hyperlink{class_v_s_a_g_u_i_a4a0358d00aa3cb520a9a1321962b0d4d}{sSettings});
-220     \}
-221 \}
+229                                               \{
+230   \hyperlink{class_v_s_a_g_u_i_a4a0358d00aa3cb520a9a1321962b0d4d}{sSettings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a48330eb812672b50a94483f264614e8f}{thresholdOffsetValue} = \hyperlink{class_v_s_a_g_u_i_a7a1d0cb3cf813ff9dce12f7f0ed6cd7a}{ui}->OffsetSlider->value();
+231   \textcolor{keywordflow}{if} (\hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample}->\hyperlink{class_soil_analyzer_1_1_sample_ab025a26f7276128a5a974cae15b51dfc}{imgPrepped}) \{
+232     \hyperlink{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}{SoilSample}->\hyperlink{class_soil_analyzer_1_1_sample_a23050a1fff3e11e907657623756333b2}{PrepImg}(\hyperlink{class_v_s_a_g_u_i_a4a0358d00aa3cb520a9a1321962b0d4d}{sSettings});
+233   \}
+234 \}
 \end{DoxyCode}
 
 
@@ -825,7 +831,7 @@ Here is the call graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [private]}}\label{class_v_s_a_g_u_i_a8a5092f741e17c73b04850a6b30dda04}
 
 
-Definition at line 109 of file vsagui.\+cpp.
+Definition at line 114 of file vsagui.\+cpp.
 
 
 
@@ -837,11 +843,11 @@ Referenced by on\+\_\+action\+Load\+\_\+triggered(), on\+\_\+action\+New\+\_\+tr
 
 
 \begin{DoxyCode}
-110 \{
-111     \textcolor{keywordtype}{int} progress = prog * 100;
-112     this->\hyperlink{class_v_s_a_g_u_i_a17b71e08eeff21b28e3816ec5482473c}{progressBar}->setValue(progress);
-113     this->\hyperlink{class_v_s_a_g_u_i_a8cbaaa3b5e0975b7a1101b9bef3c9b57}{statusLabel}->setText(tr(statusText.c\_str()));
-114 \}
+114                                                            \{
+115   \textcolor{keywordtype}{int} progress = prog * 100;
+116   this->\hyperlink{class_v_s_a_g_u_i_a17b71e08eeff21b28e3816ec5482473c}{progressBar}->setValue(progress);
+117   this->\hyperlink{class_v_s_a_g_u_i_a8cbaaa3b5e0975b7a1101b9bef3c9b57}{statusLabel}->setText(tr(statusText.c\_str()));
+118 \}
 \end{DoxyCode}
 
 
@@ -863,7 +869,7 @@ Here is the caller graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [private]}}\label{class_v_s_a_g_u_i_a988508cf880e27fcd8a029b94e546bcc}
 
 
-Definition at line 81 of file vsagui.\+cpp.
+Definition at line 88 of file vsagui.\+cpp.
 
 
 
@@ -875,13 +881,13 @@ Referenced by on\+\_\+action\+Load\+\_\+triggered(), on\+\_\+\+Segment\+Button\+
 
 
 \begin{DoxyCode}
-82 \{
-83     QImage *qOrigImg = \textcolor{keyword}{new} QImage(\hyperlink{class_open_c_v_q_t_aed2deb7932b122f110cb651747d6d81b}{OpenCVQT::Mat2QImage}(img));
-84     QPixmap *qOrigPix = \textcolor{keyword}{new} QPixmap(QPixmap::fromImage(*qOrigImg));
-85     \hyperlink{class_v_s_a_g_u_i_a7a1d0cb3cf813ff9dce12f7f0ed6cd7a}{ui}->MainImg->clear();
-86     \hyperlink{class_v_s_a_g_u_i_a7a1d0cb3cf813ff9dce12f7f0ed6cd7a}{ui}->MainImg->setPixmap(*qOrigPix);
-87     \hyperlink{class_v_s_a_g_u_i_a7a1d0cb3cf813ff9dce12f7f0ed6cd7a}{ui}->MainImg->show();
-88 \}
+88                                         \{
+89   QImage *qOrigImg = \textcolor{keyword}{new} QImage(\hyperlink{class_open_c_v_q_t_aed2deb7932b122f110cb651747d6d81b}{OpenCVQT::Mat2QImage}(img));
+90   QPixmap *qOrigPix = \textcolor{keyword}{new} QPixmap(QPixmap::fromImage(*qOrigImg));
+91   \hyperlink{class_v_s_a_g_u_i_a7a1d0cb3cf813ff9dce12f7f0ed6cd7a}{ui}->MainImg->clear();
+92   \hyperlink{class_v_s_a_g_u_i_a7a1d0cb3cf813ff9dce12f7f0ed6cd7a}{ui}->MainImg->setPixmap(*qOrigPix);
+93   \hyperlink{class_v_s_a_g_u_i_a7a1d0cb3cf813ff9dce12f7f0ed6cd7a}{ui}->MainImg->show();
+94 \}
 \end{DoxyCode}
 
 
@@ -913,7 +919,7 @@ Here is the caller graph for this function\+:\nopagebreak
 \subsubsection[{error\+Message\+Dialog}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Error\+Message$\ast$ V\+S\+A\+G\+U\+I\+::error\+Message\+Dialog\hspace{0.3cm}{\ttfamily [private]}}\label{class_v_s_a_g_u_i_af01408e987e5df2ce336ee8447841c1f}
 
 
-Definition at line 89 of file vsagui.\+h.
+Definition at line 95 of file vsagui.\+h.
 
 
 
@@ -924,7 +930,7 @@ Referenced by V\+S\+A\+G\+U\+I().
 \subsubsection[{finished\+\_\+sig}]{\setlength{\rightskip}{0pt plus 5cm}boost\+::signals2\+::connection V\+S\+A\+G\+U\+I\+::finished\+\_\+sig\hspace{0.3cm}{\ttfamily [private]}}\label{class_v_s_a_g_u_i_a670325c6bab3874937f0a9b7e8e3b370}
 
 
-Definition at line 95 of file vsagui.\+h.
+Definition at line 101 of file vsagui.\+h.
 
 
 
@@ -935,7 +941,7 @@ Referenced by on\+\_\+\+Snapshot\+Button\+\_\+clicked(), and V\+S\+A\+G\+U\+I().
 \subsubsection[{hsettting\+Window}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Hardware\+Settings}$\ast$ V\+S\+A\+G\+U\+I\+::hsettting\+Window\hspace{0.3cm}{\ttfamily [private]}}\label{class_v_s_a_g_u_i_ad7a55217e7216e0badaa15e12a7654ff}
 
 
-Definition at line 91 of file vsagui.\+h.
+Definition at line 97 of file vsagui.\+h.
 
 
 
@@ -946,7 +952,7 @@ Referenced by on\+\_\+action\+Hardware\+\_\+\+Settings\+\_\+triggered().
 \subsubsection[{Neural\+Net}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Soil\+Math\+::\+N\+N}$\ast$ V\+S\+A\+G\+U\+I\+::\+Neural\+Net = nullptr\hspace{0.3cm}{\ttfamily [private]}}\label{class_v_s_a_g_u_i_aaf0cb2947a03baddcb811eaa07c299e3}
 
 
-Definition at line 102 of file vsagui.\+h.
+Definition at line 108 of file vsagui.\+h.
 
 
 
@@ -957,14 +963,14 @@ Referenced by on\+\_\+action\+Export\+\_\+triggered(), on\+\_\+action\+Import\+\
 \subsubsection[{Orig\+Img}]{\setlength{\rightskip}{0pt plus 5cm}cv\+::\+Mat$\ast$ V\+S\+A\+G\+U\+I\+::\+Orig\+Img\hspace{0.3cm}{\ttfamily [private]}}\label{class_v_s_a_g_u_i_ae74be8a44b34a65cb189d9b58ee40455}
 
 
-Definition at line 104 of file vsagui.\+h.
+Definition at line 110 of file vsagui.\+h.
 
 \hypertarget{class_v_s_a_g_u_i_a3503e0415ff202c93fc4d7ee5c6f4fb8}{}\index{V\+S\+A\+G\+U\+I@{V\+S\+A\+G\+U\+I}!progress\+\_\+sig@{progress\+\_\+sig}}
 \index{progress\+\_\+sig@{progress\+\_\+sig}!V\+S\+A\+G\+U\+I@{V\+S\+A\+G\+U\+I}}
 \subsubsection[{progress\+\_\+sig}]{\setlength{\rightskip}{0pt plus 5cm}boost\+::signals2\+::connection V\+S\+A\+G\+U\+I\+::progress\+\_\+sig\hspace{0.3cm}{\ttfamily [private]}}\label{class_v_s_a_g_u_i_a3503e0415ff202c93fc4d7ee5c6f4fb8}
 
 
-Definition at line 96 of file vsagui.\+h.
+Definition at line 102 of file vsagui.\+h.
 
 
 
@@ -975,7 +981,7 @@ Referenced by on\+\_\+\+Snapshot\+Button\+\_\+clicked(), and V\+S\+A\+G\+U\+I().
 \subsubsection[{progress\+Bar}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Progress\+Bar$\ast$ V\+S\+A\+G\+U\+I\+::progress\+Bar = nullptr\hspace{0.3cm}{\ttfamily [private]}}\label{class_v_s_a_g_u_i_a17b71e08eeff21b28e3816ec5482473c}
 
 
-Definition at line 105 of file vsagui.\+h.
+Definition at line 111 of file vsagui.\+h.
 
 
 
@@ -986,7 +992,7 @@ Referenced by on\+\_\+\+Snapshot\+Button\+\_\+clicked(), on\+\_\+vision\+\_\+upd
 \subsubsection[{run\+From\+B\+B\+B}]{\setlength{\rightskip}{0pt plus 5cm}bool V\+S\+A\+G\+U\+I\+::run\+From\+B\+B\+B = false\hspace{0.3cm}{\ttfamily [private]}}\label{class_v_s_a_g_u_i_ad093d6fc67a6ad9e27948023ddba775d}
 
 
-Definition at line 108 of file vsagui.\+h.
+Definition at line 114 of file vsagui.\+h.
 
 
 
@@ -997,14 +1003,14 @@ Referenced by V\+S\+A\+G\+U\+I().
 \subsubsection[{Segmented}]{\setlength{\rightskip}{0pt plus 5cm}bool V\+S\+A\+G\+U\+I\+::\+Segmented = false\hspace{0.3cm}{\ttfamily [private]}}\label{class_v_s_a_g_u_i_a7684dfb6ffa5e169d611f2070b8e5041}
 
 
-Definition at line 109 of file vsagui.\+h.
+Definition at line 115 of file vsagui.\+h.
 
 \hypertarget{class_v_s_a_g_u_i_a76c2e60393e9a3d61bcc22fd02b80b87}{}\index{V\+S\+A\+G\+U\+I@{V\+S\+A\+G\+U\+I}!setting\+Window@{setting\+Window}}
 \index{setting\+Window@{setting\+Window}!V\+S\+A\+G\+U\+I@{V\+S\+A\+G\+U\+I}}
 \subsubsection[{setting\+Window}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vision\+Settings}$\ast$ V\+S\+A\+G\+U\+I\+::setting\+Window\hspace{0.3cm}{\ttfamily [private]}}\label{class_v_s_a_g_u_i_a76c2e60393e9a3d61bcc22fd02b80b87}
 
 
-Definition at line 90 of file vsagui.\+h.
+Definition at line 96 of file vsagui.\+h.
 
 
 
@@ -1015,7 +1021,7 @@ Referenced by on\+\_\+action\+Segmentation\+\_\+\+Settings\+\_\+triggered().
 \subsubsection[{Soil\+Sample}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Soil\+Analyzer\+::\+Sample}$\ast$ V\+S\+A\+G\+U\+I\+::\+Soil\+Sample = nullptr\hspace{0.3cm}{\ttfamily [private]}}\label{class_v_s_a_g_u_i_ac90517c9baea0a75455d43d5eb77d3e7}
 
 
-Definition at line 101 of file vsagui.\+h.
+Definition at line 107 of file vsagui.\+h.
 
 
 
@@ -1026,7 +1032,7 @@ Referenced by on\+\_\+action\+Load\+\_\+triggered(), on\+\_\+action\+New\+\_\+tr
 \subsubsection[{s\+Settings}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Soil\+Analyzer\+::\+Soil\+Settings}$\ast$ V\+S\+A\+G\+U\+I\+::s\+Settings\hspace{0.3cm}{\ttfamily [private]}}\label{class_v_s_a_g_u_i_a4a0358d00aa3cb520a9a1321962b0d4d}
 
 
-Definition at line 93 of file vsagui.\+h.
+Definition at line 99 of file vsagui.\+h.
 
 
 
@@ -1037,7 +1043,7 @@ Referenced by on\+\_\+action\+Hardware\+\_\+\+Settings\+\_\+triggered(), on\+\_\
 \subsubsection[{status\+Label}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Label$\ast$ V\+S\+A\+G\+U\+I\+::status\+Label = nullptr\hspace{0.3cm}{\ttfamily [private]}}\label{class_v_s_a_g_u_i_a8cbaaa3b5e0975b7a1101b9bef3c9b57}
 
 
-Definition at line 106 of file vsagui.\+h.
+Definition at line 112 of file vsagui.\+h.
 
 
 
@@ -1048,7 +1054,7 @@ Referenced by on\+\_\+\+Snapshot\+Button\+\_\+clicked(), on\+\_\+vision\+\_\+upd
 \subsubsection[{ui}]{\setlength{\rightskip}{0pt plus 5cm}Ui\+::\+V\+S\+A\+G\+U\+I$\ast$ V\+S\+A\+G\+U\+I\+::ui\hspace{0.3cm}{\ttfamily [private]}}\label{class_v_s_a_g_u_i_a7a1d0cb3cf813ff9dce12f7f0ed6cd7a}
 
 
-Definition at line 88 of file vsagui.\+h.
+Definition at line 94 of file vsagui.\+h.
 
 
 
@@ -1059,14 +1065,14 @@ Referenced by on\+\_\+\+Offset\+Slider\+\_\+value\+Changed(), on\+\_\+vertical\+
 \subsubsection[{visionprogress\+\_\+seg}]{\setlength{\rightskip}{0pt plus 5cm}boost\+::signals2\+::connection V\+S\+A\+G\+U\+I\+::visionprogress\+\_\+seg\hspace{0.3cm}{\ttfamily [private]}}\label{class_v_s_a_g_u_i_a524d706a05977a319c6381aae3f313de}
 
 
-Definition at line 97 of file vsagui.\+h.
+Definition at line 103 of file vsagui.\+h.
 
 \hypertarget{class_v_s_a_g_u_i_a1177641d1293c486f77fa62e3c8ed26a}{}\index{V\+S\+A\+G\+U\+I@{V\+S\+A\+G\+U\+I}!web\+Cams@{web\+Cams}}
 \index{web\+Cams@{web\+Cams}!V\+S\+A\+G\+U\+I@{V\+S\+A\+G\+U\+I}}
 \subsubsection[{web\+Cams}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$std\+::string$>$ V\+S\+A\+G\+U\+I\+::web\+Cams\hspace{0.3cm}{\ttfamily [private]}}\label{class_v_s_a_g_u_i_a1177641d1293c486f77fa62e3c8ed26a}
 
 
-Definition at line 112 of file vsagui.\+h.
+Definition at line 118 of file vsagui.\+h.
 
 
 

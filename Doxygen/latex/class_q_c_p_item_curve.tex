@@ -87,13 +87,15 @@ Q\+Pen \hyperlink{class_q_c_p_item_curve_ab22cbab261b20be5aa8e4ca252149246}{m\+S
 \subsection{Detailed Description}
 A curved line from one point to another. 
 
- It has four positions, {\itshape start} and {\itshape end}, which define the end points of the line, and two control points which define the direction the line exits from the start and the direction from which it approaches the end\+: {\itshape start\+Dir} and {\itshape end\+Dir}.
+ solid blue discs are positions."
+
+It has four positions, {\itshape start} and {\itshape end}, which define the end points of the line, and two control points which define the direction the line exits from the start and the direction from which it approaches the end\+: {\itshape start\+Dir} and {\itshape end\+Dir}.
 
 With \hyperlink{class_q_c_p_item_curve_a08a30d9cdd63995deea3d9e20430676f}{set\+Head} and \hyperlink{class_q_c_p_item_curve_ac3488d8b1a6489c845dc5bff3ef71124}{set\+Tail} you may set different line ending styles, e.\+g. to create an arrow.
 
 Often it is desirable for the control points to stay at fixed relative positions to the start/end point. This can be achieved by setting the parent anchor e.\+g. of {\itshape start\+Dir} simply to {\itshape start}, and then specify the desired pixel offset with \hyperlink{class_q_c_p_item_position_aa988ba4e87ab684c9021017dcaba945f}{Q\+C\+P\+Item\+Position\+::set\+Coords} on {\itshape start\+Dir}. 
 
-Definition at line 3321 of file qcustomplot.\+h.
+Definition at line 3782 of file qcustomplot.\+h.
 
 
 
@@ -109,7 +111,7 @@ Creates a curve item and sets default values.
 
 The constructed item can be added to the plot with \hyperlink{class_q_custom_plot_aa500620379262321685cb7a7674cbd2a}{Q\+Custom\+Plot\+::add\+Item}. 
 
-Definition at line 21884 of file qcustomplot.\+cpp.
+Definition at line 24413 of file qcustomplot.\+cpp.
 
 
 
@@ -117,21 +119,19 @@ References end, end\+Dir, Q\+C\+P\+Item\+Position\+::set\+Coords(), set\+Pen(), 
 
 
 \begin{DoxyCode}
-21884                                                   :
-21885   \hyperlink{class_q_c_p_abstract_item_a9922507d8b4503a1fe1ed0b1030e23b6}{QCPAbstractItem}(parentPlot),
-21886   \hyperlink{class_q_c_p_item_curve_a20c3b5ea31c33764f4f30c2ec7ae518b}{start}(\hyperlink{class_q_c_p_abstract_item_a75036d39c4d4e2e1a7dd145fff915d32}{createPosition}(QLatin1String(\textcolor{stringliteral}{"start"}))),
-21887   \hyperlink{class_q_c_p_item_curve_aa124bf66c09cc51c627fb49db8bf8a7b}{startDir}(\hyperlink{class_q_c_p_abstract_item_a75036d39c4d4e2e1a7dd145fff915d32}{createPosition}(QLatin1String(\textcolor{stringliteral}{"startDir"}))),
-21888   \hyperlink{class_q_c_p_item_curve_a28181a9dee9cc3c3da83a883221bd2d0}{endDir}(\hyperlink{class_q_c_p_abstract_item_a75036d39c4d4e2e1a7dd145fff915d32}{createPosition}(QLatin1String(\textcolor{stringliteral}{"endDir"}))),
-21889   \hyperlink{class_q_c_p_item_curve_a24ecbb195b32a08b42b61c2cf08a1b4d}{end}(\hyperlink{class_q_c_p_abstract_item_a75036d39c4d4e2e1a7dd145fff915d32}{createPosition}(QLatin1String(\textcolor{stringliteral}{"end"})))
-21890 \{
-21891   \hyperlink{class_q_c_p_item_curve_a20c3b5ea31c33764f4f30c2ec7ae518b}{start}->\hyperlink{class_q_c_p_item_position_aa988ba4e87ab684c9021017dcaba945f}{setCoords}(0, 0);
-21892   \hyperlink{class_q_c_p_item_curve_aa124bf66c09cc51c627fb49db8bf8a7b}{startDir}->\hyperlink{class_q_c_p_item_position_aa988ba4e87ab684c9021017dcaba945f}{setCoords}(0.5, 0);
-21893   \hyperlink{class_q_c_p_item_curve_a28181a9dee9cc3c3da83a883221bd2d0}{endDir}->\hyperlink{class_q_c_p_item_position_aa988ba4e87ab684c9021017dcaba945f}{setCoords}(0, 0.5);
-21894   \hyperlink{class_q_c_p_item_curve_a24ecbb195b32a08b42b61c2cf08a1b4d}{end}->\hyperlink{class_q_c_p_item_position_aa988ba4e87ab684c9021017dcaba945f}{setCoords}(1, 1);
-21895   
-21896   \hyperlink{class_q_c_p_item_curve_a034be908440aec785c34b92843461221}{setPen}(QPen(Qt::black));
-21897   \hyperlink{class_q_c_p_item_curve_a375b917669f868c5a106bf2f1ab7c26d}{setSelectedPen}(QPen(Qt::blue,2));
-21898 \}
+24414     : \hyperlink{class_q_c_p_abstract_item_a9922507d8b4503a1fe1ed0b1030e23b6}{QCPAbstractItem}(parentPlot),
+24415       \hyperlink{class_q_c_p_item_curve_a20c3b5ea31c33764f4f30c2ec7ae518b}{start}(\hyperlink{class_q_c_p_abstract_item_a75036d39c4d4e2e1a7dd145fff915d32}{createPosition}(QLatin1String(\textcolor{stringliteral}{"start"}))),
+24416       \hyperlink{class_q_c_p_item_curve_aa124bf66c09cc51c627fb49db8bf8a7b}{startDir}(\hyperlink{class_q_c_p_abstract_item_a75036d39c4d4e2e1a7dd145fff915d32}{createPosition}(QLatin1String(\textcolor{stringliteral}{"startDir"}))),
+24417       \hyperlink{class_q_c_p_item_curve_a28181a9dee9cc3c3da83a883221bd2d0}{endDir}(\hyperlink{class_q_c_p_abstract_item_a75036d39c4d4e2e1a7dd145fff915d32}{createPosition}(QLatin1String(\textcolor{stringliteral}{"endDir"}))),
+24418       \hyperlink{class_q_c_p_item_curve_a24ecbb195b32a08b42b61c2cf08a1b4d}{end}(\hyperlink{class_q_c_p_abstract_item_a75036d39c4d4e2e1a7dd145fff915d32}{createPosition}(QLatin1String(\textcolor{stringliteral}{"end"}))) \{
+24419   \hyperlink{class_q_c_p_item_curve_a20c3b5ea31c33764f4f30c2ec7ae518b}{start}->\hyperlink{class_q_c_p_item_position_aa988ba4e87ab684c9021017dcaba945f}{setCoords}(0, 0);
+24420   \hyperlink{class_q_c_p_item_curve_aa124bf66c09cc51c627fb49db8bf8a7b}{startDir}->\hyperlink{class_q_c_p_item_position_aa988ba4e87ab684c9021017dcaba945f}{setCoords}(0.5, 0);
+24421   \hyperlink{class_q_c_p_item_curve_a28181a9dee9cc3c3da83a883221bd2d0}{endDir}->\hyperlink{class_q_c_p_item_position_aa988ba4e87ab684c9021017dcaba945f}{setCoords}(0, 0.5);
+24422   \hyperlink{class_q_c_p_item_curve_a24ecbb195b32a08b42b61c2cf08a1b4d}{end}->\hyperlink{class_q_c_p_item_position_aa988ba4e87ab684c9021017dcaba945f}{setCoords}(1, 1);
+24423 
+24424   \hyperlink{class_q_c_p_item_curve_a034be908440aec785c34b92843461221}{setPen}(QPen(Qt::black));
+24425   \hyperlink{class_q_c_p_item_curve_a375b917669f868c5a106bf2f1ab7c26d}{setSelectedPen}(QPen(Qt::blue, 2));
+24426 \}
 \end{DoxyCode}
 
 
@@ -153,12 +153,11 @@ Here is the call graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_q_c_p_item_curve_ae36f20fd5deff2f1443a7c53eaa95c81}
 
 
-Definition at line 21900 of file qcustomplot.\+cpp.
+Definition at line 24428 of file qcustomplot.\+cpp.
 
 
 \begin{DoxyCode}
-21901 \{
-21902 \}
+24428 \{\}
 \end{DoxyCode}
 
 
@@ -176,7 +175,7 @@ Implements \hyperlink{class_q_c_p_abstract_item_ad0dc056f650c3ca73414e6b4f01674e
 
 
 
-Definition at line 21977 of file qcustomplot.\+cpp.
+Definition at line 24496 of file qcustomplot.\+cpp.
 
 
 
@@ -184,34 +183,37 @@ References Q\+C\+P\+Abstract\+Item\+::clip\+Rect(), Q\+C\+P\+Line\+Ending\+::dra
 
 
 \begin{DoxyCode}
-21978 \{
-21979   QPointF startVec(\hyperlink{class_q_c_p_item_curve_a20c3b5ea31c33764f4f30c2ec7ae518b}{start}->\hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}());
-21980   QPointF startDirVec(\hyperlink{class_q_c_p_item_curve_aa124bf66c09cc51c627fb49db8bf8a7b}{startDir}->\hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}());
-21981   QPointF endDirVec(\hyperlink{class_q_c_p_item_curve_a28181a9dee9cc3c3da83a883221bd2d0}{endDir}->\hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}());
-21982   QPointF endVec(\hyperlink{class_q_c_p_item_curve_a24ecbb195b32a08b42b61c2cf08a1b4d}{end}->\hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}());
-21983   \textcolor{keywordflow}{if} (QVector2D(endVec-startVec).length() > 1e10f) \textcolor{comment}{// too large curves cause crash}
-21984     \textcolor{keywordflow}{return};
-21985 
-21986   QPainterPath cubicPath(startVec);
-21987   cubicPath.cubicTo(startDirVec, endDirVec, endVec);
-21988 
-21989   \textcolor{comment}{// paint visible segment, if existent:}
-21990   QRect clip = \hyperlink{class_q_c_p_abstract_item_a538e25ff8856534582f5b2b400a46405}{clipRect}().adjusted(-\hyperlink{class_q_c_p_item_curve_a8089126f5645b6edfbaddea49d1e8390}{mainPen}().widthF(), -\hyperlink{class_q_c_p_item_curve_a8089126f5645b6edfbaddea49d1e8390}{mainPen}().widthF(), 
-      \hyperlink{class_q_c_p_item_curve_a8089126f5645b6edfbaddea49d1e8390}{mainPen}().widthF(), \hyperlink{class_q_c_p_item_curve_a8089126f5645b6edfbaddea49d1e8390}{mainPen}().widthF());
-21991   QRect cubicRect = cubicPath.controlPointRect().toRect();
-21992   \textcolor{keywordflow}{if} (cubicRect.isEmpty()) \textcolor{comment}{// may happen when start and end exactly on same x or y position}
-21993     cubicRect.adjust(0, 0, 1, 1);
-21994   \textcolor{keywordflow}{if} (clip.intersects(cubicRect))
-21995   \{
-21996     painter->\hyperlink{class_q_c_p_painter_af9c7a4cd1791403901f8c5b82a150195}{setPen}(\hyperlink{class_q_c_p_item_curve_a8089126f5645b6edfbaddea49d1e8390}{mainPen}());
-21997     painter->drawPath(cubicPath);
-21998     painter->setBrush(Qt::SolidPattern);
-21999     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_curve_af1dca285b97e3f5b892dab827a79f327}{mTail}.\hyperlink{class_q_c_p_line_ending_aea324dbfddbca9895ca8a3a968671299}{style}() != \hyperlink{class_q_c_p_line_ending_a5ef16e6876b4b74959c7261d8d4c2cd5aca12d500f50cd6871766801bac30fb03}{QCPLineEnding::esNone})
-22000       \hyperlink{class_q_c_p_item_curve_af1dca285b97e3f5b892dab827a79f327}{mTail}.\hyperlink{class_q_c_p_line_ending_ac4b2fa94bd27b2f008b5fc090fcd7c0b}{draw}(painter, QVector2D(startVec), M\_PI-cubicPath.angleAtPercent(0)/180.0*M\_PI);
-22001     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_curve_af2cc26ff199570940dc96f5ec19a13f8}{mHead}.\hyperlink{class_q_c_p_line_ending_aea324dbfddbca9895ca8a3a968671299}{style}() != \hyperlink{class_q_c_p_line_ending_a5ef16e6876b4b74959c7261d8d4c2cd5aca12d500f50cd6871766801bac30fb03}{QCPLineEnding::esNone})
-22002       \hyperlink{class_q_c_p_item_curve_af2cc26ff199570940dc96f5ec19a13f8}{mHead}.\hyperlink{class_q_c_p_line_ending_ac4b2fa94bd27b2f008b5fc090fcd7c0b}{draw}(painter, QVector2D(endVec), -cubicPath.angleAtPercent(1)/180.0*M\_PI);
-22003   \}
-22004 \}
+24496                                            \{
+24497   QPointF startVec(\hyperlink{class_q_c_p_item_curve_a20c3b5ea31c33764f4f30c2ec7ae518b}{start}->\hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}());
+24498   QPointF startDirVec(\hyperlink{class_q_c_p_item_curve_aa124bf66c09cc51c627fb49db8bf8a7b}{startDir}->\hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}());
+24499   QPointF endDirVec(\hyperlink{class_q_c_p_item_curve_a28181a9dee9cc3c3da83a883221bd2d0}{endDir}->\hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}());
+24500   QPointF endVec(\hyperlink{class_q_c_p_item_curve_a24ecbb195b32a08b42b61c2cf08a1b4d}{end}->\hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}());
+24501   \textcolor{keywordflow}{if} (QVector2D(endVec - startVec).length() >
+24502       1e10f) \textcolor{comment}{// too large curves cause crash}
+24503     \textcolor{keywordflow}{return};
+24504 
+24505   QPainterPath cubicPath(startVec);
+24506   cubicPath.cubicTo(startDirVec, endDirVec, endVec);
+24507 
+24508   \textcolor{comment}{// paint visible segment, if existent:}
+24509   QRect clip = \hyperlink{class_q_c_p_abstract_item_a538e25ff8856534582f5b2b400a46405}{clipRect}().adjusted(-\hyperlink{class_q_c_p_item_curve_a8089126f5645b6edfbaddea49d1e8390}{mainPen}().widthF(), -\hyperlink{class_q_c_p_item_curve_a8089126f5645b6edfbaddea49d1e8390}{mainPen}().widthF(),
+24510                                    \hyperlink{class_q_c_p_item_curve_a8089126f5645b6edfbaddea49d1e8390}{mainPen}().widthF(), \hyperlink{class_q_c_p_item_curve_a8089126f5645b6edfbaddea49d1e8390}{mainPen}().widthF());
+24511   QRect cubicRect = cubicPath.controlPointRect().toRect();
+24512   \textcolor{keywordflow}{if} (cubicRect.isEmpty()) \textcolor{comment}{// may happen when start and end exactly on same x or}
+24513                            \textcolor{comment}{// y position}
+24514     cubicRect.adjust(0, 0, 1, 1);
+24515   \textcolor{keywordflow}{if} (clip.intersects(cubicRect)) \{
+24516     painter->\hyperlink{class_q_c_p_painter_af9c7a4cd1791403901f8c5b82a150195}{setPen}(\hyperlink{class_q_c_p_item_curve_a8089126f5645b6edfbaddea49d1e8390}{mainPen}());
+24517     painter->drawPath(cubicPath);
+24518     painter->setBrush(Qt::SolidPattern);
+24519     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_curve_af1dca285b97e3f5b892dab827a79f327}{mTail}.\hyperlink{class_q_c_p_line_ending_aea324dbfddbca9895ca8a3a968671299}{style}() != \hyperlink{class_q_c_p_line_ending_a5ef16e6876b4b74959c7261d8d4c2cd5aca12d500f50cd6871766801bac30fb03}{QCPLineEnding::esNone})
+24520       \hyperlink{class_q_c_p_item_curve_af1dca285b97e3f5b892dab827a79f327}{mTail}.\hyperlink{class_q_c_p_line_ending_ac4b2fa94bd27b2f008b5fc090fcd7c0b}{draw}(painter, QVector2D(startVec),
+24521                  M\_PI - cubicPath.angleAtPercent(0) / 180.0 * M\_PI);
+24522     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_curve_af2cc26ff199570940dc96f5ec19a13f8}{mHead}.\hyperlink{class_q_c_p_line_ending_aea324dbfddbca9895ca8a3a968671299}{style}() != \hyperlink{class_q_c_p_line_ending_a5ef16e6876b4b74959c7261d8d4c2cd5aca12d500f50cd6871766801bac30fb03}{QCPLineEnding::esNone})
+24523       \hyperlink{class_q_c_p_item_curve_af2cc26ff199570940dc96f5ec19a13f8}{mHead}.\hyperlink{class_q_c_p_line_ending_ac4b2fa94bd27b2f008b5fc090fcd7c0b}{draw}(painter, QVector2D(endVec),
+24524                  -cubicPath.angleAtPercent(1) / 180.0 * M\_PI);
+24525   \}
+24526 \}
 \end{DoxyCode}
 
 
@@ -233,7 +235,7 @@ Here is the call graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_item_curve_afc067f0d1e60cd04812f2c2c7fdf36c3}
 
 
-Definition at line 3337 of file qcustomplot.\+h.
+Definition at line 3797 of file qcustomplot.\+h.
 
 
 
@@ -241,7 +243,7 @@ Referenced by set\+Head().
 
 
 \begin{DoxyCode}
-3337 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_curve_af2cc26ff199570940dc96f5ec19a13f8}{mHead}; \}
+3797 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_curve_af2cc26ff199570940dc96f5ec19a13f8}{mHead}; \}
 \end{DoxyCode}
 
 
@@ -263,7 +265,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_curve_a8089126f5645b6edfbaddea49d1e8390}
 
 
-Definition at line 22011 of file qcustomplot.\+cpp.
+Definition at line 24533 of file qcustomplot.\+cpp.
 
 
 
@@ -275,9 +277,7 @@ Referenced by draw().
 
 
 \begin{DoxyCode}
-22012 \{
-22013   \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_abstract_item_a4bdb3457dad1d268c0f78a44152b9645}{mSelected} ? \hyperlink{class_q_c_p_item_curve_ab22cbab261b20be5aa8e4ca252149246}{mSelectedPen} : \hyperlink{class_q_c_p_item_curve_a7ef92988d1db2e4d0311e34c0a57fe42}{mPen};
-22014 \}
+24533 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_abstract_item_a4bdb3457dad1d268c0f78a44152b9645}{mSelected} ? \hyperlink{class_q_c_p_item_curve_ab22cbab261b20be5aa8e4ca252149246}{mSelectedPen} : \hyperlink{class_q_c_p_item_curve_a7ef92988d1db2e4d0311e34c0a57fe42}{mPen}; \}
 \end{DoxyCode}
 
 
@@ -299,7 +299,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_item_curve_abc6321e55a9ba1a0c7df407843dfa252}
 
 
-Definition at line 3335 of file qcustomplot.\+h.
+Definition at line 3795 of file qcustomplot.\+h.
 
 
 
@@ -307,7 +307,7 @@ Referenced by set\+Pen(), and set\+Selected\+Pen().
 
 
 \begin{DoxyCode}
-3335 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_curve_a7ef92988d1db2e4d0311e34c0a57fe42}{mPen}; \}
+3795 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_curve_a7ef92988d1db2e4d0311e34c0a57fe42}{mPen}; \}
 \end{DoxyCode}
 
 
@@ -329,11 +329,11 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_item_curve_abd8b8be5b13bc4dafec4c1758c281336}
 
 
-Definition at line 3336 of file qcustomplot.\+h.
+Definition at line 3796 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-3336 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_curve_ab22cbab261b20be5aa8e4ca252149246}{mSelectedPen}; \}
+3796 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_curve_ab22cbab261b20be5aa8e4ca252149246}{mSelectedPen}; \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_item_curve_a741375c11667b5f9c95b2683f93ee514}{}\index{Q\+C\+P\+Item\+Curve@{Q\+C\+P\+Item\+Curve}!select\+Test@{select\+Test}}
 \index{select\+Test@{select\+Test}!Q\+C\+P\+Item\+Curve@{Q\+C\+P\+Item\+Curve}}
@@ -367,7 +367,7 @@ Implements \hyperlink{class_q_c_p_abstract_item_a96d522d10ffc0413b9a366c6f7f0476
 
 
 
-Definition at line 21951 of file qcustomplot.\+cpp.
+Definition at line 24471 of file qcustomplot.\+cpp.
 
 
 
@@ -375,29 +375,28 @@ References Q\+C\+P\+Abstract\+Item\+::dist\+Sqr\+To\+Line(), end, end\+Dir, i, Q
 
 
 \begin{DoxyCode}
-21952 \{
-21953   Q\_UNUSED(details)
-21954   if (onlySelectable && !\hyperlink{class_q_c_p_abstract_item_ad81eb35c8726a0f458db9df9732e0e41}{mSelectable})
-21955     return -1;
-21956   
-21957   QPointF startVec(\hyperlink{class_q_c_p_item_curve_a20c3b5ea31c33764f4f30c2ec7ae518b}{start}->pixelPoint());
-21958   QPointF startDirVec(\hyperlink{class_q_c_p_item_curve_aa124bf66c09cc51c627fb49db8bf8a7b}{startDir}->pixelPoint());
-21959   QPointF endDirVec(\hyperlink{class_q_c_p_item_curve_a28181a9dee9cc3c3da83a883221bd2d0}{endDir}->pixelPoint());
-21960   QPointF endVec(\hyperlink{class_q_c_p_item_curve_a24ecbb195b32a08b42b61c2cf08a1b4d}{end}->pixelPoint());
-21961 
-21962   QPainterPath cubicPath(startVec);
-21963   cubicPath.cubicTo(startDirVec, endDirVec, endVec);
-21964   
-21965   QPolygonF polygon = cubicPath.toSubpathPolygons().first();
-21966   \textcolor{keywordtype}{double} minDistSqr = \hyperlink{namespacestd}{std}::numeric\_limits<\textcolor{keywordtype}{double}>::max();
-21967   for (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=1; i<polygon.size(); ++i)
-21968   \{
-21969     \textcolor{keywordtype}{double} distSqr = \hyperlink{class_q_c_p_abstract_item_acdca343717d625b8abb3c3e38c0ed39d}{distSqrToLine}(polygon.at(i-1), polygon.at(i), pos);
-21970     \textcolor{keywordflow}{if} (distSqr < minDistSqr)
-21971       minDistSqr = distSqr;
-21972   \}
-21973   \textcolor{keywordflow}{return} qSqrt(minDistSqr);
-21974 \}
+24472                                                          \{
+24473   Q\_UNUSED(details)
+24474   if (onlySelectable && !\hyperlink{class_q_c_p_abstract_item_ad81eb35c8726a0f458db9df9732e0e41}{mSelectable})
+24475     return -1;
+24476 
+24477   QPointF startVec(\hyperlink{class_q_c_p_item_curve_a20c3b5ea31c33764f4f30c2ec7ae518b}{start}->pixelPoint());
+24478   QPointF startDirVec(\hyperlink{class_q_c_p_item_curve_aa124bf66c09cc51c627fb49db8bf8a7b}{startDir}->pixelPoint());
+24479   QPointF endDirVec(\hyperlink{class_q_c_p_item_curve_a28181a9dee9cc3c3da83a883221bd2d0}{endDir}->pixelPoint());
+24480   QPointF endVec(\hyperlink{class_q_c_p_item_curve_a24ecbb195b32a08b42b61c2cf08a1b4d}{end}->pixelPoint());
+24481 
+24482   QPainterPath cubicPath(startVec);
+24483   cubicPath.cubicTo(startDirVec, endDirVec, endVec);
+24484 
+24485   QPolygonF polygon = cubicPath.toSubpathPolygons().first();
+24486   \textcolor{keywordtype}{double} minDistSqr = \hyperlink{namespacestd}{std}::numeric\_limits<\textcolor{keywordtype}{double}>::max();
+24487   for (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 1; i < polygon.size(); ++i) \{
+24488     \textcolor{keywordtype}{double} distSqr = \hyperlink{class_q_c_p_abstract_item_acdca343717d625b8abb3c3e38c0ed39d}{distSqrToLine}(polygon.at(i - 1), polygon.at(i), pos);
+24489     \textcolor{keywordflow}{if} (distSqr < minDistSqr)
+24490       minDistSqr = distSqr;
+24491   \}
+24492   \textcolor{keywordflow}{return} qSqrt(minDistSqr);
+24493 \}
 \end{DoxyCode}
 
 
@@ -430,7 +429,7 @@ Note that due to the overloaded \hyperlink{class_q_c_p_line_ending}{Q\+C\+P\+Lin
 \end{DoxySeeAlso}
 
 
-Definition at line 21932 of file qcustomplot.\+cpp.
+Definition at line 24455 of file qcustomplot.\+cpp.
 
 
 
@@ -438,9 +437,7 @@ References head(), and m\+Head.
 
 
 \begin{DoxyCode}
-21933 \{
-21934   \hyperlink{class_q_c_p_item_curve_af2cc26ff199570940dc96f5ec19a13f8}{mHead} = \hyperlink{class_q_c_p_item_curve_afc067f0d1e60cd04812f2c2c7fdf36c3}{head};
-21935 \}
+24455 \{ \hyperlink{class_q_c_p_item_curve_af2cc26ff199570940dc96f5ec19a13f8}{mHead} = \hyperlink{class_q_c_p_item_curve_afc067f0d1e60cd04812f2c2c7fdf36c3}{head}; \}
 \end{DoxyCode}
 
 
@@ -467,7 +464,7 @@ Sets the pen that will be used to draw the line
 \end{DoxySeeAlso}
 
 
-Definition at line 21909 of file qcustomplot.\+cpp.
+Definition at line 24435 of file qcustomplot.\+cpp.
 
 
 
@@ -479,9 +476,7 @@ Referenced by Q\+C\+P\+Item\+Curve().
 
 
 \begin{DoxyCode}
-21910 \{
-21911   \hyperlink{class_q_c_p_item_curve_a7ef92988d1db2e4d0311e34c0a57fe42}{mPen} = \hyperlink{class_q_c_p_item_curve_abc6321e55a9ba1a0c7df407843dfa252}{pen};
-21912 \}
+24435 \{ \hyperlink{class_q_c_p_item_curve_a7ef92988d1db2e4d0311e34c0a57fe42}{mPen} = \hyperlink{class_q_c_p_item_curve_abc6321e55a9ba1a0c7df407843dfa252}{pen}; \}
 \end{DoxyCode}
 
 
@@ -519,7 +514,7 @@ Sets the pen that will be used to draw the line when selected
 \end{DoxySeeAlso}
 
 
-Definition at line 21919 of file qcustomplot.\+cpp.
+Definition at line 24442 of file qcustomplot.\+cpp.
 
 
 
@@ -531,9 +526,7 @@ Referenced by Q\+C\+P\+Item\+Curve().
 
 
 \begin{DoxyCode}
-21920 \{
-21921   \hyperlink{class_q_c_p_item_curve_ab22cbab261b20be5aa8e4ca252149246}{mSelectedPen} = \hyperlink{class_q_c_p_item_curve_abc6321e55a9ba1a0c7df407843dfa252}{pen};
-21922 \}
+24442 \{ \hyperlink{class_q_c_p_item_curve_ab22cbab261b20be5aa8e4ca252149246}{mSelectedPen} = \hyperlink{class_q_c_p_item_curve_abc6321e55a9ba1a0c7df407843dfa252}{pen}; \}
 \end{DoxyCode}
 
 
@@ -577,7 +570,7 @@ Note that due to the overloaded \hyperlink{class_q_c_p_line_ending}{Q\+C\+P\+Lin
 \end{DoxySeeAlso}
 
 
-Definition at line 21945 of file qcustomplot.\+cpp.
+Definition at line 24468 of file qcustomplot.\+cpp.
 
 
 
@@ -585,9 +578,7 @@ References m\+Tail, and tail().
 
 
 \begin{DoxyCode}
-21946 \{
-21947   \hyperlink{class_q_c_p_item_curve_af1dca285b97e3f5b892dab827a79f327}{mTail} = \hyperlink{class_q_c_p_item_curve_a9adddfcc5275be0cf27e3c0c31c37c1a}{tail};
-21948 \}
+24468 \{ \hyperlink{class_q_c_p_item_curve_af1dca285b97e3f5b892dab827a79f327}{mTail} = \hyperlink{class_q_c_p_item_curve_a9adddfcc5275be0cf27e3c0c31c37c1a}{tail}; \}
 \end{DoxyCode}
 
 
@@ -609,7 +600,7 @@ Here is the call graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_item_curve_a9adddfcc5275be0cf27e3c0c31c37c1a}
 
 
-Definition at line 3338 of file qcustomplot.\+h.
+Definition at line 3798 of file qcustomplot.\+h.
 
 
 
@@ -617,7 +608,7 @@ Referenced by set\+Tail().
 
 
 \begin{DoxyCode}
-3338 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_curve_af1dca285b97e3f5b892dab827a79f327}{mTail}; \}
+3798 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_curve_af1dca285b97e3f5b892dab827a79f327}{mTail}; \}
 \end{DoxyCode}
 
 
@@ -638,7 +629,7 @@ Here is the caller graph for this function\+:\nopagebreak
 \subsubsection[{end}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Item\+Position}$\ast$ const Q\+C\+P\+Item\+Curve\+::end}\label{class_q_c_p_item_curve_a24ecbb195b32a08b42b61c2cf08a1b4d}
 
 
-Definition at line 3352 of file qcustomplot.\+h.
+Definition at line 3813 of file qcustomplot.\+h.
 
 
 
@@ -649,7 +640,7 @@ Referenced by draw(), Q\+C\+P\+Item\+Curve(), and select\+Test().
 \subsubsection[{end\+Dir}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Item\+Position}$\ast$ const Q\+C\+P\+Item\+Curve\+::end\+Dir}\label{class_q_c_p_item_curve_a28181a9dee9cc3c3da83a883221bd2d0}
 
 
-Definition at line 3351 of file qcustomplot.\+h.
+Definition at line 3812 of file qcustomplot.\+h.
 
 
 
@@ -660,7 +651,7 @@ Referenced by draw(), Q\+C\+P\+Item\+Curve(), and select\+Test().
 \subsubsection[{m\+Head}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Line\+Ending} Q\+C\+P\+Item\+Curve\+::m\+Head\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_curve_af2cc26ff199570940dc96f5ec19a13f8}
 
 
-Definition at line 3357 of file qcustomplot.\+h.
+Definition at line 3818 of file qcustomplot.\+h.
 
 
 
@@ -671,7 +662,7 @@ Referenced by draw(), and set\+Head().
 \subsubsection[{m\+Pen}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Pen Q\+C\+P\+Item\+Curve\+::m\+Pen\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_curve_a7ef92988d1db2e4d0311e34c0a57fe42}
 
 
-Definition at line 3356 of file qcustomplot.\+h.
+Definition at line 3817 of file qcustomplot.\+h.
 
 
 
@@ -682,7 +673,7 @@ Referenced by main\+Pen(), and set\+Pen().
 \subsubsection[{m\+Selected\+Pen}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Pen Q\+C\+P\+Item\+Curve\+::m\+Selected\+Pen\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_curve_ab22cbab261b20be5aa8e4ca252149246}
 
 
-Definition at line 3356 of file qcustomplot.\+h.
+Definition at line 3817 of file qcustomplot.\+h.
 
 
 
@@ -693,7 +684,7 @@ Referenced by main\+Pen(), and set\+Selected\+Pen().
 \subsubsection[{m\+Tail}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Line\+Ending} Q\+C\+P\+Item\+Curve\+::m\+Tail\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_curve_af1dca285b97e3f5b892dab827a79f327}
 
 
-Definition at line 3357 of file qcustomplot.\+h.
+Definition at line 3818 of file qcustomplot.\+h.
 
 
 
@@ -704,7 +695,7 @@ Referenced by draw(), and set\+Tail().
 \subsubsection[{start}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Item\+Position}$\ast$ const Q\+C\+P\+Item\+Curve\+::start}\label{class_q_c_p_item_curve_a20c3b5ea31c33764f4f30c2ec7ae518b}
 
 
-Definition at line 3349 of file qcustomplot.\+h.
+Definition at line 3810 of file qcustomplot.\+h.
 
 
 
@@ -715,7 +706,7 @@ Referenced by draw(), Q\+C\+P\+Item\+Curve(), and select\+Test().
 \subsubsection[{start\+Dir}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Item\+Position}$\ast$ const Q\+C\+P\+Item\+Curve\+::start\+Dir}\label{class_q_c_p_item_curve_aa124bf66c09cc51c627fb49db8bf8a7b}
 
 
-Definition at line 3350 of file qcustomplot.\+h.
+Definition at line 3811 of file qcustomplot.\+h.
 
 
 

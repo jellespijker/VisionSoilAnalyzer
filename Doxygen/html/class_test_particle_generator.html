@@ -35,7 +35,7 @@
    <div id="projectname">Vision Soil Analyzer
    &#160;<span id="projectnumber">1.0.0</span>
    </div>
-   <div id="projectbrief">The Soil Analyzer is a portable lab that can analyse soil samples and tells the user about it&#39;s optical properties. It looks at the texture and describe it as a Particle Size Distribution. This information is presented as a Cumulative Distribution Function (CDF). It also describes the structure of the soil sample and gives information on the sphericity and roundness / angularity. It does so by analysing the contour of particles, describing them as Fourier Descriptors and using a Neural Network to describe it&#39;s properties. Finally it gives the color properties in a histogram in the CIE La*b* colorspace, which show correlations with the fertility of the soil. and a histogram of the Redness Index, which gives has a correlation on the iron content.</div>
+   <div id="projectbrief">Soil analyzer using an USB microscope - for Linux PC and Beaglebone Black</div>
   </td>
  </tr>
  </tbody>
@@ -139,7 +139,7 @@ Public Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p>Definition at line <a class="el" href="testparticlegenerator_8h_source.html#l00009">9</a> of file <a class="el" href="testparticlegenerator_8h_source.html">testparticlegenerator.h</a>.</p>
+<p>Definition at line <a class="el" href="testparticlegenerator_8h_source.html#l00018">18</a> of file <a class="el" href="testparticlegenerator_8h_source.html">testparticlegenerator.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a9caab4b3afc670e80408824c288172da"></a>
 <div class="memitem">
@@ -154,9 +154,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="testparticlegenerator_8cpp_source.html#l00004">4</a> of file <a class="el" href="testparticlegenerator_8cpp_source.html">testparticlegenerator.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;{</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;}</div>
+<p>Definition at line <a class="el" href="testparticlegenerator_8cpp_source.html#l00012">12</a> of file <a class="el" href="testparticlegenerator_8cpp_source.html">testparticlegenerator.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -209,16 +209,16 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="testparticlegenerator_8cpp_source.html#l00008">8</a> of file <a class="el" href="testparticlegenerator_8cpp_source.html">testparticlegenerator.cpp</a>.</p>
+<p>Definition at line <a class="el" href="testparticlegenerator_8cpp_source.html#l00016">16</a> of file <a class="el" href="testparticlegenerator_8cpp_source.html">testparticlegenerator.cpp</a>.</p>
 
 <p>References <a class="el" href="_comparision_pictures_2_createtest_image_8m_source.html#l00010">x</a>, and <a class="el" href="_comparision_pictures_2_createtest_image_8m_source.html#l00011">y</a>.</p>
-<div class="fragment"><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;{</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    uint32_t height, width;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    height =</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    cv::Mat img(<a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a9336ebf25087d91c818ee6e9ec29f8c1">x</a> ? <a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a9336ebf25087d91c818ee6e9ec29f8c1">x</a> : <a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a2fb1c5cf58867b5bbc9a1b145a86f3a0">y</a>, );</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    cv::ellipse(img, cv::Point(img.cols/2, img.rows/2), cv::Size(size, size * ellipseratio), angle, 0 360, cv::Scalar(1,1,1), -1);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    uint32_t height, width;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    height =</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    cv::Mat img(<a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a9336ebf25087d91c818ee6e9ec29f8c1">x</a> ? <a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a9336ebf25087d91c818ee6e9ec29f8c1">x</a> : <a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a2fb1c5cf58867b5bbc9a1b145a86f3a0">y</a>, );</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    cv::ellipse(img, cv::Point(img.cols/2, img.rows/2), cv::Size(size, size * ellipseratio), angle, 0 360, cv::Scalar(1,1,1), -1);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}</div>
 <div class="ttc" id="_comparision_pictures_2_createtest_image_8m_html_a9336ebf25087d91c818ee6e9ec29f8c1"><div class="ttname"><a href="_comparision_pictures_2_createtest_image_8m.html#a9336ebf25087d91c818ee6e9ec29f8c1">x</a></div><div class="ttdeci">x</div><div class="ttdef"><b>Definition:</b> <a href="_comparision_pictures_2_createtest_image_8m_source.html#l00010">CreatetestImage.m:10</a></div></div>
 <div class="ttc" id="_comparision_pictures_2_createtest_image_8m_html_a2fb1c5cf58867b5bbc9a1b145a86f3a0"><div class="ttname"><a href="_comparision_pictures_2_createtest_image_8m.html#a2fb1c5cf58867b5bbc9a1b145a86f3a0">y</a></div><div class="ttdeci">y</div><div class="ttdef"><b>Definition:</b> <a href="_comparision_pictures_2_createtest_image_8m_source.html#l00011">CreatetestImage.m:11</a></div></div>
 </div><!-- fragment -->
@@ -235,7 +235,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="testparticlegenerator_8h_source.html#l00014">14</a> of file <a class="el" href="testparticlegenerator_8h_source.html">testparticlegenerator.h</a>.</p>
+<p>Definition at line <a class="el" href="testparticlegenerator_8h_source.html#l00023">23</a> of file <a class="el" href="testparticlegenerator_8h_source.html">testparticlegenerator.h</a>.</p>
 
 </div>
 </div>
@@ -249,7 +249,7 @@ Public Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_test_particle_generator.html">TestParticleGenerator</a></li>
-    <li class="footer">Generated on Sat Jun 6 2015 21:25:40 for Vision Soil Analyzer by
+    <li class="footer">Generated on Sun Jun 7 2015 21:06:54 for Vision Soil Analyzer by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

@@ -10,7 +10,7 @@ var searchData=
   ['makeconsecutive',['makeConsecutive',['../class_vision_1_1_segment.html#a3543a9696469dc07718c8227eaeaf9c0',1,'Vision::Segment']]],
   ['makenoncosmetic',['makeNonCosmetic',['../class_q_c_p_painter.html#a7e63fbcf47e35c6f2ecd11b8fef7c7d8',1,'QCPPainter']]],
   ['margingroup',['marginGroup',['../class_q_c_p_layout_element.html#a22cb1bb62c452fd802e43ca2524660db',1,'QCPLayoutElement']]],
-  ['margingroups',['marginGroups',['../class_q_c_p_layout_element.html#ac43921c997570389c14a1671bc3ea499',1,'QCPLayoutElement']]],
+  ['margingroups',['marginGroups',['../class_q_c_p_layout_element.html#a48eb87f787d3e3bfb3fa335d2cf6b1af',1,'QCPLayoutElement']]],
   ['margins',['margins',['../class_q_c_p_layout_element.html#a85ff977dfcced84eef32d9f819ec9543',1,'QCPLayoutElement']]],
   ['marginsidetoaxistype',['marginSideToAxisType',['../class_q_c_p_axis.html#ac0a6b77bd52bec6c81cd62d167cfeba6',1,'QCPAxis']]],
   ['mask',['mask',['../_gen_blob_8m.html#a5f72e1e2c212aa06e7ea6e01744f0752',1,'mask(mask==1)=0:&#160;GenBlob.m'],['../_gen_blob_8m.html#a2f6787d513f2bdbca6833c1c1ee04329',1,'mask(mask &gt; 1):&#160;GenBlob.m']]],

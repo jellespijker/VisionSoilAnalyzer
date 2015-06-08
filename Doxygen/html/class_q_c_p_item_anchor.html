@@ -35,7 +35,7 @@
    <div id="projectname">Vision Soil Analyzer
    &#160;<span id="projectnumber">1.0.0</span>
    </div>
-   <div id="projectbrief">The Soil Analyzer is a portable lab that can analyse soil samples and tells the user about it&#39;s optical properties. It looks at the texture and describe it as a Particle Size Distribution. This information is presented as a Cumulative Distribution Function (CDF). It also describes the structure of the soil sample and gives information on the sphericity and roundness / angularity. It does so by analysing the contour of particles, describing them as Fourier Descriptors and using a Neural Network to describe it&#39;s properties. Finally it gives the color properties in a histogram in the CIE La*b* colorspace, which show correlations with the fertility of the soil. and a histogram of the Redness Index, which gives has a correlation on the iron content.</div>
+   <div id="projectbrief">Soil analyzer using an USB microscope - for Linux PC and Beaglebone Black</div>
   </td>
  </tr>
  </tbody>
@@ -173,10 +173,10 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a80fad480ad3bb980446ed6ebc00818ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00c62070333e8345976b579676ad3997"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_c_p_item_anchor.html#a00c62070333e8345976b579676ad3997">mAnchorId</a></td></tr>
 <tr class="separator:a00c62070333e8345976b579676ad3997"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3c0bfd6e50f3b48e2a9b3824695b20f7"><td class="memItemLeft" align="right" valign="top">QSet&lt; <a class="el" href="class_q_c_p_item_position.html">QCPItemPosition</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_c_p_item_anchor.html#a3c0bfd6e50f3b48e2a9b3824695b20f7">mChildrenX</a></td></tr>
-<tr class="separator:a3c0bfd6e50f3b48e2a9b3824695b20f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3abe4eebd0683454d81c8341df6f7115"><td class="memItemLeft" align="right" valign="top">QSet&lt; <a class="el" href="class_q_c_p_item_position.html">QCPItemPosition</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_c_p_item_anchor.html#a3abe4eebd0683454d81c8341df6f7115">mChildrenY</a></td></tr>
-<tr class="separator:a3abe4eebd0683454d81c8341df6f7115"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8fd931923357898286ae604e1380fa7"><td class="memItemLeft" align="right" valign="top">QSet&lt; <a class="el" href="class_q_c_p_item_position.html">QCPItemPosition</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_c_p_item_anchor.html#ab8fd931923357898286ae604e1380fa7">mChildrenX</a></td></tr>
+<tr class="separator:ab8fd931923357898286ae604e1380fa7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d58eb782eda4d96a95067354305b139"><td class="memItemLeft" align="right" valign="top">QSet&lt; <a class="el" href="class_q_c_p_item_position.html">QCPItemPosition</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_c_p_item_anchor.html#a6d58eb782eda4d96a95067354305b139">mChildrenY</a></td></tr>
+<tr class="separator:a6d58eb782eda4d96a95067354305b139"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
@@ -190,7 +190,7 @@ Friends</h2></td></tr>
 <p>Note that <a class="el" href="class_q_c_p_item_position.html" title="Manages the position of an item. ">QCPItemPosition</a> derives from <a class="el" href="class_q_c_p_item_anchor.html" title="An anchor of an item to which positions can be attached to. ">QCPItemAnchor</a>, so every position can also serve as an anchor to other positions.</p>
 <p>To learn how to provide anchors in your own item subclasses, see the subclassing section of the <a class="el" href="class_q_c_p_abstract_item.html" title="The abstract base class for all items in a plot. ">QCPAbstractItem</a> documentation. </p>
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l01503">1503</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l01723">1723</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="aeb6b681d2bf324db40a915d32ec5624f"></a>
 <div class="memitem">
@@ -229,19 +229,14 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p>Creates a new <a class="el" href="class_q_c_p_item_anchor.html" title="An anchor of an item to which positions can be attached to. ">QCPItemAnchor</a>. You shouldn't create <a class="el" href="class_q_c_p_item_anchor.html" title="An anchor of an item to which positions can be attached to. ">QCPItemAnchor</a> instances directly, even if you want to make a new item subclass. Use <a class="el" href="class_q_c_p_abstract_item.html#af3fc92527802078ca395138748b629a7">QCPAbstractItem::createAnchor</a> instead, as explained in the subclassing section of the <a class="el" href="class_q_c_p_abstract_item.html" title="The abstract base class for all items in a plot. ">QCPAbstractItem</a> documentation. </p>
 
-<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l07450">7450</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l07450"></a><span class="lineno"> 7450</span>&#160;                                                                                                                   :</div>
-<div class="line"><a name="l07451"></a><span class="lineno"> 7451</span>&#160;  <a class="code" href="class_q_c_p_item_anchor.html#a23ad4d0ab0d2cbb41a7baf05bcf996ec">mName</a>(<a class="code" href="class_q_c_p_item_anchor.html#ac93984042a58c875e76847dc3e5f75fe">name</a>),</div>
-<div class="line"><a name="l07452"></a><span class="lineno"> 7452</span>&#160;  <a class="code" href="class_q_c_p_item_anchor.html#a59b968410831ba91a25cc75a77dde6f5">mParentPlot</a>(parentPlot),</div>
-<div class="line"><a name="l07453"></a><span class="lineno"> 7453</span>&#160;  <a class="code" href="class_q_c_p_item_anchor.html#a80fad480ad3bb980446ed6ebc00818ae">mParentItem</a>(parentItem),</div>
-<div class="line"><a name="l07454"></a><span class="lineno"> 7454</span>&#160;  <a class="code" href="class_q_c_p_item_anchor.html#a00c62070333e8345976b579676ad3997">mAnchorId</a>(anchorId)</div>
-<div class="line"><a name="l07455"></a><span class="lineno"> 7455</span>&#160;{</div>
-<div class="line"><a name="l07456"></a><span class="lineno"> 7456</span>&#160;}</div>
-<div class="ttc" id="class_q_c_p_item_anchor_html_a59b968410831ba91a25cc75a77dde6f5"><div class="ttname"><a href="class_q_c_p_item_anchor.html#a59b968410831ba91a25cc75a77dde6f5">QCPItemAnchor::mParentPlot</a></div><div class="ttdeci">QCustomPlot * mParentPlot</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l01518">qcustomplot.h:1518</a></div></div>
-<div class="ttc" id="class_q_c_p_item_anchor_html_a00c62070333e8345976b579676ad3997"><div class="ttname"><a href="class_q_c_p_item_anchor.html#a00c62070333e8345976b579676ad3997">QCPItemAnchor::mAnchorId</a></div><div class="ttdeci">int mAnchorId</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l01520">qcustomplot.h:1520</a></div></div>
-<div class="ttc" id="class_q_c_p_item_anchor_html_a80fad480ad3bb980446ed6ebc00818ae"><div class="ttname"><a href="class_q_c_p_item_anchor.html#a80fad480ad3bb980446ed6ebc00818ae">QCPItemAnchor::mParentItem</a></div><div class="ttdeci">QCPAbstractItem * mParentItem</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l01519">qcustomplot.h:1519</a></div></div>
-<div class="ttc" id="class_q_c_p_item_anchor_html_ac93984042a58c875e76847dc3e5f75fe"><div class="ttname"><a href="class_q_c_p_item_anchor.html#ac93984042a58c875e76847dc3e5f75fe">QCPItemAnchor::name</a></div><div class="ttdeci">QString name() const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l01510">qcustomplot.h:1510</a></div></div>
-<div class="ttc" id="class_q_c_p_item_anchor_html_a23ad4d0ab0d2cbb41a7baf05bcf996ec"><div class="ttname"><a href="class_q_c_p_item_anchor.html#a23ad4d0ab0d2cbb41a7baf05bcf996ec">QCPItemAnchor::mName</a></div><div class="ttdeci">QString mName</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l01515">qcustomplot.h:1515</a></div></div>
+<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l08204">8204</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l08207"></a><span class="lineno"> 8207</span>&#160;    : <a class="code" href="class_q_c_p_item_anchor.html#a23ad4d0ab0d2cbb41a7baf05bcf996ec">mName</a>(<a class="code" href="class_q_c_p_item_anchor.html#ac93984042a58c875e76847dc3e5f75fe">name</a>), <a class="code" href="class_q_c_p_item_anchor.html#a59b968410831ba91a25cc75a77dde6f5">mParentPlot</a>(parentPlot), <a class="code" href="class_q_c_p_item_anchor.html#a80fad480ad3bb980446ed6ebc00818ae">mParentItem</a>(parentItem),</div>
+<div class="line"><a name="l08208"></a><span class="lineno"> 8208</span>&#160;      <a class="code" href="class_q_c_p_item_anchor.html#a00c62070333e8345976b579676ad3997">mAnchorId</a>(anchorId) {}</div>
+<div class="ttc" id="class_q_c_p_item_anchor_html_a59b968410831ba91a25cc75a77dde6f5"><div class="ttname"><a href="class_q_c_p_item_anchor.html#a59b968410831ba91a25cc75a77dde6f5">QCPItemAnchor::mParentPlot</a></div><div class="ttdeci">QCustomPlot * mParentPlot</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l01738">qcustomplot.h:1738</a></div></div>
+<div class="ttc" id="class_q_c_p_item_anchor_html_a00c62070333e8345976b579676ad3997"><div class="ttname"><a href="class_q_c_p_item_anchor.html#a00c62070333e8345976b579676ad3997">QCPItemAnchor::mAnchorId</a></div><div class="ttdeci">int mAnchorId</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l01740">qcustomplot.h:1740</a></div></div>
+<div class="ttc" id="class_q_c_p_item_anchor_html_a80fad480ad3bb980446ed6ebc00818ae"><div class="ttname"><a href="class_q_c_p_item_anchor.html#a80fad480ad3bb980446ed6ebc00818ae">QCPItemAnchor::mParentItem</a></div><div class="ttdeci">QCPAbstractItem * mParentItem</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l01739">qcustomplot.h:1739</a></div></div>
+<div class="ttc" id="class_q_c_p_item_anchor_html_ac93984042a58c875e76847dc3e5f75fe"><div class="ttname"><a href="class_q_c_p_item_anchor.html#ac93984042a58c875e76847dc3e5f75fe">QCPItemAnchor::name</a></div><div class="ttdeci">QString name() const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l01730">qcustomplot.h:1730</a></div></div>
+<div class="ttc" id="class_q_c_p_item_anchor_html_a23ad4d0ab0d2cbb41a7baf05bcf996ec"><div class="ttname"><a href="class_q_c_p_item_anchor.html#a23ad4d0ab0d2cbb41a7baf05bcf996ec">QCPItemAnchor::mName</a></div><div class="ttdeci">QString mName</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l01735">qcustomplot.h:1735</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -266,29 +261,29 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l07458">7458</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l08210">8210</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
 
-<p>References <a class="el" href="qcustomplot_8h_source.html#l01521">mChildrenX</a>, <a class="el" href="qcustomplot_8h_source.html#l01521">mChildrenY</a>, <a class="el" href="qcustomplot_8h_source.html#l01567">QCPItemPosition::parentAnchorX()</a>, <a class="el" href="qcustomplot_8h_source.html#l01568">QCPItemPosition::parentAnchorY()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l07785">QCPItemPosition::setParentAnchorX()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l07850">QCPItemPosition::setParentAnchorY()</a>.</p>
-<div class="fragment"><div class="line"><a name="l07459"></a><span class="lineno"> 7459</span>&#160;{</div>
-<div class="line"><a name="l07460"></a><span class="lineno"> 7460</span>&#160;  <span class="comment">// unregister as parent at children:</span></div>
-<div class="line"><a name="l07461"></a><span class="lineno"> 7461</span>&#160;  <span class="keywordflow">foreach</span> (<a class="code" href="class_q_c_p_item_position.html">QCPItemPosition</a> *child, <a class="code" href="class_q_c_p_item_anchor.html#a3c0bfd6e50f3b48e2a9b3824695b20f7">mChildrenX</a>.toList())</div>
-<div class="line"><a name="l07462"></a><span class="lineno"> 7462</span>&#160;  {</div>
-<div class="line"><a name="l07463"></a><span class="lineno"> 7463</span>&#160;    <span class="keywordflow">if</span> (child-&gt;<a class="code" href="class_q_c_p_item_position.html#a485abba71c8552086c5f68e95dca7f9a">parentAnchorX</a>() == <span class="keyword">this</span>)</div>
-<div class="line"><a name="l07464"></a><span class="lineno"> 7464</span>&#160;      child-&gt;<a class="code" href="class_q_c_p_item_position.html#add71461a973927c74e42179480916d9c">setParentAnchorX</a>(0); <span class="comment">// this acts back on this anchor and child removes itself from mChildrenX</span></div>
-<div class="line"><a name="l07465"></a><span class="lineno"> 7465</span>&#160;  }</div>
-<div class="line"><a name="l07466"></a><span class="lineno"> 7466</span>&#160;  <span class="keywordflow">foreach</span> (<a class="code" href="class_q_c_p_item_position.html">QCPItemPosition</a> *child, <a class="code" href="class_q_c_p_item_anchor.html#a3abe4eebd0683454d81c8341df6f7115">mChildrenY</a>.toList())</div>
-<div class="line"><a name="l07467"></a><span class="lineno"> 7467</span>&#160;  {</div>
-<div class="line"><a name="l07468"></a><span class="lineno"> 7468</span>&#160;    <span class="keywordflow">if</span> (child-&gt;<a class="code" href="class_q_c_p_item_position.html#a1502dba801cb20424b7e097399e372de">parentAnchorY</a>() == <span class="keyword">this</span>)</div>
-<div class="line"><a name="l07469"></a><span class="lineno"> 7469</span>&#160;      child-&gt;<a class="code" href="class_q_c_p_item_position.html#add5ec1db9d19cec58a3b5c9e0a0c3f9d">setParentAnchorY</a>(0); <span class="comment">// this acts back on this anchor and child removes itself from mChildrenY</span></div>
-<div class="line"><a name="l07470"></a><span class="lineno"> 7470</span>&#160;  }</div>
-<div class="line"><a name="l07471"></a><span class="lineno"> 7471</span>&#160;}</div>
-<div class="ttc" id="class_q_c_p_item_position_html_a1502dba801cb20424b7e097399e372de"><div class="ttname"><a href="class_q_c_p_item_position.html#a1502dba801cb20424b7e097399e372de">QCPItemPosition::parentAnchorY</a></div><div class="ttdeci">QCPItemAnchor * parentAnchorY() const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l01568">qcustomplot.h:1568</a></div></div>
-<div class="ttc" id="class_q_c_p_item_anchor_html_a3abe4eebd0683454d81c8341df6f7115"><div class="ttname"><a href="class_q_c_p_item_anchor.html#a3abe4eebd0683454d81c8341df6f7115">QCPItemAnchor::mChildrenY</a></div><div class="ttdeci">QSet&lt; QCPItemPosition * &gt; mChildrenY</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l01521">qcustomplot.h:1521</a></div></div>
-<div class="ttc" id="class_q_c_p_item_position_html_a485abba71c8552086c5f68e95dca7f9a"><div class="ttname"><a href="class_q_c_p_item_position.html#a485abba71c8552086c5f68e95dca7f9a">QCPItemPosition::parentAnchorX</a></div><div class="ttdeci">QCPItemAnchor * parentAnchorX() const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l01567">qcustomplot.h:1567</a></div></div>
-<div class="ttc" id="class_q_c_p_item_position_html_add71461a973927c74e42179480916d9c"><div class="ttname"><a href="class_q_c_p_item_position.html#add71461a973927c74e42179480916d9c">QCPItemPosition::setParentAnchorX</a></div><div class="ttdeci">bool setParentAnchorX(QCPItemAnchor *parentAnchor, bool keepPixelPosition=false)</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l07785">qcustomplot.cpp:7785</a></div></div>
-<div class="ttc" id="class_q_c_p_item_anchor_html_a3c0bfd6e50f3b48e2a9b3824695b20f7"><div class="ttname"><a href="class_q_c_p_item_anchor.html#a3c0bfd6e50f3b48e2a9b3824695b20f7">QCPItemAnchor::mChildrenX</a></div><div class="ttdeci">QSet&lt; QCPItemPosition * &gt; mChildrenX</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l01521">qcustomplot.h:1521</a></div></div>
-<div class="ttc" id="class_q_c_p_item_position_html"><div class="ttname"><a href="class_q_c_p_item_position.html">QCPItemPosition</a></div><div class="ttdoc">Manages the position of an item. </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l01540">qcustomplot.h:1540</a></div></div>
-<div class="ttc" id="class_q_c_p_item_position_html_add5ec1db9d19cec58a3b5c9e0a0c3f9d"><div class="ttname"><a href="class_q_c_p_item_position.html#add5ec1db9d19cec58a3b5c9e0a0c3f9d">QCPItemPosition::setParentAnchorY</a></div><div class="ttdeci">bool setParentAnchorY(QCPItemAnchor *parentAnchor, bool keepPixelPosition=false)</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l07850">qcustomplot.cpp:7850</a></div></div>
+<p>References <a class="el" href="qcustomplot_8h_source.html#l01741">mChildrenX</a>, <a class="el" href="qcustomplot_8h_source.html#l01741">mChildrenY</a>, <a class="el" href="qcustomplot_8h_source.html#l01803">QCPItemPosition::parentAnchorX()</a>, <a class="el" href="qcustomplot_8h_source.html#l01804">QCPItemPosition::parentAnchorY()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l08584">QCPItemPosition::setParentAnchorX()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l08653">QCPItemPosition::setParentAnchorY()</a>.</p>
+<div class="fragment"><div class="line"><a name="l08210"></a><span class="lineno"> 8210</span>&#160;                              {</div>
+<div class="line"><a name="l08211"></a><span class="lineno"> 8211</span>&#160;  <span class="comment">// unregister as parent at children:</span></div>
+<div class="line"><a name="l08212"></a><span class="lineno"> 8212</span>&#160;  <span class="keywordflow">foreach</span> (<a class="code" href="class_q_c_p_item_position.html">QCPItemPosition</a> *child, <a class="code" href="class_q_c_p_item_anchor.html#ab8fd931923357898286ae604e1380fa7">mChildrenX</a>.toList()) {</div>
+<div class="line"><a name="l08213"></a><span class="lineno"> 8213</span>&#160;    <span class="keywordflow">if</span> (child-&gt;<a class="code" href="class_q_c_p_item_position.html#a485abba71c8552086c5f68e95dca7f9a">parentAnchorX</a>() == <span class="keyword">this</span>)</div>
+<div class="line"><a name="l08214"></a><span class="lineno"> 8214</span>&#160;      child-&gt;<a class="code" href="class_q_c_p_item_position.html#add71461a973927c74e42179480916d9c">setParentAnchorX</a>(0); <span class="comment">// this acts back on this anchor and child</span></div>
+<div class="line"><a name="l08215"></a><span class="lineno"> 8215</span>&#160;                                  <span class="comment">// removes itself from mChildrenX</span></div>
+<div class="line"><a name="l08216"></a><span class="lineno"> 8216</span>&#160;  }</div>
+<div class="line"><a name="l08217"></a><span class="lineno"> 8217</span>&#160;  <span class="keywordflow">foreach</span> (<a class="code" href="class_q_c_p_item_position.html">QCPItemPosition</a> *child, <a class="code" href="class_q_c_p_item_anchor.html#a6d58eb782eda4d96a95067354305b139">mChildrenY</a>.toList()) {</div>
+<div class="line"><a name="l08218"></a><span class="lineno"> 8218</span>&#160;    <span class="keywordflow">if</span> (child-&gt;<a class="code" href="class_q_c_p_item_position.html#a1502dba801cb20424b7e097399e372de">parentAnchorY</a>() == <span class="keyword">this</span>)</div>
+<div class="line"><a name="l08219"></a><span class="lineno"> 8219</span>&#160;      child-&gt;<a class="code" href="class_q_c_p_item_position.html#add5ec1db9d19cec58a3b5c9e0a0c3f9d">setParentAnchorY</a>(0); <span class="comment">// this acts back on this anchor and child</span></div>
+<div class="line"><a name="l08220"></a><span class="lineno"> 8220</span>&#160;                                  <span class="comment">// removes itself from mChildrenY</span></div>
+<div class="line"><a name="l08221"></a><span class="lineno"> 8221</span>&#160;  }</div>
+<div class="line"><a name="l08222"></a><span class="lineno"> 8222</span>&#160;}</div>
+<div class="ttc" id="class_q_c_p_item_anchor_html_a6d58eb782eda4d96a95067354305b139"><div class="ttname"><a href="class_q_c_p_item_anchor.html#a6d58eb782eda4d96a95067354305b139">QCPItemAnchor::mChildrenY</a></div><div class="ttdeci">QSet&lt; QCPItemPosition * &gt; mChildrenY</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l01741">qcustomplot.h:1741</a></div></div>
+<div class="ttc" id="class_q_c_p_item_position_html_a1502dba801cb20424b7e097399e372de"><div class="ttname"><a href="class_q_c_p_item_position.html#a1502dba801cb20424b7e097399e372de">QCPItemPosition::parentAnchorY</a></div><div class="ttdeci">QCPItemAnchor * parentAnchorY() const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l01804">qcustomplot.h:1804</a></div></div>
+<div class="ttc" id="class_q_c_p_item_anchor_html_ab8fd931923357898286ae604e1380fa7"><div class="ttname"><a href="class_q_c_p_item_anchor.html#ab8fd931923357898286ae604e1380fa7">QCPItemAnchor::mChildrenX</a></div><div class="ttdeci">QSet&lt; QCPItemPosition * &gt; mChildrenX</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l01741">qcustomplot.h:1741</a></div></div>
+<div class="ttc" id="class_q_c_p_item_position_html_a485abba71c8552086c5f68e95dca7f9a"><div class="ttname"><a href="class_q_c_p_item_position.html#a485abba71c8552086c5f68e95dca7f9a">QCPItemPosition::parentAnchorX</a></div><div class="ttdeci">QCPItemAnchor * parentAnchorX() const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l01803">qcustomplot.h:1803</a></div></div>
+<div class="ttc" id="class_q_c_p_item_position_html_add71461a973927c74e42179480916d9c"><div class="ttname"><a href="class_q_c_p_item_position.html#add71461a973927c74e42179480916d9c">QCPItemPosition::setParentAnchorX</a></div><div class="ttdeci">bool setParentAnchorX(QCPItemAnchor *parentAnchor, bool keepPixelPosition=false)</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l08584">qcustomplot.cpp:8584</a></div></div>
+<div class="ttc" id="class_q_c_p_item_position_html"><div class="ttname"><a href="class_q_c_p_item_position.html">QCPItemPosition</a></div><div class="ttdoc">Manages the position of an item. </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l01762">qcustomplot.h:1762</a></div></div>
+<div class="ttc" id="class_q_c_p_item_position_html_add5ec1db9d19cec58a3b5c9e0a0c3f9d"><div class="ttname"><a href="class_q_c_p_item_position.html#add5ec1db9d19cec58a3b5c9e0a0c3f9d">QCPItemPosition::setParentAnchorY</a></div><div class="ttdeci">bool setParentAnchorY(QCPItemAnchor *parentAnchor, bool keepPixelPosition=false)</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l08653">qcustomplot.cpp:8653</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -324,18 +319,19 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l07506">7506</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l08256">8256</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
 
-<p>References <a class="el" href="qcustomplot_8h_source.html#l01521">mChildrenX</a>.</p>
+<p>References <a class="el" href="qcustomplot_8h_source.html#l01741">mChildrenX</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l07785">QCPItemPosition::setParentAnchorX()</a>.</p>
-<div class="fragment"><div class="line"><a name="l07507"></a><span class="lineno"> 7507</span>&#160;{</div>
-<div class="line"><a name="l07508"></a><span class="lineno"> 7508</span>&#160;  <span class="keywordflow">if</span> (!<a class="code" href="class_q_c_p_item_anchor.html#a3c0bfd6e50f3b48e2a9b3824695b20f7">mChildrenX</a>.contains(pos))</div>
-<div class="line"><a name="l07509"></a><span class="lineno"> 7509</span>&#160;    <a class="code" href="class_q_c_p_item_anchor.html#a3c0bfd6e50f3b48e2a9b3824695b20f7">mChildrenX</a>.insert(pos);</div>
-<div class="line"><a name="l07510"></a><span class="lineno"> 7510</span>&#160;  <span class="keywordflow">else</span></div>
-<div class="line"><a name="l07511"></a><span class="lineno"> 7511</span>&#160;    qDebug() &lt;&lt; Q_FUNC_INFO &lt;&lt; <span class="stringliteral">&quot;provided pos is child already&quot;</span> &lt;&lt; <span class="keyword">reinterpret_cast&lt;</span>quintptr<span class="keyword">&gt;</span>(pos);</div>
-<div class="line"><a name="l07512"></a><span class="lineno"> 7512</span>&#160;}</div>
-<div class="ttc" id="class_q_c_p_item_anchor_html_a3c0bfd6e50f3b48e2a9b3824695b20f7"><div class="ttname"><a href="class_q_c_p_item_anchor.html#a3c0bfd6e50f3b48e2a9b3824695b20f7">QCPItemAnchor::mChildrenX</a></div><div class="ttdeci">QSet&lt; QCPItemPosition * &gt; mChildrenX</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l01521">qcustomplot.h:1521</a></div></div>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l08584">QCPItemPosition::setParentAnchorX()</a>.</p>
+<div class="fragment"><div class="line"><a name="l08256"></a><span class="lineno"> 8256</span>&#160;                                                  {</div>
+<div class="line"><a name="l08257"></a><span class="lineno"> 8257</span>&#160;  <span class="keywordflow">if</span> (!<a class="code" href="class_q_c_p_item_anchor.html#ab8fd931923357898286ae604e1380fa7">mChildrenX</a>.contains(pos))</div>
+<div class="line"><a name="l08258"></a><span class="lineno"> 8258</span>&#160;    <a class="code" href="class_q_c_p_item_anchor.html#ab8fd931923357898286ae604e1380fa7">mChildrenX</a>.insert(pos);</div>
+<div class="line"><a name="l08259"></a><span class="lineno"> 8259</span>&#160;  <span class="keywordflow">else</span></div>
+<div class="line"><a name="l08260"></a><span class="lineno"> 8260</span>&#160;    qDebug() &lt;&lt; Q_FUNC_INFO &lt;&lt; <span class="stringliteral">&quot;provided pos is child already&quot;</span></div>
+<div class="line"><a name="l08261"></a><span class="lineno"> 8261</span>&#160;             &lt;&lt; <span class="keyword">reinterpret_cast&lt;</span>quintptr<span class="keyword">&gt;</span>(pos);</div>
+<div class="line"><a name="l08262"></a><span class="lineno"> 8262</span>&#160;}</div>
+<div class="ttc" id="class_q_c_p_item_anchor_html_ab8fd931923357898286ae604e1380fa7"><div class="ttname"><a href="class_q_c_p_item_anchor.html#ab8fd931923357898286ae604e1380fa7">QCPItemAnchor::mChildrenX</a></div><div class="ttdeci">QSet&lt; QCPItemPosition * &gt; mChildrenX</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l01741">qcustomplot.h:1741</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -370,18 +366,19 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l07534">7534</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l08286">8286</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
 
-<p>References <a class="el" href="qcustomplot_8h_source.html#l01521">mChildrenY</a>.</p>
+<p>References <a class="el" href="qcustomplot_8h_source.html#l01741">mChildrenY</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l07850">QCPItemPosition::setParentAnchorY()</a>.</p>
-<div class="fragment"><div class="line"><a name="l07535"></a><span class="lineno"> 7535</span>&#160;{</div>
-<div class="line"><a name="l07536"></a><span class="lineno"> 7536</span>&#160;  <span class="keywordflow">if</span> (!<a class="code" href="class_q_c_p_item_anchor.html#a3abe4eebd0683454d81c8341df6f7115">mChildrenY</a>.contains(pos))</div>
-<div class="line"><a name="l07537"></a><span class="lineno"> 7537</span>&#160;    <a class="code" href="class_q_c_p_item_anchor.html#a3abe4eebd0683454d81c8341df6f7115">mChildrenY</a>.insert(pos);</div>
-<div class="line"><a name="l07538"></a><span class="lineno"> 7538</span>&#160;  <span class="keywordflow">else</span></div>
-<div class="line"><a name="l07539"></a><span class="lineno"> 7539</span>&#160;    qDebug() &lt;&lt; Q_FUNC_INFO &lt;&lt; <span class="stringliteral">&quot;provided pos is child already&quot;</span> &lt;&lt; <span class="keyword">reinterpret_cast&lt;</span>quintptr<span class="keyword">&gt;</span>(pos);</div>
-<div class="line"><a name="l07540"></a><span class="lineno"> 7540</span>&#160;}</div>
-<div class="ttc" id="class_q_c_p_item_anchor_html_a3abe4eebd0683454d81c8341df6f7115"><div class="ttname"><a href="class_q_c_p_item_anchor.html#a3abe4eebd0683454d81c8341df6f7115">QCPItemAnchor::mChildrenY</a></div><div class="ttdeci">QSet&lt; QCPItemPosition * &gt; mChildrenY</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l01521">qcustomplot.h:1521</a></div></div>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l08653">QCPItemPosition::setParentAnchorY()</a>.</p>
+<div class="fragment"><div class="line"><a name="l08286"></a><span class="lineno"> 8286</span>&#160;                                                  {</div>
+<div class="line"><a name="l08287"></a><span class="lineno"> 8287</span>&#160;  <span class="keywordflow">if</span> (!<a class="code" href="class_q_c_p_item_anchor.html#a6d58eb782eda4d96a95067354305b139">mChildrenY</a>.contains(pos))</div>
+<div class="line"><a name="l08288"></a><span class="lineno"> 8288</span>&#160;    <a class="code" href="class_q_c_p_item_anchor.html#a6d58eb782eda4d96a95067354305b139">mChildrenY</a>.insert(pos);</div>
+<div class="line"><a name="l08289"></a><span class="lineno"> 8289</span>&#160;  <span class="keywordflow">else</span></div>
+<div class="line"><a name="l08290"></a><span class="lineno"> 8290</span>&#160;    qDebug() &lt;&lt; Q_FUNC_INFO &lt;&lt; <span class="stringliteral">&quot;provided pos is child already&quot;</span></div>
+<div class="line"><a name="l08291"></a><span class="lineno"> 8291</span>&#160;             &lt;&lt; <span class="keyword">reinterpret_cast&lt;</span>quintptr<span class="keyword">&gt;</span>(pos);</div>
+<div class="line"><a name="l08292"></a><span class="lineno"> 8292</span>&#160;}</div>
+<div class="ttc" id="class_q_c_p_item_anchor_html_a6d58eb782eda4d96a95067354305b139"><div class="ttname"><a href="class_q_c_p_item_anchor.html#a6d58eb782eda4d96a95067354305b139">QCPItemAnchor::mChildrenY</a></div><div class="ttdeci">QSet&lt; QCPItemPosition * &gt; mChildrenY</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l01741">qcustomplot.h:1741</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -415,9 +412,9 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l01510">1510</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l01510"></a><span class="lineno"> 1510</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="class_q_c_p_item_anchor.html#a23ad4d0ab0d2cbb41a7baf05bcf996ec">mName</a>; }</div>
-<div class="ttc" id="class_q_c_p_item_anchor_html_a23ad4d0ab0d2cbb41a7baf05bcf996ec"><div class="ttname"><a href="class_q_c_p_item_anchor.html#a23ad4d0ab0d2cbb41a7baf05bcf996ec">QCPItemAnchor::mName</a></div><div class="ttdeci">QString mName</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l01515">qcustomplot.h:1515</a></div></div>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l01730">1730</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l01730"></a><span class="lineno"> 1730</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="class_q_c_p_item_anchor.html#a23ad4d0ab0d2cbb41a7baf05bcf996ec">mName</a>; }</div>
+<div class="ttc" id="class_q_c_p_item_anchor_html_a23ad4d0ab0d2cbb41a7baf05bcf996ec"><div class="ttname"><a href="class_q_c_p_item_anchor.html#a23ad4d0ab0d2cbb41a7baf05bcf996ec">QCPItemAnchor::mName</a></div><div class="ttdeci">QString mName</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l01735">qcustomplot.h:1735</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -446,31 +443,27 @@ Here is the caller graph for this function:</div>
 
 <p>Reimplemented in <a class="el" href="class_q_c_p_item_position.html#ae490f9c76ee2ba33752c495d3b6e8fb5">QCPItemPosition</a>.</p>
 
-<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l07479">7479</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l08232">8232</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
 
-<p>References <a class="el" href="qcustomplot_8cpp_source.html#l08610">QCPAbstractItem::anchorPixelPoint()</a>, <a class="el" href="qcustomplot_8h_source.html#l01520">mAnchorId</a>, and <a class="el" href="qcustomplot_8h_source.html#l01519">mParentItem</a>.</p>
+<p>References <a class="el" href="qcustomplot_8cpp_source.html#l09478">QCPAbstractItem::anchorPixelPoint()</a>, <a class="el" href="qcustomplot_8h_source.html#l01740">mAnchorId</a>, and <a class="el" href="qcustomplot_8h_source.html#l01739">mParentItem</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l07947">QCPItemPosition::pixelPoint()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l08073">QCPItemPosition::setPixelPoint()</a>.</p>
-<div class="fragment"><div class="line"><a name="l07480"></a><span class="lineno"> 7480</span>&#160;{</div>
-<div class="line"><a name="l07481"></a><span class="lineno"> 7481</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="class_q_c_p_item_anchor.html#a80fad480ad3bb980446ed6ebc00818ae">mParentItem</a>)</div>
-<div class="line"><a name="l07482"></a><span class="lineno"> 7482</span>&#160;  {</div>
-<div class="line"><a name="l07483"></a><span class="lineno"> 7483</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="class_q_c_p_item_anchor.html#a00c62070333e8345976b579676ad3997">mAnchorId</a> &gt; -1)</div>
-<div class="line"><a name="l07484"></a><span class="lineno"> 7484</span>&#160;    {</div>
-<div class="line"><a name="l07485"></a><span class="lineno"> 7485</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="class_q_c_p_item_anchor.html#a80fad480ad3bb980446ed6ebc00818ae">mParentItem</a>-&gt;<a class="code" href="class_q_c_p_abstract_item.html#a94bde62b8a2fc133666dcbb8035deeed">anchorPixelPoint</a>(<a class="code" href="class_q_c_p_item_anchor.html#a00c62070333e8345976b579676ad3997">mAnchorId</a>);</div>
-<div class="line"><a name="l07486"></a><span class="lineno"> 7486</span>&#160;    } <span class="keywordflow">else</span></div>
-<div class="line"><a name="l07487"></a><span class="lineno"> 7487</span>&#160;    {</div>
-<div class="line"><a name="l07488"></a><span class="lineno"> 7488</span>&#160;      qDebug() &lt;&lt; Q_FUNC_INFO &lt;&lt; <span class="stringliteral">&quot;no valid anchor id set:&quot;</span> &lt;&lt; <a class="code" href="class_q_c_p_item_anchor.html#a00c62070333e8345976b579676ad3997">mAnchorId</a>;</div>
-<div class="line"><a name="l07489"></a><span class="lineno"> 7489</span>&#160;      <span class="keywordflow">return</span> QPointF();</div>
-<div class="line"><a name="l07490"></a><span class="lineno"> 7490</span>&#160;    }</div>
-<div class="line"><a name="l07491"></a><span class="lineno"> 7491</span>&#160;  } <span class="keywordflow">else</span></div>
-<div class="line"><a name="l07492"></a><span class="lineno"> 7492</span>&#160;  {</div>
-<div class="line"><a name="l07493"></a><span class="lineno"> 7493</span>&#160;    qDebug() &lt;&lt; Q_FUNC_INFO &lt;&lt; <span class="stringliteral">&quot;no parent item set&quot;</span>;</div>
-<div class="line"><a name="l07494"></a><span class="lineno"> 7494</span>&#160;    <span class="keywordflow">return</span> QPointF();</div>
-<div class="line"><a name="l07495"></a><span class="lineno"> 7495</span>&#160;  }</div>
-<div class="line"><a name="l07496"></a><span class="lineno"> 7496</span>&#160;}</div>
-<div class="ttc" id="class_q_c_p_item_anchor_html_a00c62070333e8345976b579676ad3997"><div class="ttname"><a href="class_q_c_p_item_anchor.html#a00c62070333e8345976b579676ad3997">QCPItemAnchor::mAnchorId</a></div><div class="ttdeci">int mAnchorId</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l01520">qcustomplot.h:1520</a></div></div>
-<div class="ttc" id="class_q_c_p_abstract_item_html_a94bde62b8a2fc133666dcbb8035deeed"><div class="ttname"><a href="class_q_c_p_abstract_item.html#a94bde62b8a2fc133666dcbb8035deeed">QCPAbstractItem::anchorPixelPoint</a></div><div class="ttdeci">virtual QPointF anchorPixelPoint(int anchorId) const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l08610">qcustomplot.cpp:8610</a></div></div>
-<div class="ttc" id="class_q_c_p_item_anchor_html_a80fad480ad3bb980446ed6ebc00818ae"><div class="ttname"><a href="class_q_c_p_item_anchor.html#a80fad480ad3bb980446ed6ebc00818ae">QCPItemAnchor::mParentItem</a></div><div class="ttdeci">QCPAbstractItem * mParentItem</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l01519">qcustomplot.h:1519</a></div></div>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l08762">QCPItemPosition::pixelPoint()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l08887">QCPItemPosition::setPixelPoint()</a>.</p>
+<div class="fragment"><div class="line"><a name="l08232"></a><span class="lineno"> 8232</span>&#160;                                        {</div>
+<div class="line"><a name="l08233"></a><span class="lineno"> 8233</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="class_q_c_p_item_anchor.html#a80fad480ad3bb980446ed6ebc00818ae">mParentItem</a>) {</div>
+<div class="line"><a name="l08234"></a><span class="lineno"> 8234</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="class_q_c_p_item_anchor.html#a00c62070333e8345976b579676ad3997">mAnchorId</a> &gt; -1) {</div>
+<div class="line"><a name="l08235"></a><span class="lineno"> 8235</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="class_q_c_p_item_anchor.html#a80fad480ad3bb980446ed6ebc00818ae">mParentItem</a>-&gt;<a class="code" href="class_q_c_p_abstract_item.html#a94bde62b8a2fc133666dcbb8035deeed">anchorPixelPoint</a>(<a class="code" href="class_q_c_p_item_anchor.html#a00c62070333e8345976b579676ad3997">mAnchorId</a>);</div>
+<div class="line"><a name="l08236"></a><span class="lineno"> 8236</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l08237"></a><span class="lineno"> 8237</span>&#160;      qDebug() &lt;&lt; Q_FUNC_INFO &lt;&lt; <span class="stringliteral">&quot;no valid anchor id set:&quot;</span> &lt;&lt; <a class="code" href="class_q_c_p_item_anchor.html#a00c62070333e8345976b579676ad3997">mAnchorId</a>;</div>
+<div class="line"><a name="l08238"></a><span class="lineno"> 8238</span>&#160;      <span class="keywordflow">return</span> QPointF();</div>
+<div class="line"><a name="l08239"></a><span class="lineno"> 8239</span>&#160;    }</div>
+<div class="line"><a name="l08240"></a><span class="lineno"> 8240</span>&#160;  } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l08241"></a><span class="lineno"> 8241</span>&#160;    qDebug() &lt;&lt; Q_FUNC_INFO &lt;&lt; <span class="stringliteral">&quot;no parent item set&quot;</span>;</div>
+<div class="line"><a name="l08242"></a><span class="lineno"> 8242</span>&#160;    <span class="keywordflow">return</span> QPointF();</div>
+<div class="line"><a name="l08243"></a><span class="lineno"> 8243</span>&#160;  }</div>
+<div class="line"><a name="l08244"></a><span class="lineno"> 8244</span>&#160;}</div>
+<div class="ttc" id="class_q_c_p_item_anchor_html_a00c62070333e8345976b579676ad3997"><div class="ttname"><a href="class_q_c_p_item_anchor.html#a00c62070333e8345976b579676ad3997">QCPItemAnchor::mAnchorId</a></div><div class="ttdeci">int mAnchorId</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l01740">qcustomplot.h:1740</a></div></div>
+<div class="ttc" id="class_q_c_p_abstract_item_html_a94bde62b8a2fc133666dcbb8035deeed"><div class="ttname"><a href="class_q_c_p_abstract_item.html#a94bde62b8a2fc133666dcbb8035deeed">QCPAbstractItem::anchorPixelPoint</a></div><div class="ttdeci">virtual QPointF anchorPixelPoint(int anchorId) const </div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8cpp_source.html#l09478">qcustomplot.cpp:9478</a></div></div>
+<div class="ttc" id="class_q_c_p_item_anchor_html_a80fad480ad3bb980446ed6ebc00818ae"><div class="ttname"><a href="class_q_c_p_item_anchor.html#a80fad480ad3bb980446ed6ebc00818ae">QCPItemAnchor::mParentItem</a></div><div class="ttdeci">QCPAbstractItem * mParentItem</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l01739">qcustomplot.h:1739</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -514,16 +507,17 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l07520">7520</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l08270">8270</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
 
-<p>References <a class="el" href="qcustomplot_8h_source.html#l01521">mChildrenX</a>.</p>
+<p>References <a class="el" href="qcustomplot_8h_source.html#l01741">mChildrenX</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l07785">QCPItemPosition::setParentAnchorX()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l07634">QCPItemPosition::~QCPItemPosition()</a>.</p>
-<div class="fragment"><div class="line"><a name="l07521"></a><span class="lineno"> 7521</span>&#160;{</div>
-<div class="line"><a name="l07522"></a><span class="lineno"> 7522</span>&#160;  <span class="keywordflow">if</span> (!<a class="code" href="class_q_c_p_item_anchor.html#a3c0bfd6e50f3b48e2a9b3824695b20f7">mChildrenX</a>.remove(pos))</div>
-<div class="line"><a name="l07523"></a><span class="lineno"> 7523</span>&#160;    qDebug() &lt;&lt; Q_FUNC_INFO &lt;&lt; <span class="stringliteral">&quot;provided pos isn&#39;t child&quot;</span> &lt;&lt; <span class="keyword">reinterpret_cast&lt;</span>quintptr<span class="keyword">&gt;</span>(pos);</div>
-<div class="line"><a name="l07524"></a><span class="lineno"> 7524</span>&#160;}</div>
-<div class="ttc" id="class_q_c_p_item_anchor_html_a3c0bfd6e50f3b48e2a9b3824695b20f7"><div class="ttname"><a href="class_q_c_p_item_anchor.html#a3c0bfd6e50f3b48e2a9b3824695b20f7">QCPItemAnchor::mChildrenX</a></div><div class="ttdeci">QSet&lt; QCPItemPosition * &gt; mChildrenX</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l01521">qcustomplot.h:1521</a></div></div>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l08584">QCPItemPosition::setParentAnchorX()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l08406">QCPItemPosition::~QCPItemPosition()</a>.</p>
+<div class="fragment"><div class="line"><a name="l08270"></a><span class="lineno"> 8270</span>&#160;                                                     {</div>
+<div class="line"><a name="l08271"></a><span class="lineno"> 8271</span>&#160;  <span class="keywordflow">if</span> (!<a class="code" href="class_q_c_p_item_anchor.html#ab8fd931923357898286ae604e1380fa7">mChildrenX</a>.remove(pos))</div>
+<div class="line"><a name="l08272"></a><span class="lineno"> 8272</span>&#160;    qDebug() &lt;&lt; Q_FUNC_INFO &lt;&lt; <span class="stringliteral">&quot;provided pos isn&#39;t child&quot;</span></div>
+<div class="line"><a name="l08273"></a><span class="lineno"> 8273</span>&#160;             &lt;&lt; <span class="keyword">reinterpret_cast&lt;</span>quintptr<span class="keyword">&gt;</span>(pos);</div>
+<div class="line"><a name="l08274"></a><span class="lineno"> 8274</span>&#160;}</div>
+<div class="ttc" id="class_q_c_p_item_anchor_html_ab8fd931923357898286ae604e1380fa7"><div class="ttname"><a href="class_q_c_p_item_anchor.html#ab8fd931923357898286ae604e1380fa7">QCPItemAnchor::mChildrenX</a></div><div class="ttdeci">QSet&lt; QCPItemPosition * &gt; mChildrenX</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l01741">qcustomplot.h:1741</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -558,16 +552,17 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l07548">7548</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8cpp_source.html#l08300">8300</a> of file <a class="el" href="qcustomplot_8cpp_source.html">qcustomplot.cpp</a>.</p>
 
-<p>References <a class="el" href="qcustomplot_8h_source.html#l01521">mChildrenY</a>.</p>
+<p>References <a class="el" href="qcustomplot_8h_source.html#l01741">mChildrenY</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l07850">QCPItemPosition::setParentAnchorY()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l07634">QCPItemPosition::~QCPItemPosition()</a>.</p>
-<div class="fragment"><div class="line"><a name="l07549"></a><span class="lineno"> 7549</span>&#160;{</div>
-<div class="line"><a name="l07550"></a><span class="lineno"> 7550</span>&#160;  <span class="keywordflow">if</span> (!<a class="code" href="class_q_c_p_item_anchor.html#a3abe4eebd0683454d81c8341df6f7115">mChildrenY</a>.remove(pos))</div>
-<div class="line"><a name="l07551"></a><span class="lineno"> 7551</span>&#160;    qDebug() &lt;&lt; Q_FUNC_INFO &lt;&lt; <span class="stringliteral">&quot;provided pos isn&#39;t child&quot;</span> &lt;&lt; <span class="keyword">reinterpret_cast&lt;</span>quintptr<span class="keyword">&gt;</span>(pos);</div>
-<div class="line"><a name="l07552"></a><span class="lineno"> 7552</span>&#160;}</div>
-<div class="ttc" id="class_q_c_p_item_anchor_html_a3abe4eebd0683454d81c8341df6f7115"><div class="ttname"><a href="class_q_c_p_item_anchor.html#a3abe4eebd0683454d81c8341df6f7115">QCPItemAnchor::mChildrenY</a></div><div class="ttdeci">QSet&lt; QCPItemPosition * &gt; mChildrenY</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l01521">qcustomplot.h:1521</a></div></div>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l08653">QCPItemPosition::setParentAnchorY()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l08406">QCPItemPosition::~QCPItemPosition()</a>.</p>
+<div class="fragment"><div class="line"><a name="l08300"></a><span class="lineno"> 8300</span>&#160;                                                     {</div>
+<div class="line"><a name="l08301"></a><span class="lineno"> 8301</span>&#160;  <span class="keywordflow">if</span> (!<a class="code" href="class_q_c_p_item_anchor.html#a6d58eb782eda4d96a95067354305b139">mChildrenY</a>.remove(pos))</div>
+<div class="line"><a name="l08302"></a><span class="lineno"> 8302</span>&#160;    qDebug() &lt;&lt; Q_FUNC_INFO &lt;&lt; <span class="stringliteral">&quot;provided pos isn&#39;t child&quot;</span></div>
+<div class="line"><a name="l08303"></a><span class="lineno"> 8303</span>&#160;             &lt;&lt; <span class="keyword">reinterpret_cast&lt;</span>quintptr<span class="keyword">&gt;</span>(pos);</div>
+<div class="line"><a name="l08304"></a><span class="lineno"> 8304</span>&#160;}</div>
+<div class="ttc" id="class_q_c_p_item_anchor_html_a6d58eb782eda4d96a95067354305b139"><div class="ttname"><a href="class_q_c_p_item_anchor.html#a6d58eb782eda4d96a95067354305b139">QCPItemAnchor::mChildrenY</a></div><div class="ttdeci">QSet&lt; QCPItemPosition * &gt; mChildrenY</div><div class="ttdef"><b>Definition:</b> <a href="qcustomplot_8h_source.html#l01741">qcustomplot.h:1741</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -605,10 +600,10 @@ Here is the caller graph for this function:</div>
 
 <p>Reimplemented in <a class="el" href="class_q_c_p_item_position.html#a577a7efc601df85a20b3e709d1ac320e">QCPItemPosition</a>.</p>
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l01524">1524</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l01744">1744</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l07785">QCPItemPosition::setParentAnchorX()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l07850">QCPItemPosition::setParentAnchorY()</a>.</p>
-<div class="fragment"><div class="line"><a name="l01524"></a><span class="lineno"> 1524</span>&#160;{ <span class="keywordflow">return</span> 0; }</div>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l08584">QCPItemPosition::setParentAnchorX()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l08653">QCPItemPosition::setParentAnchorY()</a>.</p>
+<div class="fragment"><div class="line"><a name="l01744"></a><span class="lineno"> 1744</span>&#160;{ <span class="keywordflow">return</span> 0; }</div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -640,7 +635,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l01535">1535</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l01759">1759</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
 </div>
 </div>
@@ -663,13 +658,13 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l01520">1520</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l01740">1740</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l07479">pixelPoint()</a>.</p>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l08232">pixelPoint()</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a3c0bfd6e50f3b48e2a9b3824695b20f7"></a>
+<a class="anchor" id="ab8fd931923357898286ae604e1380fa7"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -677,7 +672,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">QSet&lt;<a class="el" href="class_q_c_p_item_position.html">QCPItemPosition</a>*&gt; QCPItemAnchor::mChildrenX</td>
+          <td class="memname">QSet&lt;<a class="el" href="class_q_c_p_item_position.html">QCPItemPosition</a> *&gt; QCPItemAnchor::mChildrenX</td>
         </tr>
       </table>
   </td>
@@ -687,13 +682,13 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l01521">1521</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l01741">1741</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l07506">addChildX()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l07520">removeChildX()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l07458">~QCPItemAnchor()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l07634">QCPItemPosition::~QCPItemPosition()</a>.</p>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l08256">addChildX()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l08270">removeChildX()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l08210">~QCPItemAnchor()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l08406">QCPItemPosition::~QCPItemPosition()</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a3abe4eebd0683454d81c8341df6f7115"></a>
+<a class="anchor" id="a6d58eb782eda4d96a95067354305b139"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -701,7 +696,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">QSet&lt;<a class="el" href="class_q_c_p_item_position.html">QCPItemPosition</a>*&gt; QCPItemAnchor::mChildrenY</td>
+          <td class="memname">QSet&lt;<a class="el" href="class_q_c_p_item_position.html">QCPItemPosition</a> *&gt; QCPItemAnchor::mChildrenY</td>
         </tr>
       </table>
   </td>
@@ -711,9 +706,9 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l01521">1521</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l01741">1741</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l07534">addChildY()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l07548">removeChildY()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l07458">~QCPItemAnchor()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l07634">QCPItemPosition::~QCPItemPosition()</a>.</p>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l08286">addChildY()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l08300">removeChildY()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l08210">~QCPItemAnchor()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l08406">QCPItemPosition::~QCPItemPosition()</a>.</p>
 
 </div>
 </div>
@@ -735,7 +730,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l01515">1515</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l01735">1735</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
 </div>
 </div>
@@ -757,9 +752,9 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l01519">1519</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l01739">1739</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l07479">pixelPoint()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l07785">QCPItemPosition::setParentAnchorX()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l07850">QCPItemPosition::setParentAnchorY()</a>.</p>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l08232">pixelPoint()</a>, <a class="el" href="qcustomplot_8cpp_source.html#l08584">QCPItemPosition::setParentAnchorX()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l08653">QCPItemPosition::setParentAnchorY()</a>.</p>
 
 </div>
 </div>
@@ -781,9 +776,9 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l01518">1518</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
+<p>Definition at line <a class="el" href="qcustomplot_8h_source.html#l01738">1738</a> of file <a class="el" href="qcustomplot_8h_source.html">qcustomplot.h</a>.</p>
 
-<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l07947">QCPItemPosition::pixelPoint()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l08073">QCPItemPosition::setPixelPoint()</a>.</p>
+<p>Referenced by <a class="el" href="qcustomplot_8cpp_source.html#l08762">QCPItemPosition::pixelPoint()</a>, and <a class="el" href="qcustomplot_8cpp_source.html#l08887">QCPItemPosition::setPixelPoint()</a>.</p>
 
 </div>
 </div>
@@ -797,7 +792,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_q_c_p_item_anchor.html">QCPItemAnchor</a></li>
-    <li class="footer">Generated on Sat Jun 6 2015 21:25:35 for Vision Soil Analyzer by
+    <li class="footer">Generated on Sun Jun 7 2015 21:06:45 for Vision Soil Analyzer by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

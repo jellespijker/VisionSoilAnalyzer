@@ -35,7 +35,7 @@
    <div id="projectname">Vision Soil Analyzer
    &#160;<span id="projectnumber">1.0.0</span>
    </div>
-   <div id="projectbrief">The Soil Analyzer is a portable lab that can analyse soil samples and tells the user about it&#39;s optical properties. It looks at the texture and describe it as a Particle Size Distribution. This information is presented as a Cumulative Distribution Function (CDF). It also describes the structure of the soil sample and gives information on the sphericity and roundness / angularity. It does so by analysing the contour of particles, describing them as Fourier Descriptors and using a Neural Network to describe it&#39;s properties. Finally it gives the color properties in a histogram in the CIE La*b* colorspace, which show correlations with the fertility of the soil. and a histogram of the Redness Index, which gives has a correlation on the iron content.</div>
+   <div id="projectbrief">Soil analyzer using an USB microscope - for Linux PC and Beaglebone Black</div>
   </td>
  </tr>
  </tbody>
@@ -135,7 +135,7 @@ Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p>Definition at line <a class="el" href="_u_s_b_8h_source.html#l00013">13</a> of file <a class="el" href="_u_s_b_8h_source.html">USB.h</a>.</p>
+<p>Definition at line <a class="el" href="_u_s_b_8h_source.html#l00019">19</a> of file <a class="el" href="_u_s_b_8h_source.html">USB.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a225d2d24d36cc7c4e46f5c4d19f51fb8"></a>
 <div class="memitem">
@@ -150,9 +150,8 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_u_s_b_8cpp_source.html#l00005">5</a> of file <a class="el" href="_u_s_b_8cpp_source.html">USB.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    {</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    }</div>
+<p>Definition at line <a class="el" href="_u_s_b_8cpp_source.html#l00011">11</a> of file <a class="el" href="_u_s_b_8cpp_source.html">USB.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -169,9 +168,8 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_u_s_b_8cpp_source.html#l00010">10</a> of file <a class="el" href="_u_s_b_8cpp_source.html">USB.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    {</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    }</div>
+<p>Definition at line <a class="el" href="_u_s_b_8cpp_source.html#l00013">13</a> of file <a class="el" href="_u_s_b_8cpp_source.html">USB.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -191,18 +189,17 @@ Public Member Functions</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_u_s_b_8cpp_source.html#l00015">15</a> of file <a class="el" href="_u_s_b_8cpp_source.html">USB.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="_microscope_8cpp_source.html#l00026">Hardware::Microscope::StartupSeq()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    {</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keywordtype">int</span> fd, rc;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        fd = open(<span class="stringliteral">&quot;/dev/bus/usb/001/002&quot;</span>, O_WRONLY);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        rc = ioctl(fd, USBDEVFS_RESET, 0);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordflow">if</span> (rc &lt; 0)</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <span class="keywordflow">throw</span> - 1;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        }</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        close(fd);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    }</div>
+<p>Referenced by <a class="el" href="_microscope_8cpp_source.html#l00035">Hardware::Microscope::StartupSeq()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                   {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <span class="keywordtype">int</span> fd, rc;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  fd = open(<span class="stringliteral">&quot;/dev/bus/usb/001/002&quot;</span>, O_WRONLY);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  rc = ioctl(fd, USBDEVFS_RESET, 0);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <span class="keywordflow">if</span> (rc &lt; 0) {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordflow">throw</span> - 1;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  }</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  close(fd);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -225,7 +222,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_hardware.html">Hardware</a></li><li class="navelem"><a class="el" href="class_hardware_1_1_u_s_b.html">USB</a></li>
-    <li class="footer">Generated on Sat Jun 6 2015 21:25:40 for Vision Soil Analyzer by
+    <li class="footer">Generated on Sun Jun 7 2015 21:06:54 for Vision Soil Analyzer by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

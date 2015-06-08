@@ -108,7 +108,7 @@ The data cells can be accessed in two ways\+: They can be directly addressed by 
 
 This class also buffers the minimum and maximum values that are in the data set, to provide \hyperlink{class_q_c_p_color_map_a856608fa3dd1cc290bcd5f29a5575774}{Q\+C\+P\+Color\+Map\+::rescale\+Data\+Range} with the necessary information quickly. Setting a cell to a value that is greater than the current maximum increases this maximum to the new value. However, setting the cell that currently holds the maximum value to a smaller value doesn\textquotesingle{}t decrease the maximum again, because finding the true new maximum would require going through the entire data array, which might be time consuming. The same holds for the data minimum. This functionality is given by \hyperlink{class_q_c_p_color_map_data_ab235ade8a4d64bd3adb26a99b3dd57ee}{recalculate\+Data\+Bounds}, such that you can decide when it is sensible to find the true current minimum and maximum. The method \hyperlink{class_q_c_p_color_map_a856608fa3dd1cc290bcd5f29a5575774}{Q\+C\+P\+Color\+Map\+::rescale\+Data\+Range} offers a convenience parameter {\itshape recalculate\+Data\+Bounds} which may be set to true to automatically call \hyperlink{class_q_c_p_color_map_data_ab235ade8a4d64bd3adb26a99b3dd57ee}{recalculate\+Data\+Bounds} internally. 
 
-Definition at line 2997 of file qcustomplot.\+h.
+Definition at line 3431 of file qcustomplot.\+h.
 
 
 
@@ -130,7 +130,7 @@ Constructs a new \hyperlink{class_q_c_p_color_map_data}{Q\+C\+P\+Color\+Map\+Dat
 \end{DoxySeeAlso}
 
 
-Definition at line 19621 of file qcustomplot.\+cpp.
+Definition at line 21834 of file qcustomplot.\+cpp.
 
 
 
@@ -138,19 +138,12 @@ References fill(), and set\+Size().
 
 
 \begin{DoxyCode}
-19621                                                                                                            
-            :
-19622   \hyperlink{class_q_c_p_color_map_data_a354e06462023340fbc03894b22499f6d}{mKeySize}(0),
-19623   \hyperlink{class_q_c_p_color_map_data_ae8ee9093632a59f55eb4fc06579ed256}{mValueSize}(0),
-19624   \hyperlink{class_q_c_p_color_map_data_aaaafd0d7d0f153dbd152f3daf34254ee}{mKeyRange}(keyRange),
-19625   \hyperlink{class_q_c_p_color_map_data_a225bb96f10c1a27b51ae59249477dbef}{mValueRange}(valueRange),
-19626   \hyperlink{class_q_c_p_color_map_data_a10e91aa89ed05bd177b1f81e07b465b8}{mIsEmpty}(\textcolor{keyword}{true}),
-19627   \hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData}(0),
-19628   \hyperlink{class_q_c_p_color_map_data_ad3cc682da2ac14e5acdbc05cf4d3d93b}{mDataModified}(\textcolor{keyword}{true})
-19629 \{
-19630   \hyperlink{class_q_c_p_color_map_data_a0d9ff35c299d0478b682bfbcdd9c097e}{setSize}(\hyperlink{class_q_c_p_color_map_data_aa8d7811686fdfea964947715210c4af8}{keySize}, \hyperlink{class_q_c_p_color_map_data_ab880be6bc587f34e8d22fe77ef6b57e9}{valueSize});
-19631   \hyperlink{class_q_c_p_color_map_data_a350f783260eb9b5de5c7b5e0d5d3e3c2}{fill}(0);
-19632 \}
+21837     : \hyperlink{class_q_c_p_color_map_data_a354e06462023340fbc03894b22499f6d}{mKeySize}(0), \hyperlink{class_q_c_p_color_map_data_ae8ee9093632a59f55eb4fc06579ed256}{mValueSize}(0), \hyperlink{class_q_c_p_color_map_data_aaaafd0d7d0f153dbd152f3daf34254ee}{mKeyRange}(keyRange), 
+      \hyperlink{class_q_c_p_color_map_data_a225bb96f10c1a27b51ae59249477dbef}{mValueRange}(valueRange),
+21838       \hyperlink{class_q_c_p_color_map_data_a10e91aa89ed05bd177b1f81e07b465b8}{mIsEmpty}(\textcolor{keyword}{true}), \hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData}(0), \hyperlink{class_q_c_p_color_map_data_ad3cc682da2ac14e5acdbc05cf4d3d93b}{mDataModified}(\textcolor{keyword}{true}) \{
+21839   \hyperlink{class_q_c_p_color_map_data_a0d9ff35c299d0478b682bfbcdd9c097e}{setSize}(\hyperlink{class_q_c_p_color_map_data_aa8d7811686fdfea964947715210c4af8}{keySize}, \hyperlink{class_q_c_p_color_map_data_ab880be6bc587f34e8d22fe77ef6b57e9}{valueSize});
+21840   \hyperlink{class_q_c_p_color_map_data_a350f783260eb9b5de5c7b5e0d5d3e3c2}{fill}(0);
+21841 \}
 \end{DoxyCode}
 
 
@@ -172,7 +165,7 @@ Here is the call graph for this function\+:\nopagebreak
 )}\label{class_q_c_p_color_map_data_a7ac252031d0921520d5bccb6bfa23a8b}
 
 
-Definition at line 19634 of file qcustomplot.\+cpp.
+Definition at line 21843 of file qcustomplot.\+cpp.
 
 
 
@@ -180,10 +173,10 @@ References m\+Data.
 
 
 \begin{DoxyCode}
-19635 \{
-19636   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData})
-19637     \textcolor{keyword}{delete}[] \hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData};
-19638 \}
+21843                                   \{
+21844   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData})
+21845     \textcolor{keyword}{delete}[] \hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData};
+21846 \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_color_map_data_a7f2145d86473263494abb9bf1de20436}{}\index{Q\+C\+P\+Color\+Map\+Data@{Q\+C\+P\+Color\+Map\+Data}!Q\+C\+P\+Color\+Map\+Data@{Q\+C\+P\+Color\+Map\+Data}}
 \index{Q\+C\+P\+Color\+Map\+Data@{Q\+C\+P\+Color\+Map\+Data}!Q\+C\+P\+Color\+Map\+Data@{Q\+C\+P\+Color\+Map\+Data}}
@@ -194,19 +187,15 @@ References m\+Data.
 )}\label{class_q_c_p_color_map_data_a7f2145d86473263494abb9bf1de20436}
 Constructs a new \hyperlink{class_q_c_p_color_map_data}{Q\+C\+P\+Color\+Map\+Data} instance copying the data and range of {\itshape other}. 
 
-Definition at line 19643 of file qcustomplot.\+cpp.
+Definition at line 21852 of file qcustomplot.\+cpp.
 
 
 \begin{DoxyCode}
-19643                                                              :
-19644   \hyperlink{class_q_c_p_color_map_data_a354e06462023340fbc03894b22499f6d}{mKeySize}(0),
-19645   \hyperlink{class_q_c_p_color_map_data_ae8ee9093632a59f55eb4fc06579ed256}{mValueSize}(0),
-19646   \hyperlink{class_q_c_p_color_map_data_a10e91aa89ed05bd177b1f81e07b465b8}{mIsEmpty}(\textcolor{keyword}{true}),
-19647   \hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData}(0),
-19648   \hyperlink{class_q_c_p_color_map_data_ad3cc682da2ac14e5acdbc05cf4d3d93b}{mDataModified}(\textcolor{keyword}{true})
-19649 \{
-19650   *\textcolor{keyword}{this} = other;
-19651 \}
+21853     : \hyperlink{class_q_c_p_color_map_data_a354e06462023340fbc03894b22499f6d}{mKeySize}(0), \hyperlink{class_q_c_p_color_map_data_ae8ee9093632a59f55eb4fc06579ed256}{mValueSize}(0), \hyperlink{class_q_c_p_color_map_data_a10e91aa89ed05bd177b1f81e07b465b8}{mIsEmpty}(\textcolor{keyword}{true}), 
+      \hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData}(0),
+21854       \hyperlink{class_q_c_p_color_map_data_ad3cc682da2ac14e5acdbc05cf4d3d93b}{mDataModified}(\textcolor{keyword}{true}) \{
+21855   *\textcolor{keyword}{this} = other;
+21856 \}
 \end{DoxyCode}
 
 
@@ -221,7 +210,7 @@ Definition at line 19643 of file qcustomplot.\+cpp.
 )}\label{class_q_c_p_color_map_data_af51ecd21f347adbf87b4cce4e1f5cbd6}
 
 
-Definition at line 19684 of file qcustomplot.\+cpp.
+Definition at line 21892 of file qcustomplot.\+cpp.
 
 
 
@@ -229,13 +218,13 @@ References m\+Data, m\+Key\+Size, and m\+Value\+Size.
 
 
 \begin{DoxyCode}
-19685 \{
-19686   \textcolor{keywordflow}{if} (keyIndex >= 0 && keyIndex < mKeySize && valueIndex >= 0 && valueIndex < 
-      \hyperlink{class_q_c_p_color_map_data_ae8ee9093632a59f55eb4fc06579ed256}{mValueSize})
-19687     \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData}[valueIndex*\hyperlink{class_q_c_p_color_map_data_a354e06462023340fbc03894b22499f6d}{mKeySize} + keyIndex];
-19688   \textcolor{keywordflow}{else}
-19689     \textcolor{keywordflow}{return} 0;
-19690 \}
+21892                                                          \{
+21893   \textcolor{keywordflow}{if} (keyIndex >= 0 && keyIndex < mKeySize && valueIndex >= 0 &&
+21894       valueIndex < \hyperlink{class_q_c_p_color_map_data_ae8ee9093632a59f55eb4fc06579ed256}{mValueSize})
+21895     \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData}[valueIndex * \hyperlink{class_q_c_p_color_map_data_a354e06462023340fbc03894b22499f6d}{mKeySize} + keyIndex];
+21896   \textcolor{keywordflow}{else}
+21897     \textcolor{keywordflow}{return} 0;
+21898 \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_color_map_data_ac96d6e84befe7b9951b5da6d4d4a2a47}{}\index{Q\+C\+P\+Color\+Map\+Data@{Q\+C\+P\+Color\+Map\+Data}!cell\+To\+Coord@{cell\+To\+Coord}}
 \index{cell\+To\+Coord@{cell\+To\+Coord}!Q\+C\+P\+Color\+Map\+Data@{Q\+C\+P\+Color\+Map\+Data}}
@@ -259,7 +248,7 @@ The \hyperlink{class_q_c_p_color_map}{Q\+C\+P\+Color\+Map} always displays the d
 \end{DoxySeeAlso}
 
 
-Definition at line 19953 of file qcustomplot.\+cpp.
+Definition at line 22203 of file qcustomplot.\+cpp.
 
 
 
@@ -267,14 +256,17 @@ References Q\+C\+P\+Range\+::lower, m\+Key\+Range, m\+Key\+Size, m\+Value\+Range
 
 
 \begin{DoxyCode}
-19954 \{
-19955   \textcolor{keywordflow}{if} (key)
-19956     *key = keyIndex/(double)(\hyperlink{class_q_c_p_color_map_data_a354e06462023340fbc03894b22499f6d}{mKeySize}-1)*(\hyperlink{class_q_c_p_color_map_data_aaaafd0d7d0f153dbd152f3daf34254ee}{mKeyRange}.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper}-
-      \hyperlink{class_q_c_p_color_map_data_aaaafd0d7d0f153dbd152f3daf34254ee}{mKeyRange}.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower})+\hyperlink{class_q_c_p_color_map_data_aaaafd0d7d0f153dbd152f3daf34254ee}{mKeyRange}.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower};
-19957   if (value)
-19958     *value = valueIndex/(double)(\hyperlink{class_q_c_p_color_map_data_ae8ee9093632a59f55eb4fc06579ed256}{mValueSize}-1)*(\hyperlink{class_q_c_p_color_map_data_a225bb96f10c1a27b51ae59249477dbef}{mValueRange}.
-      \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper}-\hyperlink{class_q_c_p_color_map_data_a225bb96f10c1a27b51ae59249477dbef}{mValueRange}.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower})+\hyperlink{class_q_c_p_color_map_data_a225bb96f10c1a27b51ae59249477dbef}{mValueRange}.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower};
-19959 \}
+22204                                                        \{
+22205   \textcolor{keywordflow}{if} (key)
+22206     *key = keyIndex / (double)(\hyperlink{class_q_c_p_color_map_data_a354e06462023340fbc03894b22499f6d}{mKeySize} - 1) *
+22207                (\hyperlink{class_q_c_p_color_map_data_aaaafd0d7d0f153dbd152f3daf34254ee}{mKeyRange}.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} - \hyperlink{class_q_c_p_color_map_data_aaaafd0d7d0f153dbd152f3daf34254ee}{mKeyRange}.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}) +
+22208            \hyperlink{class_q_c_p_color_map_data_aaaafd0d7d0f153dbd152f3daf34254ee}{mKeyRange}.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower};
+22209   if (value)
+22210     *value = valueIndex / (double)(\hyperlink{class_q_c_p_color_map_data_ae8ee9093632a59f55eb4fc06579ed256}{mValueSize} - 1) *
+22211                  (\hyperlink{class_q_c_p_color_map_data_a225bb96f10c1a27b51ae59249477dbef}{mValueRange}.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} - \hyperlink{class_q_c_p_color_map_data_a225bb96f10c1a27b51ae59249477dbef}{mValueRange}.
+      \hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}) +
+22212              \hyperlink{class_q_c_p_color_map_data_a225bb96f10c1a27b51ae59249477dbef}{mValueRange}.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower};
+22213 \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_color_map_data_a9910ba830e96955bd5c8e5bef1e77ef3}{}\index{Q\+C\+P\+Color\+Map\+Data@{Q\+C\+P\+Color\+Map\+Data}!clear@{clear}}
 \index{clear@{clear}!Q\+C\+P\+Color\+Map\+Data@{Q\+C\+P\+Color\+Map\+Data}}
@@ -287,7 +279,7 @@ Frees the internal data memory.
 
 This is equivalent to calling \hyperlink{class_q_c_p_color_map_data_a0d9ff35c299d0478b682bfbcdd9c097e}{set\+Size(0, 0)}. 
 
-Definition at line 19896 of file qcustomplot.\+cpp.
+Definition at line 22132 of file qcustomplot.\+cpp.
 
 
 
@@ -299,9 +291,7 @@ Referenced by Q\+C\+P\+Color\+Map\+::clear\+Data().
 
 
 \begin{DoxyCode}
-19897 \{
-19898   \hyperlink{class_q_c_p_color_map_data_a0d9ff35c299d0478b682bfbcdd9c097e}{setSize}(0, 0);
-19899 \}
+22132 \{ \hyperlink{class_q_c_p_color_map_data_a0d9ff35c299d0478b682bfbcdd9c097e}{setSize}(0, 0); \}
 \end{DoxyCode}
 
 
@@ -349,7 +339,7 @@ The \hyperlink{class_q_c_p_color_map}{Q\+C\+P\+Color\+Map} always displays the d
 \end{DoxySeeAlso}
 
 
-Definition at line 19930 of file qcustomplot.\+cpp.
+Definition at line 22169 of file qcustomplot.\+cpp.
 
 
 
@@ -357,14 +347,19 @@ References Q\+C\+P\+Range\+::lower, m\+Key\+Range, m\+Key\+Size, m\+Value\+Range
 
 
 \begin{DoxyCode}
-19931 \{
-19932   \textcolor{keywordflow}{if} (keyIndex)
-19933     *keyIndex = (key-\hyperlink{class_q_c_p_color_map_data_aaaafd0d7d0f153dbd152f3daf34254ee}{mKeyRange}.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower})/(\hyperlink{class_q_c_p_color_map_data_aaaafd0d7d0f153dbd152f3daf34254ee}{mKeyRange}.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper}-
-      \hyperlink{class_q_c_p_color_map_data_aaaafd0d7d0f153dbd152f3daf34254ee}{mKeyRange}.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower})*(\hyperlink{class_q_c_p_color_map_data_a354e06462023340fbc03894b22499f6d}{mKeySize}-1)+0.5;
-19934   \textcolor{keywordflow}{if} (valueIndex)
-19935     *valueIndex = (value-\hyperlink{class_q_c_p_color_map_data_a225bb96f10c1a27b51ae59249477dbef}{mValueRange}.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower})/(\hyperlink{class_q_c_p_color_map_data_a225bb96f10c1a27b51ae59249477dbef}{mValueRange}.
-      \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper}-\hyperlink{class_q_c_p_color_map_data_a225bb96f10c1a27b51ae59249477dbef}{mValueRange}.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower})*(\hyperlink{class_q_c_p_color_map_data_ae8ee9093632a59f55eb4fc06579ed256}{mValueSize}-1)+0.5;
-19936 \}
+22170                                                          \{
+22171   \textcolor{keywordflow}{if} (keyIndex)
+22172     *keyIndex = (key - \hyperlink{class_q_c_p_color_map_data_aaaafd0d7d0f153dbd152f3daf34254ee}{mKeyRange}.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}) / (\hyperlink{class_q_c_p_color_map_data_aaaafd0d7d0f153dbd152f3daf34254ee}{mKeyRange}.
+      \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} - \hyperlink{class_q_c_p_color_map_data_aaaafd0d7d0f153dbd152f3daf34254ee}{mKeyRange}.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}) *
+22173                     (\hyperlink{class_q_c_p_color_map_data_a354e06462023340fbc03894b22499f6d}{mKeySize} - 1) +
+22174                 0.5;
+22175   \textcolor{keywordflow}{if} (valueIndex)
+22176     *valueIndex = (value - \hyperlink{class_q_c_p_color_map_data_a225bb96f10c1a27b51ae59249477dbef}{mValueRange}.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}) /
+22177                       (\hyperlink{class_q_c_p_color_map_data_a225bb96f10c1a27b51ae59249477dbef}{mValueRange}.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} - \hyperlink{class_q_c_p_color_map_data_a225bb96f10c1a27b51ae59249477dbef}{mValueRange}.
+      \hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}) *
+22178                       (\hyperlink{class_q_c_p_color_map_data_ae8ee9093632a59f55eb4fc06579ed256}{mValueSize} - 1) +
+22179                   0.5;
+22180 \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_color_map_data_a2c33807b008cdb9e1394245c294c0eaf}{}\index{Q\+C\+P\+Color\+Map\+Data@{Q\+C\+P\+Color\+Map\+Data}!data@{data}}
 \index{data@{data}!Q\+C\+P\+Color\+Map\+Data@{Q\+C\+P\+Color\+Map\+Data}}
@@ -376,7 +371,7 @@ References Q\+C\+P\+Range\+::lower, m\+Key\+Range, m\+Key\+Size, m\+Value\+Range
 )}\label{class_q_c_p_color_map_data_a2c33807b008cdb9e1394245c294c0eaf}
 
 
-Definition at line 19673 of file qcustomplot.\+cpp.
+Definition at line 21876 of file qcustomplot.\+cpp.
 
 
 
@@ -384,17 +379,22 @@ References Q\+C\+P\+Range\+::lower, m\+Data, m\+Key\+Range, m\+Key\+Size, m\+Val
 
 
 \begin{DoxyCode}
-19674 \{
-19675   \textcolor{keywordtype}{int} keyCell = (key-\hyperlink{class_q_c_p_color_map_data_aaaafd0d7d0f153dbd152f3daf34254ee}{mKeyRange}.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower})/(\hyperlink{class_q_c_p_color_map_data_aaaafd0d7d0f153dbd152f3daf34254ee}{mKeyRange}.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper}-
-      \hyperlink{class_q_c_p_color_map_data_aaaafd0d7d0f153dbd152f3daf34254ee}{mKeyRange}.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower})*(\hyperlink{class_q_c_p_color_map_data_a354e06462023340fbc03894b22499f6d}{mKeySize}-1)+0.5;
-19676   \textcolor{keywordtype}{int} valueCell = (value-\hyperlink{class_q_c_p_color_map_data_a225bb96f10c1a27b51ae59249477dbef}{mValueRange}.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower})/(\hyperlink{class_q_c_p_color_map_data_a225bb96f10c1a27b51ae59249477dbef}{mValueRange}.
-      \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper}-\hyperlink{class_q_c_p_color_map_data_a225bb96f10c1a27b51ae59249477dbef}{mValueRange}.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower})*(\hyperlink{class_q_c_p_color_map_data_ae8ee9093632a59f55eb4fc06579ed256}{mValueSize}-1)+0.5;
-19677   \textcolor{keywordflow}{if} (keyCell >= 0 && keyCell < mKeySize && valueCell >= 0 && valueCell < 
-      \hyperlink{class_q_c_p_color_map_data_ae8ee9093632a59f55eb4fc06579ed256}{mValueSize})
-19678     \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData}[valueCell*\hyperlink{class_q_c_p_color_map_data_a354e06462023340fbc03894b22499f6d}{mKeySize} + keyCell];
-19679   \textcolor{keywordflow}{else}
-19680     \textcolor{keywordflow}{return} 0;
-19681 \}
+21876                                                      \{
+21877   \textcolor{keywordtype}{int} keyCell = (key - \hyperlink{class_q_c_p_color_map_data_aaaafd0d7d0f153dbd152f3daf34254ee}{mKeyRange}.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}) / (\hyperlink{class_q_c_p_color_map_data_aaaafd0d7d0f153dbd152f3daf34254ee}{mKeyRange}.
+      \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} - \hyperlink{class_q_c_p_color_map_data_aaaafd0d7d0f153dbd152f3daf34254ee}{mKeyRange}.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}) *
+21878                     (\hyperlink{class_q_c_p_color_map_data_a354e06462023340fbc03894b22499f6d}{mKeySize} - 1) +
+21879                 0.5;
+21880   \textcolor{keywordtype}{int} valueCell = (value - \hyperlink{class_q_c_p_color_map_data_a225bb96f10c1a27b51ae59249477dbef}{mValueRange}.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}) /
+21881                       (\hyperlink{class_q_c_p_color_map_data_a225bb96f10c1a27b51ae59249477dbef}{mValueRange}.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} - \hyperlink{class_q_c_p_color_map_data_a225bb96f10c1a27b51ae59249477dbef}{mValueRange}.
+      \hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}) *
+21882                       (\hyperlink{class_q_c_p_color_map_data_ae8ee9093632a59f55eb4fc06579ed256}{mValueSize} - 1) +
+21883                   0.5;
+21884   \textcolor{keywordflow}{if} (keyCell >= 0 && keyCell < mKeySize && valueCell >= 0 &&
+21885       valueCell < \hyperlink{class_q_c_p_color_map_data_ae8ee9093632a59f55eb4fc06579ed256}{mValueSize})
+21886     \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData}[valueCell * \hyperlink{class_q_c_p_color_map_data_a354e06462023340fbc03894b22499f6d}{mKeySize} + keyCell];
+21887   \textcolor{keywordflow}{else}
+21888     \textcolor{keywordflow}{return} 0;
+21889 \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_color_map_data_a9ff433248ee226ea0c469ae6cc2489fd}{}\index{Q\+C\+P\+Color\+Map\+Data@{Q\+C\+P\+Color\+Map\+Data}!data\+Bounds@{data\+Bounds}}
 \index{data\+Bounds@{data\+Bounds}!Q\+C\+P\+Color\+Map\+Data@{Q\+C\+P\+Color\+Map\+Data}}
@@ -405,7 +405,7 @@ References Q\+C\+P\+Range\+::lower, m\+Data, m\+Key\+Range, m\+Key\+Size, m\+Val
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_color_map_data_a9ff433248ee226ea0c469ae6cc2489fd}
 
 
-Definition at line 3010 of file qcustomplot.\+h.
+Definition at line 3444 of file qcustomplot.\+h.
 
 
 
@@ -413,7 +413,7 @@ Referenced by Q\+C\+P\+Color\+Map\+::rescale\+Data\+Range().
 
 
 \begin{DoxyCode}
-3010 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_color_map_data_a1798b3dcc0a27091d196bfd156dcb3f2}{mDataBounds}; \}
+3444 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_color_map_data_a1798b3dcc0a27091d196bfd156dcb3f2}{mDataBounds}; \}
 \end{DoxyCode}
 
 
@@ -435,7 +435,7 @@ Here is the caller graph for this function\+:\nopagebreak
 )}\label{class_q_c_p_color_map_data_a350f783260eb9b5de5c7b5e0d5d3e3c2}
 Sets all cells to the value {\itshape z}. 
 
-Definition at line 19904 of file qcustomplot.\+cpp.
+Definition at line 22137 of file qcustomplot.\+cpp.
 
 
 
@@ -447,13 +447,13 @@ Referenced by Q\+C\+P\+Color\+Map\+Data(), and set\+Size().
 
 
 \begin{DoxyCode}
-19905 \{
-19906   \textcolor{keyword}{const} \textcolor{keywordtype}{int} dataCount = \hyperlink{class_q_c_p_color_map_data_ae8ee9093632a59f55eb4fc06579ed256}{mValueSize}*\hyperlink{class_q_c_p_color_map_data_a354e06462023340fbc03894b22499f6d}{mKeySize};
-19907   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}<dataCount; ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
-19908     \hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData}[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = z;
-19909   \hyperlink{class_q_c_p_color_map_data_a1798b3dcc0a27091d196bfd156dcb3f2}{mDataBounds} = \hyperlink{class_q_c_p_range}{QCPRange}(z, z);
-19910   \hyperlink{class_q_c_p_color_map_data_ad3cc682da2ac14e5acdbc05cf4d3d93b}{mDataModified} = \textcolor{keyword}{true};
-19911 \}
+22137                                    \{
+22138   \textcolor{keyword}{const} \textcolor{keywordtype}{int} dataCount = \hyperlink{class_q_c_p_color_map_data_ae8ee9093632a59f55eb4fc06579ed256}{mValueSize} * \hyperlink{class_q_c_p_color_map_data_a354e06462023340fbc03894b22499f6d}{mKeySize};
+22139   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < dataCount; ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
+22140     \hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData}[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = z;
+22141   \hyperlink{class_q_c_p_color_map_data_a1798b3dcc0a27091d196bfd156dcb3f2}{mDataBounds} = \hyperlink{class_q_c_p_range}{QCPRange}(z, z);
+22142   \hyperlink{class_q_c_p_color_map_data_ad3cc682da2ac14e5acdbc05cf4d3d93b}{mDataModified} = \textcolor{keyword}{true};
+22143 \}
 \end{DoxyCode}
 
 
@@ -475,7 +475,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_color_map_data_a986009324aee1fc5f696db46bd03dde5}
 Returns whether this instance carries no data. This is equivalent to having a size where at least one of the dimensions is 0 (see \hyperlink{class_q_c_p_color_map_data_a0d9ff35c299d0478b682bfbcdd9c097e}{set\+Size}). 
 
-Definition at line 3028 of file qcustomplot.\+h.
+Definition at line 3462 of file qcustomplot.\+h.
 
 
 
@@ -483,7 +483,7 @@ Referenced by Q\+C\+P\+Color\+Map\+::draw(), Q\+C\+P\+Color\+Map\+::update\+Lege
 
 
 \begin{DoxyCode}
-3028 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_color_map_data_a10e91aa89ed05bd177b1f81e07b465b8}{mIsEmpty}; \}
+3462 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_color_map_data_a10e91aa89ed05bd177b1f81e07b465b8}{mIsEmpty}; \}
 \end{DoxyCode}
 
 
@@ -505,7 +505,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_color_map_data_a4765180639742460f64ab6c97c745c08}
 
 
-Definition at line 3008 of file qcustomplot.\+h.
+Definition at line 3442 of file qcustomplot.\+h.
 
 
 
@@ -513,7 +513,7 @@ Referenced by Q\+C\+P\+Color\+Map\+::draw(), Q\+C\+P\+Color\+Map\+::get\+Key\+Ra
 
 
 \begin{DoxyCode}
-3008 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_color_map_data_aaaafd0d7d0f153dbd152f3daf34254ee}{mKeyRange}; \}
+3442 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_color_map_data_aaaafd0d7d0f153dbd152f3daf34254ee}{mKeyRange}; \}
 \end{DoxyCode}
 
 
@@ -535,7 +535,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_color_map_data_aa8d7811686fdfea964947715210c4af8}
 
 
-Definition at line 3006 of file qcustomplot.\+h.
+Definition at line 3440 of file qcustomplot.\+h.
 
 
 
@@ -543,7 +543,7 @@ Referenced by Q\+C\+P\+Color\+Map\+::draw(), operator=(), set\+Size(), and Q\+C\
 
 
 \begin{DoxyCode}
-3006 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_color_map_data_a354e06462023340fbc03894b22499f6d}{mKeySize}; \}
+3440 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_color_map_data_a354e06462023340fbc03894b22499f6d}{mKeySize}; \}
 \end{DoxyCode}
 
 
@@ -565,7 +565,7 @@ Here is the caller graph for this function\+:\nopagebreak
 )}\label{class_q_c_p_color_map_data_afdf4dd1b2f5714234fe84709b85c2a8d}
 Overwrites this color map data instance with the data stored in {\itshape other}. 
 
-Definition at line 19656 of file qcustomplot.\+cpp.
+Definition at line 21861 of file qcustomplot.\+cpp.
 
 
 
@@ -573,20 +573,19 @@ References key\+Range(), key\+Size(), m\+Data, m\+Data\+Bounds, m\+Data\+Modifie
 
 
 \begin{DoxyCode}
-19657 \{
-19658   \textcolor{keywordflow}{if} (&other != \textcolor{keyword}{this})
-19659   \{
-19660     \textcolor{keyword}{const} \textcolor{keywordtype}{int} \hyperlink{class_q_c_p_color_map_data_aa8d7811686fdfea964947715210c4af8}{keySize} = other.\hyperlink{class_q_c_p_color_map_data_aa8d7811686fdfea964947715210c4af8}{keySize}();
-19661     \textcolor{keyword}{const} \textcolor{keywordtype}{int} \hyperlink{class_q_c_p_color_map_data_ab880be6bc587f34e8d22fe77ef6b57e9}{valueSize} = other.\hyperlink{class_q_c_p_color_map_data_ab880be6bc587f34e8d22fe77ef6b57e9}{valueSize}();
-19662     \hyperlink{class_q_c_p_color_map_data_a0d9ff35c299d0478b682bfbcdd9c097e}{setSize}(keySize, valueSize);
-19663     \hyperlink{class_q_c_p_color_map_data_aad9c1c7c703c1339489fc730517c83d4}{setRange}(other.\hyperlink{class_q_c_p_color_map_data_a4765180639742460f64ab6c97c745c08}{keyRange}(), other.\hyperlink{class_q_c_p_color_map_data_a025be4d7ba0494fd7b38a5a56c737f2a}{valueRange}());
-19664     \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_color_map_data_a10e91aa89ed05bd177b1f81e07b465b8}{mIsEmpty})
-19665       memcpy(\hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData}, other.\hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData}, \textcolor{keyword}{sizeof}(\hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData}[0])*keySize*valueSize);
-19666     \hyperlink{class_q_c_p_color_map_data_a1798b3dcc0a27091d196bfd156dcb3f2}{mDataBounds} = other.\hyperlink{class_q_c_p_color_map_data_a1798b3dcc0a27091d196bfd156dcb3f2}{mDataBounds};
-19667     \hyperlink{class_q_c_p_color_map_data_ad3cc682da2ac14e5acdbc05cf4d3d93b}{mDataModified} = \textcolor{keyword}{true};
-19668   \}
-19669   \textcolor{keywordflow}{return} *\textcolor{keyword}{this};
-19670 \}
+21861                                                                         \{
+21862   \textcolor{keywordflow}{if} (&other != \textcolor{keyword}{this}) \{
+21863     \textcolor{keyword}{const} \textcolor{keywordtype}{int} \hyperlink{class_q_c_p_color_map_data_aa8d7811686fdfea964947715210c4af8}{keySize} = other.\hyperlink{class_q_c_p_color_map_data_aa8d7811686fdfea964947715210c4af8}{keySize}();
+21864     \textcolor{keyword}{const} \textcolor{keywordtype}{int} \hyperlink{class_q_c_p_color_map_data_ab880be6bc587f34e8d22fe77ef6b57e9}{valueSize} = other.\hyperlink{class_q_c_p_color_map_data_ab880be6bc587f34e8d22fe77ef6b57e9}{valueSize}();
+21865     \hyperlink{class_q_c_p_color_map_data_a0d9ff35c299d0478b682bfbcdd9c097e}{setSize}(keySize, valueSize);
+21866     \hyperlink{class_q_c_p_color_map_data_aad9c1c7c703c1339489fc730517c83d4}{setRange}(other.\hyperlink{class_q_c_p_color_map_data_a4765180639742460f64ab6c97c745c08}{keyRange}(), other.\hyperlink{class_q_c_p_color_map_data_a025be4d7ba0494fd7b38a5a56c737f2a}{valueRange}());
+21867     \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_color_map_data_a10e91aa89ed05bd177b1f81e07b465b8}{mIsEmpty})
+21868       memcpy(\hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData}, other.\hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData}, \textcolor{keyword}{sizeof}(\hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData}[0]) * keySize * valueSize);
+21869     \hyperlink{class_q_c_p_color_map_data_a1798b3dcc0a27091d196bfd156dcb3f2}{mDataBounds} = other.\hyperlink{class_q_c_p_color_map_data_a1798b3dcc0a27091d196bfd156dcb3f2}{mDataBounds};
+21870     \hyperlink{class_q_c_p_color_map_data_ad3cc682da2ac14e5acdbc05cf4d3d93b}{mDataModified} = \textcolor{keyword}{true};
+21871   \}
+21872   \textcolor{keywordflow}{return} *\textcolor{keyword}{this};
+21873 \}
 \end{DoxyCode}
 
 
@@ -612,7 +611,7 @@ Calling this method is only advised if you are about to call \hyperlink{class_q_
 
 Note that the method \hyperlink{class_q_c_p_color_map_a856608fa3dd1cc290bcd5f29a5575774}{Q\+C\+P\+Color\+Map\+::rescale\+Data\+Range} provides a parameter {\itshape recalculate\+Data\+Bounds} for convenience. Setting this to true will call this method for you, before doing the rescale. 
 
-Definition at line 19872 of file qcustomplot.\+cpp.
+Definition at line 22111 of file qcustomplot.\+cpp.
 
 
 
@@ -624,23 +623,21 @@ Referenced by Q\+C\+P\+Color\+Map\+::rescale\+Data\+Range().
 
 
 \begin{DoxyCode}
-19873 \{
-19874   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_data_a354e06462023340fbc03894b22499f6d}{mKeySize} > 0 && \hyperlink{class_q_c_p_color_map_data_ae8ee9093632a59f55eb4fc06579ed256}{mValueSize} > 0)
-19875   \{
-19876     \textcolor{keywordtype}{double} minHeight = \hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData}[0];
-19877     \textcolor{keywordtype}{double} maxHeight = \hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData}[0];
-19878     \textcolor{keyword}{const} \textcolor{keywordtype}{int} dataCount = \hyperlink{class_q_c_p_color_map_data_ae8ee9093632a59f55eb4fc06579ed256}{mValueSize}*\hyperlink{class_q_c_p_color_map_data_a354e06462023340fbc03894b22499f6d}{mKeySize};
-19879     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}<dataCount; ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
-19880     \{
-19881       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData}[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] > maxHeight)
-19882         maxHeight = \hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData}[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}];
-19883       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData}[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] < minHeight)
-19884         minHeight = \hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData}[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}];
-19885     \}
-19886     \hyperlink{class_q_c_p_color_map_data_a1798b3dcc0a27091d196bfd156dcb3f2}{mDataBounds}.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} = minHeight;
-19887     \hyperlink{class_q_c_p_color_map_data_a1798b3dcc0a27091d196bfd156dcb3f2}{mDataBounds}.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} = maxHeight;
-19888   \}
-19889 \}
+22111                                             \{
+22112   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_data_a354e06462023340fbc03894b22499f6d}{mKeySize} > 0 && \hyperlink{class_q_c_p_color_map_data_ae8ee9093632a59f55eb4fc06579ed256}{mValueSize} > 0) \{
+22113     \textcolor{keywordtype}{double} minHeight = \hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData}[0];
+22114     \textcolor{keywordtype}{double} maxHeight = \hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData}[0];
+22115     \textcolor{keyword}{const} \textcolor{keywordtype}{int} dataCount = \hyperlink{class_q_c_p_color_map_data_ae8ee9093632a59f55eb4fc06579ed256}{mValueSize} * \hyperlink{class_q_c_p_color_map_data_a354e06462023340fbc03894b22499f6d}{mKeySize};
+22116     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < dataCount; ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) \{
+22117       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData}[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] > maxHeight)
+22118         maxHeight = \hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData}[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}];
+22119       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData}[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] < minHeight)
+22120         minHeight = \hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData}[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}];
+22121     \}
+22122     \hyperlink{class_q_c_p_color_map_data_a1798b3dcc0a27091d196bfd156dcb3f2}{mDataBounds}.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} = minHeight;
+22123     \hyperlink{class_q_c_p_color_map_data_a1798b3dcc0a27091d196bfd156dcb3f2}{mDataBounds}.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} = maxHeight;
+22124   \}
+22125 \}
 \end{DoxyCode}
 
 
@@ -671,7 +668,7 @@ In the standard plot configuration (horizontal key axis and vertical value axis,
 \end{DoxySeeAlso}
 
 
-Definition at line 19846 of file qcustomplot.\+cpp.
+Definition at line 22079 of file qcustomplot.\+cpp.
 
 
 
@@ -679,18 +676,17 @@ References Q\+C\+P\+Range\+::lower, m\+Data, m\+Data\+Bounds, m\+Data\+Modified,
 
 
 \begin{DoxyCode}
-19847 \{
-19848   \textcolor{keywordflow}{if} (keyIndex >= 0 && keyIndex < mKeySize && valueIndex >= 0 && valueIndex < 
-      \hyperlink{class_q_c_p_color_map_data_ae8ee9093632a59f55eb4fc06579ed256}{mValueSize})
-19849   \{
-19850     \hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData}[valueIndex*\hyperlink{class_q_c_p_color_map_data_a354e06462023340fbc03894b22499f6d}{mKeySize} + keyIndex] = z;
-19851     \textcolor{keywordflow}{if} (z < \hyperlink{class_q_c_p_color_map_data_a1798b3dcc0a27091d196bfd156dcb3f2}{mDataBounds}.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower})
-19852       \hyperlink{class_q_c_p_color_map_data_a1798b3dcc0a27091d196bfd156dcb3f2}{mDataBounds}.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} = z;
-19853     \textcolor{keywordflow}{if} (z > \hyperlink{class_q_c_p_color_map_data_a1798b3dcc0a27091d196bfd156dcb3f2}{mDataBounds}.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper})
-19854       \hyperlink{class_q_c_p_color_map_data_a1798b3dcc0a27091d196bfd156dcb3f2}{mDataBounds}.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} = z;
-19855      \hyperlink{class_q_c_p_color_map_data_ad3cc682da2ac14e5acdbc05cf4d3d93b}{mDataModified} = \textcolor{keyword}{true};
-19856   \}
-19857 \}
+22079                                                                     \{
+22080   \textcolor{keywordflow}{if} (keyIndex >= 0 && keyIndex < mKeySize && valueIndex >= 0 &&
+22081       valueIndex < \hyperlink{class_q_c_p_color_map_data_ae8ee9093632a59f55eb4fc06579ed256}{mValueSize}) \{
+22082     \hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData}[valueIndex * \hyperlink{class_q_c_p_color_map_data_a354e06462023340fbc03894b22499f6d}{mKeySize} + keyIndex] = z;
+22083     \textcolor{keywordflow}{if} (z < \hyperlink{class_q_c_p_color_map_data_a1798b3dcc0a27091d196bfd156dcb3f2}{mDataBounds}.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower})
+22084       \hyperlink{class_q_c_p_color_map_data_a1798b3dcc0a27091d196bfd156dcb3f2}{mDataBounds}.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} = z;
+22085     \textcolor{keywordflow}{if} (z > \hyperlink{class_q_c_p_color_map_data_a1798b3dcc0a27091d196bfd156dcb3f2}{mDataBounds}.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper})
+22086       \hyperlink{class_q_c_p_color_map_data_a1798b3dcc0a27091d196bfd156dcb3f2}{mDataBounds}.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} = z;
+22087     \hyperlink{class_q_c_p_color_map_data_ad3cc682da2ac14e5acdbc05cf4d3d93b}{mDataModified} = \textcolor{keyword}{true};
+22088   \}
+22089 \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_color_map_data_afd2083ccfd6987ec94aa7ef8e91ca39a}{}\index{Q\+C\+P\+Color\+Map\+Data@{Q\+C\+P\+Color\+Map\+Data}!set\+Data@{set\+Data}}
 \index{set\+Data@{set\+Data}!Q\+C\+P\+Color\+Map\+Data@{Q\+C\+P\+Color\+Map\+Data}}
@@ -711,7 +707,7 @@ The \hyperlink{class_q_c_p_color_map}{Q\+C\+P\+Color\+Map} always displays the d
 \end{DoxySeeAlso}
 
 
-Definition at line 19820 of file qcustomplot.\+cpp.
+Definition at line 22045 of file qcustomplot.\+cpp.
 
 
 
@@ -719,22 +715,26 @@ References Q\+C\+P\+Range\+::lower, m\+Data, m\+Data\+Bounds, m\+Data\+Modified,
 
 
 \begin{DoxyCode}
-19821 \{
-19822   \textcolor{keywordtype}{int} keyCell = (key-\hyperlink{class_q_c_p_color_map_data_aaaafd0d7d0f153dbd152f3daf34254ee}{mKeyRange}.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower})/(\hyperlink{class_q_c_p_color_map_data_aaaafd0d7d0f153dbd152f3daf34254ee}{mKeyRange}.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper}-
-      \hyperlink{class_q_c_p_color_map_data_aaaafd0d7d0f153dbd152f3daf34254ee}{mKeyRange}.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower})*(\hyperlink{class_q_c_p_color_map_data_a354e06462023340fbc03894b22499f6d}{mKeySize}-1)+0.5;
-19823   \textcolor{keywordtype}{int} valueCell = (value-\hyperlink{class_q_c_p_color_map_data_a225bb96f10c1a27b51ae59249477dbef}{mValueRange}.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower})/(\hyperlink{class_q_c_p_color_map_data_a225bb96f10c1a27b51ae59249477dbef}{mValueRange}.
-      \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper}-\hyperlink{class_q_c_p_color_map_data_a225bb96f10c1a27b51ae59249477dbef}{mValueRange}.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower})*(\hyperlink{class_q_c_p_color_map_data_ae8ee9093632a59f55eb4fc06579ed256}{mValueSize}-1)+0.5;
-19824   \textcolor{keywordflow}{if} (keyCell >= 0 && keyCell < mKeySize && valueCell >= 0 && valueCell < 
-      \hyperlink{class_q_c_p_color_map_data_ae8ee9093632a59f55eb4fc06579ed256}{mValueSize})
-19825   \{
-19826     \hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData}[valueCell*\hyperlink{class_q_c_p_color_map_data_a354e06462023340fbc03894b22499f6d}{mKeySize} + keyCell] = z;
-19827     \textcolor{keywordflow}{if} (z < \hyperlink{class_q_c_p_color_map_data_a1798b3dcc0a27091d196bfd156dcb3f2}{mDataBounds}.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower})
-19828       \hyperlink{class_q_c_p_color_map_data_a1798b3dcc0a27091d196bfd156dcb3f2}{mDataBounds}.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} = z;
-19829     \textcolor{keywordflow}{if} (z > \hyperlink{class_q_c_p_color_map_data_a1798b3dcc0a27091d196bfd156dcb3f2}{mDataBounds}.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper})
-19830       \hyperlink{class_q_c_p_color_map_data_a1798b3dcc0a27091d196bfd156dcb3f2}{mDataBounds}.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} = z;
-19831      \hyperlink{class_q_c_p_color_map_data_ad3cc682da2ac14e5acdbc05cf4d3d93b}{mDataModified} = \textcolor{keyword}{true};
-19832   \}
-19833 \}
+22045                                                                 \{
+22046   \textcolor{keywordtype}{int} keyCell = (key - \hyperlink{class_q_c_p_color_map_data_aaaafd0d7d0f153dbd152f3daf34254ee}{mKeyRange}.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}) / (\hyperlink{class_q_c_p_color_map_data_aaaafd0d7d0f153dbd152f3daf34254ee}{mKeyRange}.
+      \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} - \hyperlink{class_q_c_p_color_map_data_aaaafd0d7d0f153dbd152f3daf34254ee}{mKeyRange}.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}) *
+22047                     (\hyperlink{class_q_c_p_color_map_data_a354e06462023340fbc03894b22499f6d}{mKeySize} - 1) +
+22048                 0.5;
+22049   \textcolor{keywordtype}{int} valueCell = (value - \hyperlink{class_q_c_p_color_map_data_a225bb96f10c1a27b51ae59249477dbef}{mValueRange}.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}) /
+22050                       (\hyperlink{class_q_c_p_color_map_data_a225bb96f10c1a27b51ae59249477dbef}{mValueRange}.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} - \hyperlink{class_q_c_p_color_map_data_a225bb96f10c1a27b51ae59249477dbef}{mValueRange}.
+      \hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}) *
+22051                       (\hyperlink{class_q_c_p_color_map_data_ae8ee9093632a59f55eb4fc06579ed256}{mValueSize} - 1) +
+22052                   0.5;
+22053   \textcolor{keywordflow}{if} (keyCell >= 0 && keyCell < mKeySize && valueCell >= 0 &&
+22054       valueCell < \hyperlink{class_q_c_p_color_map_data_ae8ee9093632a59f55eb4fc06579ed256}{mValueSize}) \{
+22055     \hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData}[valueCell * \hyperlink{class_q_c_p_color_map_data_a354e06462023340fbc03894b22499f6d}{mKeySize} + keyCell] = z;
+22056     \textcolor{keywordflow}{if} (z < \hyperlink{class_q_c_p_color_map_data_a1798b3dcc0a27091d196bfd156dcb3f2}{mDataBounds}.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower})
+22057       \hyperlink{class_q_c_p_color_map_data_a1798b3dcc0a27091d196bfd156dcb3f2}{mDataBounds}.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower} = z;
+22058     \textcolor{keywordflow}{if} (z > \hyperlink{class_q_c_p_color_map_data_a1798b3dcc0a27091d196bfd156dcb3f2}{mDataBounds}.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper})
+22059       \hyperlink{class_q_c_p_color_map_data_a1798b3dcc0a27091d196bfd156dcb3f2}{mDataBounds}.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} = z;
+22060     \hyperlink{class_q_c_p_color_map_data_ad3cc682da2ac14e5acdbc05cf4d3d93b}{mDataModified} = \textcolor{keyword}{true};
+22061   \}
+22062 \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_color_map_data_a0738c485f3c9df9ea1241b7a8bb6a86e}{}\index{Q\+C\+P\+Color\+Map\+Data@{Q\+C\+P\+Color\+Map\+Data}!set\+Key\+Range@{set\+Key\+Range}}
 \index{set\+Key\+Range@{set\+Key\+Range}!Q\+C\+P\+Color\+Map\+Data@{Q\+C\+P\+Color\+Map\+Data}}
@@ -745,14 +745,14 @@ References Q\+C\+P\+Range\+::lower, m\+Data, m\+Data\+Bounds, m\+Data\+Modified,
 )}\label{class_q_c_p_color_map_data_a0738c485f3c9df9ea1241b7a8bb6a86e}
 Sets the coordinate range the data shall be distributed over in the key dimension. Together with the value range, This defines the rectangular area covered by the color map in plot coordinates.
 
-The outer cells will be centered on the range boundaries given to this function. For example, if the key size (\hyperlink{class_q_c_p_color_map_data_ac7ef70e383aface34b44dbde49234b6b}{set\+Key\+Size}) is 3 and {\itshape key\+Range} is set to {\ttfamily \hyperlink{class_q_c_p_range}{Q\+C\+P\+Range(2, 3)}} there will be cells centered on the key coordinates 2, 2.\+5 and 3.
+The outer cells will be centered on the range boundaries given to this function. For example, if the key size (\hyperlink{class_q_c_p_color_map_data_ac7ef70e383aface34b44dbde49234b6b}{set\+Key\+Size}) is 3 and {\itshape key\+Range} is set to {\ttfamily \hyperlink{class_q_c_p_range}{Q\+C\+P\+Range}(2, 3)} there will be cells centered on the key coordinates 2, 2.\+5 and 3.
 
 \begin{DoxySeeAlso}{See also}
 \hyperlink{class_q_c_p_color_map_data_aad9c1c7c703c1339489fc730517c83d4}{set\+Range}, \hyperlink{class_q_c_p_color_map_data_ada1b2680ba96a5f4175b6d341cf75d23}{set\+Value\+Range}, \hyperlink{class_q_c_p_color_map_data_a0d9ff35c299d0478b682bfbcdd9c097e}{set\+Size} 
 \end{DoxySeeAlso}
 
 
-Definition at line 19788 of file qcustomplot.\+cpp.
+Definition at line 22007 of file qcustomplot.\+cpp.
 
 
 
@@ -764,9 +764,9 @@ Referenced by set\+Range().
 
 
 \begin{DoxyCode}
-19789 \{
-19790   \hyperlink{class_q_c_p_color_map_data_aaaafd0d7d0f153dbd152f3daf34254ee}{mKeyRange} = \hyperlink{class_q_c_p_color_map_data_a4765180639742460f64ab6c97c745c08}{keyRange};
-19791 \}
+22007                                                           \{
+22008   \hyperlink{class_q_c_p_color_map_data_aaaafd0d7d0f153dbd152f3daf34254ee}{mKeyRange} = \hyperlink{class_q_c_p_color_map_data_a4765180639742460f64ab6c97c745c08}{keyRange};
+22009 \}
 \end{DoxyCode}
 
 
@@ -808,7 +808,7 @@ Setting {\itshape key\+Size} to zero frees the internal data array and \hyperlin
 \end{DoxySeeAlso}
 
 
-Definition at line 19742 of file qcustomplot.\+cpp.
+Definition at line 21956 of file qcustomplot.\+cpp.
 
 
 
@@ -816,9 +816,7 @@ References m\+Value\+Size, and set\+Size().
 
 
 \begin{DoxyCode}
-19743 \{
-19744   \hyperlink{class_q_c_p_color_map_data_a0d9ff35c299d0478b682bfbcdd9c097e}{setSize}(\hyperlink{class_q_c_p_color_map_data_aa8d7811686fdfea964947715210c4af8}{keySize}, \hyperlink{class_q_c_p_color_map_data_ae8ee9093632a59f55eb4fc06579ed256}{mValueSize});
-19745 \}
+21956 \{ \hyperlink{class_q_c_p_color_map_data_a0d9ff35c299d0478b682bfbcdd9c097e}{setSize}(\hyperlink{class_q_c_p_color_map_data_aa8d7811686fdfea964947715210c4af8}{keySize}, \hyperlink{class_q_c_p_color_map_data_ae8ee9093632a59f55eb4fc06579ed256}{mValueSize}); \}
 \end{DoxyCode}
 
 
@@ -841,14 +839,14 @@ Here is the call graph for this function\+:\nopagebreak
 )}\label{class_q_c_p_color_map_data_aad9c1c7c703c1339489fc730517c83d4}
 Sets the coordinate ranges the data shall be distributed over. This defines the rectangular area covered by the color map in plot coordinates.
 
-The outer cells will be centered on the range boundaries given to this function. For example, if the key size (\hyperlink{class_q_c_p_color_map_data_ac7ef70e383aface34b44dbde49234b6b}{set\+Key\+Size}) is 3 and {\itshape key\+Range} is set to {\ttfamily \hyperlink{class_q_c_p_range}{Q\+C\+P\+Range(2, 3)}} there will be cells centered on the key coordinates 2, 2.\+5 and 3.
+The outer cells will be centered on the range boundaries given to this function. For example, if the key size (\hyperlink{class_q_c_p_color_map_data_ac7ef70e383aface34b44dbde49234b6b}{set\+Key\+Size}) is 3 and {\itshape key\+Range} is set to {\ttfamily \hyperlink{class_q_c_p_range}{Q\+C\+P\+Range}(2, 3)} there will be cells centered on the key coordinates 2, 2.\+5 and 3.
 
 \begin{DoxySeeAlso}{See also}
 \hyperlink{class_q_c_p_color_map_data_a0d9ff35c299d0478b682bfbcdd9c097e}{set\+Size} 
 \end{DoxySeeAlso}
 
 
-Definition at line 19772 of file qcustomplot.\+cpp.
+Definition at line 21987 of file qcustomplot.\+cpp.
 
 
 
@@ -860,10 +858,10 @@ Referenced by operator=().
 
 
 \begin{DoxyCode}
-19773 \{
-19774   \hyperlink{class_q_c_p_color_map_data_a0738c485f3c9df9ea1241b7a8bb6a86e}{setKeyRange}(keyRange);
-19775   \hyperlink{class_q_c_p_color_map_data_ada1b2680ba96a5f4175b6d341cf75d23}{setValueRange}(valueRange);
-19776 \}
+21988                                                            \{
+21989   \hyperlink{class_q_c_p_color_map_data_a0738c485f3c9df9ea1241b7a8bb6a86e}{setKeyRange}(keyRange);
+21990   \hyperlink{class_q_c_p_color_map_data_ada1b2680ba96a5f4175b6d341cf75d23}{setValueRange}(valueRange);
+21991 \}
 \end{DoxyCode}
 
 
@@ -906,7 +904,7 @@ Setting at least one of {\itshape key\+Size} or {\itshape value\+Size} to zero f
 \end{DoxySeeAlso}
 
 
-Definition at line 19704 of file qcustomplot.\+cpp.
+Definition at line 21915 of file qcustomplot.\+cpp.
 
 
 
@@ -918,34 +916,34 @@ Referenced by clear(), operator=(), Q\+C\+P\+Color\+Map\+Data(), set\+Key\+Size(
 
 
 \begin{DoxyCode}
-19705 \{
-19706   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_data_aa8d7811686fdfea964947715210c4af8}{keySize} != \hyperlink{class_q_c_p_color_map_data_a354e06462023340fbc03894b22499f6d}{mKeySize} || \hyperlink{class_q_c_p_color_map_data_ab880be6bc587f34e8d22fe77ef6b57e9}{valueSize} != \hyperlink{class_q_c_p_color_map_data_ae8ee9093632a59f55eb4fc06579ed256}{mValueSize})
-19707   \{
-19708     \hyperlink{class_q_c_p_color_map_data_a354e06462023340fbc03894b22499f6d}{mKeySize} = \hyperlink{class_q_c_p_color_map_data_aa8d7811686fdfea964947715210c4af8}{keySize};
-19709     \hyperlink{class_q_c_p_color_map_data_ae8ee9093632a59f55eb4fc06579ed256}{mValueSize} = \hyperlink{class_q_c_p_color_map_data_ab880be6bc587f34e8d22fe77ef6b57e9}{valueSize};
-19710     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData})
-19711       \textcolor{keyword}{delete}[] \hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData};
-19712     \hyperlink{class_q_c_p_color_map_data_a10e91aa89ed05bd177b1f81e07b465b8}{mIsEmpty} = \hyperlink{class_q_c_p_color_map_data_a354e06462023340fbc03894b22499f6d}{mKeySize} == 0 || \hyperlink{class_q_c_p_color_map_data_ae8ee9093632a59f55eb4fc06579ed256}{mValueSize} == 0;
-19713     \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_color_map_data_a10e91aa89ed05bd177b1f81e07b465b8}{mIsEmpty})
-19714     \{
-19715 \textcolor{preprocessor}{#ifdef \_\_EXCEPTIONS}
-19716       \textcolor{keywordflow}{try} \{ \textcolor{comment}{// 2D arrays get memory intensive fast. So if the allocation fails, at least output debug
-       message}
-19717 \textcolor{preprocessor}{#endif}
-19718       \hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData} = \textcolor{keyword}{new} \textcolor{keywordtype}{double}[\hyperlink{class_q_c_p_color_map_data_a354e06462023340fbc03894b22499f6d}{mKeySize}*\hyperlink{class_q_c_p_color_map_data_ae8ee9093632a59f55eb4fc06579ed256}{mValueSize}];
-19719 \textcolor{preprocessor}{#ifdef \_\_EXCEPTIONS}
-19720       \} \textcolor{keywordflow}{catch} (...) \{ \hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData} = 0; \}
-19721 \textcolor{preprocessor}{#endif}
-19722       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData})
-19723         \hyperlink{class_q_c_p_color_map_data_a350f783260eb9b5de5c7b5e0d5d3e3c2}{fill}(0);
-19724       \textcolor{keywordflow}{else}
-19725         qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"out of memory for data dimensions "}<< 
-      \hyperlink{class_q_c_p_color_map_data_a354e06462023340fbc03894b22499f6d}{mKeySize} << \textcolor{stringliteral}{"*"} << \hyperlink{class_q_c_p_color_map_data_ae8ee9093632a59f55eb4fc06579ed256}{mValueSize};
-19726     \} \textcolor{keywordflow}{else}
-19727       \hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData} = 0;
-19728     \hyperlink{class_q_c_p_color_map_data_ad3cc682da2ac14e5acdbc05cf4d3d93b}{mDataModified} = \textcolor{keyword}{true};
-19729   \}
-19730 \}
+21915                                                         \{
+21916   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_data_aa8d7811686fdfea964947715210c4af8}{keySize} != \hyperlink{class_q_c_p_color_map_data_a354e06462023340fbc03894b22499f6d}{mKeySize} || \hyperlink{class_q_c_p_color_map_data_ab880be6bc587f34e8d22fe77ef6b57e9}{valueSize} != \hyperlink{class_q_c_p_color_map_data_ae8ee9093632a59f55eb4fc06579ed256}{mValueSize}) \{
+21917     \hyperlink{class_q_c_p_color_map_data_a354e06462023340fbc03894b22499f6d}{mKeySize} = \hyperlink{class_q_c_p_color_map_data_aa8d7811686fdfea964947715210c4af8}{keySize};
+21918     \hyperlink{class_q_c_p_color_map_data_ae8ee9093632a59f55eb4fc06579ed256}{mValueSize} = \hyperlink{class_q_c_p_color_map_data_ab880be6bc587f34e8d22fe77ef6b57e9}{valueSize};
+21919     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData})
+21920       \textcolor{keyword}{delete}[] \hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData};
+21921     \hyperlink{class_q_c_p_color_map_data_a10e91aa89ed05bd177b1f81e07b465b8}{mIsEmpty} = \hyperlink{class_q_c_p_color_map_data_a354e06462023340fbc03894b22499f6d}{mKeySize} == 0 || \hyperlink{class_q_c_p_color_map_data_ae8ee9093632a59f55eb4fc06579ed256}{mValueSize} == 0;
+21922     \textcolor{keywordflow}{if} (!\hyperlink{class_q_c_p_color_map_data_a10e91aa89ed05bd177b1f81e07b465b8}{mIsEmpty}) \{
+21923 \textcolor{preprocessor}{#ifdef \_\_EXCEPTIONS}
+21924       \textcolor{keywordflow}{try} \{ \textcolor{comment}{// 2D arrays get memory intensive fast. So if the allocation fails,}
+21925             \textcolor{comment}{// at least output debug message}
+21926 \textcolor{preprocessor}{#endif}
+21927         \hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData} = \textcolor{keyword}{new} \textcolor{keywordtype}{double}[\hyperlink{class_q_c_p_color_map_data_a354e06462023340fbc03894b22499f6d}{mKeySize} * \hyperlink{class_q_c_p_color_map_data_ae8ee9093632a59f55eb4fc06579ed256}{mValueSize}];
+21928 \textcolor{preprocessor}{#ifdef \_\_EXCEPTIONS}
+21929       \} \textcolor{keywordflow}{catch} (...) \{
+21930         \hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData} = 0;
+21931       \}
+21932 \textcolor{preprocessor}{#endif}
+21933       \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData})
+21934         \hyperlink{class_q_c_p_color_map_data_a350f783260eb9b5de5c7b5e0d5d3e3c2}{fill}(0);
+21935       \textcolor{keywordflow}{else}
+21936         qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"out of memory for data dimensions "}
+21937                  << \hyperlink{class_q_c_p_color_map_data_a354e06462023340fbc03894b22499f6d}{mKeySize} << \textcolor{stringliteral}{"*"} << \hyperlink{class_q_c_p_color_map_data_ae8ee9093632a59f55eb4fc06579ed256}{mValueSize};
+21938     \} \textcolor{keywordflow}{else}
+21939       \hyperlink{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}{mData} = 0;
+21940     \hyperlink{class_q_c_p_color_map_data_ad3cc682da2ac14e5acdbc05cf4d3d93b}{mDataModified} = \textcolor{keyword}{true};
+21941   \}
+21942 \}
 \end{DoxyCode}
 
 
@@ -985,7 +983,7 @@ The outer cells will be centered on the range boundaries given to this function.
 \end{DoxySeeAlso}
 
 
-Definition at line 19803 of file qcustomplot.\+cpp.
+Definition at line 22025 of file qcustomplot.\+cpp.
 
 
 
@@ -997,9 +995,9 @@ Referenced by set\+Range().
 
 
 \begin{DoxyCode}
-19804 \{
-19805   \hyperlink{class_q_c_p_color_map_data_a225bb96f10c1a27b51ae59249477dbef}{mValueRange} = \hyperlink{class_q_c_p_color_map_data_a025be4d7ba0494fd7b38a5a56c737f2a}{valueRange};
-19806 \}
+22025                                                               \{
+22026   \hyperlink{class_q_c_p_color_map_data_a225bb96f10c1a27b51ae59249477dbef}{mValueRange} = \hyperlink{class_q_c_p_color_map_data_a025be4d7ba0494fd7b38a5a56c737f2a}{valueRange};
+22027 \}
 \end{DoxyCode}
 
 
@@ -1041,7 +1039,7 @@ Setting {\itshape value\+Size} to zero frees the internal data array and \hyperl
 \end{DoxySeeAlso}
 
 
-Definition at line 19757 of file qcustomplot.\+cpp.
+Definition at line 21970 of file qcustomplot.\+cpp.
 
 
 
@@ -1049,9 +1047,9 @@ References m\+Key\+Size, and set\+Size().
 
 
 \begin{DoxyCode}
-19758 \{
-19759   \hyperlink{class_q_c_p_color_map_data_a0d9ff35c299d0478b682bfbcdd9c097e}{setSize}(\hyperlink{class_q_c_p_color_map_data_a354e06462023340fbc03894b22499f6d}{mKeySize}, \hyperlink{class_q_c_p_color_map_data_ab880be6bc587f34e8d22fe77ef6b57e9}{valueSize});
-19760 \}
+21970                                                 \{
+21971   \hyperlink{class_q_c_p_color_map_data_a0d9ff35c299d0478b682bfbcdd9c097e}{setSize}(\hyperlink{class_q_c_p_color_map_data_a354e06462023340fbc03894b22499f6d}{mKeySize}, \hyperlink{class_q_c_p_color_map_data_ab880be6bc587f34e8d22fe77ef6b57e9}{valueSize});
+21972 \}
 \end{DoxyCode}
 
 
@@ -1073,7 +1071,7 @@ Here is the call graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_color_map_data_a025be4d7ba0494fd7b38a5a56c737f2a}
 
 
-Definition at line 3009 of file qcustomplot.\+h.
+Definition at line 3443 of file qcustomplot.\+h.
 
 
 
@@ -1081,7 +1079,7 @@ Referenced by Q\+C\+P\+Color\+Map\+::draw(), Q\+C\+P\+Color\+Map\+::get\+Value\+
 
 
 \begin{DoxyCode}
-3009 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_color_map_data_a225bb96f10c1a27b51ae59249477dbef}{mValueRange}; \}
+3443 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_color_map_data_a225bb96f10c1a27b51ae59249477dbef}{mValueRange}; \}
 \end{DoxyCode}
 
 
@@ -1103,7 +1101,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_color_map_data_ab880be6bc587f34e8d22fe77ef6b57e9}
 
 
-Definition at line 3007 of file qcustomplot.\+h.
+Definition at line 3441 of file qcustomplot.\+h.
 
 
 
@@ -1111,7 +1109,7 @@ Referenced by Q\+C\+P\+Color\+Map\+::draw(), operator=(), set\+Size(), and Q\+C\
 
 
 \begin{DoxyCode}
-3007 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_color_map_data_ae8ee9093632a59f55eb4fc06579ed256}{mValueSize}; \}
+3441 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_color_map_data_ae8ee9093632a59f55eb4fc06579ed256}{mValueSize}; \}
 \end{DoxyCode}
 
 
@@ -1132,7 +1130,7 @@ Here is the caller graph for this function\+:\nopagebreak
 \subsubsection[{Q\+C\+P\+Color\+Map}]{\setlength{\rightskip}{0pt plus 5cm}friend class {\bf Q\+C\+P\+Color\+Map}\hspace{0.3cm}{\ttfamily [friend]}}\label{class_q_c_p_color_map_data_afa9d9eab63af3e6f20f882c8d7cc9f20}
 
 
-Definition at line 3042 of file qcustomplot.\+h.
+Definition at line 3478 of file qcustomplot.\+h.
 
 
 
@@ -1142,7 +1140,7 @@ Definition at line 3042 of file qcustomplot.\+h.
 \subsubsection[{m\+Data}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$ Q\+C\+P\+Color\+Map\+Data\+::m\+Data\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_color_map_data_ac1682862022f575191351c9825187d39}
 
 
-Definition at line 3038 of file qcustomplot.\+h.
+Definition at line 3474 of file qcustomplot.\+h.
 
 
 
@@ -1153,7 +1151,7 @@ Referenced by cell(), data(), fill(), operator=(), recalculate\+Data\+Bounds(), 
 \subsubsection[{m\+Data\+Bounds}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Range} Q\+C\+P\+Color\+Map\+Data\+::m\+Data\+Bounds\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_color_map_data_a1798b3dcc0a27091d196bfd156dcb3f2}
 
 
-Definition at line 3039 of file qcustomplot.\+h.
+Definition at line 3475 of file qcustomplot.\+h.
 
 
 
@@ -1164,7 +1162,7 @@ Referenced by fill(), operator=(), recalculate\+Data\+Bounds(), set\+Cell(), and
 \subsubsection[{m\+Data\+Modified}]{\setlength{\rightskip}{0pt plus 5cm}bool Q\+C\+P\+Color\+Map\+Data\+::m\+Data\+Modified\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_color_map_data_ad3cc682da2ac14e5acdbc05cf4d3d93b}
 
 
-Definition at line 3040 of file qcustomplot.\+h.
+Definition at line 3476 of file qcustomplot.\+h.
 
 
 
@@ -1175,7 +1173,7 @@ Referenced by Q\+C\+P\+Color\+Map\+::draw(), fill(), operator=(), set\+Cell(), s
 \subsubsection[{m\+Is\+Empty}]{\setlength{\rightskip}{0pt plus 5cm}bool Q\+C\+P\+Color\+Map\+Data\+::m\+Is\+Empty\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_color_map_data_a10e91aa89ed05bd177b1f81e07b465b8}
 
 
-Definition at line 3036 of file qcustomplot.\+h.
+Definition at line 3472 of file qcustomplot.\+h.
 
 
 
@@ -1186,7 +1184,7 @@ Referenced by operator=(), and set\+Size().
 \subsubsection[{m\+Key\+Range}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Range} Q\+C\+P\+Color\+Map\+Data\+::m\+Key\+Range\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_color_map_data_aaaafd0d7d0f153dbd152f3daf34254ee}
 
 
-Definition at line 3035 of file qcustomplot.\+h.
+Definition at line 3471 of file qcustomplot.\+h.
 
 
 
@@ -1197,7 +1195,7 @@ Referenced by cell\+To\+Coord(), coord\+To\+Cell(), data(), set\+Data(), and set
 \subsubsection[{m\+Key\+Size}]{\setlength{\rightskip}{0pt plus 5cm}int Q\+C\+P\+Color\+Map\+Data\+::m\+Key\+Size\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_color_map_data_a354e06462023340fbc03894b22499f6d}
 
 
-Definition at line 3034 of file qcustomplot.\+h.
+Definition at line 3470 of file qcustomplot.\+h.
 
 
 
@@ -1208,7 +1206,7 @@ Referenced by cell(), cell\+To\+Coord(), coord\+To\+Cell(), data(), fill(), reca
 \subsubsection[{m\+Value\+Range}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Range} Q\+C\+P\+Color\+Map\+Data\+::m\+Value\+Range\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_color_map_data_a225bb96f10c1a27b51ae59249477dbef}
 
 
-Definition at line 3035 of file qcustomplot.\+h.
+Definition at line 3471 of file qcustomplot.\+h.
 
 
 
@@ -1219,7 +1217,7 @@ Referenced by cell\+To\+Coord(), coord\+To\+Cell(), data(), set\+Data(), and set
 \subsubsection[{m\+Value\+Size}]{\setlength{\rightskip}{0pt plus 5cm}int Q\+C\+P\+Color\+Map\+Data\+::m\+Value\+Size\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_color_map_data_ae8ee9093632a59f55eb4fc06579ed256}
 
 
-Definition at line 3034 of file qcustomplot.\+h.
+Definition at line 3470 of file qcustomplot.\+h.
 
 
 

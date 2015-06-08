@@ -176,13 +176,15 @@ Q\+Margins \hyperlink{class_q_c_p_item_text_ae7b3ef0ce6046efd4b346d28f2e1fb67}{m
 \subsection{Detailed Description}
 A text label. 
 
- Its position is defined by the member {\itshape position} and the setting of \hyperlink{class_q_c_p_item_text_a781cdf8c640fc6a055dcff1e675c8c7a}{set\+Position\+Alignment}. The latter controls which part of the text rect shall be aligned with {\itshape position}.
+ solid blue discs are positions."
+
+Its position is defined by the member {\itshape position} and the setting of \hyperlink{class_q_c_p_item_text_a781cdf8c640fc6a055dcff1e675c8c7a}{set\+Position\+Alignment}. The latter controls which part of the text rect shall be aligned with {\itshape position}.
 
 The text alignment itself (i.\+e. left, center, right) can be controlled with \hyperlink{class_q_c_p_item_text_ab5bc0684c4d1bed81949a11b34dba478}{set\+Text\+Alignment}.
 
 The text may be rotated around the {\itshape position} point with \hyperlink{class_q_c_p_item_text_a4bcc10cd97952c3f749d75824b5077f0}{set\+Rotation}. 
 
-Definition at line 3421 of file qcustomplot.\+h.
+Definition at line 3887 of file qcustomplot.\+h.
 
 
 
@@ -213,12 +215,20 @@ Definition at line 3421 of file qcustomplot.\+h.
 \end{Desc}
 
 
-Definition at line 3487 of file qcustomplot.\+h.
+Definition at line 3955 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-3487 \{\hyperlink{class_q_c_p_item_text_a14a84e58f72519c8ae1d7a4a1dd23f21a30342ee15065715f045cb52eb77b904c}{aiTopLeft}, \hyperlink{class_q_c_p_item_text_a14a84e58f72519c8ae1d7a4a1dd23f21a55ce9699c71db6d264eb669bb0eb9aff}{aiTop}, \hyperlink{class_q_c_p_item_text_a14a84e58f72519c8ae1d7a4a1dd23f21a7b6ff56fcad4c78db0b793a96fce9580}{aiTopRight}, \hyperlink{class_q_c_p_item_text_a14a84e58f72519c8ae1d7a4a1dd23f21ad4faa7def46db6df2fedd1926237b48f}{aiRight}, 
-      \hyperlink{class_q_c_p_item_text_a14a84e58f72519c8ae1d7a4a1dd23f21af2072f259730ef47aa7ad7519f3a0255}{aiBottomRight}, \hyperlink{class_q_c_p_item_text_a14a84e58f72519c8ae1d7a4a1dd23f21a5773ad69b7f4cd2724ba46d8f31b0688}{aiBottom}, \hyperlink{class_q_c_p_item_text_a14a84e58f72519c8ae1d7a4a1dd23f21a489ec73da5a18c15e98a4f9b17ed301f}{aiBottomLeft}, \hyperlink{class_q_c_p_item_text_a14a84e58f72519c8ae1d7a4a1dd23f21a7f1c1b8c574c753e300a4759915a9170}{aiLeft}\};
+3955                    \{
+3956     \hyperlink{class_q_c_p_item_text_a14a84e58f72519c8ae1d7a4a1dd23f21a30342ee15065715f045cb52eb77b904c}{aiTopLeft},
+3957     \hyperlink{class_q_c_p_item_text_a14a84e58f72519c8ae1d7a4a1dd23f21a55ce9699c71db6d264eb669bb0eb9aff}{aiTop},
+3958     \hyperlink{class_q_c_p_item_text_a14a84e58f72519c8ae1d7a4a1dd23f21a7b6ff56fcad4c78db0b793a96fce9580}{aiTopRight},
+3959     \hyperlink{class_q_c_p_item_text_a14a84e58f72519c8ae1d7a4a1dd23f21ad4faa7def46db6df2fedd1926237b48f}{aiRight},
+3960     \hyperlink{class_q_c_p_item_text_a14a84e58f72519c8ae1d7a4a1dd23f21af2072f259730ef47aa7ad7519f3a0255}{aiBottomRight},
+3961     \hyperlink{class_q_c_p_item_text_a14a84e58f72519c8ae1d7a4a1dd23f21a5773ad69b7f4cd2724ba46d8f31b0688}{aiBottom},
+3962     \hyperlink{class_q_c_p_item_text_a14a84e58f72519c8ae1d7a4a1dd23f21a489ec73da5a18c15e98a4f9b17ed301f}{aiBottomLeft},
+3963     \hyperlink{class_q_c_p_item_text_a14a84e58f72519c8ae1d7a4a1dd23f21a7f1c1b8c574c753e300a4759915a9170}{aiLeft}
+3964   \};
 \end{DoxyCode}
 
 
@@ -234,7 +244,7 @@ Creates a text item and sets default values.
 
 The constructed item can be added to the plot with \hyperlink{class_q_custom_plot_aa500620379262321685cb7a7674cbd2a}{Q\+Custom\+Plot\+::add\+Item}. 
 
-Definition at line 22192 of file qcustomplot.\+cpp.
+Definition at line 24708 of file qcustomplot.\+cpp.
 
 
 
@@ -242,35 +252,34 @@ References position, set\+Brush(), set\+Color(), Q\+C\+P\+Item\+Position\+::set\
 
 
 \begin{DoxyCode}
-22192                                                 :
-22193   \hyperlink{class_q_c_p_abstract_item_a9922507d8b4503a1fe1ed0b1030e23b6}{QCPAbstractItem}(parentPlot),
-22194   \hyperlink{class_q_c_p_item_text_a0d228a00e819022b5690c65762721129}{position}(\hyperlink{class_q_c_p_abstract_item_a75036d39c4d4e2e1a7dd145fff915d32}{createPosition}(QLatin1String(\textcolor{stringliteral}{"position"}))),
-22195   \hyperlink{class_q_c_p_item_text_a6354d8762182a3502103fabe5fbb8512}{topLeft}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"topLeft"}), \hyperlink{class_q_c_p_item_text_a14a84e58f72519c8ae1d7a4a1dd23f21a30342ee15065715f045cb52eb77b904c}{aiTopLeft})),
-22196   \hyperlink{class_q_c_p_item_text_a5c87ee162cbbe3d166b97826c8849304}{top}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"top"}), \hyperlink{class_q_c_p_item_text_a14a84e58f72519c8ae1d7a4a1dd23f21a55ce9699c71db6d264eb669bb0eb9aff}{aiTop})),
-22197   \hyperlink{class_q_c_p_item_text_ad18ac45cb4cc135de1eb78f2e86b6504}{topRight}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"topRight"}), 
+24709     : \hyperlink{class_q_c_p_abstract_item_a9922507d8b4503a1fe1ed0b1030e23b6}{QCPAbstractItem}(parentPlot),
+24710       \hyperlink{class_q_c_p_item_text_a0d228a00e819022b5690c65762721129}{position}(\hyperlink{class_q_c_p_abstract_item_a75036d39c4d4e2e1a7dd145fff915d32}{createPosition}(QLatin1String(\textcolor{stringliteral}{"position"}))),
+24711       \hyperlink{class_q_c_p_item_text_a6354d8762182a3502103fabe5fbb8512}{topLeft}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"topLeft"}), 
+      \hyperlink{class_q_c_p_item_text_a14a84e58f72519c8ae1d7a4a1dd23f21a30342ee15065715f045cb52eb77b904c}{aiTopLeft})),
+24712       \hyperlink{class_q_c_p_item_text_a5c87ee162cbbe3d166b97826c8849304}{top}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"top"}), \hyperlink{class_q_c_p_item_text_a14a84e58f72519c8ae1d7a4a1dd23f21a55ce9699c71db6d264eb669bb0eb9aff}{aiTop})),
+24713       \hyperlink{class_q_c_p_item_text_ad18ac45cb4cc135de1eb78f2e86b6504}{topRight}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"topRight"}), 
       \hyperlink{class_q_c_p_item_text_a14a84e58f72519c8ae1d7a4a1dd23f21a7b6ff56fcad4c78db0b793a96fce9580}{aiTopRight})),
-22198   \hyperlink{class_q_c_p_item_text_aef159622ce6502412e782a21ba6d84f2}{right}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"right"}), \hyperlink{class_q_c_p_item_text_a14a84e58f72519c8ae1d7a4a1dd23f21ad4faa7def46db6df2fedd1926237b48f}{aiRight})),
-22199   \hyperlink{class_q_c_p_item_text_a8ad47045c29af43b0312f7d93bb74374}{bottomRight}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"bottomRight"}), 
+24714       \hyperlink{class_q_c_p_item_text_aef159622ce6502412e782a21ba6d84f2}{right}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"right"}), \hyperlink{class_q_c_p_item_text_a14a84e58f72519c8ae1d7a4a1dd23f21ad4faa7def46db6df2fedd1926237b48f}{aiRight})),
+24715       \hyperlink{class_q_c_p_item_text_a8ad47045c29af43b0312f7d93bb74374}{bottomRight}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"bottomRight"}), 
       \hyperlink{class_q_c_p_item_text_a14a84e58f72519c8ae1d7a4a1dd23f21af2072f259730ef47aa7ad7519f3a0255}{aiBottomRight})),
-22200   \hyperlink{class_q_c_p_item_text_a94aeec080f877d3d1d0c3d8ffc10e9e6}{bottom}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"bottom"}), \hyperlink{class_q_c_p_item_text_a14a84e58f72519c8ae1d7a4a1dd23f21a5773ad69b7f4cd2724ba46d8f31b0688}{aiBottom})),
-22201   \hyperlink{class_q_c_p_item_text_a6a1c872ad3789ecafcaeac2066e218a0}{bottomLeft}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"bottomLeft"}), 
+24716       \hyperlink{class_q_c_p_item_text_a94aeec080f877d3d1d0c3d8ffc10e9e6}{bottom}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"bottom"}), \hyperlink{class_q_c_p_item_text_a14a84e58f72519c8ae1d7a4a1dd23f21a5773ad69b7f4cd2724ba46d8f31b0688}{aiBottom})),
+24717       \hyperlink{class_q_c_p_item_text_a6a1c872ad3789ecafcaeac2066e218a0}{bottomLeft}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"bottomLeft"}), 
       \hyperlink{class_q_c_p_item_text_a14a84e58f72519c8ae1d7a4a1dd23f21a489ec73da5a18c15e98a4f9b17ed301f}{aiBottomLeft})),
-22202   \hyperlink{class_q_c_p_item_text_ab8c6c6e1df36256986fab1463c0a1d38}{left}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"left"}), \hyperlink{class_q_c_p_item_text_a14a84e58f72519c8ae1d7a4a1dd23f21a7f1c1b8c574c753e300a4759915a9170}{aiLeft}))
-22203 \{
-22204   \hyperlink{class_q_c_p_item_text_a0d228a00e819022b5690c65762721129}{position}->\hyperlink{class_q_c_p_item_position_aa988ba4e87ab684c9021017dcaba945f}{setCoords}(0, 0);
-22205   
-22206   \hyperlink{class_q_c_p_item_text_a4bcc10cd97952c3f749d75824b5077f0}{setRotation}(0);
-22207   \hyperlink{class_q_c_p_item_text_ab5bc0684c4d1bed81949a11b34dba478}{setTextAlignment}(Qt::AlignTop|Qt::AlignHCenter);
-22208   \hyperlink{class_q_c_p_item_text_a781cdf8c640fc6a055dcff1e675c8c7a}{setPositionAlignment}(Qt::AlignCenter);
-22209   \hyperlink{class_q_c_p_item_text_a3dacdda0ac88f99a05b333b977c48747}{setText}(QLatin1String(\textcolor{stringliteral}{"text"}));
-22210   
-22211   \hyperlink{class_q_c_p_item_text_a9b9ec6eea0eb0603977ff84d4c78d0a3}{setPen}(Qt::NoPen);
-22212   \hyperlink{class_q_c_p_item_text_a291febe586f0da3f1c392e77bef4aa20}{setSelectedPen}(Qt::NoPen);
-22213   \hyperlink{class_q_c_p_item_text_a1c7e131516df2ed8d941ef31240ded8e}{setBrush}(Qt::NoBrush);
-22214   \hyperlink{class_q_c_p_item_text_a6b8377eeb2af75eb9528422671ac16cb}{setSelectedBrush}(Qt::NoBrush);
-22215   \hyperlink{class_q_c_p_item_text_aa51efc0841fe52da9eaf8aff6fc8a8b2}{setColor}(Qt::black);
-22216   \hyperlink{class_q_c_p_item_text_ae7ba0bdb75c897b028388e45bfd435fa}{setSelectedColor}(Qt::blue);
-22217 \}
+24718       \hyperlink{class_q_c_p_item_text_ab8c6c6e1df36256986fab1463c0a1d38}{left}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"left"}), \hyperlink{class_q_c_p_item_text_a14a84e58f72519c8ae1d7a4a1dd23f21a7f1c1b8c574c753e300a4759915a9170}{aiLeft})) \{
+24719   \hyperlink{class_q_c_p_item_text_a0d228a00e819022b5690c65762721129}{position}->\hyperlink{class_q_c_p_item_position_aa988ba4e87ab684c9021017dcaba945f}{setCoords}(0, 0);
+24720 
+24721   \hyperlink{class_q_c_p_item_text_a4bcc10cd97952c3f749d75824b5077f0}{setRotation}(0);
+24722   \hyperlink{class_q_c_p_item_text_ab5bc0684c4d1bed81949a11b34dba478}{setTextAlignment}(Qt::AlignTop | Qt::AlignHCenter);
+24723   \hyperlink{class_q_c_p_item_text_a781cdf8c640fc6a055dcff1e675c8c7a}{setPositionAlignment}(Qt::AlignCenter);
+24724   \hyperlink{class_q_c_p_item_text_a3dacdda0ac88f99a05b333b977c48747}{setText}(QLatin1String(\textcolor{stringliteral}{"text"}));
+24725 
+24726   \hyperlink{class_q_c_p_item_text_a9b9ec6eea0eb0603977ff84d4c78d0a3}{setPen}(Qt::NoPen);
+24727   \hyperlink{class_q_c_p_item_text_a291febe586f0da3f1c392e77bef4aa20}{setSelectedPen}(Qt::NoPen);
+24728   \hyperlink{class_q_c_p_item_text_a1c7e131516df2ed8d941ef31240ded8e}{setBrush}(Qt::NoBrush);
+24729   \hyperlink{class_q_c_p_item_text_a6b8377eeb2af75eb9528422671ac16cb}{setSelectedBrush}(Qt::NoBrush);
+24730   \hyperlink{class_q_c_p_item_text_aa51efc0841fe52da9eaf8aff6fc8a8b2}{setColor}(Qt::black);
+24731   \hyperlink{class_q_c_p_item_text_ae7ba0bdb75c897b028388e45bfd435fa}{setSelectedColor}(Qt::blue);
+24732 \}
 \end{DoxyCode}
 
 
@@ -292,12 +301,11 @@ Here is the call graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_q_c_p_item_text_a1efd41ca53d49042d4f4b63cf9615cb6}
 
 
-Definition at line 22219 of file qcustomplot.\+cpp.
+Definition at line 24734 of file qcustomplot.\+cpp.
 
 
 \begin{DoxyCode}
-22220 \{
-22221 \}
+24734 \{\}
 \end{DoxyCode}
 
 
@@ -315,7 +323,7 @@ Reimplemented from \hyperlink{class_q_c_p_abstract_item_a94bde62b8a2fc133666dcbb
 
 
 
-Definition at line 22414 of file qcustomplot.\+cpp.
+Definition at line 24918 of file qcustomplot.\+cpp.
 
 
 
@@ -323,38 +331,46 @@ References ai\+Bottom, ai\+Bottom\+Left, ai\+Bottom\+Right, ai\+Left, ai\+Right,
 
 
 \begin{DoxyCode}
-22415 \{
-22416   \textcolor{comment}{// get actual rect points (pretty much copied from draw function):}
-22417   QPointF pos(\hyperlink{class_q_c_p_item_text_a0d228a00e819022b5690c65762721129}{position}->\hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}());
-22418   QTransform transform;
-22419   transform.translate(pos.x(), pos.y());
-22420   \textcolor{keywordflow}{if} (!qFuzzyIsNull(\hyperlink{class_q_c_p_item_text_ac37df0061552225d2277e1ee3b48f2cb}{mRotation}))
-22421     transform.rotate(\hyperlink{class_q_c_p_item_text_ac37df0061552225d2277e1ee3b48f2cb}{mRotation});
-22422   QFontMetrics fontMetrics(\hyperlink{class_q_c_p_item_text_a23d391bd6471c45e73f45add67ede902}{mainFont}());
-22423   QRect textRect = fontMetrics.boundingRect(0, 0, 0, 0, Qt::TextDontClip|
-      \hyperlink{class_q_c_p_item_text_acdb2e50c38e83da00f083771efbd213f}{mTextAlignment}, \hyperlink{class_q_c_p_item_text_a2dec3e08c11f51639629374ecec3bd62}{mText});
-22424   QRectF textBoxRect = textRect.adjusted(-\hyperlink{class_q_c_p_item_text_ae7b3ef0ce6046efd4b346d28f2e1fb67}{mPadding}.left(), -\hyperlink{class_q_c_p_item_text_ae7b3ef0ce6046efd4b346d28f2e1fb67}{mPadding}.top(), 
-      \hyperlink{class_q_c_p_item_text_ae7b3ef0ce6046efd4b346d28f2e1fb67}{mPadding}.right(), \hyperlink{class_q_c_p_item_text_ae7b3ef0ce6046efd4b346d28f2e1fb67}{mPadding}.bottom());
-22425   QPointF textPos = \hyperlink{class_q_c_p_item_text_aa6e478b1ce198eace89157c4cacc3ddc}{getTextDrawPoint}(QPointF(0, 0), textBoxRect, 
-      \hyperlink{class_q_c_p_item_text_a6c27f7dc1a962a04b32430cf99f04654}{mPositionAlignment}); \textcolor{comment}{// 0, 0 because the transform does the translation}
-22426   textBoxRect.moveTopLeft(textPos.toPoint());
-22427   QPolygonF rectPoly = transform.map(QPolygonF(textBoxRect));
-22428   
-22429   \textcolor{keywordflow}{switch} (anchorId)
-22430   \{
-22431     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_text_a14a84e58f72519c8ae1d7a4a1dd23f21a30342ee15065715f045cb52eb77b904c}{aiTopLeft}:     \textcolor{keywordflow}{return} rectPoly.at(0);
-22432     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_text_a14a84e58f72519c8ae1d7a4a1dd23f21a55ce9699c71db6d264eb669bb0eb9aff}{aiTop}:         \textcolor{keywordflow}{return} (rectPoly.at(0)+rectPoly.at(1))*0.5;
-22433     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_text_a14a84e58f72519c8ae1d7a4a1dd23f21a7b6ff56fcad4c78db0b793a96fce9580}{aiTopRight}:    \textcolor{keywordflow}{return} rectPoly.at(1);
-22434     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_text_a14a84e58f72519c8ae1d7a4a1dd23f21ad4faa7def46db6df2fedd1926237b48f}{aiRight}:       \textcolor{keywordflow}{return} (rectPoly.at(1)+rectPoly.at(2))*0.5;
-22435     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_text_a14a84e58f72519c8ae1d7a4a1dd23f21af2072f259730ef47aa7ad7519f3a0255}{aiBottomRight}: \textcolor{keywordflow}{return} rectPoly.at(2);
-22436     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_text_a14a84e58f72519c8ae1d7a4a1dd23f21a5773ad69b7f4cd2724ba46d8f31b0688}{aiBottom}:      \textcolor{keywordflow}{return} (rectPoly.at(2)+rectPoly.at(3))*0.5;
-22437     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_text_a14a84e58f72519c8ae1d7a4a1dd23f21a489ec73da5a18c15e98a4f9b17ed301f}{aiBottomLeft}:  \textcolor{keywordflow}{return} rectPoly.at(3);
-22438     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_text_a14a84e58f72519c8ae1d7a4a1dd23f21a7f1c1b8c574c753e300a4759915a9170}{aiLeft}:        \textcolor{keywordflow}{return} (rectPoly.at(3)+rectPoly.at(0))*0.5;
-22439   \}
-22440   
-22441   qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"invalid anchorId"} << anchorId;
-22442   \textcolor{keywordflow}{return} QPointF();
-22443 \}
+24918                                                         \{
+24919   \textcolor{comment}{// get actual rect points (pretty much copied from draw function):}
+24920   QPointF pos(\hyperlink{class_q_c_p_item_text_a0d228a00e819022b5690c65762721129}{position}->\hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}());
+24921   QTransform transform;
+24922   transform.translate(pos.x(), pos.y());
+24923   \textcolor{keywordflow}{if} (!qFuzzyIsNull(\hyperlink{class_q_c_p_item_text_ac37df0061552225d2277e1ee3b48f2cb}{mRotation}))
+24924     transform.rotate(\hyperlink{class_q_c_p_item_text_ac37df0061552225d2277e1ee3b48f2cb}{mRotation});
+24925   QFontMetrics fontMetrics(\hyperlink{class_q_c_p_item_text_a23d391bd6471c45e73f45add67ede902}{mainFont}());
+24926   QRect textRect = fontMetrics.boundingRect(
+24927       0, 0, 0, 0, Qt::TextDontClip | \hyperlink{class_q_c_p_item_text_acdb2e50c38e83da00f083771efbd213f}{mTextAlignment}, \hyperlink{class_q_c_p_item_text_a2dec3e08c11f51639629374ecec3bd62}{mText});
+24928   QRectF textBoxRect = textRect.adjusted(-\hyperlink{class_q_c_p_item_text_ae7b3ef0ce6046efd4b346d28f2e1fb67}{mPadding}.left(), -\hyperlink{class_q_c_p_item_text_ae7b3ef0ce6046efd4b346d28f2e1fb67}{mPadding}.top(),
+24929                                          \hyperlink{class_q_c_p_item_text_ae7b3ef0ce6046efd4b346d28f2e1fb67}{mPadding}.right(), \hyperlink{class_q_c_p_item_text_ae7b3ef0ce6046efd4b346d28f2e1fb67}{mPadding}.bottom());
+24930   QPointF textPos = \hyperlink{class_q_c_p_item_text_aa6e478b1ce198eace89157c4cacc3ddc}{getTextDrawPoint}(
+24931       QPointF(0, 0), textBoxRect,
+24932       \hyperlink{class_q_c_p_item_text_a6c27f7dc1a962a04b32430cf99f04654}{mPositionAlignment}); \textcolor{comment}{// 0, 0 because the transform does the translation}
+24933   textBoxRect.moveTopLeft(textPos.toPoint());
+24934   QPolygonF rectPoly = transform.map(QPolygonF(textBoxRect));
+24935 
+24936   \textcolor{keywordflow}{switch} (anchorId) \{
+24937   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_text_a14a84e58f72519c8ae1d7a4a1dd23f21a30342ee15065715f045cb52eb77b904c}{aiTopLeft}:
+24938     \textcolor{keywordflow}{return} rectPoly.at(0);
+24939   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_text_a14a84e58f72519c8ae1d7a4a1dd23f21a55ce9699c71db6d264eb669bb0eb9aff}{aiTop}:
+24940     \textcolor{keywordflow}{return} (rectPoly.at(0) + rectPoly.at(1)) * 0.5;
+24941   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_text_a14a84e58f72519c8ae1d7a4a1dd23f21a7b6ff56fcad4c78db0b793a96fce9580}{aiTopRight}:
+24942     \textcolor{keywordflow}{return} rectPoly.at(1);
+24943   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_text_a14a84e58f72519c8ae1d7a4a1dd23f21ad4faa7def46db6df2fedd1926237b48f}{aiRight}:
+24944     \textcolor{keywordflow}{return} (rectPoly.at(1) + rectPoly.at(2)) * 0.5;
+24945   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_text_a14a84e58f72519c8ae1d7a4a1dd23f21af2072f259730ef47aa7ad7519f3a0255}{aiBottomRight}:
+24946     \textcolor{keywordflow}{return} rectPoly.at(2);
+24947   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_text_a14a84e58f72519c8ae1d7a4a1dd23f21a5773ad69b7f4cd2724ba46d8f31b0688}{aiBottom}:
+24948     \textcolor{keywordflow}{return} (rectPoly.at(2) + rectPoly.at(3)) * 0.5;
+24949   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_text_a14a84e58f72519c8ae1d7a4a1dd23f21a489ec73da5a18c15e98a4f9b17ed301f}{aiBottomLeft}:
+24950     \textcolor{keywordflow}{return} rectPoly.at(3);
+24951   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_text_a14a84e58f72519c8ae1d7a4a1dd23f21a7f1c1b8c574c753e300a4759915a9170}{aiLeft}:
+24952     \textcolor{keywordflow}{return} (rectPoly.at(3) + rectPoly.at(0)) * 0.5;
+24953   \}
+24954 
+24955   qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"invalid anchorId"} << anchorId;
+24956   \textcolor{keywordflow}{return} QPointF();
+24957 \}
 \end{DoxyCode}
 
 
@@ -376,7 +392,7 @@ Here is the call graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_item_text_a38b981dfacb703efa8e27346eebcb5a2}
 
 
-Definition at line 3448 of file qcustomplot.\+h.
+Definition at line 3915 of file qcustomplot.\+h.
 
 
 
@@ -384,7 +400,7 @@ Referenced by set\+Brush(), and set\+Selected\+Brush().
 
 
 \begin{DoxyCode}
-3448 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_text_a2535911875faa459b8337f2efccb5cb8}{mBrush}; \}
+3915 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_text_a2535911875faa459b8337f2efccb5cb8}{mBrush}; \}
 \end{DoxyCode}
 
 
@@ -406,7 +422,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_item_text_ac9cb0a8a27f64d1b40855910ea9ebd03}
 
 
-Definition at line 3444 of file qcustomplot.\+h.
+Definition at line 3911 of file qcustomplot.\+h.
 
 
 
@@ -414,7 +430,7 @@ Referenced by draw(), set\+Color(), and set\+Selected\+Color().
 
 
 \begin{DoxyCode}
-3444 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_text_a8407f284ad867f627878cc26ef433d08}{mColor}; \}
+3911 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_text_a8407f284ad867f627878cc26ef433d08}{mColor}; \}
 \end{DoxyCode}
 
 
@@ -440,7 +456,7 @@ Implements \hyperlink{class_q_c_p_abstract_item_ad0dc056f650c3ca73414e6b4f01674e
 
 
 
-Definition at line 22382 of file qcustomplot.\+cpp.
+Definition at line 24881 of file qcustomplot.\+cpp.
 
 
 
@@ -448,42 +464,42 @@ References Q\+C\+P\+Abstract\+Item\+::clip\+Rect(), color(), get\+Text\+Draw\+Po
 
 
 \begin{DoxyCode}
-22383 \{
-22384   QPointF pos(\hyperlink{class_q_c_p_item_text_a0d228a00e819022b5690c65762721129}{position}->\hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}());
-22385   QTransform transform = painter->transform();
-22386   transform.translate(pos.x(), pos.y());
-22387   \textcolor{keywordflow}{if} (!qFuzzyIsNull(\hyperlink{class_q_c_p_item_text_ac37df0061552225d2277e1ee3b48f2cb}{mRotation}))
-22388     transform.rotate(\hyperlink{class_q_c_p_item_text_ac37df0061552225d2277e1ee3b48f2cb}{mRotation});
-22389   painter->setFont(\hyperlink{class_q_c_p_item_text_a23d391bd6471c45e73f45add67ede902}{mainFont}());
-22390   QRect textRect = painter->fontMetrics().boundingRect(0, 0, 0, 0, Qt::TextDontClip|
-      \hyperlink{class_q_c_p_item_text_acdb2e50c38e83da00f083771efbd213f}{mTextAlignment}, \hyperlink{class_q_c_p_item_text_a2dec3e08c11f51639629374ecec3bd62}{mText});
-22391   QRect textBoxRect = textRect.adjusted(-\hyperlink{class_q_c_p_item_text_ae7b3ef0ce6046efd4b346d28f2e1fb67}{mPadding}.left(), -\hyperlink{class_q_c_p_item_text_ae7b3ef0ce6046efd4b346d28f2e1fb67}{mPadding}.top(), 
-      \hyperlink{class_q_c_p_item_text_ae7b3ef0ce6046efd4b346d28f2e1fb67}{mPadding}.right(), \hyperlink{class_q_c_p_item_text_ae7b3ef0ce6046efd4b346d28f2e1fb67}{mPadding}.bottom());
-22392   QPointF textPos = \hyperlink{class_q_c_p_item_text_aa6e478b1ce198eace89157c4cacc3ddc}{getTextDrawPoint}(QPointF(0, 0), textBoxRect, 
-      \hyperlink{class_q_c_p_item_text_a6c27f7dc1a962a04b32430cf99f04654}{mPositionAlignment}); \textcolor{comment}{// 0, 0 because the transform does the translation}
-22393   textRect.moveTopLeft(textPos.toPoint()+QPoint(\hyperlink{class_q_c_p_item_text_ae7b3ef0ce6046efd4b346d28f2e1fb67}{mPadding}.left(), 
-      \hyperlink{class_q_c_p_item_text_ae7b3ef0ce6046efd4b346d28f2e1fb67}{mPadding}.top()));
-22394   textBoxRect.moveTopLeft(textPos.toPoint());
-22395   \textcolor{keywordtype}{double} clipPad = \hyperlink{class_q_c_p_item_text_a9ade32d362b22853659201c738269e2a}{mainPen}().widthF();
-22396   QRect boundingRect = textBoxRect.adjusted(-clipPad, -clipPad, clipPad, clipPad);
-22397   \textcolor{keywordflow}{if} (transform.mapRect(boundingRect).intersects(painter->transform().mapRect(
-      \hyperlink{class_q_c_p_abstract_item_a538e25ff8856534582f5b2b400a46405}{clipRect}())))
-22398   \{
-22399     painter->setTransform(transform);
-22400     \textcolor{keywordflow}{if} ((\hyperlink{class_q_c_p_item_text_a10d6585a030633aa79d5ebc5a437f183}{mainBrush}().style() != Qt::NoBrush && \hyperlink{class_q_c_p_item_text_a10d6585a030633aa79d5ebc5a437f183}{mainBrush}().
-      \hyperlink{class_q_c_p_item_text_ac9cb0a8a27f64d1b40855910ea9ebd03}{color}().alpha() != 0) ||
-22401         (\hyperlink{class_q_c_p_item_text_a9ade32d362b22853659201c738269e2a}{mainPen}().style() != Qt::NoPen && \hyperlink{class_q_c_p_item_text_a9ade32d362b22853659201c738269e2a}{mainPen}().\hyperlink{class_q_c_p_item_text_ac9cb0a8a27f64d1b40855910ea9ebd03}{color}().alpha() != 0))
-22402     \{
-22403       painter->\hyperlink{class_q_c_p_painter_af9c7a4cd1791403901f8c5b82a150195}{setPen}(\hyperlink{class_q_c_p_item_text_a9ade32d362b22853659201c738269e2a}{mainPen}());
-22404       painter->setBrush(\hyperlink{class_q_c_p_item_text_a10d6585a030633aa79d5ebc5a437f183}{mainBrush}());
-22405       painter->drawRect(textBoxRect);
-22406     \}
-22407     painter->setBrush(Qt::NoBrush);
-22408     painter->\hyperlink{class_q_c_p_painter_af9c7a4cd1791403901f8c5b82a150195}{setPen}(QPen(\hyperlink{class_q_c_p_item_text_ad7bf17e4945cc86bbf9a36331da059a0}{mainColor}()));
-22409     painter->drawText(textRect, Qt::TextDontClip|\hyperlink{class_q_c_p_item_text_acdb2e50c38e83da00f083771efbd213f}{mTextAlignment}, 
+24881                                           \{
+24882   QPointF pos(\hyperlink{class_q_c_p_item_text_a0d228a00e819022b5690c65762721129}{position}->\hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}());
+24883   QTransform transform = painter->transform();
+24884   transform.translate(pos.x(), pos.y());
+24885   \textcolor{keywordflow}{if} (!qFuzzyIsNull(\hyperlink{class_q_c_p_item_text_ac37df0061552225d2277e1ee3b48f2cb}{mRotation}))
+24886     transform.rotate(\hyperlink{class_q_c_p_item_text_ac37df0061552225d2277e1ee3b48f2cb}{mRotation});
+24887   painter->setFont(\hyperlink{class_q_c_p_item_text_a23d391bd6471c45e73f45add67ede902}{mainFont}());
+24888   QRect textRect = painter->fontMetrics().boundingRect(
+24889       0, 0, 0, 0, Qt::TextDontClip | \hyperlink{class_q_c_p_item_text_acdb2e50c38e83da00f083771efbd213f}{mTextAlignment}, \hyperlink{class_q_c_p_item_text_a2dec3e08c11f51639629374ecec3bd62}{mText});
+24890   QRect textBoxRect = textRect.adjusted(-\hyperlink{class_q_c_p_item_text_ae7b3ef0ce6046efd4b346d28f2e1fb67}{mPadding}.left(), -\hyperlink{class_q_c_p_item_text_ae7b3ef0ce6046efd4b346d28f2e1fb67}{mPadding}.top(),
+24891                                         \hyperlink{class_q_c_p_item_text_ae7b3ef0ce6046efd4b346d28f2e1fb67}{mPadding}.right(), \hyperlink{class_q_c_p_item_text_ae7b3ef0ce6046efd4b346d28f2e1fb67}{mPadding}.bottom());
+24892   QPointF textPos = \hyperlink{class_q_c_p_item_text_aa6e478b1ce198eace89157c4cacc3ddc}{getTextDrawPoint}(
+24893       QPointF(0, 0), textBoxRect,
+24894       \hyperlink{class_q_c_p_item_text_a6c27f7dc1a962a04b32430cf99f04654}{mPositionAlignment}); \textcolor{comment}{// 0, 0 because the transform does the translation}
+24895   textRect.moveTopLeft(textPos.toPoint() +
+24896                        QPoint(\hyperlink{class_q_c_p_item_text_ae7b3ef0ce6046efd4b346d28f2e1fb67}{mPadding}.left(), \hyperlink{class_q_c_p_item_text_ae7b3ef0ce6046efd4b346d28f2e1fb67}{mPadding}.top()));
+24897   textBoxRect.moveTopLeft(textPos.toPoint());
+24898   \textcolor{keywordtype}{double} clipPad = \hyperlink{class_q_c_p_item_text_a9ade32d362b22853659201c738269e2a}{mainPen}().widthF();
+24899   QRect boundingRect =
+24900       textBoxRect.adjusted(-clipPad, -clipPad, clipPad, clipPad);
+24901   \textcolor{keywordflow}{if} (transform.mapRect(boundingRect)
+24902           .intersects(painter->transform().mapRect(\hyperlink{class_q_c_p_abstract_item_a538e25ff8856534582f5b2b400a46405}{clipRect}()))) \{
+24903     painter->setTransform(transform);
+24904     \textcolor{keywordflow}{if} ((\hyperlink{class_q_c_p_item_text_a10d6585a030633aa79d5ebc5a437f183}{mainBrush}().style() != Qt::NoBrush &&
+24905          \hyperlink{class_q_c_p_item_text_a10d6585a030633aa79d5ebc5a437f183}{mainBrush}().\hyperlink{class_q_c_p_item_text_ac9cb0a8a27f64d1b40855910ea9ebd03}{color}().alpha() != 0) ||
+24906         (\hyperlink{class_q_c_p_item_text_a9ade32d362b22853659201c738269e2a}{mainPen}().style() != Qt::NoPen && \hyperlink{class_q_c_p_item_text_a9ade32d362b22853659201c738269e2a}{mainPen}().\hyperlink{class_q_c_p_item_text_ac9cb0a8a27f64d1b40855910ea9ebd03}{color}().alpha() != 0)) \{
+24907       painter->\hyperlink{class_q_c_p_painter_af9c7a4cd1791403901f8c5b82a150195}{setPen}(\hyperlink{class_q_c_p_item_text_a9ade32d362b22853659201c738269e2a}{mainPen}());
+24908       painter->setBrush(\hyperlink{class_q_c_p_item_text_a10d6585a030633aa79d5ebc5a437f183}{mainBrush}());
+24909       painter->drawRect(textBoxRect);
+24910     \}
+24911     painter->setBrush(Qt::NoBrush);
+24912     painter->\hyperlink{class_q_c_p_painter_af9c7a4cd1791403901f8c5b82a150195}{setPen}(QPen(\hyperlink{class_q_c_p_item_text_ad7bf17e4945cc86bbf9a36331da059a0}{mainColor}()));
+24913     painter->drawText(textRect, Qt::TextDontClip | \hyperlink{class_q_c_p_item_text_acdb2e50c38e83da00f083771efbd213f}{mTextAlignment}, 
       \hyperlink{class_q_c_p_item_text_a2dec3e08c11f51639629374ecec3bd62}{mText});
-22410   \}
-22411 \}
+24914   \}
+24915 \}
 \end{DoxyCode}
 
 
@@ -505,7 +521,7 @@ Here is the call graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_item_text_ad34943fd68a9b1451d3e3234d072e418}
 
 
-Definition at line 3450 of file qcustomplot.\+h.
+Definition at line 3917 of file qcustomplot.\+h.
 
 
 
@@ -513,7 +529,7 @@ Referenced by set\+Font(), and set\+Selected\+Font().
 
 
 \begin{DoxyCode}
-3450 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_text_a1dc87fe2a824820d549ffd7e644eef8d}{mFont}; \}
+3917 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_text_a1dc87fe2a824820d549ffd7e644eef8d}{mFont}; \}
 \end{DoxyCode}
 
 
@@ -537,7 +553,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_text_aa6e478b1ce198eace89157c4cacc3ddc}
 
 
-Definition at line 22455 of file qcustomplot.\+cpp.
+Definition at line 24974 of file qcustomplot.\+cpp.
 
 
 
@@ -545,22 +561,22 @@ Referenced by anchor\+Pixel\+Point(), draw(), and select\+Test().
 
 
 \begin{DoxyCode}
-22456 \{
-22457   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_text_af13c6adc480f268116ae72196eb44b06}{positionAlignment} == 0 || \hyperlink{class_q_c_p_item_text_af13c6adc480f268116ae72196eb44b06}{positionAlignment} == (Qt::AlignLeft|
-      Qt::AlignTop))
-22458     \textcolor{keywordflow}{return} pos;
-22459   
-22460   QPointF result = pos; \textcolor{comment}{// start at top left}
-22461   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_text_af13c6adc480f268116ae72196eb44b06}{positionAlignment}.testFlag(Qt::AlignHCenter))
-22462     result.rx() -= \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.width()/2.0;
-22463   \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_text_af13c6adc480f268116ae72196eb44b06}{positionAlignment}.testFlag(Qt::AlignRight))
-22464     result.rx() -= \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.width();
-22465   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_text_af13c6adc480f268116ae72196eb44b06}{positionAlignment}.testFlag(Qt::AlignVCenter))
-22466     result.ry() -= \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.height()/2.0;
-22467   \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_text_af13c6adc480f268116ae72196eb44b06}{positionAlignment}.testFlag(Qt::AlignBottom))
-22468     result.ry() -= \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.height();
-22469   \textcolor{keywordflow}{return} result;
-22470 \}
+24975                                                                            \{
+24976   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_text_af13c6adc480f268116ae72196eb44b06}{positionAlignment} == 0 ||
+24977       \hyperlink{class_q_c_p_item_text_af13c6adc480f268116ae72196eb44b06}{positionAlignment} == (Qt::AlignLeft | Qt::AlignTop))
+24978     \textcolor{keywordflow}{return} pos;
+24979 
+24980   QPointF result = pos; \textcolor{comment}{// start at top left}
+24981   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_text_af13c6adc480f268116ae72196eb44b06}{positionAlignment}.testFlag(Qt::AlignHCenter))
+24982     result.rx() -= \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.width() / 2.0;
+24983   \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_text_af13c6adc480f268116ae72196eb44b06}{positionAlignment}.testFlag(Qt::AlignRight))
+24984     result.rx() -= \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.width();
+24985   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_text_af13c6adc480f268116ae72196eb44b06}{positionAlignment}.testFlag(Qt::AlignVCenter))
+24986     result.ry() -= \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.height() / 2.0;
+24987   \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_item_text_af13c6adc480f268116ae72196eb44b06}{positionAlignment}.testFlag(Qt::AlignBottom))
+24988     result.ry() -= \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect}.height();
+24989   \textcolor{keywordflow}{return} result;
+24990 \}
 \end{DoxyCode}
 
 
@@ -582,7 +598,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_text_a10d6585a030633aa79d5ebc5a437f183}
 
 
-Definition at line 22507 of file qcustomplot.\+cpp.
+Definition at line 25026 of file qcustomplot.\+cpp.
 
 
 
@@ -594,9 +610,9 @@ Referenced by draw().
 
 
 \begin{DoxyCode}
-22508 \{
-22509   \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_abstract_item_a4bdb3457dad1d268c0f78a44152b9645}{mSelected} ? \hyperlink{class_q_c_p_item_text_a28ccd097b42a216d81db9c6869f54a59}{mSelectedBrush} : \hyperlink{class_q_c_p_item_text_a2535911875faa459b8337f2efccb5cb8}{mBrush};
-22510 \}
+25026                                     \{
+25027   \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_abstract_item_a4bdb3457dad1d268c0f78a44152b9645}{mSelected} ? \hyperlink{class_q_c_p_item_text_a28ccd097b42a216d81db9c6869f54a59}{mSelectedBrush} : \hyperlink{class_q_c_p_item_text_a2535911875faa459b8337f2efccb5cb8}{mBrush};
+25028 \}
 \end{DoxyCode}
 
 
@@ -618,7 +634,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_text_ad7bf17e4945cc86bbf9a36331da059a0}
 
 
-Definition at line 22487 of file qcustomplot.\+cpp.
+Definition at line 25008 of file qcustomplot.\+cpp.
 
 
 
@@ -630,9 +646,9 @@ Referenced by draw().
 
 
 \begin{DoxyCode}
-22488 \{
-22489   \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_abstract_item_a4bdb3457dad1d268c0f78a44152b9645}{mSelected} ? \hyperlink{class_q_c_p_item_text_a7eb64e42f5f7998a97d8907ad25933c1}{mSelectedColor} : \hyperlink{class_q_c_p_item_text_a8407f284ad867f627878cc26ef433d08}{mColor};
-22490 \}
+25008                                     \{
+25009   \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_abstract_item_a4bdb3457dad1d268c0f78a44152b9645}{mSelected} ? \hyperlink{class_q_c_p_item_text_a7eb64e42f5f7998a97d8907ad25933c1}{mSelectedColor} : \hyperlink{class_q_c_p_item_text_a8407f284ad867f627878cc26ef433d08}{mColor};
+25010 \}
 \end{DoxyCode}
 
 
@@ -654,7 +670,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_text_a23d391bd6471c45e73f45add67ede902}
 
 
-Definition at line 22477 of file qcustomplot.\+cpp.
+Definition at line 24998 of file qcustomplot.\+cpp.
 
 
 
@@ -666,9 +682,9 @@ Referenced by anchor\+Pixel\+Point(), and draw().
 
 
 \begin{DoxyCode}
-22478 \{
-22479   \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_abstract_item_a4bdb3457dad1d268c0f78a44152b9645}{mSelected} ? \hyperlink{class_q_c_p_item_text_a6702f141fae590b2f4f1ec02fe9f8bd5}{mSelectedFont} : \hyperlink{class_q_c_p_item_text_a1dc87fe2a824820d549ffd7e644eef8d}{mFont};
-22480 \}
+24998                                   \{
+24999   \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_abstract_item_a4bdb3457dad1d268c0f78a44152b9645}{mSelected} ? \hyperlink{class_q_c_p_item_text_a6702f141fae590b2f4f1ec02fe9f8bd5}{mSelectedFont} : \hyperlink{class_q_c_p_item_text_a1dc87fe2a824820d549ffd7e644eef8d}{mFont};
+25000 \}
 \end{DoxyCode}
 
 
@@ -690,7 +706,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_text_a9ade32d362b22853659201c738269e2a}
 
 
-Definition at line 22497 of file qcustomplot.\+cpp.
+Definition at line 25018 of file qcustomplot.\+cpp.
 
 
 
@@ -702,9 +718,7 @@ Referenced by draw().
 
 
 \begin{DoxyCode}
-22498 \{
-22499   \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_abstract_item_a4bdb3457dad1d268c0f78a44152b9645}{mSelected} ? \hyperlink{class_q_c_p_item_text_a8eaec649606d6ead2d8d4dcb5691777c}{mSelectedPen} : \hyperlink{class_q_c_p_item_text_aa02388705dbbff1bf7b8aa872b5f579c}{mPen};
-22500 \}
+25018 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_abstract_item_a4bdb3457dad1d268c0f78a44152b9645}{mSelected} ? \hyperlink{class_q_c_p_item_text_a8eaec649606d6ead2d8d4dcb5691777c}{mSelectedPen} : \hyperlink{class_q_c_p_item_text_aa02388705dbbff1bf7b8aa872b5f579c}{mPen}; \}
 \end{DoxyCode}
 
 
@@ -726,7 +740,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_item_text_a00e0fa03822ff384bf4921c1c90322ff}
 
 
-Definition at line 3456 of file qcustomplot.\+h.
+Definition at line 3923 of file qcustomplot.\+h.
 
 
 
@@ -734,7 +748,7 @@ Referenced by set\+Padding().
 
 
 \begin{DoxyCode}
-3456 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_text_ae7b3ef0ce6046efd4b346d28f2e1fb67}{mPadding}; \}
+3923 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_text_ae7b3ef0ce6046efd4b346d28f2e1fb67}{mPadding}; \}
 \end{DoxyCode}
 
 
@@ -756,7 +770,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_item_text_a552bd02f46dbcb4b4812559036893352}
 
 
-Definition at line 3446 of file qcustomplot.\+h.
+Definition at line 3913 of file qcustomplot.\+h.
 
 
 
@@ -764,7 +778,7 @@ Referenced by set\+Pen(), and set\+Selected\+Pen().
 
 
 \begin{DoxyCode}
-3446 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_text_aa02388705dbbff1bf7b8aa872b5f579c}{mPen}; \}
+3913 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_text_aa02388705dbbff1bf7b8aa872b5f579c}{mPen}; \}
 \end{DoxyCode}
 
 
@@ -786,11 +800,11 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_item_text_af13c6adc480f268116ae72196eb44b06}
 
 
-Definition at line 3453 of file qcustomplot.\+h.
+Definition at line 3920 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-3453 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_text_a6c27f7dc1a962a04b32430cf99f04654}{mPositionAlignment}; \}
+3920 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_text_a6c27f7dc1a962a04b32430cf99f04654}{mPositionAlignment}; \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_item_text_ae8991207fa1697511c1c8af9f3ca0e0a}{}\index{Q\+C\+P\+Item\+Text@{Q\+C\+P\+Item\+Text}!rotation@{rotation}}
 \index{rotation@{rotation}!Q\+C\+P\+Item\+Text@{Q\+C\+P\+Item\+Text}}
@@ -801,11 +815,11 @@ Definition at line 3453 of file qcustomplot.\+h.
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_item_text_ae8991207fa1697511c1c8af9f3ca0e0a}
 
 
-Definition at line 3455 of file qcustomplot.\+h.
+Definition at line 3922 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-3455 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_text_ac37df0061552225d2277e1ee3b48f2cb}{mRotation}; \}
+3922 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_text_ac37df0061552225d2277e1ee3b48f2cb}{mRotation}; \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_item_text_ac6802bbceff1ade0053166c64a5a6966}{}\index{Q\+C\+P\+Item\+Text@{Q\+C\+P\+Item\+Text}!selected\+Brush@{selected\+Brush}}
 \index{selected\+Brush@{selected\+Brush}!Q\+C\+P\+Item\+Text@{Q\+C\+P\+Item\+Text}}
@@ -816,11 +830,11 @@ Definition at line 3455 of file qcustomplot.\+h.
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_item_text_ac6802bbceff1ade0053166c64a5a6966}
 
 
-Definition at line 3449 of file qcustomplot.\+h.
+Definition at line 3916 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-3449 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_text_a28ccd097b42a216d81db9c6869f54a59}{mSelectedBrush}; \}
+3916 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_text_a28ccd097b42a216d81db9c6869f54a59}{mSelectedBrush}; \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_item_text_a44f690ec0ba6a32e518f2e923c002e39}{}\index{Q\+C\+P\+Item\+Text@{Q\+C\+P\+Item\+Text}!selected\+Color@{selected\+Color}}
 \index{selected\+Color@{selected\+Color}!Q\+C\+P\+Item\+Text@{Q\+C\+P\+Item\+Text}}
@@ -831,11 +845,11 @@ Definition at line 3449 of file qcustomplot.\+h.
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_item_text_a44f690ec0ba6a32e518f2e923c002e39}
 
 
-Definition at line 3445 of file qcustomplot.\+h.
+Definition at line 3912 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-3445 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_text_a7eb64e42f5f7998a97d8907ad25933c1}{mSelectedColor}; \}
+3912 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_text_a7eb64e42f5f7998a97d8907ad25933c1}{mSelectedColor}; \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_item_text_af2e7cacb1975132508714a51c5f48c3b}{}\index{Q\+C\+P\+Item\+Text@{Q\+C\+P\+Item\+Text}!selected\+Font@{selected\+Font}}
 \index{selected\+Font@{selected\+Font}!Q\+C\+P\+Item\+Text@{Q\+C\+P\+Item\+Text}}
@@ -846,11 +860,11 @@ Definition at line 3445 of file qcustomplot.\+h.
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_item_text_af2e7cacb1975132508714a51c5f48c3b}
 
 
-Definition at line 3451 of file qcustomplot.\+h.
+Definition at line 3918 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-3451 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_text_a6702f141fae590b2f4f1ec02fe9f8bd5}{mSelectedFont}; \}
+3918 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_text_a6702f141fae590b2f4f1ec02fe9f8bd5}{mSelectedFont}; \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_item_text_a70c86ec95133d3e904d1718023fe3c4e}{}\index{Q\+C\+P\+Item\+Text@{Q\+C\+P\+Item\+Text}!selected\+Pen@{selected\+Pen}}
 \index{selected\+Pen@{selected\+Pen}!Q\+C\+P\+Item\+Text@{Q\+C\+P\+Item\+Text}}
@@ -861,11 +875,11 @@ Definition at line 3451 of file qcustomplot.\+h.
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_item_text_a70c86ec95133d3e904d1718023fe3c4e}
 
 
-Definition at line 3447 of file qcustomplot.\+h.
+Definition at line 3914 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-3447 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_text_a8eaec649606d6ead2d8d4dcb5691777c}{mSelectedPen}; \}
+3914 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_text_a8eaec649606d6ead2d8d4dcb5691777c}{mSelectedPen}; \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_item_text_a285b95bb6634c2e4f7768abb7a8bc69c}{}\index{Q\+C\+P\+Item\+Text@{Q\+C\+P\+Item\+Text}!select\+Test@{select\+Test}}
 \index{select\+Test@{select\+Test}!Q\+C\+P\+Item\+Text@{Q\+C\+P\+Item\+Text}}
@@ -899,7 +913,7 @@ Implements \hyperlink{class_q_c_p_abstract_item_a96d522d10ffc0413b9a366c6f7f0476
 
 
 
-Definition at line 22358 of file qcustomplot.\+cpp.
+Definition at line 24852 of file qcustomplot.\+cpp.
 
 
 
@@ -907,30 +921,35 @@ References get\+Text\+Draw\+Point(), m\+Font, m\+Padding, m\+Position\+Alignment
 
 
 \begin{DoxyCode}
-22359 \{
-22360   Q\_UNUSED(details)
-22361   if (onlySelectable && !\hyperlink{class_q_c_p_abstract_item_ad81eb35c8726a0f458db9df9732e0e41}{mSelectable})
-22362     return -1;
-22363   
-22364   \textcolor{comment}{// The rect may be rotated, so we transform the actual clicked pos to the rotated}
-22365   \textcolor{comment}{// coordinate system, so we can use the normal rectSelectTest function for non-rotated rects:}
-22366   QPointF positionPixels(\hyperlink{class_q_c_p_item_text_a0d228a00e819022b5690c65762721129}{position}->pixelPoint());
-22367   QTransform inputTransform;
-22368   inputTransform.translate(positionPixels.\hyperlink{_comparision_pictures_2_createtest_image_8m_a9336ebf25087d91c818ee6e9ec29f8c1}{x}(), positionPixels.\hyperlink{_comparision_pictures_2_createtest_image_8m_a2fb1c5cf58867b5bbc9a1b145a86f3a0}{y}());
-22369   inputTransform.rotate(-\hyperlink{class_q_c_p_item_text_ac37df0061552225d2277e1ee3b48f2cb}{mRotation});
-22370   inputTransform.translate(-positionPixels.x(), -positionPixels.y());
-22371   QPointF rotatedPos = inputTransform.map(pos);
-22372   QFontMetrics fontMetrics(\hyperlink{class_q_c_p_item_text_a1dc87fe2a824820d549ffd7e644eef8d}{mFont});
-22373   QRect textRect = fontMetrics.boundingRect(0, 0, 0, 0, Qt::TextDontClip|
-      \hyperlink{class_q_c_p_item_text_acdb2e50c38e83da00f083771efbd213f}{mTextAlignment}, \hyperlink{class_q_c_p_item_text_a2dec3e08c11f51639629374ecec3bd62}{mText});
-22374   QRect textBoxRect = textRect.adjusted(-\hyperlink{class_q_c_p_item_text_ae7b3ef0ce6046efd4b346d28f2e1fb67}{mPadding}.\hyperlink{class_q_c_p_item_text_ab8c6c6e1df36256986fab1463c0a1d38}{left}(), -\hyperlink{class_q_c_p_item_text_ae7b3ef0ce6046efd4b346d28f2e1fb67}{mPadding}.
-      \hyperlink{class_q_c_p_item_text_a5c87ee162cbbe3d166b97826c8849304}{top}(), \hyperlink{class_q_c_p_item_text_ae7b3ef0ce6046efd4b346d28f2e1fb67}{mPadding}.\hyperlink{class_q_c_p_item_text_aef159622ce6502412e782a21ba6d84f2}{right}(), \hyperlink{class_q_c_p_item_text_ae7b3ef0ce6046efd4b346d28f2e1fb67}{mPadding}.\hyperlink{class_q_c_p_item_text_a94aeec080f877d3d1d0c3d8ffc10e9e6}{bottom}());
-22375   QPointF textPos = \hyperlink{class_q_c_p_item_text_aa6e478b1ce198eace89157c4cacc3ddc}{getTextDrawPoint}(positionPixels, textBoxRect, 
+24853                                                         \{
+24854   Q\_UNUSED(details)
+24855   if (onlySelectable && !\hyperlink{class_q_c_p_abstract_item_ad81eb35c8726a0f458db9df9732e0e41}{mSelectable})
+24856     return -1;
+24857 
+24858   \textcolor{comment}{// The rect may be rotated, so we transform the actual clicked pos to the}
+24859   \textcolor{comment}{// rotated}
+24860   \textcolor{comment}{// coordinate system, so we can use the normal rectSelectTest function for}
+24861   \textcolor{comment}{// non-rotated rects:}
+24862   QPointF positionPixels(\hyperlink{class_q_c_p_item_text_a0d228a00e819022b5690c65762721129}{position}->pixelPoint());
+24863   QTransform inputTransform;
+24864   inputTransform.translate(positionPixels.\hyperlink{_comparision_pictures_2_createtest_image_8m_a9336ebf25087d91c818ee6e9ec29f8c1}{x}(), positionPixels.\hyperlink{_comparision_pictures_2_createtest_image_8m_a2fb1c5cf58867b5bbc9a1b145a86f3a0}{y}());
+24865   inputTransform.rotate(-\hyperlink{class_q_c_p_item_text_ac37df0061552225d2277e1ee3b48f2cb}{mRotation});
+24866   inputTransform.translate(-positionPixels.x(), -positionPixels.y());
+24867   QPointF rotatedPos = inputTransform.map(pos);
+24868   QFontMetrics fontMetrics(\hyperlink{class_q_c_p_item_text_a1dc87fe2a824820d549ffd7e644eef8d}{mFont});
+24869   QRect textRect = fontMetrics.boundingRect(
+24870       0, 0, 0, 0, Qt::TextDontClip | \hyperlink{class_q_c_p_item_text_acdb2e50c38e83da00f083771efbd213f}{mTextAlignment}, \hyperlink{class_q_c_p_item_text_a2dec3e08c11f51639629374ecec3bd62}{mText});
+24871   QRect textBoxRect = textRect.adjusted(-\hyperlink{class_q_c_p_item_text_ae7b3ef0ce6046efd4b346d28f2e1fb67}{mPadding}.\hyperlink{class_q_c_p_item_text_ab8c6c6e1df36256986fab1463c0a1d38}{left}(), -\hyperlink{class_q_c_p_item_text_ae7b3ef0ce6046efd4b346d28f2e1fb67}{mPadding}.
+      \hyperlink{class_q_c_p_item_text_a5c87ee162cbbe3d166b97826c8849304}{top}(),
+24872                                         \hyperlink{class_q_c_p_item_text_ae7b3ef0ce6046efd4b346d28f2e1fb67}{mPadding}.\hyperlink{class_q_c_p_item_text_aef159622ce6502412e782a21ba6d84f2}{right}(), \hyperlink{class_q_c_p_item_text_ae7b3ef0ce6046efd4b346d28f2e1fb67}{mPadding}.
+      \hyperlink{class_q_c_p_item_text_a94aeec080f877d3d1d0c3d8ffc10e9e6}{bottom}());
+24873   QPointF textPos =
+24874       \hyperlink{class_q_c_p_item_text_aa6e478b1ce198eace89157c4cacc3ddc}{getTextDrawPoint}(positionPixels, textBoxRect, 
       \hyperlink{class_q_c_p_item_text_a6c27f7dc1a962a04b32430cf99f04654}{mPositionAlignment});
-22376   textBoxRect.moveTopLeft(textPos.toPoint());
-22377 
-22378   return \hyperlink{class_q_c_p_abstract_item_a4c0e14c4e92df91174cb7183fb363069}{rectSelectTest}(textBoxRect, rotatedPos, true);
-22379 \}
+24875   textBoxRect.moveTopLeft(textPos.toPoint());
+24876 
+24877   return \hyperlink{class_q_c_p_abstract_item_a4c0e14c4e92df91174cb7183fb363069}{rectSelectTest}(textBoxRect, rotatedPos, true);
+24878 \}
 \end{DoxyCode}
 
 
@@ -957,7 +976,7 @@ Sets the brush that will be used do fill the background of the text. To disable 
 \end{DoxySeeAlso}
 
 
-Definition at line 22267 of file qcustomplot.\+cpp.
+Definition at line 24773 of file qcustomplot.\+cpp.
 
 
 
@@ -969,9 +988,7 @@ Referenced by Q\+C\+P\+Item\+Text().
 
 
 \begin{DoxyCode}
-22268 \{
-22269   \hyperlink{class_q_c_p_item_text_a2535911875faa459b8337f2efccb5cb8}{mBrush} = \hyperlink{class_q_c_p_item_text_a38b981dfacb703efa8e27346eebcb5a2}{brush};
-22270 \}
+24773 \{ \hyperlink{class_q_c_p_item_text_a2535911875faa459b8337f2efccb5cb8}{mBrush} = \hyperlink{class_q_c_p_item_text_a38b981dfacb703efa8e27346eebcb5a2}{brush}; \}
 \end{DoxyCode}
 
 
@@ -1004,7 +1021,7 @@ Here is the caller graph for this function\+:\nopagebreak
 )}\label{class_q_c_p_item_text_aa51efc0841fe52da9eaf8aff6fc8a8b2}
 Sets the color of the text. 
 
-Definition at line 22226 of file qcustomplot.\+cpp.
+Definition at line 24739 of file qcustomplot.\+cpp.
 
 
 
@@ -1016,9 +1033,7 @@ Referenced by Q\+C\+P\+Item\+Text().
 
 
 \begin{DoxyCode}
-22227 \{
-22228   \hyperlink{class_q_c_p_item_text_a8407f284ad867f627878cc26ef433d08}{mColor} = \hyperlink{class_q_c_p_item_text_ac9cb0a8a27f64d1b40855910ea9ebd03}{color};
-22229 \}
+24739 \{ \hyperlink{class_q_c_p_item_text_a8407f284ad867f627878cc26ef433d08}{mColor} = \hyperlink{class_q_c_p_item_text_ac9cb0a8a27f64d1b40855910ea9ebd03}{color}; \}
 \end{DoxyCode}
 
 
@@ -1056,7 +1071,7 @@ Sets the font of the text.
 \end{DoxySeeAlso}
 
 
-Definition at line 22288 of file qcustomplot.\+cpp.
+Definition at line 24791 of file qcustomplot.\+cpp.
 
 
 
@@ -1064,9 +1079,7 @@ References font(), and m\+Font.
 
 
 \begin{DoxyCode}
-22289 \{
-22290   \hyperlink{class_q_c_p_item_text_a1dc87fe2a824820d549ffd7e644eef8d}{mFont} = \hyperlink{class_q_c_p_item_text_ad34943fd68a9b1451d3e3234d072e418}{font};
-22291 \}
+24791 \{ \hyperlink{class_q_c_p_item_text_a1dc87fe2a824820d549ffd7e644eef8d}{mFont} = \hyperlink{class_q_c_p_item_text_ad34943fd68a9b1451d3e3234d072e418}{font}; \}
 \end{DoxyCode}
 
 
@@ -1088,7 +1101,7 @@ Here is the call graph for this function\+:\nopagebreak
 )}\label{class_q_c_p_item_text_aeea8a3e01f135f9dd0bb08f51db66310}
 Sets the distance between the border of the text rectangle and the text. The appearance (and visibility) of the text rectangle can be controlled with \hyperlink{class_q_c_p_item_text_a9b9ec6eea0eb0603977ff84d4c78d0a3}{set\+Pen} and \hyperlink{class_q_c_p_item_text_a1c7e131516df2ed8d941ef31240ded8e}{set\+Brush}. 
 
-Definition at line 22352 of file qcustomplot.\+cpp.
+Definition at line 24849 of file qcustomplot.\+cpp.
 
 
 
@@ -1096,9 +1109,7 @@ References m\+Padding, and padding().
 
 
 \begin{DoxyCode}
-22353 \{
-22354   \hyperlink{class_q_c_p_item_text_ae7b3ef0ce6046efd4b346d28f2e1fb67}{mPadding} = \hyperlink{class_q_c_p_item_text_a00e0fa03822ff384bf4921c1c90322ff}{padding};
-22355 \}
+24849 \{ \hyperlink{class_q_c_p_item_text_ae7b3ef0ce6046efd4b346d28f2e1fb67}{mPadding} = \hyperlink{class_q_c_p_item_text_a00e0fa03822ff384bf4921c1c90322ff}{padding}; \}
 \end{DoxyCode}
 
 
@@ -1125,7 +1136,7 @@ Sets the pen that will be used do draw a rectangular border around the text. To 
 \end{DoxySeeAlso}
 
 
-Definition at line 22245 of file qcustomplot.\+cpp.
+Definition at line 24755 of file qcustomplot.\+cpp.
 
 
 
@@ -1137,9 +1148,7 @@ Referenced by Q\+C\+P\+Item\+Text().
 
 
 \begin{DoxyCode}
-22246 \{
-22247   \hyperlink{class_q_c_p_item_text_aa02388705dbbff1bf7b8aa872b5f579c}{mPen} = \hyperlink{class_q_c_p_item_text_a552bd02f46dbcb4b4812559036893352}{pen};
-22248 \}
+24755 \{ \hyperlink{class_q_c_p_item_text_aa02388705dbbff1bf7b8aa872b5f579c}{mPen} = \hyperlink{class_q_c_p_item_text_a552bd02f46dbcb4b4812559036893352}{pen}; \}
 \end{DoxyCode}
 
 
@@ -1176,7 +1185,7 @@ Examples\+: \begin{DoxyItemize}
 \item If {\itshape alignment} is {\ttfamily Qt\+::\+Align\+H\+Center $\vert$ Qt\+::\+Align\+Top}, the text will be positioned such that the top of the text rect will be horizontally centered on {\itshape position}. \item If {\itshape alignment} is {\ttfamily Qt\+::\+Align\+Left $\vert$ Qt\+::\+Align\+Bottom}, {\itshape position} will indicate the bottom left corner of the text rect.\end{DoxyItemize}
 If you want to control the alignment of (multi-\/lined) text within the text rect, use \hyperlink{class_q_c_p_item_text_ab5bc0684c4d1bed81949a11b34dba478}{set\+Text\+Alignment}. 
 
-Definition at line 22326 of file qcustomplot.\+cpp.
+Definition at line 24824 of file qcustomplot.\+cpp.
 
 
 
@@ -1188,9 +1197,9 @@ Referenced by Q\+C\+P\+Item\+Text().
 
 
 \begin{DoxyCode}
-22327 \{
-22328   \hyperlink{class_q_c_p_item_text_a6c27f7dc1a962a04b32430cf99f04654}{mPositionAlignment} = alignment;
-22329 \}
+24824                                                             \{
+24825   \hyperlink{class_q_c_p_item_text_a6c27f7dc1a962a04b32430cf99f04654}{mPositionAlignment} = alignment;
+24826 \}
 \end{DoxyCode}
 
 
@@ -1212,7 +1221,7 @@ Here is the caller graph for this function\+:\nopagebreak
 )}\label{class_q_c_p_item_text_a4bcc10cd97952c3f749d75824b5077f0}
 Sets the angle in degrees by which the text (and the text rectangle, if visible) will be rotated around {\itshape position}. 
 
-Definition at line 22343 of file qcustomplot.\+cpp.
+Definition at line 24841 of file qcustomplot.\+cpp.
 
 
 
@@ -1224,9 +1233,7 @@ Referenced by Q\+C\+P\+Item\+Text().
 
 
 \begin{DoxyCode}
-22344 \{
-22345   \hyperlink{class_q_c_p_item_text_ac37df0061552225d2277e1ee3b48f2cb}{mRotation} = degrees;
-22346 \}
+24841 \{ \hyperlink{class_q_c_p_item_text_ac37df0061552225d2277e1ee3b48f2cb}{mRotation} = degrees; \}
 \end{DoxyCode}
 
 
@@ -1253,7 +1260,7 @@ Sets the brush that will be used do fill the background of the text, when the it
 \end{DoxySeeAlso}
 
 
-Definition at line 22278 of file qcustomplot.\+cpp.
+Definition at line 24782 of file qcustomplot.\+cpp.
 
 
 
@@ -1265,9 +1272,9 @@ Referenced by Q\+C\+P\+Item\+Text().
 
 
 \begin{DoxyCode}
-22279 \{
-22280   \hyperlink{class_q_c_p_item_text_a28ccd097b42a216d81db9c6869f54a59}{mSelectedBrush} = \hyperlink{class_q_c_p_item_text_a38b981dfacb703efa8e27346eebcb5a2}{brush};
-22281 \}
+24782                                                       \{
+24783   \hyperlink{class_q_c_p_item_text_a28ccd097b42a216d81db9c6869f54a59}{mSelectedBrush} = \hyperlink{class_q_c_p_item_text_a38b981dfacb703efa8e27346eebcb5a2}{brush};
+24784 \}
 \end{DoxyCode}
 
 
@@ -1300,7 +1307,7 @@ Here is the caller graph for this function\+:\nopagebreak
 )}\label{class_q_c_p_item_text_ae7ba0bdb75c897b028388e45bfd435fa}
 Sets the color of the text that will be used when the item is selected. 
 
-Definition at line 22234 of file qcustomplot.\+cpp.
+Definition at line 24744 of file qcustomplot.\+cpp.
 
 
 
@@ -1312,9 +1319,9 @@ Referenced by Q\+C\+P\+Item\+Text().
 
 
 \begin{DoxyCode}
-22235 \{
-22236   \hyperlink{class_q_c_p_item_text_a7eb64e42f5f7998a97d8907ad25933c1}{mSelectedColor} = \hyperlink{class_q_c_p_item_text_ac9cb0a8a27f64d1b40855910ea9ebd03}{color};
-22237 \}
+24744                                                       \{
+24745   \hyperlink{class_q_c_p_item_text_a7eb64e42f5f7998a97d8907ad25933c1}{mSelectedColor} = \hyperlink{class_q_c_p_item_text_ac9cb0a8a27f64d1b40855910ea9ebd03}{color};
+24746 \}
 \end{DoxyCode}
 
 
@@ -1352,7 +1359,7 @@ Sets the font of the text that will be used when the item is selected.
 \end{DoxySeeAlso}
 
 
-Definition at line 22298 of file qcustomplot.\+cpp.
+Definition at line 24798 of file qcustomplot.\+cpp.
 
 
 
@@ -1360,9 +1367,7 @@ References font(), and m\+Selected\+Font.
 
 
 \begin{DoxyCode}
-22299 \{
-22300   \hyperlink{class_q_c_p_item_text_a6702f141fae590b2f4f1ec02fe9f8bd5}{mSelectedFont} = \hyperlink{class_q_c_p_item_text_ad34943fd68a9b1451d3e3234d072e418}{font};
-22301 \}
+24798 \{ \hyperlink{class_q_c_p_item_text_a6702f141fae590b2f4f1ec02fe9f8bd5}{mSelectedFont} = \hyperlink{class_q_c_p_item_text_ad34943fd68a9b1451d3e3234d072e418}{font}; \}
 \end{DoxyCode}
 
 
@@ -1389,7 +1394,7 @@ Sets the pen that will be used do draw a rectangular border around the text, whe
 \end{DoxySeeAlso}
 
 
-Definition at line 22256 of file qcustomplot.\+cpp.
+Definition at line 24764 of file qcustomplot.\+cpp.
 
 
 
@@ -1401,9 +1406,7 @@ Referenced by Q\+C\+P\+Item\+Text().
 
 
 \begin{DoxyCode}
-22257 \{
-22258   \hyperlink{class_q_c_p_item_text_a8eaec649606d6ead2d8d4dcb5691777c}{mSelectedPen} = \hyperlink{class_q_c_p_item_text_a552bd02f46dbcb4b4812559036893352}{pen};
-22259 \}
+24764 \{ \hyperlink{class_q_c_p_item_text_a8eaec649606d6ead2d8d4dcb5691777c}{mSelectedPen} = \hyperlink{class_q_c_p_item_text_a552bd02f46dbcb4b4812559036893352}{pen}; \}
 \end{DoxyCode}
 
 
@@ -1442,7 +1445,7 @@ Sets the text that will be displayed. Multi-\/line texts are supported by insert
 \end{DoxySeeAlso}
 
 
-Definition at line 22309 of file qcustomplot.\+cpp.
+Definition at line 24807 of file qcustomplot.\+cpp.
 
 
 
@@ -1454,9 +1457,7 @@ Referenced by Q\+C\+P\+Item\+Text().
 
 
 \begin{DoxyCode}
-22310 \{
-22311   \hyperlink{class_q_c_p_item_text_a2dec3e08c11f51639629374ecec3bd62}{mText} = \hyperlink{class_q_c_p_item_text_a9547f7832010486abed0837e75db5330}{text};
-22312 \}
+24807 \{ \hyperlink{class_q_c_p_item_text_a2dec3e08c11f51639629374ecec3bd62}{mText} = \hyperlink{class_q_c_p_item_text_a9547f7832010486abed0837e75db5330}{text}; \}
 \end{DoxyCode}
 
 
@@ -1489,7 +1490,7 @@ Here is the caller graph for this function\+:\nopagebreak
 )}\label{class_q_c_p_item_text_ab5bc0684c4d1bed81949a11b34dba478}
 Controls how (multi-\/lined) text is aligned inside the text rect (typically Qt\+::\+Align\+Left, Qt\+::\+Align\+Center or Qt\+::\+Align\+Right). 
 
-Definition at line 22334 of file qcustomplot.\+cpp.
+Definition at line 24832 of file qcustomplot.\+cpp.
 
 
 
@@ -1501,9 +1502,9 @@ Referenced by Q\+C\+P\+Item\+Text().
 
 
 \begin{DoxyCode}
-22335 \{
-22336   \hyperlink{class_q_c_p_item_text_acdb2e50c38e83da00f083771efbd213f}{mTextAlignment} = alignment;
-22337 \}
+24832                                                         \{
+24833   \hyperlink{class_q_c_p_item_text_acdb2e50c38e83da00f083771efbd213f}{mTextAlignment} = alignment;
+24834 \}
 \end{DoxyCode}
 
 
@@ -1525,7 +1526,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_item_text_a9547f7832010486abed0837e75db5330}
 
 
-Definition at line 3452 of file qcustomplot.\+h.
+Definition at line 3919 of file qcustomplot.\+h.
 
 
 
@@ -1533,7 +1534,7 @@ Referenced by set\+Text().
 
 
 \begin{DoxyCode}
-3452 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_text_a2dec3e08c11f51639629374ecec3bd62}{mText}; \}
+3919 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_text_a2dec3e08c11f51639629374ecec3bd62}{mText}; \}
 \end{DoxyCode}
 
 
@@ -1555,11 +1556,11 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_item_text_aaa1d84b3f61f9f2a0cce230e66ef7194}
 
 
-Definition at line 3454 of file qcustomplot.\+h.
+Definition at line 3921 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-3454 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_text_acdb2e50c38e83da00f083771efbd213f}{mTextAlignment}; \}
+3921 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_text_acdb2e50c38e83da00f083771efbd213f}{mTextAlignment}; \}
 \end{DoxyCode}
 
 
@@ -1569,35 +1570,35 @@ Definition at line 3454 of file qcustomplot.\+h.
 \subsubsection[{bottom}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Item\+Anchor}$\ast$ const Q\+C\+P\+Item\+Text\+::bottom}\label{class_q_c_p_item_text_a94aeec080f877d3d1d0c3d8ffc10e9e6}
 
 
-Definition at line 3482 of file qcustomplot.\+h.
+Definition at line 3950 of file qcustomplot.\+h.
 
 \hypertarget{class_q_c_p_item_text_a6a1c872ad3789ecafcaeac2066e218a0}{}\index{Q\+C\+P\+Item\+Text@{Q\+C\+P\+Item\+Text}!bottom\+Left@{bottom\+Left}}
 \index{bottom\+Left@{bottom\+Left}!Q\+C\+P\+Item\+Text@{Q\+C\+P\+Item\+Text}}
 \subsubsection[{bottom\+Left}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Item\+Anchor}$\ast$ const Q\+C\+P\+Item\+Text\+::bottom\+Left}\label{class_q_c_p_item_text_a6a1c872ad3789ecafcaeac2066e218a0}
 
 
-Definition at line 3483 of file qcustomplot.\+h.
+Definition at line 3951 of file qcustomplot.\+h.
 
 \hypertarget{class_q_c_p_item_text_a8ad47045c29af43b0312f7d93bb74374}{}\index{Q\+C\+P\+Item\+Text@{Q\+C\+P\+Item\+Text}!bottom\+Right@{bottom\+Right}}
 \index{bottom\+Right@{bottom\+Right}!Q\+C\+P\+Item\+Text@{Q\+C\+P\+Item\+Text}}
 \subsubsection[{bottom\+Right}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Item\+Anchor}$\ast$ const Q\+C\+P\+Item\+Text\+::bottom\+Right}\label{class_q_c_p_item_text_a8ad47045c29af43b0312f7d93bb74374}
 
 
-Definition at line 3481 of file qcustomplot.\+h.
+Definition at line 3949 of file qcustomplot.\+h.
 
 \hypertarget{class_q_c_p_item_text_ab8c6c6e1df36256986fab1463c0a1d38}{}\index{Q\+C\+P\+Item\+Text@{Q\+C\+P\+Item\+Text}!left@{left}}
 \index{left@{left}!Q\+C\+P\+Item\+Text@{Q\+C\+P\+Item\+Text}}
 \subsubsection[{left}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Item\+Anchor}$\ast$ const Q\+C\+P\+Item\+Text\+::left}\label{class_q_c_p_item_text_ab8c6c6e1df36256986fab1463c0a1d38}
 
 
-Definition at line 3484 of file qcustomplot.\+h.
+Definition at line 3952 of file qcustomplot.\+h.
 
 \hypertarget{class_q_c_p_item_text_a2535911875faa459b8337f2efccb5cb8}{}\index{Q\+C\+P\+Item\+Text@{Q\+C\+P\+Item\+Text}!m\+Brush@{m\+Brush}}
 \index{m\+Brush@{m\+Brush}!Q\+C\+P\+Item\+Text@{Q\+C\+P\+Item\+Text}}
 \subsubsection[{m\+Brush}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Brush Q\+C\+P\+Item\+Text\+::m\+Brush\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_text_a2535911875faa459b8337f2efccb5cb8}
 
 
-Definition at line 3492 of file qcustomplot.\+h.
+Definition at line 3969 of file qcustomplot.\+h.
 
 
 
@@ -1608,7 +1609,7 @@ Referenced by main\+Brush(), and set\+Brush().
 \subsubsection[{m\+Color}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Color Q\+C\+P\+Item\+Text\+::m\+Color\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_text_a8407f284ad867f627878cc26ef433d08}
 
 
-Definition at line 3490 of file qcustomplot.\+h.
+Definition at line 3967 of file qcustomplot.\+h.
 
 
 
@@ -1619,7 +1620,7 @@ Referenced by main\+Color(), and set\+Color().
 \subsubsection[{m\+Font}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Font Q\+C\+P\+Item\+Text\+::m\+Font\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_text_a1dc87fe2a824820d549ffd7e644eef8d}
 
 
-Definition at line 3493 of file qcustomplot.\+h.
+Definition at line 3970 of file qcustomplot.\+h.
 
 
 
@@ -1630,7 +1631,7 @@ Referenced by main\+Font(), select\+Test(), and set\+Font().
 \subsubsection[{m\+Padding}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Margins Q\+C\+P\+Item\+Text\+::m\+Padding\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_text_ae7b3ef0ce6046efd4b346d28f2e1fb67}
 
 
-Definition at line 3498 of file qcustomplot.\+h.
+Definition at line 3975 of file qcustomplot.\+h.
 
 
 
@@ -1641,7 +1642,7 @@ Referenced by anchor\+Pixel\+Point(), draw(), select\+Test(), and set\+Padding()
 \subsubsection[{m\+Pen}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Pen Q\+C\+P\+Item\+Text\+::m\+Pen\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_text_aa02388705dbbff1bf7b8aa872b5f579c}
 
 
-Definition at line 3491 of file qcustomplot.\+h.
+Definition at line 3968 of file qcustomplot.\+h.
 
 
 
@@ -1652,7 +1653,7 @@ Referenced by main\+Pen(), and set\+Pen().
 \subsubsection[{m\+Position\+Alignment}]{\setlength{\rightskip}{0pt plus 5cm}Qt\+::\+Alignment Q\+C\+P\+Item\+Text\+::m\+Position\+Alignment\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_text_a6c27f7dc1a962a04b32430cf99f04654}
 
 
-Definition at line 3495 of file qcustomplot.\+h.
+Definition at line 3972 of file qcustomplot.\+h.
 
 
 
@@ -1663,7 +1664,7 @@ Referenced by anchor\+Pixel\+Point(), draw(), select\+Test(), and set\+Position\
 \subsubsection[{m\+Rotation}]{\setlength{\rightskip}{0pt plus 5cm}double Q\+C\+P\+Item\+Text\+::m\+Rotation\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_text_ac37df0061552225d2277e1ee3b48f2cb}
 
 
-Definition at line 3497 of file qcustomplot.\+h.
+Definition at line 3974 of file qcustomplot.\+h.
 
 
 
@@ -1674,7 +1675,7 @@ Referenced by anchor\+Pixel\+Point(), draw(), select\+Test(), and set\+Rotation(
 \subsubsection[{m\+Selected\+Brush}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Brush Q\+C\+P\+Item\+Text\+::m\+Selected\+Brush\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_text_a28ccd097b42a216d81db9c6869f54a59}
 
 
-Definition at line 3492 of file qcustomplot.\+h.
+Definition at line 3969 of file qcustomplot.\+h.
 
 
 
@@ -1685,7 +1686,7 @@ Referenced by main\+Brush(), and set\+Selected\+Brush().
 \subsubsection[{m\+Selected\+Color}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Color Q\+C\+P\+Item\+Text\+::m\+Selected\+Color\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_text_a7eb64e42f5f7998a97d8907ad25933c1}
 
 
-Definition at line 3490 of file qcustomplot.\+h.
+Definition at line 3967 of file qcustomplot.\+h.
 
 
 
@@ -1696,7 +1697,7 @@ Referenced by main\+Color(), and set\+Selected\+Color().
 \subsubsection[{m\+Selected\+Font}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Font Q\+C\+P\+Item\+Text\+::m\+Selected\+Font\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_text_a6702f141fae590b2f4f1ec02fe9f8bd5}
 
 
-Definition at line 3493 of file qcustomplot.\+h.
+Definition at line 3970 of file qcustomplot.\+h.
 
 
 
@@ -1707,7 +1708,7 @@ Referenced by main\+Font(), and set\+Selected\+Font().
 \subsubsection[{m\+Selected\+Pen}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Pen Q\+C\+P\+Item\+Text\+::m\+Selected\+Pen\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_text_a8eaec649606d6ead2d8d4dcb5691777c}
 
 
-Definition at line 3491 of file qcustomplot.\+h.
+Definition at line 3968 of file qcustomplot.\+h.
 
 
 
@@ -1718,7 +1719,7 @@ Referenced by main\+Pen(), and set\+Selected\+Pen().
 \subsubsection[{m\+Text}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String Q\+C\+P\+Item\+Text\+::m\+Text\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_text_a2dec3e08c11f51639629374ecec3bd62}
 
 
-Definition at line 3494 of file qcustomplot.\+h.
+Definition at line 3971 of file qcustomplot.\+h.
 
 
 
@@ -1729,7 +1730,7 @@ Referenced by anchor\+Pixel\+Point(), draw(), select\+Test(), and set\+Text().
 \subsubsection[{m\+Text\+Alignment}]{\setlength{\rightskip}{0pt plus 5cm}Qt\+::\+Alignment Q\+C\+P\+Item\+Text\+::m\+Text\+Alignment\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_text_acdb2e50c38e83da00f083771efbd213f}
 
 
-Definition at line 3496 of file qcustomplot.\+h.
+Definition at line 3973 of file qcustomplot.\+h.
 
 
 
@@ -1740,7 +1741,7 @@ Referenced by anchor\+Pixel\+Point(), draw(), select\+Test(), and set\+Text\+Ali
 \subsubsection[{position}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Item\+Position}$\ast$ const Q\+C\+P\+Item\+Text\+::position}\label{class_q_c_p_item_text_a0d228a00e819022b5690c65762721129}
 
 
-Definition at line 3476 of file qcustomplot.\+h.
+Definition at line 3944 of file qcustomplot.\+h.
 
 
 
@@ -1751,28 +1752,28 @@ Referenced by anchor\+Pixel\+Point(), draw(), Q\+C\+P\+Item\+Text(), and select\
 \subsubsection[{right}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Item\+Anchor}$\ast$ const Q\+C\+P\+Item\+Text\+::right}\label{class_q_c_p_item_text_aef159622ce6502412e782a21ba6d84f2}
 
 
-Definition at line 3480 of file qcustomplot.\+h.
+Definition at line 3948 of file qcustomplot.\+h.
 
 \hypertarget{class_q_c_p_item_text_a5c87ee162cbbe3d166b97826c8849304}{}\index{Q\+C\+P\+Item\+Text@{Q\+C\+P\+Item\+Text}!top@{top}}
 \index{top@{top}!Q\+C\+P\+Item\+Text@{Q\+C\+P\+Item\+Text}}
 \subsubsection[{top}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Item\+Anchor}$\ast$ const Q\+C\+P\+Item\+Text\+::top}\label{class_q_c_p_item_text_a5c87ee162cbbe3d166b97826c8849304}
 
 
-Definition at line 3478 of file qcustomplot.\+h.
+Definition at line 3946 of file qcustomplot.\+h.
 
 \hypertarget{class_q_c_p_item_text_a6354d8762182a3502103fabe5fbb8512}{}\index{Q\+C\+P\+Item\+Text@{Q\+C\+P\+Item\+Text}!top\+Left@{top\+Left}}
 \index{top\+Left@{top\+Left}!Q\+C\+P\+Item\+Text@{Q\+C\+P\+Item\+Text}}
 \subsubsection[{top\+Left}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Item\+Anchor}$\ast$ const Q\+C\+P\+Item\+Text\+::top\+Left}\label{class_q_c_p_item_text_a6354d8762182a3502103fabe5fbb8512}
 
 
-Definition at line 3477 of file qcustomplot.\+h.
+Definition at line 3945 of file qcustomplot.\+h.
 
 \hypertarget{class_q_c_p_item_text_ad18ac45cb4cc135de1eb78f2e86b6504}{}\index{Q\+C\+P\+Item\+Text@{Q\+C\+P\+Item\+Text}!top\+Right@{top\+Right}}
 \index{top\+Right@{top\+Right}!Q\+C\+P\+Item\+Text@{Q\+C\+P\+Item\+Text}}
 \subsubsection[{top\+Right}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Item\+Anchor}$\ast$ const Q\+C\+P\+Item\+Text\+::top\+Right}\label{class_q_c_p_item_text_ad18ac45cb4cc135de1eb78f2e86b6504}
 
 
-Definition at line 3479 of file qcustomplot.\+h.
+Definition at line 3947 of file qcustomplot.\+h.
 
 
 

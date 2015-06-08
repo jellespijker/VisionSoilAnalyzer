@@ -50,7 +50,7 @@ void $\ast$ \hyperlink{namespace_hardware_af5f1bde915012872fc6b800981948aaa}{thr
 \subsubsection[{Callback\+Type}]{\setlength{\rightskip}{0pt plus 5cm}typedef int($\ast$ Hardware\+::\+Callback\+Type) (int)}\label{namespace_hardware_a5ba2e4bdfa2bbd8b551b1d5b2a0c61fd}
 Callback\+Type used to pass a function to a thread 
 
-Definition at line 28 of file B\+B\+B.\+h.
+Definition at line 37 of file B\+B\+B.\+h.
 
 
 
@@ -64,7 +64,7 @@ Definition at line 28 of file B\+B\+B.\+h.
 )}\label{namespace_hardware_a999708509591fcc4884019c76b9f74ed}
 The thread function that runs trough all the colors 
 
-Definition at line 87 of file E\+C12\+P.\+cpp.
+Definition at line 91 of file E\+C12\+P.\+cpp.
 
 
 
@@ -72,20 +72,21 @@ References i, Hardware\+::\+E\+C12\+P\+::\+Set\+Pixel\+Color(), Hardware\+::\+E\
 
 
 \begin{DoxyCode}
-88     \{
-89         \textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0;
-90         \hyperlink{class_e_c12_p}{EC12P} *ec12p = \textcolor{keyword}{static\_cast<}\hyperlink{class_e_c12_p}{EC12P}*\textcolor{keyword}{>}(value);
-91         EC12P::Color pcolor;
-92         \textcolor{keywordflow}{while} (ec12p->threadRunning)
-93         \{
-94             pcolor = \textcolor{keyword}{static\_cast<}EC12P::Color\textcolor{keyword}{>}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i});
-95             ec12p->SetPixelColor(pcolor);
-96             usleep(ec12p->sleepperiod);
-97             i++;
-98             \textcolor{keywordflow}{if} (i == 6) \{ i = 0; \}
-99         \}
-100         \textcolor{keywordflow}{return} ec12p;
-101     \}
+91                              \{
+92   \textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0;
+93   \hyperlink{class_e_c12_p}{EC12P} *ec12p = \textcolor{keyword}{static\_cast<}\hyperlink{class_e_c12_p}{EC12P} *\textcolor{keyword}{>}(value);
+94   EC12P::Color pcolor;
+95   \textcolor{keywordflow}{while} (ec12p->threadRunning) \{
+96     pcolor = \textcolor{keyword}{static\_cast<}EC12P::Color\textcolor{keyword}{>}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i});
+97     ec12p->SetPixelColor(pcolor);
+98     usleep(ec12p->sleepperiod);
+99     i++;
+100     \textcolor{keywordflow}{if} (i == 6) \{
+101       i = 0;
+102     \}
+103   \}
+104   \textcolor{keywordflow}{return} ec12p;
+105 \}
 \end{DoxyCode}
 
 
@@ -107,7 +108,7 @@ Here is the call graph for this function\+:\nopagebreak
 )}\label{namespace_hardware_a594324488333eeaa49790a5391626fad}
 friendly function to start the threading 
 
-Definition at line 116 of file A\+D\+C.\+cpp.
+Definition at line 121 of file A\+D\+C.\+cpp.
 
 
 
@@ -115,14 +116,13 @@ References Hardware\+::\+B\+B\+B\+::callback\+Function, Hardware\+::\+B\+B\+B\+:
 
 
 \begin{DoxyCode}
-117     \{
-118         \hyperlink{class_a_d_c}{ADC} *adc = \textcolor{keyword}{static\_cast<}\hyperlink{class_a_d_c}{ADC}*\textcolor{keyword}{>}(value);
-119         \textcolor{keywordflow}{while} (adc->threadRunning)
-120         \{
-121             adc->callbackFunction(adc->WaitForValueChange());
-122             usleep(200000);
-123         \}
-124     \}
+121                                    \{
+122   \hyperlink{class_a_d_c}{ADC} *adc = \textcolor{keyword}{static\_cast<}\hyperlink{class_a_d_c}{ADC} *\textcolor{keyword}{>}(value);
+123   \textcolor{keywordflow}{while} (adc->threadRunning) \{
+124     adc->callbackFunction(adc->WaitForValueChange());
+125     usleep(200000);
+126   \}
+127 \}
 \end{DoxyCode}
 
 
@@ -144,7 +144,7 @@ Here is the call graph for this function\+:\nopagebreak
 )}\label{namespace_hardware_abb5f0943d53124cfc6df04c91ffcb21b}
 
 
-Definition at line 250 of file eqep.\+cpp.
+Definition at line 242 of file eqep.\+cpp.
 
 
 
@@ -152,15 +152,14 @@ References Hardware\+::\+B\+B\+B\+::callback\+Function, Hardware\+::\+B\+B\+B\+:
 
 
 \begin{DoxyCode}
-251     \{
-252         eQEP *eqep = \textcolor{keyword}{static\_cast<}eQEP*\textcolor{keyword}{>}(value);
-253         \textcolor{keywordflow}{while} (eqep->threadRunning)
-254         \{
-255             eqep->callbackFunction(eqep->get\_position(\textcolor{keyword}{true}));
-256             usleep(eqep->debounceTime * 1000);
-257         \}
-258         \textcolor{keywordflow}{return} 0;
-259     \}
+242                                     \{
+243   eQEP *eqep = \textcolor{keyword}{static\_cast<}eQEP *\textcolor{keyword}{>}(value);
+244   \textcolor{keywordflow}{while} (eqep->threadRunning) \{
+245     eqep->callbackFunction(eqep->get\_position(\textcolor{keyword}{true}));
+246     usleep(eqep->debounceTime * 1000);
+247   \}
+248   \textcolor{keywordflow}{return} 0;
+249 \}
 \end{DoxyCode}
 
 
@@ -182,7 +181,7 @@ Here is the call graph for this function\+:\nopagebreak
 )}\label{namespace_hardware_af5f1bde915012872fc6b800981948aaa}
 
 
-Definition at line 180 of file G\+P\+I\+O.\+cpp.
+Definition at line 171 of file G\+P\+I\+O.\+cpp.
 
 
 
@@ -190,15 +189,14 @@ References Hardware\+::\+B\+B\+B\+::callback\+Function, Hardware\+::\+B\+B\+B\+:
 
 
 \begin{DoxyCode}
-181     \{
-182         GPIO *gpio = \textcolor{keyword}{static\_cast<}GPIO*\textcolor{keyword}{>}(value);
-183         \textcolor{keywordflow}{while} (gpio->threadRunning)
-184         \{
-185             gpio->callbackFunction(gpio->WaitForEdge());
-186             usleep(gpio->debounceTime * 1000);
-187         \}
-188         \textcolor{keywordflow}{return} 0;
-189     \}
+171                                     \{
+172   GPIO *gpio = \textcolor{keyword}{static\_cast<}GPIO *\textcolor{keyword}{>}(value);
+173   \textcolor{keywordflow}{while} (gpio->threadRunning) \{
+174     gpio->callbackFunction(gpio->WaitForEdge());
+175     usleep(gpio->debounceTime * 1000);
+176   \}
+177   \textcolor{keywordflow}{return} 0;
+178 \}
 \end{DoxyCode}
 
 

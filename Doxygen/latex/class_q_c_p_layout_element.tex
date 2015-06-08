@@ -60,7 +60,7 @@ Q\+Size \hyperlink{class_q_c_p_layout_element_a1fc85c79e15c2ab8051eccd455fccc4a}
 \item 
 \hyperlink{class_q_c_p_margin_group}{Q\+C\+P\+Margin\+Group} $\ast$ \hyperlink{class_q_c_p_layout_element_a22cb1bb62c452fd802e43ca2524660db}{margin\+Group} (\hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54}{Q\+C\+P\+::\+Margin\+Side} side) const 
 \item 
-Q\+Hash$<$ \hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54}{Q\+C\+P\+::\+Margin\+Side}, \hyperlink{class_q_c_p_margin_group}{Q\+C\+P\+Margin\+Group} $\ast$ $>$ \hyperlink{class_q_c_p_layout_element_ac43921c997570389c14a1671bc3ea499}{margin\+Groups} () const 
+Q\+Hash$<$ \hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54}{Q\+C\+P\+::\+Margin\+Side}, \hyperlink{class_q_c_p_margin_group}{Q\+C\+P\+Margin\+Group} $\ast$ $>$ \hyperlink{class_q_c_p_layout_element_a48eb87f787d3e3bfb3fa335d2cf6b1af}{margin\+Groups} () const 
 \item 
 void \hyperlink{class_q_c_p_layout_element_a38975ea13e36de8e53391ce41d94bc0f}{set\+Outer\+Rect} (const Q\+Rect \&\hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect})
 \item 
@@ -130,7 +130,7 @@ Q\+Margins \hyperlink{class_q_c_p_layout_element_a5ba71f25d1af4bb092b28df618538e
 \item 
 Q\+C\+P\+::\+Margin\+Sides \hyperlink{class_q_c_p_layout_element_af61c70354d1275778d68206b2a1b2d36}{m\+Auto\+Margins}
 \item 
-Q\+Hash$<$ \hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54}{Q\+C\+P\+::\+Margin\+Side}, \hyperlink{class_q_c_p_margin_group}{Q\+C\+P\+Margin\+Group} $\ast$ $>$ \hyperlink{class_q_c_p_layout_element_aeafbbc1130e02eee663c5326761fc963}{m\+Margin\+Groups}
+Q\+Hash$<$ \hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54}{Q\+C\+P\+::\+Margin\+Side}, \hyperlink{class_q_c_p_margin_group}{Q\+C\+P\+Margin\+Group} $\ast$ $>$ \hyperlink{class_q_c_p_layout_element_ae027b5caf347c2fb635e797513712a32}{m\+Margin\+Groups}
 \end{DoxyCompactItemize}
 \subsection*{Friends}
 \begin{DoxyCompactItemize}
@@ -155,7 +155,7 @@ Layout elements can be placed in layouts (base class \hyperlink{class_q_c_p_layo
 
 Thus in \hyperlink{class_q_custom_plot}{Q\+Custom\+Plot} one can divide layout elements into two categories\+: The ones that are invisible by themselves, because they don\textquotesingle{}t draw anything. Their only purpose is to manage the position and size of other layout elements. This category of layout elements usually use \hyperlink{class_q_c_p_layout}{Q\+C\+P\+Layout} as base class. Then there is the category of layout elements which actually draw something. For example, \hyperlink{class_q_c_p_axis_rect}{Q\+C\+P\+Axis\+Rect}, \hyperlink{class_q_c_p_legend}{Q\+C\+P\+Legend} and \hyperlink{class_q_c_p_plot_title}{Q\+C\+P\+Plot\+Title} are of this category. This does not necessarily mean that the latter category can\textquotesingle{}t have child layout elements. \hyperlink{class_q_c_p_legend}{Q\+C\+P\+Legend} for instance, actually derives from \hyperlink{class_q_c_p_layout_grid}{Q\+C\+P\+Layout\+Grid} and the individual legend items are child layout elements in the grid layout. 
 
-Definition at line 629 of file qcustomplot.\+h.
+Definition at line 754 of file qcustomplot.\+h.
 
 
 
@@ -168,22 +168,25 @@ Defines the phases of the update process, that happens just before a replot. At 
 \begin{description}
 \index{up\+Preparation@{up\+Preparation}!Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}}\index{Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}!up\+Preparation@{up\+Preparation}}\item[{\em 
 \hypertarget{class_q_c_p_layout_element_a0d83360e05735735aaf6d7983c56374dad6119882eba136357c2f627992e527d3}{}up\+Preparation\label{class_q_c_p_layout_element_a0d83360e05735735aaf6d7983c56374dad6119882eba136357c2f627992e527d3}
-}]Phase used for any type of preparation that needs to be done before margin calculation and layout. \index{up\+Margins@{up\+Margins}!Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}}\index{Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}!up\+Margins@{up\+Margins}}\item[{\em 
+}]Phase used for any type of preparation that needs to be done before margin calculation and layout \index{up\+Margins@{up\+Margins}!Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}}\index{Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}!up\+Margins@{up\+Margins}}\item[{\em 
 \hypertarget{class_q_c_p_layout_element_a0d83360e05735735aaf6d7983c56374da288cb59a92280e47261a341f2813e676}{}up\+Margins\label{class_q_c_p_layout_element_a0d83360e05735735aaf6d7983c56374da288cb59a92280e47261a341f2813e676}
 }]Phase in which the margins are calculated and set. \index{up\+Layout@{up\+Layout}!Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}}\index{Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}!up\+Layout@{up\+Layout}}\item[{\em 
 \hypertarget{class_q_c_p_layout_element_a0d83360e05735735aaf6d7983c56374da5d1ccf5d79967c232c3c511796860045}{}up\+Layout\label{class_q_c_p_layout_element_a0d83360e05735735aaf6d7983c56374da5d1ccf5d79967c232c3c511796860045}
-}]Final phase in which the layout system places the rects of the elements. \end{description}
+}]Final phase in which the layout system places the rects of the elements \end{description}
 \end{Desc}
 
 
-Definition at line 646 of file qcustomplot.\+h.
+Definition at line 772 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-646                    \{ \hyperlink{class_q_c_p_layout_element_a0d83360e05735735aaf6d7983c56374dad6119882eba136357c2f627992e527d3}{upPreparation} 
-647                      ,\hyperlink{class_q_c_p_layout_element_a0d83360e05735735aaf6d7983c56374da288cb59a92280e47261a341f2813e676}{upMargins}    
-648                      ,\hyperlink{class_q_c_p_layout_element_a0d83360e05735735aaf6d7983c56374da5d1ccf5d79967c232c3c511796860045}{upLayout}     
-649                    \};
+772                    \{
+773     \hyperlink{class_q_c_p_layout_element_a0d83360e05735735aaf6d7983c56374dad6119882eba136357c2f627992e527d3}{upPreparation} 
+774     ,
+776     \hyperlink{class_q_c_p_layout_element_a0d83360e05735735aaf6d7983c56374da288cb59a92280e47261a341f2813e676}{upMargins} 
+777     ,
+778     \hyperlink{class_q_c_p_layout_element_a0d83360e05735735aaf6d7983c56374da5d1ccf5d79967c232c3c511796860045}{upLayout} 
+779   \};
 \end{DoxyCode}
 
 
@@ -197,23 +200,18 @@ Definition at line 646 of file qcustomplot.\+h.
 )\hspace{0.3cm}{\ttfamily [explicit]}}\label{class_q_c_p_layout_element_a8947f0ada17e672aaba3d424cbbb67e3}
 Creates an instance of \hyperlink{class_q_c_p_layout_element}{Q\+C\+P\+Layout\+Element} and sets default values. 
 
-Definition at line 1728 of file qcustomplot.\+cpp.
+Definition at line 1896 of file qcustomplot.\+cpp.
 
 
 \begin{DoxyCode}
-1728                                                           :
-1729   \hyperlink{class_q_c_p_layerable_a74c0fa237f29bf0e49565013fc5d1ec0}{QCPLayerable}(parentPlot), \textcolor{comment}{// parenthood is changed as soon as layout element gets inserted
-       into a layout (except for top level layout)}
-1730   \hyperlink{class_q_c_p_layout_element_ae7c75c25549608bd688bdb65d4c38066}{mParentLayout}(0),
-1731   \hyperlink{class_q_c_p_layout_element_affef747c81632de33f08483b7fd10d01}{mMinimumSize}(),
-1732   \hyperlink{class_q_c_p_layout_element_a64a387973fd4addac842028c89088998}{mMaximumSize}(QWIDGETSIZE\_MAX, QWIDGETSIZE\_MAX),
-1733   \hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}(0, 0, 0, 0),
-1734   \hyperlink{class_q_c_p_layout_element_a07bb4973379e75cb0fa5b032c1d24afd}{mOuterRect}(0, 0, 0, 0),
-1735   \hyperlink{class_q_c_p_layout_element_ac2a32b99ee527ca5dfff9da03628fe94}{mMargins}(0, 0, 0, 0),
-1736   \hyperlink{class_q_c_p_layout_element_a5ba71f25d1af4bb092b28df618538e63}{mMinimumMargins}(0, 0, 0, 0),
-1737   \hyperlink{class_q_c_p_layout_element_af61c70354d1275778d68206b2a1b2d36}{mAutoMargins}(\hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a43d7361cb0c5244eabdc962021bffebc}{QCP::msAll})
-1738 \{
-1739 \}
+1897     : \hyperlink{class_q_c_p_layerable_a74c0fa237f29bf0e49565013fc5d1ec0}{QCPLayerable}(parentPlot), \textcolor{comment}{// parenthood is changed as soon as layout}
+1898                                 \textcolor{comment}{// element gets inserted into a layout (except}
+1899                                 \textcolor{comment}{// for top level layout)}
+1900       \hyperlink{class_q_c_p_layout_element_ae7c75c25549608bd688bdb65d4c38066}{mParentLayout}(0), \hyperlink{class_q_c_p_layout_element_affef747c81632de33f08483b7fd10d01}{mMinimumSize}(),
+1901       \hyperlink{class_q_c_p_layout_element_a64a387973fd4addac842028c89088998}{mMaximumSize}(QWIDGETSIZE\_MAX, QWIDGETSIZE\_MAX), \hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}(0, 0, 0, 0),
+1902       \hyperlink{class_q_c_p_layout_element_a07bb4973379e75cb0fa5b032c1d24afd}{mOuterRect}(0, 0, 0, 0), \hyperlink{class_q_c_p_layout_element_ac2a32b99ee527ca5dfff9da03628fe94}{mMargins}(0, 0, 0, 0), 
+      \hyperlink{class_q_c_p_layout_element_a5ba71f25d1af4bb092b28df618538e63}{mMinimumMargins}(0, 0, 0, 0),
+1903       \hyperlink{class_q_c_p_layout_element_af61c70354d1275778d68206b2a1b2d36}{mAutoMargins}(\hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a43d7361cb0c5244eabdc962021bffebc}{QCP::msAll}) \{\}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_layout_element_a0dc52343920011b3e72d61fc94ed3400}{}\index{Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}!````~Q\+C\+P\+Layout\+Element@{$\sim$\+Q\+C\+P\+Layout\+Element}}
 \index{````~Q\+C\+P\+Layout\+Element@{$\sim$\+Q\+C\+P\+Layout\+Element}!Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}}
@@ -224,7 +222,7 @@ Definition at line 1728 of file qcustomplot.\+cpp.
 )\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_q_c_p_layout_element_a0dc52343920011b3e72d61fc94ed3400}
 
 
-Definition at line 1741 of file qcustomplot.\+cpp.
+Definition at line 1905 of file qcustomplot.\+cpp.
 
 
 
@@ -232,13 +230,17 @@ References m\+Parent\+Layout, Q\+C\+P\+::ms\+All, set\+Margin\+Group(), and Q\+C
 
 
 \begin{DoxyCode}
-1742 \{
-1743   \hyperlink{class_q_c_p_layout_element_a516e56f76b6bc100e8e71d329866847d}{setMarginGroup}(\hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a43d7361cb0c5244eabdc962021bffebc}{QCP::msAll}, 0); \textcolor{comment}{// unregister at margin groups, if there are any}
-1744   \textcolor{comment}{// unregister at layout:}
-1745   \textcolor{keywordflow}{if} (qobject\_cast<QCPLayout*>(\hyperlink{class_q_c_p_layout_element_ae7c75c25549608bd688bdb65d4c38066}{mParentLayout})) \textcolor{comment}{// the qobject\_cast is just a safeguard in case
-       the layout forgets to call clear() in its dtor and this dtor is called by QObject dtor}
-1746     \hyperlink{class_q_c_p_layout_element_ae7c75c25549608bd688bdb65d4c38066}{mParentLayout}->\hyperlink{class_q_c_p_layout_ada26cd17e56472b0b4d7fbbc96873e4c}{take}(\textcolor{keyword}{this});
-1747 \}
+1905                                     \{
+1906   \hyperlink{class_q_c_p_layout_element_a516e56f76b6bc100e8e71d329866847d}{setMarginGroup}(\hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a43d7361cb0c5244eabdc962021bffebc}{QCP::msAll},
+1907                  0); \textcolor{comment}{// unregister at margin groups, if there are any}
+1908   \textcolor{comment}{// unregister at layout:}
+1909   \textcolor{keywordflow}{if} (qobject\_cast<QCPLayout *>(\hyperlink{class_q_c_p_layout_element_ae7c75c25549608bd688bdb65d4c38066}{mParentLayout})) \textcolor{comment}{// the qobject\_cast is just a}
+1910                                                 \textcolor{comment}{// safeguard in case the layout}
+1911                                                 \textcolor{comment}{// forgets to call clear() in}
+1912                                                 \textcolor{comment}{// its dtor and this dtor is}
+1913                                                 \textcolor{comment}{// called by QObject dtor}
+1914     \hyperlink{class_q_c_p_layout_element_ae7c75c25549608bd688bdb65d4c38066}{mParentLayout}->\hyperlink{class_q_c_p_layout_ada26cd17e56472b0b4d7fbbc96873e4c}{take}(\textcolor{keyword}{this});
+1915 \}
 \end{DoxyCode}
 
 
@@ -271,11 +273,13 @@ Reimplemented in \hyperlink{class_q_c_p_color_scale_a23d530c340c15d2fce6583e7120
 
 
 
-Definition at line 706 of file qcustomplot.\+h.
+Definition at line 842 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-706 \{ Q\_UNUSED(painter) \}
+842                                                                        \{
+843     Q\_UNUSED(painter)
+844   \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_layout_element_a2f499b1179b3126e22d0d7508124ccb3}{}\index{Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}!auto\+Margins@{auto\+Margins}}
 \index{auto\+Margins@{auto\+Margins}!Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}}
@@ -286,11 +290,11 @@ Definition at line 706 of file qcustomplot.\+h.
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_layout_element_a2f499b1179b3126e22d0d7508124ccb3}
 
 
-Definition at line 661 of file qcustomplot.\+h.
+Definition at line 792 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-661 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_af61c70354d1275778d68206b2a1b2d36}{mAutoMargins}; \}
+792 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_af61c70354d1275778d68206b2a1b2d36}{mAutoMargins}; \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_layout_element_a005c9f0fe84bc1591a2cf2c46fd477b4}{}\index{Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}!calculate\+Auto\+Margin@{calculate\+Auto\+Margin}}
 \index{calculate\+Auto\+Margin@{calculate\+Auto\+Margin}!Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}}
@@ -305,7 +309,7 @@ Reimplemented in \hyperlink{class_q_c_p_axis_rect_ae79f18302e6507586aa8c032a5f9e
 
 
 
-Definition at line 2042 of file qcustomplot.\+cpp.
+Definition at line 2246 of file qcustomplot.\+cpp.
 
 
 
@@ -317,10 +321,10 @@ Referenced by update().
 
 
 \begin{DoxyCode}
-2043 \{
-2044   \textcolor{keywordflow}{return} qMax(\hyperlink{namespace_q_c_p_a23a2679d3495c444acc26acc61e35b5b}{QCP::getMarginValue}(\hyperlink{class_q_c_p_layout_element_ac2a32b99ee527ca5dfff9da03628fe94}{mMargins}, side), 
-      \hyperlink{namespace_q_c_p_a23a2679d3495c444acc26acc61e35b5b}{QCP::getMarginValue}(\hyperlink{class_q_c_p_layout_element_a5ba71f25d1af4bb092b28df618538e63}{mMinimumMargins}, side));
-2045 \}
+2246                                                             \{
+2247   \textcolor{keywordflow}{return} qMax(\hyperlink{namespace_q_c_p_a23a2679d3495c444acc26acc61e35b5b}{QCP::getMarginValue}(\hyperlink{class_q_c_p_layout_element_ac2a32b99ee527ca5dfff9da03628fe94}{mMargins}, side),
+2248               \hyperlink{namespace_q_c_p_a23a2679d3495c444acc26acc61e35b5b}{QCP::getMarginValue}(\hyperlink{class_q_c_p_layout_element_a5ba71f25d1af4bb092b28df618538e63}{mMinimumMargins}, side));
+2249 \}
 \end{DoxyCode}
 
 
@@ -361,11 +365,11 @@ Reimplemented in \hyperlink{class_q_c_p_color_scale_axis_rect_private_adb67bfe90
 
 
 
-Definition at line 707 of file qcustomplot.\+h.
+Definition at line 845 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-707 \{ Q\_UNUSED(painter) \}
+845 \{ Q\_UNUSED(painter) \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_layout_element_a311d60d78e62ef8eaaedb1b6ceb9e788}{}\index{Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}!elements@{elements}}
 \index{elements@{elements}!Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}}
@@ -385,7 +389,7 @@ Reimplemented in \hyperlink{class_q_c_p_axis_rect_a2bda6bf2b5b5797f92583cecd01c8
 
 
 
-Definition at line 1982 of file qcustomplot.\+cpp.
+Definition at line 2182 of file qcustomplot.\+cpp.
 
 
 
@@ -393,10 +397,10 @@ Referenced by Q\+Custom\+Plot\+::axis\+Rects(), Q\+Custom\+Plot\+::layout\+Eleme
 
 
 \begin{DoxyCode}
-1983 \{
-1984   Q\_UNUSED(recursive)
-1985   return QList<\hyperlink{class_q_c_p_layout_element}{QCPLayoutElement}*>();
-1986 \}
+2182                                                                          \{
+2183   Q\_UNUSED(recursive)
+2184   return QList<\hyperlink{class_q_c_p_layout_element}{QCPLayoutElement} *>();
+2185 \}
 \end{DoxyCode}
 
 
@@ -418,7 +422,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_layout_element_a6235f5384db871fc6e3387a1bc558b0d}
 Returns the parent layout of this layout element. 
 
-Definition at line 656 of file qcustomplot.\+h.
+Definition at line 787 of file qcustomplot.\+h.
 
 
 
@@ -426,7 +430,7 @@ Referenced by Q\+C\+P\+Layout\+Grid\+::add\+Element(), and Q\+C\+P\+Layout\+Inse
 
 
 \begin{DoxyCode}
-656 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_ae7c75c25549608bd688bdb65d4c38066}{mParentLayout}; \}
+787 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_ae7c75c25549608bd688bdb65d4c38066}{mParentLayout}; \}
 \end{DoxyCode}
 
 
@@ -448,7 +452,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_layout_element_a22cb1bb62c452fd802e43ca2524660db}
 
 
-Definition at line 664 of file qcustomplot.\+h.
+Definition at line 795 of file qcustomplot.\+h.
 
 
 
@@ -456,7 +460,9 @@ Referenced by set\+Margin\+Group().
 
 
 \begin{DoxyCode}
-664 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_aeafbbc1130e02eee663c5326761fc963}{mMarginGroups}.value(side, (\hyperlink{class_q_c_p_margin_group}{QCPMarginGroup}*)0); \}
+795                                                         \{
+796     \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_ae027b5caf347c2fb635e797513712a32}{mMarginGroups}.value(side, (\hyperlink{class_q_c_p_margin_group}{QCPMarginGroup} *)0);
+797   \}
 \end{DoxyCode}
 
 
@@ -469,20 +475,22 @@ Here is the caller graph for this function\+:\nopagebreak
 \end{figure}
 
 
-\hypertarget{class_q_c_p_layout_element_ac43921c997570389c14a1671bc3ea499}{}\index{Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}!margin\+Groups@{margin\+Groups}}
+\hypertarget{class_q_c_p_layout_element_a48eb87f787d3e3bfb3fa335d2cf6b1af}{}\index{Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}!margin\+Groups@{margin\+Groups}}
 \index{margin\+Groups@{margin\+Groups}!Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}}
-\subsubsection[{margin\+Groups}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Hash$<${\bf Q\+C\+P\+::\+Margin\+Side}, {\bf Q\+C\+P\+Margin\+Group}$\ast$$>$ Q\+C\+P\+Layout\+Element\+::margin\+Groups (
+\subsubsection[{margin\+Groups}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Hash$<${\bf Q\+C\+P\+::\+Margin\+Side}, {\bf Q\+C\+P\+Margin\+Group} $\ast$$>$ Q\+C\+P\+Layout\+Element\+::margin\+Groups (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_layout_element_ac43921c997570389c14a1671bc3ea499}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_layout_element_a48eb87f787d3e3bfb3fa335d2cf6b1af}
 
 
-Definition at line 665 of file qcustomplot.\+h.
+Definition at line 798 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-665 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_aeafbbc1130e02eee663c5326761fc963}{mMarginGroups}; \}
+798                                                               \{
+799     \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_ae027b5caf347c2fb635e797513712a32}{mMarginGroups};
+800   \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_layout_element_a85ff977dfcced84eef32d9f819ec9543}{}\index{Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}!margins@{margins}}
 \index{margins@{margins}!Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}}
@@ -493,7 +501,7 @@ Definition at line 665 of file qcustomplot.\+h.
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_layout_element_a85ff977dfcced84eef32d9f819ec9543}
 
 
-Definition at line 659 of file qcustomplot.\+h.
+Definition at line 790 of file qcustomplot.\+h.
 
 
 
@@ -501,7 +509,7 @@ Referenced by set\+Margins(), set\+Minimum\+Margins(), and Q\+C\+P\+Color\+Scale
 
 
 \begin{DoxyCode}
-659 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_ac2a32b99ee527ca5dfff9da03628fe94}{mMargins}; \}
+790 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_ac2a32b99ee527ca5dfff9da03628fe94}{mMargins}; \}
 \end{DoxyCode}
 
 
@@ -523,11 +531,11 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_layout_element_a1fc85c79e15c2ab8051eccd455fccc4a}
 
 
-Definition at line 663 of file qcustomplot.\+h.
+Definition at line 794 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-663 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_a64a387973fd4addac842028c89088998}{mMaximumSize}; \}
+794 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_a64a387973fd4addac842028c89088998}{mMaximumSize}; \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_layout_element_adbd3a00fec44c977150c6be7329eb801}{}\index{Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}!maximum\+Size\+Hint@{maximum\+Size\+Hint}}
 \index{maximum\+Size\+Hint@{maximum\+Size\+Hint}!Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}}
@@ -544,7 +552,7 @@ Reimplemented in \hyperlink{class_q_c_p_plot_title_a2afaf11a379038e5ca58040a0eb0
 
 
 
-Definition at line 1970 of file qcustomplot.\+cpp.
+Definition at line 2171 of file qcustomplot.\+cpp.
 
 
 
@@ -552,9 +560,7 @@ References m\+Maximum\+Size.
 
 
 \begin{DoxyCode}
-1971 \{
-1972   \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_a64a387973fd4addac842028c89088998}{mMaximumSize};
-1973 \}
+2171 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_a64a387973fd4addac842028c89088998}{mMaximumSize}; \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_layout_element_a60ec7f377c26726174d536bffb632002}{}\index{Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}!minimum\+Margins@{minimum\+Margins}}
 \index{minimum\+Margins@{minimum\+Margins}!Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}}
@@ -565,11 +571,11 @@ References m\+Maximum\+Size.
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_layout_element_a60ec7f377c26726174d536bffb632002}
 
 
-Definition at line 660 of file qcustomplot.\+h.
+Definition at line 791 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-660 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_a5ba71f25d1af4bb092b28df618538e63}{mMinimumMargins}; \}
+791 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_a5ba71f25d1af4bb092b28df618538e63}{mMinimumMargins}; \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_layout_element_ae71f9230171d2d898e21dc461fc3df03}{}\index{Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}!minimum\+Size@{minimum\+Size}}
 \index{minimum\+Size@{minimum\+Size}!Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}}
@@ -580,11 +586,11 @@ Definition at line 660 of file qcustomplot.\+h.
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_layout_element_ae71f9230171d2d898e21dc461fc3df03}
 
 
-Definition at line 662 of file qcustomplot.\+h.
+Definition at line 793 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-662 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_affef747c81632de33f08483b7fd10d01}{mMinimumSize}; \}
+793 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_affef747c81632de33f08483b7fd10d01}{mMinimumSize}; \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_layout_element_aebe14fb71f858c0f98caf8d342a9864a}{}\index{Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}!minimum\+Size\+Hint@{minimum\+Size\+Hint}}
 \index{minimum\+Size\+Hint@{minimum\+Size\+Hint}!Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}}
@@ -601,7 +607,7 @@ Reimplemented in \hyperlink{class_q_c_p_plot_title_a695e6037e72a1e129387e7e4a980
 
 
 
-Definition at line 1958 of file qcustomplot.\+cpp.
+Definition at line 2159 of file qcustomplot.\+cpp.
 
 
 
@@ -609,9 +615,7 @@ References m\+Minimum\+Size.
 
 
 \begin{DoxyCode}
-1959 \{
-1960   \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_affef747c81632de33f08483b7fd10d01}{mMinimumSize};
-1961 \}
+2159 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_affef747c81632de33f08483b7fd10d01}{mMinimumSize}; \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_layout_element_aa8fef6486cb6ceb7c82cbdd50bc32ee9}{}\index{Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}!mouse\+Double\+Click\+Event@{mouse\+Double\+Click\+Event}}
 \index{mouse\+Double\+Click\+Event@{mouse\+Double\+Click\+Event}!Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}}
@@ -622,11 +626,11 @@ References m\+Minimum\+Size.
 )\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}\label{class_q_c_p_layout_element_aa8fef6486cb6ceb7c82cbdd50bc32ee9}
 This event is called, if the mouse is double-\/clicked inside the outer rect of this layout element. 
 
-Definition at line 702 of file qcustomplot.\+h.
+Definition at line 838 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-702 \{Q\_UNUSED(event)\}
+838 \{ Q\_UNUSED(event) \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_layout_element_a14f4acf58cdb8dd2c6c571479c4c4a40}{}\index{Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}!mouse\+Move\+Event@{mouse\+Move\+Event}}
 \index{mouse\+Move\+Event@{mouse\+Move\+Event}!Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}}
@@ -641,11 +645,11 @@ Reimplemented in \hyperlink{class_q_c_p_color_scale_a3aca469d531ce7b5882de73590a
 
 
 
-Definition at line 700 of file qcustomplot.\+h.
+Definition at line 836 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-700 \{Q\_UNUSED(event)\}
+836 \{ Q\_UNUSED(event) \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_layout_element_a2d82ea21fe0ee628f177bd824bc51a71}{}\index{Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}!mouse\+Press\+Event@{mouse\+Press\+Event}}
 \index{mouse\+Press\+Event@{mouse\+Press\+Event}!Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}}
@@ -660,11 +664,11 @@ Reimplemented in \hyperlink{class_q_c_p_color_scale_a5df6ad81b2ad045878d276c2d5b
 
 
 
-Definition at line 699 of file qcustomplot.\+h.
+Definition at line 835 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-699 \{Q\_UNUSED(event)\}
+835 \{ Q\_UNUSED(event) \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_layout_element_ae526ac828cce1e5bb94eaa85776d7404}{}\index{Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}!mouse\+Release\+Event@{mouse\+Release\+Event}}
 \index{mouse\+Release\+Event@{mouse\+Release\+Event}!Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}}
@@ -679,11 +683,11 @@ Reimplemented in \hyperlink{class_q_c_p_color_scale_a0916613d20901950fc6d00c6f99
 
 
 
-Definition at line 701 of file qcustomplot.\+h.
+Definition at line 837 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-701 \{Q\_UNUSED(event)\}
+837 \{ Q\_UNUSED(event) \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_layout_element_a60bbddee2d1230c2414bd776f44d17b8}{}\index{Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}!outer\+Rect@{outer\+Rect}}
 \index{outer\+Rect@{outer\+Rect}!Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}}
@@ -694,11 +698,11 @@ Definition at line 701 of file qcustomplot.\+h.
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_layout_element_a60bbddee2d1230c2414bd776f44d17b8}
 
 
-Definition at line 658 of file qcustomplot.\+h.
+Definition at line 789 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-658 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_a07bb4973379e75cb0fa5b032c1d24afd}{mOuterRect}; \}
+789 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_a07bb4973379e75cb0fa5b032c1d24afd}{mOuterRect}; \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_layout_element_a1478899e80e8244b411e96ec3b2e5ce2}{}\index{Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}!parent\+Plot\+Initialized@{parent\+Plot\+Initialized}}
 \index{parent\+Plot\+Initialized@{parent\+Plot\+Initialized}!Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}}
@@ -717,7 +721,7 @@ Reimplemented in \hyperlink{class_q_c_p_legend_a4d552c63d82742d77fb7f177bae7b1ba
 
 
 
-Definition at line 2024 of file qcustomplot.\+cpp.
+Definition at line 2227 of file qcustomplot.\+cpp.
 
 
 
@@ -725,13 +729,12 @@ References elements(), Q\+C\+P\+Layerable\+::initialize\+Parent\+Plot(), and Q\+
 
 
 \begin{DoxyCode}
-2025 \{
-2026   \textcolor{keywordflow}{foreach} (\hyperlink{class_q_c_p_layout_element}{QCPLayoutElement}* el, \hyperlink{class_q_c_p_layout_element_a311d60d78e62ef8eaaedb1b6ceb9e788}{elements}(\textcolor{keyword}{false}))
-2027   \{
-2028     \textcolor{keywordflow}{if} (!el->\hyperlink{class_q_c_p_layerable_ab7e0e94461566093d36ffc0f5312b109}{parentPlot}())
-2029       el->\hyperlink{class_q_c_p_layerable_a8cbe5a0c9a5674249982f5ca5f8e02bc}{initializeParentPlot}(parentPlot);
-2030   \}
-2031 \}
+2227                                                                     \{
+2228   \textcolor{keywordflow}{foreach} (\hyperlink{class_q_c_p_layout_element}{QCPLayoutElement} *el, \hyperlink{class_q_c_p_layout_element_a311d60d78e62ef8eaaedb1b6ceb9e788}{elements}(\textcolor{keyword}{false})) \{
+2229     \textcolor{keywordflow}{if} (!el->\hyperlink{class_q_c_p_layerable_ab7e0e94461566093d36ffc0f5312b109}{parentPlot}())
+2230       el->\hyperlink{class_q_c_p_layerable_a8cbe5a0c9a5674249982f5ca5f8e02bc}{initializeParentPlot}(parentPlot);
+2231   \}
+2232 \}
 \end{DoxyCode}
 
 
@@ -755,7 +758,7 @@ Returns the inner rect of this layout element. The inner rect is the outer rect 
 
 In some cases, the area between outer and inner rect is left blank. In other cases the margin area is used to display peripheral graphics while the main content is in the inner rect. This is where automatic margin calculation becomes interesting because it allows the layout element to adapt the margins to the peripheral graphics it wants to draw. For example, \hyperlink{class_q_c_p_axis_rect}{Q\+C\+P\+Axis\+Rect} draws the axis labels and tick labels in the margin area, thus needs to adjust the margins (if \hyperlink{class_q_c_p_layout_element_accfda49994e3e6d51ed14504abf9d27d}{set\+Auto\+Margins} is enabled) according to the space required by the labels of the axes. 
 
-Definition at line 657 of file qcustomplot.\+h.
+Definition at line 788 of file qcustomplot.\+h.
 
 
 
@@ -763,7 +766,7 @@ Referenced by Q\+C\+P\+Axis\+::calculate\+Margin(), Q\+C\+P\+Axis\+::draw(), Q\+
 
 
 \begin{DoxyCode}
-657 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}; \}
+788 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect}; \}
 \end{DoxyCode}
 
 
@@ -799,7 +802,7 @@ Reimplemented in \hyperlink{class_q_c_p_plot_title_a5b7ae716be9134a48f4e378feb0e
 
 
 
-Definition at line 1999 of file qcustomplot.\+cpp.
+Definition at line 2203 of file qcustomplot.\+cpp.
 
 
 
@@ -811,24 +814,22 @@ Referenced by Q\+Custom\+Plot\+::layout\+Element\+At().
 
 
 \begin{DoxyCode}
-2000 \{
-2001   Q\_UNUSED(details)
-2002   
-2003   if (onlySelectable)
-2004     return -1;
-2005   
-2006   if (QRectF(\hyperlink{class_q_c_p_layout_element_a07bb4973379e75cb0fa5b032c1d24afd}{mOuterRect}).contains(pos))
-2007   \{
-2008     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot})
-2009       \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_a7b738074c75e80070ef6a10263c6cd69}{selectionTolerance}()*0.99;
-2010     \textcolor{keywordflow}{else}
-2011     \{
-2012       qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"parent plot not defined"};
-2013       \textcolor{keywordflow}{return} -1;
-2014     \}
-2015   \} \textcolor{keywordflow}{else}
-2016     \textcolor{keywordflow}{return} -1;
-2017 \}
+2204                                                              \{
+2205   Q\_UNUSED(details)
+2206 
+2207   if (onlySelectable)
+2208     return -1;
+2209 
+2210   if (QRectF(\hyperlink{class_q_c_p_layout_element_a07bb4973379e75cb0fa5b032c1d24afd}{mOuterRect}).contains(pos)) \{
+2211     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot})
+2212       \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_a7b738074c75e80070ef6a10263c6cd69}{selectionTolerance}() * 0.99;
+2213     \textcolor{keywordflow}{else} \{
+2214       qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"parent plot not defined"};
+2215       \textcolor{keywordflow}{return} -1;
+2216     \}
+2217   \} \textcolor{keywordflow}{else}
+2218     \textcolor{keywordflow}{return} -1;
+2219 \}
 \end{DoxyCode}
 
 
@@ -868,7 +869,7 @@ Margin sides that are under automatic control may participate in a \hyperlink{cl
 \end{DoxySeeAlso}
 
 
-Definition at line 1816 of file qcustomplot.\+cpp.
+Definition at line 1994 of file qcustomplot.\+cpp.
 
 
 
@@ -876,9 +877,9 @@ References m\+Auto\+Margins, and sides.
 
 
 \begin{DoxyCode}
-1817 \{
-1818   \hyperlink{class_q_c_p_layout_element_af61c70354d1275778d68206b2a1b2d36}{mAutoMargins} = \hyperlink{_comparision_pictures_2_createtest_image_8m_a2fd0c42bc0f9d36e00931ccceebc7087}{sides};
-1819 \}
+1994                                                           \{
+1995   \hyperlink{class_q_c_p_layout_element_af61c70354d1275778d68206b2a1b2d36}{mAutoMargins} = \hyperlink{_comparision_pictures_2_createtest_image_8m_a2fd0c42bc0f9d36e00931ccceebc7087}{sides};
+1996 \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_layout_element_a516e56f76b6bc100e8e71d329866847d}{}\index{Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}!set\+Margin\+Group@{set\+Margin\+Group}}
 \index{set\+Margin\+Group@{set\+Margin\+Group}!Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}}
@@ -896,7 +897,7 @@ To unset the margin group of {\itshape sides}, set {\itshape group} to 0.
 
 Note that margin groups only work for margin sides that are set to automatic (\hyperlink{class_q_c_p_layout_element_accfda49994e3e6d51ed14504abf9d27d}{set\+Auto\+Margins}). 
 
-Definition at line 1883 of file qcustomplot.\+cpp.
+Definition at line 2063 of file qcustomplot.\+cpp.
 
 
 
@@ -908,36 +909,36 @@ Referenced by $\sim$\+Q\+C\+P\+Layout\+Element().
 
 
 \begin{DoxyCode}
-1884 \{
-1885   QVector<QCP::MarginSide> sideVector;
-1886   \textcolor{keywordflow}{if} (\hyperlink{_comparision_pictures_2_createtest_image_8m_a2fd0c42bc0f9d36e00931ccceebc7087}{sides}.testFlag(\hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a9500c8bfcc9e80b9dff0a8e00e867f07}{QCP::msLeft})) sideVector.append(\hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a9500c8bfcc9e80b9dff0a8e00e867f07}{QCP::msLeft});
-1887   \textcolor{keywordflow}{if} (\hyperlink{_comparision_pictures_2_createtest_image_8m_a2fd0c42bc0f9d36e00931ccceebc7087}{sides}.testFlag(\hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a93c719593bb2b94ed244d52c86d83b65}{QCP::msRight})) sideVector.append(
-      \hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a93c719593bb2b94ed244d52c86d83b65}{QCP::msRight});
-1888   \textcolor{keywordflow}{if} (\hyperlink{_comparision_pictures_2_createtest_image_8m_a2fd0c42bc0f9d36e00931ccceebc7087}{sides}.testFlag(\hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a5db8fb0d0b0ecf0d611c2602a348e8a0}{QCP::msTop})) sideVector.append(\hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a5db8fb0d0b0ecf0d611c2602a348e8a0}{QCP::msTop});
-1889   \textcolor{keywordflow}{if} (\hyperlink{_comparision_pictures_2_createtest_image_8m_a2fd0c42bc0f9d36e00931ccceebc7087}{sides}.testFlag(\hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a5241d8eac2bab9524a38889f576179cc}{QCP::msBottom})) sideVector.append(
-      \hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a5241d8eac2bab9524a38889f576179cc}{QCP::msBottom});
-1890   
-1891   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}<sideVector.size(); ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
-1892   \{
-1893     \hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54}{QCP::MarginSide} side = sideVector.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i});
-1894     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_element_a22cb1bb62c452fd802e43ca2524660db}{marginGroup}(side) != group)
-1895     \{
-1896       \hyperlink{class_q_c_p_margin_group}{QCPMarginGroup} *oldGroup = \hyperlink{class_q_c_p_layout_element_a22cb1bb62c452fd802e43ca2524660db}{marginGroup}(side);
-1897       \textcolor{keywordflow}{if} (oldGroup) \textcolor{comment}{// unregister at old group}
-1898         oldGroup->\hyperlink{class_q_c_p_margin_group_a20ab3286062957d99b58db683fe725b0}{removeChild}(side, \textcolor{keyword}{this});
-1899       
-1900       \textcolor{keywordflow}{if} (!group) \textcolor{comment}{// if setting to 0, remove hash entry. Else set hash entry to new group and register
-       there}
-1901       \{
-1902         \hyperlink{class_q_c_p_layout_element_aeafbbc1130e02eee663c5326761fc963}{mMarginGroups}.remove(side);
-1903       \} \textcolor{keywordflow}{else} \textcolor{comment}{// setting to a new group}
-1904       \{
-1905         \hyperlink{class_q_c_p_layout_element_aeafbbc1130e02eee663c5326761fc963}{mMarginGroups}[side] = group;
-1906         group->\hyperlink{class_q_c_p_margin_group_acb9c3a35acec655c2895b7eb95ee0524}{addChild}(side, \textcolor{keyword}{this});
-1907       \}
-1908     \}
-1909   \}
-1910 \}
+2064                                                              \{
+2065   QVector<QCP::MarginSide> sideVector;
+2066   \textcolor{keywordflow}{if} (\hyperlink{_comparision_pictures_2_createtest_image_8m_a2fd0c42bc0f9d36e00931ccceebc7087}{sides}.testFlag(\hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a9500c8bfcc9e80b9dff0a8e00e867f07}{QCP::msLeft}))
+2067     sideVector.append(\hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a9500c8bfcc9e80b9dff0a8e00e867f07}{QCP::msLeft});
+2068   \textcolor{keywordflow}{if} (\hyperlink{_comparision_pictures_2_createtest_image_8m_a2fd0c42bc0f9d36e00931ccceebc7087}{sides}.testFlag(\hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a93c719593bb2b94ed244d52c86d83b65}{QCP::msRight}))
+2069     sideVector.append(\hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a93c719593bb2b94ed244d52c86d83b65}{QCP::msRight});
+2070   \textcolor{keywordflow}{if} (\hyperlink{_comparision_pictures_2_createtest_image_8m_a2fd0c42bc0f9d36e00931ccceebc7087}{sides}.testFlag(\hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a5db8fb0d0b0ecf0d611c2602a348e8a0}{QCP::msTop}))
+2071     sideVector.append(\hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a5db8fb0d0b0ecf0d611c2602a348e8a0}{QCP::msTop});
+2072   \textcolor{keywordflow}{if} (\hyperlink{_comparision_pictures_2_createtest_image_8m_a2fd0c42bc0f9d36e00931ccceebc7087}{sides}.testFlag(\hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a5241d8eac2bab9524a38889f576179cc}{QCP::msBottom}))
+2073     sideVector.append(\hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a5241d8eac2bab9524a38889f576179cc}{QCP::msBottom});
+2074 
+2075   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < sideVector.size(); ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) \{
+2076     \hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54}{QCP::MarginSide} side = sideVector.at(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i});
+2077     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_element_a22cb1bb62c452fd802e43ca2524660db}{marginGroup}(side) != group) \{
+2078       \hyperlink{class_q_c_p_margin_group}{QCPMarginGroup} *oldGroup = \hyperlink{class_q_c_p_layout_element_a22cb1bb62c452fd802e43ca2524660db}{marginGroup}(side);
+2079       \textcolor{keywordflow}{if} (oldGroup) \textcolor{comment}{// unregister at old group}
+2080         oldGroup->\hyperlink{class_q_c_p_margin_group_a20ab3286062957d99b58db683fe725b0}{removeChild}(side, \textcolor{keyword}{this});
+2081 
+2082       \textcolor{keywordflow}{if} (!group) \textcolor{comment}{// if setting to 0, remove hash entry. Else set hash entry to}
+2083                   \textcolor{comment}{// new group and register there}
+2084       \{
+2085         \hyperlink{class_q_c_p_layout_element_ae027b5caf347c2fb635e797513712a32}{mMarginGroups}.remove(side);
+2086       \} \textcolor{keywordflow}{else} \textcolor{comment}{// setting to a new group}
+2087       \{
+2088         \hyperlink{class_q_c_p_layout_element_ae027b5caf347c2fb635e797513712a32}{mMarginGroups}[side] = group;
+2089         group->\hyperlink{class_q_c_p_margin_group_acb9c3a35acec655c2895b7eb95ee0524}{addChild}(side, \textcolor{keyword}{this});
+2090       \}
+2091     \}
+2092   \}
+2093 \}
 \end{DoxyCode}
 
 
@@ -977,7 +978,7 @@ The margin is the distance between the outer rect (controlled by the parent layo
 \end{DoxySeeAlso}
 
 
-Definition at line 1780 of file qcustomplot.\+cpp.
+Definition at line 1954 of file qcustomplot.\+cpp.
 
 
 
@@ -989,14 +990,13 @@ Referenced by Q\+C\+P\+Abstract\+Legend\+Item\+::\+Q\+C\+P\+Abstract\+Legend\+It
 
 
 \begin{DoxyCode}
-1781 \{
-1782   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_element_ac2a32b99ee527ca5dfff9da03628fe94}{mMargins} != \hyperlink{class_q_c_p_layout_element_a85ff977dfcced84eef32d9f819ec9543}{margins})
-1783   \{
-1784     \hyperlink{class_q_c_p_layout_element_ac2a32b99ee527ca5dfff9da03628fe94}{mMargins} = \hyperlink{class_q_c_p_layout_element_a85ff977dfcced84eef32d9f819ec9543}{margins};
-1785     \hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect} = \hyperlink{class_q_c_p_layout_element_a07bb4973379e75cb0fa5b032c1d24afd}{mOuterRect}.adjusted(\hyperlink{class_q_c_p_layout_element_ac2a32b99ee527ca5dfff9da03628fe94}{mMargins}.left(), \hyperlink{class_q_c_p_layout_element_ac2a32b99ee527ca5dfff9da03628fe94}{mMargins}.top(), -
-      \hyperlink{class_q_c_p_layout_element_ac2a32b99ee527ca5dfff9da03628fe94}{mMargins}.right(), -\hyperlink{class_q_c_p_layout_element_ac2a32b99ee527ca5dfff9da03628fe94}{mMargins}.bottom());
-1786   \}
-1787 \}
+1954                                                          \{
+1955   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_element_ac2a32b99ee527ca5dfff9da03628fe94}{mMargins} != \hyperlink{class_q_c_p_layout_element_a85ff977dfcced84eef32d9f819ec9543}{margins}) \{
+1956     \hyperlink{class_q_c_p_layout_element_ac2a32b99ee527ca5dfff9da03628fe94}{mMargins} = \hyperlink{class_q_c_p_layout_element_a85ff977dfcced84eef32d9f819ec9543}{margins};
+1957     \hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect} = \hyperlink{class_q_c_p_layout_element_a07bb4973379e75cb0fa5b032c1d24afd}{mOuterRect}.adjusted(\hyperlink{class_q_c_p_layout_element_ac2a32b99ee527ca5dfff9da03628fe94}{mMargins}.left(), \hyperlink{class_q_c_p_layout_element_ac2a32b99ee527ca5dfff9da03628fe94}{mMargins}.top(),
+1958                                 -\hyperlink{class_q_c_p_layout_element_ac2a32b99ee527ca5dfff9da03628fe94}{mMargins}.right(), -\hyperlink{class_q_c_p_layout_element_ac2a32b99ee527ca5dfff9da03628fe94}{mMargins}.bottom());
+1959   \}
+1960 \}
 \end{DoxyCode}
 
 
@@ -1029,7 +1029,7 @@ Here is the caller graph for this function\+:\nopagebreak
 )}\label{class_q_c_p_layout_element_a74eb5280a737ab44833d506db65efd95}
 Sets the maximum size for the inner \hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect} of this layout element. A parent layout tries to respect the {\itshape size} here by changing row/column sizes in the layout accordingly. 
 
-Definition at line 1853 of file qcustomplot.\+cpp.
+Definition at line 2034 of file qcustomplot.\+cpp.
 
 
 
@@ -1041,14 +1041,13 @@ Referenced by set\+Maximum\+Size(), and Q\+C\+P\+Color\+Scale\+::update().
 
 
 \begin{DoxyCode}
-1854 \{
-1855   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_element_a64a387973fd4addac842028c89088998}{mMaximumSize} != size)
-1856   \{
-1857     \hyperlink{class_q_c_p_layout_element_a64a387973fd4addac842028c89088998}{mMaximumSize} = size;
-1858     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_element_ae7c75c25549608bd688bdb65d4c38066}{mParentLayout})
-1859       \hyperlink{class_q_c_p_layout_element_ae7c75c25549608bd688bdb65d4c38066}{mParentLayout}->\hyperlink{class_q_c_p_layout_a6218cd7e5c0e30077c1aeaffe55b6145}{sizeConstraintsChanged}();
-1860   \}
-1861 \}
+2034                                                        \{
+2035   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_element_a64a387973fd4addac842028c89088998}{mMaximumSize} != size) \{
+2036     \hyperlink{class_q_c_p_layout_element_a64a387973fd4addac842028c89088998}{mMaximumSize} = size;
+2037     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_element_ae7c75c25549608bd688bdb65d4c38066}{mParentLayout})
+2038       \hyperlink{class_q_c_p_layout_element_ae7c75c25549608bd688bdb65d4c38066}{mParentLayout}->\hyperlink{class_q_c_p_layout_a6218cd7e5c0e30077c1aeaffe55b6145}{sizeConstraintsChanged}();
+2039   \}
+2040 \}
 \end{DoxyCode}
 
 
@@ -1084,7 +1083,7 @@ This is an overloaded member function, provided for convenience. It differs from
 
 Sets the maximum size for the inner \hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect} of this layout element. 
 
-Definition at line 1867 of file qcustomplot.\+cpp.
+Definition at line 2046 of file qcustomplot.\+cpp.
 
 
 
@@ -1092,9 +1091,9 @@ References set\+Maximum\+Size().
 
 
 \begin{DoxyCode}
-1868 \{
-1869   \hyperlink{class_q_c_p_layout_element_a74eb5280a737ab44833d506db65efd95}{setMaximumSize}(QSize(width, height));
-1870 \}
+2046                                                            \{
+2047   \hyperlink{class_q_c_p_layout_element_a74eb5280a737ab44833d506db65efd95}{setMaximumSize}(QSize(width, height));
+2048 \}
 \end{DoxyCode}
 
 
@@ -1123,7 +1122,7 @@ The minimum values are not enforced on margin sides that were set to be under ma
 \end{DoxySeeAlso}
 
 
-Definition at line 1798 of file qcustomplot.\+cpp.
+Definition at line 1973 of file qcustomplot.\+cpp.
 
 
 
@@ -1135,12 +1134,11 @@ Referenced by Q\+C\+P\+Axis\+Rect\+::\+Q\+C\+P\+Axis\+Rect(), Q\+C\+P\+Color\+Sc
 
 
 \begin{DoxyCode}
-1799 \{
-1800   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_element_a5ba71f25d1af4bb092b28df618538e63}{mMinimumMargins} != \hyperlink{class_q_c_p_layout_element_a85ff977dfcced84eef32d9f819ec9543}{margins})
-1801   \{
-1802     \hyperlink{class_q_c_p_layout_element_a5ba71f25d1af4bb092b28df618538e63}{mMinimumMargins} = \hyperlink{class_q_c_p_layout_element_a85ff977dfcced84eef32d9f819ec9543}{margins};
-1803   \}
-1804 \}
+1973                                                                 \{
+1974   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_element_a5ba71f25d1af4bb092b28df618538e63}{mMinimumMargins} != \hyperlink{class_q_c_p_layout_element_a85ff977dfcced84eef32d9f819ec9543}{margins}) \{
+1975     \hyperlink{class_q_c_p_layout_element_a5ba71f25d1af4bb092b28df618538e63}{mMinimumMargins} = \hyperlink{class_q_c_p_layout_element_a85ff977dfcced84eef32d9f819ec9543}{margins};
+1976   \}
+1977 \}
 \end{DoxyCode}
 
 
@@ -1175,7 +1173,7 @@ Sets the minimum size for the inner \hyperlink{class_q_c_p_layout_element_affdfe
 
 If the parent layout size is not sufficient to satisfy all minimum size constraints of its child layout elements, the layout may set a size that is actually smaller than {\itshape size}. \hyperlink{class_q_custom_plot}{Q\+Custom\+Plot} propagates the layout\textquotesingle{}s size constraints to the outside by setting its own minimum Q\+Widget size accordingly, so violations of {\itshape size} should be exceptions. 
 
-Definition at line 1830 of file qcustomplot.\+cpp.
+Definition at line 2012 of file qcustomplot.\+cpp.
 
 
 
@@ -1187,14 +1185,13 @@ Referenced by Q\+C\+P\+Axis\+Rect\+::\+Q\+C\+P\+Axis\+Rect(), set\+Minimum\+Size
 
 
 \begin{DoxyCode}
-1831 \{
-1832   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_element_affef747c81632de33f08483b7fd10d01}{mMinimumSize} != size)
-1833   \{
-1834     \hyperlink{class_q_c_p_layout_element_affef747c81632de33f08483b7fd10d01}{mMinimumSize} = size;
-1835     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_element_ae7c75c25549608bd688bdb65d4c38066}{mParentLayout})
-1836       \hyperlink{class_q_c_p_layout_element_ae7c75c25549608bd688bdb65d4c38066}{mParentLayout}->\hyperlink{class_q_c_p_layout_a6218cd7e5c0e30077c1aeaffe55b6145}{sizeConstraintsChanged}();
-1837   \}
-1838 \}
+2012                                                        \{
+2013   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_element_affef747c81632de33f08483b7fd10d01}{mMinimumSize} != size) \{
+2014     \hyperlink{class_q_c_p_layout_element_affef747c81632de33f08483b7fd10d01}{mMinimumSize} = size;
+2015     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_element_ae7c75c25549608bd688bdb65d4c38066}{mParentLayout})
+2016       \hyperlink{class_q_c_p_layout_element_ae7c75c25549608bd688bdb65d4c38066}{mParentLayout}->\hyperlink{class_q_c_p_layout_a6218cd7e5c0e30077c1aeaffe55b6145}{sizeConstraintsChanged}();
+2017   \}
+2018 \}
 \end{DoxyCode}
 
 
@@ -1230,7 +1227,7 @@ This is an overloaded member function, provided for convenience. It differs from
 
 Sets the minimum size for the inner \hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect} of this layout element. 
 
-Definition at line 1844 of file qcustomplot.\+cpp.
+Definition at line 2024 of file qcustomplot.\+cpp.
 
 
 
@@ -1238,9 +1235,9 @@ References set\+Minimum\+Size().
 
 
 \begin{DoxyCode}
-1845 \{
-1846   \hyperlink{class_q_c_p_layout_element_a5dd29a3c8bc88440c97c06b67be7886b}{setMinimumSize}(QSize(width, height));
-1847 \}
+2024                                                            \{
+2025   \hyperlink{class_q_c_p_layout_element_a5dd29a3c8bc88440c97c06b67be7886b}{setMinimumSize}(QSize(width, height));
+2026 \}
 \end{DoxyCode}
 
 
@@ -1271,7 +1268,7 @@ The layout element will adapt its inner \hyperlink{class_q_c_p_layout_element_af
 \end{DoxySeeAlso}
 
 
-Definition at line 1760 of file qcustomplot.\+cpp.
+Definition at line 1931 of file qcustomplot.\+cpp.
 
 
 
@@ -1283,14 +1280,13 @@ Referenced by Q\+Custom\+Plot\+::set\+Viewport(), and Q\+C\+P\+Axis\+Rect\+::upd
 
 
 \begin{DoxyCode}
-1761 \{
-1762   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_element_a07bb4973379e75cb0fa5b032c1d24afd}{mOuterRect} != \hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect})
-1763   \{
-1764     \hyperlink{class_q_c_p_layout_element_a07bb4973379e75cb0fa5b032c1d24afd}{mOuterRect} = \hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect};
-1765     \hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect} = \hyperlink{class_q_c_p_layout_element_a07bb4973379e75cb0fa5b032c1d24afd}{mOuterRect}.adjusted(\hyperlink{class_q_c_p_layout_element_ac2a32b99ee527ca5dfff9da03628fe94}{mMargins}.left(), \hyperlink{class_q_c_p_layout_element_ac2a32b99ee527ca5dfff9da03628fe94}{mMargins}.top(), -
-      \hyperlink{class_q_c_p_layout_element_ac2a32b99ee527ca5dfff9da03628fe94}{mMargins}.right(), -\hyperlink{class_q_c_p_layout_element_ac2a32b99ee527ca5dfff9da03628fe94}{mMargins}.bottom());
-1766   \}
-1767 \}
+1931                                                      \{
+1932   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_element_a07bb4973379e75cb0fa5b032c1d24afd}{mOuterRect} != \hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect}) \{
+1933     \hyperlink{class_q_c_p_layout_element_a07bb4973379e75cb0fa5b032c1d24afd}{mOuterRect} = \hyperlink{class_q_c_p_layout_element_affdfea003469aac3d0fac5f4e06171bc}{rect};
+1934     \hyperlink{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}{mRect} = \hyperlink{class_q_c_p_layout_element_a07bb4973379e75cb0fa5b032c1d24afd}{mOuterRect}.adjusted(\hyperlink{class_q_c_p_layout_element_ac2a32b99ee527ca5dfff9da03628fe94}{mMargins}.left(), \hyperlink{class_q_c_p_layout_element_ac2a32b99ee527ca5dfff9da03628fe94}{mMargins}.top(),
+1935                                 -\hyperlink{class_q_c_p_layout_element_ac2a32b99ee527ca5dfff9da03628fe94}{mMargins}.right(), -\hyperlink{class_q_c_p_layout_element_ac2a32b99ee527ca5dfff9da03628fe94}{mMargins}.bottom());
+1936   \}
+1937 \}
 \end{DoxyCode}
 
 
@@ -1331,7 +1327,7 @@ Reimplemented in \hyperlink{class_q_c_p_color_scale_ab8f6991ac88243fc582b44b1836
 
 
 
-Definition at line 1924 of file qcustomplot.\+cpp.
+Definition at line 2112 of file qcustomplot.\+cpp.
 
 
 
@@ -1343,41 +1339,45 @@ Referenced by Q\+C\+P\+Layout\+::update(), Q\+C\+P\+Axis\+Rect\+::update(), and 
 
 
 \begin{DoxyCode}
-1925 \{
-1926   \textcolor{keywordflow}{if} (phase == \hyperlink{class_q_c_p_layout_element_a0d83360e05735735aaf6d7983c56374da288cb59a92280e47261a341f2813e676}{upMargins})
-1927   \{
-1928     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_element_af61c70354d1275778d68206b2a1b2d36}{mAutoMargins} != \hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a80aa4149f16dabd538f8b2e3d42c42d5}{QCP::msNone})
-1929     \{
-1930       \textcolor{comment}{// set the margins of this layout element according to automatic margin calculation, either directly
-       or via a margin group:}
-1931       QMargins newMargins = \hyperlink{class_q_c_p_layout_element_ac2a32b99ee527ca5dfff9da03628fe94}{mMargins};
-1932       QList<QCP::MarginSide> allMarginSides = QList<QCP::MarginSide>() << 
-      \hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a9500c8bfcc9e80b9dff0a8e00e867f07}{QCP::msLeft} << \hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a93c719593bb2b94ed244d52c86d83b65}{QCP::msRight} << \hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a5db8fb0d0b0ecf0d611c2602a348e8a0}{QCP::msTop} << 
+2112                                                \{
+2113   \textcolor{keywordflow}{if} (phase == \hyperlink{class_q_c_p_layout_element_a0d83360e05735735aaf6d7983c56374da288cb59a92280e47261a341f2813e676}{upMargins}) \{
+2114     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_element_af61c70354d1275778d68206b2a1b2d36}{mAutoMargins} != \hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a80aa4149f16dabd538f8b2e3d42c42d5}{QCP::msNone}) \{
+2115       \textcolor{comment}{// set the margins of this layout element according to automatic margin}
+2116       \textcolor{comment}{// calculation, either directly or via a margin group:}
+2117       QMargins newMargins = \hyperlink{class_q_c_p_layout_element_ac2a32b99ee527ca5dfff9da03628fe94}{mMargins};
+2118       QList<QCP::MarginSide> allMarginSides = QList<QCP::MarginSide>()
+2119                                               << \hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a9500c8bfcc9e80b9dff0a8e00e867f07}{QCP::msLeft} << 
+      \hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a93c719593bb2b94ed244d52c86d83b65}{QCP::msRight}
+2120                                               << \hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a5db8fb0d0b0ecf0d611c2602a348e8a0}{QCP::msTop} << 
       \hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54a5241d8eac2bab9524a38889f576179cc}{QCP::msBottom};
-1933       \textcolor{keywordflow}{foreach} (\hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54}{QCP::MarginSide} side, allMarginSides)
-1934       \{
-1935         \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_element_af61c70354d1275778d68206b2a1b2d36}{mAutoMargins}.testFlag(side)) \textcolor{comment}{// this side's margin shall be calculated
-       automatically}
-1936         \{
-1937           \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_element_aeafbbc1130e02eee663c5326761fc963}{mMarginGroups}.contains(side))
-1938             \hyperlink{namespace_q_c_p_afbf6e3084c108f2bb4372107945ee82f}{QCP::setMarginValue}(newMargins, side, 
-      \hyperlink{class_q_c_p_layout_element_aeafbbc1130e02eee663c5326761fc963}{mMarginGroups}[side]->commonMargin(side)); \textcolor{comment}{// this side is part of a margin group, so get the
-       margin value from that group}
-1939           \textcolor{keywordflow}{else}
-1940             \hyperlink{namespace_q_c_p_afbf6e3084c108f2bb4372107945ee82f}{QCP::setMarginValue}(newMargins, side, 
-      \hyperlink{class_q_c_p_layout_element_a005c9f0fe84bc1591a2cf2c46fd477b4}{calculateAutoMargin}(side)); \textcolor{comment}{// this side is not part of a group, so calculate the value
-       directly}
-1941           \textcolor{comment}{// apply minimum margin restrictions:}
-1942           \textcolor{keywordflow}{if} (\hyperlink{namespace_q_c_p_a23a2679d3495c444acc26acc61e35b5b}{QCP::getMarginValue}(newMargins, side) < 
-      \hyperlink{namespace_q_c_p_a23a2679d3495c444acc26acc61e35b5b}{QCP::getMarginValue}(\hyperlink{class_q_c_p_layout_element_a5ba71f25d1af4bb092b28df618538e63}{mMinimumMargins}, side))
-1943             \hyperlink{namespace_q_c_p_afbf6e3084c108f2bb4372107945ee82f}{QCP::setMarginValue}(newMargins, side, 
-      \hyperlink{namespace_q_c_p_a23a2679d3495c444acc26acc61e35b5b}{QCP::getMarginValue}(\hyperlink{class_q_c_p_layout_element_a5ba71f25d1af4bb092b28df618538e63}{mMinimumMargins}, side));
-1944         \}
-1945       \}
-1946       \hyperlink{class_q_c_p_layout_element_a8f450b1f3f992ad576fce2c63d8b79cf}{setMargins}(newMargins);
-1947     \}
-1948   \}
-1949 \}
+2121       \textcolor{keywordflow}{foreach} (\hyperlink{namespace_q_c_p_a7e487e3e2ccb62ab7771065bab7cae54}{QCP::MarginSide} side, allMarginSides) \{
+2122         \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_element_af61c70354d1275778d68206b2a1b2d36}{mAutoMargins}.testFlag(
+2123                 side)) \textcolor{comment}{// this side's margin shall be calculated automatically}
+2124         \{
+2125           \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_layout_element_ae027b5caf347c2fb635e797513712a32}{mMarginGroups}.contains(side))
+2126             \hyperlink{namespace_q_c_p_afbf6e3084c108f2bb4372107945ee82f}{QCP::setMarginValue}(newMargins, side,
+2127                                 \hyperlink{class_q_c_p_layout_element_ae027b5caf347c2fb635e797513712a32}{mMarginGroups}[side]->commonMargin(
+2128                                     side)); \textcolor{comment}{// this side is part of a margin}
+2129                                             \textcolor{comment}{// group, so get the margin value}
+2130                                             \textcolor{comment}{// from that group}
+2131           \textcolor{keywordflow}{else}
+2132             \hyperlink{namespace_q_c_p_afbf6e3084c108f2bb4372107945ee82f}{QCP::setMarginValue}(newMargins, side,
+2133                                 \hyperlink{class_q_c_p_layout_element_a005c9f0fe84bc1591a2cf2c46fd477b4}{calculateAutoMargin}(side)); \textcolor{comment}{// this side is not}
+2134                                                             \textcolor{comment}{// part of a group,}
+2135                                                             \textcolor{comment}{// so calculate the}
+2136                                                             \textcolor{comment}{// value directly}
+2137           \textcolor{comment}{// apply minimum margin restrictions:}
+2138           \textcolor{keywordflow}{if} (\hyperlink{namespace_q_c_p_a23a2679d3495c444acc26acc61e35b5b}{QCP::getMarginValue}(newMargins, side) <
+2139               \hyperlink{namespace_q_c_p_a23a2679d3495c444acc26acc61e35b5b}{QCP::getMarginValue}(\hyperlink{class_q_c_p_layout_element_a5ba71f25d1af4bb092b28df618538e63}{mMinimumMargins}, side))
+2140             \hyperlink{namespace_q_c_p_afbf6e3084c108f2bb4372107945ee82f}{QCP::setMarginValue}(newMargins, side,
+2141                                 \hyperlink{namespace_q_c_p_a23a2679d3495c444acc26acc61e35b5b}{QCP::getMarginValue}(
+      \hyperlink{class_q_c_p_layout_element_a5ba71f25d1af4bb092b28df618538e63}{mMinimumMargins}, side));
+2142         \}
+2143       \}
+2144       \hyperlink{class_q_c_p_layout_element_a8f450b1f3f992ad576fce2c63d8b79cf}{setMargins}(newMargins);
+2145     \}
+2146   \}
+2147 \}
 \end{DoxyCode}
 
 
@@ -1414,11 +1414,11 @@ Reimplemented in \hyperlink{class_q_c_p_color_scale_ab398e14c01240f3dc855884fe9e
 
 
 
-Definition at line 703 of file qcustomplot.\+h.
+Definition at line 839 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-703 \{Q\_UNUSED(event)\}
+839 \{ Q\_UNUSED(event) \}
 \end{DoxyCode}
 
 
@@ -1428,21 +1428,21 @@ Definition at line 703 of file qcustomplot.\+h.
 \subsubsection[{Q\+C\+P\+Layout}]{\setlength{\rightskip}{0pt plus 5cm}friend class {\bf Q\+C\+P\+Layout}\hspace{0.3cm}{\ttfamily [friend]}}\label{class_q_c_p_layout_element_a588aac0a0d721f6c5f10126d8596a20f}
 
 
-Definition at line 714 of file qcustomplot.\+h.
+Definition at line 852 of file qcustomplot.\+h.
 
 \hypertarget{class_q_c_p_layout_element_ad077a686e85ab6fa03dcb2fd37fc499a}{}\index{Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}!Q\+C\+P\+Margin\+Group@{Q\+C\+P\+Margin\+Group}}
 \index{Q\+C\+P\+Margin\+Group@{Q\+C\+P\+Margin\+Group}!Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}}
 \subsubsection[{Q\+C\+P\+Margin\+Group}]{\setlength{\rightskip}{0pt plus 5cm}friend class {\bf Q\+C\+P\+Margin\+Group}\hspace{0.3cm}{\ttfamily [friend]}}\label{class_q_c_p_layout_element_ad077a686e85ab6fa03dcb2fd37fc499a}
 
 
-Definition at line 715 of file qcustomplot.\+h.
+Definition at line 853 of file qcustomplot.\+h.
 
 \hypertarget{class_q_c_p_layout_element_a1cdf9df76adcfae45261690aa0ca2198}{}\index{Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}!Q\+Custom\+Plot@{Q\+Custom\+Plot}}
 \index{Q\+Custom\+Plot@{Q\+Custom\+Plot}!Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}}
 \subsubsection[{Q\+Custom\+Plot}]{\setlength{\rightskip}{0pt plus 5cm}friend class {\bf Q\+Custom\+Plot}\hspace{0.3cm}{\ttfamily [friend]}}\label{class_q_c_p_layout_element_a1cdf9df76adcfae45261690aa0ca2198}
 
 
-Definition at line 713 of file qcustomplot.\+h.
+Definition at line 851 of file qcustomplot.\+h.
 
 
 
@@ -1452,18 +1452,18 @@ Definition at line 713 of file qcustomplot.\+h.
 \subsubsection[{m\+Auto\+Margins}]{\setlength{\rightskip}{0pt plus 5cm}Q\+C\+P\+::\+Margin\+Sides Q\+C\+P\+Layout\+Element\+::m\+Auto\+Margins\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_layout_element_af61c70354d1275778d68206b2a1b2d36}
 
 
-Definition at line 693 of file qcustomplot.\+h.
+Definition at line 829 of file qcustomplot.\+h.
 
 
 
 Referenced by Q\+C\+P\+Axis\+Rect\+::calculate\+Auto\+Margin(), set\+Auto\+Margins(), and update().
 
-\hypertarget{class_q_c_p_layout_element_aeafbbc1130e02eee663c5326761fc963}{}\index{Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}!m\+Margin\+Groups@{m\+Margin\+Groups}}
+\hypertarget{class_q_c_p_layout_element_ae027b5caf347c2fb635e797513712a32}{}\index{Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}!m\+Margin\+Groups@{m\+Margin\+Groups}}
 \index{m\+Margin\+Groups@{m\+Margin\+Groups}!Q\+C\+P\+Layout\+Element@{Q\+C\+P\+Layout\+Element}}
-\subsubsection[{m\+Margin\+Groups}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Hash$<${\bf Q\+C\+P\+::\+Margin\+Side}, {\bf Q\+C\+P\+Margin\+Group}$\ast$$>$ Q\+C\+P\+Layout\+Element\+::m\+Margin\+Groups\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_layout_element_aeafbbc1130e02eee663c5326761fc963}
+\subsubsection[{m\+Margin\+Groups}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Hash$<${\bf Q\+C\+P\+::\+Margin\+Side}, {\bf Q\+C\+P\+Margin\+Group} $\ast$$>$ Q\+C\+P\+Layout\+Element\+::m\+Margin\+Groups\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_layout_element_ae027b5caf347c2fb635e797513712a32}
 
 
-Definition at line 694 of file qcustomplot.\+h.
+Definition at line 830 of file qcustomplot.\+h.
 
 
 
@@ -1474,7 +1474,7 @@ Referenced by set\+Margin\+Group(), and update().
 \subsubsection[{m\+Margins}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Margins Q\+C\+P\+Layout\+Element\+::m\+Margins\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_layout_element_ac2a32b99ee527ca5dfff9da03628fe94}
 
 
-Definition at line 692 of file qcustomplot.\+h.
+Definition at line 828 of file qcustomplot.\+h.
 
 
 
@@ -1485,7 +1485,7 @@ Referenced by calculate\+Auto\+Margin(), Q\+C\+P\+Layout\+Grid\+::maximum\+Size\
 \subsubsection[{m\+Maximum\+Size}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Size Q\+C\+P\+Layout\+Element\+::m\+Maximum\+Size\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_layout_element_a64a387973fd4addac842028c89088998}
 
 
-Definition at line 690 of file qcustomplot.\+h.
+Definition at line 826 of file qcustomplot.\+h.
 
 
 
@@ -1496,7 +1496,7 @@ Referenced by maximum\+Size\+Hint(), and set\+Maximum\+Size().
 \subsubsection[{m\+Minimum\+Margins}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Margins Q\+C\+P\+Layout\+Element\+::m\+Minimum\+Margins\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_layout_element_a5ba71f25d1af4bb092b28df618538e63}
 
 
-Definition at line 692 of file qcustomplot.\+h.
+Definition at line 828 of file qcustomplot.\+h.
 
 
 
@@ -1507,7 +1507,7 @@ Referenced by calculate\+Auto\+Margin(), set\+Minimum\+Margins(), and update().
 \subsubsection[{m\+Minimum\+Size}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Size Q\+C\+P\+Layout\+Element\+::m\+Minimum\+Size\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_layout_element_affef747c81632de33f08483b7fd10d01}
 
 
-Definition at line 690 of file qcustomplot.\+h.
+Definition at line 826 of file qcustomplot.\+h.
 
 
 
@@ -1518,7 +1518,7 @@ Referenced by minimum\+Size\+Hint(), and set\+Minimum\+Size().
 \subsubsection[{m\+Outer\+Rect}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Rect Q\+C\+P\+Layout\+Element\+::m\+Outer\+Rect\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_layout_element_a07bb4973379e75cb0fa5b032c1d24afd}
 
 
-Definition at line 691 of file qcustomplot.\+h.
+Definition at line 827 of file qcustomplot.\+h.
 
 
 
@@ -1529,7 +1529,7 @@ Referenced by Q\+C\+P\+Abstract\+Legend\+Item\+::clip\+Rect(), Q\+C\+P\+Legend\+
 \subsubsection[{m\+Parent\+Layout}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Layout}$\ast$ Q\+C\+P\+Layout\+Element\+::m\+Parent\+Layout\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_layout_element_ae7c75c25549608bd688bdb65d4c38066}
 
 
-Definition at line 689 of file qcustomplot.\+h.
+Definition at line 825 of file qcustomplot.\+h.
 
 
 
@@ -1540,7 +1540,7 @@ Referenced by Q\+C\+P\+Layout\+::adopt\+Element(), Q\+C\+P\+Layout\+::release\+E
 \subsubsection[{m\+Rect}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Rect Q\+C\+P\+Layout\+Element\+::m\+Rect\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_layout_element_ad8896f05550389f7b9e92c9e6cdf6e01}
 
 
-Definition at line 691 of file qcustomplot.\+h.
+Definition at line 827 of file qcustomplot.\+h.
 
 
 

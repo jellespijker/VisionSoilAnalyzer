@@ -35,7 +35,7 @@
    <div id="projectname">Vision Soil Analyzer
    &#160;<span id="projectnumber">1.0.0</span>
    </div>
-   <div id="projectbrief">The Soil Analyzer is a portable lab that can analyse soil samples and tells the user about it&#39;s optical properties. It looks at the texture and describe it as a Particle Size Distribution. This information is presented as a Cumulative Distribution Function (CDF). It also describes the structure of the soil sample and gives information on the sphericity and roundness / angularity. It does so by analysing the contour of particles, describing them as Fourier Descriptors and using a Neural Network to describe it&#39;s properties. Finally it gives the color properties in a histogram in the CIE La*b* colorspace, which show correlations with the fertility of the soil. and a histogram of the Redness Index, which gives has a correlation on the iron content.</div>
+   <div id="projectbrief">Soil analyzer using an USB microscope - for Linux PC and Beaglebone Black</div>
   </td>
  </tr>
  </tbody>
@@ -111,61 +111,67 @@ $(document).ready(function(){initNavTree('hardwaresettings_8h_source.html','');}
 <div class="title">hardwaresettings.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="hardwaresettings_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef HARDWARESETTINGS_H</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define HARDWARESETTINGS_H</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;QDialog&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_vision_soil_8h.html">VisionSoil.h</a>&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;sys/utsname.h&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="namespace_ui.html">    9</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_ui.html">Ui</a> {</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">class </span><a class="code" href="class_hardware_settings.html">HardwareSettings</a>;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;}</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_hardware_settings.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_hardware_settings.html">HardwareSettings</a> : <span class="keyword">public</span> QDialog</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    Q_OBJECT</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="class_hardware_settings.html#a354b31caf3670eadd6b60cd6dd01c315">HardwareSettings</a>(QWidget *parent = 0, <a class="code" href="class_soil_analyzer_1_1_soil_settings.html">SoilAnalyzer::SoilSettings</a> *soilsetting =0);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="class_hardware_settings.html#a638ad23710a2c39a95473b3b4374ebb7">~HardwareSettings</a>();</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">private</span> slots:</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_hardware_settings.html#a667f301ecd49dd8d8df164ec27568f91">on_sb_HDRframes_editingFinished</a>();</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_hardware_settings.html#a2eee1385ac9ad1ad88d04c7682ee8c2c">on_sb_lightLevel_editingFinished</a>();</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_hardware_settings.html#a3127a1b2e53d6ac09e20391a0b6c9920">on_cb_encoderInv_clicked</a>(<span class="keywordtype">bool</span> checked);</div>
+<a href="hardwaresettings_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright (C) Jelle Spijker - All Rights Reserved</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Unauthorized copying of this file, via any medium is strictly prohibited</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * and only allowed with the written consent of the author (Jelle Spijker)</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * This software is proprietary and confidential</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * Written by Jelle Spijker &lt;spijker.jelle@gmail.com&gt;, 2015</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef HARDWARESETTINGS_H</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define HARDWARESETTINGS_H</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;QDialog&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_vision_soil_8h.html">VisionSoil.h</a>&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;sys/utsname.h&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="namespace_ui.html">   16</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_ui.html">Ui</a> {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">class </span><a class="code" href="class_hardware_settings.html">HardwareSettings</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;}</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_hardware_settings.html">   20</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_hardware_settings.html">HardwareSettings</a> : <span class="keyword">public</span> QDialog {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  Q_OBJECT</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keyword">explicit</span> <a class="code" href="class_hardware_settings.html#a354b31caf3670eadd6b60cd6dd01c315">HardwareSettings</a>(QWidget *parent = 0,</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                            <a class="code" href="class_soil_analyzer_1_1_soil_settings.html">SoilAnalyzer::SoilSettings</a> *soilsetting = 0);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <a class="code" href="class_hardware_settings.html#a638ad23710a2c39a95473b3b4374ebb7">~HardwareSettings</a>();</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_hardware_settings.html#a4febc1e4a9e63c81ab74347bb1f66fe2">on_cb_enableRainbow_clicked</a>(<span class="keywordtype">bool</span> checked);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_hardware_settings.html#ae46cc8fe1f4247ab95bedf9bd5c14557">   31</a></span>&#160;    Ui::HardwareSettings *<a class="code" href="class_hardware_settings.html#ae46cc8fe1f4247ab95bedf9bd5c14557">ui</a>;</div>
-<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_hardware_settings.html#a01cb694c4dbf49199d239a890639dce6">   32</a></span>&#160;    <a class="code" href="class_soil_analyzer_1_1_soil_settings.html">SoilAnalyzer::SoilSettings</a> *<a class="code" href="class_hardware_settings.html#a01cb694c4dbf49199d239a890639dce6">soilSetting</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;};</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#endif // HARDWARESETTINGS_H</span></div>
-<div class="ttc" id="class_hardware_settings_html_a2eee1385ac9ad1ad88d04c7682ee8c2c"><div class="ttname"><a href="class_hardware_settings.html#a2eee1385ac9ad1ad88d04c7682ee8c2c">HardwareSettings::on_sb_lightLevel_editingFinished</a></div><div class="ttdeci">void on_sb_lightLevel_editingFinished()</div><div class="ttdef"><b>Definition:</b> <a href="hardwaresettings_8cpp_source.html#l00053">hardwaresettings.cpp:53</a></div></div>
-<div class="ttc" id="class_hardware_settings_html_a638ad23710a2c39a95473b3b4374ebb7"><div class="ttname"><a href="class_hardware_settings.html#a638ad23710a2c39a95473b3b4374ebb7">HardwareSettings::~HardwareSettings</a></div><div class="ttdeci">~HardwareSettings()</div><div class="ttdef"><b>Definition:</b> <a href="hardwaresettings_8cpp_source.html#l00043">hardwaresettings.cpp:43</a></div></div>
-<div class="ttc" id="namespace_ui_html"><div class="ttname"><a href="namespace_ui.html">Ui</a></div><div class="ttdef"><b>Definition:</b> <a href="hardwaresettings_8h_source.html#l00009">hardwaresettings.h:9</a></div></div>
-<div class="ttc" id="class_hardware_settings_html_a667f301ecd49dd8d8df164ec27568f91"><div class="ttname"><a href="class_hardware_settings.html#a667f301ecd49dd8d8df164ec27568f91">HardwareSettings::on_sb_HDRframes_editingFinished</a></div><div class="ttdeci">void on_sb_HDRframes_editingFinished()</div><div class="ttdef"><b>Definition:</b> <a href="hardwaresettings_8cpp_source.html#l00048">hardwaresettings.cpp:48</a></div></div>
-<div class="ttc" id="class_hardware_settings_html_ae46cc8fe1f4247ab95bedf9bd5c14557"><div class="ttname"><a href="class_hardware_settings.html#ae46cc8fe1f4247ab95bedf9bd5c14557">HardwareSettings::ui</a></div><div class="ttdeci">Ui::HardwareSettings * ui</div><div class="ttdef"><b>Definition:</b> <a href="hardwaresettings_8h_source.html#l00031">hardwaresettings.h:31</a></div></div>
-<div class="ttc" id="class_hardware_settings_html_a01cb694c4dbf49199d239a890639dce6"><div class="ttname"><a href="class_hardware_settings.html#a01cb694c4dbf49199d239a890639dce6">HardwareSettings::soilSetting</a></div><div class="ttdeci">SoilAnalyzer::SoilSettings * soilSetting</div><div class="ttdef"><b>Definition:</b> <a href="hardwaresettings_8h_source.html#l00032">hardwaresettings.h:32</a></div></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">private</span> slots:</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_hardware_settings.html#a667f301ecd49dd8d8df164ec27568f91">on_sb_HDRframes_editingFinished</a>();</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_hardware_settings.html#a2eee1385ac9ad1ad88d04c7682ee8c2c">on_sb_lightLevel_editingFinished</a>();</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_hardware_settings.html#a3127a1b2e53d6ac09e20391a0b6c9920">on_cb_encoderInv_clicked</a>(<span class="keywordtype">bool</span> checked);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_hardware_settings.html#a4febc1e4a9e63c81ab74347bb1f66fe2">on_cb_enableRainbow_clicked</a>(<span class="keywordtype">bool</span> checked);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="class_hardware_settings.html#ae46cc8fe1f4247ab95bedf9bd5c14557">   38</a></span>&#160;  Ui::HardwareSettings *<a class="code" href="class_hardware_settings.html#ae46cc8fe1f4247ab95bedf9bd5c14557">ui</a>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="class_hardware_settings.html#a01cb694c4dbf49199d239a890639dce6">   39</a></span>&#160;  <a class="code" href="class_soil_analyzer_1_1_soil_settings.html">SoilAnalyzer::SoilSettings</a> *<a class="code" href="class_hardware_settings.html#a01cb694c4dbf49199d239a890639dce6">soilSetting</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;};</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#endif // HARDWARESETTINGS_H</span></div>
+<div class="ttc" id="class_hardware_settings_html_a2eee1385ac9ad1ad88d04c7682ee8c2c"><div class="ttname"><a href="class_hardware_settings.html#a2eee1385ac9ad1ad88d04c7682ee8c2c">HardwareSettings::on_sb_lightLevel_editingFinished</a></div><div class="ttdeci">void on_sb_lightLevel_editingFinished()</div><div class="ttdef"><b>Definition:</b> <a href="hardwaresettings_8cpp_source.html#l00050">hardwaresettings.cpp:50</a></div></div>
+<div class="ttc" id="class_hardware_settings_html_a638ad23710a2c39a95473b3b4374ebb7"><div class="ttname"><a href="class_hardware_settings.html#a638ad23710a2c39a95473b3b4374ebb7">HardwareSettings::~HardwareSettings</a></div><div class="ttdeci">~HardwareSettings()</div><div class="ttdef"><b>Definition:</b> <a href="hardwaresettings_8cpp_source.html#l00044">hardwaresettings.cpp:44</a></div></div>
+<div class="ttc" id="namespace_ui_html"><div class="ttname"><a href="namespace_ui.html">Ui</a></div><div class="ttdef"><b>Definition:</b> <a href="hardwaresettings_8h_source.html#l00016">hardwaresettings.h:16</a></div></div>
+<div class="ttc" id="class_hardware_settings_html_a667f301ecd49dd8d8df164ec27568f91"><div class="ttname"><a href="class_hardware_settings.html#a667f301ecd49dd8d8df164ec27568f91">HardwareSettings::on_sb_HDRframes_editingFinished</a></div><div class="ttdeci">void on_sb_HDRframes_editingFinished()</div><div class="ttdef"><b>Definition:</b> <a href="hardwaresettings_8cpp_source.html#l00046">hardwaresettings.cpp:46</a></div></div>
+<div class="ttc" id="class_hardware_settings_html_ae46cc8fe1f4247ab95bedf9bd5c14557"><div class="ttname"><a href="class_hardware_settings.html#ae46cc8fe1f4247ab95bedf9bd5c14557">HardwareSettings::ui</a></div><div class="ttdeci">Ui::HardwareSettings * ui</div><div class="ttdef"><b>Definition:</b> <a href="hardwaresettings_8h_source.html#l00038">hardwaresettings.h:38</a></div></div>
+<div class="ttc" id="class_hardware_settings_html_a01cb694c4dbf49199d239a890639dce6"><div class="ttname"><a href="class_hardware_settings.html#a01cb694c4dbf49199d239a890639dce6">HardwareSettings::soilSetting</a></div><div class="ttdeci">SoilAnalyzer::SoilSettings * soilSetting</div><div class="ttdef"><b>Definition:</b> <a href="hardwaresettings_8h_source.html#l00039">hardwaresettings.h:39</a></div></div>
 <div class="ttc" id="_vision_soil_8h_html"><div class="ttname"><a href="_vision_soil_8h.html">VisionSoil.h</a></div></div>
-<div class="ttc" id="class_hardware_settings_html"><div class="ttname"><a href="class_hardware_settings.html">HardwareSettings</a></div><div class="ttdef"><b>Definition:</b> <a href="hardwaresettings_8h_source.html#l00013">hardwaresettings.h:13</a></div></div>
-<div class="ttc" id="class_hardware_settings_html_a354b31caf3670eadd6b60cd6dd01c315"><div class="ttname"><a href="class_hardware_settings.html#a354b31caf3670eadd6b60cd6dd01c315">HardwareSettings::HardwareSettings</a></div><div class="ttdeci">HardwareSettings(QWidget *parent=0, SoilAnalyzer::SoilSettings *soilsetting=0)</div><div class="ttdef"><b>Definition:</b> <a href="hardwaresettings_8cpp_source.html#l00004">hardwaresettings.cpp:4</a></div></div>
-<div class="ttc" id="class_hardware_settings_html_a4febc1e4a9e63c81ab74347bb1f66fe2"><div class="ttname"><a href="class_hardware_settings.html#a4febc1e4a9e63c81ab74347bb1f66fe2">HardwareSettings::on_cb_enableRainbow_clicked</a></div><div class="ttdeci">void on_cb_enableRainbow_clicked(bool checked)</div><div class="ttdef"><b>Definition:</b> <a href="hardwaresettings_8cpp_source.html#l00063">hardwaresettings.cpp:63</a></div></div>
-<div class="ttc" id="class_hardware_settings_html_a3127a1b2e53d6ac09e20391a0b6c9920"><div class="ttname"><a href="class_hardware_settings.html#a3127a1b2e53d6ac09e20391a0b6c9920">HardwareSettings::on_cb_encoderInv_clicked</a></div><div class="ttdeci">void on_cb_encoderInv_clicked(bool checked)</div><div class="ttdef"><b>Definition:</b> <a href="hardwaresettings_8cpp_source.html#l00058">hardwaresettings.cpp:58</a></div></div>
-<div class="ttc" id="class_soil_analyzer_1_1_soil_settings_html"><div class="ttname"><a href="class_soil_analyzer_1_1_soil_settings.html">SoilAnalyzer::SoilSettings</a></div><div class="ttdef"><b>Definition:</b> <a href="soilsettings_8h_source.html#l00010">soilsettings.h:10</a></div></div>
+<div class="ttc" id="class_hardware_settings_html"><div class="ttname"><a href="class_hardware_settings.html">HardwareSettings</a></div><div class="ttdef"><b>Definition:</b> <a href="hardwaresettings_8h_source.html#l00020">hardwaresettings.h:20</a></div></div>
+<div class="ttc" id="class_hardware_settings_html_a354b31caf3670eadd6b60cd6dd01c315"><div class="ttname"><a href="class_hardware_settings.html#a354b31caf3670eadd6b60cd6dd01c315">HardwareSettings::HardwareSettings</a></div><div class="ttdeci">HardwareSettings(QWidget *parent=0, SoilAnalyzer::SoilSettings *soilsetting=0)</div><div class="ttdef"><b>Definition:</b> <a href="hardwaresettings_8cpp_source.html#l00011">hardwaresettings.cpp:11</a></div></div>
+<div class="ttc" id="class_hardware_settings_html_a4febc1e4a9e63c81ab74347bb1f66fe2"><div class="ttname"><a href="class_hardware_settings.html#a4febc1e4a9e63c81ab74347bb1f66fe2">HardwareSettings::on_cb_enableRainbow_clicked</a></div><div class="ttdeci">void on_cb_enableRainbow_clicked(bool checked)</div><div class="ttdef"><b>Definition:</b> <a href="hardwaresettings_8cpp_source.html#l00058">hardwaresettings.cpp:58</a></div></div>
+<div class="ttc" id="class_hardware_settings_html_a3127a1b2e53d6ac09e20391a0b6c9920"><div class="ttname"><a href="class_hardware_settings.html#a3127a1b2e53d6ac09e20391a0b6c9920">HardwareSettings::on_cb_encoderInv_clicked</a></div><div class="ttdeci">void on_cb_encoderInv_clicked(bool checked)</div><div class="ttdef"><b>Definition:</b> <a href="hardwaresettings_8cpp_source.html#l00054">hardwaresettings.cpp:54</a></div></div>
+<div class="ttc" id="class_soil_analyzer_1_1_soil_settings_html"><div class="ttname"><a href="class_soil_analyzer_1_1_soil_settings.html">SoilAnalyzer::SoilSettings</a></div><div class="ttdef"><b>Definition:</b> <a href="soilsettings_8h_source.html#l00017">soilsettings.h:17</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_885b01542792bd8907df3d55a808f527.html">VSAGUI</a></li><li class="navelem"><a class="el" href="hardwaresettings_8h.html">hardwaresettings.h</a></li>
-    <li class="footer">Generated on Sat Jun 6 2015 21:25:29 for Vision Soil Analyzer by
+    <li class="footer">Generated on Sun Jun 7 2015 21:06:33 for Vision Soil Analyzer by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

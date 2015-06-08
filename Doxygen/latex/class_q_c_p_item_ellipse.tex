@@ -122,9 +122,11 @@ Q\+Brush \hyperlink{class_q_c_p_item_ellipse_a2e49d5547478aa36910ed8a2dcc8a5c0}{
 \subsection{Detailed Description}
 An ellipse. 
 
- It has two positions, {\itshape top\+Left} and {\itshape bottom\+Right}, which define the rect the ellipse will be drawn in. 
+ anchors, solid blue discs are positions."
 
-Definition at line 3513 of file qcustomplot.\+h.
+It has two positions, {\itshape top\+Left} and {\itshape bottom\+Right}, which define the rect the ellipse will be drawn in. 
+
+Definition at line 3990 of file qcustomplot.\+h.
 
 
 
@@ -157,13 +159,21 @@ Definition at line 3513 of file qcustomplot.\+h.
 \end{Desc}
 
 
-Definition at line 3554 of file qcustomplot.\+h.
+Definition at line 4031 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-3554 \{\hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45eab2538849b88921e7fc1dcc15b2a6109d}{aiTopLeftRim}, \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45ea83e55b0c1799baac1eecab52bcbe096d}{aiTop}, \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45ea415d82233c14f0c70c245d50e706e75b}{aiTopRightRim}, \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45ea0f0dcfdf87d9405b53b2129740fb6ba6}{aiRight}, 
-      \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45eab62732e96d67801d50c6a9bdebc374d0}{aiBottomRightRim}, \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45ea5894287dedaeec1f48394fd950ccff5b}{aiBottom}, \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45ea7b8101bfc590af8ce32961f6545c4f90}{aiBottomLeftRim}, 
-      \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45eae74dad00419a0e1f42877510158fb922}{aiLeft}, \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45ea580ec0e9b9fd1488fccf5783e52c0c02}{aiCenter}\};
+4031                    \{
+4032     \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45eab2538849b88921e7fc1dcc15b2a6109d}{aiTopLeftRim},
+4033     \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45ea83e55b0c1799baac1eecab52bcbe096d}{aiTop},
+4034     \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45ea415d82233c14f0c70c245d50e706e75b}{aiTopRightRim},
+4035     \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45ea0f0dcfdf87d9405b53b2129740fb6ba6}{aiRight},
+4036     \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45eab62732e96d67801d50c6a9bdebc374d0}{aiBottomRightRim},
+4037     \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45ea5894287dedaeec1f48394fd950ccff5b}{aiBottom},
+4038     \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45ea7b8101bfc590af8ce32961f6545c4f90}{aiBottomLeftRim},
+4039     \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45eae74dad00419a0e1f42877510158fb922}{aiLeft},
+4040     \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45ea580ec0e9b9fd1488fccf5783e52c0c02}{aiCenter}
+4041   \};
 \end{DoxyCode}
 
 
@@ -179,7 +189,7 @@ Creates an ellipse item and sets default values.
 
 The constructed item can be added to the plot with \hyperlink{class_q_custom_plot_aa500620379262321685cb7a7674cbd2a}{Q\+Custom\+Plot\+::add\+Item}. 
 
-Definition at line 22530 of file qcustomplot.\+cpp.
+Definition at line 25049 of file qcustomplot.\+cpp.
 
 
 
@@ -187,32 +197,32 @@ References bottom\+Right, set\+Brush(), Q\+C\+P\+Item\+Position\+::set\+Coords()
 
 
 \begin{DoxyCode}
-22530                                                       :
-22531   \hyperlink{class_q_c_p_abstract_item_a9922507d8b4503a1fe1ed0b1030e23b6}{QCPAbstractItem}(parentPlot),
-22532   \hyperlink{class_q_c_p_item_ellipse_a12fd8420c06718d0c8a2303d6a652848}{topLeft}(\hyperlink{class_q_c_p_abstract_item_a75036d39c4d4e2e1a7dd145fff915d32}{createPosition}(QLatin1String(\textcolor{stringliteral}{"topLeft"}))),
-22533   \hyperlink{class_q_c_p_item_ellipse_ab73c8deafc0d8d1ef7d75b6cdcc37159}{bottomRight}(\hyperlink{class_q_c_p_abstract_item_a75036d39c4d4e2e1a7dd145fff915d32}{createPosition}(QLatin1String(\textcolor{stringliteral}{"bottomRight"}))),
-22534   \hyperlink{class_q_c_p_item_ellipse_a33ebd2a751b63b9240edc9aa46c19eff}{topLeftRim}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"topLeftRim"}), 
+25050     : \hyperlink{class_q_c_p_abstract_item_a9922507d8b4503a1fe1ed0b1030e23b6}{QCPAbstractItem}(parentPlot),
+25051       \hyperlink{class_q_c_p_item_ellipse_a12fd8420c06718d0c8a2303d6a652848}{topLeft}(\hyperlink{class_q_c_p_abstract_item_a75036d39c4d4e2e1a7dd145fff915d32}{createPosition}(QLatin1String(\textcolor{stringliteral}{"topLeft"}))),
+25052       \hyperlink{class_q_c_p_item_ellipse_ab73c8deafc0d8d1ef7d75b6cdcc37159}{bottomRight}(\hyperlink{class_q_c_p_abstract_item_a75036d39c4d4e2e1a7dd145fff915d32}{createPosition}(QLatin1String(\textcolor{stringliteral}{"bottomRight"}))),
+25053       \hyperlink{class_q_c_p_item_ellipse_a33ebd2a751b63b9240edc9aa46c19eff}{topLeftRim}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"topLeftRim"}), 
       \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45eab2538849b88921e7fc1dcc15b2a6109d}{aiTopLeftRim})),
-22535   \hyperlink{class_q_c_p_item_ellipse_ad50f907d6f9d1402c6c5d302dca5c5d5}{top}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"top"}), \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45ea83e55b0c1799baac1eecab52bcbe096d}{aiTop})),
-22536   \hyperlink{class_q_c_p_item_ellipse_a744446970b38a4a3bbea46d722b7c54d}{topRightRim}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"topRightRim"}), 
+25054       \hyperlink{class_q_c_p_item_ellipse_ad50f907d6f9d1402c6c5d302dca5c5d5}{top}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"top"}), \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45ea83e55b0c1799baac1eecab52bcbe096d}{aiTop})),
+25055       \hyperlink{class_q_c_p_item_ellipse_a744446970b38a4a3bbea46d722b7c54d}{topRightRim}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"topRightRim"}), 
       \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45ea415d82233c14f0c70c245d50e706e75b}{aiTopRightRim})),
-22537   \hyperlink{class_q_c_p_item_ellipse_a50091a3bd8761d3ce0d95d9c727e4a82}{right}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"right"}), \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45ea0f0dcfdf87d9405b53b2129740fb6ba6}{aiRight})),
-22538   \hyperlink{class_q_c_p_item_ellipse_a5c8404be601d61b7fafeaaf1c05c4c42}{bottomRightRim}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"bottomRightRim"}), 
+25056       \hyperlink{class_q_c_p_item_ellipse_a50091a3bd8761d3ce0d95d9c727e4a82}{right}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"right"}), \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45ea0f0dcfdf87d9405b53b2129740fb6ba6}{aiRight})),
+25057       \hyperlink{class_q_c_p_item_ellipse_a5c8404be601d61b7fafeaaf1c05c4c42}{bottomRightRim}(
+25058           \hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"bottomRightRim"}), 
       \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45eab62732e96d67801d50c6a9bdebc374d0}{aiBottomRightRim})),
-22539   \hyperlink{class_q_c_p_item_ellipse_a2dc80ff9f5db600eae0133bdde65066f}{bottom}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"bottom"}), \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45ea5894287dedaeec1f48394fd950ccff5b}{aiBottom})),
-22540   \hyperlink{class_q_c_p_item_ellipse_a31f31a9e9f9098c90fb47573094276c5}{bottomLeftRim}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"bottomLeftRim"}), 
+25059       \hyperlink{class_q_c_p_item_ellipse_a2dc80ff9f5db600eae0133bdde65066f}{bottom}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"bottom"}), \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45ea5894287dedaeec1f48394fd950ccff5b}{aiBottom})),
+25060       \hyperlink{class_q_c_p_item_ellipse_a31f31a9e9f9098c90fb47573094276c5}{bottomLeftRim}(
+25061           \hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"bottomLeftRim"}), 
       \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45ea7b8101bfc590af8ce32961f6545c4f90}{aiBottomLeftRim})),
-22541   \hyperlink{class_q_c_p_item_ellipse_aa259cd03efaedf60cf5b1019b20e4f2b}{left}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"left"}), \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45eae74dad00419a0e1f42877510158fb922}{aiLeft})),
-22542   \hyperlink{class_q_c_p_item_ellipse_a8b6dd0e854f99239c5806ffdf2f590b3}{center}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"center"}), \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45ea580ec0e9b9fd1488fccf5783e52c0c02}{aiCenter}))
-22543 \{
-22544   \hyperlink{class_q_c_p_item_ellipse_a12fd8420c06718d0c8a2303d6a652848}{topLeft}->\hyperlink{class_q_c_p_item_position_aa988ba4e87ab684c9021017dcaba945f}{setCoords}(0, 1);
-22545   \hyperlink{class_q_c_p_item_ellipse_ab73c8deafc0d8d1ef7d75b6cdcc37159}{bottomRight}->\hyperlink{class_q_c_p_item_position_aa988ba4e87ab684c9021017dcaba945f}{setCoords}(1, 0);
-22546   
-22547   \hyperlink{class_q_c_p_item_ellipse_adb81a663ed2420fcfa011e49f678d1a6}{setPen}(QPen(Qt::black));
-22548   \hyperlink{class_q_c_p_item_ellipse_a6c542fba1dc918041c583f58a50dde99}{setSelectedPen}(QPen(Qt::blue, 2));
-22549   \hyperlink{class_q_c_p_item_ellipse_a49fc74e6965834e873d027d026def798}{setBrush}(Qt::NoBrush);
-22550   \hyperlink{class_q_c_p_item_ellipse_a9693501cfaa43a099655c75bed0dab3f}{setSelectedBrush}(Qt::NoBrush);
-22551 \}
+25062       \hyperlink{class_q_c_p_item_ellipse_aa259cd03efaedf60cf5b1019b20e4f2b}{left}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"left"}), \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45eae74dad00419a0e1f42877510158fb922}{aiLeft})),
+25063       \hyperlink{class_q_c_p_item_ellipse_a8b6dd0e854f99239c5806ffdf2f590b3}{center}(\hyperlink{class_q_c_p_abstract_item_af3fc92527802078ca395138748b629a7}{createAnchor}(QLatin1String(\textcolor{stringliteral}{"center"}), \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45ea580ec0e9b9fd1488fccf5783e52c0c02}{aiCenter})) \{
+25064   \hyperlink{class_q_c_p_item_ellipse_a12fd8420c06718d0c8a2303d6a652848}{topLeft}->\hyperlink{class_q_c_p_item_position_aa988ba4e87ab684c9021017dcaba945f}{setCoords}(0, 1);
+25065   \hyperlink{class_q_c_p_item_ellipse_ab73c8deafc0d8d1ef7d75b6cdcc37159}{bottomRight}->\hyperlink{class_q_c_p_item_position_aa988ba4e87ab684c9021017dcaba945f}{setCoords}(1, 0);
+25066 
+25067   \hyperlink{class_q_c_p_item_ellipse_adb81a663ed2420fcfa011e49f678d1a6}{setPen}(QPen(Qt::black));
+25068   \hyperlink{class_q_c_p_item_ellipse_a6c542fba1dc918041c583f58a50dde99}{setSelectedPen}(QPen(Qt::blue, 2));
+25069   \hyperlink{class_q_c_p_item_ellipse_a49fc74e6965834e873d027d026def798}{setBrush}(Qt::NoBrush);
+25070   \hyperlink{class_q_c_p_item_ellipse_a9693501cfaa43a099655c75bed0dab3f}{setSelectedBrush}(Qt::NoBrush);
+25071 \}
 \end{DoxyCode}
 
 
@@ -234,12 +244,11 @@ Here is the call graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_q_c_p_item_ellipse_a3c17073a1805d32b4e09b6ccde0bef76}
 
 
-Definition at line 22553 of file qcustomplot.\+cpp.
+Definition at line 25073 of file qcustomplot.\+cpp.
 
 
 \begin{DoxyCode}
-22554 \{
-22555 \}
+25073 \{\}
 \end{DoxyCode}
 
 
@@ -257,7 +266,7 @@ Reimplemented from \hyperlink{class_q_c_p_abstract_item_a94bde62b8a2fc133666dcbb
 
 
 
-Definition at line 22656 of file qcustomplot.\+cpp.
+Definition at line 25166 of file qcustomplot.\+cpp.
 
 
 
@@ -265,27 +274,33 @@ References ai\+Bottom, ai\+Bottom\+Left\+Rim, ai\+Bottom\+Right\+Rim, ai\+Center
 
 
 \begin{DoxyCode}
-22657 \{
-22658   QRectF \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect} = QRectF(\hyperlink{class_q_c_p_item_ellipse_a12fd8420c06718d0c8a2303d6a652848}{topLeft}->\hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}(), \hyperlink{class_q_c_p_item_ellipse_ab73c8deafc0d8d1ef7d75b6cdcc37159}{bottomRight}->
+25166                                                            \{
+25167   QRectF \hyperlink{_gen_blob_8m_aea8f6815d9a63491fc422c5572c6b3c3}{rect} = QRectF(\hyperlink{class_q_c_p_item_ellipse_a12fd8420c06718d0c8a2303d6a652848}{topLeft}->\hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}(), \hyperlink{class_q_c_p_item_ellipse_ab73c8deafc0d8d1ef7d75b6cdcc37159}{bottomRight}->
       \hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}());
-22659   \textcolor{keywordflow}{switch} (anchorId)
-22660   \{
-22661     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45eab2538849b88921e7fc1dcc15b2a6109d}{aiTopLeftRim}:     \textcolor{keywordflow}{return} rect.center()+(rect.topLeft()-rect.center())*1/qSqrt(2);
-22662     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45ea83e55b0c1799baac1eecab52bcbe096d}{aiTop}:            \textcolor{keywordflow}{return} (rect.topLeft()+rect.topRight())*0.5;
-22663     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45ea415d82233c14f0c70c245d50e706e75b}{aiTopRightRim}:    \textcolor{keywordflow}{return} rect.center()+(rect.topRight()-rect.center())*1/qSqrt(2);
-22664     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45ea0f0dcfdf87d9405b53b2129740fb6ba6}{aiRight}:          \textcolor{keywordflow}{return} (rect.topRight()+rect.bottomRight())*0.5;
-22665     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45eab62732e96d67801d50c6a9bdebc374d0}{aiBottomRightRim}: \textcolor{keywordflow}{return} rect.center()+(rect.bottomRight()-rect.center())*1/qSqrt(
-      2);
-22666     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45ea5894287dedaeec1f48394fd950ccff5b}{aiBottom}:         \textcolor{keywordflow}{return} (rect.bottomLeft()+rect.bottomRight())*0.5;
-22667     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45ea7b8101bfc590af8ce32961f6545c4f90}{aiBottomLeftRim}:  \textcolor{keywordflow}{return} rect.center()+(rect.bottomLeft()-rect.center())*1/qSqrt(2)
-      ;
-22668     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45eae74dad00419a0e1f42877510158fb922}{aiLeft}:           \textcolor{keywordflow}{return} (rect.topLeft()+rect.bottomLeft())*0.5;
-22669     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45ea580ec0e9b9fd1488fccf5783e52c0c02}{aiCenter}:         \textcolor{keywordflow}{return} (rect.topLeft()+rect.bottomRight())*0.5;
-22670   \}
-22671   
-22672   qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"invalid anchorId"} << anchorId;
-22673   \textcolor{keywordflow}{return} QPointF();
-22674 \}
+25168   \textcolor{keywordflow}{switch} (anchorId) \{
+25169   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45eab2538849b88921e7fc1dcc15b2a6109d}{aiTopLeftRim}:
+25170     \textcolor{keywordflow}{return} rect.center() + (rect.topLeft() - rect.center()) * 1 / qSqrt(2);
+25171   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45ea83e55b0c1799baac1eecab52bcbe096d}{aiTop}:
+25172     \textcolor{keywordflow}{return} (rect.topLeft() + rect.topRight()) * 0.5;
+25173   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45ea415d82233c14f0c70c245d50e706e75b}{aiTopRightRim}:
+25174     \textcolor{keywordflow}{return} rect.center() + (rect.topRight() - rect.center()) * 1 / qSqrt(2);
+25175   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45ea0f0dcfdf87d9405b53b2129740fb6ba6}{aiRight}:
+25176     \textcolor{keywordflow}{return} (rect.topRight() + rect.bottomRight()) * 0.5;
+25177   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45eab62732e96d67801d50c6a9bdebc374d0}{aiBottomRightRim}:
+25178     \textcolor{keywordflow}{return} rect.center() + (rect.bottomRight() - rect.center()) * 1 / qSqrt(2);
+25179   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45ea5894287dedaeec1f48394fd950ccff5b}{aiBottom}:
+25180     \textcolor{keywordflow}{return} (rect.bottomLeft() + rect.bottomRight()) * 0.5;
+25181   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45ea7b8101bfc590af8ce32961f6545c4f90}{aiBottomLeftRim}:
+25182     \textcolor{keywordflow}{return} rect.center() + (rect.bottomLeft() - rect.center()) * 1 / qSqrt(2);
+25183   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45eae74dad00419a0e1f42877510158fb922}{aiLeft}:
+25184     \textcolor{keywordflow}{return} (rect.topLeft() + rect.bottomLeft()) * 0.5;
+25185   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_item_ellipse_a415009889543169f35b70795f415e45ea580ec0e9b9fd1488fccf5783e52c0c02}{aiCenter}:
+25186     \textcolor{keywordflow}{return} (rect.topLeft() + rect.bottomRight()) * 0.5;
+25187   \}
+25188 
+25189   qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"invalid anchorId"} << anchorId;
+25190   \textcolor{keywordflow}{return} QPointF();
+25191 \}
 \end{DoxyCode}
 
 
@@ -307,7 +322,7 @@ Here is the call graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_item_ellipse_ac012e4fd59fdb1afb6554937bae8f7e1}
 
 
-Definition at line 3529 of file qcustomplot.\+h.
+Definition at line 4005 of file qcustomplot.\+h.
 
 
 
@@ -315,7 +330,7 @@ Referenced by set\+Brush(), and set\+Selected\+Brush().
 
 
 \begin{DoxyCode}
-3529 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_ellipse_a6fa59478cd3ad1b10e6c1f6cedc84bd6}{mBrush}; \}
+4005 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_ellipse_a6fa59478cd3ad1b10e6c1f6cedc84bd6}{mBrush}; \}
 \end{DoxyCode}
 
 
@@ -341,7 +356,7 @@ Implements \hyperlink{class_q_c_p_abstract_item_ad0dc056f650c3ca73414e6b4f01674e
 
 
 
-Definition at line 22628 of file qcustomplot.\+cpp.
+Definition at line 25138 of file qcustomplot.\+cpp.
 
 
 
@@ -349,32 +364,32 @@ References bottom\+Right, Q\+C\+P\+Abstract\+Item\+::clip\+Rect(), main\+Brush()
 
 
 \begin{DoxyCode}
-22629 \{
-22630   QPointF p1 = \hyperlink{class_q_c_p_item_ellipse_a12fd8420c06718d0c8a2303d6a652848}{topLeft}->\hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}();
-22631   QPointF p2 = \hyperlink{class_q_c_p_item_ellipse_ab73c8deafc0d8d1ef7d75b6cdcc37159}{bottomRight}->\hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}();
-22632   \textcolor{keywordflow}{if} (p1.toPoint() == p2.toPoint())
-22633     \textcolor{keywordflow}{return};
-22634   QRectF ellipseRect = QRectF(p1, p2).normalized();
-22635   QRect clip = \hyperlink{class_q_c_p_abstract_item_a538e25ff8856534582f5b2b400a46405}{clipRect}().adjusted(-\hyperlink{class_q_c_p_item_ellipse_afc78d49ed5ffa886bccf18f297f83d30}{mainPen}().widthF(), -\hyperlink{class_q_c_p_item_ellipse_afc78d49ed5ffa886bccf18f297f83d30}{mainPen}().widthF(), 
-      \hyperlink{class_q_c_p_item_ellipse_afc78d49ed5ffa886bccf18f297f83d30}{mainPen}().widthF(), \hyperlink{class_q_c_p_item_ellipse_afc78d49ed5ffa886bccf18f297f83d30}{mainPen}().widthF());
-22636   \textcolor{keywordflow}{if} (ellipseRect.intersects(clip)) \textcolor{comment}{// only draw if bounding rect of ellipse is visible in cliprect}
-22637   \{
-22638     painter->\hyperlink{class_q_c_p_painter_af9c7a4cd1791403901f8c5b82a150195}{setPen}(\hyperlink{class_q_c_p_item_ellipse_afc78d49ed5ffa886bccf18f297f83d30}{mainPen}());
-22639     painter->setBrush(\hyperlink{class_q_c_p_item_ellipse_a2a9757204877c9d0fd07adfb26d6b1d8}{mainBrush}());
-22640 \textcolor{preprocessor}{#ifdef \_\_EXCEPTIONS}
-22641     \textcolor{keywordflow}{try} \textcolor{comment}{// drawEllipse sometimes throws exceptions if ellipse is too big}
-22642     \{
-22643 \textcolor{preprocessor}{#endif}
-22644       painter->drawEllipse(ellipseRect);
-22645 \textcolor{preprocessor}{#ifdef \_\_EXCEPTIONS}
-22646     \} \textcolor{keywordflow}{catch} (...)
-22647     \{
-22648       qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Item too large for memory, setting invisible"};
-22649       \hyperlink{class_q_c_p_layerable_a3bed99ddc396b48ce3ebfdc0418744f8}{setVisible}(\textcolor{keyword}{false});
-22650     \}
-22651 \textcolor{preprocessor}{#endif}
-22652   \}
-22653 \}
+25138                                              \{
+25139   QPointF p1 = \hyperlink{class_q_c_p_item_ellipse_a12fd8420c06718d0c8a2303d6a652848}{topLeft}->\hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}();
+25140   QPointF p2 = \hyperlink{class_q_c_p_item_ellipse_ab73c8deafc0d8d1ef7d75b6cdcc37159}{bottomRight}->\hyperlink{class_q_c_p_item_position_ae490f9c76ee2ba33752c495d3b6e8fb5}{pixelPoint}();
+25141   \textcolor{keywordflow}{if} (p1.toPoint() == p2.toPoint())
+25142     \textcolor{keywordflow}{return};
+25143   QRectF ellipseRect = QRectF(p1, p2).normalized();
+25144   QRect clip = \hyperlink{class_q_c_p_abstract_item_a538e25ff8856534582f5b2b400a46405}{clipRect}().adjusted(-\hyperlink{class_q_c_p_item_ellipse_afc78d49ed5ffa886bccf18f297f83d30}{mainPen}().widthF(), -\hyperlink{class_q_c_p_item_ellipse_afc78d49ed5ffa886bccf18f297f83d30}{mainPen}().widthF(),
+25145                                    \hyperlink{class_q_c_p_item_ellipse_afc78d49ed5ffa886bccf18f297f83d30}{mainPen}().widthF(), \hyperlink{class_q_c_p_item_ellipse_afc78d49ed5ffa886bccf18f297f83d30}{mainPen}().widthF());
+25146   \textcolor{keywordflow}{if} (ellipseRect.intersects(
+25147           clip)) \textcolor{comment}{// only draw if bounding rect of ellipse is visible in cliprect}
+25148   \{
+25149     painter->\hyperlink{class_q_c_p_painter_af9c7a4cd1791403901f8c5b82a150195}{setPen}(\hyperlink{class_q_c_p_item_ellipse_afc78d49ed5ffa886bccf18f297f83d30}{mainPen}());
+25150     painter->setBrush(\hyperlink{class_q_c_p_item_ellipse_a2a9757204877c9d0fd07adfb26d6b1d8}{mainBrush}());
+25151 \textcolor{preprocessor}{#ifdef \_\_EXCEPTIONS}
+25152     \textcolor{keywordflow}{try} \textcolor{comment}{// drawEllipse sometimes throws exceptions if ellipse is too big}
+25153     \{
+25154 \textcolor{preprocessor}{#endif}
+25155       painter->drawEllipse(ellipseRect);
+25156 \textcolor{preprocessor}{#ifdef \_\_EXCEPTIONS}
+25157     \} \textcolor{keywordflow}{catch} (...) \{
+25158       qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"Item too large for memory, setting invisible"};
+25159       \hyperlink{class_q_c_p_layerable_a3bed99ddc396b48ce3ebfdc0418744f8}{setVisible}(\textcolor{keyword}{false});
+25160     \}
+25161 \textcolor{preprocessor}{#endif}
+25162   \}
+25163 \}
 \end{DoxyCode}
 
 
@@ -396,7 +411,7 @@ Here is the call graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_ellipse_a2a9757204877c9d0fd07adfb26d6b1d8}
 
 
-Definition at line 22691 of file qcustomplot.\+cpp.
+Definition at line 25207 of file qcustomplot.\+cpp.
 
 
 
@@ -408,9 +423,9 @@ Referenced by draw().
 
 
 \begin{DoxyCode}
-22692 \{
-22693   \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_abstract_item_a4bdb3457dad1d268c0f78a44152b9645}{mSelected} ? \hyperlink{class_q_c_p_item_ellipse_a2e49d5547478aa36910ed8a2dcc8a5c0}{mSelectedBrush} : \hyperlink{class_q_c_p_item_ellipse_a6fa59478cd3ad1b10e6c1f6cedc84bd6}{mBrush};
-22694 \}
+25207                                        \{
+25208   \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_abstract_item_a4bdb3457dad1d268c0f78a44152b9645}{mSelected} ? \hyperlink{class_q_c_p_item_ellipse_a2e49d5547478aa36910ed8a2dcc8a5c0}{mSelectedBrush} : \hyperlink{class_q_c_p_item_ellipse_a6fa59478cd3ad1b10e6c1f6cedc84bd6}{mBrush};
+25209 \}
 \end{DoxyCode}
 
 
@@ -432,7 +447,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_ellipse_afc78d49ed5ffa886bccf18f297f83d30}
 
 
-Definition at line 22681 of file qcustomplot.\+cpp.
+Definition at line 25199 of file qcustomplot.\+cpp.
 
 
 
@@ -444,9 +459,7 @@ Referenced by draw().
 
 
 \begin{DoxyCode}
-22682 \{
-22683   \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_abstract_item_a4bdb3457dad1d268c0f78a44152b9645}{mSelected} ? \hyperlink{class_q_c_p_item_ellipse_a57b047abfce6f1a84ed46ca668c90e21}{mSelectedPen} : \hyperlink{class_q_c_p_item_ellipse_a16ad9389acf028a7e4ac8fd7a550b2e4}{mPen};
-22684 \}
+25199 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_abstract_item_a4bdb3457dad1d268c0f78a44152b9645}{mSelected} ? \hyperlink{class_q_c_p_item_ellipse_a57b047abfce6f1a84ed46ca668c90e21}{mSelectedPen} : \hyperlink{class_q_c_p_item_ellipse_a16ad9389acf028a7e4ac8fd7a550b2e4}{mPen}; \}
 \end{DoxyCode}
 
 
@@ -468,7 +481,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_item_ellipse_adb67471eabaf1214c99767f1653ca0ed}
 
 
-Definition at line 3527 of file qcustomplot.\+h.
+Definition at line 4003 of file qcustomplot.\+h.
 
 
 
@@ -476,7 +489,7 @@ Referenced by set\+Pen(), and set\+Selected\+Pen().
 
 
 \begin{DoxyCode}
-3527 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_ellipse_a16ad9389acf028a7e4ac8fd7a550b2e4}{mPen}; \}
+4003 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_ellipse_a16ad9389acf028a7e4ac8fd7a550b2e4}{mPen}; \}
 \end{DoxyCode}
 
 
@@ -498,11 +511,11 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_item_ellipse_a0043e401a912d54ea3195bab0967b394}
 
 
-Definition at line 3530 of file qcustomplot.\+h.
+Definition at line 4006 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-3530 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_ellipse_a2e49d5547478aa36910ed8a2dcc8a5c0}{mSelectedBrush}; \}
+4006 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_ellipse_a2e49d5547478aa36910ed8a2dcc8a5c0}{mSelectedBrush}; \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_item_ellipse_ac52ab52225d238365ff3264b4b69130f}{}\index{Q\+C\+P\+Item\+Ellipse@{Q\+C\+P\+Item\+Ellipse}!selected\+Pen@{selected\+Pen}}
 \index{selected\+Pen@{selected\+Pen}!Q\+C\+P\+Item\+Ellipse@{Q\+C\+P\+Item\+Ellipse}}
@@ -513,11 +526,11 @@ Definition at line 3530 of file qcustomplot.\+h.
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_item_ellipse_ac52ab52225d238365ff3264b4b69130f}
 
 
-Definition at line 3528 of file qcustomplot.\+h.
+Definition at line 4004 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-3528 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_ellipse_a57b047abfce6f1a84ed46ca668c90e21}{mSelectedPen}; \}
+4004 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_item_ellipse_a57b047abfce6f1a84ed46ca668c90e21}{mSelectedPen}; \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_item_ellipse_acd7e5f9528630b2ab5987e2a5782eb7c}{}\index{Q\+C\+P\+Item\+Ellipse@{Q\+C\+P\+Item\+Ellipse}!select\+Test@{select\+Test}}
 \index{select\+Test@{select\+Test}!Q\+C\+P\+Item\+Ellipse@{Q\+C\+P\+Item\+Ellipse}}
@@ -551,7 +564,7 @@ Implements \hyperlink{class_q_c_p_abstract_item_a96d522d10ffc0413b9a366c6f7f0476
 
 
 
-Definition at line 22600 of file qcustomplot.\+cpp.
+Definition at line 25110 of file qcustomplot.\+cpp.
 
 
 
@@ -559,32 +572,31 @@ References bottom\+Right, c, center, m\+Brush, Q\+C\+P\+Layerable\+::m\+Parent\+
 
 
 \begin{DoxyCode}
-22601 \{
-22602   Q\_UNUSED(details)
-22603   if (onlySelectable && !\hyperlink{class_q_c_p_abstract_item_ad81eb35c8726a0f458db9df9732e0e41}{mSelectable})
-22604     return -1;
-22605   
-22606   \textcolor{keywordtype}{double} result = -1;
-22607   QPointF p1 = \hyperlink{class_q_c_p_item_ellipse_a12fd8420c06718d0c8a2303d6a652848}{topLeft}->pixelPoint();
-22608   QPointF p2 = \hyperlink{class_q_c_p_item_ellipse_ab73c8deafc0d8d1ef7d75b6cdcc37159}{bottomRight}->pixelPoint();
-22609   QPointF \hyperlink{class_q_c_p_item_ellipse_a8b6dd0e854f99239c5806ffdf2f590b3}{center}((p1+p2)/2.0);
-22610   \textcolor{keywordtype}{double} a = qAbs(p1.\hyperlink{_comparision_pictures_2_createtest_image_8m_a9336ebf25087d91c818ee6e9ec29f8c1}{x}()-p2.\hyperlink{_comparision_pictures_2_createtest_image_8m_a9336ebf25087d91c818ee6e9ec29f8c1}{x}())/2.0;
-22611   \textcolor{keywordtype}{double} b = qAbs(p1.\hyperlink{_comparision_pictures_2_createtest_image_8m_a2fb1c5cf58867b5bbc9a1b145a86f3a0}{y}()-p2.\hyperlink{_comparision_pictures_2_createtest_image_8m_a2fb1c5cf58867b5bbc9a1b145a86f3a0}{y}())/2.0;
-22612   \textcolor{keywordtype}{double} x = pos.x()-\hyperlink{class_q_c_p_item_ellipse_a8b6dd0e854f99239c5806ffdf2f590b3}{center}.x();
-22613   \textcolor{keywordtype}{double} y = pos.y()-\hyperlink{class_q_c_p_item_ellipse_a8b6dd0e854f99239c5806ffdf2f590b3}{center}.y();
-22614   
-22615   \textcolor{comment}{// distance to border:}
-22616   \textcolor{keywordtype}{double} \hyperlink{_comparision_pictures_2_createtest_image_8m_ae0323a9039add2978bf5b49550572c7c}{c} = 1.0/qSqrt(x*x/(a*a)+y*y/(b*b));
-22617   result = qAbs(\hyperlink{_comparision_pictures_2_createtest_image_8m_ae0323a9039add2978bf5b49550572c7c}{c}-1)*qSqrt(x*x+y*y);
-22618   \textcolor{comment}{// filled ellipse, allow click inside to count as hit:}
-22619   if (result > \hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->selectionTolerance()*0.99 && \hyperlink{class_q_c_p_item_ellipse_a6fa59478cd3ad1b10e6c1f6cedc84bd6}{mBrush}.style() != Qt::NoBrush && 
-      \hyperlink{class_q_c_p_item_ellipse_a6fa59478cd3ad1b10e6c1f6cedc84bd6}{mBrush}.color().alpha() != 0)
-22620   \{
-22621     \textcolor{keywordflow}{if} (x*x/(a*a) + y*y/(b*b) <= 1)
-22622       result = \hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_a7b738074c75e80070ef6a10263c6cd69}{selectionTolerance}()*0.99;
-22623   \}
-22624   \textcolor{keywordflow}{return} result;
-22625 \}
+25111                                                            \{
+25112   Q\_UNUSED(details)
+25113   if (onlySelectable && !\hyperlink{class_q_c_p_abstract_item_ad81eb35c8726a0f458db9df9732e0e41}{mSelectable})
+25114     return -1;
+25115 
+25116   \textcolor{keywordtype}{double} result = -1;
+25117   QPointF p1 = \hyperlink{class_q_c_p_item_ellipse_a12fd8420c06718d0c8a2303d6a652848}{topLeft}->pixelPoint();
+25118   QPointF p2 = \hyperlink{class_q_c_p_item_ellipse_ab73c8deafc0d8d1ef7d75b6cdcc37159}{bottomRight}->pixelPoint();
+25119   QPointF \hyperlink{class_q_c_p_item_ellipse_a8b6dd0e854f99239c5806ffdf2f590b3}{center}((p1 + p2) / 2.0);
+25120   \textcolor{keywordtype}{double} a = qAbs(p1.\hyperlink{_comparision_pictures_2_createtest_image_8m_a9336ebf25087d91c818ee6e9ec29f8c1}{x}() - p2.\hyperlink{_comparision_pictures_2_createtest_image_8m_a9336ebf25087d91c818ee6e9ec29f8c1}{x}()) / 2.0;
+25121   \textcolor{keywordtype}{double} b = qAbs(p1.\hyperlink{_comparision_pictures_2_createtest_image_8m_a2fb1c5cf58867b5bbc9a1b145a86f3a0}{y}() - p2.\hyperlink{_comparision_pictures_2_createtest_image_8m_a2fb1c5cf58867b5bbc9a1b145a86f3a0}{y}()) / 2.0;
+25122   \textcolor{keywordtype}{double} x = pos.x() - \hyperlink{class_q_c_p_item_ellipse_a8b6dd0e854f99239c5806ffdf2f590b3}{center}.x();
+25123   \textcolor{keywordtype}{double} y = pos.y() - \hyperlink{class_q_c_p_item_ellipse_a8b6dd0e854f99239c5806ffdf2f590b3}{center}.y();
+25124 
+25125   \textcolor{comment}{// distance to border:}
+25126   \textcolor{keywordtype}{double} \hyperlink{_comparision_pictures_2_createtest_image_8m_ae0323a9039add2978bf5b49550572c7c}{c} = 1.0 / qSqrt(x * x / (a * a) + y * y / (b * b));
+25127   result = qAbs(\hyperlink{_comparision_pictures_2_createtest_image_8m_ae0323a9039add2978bf5b49550572c7c}{c} - 1) * qSqrt(x * x + y * y);
+25128   \textcolor{comment}{// filled ellipse, allow click inside to count as hit:}
+25129   if (result > \hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->selectionTolerance() * 0.99 &&
+25130       \hyperlink{class_q_c_p_item_ellipse_a6fa59478cd3ad1b10e6c1f6cedc84bd6}{mBrush}.style() != Qt::NoBrush && \hyperlink{class_q_c_p_item_ellipse_a6fa59478cd3ad1b10e6c1f6cedc84bd6}{mBrush}.color().alpha() != 0) \{
+25131     \textcolor{keywordflow}{if} (x * x / (a * a) + y * y / (b * b) <= 1)
+25132       result = \hyperlink{class_q_c_p_layerable_aa2a528433e44db02b8aef23c1f9f90ed}{mParentPlot}->\hyperlink{class_q_custom_plot_a7b738074c75e80070ef6a10263c6cd69}{selectionTolerance}() * 0.99;
+25133   \}
+25134   \textcolor{keywordflow}{return} result;
+25135 \}
 \end{DoxyCode}
 
 
@@ -611,7 +623,7 @@ Sets the brush that will be used to fill the ellipse. To disable filling, set {\
 \end{DoxySeeAlso}
 
 
-Definition at line 22583 of file qcustomplot.\+cpp.
+Definition at line 25096 of file qcustomplot.\+cpp.
 
 
 
@@ -623,9 +635,7 @@ Referenced by Q\+C\+P\+Item\+Ellipse().
 
 
 \begin{DoxyCode}
-22584 \{
-22585   \hyperlink{class_q_c_p_item_ellipse_a6fa59478cd3ad1b10e6c1f6cedc84bd6}{mBrush} = \hyperlink{class_q_c_p_item_ellipse_ac012e4fd59fdb1afb6554937bae8f7e1}{brush};
-22586 \}
+25096 \{ \hyperlink{class_q_c_p_item_ellipse_a6fa59478cd3ad1b10e6c1f6cedc84bd6}{mBrush} = \hyperlink{class_q_c_p_item_ellipse_ac012e4fd59fdb1afb6554937bae8f7e1}{brush}; \}
 \end{DoxyCode}
 
 
@@ -663,7 +673,7 @@ Sets the pen that will be used to draw the line of the ellipse
 \end{DoxySeeAlso}
 
 
-Definition at line 22562 of file qcustomplot.\+cpp.
+Definition at line 25080 of file qcustomplot.\+cpp.
 
 
 
@@ -675,9 +685,7 @@ Referenced by Q\+C\+P\+Item\+Ellipse().
 
 
 \begin{DoxyCode}
-22563 \{
-22564   \hyperlink{class_q_c_p_item_ellipse_a16ad9389acf028a7e4ac8fd7a550b2e4}{mPen} = \hyperlink{class_q_c_p_item_ellipse_adb67471eabaf1214c99767f1653ca0ed}{pen};
-22565 \}
+25080 \{ \hyperlink{class_q_c_p_item_ellipse_a16ad9389acf028a7e4ac8fd7a550b2e4}{mPen} = \hyperlink{class_q_c_p_item_ellipse_adb67471eabaf1214c99767f1653ca0ed}{pen}; \}
 \end{DoxyCode}
 
 
@@ -715,7 +723,7 @@ Sets the brush that will be used to fill the ellipse when selected. To disable f
 \end{DoxySeeAlso}
 
 
-Definition at line 22594 of file qcustomplot.\+cpp.
+Definition at line 25105 of file qcustomplot.\+cpp.
 
 
 
@@ -727,9 +735,9 @@ Referenced by Q\+C\+P\+Item\+Ellipse().
 
 
 \begin{DoxyCode}
-22595 \{
-22596   \hyperlink{class_q_c_p_item_ellipse_a2e49d5547478aa36910ed8a2dcc8a5c0}{mSelectedBrush} = \hyperlink{class_q_c_p_item_ellipse_ac012e4fd59fdb1afb6554937bae8f7e1}{brush};
-22597 \}
+25105                                                          \{
+25106   \hyperlink{class_q_c_p_item_ellipse_a2e49d5547478aa36910ed8a2dcc8a5c0}{mSelectedBrush} = \hyperlink{class_q_c_p_item_ellipse_ac012e4fd59fdb1afb6554937bae8f7e1}{brush};
+25107 \}
 \end{DoxyCode}
 
 
@@ -767,7 +775,7 @@ Sets the pen that will be used to draw the line of the ellipse when selected
 \end{DoxySeeAlso}
 
 
-Definition at line 22572 of file qcustomplot.\+cpp.
+Definition at line 25087 of file qcustomplot.\+cpp.
 
 
 
@@ -779,9 +787,7 @@ Referenced by Q\+C\+P\+Item\+Ellipse().
 
 
 \begin{DoxyCode}
-22573 \{
-22574   \hyperlink{class_q_c_p_item_ellipse_a57b047abfce6f1a84ed46ca668c90e21}{mSelectedPen} = \hyperlink{class_q_c_p_item_ellipse_adb67471eabaf1214c99767f1653ca0ed}{pen};
-22575 \}
+25087 \{ \hyperlink{class_q_c_p_item_ellipse_a57b047abfce6f1a84ed46ca668c90e21}{mSelectedPen} = \hyperlink{class_q_c_p_item_ellipse_adb67471eabaf1214c99767f1653ca0ed}{pen}; \}
 \end{DoxyCode}
 
 
@@ -813,21 +819,21 @@ Here is the caller graph for this function\+:\nopagebreak
 \subsubsection[{bottom}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Item\+Anchor}$\ast$ const Q\+C\+P\+Item\+Ellipse\+::bottom}\label{class_q_c_p_item_ellipse_a2dc80ff9f5db600eae0133bdde65066f}
 
 
-Definition at line 3548 of file qcustomplot.\+h.
+Definition at line 4025 of file qcustomplot.\+h.
 
 \hypertarget{class_q_c_p_item_ellipse_a31f31a9e9f9098c90fb47573094276c5}{}\index{Q\+C\+P\+Item\+Ellipse@{Q\+C\+P\+Item\+Ellipse}!bottom\+Left\+Rim@{bottom\+Left\+Rim}}
 \index{bottom\+Left\+Rim@{bottom\+Left\+Rim}!Q\+C\+P\+Item\+Ellipse@{Q\+C\+P\+Item\+Ellipse}}
 \subsubsection[{bottom\+Left\+Rim}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Item\+Anchor}$\ast$ const Q\+C\+P\+Item\+Ellipse\+::bottom\+Left\+Rim}\label{class_q_c_p_item_ellipse_a31f31a9e9f9098c90fb47573094276c5}
 
 
-Definition at line 3549 of file qcustomplot.\+h.
+Definition at line 4026 of file qcustomplot.\+h.
 
 \hypertarget{class_q_c_p_item_ellipse_ab73c8deafc0d8d1ef7d75b6cdcc37159}{}\index{Q\+C\+P\+Item\+Ellipse@{Q\+C\+P\+Item\+Ellipse}!bottom\+Right@{bottom\+Right}}
 \index{bottom\+Right@{bottom\+Right}!Q\+C\+P\+Item\+Ellipse@{Q\+C\+P\+Item\+Ellipse}}
 \subsubsection[{bottom\+Right}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Item\+Position}$\ast$ const Q\+C\+P\+Item\+Ellipse\+::bottom\+Right}\label{class_q_c_p_item_ellipse_ab73c8deafc0d8d1ef7d75b6cdcc37159}
 
 
-Definition at line 3542 of file qcustomplot.\+h.
+Definition at line 4019 of file qcustomplot.\+h.
 
 
 
@@ -838,14 +844,14 @@ Referenced by anchor\+Pixel\+Point(), draw(), Q\+C\+P\+Item\+Ellipse(), and sele
 \subsubsection[{bottom\+Right\+Rim}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Item\+Anchor}$\ast$ const Q\+C\+P\+Item\+Ellipse\+::bottom\+Right\+Rim}\label{class_q_c_p_item_ellipse_a5c8404be601d61b7fafeaaf1c05c4c42}
 
 
-Definition at line 3547 of file qcustomplot.\+h.
+Definition at line 4024 of file qcustomplot.\+h.
 
 \hypertarget{class_q_c_p_item_ellipse_a8b6dd0e854f99239c5806ffdf2f590b3}{}\index{Q\+C\+P\+Item\+Ellipse@{Q\+C\+P\+Item\+Ellipse}!center@{center}}
 \index{center@{center}!Q\+C\+P\+Item\+Ellipse@{Q\+C\+P\+Item\+Ellipse}}
 \subsubsection[{center}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Item\+Anchor}$\ast$ const Q\+C\+P\+Item\+Ellipse\+::center}\label{class_q_c_p_item_ellipse_a8b6dd0e854f99239c5806ffdf2f590b3}
 
 
-Definition at line 3551 of file qcustomplot.\+h.
+Definition at line 4028 of file qcustomplot.\+h.
 
 
 
@@ -856,14 +862,14 @@ Referenced by select\+Test().
 \subsubsection[{left}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Item\+Anchor}$\ast$ const Q\+C\+P\+Item\+Ellipse\+::left}\label{class_q_c_p_item_ellipse_aa259cd03efaedf60cf5b1019b20e4f2b}
 
 
-Definition at line 3550 of file qcustomplot.\+h.
+Definition at line 4027 of file qcustomplot.\+h.
 
 \hypertarget{class_q_c_p_item_ellipse_a6fa59478cd3ad1b10e6c1f6cedc84bd6}{}\index{Q\+C\+P\+Item\+Ellipse@{Q\+C\+P\+Item\+Ellipse}!m\+Brush@{m\+Brush}}
 \index{m\+Brush@{m\+Brush}!Q\+C\+P\+Item\+Ellipse@{Q\+C\+P\+Item\+Ellipse}}
 \subsubsection[{m\+Brush}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Brush Q\+C\+P\+Item\+Ellipse\+::m\+Brush\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_ellipse_a6fa59478cd3ad1b10e6c1f6cedc84bd6}
 
 
-Definition at line 3558 of file qcustomplot.\+h.
+Definition at line 4045 of file qcustomplot.\+h.
 
 
 
@@ -874,7 +880,7 @@ Referenced by main\+Brush(), select\+Test(), and set\+Brush().
 \subsubsection[{m\+Pen}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Pen Q\+C\+P\+Item\+Ellipse\+::m\+Pen\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_ellipse_a16ad9389acf028a7e4ac8fd7a550b2e4}
 
 
-Definition at line 3557 of file qcustomplot.\+h.
+Definition at line 4044 of file qcustomplot.\+h.
 
 
 
@@ -885,7 +891,7 @@ Referenced by main\+Pen(), and set\+Pen().
 \subsubsection[{m\+Selected\+Brush}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Brush Q\+C\+P\+Item\+Ellipse\+::m\+Selected\+Brush\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_ellipse_a2e49d5547478aa36910ed8a2dcc8a5c0}
 
 
-Definition at line 3558 of file qcustomplot.\+h.
+Definition at line 4045 of file qcustomplot.\+h.
 
 
 
@@ -896,7 +902,7 @@ Referenced by main\+Brush(), and set\+Selected\+Brush().
 \subsubsection[{m\+Selected\+Pen}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Pen Q\+C\+P\+Item\+Ellipse\+::m\+Selected\+Pen\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_item_ellipse_a57b047abfce6f1a84ed46ca668c90e21}
 
 
-Definition at line 3557 of file qcustomplot.\+h.
+Definition at line 4044 of file qcustomplot.\+h.
 
 
 
@@ -907,21 +913,21 @@ Referenced by main\+Pen(), and set\+Selected\+Pen().
 \subsubsection[{right}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Item\+Anchor}$\ast$ const Q\+C\+P\+Item\+Ellipse\+::right}\label{class_q_c_p_item_ellipse_a50091a3bd8761d3ce0d95d9c727e4a82}
 
 
-Definition at line 3546 of file qcustomplot.\+h.
+Definition at line 4023 of file qcustomplot.\+h.
 
 \hypertarget{class_q_c_p_item_ellipse_ad50f907d6f9d1402c6c5d302dca5c5d5}{}\index{Q\+C\+P\+Item\+Ellipse@{Q\+C\+P\+Item\+Ellipse}!top@{top}}
 \index{top@{top}!Q\+C\+P\+Item\+Ellipse@{Q\+C\+P\+Item\+Ellipse}}
 \subsubsection[{top}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Item\+Anchor}$\ast$ const Q\+C\+P\+Item\+Ellipse\+::top}\label{class_q_c_p_item_ellipse_ad50f907d6f9d1402c6c5d302dca5c5d5}
 
 
-Definition at line 3544 of file qcustomplot.\+h.
+Definition at line 4021 of file qcustomplot.\+h.
 
 \hypertarget{class_q_c_p_item_ellipse_a12fd8420c06718d0c8a2303d6a652848}{}\index{Q\+C\+P\+Item\+Ellipse@{Q\+C\+P\+Item\+Ellipse}!top\+Left@{top\+Left}}
 \index{top\+Left@{top\+Left}!Q\+C\+P\+Item\+Ellipse@{Q\+C\+P\+Item\+Ellipse}}
 \subsubsection[{top\+Left}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Item\+Position}$\ast$ const Q\+C\+P\+Item\+Ellipse\+::top\+Left}\label{class_q_c_p_item_ellipse_a12fd8420c06718d0c8a2303d6a652848}
 
 
-Definition at line 3541 of file qcustomplot.\+h.
+Definition at line 4018 of file qcustomplot.\+h.
 
 
 
@@ -932,14 +938,14 @@ Referenced by anchor\+Pixel\+Point(), draw(), Q\+C\+P\+Item\+Ellipse(), and sele
 \subsubsection[{top\+Left\+Rim}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Item\+Anchor}$\ast$ const Q\+C\+P\+Item\+Ellipse\+::top\+Left\+Rim}\label{class_q_c_p_item_ellipse_a33ebd2a751b63b9240edc9aa46c19eff}
 
 
-Definition at line 3543 of file qcustomplot.\+h.
+Definition at line 4020 of file qcustomplot.\+h.
 
 \hypertarget{class_q_c_p_item_ellipse_a744446970b38a4a3bbea46d722b7c54d}{}\index{Q\+C\+P\+Item\+Ellipse@{Q\+C\+P\+Item\+Ellipse}!top\+Right\+Rim@{top\+Right\+Rim}}
 \index{top\+Right\+Rim@{top\+Right\+Rim}!Q\+C\+P\+Item\+Ellipse@{Q\+C\+P\+Item\+Ellipse}}
 \subsubsection[{top\+Right\+Rim}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+C\+P\+Item\+Anchor}$\ast$ const Q\+C\+P\+Item\+Ellipse\+::top\+Right\+Rim}\label{class_q_c_p_item_ellipse_a744446970b38a4a3bbea46d722b7c54d}
 
 
-Definition at line 3545 of file qcustomplot.\+h.
+Definition at line 4022 of file qcustomplot.\+h.
 
 
 

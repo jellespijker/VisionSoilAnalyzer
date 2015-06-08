@@ -104,7 +104,7 @@ bool \hyperlink{class_q_c_p_color_gradient_abacf55e11f67d6722a687af1bb2687bd}{m\
 \subsection{Detailed Description}
 Defines a color gradient for use with e.\+g. \hyperlink{class_q_c_p_color_map}{Q\+C\+P\+Color\+Map}. 
 
-This class describes a color gradient which can be used to encode data with color. For example, \hyperlink{class_q_c_p_color_map}{Q\+C\+P\+Color\+Map} and \hyperlink{class_q_c_p_color_scale}{Q\+C\+P\+Color\+Scale} have \hyperlink{class_q_c_p_color_map_a7313c78360471cead3576341a2c50377}{set\+Gradient} methods which take an instance of this class. Colors are set with \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{set\+Color\+Stop\+At(double position, const Q\+Color \&color)} with a {\itshape position} from 0 to 1. In between these defined color positions, the color will be interpolated linearly either in R\+G\+B or H\+S\+V space, see \hyperlink{class_q_c_p_color_gradient_aa13fda86406e1d896a465a409ae63b38}{set\+Color\+Interpolation}.
+This class describes a color gradient which can be used to encode data with color. For example, \hyperlink{class_q_c_p_color_map}{Q\+C\+P\+Color\+Map} and \hyperlink{class_q_c_p_color_scale}{Q\+C\+P\+Color\+Scale} have \hyperlink{class_q_c_p_color_map_a7313c78360471cead3576341a2c50377}{set\+Gradient} methods which take an instance of this class. Colors are set with \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{set\+Color\+Stop\+At}(double position, const Q\+Color \&color) with a {\itshape position} from 0 to 1. In between these defined color positions, the color will be interpolated linearly either in R\+G\+B or H\+S\+V space, see \hyperlink{class_q_c_p_color_gradient_aa13fda86406e1d896a465a409ae63b38}{set\+Color\+Interpolation}.
 
 Alternatively, load one of the preset color gradients shown in the image below, with \hyperlink{class_q_c_p_color_gradient_aa0aeec1528241728b9671bf8e60b1622}{load\+Preset}, or by directly specifying the preset in the constructor.
 
@@ -113,9 +113,11 @@ Alternatively, load one of the preset color gradients shown in the image below, 
 The fact that the \hyperlink{class_q_c_p_color_gradient}{ructor} allows directly converting a \hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072}{Gradient\+Preset} to a \hyperlink{class_q_c_p_color_gradient}{Q\+C\+P\+Color\+Gradient}, you can also directly pass \hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072}{Gradient\+Preset} to all the {\itshape set\+Gradient} methods, e.\+g.\+: 
 \begin{DoxyCodeInclude}
 \end{DoxyCodeInclude}
- The total number of levels used in the gradient can be set with \hyperlink{class_q_c_p_color_gradient_a18da587eb4f7fc788ea28ba15b6a12de}{set\+Level\+Count}. Whether the color gradient shall be applied periodically (wrapping around) to data values that lie outside the data range specified on the plottable instance can be controlled with \hyperlink{class_q_c_p_color_gradient_a39d6448155fc00a219f239220d14bb39}{set\+Periodic}. 
+qcpcolorgradient-\/setgradient
 
-Definition at line 1900 of file qcustomplot.\+h.
+The total number of levels used in the gradient can be set with \hyperlink{class_q_c_p_color_gradient_a18da587eb4f7fc788ea28ba15b6a12de}{set\+Level\+Count}. Whether the color gradient shall be applied periodically (wrapping around) to data values that lie outside the data range specified on the plottable instance can be controlled with \hyperlink{class_q_c_p_color_gradient_a39d6448155fc00a219f239220d14bb39}{set\+Periodic}. 
+
+Definition at line 2189 of file qcustomplot.\+h.
 
 
 
@@ -139,13 +141,15 @@ Defines the color spaces in which color interpolation between gradient stops can
 \end{Desc}
 
 
-Definition at line 1909 of file qcustomplot.\+h.
+Definition at line 2198 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-1909                           \{ \hyperlink{class_q_c_p_color_gradient_ac5dca17cc24336e6ca176610e7f77fc1a5e30f725c9cfe93999e268a9f92afbe7}{ciRGB}  
-1910                             ,\hyperlink{class_q_c_p_color_gradient_ac5dca17cc24336e6ca176610e7f77fc1af14ae62fcae11ecc07234eeaec5856cb}{ciHSV} 
-1911                           \};
+2198                           \{
+2199     \hyperlink{class_q_c_p_color_gradient_ac5dca17cc24336e6ca176610e7f77fc1a5e30f725c9cfe93999e268a9f92afbe7}{ciRGB} 
+2200     ,
+2201     \hyperlink{class_q_c_p_color_gradient_ac5dca17cc24336e6ca176610e7f77fc1af14ae62fcae11ecc07234eeaec5856cb}{ciHSV} 
+2202   \};
 \end{DoxyCode}
 \hypertarget{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072}{}\index{Q\+C\+P\+Color\+Gradient@{Q\+C\+P\+Color\+Gradient}!Gradient\+Preset@{Gradient\+Preset}}
 \index{Gradient\+Preset@{Gradient\+Preset}!Q\+C\+P\+Color\+Gradient@{Q\+C\+P\+Color\+Gradient}}
@@ -165,13 +169,13 @@ Defines the available presets that can be loaded with \hyperlink{class_q_c_p_col
 \hypertarget{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072a9e72663bf6b94b65945f7843f24e0721}{}gp\+Candy\label{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072a9e72663bf6b94b65945f7843f24e0721}
 }]Blue over pink to white. \index{gp\+Geography@{gp\+Geography}!Q\+C\+P\+Color\+Gradient@{Q\+C\+P\+Color\+Gradient}}\index{Q\+C\+P\+Color\+Gradient@{Q\+C\+P\+Color\+Gradient}!gp\+Geography@{gp\+Geography}}\item[{\em 
 \hypertarget{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072a382f0b07cec1a59d8a533438aea815d2}{}gp\+Geography\label{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072a382f0b07cec1a59d8a533438aea815d2}
-}]Colors suitable to represent different elevations on geographical maps. \index{gp\+Ion@{gp\+Ion}!Q\+C\+P\+Color\+Gradient@{Q\+C\+P\+Color\+Gradient}}\index{Q\+C\+P\+Color\+Gradient@{Q\+C\+P\+Color\+Gradient}!gp\+Ion@{gp\+Ion}}\item[{\em 
+}]Colors suitable to represent different elevations on geographical maps \index{gp\+Ion@{gp\+Ion}!Q\+C\+P\+Color\+Gradient@{Q\+C\+P\+Color\+Gradient}}\index{Q\+C\+P\+Color\+Gradient@{Q\+C\+P\+Color\+Gradient}!gp\+Ion@{gp\+Ion}}\item[{\em 
 \hypertarget{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072a4297f4f9e212a819cd65e8e34567182b}{}gp\+Ion\label{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072a4297f4f9e212a819cd65e8e34567182b}
 }]Half hue spectrum from black over purple to blue and finally green (creates banding illusion but allows more precise magnitude estimates) \index{gp\+Thermal@{gp\+Thermal}!Q\+C\+P\+Color\+Gradient@{Q\+C\+P\+Color\+Gradient}}\index{Q\+C\+P\+Color\+Gradient@{Q\+C\+P\+Color\+Gradient}!gp\+Thermal@{gp\+Thermal}}\item[{\em 
 \hypertarget{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072af1676b129f9f458ace453f280c731cf7}{}gp\+Thermal\label{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072af1676b129f9f458ace453f280c731cf7}
-}]Colors suitable for thermal imaging, ranging from dark blue over purple to orange, yellow and white. \index{gp\+Polar@{gp\+Polar}!Q\+C\+P\+Color\+Gradient@{Q\+C\+P\+Color\+Gradient}}\index{Q\+C\+P\+Color\+Gradient@{Q\+C\+P\+Color\+Gradient}!gp\+Polar@{gp\+Polar}}\item[{\em 
+}]Colors suitable for thermal imaging, ranging from dark blue over purple to orange, yellow and white \index{gp\+Polar@{gp\+Polar}!Q\+C\+P\+Color\+Gradient@{Q\+C\+P\+Color\+Gradient}}\index{Q\+C\+P\+Color\+Gradient@{Q\+C\+P\+Color\+Gradient}!gp\+Polar@{gp\+Polar}}\item[{\em 
 \hypertarget{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072ab7414ce4e36dc3e82e0132a7f0f41b52}{}gp\+Polar\label{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072ab7414ce4e36dc3e82e0132a7f0f41b52}
-}]Colors suitable to emphasize polarity around the center, with blue for negative, black in the middle and red for positive values. \index{gp\+Spectrum@{gp\+Spectrum}!Q\+C\+P\+Color\+Gradient@{Q\+C\+P\+Color\+Gradient}}\index{Q\+C\+P\+Color\+Gradient@{Q\+C\+P\+Color\+Gradient}!gp\+Spectrum@{gp\+Spectrum}}\item[{\em 
+}]Colors suitable to emphasize polarity around the center, with blue for negative, black in the middle and red for positive values \index{gp\+Spectrum@{gp\+Spectrum}!Q\+C\+P\+Color\+Gradient@{Q\+C\+P\+Color\+Gradient}}\index{Q\+C\+P\+Color\+Gradient@{Q\+C\+P\+Color\+Gradient}!gp\+Spectrum@{gp\+Spectrum}}\item[{\em 
 \hypertarget{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072ad63adc100ef46f6b4a8a6deacec4642f}{}gp\+Spectrum\label{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072ad63adc100ef46f6b4a8a6deacec4642f}
 }]An approximation of the visible light spectrum (creates banding illusion but allows more precise magnitude estimates) \index{gp\+Jet@{gp\+Jet}!Q\+C\+P\+Color\+Gradient@{Q\+C\+P\+Color\+Gradient}}\index{Q\+C\+P\+Color\+Gradient@{Q\+C\+P\+Color\+Gradient}!gp\+Jet@{gp\+Jet}}\item[{\em 
 \hypertarget{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072a5f8a9e67b64c17ddfe4f069fe2b9fb02}{}gp\+Jet\label{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072a5f8a9e67b64c17ddfe4f069fe2b9fb02}
@@ -181,23 +185,35 @@ Defines the available presets that can be loaded with \hyperlink{class_q_c_p_col
 \end{Desc}
 
 
-Definition at line 1918 of file qcustomplot.\+h.
+Definition at line 2212 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-1918                       \{ \hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072add11ae369a86f3b1b6205ec72e5021fb}{gpGrayscale}  
-1919                         ,\hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072a4f42e534cf6cff5a29a5388094d099b5}{gpHot}       
-1920                         ,\hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072aec8c001f62c0d5cb853db5fd85309557}{gpCold}      
-1921                         ,\hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072a1bb89351b6def7d220973443fe059c62}{gpNight}     
-1922                         ,\hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072a9e72663bf6b94b65945f7843f24e0721}{gpCandy}     
-1923                         ,\hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072a382f0b07cec1a59d8a533438aea815d2}{gpGeography} 
-1924                         ,\hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072a4297f4f9e212a819cd65e8e34567182b}{gpIon}       
-1925                         ,\hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072af1676b129f9f458ace453f280c731cf7}{gpThermal}   
-1926                         ,\hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072ab7414ce4e36dc3e82e0132a7f0f41b52}{gpPolar}     
-1927                         ,\hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072ad63adc100ef46f6b4a8a6deacec4642f}{gpSpectrum}  
-1928                         ,\hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072a5f8a9e67b64c17ddfe4f069fe2b9fb02}{gpJet}       
-1929                         ,\hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072a30efe58407acfb67939032f70213a130}{gpHues}      
-1930                       \};
+2212                       \{
+2213     \hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072add11ae369a86f3b1b6205ec72e5021fb}{gpGrayscale} 
+2214     ,
+2216     \hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072a4f42e534cf6cff5a29a5388094d099b5}{gpHot} 
+2217     ,
+2219     \hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072aec8c001f62c0d5cb853db5fd85309557}{gpCold} 
+2220     ,
+2222     \hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072a1bb89351b6def7d220973443fe059c62}{gpNight} 
+2223     ,
+2225     \hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072a9e72663bf6b94b65945f7843f24e0721}{gpCandy} 
+2226     ,
+2227     \hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072a382f0b07cec1a59d8a533438aea815d2}{gpGeography} 
+2228     ,
+2230     \hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072a4297f4f9e212a819cd65e8e34567182b}{gpIon} 
+2231     ,
+2234     \hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072af1676b129f9f458ace453f280c731cf7}{gpThermal} 
+2235     ,
+2237     \hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072ab7414ce4e36dc3e82e0132a7f0f41b52}{gpPolar} 
+2238     ,
+2241     \hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072ad63adc100ef46f6b4a8a6deacec4642f}{gpSpectrum} 
+2242     ,
+2244     \hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072a5f8a9e67b64c17ddfe4f069fe2b9fb02}{gpJet} 
+2245     ,
+2248     \hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072a30efe58407acfb67939032f70213a130}{gpHues} 
+2249   \};
 \end{DoxyCode}
 
 
@@ -213,7 +229,7 @@ Constructs a new \hyperlink{class_q_c_p_color_gradient}{Q\+C\+P\+Color\+Gradient
 
 The color level count is initialized to 350. 
 
-Definition at line 11172 of file qcustomplot.\+cpp.
+Definition at line 12352 of file qcustomplot.\+cpp.
 
 
 
@@ -221,15 +237,12 @@ References load\+Preset(), m\+Color\+Buffer, and m\+Level\+Count.
 
 
 \begin{DoxyCode}
-11172                                                         :
-11173   \hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount}(350),
-11174   \hyperlink{class_q_c_p_color_gradient_a028cef73d863800a9ee93ffd641cce01}{mColorInterpolation}(\hyperlink{class_q_c_p_color_gradient_ac5dca17cc24336e6ca176610e7f77fc1a5e30f725c9cfe93999e268a9f92afbe7}{ciRGB}),
-11175   \hyperlink{class_q_c_p_color_gradient_a4b07deeb20ca1ee2d5ea7e01bf0420af}{mPeriodic}(\textcolor{keyword}{false}),
-11176   \hyperlink{class_q_c_p_color_gradient_abacf55e11f67d6722a687af1bb2687bd}{mColorBufferInvalidated}(\textcolor{keyword}{true})
-11177 \{
-11178   \hyperlink{class_q_c_p_color_gradient_af8b5f0739faa5f8295154d47ce38ecff}{mColorBuffer}.fill(qRgb(0, 0, 0), \hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount});
-11179   \hyperlink{class_q_c_p_color_gradient_aa0aeec1528241728b9671bf8e60b1622}{loadPreset}(preset);
-11180 \}
+12353     : \hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount}(350), \hyperlink{class_q_c_p_color_gradient_a028cef73d863800a9ee93ffd641cce01}{mColorInterpolation}(\hyperlink{class_q_c_p_color_gradient_ac5dca17cc24336e6ca176610e7f77fc1a5e30f725c9cfe93999e268a9f92afbe7}{ciRGB}), 
+      \hyperlink{class_q_c_p_color_gradient_a4b07deeb20ca1ee2d5ea7e01bf0420af}{mPeriodic}(\textcolor{keyword}{false}),
+12354       \hyperlink{class_q_c_p_color_gradient_abacf55e11f67d6722a687af1bb2687bd}{mColorBufferInvalidated}(\textcolor{keyword}{true}) \{
+12355   \hyperlink{class_q_c_p_color_gradient_af8b5f0739faa5f8295154d47ce38ecff}{mColorBuffer}.fill(qRgb(0, 0, 0), \hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount});
+12356   \hyperlink{class_q_c_p_color_gradient_aa0aeec1528241728b9671bf8e60b1622}{loadPreset}(preset);
+12357 \}
 \end{DoxyCode}
 
 
@@ -259,7 +272,7 @@ Clears all color stops.
 \end{DoxySeeAlso}
 
 
-Definition at line 11503 of file qcustomplot.\+cpp.
+Definition at line 12689 of file qcustomplot.\+cpp.
 
 
 
@@ -271,10 +284,10 @@ Referenced by inverted(), and load\+Preset().
 
 
 \begin{DoxyCode}
-11504 \{
-11505   \hyperlink{class_q_c_p_color_gradient_a9e11a2b0974ef289d12c324822bc3a3e}{mColorStops}.clear();
-11506   \hyperlink{class_q_c_p_color_gradient_abacf55e11f67d6722a687af1bb2687bd}{mColorBufferInvalidated} = \textcolor{keyword}{true};
-11507 \}
+12689                                        \{
+12690   \hyperlink{class_q_c_p_color_gradient_a9e11a2b0974ef289d12c324822bc3a3e}{mColorStops}.clear();
+12691   \hyperlink{class_q_c_p_color_gradient_abacf55e11f67d6722a687af1bb2687bd}{mColorBufferInvalidated} = \textcolor{keyword}{true};
+12692 \}
 \end{DoxyCode}
 
 
@@ -298,7 +311,7 @@ Here is the caller graph for this function\+:\nopagebreak
 )}\label{class_q_c_p_color_gradient_a0599545c859268b025d2060dea741cea}
 
 
-Definition at line 11362 of file qcustomplot.\+cpp.
+Definition at line 12550 of file qcustomplot.\+cpp.
 
 
 
@@ -310,30 +323,30 @@ Referenced by Q\+C\+P\+Color\+Scale\+Axis\+Rect\+Private\+::update\+Gradient\+Im
 
 
 \begin{DoxyCode}
-11363 \{
-11364   \textcolor{comment}{// If you change something here, make sure to also adapt ::colorize()}
-11365   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_gradient_abacf55e11f67d6722a687af1bb2687bd}{mColorBufferInvalidated})
-11366     \hyperlink{class_q_c_p_color_gradient_a353f15ab3ab586eebf1f6b58c3e2707b}{updateColorBuffer}();
-11367   \textcolor{keywordtype}{int} index = 0;
-11368   \textcolor{keywordflow}{if} (!logarithmic)
-11369     index = (position-range.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower})*(\hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount}-1)/range.\hyperlink{class_q_c_p_range_afa57c13049b965edb6fd1c00ac56338a}{size}();
-11370   \textcolor{keywordflow}{else}
-11371     index = qLn(position/range.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower})/qLn(range.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper}/range.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower})*(
-      \hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount}-1);
-11372   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_gradient_a4b07deeb20ca1ee2d5ea7e01bf0420af}{mPeriodic})
-11373   \{
-11374     index = index % \hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount};
-11375     \textcolor{keywordflow}{if} (index < 0)
-11376       index += \hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount};
-11377   \} \textcolor{keywordflow}{else}
-11378   \{
-11379     \textcolor{keywordflow}{if} (index < 0)
-11380       index = 0;
-11381     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (index >= \hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount})
-11382       index = \hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount}-1;
-11383   \}
-11384   \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_color_gradient_af8b5f0739faa5f8295154d47ce38ecff}{mColorBuffer}.at(index);
-11385 \}
+12551                                                \{
+12552   \textcolor{comment}{// If you change something here, make sure to also adapt ::colorize()}
+12553   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_gradient_abacf55e11f67d6722a687af1bb2687bd}{mColorBufferInvalidated})
+12554     \hyperlink{class_q_c_p_color_gradient_a353f15ab3ab586eebf1f6b58c3e2707b}{updateColorBuffer}();
+12555   \textcolor{keywordtype}{int} index = 0;
+12556   \textcolor{keywordflow}{if} (!logarithmic)
+12557     index = (position - range.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}) * (\hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount} - 1) / range.
+      \hyperlink{class_q_c_p_range_afa57c13049b965edb6fd1c00ac56338a}{size}();
+12558   \textcolor{keywordflow}{else}
+12559     index = qLn(position / range.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}) / qLn(range.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} / range.
+      \hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}) *
+12560             (\hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount} - 1);
+12561   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_gradient_a4b07deeb20ca1ee2d5ea7e01bf0420af}{mPeriodic}) \{
+12562     index = index % \hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount};
+12563     \textcolor{keywordflow}{if} (index < 0)
+12564       index += \hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount};
+12565   \} \textcolor{keywordflow}{else} \{
+12566     \textcolor{keywordflow}{if} (index < 0)
+12567       index = 0;
+12568     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (index >= \hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount})
+12569       index = \hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount} - 1;
+12570   \}
+12571   \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_color_gradient_af8b5f0739faa5f8295154d47ce38ecff}{mColorBuffer}.at(index);
+12572 \}
 \end{DoxyCode}
 
 
@@ -366,11 +379,11 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_color_gradient_a731616fabe6f2e33f71f58dd382359d8}
 
 
-Definition at line 1940 of file qcustomplot.\+h.
+Definition at line 2262 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-1940 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_color_gradient_a028cef73d863800a9ee93ffd641cce01}{mColorInterpolation}; \}
+2262 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_color_gradient_a028cef73d863800a9ee93ffd641cce01}{mColorInterpolation}; \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_color_gradient_aaf423ceb943e177b0ed2c48c811d83dc}{}\index{Q\+C\+P\+Color\+Gradient@{Q\+C\+P\+Color\+Gradient}!colorize@{colorize}}
 \index{colorize@{colorize}!Q\+C\+P\+Color\+Gradient@{Q\+C\+P\+Color\+Gradient}}
@@ -388,7 +401,7 @@ This method is used to quickly convert a {\itshape data} array to colors. The co
 
 if {\itshape data} actually contains 2\+D-\/data linearized via {\ttfamily \mbox{[}row$\ast$column\+Count + column\mbox{]}}, you can set {\itshape data\+Index\+Factor} to {\ttfamily column\+Count} to convert a column instead of a row of the data array, in {\itshape scan\+Line}. {\itshape scan\+Line} will remain a regular (1\+D) array. This works because {\itshape data} is addressed {\ttfamily data\mbox{[}i$\ast$data\+Index\+Factor\mbox{]}}. 
 
-Definition at line 11287 of file qcustomplot.\+cpp.
+Definition at line 12475 of file qcustomplot.\+cpp.
 
 
 
@@ -400,73 +413,66 @@ Referenced by Q\+C\+P\+Color\+Scale\+Axis\+Rect\+Private\+::update\+Gradient\+Im
 
 
 \begin{DoxyCode}
-11288 \{
-11289   \textcolor{comment}{// If you change something here, make sure to also adapt ::color()}
-11290   \textcolor{keywordflow}{if} (!data)
-11291   \{
-11292     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"null pointer given as data"};
-11293     \textcolor{keywordflow}{return};
-11294   \}
-11295   \textcolor{keywordflow}{if} (!scanLine)
-11296   \{
-11297     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"null pointer given as scanLine"};
-11298     \textcolor{keywordflow}{return};
-11299   \}
-11300   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_gradient_abacf55e11f67d6722a687af1bb2687bd}{mColorBufferInvalidated})
-11301     \hyperlink{class_q_c_p_color_gradient_a353f15ab3ab586eebf1f6b58c3e2707b}{updateColorBuffer}();
-11302   
-11303   \textcolor{keywordflow}{if} (!logarithmic)
-11304   \{
-11305     \textcolor{keyword}{const} \textcolor{keywordtype}{double} posToIndexFactor = (\hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount}-1)/range.\hyperlink{class_q_c_p_range_afa57c13049b965edb6fd1c00ac56338a}{size}();
-11306     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_gradient_a4b07deeb20ca1ee2d5ea7e01bf0420af}{mPeriodic})
-11307     \{
-11308       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}<\hyperlink{_comparision_pictures_2_createtest_image_8m_aeab71244afb687f16d8c4f5ee9d6ef0e}{n}; ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
-11309       \{
-11310         \textcolor{keywordtype}{int} index = (int)((data[dataIndexFactor*\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}]-range.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower})*posToIndexFactor) % 
-      \hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount};
-11311         \textcolor{keywordflow}{if} (index < 0)
-11312           index += \hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount};
-11313         scanLine[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = \hyperlink{class_q_c_p_color_gradient_af8b5f0739faa5f8295154d47ce38ecff}{mColorBuffer}.at(index);
-11314       \}
-11315     \} \textcolor{keywordflow}{else}
-11316     \{
-11317       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}<\hyperlink{_comparision_pictures_2_createtest_image_8m_aeab71244afb687f16d8c4f5ee9d6ef0e}{n}; ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
-11318       \{
-11319         \textcolor{keywordtype}{int} index = (data[dataIndexFactor*\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}]-range.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower})*posToIndexFactor;
-11320         \textcolor{keywordflow}{if} (index < 0)
-11321           index = 0;
-11322         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (index >= \hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount})
-11323           index = \hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount}-1;
-11324         scanLine[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = \hyperlink{class_q_c_p_color_gradient_af8b5f0739faa5f8295154d47ce38ecff}{mColorBuffer}.at(index);
-11325       \}
-11326     \}
-11327   \} \textcolor{keywordflow}{else} \textcolor{comment}{// logarithmic == true}
-11328   \{
-11329     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_gradient_a4b07deeb20ca1ee2d5ea7e01bf0420af}{mPeriodic})
-11330     \{
-11331       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}<\hyperlink{_comparision_pictures_2_createtest_image_8m_aeab71244afb687f16d8c4f5ee9d6ef0e}{n}; ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
-11332       \{
-11333         \textcolor{keywordtype}{int} index = (int)(qLn(data[dataIndexFactor*\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}]/range.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower})/qLn(range.
-      \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper}/range.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower})*(\hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount}-1)) % \hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount};
-11334         \textcolor{keywordflow}{if} (index < 0)
-11335           index += \hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount};
-11336         scanLine[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = \hyperlink{class_q_c_p_color_gradient_af8b5f0739faa5f8295154d47ce38ecff}{mColorBuffer}.at(index);
-11337       \}
-11338     \} \textcolor{keywordflow}{else}
-11339     \{
-11340       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}<\hyperlink{_comparision_pictures_2_createtest_image_8m_aeab71244afb687f16d8c4f5ee9d6ef0e}{n}; ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
-11341       \{
-11342         \textcolor{keywordtype}{int} index = qLn(data[dataIndexFactor*\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}]/range.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower})/qLn(range.
-      \hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper}/range.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower})*(\hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount}-1);
-11343         \textcolor{keywordflow}{if} (index < 0)
-11344           index = 0;
-11345         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (index >= \hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount})
-11346           index = \hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount}-1;
-11347         scanLine[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = \hyperlink{class_q_c_p_color_gradient_af8b5f0739faa5f8295154d47ce38ecff}{mColorBuffer}.at(index);
-11348       \}
-11349     \}
-11350   \}
-11351 \}
+12477                                                   \{
+12478   \textcolor{comment}{// If you change something here, make sure to also adapt ::color()}
+12479   \textcolor{keywordflow}{if} (!data) \{
+12480     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"null pointer given as data"};
+12481     \textcolor{keywordflow}{return};
+12482   \}
+12483   \textcolor{keywordflow}{if} (!scanLine) \{
+12484     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"null pointer given as scanLine"};
+12485     \textcolor{keywordflow}{return};
+12486   \}
+12487   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_gradient_abacf55e11f67d6722a687af1bb2687bd}{mColorBufferInvalidated})
+12488     \hyperlink{class_q_c_p_color_gradient_a353f15ab3ab586eebf1f6b58c3e2707b}{updateColorBuffer}();
+12489 
+12490   \textcolor{keywordflow}{if} (!logarithmic) \{
+12491     \textcolor{keyword}{const} \textcolor{keywordtype}{double} posToIndexFactor = (\hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount} - 1) / range.\hyperlink{class_q_c_p_range_afa57c13049b965edb6fd1c00ac56338a}{size}();
+12492     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_gradient_a4b07deeb20ca1ee2d5ea7e01bf0420af}{mPeriodic}) \{
+12493       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < \hyperlink{_comparision_pictures_2_createtest_image_8m_aeab71244afb687f16d8c4f5ee9d6ef0e}{n}; ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) \{
+12494         \textcolor{keywordtype}{int} index = (int)((data[dataIndexFactor * \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] - range.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}) *
+12495                           posToIndexFactor) %
+12496                     \hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount};
+12497         \textcolor{keywordflow}{if} (index < 0)
+12498           index += \hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount};
+12499         scanLine[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = \hyperlink{class_q_c_p_color_gradient_af8b5f0739faa5f8295154d47ce38ecff}{mColorBuffer}.at(index);
+12500       \}
+12501     \} \textcolor{keywordflow}{else} \{
+12502       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < \hyperlink{_comparision_pictures_2_createtest_image_8m_aeab71244afb687f16d8c4f5ee9d6ef0e}{n}; ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) \{
+12503         \textcolor{keywordtype}{int} index =
+12504             (data[dataIndexFactor * \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] - range.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}) * posToIndexFactor;
+12505         \textcolor{keywordflow}{if} (index < 0)
+12506           index = 0;
+12507         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (index >= \hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount})
+12508           index = \hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount} - 1;
+12509         scanLine[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = \hyperlink{class_q_c_p_color_gradient_af8b5f0739faa5f8295154d47ce38ecff}{mColorBuffer}.at(index);
+12510       \}
+12511     \}
+12512   \} \textcolor{keywordflow}{else} \textcolor{comment}{// logarithmic == true}
+12513   \{
+12514     \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_gradient_a4b07deeb20ca1ee2d5ea7e01bf0420af}{mPeriodic}) \{
+12515       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < \hyperlink{_comparision_pictures_2_createtest_image_8m_aeab71244afb687f16d8c4f5ee9d6ef0e}{n}; ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) \{
+12516         \textcolor{keywordtype}{int} index = (int)(qLn(data[dataIndexFactor * \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] / range.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}) /
+12517                           qLn(range.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} / range.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}) * (
+      \hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount} - 1)) %
+12518                     \hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount};
+12519         \textcolor{keywordflow}{if} (index < 0)
+12520           index += \hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount};
+12521         scanLine[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = \hyperlink{class_q_c_p_color_gradient_af8b5f0739faa5f8295154d47ce38ecff}{mColorBuffer}.at(index);
+12522       \}
+12523     \} \textcolor{keywordflow}{else} \{
+12524       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < \hyperlink{_comparision_pictures_2_createtest_image_8m_aeab71244afb687f16d8c4f5ee9d6ef0e}{n}; ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) \{
+12525         \textcolor{keywordtype}{int} index = qLn(data[dataIndexFactor * \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] / range.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}) /
+12526                     qLn(range.\hyperlink{class_q_c_p_range_ae44eb3aafe1d0e2ed34b499b6d2e074f}{upper} / range.\hyperlink{class_q_c_p_range_aa3aca3edb14f7ca0c85d912647b91745}{lower}) * (\hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount} - 1);
+12527         \textcolor{keywordflow}{if} (index < 0)
+12528           index = 0;
+12529         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (index >= \hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount})
+12530           index = \hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount} - 1;
+12531         scanLine[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = \hyperlink{class_q_c_p_color_gradient_af8b5f0739faa5f8295154d47ce38ecff}{mColorBuffer}.at(index);
+12532       \}
+12533     \}
+12534   \}
+12535 \}
 \end{DoxyCode}
 
 
@@ -499,7 +505,7 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_color_gradient_a64f8aba7826f9c6363aacff8376cef37}
 
 
-Definition at line 1939 of file qcustomplot.\+h.
+Definition at line 2261 of file qcustomplot.\+h.
 
 
 
@@ -507,7 +513,7 @@ Referenced by set\+Color\+Stops().
 
 
 \begin{DoxyCode}
-1939 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_color_gradient_a9e11a2b0974ef289d12c324822bc3a3e}{mColorStops}; \}
+2261 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_color_gradient_a9e11a2b0974ef289d12c324822bc3a3e}{mColorStops}; \}
 \end{DoxyCode}
 
 
@@ -534,7 +540,7 @@ Returns an inverted gradient. The inverted gradient has all properties as this \
 \end{DoxySeeAlso}
 
 
-Definition at line 11515 of file qcustomplot.\+cpp.
+Definition at line 12701 of file qcustomplot.\+cpp.
 
 
 
@@ -542,14 +548,14 @@ References clear\+Color\+Stops(), m\+Color\+Stops, and set\+Color\+Stop\+At().
 
 
 \begin{DoxyCode}
-11516 \{
-11517   \hyperlink{class_q_c_p_color_gradient}{QCPColorGradient} result(*\textcolor{keyword}{this});
-11518   result.clearColorStops();
-11519   \textcolor{keywordflow}{for} (QMap<double, QColor>::const\_iterator it=\hyperlink{class_q_c_p_color_gradient_a9e11a2b0974ef289d12c324822bc3a3e}{mColorStops}.constBegin(); it!=
-      \hyperlink{class_q_c_p_color_gradient_a9e11a2b0974ef289d12c324822bc3a3e}{mColorStops}.constEnd(); ++it)
-11520     result.setColorStopAt(1.0-it.key(), it.value());
-11521   \textcolor{keywordflow}{return} result;
-11522 \}
+12701                                                   \{
+12702   \hyperlink{class_q_c_p_color_gradient}{QCPColorGradient} result(*\textcolor{keyword}{this});
+12703   result.clearColorStops();
+12704   \textcolor{keywordflow}{for} (QMap<double, QColor>::const\_iterator it = \hyperlink{class_q_c_p_color_gradient_a9e11a2b0974ef289d12c324822bc3a3e}{mColorStops}.constBegin();
+12705        it != \hyperlink{class_q_c_p_color_gradient_a9e11a2b0974ef289d12c324822bc3a3e}{mColorStops}.constEnd(); ++it)
+12706     result.setColorStopAt(1.0 - it.key(), it.value());
+12707   \textcolor{keywordflow}{return} result;
+12708 \}
 \end{DoxyCode}
 
 
@@ -571,7 +577,7 @@ Here is the call graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_color_gradient_ae7537a8e6d0fed3f1928328062bb0f4e}
 
 
-Definition at line 1938 of file qcustomplot.\+h.
+Definition at line 2260 of file qcustomplot.\+h.
 
 
 
@@ -579,7 +585,7 @@ Referenced by Q\+C\+P\+Color\+Scale\+Axis\+Rect\+Private\+::update\+Gradient\+Im
 
 
 \begin{DoxyCode}
-1938 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount}; \}
+2260 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount}; \}
 \end{DoxyCode}
 
 
@@ -603,7 +609,7 @@ Clears the current color stops and loads the specified {\itshape preset}. A pres
 
 The available presets are\+:  
 
-Definition at line 11394 of file qcustomplot.\+cpp.
+Definition at line 12582 of file qcustomplot.\+cpp.
 
 
 
@@ -615,108 +621,107 @@ Referenced by Q\+C\+P\+Color\+Gradient().
 
 
 \begin{DoxyCode}
-11395 \{
-11396   \hyperlink{class_q_c_p_color_gradient_a939213e85f0d1279519d555c5fcfb6ad}{clearColorStops}();
-11397   \textcolor{keywordflow}{switch} (preset)
-11398   \{
-11399     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072add11ae369a86f3b1b6205ec72e5021fb}{gpGrayscale}:
-11400       \hyperlink{class_q_c_p_color_gradient_aa13fda86406e1d896a465a409ae63b38}{setColorInterpolation}(\hyperlink{class_q_c_p_color_gradient_ac5dca17cc24336e6ca176610e7f77fc1a5e30f725c9cfe93999e268a9f92afbe7}{ciRGB});
-11401       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0, Qt::black);
-11402       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(1, Qt::white);
-11403       \textcolor{keywordflow}{break};
-11404     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072a4f42e534cf6cff5a29a5388094d099b5}{gpHot}:
-11405       \hyperlink{class_q_c_p_color_gradient_aa13fda86406e1d896a465a409ae63b38}{setColorInterpolation}(\hyperlink{class_q_c_p_color_gradient_ac5dca17cc24336e6ca176610e7f77fc1a5e30f725c9cfe93999e268a9f92afbe7}{ciRGB});
-11406       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0, QColor(50, 0, 0));
-11407       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.2, QColor(180, 10, 0));
-11408       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.4, QColor(245, 50, 0));
-11409       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.6, QColor(255, 150, 10));
-11410       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.8, QColor(255, 255, 50));
-11411       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(1, QColor(255, 255, 255));
-11412       \textcolor{keywordflow}{break};
-11413     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072aec8c001f62c0d5cb853db5fd85309557}{gpCold}:
-11414       \hyperlink{class_q_c_p_color_gradient_aa13fda86406e1d896a465a409ae63b38}{setColorInterpolation}(\hyperlink{class_q_c_p_color_gradient_ac5dca17cc24336e6ca176610e7f77fc1a5e30f725c9cfe93999e268a9f92afbe7}{ciRGB});
-11415       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0, QColor(0, 0, 50));
-11416       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.2, QColor(0, 10, 180));
-11417       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.4, QColor(0, 50, 245));
-11418       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.6, QColor(10, 150, 255));
-11419       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.8, QColor(50, 255, 255));
-11420       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(1, QColor(255, 255, 255));
-11421       \textcolor{keywordflow}{break};
-11422     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072a1bb89351b6def7d220973443fe059c62}{gpNight}:
-11423       \hyperlink{class_q_c_p_color_gradient_aa13fda86406e1d896a465a409ae63b38}{setColorInterpolation}(\hyperlink{class_q_c_p_color_gradient_ac5dca17cc24336e6ca176610e7f77fc1af14ae62fcae11ecc07234eeaec5856cb}{ciHSV});
-11424       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0, QColor(10, 20, 30));
-11425       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(1, QColor(250, 255, 250));
-11426       \textcolor{keywordflow}{break};
-11427     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072a9e72663bf6b94b65945f7843f24e0721}{gpCandy}:
-11428       \hyperlink{class_q_c_p_color_gradient_aa13fda86406e1d896a465a409ae63b38}{setColorInterpolation}(\hyperlink{class_q_c_p_color_gradient_ac5dca17cc24336e6ca176610e7f77fc1af14ae62fcae11ecc07234eeaec5856cb}{ciHSV});
-11429       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0, QColor(0, 0, 255));
-11430       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(1, QColor(255, 250, 250));
-11431       \textcolor{keywordflow}{break};
-11432     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072a382f0b07cec1a59d8a533438aea815d2}{gpGeography}:
-11433       \hyperlink{class_q_c_p_color_gradient_aa13fda86406e1d896a465a409ae63b38}{setColorInterpolation}(\hyperlink{class_q_c_p_color_gradient_ac5dca17cc24336e6ca176610e7f77fc1a5e30f725c9cfe93999e268a9f92afbe7}{ciRGB});
-11434       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0, QColor(70, 170, 210));
-11435       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.20, QColor(90, 160, 180));
-11436       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.25, QColor(45, 130, 175));
-11437       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.30, QColor(100, 140, 125));
-11438       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.5, QColor(100, 140, 100));
-11439       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.6, QColor(130, 145, 120));
-11440       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.7, QColor(140, 130, 120));
-11441       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.9, QColor(180, 190, 190));
-11442       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(1, QColor(210, 210, 230));
-11443       \textcolor{keywordflow}{break};
-11444     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072a4297f4f9e212a819cd65e8e34567182b}{gpIon}:
-11445       \hyperlink{class_q_c_p_color_gradient_aa13fda86406e1d896a465a409ae63b38}{setColorInterpolation}(\hyperlink{class_q_c_p_color_gradient_ac5dca17cc24336e6ca176610e7f77fc1af14ae62fcae11ecc07234eeaec5856cb}{ciHSV});
-11446       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0, QColor(50, 10, 10));
-11447       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.45, QColor(0, 0, 255));
-11448       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.8, QColor(0, 255, 255));
-11449       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(1, QColor(0, 255, 0));
-11450       \textcolor{keywordflow}{break};
-11451     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072af1676b129f9f458ace453f280c731cf7}{gpThermal}:
-11452       \hyperlink{class_q_c_p_color_gradient_aa13fda86406e1d896a465a409ae63b38}{setColorInterpolation}(\hyperlink{class_q_c_p_color_gradient_ac5dca17cc24336e6ca176610e7f77fc1a5e30f725c9cfe93999e268a9f92afbe7}{ciRGB});
-11453       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0, QColor(0, 0, 50));
-11454       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.15, QColor(20, 0, 120));
-11455       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.33, QColor(200, 30, 140));
-11456       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.6, QColor(255, 100, 0));
-11457       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.85, QColor(255, 255, 40));
-11458       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(1, QColor(255, 255, 255));
-11459       \textcolor{keywordflow}{break};
-11460     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072ab7414ce4e36dc3e82e0132a7f0f41b52}{gpPolar}:
-11461       \hyperlink{class_q_c_p_color_gradient_aa13fda86406e1d896a465a409ae63b38}{setColorInterpolation}(\hyperlink{class_q_c_p_color_gradient_ac5dca17cc24336e6ca176610e7f77fc1a5e30f725c9cfe93999e268a9f92afbe7}{ciRGB});
-11462       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0, QColor(50, 255, 255));
-11463       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.18, QColor(10, 70, 255));
-11464       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.28, QColor(10, 10, 190));
-11465       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.5, QColor(0, 0, 0));
-11466       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.72, QColor(190, 10, 10));
-11467       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.82, QColor(255, 70, 10));
-11468       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(1, QColor(255, 255, 50));
-11469       \textcolor{keywordflow}{break};
-11470     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072ad63adc100ef46f6b4a8a6deacec4642f}{gpSpectrum}:
-11471       \hyperlink{class_q_c_p_color_gradient_aa13fda86406e1d896a465a409ae63b38}{setColorInterpolation}(\hyperlink{class_q_c_p_color_gradient_ac5dca17cc24336e6ca176610e7f77fc1af14ae62fcae11ecc07234eeaec5856cb}{ciHSV});
-11472       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0, QColor(50, 0, 50));
-11473       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.15, QColor(0, 0, 255));
-11474       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.35, QColor(0, 255, 255));
-11475       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.6, QColor(255, 255, 0));
-11476       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.75, QColor(255, 30, 0));
-11477       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(1, QColor(50, 0, 0));
-11478       \textcolor{keywordflow}{break};
-11479     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072a5f8a9e67b64c17ddfe4f069fe2b9fb02}{gpJet}:
-11480       \hyperlink{class_q_c_p_color_gradient_aa13fda86406e1d896a465a409ae63b38}{setColorInterpolation}(\hyperlink{class_q_c_p_color_gradient_ac5dca17cc24336e6ca176610e7f77fc1a5e30f725c9cfe93999e268a9f92afbe7}{ciRGB});
-11481       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0, QColor(0, 0, 100));
-11482       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.15, QColor(0, 50, 255));
-11483       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.35, QColor(0, 255, 255));
-11484       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.65, QColor(255, 255, 0));
-11485       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.85, QColor(255, 30, 0));
-11486       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(1, QColor(100, 0, 0));
-11487       \textcolor{keywordflow}{break};
-11488     \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072a30efe58407acfb67939032f70213a130}{gpHues}:
-11489       \hyperlink{class_q_c_p_color_gradient_aa13fda86406e1d896a465a409ae63b38}{setColorInterpolation}(\hyperlink{class_q_c_p_color_gradient_ac5dca17cc24336e6ca176610e7f77fc1af14ae62fcae11ecc07234eeaec5856cb}{ciHSV});
-11490       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0, QColor(255, 0, 0));
-11491       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(1.0/3.0, QColor(0, 0, 255));
-11492       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(2.0/3.0, QColor(0, 255, 0));
-11493       \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(1, QColor(255, 0, 0));
-11494       \textcolor{keywordflow}{break};
-11495   \}
-11496 \}
+12582                                                        \{
+12583   \hyperlink{class_q_c_p_color_gradient_a939213e85f0d1279519d555c5fcfb6ad}{clearColorStops}();
+12584   \textcolor{keywordflow}{switch} (preset) \{
+12585   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072add11ae369a86f3b1b6205ec72e5021fb}{gpGrayscale}:
+12586     \hyperlink{class_q_c_p_color_gradient_aa13fda86406e1d896a465a409ae63b38}{setColorInterpolation}(\hyperlink{class_q_c_p_color_gradient_ac5dca17cc24336e6ca176610e7f77fc1a5e30f725c9cfe93999e268a9f92afbe7}{ciRGB});
+12587     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0, Qt::black);
+12588     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(1, Qt::white);
+12589     \textcolor{keywordflow}{break};
+12590   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072a4f42e534cf6cff5a29a5388094d099b5}{gpHot}:
+12591     \hyperlink{class_q_c_p_color_gradient_aa13fda86406e1d896a465a409ae63b38}{setColorInterpolation}(\hyperlink{class_q_c_p_color_gradient_ac5dca17cc24336e6ca176610e7f77fc1a5e30f725c9cfe93999e268a9f92afbe7}{ciRGB});
+12592     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0, QColor(50, 0, 0));
+12593     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.2, QColor(180, 10, 0));
+12594     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.4, QColor(245, 50, 0));
+12595     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.6, QColor(255, 150, 10));
+12596     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.8, QColor(255, 255, 50));
+12597     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(1, QColor(255, 255, 255));
+12598     \textcolor{keywordflow}{break};
+12599   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072aec8c001f62c0d5cb853db5fd85309557}{gpCold}:
+12600     \hyperlink{class_q_c_p_color_gradient_aa13fda86406e1d896a465a409ae63b38}{setColorInterpolation}(\hyperlink{class_q_c_p_color_gradient_ac5dca17cc24336e6ca176610e7f77fc1a5e30f725c9cfe93999e268a9f92afbe7}{ciRGB});
+12601     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0, QColor(0, 0, 50));
+12602     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.2, QColor(0, 10, 180));
+12603     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.4, QColor(0, 50, 245));
+12604     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.6, QColor(10, 150, 255));
+12605     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.8, QColor(50, 255, 255));
+12606     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(1, QColor(255, 255, 255));
+12607     \textcolor{keywordflow}{break};
+12608   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072a1bb89351b6def7d220973443fe059c62}{gpNight}:
+12609     \hyperlink{class_q_c_p_color_gradient_aa13fda86406e1d896a465a409ae63b38}{setColorInterpolation}(\hyperlink{class_q_c_p_color_gradient_ac5dca17cc24336e6ca176610e7f77fc1af14ae62fcae11ecc07234eeaec5856cb}{ciHSV});
+12610     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0, QColor(10, 20, 30));
+12611     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(1, QColor(250, 255, 250));
+12612     \textcolor{keywordflow}{break};
+12613   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072a9e72663bf6b94b65945f7843f24e0721}{gpCandy}:
+12614     \hyperlink{class_q_c_p_color_gradient_aa13fda86406e1d896a465a409ae63b38}{setColorInterpolation}(\hyperlink{class_q_c_p_color_gradient_ac5dca17cc24336e6ca176610e7f77fc1af14ae62fcae11ecc07234eeaec5856cb}{ciHSV});
+12615     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0, QColor(0, 0, 255));
+12616     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(1, QColor(255, 250, 250));
+12617     \textcolor{keywordflow}{break};
+12618   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072a382f0b07cec1a59d8a533438aea815d2}{gpGeography}:
+12619     \hyperlink{class_q_c_p_color_gradient_aa13fda86406e1d896a465a409ae63b38}{setColorInterpolation}(\hyperlink{class_q_c_p_color_gradient_ac5dca17cc24336e6ca176610e7f77fc1a5e30f725c9cfe93999e268a9f92afbe7}{ciRGB});
+12620     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0, QColor(70, 170, 210));
+12621     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.20, QColor(90, 160, 180));
+12622     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.25, QColor(45, 130, 175));
+12623     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.30, QColor(100, 140, 125));
+12624     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.5, QColor(100, 140, 100));
+12625     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.6, QColor(130, 145, 120));
+12626     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.7, QColor(140, 130, 120));
+12627     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.9, QColor(180, 190, 190));
+12628     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(1, QColor(210, 210, 230));
+12629     \textcolor{keywordflow}{break};
+12630   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072a4297f4f9e212a819cd65e8e34567182b}{gpIon}:
+12631     \hyperlink{class_q_c_p_color_gradient_aa13fda86406e1d896a465a409ae63b38}{setColorInterpolation}(\hyperlink{class_q_c_p_color_gradient_ac5dca17cc24336e6ca176610e7f77fc1af14ae62fcae11ecc07234eeaec5856cb}{ciHSV});
+12632     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0, QColor(50, 10, 10));
+12633     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.45, QColor(0, 0, 255));
+12634     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.8, QColor(0, 255, 255));
+12635     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(1, QColor(0, 255, 0));
+12636     \textcolor{keywordflow}{break};
+12637   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072af1676b129f9f458ace453f280c731cf7}{gpThermal}:
+12638     \hyperlink{class_q_c_p_color_gradient_aa13fda86406e1d896a465a409ae63b38}{setColorInterpolation}(\hyperlink{class_q_c_p_color_gradient_ac5dca17cc24336e6ca176610e7f77fc1a5e30f725c9cfe93999e268a9f92afbe7}{ciRGB});
+12639     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0, QColor(0, 0, 50));
+12640     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.15, QColor(20, 0, 120));
+12641     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.33, QColor(200, 30, 140));
+12642     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.6, QColor(255, 100, 0));
+12643     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.85, QColor(255, 255, 40));
+12644     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(1, QColor(255, 255, 255));
+12645     \textcolor{keywordflow}{break};
+12646   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072ab7414ce4e36dc3e82e0132a7f0f41b52}{gpPolar}:
+12647     \hyperlink{class_q_c_p_color_gradient_aa13fda86406e1d896a465a409ae63b38}{setColorInterpolation}(\hyperlink{class_q_c_p_color_gradient_ac5dca17cc24336e6ca176610e7f77fc1a5e30f725c9cfe93999e268a9f92afbe7}{ciRGB});
+12648     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0, QColor(50, 255, 255));
+12649     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.18, QColor(10, 70, 255));
+12650     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.28, QColor(10, 10, 190));
+12651     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.5, QColor(0, 0, 0));
+12652     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.72, QColor(190, 10, 10));
+12653     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.82, QColor(255, 70, 10));
+12654     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(1, QColor(255, 255, 50));
+12655     \textcolor{keywordflow}{break};
+12656   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072ad63adc100ef46f6b4a8a6deacec4642f}{gpSpectrum}:
+12657     \hyperlink{class_q_c_p_color_gradient_aa13fda86406e1d896a465a409ae63b38}{setColorInterpolation}(\hyperlink{class_q_c_p_color_gradient_ac5dca17cc24336e6ca176610e7f77fc1af14ae62fcae11ecc07234eeaec5856cb}{ciHSV});
+12658     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0, QColor(50, 0, 50));
+12659     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.15, QColor(0, 0, 255));
+12660     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.35, QColor(0, 255, 255));
+12661     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.6, QColor(255, 255, 0));
+12662     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.75, QColor(255, 30, 0));
+12663     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(1, QColor(50, 0, 0));
+12664     \textcolor{keywordflow}{break};
+12665   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072a5f8a9e67b64c17ddfe4f069fe2b9fb02}{gpJet}:
+12666     \hyperlink{class_q_c_p_color_gradient_aa13fda86406e1d896a465a409ae63b38}{setColorInterpolation}(\hyperlink{class_q_c_p_color_gradient_ac5dca17cc24336e6ca176610e7f77fc1a5e30f725c9cfe93999e268a9f92afbe7}{ciRGB});
+12667     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0, QColor(0, 0, 100));
+12668     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.15, QColor(0, 50, 255));
+12669     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.35, QColor(0, 255, 255));
+12670     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.65, QColor(255, 255, 0));
+12671     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0.85, QColor(255, 30, 0));
+12672     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(1, QColor(100, 0, 0));
+12673     \textcolor{keywordflow}{break};
+12674   \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_color_gradient_aed6569828fee337023670272910c9072a30efe58407acfb67939032f70213a130}{gpHues}:
+12675     \hyperlink{class_q_c_p_color_gradient_aa13fda86406e1d896a465a409ae63b38}{setColorInterpolation}(\hyperlink{class_q_c_p_color_gradient_ac5dca17cc24336e6ca176610e7f77fc1af14ae62fcae11ecc07234eeaec5856cb}{ciHSV});
+12676     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(0, QColor(255, 0, 0));
+12677     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(1.0 / 3.0, QColor(0, 0, 255));
+12678     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(2.0 / 3.0, QColor(0, 255, 0));
+12679     \hyperlink{class_q_c_p_color_gradient_a3b48be5e78079db1bb2a1188a4c3390e}{setColorStopAt}(1, QColor(255, 0, 0));
+12680     \textcolor{keywordflow}{break};
+12681   \}
+12682 \}
 \end{DoxyCode}
 
 
@@ -749,11 +754,13 @@ Here is the caller graph for this function\+:\nopagebreak
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_color_gradient_ac641f5d2dc1686201d3cb602c871791d}
 
 
-Definition at line 1935 of file qcustomplot.\+h.
+Definition at line 2255 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-1935 \{ \textcolor{keywordflow}{return} !(*\textcolor{keyword}{this} == other); \}
+2255                                                        \{
+2256     \textcolor{keywordflow}{return} !(*\textcolor{keyword}{this} == other);
+2257   \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_color_gradient_aada47d8206bf2cec77462653bf471c13}{}\index{Q\+C\+P\+Color\+Gradient@{Q\+C\+P\+Color\+Gradient}!operator==@{operator==}}
 \index{operator==@{operator==}!Q\+C\+P\+Color\+Gradient@{Q\+C\+P\+Color\+Gradient}}
@@ -764,7 +771,7 @@ Definition at line 1935 of file qcustomplot.\+h.
 ) const}\label{class_q_c_p_color_gradient_aada47d8206bf2cec77462653bf471c13}
 
 
-Definition at line 11183 of file qcustomplot.\+cpp.
+Definition at line 12360 of file qcustomplot.\+cpp.
 
 
 
@@ -772,12 +779,12 @@ References m\+Color\+Interpolation, m\+Color\+Stops, m\+Level\+Count, and m\+Per
 
 
 \begin{DoxyCode}
-11184 \{
-11185   \textcolor{keywordflow}{return} ((other.\hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount} == this->mLevelCount) &&
-11186           (other.\hyperlink{class_q_c_p_color_gradient_a028cef73d863800a9ee93ffd641cce01}{mColorInterpolation} == this->mColorInterpolation) &&
-11187           (other.\hyperlink{class_q_c_p_color_gradient_a4b07deeb20ca1ee2d5ea7e01bf0420af}{mPeriodic} == this->mPeriodic) &&
-11188           (other.\hyperlink{class_q_c_p_color_gradient_a9e11a2b0974ef289d12c324822bc3a3e}{mColorStops} == this->mColorStops));
-11189 \}
+12360                                                                      \{
+12361   \textcolor{keywordflow}{return} ((other.\hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount} == this->mLevelCount) &&
+12362           (other.\hyperlink{class_q_c_p_color_gradient_a028cef73d863800a9ee93ffd641cce01}{mColorInterpolation} == this->mColorInterpolation) &&
+12363           (other.\hyperlink{class_q_c_p_color_gradient_a4b07deeb20ca1ee2d5ea7e01bf0420af}{mPeriodic} == this->mPeriodic) &&
+12364           (other.\hyperlink{class_q_c_p_color_gradient_a9e11a2b0974ef289d12c324822bc3a3e}{mColorStops} == this->mColorStops));
+12365 \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_color_gradient_a860b7048f877195d2a0fb8d5a7cf5d73}{}\index{Q\+C\+P\+Color\+Gradient@{Q\+C\+P\+Color\+Gradient}!periodic@{periodic}}
 \index{periodic@{periodic}!Q\+C\+P\+Color\+Gradient@{Q\+C\+P\+Color\+Gradient}}
@@ -788,11 +795,11 @@ References m\+Color\+Interpolation, m\+Color\+Stops, m\+Level\+Count, and m\+Per
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_q_c_p_color_gradient_a860b7048f877195d2a0fb8d5a7cf5d73}
 
 
-Definition at line 1941 of file qcustomplot.\+h.
+Definition at line 2263 of file qcustomplot.\+h.
 
 
 \begin{DoxyCode}
-1941 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_color_gradient_a4b07deeb20ca1ee2d5ea7e01bf0420af}{mPeriodic}; \}
+2263 \{ \textcolor{keywordflow}{return} \hyperlink{class_q_c_p_color_gradient_a4b07deeb20ca1ee2d5ea7e01bf0420af}{mPeriodic}; \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_color_gradient_aa13fda86406e1d896a465a409ae63b38}{}\index{Q\+C\+P\+Color\+Gradient@{Q\+C\+P\+Color\+Gradient}!set\+Color\+Interpolation@{set\+Color\+Interpolation}}
 \index{set\+Color\+Interpolation@{set\+Color\+Interpolation}!Q\+C\+P\+Color\+Gradient@{Q\+C\+P\+Color\+Gradient}}
@@ -805,7 +812,7 @@ Sets whether the colors in between the configured color stops (see \hyperlink{cl
 
 For example, a sweep in R\+G\+B space from red to green will have a muddy brown intermediate color, whereas in H\+S\+V space the intermediate color is yellow. 
 
-Definition at line 11246 of file qcustomplot.\+cpp.
+Definition at line 12425 of file qcustomplot.\+cpp.
 
 
 
@@ -817,13 +824,12 @@ Referenced by load\+Preset().
 
 
 \begin{DoxyCode}
-11247 \{
-11248   \textcolor{keywordflow}{if} (interpolation != \hyperlink{class_q_c_p_color_gradient_a028cef73d863800a9ee93ffd641cce01}{mColorInterpolation})
-11249   \{
-11250     \hyperlink{class_q_c_p_color_gradient_a028cef73d863800a9ee93ffd641cce01}{mColorInterpolation} = interpolation;
-11251     \hyperlink{class_q_c_p_color_gradient_abacf55e11f67d6722a687af1bb2687bd}{mColorBufferInvalidated} = \textcolor{keyword}{true};
-11252   \}
-11253 \}
+12426                                                       \{
+12427   \textcolor{keywordflow}{if} (interpolation != \hyperlink{class_q_c_p_color_gradient_a028cef73d863800a9ee93ffd641cce01}{mColorInterpolation}) \{
+12428     \hyperlink{class_q_c_p_color_gradient_a028cef73d863800a9ee93ffd641cce01}{mColorInterpolation} = interpolation;
+12429     \hyperlink{class_q_c_p_color_gradient_abacf55e11f67d6722a687af1bb2687bd}{mColorBufferInvalidated} = \textcolor{keyword}{true};
+12430   \}
+12431 \}
 \end{DoxyCode}
 
 
@@ -851,7 +857,7 @@ Sets the {\itshape color} the gradient will have at the specified {\itshape posi
 \end{DoxySeeAlso}
 
 
-Definition at line 11233 of file qcustomplot.\+cpp.
+Definition at line 12411 of file qcustomplot.\+cpp.
 
 
 
@@ -863,10 +869,10 @@ Referenced by inverted(), and load\+Preset().
 
 
 \begin{DoxyCode}
-11234 \{
-11235   \hyperlink{class_q_c_p_color_gradient_a9e11a2b0974ef289d12c324822bc3a3e}{mColorStops}.insert(position, \hyperlink{class_q_c_p_color_gradient_a0599545c859268b025d2060dea741cea}{color});
-11236   \hyperlink{class_q_c_p_color_gradient_abacf55e11f67d6722a687af1bb2687bd}{mColorBufferInvalidated} = \textcolor{keyword}{true};
-11237 \}
+12411                                                                           \{
+12412   \hyperlink{class_q_c_p_color_gradient_a9e11a2b0974ef289d12c324822bc3a3e}{mColorStops}.insert(position, \hyperlink{class_q_c_p_color_gradient_a0599545c859268b025d2060dea741cea}{color});
+12413   \hyperlink{class_q_c_p_color_gradient_abacf55e11f67d6722a687af1bb2687bd}{mColorBufferInvalidated} = \textcolor{keyword}{true};
+12414 \}
 \end{DoxyCode}
 
 
@@ -895,7 +901,7 @@ A more convenient way to create a custom gradient may be to clear all color stop
 \end{DoxySeeAlso}
 
 
-Definition at line 11221 of file qcustomplot.\+cpp.
+Definition at line 12398 of file qcustomplot.\+cpp.
 
 
 
@@ -903,10 +909,10 @@ References color\+Stops(), m\+Color\+Buffer\+Invalidated, and m\+Color\+Stops.
 
 
 \begin{DoxyCode}
-11222 \{
-11223   \hyperlink{class_q_c_p_color_gradient_a9e11a2b0974ef289d12c324822bc3a3e}{mColorStops} = \hyperlink{class_q_c_p_color_gradient_a64f8aba7826f9c6363aacff8376cef37}{colorStops};
-11224   \hyperlink{class_q_c_p_color_gradient_abacf55e11f67d6722a687af1bb2687bd}{mColorBufferInvalidated} = \textcolor{keyword}{true};
-11225 \}
+12398                                                                            \{
+12399   \hyperlink{class_q_c_p_color_gradient_a9e11a2b0974ef289d12c324822bc3a3e}{mColorStops} = \hyperlink{class_q_c_p_color_gradient_a64f8aba7826f9c6363aacff8376cef37}{colorStops};
+12400   \hyperlink{class_q_c_p_color_gradient_abacf55e11f67d6722a687af1bb2687bd}{mColorBufferInvalidated} = \textcolor{keyword}{true};
+12401 \}
 \end{DoxyCode}
 
 
@@ -930,7 +936,7 @@ Sets the number of discretization levels of the color gradient to {\itshape n}. 
 
  
 
-Definition at line 11197 of file qcustomplot.\+cpp.
+Definition at line 12374 of file qcustomplot.\+cpp.
 
 
 
@@ -938,18 +944,16 @@ References m\+Color\+Buffer\+Invalidated, m\+Level\+Count, and n.
 
 
 \begin{DoxyCode}
-11198 \{
-11199   \textcolor{keywordflow}{if} (\hyperlink{_comparision_pictures_2_createtest_image_8m_aeab71244afb687f16d8c4f5ee9d6ef0e}{n} < 2)
-11200   \{
-11201     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"n must be greater or equal 2 but was"} << \hyperlink{_comparision_pictures_2_createtest_image_8m_aeab71244afb687f16d8c4f5ee9d6ef0e}{n};
-11202     n = 2;
-11203   \}
-11204   \textcolor{keywordflow}{if} (\hyperlink{_comparision_pictures_2_createtest_image_8m_aeab71244afb687f16d8c4f5ee9d6ef0e}{n} != \hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount})
-11205   \{
-11206     \hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount} = \hyperlink{_comparision_pictures_2_createtest_image_8m_aeab71244afb687f16d8c4f5ee9d6ef0e}{n};
-11207     \hyperlink{class_q_c_p_color_gradient_abacf55e11f67d6722a687af1bb2687bd}{mColorBufferInvalidated} = \textcolor{keyword}{true};
-11208   \}
-11209 \}
+12374                                           \{
+12375   \textcolor{keywordflow}{if} (\hyperlink{_comparision_pictures_2_createtest_image_8m_aeab71244afb687f16d8c4f5ee9d6ef0e}{n} < 2) \{
+12376     qDebug() << Q\_FUNC\_INFO << \textcolor{stringliteral}{"n must be greater or equal 2 but was"} << \hyperlink{_comparision_pictures_2_createtest_image_8m_aeab71244afb687f16d8c4f5ee9d6ef0e}{n};
+12377     n = 2;
+12378   \}
+12379   \textcolor{keywordflow}{if} (\hyperlink{_comparision_pictures_2_createtest_image_8m_aeab71244afb687f16d8c4f5ee9d6ef0e}{n} != \hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount}) \{
+12380     \hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount} = \hyperlink{_comparision_pictures_2_createtest_image_8m_aeab71244afb687f16d8c4f5ee9d6ef0e}{n};
+12381     \hyperlink{class_q_c_p_color_gradient_abacf55e11f67d6722a687af1bb2687bd}{mColorBufferInvalidated} = \textcolor{keyword}{true};
+12382   \}
+12383 \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_color_gradient_a39d6448155fc00a219f239220d14bb39}{}\index{Q\+C\+P\+Color\+Gradient@{Q\+C\+P\+Color\+Gradient}!set\+Periodic@{set\+Periodic}}
 \index{set\+Periodic@{set\+Periodic}!Q\+C\+P\+Color\+Gradient@{Q\+C\+P\+Color\+Gradient}}
@@ -966,7 +970,7 @@ As shown in the image above, gradients that have the same start and end color ar
 
 In practice, using periodic color gradients makes sense when the data corresponds to a periodic dimension, such as an angle or a phase. If this is not the case, the color encoding might become ambiguous, because multiple different data values are shown as the same color. 
 
-Definition at line 11270 of file qcustomplot.\+cpp.
+Definition at line 12454 of file qcustomplot.\+cpp.
 
 
 
@@ -974,9 +978,7 @@ References m\+Periodic.
 
 
 \begin{DoxyCode}
-11271 \{
-11272   \hyperlink{class_q_c_p_color_gradient_a4b07deeb20ca1ee2d5ea7e01bf0420af}{mPeriodic} = enabled;
-11273 \}
+12454 \{ \hyperlink{class_q_c_p_color_gradient_a4b07deeb20ca1ee2d5ea7e01bf0420af}{mPeriodic} = enabled; \}
 \end{DoxyCode}
 \hypertarget{class_q_c_p_color_gradient_a353f15ab3ab586eebf1f6b58c3e2707b}{}\index{Q\+C\+P\+Color\+Gradient@{Q\+C\+P\+Color\+Gradient}!update\+Color\+Buffer@{update\+Color\+Buffer}}
 \index{update\+Color\+Buffer@{update\+Color\+Buffer}!Q\+C\+P\+Color\+Gradient@{Q\+C\+P\+Color\+Gradient}}
@@ -987,7 +989,7 @@ References m\+Periodic.
 )\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_color_gradient_a353f15ab3ab586eebf1f6b58c3e2707b}
 
 
-Definition at line 11529 of file qcustomplot.\+cpp.
+Definition at line 12717 of file qcustomplot.\+cpp.
 
 
 
@@ -999,68 +1001,72 @@ Referenced by color(), and colorize().
 
 
 \begin{DoxyCode}
-11530 \{
-11531   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_gradient_af8b5f0739faa5f8295154d47ce38ecff}{mColorBuffer}.size() != \hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount})
-11532     \hyperlink{class_q_c_p_color_gradient_af8b5f0739faa5f8295154d47ce38ecff}{mColorBuffer}.resize(\hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount});
-11533   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_gradient_a9e11a2b0974ef289d12c324822bc3a3e}{mColorStops}.size() > 1)
-11534   \{
-11535     \textcolor{keywordtype}{double} indexToPosFactor = 1.0/(double)(\hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount}-1);
-11536     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}<\hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount}; ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
-11537     \{
-11538       \textcolor{keywordtype}{double} position = \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}*indexToPosFactor;
-11539       QMap<double, QColor>::const\_iterator it = \hyperlink{class_q_c_p_color_gradient_a9e11a2b0974ef289d12c324822bc3a3e}{mColorStops}.lowerBound(position);
-11540       \textcolor{keywordflow}{if} (it == \hyperlink{class_q_c_p_color_gradient_a9e11a2b0974ef289d12c324822bc3a3e}{mColorStops}.constEnd()) \textcolor{comment}{// position is on or after last stop, use color of last
-       stop}
-11541       \{
-11542         \hyperlink{class_q_c_p_color_gradient_af8b5f0739faa5f8295154d47ce38ecff}{mColorBuffer}[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = (it-1).value().rgb();
-11543       \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (it == \hyperlink{class_q_c_p_color_gradient_a9e11a2b0974ef289d12c324822bc3a3e}{mColorStops}.constBegin()) \textcolor{comment}{// position is on or before first stop, use
-       color of first stop}
-11544       \{
-11545         \hyperlink{class_q_c_p_color_gradient_af8b5f0739faa5f8295154d47ce38ecff}{mColorBuffer}[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = it.value().rgb();
-11546       \} \textcolor{keywordflow}{else} \textcolor{comment}{// position is in between stops (or on an intermediate stop), interpolate color}
-11547       \{
-11548         QMap<double, QColor>::const\_iterator high = it;
-11549         QMap<double, QColor>::const\_iterator low = it-1;
-11550         \textcolor{keywordtype}{double} t = (position-low.key())/(high.key()-low.key()); \textcolor{comment}{// interpolation factor 0..1}
-11551         \textcolor{keywordflow}{switch} (\hyperlink{class_q_c_p_color_gradient_a028cef73d863800a9ee93ffd641cce01}{mColorInterpolation})
-11552         \{
-11553           \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_color_gradient_ac5dca17cc24336e6ca176610e7f77fc1a5e30f725c9cfe93999e268a9f92afbe7}{ciRGB}:
-11554           \{
-11555             \hyperlink{class_q_c_p_color_gradient_af8b5f0739faa5f8295154d47ce38ecff}{mColorBuffer}[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = qRgb((1-t)*low.value().red() + t*high.value().red(),
-11556                                    (1-t)*low.value().green() + t*high.value().green(),
-11557                                    (1-t)*low.value().blue() + t*high.value().blue());
-11558             \textcolor{keywordflow}{break};
-11559           \}
-11560           \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_color_gradient_ac5dca17cc24336e6ca176610e7f77fc1af14ae62fcae11ecc07234eeaec5856cb}{ciHSV}:
-11561           \{
-11562             QColor lowHsv = low.value().toHsv();
-11563             QColor highHsv = high.value().toHsv();
-11564             \textcolor{keywordtype}{double} hue = 0;
-11565             \textcolor{keywordtype}{double} hueDiff = highHsv.hueF()-lowHsv.hueF();
-11566             \textcolor{keywordflow}{if} (hueDiff > 0.5)
-11567               hue = lowHsv.hueF() - t*(1.0-hueDiff);
-11568             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (hueDiff < -0.5)
-11569               hue = lowHsv.hueF() + t*(1.0+hueDiff);
-11570             \textcolor{keywordflow}{else}
-11571               hue = lowHsv.hueF() + t*hueDiff;
-11572             \textcolor{keywordflow}{if} (hue < 0) hue += 1.0;
-11573             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (hue >= 1.0) hue -= 1.0;
-11574             \hyperlink{class_q_c_p_color_gradient_af8b5f0739faa5f8295154d47ce38ecff}{mColorBuffer}[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = QColor::fromHsvF(hue, (1-t)*lowHsv.saturationF() + t*highHsv.
-      saturationF(), (1-t)*lowHsv.valueF() + t*highHsv.valueF()).rgb();
-11575             \textcolor{keywordflow}{break};
-11576           \}
-11577         \}
-11578       \}
-11579     \}
-11580   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_gradient_a9e11a2b0974ef289d12c324822bc3a3e}{mColorStops}.size() == 1)
-11581   \{
-11582     \hyperlink{class_q_c_p_color_gradient_af8b5f0739faa5f8295154d47ce38ecff}{mColorBuffer}.fill(\hyperlink{class_q_c_p_color_gradient_a9e11a2b0974ef289d12c324822bc3a3e}{mColorStops}.constBegin().value().rgb());
-11583   \} \textcolor{keywordflow}{else} \textcolor{comment}{// mColorStops is empty, fill color buffer with black}
-11584   \{
-11585     \hyperlink{class_q_c_p_color_gradient_af8b5f0739faa5f8295154d47ce38ecff}{mColorBuffer}.fill(qRgb(0, 0, 0));
-11586   \}
-11587   \hyperlink{class_q_c_p_color_gradient_abacf55e11f67d6722a687af1bb2687bd}{mColorBufferInvalidated} = \textcolor{keyword}{false};
-11588 \}
+12717                                          \{
+12718   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_gradient_af8b5f0739faa5f8295154d47ce38ecff}{mColorBuffer}.size() != \hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount})
+12719     \hyperlink{class_q_c_p_color_gradient_af8b5f0739faa5f8295154d47ce38ecff}{mColorBuffer}.resize(\hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount});
+12720   \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_gradient_a9e11a2b0974ef289d12c324822bc3a3e}{mColorStops}.size() > 1) \{
+12721     \textcolor{keywordtype}{double} indexToPosFactor = 1.0 / (double)(\hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount} - 1);
+12722     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < \hyperlink{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}{mLevelCount}; ++\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) \{
+12723       \textcolor{keywordtype}{double} position = \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} * indexToPosFactor;
+12724       QMap<double, QColor>::const\_iterator it =
+12725           \hyperlink{class_q_c_p_color_gradient_a9e11a2b0974ef289d12c324822bc3a3e}{mColorStops}.lowerBound(position);
+12726       \textcolor{keywordflow}{if} (it == \hyperlink{class_q_c_p_color_gradient_a9e11a2b0974ef289d12c324822bc3a3e}{mColorStops}.constEnd()) \textcolor{comment}{// position is on or after last stop,}
+12727                                         \textcolor{comment}{// use color of last stop}
+12728       \{
+12729         \hyperlink{class_q_c_p_color_gradient_af8b5f0739faa5f8295154d47ce38ecff}{mColorBuffer}[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = (it - 1).value().rgb();
+12730       \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (it == \hyperlink{class_q_c_p_color_gradient_a9e11a2b0974ef289d12c324822bc3a3e}{mColorStops}.constBegin()) \textcolor{comment}{// position is on or before}
+12731                                                  \textcolor{comment}{// first stop, use color of}
+12732                                                  \textcolor{comment}{// first stop}
+12733       \{
+12734         \hyperlink{class_q_c_p_color_gradient_af8b5f0739faa5f8295154d47ce38ecff}{mColorBuffer}[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = it.value().rgb();
+12735       \} \textcolor{keywordflow}{else} \textcolor{comment}{// position is in between stops (or on an intermediate stop),}
+12736              \textcolor{comment}{// interpolate color}
+12737       \{
+12738         QMap<double, QColor>::const\_iterator high = it;
+12739         QMap<double, QColor>::const\_iterator low = it - 1;
+12740         \textcolor{keywordtype}{double} t = (position - low.key()) /
+12741                    (high.key() - low.key()); \textcolor{comment}{// interpolation factor 0..1}
+12742         \textcolor{keywordflow}{switch} (\hyperlink{class_q_c_p_color_gradient_a028cef73d863800a9ee93ffd641cce01}{mColorInterpolation}) \{
+12743         \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_color_gradient_ac5dca17cc24336e6ca176610e7f77fc1a5e30f725c9cfe93999e268a9f92afbe7}{ciRGB}: \{
+12744           \hyperlink{class_q_c_p_color_gradient_af8b5f0739faa5f8295154d47ce38ecff}{mColorBuffer}[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] =
+12745               qRgb((1 - t) * low.value().red() + t * high.value().red(),
+12746                    (1 - t) * low.value().green() + t * high.value().green(),
+12747                    (1 - t) * low.value().blue() + t * high.value().blue());
+12748           \textcolor{keywordflow}{break};
+12749         \}
+12750         \textcolor{keywordflow}{case} \hyperlink{class_q_c_p_color_gradient_ac5dca17cc24336e6ca176610e7f77fc1af14ae62fcae11ecc07234eeaec5856cb}{ciHSV}: \{
+12751           QColor lowHsv = low.value().toHsv();
+12752           QColor highHsv = high.value().toHsv();
+12753           \textcolor{keywordtype}{double} hue = 0;
+12754           \textcolor{keywordtype}{double} hueDiff = highHsv.hueF() - lowHsv.hueF();
+12755           \textcolor{keywordflow}{if} (hueDiff > 0.5)
+12756             hue = lowHsv.hueF() - t * (1.0 - hueDiff);
+12757           \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (hueDiff < -0.5)
+12758             hue = lowHsv.hueF() + t * (1.0 + hueDiff);
+12759           \textcolor{keywordflow}{else}
+12760             hue = lowHsv.hueF() + t * hueDiff;
+12761           \textcolor{keywordflow}{if} (hue < 0)
+12762             hue += 1.0;
+12763           \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (hue >= 1.0)
+12764             hue -= 1.0;
+12765           \hyperlink{class_q_c_p_color_gradient_af8b5f0739faa5f8295154d47ce38ecff}{mColorBuffer}[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] =
+12766               QColor::fromHsvF(
+12767                   hue,
+12768                   (1 - t) * lowHsv.saturationF() + t * highHsv.saturationF(),
+12769                   (1 - t) * lowHsv.valueF() + t * highHsv.valueF()).rgb();
+12770           \textcolor{keywordflow}{break};
+12771         \}
+12772         \}
+12773       \}
+12774     \}
+12775   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\hyperlink{class_q_c_p_color_gradient_a9e11a2b0974ef289d12c324822bc3a3e}{mColorStops}.size() == 1) \{
+12776     \hyperlink{class_q_c_p_color_gradient_af8b5f0739faa5f8295154d47ce38ecff}{mColorBuffer}.fill(\hyperlink{class_q_c_p_color_gradient_a9e11a2b0974ef289d12c324822bc3a3e}{mColorStops}.constBegin().value().rgb());
+12777   \} \textcolor{keywordflow}{else} \textcolor{comment}{// mColorStops is empty, fill color buffer with black}
+12778   \{
+12779     \hyperlink{class_q_c_p_color_gradient_af8b5f0739faa5f8295154d47ce38ecff}{mColorBuffer}.fill(qRgb(0, 0, 0));
+12780   \}
+12781   \hyperlink{class_q_c_p_color_gradient_abacf55e11f67d6722a687af1bb2687bd}{mColorBufferInvalidated} = \textcolor{keyword}{false};
+12782 \}
 \end{DoxyCode}
 
 
@@ -1081,7 +1087,7 @@ Here is the caller graph for this function\+:\nopagebreak
 \subsubsection[{m\+Color\+Buffer}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Vector$<$Q\+Rgb$>$ Q\+C\+P\+Color\+Gradient\+::m\+Color\+Buffer\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_color_gradient_af8b5f0739faa5f8295154d47ce38ecff}
 
 
-Definition at line 1967 of file qcustomplot.\+h.
+Definition at line 2290 of file qcustomplot.\+h.
 
 
 
@@ -1092,7 +1098,7 @@ Referenced by color(), colorize(), Q\+C\+P\+Color\+Gradient(), and update\+Color
 \subsubsection[{m\+Color\+Buffer\+Invalidated}]{\setlength{\rightskip}{0pt plus 5cm}bool Q\+C\+P\+Color\+Gradient\+::m\+Color\+Buffer\+Invalidated\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_color_gradient_abacf55e11f67d6722a687af1bb2687bd}
 
 
-Definition at line 1968 of file qcustomplot.\+h.
+Definition at line 2291 of file qcustomplot.\+h.
 
 
 
@@ -1103,7 +1109,7 @@ Referenced by clear\+Color\+Stops(), color(), colorize(), set\+Color\+Interpolat
 \subsubsection[{m\+Color\+Interpolation}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Color\+Interpolation} Q\+C\+P\+Color\+Gradient\+::m\+Color\+Interpolation\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_color_gradient_a028cef73d863800a9ee93ffd641cce01}
 
 
-Definition at line 1963 of file qcustomplot.\+h.
+Definition at line 2286 of file qcustomplot.\+h.
 
 
 
@@ -1114,7 +1120,7 @@ Referenced by operator==(), set\+Color\+Interpolation(), and update\+Color\+Buff
 \subsubsection[{m\+Color\+Stops}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Map$<$double, Q\+Color$>$ Q\+C\+P\+Color\+Gradient\+::m\+Color\+Stops\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_color_gradient_a9e11a2b0974ef289d12c324822bc3a3e}
 
 
-Definition at line 1962 of file qcustomplot.\+h.
+Definition at line 2285 of file qcustomplot.\+h.
 
 
 
@@ -1125,7 +1131,7 @@ Referenced by clear\+Color\+Stops(), inverted(), operator==(), set\+Color\+Stop\
 \subsubsection[{m\+Level\+Count}]{\setlength{\rightskip}{0pt plus 5cm}int Q\+C\+P\+Color\+Gradient\+::m\+Level\+Count\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_color_gradient_a98fb68e359904b2c991fcae3e38a211a}
 
 
-Definition at line 1961 of file qcustomplot.\+h.
+Definition at line 2284 of file qcustomplot.\+h.
 
 
 
@@ -1136,7 +1142,7 @@ Referenced by color(), colorize(), operator==(), Q\+C\+P\+Color\+Gradient(), set
 \subsubsection[{m\+Periodic}]{\setlength{\rightskip}{0pt plus 5cm}bool Q\+C\+P\+Color\+Gradient\+::m\+Periodic\hspace{0.3cm}{\ttfamily [protected]}}\label{class_q_c_p_color_gradient_a4b07deeb20ca1ee2d5ea7e01bf0420af}
 
 
-Definition at line 1964 of file qcustomplot.\+h.
+Definition at line 2287 of file qcustomplot.\+h.
 
 
 
