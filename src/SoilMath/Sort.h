@@ -9,11 +9,20 @@
 #include <stdint.h>
 
 namespace SoilMath {
+/*!
+ * \brief The Sort template class
+ */
 class Sort {
 public:
   Sort() {}
   ~Sort() {}
 
+  /*!
+   * \brief QuickSort a static sort a Type T array with i values
+   * \details Usage: QuickSort<type>(*type , i)
+   * \param arr an array of Type T
+   * \param i the number of elements
+   */
   template <typename T> static void QuickSort(T *arr, int i) {
     if (i < 2)
       return;

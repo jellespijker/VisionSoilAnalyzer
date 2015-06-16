@@ -32,33 +32,42 @@
 using namespace std;
 
 namespace SoilMath {
+
+/*!
+ * \brief Stats class
+ * \details Usage Stats<type1, type2, type3>Stats() type 1, 2 and 3 shoudl be of the same value and concecuative in size
+ */
 template <typename T1, typename T2, typename T3> class Stats {
 public:
-  bool isDiscrete = true;
+  bool isDiscrete = true; /**< indicates if the data is discrete or real*/
 
-  T1 *Data;
-  uint32_t *bins;
-  bool Calculated = false;
-  float Mean = 0.0;
-  uint32_t n = 0;
-  uint32_t noBins = 0;
-  T1 Range = 0;
-  T1 min = 0;
-  T1 max = 0;
-  T1 Startbin = 0;
-  T1 EndBin = 0;
-  T1 binRange = 0;
-  float Std = 0.0;
-  T3 Sum = 0;
-  uint16_t Rows = 0;
-  uint16_t Cols = 0;
-  bool StartAtZero = true;
+  T1 *Data; /**< */
+  uint32_t *bins; /**< */
+  bool Calculated = false; /**< */
+  float Mean = 0.0; /**< */
+  uint32_t n = 0; /**< */
+  uint32_t noBins = 0; /**< */
+  T1 Range = 0; /**< */
+  T1 min = 0; /**< */
+  T1 max = 0; /**< */
+  T1 Startbin = 0; /**< */
+  T1 EndBin = 0; /**< */
+  T1 binRange = 0; /**< */
+  float Std = 0.0; /**< */
+  T3 Sum = 0; /**< */
+  uint16_t Rows = 0; /**< */
+  uint16_t Cols = 0; /**< */
+  bool StartAtZero = true; /**< */
 
-  uint32_t *begin() { return &bins[0]; }
-  uint32_t *end() { return &bins[noBins]; }
+  uint32_t *begin() { return &bins[0]; } /**< */
+  uint32_t *end() { return &bins[noBins]; } /**< */
 
-  // Compare the sample using the Welch's Test (source:
-  // http://www.boost.org/doc/libs/1_57_0/libs/math/doc/html/math_toolkit/stat_tut/weg/st_eg/two_sample_students_t.html)
+  /*!
+   * \brief WelchTest Compare the sample using the Welch's Test
+   * \details (source: http://www.boost.org/doc/libs/1_57_0/libs/math/doc/html/math_toolkit/stat_tut/weg/st_eg/two_sample_students_t.html)
+   * \param statComp Statiscs Results of which it should be tested against
+   * \return
+   */
   bool WelchTest(SoilMath::Stats<T1, T2, T3> &statComp) {
     double alpha = 0.05;
     // Degrees of freedom:
@@ -92,6 +101,10 @@ public:
     return rejected;
   }
 
+  /*!
+   * \brief Stats
+   * \param rhs
+   */
   Stats(const Stats &rhs)
       : bins{new uint32_t[rhs.noBins]}, Data{new T1[rhs.n]} {
     this->binRange = rhs.binRange;
@@ -115,6 +128,11 @@ public:
     this->StartAtZero = rhs.StartAtZero;
   }
 
+  /*!
+   * \brief operator =
+   * \param rhs
+   * \return
+   */
   Stats &operator=(Stats const &rhs) {
     if (&rhs != this) {
       delete[] bins;
@@ -144,6 +162,12 @@ public:
     return *this;
   }
 
+  /*!
+   * \brief Stats
+   * \param noBins
+   * \param startBin
+   * \param endBin
+   */
   Stats(int noBins = 256, T1 startBin = 0, T1 endBin = 255) {
     min = numeric_limits<T1>::max();
     max = numeric_limits<T1>::min();
@@ -163,6 +187,15 @@ public:
     }
   }
 
+  /*!
+   * \brief Stats
+   * \param data
+   * \param rows
+   * \param cols
+   * \param noBins
+   * \param startBin
+   * \param startatzero
+   */
   Stats(T1 *data, uint16_t rows, uint16_t cols, int noBins = 256,
         T1 startBin = 0, bool startatzero = true) {
     min = numeric_limits<T1>::max();
@@ -192,6 +225,16 @@ public:
     }
   }
 
+  /*!
+   * \brief Stats
+   * \param data
+   * \param rows
+   * \param cols
+   * \param mask
+   * \param noBins
+   * \param startBin
+   * \param startatzero
+   */
   Stats(T1 *data, uint16_t rows, uint16_t cols, uchar *mask, int noBins = 256,
         T1 startBin = 0, bool startatzero = true) {
     min = numeric_limits<T1>::max();
@@ -226,6 +269,13 @@ public:
   /// </summary>
   /// <param name="binData">A histogram of [256] bins</param>
   /// <param name="offset">offset when the data starts</param>
+  ///
+  /*!
+   * \brief Stats
+   * \param binData
+   * \param startC
+   * \param endC
+   */
   Stats(T2 *binData, uint16_t startC, uint16_t endC) {
     noBins = endC - startC;
     Startbin = startC;
@@ -254,6 +304,10 @@ public:
   /// <summary>
   /// Calculate the stats using a mask with the same size as the data
   /// </summary>
+  ///
+  /*!
+   * \brief BasicCalculateFloat
+   */
   void BasicCalculateFloat() {
     float sum_dev = 0.0;
     n = Rows * Cols;
@@ -297,6 +351,11 @@ public:
   /// Calculate the stats using a mask with the same size as the data
   /// </summary>
   /// <param name="mask">A mask type uchar</param>
+  ///
+  /*!
+   * \brief BasicCalculateFloat
+   * \param mask
+   */
   void BasicCalculateFloat(uchar *mask) {
     float sum_dev = 0.0;
     n = Rows * Cols;
@@ -383,6 +442,10 @@ public:
     Calculated = true;
   }
 
+  /*!
+   * \brief BasicCalculate
+   * \param mask
+   */
   void BasicCalculate(uchar *mask) {
     double sum_dev = 0.0;
     n = Rows * Cols;
@@ -436,6 +499,11 @@ public:
   /// <summary>
   /// Make the calculations using the histogram
   /// </summary>
+  /*!
+   * \brief BinCalculations
+   * \param startC
+   * \param endC
+   */
   void BinCalculations(uint16_t startC, uint16_t endC) {
     float sum_dev = 0.0;
     // Get the Sum
@@ -474,8 +542,14 @@ public:
   }
 
 private:
-  uint32_t n_end = 0;
-  friend class boost::serialization::access;
+  uint32_t n_end = 0; /**< */
+  friend class boost::serialization::access; /**< */
+
+  /*!
+   * \brief serialize
+   * \param ar
+   * \param version
+   */
   template <class Archive>
   void serialize(Archive &ar, const unsigned int version) {
     ar &isDiscrete;
@@ -504,7 +578,7 @@ private:
 };
 }
 
-typedef SoilMath::Stats<float, double, long double> floatStat_t;
-typedef SoilMath::Stats<uchar, uint32_t, uint64_t> ucharStat_t;
-typedef SoilMath::Stats<uint16_t, uint32_t, uint64_t> uint16Stat_t;
-typedef SoilMath::Stats<uint32_t, uint32_t, uint64_t> uint32Stat_t;
+typedef SoilMath::Stats<float, double, long double> floatStat_t; /**< */
+typedef SoilMath::Stats<uchar, uint32_t, uint64_t> ucharStat_t; /**< */
+typedef SoilMath::Stats<uint16_t, uint32_t, uint64_t> uint16Stat_t; /**< */
+typedef SoilMath::Stats<uint32_t, uint32_t, uint64_t> uint32Stat_t; /**< */
