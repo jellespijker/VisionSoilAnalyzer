@@ -234,3 +234,25 @@ void VSAGUI::on_actionHardware_Settings_triggered() {
   hsetttingWindow = new HardwareSettings(0, sSettings);
   hsetttingWindow->exec();
 }
+
+/*!
+ * \brief VSAGUI::on_actionCheese_2_triggered
+ */
+void VSAGUI::on_actionCheese_2_triggered()
+{
+    // Get the name of the individual cams
+    std::vector<std::string> availCams = Hardware::Microscope::AvailableCams();
+    uint i = 0;
+    for_each(availCams.begin(), availCams.end(),[&](std::string &C)
+    {
+        // If the current itterator is the Micrscope start cheese
+        if (C.compare(MICROSCOPE_NAME) == 0) {
+            std::string bashStr = "cheese --device=/dev/video";
+            bashStr.append(std::to_string(i));
+            std::system(bashStr.c_str());
+            return;
+        }
+        i++;
+    });
+
+}

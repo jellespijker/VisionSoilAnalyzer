@@ -12,6 +12,7 @@ Interaction with the USB 5 MP microscope
 #pragma once
 #define MICROSCOPE_VERSION 1 /*!< Version of the class*/
 
+#define MICROSCOPE_NAME "USB Microscope"
 #define MIN_BRIGHTNESS -64
 #define MAX_BRIGHTNESS 64
 #define MIN_CONTRAST 0
@@ -73,7 +74,7 @@ public:
              bool firstdefault = true);
   ~Microscope();
 
-  std::vector<std::string> AvailableCams();
+  static std::vector<std::string> AvailableCams();
 
   void GetFrame(cv::Mat &dst);
   void GetHDRFrame(cv::Mat &dst, uint32_t noframes = 5);
@@ -96,6 +97,6 @@ private:
   std::vector<cv::Mat> HDRframes;
   std::vector<float> times;
 
-  bool exist(const std::string &name);
+  static bool exist(const std::string &name);
 };
 }

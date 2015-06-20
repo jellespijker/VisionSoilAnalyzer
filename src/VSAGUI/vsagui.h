@@ -13,6 +13,7 @@
 #include <string>
 #include <vector>
 #include <sys/utsname.h>
+#include <stdlib.h>
 
 #include <QMainWindow>
 #include <QtGui>
@@ -89,6 +90,8 @@ private slots:
   void on_OffsetSlider_sliderReleased();
 
   void on_actionHardware_Settings_triggered();
+
+  void on_actionCheese_2_triggered();
 
 private:
   Ui::VSAGUI *ui;
