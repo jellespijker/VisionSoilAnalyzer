@@ -121,8 +121,7 @@ public:
   void LoadState(string filename);
 
   Weight_t iWeights; /**< a vector of real valued floating point input weights*/
-  Weight_t
-      hWeights; /**< a vector of real valued floating point hidden weights*/
+  Weight_t hWeights; /**< a vector of real valued floating point hidden weight*/
 
 private:
   std::vector<float> iNeurons; /**< a vector of input values, the bias is

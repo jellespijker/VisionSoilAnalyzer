@@ -18,6 +18,10 @@
 #include "../SoilVision/VisionDebug.h"
 
 namespace SoilAnalyzer {
+/*!
+ * \brief The Soil class
+ * \details The parent object of the Soil related objects
+ */
 class Soil {
 private:
   friend class boost::serialization::access;
@@ -36,21 +40,34 @@ private:
   }
 
 protected:
-  cv::Mat OptimizedInt;
+  cv::Mat OptimizedInt; /**< The enhanced int image*/
 
 public:
+  /*!
+   * \brief Soil the constructor
+   */
   Soil();
+
+  /*!
+    * \brief Soil deconstructor
+    */
   ~Soil();
-  cv::Mat BW;
-  cv::Mat Intensity;
-  cv::Mat LAB;
-  cv::Mat RGB;
-  cv::Mat RI;
-  cv::Mat Edge;
-  uint8_t version;
-  std::string TimeTaken;
-  std::string TimeAnalyzed;
-  std::string Location;
-  uint32_t ID;
+  cv::Mat BW; /**< The black and white image consisting of values of 0 and 1
+                 where 0 is the bacground*/
+  cv::Mat
+      Intensity;   /**< The intensity image after it is converted from the RGB
+                      color model*/
+  cv::Mat LAB;     /**< The CIE Lab color image*/
+  cv::Mat RGB;     /**< The RGB color image*/
+  cv::Mat RI;      /**< The individual RI image*/
+  cv::Mat Edge;    /**< The black and white image consiting of values of 0 and 1
+                      where 0 is background and 1 is the edge of the blob*/
+  uint8_t version; /**< the version of the object*/
+  std::string
+      TimeTaken; /**< a string indicating which time the sample was taken*/
+  std::string
+      TimeAnalyzed;     /**< a string indicating which time it was analyzed*/
+  std::string Location; /**< a string with the location of the soilsample*/
+  uint32_t ID;          /**< the sample ID*/
 };
 }

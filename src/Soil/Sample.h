@@ -36,32 +36,89 @@ using namespace std;
 using namespace cv;
 
 namespace SoilAnalyzer {
+/*!
+ * \brief The Sample class
+ * \details This class represent a single soilsample snapshot it inherents from
+ * the class Soil
+ */
 class Sample : public Soil {
 public:
-  typedef boost::signals2::signal<void(float, std::string)> Progress_t;
+  typedef boost::signals2::signal<void(
+      float, std::string)> Progress_t; /**< A boost signal, used for progress
+                                          update indicating the progres so far
+                                          as a float between 0. and 1. and the
+                                          current progress step as string*/
+
+  /*!
+   * \brief connect_Progress used to connect the progress signal
+   * \param subscriber a reference to the subscriber
+   * \return returns the signal
+   */
   boost::signals2::connection
   connect_Progress(const Progress_t::slot_type &subscriber);
 
+  /*!
+   * \brief Sample the constructor
+   * \param settings a pointer to the an object of the type SoilSettings used to
+   * initalize the analyzing settings
+   */
   Sample(SoilSettings *settings = nullptr);
+
+  /*!
+   * \brief Sample the constructor
+   * \param src the source rgb image
+   * \param settings a pointer to the an object of the type SoilSettings used to
+   * initalize the analyzing settings
+   */
   Sample(const Mat &src, SoilSettings *settings = nullptr);
+
+  /*!
+    * \brief The Deconstructor
+    */
   ~Sample();
 
-  cv::Mat OriginalImage;
-  vector<Particle> Population;
-  AnalysisResults Results;
+  cv::Mat OriginalImage;       /**< The original image*/
+  vector<Particle> Population; /**< a Vector with original particles*/
+  AnalysisResults Results;     /**< The analysis results*/
 
-  SoilSettings *Settings = nullptr;
+  SoilSettings *Settings =
+      nullptr; /**< The Settings used to initialize the analyzis*/
 
+  /*!
+   * \brief PrepImg Prep te image for analysis
+   * \param settings a pointer to the an object of the type SoilSettings used to
+   * initalize the analyzing settings
+   */
   void PrepImg(SoilSettings *settings = nullptr);
-  bool imgPrepped = false;
+  bool imgPrepped = false; /**< */
 
+  /*!
+   * \brief Analyse the RGB image
+   * \param nn a reference to the neural network used during analyzing
+   */
   void Analyse(SoilMath::NN &nn);
+
+  /*!
+   * \brief Analyse the the RGB image
+   * \param src the RGB image with needs to be analysed
+   * \param nn a reference to the neural network used during analyzing
+   */
   void Analyse(const Mat &src, SoilMath::NN &nn);
+
+  /*!
+   * \brief Save the SoilSample to disk
+   * \param filename the where to save
+   */
   void Save(string &filename);
+
+  /*!
+   * \brief Load the SoilSample from disk
+   * \param filename where the saved Soilsample can be found
+   */
   void Load(string &filename);
 
 private:
-  Progress_t prog_sig;
+  Progress_t prog_sig; /**< The progress signal*/
 
   friend class boost::serialization::access;
   template <class Archive>
@@ -73,8 +130,20 @@ private:
     ar &Settings;
     ar &imgPrepped;
   }
+
+  /*!
+   * \brief AnalysePopVect analyse the particle population vector
+   * \param population a reference to individual particles
+   * \param results
+   * \return
+   */
   bool AnalysePopVect(const vector<Particle> &population,
                       AnalysisResults &results);
+
+  /*!
+   * \brief SegmentParticles
+   * \param segType
+   */
   void SegmentParticles(
       Vision::Segment::SegmentationType segType = Vision::Segment::Normal);
 };

@@ -2,6 +2,11 @@
 \label{class_soil_analyzer_1_1_soil_settings}\index{Soil\+Analyzer\+::\+Soil\+Settings@{Soil\+Analyzer\+::\+Soil\+Settings}}
 
 
+The \hyperlink{class_soil_analyzer_1_1_soil_settings}{Soil\+Settings} class.  
+
+
+
+
 {\ttfamily \#include $<$soilsettings.\+h$>$}
 
 
@@ -19,15 +24,15 @@ Collaboration diagram for Soil\+Analyzer\+:\+:Soil\+Settings\+:\nopagebreak
 \hyperlink{class_soil_analyzer_1_1_soil_settings_ab8359b9a5ea27e6296e79a82789c8719}{Soil\+Settings} ()
 \item 
 void \hyperlink{class_soil_analyzer_1_1_soil_settings_ab211c361df454e8e1e29a4bddedeba81}{Save\+Settings} (std\+::string filename)
-\item 
+\begin{DoxyCompactList}\small\item\em Save\+Settings a function to save the settings to disk. \end{DoxyCompactList}\item 
 void \hyperlink{class_soil_analyzer_1_1_soil_settings_a438bf660eeb7a49a676eef5da129f8d5}{Load\+Settings} (std\+::string filename)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Load\+Settings a function to load the settings from disk. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-bool \hyperlink{class_soil_analyzer_1_1_soil_settings_a0e27335d05aed8f3f084744062368578}{use\+Adaptive\+Contrast} = true
+bool \hyperlink{class_soil_analyzer_1_1_soil_settings_a0e27335d05aed8f3f084744062368578}{use\+Adaptive\+Contrast}
 \item 
-uint32\+\_\+t \hyperlink{class_soil_analyzer_1_1_soil_settings_a73f627b092dbdbda37b66ef6c2eef95c}{adapt\+Contrast\+Kernel\+Size} = 9
+uint32\+\_\+t \hyperlink{class_soil_analyzer_1_1_soil_settings_a73f627b092dbdbda37b66ef6c2eef95c}{adapt\+Contrast\+Kernel\+Size}
 \item 
 float \hyperlink{class_soil_analyzer_1_1_soil_settings_ace12c0f4bc35d420ef528cc390fc2cdb}{adapt\+Contrast\+Kernel\+Factor} = 1.
 \item 
@@ -35,9 +40,9 @@ bool \hyperlink{class_soil_analyzer_1_1_soil_settings_a21bd246a48a712734af86f592
 \item 
 uint32\+\_\+t \hyperlink{class_soil_analyzer_1_1_soil_settings_afa46542d30045e00fadbdd5a6ab9a1e1}{blur\+Kernel\+Size} = 5
 \item 
-\hyperlink{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7dd}{Vision\+::\+Segment\+::\+Type\+Of\+Objects} \hyperlink{class_soil_analyzer_1_1_soil_settings_a21ae88dba6b9b0b07d9c26812bc739fb}{type\+Of\+Objects\+Segmented} = \hyperlink{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7dda962a0c0955809f63df036dbd41824c54}{Vision\+::\+Segment\+::\+Dark}
+\hyperlink{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7dd}{Vision\+::\+Segment\+::\+Type\+Of\+Objects} \hyperlink{class_soil_analyzer_1_1_soil_settings_a21ae88dba6b9b0b07d9c26812bc739fb}{type\+Of\+Objects\+Segmented}
 \item 
-bool \hyperlink{class_soil_analyzer_1_1_soil_settings_a24fb1d7da2247da77a17d853ea1494d7}{ignore\+Partial\+Border\+Particles} = true
+bool \hyperlink{class_soil_analyzer_1_1_soil_settings_a24fb1d7da2247da77a17d853ea1494d7}{ignore\+Partial\+Border\+Particles}
 \item 
 bool \hyperlink{class_soil_analyzer_1_1_soil_settings_a2c9dbe9429742aed1da9d9683da5cc1e}{fill\+Holes} = true
 \item 
@@ -49,13 +54,13 @@ int \hyperlink{class_soil_analyzer_1_1_soil_settings_a48330eb812672b50a94483f264
 \item 
 uint32\+\_\+t \hyperlink{class_soil_analyzer_1_1_soil_settings_ad9d5071bbf6d10638df024e883c6199f}{filter\+Mask\+Size} = 5
 \item 
-uint32\+\_\+t \hyperlink{class_soil_analyzer_1_1_soil_settings_a77e631ff44efe74762b5adaa2eb2cd11}{H\+D\+Rframes} = 5
+uint32\+\_\+t \hyperlink{class_soil_analyzer_1_1_soil_settings_a77e631ff44efe74762b5adaa2eb2cd11}{H\+D\+Rframes}
 \item 
 float \hyperlink{class_soil_analyzer_1_1_soil_settings_aa4d3ed8c1ab6551bfa4763e8a1ffc148}{light\+Level} = 0.\+5
 \item 
 bool \hyperlink{class_soil_analyzer_1_1_soil_settings_ad831e13b61fc2097219bbf7252f045d5}{enc\+Inv} = false
 \item 
-bool \hyperlink{class_soil_analyzer_1_1_soil_settings_a9ece0b96eb8614a497fba3a19d8b4da1}{enable\+Rainbow} = true
+bool \hyperlink{class_soil_analyzer_1_1_soil_settings_a9ece0b96eb8614a497fba3a19d8b4da1}{enable\+Rainbow}
 \end{DoxyCompactItemize}
 \subsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
@@ -70,9 +75,11 @@ class \hyperlink{class_soil_analyzer_1_1_soil_settings_ac98d07dd8f7b70e16ccb9a01
 
 
 \subsection{Detailed Description}
+The \hyperlink{class_soil_analyzer_1_1_soil_settings}{Soil\+Settings} class. 
 
+A class with which the used settings can easily transfered to setup the \hyperlink{class_soil_analyzer_1_1_sample}{Sample} class in one go. This class is also used in the G\+U\+I. and has a possibility to saved to disk as a serialized object 
 
-Definition at line 17 of file soilsettings.\+h.
+Definition at line 23 of file soilsettings.\+h.
 
 
 
@@ -102,6 +109,15 @@ Definition at line 11 of file soilsettings.\+cpp.
 \item[{std\+::string}]{filename}
 \end{DoxyParamCaption}
 )}\label{class_soil_analyzer_1_1_soil_settings_a438bf660eeb7a49a676eef5da129f8d5}
+
+
+Load\+Settings a function to load the settings from disk. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & a string with the filename \\
+\hline
+\end{DoxyParams}
 
 
 Definition at line 13 of file soilsettings.\+cpp.
@@ -136,6 +152,15 @@ Here is the caller graph for this function\+:\nopagebreak
 \item[{std\+::string}]{filename}
 \end{DoxyParamCaption}
 )}\label{class_soil_analyzer_1_1_soil_settings_ab211c361df454e8e1e29a4bddedeba81}
+
+
+Save\+Settings a function to save the settings to disk. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & a string with the filename \\
+\hline
+\end{DoxyParams}
 
 
 Definition at line 19 of file soilsettings.\+cpp.
@@ -173,28 +198,32 @@ Here is the caller graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}\label{class_soil_analyzer_1_1_soil_settings_ad52138eef4b72905cdaed60bed902646}
 
 
-Definition at line 49 of file soilsettings.\+h.
+Definition at line 76 of file soilsettings.\+h.
+
+
+
+References sigma\+Factor.
 
 
 \begin{DoxyCode}
-49                                                           \{
-50     ar &BOOST\_SERIALIZATION\_NVP(\hyperlink{class_soil_analyzer_1_1_soil_settings_a0e27335d05aed8f3f084744062368578}{useAdaptiveContrast});
-51     ar &BOOST\_SERIALIZATION\_NVP(\hyperlink{class_soil_analyzer_1_1_soil_settings_ace12c0f4bc35d420ef528cc390fc2cdb}{adaptContrastKernelFactor});
-52     ar &BOOST\_SERIALIZATION\_NVP(\hyperlink{class_soil_analyzer_1_1_soil_settings_a73f627b092dbdbda37b66ef6c2eef95c}{adaptContrastKernelSize});
-53     ar &BOOST\_SERIALIZATION\_NVP(\hyperlink{class_soil_analyzer_1_1_soil_settings_a21bd246a48a712734af86f592030e18b}{useBlur});
-54     ar &BOOST\_SERIALIZATION\_NVP(\hyperlink{class_soil_analyzer_1_1_soil_settings_afa46542d30045e00fadbdd5a6ab9a1e1}{blurKernelSize});
-55     ar &BOOST\_SERIALIZATION\_NVP(\hyperlink{class_soil_analyzer_1_1_soil_settings_a21ae88dba6b9b0b07d9c26812bc739fb}{typeOfObjectsSegmented});
-56     ar &BOOST\_SERIALIZATION\_NVP(\hyperlink{class_soil_analyzer_1_1_soil_settings_a24fb1d7da2247da77a17d853ea1494d7}{ignorePartialBorderParticles});
-57     ar &BOOST\_SERIALIZATION\_NVP(\hyperlink{class_soil_analyzer_1_1_soil_settings_a2c9dbe9429742aed1da9d9683da5cc1e}{fillHoles});
-58     ar &BOOST\_SERIALIZATION\_NVP(\hyperlink{class_soil_analyzer_1_1_soil_settings_a97e62512e12a2ba9210fd93950b6e717}{sigmaFactor});
-59     ar &BOOST\_SERIALIZATION\_NVP(\hyperlink{class_soil_analyzer_1_1_soil_settings_ad1420c4800badb3eb07eba4767e3df81}{morphFilterType});
-60     ar &BOOST\_SERIALIZATION\_NVP(\hyperlink{class_soil_analyzer_1_1_soil_settings_ad9d5071bbf6d10638df024e883c6199f}{filterMaskSize});
-61     ar &BOOST\_SERIALIZATION\_NVP(\hyperlink{class_soil_analyzer_1_1_soil_settings_a48330eb812672b50a94483f264614e8f}{thresholdOffsetValue});
-62     ar &BOOST\_SERIALIZATION\_NVP(\hyperlink{class_soil_analyzer_1_1_soil_settings_a77e631ff44efe74762b5adaa2eb2cd11}{HDRframes});
-63     ar &BOOST\_SERIALIZATION\_NVP(\hyperlink{class_soil_analyzer_1_1_soil_settings_aa4d3ed8c1ab6551bfa4763e8a1ffc148}{lightLevel});
-64     ar &BOOST\_SERIALIZATION\_NVP(\hyperlink{class_soil_analyzer_1_1_soil_settings_ad831e13b61fc2097219bbf7252f045d5}{encInv});
-65     ar &BOOST\_SERIALIZATION\_NVP(\hyperlink{class_soil_analyzer_1_1_soil_settings_a9ece0b96eb8614a497fba3a19d8b4da1}{enableRainbow});
-66   \}
+76                                                           \{
+77     ar &BOOST\_SERIALIZATION\_NVP(\hyperlink{class_soil_analyzer_1_1_soil_settings_a0e27335d05aed8f3f084744062368578}{useAdaptiveContrast});
+78     ar &BOOST\_SERIALIZATION\_NVP(\hyperlink{class_soil_analyzer_1_1_soil_settings_ace12c0f4bc35d420ef528cc390fc2cdb}{adaptContrastKernelFactor});
+79     ar &BOOST\_SERIALIZATION\_NVP(\hyperlink{class_soil_analyzer_1_1_soil_settings_a73f627b092dbdbda37b66ef6c2eef95c}{adaptContrastKernelSize});
+80     ar &BOOST\_SERIALIZATION\_NVP(\hyperlink{class_soil_analyzer_1_1_soil_settings_a21bd246a48a712734af86f592030e18b}{useBlur});
+81     ar &BOOST\_SERIALIZATION\_NVP(\hyperlink{class_soil_analyzer_1_1_soil_settings_afa46542d30045e00fadbdd5a6ab9a1e1}{blurKernelSize});
+82     ar &BOOST\_SERIALIZATION\_NVP(\hyperlink{class_soil_analyzer_1_1_soil_settings_a21ae88dba6b9b0b07d9c26812bc739fb}{typeOfObjectsSegmented});
+83     ar &BOOST\_SERIALIZATION\_NVP(\hyperlink{class_soil_analyzer_1_1_soil_settings_a24fb1d7da2247da77a17d853ea1494d7}{ignorePartialBorderParticles});
+84     ar &BOOST\_SERIALIZATION\_NVP(\hyperlink{class_soil_analyzer_1_1_soil_settings_a2c9dbe9429742aed1da9d9683da5cc1e}{fillHoles});
+85     ar &BOOST\_SERIALIZATION\_NVP(\hyperlink{class_soil_analyzer_1_1_soil_settings_a97e62512e12a2ba9210fd93950b6e717}{sigmaFactor});
+86     ar &BOOST\_SERIALIZATION\_NVP(\hyperlink{class_soil_analyzer_1_1_soil_settings_ad1420c4800badb3eb07eba4767e3df81}{morphFilterType});
+87     ar &BOOST\_SERIALIZATION\_NVP(\hyperlink{class_soil_analyzer_1_1_soil_settings_ad9d5071bbf6d10638df024e883c6199f}{filterMaskSize});
+88     ar &BOOST\_SERIALIZATION\_NVP(\hyperlink{class_soil_analyzer_1_1_soil_settings_a48330eb812672b50a94483f264614e8f}{thresholdOffsetValue});
+89     ar &BOOST\_SERIALIZATION\_NVP(\hyperlink{class_soil_analyzer_1_1_soil_settings_a77e631ff44efe74762b5adaa2eb2cd11}{HDRframes});
+90     ar &BOOST\_SERIALIZATION\_NVP(\hyperlink{class_soil_analyzer_1_1_soil_settings_aa4d3ed8c1ab6551bfa4763e8a1ffc148}{lightLevel});
+91     ar &BOOST\_SERIALIZATION\_NVP(\hyperlink{class_soil_analyzer_1_1_soil_settings_ad831e13b61fc2097219bbf7252f045d5}{encInv});
+92     ar &BOOST\_SERIALIZATION\_NVP(\hyperlink{class_soil_analyzer_1_1_soil_settings_a9ece0b96eb8614a497fba3a19d8b4da1}{enableRainbow});
+93   \}
 \end{DoxyCode}
 
 
@@ -204,7 +233,7 @@ Definition at line 49 of file soilsettings.\+h.
 \subsubsection[{boost\+::serialization\+::access}]{\setlength{\rightskip}{0pt plus 5cm}friend class boost\+::serialization\+::access\hspace{0.3cm}{\ttfamily [friend]}}\label{class_soil_analyzer_1_1_soil_settings_ac98d07dd8f7b70e16ccb9a01abf56b9c}
 
 
-Definition at line 47 of file soilsettings.\+h.
+Definition at line 74 of file soilsettings.\+h.
 
 
 
@@ -212,9 +241,9 @@ Definition at line 47 of file soilsettings.\+h.
 \hypertarget{class_soil_analyzer_1_1_soil_settings_ace12c0f4bc35d420ef528cc390fc2cdb}{}\index{Soil\+Analyzer\+::\+Soil\+Settings@{Soil\+Analyzer\+::\+Soil\+Settings}!adapt\+Contrast\+Kernel\+Factor@{adapt\+Contrast\+Kernel\+Factor}}
 \index{adapt\+Contrast\+Kernel\+Factor@{adapt\+Contrast\+Kernel\+Factor}!Soil\+Analyzer\+::\+Soil\+Settings@{Soil\+Analyzer\+::\+Soil\+Settings}}
 \subsubsection[{adapt\+Contrast\+Kernel\+Factor}]{\setlength{\rightskip}{0pt plus 5cm}float Soil\+Analyzer\+::\+Soil\+Settings\+::adapt\+Contrast\+Kernel\+Factor = 1.}\label{class_soil_analyzer_1_1_soil_settings_ace12c0f4bc35d420ef528cc390fc2cdb}
+the factor with which to multiply the effect of the adaptive contrast stretch 
 
-
-Definition at line 26 of file soilsettings.\+h.
+Definition at line 43 of file soilsettings.\+h.
 
 
 
@@ -222,10 +251,15 @@ Referenced by Vision\+Settings\+::on\+\_\+sb\+\_\+adapt\+Contrast\+Factor\+\_\+e
 
 \hypertarget{class_soil_analyzer_1_1_soil_settings_a73f627b092dbdbda37b66ef6c2eef95c}{}\index{Soil\+Analyzer\+::\+Soil\+Settings@{Soil\+Analyzer\+::\+Soil\+Settings}!adapt\+Contrast\+Kernel\+Size@{adapt\+Contrast\+Kernel\+Size}}
 \index{adapt\+Contrast\+Kernel\+Size@{adapt\+Contrast\+Kernel\+Size}!Soil\+Analyzer\+::\+Soil\+Settings@{Soil\+Analyzer\+::\+Soil\+Settings}}
-\subsubsection[{adapt\+Contrast\+Kernel\+Size}]{\setlength{\rightskip}{0pt plus 5cm}uint32\+\_\+t Soil\+Analyzer\+::\+Soil\+Settings\+::adapt\+Contrast\+Kernel\+Size = 9}\label{class_soil_analyzer_1_1_soil_settings_a73f627b092dbdbda37b66ef6c2eef95c}
+\subsubsection[{adapt\+Contrast\+Kernel\+Size}]{\setlength{\rightskip}{0pt plus 5cm}uint32\+\_\+t Soil\+Analyzer\+::\+Soil\+Settings\+::adapt\+Contrast\+Kernel\+Size}\label{class_soil_analyzer_1_1_soil_settings_a73f627b092dbdbda37b66ef6c2eef95c}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+      9
+\end{DoxyCode}
+The size of the adaptive contrast kernelsize 
 
-
-Definition at line 25 of file soilsettings.\+h.
+Definition at line 41 of file soilsettings.\+h.
 
 
 
@@ -234,9 +268,9 @@ Referenced by Vision\+Settings\+::on\+\_\+sb\+\_\+adapt\+Contr\+Kernel\+\_\+edit
 \hypertarget{class_soil_analyzer_1_1_soil_settings_afa46542d30045e00fadbdd5a6ab9a1e1}{}\index{Soil\+Analyzer\+::\+Soil\+Settings@{Soil\+Analyzer\+::\+Soil\+Settings}!blur\+Kernel\+Size@{blur\+Kernel\+Size}}
 \index{blur\+Kernel\+Size@{blur\+Kernel\+Size}!Soil\+Analyzer\+::\+Soil\+Settings@{Soil\+Analyzer\+::\+Soil\+Settings}}
 \subsubsection[{blur\+Kernel\+Size}]{\setlength{\rightskip}{0pt plus 5cm}uint32\+\_\+t Soil\+Analyzer\+::\+Soil\+Settings\+::blur\+Kernel\+Size = 5}\label{class_soil_analyzer_1_1_soil_settings_afa46542d30045e00fadbdd5a6ab9a1e1}
+the median blurkernel 
 
-
-Definition at line 29 of file soilsettings.\+h.
+Definition at line 48 of file soilsettings.\+h.
 
 
 
@@ -244,10 +278,15 @@ Referenced by Vision\+Settings\+::on\+\_\+sb\+\_\+blur\+Mask\+\_\+editing\+Finis
 
 \hypertarget{class_soil_analyzer_1_1_soil_settings_a9ece0b96eb8614a497fba3a19d8b4da1}{}\index{Soil\+Analyzer\+::\+Soil\+Settings@{Soil\+Analyzer\+::\+Soil\+Settings}!enable\+Rainbow@{enable\+Rainbow}}
 \index{enable\+Rainbow@{enable\+Rainbow}!Soil\+Analyzer\+::\+Soil\+Settings@{Soil\+Analyzer\+::\+Soil\+Settings}}
-\subsubsection[{enable\+Rainbow}]{\setlength{\rightskip}{0pt plus 5cm}bool Soil\+Analyzer\+::\+Soil\+Settings\+::enable\+Rainbow = true}\label{class_soil_analyzer_1_1_soil_settings_a9ece0b96eb8614a497fba3a19d8b4da1}
+\subsubsection[{enable\+Rainbow}]{\setlength{\rightskip}{0pt plus 5cm}bool Soil\+Analyzer\+::\+Soil\+Settings\+::enable\+Rainbow}\label{class_soil_analyzer_1_1_soil_settings_a9ece0b96eb8614a497fba3a19d8b4da1}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+      \textcolor{keyword}{true}
+\end{DoxyCode}
+run a rainbow loop on the R\+G\+B encoder during analysis 
 
-
-Definition at line 44 of file soilsettings.\+h.
+Definition at line 70 of file soilsettings.\+h.
 
 
 
@@ -256,9 +295,9 @@ Referenced by Hardware\+Settings\+::\+Hardware\+Settings(), and Hardware\+Settin
 \hypertarget{class_soil_analyzer_1_1_soil_settings_ad831e13b61fc2097219bbf7252f045d5}{}\index{Soil\+Analyzer\+::\+Soil\+Settings@{Soil\+Analyzer\+::\+Soil\+Settings}!enc\+Inv@{enc\+Inv}}
 \index{enc\+Inv@{enc\+Inv}!Soil\+Analyzer\+::\+Soil\+Settings@{Soil\+Analyzer\+::\+Soil\+Settings}}
 \subsubsection[{enc\+Inv}]{\setlength{\rightskip}{0pt plus 5cm}bool Soil\+Analyzer\+::\+Soil\+Settings\+::enc\+Inv = false}\label{class_soil_analyzer_1_1_soil_settings_ad831e13b61fc2097219bbf7252f045d5}
+invert the values gained form the encoder 
 
-
-Definition at line 43 of file soilsettings.\+h.
+Definition at line 69 of file soilsettings.\+h.
 
 
 
@@ -267,9 +306,9 @@ Referenced by Hardware\+Settings\+::\+Hardware\+Settings(), and Hardware\+Settin
 \hypertarget{class_soil_analyzer_1_1_soil_settings_a2c9dbe9429742aed1da9d9683da5cc1e}{}\index{Soil\+Analyzer\+::\+Soil\+Settings@{Soil\+Analyzer\+::\+Soil\+Settings}!fill\+Holes@{fill\+Holes}}
 \index{fill\+Holes@{fill\+Holes}!Soil\+Analyzer\+::\+Soil\+Settings@{Soil\+Analyzer\+::\+Soil\+Settings}}
 \subsubsection[{fill\+Holes}]{\setlength{\rightskip}{0pt plus 5cm}bool Soil\+Analyzer\+::\+Soil\+Settings\+::fill\+Holes = true}\label{class_soil_analyzer_1_1_soil_settings_a2c9dbe9429742aed1da9d9683da5cc1e}
+should the holes be filled 
 
-
-Definition at line 33 of file soilsettings.\+h.
+Definition at line 54 of file soilsettings.\+h.
 
 
 
@@ -278,9 +317,9 @@ Referenced by Vision\+Settings\+::on\+\_\+cb\+\_\+fill\+Holes\+\_\+state\+Change
 \hypertarget{class_soil_analyzer_1_1_soil_settings_ad9d5071bbf6d10638df024e883c6199f}{}\index{Soil\+Analyzer\+::\+Soil\+Settings@{Soil\+Analyzer\+::\+Soil\+Settings}!filter\+Mask\+Size@{filter\+Mask\+Size}}
 \index{filter\+Mask\+Size@{filter\+Mask\+Size}!Soil\+Analyzer\+::\+Soil\+Settings@{Soil\+Analyzer\+::\+Soil\+Settings}}
 \subsubsection[{filter\+Mask\+Size}]{\setlength{\rightskip}{0pt plus 5cm}uint32\+\_\+t Soil\+Analyzer\+::\+Soil\+Settings\+::filter\+Mask\+Size = 5}\label{class_soil_analyzer_1_1_soil_settings_ad9d5071bbf6d10638df024e883c6199f}
+the filter mask 
 
-
-Definition at line 39 of file soilsettings.\+h.
+Definition at line 64 of file soilsettings.\+h.
 
 
 
@@ -288,10 +327,15 @@ Referenced by Vision\+Settings\+::on\+\_\+sb\+\_\+morph\+Mask\+\_\+editing\+Fini
 
 \hypertarget{class_soil_analyzer_1_1_soil_settings_a77e631ff44efe74762b5adaa2eb2cd11}{}\index{Soil\+Analyzer\+::\+Soil\+Settings@{Soil\+Analyzer\+::\+Soil\+Settings}!H\+D\+Rframes@{H\+D\+Rframes}}
 \index{H\+D\+Rframes@{H\+D\+Rframes}!Soil\+Analyzer\+::\+Soil\+Settings@{Soil\+Analyzer\+::\+Soil\+Settings}}
-\subsubsection[{H\+D\+Rframes}]{\setlength{\rightskip}{0pt plus 5cm}uint32\+\_\+t Soil\+Analyzer\+::\+Soil\+Settings\+::\+H\+D\+Rframes = 5}\label{class_soil_analyzer_1_1_soil_settings_a77e631ff44efe74762b5adaa2eb2cd11}
+\subsubsection[{H\+D\+Rframes}]{\setlength{\rightskip}{0pt plus 5cm}uint32\+\_\+t Soil\+Analyzer\+::\+Soil\+Settings\+::\+H\+D\+Rframes}\label{class_soil_analyzer_1_1_soil_settings_a77e631ff44efe74762b5adaa2eb2cd11}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+      5
+\end{DoxyCode}
+The number of frames which should be used for the H\+D\+R image 
 
-
-Definition at line 41 of file soilsettings.\+h.
+Definition at line 66 of file soilsettings.\+h.
 
 
 
@@ -299,10 +343,15 @@ Referenced by Hardware\+Settings\+::\+Hardware\+Settings(), Hardware\+Settings\+
 
 \hypertarget{class_soil_analyzer_1_1_soil_settings_a24fb1d7da2247da77a17d853ea1494d7}{}\index{Soil\+Analyzer\+::\+Soil\+Settings@{Soil\+Analyzer\+::\+Soil\+Settings}!ignore\+Partial\+Border\+Particles@{ignore\+Partial\+Border\+Particles}}
 \index{ignore\+Partial\+Border\+Particles@{ignore\+Partial\+Border\+Particles}!Soil\+Analyzer\+::\+Soil\+Settings@{Soil\+Analyzer\+::\+Soil\+Settings}}
-\subsubsection[{ignore\+Partial\+Border\+Particles}]{\setlength{\rightskip}{0pt plus 5cm}bool Soil\+Analyzer\+::\+Soil\+Settings\+::ignore\+Partial\+Border\+Particles = true}\label{class_soil_analyzer_1_1_soil_settings_a24fb1d7da2247da77a17d853ea1494d7}
+\subsubsection[{ignore\+Partial\+Border\+Particles}]{\setlength{\rightskip}{0pt plus 5cm}bool Soil\+Analyzer\+::\+Soil\+Settings\+::ignore\+Partial\+Border\+Particles}\label{class_soil_analyzer_1_1_soil_settings_a24fb1d7da2247da77a17d853ea1494d7}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+      \textcolor{keyword}{true}
+\end{DoxyCode}
+Indication of partial border particles should be used 
 
-
-Definition at line 32 of file soilsettings.\+h.
+Definition at line 52 of file soilsettings.\+h.
 
 
 
@@ -311,9 +360,9 @@ Referenced by Vision\+Settings\+::on\+\_\+cb\+\_\+ignore\+Border\+\_\+state\+Cha
 \hypertarget{class_soil_analyzer_1_1_soil_settings_aa4d3ed8c1ab6551bfa4763e8a1ffc148}{}\index{Soil\+Analyzer\+::\+Soil\+Settings@{Soil\+Analyzer\+::\+Soil\+Settings}!light\+Level@{light\+Level}}
 \index{light\+Level@{light\+Level}!Soil\+Analyzer\+::\+Soil\+Settings@{Soil\+Analyzer\+::\+Soil\+Settings}}
 \subsubsection[{light\+Level}]{\setlength{\rightskip}{0pt plus 5cm}float Soil\+Analyzer\+::\+Soil\+Settings\+::light\+Level = 0.\+5}\label{class_soil_analyzer_1_1_soil_settings_aa4d3ed8c1ab6551bfa4763e8a1ffc148}
+The light level of the environmental case 
 
-
-Definition at line 42 of file soilsettings.\+h.
+Definition at line 68 of file soilsettings.\+h.
 
 
 
@@ -327,9 +376,9 @@ Referenced by Hardware\+Settings\+::\+Hardware\+Settings(), and Hardware\+Settin
 =
       \hyperlink{class_vision_1_1_morphological_filter_a1f19c9cb13f0d68778c77d6fd0370868afd436eed00afa15b23eeac4de3509303}{Vision::MorphologicalFilter::OPEN}
 \end{DoxyCode}
+Indicating which type of morhpological filter should be used 
 
-
-Definition at line 37 of file soilsettings.\+h.
+Definition at line 60 of file soilsettings.\+h.
 
 
 
@@ -338,20 +387,20 @@ Referenced by Vision\+Settings\+::on\+\_\+rb\+\_\+use\+Close\+\_\+toggled(), Vis
 \hypertarget{class_soil_analyzer_1_1_soil_settings_a97e62512e12a2ba9210fd93950b6e717}{}\index{Soil\+Analyzer\+::\+Soil\+Settings@{Soil\+Analyzer\+::\+Soil\+Settings}!sigma\+Factor@{sigma\+Factor}}
 \index{sigma\+Factor@{sigma\+Factor}!Soil\+Analyzer\+::\+Soil\+Settings@{Soil\+Analyzer\+::\+Soil\+Settings}}
 \subsubsection[{sigma\+Factor}]{\setlength{\rightskip}{0pt plus 5cm}float Soil\+Analyzer\+::\+Soil\+Settings\+::sigma\+Factor = 2}\label{class_soil_analyzer_1_1_soil_settings_a97e62512e12a2ba9210fd93950b6e717}
+The sigma factor or the bandwidth indicating which pixel intensity values count belong to an object 
+
+Definition at line 56 of file soilsettings.\+h.
 
 
-Definition at line 34 of file soilsettings.\+h.
 
-
-
-Referenced by Vision\+Settings\+::on\+\_\+sb\+\_\+sigma\+Factor\+\_\+editing\+Finished(), Soil\+Analyzer\+::\+Sample\+::\+Prep\+Img(), and Vision\+Settings\+::\+Vision\+Settings().
+Referenced by Vision\+Settings\+::on\+\_\+sb\+\_\+sigma\+Factor\+\_\+editing\+Finished(), Soil\+Analyzer\+::\+Sample\+::\+Prep\+Img(), serialize(), and Vision\+Settings\+::\+Vision\+Settings().
 
 \hypertarget{class_soil_analyzer_1_1_soil_settings_a48330eb812672b50a94483f264614e8f}{}\index{Soil\+Analyzer\+::\+Soil\+Settings@{Soil\+Analyzer\+::\+Soil\+Settings}!threshold\+Offset\+Value@{threshold\+Offset\+Value}}
 \index{threshold\+Offset\+Value@{threshold\+Offset\+Value}!Soil\+Analyzer\+::\+Soil\+Settings@{Soil\+Analyzer\+::\+Soil\+Settings}}
 \subsubsection[{threshold\+Offset\+Value}]{\setlength{\rightskip}{0pt plus 5cm}int Soil\+Analyzer\+::\+Soil\+Settings\+::threshold\+Offset\+Value = 0}\label{class_soil_analyzer_1_1_soil_settings_a48330eb812672b50a94483f264614e8f}
+an tweaking offset value 
 
-
-Definition at line 35 of file soilsettings.\+h.
+Definition at line 58 of file soilsettings.\+h.
 
 
 
@@ -359,10 +408,15 @@ Referenced by V\+S\+A\+G\+U\+I\+::on\+\_\+\+Offset\+Slider\+\_\+value\+Changed()
 
 \hypertarget{class_soil_analyzer_1_1_soil_settings_a21ae88dba6b9b0b07d9c26812bc739fb}{}\index{Soil\+Analyzer\+::\+Soil\+Settings@{Soil\+Analyzer\+::\+Soil\+Settings}!type\+Of\+Objects\+Segmented@{type\+Of\+Objects\+Segmented}}
 \index{type\+Of\+Objects\+Segmented@{type\+Of\+Objects\+Segmented}!Soil\+Analyzer\+::\+Soil\+Settings@{Soil\+Analyzer\+::\+Soil\+Settings}}
-\subsubsection[{type\+Of\+Objects\+Segmented}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vision\+::\+Segment\+::\+Type\+Of\+Objects} Soil\+Analyzer\+::\+Soil\+Settings\+::type\+Of\+Objects\+Segmented = {\bf Vision\+::\+Segment\+::\+Dark}}\label{class_soil_analyzer_1_1_soil_settings_a21ae88dba6b9b0b07d9c26812bc739fb}
+\subsubsection[{type\+Of\+Objects\+Segmented}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vision\+::\+Segment\+::\+Type\+Of\+Objects} Soil\+Analyzer\+::\+Soil\+Settings\+::type\+Of\+Objects\+Segmented}\label{class_soil_analyzer_1_1_soil_settings_a21ae88dba6b9b0b07d9c26812bc739fb}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+      \hyperlink{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7dda962a0c0955809f63df036dbd41824c54}{Vision::Segment::Dark}
+\end{DoxyCode}
+Which type of object should be segmented 
 
-
-Definition at line 31 of file soilsettings.\+h.
+Definition at line 50 of file soilsettings.\+h.
 
 
 
@@ -370,10 +424,15 @@ Referenced by Vision\+Settings\+::on\+\_\+rb\+\_\+use\+Light\+\_\+toggled(), Soi
 
 \hypertarget{class_soil_analyzer_1_1_soil_settings_a0e27335d05aed8f3f084744062368578}{}\index{Soil\+Analyzer\+::\+Soil\+Settings@{Soil\+Analyzer\+::\+Soil\+Settings}!use\+Adaptive\+Contrast@{use\+Adaptive\+Contrast}}
 \index{use\+Adaptive\+Contrast@{use\+Adaptive\+Contrast}!Soil\+Analyzer\+::\+Soil\+Settings@{Soil\+Analyzer\+::\+Soil\+Settings}}
-\subsubsection[{use\+Adaptive\+Contrast}]{\setlength{\rightskip}{0pt plus 5cm}bool Soil\+Analyzer\+::\+Soil\+Settings\+::use\+Adaptive\+Contrast = true}\label{class_soil_analyzer_1_1_soil_settings_a0e27335d05aed8f3f084744062368578}
+\subsubsection[{use\+Adaptive\+Contrast}]{\setlength{\rightskip}{0pt plus 5cm}bool Soil\+Analyzer\+::\+Soil\+Settings\+::use\+Adaptive\+Contrast}\label{class_soil_analyzer_1_1_soil_settings_a0e27335d05aed8f3f084744062368578}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+      \textcolor{keyword}{true}
+\end{DoxyCode}
+Should adaptive contrast stretch be used default is true 
 
-
-Definition at line 24 of file soilsettings.\+h.
+Definition at line 39 of file soilsettings.\+h.
 
 
 
@@ -382,9 +441,9 @@ Referenced by Vision\+Settings\+::on\+\_\+cb\+\_\+use\+\_\+adapt\+Contrast\+\_\+
 \hypertarget{class_soil_analyzer_1_1_soil_settings_a21bd246a48a712734af86f592030e18b}{}\index{Soil\+Analyzer\+::\+Soil\+Settings@{Soil\+Analyzer\+::\+Soil\+Settings}!use\+Blur@{use\+Blur}}
 \index{use\+Blur@{use\+Blur}!Soil\+Analyzer\+::\+Soil\+Settings@{Soil\+Analyzer\+::\+Soil\+Settings}}
 \subsubsection[{use\+Blur}]{\setlength{\rightskip}{0pt plus 5cm}bool Soil\+Analyzer\+::\+Soil\+Settings\+::use\+Blur = true}\label{class_soil_analyzer_1_1_soil_settings_a21bd246a48a712734af86f592030e18b}
+Should the mediaan blur be used during analsyis 
 
-
-Definition at line 28 of file soilsettings.\+h.
+Definition at line 47 of file soilsettings.\+h.
 
 
 

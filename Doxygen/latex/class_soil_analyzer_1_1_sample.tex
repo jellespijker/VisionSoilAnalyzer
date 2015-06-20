@@ -2,6 +2,11 @@
 \label{class_soil_analyzer_1_1_sample}\index{Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}}
 
 
+The \hyperlink{class_soil_analyzer_1_1_sample}{Sample} class.  
+
+
+
+
 {\ttfamily \#include $<$Sample.\+h$>$}
 
 
@@ -25,29 +30,29 @@ Collaboration diagram for Soil\+Analyzer\+:\+:Sample\+:\nopagebreak
 \subsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
-typedef boost\+::signals2\+::signal$<$ void(float, std\+::string)$>$ \hyperlink{class_soil_analyzer_1_1_sample_a28ace3c6ddde646d05a7771b715777d2}{Progress\+\_\+t}
+typedef boost\+::signals2\+::signal$<$ void(float, std\+::string)$>$ \hyperlink{class_soil_analyzer_1_1_sample_ab7b3516f36d3c9278f514b7b03621a64}{Progress\+\_\+t}
 \end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 boost\+::signals2\+::connection \hyperlink{class_soil_analyzer_1_1_sample_a472dfdde346375463c979e45eb75fbb7}{connect\+\_\+\+Progress} (const Progress\+\_\+t\+::slot\+\_\+type \&subscriber)
-\item 
+\begin{DoxyCompactList}\small\item\em connect\+\_\+\+Progress used to connect the progress signal \end{DoxyCompactList}\item 
 \hyperlink{class_soil_analyzer_1_1_sample_aa132beeb85f46a9d14f7ed0903eda595}{Sample} (\hyperlink{class_soil_analyzer_1_1_soil_settings}{Soil\+Settings} $\ast$settings=nullptr)
-\item 
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_soil_analyzer_1_1_sample}{Sample} the constructor. \end{DoxyCompactList}\item 
 \hyperlink{class_soil_analyzer_1_1_sample_a8d469b55b6af5c3e9283665df8430926}{Sample} (const Mat \&src, \hyperlink{class_soil_analyzer_1_1_soil_settings}{Soil\+Settings} $\ast$settings=nullptr)
-\item 
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_soil_analyzer_1_1_sample}{Sample} the constructor. \end{DoxyCompactList}\item 
 \hyperlink{class_soil_analyzer_1_1_sample_a26f964ba39721002cbb182f3834ebb3c}{$\sim$\+Sample} ()
-\item 
+\begin{DoxyCompactList}\small\item\em The Deconstructor. \end{DoxyCompactList}\item 
 void \hyperlink{class_soil_analyzer_1_1_sample_a23050a1fff3e11e907657623756333b2}{Prep\+Img} (\hyperlink{class_soil_analyzer_1_1_soil_settings}{Soil\+Settings} $\ast$settings=nullptr)
-\item 
+\begin{DoxyCompactList}\small\item\em Prep\+Img Prep te image for analysis. \end{DoxyCompactList}\item 
 void \hyperlink{class_soil_analyzer_1_1_sample_aeb62e34de081b3f298e9b8ebf82df36d}{Analyse} (\hyperlink{class_soil_math_1_1_n_n}{Soil\+Math\+::\+N\+N} \&nn)
-\item 
+\begin{DoxyCompactList}\small\item\em Analyse the R\+G\+B image. \end{DoxyCompactList}\item 
 void \hyperlink{class_soil_analyzer_1_1_sample_a5555ad91e224aeb59e2a301f23e1899f}{Analyse} (const Mat \&src, \hyperlink{class_soil_math_1_1_n_n}{Soil\+Math\+::\+N\+N} \&nn)
-\item 
+\begin{DoxyCompactList}\small\item\em Analyse the the R\+G\+B image. \end{DoxyCompactList}\item 
 void \hyperlink{class_soil_analyzer_1_1_sample_a00fd0ec3bbea70454a6d8a6c1aaf34df}{Save} (string \&filename)
-\item 
+\begin{DoxyCompactList}\small\item\em Save the Soil\+Sample to disk. \end{DoxyCompactList}\item 
 void \hyperlink{class_soil_analyzer_1_1_sample_a88f29d8ee3fad37cdad6cb88b2c8a288}{Load} (string \&filename)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Load the Soil\+Sample from disk. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -57,7 +62,7 @@ vector$<$ \hyperlink{class_soil_analyzer_1_1_particle}{Particle} $>$ \hyperlink{
 \item 
 \hyperlink{class_soil_analyzer_1_1_analysis_results}{Analysis\+Results} \hyperlink{class_soil_analyzer_1_1_sample_ab242ae1c2f229168fd630a9f31d7237f}{Results}
 \item 
-\hyperlink{class_soil_analyzer_1_1_soil_settings}{Soil\+Settings} $\ast$ \hyperlink{class_soil_analyzer_1_1_sample_a31f7b29fc46497f9b2847285c7893832}{Settings} = nullptr
+\hyperlink{class_soil_analyzer_1_1_soil_settings}{Soil\+Settings} $\ast$ \hyperlink{class_soil_analyzer_1_1_sample_a31f7b29fc46497f9b2847285c7893832}{Settings}
 \item 
 bool \hyperlink{class_soil_analyzer_1_1_sample_ab025a26f7276128a5a974cae15b51dfc}{img\+Prepped} = false
 \end{DoxyCompactItemize}
@@ -67,13 +72,13 @@ bool \hyperlink{class_soil_analyzer_1_1_sample_ab025a26f7276128a5a974cae15b51dfc
 {\footnotesize template$<$class Archive $>$ }\\void \hyperlink{class_soil_analyzer_1_1_sample_a5be6eea7a7d74e0adec741d1e203635e}{serialize} (Archive \&ar, const unsigned int \hyperlink{class_soil_analyzer_1_1_soil_ac32132912c73338edf60b5cd6de4feb8}{version})
 \item 
 bool \hyperlink{class_soil_analyzer_1_1_sample_ab086f5475a5e404625b6ae1faa0fe7a2}{Analyse\+Pop\+Vect} (const vector$<$ \hyperlink{class_soil_analyzer_1_1_particle}{Particle} $>$ \&population, \hyperlink{class_soil_analyzer_1_1_analysis_results}{Analysis\+Results} \&results)
-\item 
+\begin{DoxyCompactList}\small\item\em Analyse\+Pop\+Vect analyse the particle population vector. \end{DoxyCompactList}\item 
 void \hyperlink{class_soil_analyzer_1_1_sample_a38d665f29d94e597cb4c6a467d2e1f0b}{Segment\+Particles} (\hyperlink{class_vision_1_1_segment_af3a2b992526eac54bca53e34cf2db4da}{Vision\+::\+Segment\+::\+Segmentation\+Type} seg\+Type=\hyperlink{class_vision_1_1_segment_af3a2b992526eac54bca53e34cf2db4daae000cfc8d629752d6cdbba0d3d750184}{Vision\+::\+Segment\+::\+Normal})
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Segment\+Particles. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_soil_analyzer_1_1_sample_a28ace3c6ddde646d05a7771b715777d2}{Progress\+\_\+t} \hyperlink{class_soil_analyzer_1_1_sample_aab3a7522152890650245a1f069605a13}{prog\+\_\+sig}
+\hyperlink{class_soil_analyzer_1_1_sample_ab7b3516f36d3c9278f514b7b03621a64}{Progress\+\_\+t} \hyperlink{class_soil_analyzer_1_1_sample_aab3a7522152890650245a1f069605a13}{prog\+\_\+sig}
 \end{DoxyCompactItemize}
 \subsection*{Friends}
 \begin{DoxyCompactItemize}
@@ -84,19 +89,21 @@ class \hyperlink{class_soil_analyzer_1_1_sample_ac98d07dd8f7b70e16ccb9a01abf56b9
 
 
 \subsection{Detailed Description}
+The \hyperlink{class_soil_analyzer_1_1_sample}{Sample} class. 
 
+This class represent a single soilsample snapshot it inherents from the class \hyperlink{class_soil_analyzer_1_1_soil}{Soil} 
 
-Definition at line 39 of file Sample.\+h.
+Definition at line 44 of file Sample.\+h.
 
 
 
 \subsection{Member Typedef Documentation}
-\hypertarget{class_soil_analyzer_1_1_sample_a28ace3c6ddde646d05a7771b715777d2}{}\index{Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}!Progress\+\_\+t@{Progress\+\_\+t}}
+\hypertarget{class_soil_analyzer_1_1_sample_ab7b3516f36d3c9278f514b7b03621a64}{}\index{Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}!Progress\+\_\+t@{Progress\+\_\+t}}
 \index{Progress\+\_\+t@{Progress\+\_\+t}!Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}}
-\subsubsection[{Progress\+\_\+t}]{\setlength{\rightskip}{0pt plus 5cm}typedef boost\+::signals2\+::signal$<$void(float, std\+::string)$>$ {\bf Soil\+Analyzer\+::\+Sample\+::\+Progress\+\_\+t}}\label{class_soil_analyzer_1_1_sample_a28ace3c6ddde646d05a7771b715777d2}
+\subsubsection[{Progress\+\_\+t}]{\setlength{\rightskip}{0pt plus 5cm}typedef boost\+::signals2\+::signal$<$void( float, std\+::string)$>$ {\bf Soil\+Analyzer\+::\+Sample\+::\+Progress\+\_\+t}}\label{class_soil_analyzer_1_1_sample_ab7b3516f36d3c9278f514b7b03621a64}
+A boost signal, used for progress update indicating the progres so far as a float between 0. and 1. and the current progress step as string 
 
-
-Definition at line 41 of file Sample.\+h.
+Definition at line 47 of file Sample.\+h.
 
 
 
@@ -108,6 +115,15 @@ Definition at line 41 of file Sample.\+h.
 \item[{{\bf Soil\+Settings} $\ast$}]{settings = {\ttfamily nullptr}}
 \end{DoxyParamCaption}
 )}\label{class_soil_analyzer_1_1_sample_aa132beeb85f46a9d14f7ed0903eda595}
+
+
+\hyperlink{class_soil_analyzer_1_1_sample}{Sample} the constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em settings} & a pointer to the an object of the type \hyperlink{class_soil_analyzer_1_1_soil_settings}{Soil\+Settings} used to initalize the analyzing settings \\
+\hline
+\end{DoxyParams}
 
 
 Definition at line 11 of file Sample.\+cpp.
@@ -128,6 +144,17 @@ References Settings.
 \item[{{\bf Soil\+Settings} $\ast$}]{settings = {\ttfamily nullptr}}
 \end{DoxyParamCaption}
 )}\label{class_soil_analyzer_1_1_sample_a8d469b55b6af5c3e9283665df8430926}
+
+
+\hyperlink{class_soil_analyzer_1_1_sample}{Sample} the constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em src} & the source rgb image \\
+\hline
+{\em settings} & a pointer to the an object of the type \hyperlink{class_soil_analyzer_1_1_soil_settings}{Soil\+Settings} used to initalize the analyzing settings \\
+\hline
+\end{DoxyParams}
 
 
 Definition at line 13 of file Sample.\+cpp.
@@ -152,6 +179,10 @@ References Original\+Image, and Settings.
 )}\label{class_soil_analyzer_1_1_sample_a26f964ba39721002cbb182f3834ebb3c}
 
 
+The Deconstructor. 
+
+
+
 Definition at line 18 of file Sample.\+cpp.
 
 
@@ -168,6 +199,15 @@ Definition at line 18 of file Sample.\+cpp.
 \item[{{\bf Soil\+Math\+::\+N\+N} \&}]{nn}
 \end{DoxyParamCaption}
 )}\label{class_soil_analyzer_1_1_sample_aeb62e34de081b3f298e9b8ebf82df36d}
+
+
+Analyse the R\+G\+B image. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nn} & a reference to the neural network used during analyzing \\
+\hline
+\end{DoxyParams}
 
 
 Definition at line 173 of file Sample.\+cpp.
@@ -237,6 +277,17 @@ Here is the caller graph for this function\+:\nopagebreak
 )}\label{class_soil_analyzer_1_1_sample_a5555ad91e224aeb59e2a301f23e1899f}
 
 
+Analyse the the R\+G\+B image. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em src} & the R\+G\+B image with needs to be analysed \\
+\hline
+{\em nn} & a reference to the neural network used during analyzing \\
+\hline
+\end{DoxyParams}
+
+
 Definition at line 196 of file Sample.\+cpp.
 
 
@@ -271,6 +322,20 @@ Here is the call graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [private]}}\label{class_soil_analyzer_1_1_sample_ab086f5475a5e404625b6ae1faa0fe7a2}
 
 
+Analyse\+Pop\+Vect analyse the particle population vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em population} & a reference to individual particles \\
+\hline
+{\em results} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
 Definition at line 201 of file Sample.\+cpp.
 
 
@@ -286,6 +351,18 @@ Definition at line 201 of file Sample.\+cpp.
 \item[{const Progress\+\_\+t\+::slot\+\_\+type \&}]{subscriber}
 \end{DoxyParamCaption}
 )}\label{class_soil_analyzer_1_1_sample_a472dfdde346375463c979e45eb75fbb7}
+
+
+connect\+\_\+\+Progress used to connect the progress signal 
+
+
+\begin{DoxyParams}{Parameters}
+{\em subscriber} & a reference to the subscriber \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+returns the signal 
+\end{DoxyReturn}
 
 
 Definition at line 257 of file Sample.\+cpp.
@@ -324,6 +401,15 @@ Here is the caller graph for this function\+:\nopagebreak
 )}\label{class_soil_analyzer_1_1_sample_a88f29d8ee3fad37cdad6cb88b2c8a288}
 
 
+Load the Soil\+Sample from disk. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & where the saved Soilsample can be found \\
+\hline
+\end{DoxyParams}
+
+
 Definition at line 26 of file Sample.\+cpp.
 
 
@@ -356,6 +442,15 @@ Here is the caller graph for this function\+:\nopagebreak
 \item[{{\bf Soil\+Settings} $\ast$}]{settings = {\ttfamily nullptr}}
 \end{DoxyParamCaption}
 )}\label{class_soil_analyzer_1_1_sample_a23050a1fff3e11e907657623756333b2}
+
+
+Prep\+Img Prep te image for analysis. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em settings} & a pointer to the an object of the type \hyperlink{class_soil_analyzer_1_1_soil_settings}{Soil\+Settings} used to initalize the analyzing settings \\
+\hline
+\end{DoxyParams}
 
 
 Definition at line 32 of file Sample.\+cpp.
@@ -548,6 +643,15 @@ Here is the caller graph for this function\+:\nopagebreak
 )}\label{class_soil_analyzer_1_1_sample_a00fd0ec3bbea70454a6d8a6c1aaf34df}
 
 
+Save the Soil\+Sample to disk. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & the where to save \\
+\hline
+\end{DoxyParams}
+
+
 Definition at line 20 of file Sample.\+cpp.
 
 
@@ -580,6 +684,15 @@ Here is the caller graph for this function\+:\nopagebreak
 \item[{{\bf Vision\+::\+Segment\+::\+Segmentation\+Type}}]{seg\+Type = {\ttfamily {\bf Vision\+::\+Segment\+::\+Normal}}}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [private]}}\label{class_soil_analyzer_1_1_sample_a38d665f29d94e597cb4c6a467d2e1f0b}
+
+
+Segment\+Particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em seg\+Type} & \\
+\hline
+\end{DoxyParams}
 
 
 Definition at line 206 of file Sample.\+cpp.
@@ -661,18 +774,18 @@ Here is the call graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}\label{class_soil_analyzer_1_1_sample_a5be6eea7a7d74e0adec741d1e203635e}
 
 
-Definition at line 68 of file Sample.\+h.
+Definition at line 125 of file Sample.\+h.
 
 
 \begin{DoxyCode}
-68                                                           \{
-69     ar &BOOST\_SERIALIZATION\_BASE\_OBJECT\_NVP(\hyperlink{class_soil_analyzer_1_1_soil_aee6934dca3d712e86648f92d60e78765}{Soil});
-70     ar &\hyperlink{class_soil_analyzer_1_1_sample_a0d6e6fca9e232a77329daf0b4b29c634}{OriginalImage};
-71     ar &\hyperlink{class_soil_analyzer_1_1_sample_ab87a190f2b4a49bc71b355f9c52d8aa4}{Population};
-72     ar &\hyperlink{class_soil_analyzer_1_1_sample_ab242ae1c2f229168fd630a9f31d7237f}{Results};
-73     ar &\hyperlink{class_soil_analyzer_1_1_sample_a31f7b29fc46497f9b2847285c7893832}{Settings};
-74     ar &\hyperlink{class_soil_analyzer_1_1_sample_ab025a26f7276128a5a974cae15b51dfc}{imgPrepped};
-75   \}
+125                                                           \{
+126     ar &BOOST\_SERIALIZATION\_BASE\_OBJECT\_NVP(\hyperlink{class_soil_analyzer_1_1_soil_aee6934dca3d712e86648f92d60e78765}{Soil});
+127     ar &\hyperlink{class_soil_analyzer_1_1_sample_a0d6e6fca9e232a77329daf0b4b29c634}{OriginalImage};
+128     ar &\hyperlink{class_soil_analyzer_1_1_sample_ab87a190f2b4a49bc71b355f9c52d8aa4}{Population};
+129     ar &\hyperlink{class_soil_analyzer_1_1_sample_ab242ae1c2f229168fd630a9f31d7237f}{Results};
+130     ar &\hyperlink{class_soil_analyzer_1_1_sample_a31f7b29fc46497f9b2847285c7893832}{Settings};
+131     ar &\hyperlink{class_soil_analyzer_1_1_sample_ab025a26f7276128a5a974cae15b51dfc}{imgPrepped};
+132   \}
 \end{DoxyCode}
 
 
@@ -682,7 +795,7 @@ Definition at line 68 of file Sample.\+h.
 \subsubsection[{boost\+::serialization\+::access}]{\setlength{\rightskip}{0pt plus 5cm}friend class boost\+::serialization\+::access\hspace{0.3cm}{\ttfamily [friend]}}\label{class_soil_analyzer_1_1_sample_ac98d07dd8f7b70e16ccb9a01abf56b9c}
 
 
-Definition at line 66 of file Sample.\+h.
+Definition at line 123 of file Sample.\+h.
 
 
 
@@ -692,7 +805,7 @@ Definition at line 66 of file Sample.\+h.
 \subsubsection[{img\+Prepped}]{\setlength{\rightskip}{0pt plus 5cm}bool Soil\+Analyzer\+::\+Sample\+::img\+Prepped = false}\label{class_soil_analyzer_1_1_sample_ab025a26f7276128a5a974cae15b51dfc}
 
 
-Definition at line 56 of file Sample.\+h.
+Definition at line 93 of file Sample.\+h.
 
 
 
@@ -701,9 +814,9 @@ Referenced by Analyse(), V\+S\+A\+G\+U\+I\+::on\+\_\+vertical\+Slider\+\_\+slide
 \hypertarget{class_soil_analyzer_1_1_sample_a0d6e6fca9e232a77329daf0b4b29c634}{}\index{Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}!Original\+Image@{Original\+Image}}
 \index{Original\+Image@{Original\+Image}!Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}}
 \subsubsection[{Original\+Image}]{\setlength{\rightskip}{0pt plus 5cm}cv\+::\+Mat Soil\+Analyzer\+::\+Sample\+::\+Original\+Image}\label{class_soil_analyzer_1_1_sample_a0d6e6fca9e232a77329daf0b4b29c634}
+The original image 
 
-
-Definition at line 49 of file Sample.\+h.
+Definition at line 80 of file Sample.\+h.
 
 
 
@@ -712,9 +825,9 @@ Referenced by Analyse(), B\+O\+O\+S\+T\+\_\+\+F\+I\+X\+T\+U\+R\+E\+\_\+\+T\+E\+S
 \hypertarget{class_soil_analyzer_1_1_sample_ab87a190f2b4a49bc71b355f9c52d8aa4}{}\index{Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}!Population@{Population}}
 \index{Population@{Population}!Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}}
 \subsubsection[{Population}]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf Particle}$>$ Soil\+Analyzer\+::\+Sample\+::\+Population}\label{class_soil_analyzer_1_1_sample_ab87a190f2b4a49bc71b355f9c52d8aa4}
+a Vector with original particles 
 
-
-Definition at line 50 of file Sample.\+h.
+Definition at line 81 of file Sample.\+h.
 
 
 
@@ -723,9 +836,9 @@ Referenced by Segment\+Particles().
 \hypertarget{class_soil_analyzer_1_1_sample_aab3a7522152890650245a1f069605a13}{}\index{Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}!prog\+\_\+sig@{prog\+\_\+sig}}
 \index{prog\+\_\+sig@{prog\+\_\+sig}!Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}}
 \subsubsection[{prog\+\_\+sig}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Progress\+\_\+t} Soil\+Analyzer\+::\+Sample\+::prog\+\_\+sig\hspace{0.3cm}{\ttfamily [private]}}\label{class_soil_analyzer_1_1_sample_aab3a7522152890650245a1f069605a13}
+The progress signal 
 
-
-Definition at line 64 of file Sample.\+h.
+Definition at line 121 of file Sample.\+h.
 
 
 
@@ -734,16 +847,21 @@ Referenced by connect\+\_\+\+Progress(), and Prep\+Img().
 \hypertarget{class_soil_analyzer_1_1_sample_ab242ae1c2f229168fd630a9f31d7237f}{}\index{Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}!Results@{Results}}
 \index{Results@{Results}!Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}}
 \subsubsection[{Results}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Analysis\+Results} Soil\+Analyzer\+::\+Sample\+::\+Results}\label{class_soil_analyzer_1_1_sample_ab242ae1c2f229168fd630a9f31d7237f}
+The analysis results 
 
-
-Definition at line 51 of file Sample.\+h.
+Definition at line 82 of file Sample.\+h.
 
 \hypertarget{class_soil_analyzer_1_1_sample_a31f7b29fc46497f9b2847285c7893832}{}\index{Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}!Settings@{Settings}}
 \index{Settings@{Settings}!Soil\+Analyzer\+::\+Sample@{Soil\+Analyzer\+::\+Sample}}
-\subsubsection[{Settings}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Soil\+Settings}$\ast$ Soil\+Analyzer\+::\+Sample\+::\+Settings = nullptr}\label{class_soil_analyzer_1_1_sample_a31f7b29fc46497f9b2847285c7893832}
+\subsubsection[{Settings}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Soil\+Settings}$\ast$ Soil\+Analyzer\+::\+Sample\+::\+Settings}\label{class_soil_analyzer_1_1_sample_a31f7b29fc46497f9b2847285c7893832}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+      \textcolor{keyword}{nullptr}
+\end{DoxyCode}
+The Settings used to initialize the analyzis 
 
-
-Definition at line 53 of file Sample.\+h.
+Definition at line 84 of file Sample.\+h.
 
 
 

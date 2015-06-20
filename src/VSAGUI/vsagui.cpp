@@ -162,7 +162,6 @@ void VSAGUI::on_actionImport_triggered() {
       this, tr("Import Neural Network"), tr("/home/"),
       tr("Neural Net (*.NN);;All Files (*)"));
   if (!fn.isEmpty())
-    ;
   {
     std::string filename = fn.toStdString();
     NeuralNet->LoadState(filename);
@@ -174,7 +173,6 @@ void VSAGUI::on_actionExport_triggered() {
       this, tr("Export Neural Network"), tr("/home/"),
       tr("Neural Net (*.NN);;All Files (*)"));
   if (!fn.isEmpty())
-    ;
   {
     if (!fn.contains(tr(".NN"))) {
       fn.append(tr(".NN"));
@@ -193,9 +191,7 @@ void VSAGUI::on_actionSave_Settings_triggered() {
   QString fn =
       QFileDialog::getSaveFileName(this, tr("Save Settings"), tr("/home/"),
                                    tr("Settings (*.ini);;All Files (*)"));
-  if (!fn.isEmpty())
-    ;
-  {
+  if (!fn.isEmpty()) {
     if (!fn.contains(tr(".ini"))) {
       fn.append(tr(".ini"));
     }
@@ -208,9 +204,7 @@ void VSAGUI::on_actionLoad_Settings_triggered() {
   QString fn =
       QFileDialog::getOpenFileName(this, tr("Load Settings"), tr("/home/"),
                                    tr("Settings (*.ini);;All Files (*)"));
-  if (!fn.isEmpty())
-    ;
-  {
+  if (!fn.isEmpty())  {
     std::string filename = fn.toStdString();
     sSettings->LoadSettings(filename);
   }

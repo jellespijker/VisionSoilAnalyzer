@@ -451,7 +451,7 @@ Here is the call graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}\label{class_vision_1_1_conversion_aea73f90915cd0459dcaf70fb3e109a82}
 
 
-Definition at line 246 of file Conversion.\+cpp.
+Definition at line 244 of file Conversion.\+cpp.
 
 
 
@@ -459,12 +459,12 @@ Referenced by X\+Y\+Z2\+Lab().
 
 
 \begin{DoxyCode}
-246                                           \{
-247   \textcolor{keywordflow}{if} (t > 0.008856) \{
-248     \textcolor{keywordflow}{return} pow(t, 0.3333333333f);
-249   \}
-250   \textcolor{keywordflow}{return} 7.787 * t + 0.137931034482759f;
-251 \}
+244                                           \{
+245   \textcolor{keywordflow}{if} (t > 0.008856) \{
+246     \textcolor{keywordflow}{return} pow(t, 0.3333333333f);
+247   \}
+248   \textcolor{keywordflow}{return} 7.787 * t + 0.137931034482759f;
+249 \}
 \end{DoxyCode}
 
 
@@ -497,7 +497,7 @@ Here is the caller graph for this function\+:\nopagebreak
 \end{DoxyParams}
 
 
-Definition at line 258 of file Conversion.\+cpp.
+Definition at line 256 of file Conversion.\+cpp.
 
 
 
@@ -509,19 +509,18 @@ Referenced by Convert().
 
 
 \begin{DoxyCode}
-258                                                      \{
-259   uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0;
-260   uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} = 0;
-261   \textcolor{keywordtype}{float} L, a, b;
-262   \textcolor{keywordflow}{for} (uint32\_t i = 0; i < nData; i += 3) \{
-263     L = *(O + \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i});
-264     a = *(O + i + 1);
-265     b = *(O + i + 2);
-266     P[j++] =
-267         (L * (pow((pow(a, 2.0f) + pow(b, 2.0f)), 0.5f) * (pow(10, 8.2f)))) /
-268         (b * pow(L, 6.0f));
-269   \}
-270 \}
+256                                                      \{
+257   uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} = 0;
+258   \textcolor{keywordtype}{float} L, a, b;
+259   \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < nData; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} += 3) \{
+260     L = *(O + \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i});
+261     a = *(O + \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} + 1);
+262     b = *(O + \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} + 2);
+263     P[j++] =
+264         (L * (pow((pow(a, 2.0f) + pow(b, 2.0f)), 0.5f) * (pow(10, 8.2f)))) /
+265         (b * pow(L, 6.0f));
+266   \}
+267 \}
 \end{DoxyCode}
 
 
@@ -650,18 +649,17 @@ Referenced by Convert().
 
 \begin{DoxyCode}
 207                                                       \{
-208   uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0;
-209   uint32\_t endData = nData * \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.step.buf[1];
-210   \textcolor{keywordtype}{float} R, G, \hyperlink{struct_b}{B};
-211   \textcolor{keywordflow}{for} (uint32\_t i = 0; i < endData; i += \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.step.buf[1]) \{
-212     R = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(*(O + i + 2) / 255.0f);
-213     B = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(*(O + i + 1) / 255.0f);
-214     G = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(*(O + \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) / 255.0f);
-215     P[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = (\hyperlink{class_vision_1_1_conversion_ad0c6e6c63380927c63da7f967b5e61d1}{XYZmat}[0][0] * R) + (\hyperlink{class_vision_1_1_conversion_ad0c6e6c63380927c63da7f967b5e61d1}{XYZmat}[0][1] * B) + (\hyperlink{class_vision_1_1_conversion_ad0c6e6c63380927c63da7f967b5e61d1}{XYZmat}[0][2] * G); \textcolor{comment}{// X}
-216     P[i + 1] = (\hyperlink{class_vision_1_1_conversion_ad0c6e6c63380927c63da7f967b5e61d1}{XYZmat}[1][0] * R) + (\hyperlink{class_vision_1_1_conversion_ad0c6e6c63380927c63da7f967b5e61d1}{XYZmat}[1][1] * B) + (\hyperlink{class_vision_1_1_conversion_ad0c6e6c63380927c63da7f967b5e61d1}{XYZmat}[1][2] * G); \textcolor{comment}{// Y}
-217     P[i + 2] = (\hyperlink{class_vision_1_1_conversion_ad0c6e6c63380927c63da7f967b5e61d1}{XYZmat}[2][0] * R) + (\hyperlink{class_vision_1_1_conversion_ad0c6e6c63380927c63da7f967b5e61d1}{XYZmat}[2][1] * B) + (\hyperlink{class_vision_1_1_conversion_ad0c6e6c63380927c63da7f967b5e61d1}{XYZmat}[2][2] * G); \textcolor{comment}{// Z}
-218   \}
-219 \}
+208   uint32\_t endData = nData * \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.step.buf[1];
+209   \textcolor{keywordtype}{float} R, G, \hyperlink{struct_b}{B};
+210   \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < endData; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} += \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.step.buf[1]) \{
+211     R = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(*(O + \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} + 2) / 255.0f);
+212     B = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(*(O + \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} + 1) / 255.0f);
+213     G = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(*(O + \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) / 255.0f);
+214     P[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = (\hyperlink{class_vision_1_1_conversion_ad0c6e6c63380927c63da7f967b5e61d1}{XYZmat}[0][0] * R) + (\hyperlink{class_vision_1_1_conversion_ad0c6e6c63380927c63da7f967b5e61d1}{XYZmat}[0][1] * B) + (\hyperlink{class_vision_1_1_conversion_ad0c6e6c63380927c63da7f967b5e61d1}{XYZmat}[0][2] * G); \textcolor{comment}{// X}
+215     P[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} + 1] = (\hyperlink{class_vision_1_1_conversion_ad0c6e6c63380927c63da7f967b5e61d1}{XYZmat}[1][0] * R) + (\hyperlink{class_vision_1_1_conversion_ad0c6e6c63380927c63da7f967b5e61d1}{XYZmat}[1][1] * B) + (\hyperlink{class_vision_1_1_conversion_ad0c6e6c63380927c63da7f967b5e61d1}{XYZmat}[1][2] * G); \textcolor{comment}{// Y}
+216     P[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} + 2] = (\hyperlink{class_vision_1_1_conversion_ad0c6e6c63380927c63da7f967b5e61d1}{XYZmat}[2][0] * R) + (\hyperlink{class_vision_1_1_conversion_ad0c6e6c63380927c63da7f967b5e61d1}{XYZmat}[2][1] * B) + (\hyperlink{class_vision_1_1_conversion_ad0c6e6c63380927c63da7f967b5e61d1}{XYZmat}[2][2] * G); \textcolor{comment}{// Z}
+217   \}
+218 \}
 \end{DoxyCode}
 
 
@@ -694,7 +692,7 @@ Here is the caller graph for this function\+:\nopagebreak
 \end{DoxyParams}
 
 
-Definition at line 226 of file Conversion.\+cpp.
+Definition at line 225 of file Conversion.\+cpp.
 
 
 
@@ -706,25 +704,24 @@ Referenced by Convert().
 
 
 \begin{DoxyCode}
-226                                                       \{
-227   uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0;
-228   uint32\_t endData = nData * 3;
-229   \textcolor{keywordtype}{float} yy0, xx0, zz0;
-230   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < endData; i += 3) \{
-231     xx0 = *(O + \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) / \hyperlink{class_vision_1_1_conversion_adbaed406827f7ffb583d003815a9f3f8}{whitePoint}[0];
-232     yy0 = *(O + i + 1) / \hyperlink{class_vision_1_1_conversion_adbaed406827f7ffb583d003815a9f3f8}{whitePoint}[1];
-233     zz0 = *(O + i + 2) / \hyperlink{class_vision_1_1_conversion_adbaed406827f7ffb583d003815a9f3f8}{whitePoint}[2];
-234 
-235     \textcolor{keywordflow}{if} (yy0 > 0.008856) \{
-236       P[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = (116 * pow(yy0, 0.333f)) - 16; \textcolor{comment}{// L}
-237     \} \textcolor{keywordflow}{else} \{
-238       P[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = 903.3 * yy0; \textcolor{comment}{// L}
-239     \}
-240 
-241     P[i + 1] = 500 * (\hyperlink{class_vision_1_1_conversion_aea73f90915cd0459dcaf70fb3e109a82}{f\_xyz2lab}(xx0) - \hyperlink{class_vision_1_1_conversion_aea73f90915cd0459dcaf70fb3e109a82}{f\_xyz2lab}(yy0));
-242     P[i + 2] = 200 * (\hyperlink{class_vision_1_1_conversion_aea73f90915cd0459dcaf70fb3e109a82}{f\_xyz2lab}(yy0) - \hyperlink{class_vision_1_1_conversion_aea73f90915cd0459dcaf70fb3e109a82}{f\_xyz2lab}(zz0));
-243   \}
-244 \}
+225                                                       \{
+226   uint32\_t endData = nData * 3;
+227   \textcolor{keywordtype}{float} yy0, xx0, zz0;
+228   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < endData; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} += 3) \{
+229     xx0 = *(O + \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) / \hyperlink{class_vision_1_1_conversion_adbaed406827f7ffb583d003815a9f3f8}{whitePoint}[0];
+230     yy0 = *(O + \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} + 1) / \hyperlink{class_vision_1_1_conversion_adbaed406827f7ffb583d003815a9f3f8}{whitePoint}[1];
+231     zz0 = *(O + \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} + 2) / \hyperlink{class_vision_1_1_conversion_adbaed406827f7ffb583d003815a9f3f8}{whitePoint}[2];
+232 
+233     \textcolor{keywordflow}{if} (yy0 > 0.008856) \{
+234       P[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = (116 * pow(yy0, 0.333f)) - 16; \textcolor{comment}{// L}
+235     \} \textcolor{keywordflow}{else} \{
+236       P[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = 903.3 * yy0; \textcolor{comment}{// L}
+237     \}
+238 
+239     P[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} + 1] = 500 * (\hyperlink{class_vision_1_1_conversion_aea73f90915cd0459dcaf70fb3e109a82}{f\_xyz2lab}(xx0) - \hyperlink{class_vision_1_1_conversion_aea73f90915cd0459dcaf70fb3e109a82}{f\_xyz2lab}(yy0));
+240     P[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} + 2] = 200 * (\hyperlink{class_vision_1_1_conversion_aea73f90915cd0459dcaf70fb3e109a82}{f\_xyz2lab}(yy0) - \hyperlink{class_vision_1_1_conversion_aea73f90915cd0459dcaf70fb3e109a82}{f\_xyz2lab}(zz0));
+241   \}
+242 \}
 \end{DoxyCode}
 
 

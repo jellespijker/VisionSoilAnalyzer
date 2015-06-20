@@ -181,36 +181,35 @@ Referenced by Soil\+Analyzer\+::\+Sample\+::\+Prep\+Img().
 \begin{DoxyCode}
 77                                                           \{
 78     Mat dst(src.size(), cvType);
-79     uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0, i\_src = 0;
-80     uint32\_t nData = src.rows * src.cols * dst.step[1];
-81     \textcolor{keywordflow}{if} (cvType == 0 || cvType == 8 || cvType == 16 || cvType == 24) \{
-82       \textcolor{keywordflow}{for} (uint32\_t i = 0; i < nData; i += dst.step[1]) \{
-83         dst.data[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] =
-84             \textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(LUT[*(T2 *)(src.data + (i * src.step[1]))]);
-85       \}
-86     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (cvType == 1 || cvType == 9 || cvType == 17 || cvType == 25) \{
-87       \textcolor{keywordflow}{for} (uint32\_t i = 0; i < nData; i += src.step[1]) \{
-88         dst.data[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] =
-89             \textcolor{keyword}{static\_cast<}int8\_t\textcolor{keyword}{>}(LUT[*(T2 *)(src.data + (i * src.step[1]))]);
-90       \}
-91     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (cvType == 2 || cvType == 10 || cvType == 18 || cvType == 26) \{
-92       \textcolor{keywordflow}{for} (uint32\_t i = 0; i < nData; i += src.step[1]) \{
-93         dst.data[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] =
-94             \textcolor{keyword}{static\_cast<}uint16\_t\textcolor{keyword}{>}(LUT[*(T2 *)(src.data + (i * src.step[1]))]);
-95       \}
-96     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (cvType == 3 || cvType == 11 || cvType == 19 || cvType == 27) \{
-97       \textcolor{keywordflow}{for} (uint32\_t i = 0; i < nData; i += src.step[1]) \{
-98         dst.data[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] =
-99             \textcolor{keyword}{static\_cast<}int16\_t\textcolor{keyword}{>}(LUT[*(T2 *)(src.data + (i * src.step[1]))]);
-100       \}
-101     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (cvType == 4 || cvType == 12 || cvType == 20 || cvType == 28) \{
-102       \textcolor{keywordflow}{for} (uint32\_t i = 0; i < nData; i += src.step[1]) \{
-103         dst.data[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] =
-104             \textcolor{keyword}{static\_cast<}int32\_t\textcolor{keyword}{>}(LUT[*(T2 *)(src.data + (i * src.step[1]))]);
-105       \}
-106     \}
-107     \textcolor{keywordflow}{return} dst;
-108   \}
+79     uint32\_t nData = src.rows * src.cols * dst.step[1];
+80     \textcolor{keywordflow}{if} (cvType == 0 || cvType == 8 || cvType == 16 || cvType == 24) \{
+81       \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < nData; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} += dst.step[1]) \{
+82         dst.data[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] =
+83             \textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(LUT[*(T2 *)(src.data + (\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} * src.step[1]))]);
+84       \}
+85     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (cvType == 1 || cvType == 9 || cvType == 17 || cvType == 25) \{
+86       \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < nData; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} += src.step[1]) \{
+87         dst.data[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] =
+88             \textcolor{keyword}{static\_cast<}int8\_t\textcolor{keyword}{>}(LUT[*(T2 *)(src.data + (\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} * src.step[1]))]);
+89       \}
+90     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (cvType == 2 || cvType == 10 || cvType == 18 || cvType == 26) \{
+91       \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < nData; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} += src.step[1]) \{
+92         dst.data[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] =
+93             \textcolor{keyword}{static\_cast<}uint16\_t\textcolor{keyword}{>}(LUT[*(T2 *)(src.data + (\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} * src.step[1]))]);
+94       \}
+95     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (cvType == 3 || cvType == 11 || cvType == 19 || cvType == 27) \{
+96       \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < nData; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} += src.step[1]) \{
+97         dst.data[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] =
+98             \textcolor{keyword}{static\_cast<}int16\_t\textcolor{keyword}{>}(LUT[*(T2 *)(src.data + (\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} * src.step[1]))]);
+99       \}
+100     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (cvType == 4 || cvType == 12 || cvType == 20 || cvType == 28) \{
+101       \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < nData; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} += src.step[1]) \{
+102         dst.data[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] =
+103             \textcolor{keyword}{static\_cast<}int32\_t\textcolor{keyword}{>}(LUT[*(T2 *)(src.data + (\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} * src.step[1]))]);
+104       \}
+105     \}
+106     \textcolor{keywordflow}{return} dst;
+107   \}
 \end{DoxyCode}
 
 
@@ -246,7 +245,7 @@ The new matrix
 \end{DoxyReturn}
 
 
-Definition at line 117 of file Image\+Processing.\+h.
+Definition at line 116 of file Image\+Processing.\+h.
 
 
 
@@ -254,34 +253,34 @@ References extract\+Channel(), and m.
 
 
 \begin{DoxyCode}
-117                                                                   \{
-118     \textcolor{keywordflow}{if} (src.size != \hyperlink{_gen_blob_8m_a5d76cc2129e79ba1941d2cc2f53b9e8e}{mask}.size) \{
-119       \textcolor{keywordflow}{throw} Exception::WrongKernelSizeException(
-120           \textcolor{stringliteral}{"Mask not the same size as src Exception!"});
-121     \}
-122     \textcolor{keywordflow}{if} (\hyperlink{_gen_blob_8m_a5d76cc2129e79ba1941d2cc2f53b9e8e}{mask}.channels() != 1) \{
-123       \textcolor{keywordflow}{throw} Exception::WrongKernelSizeException(
-124           \textcolor{stringliteral}{"Mask has more then 1 channel Exception!"});
-125     \}
-126     Mat dst(src.size(), cvType);
-127 
-128     vector<Mat> exSrc = \hyperlink{class_vision_1_1_image_processing_ad5fa51caaabb8cb0fc2c15f645695a3c}{Vision::ImageProcessing::extractChannel}(src)
+116                                                                   \{
+117     \textcolor{keywordflow}{if} (src.size != \hyperlink{_gen_blob_8m_a5d76cc2129e79ba1941d2cc2f53b9e8e}{mask}.size) \{
+118       \textcolor{keywordflow}{throw} Exception::WrongKernelSizeException(
+119           \textcolor{stringliteral}{"Mask not the same size as src Exception!"});
+120     \}
+121     \textcolor{keywordflow}{if} (\hyperlink{_gen_blob_8m_a5d76cc2129e79ba1941d2cc2f53b9e8e}{mask}.channels() != 1) \{
+122       \textcolor{keywordflow}{throw} Exception::WrongKernelSizeException(
+123           \textcolor{stringliteral}{"Mask has more then 1 channel Exception!"});
+124     \}
+125     Mat dst(src.size(), cvType);
+126 
+127     vector<Mat> exSrc = \hyperlink{class_vision_1_1_image_processing_ad5fa51caaabb8cb0fc2c15f645695a3c}{Vision::ImageProcessing::extractChannel}(src)
       ;
-129     vector<Mat> exDst;
-130 
-131     \textcolor{keywordtype}{int} cvBaseType = cvType % 8;
-132     for\_each(exSrc.begin(), exSrc.end(), [&](\textcolor{keyword}{const} Mat &sItem) \{
-133       Mat dItem(src.size(), cvBaseType);
-134       std::transform(sItem.begin<T1>(), sItem.end<T1>(), \hyperlink{_gen_blob_8m_a5d76cc2129e79ba1941d2cc2f53b9e8e}{mask}.begin<T1>(),
-135                      dItem.begin<T1>(),
-136                      [](\textcolor{keyword}{const} T1 &s, \textcolor{keyword}{const} T1 &\hyperlink{_gen_blob_8m_ab3cd915d758008bd19d0f2428fbb354a}{m}) -> T1 \{ return s * m; \});
-137       exDst.push\_back(dItem);
-138     \});
-139 
-140     merge(exDst, dst);
-141 
-142     \textcolor{keywordflow}{return} dst;
-143   \}
+128     vector<Mat> exDst;
+129 
+130     \textcolor{keywordtype}{int} cvBaseType = cvType % 8;
+131     for\_each(exSrc.begin(), exSrc.end(), [&](\textcolor{keyword}{const} Mat &sItem) \{
+132       Mat dItem(src.size(), cvBaseType);
+133       std::transform(sItem.begin<T1>(), sItem.end<T1>(), \hyperlink{_gen_blob_8m_a5d76cc2129e79ba1941d2cc2f53b9e8e}{mask}.begin<T1>(),
+134                      dItem.begin<T1>(),
+135                      [](\textcolor{keyword}{const} T1 &s, \textcolor{keyword}{const} T1 &\hyperlink{_gen_blob_8m_ab3cd915d758008bd19d0f2428fbb354a}{m}) -> T1 \{ return s * m; \});
+136       exDst.push\_back(dItem);
+137     \});
+138 
+139     merge(exDst, dst);
+140 
+141     \textcolor{keywordflow}{return} dst;
+142   \}
 \end{DoxyCode}
 
 
@@ -398,7 +397,7 @@ Here is the caller graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{class_vision_1_1_image_processing_a97407ef83de37496d30d6defe3165edd}
 
 
-Definition at line 146 of file Image\+Processing.\+h.
+Definition at line 145 of file Image\+Processing.\+h.
 
 
 
@@ -406,51 +405,51 @@ References imshow().
 
 
 \begin{DoxyCode}
-147                                               \{
-148     \textcolor{keywordflow}{if} (img.rows > 0 && img.cols > 0) \{
-149       cv::Mat tempImg(img.size(), img.type());
-150       \textcolor{keywordflow}{if} (scale == \textcolor{keyword}{true}) \{
-151         std::vector<cv::Mat> exSrc = \hyperlink{class_vision_1_1_image_processing_ad5fa51caaabb8cb0fc2c15f645695a3c}{extractChannel}(img);
-152         std::vector<cv::Mat> exDst;
-153         \textcolor{keywordtype}{int} cvBaseType = img.type() % 8;
-154         T1 MatMin = std::numeric\_limits<T1>::max();
-155         T1 MatMax = std::numeric\_limits<T1>::min();
-156 
-157         \textcolor{comment}{// Find the global max and min}
-158         for\_each(exSrc.begin(), exSrc.end(), [&](\textcolor{keyword}{const} Mat &sItem) \{
-159           std::for\_each(sItem.begin<T1>(), sItem.end<T1>(), [&](\textcolor{keyword}{const} T1 &s) \{
-160             if (s > MatMax) \{
-161               MatMax = s;
-162             \} \textcolor{keywordflow}{else} if (s < MatMin) \{
-163               MatMin = s;
-164             \}
-165           \});
-166         \});
-167 
-168         \textcolor{keywordtype}{int} Range = MatMax - MatMin;
-169         \textcolor{keywordflow}{if} (Range < 1)
-170           Range = maxVal;
-171 
-172         \textcolor{comment}{// Convert the values}
-173         for\_each(exSrc.begin(), exSrc.end(), [&](\textcolor{keyword}{const} cv::Mat &sItem) \{
-174           Mat dItem(img.size(), cvBaseType);
-175           std::transform(sItem.begin<T1>(), sItem.end<T1>(), dItem.begin<T1>(),
-176                          [&](\textcolor{keyword}{const} T1 &s) -> T1 \{
-177                            return (T1)round(((s - MatMin) * maxVal) / Range);
-178                          \});
-179           exDst.push\_back(dItem);
-180         \});
-181 
-182         merge(exDst, tempImg);
-183       \} \textcolor{keywordflow}{else} \{
-184         tempImg = img;
-185       \}
-186       cv::namedWindow(windowName, cv::WINDOW\_NORMAL);
-187       \hyperlink{_comparision_pictures_2_createtest_image_8m_ab203292116da4a8a72763ec58b04da8f}{cv::imshow}(windowName, tempImg);
-188       cv::waitKey(0);
-189       cv::destroyWindow(windowName);
-190     \};
-191   \};
+146                                               \{
+147     \textcolor{keywordflow}{if} (img.rows > 0 && img.cols > 0) \{
+148       cv::Mat tempImg(img.size(), img.type());
+149       \textcolor{keywordflow}{if} (scale == \textcolor{keyword}{true}) \{
+150         std::vector<cv::Mat> exSrc = \hyperlink{class_vision_1_1_image_processing_ad5fa51caaabb8cb0fc2c15f645695a3c}{extractChannel}(img);
+151         std::vector<cv::Mat> exDst;
+152         \textcolor{keywordtype}{int} cvBaseType = img.type() % 8;
+153         T1 MatMin = std::numeric\_limits<T1>::max();
+154         T1 MatMax = std::numeric\_limits<T1>::min();
+155 
+156         \textcolor{comment}{// Find the global max and min}
+157         for\_each(exSrc.begin(), exSrc.end(), [&](\textcolor{keyword}{const} Mat &sItem) \{
+158           std::for\_each(sItem.begin<T1>(), sItem.end<T1>(), [&](\textcolor{keyword}{const} T1 &s) \{
+159             if (s > MatMax) \{
+160               MatMax = s;
+161             \} \textcolor{keywordflow}{else} if (s < MatMin) \{
+162               MatMin = s;
+163             \}
+164           \});
+165         \});
+166 
+167         \textcolor{keywordtype}{int} Range = MatMax - MatMin;
+168         \textcolor{keywordflow}{if} (Range < 1)
+169           Range = maxVal;
+170 
+171         \textcolor{comment}{// Convert the values}
+172         for\_each(exSrc.begin(), exSrc.end(), [&](\textcolor{keyword}{const} cv::Mat &sItem) \{
+173           Mat dItem(img.size(), cvBaseType);
+174           std::transform(sItem.begin<T1>(), sItem.end<T1>(), dItem.begin<T1>(),
+175                          [&](\textcolor{keyword}{const} T1 &s) -> T1 \{
+176                            return (T1)round(((s - MatMin) * maxVal) / Range);
+177                          \});
+178           exDst.push\_back(dItem);
+179         \});
+180 
+181         merge(exDst, tempImg);
+182       \} \textcolor{keywordflow}{else} \{
+183         tempImg = img;
+184       \}
+185       cv::namedWindow(windowName, cv::WINDOW\_NORMAL);
+186       \hyperlink{_comparision_pictures_2_createtest_image_8m_ab203292116da4a8a72763ec58b04da8f}{cv::imshow}(windowName, tempImg);
+187       cv::waitKey(0);
+188       cv::destroyWindow(windowName);
+189     \};
+190   \};
 \end{DoxyCode}
 
 

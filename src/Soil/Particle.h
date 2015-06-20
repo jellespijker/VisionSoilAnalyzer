@@ -14,15 +14,41 @@
 #include "ParticleAnalysisResults.h"
 
 namespace SoilAnalyzer {
+/*!
+ * \brief The Particle class
+ * \details Representing an individual particle
+ */
 class Particle : public Soil {
 public:
+  /*!
+ * \brief Particle the constructor
+ */
   Particle();
+
+  /*!
+    * \brief the deconstructor
+    */
   ~Particle();
 
+  /*!
+   * \brief Save the particle to disk
+   * \param filename string indicating the filename
+   */
   void Save(std::string &filename);
+
+  /*!
+   * \brief Load load the particle from disk
+   * \param filename string indicating the filename
+   */
   void Load(std::string &filename);
 
-  ParticleAnalysisResults Analysis;
+  ParticleAnalysisResults Analysis; /**< The Analysis results*/
+
+  /*!
+   * \brief Analyze the function which analyses the particle
+   * \param nn the neural network to be used pased as a reference
+   * \return thes analysis results
+   */
   SoilAnalyzer::AnalysisResults Analyze(SoilMath::NN &nn);
 
 private:

@@ -12,9 +12,21 @@
 #include <boost/serialization/vector.hpp>
 
 namespace SoilAnalyzer {
+/*!
+ * \brief The SampleAnalysisResult class
+ * \details The class where the results are stored
+ */
 class SampleAnalysisResult : public AnalysisResults {
 public:
+
+    /*!
+   * \brief SampleAnalysisResult the constructor
+   */
   SampleAnalysisResult();
+
+  /*!
+    * \brief The deconstructor
+    */
   ~SampleAnalysisResult();
 
 private:

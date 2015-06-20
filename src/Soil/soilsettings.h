@@ -14,34 +14,61 @@
 #include "../SoilVision/Vision.h"
 
 namespace SoilAnalyzer {
+/*!
+ * \brief The SoilSettings class
+ * \details A class with which the used settings can easily transfered to setup
+ * the Sample class in one go. This class is also used in the GUI. and has a
+ * possibility to saved to disk as a serialized object
+ */
 class SoilSettings {
 public:
   SoilSettings();
 
+  /*!
+   * \brief SaveSettings a function to save the settings to disk
+   * \param filename a string with the filename
+   */
   void SaveSettings(std::string filename);
+
+  /*!
+   * \brief LoadSettings a function to load the settings from disk
+   * \param filename a string with the filename
+   */
   void LoadSettings(std::string filename);
 
-  bool useAdaptiveContrast = true;
-  uint32_t adaptContrastKernelSize = 9;
-  float adaptContrastKernelFactor = 1.;
+  bool useAdaptiveContrast =
+      true; /**< Should adaptive contrast stretch be used default is true*/
+  uint32_t adaptContrastKernelSize =
+      9; /**< The size of the adaptive contrast kernelsize*/
+  float adaptContrastKernelFactor = 1.; /**< the factor with which to multiply
+                                           the effect of the adaptive contrast
+                                           stretch*/
 
-  bool useBlur = true;
-  uint32_t blurKernelSize = 5;
+  bool useBlur = true; /**< Should the mediaan blur be used during analsyis*/
+  uint32_t blurKernelSize = 5; /**< the median blurkernel*/
 
-  Vision::Segment::TypeOfObjects typeOfObjectsSegmented = Vision::Segment::Dark;
-  bool ignorePartialBorderParticles = true;
-  bool fillHoles = true;
-  float sigmaFactor = 2;
-  int thresholdOffsetValue = 0;
+  Vision::Segment::TypeOfObjects typeOfObjectsSegmented =
+      Vision::Segment::Dark; /**< Which type of object should be segmented*/
+  bool ignorePartialBorderParticles =
+      true; /**< Indication of partial border particles should be used*/
+  bool fillHoles = true; /**< should the holes be filled*/
+  float
+      sigmaFactor = 2; /**< The sigma factor or the bandwidth indicating which
+                          pixel intensity values count belong to an object*/
+  int thresholdOffsetValue = 0; /**< an tweaking offset value*/
 
   Vision::MorphologicalFilter::FilterType morphFilterType =
-      Vision::MorphologicalFilter::OPEN;
-  uint32_t filterMaskSize = 5;
+      Vision::MorphologicalFilter::OPEN; /**< Indicating which type of
+                                            morhpological filter should be
+                                            used*/
+  uint32_t filterMaskSize = 5;           /**< the filter mask*/
 
-  uint32_t HDRframes = 5;
-  float lightLevel = 0.5;
-  bool encInv = false;
-  bool enableRainbow = true;
+  uint32_t HDRframes =
+      5; /**< The number of frames which should be used for the HDR image*/
+  float lightLevel = 0.5; /**< The light level of the environmental case*/
+  bool encInv = false;    /**< invert the values gained form the encoder*/
+  bool enableRainbow =
+      true; /**< run a rainbow loop on the RGB encoder during analysis*/
 
 private:
   friend class boost::serialization::access;

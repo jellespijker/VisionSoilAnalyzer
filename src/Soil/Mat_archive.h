@@ -17,12 +17,15 @@
 
 namespace boost {
 namespace serialization {
+/*!
+ * \brief serialize Serialize the openCV mat to disk
+ */
 template <class Archive>
 inline void serialize(Archive &ar, cv::Mat &m, const unsigned int version) {
   int cols = m.cols;
   int rows = m.rows;
-  size_t elemSize = m.elemSize();
-  size_t elemType = m.type();
+  int elemSize = m.elemSize();
+  int elemType = m.type();
 
   ar &cols;
   ar &rows;

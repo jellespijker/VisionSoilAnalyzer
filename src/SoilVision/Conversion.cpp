@@ -205,7 +205,6 @@ void Conversion::RGB2Intensity(uchar *O, uchar *P, int nData) {
 \param nData an int indicating the total number of pixels
 */
 void Conversion::RGB2XYZ(uchar *O, float *P, int nData) {
-  uint32_t i = 0;
   uint32_t endData = nData * OriginalImg.step.buf[1];
   float R, G, B;
   for (uint32_t i = 0; i < endData; i += OriginalImg.step.buf[1]) {
@@ -224,7 +223,6 @@ void Conversion::RGB2XYZ(uchar *O, float *P, int nData) {
 \param nData an int indicating the total number of pixels
 */
 void Conversion::XYZ2Lab(float *O, float *P, int nData) {
-  uint32_t i = 0;
   uint32_t endData = nData * 3;
   float yy0, xx0, zz0;
   for (size_t i = 0; i < endData; i += 3) {
@@ -256,7 +254,6 @@ inline float Conversion::f_xyz2lab(float t) {
 \param nData an int indicating the total number of pixels
 */
 void Conversion::Lab2RI(float *O, float *P, int nData) {
-  uint32_t i = 0;
   uint32_t j = 0;
   float L, a, b;
   for (uint32_t i = 0; i < nData; i += 3) {

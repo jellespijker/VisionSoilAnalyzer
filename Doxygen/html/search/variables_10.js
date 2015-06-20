@@ -8,7 +8,7 @@ var searchData=
   ['results',['Results',['../class_soil_analyzer_1_1_sample.html#ab242ae1c2f229168fd630a9f31d7237f',1,'SoilAnalyzer::Sample']]],
   ['reversedendings',['reversedEndings',['../class_q_c_p_axis_painter_private.html#a06d0ef3f4f1b567feb84196fc3b140da',1,'QCPAxisPainterPrivate']]],
   ['rgb',['RGB',['../class_soil_analyzer_1_1_soil.html#a4a328e0ebe7f1f3c5a1c4c581180d19e',1,'SoilAnalyzer::Soil']]],
-  ['rgb_5fstat',['RGB_Stat',['../class_soil_analyzer_1_1_analysis_results.html#ab35eca5f2cfca4b80797cfc314d5cdf5',1,'SoilAnalyzer::AnalysisResults']]],
+  ['rgb_5fstat',['RGB_Stat',['../class_soil_analyzer_1_1_analysis_results.html#a302530d86430df909abd58164eb0baa8',1,'SoilAnalyzer::AnalysisResults']]],
   ['rgbchecker',['RGBchecker',['../struct_p_m.html#a536041e64b62e33d2136365842f32d95',1,'PM']]],
   ['rgbencoder',['RGBEncoder',['../class_hardware_1_1_soil_cape.html#a0e68dc6f30fdcbff0462d2996e47a338',1,'Hardware::SoilCape']]],
   ['rgbmat',['rgbmat',['../_gen_blob_8m.html#a5938237805483a188136e504cfd06491',1,'GenBlob.m']]],
