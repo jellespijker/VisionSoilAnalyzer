@@ -7,5 +7,8 @@
 
 #pragma once
 namespace SoilAnalyzer {
+/*!
+ * \brief The AnalyseType enum
+ */
 enum AnalyseType { S_LAB, S_PSD, S_RI, S_ROUNDNESS };
 }

@@ -35,36 +35,39 @@ namespace SoilMath {
 
 /*!
  * \brief Stats class
- * \details Usage Stats<type1, type2, type3>Stats() type 1, 2 and 3 shoudl be of the same value and concecuative in size
+ * \details Usage Stats<type1, type2, type3>Stats() type 1, 2 and 3 shoudl be of
+ * the same value and concecuative in size
  */
 template <typename T1, typename T2, typename T3> class Stats {
 public:
   bool isDiscrete = true; /**< indicates if the data is discrete or real*/
 
-  T1 *Data; /**< */
-  uint32_t *bins; /**< */
-  bool Calculated = false; /**< */
-  float Mean = 0.0; /**< */
-  uint32_t n = 0; /**< */
-  uint32_t noBins = 0; /**< */
-  T1 Range = 0; /**< */
-  T1 min = 0; /**< */
-  T1 max = 0; /**< */
-  T1 Startbin = 0; /**< */
-  T1 EndBin = 0; /**< */
-  T1 binRange = 0; /**< */
-  float Std = 0.0; /**< */
-  T3 Sum = 0; /**< */
-  uint16_t Rows = 0; /**< */
-  uint16_t Cols = 0; /**< */
-  bool StartAtZero = true; /**< */
+  T1 *Data;                /**< Pointer the data*/
+  uint32_t *bins;          /**< the histogram*/
+  bool Calculated = false; /**< indication if the data has been calculated*/
+  float Mean = 0.0;        /**< the mean value of the data*/
+  uint32_t n = 0;          /**< number of data points*/
+  uint32_t noBins = 0;     /**< number of bins*/
+  T1 Range = 0;            /**< range of the data*/
+  T1 min = 0;              /**< minimum value*/
+  T1 max = 0;              /**< maximum value*/
+  T1 Startbin = 0;         /**< First bin value*/
+  T1 EndBin = 0;           /**< End bin value*/
+  T1 binRange = 0;         /**< the range of a single bin*/
+  float Std = 0.0;         /**< standard deviation*/
+  T3 Sum = 0;              /**< total sum of all the data values*/
+  uint16_t Rows = 0;       /**< number of rows from the data matrix*/
+  uint16_t Cols = 0;       /**< number of cols from the data matrix*/
+  bool StartAtZero = true; /**< indication of the minimum value starts at zero
+                              or could be less*/
 
-  uint32_t *begin() { return &bins[0]; } /**< */
-  uint32_t *end() { return &bins[noBins]; } /**< */
+  uint32_t *begin() { return &bins[0]; }    /**< pointer to the first bin*/
+  uint32_t *end() { return &bins[noBins]; } /**< pointer to the last bin*/
 
   /*!
    * \brief WelchTest Compare the sample using the Welch's Test
-   * \details (source: http://www.boost.org/doc/libs/1_57_0/libs/math/doc/html/math_toolkit/stat_tut/weg/st_eg/two_sample_students_t.html)
+   * \details (source:
+   * http://www.boost.org/doc/libs/1_57_0/libs/math/doc/html/math_toolkit/stat_tut/weg/st_eg/two_sample_students_t.html)
    * \param statComp Statiscs Results of which it should be tested against
    * \return
    */
@@ -102,11 +105,11 @@ public:
   }
 
   /*!
-   * \brief Stats
-   * \param rhs
+   * \brief Stats Constructor
+   * \param rhs Right hand side
    */
   Stats(const Stats &rhs)
-      : bins{new uint32_t[rhs.noBins]}, Data{new T1[rhs.n]} {
+      : Data{new T1[rhs.n]}, bins{new uint32_t[rhs.noBins]} {
     this->binRange = rhs.binRange;
     this->Calculated = rhs.Calculated;
     this->Cols = rhs.Cols;
@@ -129,9 +132,9 @@ public:
   }
 
   /*!
-   * \brief operator =
-   * \param rhs
-   * \return
+   * \brief operator = Assigmnet operator
+   * \param rhs right hand side
+   * \return returns the right hand side
    */
   Stats &operator=(Stats const &rhs) {
     if (&rhs != this) {
@@ -163,10 +166,10 @@ public:
   }
 
   /*!
-   * \brief Stats
-   * \param noBins
-   * \param startBin
-   * \param endBin
+   * \brief Stats Constructor
+   * \param noBins number of bins with which to build the histogram
+   * \param startBin starting value of the first bin
+   * \param endBin end value of the second bin
    */
   Stats(int noBins = 256, T1 startBin = 0, T1 endBin = 255) {
     min = numeric_limits<T1>::max();
@@ -188,13 +191,13 @@ public:
   }
 
   /*!
-   * \brief Stats
-   * \param data
-   * \param rows
-   * \param cols
-   * \param noBins
-   * \param startBin
-   * \param startatzero
+   * \brief Stats constructor
+   * \param data Pointer to the data
+   * \param rows Number of rows
+   * \param cols Number of Columns
+   * \param noBins Number of bins
+   * \param startBin Value of the start bin
+   * \param startatzero bool indicating if the bins should be shifted from zero
    */
   Stats(T1 *data, uint16_t rows, uint16_t cols, int noBins = 256,
         T1 startBin = 0, bool startatzero = true) {
@@ -226,14 +229,16 @@ public:
   }
 
   /*!
-   * \brief Stats
-   * \param data
-   * \param rows
-   * \param cols
-   * \param mask
-   * \param noBins
-   * \param startBin
-   * \param startatzero
+   * \brief Stats Constructor
+   * \param data Pointer the data
+   * \param rows Number of rows
+   * \param cols Number of Columns
+   * \param mask the mask should have the same size as the data a value of zero
+   * indicates that the data pointer doesn't exist. A 1 indicates that the data
+   * pointer is to be used
+   * \param noBins Number of bins
+   * \param startBin Value of the start bin
+   * \param startatzero indicating if the bins should be shifted from zero
    */
   Stats(T1 *data, uint16_t rows, uint16_t cols, uchar *mask, int noBins = 256,
         T1 startBin = 0, bool startatzero = true) {
@@ -264,17 +269,11 @@ public:
     }
   }
 
-  /// <summary>
-  /// Constructor when the data is given as an histogram
-  /// </summary>
-  /// <param name="binData">A histogram of [256] bins</param>
-  /// <param name="offset">offset when the data starts</param>
-  ///
   /*!
-   * \brief Stats
-   * \param binData
-   * \param startC
-   * \param endC
+   * \brief Stats Constructor
+   * \param binData The histogram data
+   * \param startC start counter
+   * \param endC end counter
    */
   Stats(T2 *binData, uint16_t startC, uint16_t endC) {
     noBins = endC - startC;
@@ -301,12 +300,8 @@ public:
 
   ~Stats() { delete[] bins; }
 
-  /// <summary>
-  /// Calculate the stats using a mask with the same size as the data
-  /// </summary>
-  ///
   /*!
-   * \brief BasicCalculateFloat
+   * \brief BasicCalculateFloat execute the basic float data calculations
    */
   void BasicCalculateFloat() {
     float sum_dev = 0.0;
@@ -347,14 +342,10 @@ public:
     Calculated = true;
   }
 
-  /// <summary>
-  /// Calculate the stats using a mask with the same size as the data
-  /// </summary>
-  /// <param name="mask">A mask type uchar</param>
-  ///
   /*!
-   * \brief BasicCalculateFloat
-   * \param mask
+   * \brief BasicCalculateFloat execute the basic float data calculations with a
+   * mask
+   * \param mask uchar mask type 0 don't calculate, 1 calculate
    */
   void BasicCalculateFloat(uchar *mask) {
     float sum_dev = 0.0;
@@ -403,6 +394,9 @@ public:
     Calculated = true;
   }
 
+  /*!
+   * \brief BasicCalculate execute the basic discrete data calculations
+   */
   void BasicCalculate() {
     double sum_dev = 0.0;
     n = Rows * Cols;
@@ -443,8 +437,9 @@ public:
   }
 
   /*!
-   * \brief BasicCalculate
-   * \param mask
+   * \brief BasicCalculate execute the basic discrete data calculations with
+   * mask
+   * \param mask uchar mask type 0 don't calculate, 1 calculate
    */
   void BasicCalculate(uchar *mask) {
     double sum_dev = 0.0;
@@ -496,13 +491,10 @@ public:
     Calculated = true;
   }
 
-  /// <summary>
-  /// Make the calculations using the histogram
-  /// </summary>
   /*!
-   * \brief BinCalculations
-   * \param startC
-   * \param endC
+   * \brief BinCalculations excute the cacluations with the histogram
+   * \param startC start counter
+   * \param endC end counter
    */
   void BinCalculations(uint16_t startC, uint16_t endC) {
     float sum_dev = 0.0;
@@ -542,12 +534,12 @@ public:
   }
 
 private:
-  uint32_t n_end = 0; /**< */
-  friend class boost::serialization::access; /**< */
+  uint32_t n_end = 0; /**< data end counter used with mask*/
+  friend class boost::serialization::access; /**< Serialization class*/
 
   /*!
-   * \brief serialize
-   * \param ar
+   * \brief serialize the object
+   * \param ar argument
    * \param version
    */
   template <class Archive>
@@ -578,7 +570,11 @@ private:
 };
 }
 
-typedef SoilMath::Stats<float, double, long double> floatStat_t; /**< */
-typedef SoilMath::Stats<uchar, uint32_t, uint64_t> ucharStat_t; /**< */
-typedef SoilMath::Stats<uint16_t, uint32_t, uint64_t> uint16Stat_t; /**< */
-typedef SoilMath::Stats<uint32_t, uint32_t, uint64_t> uint32Stat_t; /**< */
+typedef SoilMath::Stats<float, double, long double>
+    floatStat_t; /**< floating Stat type*/
+typedef SoilMath::Stats<uchar, uint32_t, uint64_t>
+    ucharStat_t; /**< uchar Stat type*/
+typedef SoilMath::Stats<uint16_t, uint32_t, uint64_t>
+    uint16Stat_t; /**< uint16 Stat type*/
+typedef SoilMath::Stats<uint32_t, uint32_t, uint64_t>
+    uint32Stat_t; /**< uint32 Stat type*/

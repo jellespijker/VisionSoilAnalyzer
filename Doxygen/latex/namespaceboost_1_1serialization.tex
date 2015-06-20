@@ -4,7 +4,7 @@
 \begin{DoxyCompactItemize}
 \item 
 {\footnotesize template$<$class Archive $>$ }\\void \hyperlink{namespaceboost_1_1serialization_af538662059acaef423bdb632f82ab3b7}{serialize} (Archive \&ar, cv\+::\+Mat \&\hyperlink{_gen_blob_8m_ab3cd915d758008bd19d0f2428fbb354a}{m}, const unsigned int version)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em serialize Serialize the open\+C\+V mat to disk \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Function Documentation}
@@ -19,29 +19,33 @@
 )\hspace{0.3cm}{\ttfamily [inline]}}\label{namespaceboost_1_1serialization_af538662059acaef423bdb632f82ab3b7}
 
 
-Definition at line 21 of file Mat\+\_\+archive.\+h.
+serialize Serialize the open\+C\+V mat to disk 
+
+
+
+Definition at line 24 of file Mat\+\_\+archive.\+h.
 
 
 \begin{DoxyCode}
-21                                                                          \{
-22   \textcolor{keywordtype}{int} cols = \hyperlink{_gen_blob_8m_ab3cd915d758008bd19d0f2428fbb354a}{m}.cols;
-23   \textcolor{keywordtype}{int} rows = \hyperlink{_gen_blob_8m_ab3cd915d758008bd19d0f2428fbb354a}{m}.rows;
-24   \textcolor{keywordtype}{size\_t} elemSize = \hyperlink{_gen_blob_8m_ab3cd915d758008bd19d0f2428fbb354a}{m}.elemSize();
-25   \textcolor{keywordtype}{size\_t} elemType = \hyperlink{_gen_blob_8m_ab3cd915d758008bd19d0f2428fbb354a}{m}.type();
-26 
-27   ar &cols;
-28   ar &rows;
-29   ar &elemSize;
-30   ar &elemType; \textcolor{comment}{// element type.}
-31 
-32   \textcolor{keywordflow}{if} (\hyperlink{_gen_blob_8m_ab3cd915d758008bd19d0f2428fbb354a}{m}.type() != elemType || \hyperlink{_gen_blob_8m_ab3cd915d758008bd19d0f2428fbb354a}{m}.rows != rows || \hyperlink{_gen_blob_8m_ab3cd915d758008bd19d0f2428fbb354a}{m}.cols != cols) \{
-33     \hyperlink{_gen_blob_8m_ab3cd915d758008bd19d0f2428fbb354a}{m} = cv::Mat(rows, cols, elemType, cv::Scalar(0));
-34   \}
-35 
-36   \textcolor{keywordtype}{size\_t} dataSize = cols * rows * elemSize;
-37 
-38   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} dc = 0; dc < dataSize; dc++) \{
-39     ar &\hyperlink{_gen_blob_8m_ab3cd915d758008bd19d0f2428fbb354a}{m}.data[dc];
-40   \}
-41 \}
+24                                                                          \{
+25   \textcolor{keywordtype}{int} cols = \hyperlink{_gen_blob_8m_ab3cd915d758008bd19d0f2428fbb354a}{m}.cols;
+26   \textcolor{keywordtype}{int} rows = \hyperlink{_gen_blob_8m_ab3cd915d758008bd19d0f2428fbb354a}{m}.rows;
+27   \textcolor{keywordtype}{int} elemSize = \hyperlink{_gen_blob_8m_ab3cd915d758008bd19d0f2428fbb354a}{m}.elemSize();
+28   \textcolor{keywordtype}{int} elemType = \hyperlink{_gen_blob_8m_ab3cd915d758008bd19d0f2428fbb354a}{m}.type();
+29 
+30   ar &cols;
+31   ar &rows;
+32   ar &elemSize;
+33   ar &elemType; \textcolor{comment}{// element type.}
+34 
+35   \textcolor{keywordflow}{if} (\hyperlink{_gen_blob_8m_ab3cd915d758008bd19d0f2428fbb354a}{m}.type() != elemType || \hyperlink{_gen_blob_8m_ab3cd915d758008bd19d0f2428fbb354a}{m}.rows != rows || \hyperlink{_gen_blob_8m_ab3cd915d758008bd19d0f2428fbb354a}{m}.cols != cols) \{
+36     \hyperlink{_gen_blob_8m_ab3cd915d758008bd19d0f2428fbb354a}{m} = cv::Mat(rows, cols, elemType, cv::Scalar(0));
+37   \}
+38 
+39   \textcolor{keywordtype}{size\_t} dataSize = cols * rows * elemSize;
+40 
+41   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} dc = 0; dc < dataSize; dc++) \{
+42     ar &\hyperlink{_gen_blob_8m_ab3cd915d758008bd19d0f2428fbb354a}{m}.data[dc];
+43   \}
+44 \}
 \end{DoxyCode}

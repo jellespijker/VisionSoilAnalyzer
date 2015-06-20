@@ -20,9 +20,9 @@ class \hyperlink{class_soil_math_1_1_g_a}{G\+A}
 class \hyperlink{class_soil_math_1_1_n_n}{N\+N}
 \begin{DoxyCompactList}\small\item\em The Neural Network class. \end{DoxyCompactList}\item 
 class \hyperlink{class_soil_math_1_1_sort}{Sort}
-\item 
+\begin{DoxyCompactList}\small\item\em The \hyperlink{class_soil_math_1_1_sort}{Sort} template class. \end{DoxyCompactList}\item 
 class \hyperlink{class_soil_math_1_1_stats}{Stats}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_soil_math_1_1_stats}{Stats} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -62,7 +62,7 @@ Use this class for optimization problems. It\textquotesingle{}s currently optimi
 )\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{namespace_soil_math_ab3886ae2a670a717bbe01f94543922a0}
 
 
-Definition at line 46 of file Common\+Operations.\+h.
+Definition at line 47 of file Common\+Operations.\+h.
 
 
 
@@ -74,15 +74,15 @@ Referenced by Vision\+::\+Enhance\+::\+Calculate\+Std\+Of\+Neighboring\+Pixels()
 
 
 \begin{DoxyCode}
-46                                                  \{
-47   \textcolor{keyword}{union }\{
-48     \textcolor{keywordtype}{double} d;
-49     \textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a9336ebf25087d91c818ee6e9ec29f8c1}{x}[2];
-50   \} u = \{a\};
-51   u.x[1] = (int)(b * (u.x[1] - 1072632447) + 1072632447);
-52   u.x[0] = 0;
-53   \textcolor{keywordflow}{return} u.d;
-54 \}
+47                                                  \{
+48   \textcolor{keyword}{union }\{
+49     \textcolor{keywordtype}{double} d;
+50     \textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a9336ebf25087d91c818ee6e9ec29f8c1}{x}[2];
+51   \} u = \{a\};
+52   u.x[1] = (int)(b * (u.x[1] - 1072632447) + 1072632447);
+53   u.x[0] = 0;
+54   \textcolor{keywordflow}{return} u.d;
+55 \}
 \end{DoxyCode}
 
 
@@ -104,7 +104,7 @@ Here is the caller graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{namespace_soil_math_a5b0b4bcf1fecd0f3eefc2520c624f9f4}
 
 
-Definition at line 87 of file Common\+Operations.\+h.
+Definition at line 88 of file Common\+Operations.\+h.
 
 
 
@@ -112,10 +112,10 @@ Referenced by Soil\+Math\+\_\+\+Test\+::test\+Case\+\_\+benchmark\+\_\+float2int
 
 
 \begin{DoxyCode}
-87                                             \{
-88   d += 6755399441055744.0;
-89   \textcolor{keywordflow}{return} \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{int} &\textcolor{keyword}{>}(d);
-90 \}
+88                                             \{
+89   d += 6755399441055744.0;
+90   \textcolor{keywordflow}{return} \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{int} &\textcolor{keyword}{>}(d);
+91 \}
 \end{DoxyCode}
 
 
@@ -288,7 +288,7 @@ Definition at line 15 of file Common\+Operations.\+h.
 \begin{DoxyParamCaption}
 \item[{int}]{n}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}\label{namespace_soil_math_a1e4cf56fbcab8b4c623d6976868fbaf3}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{namespace_soil_math_a1e4cf56fbcab8b4c623d6976868fbaf3}
 
 
 Definition at line 35 of file Common\+Operations.\+h.
@@ -299,7 +299,7 @@ References n.
 
 
 \begin{DoxyCode}
-35                                  \{
+35                                         \{
 36   \textcolor{keyword}{static} \textcolor{keywordtype}{double} pow10[19] = \{1, 10, 100, 1000, 10000, 100000, 1000000, 10000000,
 37                              100000000, 1000000000, 10000000000, 100000000000,
 38                              1000000000000, 10000000000000, 100000000000000,
@@ -317,7 +317,7 @@ References n.
 )\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{namespace_soil_math_a69d186af0e164a5f98c42985aabec919}
 
 
-Definition at line 56 of file Common\+Operations.\+h.
+Definition at line 57 of file Common\+Operations.\+h.
 
 
 
@@ -325,36 +325,36 @@ Referenced by Vision\+::\+Enhance\+::\+Calculate\+Std\+Of\+Neighboring\+Pixels()
 
 
 \begin{DoxyCode}
-56                                        \{
-57   \textcolor{keyword}{static} \textcolor{keywordtype}{double} pow2[256] = \{
-58       0,     1,     4,     9,     16,    25,    36,    49,    64,    81,
-59       100,   121,   144,   169,   196,   225,   256,   289,   324,   361,
-60       400,   441,   484,   529,   576,   625,   676,   729,   784,   841,
-61       900,   961,   1024,  1089,  1156,  1225,  1296,  1369,  1444,  1521,
-62       1600,  1681,  1764,  1849,  1936,  2025,  2116,  2209,  2304,  2401,
-63       2500,  2601,  2704,  2809,  2916,  3025,  3136,  3249,  3364,  3481,
-64       3600,  3721,  3844,  3969,  4096,  4225,  4356,  4489,  4624,  4761,
-65       4900,  5041,  5184,  5329,  5476,  5625,  5776,  5929,  6084,  6241,
-66       6400,  6561,  6724,  6889,  7056,  7225,  7396,  7569,  7744,  7921,
-67       8100,  8281,  8464,  8649,  8836,  9025,  9216,  9409,  9604,  9801,
-68       10000, 10201, 10404, 10609, 10816, 11025, 11236, 11449, 11664, 11881,
-69       12100, 12321, 12544, 12769, 12996, 13225, 13456, 13689, 13924, 14161,
-70       14400, 14641, 14884, 15129, 15376, 15625, 15876, 16129, 16384, 16641,
-71       16900, 17161, 17424, 17689, 17956, 18225, 18496, 18769, 19044, 19321,
-72       19600, 19881, 20164, 20449, 20736, 21025, 21316, 21609, 21904, 22201,
-73       22500, 22801, 23104, 23409, 23716, 24025, 24336, 24649, 24964, 25281,
-74       25600, 25921, 26244, 26569, 26896, 27225, 27556, 27889, 28224, 28561,
-75       28900, 29241, 29584, 29929, 30276, 30625, 30976, 31329, 31684, 32041,
-76       32400, 32761, 33124, 33489, 33856, 34225, 34596, 34969, 35344, 35721,
-77       36100, 36481, 36864, 37249, 37636, 38025, 38416, 38809, 39204, 39601,
-78       40000, 40401, 40804, 41209, 41616, 42025, 42436, 42849, 43264, 43681,
-79       44100, 44521, 44944, 45369, 45796, 46225, 46656, 47089, 47524, 47961,
-80       48400, 48841, 49284, 49729, 50176, 50625, 51076, 51529, 51984, 52441,
-81       52900, 53361, 53824, 54289, 54756, 55225, 55696, 56169, 56644, 57121,
-82       57600, 58081, 58564, 59049, 59536, 60025, 60516, 61009, 61504, 62001,
-83       62500, 63001, 63504, 64009, 64516, 65025\};
-84   \textcolor{keywordflow}{return} pow2[(\hyperlink{_comparision_pictures_2_createtest_image_8m_aeab71244afb687f16d8c4f5ee9d6ef0e}{n} >= 0) ? n : -n];
-85 \}
+57                                        \{
+58   \textcolor{keyword}{static} \textcolor{keywordtype}{double} pow2[256] = \{
+59       0,     1,     4,     9,     16,    25,    36,    49,    64,    81,
+60       100,   121,   144,   169,   196,   225,   256,   289,   324,   361,
+61       400,   441,   484,   529,   576,   625,   676,   729,   784,   841,
+62       900,   961,   1024,  1089,  1156,  1225,  1296,  1369,  1444,  1521,
+63       1600,  1681,  1764,  1849,  1936,  2025,  2116,  2209,  2304,  2401,
+64       2500,  2601,  2704,  2809,  2916,  3025,  3136,  3249,  3364,  3481,
+65       3600,  3721,  3844,  3969,  4096,  4225,  4356,  4489,  4624,  4761,
+66       4900,  5041,  5184,  5329,  5476,  5625,  5776,  5929,  6084,  6241,
+67       6400,  6561,  6724,  6889,  7056,  7225,  7396,  7569,  7744,  7921,
+68       8100,  8281,  8464,  8649,  8836,  9025,  9216,  9409,  9604,  9801,
+69       10000, 10201, 10404, 10609, 10816, 11025, 11236, 11449, 11664, 11881,
+70       12100, 12321, 12544, 12769, 12996, 13225, 13456, 13689, 13924, 14161,
+71       14400, 14641, 14884, 15129, 15376, 15625, 15876, 16129, 16384, 16641,
+72       16900, 17161, 17424, 17689, 17956, 18225, 18496, 18769, 19044, 19321,
+73       19600, 19881, 20164, 20449, 20736, 21025, 21316, 21609, 21904, 22201,
+74       22500, 22801, 23104, 23409, 23716, 24025, 24336, 24649, 24964, 25281,
+75       25600, 25921, 26244, 26569, 26896, 27225, 27556, 27889, 28224, 28561,
+76       28900, 29241, 29584, 29929, 30276, 30625, 30976, 31329, 31684, 32041,
+77       32400, 32761, 33124, 33489, 33856, 34225, 34596, 34969, 35344, 35721,
+78       36100, 36481, 36864, 37249, 37636, 38025, 38416, 38809, 39204, 39601,
+79       40000, 40401, 40804, 41209, 41616, 42025, 42436, 42849, 43264, 43681,
+80       44100, 44521, 44944, 45369, 45796, 46225, 46656, 47089, 47524, 47961,
+81       48400, 48841, 49284, 49729, 50176, 50625, 51076, 51529, 51984, 52441,
+82       52900, 53361, 53824, 54289, 54756, 55225, 55696, 56169, 56644, 57121,
+83       57600, 58081, 58564, 59049, 59536, 60025, 60516, 61009, 61504, 62001,
+84       62500, 63001, 63504, 64009, 64516, 65025\};
+85   \textcolor{keywordflow}{return} pow2[(\hyperlink{_comparision_pictures_2_createtest_image_8m_aeab71244afb687f16d8c4f5ee9d6ef0e}{n} >= 0) ? n : -n];
+86 \}
 \end{DoxyCode}
 
 

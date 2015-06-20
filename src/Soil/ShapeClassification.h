@@ -13,15 +13,30 @@
 
 #include "../SoilMath/SoilMath.h"
 
+/*!
+ * \brief The ShapeClassification class the class which describes the shape as
+ * category and with FFT descriptor
+ */
 class ShapeClassification {
 public:
-  unsigned char Category;
-  ComplexVect_t FFT_descriptors;
+  unsigned char Category;        /**< The category class*/
+  ComplexVect_t FFT_descriptors; /**< The Fast Fourier Descriptors*/
 
+  /*!
+   * \brief ShapeClassification the constructor
+   */
   ShapeClassification();
-  ShapeClassification(ComplexVect_t fft_descriptors)
-      : FFT_descriptors(fft_descriptors){};
 
+  /*!
+   * \brief ShapeClassification the constructor
+   * \param fft_descriptors teh fast fourier descriptors
+   */
+  ShapeClassification(ComplexVect_t fft_descriptors)
+      : FFT_descriptors(fft_descriptors) {}
+
+  /*!
+    * \brief The descontructor
+    */
   ~ShapeClassification();
 
 private:

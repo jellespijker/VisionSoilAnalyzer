@@ -76,7 +76,6 @@ public:
   template <typename T1, typename T2>
   static Mat CopyMat(const Mat &src, T1 *LUT, int cvType) {
     Mat dst(src.size(), cvType);
-    uint32_t i = 0, i_src = 0;
     uint32_t nData = src.rows * src.cols * dst.step[1];
     if (cvType == 0 || cvType == 8 || cvType == 16 || cvType == 24) {
       for (uint32_t i = 0; i < nData; i += dst.step[1]) {

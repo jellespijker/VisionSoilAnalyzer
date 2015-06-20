@@ -2,6 +2,11 @@
 \label{class_soil_analyzer_1_1_particle_analysis_results}\index{Soil\+Analyzer\+::\+Particle\+Analysis\+Results@{Soil\+Analyzer\+::\+Particle\+Analysis\+Results}}
 
 
+The \hyperlink{class_soil_analyzer_1_1_particle_analysis_results}{Particle\+Analysis\+Results} class.  
+
+
+
+
 {\ttfamily \#include $<$Particle\+Analysis\+Results.\+h$>$}
 
 
@@ -26,9 +31,9 @@ Collaboration diagram for Soil\+Analyzer\+:\+:Particle\+Analysis\+Results\+:\nop
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{class_soil_analyzer_1_1_particle_analysis_results_a5107ea5aae70deadb77ab22c2429f7f6}{Particle\+Analysis\+Results} ()
-\item 
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_soil_analyzer_1_1_particle_analysis_results}{Particle\+Analysis\+Results} The constructor. \end{DoxyCompactList}\item 
 \hyperlink{class_soil_analyzer_1_1_particle_analysis_results_aac752bb68987b0d4e78d506c68a1ebeb}{$\sim$\+Particle\+Analysis\+Results} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Deconstructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -53,9 +58,11 @@ class \hyperlink{class_soil_analyzer_1_1_particle_analysis_results_ac98d07dd8f7b
 
 
 \subsection{Detailed Description}
+The \hyperlink{class_soil_analyzer_1_1_particle_analysis_results}{Particle\+Analysis\+Results} class. 
 
+The Analysis results of an individual particle, it inherents form the class \hyperlink{class_soil_analyzer_1_1_analysis_results}{Analysis\+Results} 
 
-Definition at line 19 of file Particle\+Analysis\+Results.\+h.
+Definition at line 27 of file Particle\+Analysis\+Results.\+h.
 
 
 
@@ -67,6 +74,10 @@ Definition at line 19 of file Particle\+Analysis\+Results.\+h.
 {}
 \end{DoxyParamCaption}
 )}\label{class_soil_analyzer_1_1_particle_analysis_results_a5107ea5aae70deadb77ab22c2429f7f6}
+
+
+\hyperlink{class_soil_analyzer_1_1_particle_analysis_results}{Particle\+Analysis\+Results} The constructor. 
+
 
 
 Definition at line 11 of file Particle\+Analysis\+Results.\+cpp.
@@ -82,6 +93,10 @@ Definition at line 11 of file Particle\+Analysis\+Results.\+cpp.
 {}
 \end{DoxyParamCaption}
 )}\label{class_soil_analyzer_1_1_particle_analysis_results_aac752bb68987b0d4e78d506c68a1ebeb}
+
+
+Deconstructor. 
+
 
 
 Definition at line 13 of file Particle\+Analysis\+Results.\+cpp.
@@ -103,22 +118,8 @@ Definition at line 13 of file Particle\+Analysis\+Results.\+cpp.
 )\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}\label{class_soil_analyzer_1_1_particle_analysis_results_a89c11362f5cb934006c6d67d1b51eef4}
 
 
-Definition at line 32 of file Particle\+Analysis\+Results.\+h.
+Definition at line 48 of file Particle\+Analysis\+Results.\+h.
 
-
-
-References Analyzed, Area, Shape, and Small\+Particle.
-
-
-\begin{DoxyCode}
-32                                                           \{
-33     ar &\hyperlink{class_soil_analyzer_1_1_particle_analysis_results_abfb8465c0cfbe9a6ad4d844f6269676f}{Analyzed};
-34     ar &\hyperlink{class_soil_analyzer_1_1_particle_analysis_results_a8aaa7f053d68bce6f1ad2b7bcd30cd95}{SmallParticle};
-35     ar &\hyperlink{class_soil_analyzer_1_1_particle_analysis_results_a1a6dbe8880b29f51ba3d8ec28b96ed45}{Area};
-36     ar &\hyperlink{class_soil_analyzer_1_1_particle_analysis_results_a75230aa0675b2df489c08bcfffb43b97}{Shape};
-37     ar &BOOST\_SERIALIZATION\_BASE\_OBJECT\_NVP(\hyperlink{class_soil_analyzer_1_1_analysis_results_a893864c1e4bf50bf6979088a390da482}{AnalysisResults});
-38   \}
-\end{DoxyCode}
 
 
 \subsection{Friends And Related Function Documentation}
@@ -127,7 +128,7 @@ References Analyzed, Area, Shape, and Small\+Particle.
 \subsubsection[{boost\+::serialization\+::access}]{\setlength{\rightskip}{0pt plus 5cm}friend class boost\+::serialization\+::access\hspace{0.3cm}{\ttfamily [friend]}}\label{class_soil_analyzer_1_1_particle_analysis_results_ac98d07dd8f7b70e16ccb9a01abf56b9c}
 
 
-Definition at line 30 of file Particle\+Analysis\+Results.\+h.
+Definition at line 46 of file Particle\+Analysis\+Results.\+h.
 
 
 
@@ -135,46 +136,42 @@ Definition at line 30 of file Particle\+Analysis\+Results.\+h.
 \hypertarget{class_soil_analyzer_1_1_particle_analysis_results_abfb8465c0cfbe9a6ad4d844f6269676f}{}\index{Soil\+Analyzer\+::\+Particle\+Analysis\+Results@{Soil\+Analyzer\+::\+Particle\+Analysis\+Results}!Analyzed@{Analyzed}}
 \index{Analyzed@{Analyzed}!Soil\+Analyzer\+::\+Particle\+Analysis\+Results@{Soil\+Analyzer\+::\+Particle\+Analysis\+Results}}
 \subsubsection[{Analyzed}]{\setlength{\rightskip}{0pt plus 5cm}bool Soil\+Analyzer\+::\+Particle\+Analysis\+Results\+::\+Analyzed = false}\label{class_soil_analyzer_1_1_particle_analysis_results_abfb8465c0cfbe9a6ad4d844f6269676f}
+Indicates whether the results are analyzed 
+
+Definition at line 29 of file Particle\+Analysis\+Results.\+h.
 
 
-Definition at line 21 of file Particle\+Analysis\+Results.\+h.
 
-
-
-Referenced by Soil\+Analyzer\+::\+Particle\+::\+Analyze(), and serialize().
+Referenced by Soil\+Analyzer\+::\+Particle\+::\+Analyze().
 
 \hypertarget{class_soil_analyzer_1_1_particle_analysis_results_a1a6dbe8880b29f51ba3d8ec28b96ed45}{}\index{Soil\+Analyzer\+::\+Particle\+Analysis\+Results@{Soil\+Analyzer\+::\+Particle\+Analysis\+Results}!Area@{Area}}
 \index{Area@{Area}!Soil\+Analyzer\+::\+Particle\+Analysis\+Results@{Soil\+Analyzer\+::\+Particle\+Analysis\+Results}}
 \subsubsection[{Area}]{\setlength{\rightskip}{0pt plus 5cm}uint32\+\_\+t Soil\+Analyzer\+::\+Particle\+Analysis\+Results\+::\+Area}\label{class_soil_analyzer_1_1_particle_analysis_results_a1a6dbe8880b29f51ba3d8ec28b96ed45}
+The total area of the particle as a pixel 
 
-
-Definition at line 23 of file Particle\+Analysis\+Results.\+h.
-
-
-
-Referenced by serialize().
+Definition at line 32 of file Particle\+Analysis\+Results.\+h.
 
 \hypertarget{class_soil_analyzer_1_1_particle_analysis_results_a75230aa0675b2df489c08bcfffb43b97}{}\index{Soil\+Analyzer\+::\+Particle\+Analysis\+Results@{Soil\+Analyzer\+::\+Particle\+Analysis\+Results}!Shape@{Shape}}
 \index{Shape@{Shape}!Soil\+Analyzer\+::\+Particle\+Analysis\+Results@{Soil\+Analyzer\+::\+Particle\+Analysis\+Results}}
 \subsubsection[{Shape}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Shape\+Classification} Soil\+Analyzer\+::\+Particle\+Analysis\+Results\+::\+Shape}\label{class_soil_analyzer_1_1_particle_analysis_results_a75230aa0675b2df489c08bcfffb43b97}
+The Shape indicator 
+
+Definition at line 33 of file Particle\+Analysis\+Results.\+h.
 
 
-Definition at line 24 of file Particle\+Analysis\+Results.\+h.
 
-
-
-Referenced by Soil\+Analyzer\+::\+Particle\+::\+Analyze(), and serialize().
+Referenced by Soil\+Analyzer\+::\+Particle\+::\+Analyze().
 
 \hypertarget{class_soil_analyzer_1_1_particle_analysis_results_a8aaa7f053d68bce6f1ad2b7bcd30cd95}{}\index{Soil\+Analyzer\+::\+Particle\+Analysis\+Results@{Soil\+Analyzer\+::\+Particle\+Analysis\+Results}!Small\+Particle@{Small\+Particle}}
 \index{Small\+Particle@{Small\+Particle}!Soil\+Analyzer\+::\+Particle\+Analysis\+Results@{Soil\+Analyzer\+::\+Particle\+Analysis\+Results}}
 \subsubsection[{Small\+Particle}]{\setlength{\rightskip}{0pt plus 5cm}bool Soil\+Analyzer\+::\+Particle\+Analysis\+Results\+::\+Small\+Particle = false}\label{class_soil_analyzer_1_1_particle_analysis_results_a8aaa7f053d68bce6f1ad2b7bcd30cd95}
+Indicates if the particle is considered to small to analyze the voor shape 
+
+Definition at line 30 of file Particle\+Analysis\+Results.\+h.
 
 
-Definition at line 22 of file Particle\+Analysis\+Results.\+h.
 
-
-
-Referenced by Soil\+Analyzer\+::\+Particle\+::\+Analyze(), and serialize().
+Referenced by Soil\+Analyzer\+::\+Particle\+::\+Analyze().
 
 
 

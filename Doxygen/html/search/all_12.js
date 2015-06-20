@@ -60,7 +60,7 @@ var searchData=
   ['rgb',['RGB',['../class_soil_analyzer_1_1_soil.html#a4a328e0ebe7f1f3c5a1c4c581180d19e',1,'SoilAnalyzer::Soil::RGB()'],['../class_vision_1_1_conversion.html#a0a21d4ccbb013185f1974d35ec86e388af3fab43e1e6d8ffab1bf27050866a8d5',1,'Vision::Conversion::RGB()']]],
   ['rgb2intensity',['RGB2Intensity',['../class_vision_1_1_conversion.html#a93626e56872b99ed79fd3540c6adf776',1,'Vision::Conversion']]],
   ['rgb2xyz',['RGB2XYZ',['../class_vision_1_1_conversion.html#afe7b24da82f77ff1116f8bc3d0a62fcc',1,'Vision::Conversion']]],
-  ['rgb_5fstat',['RGB_Stat',['../class_soil_analyzer_1_1_analysis_results.html#ab35eca5f2cfca4b80797cfc314d5cdf5',1,'SoilAnalyzer::AnalysisResults']]],
+  ['rgb_5fstat',['RGB_Stat',['../class_soil_analyzer_1_1_analysis_results.html#a302530d86430df909abd58164eb0baa8',1,'SoilAnalyzer::AnalysisResults']]],
   ['rgbchecker',['RGBchecker',['../struct_p_m.html#a536041e64b62e33d2136365842f32d95',1,'PM']]],
   ['rgbencoder',['RGBEncoder',['../class_hardware_1_1_soil_cape.html#a0e68dc6f30fdcbff0462d2996e47a338',1,'Hardware::SoilCape']]],
   ['rgbmat',['rgbmat',['../_gen_blob_8m.html#a5938237805483a188136e504cfd06491',1,'rgbmat():&#160;GenBlob.m'],['../_gen_blob_8m.html#a215f8d74ab60c53dcef581718709f24f',1,'rgbmat(:,:, 1):&#160;GenBlob.m'],['../_gen_blob_8m.html#a86a75dbcdc2b6bb09f54c5ec3e67b5cf',1,'rgbmat(:,:, 2):&#160;GenBlob.m'],['../_gen_blob_8m.html#adf7ac00233250376cbad3839cd1b71c4',1,'rgbmat(:,:, 3):&#160;GenBlob.m']]],

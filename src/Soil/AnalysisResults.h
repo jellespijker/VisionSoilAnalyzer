@@ -18,12 +18,26 @@
 #include "../SoilMath/SoilMath.h"
 
 namespace SoilAnalyzer {
+/*!
+ * \brief The AnalysisResults class
+ * \details the analysis results this is the base class for particle and soil
+ * analysis results
+ */
 class AnalysisResults {
 public:
+  /*!
+ * \brief AnalysisResults Constructor
+ */
   AnalysisResults();
+
+  /*!
+    * \brief AnalysisResult de-constructor
+    */
   ~AnalysisResults();
 
-  std::vector<ucharStat_t> RGB_Stat;
+  std::vector<
+      ucharStat_t> RGB_Stat; /**< A Vector with the Stats class for each color
+                                channel in the RGB*/
   std::vector<floatStat_t> LAB_Stat;
   floatStat_t RI_Stat;
 

@@ -32,7 +32,7 @@ inline uint16_t Min(uint16_t a, uint16_t b, uint16_t c, uint16_t d) {
   return (Min(a, b) > Min(c, d)) ? Min(a, b) : Min(c, d);
 }
 
-static double quick_pow10(int n) {
+static inline double quick_pow10(int n) {
   static double pow10[19] = {1, 10, 100, 1000, 10000, 100000, 1000000, 10000000,
                              100000000, 1000000000, 10000000000, 100000000000,
                              1000000000000, 10000000000000, 100000000000000,
@@ -40,6 +40,7 @@ static double quick_pow10(int n) {
                              100000000000000000, 1000000000000000000};
   return pow10[n];
 }
+
 
 // Source:
 // http://martin.ankerl.com/2012/01/25/optimized-approximative-pow-in-c-and-cpp/
