@@ -68,7 +68,7 @@ public:
   void WaitForPositionChangeCancel() { this->threadRunning = false; }
 
   // Set the polling period
-  void set_period(uint64_t period);
+  void set_period(long long unsigned int period);
 
   // Get the polling period of the encoder
   uint64_t get_period();

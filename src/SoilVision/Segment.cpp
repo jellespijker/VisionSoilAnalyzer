@@ -196,7 +196,7 @@ void Segment::Threshold(uchar t, TypeOfObjects Typeobjects) {
   uchar *O = OriginalImg.data;
 
   // Fills the ProcessedImg with either a 0 or 1
-  for (uint32_t i = 0; i < OriginalImg.cols * OriginalImg.rows; i++) {
+  for (int i = 0; i < OriginalImg.cols * OriginalImg.rows; i++) {
     P[i] = LUT_newValue[O[i]];
   }
 }
@@ -727,7 +727,7 @@ void Segment::GetBlobList(bool chain, Connected conn) {
   uint16_t *L = (uint16_t *)LabelledImg.data;
 
   uint32_t currentX, currentY;
-  uint16_t leftX, leftY, rightX, rightY;
+  //uint16_t leftX, leftY, rightX, rightY;
   // Loop through the labeled image and extract the Blobs
   for (uint32_t i = 0; i < nData; i++) {
     if (L[i] != 0) {

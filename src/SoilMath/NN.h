@@ -150,7 +150,7 @@ private:
    * \param version the version of the class
    */
   template <class Archive>
-  void serialize(Archive &ar, const unsigned int version) {
+  void serialize(Archive &ar, const unsigned int version __attribute__((unused))) {
     ar &BOOST_SERIALIZATION_NVP(inputNeurons);
     ar &BOOST_SERIALIZATION_NVP(hiddenNeurons);
     ar &BOOST_SERIALIZATION_NVP(outputNeurons);

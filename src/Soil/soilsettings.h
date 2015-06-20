@@ -73,7 +73,7 @@ public:
 private:
   friend class boost::serialization::access;
   template <class Archive>
-  void serialize(Archive &ar, const unsigned int version) {
+  void serialize(Archive &ar, const unsigned int version __attribute__((unused))) {
     ar &BOOST_SERIALIZATION_NVP(useAdaptiveContrast);
     ar &BOOST_SERIALIZATION_NVP(adaptContrastKernelFactor);
     ar &BOOST_SERIALIZATION_NVP(adaptContrastKernelSize);

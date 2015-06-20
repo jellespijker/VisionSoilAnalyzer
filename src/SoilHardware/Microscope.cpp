@@ -34,7 +34,7 @@ Microscope::Microscope(uint8_t frameDelayTrigger, Resolution dimensions,
 
 void Microscope::StartupSeq(bool firstdefault) {
   std::vector<std::string> camNames = AvailableCams();
-  int videodev = find(camNames.begin(), camNames.end(), "USB Microscope") -
+  uint videodev = find(camNames.begin(), camNames.end(), "USB Microscope") -
                  camNames.begin();
   if (videodev == camNames.size() && !firstdefault) {
     throw Exception::MicroscopeNotFoundException(

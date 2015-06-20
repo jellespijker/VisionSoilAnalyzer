@@ -154,7 +154,7 @@ void Enhance::AdaptiveContrastStretch(uchar kernelsize, float factor,
   CHAIN_PROCESS(chain, O, uchar);
   uchar *P = ProcessedImg.data;
 
-  uint32_t i = 0;
+  int i = 0;
   int hKsize = kernelsize / 2;
   int nCols = OriginalImg.cols;
   int pStart = (hKsize * nCols) + hKsize + 1;

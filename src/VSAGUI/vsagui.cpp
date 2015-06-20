@@ -134,9 +134,7 @@ void VSAGUI::on_actionLoad_triggered() {
   QString fn = QFileDialog::getOpenFileName(
       this, tr("Load Soil Sample"), tr("/home/"),
       tr("Soil Samples (*.VSS);; Soil Particles (*.VPS);; All Files (*)"));
-  if (!fn.isEmpty() && fn.contains(tr("VSS")))
-    ;
-  {
+  if (!fn.isEmpty() && fn.contains(tr("VSS"))) {
     delete SoilSample;
     SoilSample = new SoilAnalyzer::Sample;
     std::string filename = fn.toStdString();
