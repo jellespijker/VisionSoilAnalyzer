@@ -191,7 +191,7 @@ void Sample::Analyse(SoilMath::NN &nn) {
   // Results.RI_Stat = floatStat_t((float *)RI.data, RI.rows, RI.cols);
 
   // Segment and analyze the particles
-  // SegmentParticles();
+  SegmentParticles(Vision::Segment::SegmentationType::Normal);
   // for_each(Population.begin(), Population.end(), [&](Particle &P)
   //{
   //	P.Analyze(nn);
@@ -211,40 +211,13 @@ bool Sample::AnalysePopVect(const vector<Particle> &population,
 }
 
 void Sample::SegmentParticles(Vision::Segment::SegmentationType segType) {
-  Vision::Enhance Enhancer(Intensity);
-  Vision::Segment Segmenter;
-  Vision::MorphologicalFilter Eroder;
-
-  switch (segType) {
-  case Vision::Segment::Normal:
-    // Optimize the intensity image
-    Enhancer.Blur(15);
-    Enhancer.AdaptiveContrastStretch(5, 0.125, true);
-
-    // Segment the enhance image and remove borderblobs get the edges
-    Segmenter.LoadOriginalImg(Enhancer.ProcessedImg);
-    Segmenter.ConvertToBW(Vision::Segment::Dark);
-    Segmenter.RemoveBorderBlobs(1, true);
-    BW = Segmenter.ProcessedImg.clone();
-    break;
-  case Vision::Segment::LabNeuralNet:
-    throw Exception::AnalysisException("Not yet implemented!", 1);
-    break;
-  case Vision::Segment::GraphMinCut:
-    throw Exception::AnalysisException("Not yet implemented!", 1);
-    break;
-  default:
-    break;
-  }
-
-  Vision::Segment getEdges(BW);
-  getEdges.GetEdgesEroding();
-  Edge = getEdges.ProcessedImg;
+  Vision::Segment Segmenter(BW);
 
   // Get the Particlelist
-  Segmenter.GetBlobList(true);
+  Segmenter.GetBlobList();
   Population.resize(Segmenter.BlobList.size());
   uint32_t i = 0;
+  // Analyze each particle
   for_each(Population.begin(), Population.end(), [&](Particle &P) {
     P.ID = Segmenter.BlobList[i].Label;
     P.Analysis.Analyzed = false;
