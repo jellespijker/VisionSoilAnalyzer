@@ -33,9 +33,15 @@ void Sample::PrepImg(SoilSettings *settings) {
   // setup the settings
   if (settings == nullptr && Settings == nullptr) {
     Settings = new SoilSettings;
-  } else {
+  } else if (Settings != nullptr) {
     Settings = settings;
   }
+
+  // Determine the biggest kernelsize. These border pixels are discarded with
+  // the optimized int
+  uint32_t kBorder = ((Settings->adaptContrastKernelSize > Settings->blurKernelSize)
+                     ? Settings->adaptContrastKernelSize : Settings->blurKernelSize);
+  uint32_t khBorder = kBorder / 2;
 
   // set up the progress signal
   float currentProg = 0.;
@@ -90,8 +96,9 @@ void Sample::PrepImg(SoilSettings *settings) {
     IntEnchance.ProcessedImg = IntEnchance.OriginalImg;
   }
   OptimizedInt =
-      IntEnchance.ProcessedImg(cv::Rect(10, 10, OriginalImage.cols - 20,
-                                        OriginalImage.rows - 20)).clone();
+      IntEnchance.ProcessedImg(cv::Rect(khBorder, khBorder,
+                                        OriginalImage.cols - kBorder,
+                                        OriginalImage.rows - kBorder)).clone();
   SHOW_DEBUG_IMG(OptimizedInt, uchar, 255, "IntEnchance", false);
 
   // Segment the Dark Objects en fill the holes
@@ -140,8 +147,8 @@ void Sample::PrepImg(SoilSettings *settings) {
   SHOW_DEBUG_IMG(BW, uchar, 255,
                  "BW after segmentation, fill holes and erosion", true);
   RGB = Vision::ImageProcessing::CopyMat<uchar>(
-      OriginalImage(cv::Rect(10, 10, OriginalImage.cols - 20,
-                             OriginalImage.rows - 20)).clone(),
+      OriginalImage(cv::Rect(khBorder, khBorder, OriginalImage.cols - kBorder,
+                             OriginalImage.rows - kBorder)).clone(),
       BW, CV_8UC1);
   PROG_INCR("RGB masked image generated");
   SHOW_DEBUG_IMG(RGB, uchar, 255, "RGB no Background", false);

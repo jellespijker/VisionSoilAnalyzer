@@ -142,7 +142,13 @@ void VSAGUI::on_actionLoad_triggered() {
   }
 }
 
-void VSAGUI::on_AnalyzeButton_clicked() { SoilSample->Analyse(*NeuralNet); }
+/*!
+ * \brief VSAGUI::on_AnalyzeButton_clicked Analyze the sample
+ */
+void VSAGUI::on_AnalyzeButton_clicked() {
+  SoilSample->Analyse(*NeuralNet);
+  SetMatToMainView(SoilSample->RGB);
+}
 
 void VSAGUI::on_actionNew_triggered() {
   CreateNewSoilSample();
