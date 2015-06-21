@@ -93,6 +93,8 @@ private slots:
 
   void on_actionCheese_2_triggered();
 
+  void on_actionImport_RGB_Snapshot_triggered();
+
 private:
   Ui::VSAGUI *ui;
   QErrorMessage *errorMessageDialog;
@@ -120,6 +122,7 @@ private:
   void LoadSample();
   std::vector<std::string> webCams;
   void SetMatToMainView(cv::Mat &img);
+  void CreateNewSoilSample();
 };
 
 #endif // VSAGUI_H

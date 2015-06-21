@@ -97,10 +97,7 @@ VSAGUI::~VSAGUI() { delete ui; }
 
 void VSAGUI::on_SnapshotButton_clicked() {
   Hardware::Microscope microscope;
-  delete SoilSample;
-  SoilSample = new SoilAnalyzer::Sample;
-  SoilSample->connect_Progress(
-      boost::bind(&VSAGUI::on_vision_update, this, _1, _2));
+  CreateNewSoilSample();
   this->statusLabel->setText(tr("Grabbing new Image!"));
   finished_sig = microscope.connect_Finished([&]() {
     SetMatToMainView(SoilSample->OriginalImage);
@@ -148,10 +145,7 @@ void VSAGUI::on_actionLoad_triggered() {
 void VSAGUI::on_AnalyzeButton_clicked() { SoilSample->Analyse(*NeuralNet); }
 
 void VSAGUI::on_actionNew_triggered() {
-  delete SoilSample;
-  SoilSample = new SoilAnalyzer::Sample;
-  SoilSample->connect_Progress(
-      boost::bind(&VSAGUI::on_vision_update, this, _1, _2));
+  CreateNewSoilSample();
   on_SnapshotButton_clicked();
 }
 
@@ -243,8 +237,7 @@ void VSAGUI::on_actionCheese_2_triggered()
     // Get the name of the individual cams
     std::vector<std::string> availCams = Hardware::Microscope::AvailableCams();
     uint i = 0;
-    for_each(availCams.begin(), availCams.end(),[&](std::string &C)
-    {
+    for_each(availCams.begin(), availCams.end(),[&](std::string &C)  {
         // If the current itterator is the Micrscope start cheese
         if (C.compare(MICROSCOPE_NAME) == 0) {
             std::string bashStr = "cheese --device=/dev/video";
@@ -255,4 +248,37 @@ void VSAGUI::on_actionCheese_2_triggered()
         i++;
     });
 
+}
+
+/*!
+ * \brief VSAGUI::on_actionImport_RGB_Snapshot_triggered Imports an RGB image to be used for
+ */
+void VSAGUI::on_actionImport_RGB_Snapshot_triggered()
+{
+    this->statusLabel->setText(tr("Importing new Image!"));
+
+    // Create the new SoilSample
+    CreateNewSoilSample();
+    // Show the filedialog and import the RGB image
+    QString fn =
+        QFileDialog::getOpenFileName(this, tr("Load Image"), tr("/home/"),
+                                     tr("Image (*.jpg *.JPG *.png *.PNG *.gif *.GIF *.bmp *.BMP *.ppm *.PPM"));
+    if (!fn.isEmpty())  {
+      std::string filename = fn.toStdString();
+      SoilSample->OriginalImage = cv::imread(filename, 1);
+      if (SoilSample->OriginalImage.channels() != 3) {
+          errorMessageDialog->showMessage(tr("No RGB image"));
+          on_actionImport_RGB_Snapshot_triggered();
+        }
+      SetMatToMainView(SoilSample->OriginalImage);
+      this->statusLabel->setText(tr("New Image Imported"));
+    }
+}
+
+void VSAGUI::CreateNewSoilSample()
+{
+    delete SoilSample;
+    SoilSample = new SoilAnalyzer::Sample;
+    SoilSample->connect_Progress(
+        boost::bind(&VSAGUI::on_vision_update, this, _1, _2));
 }
