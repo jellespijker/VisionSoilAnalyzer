@@ -93,3 +93,6 @@ unix {
     target.path = $PWD/../../../build/install
     INSTALLS += target
 }
+
+DISTFILES += \
+    Images/sample.ppm

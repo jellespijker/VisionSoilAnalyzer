@@ -95,6 +95,8 @@ private slots:
 
   void on_actionImport_RGB_Snapshot_triggered();
 
+  void on_actionExport_RGB_Snapshot_triggered();
+
 private:
   Ui::VSAGUI *ui;
   QErrorMessage *errorMessageDialog;
