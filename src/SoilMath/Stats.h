@@ -62,7 +62,7 @@ public:
                               or could be less*/
 
   uint32_t *begin() { return &bins[0]; }    /**< pointer to the first bin*/
-  uint32_t *end() { return &bins[noBins]; } /**< pointer to the last bin*/
+  uint32_t *end() { return &bins[noBins]; } /**< pointer to the last + 1 bin*/
 
   /*!
    * \brief WelchTest Compare the sample using the Welch's Test
