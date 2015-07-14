@@ -80,7 +80,7 @@ void SoilMath_Test::testCase_Sort() {
 
 void SoilMath_Test::testCase_Sort_withKey() {
     uint16_t compArr[10] = {1, 2, 4, 4, 5, 6, 7, 10, 10, 10};
-    uint16_t compKeyArr[10] = {3, 1, 6, 8, 2, 9, 4, 7, 0, 5};
+    uint16_t compKeyArr[10] = {3, 1, 6, 8, 2, 9, 4, 7, 5, 0};
     uint16_t startArr[10] = {10, 2, 5, 1, 7, 10, 4, 10, 4, 6};
     uint16_t startKeyarr[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
 

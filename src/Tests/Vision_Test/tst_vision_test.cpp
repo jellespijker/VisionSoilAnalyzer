@@ -15,11 +15,33 @@ public:
     Vision_Test();
 
 private Q_SLOTS:
+    void TestCase_SimpleLabelBlob();
     void TestCase_LabelBlobs();
 };
 
 Vision_Test::Vision_Test()
 {
+}
+
+void Vision_Test::TestCase_SimpleLabelBlob() {
+  uchar testImgData[100] = { 0, 0, 1, 1, 0, 0, 0, 1, 1, 1,
+                             0, 0, 0, 1, 0, 0, 0, 1, 1, 1,
+                             1, 0, 0, 1, 0, 1, 0, 0, 0, 1,
+                             1, 1, 1, 1, 0, 1, 1, 1, 1, 1,
+                             1, 1, 1, 0, 0, 0, 0, 1, 1, 0,
+                             0, 0, 1, 1, 1, 0, 0, 0, 0, 0,
+                             0, 0, 0, 1, 1, 1, 0, 0, 1, 1,
+                             0, 0, 1, 1, 0, 1, 0, 0, 1, 1,
+                             0, 0, 1, 1, 1, 1, 0, 0, 0, 0,
+                             0, 0, 0, 1, 0, 0, 0, 0, 0, 0};
+
+  cv::Mat testImg(10, 10, CV_8UC1, testImgData);
+  testImg *= 255;
+  Vision::Segment Segmenter(testImg);
+  Segmenter.ConvertToBW(Vision::Segment::Bright);
+  Segmenter.GetBlobList(true);
+  uint16_t totalNoOfBlobs = Segmenter.MaxLabel;
+  QCOMPARE(totalNoOfBlobs, uint16_t(3));
 }
 
 void Vision_Test::TestCase_LabelBlobs()
