@@ -469,34 +469,28 @@ void Segment::LabelBlobs(bool chain, uint16_t minBlobArea, Connected conn) {
         }
     }
 
-  for_each(connectedLabels.begin(), connectedLabels.end(),
-           [&](std::vector<uint16_t> &L) {
-             std::sort(L.begin(), L.end());
-             std::vector<uint16_t>::iterator it;
-             it = std::unique(L.begin(), L.end());
-             L.resize(std::distance(L.begin(), it));
-           });
-
-  uint16_t *UniqueVal = new uint16_t[connectedLabels.size()];
-  uint16_t *ConsecVal = new uint16_t[connectedLabels.size()];
-
-  for (uint32_t i = 0; i < connectedLabels.size(); i++) {
-      UniqueVal[i] = connectedLabels[i][0];
-      ConsecVal[i] = connectedLabels[i][0];
+  // Make numbers consecutive
+  uint16_t *valueArr = new uint16_t[connectedLabels.size()];
+  uint16_t *keyArr = new uint16_t[connectedLabels.size()];
+  for (uint16_t i = 0; i < connectedLabels.size(); i++) {
+      valueArr[i] = connectedLabels[i][0];
+      keyArr[i] = i;
     }
-  std::vector<uint16_t> ConsecVect(ConsecVal, ConsecVal + connectedLabels.size());
-  std::sort(ConsecVect.begin(), ConsecVect.end());
-  std::vector<uint16_t>::iterator it;
-  it = std::unique(ConsecVect.begin(), ConsecVect.end());
-  ConsecVect.resize(std::distance(ConsecVect.begin(), it));
-  MaxLabel = ConsecVect.size();
-  delete[] ConsecVal;
 
+  SoilMath::Sort::QuickSort<uint16_t>(valueArr, keyArr, connectedLabels.size());
+  uint16_t count = 0;
+  for (uint32_t i = 1; i < connectedLabels.size(); i++) {
+      if (valueArr[i] != valueArr[i - 1]) { count++; }
+      valueArr[i] = count;
+    }
+  SoilMath::Sort::QuickSort<uint16_t>(keyArr, valueArr, connectedLabels.size());
+  delete[] keyArr;
+  MaxLabel = count;
 
-
-  for_each(P, P + nData, [&](uint16_t &V) { V = UniqueVal[V]; });
-  delete[] UniqueVal;
-  SHOW_DEBUG_IMG(ProcessedImg, uint16_t, 255, "LabbeldImg", true);
+  // Second loop through the pixels to give the values a final value
+  for_each(P, P + nData, [&](uint16_t &V) { V = valueArr[V]; });
+  delete[] valueArr;
+  SHOW_DEBUG_IMG(LabelledImg, uint16_t, uint16_t(-1), "LabbeldImg", true);
 }
 
 /*! Create a BW image with only edges from a BW image
