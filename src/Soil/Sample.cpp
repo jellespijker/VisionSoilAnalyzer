@@ -33,9 +33,15 @@ void Sample::PrepImg(SoilSettings *settings) {
   // setup the settings
   if (settings == nullptr && Settings == nullptr) {
     Settings = new SoilSettings;
-  } else {
+  } else if (Settings != nullptr) {
     Settings = settings;
   }
+
+  // Determine the biggest kernelsize. These border pixels are discarded with
+  // the optimized int
+  uint32_t kBorder = ((Settings->adaptContrastKernelSize > Settings->blurKernelSize)
+                     ? Settings->adaptContrastKernelSize : Settings->blurKernelSize);
+  uint32_t khBorder = kBorder / 2;
 
   // set up the progress signal
   float currentProg = 0.;
@@ -90,8 +96,9 @@ void Sample::PrepImg(SoilSettings *settings) {
     IntEnchance.ProcessedImg = IntEnchance.OriginalImg;
   }
   OptimizedInt =
-      IntEnchance.ProcessedImg(cv::Rect(10, 10, OriginalImage.cols - 20,
-                                        OriginalImage.rows - 20)).clone();
+      IntEnchance.ProcessedImg(cv::Rect(khBorder, khBorder,
+                                        OriginalImage.cols - kBorder,
+                                        OriginalImage.rows - kBorder)).clone();
   SHOW_DEBUG_IMG(OptimizedInt, uchar, 255, "IntEnchance", false);
 
   // Segment the Dark Objects en fill the holes
@@ -140,8 +147,8 @@ void Sample::PrepImg(SoilSettings *settings) {
   SHOW_DEBUG_IMG(BW, uchar, 255,
                  "BW after segmentation, fill holes and erosion", true);
   RGB = Vision::ImageProcessing::CopyMat<uchar>(
-      OriginalImage(cv::Rect(10, 10, OriginalImage.cols - 20,
-                             OriginalImage.rows - 20)).clone(),
+      OriginalImage(cv::Rect(khBorder, khBorder, OriginalImage.cols - kBorder,
+                             OriginalImage.rows - kBorder)).clone(),
       BW, CV_8UC1);
   PROG_INCR("RGB masked image generated");
   SHOW_DEBUG_IMG(RGB, uchar, 255, "RGB no Background", false);
@@ -184,7 +191,7 @@ void Sample::Analyse(SoilMath::NN &nn) {
   // Results.RI_Stat = floatStat_t((float *)RI.data, RI.rows, RI.cols);
 
   // Segment and analyze the particles
-  // SegmentParticles();
+  SegmentParticles(Vision::Segment::SegmentationType::Normal);
   // for_each(Population.begin(), Population.end(), [&](Particle &P)
   //{
   //	P.Analyze(nn);
@@ -204,40 +211,13 @@ bool Sample::AnalysePopVect(const vector<Particle> &population,
 }
 
 void Sample::SegmentParticles(Vision::Segment::SegmentationType segType) {
-  Vision::Enhance Enhancer(Intensity);
-  Vision::Segment Segmenter;
-  Vision::MorphologicalFilter Eroder;
-
-  switch (segType) {
-  case Vision::Segment::Normal:
-    // Optimize the intensity image
-    Enhancer.Blur(15);
-    Enhancer.AdaptiveContrastStretch(5, 0.125, true);
-
-    // Segment the enhance image and remove borderblobs get the edges
-    Segmenter.LoadOriginalImg(Enhancer.ProcessedImg);
-    Segmenter.ConvertToBW(Vision::Segment::Dark);
-    Segmenter.RemoveBorderBlobs(1, true);
-    BW = Segmenter.ProcessedImg.clone();
-    break;
-  case Vision::Segment::LabNeuralNet:
-    throw Exception::AnalysisException("Not yet implemented!", 1);
-    break;
-  case Vision::Segment::GraphMinCut:
-    throw Exception::AnalysisException("Not yet implemented!", 1);
-    break;
-  default:
-    break;
-  }
-
-  Vision::Segment getEdges(BW);
-  getEdges.GetEdgesEroding();
-  Edge = getEdges.ProcessedImg;
+  Vision::Segment Segmenter(BW);
 
   // Get the Particlelist
-  Segmenter.GetBlobList(true);
+  Segmenter.GetBlobList();
   Population.resize(Segmenter.BlobList.size());
   uint32_t i = 0;
+  // Analyze each particle
   for_each(Population.begin(), Population.end(), [&](Particle &P) {
     P.ID = Segmenter.BlobList[i].Label;
     P.Analysis.Analyzed = false;

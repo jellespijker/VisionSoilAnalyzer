@@ -189,7 +189,7 @@ void Conversion::Convert(ColorSpace convertFrom, ColorSpace convertTo,
 */
 void Conversion::RGB2Intensity(uchar *O, uchar *P, int nData) {
   uint32_t i;
-  uint32_t j;
+  int j;
   i = 0;
   j = 0;
   while (j < nData) {
@@ -256,7 +256,7 @@ inline float Conversion::f_xyz2lab(float t) {
 void Conversion::Lab2RI(float *O, float *P, int nData) {
   uint32_t j = 0;
   float L, a, b;
-  for (uint32_t i = 0; i < nData; i += 3) {
+  for (int i = 0; i < nData; i += 3) {
     L = *(O + i);
     a = *(O + i + 1);
     b = *(O + i + 2);

@@ -98,7 +98,7 @@ Predict_t NN::Predict(ComplexVect_t input) {
 }
 
 void NN::Learn(InputLearnVector_t input, OutputLearnVector_t cat,
-               uint32_t noOfDescriptorsUsed) {
+               uint32_t noOfDescriptorsUsed __attribute__((unused))) {
   SoilMath::GA optim(PredictLearn, inputNeurons, hiddenNeurons, outputNeurons);
   ComplexVect_t inputTest;
   std::vector<Weight_t> weights;

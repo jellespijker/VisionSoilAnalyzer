@@ -86,7 +86,7 @@ void GPIO::SetEdge(Edge edge) {
   WritesEdge(gpiopath, edge);
 }
 
-bool GPIO::isExported(int number, Direction &dir, Edge &edge) {
+bool GPIO::isExported(int number __attribute__((unused)), Direction &dir, Edge &edge) {
   // Checks if directory exist and therefore is exported
   if (!DirectoryExist(gpiopath)) {
     return false;

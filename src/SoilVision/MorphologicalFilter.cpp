@@ -123,7 +123,7 @@ void MorphologicalFilter::Filter(const Mat &mask, bool chain, uchar startVal,
   uchar *P = workProcImg.data;
 
   // Init the relevant data
-  uint32_t nData = OriginalImg.cols * OriginalImg.rows;
+  //uint32_t nData = OriginalImg.cols * OriginalImg.rows;
   uint32_t nWData = workProcImg.cols * workProcImg.rows;
   uint32_t nWStart = (hKsizeRow * workProcImg.cols) + hKsizeRow;
   uint32_t nWEnd = nWData - hKsizeCol - hKsizeRow * workProcImg.cols - 1;
@@ -143,8 +143,8 @@ void MorphologicalFilter::Filter(const Mat &mask, bool chain, uchar startVal,
     if (nRow[i] == 1) {
       i += mask.cols;
     }
-    for (uint32_t r = 0; r < mask.rows; r++) {
-      for (uint32_t c = 0; c < mask.cols; c++) {
+    for (int r = 0; r < mask.rows; r++) {
+      for (int c = 0; c < mask.cols; c++) {
         MaskPixel = c + r * mask.cols;
         OPixel = i - hKsizeCol + c + (r - hKsizeRow) * workProcImg.cols;
         if (mask.data[MaskPixel] == 1 && O[OPixel] == switchVal) {

@@ -196,7 +196,7 @@ void Segment::Threshold(uchar t, TypeOfObjects Typeobjects) {
   uchar *O = OriginalImg.data;
 
   // Fills the ProcessedImg with either a 0 or 1
-  for (uint32_t i = 0; i < OriginalImg.cols * OriginalImg.rows; i++) {
+  for (int i = 0; i < OriginalImg.cols * OriginalImg.rows; i++) {
     P[i] = LUT_newValue[O[i]];
   }
 }
@@ -318,17 +318,27 @@ void Segment::LabelBlobs(bool chain, uint16_t minBlobArea, Connected conn) {
   CV_Assert(OriginalImg.depth() != sizeof(uchar));
   EMPTY_CHECK(OriginalImg);
 
-  // make the Pointers
+  // make the Pointers to the data
   uchar *O;
-  CHAIN_PROCESS(chain, O, uchar);
+  if (chain) {
+    TempImg = ProcessedImg.clone();
+    ProcessedImg = cv::Mat(OriginalImg.rows, OriginalImg.cols, CV_16UC1);
+    O = (uchar *)TempImg.data;
+  } else {
+    O = (uchar *)OriginalImg.data;
+  }
   uint16_t *P = (uint16_t *)LabelledImg.data;
 
   uint32_t nCols = OriginalImg.cols;
   uint32_t nRows = OriginalImg.rows;
   uint32_t nData = nCols * nRows;
-  uint32_t i = OriginalImg.cols + 2;
-  uint32_t j = 4;
-  uint32_t pEnd = nData - OriginalImg.cols;
+
+  // Determine the size of the array for beginning and endrow and middle of a
+  // row
+  uint32_t noConn[3] = {static_cast<uint32_t>(conn),
+                        (static_cast<uint32_t>(conn) / 2),
+                        (static_cast<uint32_t>(conn) / 2) + 1};
+  uint32_t lastConn[3] = {noConn[0] - 1, noConn[1] - 1, noConn[2] - 1};
 
   uint16_t currentlbl = 0;
   vector<vector<uint16_t>> connectedLabels;
@@ -336,211 +346,151 @@ void Segment::LabelBlobs(bool chain, uint16_t minBlobArea, Connected conn) {
   zeroVector.push_back(currentlbl);
   connectedLabels.push_back(zeroVector);
 
-  /* Four connected strategy... Although it's more code. If I place this check
-  here it's less machine instructions compared to doing it's done
-  inside the loop */
-  if (conn == Four) {
-    // Loop through the picture
-    while (i < pEnd) {
-      // If current value = zero processed value = zero
-      if (O[i] == 0) {
-        P[i] = 0;
+  // Determine which borderpixels should be handled differently
+  uchar *nRow = new uchar[nData]{};
+  for (uint32_t i = nCols; i < nData; i += nCols) {
+    nRow[i] = 1;
+    nRow[i - 1] = 2;
+  }
+
+  // Set the first pixel
+  if (O[0] == 0) {
+    P[0] = 0;
+  } else if (O[0] == 1) {
+    P[0] = 1;
+  } else {
+    throw Exception::PixelValueOutOfBoundException();
+  }
+
+  // Walk through the toprow and determine if it's a new blob or it's connected
+  // with previously determine blob
+  for (uint32_t i = 1; i < nCols; i++) {
+    if (O[i] == 0) {
+      P[i] = 0;
+    } else if (O[i] == 1) {
+      // If West is zero assume this is a new blob
+      if (P[i - 1] == 0) {
+        P[i] = ++currentlbl;
+        vector<uint16_t> cVector;
+        cVector.push_back(currentlbl);
+        connectedLabels.push_back(cVector);
+      } else { // set as previous blob
+        P[i] = P[i - 1];
       }
-
-      // If current value = 1 check North and West and act accordingly
-      else if (O[i] == 1) {
-        uint16_t North = P[i - nCols];
-        uint16_t West = P[i - 1];
-        uint16_t minVal;
-        uint16_t maxVal;
-
-        // If North and West are both zero assume this is a new blob
-        if (North == 0 && West == 0) {
-          P[i] = ++currentlbl;
-          vector<uint16_t> cVector;
-          cVector.push_back(currentlbl);
-          connectedLabels.push_back(cVector);
-        }
-
-        // Sets the processed value to the smallest non - zero value of North
-        // and West and update the connectedLabels
-        else {
-          maxVal = SoilMath::Max(North, West);
-          if (North == 0 || West == 0) {
-            minVal = maxVal;
-          } else {
-            minVal = SoilMath::Min(North, West);
-          }
-
-          P[i] = minVal;
-
-          /* If North and West belong to two different connected components set
-           * the current processed value to the lowest value and remember that
-           * the highest value should be the lowest value */
-          if (North != 0 && West != 0 && maxVal != minVal) {
-            connectedLabels[maxVal].push_back(minVal);
-          }
-        }
-      }
-
-      // If there is a value greater then 1 or smaller then 1 throw error
-      else {
-        throw Exception::PixelValueOutOfBoundException();
-      }
-      i++;
+    } else { // Value of of bounds
+      throw Exception::PixelValueOutOfBoundException();
     }
   }
 
-  // If eight connected is required
-  else {
-    // Loop through the picture
-    while (i < pEnd) {
-      // If current value = zero processed value = zero
-      if (O[i] == 0) {
-        P[i] = 0;
-      }
-
-      // If current value = 1 check North and West and act accordingly
-      else if (O[i] == 1) {
-        uint16_t *nPixels = new uint16_t[4];
+  // walk through each pixel and determine if it's a new blob or it's connected
+  // with previously determine blob
+  for (uint32_t i = OriginalImg.cols; i < nData; i++) {
+    if (O[i] == 0) { // Original pixel = 0
+      P[i] = 0;
+    } else if (O[i] == 1) {
+      // Get an array of Neighboring Pixels
+      uint16_t *nPixels = new uint16_t[noConn[nRow[i]]];
+      if (nRow[i] != 1) {
         nPixels[0] = P[i - 1];
-        nPixels[1] = P[i - nCols - 1];
-        nPixels[2] = P[i - nCols];
-        nPixels[3] = P[i - nCols + 1];
-        uint16_t minVal;
-        uint16_t maxVal;
+      }
+      uint32_t j = i - nCols - ((nRow[i] == 1) ? 0 : ((conn == Four) ? 0 : 1));
+      for_each(nPixels + ((nRow[i] != 1) ? 1 : 0), nPixels + noConn[nRow[i]],
+               [&](uint16_t &N) { N = P[j++]; });
 
-        // Sort the neighbors for easier checking
-        SoilMath::Sort::QuickSort<uint16_t>(nPixels, 4);
+      // Sort the neighbors for easier checking
+      SoilMath::Sort::QuickSort<uint16_t>(nPixels, noConn[nRow[i]]);
 
-        // If North NorthWest, NorthEast and West are all zero assume this is a
-        // new blob
-        if (nPixels[3] == 0) {
-          P[i] = ++currentlbl;
-          vector<uint16_t> cVector;
-          cVector.push_back(currentlbl);
-          connectedLabels.push_back(cVector);
+      // If all are zero assume this is a new blob
+      if (nPixels[lastConn[nRow[i]]] == 0) {
+        P[i] = ++currentlbl;
+        vector<uint16_t> cVector;
+        cVector.push_back(currentlbl);
+        connectedLabels.push_back(cVector);
+      } else {
+        /* Sets the processed value to the smallest non-zero value and update
+         * the connectedLabels */
+        for (uint32_t j = 0; j < noConn[nRow[i]]; j++) {
+          if (nPixels[j] > 0) {
+            P[i] = nPixels[j];
+            break;
+          }
         }
 
-        // Sets the processed value to the smallest non-zero value of North and
-        // West and update the connectedLabels
-        else {
-          maxVal = nPixels[3];
-
-          // If there is only 1 neighbor of importance
-          if (nPixels[2] == 0) {
-            minVal = nPixels[3];
-          } else if (nPixels[1] == 0) {
-            minVal = nPixels[2];
-          } else if (nPixels[0] == 0) {
-            minVal = nPixels[2];
-          } else {
-            minVal = nPixels[0];
-          }
-
-          P[i] = minVal;
-
-          /* If North NorthWest, NorthEast and West belong to different
-           * connected components set the current processed value to the lowest
-           * value and remember that the other value should be the lowest
-           * value*/
-          if (nPixels[0] != nPixels[3]) {
-            j = 4;
-            while (j-- > 0) {
-              if (nPixels[j] != 0 && nPixels[j] > minVal) {
-                connectedLabels[nPixels[j]].push_back(minVal);
-              }
+        /* If previous blobs belong to different connected components set the
+         * current processed value to the lowest value and remember that the
+         * other values should be the lowest value*/
+        if (P[i] != nPixels[lastConn[nRow[i]]]) {
+          for (int j = lastConn[nRow[i]]; j >= 0; --j) {
+            if (nPixels[j] <= P[i]) {
+              break;
+            } else {
+              connectedLabels[nPixels[j]].push_back(P[i]);
             }
           }
         }
-        delete[] nPixels;
       }
-      // If there is a value greater then 1 or smaller then 1 throw error
-      else {
-        throw Exception::PixelValueOutOfBoundException();
-      }
-      i++;
-    }
-  }
-
-  // Sort all the vectors so the min value is easily obtained
-  i = currentlbl + 1;
-  while (i-- > 0) {
-    std::sort(connectedLabels[i].begin(), connectedLabels[i].end());
-  }
-
-  // Create the LUT
-  uint16_t *LUT_newVal = new uint16_t[currentlbl + 1];
-  i = currentlbl + 1;
-  while (i-- > 0) {
-    // If the value has a chain, crawl in that rabbit hole till the
-    // lowest value is found and sets the LUT
-    if (connectedLabels[i].size() > 1) {
-      uint16_t pChainVal = connectedLabels[connectedLabels[i][0]][0];
-      uint16_t cChainVal = connectedLabels[i][0];
-      uint16_t lowestVal = pChainVal;
-
-      // How far goes the rabbit hole
-      while (pChainVal != cChainVal) {
-        cChainVal = connectedLabels[pChainVal][0];
-        pChainVal = connectedLabels[cChainVal][0];
-        lowestVal = pChainVal;
-      }
-
-      // Write the lowest label to the Look-Up-Table
-      LUT_newVal[i] = lowestVal;
+      delete[] nPixels;
     } else {
-      LUT_newVal[i] = i;
-    } // End of the line so use the same label
-  }
-
-  // Make the labels consecutive numbers
-  uint16_t *tempLUT = new uint16_t[currentlbl + 1];
-  makeConsecutive(currentlbl, tempLUT, LUT_newVal);
-
-  // Get the maximum value
-  i = 0;
-  while (i <= currentlbl) {
-    if (LUT_newVal[i] > MaxLabel) {
-      MaxLabel = LUT_newVal[i];
+      throw Exception::PixelValueOutOfBoundException();
     }
-    i++;
   }
+  delete[] nRow;
 
-  // Second loop through each pixel to replace them with corresponding
-  // intermediate value
-  i = 0;
-  while (i < pEnd) {
-    P[i] = LUT_newVal[P[i]];
-    i++;
-  }
+  // Sort all the vectors and make unique,
+  uint32_t j = 0;
+  for_each(connectedLabels.begin(), connectedLabels.end(),
+           [&](std::vector<uint16_t> &L) {
+             std::sort(L.begin(), L.end());
+             std::vector<uint16_t>::iterator it;
+             it = std::unique(L.begin(), L.end());
+             L.resize(std::distance(L.begin(), it));
+             if (L.size() > 1) {
+               for (std::vector<uint16_t>::iterator iter = L.begin();
+                    iter != L.end(); ++iter) {
+                 if (*iter == j) {
+                   L.erase(iter);
+                   break;
+                 }
+               }
+             }
+             j++;
+           });
 
-  // Create a LUT_filter for each value that is smaller then minBlobArea
-  uint16Stat_t ProcImgStats(P, nCols, nRows, MaxLabel + 1, 0, MaxLabel);
-  uint16_t *LUT_finalVal = new uint16_t[MaxLabel + 1]{};
+  // Down the rabbit hole
+  for (uint32_t i = 0; i < connectedLabels.size(); i++) {
+      for (uint32_t j = 0; j < connectedLabels[i].size(); j++) {
+          uint16_t CurrentVal = connectedLabels[i][j];
+          uint16_t PrevVal = i;
+          while (CurrentVal != PrevVal) {
+              PrevVal = CurrentVal;
+              CurrentVal = connectedLabels[PrevVal][0];
+            }
+          connectedLabels[i][j] = CurrentVal;
+        }
+    }
+
+  // Make numbers consecutive
+  uint16_t *valueArr = new uint16_t[connectedLabels.size()];
+  uint16_t *keyArr = new uint16_t[connectedLabels.size()];
+  for (uint16_t i = 0; i < connectedLabels.size(); i++) {
+      valueArr[i] = connectedLabels[i][0];
+      keyArr[i] = i;
+    }
+
+  SoilMath::Sort::QuickSort<uint16_t>(valueArr, keyArr, connectedLabels.size());
   uint16_t count = 0;
-  i = 0;
-  while (i <= MaxLabel) {
-    if (ProcImgStats.bins[i] > minBlobArea) {
-      LUT_finalVal[i] = count++;
+  for (uint32_t i = 1; i < connectedLabels.size(); i++) {
+      if (valueArr[i] != valueArr[i - 1]) { count++; }
+      valueArr[i] = count;
     }
-    i++;
-  }
+  SoilMath::Sort::QuickSort<uint16_t>(keyArr, valueArr, connectedLabels.size());
+  delete[] keyArr;
+  MaxLabel = count;
 
-  noOfFilteredBlobs = MaxLabel - count - 1;
-  MaxLabel = count - 1;
-
-  // third loop through each pixel to replace them with corresponding final
-  // value
-  i = 0;
-  while (i < pEnd) {
-    P[i] = LUT_finalVal[P[i]];
-    i++;
-  }
-
-  delete[] tempLUT;
-  delete[] LUT_newVal;
-  delete[] LUT_finalVal;
+  // Second loop through the pixels to give the values a final value
+  for_each(P, P + nData, [&](uint16_t &V) { V = valueArr[V]; });
+  delete[] valueArr;
+  SHOW_DEBUG_IMG(LabelledImg, uint16_t, uint16_t(-1), "LabbeldImg", true);
 }
 
 /*! Create a BW image with only edges from a BW image
@@ -727,7 +677,7 @@ void Segment::GetBlobList(bool chain, Connected conn) {
   uint16_t *L = (uint16_t *)LabelledImg.data;
 
   uint32_t currentX, currentY;
-  uint16_t leftX, leftY, rightX, rightY;
+  // uint16_t leftX, leftY, rightX, rightY;
   // Loop through the labeled image and extract the Blobs
   for (uint32_t i = 0; i < nData; i++) {
     if (L[i] != 0) {
@@ -782,27 +732,6 @@ void Segment::GetBlobList(bool chain, Connected conn) {
 
   // Remove background blob
   BlobList.erase(BlobList.begin());
-}
-
-void Segment::makeConsecutive(uint16_t LastLabelUsed, uint16_t *tempLUT,
-                              uint16_t *LUT_newVal) {
-  uint32_t i = LastLabelUsed + 1;
-  while (i-- > 0) {
-    tempLUT[i] = LUT_newVal[i];
-  }
-  SoilMath::Sort::QuickSort<uint16_t>(tempLUT, LastLabelUsed + 1);
-  std::vector<uint16_t> v(LUT_newVal, LUT_newVal + (LastLabelUsed + 1));
-
-  uint16_t count = 0;
-  i = 1;
-  while (i <= LastLabelUsed) {
-    if (tempLUT[i] != tempLUT[i - 1]) {
-      std::replace(v.begin(), v.end(), tempLUT[i], ++count);
-    }
-    i++;
-  }
-
-  LUT_newVal = &v[0];
 }
 
 void Segment::FillHoles(bool chain) {

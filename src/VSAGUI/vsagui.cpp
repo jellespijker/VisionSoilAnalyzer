@@ -97,10 +97,7 @@ VSAGUI::~VSAGUI() { delete ui; }
 
 void VSAGUI::on_SnapshotButton_clicked() {
   Hardware::Microscope microscope;
-  delete SoilSample;
-  SoilSample = new SoilAnalyzer::Sample;
-  SoilSample->connect_Progress(
-      boost::bind(&VSAGUI::on_vision_update, this, _1, _2));
+  CreateNewSoilSample();
   this->statusLabel->setText(tr("Grabbing new Image!"));
   finished_sig = microscope.connect_Finished([&]() {
     SetMatToMainView(SoilSample->OriginalImage);
@@ -134,9 +131,7 @@ void VSAGUI::on_actionLoad_triggered() {
   QString fn = QFileDialog::getOpenFileName(
       this, tr("Load Soil Sample"), tr("/home/"),
       tr("Soil Samples (*.VSS);; Soil Particles (*.VPS);; All Files (*)"));
-  if (!fn.isEmpty() && fn.contains(tr("VSS")))
-    ;
-  {
+  if (!fn.isEmpty() && fn.contains(tr("VSS"))) {
     delete SoilSample;
     SoilSample = new SoilAnalyzer::Sample;
     std::string filename = fn.toStdString();
@@ -147,13 +142,16 @@ void VSAGUI::on_actionLoad_triggered() {
   }
 }
 
-void VSAGUI::on_AnalyzeButton_clicked() { SoilSample->Analyse(*NeuralNet); }
+/*!
+ * \brief VSAGUI::on_AnalyzeButton_clicked Analyze the sample
+ */
+void VSAGUI::on_AnalyzeButton_clicked() {
+  SoilSample->Analyse(*NeuralNet);
+  SetMatToMainView(SoilSample->RGB);
+}
 
 void VSAGUI::on_actionNew_triggered() {
-  delete SoilSample;
-  SoilSample = new SoilAnalyzer::Sample;
-  SoilSample->connect_Progress(
-      boost::bind(&VSAGUI::on_vision_update, this, _1, _2));
+  CreateNewSoilSample();
   on_SnapshotButton_clicked();
 }
 
@@ -161,8 +159,7 @@ void VSAGUI::on_actionImport_triggered() {
   QString fn = QFileDialog::getOpenFileName(
       this, tr("Import Neural Network"), tr("/home/"),
       tr("Neural Net (*.NN);;All Files (*)"));
-  if (!fn.isEmpty())
-  {
+  if (!fn.isEmpty()) {
     std::string filename = fn.toStdString();
     NeuralNet->LoadState(filename);
   }
@@ -172,8 +169,7 @@ void VSAGUI::on_actionExport_triggered() {
   QString fn = QFileDialog::getSaveFileName(
       this, tr("Export Neural Network"), tr("/home/"),
       tr("Neural Net (*.NN);;All Files (*)"));
-  if (!fn.isEmpty())
-  {
+  if (!fn.isEmpty()) {
     if (!fn.contains(tr(".NN"))) {
       fn.append(tr(".NN"));
     }
@@ -204,7 +200,7 @@ void VSAGUI::on_actionLoad_Settings_triggered() {
   QString fn =
       QFileDialog::getOpenFileName(this, tr("Load Settings"), tr("/home/"),
                                    tr("Settings (*.ini);;All Files (*)"));
-  if (!fn.isEmpty())  {
+  if (!fn.isEmpty()) {
     std::string filename = fn.toStdString();
     sSettings->LoadSettings(filename);
   }
@@ -235,4 +231,77 @@ void VSAGUI::on_OffsetSlider_sliderReleased() {}
 void VSAGUI::on_actionHardware_Settings_triggered() {
   hsetttingWindow = new HardwareSettings(0, sSettings);
   hsetttingWindow->exec();
+}
+
+/*!
+ * \brief VSAGUI::on_actionCheese_2_triggered Load the cheese program which can
+ * stream the webcam
+ */
+void VSAGUI::on_actionCheese_2_triggered() {
+  // Get the name of the individual cams
+  std::vector<std::string> availCams = Hardware::Microscope::AvailableCams();
+  uint i = 0;
+  for_each(availCams.begin(), availCams.end(), [&](std::string &C) {
+    // If the current itterator is the Micrscope start cheese
+    if (C.compare(MICROSCOPE_NAME) == 0) {
+      std::string bashStr = "cheese --device=/dev/video";
+      bashStr.append(std::to_string(i));
+      std::system(bashStr.c_str());
+      return;
+    }
+    i++;
+  });
+}
+
+/*!
+ * \brief VSAGUI::on_actionImport_RGB_Snapshot_triggered Imports an RGB image to
+ * be used for
+ */
+void VSAGUI::on_actionImport_RGB_Snapshot_triggered() {
+  this->statusLabel->setText(tr("Importing new Image!"));
+
+  // Create the new SoilSample
+  CreateNewSoilSample();
+  // Show the filedialog and import the RGB image
+  QString fn = QFileDialog::getOpenFileName(
+      this, tr("Load Image"), tr("/home/"),
+      tr("Image (*.jpg *.JPG *.png *.PNG *.gif *.GIF *.bmp *.BMP *.ppm *.PPM"));
+  if (!fn.isEmpty()) {
+    std::string filename = fn.toStdString();
+    SoilSample->OriginalImage = cv::imread(filename, 1);
+    if (SoilSample->OriginalImage.channels() != 3) {
+      errorMessageDialog->showMessage(tr("No RGB image"));
+      on_actionImport_RGB_Snapshot_triggered();
+    }
+    SetMatToMainView(SoilSample->OriginalImage);
+    this->statusLabel->setText(tr("New Image Imported"));
+  }
+}
+
+/*!
+ * \brief VSAGUI::CreateNewSoilSample Create the new Soil Sample
+ */
+void VSAGUI::CreateNewSoilSample() {
+  delete SoilSample;
+  SoilSample = new SoilAnalyzer::Sample;
+  SoilSample->connect_Progress(
+      boost::bind(&VSAGUI::on_vision_update, this, _1, _2));
+}
+
+/*!
+ * \brief VSAGUI::on_actionExport_RGB_Snapshot_triggered Export the RGB snapshot
+ */
+void VSAGUI::on_actionExport_RGB_Snapshot_triggered()
+{
+  QString fn =
+      QFileDialog::getSaveFileName(this, tr("Load Image"), tr("/home/"),
+                                   tr("PPM Image (*.ppm *.PPM"));
+  if (!fn.isEmpty()) {
+    if (!fn.contains(tr(".ppm"))) {
+      fn.append(tr(".ppm"));
+    }
+    std::string filename = fn.toStdString();
+    cv::imwrite(filename, SoilSample->OriginalImage);
+  }
+
 }

@@ -1,4 +1,4 @@
-clear; clc;
+IIclear; clc;
 I = zeros(2000,2000);
 
 n = 600;

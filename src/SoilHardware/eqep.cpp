@@ -82,7 +82,7 @@ void eQEP::set_position(int32_t position) {
 }
 
 // Set the period of the eQEP hardware
-void eQEP::set_period(uint64_t period) {
+void eQEP::set_period(long long unsigned int period) {
   // Open the file representing the position
   FILE *fp = fopen((this->path + "/period").c_str(), "w");
 

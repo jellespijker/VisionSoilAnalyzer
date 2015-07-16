@@ -58,9 +58,9 @@ public:
   /*! Enumerator to indicate how the pixel correlate between each other in a
    * blob*/
   enum Connected {
-    Four, /*!< Enum Four connected, relation between Center, North, East, South
+    Four = 2, /*!< Enum Four connected, relation between Center, North, East, South
              and West*/
-    Eight /*!< Enum Eight connected, relation between Center, North, NorthEast,
+    Eight = 4 /*!< Enum Eight connected, relation between Center, North, NorthEast,
              East, SouthEast, South, SouthWest, West and NorthWest */
   };
 

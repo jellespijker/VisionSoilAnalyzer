@@ -62,7 +62,7 @@ public:
                               or could be less*/
 
   uint32_t *begin() { return &bins[0]; }    /**< pointer to the first bin*/
-  uint32_t *end() { return &bins[noBins]; } /**< pointer to the last bin*/
+  uint32_t *end() { return &bins[noBins]; } /**< pointer to the last + 1 bin*/
 
   /*!
    * \brief WelchTest Compare the sample using the Welch's Test
@@ -496,7 +496,7 @@ public:
    * \param startC start counter
    * \param endC end counter
    */
-  void BinCalculations(uint16_t startC, uint16_t endC) {
+  void BinCalculations(uint16_t startC, uint16_t endC __attribute__((unused))) {
     float sum_dev = 0.0;
     // Get the Sum
     uint32_t i = 0;
@@ -543,7 +543,7 @@ private:
    * \param version
    */
   template <class Archive>
-  void serialize(Archive &ar, const unsigned int version) {
+  void serialize(Archive &ar, const unsigned int version __attribute__((unused))) {
     ar &isDiscrete;
     ar &n;
     for (size_t dc = 0; dc < n; dc++) {

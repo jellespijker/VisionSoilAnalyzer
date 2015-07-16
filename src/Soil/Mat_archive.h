@@ -21,7 +21,7 @@ namespace serialization {
  * \brief serialize Serialize the openCV mat to disk
  */
 template <class Archive>
-inline void serialize(Archive &ar, cv::Mat &m, const unsigned int version) {
+inline void serialize(Archive &ar, cv::Mat &m, const unsigned int version __attribute__((unused))) {
   int cols = m.cols;
   int rows = m.rows;
   int elemSize = m.elemSize();

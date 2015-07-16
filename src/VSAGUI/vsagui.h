@@ -13,6 +13,7 @@
 #include <string>
 #include <vector>
 #include <sys/utsname.h>
+#include <stdlib.h>
 
 #include <QMainWindow>
 #include <QtGui>
@@ -90,6 +91,12 @@ private slots:
 
   void on_actionHardware_Settings_triggered();
 
+  void on_actionCheese_2_triggered();
+
+  void on_actionImport_RGB_Snapshot_triggered();
+
+  void on_actionExport_RGB_Snapshot_triggered();
+
 private:
   Ui::VSAGUI *ui;
   QErrorMessage *errorMessageDialog;
@@ -117,6 +124,7 @@ private:
   void LoadSample();
   std::vector<std::string> webCams;
   void SetMatToMainView(cv::Mat &img);
+  void CreateNewSoilSample();
 };
 
 #endif // VSAGUI_H
