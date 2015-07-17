@@ -1,4 +1,5 @@
 #define NO_OF_BLOBS 379
+#define SMALL_NO_OF_BLOBS 4
 
 #include <QString>
 #include <QtTest>
@@ -41,12 +42,12 @@ void Vision_Test::TestCase_SimpleLabelBlob() {
   Segmenter.ConvertToBW(Vision::Segment::Bright);
   Segmenter.GetBlobList(true);
   uint16_t totalNoOfBlobs = Segmenter.MaxLabel;
-  QCOMPARE(totalNoOfBlobs, uint16_t(3));
+  QCOMPARE(totalNoOfBlobs, uint16_t(SMALL_NO_OF_BLOBS));
 }
 
 void Vision_Test::TestCase_LabelBlobs()
 {
-    cv::Mat testImg = cv::imread("379_blobs.ppm", 1);
+    cv::Mat testImg = cv::imread("379_blobs.ppm", 0);
 
     Vision::Segment Segmenter(testImg);
     Segmenter.ConvertToBW(Vision::Segment::Dark);

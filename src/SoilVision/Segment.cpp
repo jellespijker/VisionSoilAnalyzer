@@ -662,13 +662,13 @@ void Segment::GetBlobList(bool chain, Connected conn) {
   uint16Stat_t LabelStats((uint16_t *)LabelledImg.data, LabelledImg.cols,
                           LabelledImg.rows, MaxLabel + 1, 0, MaxLabel);
 
-  BlobList.reserve(MaxLabel + 1);
-  rectList.reserve(MaxLabel + 1);
+  BlobList.reserve(LabelStats.EndBin);
+  rectList.reserve(LabelStats.EndBin);
 
   BlobList.push_back(Blob_t(0, 0));
   rectList.push_back(Rect_t(0, 0, 0, 0));
 
-  for (uint32_t i = 1; i <= MaxLabel; i++) {
+  for (uint32_t i = 1; i < LabelStats.EndBin; i++) {
     BlobList.push_back(Blob_t(i, LabelStats.bins[i]));
     rectList.push_back(Rect_t(nCols, nRows, 0, 0));
   }
@@ -683,8 +683,8 @@ void Segment::GetBlobList(bool chain, Connected conn) {
     if (L[i] != 0) {
       /* Determine the current x and y value of the current blob and
       checks if it is min/max */
-      currentX = i / nCols;
-      currentY = i % nCols;
+      currentY = i / nCols;
+      currentX = i % nCols;
 
       // Min value
       if (currentX < rectList[L[i]].leftX) {
@@ -708,24 +708,25 @@ void Segment::GetBlobList(bool chain, Connected conn) {
   uint8_t *LUT_filter = new uint8_t[MaxLabel + 1]{};
   for (uint32_t i = 1; i <= MaxLabel; i++) {
     LUT_filter[i] = 1;
-    BlobList[i].ROI.y = rectList[i].leftX;
-    BlobList[i].ROI.x = rectList[i].leftY;
-    BlobList[i].ROI.height = rectList[i].rightX - rectList[i].leftX;
-    BlobList[i].ROI.width = rectList[i].rightY - rectList[i].leftY;
-    if (BlobList[i].ROI.height < 0) {
-      BlobList[i].ROI.height -= BlobList[i].ROI.height;
-      BlobList[i].ROI.y = rectList[i].rightX;
-    } else if (BlobList[i].ROI.height == 0) {
-      BlobList[i].ROI.height++;
-    }
-    if (BlobList[i].ROI.width < 0) {
-      BlobList[i].ROI.width -= BlobList[i].ROI.width;
-      BlobList[i].ROI.x = rectList[i].rightY;
-    } else if (BlobList[i].ROI.width == 0) {
-      BlobList[i].ROI.width++;
-    }
+    BlobList[i].ROI.y = rectList[i].leftY;
+    BlobList[i].ROI.x = rectList[i].leftX;
+    BlobList[i].ROI.height = rectList[i].rightY - rectList[i].leftY + 1;
+    BlobList[i].ROI.width = rectList[i].rightX - rectList[i].leftX + 1;
+//    if (BlobList[i].ROI.height < 0) {
+//      BlobList[i].ROI.height -= BlobList[i].ROI.height;
+//      BlobList[i].ROI.y = rectList[i].rightX;
+//    } else if (BlobList[i].ROI.height == 0) {
+//      BlobList[i].ROI.height++;
+//    }
+//    if (BlobList[i].ROI.width < 0) {
+//      BlobList[i].ROI.width -= BlobList[i].ROI.width;
+//      BlobList[i].ROI.x = rectList[i].rightX;
+//    } else if (BlobList[i].ROI.width == 0) {
+//      BlobList[i].ROI.width++;
+//    }
     BlobList[i].Img = CopyMat<uint8_t, uint16_t>(
         LabelledImg(BlobList[i].ROI).clone(), LUT_filter, CV_8UC1);
+    SHOW_DEBUG_IMG(BlobList[i].Img, uchar, 255, "Blob", true);
     LUT_filter[i] = 0;
   }
   delete[] LUT_filter;
