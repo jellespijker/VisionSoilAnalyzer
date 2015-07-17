@@ -13,6 +13,9 @@
 #include <stdint.h>
 #include <iostream>
 #include <algorithm>
+#include <utility>
+
+#include <boost/range/adaptor/reversed.hpp>
 
 #include "opencv2/imgproc/imgproc.hpp"
 

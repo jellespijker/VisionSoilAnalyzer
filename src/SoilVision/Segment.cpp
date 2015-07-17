@@ -341,10 +341,10 @@ void Segment::LabelBlobs(bool chain, uint16_t minBlobArea, Connected conn) {
   uint32_t lastConn[3] = {noConn[0] - 1, noConn[1] - 1, noConn[2] - 1};
 
   uint16_t currentlbl = 0;
-  vector<vector<uint16_t>> connectedLabels;
+  vector<vector<uint16_t>> CL;
   vector<uint16_t> zeroVector;
   zeroVector.push_back(currentlbl);
-  connectedLabels.push_back(zeroVector);
+  CL.push_back(zeroVector);
 
   // Determine which borderpixels should be handled differently
   uchar *nRow = new uchar[nData]{};
@@ -373,7 +373,7 @@ void Segment::LabelBlobs(bool chain, uint16_t minBlobArea, Connected conn) {
         P[i] = ++currentlbl;
         vector<uint16_t> cVector;
         cVector.push_back(currentlbl);
-        connectedLabels.push_back(cVector);
+        CL.push_back(cVector);
       } else { // set as previous blob
         P[i] = P[i - 1];
       }
@@ -405,7 +405,7 @@ void Segment::LabelBlobs(bool chain, uint16_t minBlobArea, Connected conn) {
         P[i] = ++currentlbl;
         vector<uint16_t> cVector;
         cVector.push_back(currentlbl);
-        connectedLabels.push_back(cVector);
+        CL.push_back(cVector);
       } else {
         /* Sets the processed value to the smallest non-zero value and update
          * the connectedLabels */
@@ -424,7 +424,7 @@ void Segment::LabelBlobs(bool chain, uint16_t minBlobArea, Connected conn) {
             if (nPixels[j] <= P[i]) {
               break;
             } else {
-              connectedLabels[nPixels[j]].push_back(P[i]);
+              CL[nPixels[j]].push_back(P[i]);
             }
           }
         }
@@ -436,54 +436,78 @@ void Segment::LabelBlobs(bool chain, uint16_t minBlobArea, Connected conn) {
   }
   delete[] nRow;
 
+  cv::Mat temp(LabelledImg.rows, LabelledImg.cols, CV_8UC1);
+  LabelledImg.convertTo(temp, CV_8UC1);
+  SHOW_DEBUG_IMG(temp, uchar, 255, "temp labelblobs truncat 255", false);
+
+
   // Sort all the vectors and make unique,
   uint32_t j = 0;
-  for_each(connectedLabels.begin(), connectedLabels.end(),
+  for_each(CL.begin(), CL.end(), [&](std::vector<uint16_t> &L) {
+    std::sort(L.begin(), L.end());
+    std::vector<uint16_t>::iterator it;
+    it = std::unique(L.begin(), L.end());
+    L.resize(std::distance(L.begin(), it));
+    if (L.size() > 1) {
+      for (std::vector<uint16_t>::iterator iter = L.begin(); iter != L.end();
+           ++iter) {
+        if (*iter == j) {
+          L.erase(iter);
+          break;
+        }
+      }
+    }
+    j++;
+  });
+
+  // find the lowest value
+  std::vector<std::vector<uint16_t>> chainValues;
+  std::vector<uint16_t> cv;
+  chainValues.resize(CL.size(), cv);
+  for (uint32_t i = 0; i < CL.size(); i++) {
+    for (uint32_t j = 0; j < CL[i].size(); j++) {
+      chainValues[CL[i][j]].push_back(i);
+    }
+  }
+
+  for (uint32_t i = 0; i < chainValues.size(); i++) {
+    if (chainValues[i].size() > 0) {
+      for (uint32_t j = 0; j < chainValues[i].size(); j++) {
+        if (chainValues[i][j] != i) {
+          chainValues[i].insert(chainValues[i].end(),
+                                chainValues[chainValues[i][j]].begin(),
+                                chainValues[chainValues[i][j]].end());
+          chainValues[chainValues[i][j]].clear();
+        }
+      }
+    }
+  }
+
+  uint16_t *valueArr = new uint16_t[CL.size()];
+  uint16_t *keyArr = new uint16_t[CL.size()];
+  uint16_t count = 0;
+  for_each(chainValues.begin(), chainValues.end(),
            [&](std::vector<uint16_t> &L) {
-             std::sort(L.begin(), L.end());
-             std::vector<uint16_t>::iterator it;
-             it = std::unique(L.begin(), L.end());
-             L.resize(std::distance(L.begin(), it));
-             if (L.size() > 1) {
-               for (std::vector<uint16_t>::iterator iter = L.begin();
-                    iter != L.end(); ++iter) {
-                 if (*iter == j) {
-                   L.erase(iter);
-                   break;
-                 }
+             if (L.size() > 0) {
+               std::sort(L.begin(), L.end());
+               for (uint32_t i = 0; i < L.size(); i++) {
+                 valueArr[L[i]] = count;
+                 keyArr[L[i]] = L[i];
                }
              }
-             j++;
+             count++;
            });
 
-  // Down the rabbit hole
-  for (uint32_t i = 0; i < connectedLabels.size(); i++) {
-      for (uint32_t j = 0; j < connectedLabels[i].size(); j++) {
-          uint16_t CurrentVal = connectedLabels[i][j];
-          uint16_t PrevVal = i;
-          while (CurrentVal != PrevVal) {
-              PrevVal = CurrentVal;
-              CurrentVal = connectedLabels[PrevVal][0];
-            }
-          connectedLabels[i][j] = CurrentVal;
-        }
-    }
-
   // Make numbers consecutive
-  uint16_t *valueArr = new uint16_t[connectedLabels.size()];
-  uint16_t *keyArr = new uint16_t[connectedLabels.size()];
-  for (uint16_t i = 0; i < connectedLabels.size(); i++) {
-      valueArr[i] = connectedLabels[i][0];
-      keyArr[i] = i;
+  SoilMath::Sort::QuickSort<uint16_t>(valueArr, keyArr, CL.size());
+  count = 0;
+  for (uint32_t i = 1; i < CL.size(); i++) {
+    if (valueArr[i] != valueArr[i - 1]) {
+      count++;
     }
-
-  SoilMath::Sort::QuickSort<uint16_t>(valueArr, keyArr, connectedLabels.size());
-  uint16_t count = 0;
-  for (uint32_t i = 1; i < connectedLabels.size(); i++) {
-      if (valueArr[i] != valueArr[i - 1]) { count++; }
-      valueArr[i] = count;
-    }
-  SoilMath::Sort::QuickSort<uint16_t>(keyArr, valueArr, connectedLabels.size());
+    valueArr[i] = count;
+  }
+  SoilMath::Sort::QuickSort<uint16_t>(keyArr, valueArr, CL.size());
   delete[] keyArr;
   MaxLabel = count;
 
@@ -712,21 +736,9 @@ void Segment::GetBlobList(bool chain, Connected conn) {
     BlobList[i].ROI.x = rectList[i].leftX;
     BlobList[i].ROI.height = rectList[i].rightY - rectList[i].leftY + 1;
     BlobList[i].ROI.width = rectList[i].rightX - rectList[i].leftX + 1;
-//    if (BlobList[i].ROI.height < 0) {
-//      BlobList[i].ROI.height -= BlobList[i].ROI.height;
-//      BlobList[i].ROI.y = rectList[i].rightX;
-//    } else if (BlobList[i].ROI.height == 0) {
-//      BlobList[i].ROI.height++;
-//    }
-//    if (BlobList[i].ROI.width < 0) {
-//      BlobList[i].ROI.width -= BlobList[i].ROI.width;
-//      BlobList[i].ROI.x = rectList[i].rightX;
-//    } else if (BlobList[i].ROI.width == 0) {
-//      BlobList[i].ROI.width++;
-//    }
     BlobList[i].Img = CopyMat<uint8_t, uint16_t>(
         LabelledImg(BlobList[i].ROI).clone(), LUT_filter, CV_8UC1);
-    SHOW_DEBUG_IMG(BlobList[i].Img, uchar, 255, "Blob", true);
+    // SHOW_DEBUG_IMG(BlobList[i].Img, uchar, 255, "Blob", true);
     LUT_filter[i] = 0;
   }
   delete[] LUT_filter;
