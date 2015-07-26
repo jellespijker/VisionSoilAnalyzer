@@ -9,6 +9,7 @@ QMAKE_CXXFLAGS += -std=c++11
 
 TARGET = Soil
 TEMPLATE = lib
+VERSION = 0.9.0
 
 DEFINES += SOIL_LIBRARY
 

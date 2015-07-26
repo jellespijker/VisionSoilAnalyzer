@@ -460,47 +460,42 @@ void Segment::LabelBlobs(bool chain, uint16_t minBlobArea, Connected conn) {
     j++;
   });
 
-  // find the lowest value
-  std::vector<std::vector<uint16_t>> chainValues;
-  std::vector<uint16_t> cv;
-  chainValues.resize(CL.size(), cv);
-  for (uint32_t i = 0; i < CL.size(); i++) {
-    for (uint32_t j = 0; j < CL[i].size(); j++) {
-      chainValues[CL[i][j]].push_back(i);
-    }
-  }
-
-  for (uint32_t i = 0; i < chainValues.size(); i++) {
-    if (chainValues[i].size() > 0) {
-      for (uint32_t j = 0; j < chainValues[i].size(); j++) {
-        if (chainValues[i][j] != i) {
-          chainValues[i].insert(chainValues[i].end(),
-                                chainValues[chainValues[i][j]].begin(),
-                                chainValues[chainValues[i][j]].end());
-          chainValues[chainValues[i][j]].clear();
-        }
-      }
-    }
-  }
-
+  // identify all the lowest values in the adjacent list
   uint16_t *valueArr = new uint16_t[CL.size()];
   uint16_t *keyArr = new uint16_t[CL.size()];
-  uint16_t count = 0;
-  for_each(chainValues.begin(), chainValues.end(),
-           [&](std::vector<uint16_t> &L) {
-             if (L.size() > 0) {
-               std::sort(L.begin(), L.end());
-               for (uint32_t i = 0; i < L.size(); i++) {
-                 valueArr[L[i]] = count;
-                 keyArr[L[i]] = L[i];
-               }
-             }
-             count++;
-           });
+
+  for (int i = CL.size() - 1; i >= 0; --i) {
+      std::vector<uint16_t *> route;
+      uint16_t minVal = i;
+      for (uint32_t j = 0; j < CL[i].size(); j++) {
+
+          // add the first node to the queue;
+          route.push_back(&CL[i][j]);
+
+          // itterate till the last node
+          bool lastNodeReached = false;
+          while (!lastNodeReached) {
+              uint32_t nodesVisited = route.size() - 1;
+              if (*route[nodesVisited] < minVal) { minVal = *route[nodesVisited]; }
+              route.push_back(&CL[*route[nodesVisited]][0]);
+              if (route[nodesVisited] == route[nodesVisited + 1]) {
+                  route.pop_back();
+                  lastNodeReached = true;
+                }
+            }
+
+        }
+      // Set all values to the lowest value
+      for (uint32_t k = 0; k < route.size(); k++) {
+          *route[k] = minVal;
+        }
+      valueArr[i] = minVal;
+      keyArr[i] = i;
+    }
 
   // Make numbers consecutive
   SoilMath::Sort::QuickSort<uint16_t>(valueArr, keyArr, CL.size());
-  count = 0;
+  uint16_t count = 0;
   for (uint32_t i = 1; i < CL.size(); i++) {
     if (valueArr[i] != valueArr[i - 1]) {
       count++;

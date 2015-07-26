@@ -12,15 +12,14 @@ RESOURCES     = VSA.qrc
 
 TARGET = VSAGUI
 TEMPLATE = app
+VERSION = 0.9.0
 
 SOURCES += main.cpp\
         vsagui.cpp \
-    qcustomplot.cpp \
     visionsettings.cpp \
     hardwaresettings.cpp
 
 HEADERS  += vsagui.h \
-    qcustomplot.h \
     opencvqt.h \
     visionsettings.h \
     hardwaresettings.h
@@ -39,36 +38,47 @@ DEFINES += BOOST_ALL_DYN_LINK
 INCLUDEPATH += /usr/include/boost
 LIBS += -L/usr/lib/x86_64-linux-gnu/ -lboost_filesystem -lboost_serialization -lboost_system
 
-OTHER_FILES += \
-    Settings/Default.ini \
-    NeuralNet/Default.NN \
-    Images/SoilSample1.png
-
+#SoilMath lib
 unix:!macx: LIBS += -L$$PWD/../../build/install/ -lSoilMath
 
 INCLUDEPATH += $$PWD/../SoilMath
 DEPENDPATH += $$PWD/../SoilMath
 
+#SoilHardware lib
 unix:!macx: LIBS += -L$$PWD/../../build/install/ -lSoilHardware
 
 INCLUDEPATH += $$PWD/../SoilHardware
 DEPENDPATH += $$PWD/../SoilHardware
 
+#SoilVision lib
 unix:!macx: LIBS += -L$$PWD/../../build/install/ -lSoilVision
 
 INCLUDEPATH += $$PWD/../SoilVision
 DEPENDPATH += $$PWD/../SoilVision
 
+#Soil lib
 unix:!macx: LIBS += -L$$PWD/../../build/install/ -lSoil
 
 INCLUDEPATH += $$PWD/../Soil
 DEPENDPATH += $$PWD/../Soil
 
+#QCustomplot lib
+DEFINES += QCUSTOMPLOT_USE_LIBRARY
+unix:!macx: LIBS += -L$$PWD/../../build/install/ -lqcustomplot
+
+INCLUDEPATH += $$PWD/../qcustomplot
+DEPENDPATH += $$PWD/../qcustomplot
+
+OTHER_FILES += \
+    Settings/Default.ini \
+    NeuralNet/Default.NN \
+    Images/SoilSample1.png
+
 #NeuralNetFiles
 NNtarget.path += $${OUT_PWD}/NeuralNet
 NNtarget.files += $${PWD}/NeuralNet/*
 INSTALLS += NNtarget
-bNNtarget.path += $${PWD}/../../../build/install/NeuralNet
+bNNtarget.path += $${PWD}/../../build/install/NeuralNet
 bNNtarget.files += $${PWD}/NeuralNet/*
 INSTALLS += bNNtarget
 
@@ -76,7 +86,7 @@ INSTALLS += bNNtarget
 IMGtarget.path += $${OUT_PWD}/Images
 IMGtarget.files += $${PWD}/Images/*
 INSTALLS += IMGtarget
-bIMGtarget.path += $${PWD}/../../../build/install/Images
+bIMGtarget.path += $${PWD}/../../build/install/Images
 bIMGtarget.files += $${PWD}/Images/*
 INSTALLS += bIMGtarget
 
@@ -84,7 +94,7 @@ INSTALLS += bIMGtarget
 INItarget.path += $${OUT_PWD}/Settings
 INItarget.files += $${PWD}/Settings/*
 INSTALLS += INItarget
-bINItarget.path += $PWD/../../../build/install/Settings
+bINItarget.path += $PWD/../../build/install/Settings
 bINItarget.files += $PWD/Settings/*
 INSTALLS += bINItarget
 

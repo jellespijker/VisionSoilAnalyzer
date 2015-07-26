@@ -29,7 +29,8 @@ INCLUDEPATH += $$PWD/../../SoilVision
 DEPENDPATH += $$PWD/../../SoilVision
 
 unix {
-    target.files += 379_blobs.ppm
+    #target.files += 379_blobs.ppm
+    target.files += 42_blobs.ppm
     target.path += $$OUT_PWD
     INSTALLS += target
 }

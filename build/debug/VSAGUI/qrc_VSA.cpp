@@ -1,13 +1,13 @@
 /****************************************************************************
 ** Resource object code
 **
-** Created by: The Resource Compiler for Qt version 5.4.1
+** Created by: The Resource Compiler for Qt version 5.5.0
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
 static const unsigned char qt_resource_data[] = {
-  // /home/peer23peer/VisionSoilAnalyzer/src/VSAGUI/Icons/IHClogo.png
+  // /home/peer23peer/programmingspace/VSA/VisionSoilAnalyzer/src/VSAGUI/Icons/IHClogo.png
   0x0,0x0,0x5,0x5a,
   0x89,
   0x50,0x4e,0x47,0xd,0xa,0x1a,0xa,0x0,0x0,0x0,0xd,0x49,0x48,0x44,0x52,0x0,
