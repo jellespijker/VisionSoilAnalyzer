@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'vsagui.ui'
 **
-** Created by: Qt User Interface Compiler version 5.4.1
+** Created by: Qt User Interface Compiler version 5.5.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -57,6 +57,12 @@ public:
     QAction *actionRestore_Default;
     QAction *actionHardware_Settings;
     QAction *actionNeural_Net_Settings;
+    QAction *actionCheese_2;
+    QAction *actionExport_Particles;
+    QAction *actionRGB_2;
+    QAction *actionBinary;
+    QAction *actionImport_RGB_Snapshot;
+    QAction *actionExport_RGB_Snapshot;
     QWidget *centralWidget;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout;
@@ -90,6 +96,7 @@ public:
     QMenu *menuFile;
     QMenu *menuAbout;
     QMenu *menuColorspace;
+    QMenu *menuExport_Snaphost;
     QMenu *menuNeuralNet;
     QMenu *menuSettings;
     QToolBar *mainToolBar;
@@ -151,6 +158,18 @@ public:
         actionHardware_Settings->setObjectName(QStringLiteral("actionHardware_Settings"));
         actionNeural_Net_Settings = new QAction(VSAGUI);
         actionNeural_Net_Settings->setObjectName(QStringLiteral("actionNeural_Net_Settings"));
+        actionCheese_2 = new QAction(VSAGUI);
+        actionCheese_2->setObjectName(QStringLiteral("actionCheese_2"));
+        actionExport_Particles = new QAction(VSAGUI);
+        actionExport_Particles->setObjectName(QStringLiteral("actionExport_Particles"));
+        actionRGB_2 = new QAction(VSAGUI);
+        actionRGB_2->setObjectName(QStringLiteral("actionRGB_2"));
+        actionBinary = new QAction(VSAGUI);
+        actionBinary->setObjectName(QStringLiteral("actionBinary"));
+        actionImport_RGB_Snapshot = new QAction(VSAGUI);
+        actionImport_RGB_Snapshot->setObjectName(QStringLiteral("actionImport_RGB_Snapshot"));
+        actionExport_RGB_Snapshot = new QAction(VSAGUI);
+        actionExport_RGB_Snapshot->setObjectName(QStringLiteral("actionExport_RGB_Snapshot"));
         centralWidget = new QWidget(VSAGUI);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         verticalLayout = new QVBoxLayout(centralWidget);
@@ -329,13 +348,15 @@ public:
         VSAGUI->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(VSAGUI);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 1024, 28));
+        menuBar->setGeometry(QRect(0, 0, 1024, 25));
         menuFile = new QMenu(menuBar);
         menuFile->setObjectName(QStringLiteral("menuFile"));
         menuAbout = new QMenu(menuBar);
         menuAbout->setObjectName(QStringLiteral("menuAbout"));
         menuColorspace = new QMenu(menuAbout);
         menuColorspace->setObjectName(QStringLiteral("menuColorspace"));
+        menuExport_Snaphost = new QMenu(menuAbout);
+        menuExport_Snaphost->setObjectName(QStringLiteral("menuExport_Snaphost"));
         menuNeuralNet = new QMenu(menuBar);
         menuNeuralNet->setObjectName(QStringLiteral("menuNeuralNet"));
         menuSettings = new QMenu(menuBar);
@@ -359,12 +380,19 @@ public:
         menuFile->addAction(actionExit);
         menuAbout->addAction(menuColorspace->menuAction());
         menuAbout->addSeparator();
+        menuAbout->addAction(actionExport_Particles);
+        menuAbout->addAction(menuExport_Snaphost->menuAction());
+        menuAbout->addSeparator();
+        menuAbout->addAction(actionImport_RGB_Snapshot);
+        menuAbout->addAction(actionExport_RGB_Snapshot);
         menuColorspace->addAction(actionIntensity);
         menuColorspace->addAction(actionCIE_La_b);
         menuColorspace->addAction(actionRedness_Index);
         menuColorspace->addAction(actionRGB);
         menuColorspace->addSeparator();
         menuColorspace->addAction(actionSettings);
+        menuExport_Snaphost->addAction(actionRGB_2);
+        menuExport_Snaphost->addAction(actionBinary);
         menuNeuralNet->addAction(actionImport);
         menuNeuralNet->addAction(actionExport);
         menuNeuralNet->addSeparator();
@@ -377,6 +405,8 @@ public:
         menuSettings->addAction(actionSegmentation_Settings);
         menuSettings->addAction(actionHardware_Settings);
         menuSettings->addAction(actionNeural_Net_Settings);
+        menuSettings->addSeparator();
+        menuSettings->addAction(actionCheese_2);
 
         retranslateUi(VSAGUI);
         QObject::connect(actionExit, SIGNAL(triggered()), VSAGUI, SLOT(close()));
@@ -410,6 +440,12 @@ public:
         actionRestore_Default->setText(QApplication::translate("VSAGUI", "&Restore Default", 0));
         actionHardware_Settings->setText(QApplication::translate("VSAGUI", "&Hardware Settings", 0));
         actionNeural_Net_Settings->setText(QApplication::translate("VSAGUI", "&Neural Net Settings", 0));
+        actionCheese_2->setText(QApplication::translate("VSAGUI", "Cheese", 0));
+        actionExport_Particles->setText(QApplication::translate("VSAGUI", "Export Particles", 0));
+        actionRGB_2->setText(QApplication::translate("VSAGUI", "RGB", 0));
+        actionBinary->setText(QApplication::translate("VSAGUI", "Binary", 0));
+        actionImport_RGB_Snapshot->setText(QApplication::translate("VSAGUI", "Import RGB Snapshot", 0));
+        actionExport_RGB_Snapshot->setText(QApplication::translate("VSAGUI", "Export RGB Snapshot", 0));
         label_psd_desc->setText(QApplication::translate("VSAGUI", "Particle Size Distribution", 0));
         label_shape_desc->setText(QApplication::translate("VSAGUI", "Shape Classifaction", 0));
         label_color_desc->setText(QApplication::translate("VSAGUI", "CIE La*b* Color Description", 0));
@@ -423,6 +459,7 @@ public:
         menuFile->setTitle(QApplication::translate("VSAGUI", "Fi&le", 0));
         menuAbout->setTitle(QApplication::translate("VSAGUI", "Soil Sa&mple", 0));
         menuColorspace->setTitle(QApplication::translate("VSAGUI", "&Colorspace", 0));
+        menuExport_Snaphost->setTitle(QApplication::translate("VSAGUI", "Export Snaphost", 0));
         menuNeuralNet->setTitle(QApplication::translate("VSAGUI", "&NeuralNet", 0));
         menuSettings->setTitle(QApplication::translate("VSAGUI", "Settin&gs", 0));
     } // retranslateUi

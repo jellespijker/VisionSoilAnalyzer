@@ -25,6 +25,7 @@
 #include <QLabel>
 #include <QProgressBar>
 #include <QFileDialog>
+#include <qcustomplot.h>
 
 #include <opencv2/core.hpp>
 #include <opencv2/highgui.hpp>

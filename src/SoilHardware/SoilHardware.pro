@@ -8,6 +8,7 @@ QT       -= core gui
 
 TARGET = SoilHardware
 TEMPLATE = lib
+VERSION = 0.9.0
 
 DEFINES += SOILHARDWARE_LIBRARY
 QMAKE_CXXFLAGS += -std=c++11 -pthread
