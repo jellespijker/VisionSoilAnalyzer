@@ -23,7 +23,7 @@ INCLUDEPATH += /usr/local/include
 SOURCES += tst_vision_test.cpp
 DEFINES += SRCDIR=\\\"$$PWD/\\\"
 
-unix:!macx: LIBS += -L$$PWD/../../../build/install/ -lSoilVision
+unix:!macx: LIBS += -L$$PWD/../../../build/install -lSoilVision
 
 INCLUDEPATH += $$PWD/../../SoilVision
 DEPENDPATH += $$PWD/../../SoilVision
