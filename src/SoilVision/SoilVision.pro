@@ -12,6 +12,7 @@ TEMPLATE = lib
 VERSION = 0.9.0
 
 DEFINES += SOILVISION_LIBRARY
+unix:!macx: QMAKE_RPATHDIR += $$PWD/../../../build/install/
 
 SOURCES += \
     Segment.cpp \

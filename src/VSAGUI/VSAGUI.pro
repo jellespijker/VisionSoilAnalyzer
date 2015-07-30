@@ -13,6 +13,7 @@ RESOURCES     = VSA.qrc
 TARGET = VSAGUI
 TEMPLATE = app
 VERSION = 0.9.0
+unix:!macx: QMAKE_RPATHDIR += $$PWD/../../../build/install/
 
 SOURCES += main.cpp\
         vsagui.cpp \

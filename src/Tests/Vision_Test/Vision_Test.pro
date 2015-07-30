@@ -23,11 +23,6 @@ INCLUDEPATH += /usr/local/include
 SOURCES += tst_vision_test.cpp
 DEFINES += SRCDIR=\\\"$$PWD/\\\"
 
-unix:!macx: LIBS += -L$$PWD/../../../build/install -lSoilVision
-
-INCLUDEPATH += $$PWD/../../SoilVision
-DEPENDPATH += $$PWD/../../SoilVision
-
 unix {
     #target.files += 379_blobs.ppm
     target.files += 42_blobs.ppm
@@ -37,3 +32,9 @@ unix {
 
 DISTFILES += \
     379_blobs.ppm
+
+unix:!macx: QMAKE_RPATHDIR += $$PWD/../../../build/install/
+unix:!macx: LIBS += -L$$PWD/../../../build/install/ -lSoilVision
+
+INCLUDEPATH += $$PWD/../../SoilVision
+DEPENDPATH += $$PWD/../../SoilVision

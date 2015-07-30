@@ -12,6 +12,7 @@ VERSION = 0.9.0
 
 DEFINES += SOILMATH_LIBRARY
 QMAKE_CXXFLAGS += -std=c++11
+unix:!macx: QMAKE_RPATHDIR += $$PWD/../../../build/install/
 
 SOURCES += \
     NN.cpp \

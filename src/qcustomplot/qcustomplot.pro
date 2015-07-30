@@ -5,6 +5,7 @@
 QT += core gui
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 QMAKE_CXXFLAGS += -std=c++11
+unix:!macx: QMAKE_RPATHDIR += $$PWD/../../../build/install/
 
 DEFINES += QCUSTOMPLOT_COMPILE_LIBRARY
 TEMPLATE = lib

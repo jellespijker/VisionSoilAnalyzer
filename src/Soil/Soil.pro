@@ -6,6 +6,7 @@
 
 QT       -= core gui
 QMAKE_CXXFLAGS += -std=c++11
+unix:!macx: QMAKE_RPATHDIR += $$PWD/../../../build/install/
 
 TARGET = Soil
 TEMPLATE = lib
