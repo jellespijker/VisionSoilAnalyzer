@@ -33,7 +33,7 @@ void Sample::PrepImg(SoilSettings *settings) {
   // setup the settings
   if (settings == nullptr && Settings == nullptr) {
     Settings = new SoilSettings;
-  } else if (Settings != nullptr) {
+  } else {
     Settings = settings;
   }
 
@@ -44,7 +44,7 @@ void Sample::PrepImg(SoilSettings *settings) {
   uint32_t khBorder = kBorder / 2;
 
   // set up the progress signal
-  float currentProg = 0.;
+   float currentProg = 0.;
   prog_sig(currentProg, "Starting segmentation");
 
   uint32_t totalsteps = 5;
