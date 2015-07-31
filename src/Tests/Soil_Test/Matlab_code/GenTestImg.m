@@ -1,1 +1,0 @@
-% Generate a test img with certain statistics
