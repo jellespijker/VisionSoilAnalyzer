@@ -24,8 +24,7 @@ SOURCES += tst_vision_test.cpp
 DEFINES += SRCDIR=\\\"$$PWD/\\\"
 
 unix {
-    #target.files += 379_blobs.ppm
-    target.files += 42_blobs.ppm
+    target.files += 379_blobs.ppm
     target.path += $$OUT_PWD
     INSTALLS += target
 }

@@ -74,8 +74,6 @@ void SoilMath_Test::testCase_Sort() {
         uint16_t sArr[10] = {10, 2, 5, 1, 7, 10, 4, 10, 4, 6};
         SoilMath::Sort::QuickSort<uint16_t>(sArr, 10);
     }
-
-
 }
 
 void SoilMath_Test::testCase_Sort_withKey() {

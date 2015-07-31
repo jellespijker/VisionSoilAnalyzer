@@ -61,10 +61,12 @@ public:
   /*! Enumerator to indicate how the pixel correlate between each other in a
    * blob*/
   enum Connected {
-    Four = 2, /*!< Enum Four connected, relation between Center, North, East, South
-             and West*/
-    Eight = 4 /*!< Enum Eight connected, relation between Center, North, NorthEast,
-             East, SouthEast, South, SouthWest, West and NorthWest */
+    Four =
+        2, /*!< Enum Four connected, relation between Center, North, East, South
+          and West*/
+    Eight =
+        4 /*!< Enum Eight connected, relation between Center, North, NorthEast,
+         East, SouthEast, South, SouthWest, West and NorthWest */
   };
 
   /*!< Enumerator which indicate which Segmentation technique should be used */
@@ -124,7 +126,14 @@ private:
   void SetBorder(uchar *P, uchar setValue);
   void FloodFill(uchar *O, uchar *P, uint16_t x, uint16_t y, uchar fillValue,
                  uchar OldValue);
-  void makeConsecutive(uint16_t LastLabelUsed, uint16_t *tempLUT,
-                       uint16_t *LUT_newVal);
+  void MakeConsecutive(uint16_t *valueArr, uint32_t noElem, uint16_t &maxlabel);
+  void MakeConsecutive(uint16_t *valueArr, uint16_t *keyArr, uint16_t noElem,
+                       uint16_t &maxlabel);
+  void SortAdjacencyList(std::vector<std::vector<uint16_t>> &adj);
+  void ConnectedBlobs(uchar *O, uint16_t *P,
+                      std::vector<std::vector<uint16_t>> &adj, uint32_t nCols,
+                      uint32_t nRows, Connected conn);
+  void InvertAdjacencyList(std::vector<std::vector<uint16_t>> &adj,
+                           std::vector<std::vector<uint16_t>> &adjInv);
 };
 }

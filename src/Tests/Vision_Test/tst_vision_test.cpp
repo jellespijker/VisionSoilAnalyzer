@@ -70,20 +70,13 @@ void Vision_Test::TestCase_SingleComplexLabelBlob() {
 
 void Vision_Test::TestCase_LabelBlobs()
 {
-    cv::Mat testImg = cv::imread("42_blobs.ppm", 0);
+    cv::Mat testImg = cv::imread("379_blobs.ppm", 0);
 
     Vision::Segment Segmenter(testImg);
-    Segmenter.ConvertToBW(Vision::Segment::Bright);
+    Segmenter.ConvertToBW(Vision::Segment::Dark);
     Segmenter.GetBlobList(true);
-    std::vector<int> params;
-    params.push_back(CV_IMWRITE_PXM_BINARY);
-    params.push_back(0);
-    cv::Mat temp(Segmenter.LabelledImg.rows, Segmenter.LabelledImg.cols, CV_8UC1);
-    Segmenter.LabelledImg.convertTo(temp, CV_8UC1);
-    cv::imwrite("L.pgm", temp, params);
-    SHOW_DEBUG_IMG(Segmenter.LabelledImg, uint16_t, uint16_t(-1), "segment labelblobs", true);
     uint16_t totalNoOfBlobs = Segmenter.MaxLabel;
-    QCOMPARE(totalNoOfBlobs, uint16_t(42));
+    QCOMPARE(totalNoOfBlobs, uint16_t(NO_OF_BLOBS));
 }
 
 QTEST_APPLESS_MAIN(Vision_Test)
