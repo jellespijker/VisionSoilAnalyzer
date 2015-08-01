@@ -118,6 +118,7 @@ void VSAGUI::on_actionSave_triggered() {
   QString fn = QFileDialog::getSaveFileName(
       this, tr("Save Soil Sample"), tr("/home/"),
       tr("Soil Samples (*.VSS);; Soil Particles (*.VPS);; All Files (*)"));
+  this->raise();
   if (!fn.isEmpty()) {
     if (!fn.contains(tr(".VSS"))) {
       fn.append(tr(".VSS"));
@@ -131,6 +132,7 @@ void VSAGUI::on_actionLoad_triggered() {
   QString fn = QFileDialog::getOpenFileName(
       this, tr("Load Soil Sample"), tr("/home/"),
       tr("Soil Samples (*.VSS);; Soil Particles (*.VPS);; All Files (*)"));
+  this->raise();
   if (!fn.isEmpty() && fn.contains(tr("VSS"))) {
     delete SoilSample;
     SoilSample = new SoilAnalyzer::Sample;
@@ -159,6 +161,7 @@ void VSAGUI::on_actionImport_triggered() {
   QString fn = QFileDialog::getOpenFileName(
       this, tr("Import Neural Network"), tr("/home/"),
       tr("Neural Net (*.NN);;All Files (*)"));
+  this->raise();
   if (!fn.isEmpty()) {
     std::string filename = fn.toStdString();
     NeuralNet->LoadState(filename);
@@ -169,6 +172,7 @@ void VSAGUI::on_actionExport_triggered() {
   QString fn = QFileDialog::getSaveFileName(
       this, tr("Export Neural Network"), tr("/home/"),
       tr("Neural Net (*.NN);;All Files (*)"));
+  this->raise();
   if (!fn.isEmpty()) {
     if (!fn.contains(tr(".NN"))) {
       fn.append(tr(".NN"));
@@ -181,12 +185,14 @@ void VSAGUI::on_actionExport_triggered() {
 void VSAGUI::on_actionSegmentation_Settings_triggered() {
   settingWindow = new VisionSettings(0, sSettings);
   settingWindow->exec();
+  this->raise();
 }
 
 void VSAGUI::on_actionSave_Settings_triggered() {
   QString fn =
       QFileDialog::getSaveFileName(this, tr("Save Settings"), tr("/home/"),
                                    tr("Settings (*.ini);;All Files (*)"));
+  this->raise();
   if (!fn.isEmpty()) {
     if (!fn.contains(tr(".ini"))) {
       fn.append(tr(".ini"));
@@ -200,6 +206,7 @@ void VSAGUI::on_actionLoad_Settings_triggered() {
   QString fn =
       QFileDialog::getOpenFileName(this, tr("Load Settings"), tr("/home/"),
                                    tr("Settings (*.ini);;All Files (*)"));
+  this->raise();
   if (!fn.isEmpty()) {
     std::string filename = fn.toStdString();
     sSettings->LoadSettings(filename);
@@ -231,6 +238,7 @@ void VSAGUI::on_OffsetSlider_sliderReleased() {}
 void VSAGUI::on_actionHardware_Settings_triggered() {
   hsetttingWindow = new HardwareSettings(0, sSettings);
   hsetttingWindow->exec();
+  this->raise();
 }
 
 /*!
@@ -251,6 +259,7 @@ void VSAGUI::on_actionCheese_2_triggered() {
     }
     i++;
   });
+  this->raise();
 }
 
 /*!
@@ -266,6 +275,7 @@ void VSAGUI::on_actionImport_RGB_Snapshot_triggered() {
   QString fn = QFileDialog::getOpenFileName(
       this, tr("Load Image"), tr("/home/"),
       tr("Image (*.jpg *.JPG *.png *.PNG *.gif *.GIF *.bmp *.BMP *.ppm *.PPM"));
+  this->raise();
   if (!fn.isEmpty()) {
     std::string filename = fn.toStdString();
     SoilSample->OriginalImage = cv::imread(filename, 1);
@@ -296,6 +306,7 @@ void VSAGUI::on_actionExport_RGB_Snapshot_triggered()
   QString fn =
       QFileDialog::getSaveFileName(this, tr("Load Image"), tr("/home/"),
                                    tr("PPM Image (*.ppm *.PPM"));
+  this->raise();
   if (!fn.isEmpty()) {
     if (!fn.contains(tr(".ppm"))) {
       fn.append(tr(".ppm"));
@@ -304,4 +315,13 @@ void VSAGUI::on_actionExport_RGB_Snapshot_triggered()
     cv::imwrite(filename, SoilSample->OriginalImage);
   }
 
+}
+
+/*!
+ * \brief VSAGUI::on_actionLearn_triggered
+ */
+void VSAGUI::on_actionLearn_triggered()
+{
+  teacherWindow = new NNteacher(0);
+  teacherWindow->show();
 }

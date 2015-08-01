@@ -38,6 +38,7 @@
 #include "opencvqt.h"
 #include "visionsettings.h"
 #include "hardwaresettings.h"
+#include "nnteacher.h"
 
 #include "Hardware.h"
 #include "SoilMath.h"
@@ -98,11 +99,14 @@ private slots:
 
   void on_actionExport_RGB_Snapshot_triggered();
 
+  void on_actionLearn_triggered();
+
 private:
   Ui::VSAGUI *ui;
   QErrorMessage *errorMessageDialog;
   VisionSettings *settingWindow;
   HardwareSettings *hsetttingWindow;
+  NNteacher *teacherWindow;
 
   SoilAnalyzer::SoilSettings *sSettings;
 

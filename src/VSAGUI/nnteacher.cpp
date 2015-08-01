@@ -5,13 +5,17 @@
  * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015
  */
 
-#include "vsagui.h"
-#include <QApplication>
+#include "nnteacher.h"
+#include "ui_nnteacher.h"
 
-int main(int argc, char *argv[]) {
-  QApplication a(argc, argv);
-  VSAGUI w;
-  w.showMaximized();
+NNteacher::NNteacher(QWidget *parent) :
+  QMainWindow(parent),
+  ui(new Ui::NNteacher)
+{
+  ui->setupUi(this);
+}
 
-  return a.exec();
+NNteacher::~NNteacher()
+{
+  delete ui;
 }

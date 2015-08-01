@@ -5,13 +5,25 @@
  * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015
  */
 
-#include "vsagui.h"
-#include <QApplication>
+#ifndef NNTEACHER_H
+#define NNTEACHER_H
 
-int main(int argc, char *argv[]) {
-  QApplication a(argc, argv);
-  VSAGUI w;
-  w.showMaximized();
+#include <QMainWindow>
 
-  return a.exec();
+namespace Ui {
+  class NNteacher;
 }
+
+class NNteacher : public QMainWindow
+{
+  Q_OBJECT
+
+public:
+  explicit NNteacher(QWidget *parent = 0);
+  ~NNteacher();
+
+private:
+  Ui::NNteacher *ui;
+};
+
+#endif // NNTEACHER_H

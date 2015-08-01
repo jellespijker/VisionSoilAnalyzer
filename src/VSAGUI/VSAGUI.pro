@@ -18,16 +18,19 @@ unix:!macx: QMAKE_RPATHDIR += $$PWD/../../../build/install/
 SOURCES += main.cpp\
         vsagui.cpp \
     visionsettings.cpp \
-    hardwaresettings.cpp
+    hardwaresettings.cpp \
+    nnteacher.cpp
 
 HEADERS  += vsagui.h \
     opencvqt.h \
     visionsettings.h \
-    hardwaresettings.h
+    hardwaresettings.h \
+    nnteacher.h
 
 FORMS    += vsagui.ui \
     visionsettings.ui \
-    hardwaresettings.ui
+    hardwaresettings.ui \
+    nnteacher.ui
 
 #opencv
 LIBS += -L/usr/local/lib -lopencv_core -lopencv_highgui -lopencv_imgcodecs
