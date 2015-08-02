@@ -89,4 +89,8 @@ static inline long float2intRound(double d) {
   d += 6755399441055744.0;
   return reinterpret_cast<int &>(d);
 }
+
+static inline float calcVolume(uint32_t A) {
+  return (pow(static_cast<float>(A), 1.5)) / 10.6347f;
+}
 }
