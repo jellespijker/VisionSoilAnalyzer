@@ -12,7 +12,10 @@ cd build
 mkdir -p $DEBUG $INSTALL $RELEASE $TESTS $INSTALL/Images $INSTALL/NeuralNet $INSTALL/Settings
 
 current_dir=$(pwd)
-export LD_LIBRARY_PATH=$current_dir/$INSTALL:${LD_LIBRARY_PATH}
+echo "$current_dir/$INSTALL" >> VSAGUI.conf
+sudo chown root:root VSAGUI.conf
+sudo mv VSAGUI.conf /etc/ld.so.conf.d/
+sudo ldconfig
 
 cd ../src/
 for d in */ ; do
