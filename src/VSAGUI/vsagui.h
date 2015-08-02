@@ -19,6 +19,7 @@
 #include <QtGui>
 #include <QWidget>
 #include <QErrorMessage>
+#include <QMessageBox>
 #include <QGraphicsScene>
 #include <QGraphicsPixmapItem>
 #include <QPixmap>
@@ -130,6 +131,8 @@ private:
   std::vector<std::string> webCams;
   void SetMatToMainView(cv::Mat &img);
   void CreateNewSoilSample();
+
+  void makeSnapShot(Hardware::Microscope &microscope);
 };
 
 #endif // VSAGUI_H

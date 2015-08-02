@@ -54,15 +54,14 @@ VSAGUI::VSAGUI(QWidget *parent) : QMainWindow(parent), ui(new Ui::VSAGUI) {
       [&](int &prog) { this->progressBar->setValue(prog); });
 
   try {
-    if (microscope.IsOpened()) {
-      microscope.GetHDRFrame(SoilSample->OriginalImage, sSettings->HDRframes);
-    }
+    makeSnapShot(microscope);
   } catch (Hardware::Exception::MicroscopeNotFoundException &em) {
     try {
       errorMessageDialog->showMessage(
           tr("Microscope not found switching to first default Cam!"));
       if (microscope.AvailableCams().size() > 0) {
         microscope.openCam(0);
+        makeSnapShot(microscope);
       }
     } catch (Hardware::Exception::MicroscopeNotFoundException &em2) {
       // display error dialog no cam found and show default test image
@@ -75,7 +74,8 @@ VSAGUI::VSAGUI(QWidget *parent) : QMainWindow(parent), ui(new Ui::VSAGUI) {
     try {
       errorMessageDialog->showMessage(
           tr("HDR Grab failed switching to normal grab!"));
-      microscope.GetFrame(SoilSample->OriginalImage);
+      sSettings->useHDR = false;
+      makeSnapShot(microscope);
     } catch (Hardware::Exception::CouldNotGrabImageException &ei2) {
       // show default test image and error dialog
       errorMessageDialog->showMessage(
@@ -105,7 +105,7 @@ void VSAGUI::on_SnapshotButton_clicked() {
   });
   progress_sig = microscope.connect_Progress(
       [&](int &prog) { this->progressBar->setValue(prog); });
-  microscope.GetHDRFrame(SoilSample->OriginalImage, sSettings->HDRframes);
+  makeSnapShot(microscope);
 }
 
 void VSAGUI::on_vision_update(float prog, string statusText) {
@@ -324,4 +324,22 @@ void VSAGUI::on_actionLearn_triggered()
 {
   teacherWindow = new NNteacher(0);
   teacherWindow->show();
+}
+
+void VSAGUI::makeSnapShot(Hardware::Microscope &microscope) {
+  if (microscope.IsOpened()) {
+      if (sSettings->useHDR) {
+          microscope.GetHDRFrame(SoilSample->OriginalImage, sSettings->HDRframes);
+          if (sSettings->useBacklightProjection) {
+              QMessageBox::information(0, "Backlight shot", "Activate your backlight and turn of the front light!");
+              microscope.GetFrame(SoilSample->ProjectedImage);
+            }
+        } else {
+          microscope.GetFrame(SoilSample->OriginalImage);
+          if (sSettings->useBacklightProjection) {
+              QMessageBox::information(0, "Backlight shot", "Activate your backlight and turn of the front light!");
+              microscope.GetFrame(SoilSample->ProjectedImage);
+            }
+        }
+  }
 }

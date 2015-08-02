@@ -67,20 +67,29 @@ Microscope::~Microscope() { captureDevice.~VideoCapture(); }
 \param dst a cv::Mat construct which stores the retrieved image
 */
 void Microscope::GetFrame(cv::Mat &dst) {
+  prog_sig(0);
+
   // Work around for crappy cam retrival of the BBB
   if (arch.find("armv7l") != string::npos) {
     if (!captureDevice.grab()) {
       throw Exception::CouldNotGrabImageException();
     }
+    prog_sig(25);
     sleep(FrameDelayTrigger); // Needed otherwise scrambled picture
+    prog_sig(50);
     if (!captureDevice.grab()) {
       throw Exception::CouldNotGrabImageException();
     }
+    prog_sig(75);
     captureDevice.retrieve(dst);
+    prog_sig(100);
+    fin_sig();
   } else {
     if (!captureDevice.read(dst)) {
       throw Exception::CouldNotGrabImageException();
     }
+    prog_sig(100);
+    fin_sig();
   }
 }
 

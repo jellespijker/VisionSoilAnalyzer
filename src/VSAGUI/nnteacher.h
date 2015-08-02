@@ -9,6 +9,7 @@
 #define NNTEACHER_H
 
 #include <QMainWindow>
+#include "SoilMath.h"
 
 namespace Ui {
   class NNteacher;

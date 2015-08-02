@@ -18,3 +18,4 @@
 #include "GA.h"
 #include "CommonOperations.h"
 #include "SoilMathTypes.h"
+#include "nnlearndataset.h"

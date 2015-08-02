@@ -77,7 +77,8 @@ public:
     */
   ~Sample();
 
-  cv::Mat OriginalImage;       /**< The original image*/
+  cv::Mat OriginalImage;       /**< The original image with light projected from the front*/
+  cv::Mat ProjectedImage;      /**< The original image with light projected from behind*/
   vector<Particle> Population; /**< a Vector with original particles*/
   AnalysisResults Results;     /**< The analysis results*/
 
@@ -125,6 +126,7 @@ private:
   void serialize(Archive &ar, const unsigned int version __attribute__((unused))) {
     ar &BOOST_SERIALIZATION_BASE_OBJECT_NVP(Soil);
     ar &OriginalImage;
+    ar &ProjectedImage;
     ar &Population;
     ar &Results;
     ar &Settings;
