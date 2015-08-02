@@ -34,6 +34,10 @@ private slots:
 
   void on_cb_enableRainbow_clicked(bool checked);
 
+  void on_cb_useHDR_toggled(bool checked);
+
+  void on_cb_useBacklightProjection_toggled(bool checked);
+
 private:
   Ui::HardwareSettings *ui;
   SoilAnalyzer::SoilSettings *soilSetting = nullptr;

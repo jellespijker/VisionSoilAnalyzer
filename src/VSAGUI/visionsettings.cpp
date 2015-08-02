@@ -122,7 +122,7 @@ void VisionSettings::on_cb_fillHoles_stateChanged(int arg1) {
 }
 
 void VisionSettings::on_sb_sigmaFactor_editingFinished() {
-  soilSetting->sigmaFactor = static_cast<float>(ui->sb_blurMask->value());
+  soilSetting->sigmaFactor = static_cast<float>(ui->sb_sigmaFactor->value());
 }
 
 void VisionSettings::on_rb_useOpen_toggled(bool checked) {

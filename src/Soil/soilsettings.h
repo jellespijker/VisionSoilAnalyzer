@@ -37,14 +37,14 @@ public:
   void LoadSettings(std::string filename);
 
   bool useAdaptiveContrast =
-      true; /**< Should adaptive contrast stretch be used default is true*/
+      false; /**< Should adaptive contrast stretch be used default is true*/
   uint32_t adaptContrastKernelSize =
       9; /**< The size of the adaptive contrast kernelsize*/
   float adaptContrastKernelFactor = 1.; /**< the factor with which to multiply
                                            the effect of the adaptive contrast
                                            stretch*/
 
-  bool useBlur = true; /**< Should the mediaan blur be used during analsyis*/
+  bool useBlur = false; /**< Should the mediaan blur be used during analsyis*/
   uint32_t blurKernelSize = 5; /**< the median blurkernel*/
 
   Vision::Segment::TypeOfObjects typeOfObjectsSegmented =
@@ -69,7 +69,8 @@ public:
   bool encInv = false;    /**< invert the values gained form the encoder*/
   bool enableRainbow =
       true; /**< run a rainbow loop on the RGB encoder during analysis*/
-
+  bool useBacklightProjection = true;
+  bool useHDR = false;
 private:
   friend class boost::serialization::access;
   template <class Archive>
@@ -90,6 +91,8 @@ private:
     ar &BOOST_SERIALIZATION_NVP(lightLevel);
     ar &BOOST_SERIALIZATION_NVP(encInv);
     ar &BOOST_SERIALIZATION_NVP(enableRainbow);
+    ar &BOOST_SERIALIZATION_NVP(useBacklightProjection);
+    ar &BOOST_SERIALIZATION_NVP(useHDR);
   }
 };
 }

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>600</width>
-    <height>200</height>
+    <height>260</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,7 +21,7 @@
    <property name="geometry">
     <rect>
      <x>490</x>
-     <y>160</y>
+     <y>220</y>
      <width>91</width>
      <height>32</height>
     </rect>
@@ -140,7 +140,7 @@
      <x>10</x>
      <y>10</y>
      <width>161</width>
-     <height>171</height>
+     <height>250</height>
     </rect>
    </property>
    <property name="title">
@@ -151,11 +151,21 @@
      <rect>
       <x>10</x>
       <y>20</y>
-      <width>141</width>
-      <height>139</height>
+      <width>142</width>
+      <height>221</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QCheckBox" name="cb_useHDR">
+       <property name="text">
+        <string>Use HDR</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
@@ -182,6 +192,13 @@
       </widget>
      </item>
      <item>
+      <widget class="QCheckBox" name="cb_useBacklightProjection">
+       <property name="text">
+        <string>use Backlight</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <layout class="QHBoxLayout" name="horizontalLayout_3">
        <item>
         <widget class="QLabel" name="label_ll">
@@ -201,6 +218,13 @@
         </widget>
        </item>
       </layout>
+     </item>
+     <item>
+      <widget class="Line" name="line">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
      </item>
      <item>
       <widget class="QCheckBox" name="cb_encoderInv">
@@ -256,6 +280,38 @@
     <hint type="destinationlabel">
      <x>286</x>
      <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cb_useHDR</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>sb_HDRframes</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>90</x>
+     <y>42</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>134</x>
+     <y>79</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cb_useHDR</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>label_11</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>90</x>
+     <y>42</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>62</x>
+     <y>79</y>
     </hint>
    </hints>
   </connection>

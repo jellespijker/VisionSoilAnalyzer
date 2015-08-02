@@ -12,7 +12,7 @@ RESOURCES     = VSA.qrc
 
 TARGET = VSAGUI
 TEMPLATE = app
-VERSION = 0.9.0
+VERSION = 0.9.1
 unix:!macx: QMAKE_RPATHDIR += $$PWD/../../../build/install/
 
 SOURCES += main.cpp\
@@ -98,8 +98,8 @@ INSTALLS += bIMGtarget
 INItarget.path += $${OUT_PWD}/Settings
 INItarget.files += $${PWD}/Settings/*
 INSTALLS += INItarget
-bINItarget.path += $PWD/../../build/install/Settings
-bINItarget.files += $PWD/Settings/*
+bINItarget.path += $$PWD/../../build/install/Settings
+bINItarget.files += $$PWD/Settings/*
 INSTALLS += bINItarget
 
 #MainProg
