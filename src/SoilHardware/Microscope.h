@@ -10,52 +10,67 @@ Interaction with the USB 5 MP microscope
 */
 
 #pragma once
-#define MICROSCOPE_VERSION 1 /*!< Version of the class*/
 
-#define MICROSCOPE_NAME "USB Microscope"
-#define MIN_BRIGHTNESS -64
-#define MAX_BRIGHTNESS 64
-#define MIN_CONTRAST 0
-#define MAX_CONTRAST 64
-#define MIN_SATURATION 0
-#define MAX_SATURATION 128
-#define MIN_HUE -40
-#define MAX_HUE 40
-#define MIN_GAMMA 40
-#define MAX_GAMMA 500
-#define MIN_SHARPNESS 1
-#define MAX_SHARPNESS 25
-
-#include "stdint.h"
+#include <stdint.h>
 #include <vector>
 #include <string>
+#include <utility>
+
 #include <sys/stat.h>
 #include <sys/utsname.h>
+#include <sys/ioctl.h>
+#include <fstream>
+#include <fcntl.h>
+
+#include <linux/videodev2.h>
+#include <linux/v4l2-controls.h>
+#include <linux/v4l2-common.h>
 
 #include <boost/signals2.hpp>
 #include <boost/bind.hpp>
-
-#include "USB.h"
+#include <boost/filesystem.hpp>
 
 #include <opencv2/photo.hpp>
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/opencv.hpp>
-#include <opencv/highgui.h>
-#include <opencv2/videoio.hpp>
+#include <opencv2/core.hpp>
 
-#include <boost/filesystem.hpp>
-
-#include <fstream>
+#include "MicroscopeNotFoundException.h"
+#include "CouldNotGrabImageException.h"
 
 namespace Hardware {
 class Microscope {
+private:
+  struct v4l2_queryctrl queryctrl;
+  struct v4l2_querymenu querymenu;
+  struct v4l2_control controlctrl;
+  struct v4l2_format format;
+
 public:
-  /*! Struct that represent the Resolution that is used */
-  struct Resolution {
-  public:
-    uint16_t Width;  /*!< Width of the image*/
-    uint16_t Height; /*!< Height of the image*/
+  enum Arch { ARM, X64 };
+
+  enum PixelFormat { YUYV, MJPG };
+
+  struct Resolution_t {
+    uint16_t Width = 2048;
+    uint16_t Height = 1536;
   };
+
+  struct Cam_t {
+    std::string Name;
+    uint32_t ID;
+    std::vector<std::pair<PixelFormat, Resolution_t>> Resolutions;
+    uint32_t delaytrigger = 1;
+    std::pair<PixelFormat, Resolution_t> *SelectedResolution = nullptr;
+    std::vector<std::pair<string, int>> Controls;
+    std::vector<std::pair<string, int>> Menus;
+    std::vector<v4l2_queryctrl> ctrls;
+    std::vector<v4l2_querymenu> menus;
+  };
+
+  std::vector<Cam_t> AvailableCams;
+  Cam_t *SelectedCam = nullptr;
+  Arch RunEnv;
 
   typedef boost::signals2::signal<void()> Finished_t;
   typedef boost::signals2::signal<void(int)> Progress_t;
@@ -65,38 +80,31 @@ public:
   boost::signals2::connection
   connect_Progress(const Progress_t::slot_type &subscriber);
 
-  uint8_t FrameDelayTrigger; /*!< Delay in seconds */
-  cv::Mat LastFrame;         /*!< Last grabbed and processed frame */
-  Resolution Dimensions;     /*!< Dimensions of the frame */
+  Microscope();
+  Microscope(const Microscope &rhs);
 
-  Microscope(uint8_t frameDelayTrigger = 3,
-             Resolution dimensions = Resolution{2048, 1536},
-             bool firstdefault = true);
   ~Microscope();
 
-  static std::vector<std::string> AvailableCams();
-
-  void GetFrame(cv::Mat &dst);
-  void GetHDRFrame(cv::Mat &dst, uint32_t noframes = 5);
+  Microscope operator=(Microscope const &rhs);
 
   bool IsOpened();
-  void Release();
+  void openCam(Cam_t *cam);
 
-  void openCam(int dev);
+  void GetFrame(cv::Mat &dst);
+  void GetHDRFrame(cv::Mat &dst, uint32_t noframes = 3);
 
-private:
   Finished_t fin_sig;
   Progress_t prog_sig;
-
-  std::string arch;
-
-  cv::VideoCapture
-      captureDevice; /*!< An openCV instance of the capture device*/
-  void StartupSeq(bool firstdefault);
+private:
+  cv::VideoCapture *cap = nullptr;
 
   std::vector<cv::Mat> HDRframes;
-  std::vector<float> times;
 
-  static bool exist(const std::string &name);
+  std::vector<Cam_t> GetAvailableCams();
+  Arch GetCurrentArchitecture();
+  int fd;
+  void enumerate_menu(Cam_t &currentCam);
+
+
 };
 }
