@@ -14,6 +14,20 @@ Microscope::Microscope() {
   AvailableCams = GetAvailableCams();
 }
 
+Microscope::Microscope(const Microscope &rhs) {
+  std::copy(rhs.AvailableCams.begin(), rhs.AvailableCams.end(),
+            this->AvailableCams.begin());
+  this->RunEnv = rhs.RunEnv;
+  this->SelectedCam = rhs.SelectedCam;
+  this->cap = rhs.cap;
+  this->controlctrl = rhs.controlctrl;
+  this->fd = rhs.fd;
+  this->format = rhs.format;
+  this->HDRframes = rhs.HDRframes;
+  this->queryctrl = rhs.queryctrl;
+  this->querymenu = rhs.querymenu;
+}
+
 Microscope::~Microscope() { delete cap; }
 
 Microscope::Arch Microscope::GetCurrentArchitecture() {
@@ -52,8 +66,8 @@ std::vector<Microscope::Cam_t> Microscope::GetAvailableCams() {
           std::atoi(itr->path().string().substr(28, std::string::npos).c_str());
 
       // Open Cam
-      string camdev = path_ss_dev + std::to_string(currentCam.ID);
-      if ((fd = open(camdev.c_str(), O_RDWR)) == -1) {
+      currentCam.devString = path_ss_dev + std::to_string(currentCam.ID);
+      if ((fd = open(currentCam.devString.c_str(), O_RDWR)) == -1) {
         throw Exception::MicroscopeException(EXCEPTION_NOCAMS,
                                              EXCEPTION_NOCAMS_NR);
       }
@@ -195,22 +209,75 @@ void Microscope::enumerate_menu(Cam_t &currentCam) {
   }
 }
 
-bool Microscope::IsOpened() { cap->isOpened(); }
+bool Microscope::IsOpened() {
+  if (cap == nullptr) {
+    return false;
+  } else {
+    return cap->isOpened();
+  }
+}
 
-void Microscope::openCam(Cam_t *cam) {
-  if (cap != nullptr) {
-    cap->release();
-    delete cap;
+bool Microscope::openCam(Cam_t *cam) {
+  bool found = false;
+  for (uint32_t i = 0; i < AvailableCams.size(); i++) {
+    if (AvailableCams[i] == *cam) {
+      found = true;
+      break;
+    }
   }
-  SelectedCam = cam;
-  cap = new cv::VideoCapture(SelectedCam->ID);
-  if (!cap->isOpened()) {
-    throw Exception::MicroscopeException(EXCEPTION_NOCAMS, EXCEPTION_NOCAMS_NR);
+  if (found) {
+    if (cap != nullptr) {
+      cap->release();
+      delete cap;
+    }
+    SelectedCam = cam;
+    cap = new cv::VideoCapture(SelectedCam->ID);
+    if (!cap->isOpened()) {
+      throw Exception::MicroscopeException(EXCEPTION_NOCAMS,
+                                           EXCEPTION_NOCAMS_NR);
+    }
+    cap->set(CV_CAP_PROP_FRAME_WIDTH,
+             SelectedCam->SelectedResolution->second.Width);
+    cap->set(CV_CAP_PROP_FRAME_HEIGHT,
+             SelectedCam->SelectedResolution->second.Height);
+    return true;
+  } else {
+    return false;
   }
-  cap->set(CV_CAP_PROP_FRAME_WIDTH,
-           SelectedCam->SelectedResolution->second.Width);
-  cap->set(CV_CAP_PROP_FRAME_HEIGHT,
-           SelectedCam->SelectedResolution->second.Height);
+}
+
+bool Microscope::openCam(std::string &cam) {
+  bool found = false;
+  Cam_t *camP;
+  for (uint32_t i = 0; i < AvailableCams.size(); i++) {
+    if (cam.compare(AvailableCams[i].Name) == 0) {
+      camP = &AvailableCams[i];
+      found = true;
+      break;
+    }
+  }
+  if (found) {
+    return openCam(camP);
+  } else {
+    return false;
+  }
+}
+
+bool Microscope::openCam(int &cam) {
+  bool found = false;
+  Cam_t *camP;
+  for (uint32_t i = 0; i < AvailableCams.size(); i++) {
+    if (cam == AvailableCams[i].ID) {
+      camP = &AvailableCams[i];
+      found = true;
+      break;
+    }
+  }
+  if (found) {
+    return openCam(camP);
+  } else {
+    return false;
+  }
 }
 
 void Microscope::GetFrame(cv::Mat &dst) {
@@ -247,8 +314,7 @@ void Microscope::GetHDRFrame(cv::Mat &dst, uint32_t noframes) {
   cv::Mat currentImg;
   // take the shots at different brightness levels
   for (uint32_t i = 1; i <= noframes; i++) {
-    cap->set(CV_CAP_PROP_BRIGHTNESS,
-                      (minBr + (i * brightnessStep)));
+    cap->set(CV_CAP_PROP_BRIGHTNESS, (minBr + (i * brightnessStep)));
     GetFrame(currentImg);
     HDRframes.push_back(currentImg);
     prog_sig(i * progStep);
@@ -267,16 +333,16 @@ void Microscope::GetHDRFrame(cv::Mat &dst, uint32_t noframes) {
   prog_sig(85);
   fusion.convertTo(dst, CV_8UC1);
   prog_sig(100);
-  //fin_sig();
+  // fin_sig();
 }
 
- boost::signals2::connection
- Microscope::connect_Finished(const Finished_t::slot_type &subscriber) {
+boost::signals2::connection
+Microscope::connect_Finished(const Finished_t::slot_type &subscriber) {
   return fin_sig.connect(subscriber);
 }
 
- boost::signals2::connection
- Microscope::connect_Progress(const Progress_t::slot_type &subscriber) {
+boost::signals2::connection
+Microscope::connect_Progress(const Progress_t::slot_type &subscriber) {
   return prog_sig.connect(subscriber);
 }
 }

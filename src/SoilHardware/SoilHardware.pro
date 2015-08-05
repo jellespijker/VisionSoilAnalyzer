@@ -8,7 +8,7 @@ QT       -= core gui
 
 TARGET = SoilHardware
 TEMPLATE = lib
-VERSION = 0.9.0
+VERSION = 0.9.1
 
 DEFINES += SOILHARDWARE_LIBRARY
 QMAKE_CXXFLAGS += -std=c++11 -pthread
@@ -52,7 +52,7 @@ INCLUDEPATH += /usr/local/include
 #boost
 DEFINES += BOOST_ALL_DYN_LINK
 INCLUDEPATH += /usr/include/boost
-LIBS += -L/usr/lib/x86_64-linux-gnu/ -lboost_filesystem
+LIBS += -L/usr/lib/x86_64-linux-gnu/ -lboost_filesystem -lboost_system
 
 unix {
     target.path = $PWD/../../../build/install

@@ -26,7 +26,8 @@
 #include <QLabel>
 #include <QProgressBar>
 #include <QFileDialog>
-#include <qcustomplot.h>
+#include <QAction>
+#include <QSignalMapper>
 
 #include <opencv2/core.hpp>
 #include <opencv2/highgui.hpp>
@@ -41,11 +42,13 @@
 #include "hardwaresettings.h"
 #include "nnteacher.h"
 
+#include <qcustomplot.h>
 #include "Hardware.h"
 #include "SoilMath.h"
 #include "Vision.h"
 #include "VisionDebug.h"
 #include "VisionSoil.h"
+#include "VisionDebug.h"
 
 class QErrorMessage;
 
@@ -86,11 +89,7 @@ private slots:
 
   void on_SegmentButton_clicked();
 
-  void on_verticalSlider_sliderReleased();
-
   void on_OffsetSlider_valueChanged(int value);
-
-  void on_OffsetSlider_sliderReleased();
 
   void on_actionHardware_Settings_triggered();
 
@@ -102,12 +101,19 @@ private slots:
 
   void on_actionLearn_triggered();
 
+  void on_actionExport_Particles_triggered();
+
+  void on_OffsetSlider_sliderReleased();
+
+  void selectCam(int cam);
+
 private:
   Ui::VSAGUI *ui;
   QErrorMessage *errorMessageDialog;
   VisionSettings *settingWindow;
   HardwareSettings *hsetttingWindow;
   NNteacher *teacherWindow;
+  Hardware::Microscope *microscope;
 
   SoilAnalyzer::SoilSettings *sSettings;
 
@@ -123,6 +129,8 @@ private:
   cv::Mat *OrigImg;
   QProgressBar *progressBar = nullptr;
   QLabel *statusLabel = nullptr;
+  QSignalMapper *mapper = nullptr;
+  QActionGroup *menuCamgroup = nullptr;
 
   bool runFromBBB = false;
   bool Segmented = false;
@@ -132,7 +140,7 @@ private:
   void SetMatToMainView(cv::Mat &img);
   void CreateNewSoilSample();
 
-  void makeSnapShot(Hardware::Microscope &microscope);
+  void makeSnapShot();
 };
 
 #endif // VSAGUI_H

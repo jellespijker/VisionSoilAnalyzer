@@ -28,6 +28,8 @@ VSAGUI::VSAGUI(QWidget *parent) : QMainWindow(parent), ui(new Ui::VSAGUI) {
   sSettings->LoadSettings("Settings/Default.ini");
   ui->OffsetSlider->setValue(sSettings->thresholdOffsetValue);
 
+  errorMessageDialog = new QErrorMessage(this);
+
   // Init the status bar
   progressBar = new QProgressBar(ui->statusBar);
   progressBar->setAlignment(Qt::AlignLeft);
@@ -44,44 +46,44 @@ VSAGUI::VSAGUI(QWidget *parent) : QMainWindow(parent), ui(new Ui::VSAGUI) {
 
   // Get HDR snapshot of the sample or normal shot when HDR grab faulters or
   // test image if normal grab falters
-  Hardware::Microscope microscope;
-
-  finished_sig = microscope.connect_Finished([&]() {
+  microscope = new Hardware::Microscope;
+  finished_sig = microscope->connect_Finished([&]() {
     SetMatToMainView(SoilSample->OriginalImage);
     this->statusLabel->setText(tr("New Image Grabbed"));
   });
-  progress_sig = microscope.connect_Progress(
+  progress_sig = microscope->connect_Progress(
       [&](int &prog) { this->progressBar->setValue(prog); });
 
-  try {
-    makeSnapShot(microscope);
-  } catch (Hardware::Exception::MicroscopeNotFoundException &em) {
+  if (microscope->AvailableCams.size() == 0) {
+    errorMessageDialog->showMessage(tr("No Microscopes found!"));
+    SoilSample->OriginalImage = cv::imread("/Images/SoilSample1.png");
+  } else {
     try {
-      errorMessageDialog->showMessage(
-          tr("Microscope not found switching to first default Cam!"));
-      if (microscope.AvailableCams().size() > 0) {
-        microscope.openCam(0);
-        makeSnapShot(microscope);
+      if (!microscope->openCam(sSettings->defaultWebcam)) {
+        errorMessageDialog->showMessage(
+            tr("Microscope not connected switching to default!"));
+        int defCam = 0;
+        microscope->openCam(defCam);
+        sSettings->defaultWebcam = microscope->SelectedCam->Name;
       }
-    } catch (Hardware::Exception::MicroscopeNotFoundException &em2) {
-      // display error dialog no cam found and show default test image
-      errorMessageDialog->showMessage(
-          tr("Microscope not found switching to test image!"));
-      SoilSample->OriginalImage = cv::imread("/Images/SoilSample1.png");
+    } catch (Hardware::Exception::MicroscopeException &e) {
     }
-  } catch (Hardware::Exception::CouldNotGrabImageException &ei) {
-    // HDRFrame not working switching to normal grab
-    try {
-      errorMessageDialog->showMessage(
-          tr("HDR Grab failed switching to normal grab!"));
-      sSettings->useHDR = false;
-      makeSnapShot(microscope);
-    } catch (Hardware::Exception::CouldNotGrabImageException &ei2) {
-      // show default test image and error dialog
-      errorMessageDialog->showMessage(
-          tr("Normal Grab failed switching to test image!"));
-      SoilSample->OriginalImage = cv::imread("/Images/SoilSample1.png");
+
+    menuCamgroup = new QActionGroup(ui->menuMicroscopes);
+    menuCamgroup->setExclusive(true);
+    mapper = new QSignalMapper(menuCamgroup);
+    for (uint32_t i = 0; i < microscope->AvailableCams.size(); i++) {
+      QAction *camLabel =
+          new QAction(microscope->AvailableCams[i].Name.c_str(), menuCamgroup);
+      camLabel->setCheckable(true);
+      if (microscope->AvailableCams[i] == *microscope->SelectedCam) {
+        camLabel->setChecked(true);
+      }
+      ui->menuMicroscopes->addAction(camLabel);
+      mapper->setMapping(camLabel, i);
+      connect(camLabel, SIGNAL(toggled(bool)), mapper, SLOT(map()));
     }
+    connect(mapper, SIGNAL(mapped(int)), this, SLOT(selectCam(int)));
   }
 }
 
@@ -105,7 +107,7 @@ void VSAGUI::on_SnapshotButton_clicked() {
   });
   progress_sig = microscope.connect_Progress(
       [&](int &prog) { this->progressBar->setValue(prog); });
-  makeSnapShot(microscope);
+  makeSnapShot();
 }
 
 void VSAGUI::on_vision_update(float prog, string statusText) {
@@ -223,17 +225,9 @@ void VSAGUI::on_SegmentButton_clicked() {
   SetMatToMainView(SoilSample->RGB);
 }
 
-void VSAGUI::on_verticalSlider_sliderReleased() {
-  sSettings->thresholdOffsetValue = ui->OffsetSlider->value();
-  if (SoilSample->imgPrepped) {
-    SoilSample->PrepImg(sSettings);
-  }
-}
 void VSAGUI::on_OffsetSlider_valueChanged(int value) {
   sSettings->thresholdOffsetValue = ui->OffsetSlider->value();
 }
-
-void VSAGUI::on_OffsetSlider_sliderReleased() {}
 
 void VSAGUI::on_actionHardware_Settings_triggered() {
   hsetttingWindow = new HardwareSettings(0, sSettings);
@@ -246,19 +240,9 @@ void VSAGUI::on_actionHardware_Settings_triggered() {
  * stream the webcam
  */
 void VSAGUI::on_actionCheese_2_triggered() {
-  // Get the name of the individual cams
-  std::vector<std::string> availCams = Hardware::Microscope::AvailableCams();
-  uint i = 0;
-  for_each(availCams.begin(), availCams.end(), [&](std::string &C) {
-    // If the current itterator is the Micrscope start cheese
-    if (C.compare(MICROSCOPE_NAME) == 0) {
-      std::string bashStr = "cheese --device=/dev/video";
-      bashStr.append(std::to_string(i));
-      std::system(bashStr.c_str());
-      return;
-    }
-    i++;
-  });
+  std::string bashStr = "cheese --device=";
+  bashStr.append(microscope->SelectedCam->devString);
+  std::system(bashStr.c_str());
   this->raise();
 }
 
@@ -301,11 +285,9 @@ void VSAGUI::CreateNewSoilSample() {
 /*!
  * \brief VSAGUI::on_actionExport_RGB_Snapshot_triggered Export the RGB snapshot
  */
-void VSAGUI::on_actionExport_RGB_Snapshot_triggered()
-{
-  QString fn =
-      QFileDialog::getSaveFileName(this, tr("Load Image"), tr("/home/"),
-                                   tr("PPM Image (*.ppm *.PPM"));
+void VSAGUI::on_actionExport_RGB_Snapshot_triggered() {
+  QString fn = QFileDialog::getSaveFileName(
+      this, tr("Load Image"), tr("/home/"), tr("PPM Image (*.ppm *.PPM"));
   this->raise();
   if (!fn.isEmpty()) {
     if (!fn.contains(tr(".ppm"))) {
@@ -314,32 +296,61 @@ void VSAGUI::on_actionExport_RGB_Snapshot_triggered()
     std::string filename = fn.toStdString();
     cv::imwrite(filename, SoilSample->OriginalImage);
   }
-
 }
 
 /*!
  * \brief VSAGUI::on_actionLearn_triggered
  */
-void VSAGUI::on_actionLearn_triggered()
-{
+void VSAGUI::on_actionLearn_triggered() {
   teacherWindow = new NNteacher(0);
   teacherWindow->show();
 }
 
-void VSAGUI::makeSnapShot(Hardware::Microscope &microscope) {
-  if (microscope.IsOpened()) {
-      if (sSettings->useHDR) {
-          microscope.GetHDRFrame(SoilSample->OriginalImage, sSettings->HDRframes);
-          if (sSettings->useBacklightProjection) {
-              QMessageBox::information(0, "Backlight shot", "Activate your backlight and turn of the front light!");
-              microscope.GetFrame(SoilSample->ProjectedImage);
-            }
-        } else {
-          microscope.GetFrame(SoilSample->OriginalImage);
-          if (sSettings->useBacklightProjection) {
-              QMessageBox::information(0, "Backlight shot", "Activate your backlight and turn of the front light!");
-              microscope.GetFrame(SoilSample->ProjectedImage);
-            }
-        }
+/*!
+ * \brief VSAGUI::makeSnapShot make a snapshot according the soilsettings
+ * \param microscope
+ */
+void VSAGUI::makeSnapShot() {
+  if (microscope->IsOpened()) {
+    if (sSettings->useHDR) {
+      microscope->GetHDRFrame(SoilSample->OriginalImage, sSettings->HDRframes);
+      if (sSettings->useBacklightProjection) {
+        QMessageBox::information(
+            0, "Backlight shot",
+            "Activate your backlight and turn of the front light!");
+        microscope->GetFrame(SoilSample->ProjectedImage);
+      }
+    } else {
+      microscope->GetFrame(SoilSample->OriginalImage);
+      if (sSettings->useBacklightProjection) {
+        QMessageBox::information(
+            0, "Backlight shot",
+            "Activate your backlight and turn of the front light!");
+        microscope->GetFrame(SoilSample->ProjectedImage);
+      }
+    }
+  }
+  microscope->fin_sig();
+}
+
+/*!
+ * \brief VSAGUI::on_actionExport_Particles_triggered
+ */
+void VSAGUI::on_actionExport_Particles_triggered() {
+  if (!SoilSample->imgPrepped) {
+    SoilSample->PrepImg(sSettings);
+  }
+}
+
+void VSAGUI::on_OffsetSlider_sliderReleased() {
+  sSettings->thresholdOffsetValue = ui->OffsetSlider->value();
+  if (SoilSample->imgPrepped) {
+    SoilSample->PrepImg(sSettings);
+  }
+}
+
+void VSAGUI::selectCam(int cam) {
+  if (cam != microscope->SelectedCam->ID) {
+    microscope->openCam(&microscope->AvailableCams[cam]);
   }
 }

@@ -15,6 +15,7 @@ Interaction with the USB 5 MP microscope
 #include <vector>
 #include <string>
 #include <utility>
+#include <algorithm>
 
 #include <sys/stat.h>
 #include <sys/utsname.h>
@@ -58,6 +59,7 @@ public:
 
   struct Cam_t {
     std::string Name;
+    std::string devString;
     uint32_t ID;
     std::vector<std::pair<PixelFormat, Resolution_t>> Resolutions;
     uint32_t delaytrigger = 1;
@@ -66,6 +68,20 @@ public:
     std::vector<std::pair<string, int>> Menus;
     std::vector<v4l2_queryctrl> ctrls;
     std::vector<v4l2_querymenu> menus;
+    bool operator==(Cam_t const &rhs) {
+      if (this->ID == rhs.ID || this->Name == rhs.Name) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    bool operator!=(Cam_t const &rhs) {
+      if (this->ID != rhs.ID && this->Name != rhs.Name) {
+        return true;
+      } else {
+        return false;
+      }
+    }
   };
 
   std::vector<Cam_t> AvailableCams;
@@ -88,13 +104,16 @@ public:
   Microscope operator=(Microscope const &rhs);
 
   bool IsOpened();
-  void openCam(Cam_t *cam);
+  bool openCam(Cam_t *cam);
+  bool openCam(int &cam);
+  bool openCam(std::string &cam);
 
   void GetFrame(cv::Mat &dst);
   void GetHDRFrame(cv::Mat &dst, uint32_t noframes = 3);
 
   Finished_t fin_sig;
   Progress_t prog_sig;
+
 private:
   cv::VideoCapture *cap = nullptr;
 
@@ -104,7 +123,5 @@ private:
   Arch GetCurrentArchitecture();
   int fd;
   void enumerate_menu(Cam_t &currentCam);
-
-
 };
 }

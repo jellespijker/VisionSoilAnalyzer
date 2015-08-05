@@ -52,9 +52,8 @@ public:
   bool ignorePartialBorderParticles =
       true; /**< Indication of partial border particles should be used*/
   bool fillHoles = true; /**< should the holes be filled*/
-  float
-      sigmaFactor = 2; /**< The sigma factor or the bandwidth indicating which
-                          pixel intensity values count belong to an object*/
+  float sigmaFactor = 2; /**< The sigma factor or the bandwidth indicating which
+                            pixel intensity values count belong to an object*/
   int thresholdOffsetValue = 0; /**< an tweaking offset value*/
 
   Vision::MorphologicalFilter::FilterType morphFilterType =
@@ -71,10 +70,13 @@ public:
       true; /**< run a rainbow loop on the RGB encoder during analysis*/
   bool useBacklightProjection = true;
   bool useHDR = false;
+  std::string defaultWebcam = "USB Microscope";
+
 private:
   friend class boost::serialization::access;
   template <class Archive>
-  void serialize(Archive &ar, const unsigned int version __attribute__((unused))) {
+  void serialize(Archive &ar,
+                 const unsigned int version __attribute__((unused))) {
     ar &BOOST_SERIALIZATION_NVP(useAdaptiveContrast);
     ar &BOOST_SERIALIZATION_NVP(adaptContrastKernelFactor);
     ar &BOOST_SERIALIZATION_NVP(adaptContrastKernelSize);
@@ -93,6 +95,7 @@ private:
     ar &BOOST_SERIALIZATION_NVP(enableRainbow);
     ar &BOOST_SERIALIZATION_NVP(useBacklightProjection);
     ar &BOOST_SERIALIZATION_NVP(useHDR);
+    ar &BOOST_SERIALIZATION_NVP(defaultWebcam);
   }
 };
 }
