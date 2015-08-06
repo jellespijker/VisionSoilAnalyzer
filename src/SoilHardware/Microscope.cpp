@@ -91,40 +91,14 @@ std::vector<Microscope::Cam_t> Microscope::GetAvailableCams() {
                                                  EXCEPTION_QUERY_NR);
           }
           // Get control value
-          std::pair<string, int> currentControl((char *)queryctrl.name, value);
+          Control_t currentControl;
+          currentControl.name = (char *)queryctrl.name;
+          currentControl.minimum = queryctrl.minimum;
+          currentControl.maximum = queryctrl.maximum;
+          currentControl.step = queryctrl.step;
+          currentControl.default_value = queryctrl.default_value;
+          currentControl.current_value = value;
           currentCam.Controls.push_back(currentControl);
-          if (queryctrl.type == V4L2_CTRL_TYPE_MENU) {
-            enumerate_menu(currentCam);
-          }
-        } else {
-          if (errno == EINVAL) {
-            break;
-          }
-          throw Exception::MicroscopeException(EXCEPTION_QUERY,
-                                               EXCEPTION_QUERY_NR);
-        }
-      }
-
-      for (queryctrl.id = V4L2_CID_PRIVATE_BASE;; queryctrl.id++) {
-        if (0 == ioctl(fd, VIDIOC_QUERYCTRL, &queryctrl)) {
-          if (queryctrl.flags & V4L2_CTRL_FLAG_DISABLED) {
-            continue;
-          }
-          currentCam.ctrls.push_back(queryctrl);
-          int value;
-          controlctrl.id = queryctrl.id;
-          if (0 == ioctl(fd, VIDIOC_G_CTRL, &controlctrl)) {
-            value = controlctrl.value;
-          } else {
-            throw Exception::MicroscopeException(EXCEPTION_QUERY,
-                                                 EXCEPTION_QUERY_NR);
-          }
-          // Get control value
-          std::pair<string, int> currentControl((char *)queryctrl.name, value);
-          currentCam.Controls.push_back(currentControl);
-          if (queryctrl.type == V4L2_CTRL_TYPE_MENU) {
-            enumerate_menu(currentCam);
-          }
         } else {
           if (errno == EINVAL) {
             break;
@@ -139,7 +113,6 @@ std::vector<Microscope::Cam_t> Microscope::GetAvailableCams() {
       uint32_t height[6] = {480, 600, 960, 1200, 1536};
 
       // YUYV
-
       for (uint32_t i = 0; i < 5; i++) {
         memset(&format, 0, sizeof(format));
         format.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
@@ -195,20 +168,6 @@ std::vector<Microscope::Cam_t> Microscope::GetAvailableCams() {
   return retVal;
 }
 
-void Microscope::enumerate_menu(Cam_t &currentCam) {
-  memset(&querymenu, 0, sizeof(querymenu));
-  querymenu.id = queryctrl.id;
-
-  for (querymenu.index = queryctrl.minimum;
-       querymenu.index <= queryctrl.maximum; querymenu.index++) {
-    if (0 == ioctl(fd, VIDIOC_QUERYMENU, &querymenu)) {
-      currentCam.menus.push_back(querymenu);
-    } else {
-      throw Exception::MicroscopeException(EXCEPTION_QUERY, EXCEPTION_QUERY_NR);
-    }
-  }
-}
-
 bool Microscope::IsOpened() {
   if (cap == nullptr) {
     return false;
@@ -226,10 +185,7 @@ bool Microscope::openCam(Cam_t *cam) {
     }
   }
   if (found) {
-    if (cap != nullptr) {
-      cap->release();
-      delete cap;
-    }
+    closeCam(cam);
     SelectedCam = cam;
     cap = new cv::VideoCapture(SelectedCam->ID);
     if (!cap->isOpened()) {
@@ -240,6 +196,10 @@ bool Microscope::openCam(Cam_t *cam) {
              SelectedCam->SelectedResolution->second.Width);
     cap->set(CV_CAP_PROP_FRAME_HEIGHT,
              SelectedCam->SelectedResolution->second.Height);
+    Control_t *brightness = GetControl("Brightness");
+    Control_t *contrast = GetControl("Contrast");
+    cap->set(CV_CAP_PROP_BRIGHTNESS, brightness->current_value);
+    cap->set(CV_CAP_PROP_CONTRAST, contrast->current_value);
     return true;
   } else {
     return false;
@@ -280,6 +240,16 @@ bool Microscope::openCam(int &cam) {
   }
 }
 
+bool Microscope::closeCam(Cam_t *cam) {
+  if (cap != nullptr) {
+    if (cap->isOpened()) {
+      cap->release();
+    }
+    delete cap;
+    cap = nullptr;
+  }
+}
+
 void Microscope::GetFrame(cv::Mat &dst) {
   openCam(SelectedCam);
   if (RunEnv == Arch::ARM) {
@@ -306,23 +276,25 @@ void Microscope::GetHDRFrame(cv::Mat &dst, uint32_t noframes) {
   uint32_t maxBr = SelectedCam->ctrls[0].maximum;
   uint32_t maxCon = SelectedCam->ctrls[1].maximum;
   uint32_t brightnessStep = (maxBr - minBr) / noframes;
-  int8_t currentBrightness = cap->get(CV_CAP_PROP_BRIGHTNESS);
-  int8_t currentContrast = cap->get(CV_CAP_PROP_CONTRAST);
-  cap->set(CV_CAP_PROP_CONTRAST, maxCon);
+  Control_t *brightness = GetControl("Brightness");
+  Control_t *contrast = GetControl("Contrast");
+  int8_t currentBrightness = brightness->current_value;
+  int8_t currentContrast = contrast->current_value;
+  contrast->current_value = maxCon;
 
   int progStep = 70 / noframes;
   cv::Mat currentImg;
   // take the shots at different brightness levels
   for (uint32_t i = 1; i <= noframes; i++) {
-    cap->set(CV_CAP_PROP_BRIGHTNESS, (minBr + (i * brightnessStep)));
+    brightness->current_value = minBr + (i * brightnessStep);
     GetFrame(currentImg);
     HDRframes.push_back(currentImg);
     prog_sig(i * progStep);
   }
 
   // Set the brightness and back to the previous used level
-  cap->set(CV_CAP_PROP_BRIGHTNESS, currentBrightness);
-  cap->set(CV_CAP_PROP_CONTRAST, currentContrast);
+  brightness->current_value = currentBrightness;
+  contrast->current_value = currentContrast;
 
   // Perform the exposure fusion
   cv::Mat fusion;
@@ -334,6 +306,16 @@ void Microscope::GetHDRFrame(cv::Mat &dst, uint32_t noframes) {
   fusion.convertTo(dst, CV_8UC1);
   prog_sig(100);
   // fin_sig();
+}
+
+Microscope::Control_t *Microscope::GetControl(const string name) {
+  for (Controls_t::iterator it = SelectedCam->Controls.begin();
+       it != SelectedCam->Controls.end(); ++it) {
+    if (name.compare(it->name) == 0) {
+      return &*it;
+    }
+  }
+  return nullptr;
 }
 
 boost::signals2::connection

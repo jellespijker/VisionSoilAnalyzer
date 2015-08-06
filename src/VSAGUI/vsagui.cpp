@@ -240,9 +240,11 @@ void VSAGUI::on_actionHardware_Settings_triggered() {
  * stream the webcam
  */
 void VSAGUI::on_actionCheese_2_triggered() {
+  microscope->closeCam(microscope->SelectedCam);
   std::string bashStr = "cheese --device=";
   bashStr.append(microscope->SelectedCam->devString);
   std::system(bashStr.c_str());
+  microscope->openCam(microscope->SelectedCam);
   this->raise();
 }
 

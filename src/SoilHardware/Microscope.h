@@ -57,6 +57,33 @@ public:
     uint16_t Height = 1536;
   };
 
+  struct Control_t {
+    std::string name;
+    int minimum;
+    int maximum;
+    int step;
+    int default_value;
+    int current_value;
+    bool operator==(Control_t &rhs) {
+      if (this->name.compare(rhs.name) == 0) {
+          return true;
+        }
+      else {
+          return false;
+        }
+    }
+    bool operator!=(Control_t &rhs) {
+    if (this->name.compare(rhs.name) != 0) {
+        return true;
+      }
+    else {
+        return false;
+      }
+    }
+  };
+
+  typedef std::vector<Control_t> Controls_t;
+
   struct Cam_t {
     std::string Name;
     std::string devString;
@@ -64,8 +91,7 @@ public:
     std::vector<std::pair<PixelFormat, Resolution_t>> Resolutions;
     uint32_t delaytrigger = 1;
     std::pair<PixelFormat, Resolution_t> *SelectedResolution = nullptr;
-    std::vector<std::pair<string, int>> Controls;
-    std::vector<std::pair<string, int>> Menus;
+    Controls_t Controls;
     std::vector<v4l2_queryctrl> ctrls;
     std::vector<v4l2_querymenu> menus;
     bool operator==(Cam_t const &rhs) {
@@ -108,8 +134,12 @@ public:
   bool openCam(int &cam);
   bool openCam(std::string &cam);
 
+  bool closeCam(Cam_t *cam);
+
   void GetFrame(cv::Mat &dst);
   void GetHDRFrame(cv::Mat &dst, uint32_t noframes = 3);
+
+  Control_t *GetControl(const std::string name);
 
   Finished_t fin_sig;
   Progress_t prog_sig;
@@ -122,6 +152,5 @@ private:
   std::vector<Cam_t> GetAvailableCams();
   Arch GetCurrentArchitecture();
   int fd;
-  void enumerate_menu(Cam_t &currentCam);
 };
 }
