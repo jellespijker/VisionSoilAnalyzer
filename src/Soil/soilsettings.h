@@ -71,6 +71,22 @@ public:
   bool useBacklightProjection = true;
   bool useHDR = false;
   std::string defaultWebcam = "USB Microscope";
+  int Brightness_front = 0;
+  int Brightness_proj = -10;
+  int Contrast_front = 36;
+  int Contrast_proj = 36;
+  int Saturation_front = 64;
+  int Saturation_proj = 0;
+  int Hue_front = 0;
+  int Hue_proj = -40;
+  int Gamma_front = 100;
+  int Gamma_proj = 200;
+  int PowerLineFrequency_front = 1;
+  int PowerLineFrequency_proj = 1;
+  int Sharpness_front = 12;
+  int Sharpness_proj = 25;
+  int BackLightCompensation_front = 1;
+  int BackLightCompensation_proj = 1;
 
 private:
   friend class boost::serialization::access;
@@ -96,6 +112,22 @@ private:
     ar &BOOST_SERIALIZATION_NVP(useBacklightProjection);
     ar &BOOST_SERIALIZATION_NVP(useHDR);
     ar &BOOST_SERIALIZATION_NVP(defaultWebcam);
+    ar &BOOST_SERIALIZATION_NVP(Brightness_front);
+    ar &BOOST_SERIALIZATION_NVP(Brightness_proj);
+    ar &BOOST_SERIALIZATION_NVP(Contrast_front);
+    ar &BOOST_SERIALIZATION_NVP(Contrast_proj);
+    ar &BOOST_SERIALIZATION_NVP(Saturation_front);
+    ar &BOOST_SERIALIZATION_NVP(Saturation_proj);
+    ar &BOOST_SERIALIZATION_NVP(Hue_front);
+    ar &BOOST_SERIALIZATION_NVP(Hue_proj);
+    ar &BOOST_SERIALIZATION_NVP(Gamma_front);
+    ar &BOOST_SERIALIZATION_NVP(Gamma_proj);
+    ar &BOOST_SERIALIZATION_NVP(PowerLineFrequency_front);
+    ar &BOOST_SERIALIZATION_NVP(PowerLineFrequency_proj);
+    ar &BOOST_SERIALIZATION_NVP(Sharpness_front);
+    ar &BOOST_SERIALIZATION_NVP(Sharpness_proj);
+    ar &BOOST_SERIALIZATION_NVP(BackLightCompensation_front);
+    ar &BOOST_SERIALIZATION_NVP(BackLightCompensation_proj);
   }
 };
 }

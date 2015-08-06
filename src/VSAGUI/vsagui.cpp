@@ -315,27 +315,52 @@ void VSAGUI::on_actionLearn_triggered() {
 void VSAGUI::makeSnapShot() {
   if (microscope->IsOpened()) {
     if (sSettings->useHDR) {
+      microscope->GetControl("Brightness")->current_value = sSettings->Brightness_front;
+      microscope->GetControl("Contrast")->current_value = sSettings->Contrast_front;
+      microscope->GetControl("Saturation")->current_value = sSettings->Saturation_front;
+      microscope->GetControl("Hue")->current_value = sSettings->Hue_front;
+      microscope->GetControl("Gamma")->current_value = sSettings->Gamma_front;
+      microscope->GetControl("Power Line Frequency")->current_value = sSettings->PowerLineFrequency_front;
+      microscope->GetControl("Sharpness")->current_value = sSettings->Sharpness_front;
+      microscope->GetControl("Backlight Compensation")->current_value = sSettings->BackLightCompensation_front;
       microscope->GetHDRFrame(SoilSample->OriginalImage, sSettings->HDRframes);
       if (sSettings->useBacklightProjection) {
         QMessageBox::information(
             0, "Backlight shot",
             "Activate your backlight and turn of the front light!");
+        microscope->GetControl("Brightness")->current_value = sSettings->Brightness_proj;
+        microscope->GetControl("Contrast")->current_value = sSettings->Contrast_proj;
+        microscope->GetControl("Saturation")->current_value = sSettings->Saturation_proj;
+        microscope->GetControl("Hue")->current_value = sSettings->Hue_proj;
+        microscope->GetControl("Gamma")->current_value = sSettings->Gamma_proj;
+        microscope->GetControl("Power Line Frequency")->current_value = sSettings->PowerLineFrequency_proj;
+        microscope->GetControl("Sharpness")->current_value = sSettings->Sharpness_proj;
+        microscope->GetControl("Backlight Compensation")->current_value = sSettings->BackLightCompensation_proj;
+        microscope->GetFrame(SoilSample->ProjectedImage);
         microscope->GetFrame(SoilSample->ProjectedImage);
       }
     } else {
-      Hardware::Microscope::Control_t *brightness =
-          microscope->GetControl("Brightness");
-      Hardware::Microscope::Control_t *contrast =
-          microscope->GetControl("Contrast");
-      brightness->current_value = brightness->default_value;
-      contrast->current_value = contrast->default_value;
+      microscope->GetControl("Brightness")->current_value = sSettings->Brightness_front;
+      microscope->GetControl("Contrast")->current_value = sSettings->Contrast_front;
+      microscope->GetControl("Saturation")->current_value = sSettings->Saturation_front;
+      microscope->GetControl("Hue")->current_value = sSettings->Hue_front;
+      microscope->GetControl("Gamma")->current_value = sSettings->Gamma_front;
+      microscope->GetControl("Power Line Frequency")->current_value = sSettings->PowerLineFrequency_front;
+      microscope->GetControl("Sharpness")->current_value = sSettings->Sharpness_front;
+      microscope->GetControl("Backlight Compensation")->current_value = sSettings->BackLightCompensation_front;
       microscope->GetFrame(SoilSample->OriginalImage);
       if (sSettings->useBacklightProjection) {
         QMessageBox::information(
             0, "Backlight shot",
             "Activate your backlight and turn of the front light!");
-        brightness->current_value = brightness->maximum;
-        contrast->current_value = contrast->maximum;
+        microscope->GetControl("Brightness")->current_value = sSettings->Brightness_proj;
+        microscope->GetControl("Contrast")->current_value = sSettings->Contrast_proj;
+        microscope->GetControl("Saturation")->current_value = sSettings->Saturation_proj;
+        microscope->GetControl("Hue")->current_value = sSettings->Hue_proj;
+        microscope->GetControl("Gamma")->current_value = sSettings->Gamma_proj;
+        microscope->GetControl("Power Line Frequency")->current_value = sSettings->PowerLineFrequency_proj;
+        microscope->GetControl("Sharpness")->current_value = sSettings->Sharpness_proj;
+        microscope->GetControl("Backlight Compensation")->current_value = sSettings->BackLightCompensation_proj;
         microscope->GetFrame(SoilSample->ProjectedImage);
       }
     }
