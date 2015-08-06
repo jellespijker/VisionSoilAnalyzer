@@ -12,6 +12,11 @@
 #define EXCEPTION_QUERY_NR 3
 #define EXCEPTION_FORMAT_RESOLUTION "Exception No supported formats and resolutions!"
 #define EXCEPTION_FORMAT_RESOLUTION_NR 4
+#define EXCEPTION_CTRL_NOT_FOUND "Control not found!"
+#define EXCEPTION_CTRL_NOT_FOUND_NR 5
+#define EXCEPTION_CTRL_VALUE "Control value not set!"
+#define EXCEPTION_CTRL_VALUE_NR 5
+
 
 #pragma once
 #include <exception>

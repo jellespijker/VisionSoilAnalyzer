@@ -41,12 +41,6 @@ Interaction with the USB 5 MP microscope
 
 namespace Hardware {
 class Microscope {
-private:
-  struct v4l2_queryctrl queryctrl;
-  struct v4l2_querymenu querymenu;
-  struct v4l2_control controlctrl;
-  struct v4l2_format format;
-
 public:
   enum Arch { ARM, X64 };
 
@@ -64,19 +58,18 @@ public:
     int step;
     int default_value;
     int current_value;
+    uint32_t ID = V4L2_CID_BASE;
     bool operator==(Control_t &rhs) {
       if (this->name.compare(rhs.name) == 0) {
-          return true;
-        }
-      else {
-          return false;
-        }
+        return true;
+      } else {
+        return false;
+      }
     }
     bool operator!=(Control_t &rhs) {
-    if (this->name.compare(rhs.name) != 0) {
+      if (this->name.compare(rhs.name) != 0) {
         return true;
-      }
-    else {
+      } else {
         return false;
       }
     }
@@ -92,8 +85,7 @@ public:
     uint32_t delaytrigger = 1;
     std::pair<PixelFormat, Resolution_t> *SelectedResolution = nullptr;
     Controls_t Controls;
-    std::vector<v4l2_queryctrl> ctrls;
-    std::vector<v4l2_querymenu> menus;
+    int fd;
     bool operator==(Cam_t const &rhs) {
       if (this->ID == rhs.ID || this->Name == rhs.Name) {
         return true;
@@ -140,6 +132,7 @@ public:
   void GetHDRFrame(cv::Mat &dst, uint32_t noframes = 3);
 
   Control_t *GetControl(const std::string name);
+  void SetControl(Control_t *control);
 
   Finished_t fin_sig;
   Progress_t prog_sig;

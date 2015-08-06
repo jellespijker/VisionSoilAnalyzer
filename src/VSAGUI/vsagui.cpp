@@ -323,11 +323,19 @@ void VSAGUI::makeSnapShot() {
         microscope->GetFrame(SoilSample->ProjectedImage);
       }
     } else {
+      Hardware::Microscope::Control_t *brightness =
+          microscope->GetControl("Brightness");
+      Hardware::Microscope::Control_t *contrast =
+          microscope->GetControl("Contrast");
+      brightness->current_value = brightness->default_value;
+      contrast->current_value = contrast->default_value;
       microscope->GetFrame(SoilSample->OriginalImage);
       if (sSettings->useBacklightProjection) {
         QMessageBox::information(
             0, "Backlight shot",
             "Activate your backlight and turn of the front light!");
+        brightness->current_value = brightness->maximum;
+        contrast->current_value = contrast->maximum;
         microscope->GetFrame(SoilSample->ProjectedImage);
       }
     }
