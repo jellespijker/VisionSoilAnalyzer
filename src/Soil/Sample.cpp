@@ -8,6 +8,8 @@
 #include "Sample.h"
 
 namespace SoilAnalyzer {
+namespace io = boost::iostreams;
+
 Sample::Sample(SoilSettings *settings) { Settings = settings; }
 
 Sample::Sample(const Mat &src, SoilSettings *settings) {
@@ -24,14 +26,27 @@ Sample::Sample(const Mat &src, const Mat &back_src, SoilSettings *settings) {
 Sample::~Sample() {}
 
 void Sample::Save(string &filename) {
-  std::ofstream ofs(filename.c_str());
-  boost::archive::binary_oarchive oa(ofs);
-  oa << boost::serialization::make_nvp("SoilSample", *this);
+  std::ofstream ofs(filename.c_str(), std::ios::out | std::ios::binary);
+  {
+    boost::iostreams::filtering_streambuf<io::output> out;
+
+    out.push(io::zlib_compressor());
+    out.push(ofs);
+    {
+      boost::archive::binary_oarchive oa(out);
+      oa << boost::serialization::make_nvp("SoilSample", *this);
+    }
+  }
+  ofs.close();
 }
 
 void Sample::Load(string &filename) {
-  std::ifstream ifs(filename.c_str());
-  boost::archive::binary_iarchive ia(ifs);
+  std::ifstream ifs(filename.c_str(), std::ios::in | std::ios::binary);
+  boost::iostreams::filtering_streambuf<io::input> in;
+  in.push(io::zlib_decompressor());
+  in.push(ifs);
+
+  boost::archive::binary_iarchive ia(in);
   ia >> boost::serialization::make_nvp("SoilSample", *this);
 }
 

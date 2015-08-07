@@ -12,7 +12,7 @@ RESOURCES     = VSA.qrc
 
 TARGET = VSAGUI
 TEMPLATE = app
-VERSION = 0.9.1
+VERSION = 0.9.2
 unix:!macx: QMAKE_RPATHDIR += $$PWD/../../../build/install/
 
 SOURCES += main.cpp\
@@ -40,7 +40,7 @@ INCLUDEPATH += /usr/local/include
 #boost
 DEFINES += BOOST_ALL_DYN_LINK
 INCLUDEPATH += /usr/include/boost
-LIBS += -L/usr/lib/x86_64-linux-gnu/ -lboost_filesystem -lboost_serialization -lboost_system
+LIBS += -L/usr/lib/x86_64-linux-gnu/ -lboost_filesystem -lboost_serialization -lboost_system -lboost_iostreams
 
 #SoilMath lib
 unix:!macx: LIBS += -L$$PWD/../../build/install/ -lSoilMath

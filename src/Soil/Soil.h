@@ -16,6 +16,9 @@
 #include <stdint.h>
 #include <string>
 #include "../SoilVision/VisionDebug.h"
+#include <zlib.h>
+#include <boost/iostreams/filter/zlib.hpp>
+#include <boost/iostreams/filtering_streambuf.hpp>
 
 namespace SoilAnalyzer {
 /*!

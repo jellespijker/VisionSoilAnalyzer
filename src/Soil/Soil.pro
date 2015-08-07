@@ -10,7 +10,7 @@ unix:!macx: QMAKE_RPATHDIR += $$PWD/../../../build/install/
 
 TARGET = Soil
 TEMPLATE = lib
-VERSION = 0.9.0
+VERSION = 0.9.1
 
 DEFINES += SOIL_LIBRARY
 
@@ -51,7 +51,11 @@ INCLUDEPATH += /usr/local/include
 #boost
 DEFINES += BOOST_ALL_DYN_LINK
 INCLUDEPATH += /usr/include/boost
-LIBS += -L/usr/lib/x86_64-linux-gnu/ -lboost_serialization
+LIBS += -L/usr/lib/x86_64-linux-gnu/ -lboost_serialization -lboost_iostreams
+
+#Zlib
+LIBS += -L/usr/local/lib -lz
+INCLUDEPATH += /usr/local/include
 
 unix:!macx: LIBS += -L$$PWD/../../build/install/ -lSoilMath
 

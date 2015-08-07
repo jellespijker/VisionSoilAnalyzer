@@ -8,7 +8,7 @@ QT       -= core gui
 
 TARGET = SoilMath
 TEMPLATE = lib
-VERSION = 0.9.1
+VERSION = 0.9.2
 
 DEFINES += SOILMATH_LIBRARY
 QMAKE_CXXFLAGS += -std=c++11
@@ -42,7 +42,11 @@ INCLUDEPATH += /usr/local/include
 #boost
 DEFINES += BOOST_ALL_DYN_LINK
 INCLUDEPATH += /usr/include/boost
-LIBS += -L/usr/lib/x86_64-linux-gnu/ -lboost_serialization
+LIBS += -L/usr/lib/x86_64-linux-gnu/ -lboost_serialization -lboost_iostreams
+
+#Zlib
+LIBS += -L/usr/local/lib -lz
+INCLUDEPATH += /usr/local/include
 
 unix {
     target.path = $PWD/../../../build/install
