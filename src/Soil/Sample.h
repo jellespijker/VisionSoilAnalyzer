@@ -132,7 +132,7 @@ private:
 
   friend class boost::serialization::access;
   template <class Archive>
-  void serialize(Archive &ar, const unsigned int version __attribute__((unused))) {
+  void serialize(Archive &ar, const unsigned int version) {
     ar &BOOST_SERIALIZATION_BASE_OBJECT_NVP(Soil);
     ar &OriginalImage;
     ar &ProjectedImage;
@@ -162,3 +162,4 @@ private:
   void getBW(cv::Mat &src, cv::Mat &dst, float &progstep);
 };
 }
+BOOST_CLASS_VERSION(SoilAnalyzer::Sample, 1)

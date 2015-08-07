@@ -30,7 +30,7 @@ void Sample::Save(string &filename) {
   {
     boost::iostreams::filtering_streambuf<io::output> out;
 
-    out.push(io::zlib_compressor());
+    out.push(io::zlib_compressor(io::zlib::best_compression));
     out.push(ofs);
     {
       boost::archive::binary_oarchive oa(out);
@@ -42,12 +42,17 @@ void Sample::Save(string &filename) {
 
 void Sample::Load(string &filename) {
   std::ifstream ifs(filename.c_str(), std::ios::in | std::ios::binary);
-  boost::iostreams::filtering_streambuf<io::input> in;
-  in.push(io::zlib_decompressor());
-  in.push(ifs);
+  {
+    boost::iostreams::filtering_streambuf<io::input> in;
 
-  boost::archive::binary_iarchive ia(in);
-  ia >> boost::serialization::make_nvp("SoilSample", *this);
+    in.push(io::zlib_decompressor());
+    in.push(ifs);
+    {
+      boost::archive::binary_iarchive ia(in);
+      ia >> boost::serialization::make_nvp("SoilSample", *this);
+    }
+  }
+  ifs.close();
 }
 
 void Sample::PrepImg(SoilSettings *settings) {
