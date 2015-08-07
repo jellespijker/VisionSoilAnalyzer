@@ -11,14 +11,17 @@
 #include <boost/archive/binary_iarchive.hpp>
 #include <boost/archive/binary_oarchive.hpp>
 #include <boost/serialization/string.hpp>
+#include <boost/serialization/version.hpp>
+#include <boost/serialization/vector.hpp>
+#include <boost/iostreams/filter/zlib.hpp>
+#include <boost/iostreams/filtering_streambuf.hpp>
 #include "Mat_archive.h"
 #include <opencv2/core/core.hpp>
 #include <stdint.h>
 #include <string>
 #include "../SoilVision/VisionDebug.h"
 #include <zlib.h>
-#include <boost/iostreams/filter/zlib.hpp>
-#include <boost/iostreams/filtering_streambuf.hpp>
+#include <vector>
 
 namespace SoilAnalyzer {
 /*!
@@ -29,7 +32,7 @@ class Soil {
 private:
   friend class boost::serialization::access;
   template <class Archive>
-  void serialize(Archive &ar, const unsigned int version __attribute__((unused))) {
+  void serialize(Archive &ar, const unsigned int version) {
     ar &ID;
     ar &Location;
     ar &TimeTaken;
@@ -70,3 +73,4 @@ public:
   uint32_t ID;          /**< the sample ID*/
 };
 }
+BOOST_CLASS_VERSION(SoilAnalyzer::Soil, 1)
