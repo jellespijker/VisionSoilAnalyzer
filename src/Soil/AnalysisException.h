@@ -4,6 +4,10 @@
  * This software is proprietary and confidential
  * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015
  */
+#define EXCEPTION_NO_FORE_IMAGE_FOUND "No forefront lighted image found!"
+#define EXCEPTION_NO_FORE_IMAGE_FOUND_NR 1
+#define EXCEPTION_NO_PROJECTED_IMAGE_FOUND "No projected image found!"
+#define EXCEPTION_NO_PROJECTED_IMAGE_FOUND_NR 2
 
 #pragma once
 #include <exception>

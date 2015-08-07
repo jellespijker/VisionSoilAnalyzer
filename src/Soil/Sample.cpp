@@ -15,6 +15,12 @@ Sample::Sample(const Mat &src, SoilSettings *settings) {
   OriginalImage = src.clone();
 }
 
+Sample::Sample(const Mat &src, const Mat &back_src, SoilSettings *settings) {
+  Settings = settings;
+  OriginalImage = src.clone();
+  ProjectedImage = back_src.clone();
+}
+
 Sample::~Sample() {}
 
 void Sample::Save(string &filename) {
@@ -37,144 +43,34 @@ void Sample::PrepImg(SoilSettings *settings) {
     Settings = settings;
   }
 
-  // Determine the biggest kernelsize. These border pixels are discarded with
-  // the optimized int
-  uint32_t kBorder = ((Settings->adaptContrastKernelSize > Settings->blurKernelSize)
-                     ? Settings->adaptContrastKernelSize : Settings->blurKernelSize);
-  uint32_t khBorder = kBorder / 2;
+  // error checking
+  if (OriginalImage.empty()) {
+    throw Exception::AnalysisException(EXCEPTION_NO_FORE_IMAGE_FOUND,
+                                       EXCEPTION_NO_FORE_IMAGE_FOUND_NR);
+  }
+  if (Settings->useBacklightProjection && ProjectedImage.empty()) {
+    throw Exception::AnalysisException(EXCEPTION_NO_PROJECTED_IMAGE_FOUND,
+                                       EXCEPTION_NO_PROJECTED_IMAGE_FOUND_NR);
+  }
 
-  // set up the progress signal
-   float currentProg = 0.;
-  prog_sig(currentProg, "Starting segmentation");
-
+  // Setup signals
+  float currentProg = 0.;
+  prog_sig(currentProg, "Starting segmentation process");
   uint32_t totalsteps = 5;
-  if (Settings->useAdaptiveContrast) {
-    totalsteps++;
-  }
-  if (Settings->useBlur) {
-    totalsteps++;
-  }
-  if (Settings->fillHoles) {
-    totalsteps++;
-  }
-  if (Settings->ignorePartialBorderParticles) {
-    totalsteps++;
-  }
-  if (Settings->morphFilterType != Vision::MorphologicalFilter::NONE) {
-    totalsteps++;
-  }
+
   float progstep = 1. / static_cast<float>(totalsteps);
 
-  if (OriginalImage.empty()) {
-    throw Exception::AnalysisException("No Image found to analyze!", 1);
-  }
-  SHOW_DEBUG_IMG(OriginalImage, uchar, 255, "RGB", false);
+  if (Settings->useBacklightProjection) {
+    cv::Mat OIntBL;
+    getEnhInt(ProjectedImage, OIntBL, progstep);
 
-  // Convert the image to an intensity image and an enhanced Intinsity for
-  // better segmentation
-  Vision::Conversion RGBConvertor(OriginalImage);
-  RGBConvertor.Convert(Vision::Conversion::RGB, Vision::Conversion::Intensity);
-  PROG_INCR("Converted to intensity");
-  Intensity = RGBConvertor.ProcessedImg.clone();
-  SHOW_DEBUG_IMG(Intensity, uchar, 255, "Intensity", false);
+    getBW(OIntBL, BW, progstep);
 
-  // Enhance the image with an Adaptive contrast stretch and/or followed by a
-  // blur
-  Vision::Enhance IntEnchance(Intensity);
-  if (Settings->useAdaptiveContrast) {
-    IntEnchance.AdaptiveContrastStretch(Settings->adaptContrastKernelSize,
-                                        Settings->adaptContrastKernelSize);
-    PROG_INCR("Adaptive contrast stretch applied");
-    if (Settings->useBlur) {
-      IntEnchance.Blur(Settings->blurKernelSize, true);
-      PROG_INCR("Blur applied");
-    }
-  } else if (Settings->useBlur) {
-    IntEnchance.Blur(Settings->blurKernelSize, false);
-    PROG_INCR("Blur applied");
   } else {
-    IntEnchance.ProcessedImg = IntEnchance.OriginalImg;
+    cv::Mat OIntFL;
+    getEnhInt(OriginalImage, OIntFL, progstep);
+    getBW(OIntFL, BW, progstep);
   }
-  OptimizedInt =
-      IntEnchance.ProcessedImg(cv::Rect(khBorder, khBorder,
-                                        OriginalImage.cols - kBorder,
-                                        OriginalImage.rows - kBorder)).clone();
-  SHOW_DEBUG_IMG(OptimizedInt, uchar, 255, "IntEnchance", false);
-
-  // Segment the Dark Objects en fill the holes
-  Vision::Segment Segmenter(OptimizedInt);
-  Segmenter.sigma = Settings->sigmaFactor;
-  Segmenter.thresholdOffset = Settings->thresholdOffsetValue;
-  Segmenter.ConvertToBW(Settings->typeOfObjectsSegmented);
-  PROG_INCR("Threshold applied");
-  if (Settings->fillHoles) {
-    Segmenter.FillHoles(true);
-    PROG_INCR("Holes filled");
-  }
-  if (Settings->ignorePartialBorderParticles) {
-    Segmenter.RemoveBorderBlobs(1, true);
-    PROG_INCR("Border Blobs removed");
-  }
-  SHOW_DEBUG_IMG(Segmenter.ProcessedImg, uchar, 255, "Segmenter", true);
-
-  // Erode the segmented image and sets the BW image use it to create the NO
-  // background RGB
-  Vision::MorphologicalFilter Filter(Segmenter.ProcessedImg);
-  uint kSize = Settings->filterMaskSize;
-  Mat mask = cv::Mat::zeros(kSize, kSize, CV_8UC1);
-  circle(mask, Point(kSize / 2, kSize / 2), (kSize / 2) + 1, 1, -1);
-  switch (Settings->morphFilterType) {
-  case Vision::MorphologicalFilter::CLOSE:
-    Filter.Close(mask);
-    PROG_INCR("Morphological filer - close applied");
-    break;
-  case Vision::MorphologicalFilter::DILATE:
-    Filter.Dilation(mask);
-    PROG_INCR("Morphological filer - dilate applied");
-    break;
-  case Vision::MorphologicalFilter::ERODE:
-    Filter.Erosion(mask);
-    PROG_INCR("Morphological filer - erode applied");
-    break;
-  case Vision::MorphologicalFilter::OPEN:
-    Filter.Open(mask);
-    PROG_INCR("Morphological filer - open applied");
-    break;
-  case Vision::MorphologicalFilter::NONE:
-    Filter.ProcessedImg = Filter.OriginalImg;
-  }
-  BW = Filter.ProcessedImg.clone();
-  SHOW_DEBUG_IMG(BW, uchar, 255,
-                 "BW after segmentation, fill holes and erosion", true);
-  RGB = Vision::ImageProcessing::CopyMat<uchar>(
-      OriginalImage(cv::Rect(khBorder, khBorder, OriginalImage.cols - kBorder,
-                             OriginalImage.rows - kBorder)).clone(),
-      BW, CV_8UC1);
-  PROG_INCR("RGB masked image generated");
-  SHOW_DEBUG_IMG(RGB, uchar, 255, "RGB no Background", false);
-
-  // Create the Edge image
-  Vision::Segment Edger(BW);
-  Edger.GetEdgesEroding();
-  Edge = Edger.ProcessedImg;
-  PROG_INCR("Edge filter applied");
-  SHOW_DEBUG_IMG(Edge, uchar, 255, "Edge", true);
-
-  // Make the CIE La*b* conversion
-  Vision::Conversion RGBnewConvertor(RGB);
-  RGBnewConvertor.Convert(Vision::Conversion::RGB, Vision::Conversion::CIE_lab);
-  LAB = RGBnewConvertor.CopyMat<float>(RGB, BW, CV_32F);
-  PROG_INCR("CIE La*b* conversion calculated");
-  SHOW_DEBUG_IMG(LAB, float, 1.0, "LAB", true);
-
-  // Create the Redness Index
-  Vision::Conversion LABConvertor(LAB);
-  LABConvertor.Convert(Vision::Conversion::CIE_lab, Vision::Conversion::RI);
-  RI = LABConvertor.ProcessedImg;
-  PROG_INCR("Redness conversion calculated");
-  SHOW_DEBUG_IMG(RI, float, 1.0, "RI", true);
-
-  imgPrepped = true;
 }
 
 void Sample::Analyse(SoilMath::NN &nn) {
@@ -231,6 +127,104 @@ void Sample::SegmentParticles(Vision::Segment::SegmentationType segType) {
     P.Edge = Vision::Segment::CopyMat<uchar>(Edge(ROI).clone(), P.BW, CV_8UC1);
     i++;
   });
+}
+
+void Sample::getEnhInt(cv::Mat &src, cv::Mat &dst, float &progstep) {
+  Vision::Conversion IntConvertor(src);
+  IntConvertor.Convert(Vision::Conversion::RGB, Vision::Conversion::Intensity);
+  SHOW_DEBUG_IMG(IntConvertor.ProcessedImg, uchar, 255, "RGB 2 Int", false);
+
+  if (Settings->useBlur) {
+    Vision::Enhance IntBlur(IntConvertor.ProcessedImg.clone());
+    IntBlur.Blur(Settings->blurKernelSize);
+    uint32_t HBK = Settings->blurKernelSize / 2;
+    uint32_t BK = Settings->blurKernelSize - 1;
+    if (Settings->useAdaptiveContrast) {
+      Vision::Enhance IntAdaptContrast(
+          IntBlur.ProcessedImg(
+                      cv::Rect(HBK, HBK, IntBlur.ProcessedImg.cols - BK,
+                               IntBlur.ProcessedImg.rows - BK)).clone());
+      IntAdaptContrast.AdaptiveContrastStretch(
+          Settings->adaptContrastKernelSize,
+          Settings->adaptContrastKernelFactor);
+      uint32_t HAK = Settings->adaptContrastKernelSize / 2;
+      uint32_t AK = Settings->adaptContrastKernelSize - 1;
+      dst = IntAdaptContrast.ProcessedImg(
+          cv::Rect(HAK, HAK, IntAdaptContrast.ProcessedImg.cols - AK,
+                   IntAdaptContrast.ProcessedImg.rows - AK));
+    } else {
+      dst = IntBlur.ProcessedImg(cv::Rect(HBK, HBK,
+                                          IntBlur.ProcessedImg.cols - BK,
+                                          IntBlur.ProcessedImg.rows - BK));
+    }
+  } else if (Settings->useAdaptiveContrast) {
+    Vision::Enhance IntAdaptContrast(IntConvertor.ProcessedImg.clone());
+    IntAdaptContrast.AdaptiveContrastStretch(
+        Settings->adaptContrastKernelSize, Settings->adaptContrastKernelFactor);
+    uint32_t HAK = Settings->adaptContrastKernelSize / 2;
+    uint32_t AK = Settings->adaptContrastKernelSize - 1;
+    dst = IntAdaptContrast.ProcessedImg(
+        cv::Rect(HAK, HAK, IntAdaptContrast.ProcessedImg.cols - AK,
+                 IntAdaptContrast.ProcessedImg.rows - AK));
+  } else {
+    dst = IntConvertor.ProcessedImg;
+  }
+  SHOW_DEBUG_IMG(dst, uchar, 255, "Enhanced Int", false);
+}
+
+void Sample::getBW(cv::Mat &src, cv::Mat &dst, float &progstep) {
+  Vision::Segment SegBL(src.clone());
+  SegBL.sigma = Settings->sigmaFactor;
+  SegBL.thresholdOffset = Settings->thresholdOffsetValue;
+  SegBL.ConvertToBW(Settings->typeOfObjectsSegmented);
+
+  SHOW_DEBUG_IMG(SegBL.ProcessedImg, uchar, 255, "Segment", true);
+
+  cv::Mat BWholes;
+  if (Settings->fillHoles) {
+    Vision::Segment Fillholes(SegBL.ProcessedImg);
+    Fillholes.FillHoles();
+    BWholes = Fillholes.ProcessedImg;
+    SHOW_DEBUG_IMG(BWholes, uchar, 255, "Fillholes", true);
+  } else {
+    BWholes = SegBL.ProcessedImg;
+  }
+
+  cv::Mat BWborder;
+  if (Settings->ignorePartialBorderParticles) {
+    Vision::Segment RemoveBB(BWholes.clone());
+    RemoveBB.RemoveBorderBlobs();
+    BWborder = RemoveBB.ProcessedImg;
+    SHOW_DEBUG_IMG(BWborder, uchar, 255, "RemoveBorderBlobs", true);
+  } else {
+    BWborder = BWholes;
+  }
+
+  if (Settings->morphFilterType != Vision::MorphologicalFilter::NONE) {
+    Vision::MorphologicalFilter Morph(BWborder.clone());
+    cv::Mat kernel = cv::Mat::zeros(Settings->filterMaskSize,
+                                    Settings->filterMaskSize, CV_8UC1);
+    uint32_t hMaskSize = Settings->filterMaskSize / 2;
+    cv::circle(kernel, cv::Point(hMaskSize, hMaskSize), hMaskSize + 1, 1, -1);
+    switch (Settings->morphFilterType) {
+    case Vision::MorphologicalFilter::CLOSE:
+      Morph.Close(kernel);
+      break;
+    case Vision::MorphologicalFilter::OPEN:
+      Morph.Open(kernel);
+      break;
+    case Vision::MorphologicalFilter::DILATE:
+      Morph.Dilation(kernel);
+      break;
+    case Vision::MorphologicalFilter::ERODE:
+      Morph.Erosion(kernel);
+      break;
+    }
+    dst = Morph.ProcessedImg;
+    SHOW_DEBUG_IMG(dst, uchar, 255, "Morphological operation", true);
+  } else {
+    dst = BWholes;
+  }
 }
 
 boost::signals2::connection

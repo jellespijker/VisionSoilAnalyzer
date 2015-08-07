@@ -36,11 +36,7 @@ private:
     ar &LAB;
     ar &RI;
     ar &RGB;
-    ar &OptimizedInt;
   }
-
-protected:
-  cv::Mat OptimizedInt; /**< The enhanced int image*/
 
 public:
   /*!

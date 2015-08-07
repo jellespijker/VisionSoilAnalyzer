@@ -73,6 +73,15 @@ public:
   Sample(const Mat &src, SoilSettings *settings = nullptr);
 
   /*!
+   * \brief Sample the constructor
+   * \param src the source rgb image
+   * \param back_src the source backgroudn image
+   * \param settings a pointer to the an object of the type SoilSettings used to
+   * initalize the analyzing settings
+   */
+  Sample(const Mat &src, const Mat &back_src,SoilSettings *settings = nullptr);
+
+  /*!
     * \brief The Deconstructor
     */
   ~Sample();
@@ -148,5 +157,8 @@ private:
    */
   void SegmentParticles(
       Vision::Segment::SegmentationType segType = Vision::Segment::Normal);
+
+  void getEnhInt(cv::Mat &src, cv::Mat &dst, float &progstep);
+  void getBW(cv::Mat &src, cv::Mat &dst, float &progstep);
 };
 }
