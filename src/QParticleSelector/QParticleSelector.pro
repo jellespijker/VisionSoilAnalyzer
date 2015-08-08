@@ -6,15 +6,14 @@
 
 QT       += core gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets uiplugin
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = QParticleSelector
 TEMPLATE = lib
 CONFIG += shared
 VERSION = 0.1.0
 
-SOURCES +=\
-        qparticleselector.cpp
+SOURCES += qparticleselector.cpp
 
 HEADERS  += qparticleselector.h
 
