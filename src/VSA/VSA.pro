@@ -84,3 +84,8 @@ unix:!macx: LIBS += -L$$PWD/../../build/install/ -lQParticleSelector
 
 INCLUDEPATH += $$PWD/../QParticleSelector
 DEPENDPATH += $$PWD/../QParticleSelector
+
+unix:!macx: LIBS += -L$$PWD/../../build/install/ -lQParticleDisplay
+
+INCLUDEPATH += $$PWD/../QParticleDisplay
+DEPENDPATH += $$PWD/../QParticleDisplay
