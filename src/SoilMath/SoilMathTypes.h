@@ -22,6 +22,7 @@
 
 typedef unsigned char uchar;   /**< unsigned char*/
 typedef unsigned short ushort; /**< unsigned short*/
+typedef unsigned int uint32_t;
 
 typedef std::complex<double> Complex_t;       /**< complex vector of doubles*/
 typedef std::vector<Complex_t> ComplexVect_t; /**< vector of Complex_t*/
@@ -44,7 +45,7 @@ typedef std::pair<float, float>
     MinMaxWeight_t; /**< floating pair weight range*/
 
 typedef struct Predict_struct {
-  uint32_t Category; /**< the category number */
+  uint8_t Category; /**< the category number */
   float RealValue;   /**< category number as float in order to estimate how
                         precise to outcome is*/
   float Accuracy;    /**< the accuracy of the category*/

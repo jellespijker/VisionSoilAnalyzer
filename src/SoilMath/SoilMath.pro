@@ -31,8 +31,8 @@ HEADERS += \
     FFT.h \
     CommonOperations.h \
     nnlearndataset.h \
-    ../Soil/Mat_archive.h \
-    predict_t_archive.h
+    predict_t_archive.h \
+    Mat_archive.h
 
 #opencv
 LIBS += -L/usr/local/lib -lopencv_core -lopencv_highgui

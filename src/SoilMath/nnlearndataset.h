@@ -19,7 +19,7 @@
 #include <boost/archive/binary_oarchive.hpp>
 
 #include <opencv2/core/core.hpp>
-#include "../Soil/Mat_archive.h"
+#include "Mat_archive.h"
 #include "predict_t_archive.h"
 #include "NN.h"
 
