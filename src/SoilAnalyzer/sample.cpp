@@ -10,8 +10,16 @@
 
 namespace SoilAnalyzer {
 namespace io = boost::iostreams;
+
+/*!
+ * \brief Sample::Sample
+ */
 Sample::Sample() {}
 
+/*!
+ * \brief Sample::Save
+ * \param filename
+ */
 void Sample::Save(const string &filename) {
   std::ofstream ofs(filename.c_str(), std::ios::out | std::ios::binary);
   {
@@ -27,6 +35,10 @@ void Sample::Save(const string &filename) {
   ofs.close();
 }
 
+/*!
+ * \brief Sample::Load
+ * \param filename
+ */
 void Sample::Load(const string &filename) {
   std::ifstream ifs(filename.c_str(), std::ios::in | std::ios::binary);
   {
@@ -42,6 +54,10 @@ void Sample::Load(const string &filename) {
   ifs.close();
 }
 
+/*!
+ * \brief Sample::GetPSDVector
+ * \return
+ */
 Sample::PSDVector_t *Sample::GetPSDVector() {
   if (!PSDGathered) {
     Volume.clear();
@@ -52,6 +68,10 @@ Sample::PSDVector_t *Sample::GetPSDVector() {
   return &Volume;
 }
 
+/*!
+ * \brief Sample::GetClassVector
+ * \return
+ */
 Sample::ClassVector_t *Sample::GetClassVector() {
   if (!ClassGathered) {
     Class.clear();

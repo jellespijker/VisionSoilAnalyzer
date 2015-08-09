@@ -3,14 +3,15 @@
 # Project created by QtCreator 2015-08-08T18:57:27
 #
 #-------------------------------------------------
-QT -= gui
 
+QT       += core gui
 QMAKE_CXXFLAGS += -std=c++11
+
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = SoilAnalyzer
 TEMPLATE = lib
 VERSION = 0.9.9
-CONFIG = shared
 
 DEFINES += SOILANALYZER_LIBRARY
 
@@ -25,15 +26,9 @@ HEADERS +=\
     sample.h \
     particle.h \
     analyzer.h \
-    soilanalyzerexception.h
-
-unix {
-    target.path = $PWD/../../../build/install
-    INSTALLS += target
-}
-
-LIBS += -L/opt/Qt/5.5/gcc_64/lib -lQt5Core
-INCLUDEPATH += /opt/Qt/5.5/gcc_64/include
+    soilanalyzerexception.h \
+    ../SoilMath/Mat_archive.h \
+    soilanalyzer.h
 
 #opencv
 LIBS += -L/usr/local/lib -lopencv_core -lopencv_highgui
@@ -56,3 +51,9 @@ DEPENDPATH += $$PWD/../SoilMath
 unix:!macx: LIBS += -L$$PWD/../../build/install/ -lSoilVision
 INCLUDEPATH += $$PWD/../SoilVision
 DEPENDPATH += $$PWD/../SoilVision
+
+#MainLib
+
+target.path = $PWD/../../../build/install
+INSTALLS += target
+

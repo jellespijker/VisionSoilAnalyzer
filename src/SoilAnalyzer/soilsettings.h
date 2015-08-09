@@ -11,6 +11,7 @@
 #include <fstream>
 #include <boost/archive/xml_iarchive.hpp>
 #include <boost/archive/xml_oarchive.hpp>
+#include <boost/serialization/version.hpp>
 #include "../SoilVision/Vision.h"
 
 namespace SoilAnalyzer {
@@ -68,66 +69,75 @@ public:
   bool encInv = false;    /**< invert the values gained form the encoder*/
   bool enableRainbow =
       true; /**< run a rainbow loop on the RGB encoder during analysis*/
-  bool useBacklightProjection = true;
-  bool useHDR = false;
-  std::string defaultWebcam = "USB Microscope";
-  int Brightness_front = 0;
-  int Brightness_proj = -10;
-  int Contrast_front = 36;
-  int Contrast_proj = 36;
-  int Saturation_front = 64;
-  int Saturation_proj = 0;
-  int Hue_front = 0;
-  int Hue_proj = -40;
-  int Gamma_front = 100;
-  int Gamma_proj = 200;
-  int PowerLineFrequency_front = 1;
-  int PowerLineFrequency_proj = 1;
-  int Sharpness_front = 12;
-  int Sharpness_proj = 25;
-  int BackLightCompensation_front = 1;
-  int BackLightCompensation_proj = 1;
-
+  bool useBacklightProjection = true;           /*!< use Projection*/
+  bool useHDR = false;                          /*!< use HDR*/
+  std::string defaultWebcam = "USB Microscope"; /*!< The defaultWebcam string*/
+  int Brightness_front = 0;  /*!< cam brightness setting front light*/
+  int Brightness_proj = -10; /*!< cam brightness setting projected light*/
+  int Contrast_front = 36;   /*!< cam contrast setting front light*/
+  int Contrast_proj = 36;    /*!< cam contrast setting projected light*/
+  int Saturation_front = 64; /*!< cam saturation setting front light*/
+  int Saturation_proj = 0;   /*!< cam saturation setting projected light*/
+  int Hue_front = 0;         /*!< cam hue setting front light*/
+  int Hue_proj = -40;        /*!< cam hue setting projected light*/
+  int Gamma_front = 100;     /*!< cam gamma setting front light*/
+  int Gamma_proj = 200;      /*!< cam gamma setting projected light*/
+  int PowerLineFrequency_front =
+      1; /*!< cam powerline freq setting front light*/
+  int PowerLineFrequency_proj =
+      1;                    /*!< cam powerline freq setting projected light*/
+  int Sharpness_front = 12; /*!< cam sharpness setting front light*/
+  int Sharpness_proj = 25;  /*!< cam sharpness setting projected light*/
+  int BackLightCompensation_front =
+      1; /*!< cam backlight compensation setting front light*/
+  int BackLightCompensation_proj =
+      1; /*!< cam backlight compensation setting projected light*/
+  std::string NNlocation = "NeuralNet/Default.NN";
+  bool useCUDA =  false;
 private:
   friend class boost::serialization::access;
   template <class Archive>
-  void serialize(Archive &ar,
-                 const unsigned int version __attribute__((unused))) {
-    ar &BOOST_SERIALIZATION_NVP(useAdaptiveContrast);
-    ar &BOOST_SERIALIZATION_NVP(adaptContrastKernelFactor);
-    ar &BOOST_SERIALIZATION_NVP(adaptContrastKernelSize);
-    ar &BOOST_SERIALIZATION_NVP(useBlur);
-    ar &BOOST_SERIALIZATION_NVP(blurKernelSize);
-    ar &BOOST_SERIALIZATION_NVP(typeOfObjectsSegmented);
-    ar &BOOST_SERIALIZATION_NVP(ignorePartialBorderParticles);
-    ar &BOOST_SERIALIZATION_NVP(fillHoles);
-    ar &BOOST_SERIALIZATION_NVP(sigmaFactor);
-    ar &BOOST_SERIALIZATION_NVP(morphFilterType);
-    ar &BOOST_SERIALIZATION_NVP(filterMaskSize);
-    ar &BOOST_SERIALIZATION_NVP(thresholdOffsetValue);
-    ar &BOOST_SERIALIZATION_NVP(HDRframes);
-    ar &BOOST_SERIALIZATION_NVP(lightLevel);
-    ar &BOOST_SERIALIZATION_NVP(encInv);
-    ar &BOOST_SERIALIZATION_NVP(enableRainbow);
-    ar &BOOST_SERIALIZATION_NVP(useBacklightProjection);
-    ar &BOOST_SERIALIZATION_NVP(useHDR);
-    ar &BOOST_SERIALIZATION_NVP(defaultWebcam);
-    ar &BOOST_SERIALIZATION_NVP(Brightness_front);
-    ar &BOOST_SERIALIZATION_NVP(Brightness_proj);
-    ar &BOOST_SERIALIZATION_NVP(Contrast_front);
-    ar &BOOST_SERIALIZATION_NVP(Contrast_proj);
-    ar &BOOST_SERIALIZATION_NVP(Saturation_front);
-    ar &BOOST_SERIALIZATION_NVP(Saturation_proj);
-    ar &BOOST_SERIALIZATION_NVP(Hue_front);
-    ar &BOOST_SERIALIZATION_NVP(Hue_proj);
-    ar &BOOST_SERIALIZATION_NVP(Gamma_front);
-    ar &BOOST_SERIALIZATION_NVP(Gamma_proj);
-    ar &BOOST_SERIALIZATION_NVP(PowerLineFrequency_front);
-    ar &BOOST_SERIALIZATION_NVP(PowerLineFrequency_proj);
-    ar &BOOST_SERIALIZATION_NVP(Sharpness_front);
-    ar &BOOST_SERIALIZATION_NVP(Sharpness_proj);
-    ar &BOOST_SERIALIZATION_NVP(BackLightCompensation_front);
-    ar &BOOST_SERIALIZATION_NVP(BackLightCompensation_proj);
+  void serialize(Archive &ar, const unsigned int version) {
+    if (version >= 0) {
+      ar &BOOST_SERIALIZATION_NVP(useAdaptiveContrast);
+      ar &BOOST_SERIALIZATION_NVP(adaptContrastKernelFactor);
+      ar &BOOST_SERIALIZATION_NVP(adaptContrastKernelSize);
+      ar &BOOST_SERIALIZATION_NVP(useBlur);
+      ar &BOOST_SERIALIZATION_NVP(blurKernelSize);
+      ar &BOOST_SERIALIZATION_NVP(typeOfObjectsSegmented);
+      ar &BOOST_SERIALIZATION_NVP(ignorePartialBorderParticles);
+      ar &BOOST_SERIALIZATION_NVP(fillHoles);
+      ar &BOOST_SERIALIZATION_NVP(sigmaFactor);
+      ar &BOOST_SERIALIZATION_NVP(morphFilterType);
+      ar &BOOST_SERIALIZATION_NVP(filterMaskSize);
+      ar &BOOST_SERIALIZATION_NVP(thresholdOffsetValue);
+      ar &BOOST_SERIALIZATION_NVP(HDRframes);
+      ar &BOOST_SERIALIZATION_NVP(lightLevel);
+      ar &BOOST_SERIALIZATION_NVP(encInv);
+      ar &BOOST_SERIALIZATION_NVP(enableRainbow);
+      ar &BOOST_SERIALIZATION_NVP(useBacklightProjection);
+      ar &BOOST_SERIALIZATION_NVP(useHDR);
+      ar &BOOST_SERIALIZATION_NVP(defaultWebcam);
+      ar &BOOST_SERIALIZATION_NVP(Brightness_front);
+      ar &BOOST_SERIALIZATION_NVP(Brightness_proj);
+      ar &BOOST_SERIALIZATION_NVP(Contrast_front);
+      ar &BOOST_SERIALIZATION_NVP(Contrast_proj);
+      ar &BOOST_SERIALIZATION_NVP(Saturation_front);
+      ar &BOOST_SERIALIZATION_NVP(Saturation_proj);
+      ar &BOOST_SERIALIZATION_NVP(Hue_front);
+      ar &BOOST_SERIALIZATION_NVP(Hue_proj);
+      ar &BOOST_SERIALIZATION_NVP(Gamma_front);
+      ar &BOOST_SERIALIZATION_NVP(Gamma_proj);
+      ar &BOOST_SERIALIZATION_NVP(PowerLineFrequency_front);
+      ar &BOOST_SERIALIZATION_NVP(PowerLineFrequency_proj);
+      ar &BOOST_SERIALIZATION_NVP(Sharpness_front);
+      ar &BOOST_SERIALIZATION_NVP(Sharpness_proj);
+      ar &BOOST_SERIALIZATION_NVP(BackLightCompensation_front);
+      ar &BOOST_SERIALIZATION_NVP(BackLightCompensation_proj);
+      ar &BOOST_SERIALIZATION_NVP(NNlocation);
+      ar &BOOST_SERIALIZATION_NVP(useCUDA);
+    }
   }
 };
 }
+BOOST_CLASS_VERSION(SoilAnalyzer::SoilSettings, 0)

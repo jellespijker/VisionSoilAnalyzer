@@ -4,9 +4,7 @@
  * This software is proprietary and confidential
  * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015
  */
-
-#ifndef PARTICLE_H
-#define PARTICLE_H
+#pragma once
 
 #include <opencv2/core.hpp>
 #include <stdint.h>
@@ -29,24 +27,27 @@ class Particle {
 public:
   Particle();
 
-  uint32_t ID;
+  uint32_t ID; /*!< The particle ID*/
 
-  cv::Mat BW;
-  cv::Mat Edge;
-  cv::Mat RGB;
+  cv::Mat BW; /*!< The binary image of the particle*/
+  cv::Mat Edge; /*!< The binary edge image of the particle*/
+  cv::Mat RGB; /*!< The RGB image of the particle*/
 
-  std::vector<Complex_t> FFDescriptors;
-  Predict_t Classification;
-  float SIPixelFactor = 1.0;
-  uint32_t PixelArea = 0;
+  std::vector<Complex_t> FFDescriptors; /*!< The Fast Fourier Descriptors describing the contour in the Frequency domain*/
+  Predict_t Classification; /*!< The classification prediction*/
+  float SIPixelFactor = 1.0; /*!< The conversion factor from pixel to SI*/
+  uint32_t PixelArea = 0; /*!< The total area of the binary image*/
 
   float GetSIVolume();
 
   void Save(const std::string &filename);
   void Load(const std::string &filename);
 
+  bool isPreparedForAnalysis = false; /*!< is the particle ready for analysis*/
+  bool isAnalysed = false; /*!< is the particle analyzed*/
+
 private:
-  float SIVolume = 0.;
+  float SIVolume = 0.; /*!< The correspondening SI volume*/
 
   friend class boost::serialization::access;
   template <class Archive>
@@ -61,9 +62,10 @@ private:
       ar &SIPixelFactor;
       ar &PixelArea;
       ar &SIVolume;
+      ar &isPreparedForAnalysis;
+      ar &isAnalysed;
     }
   }
 };
 }
 BOOST_CLASS_VERSION(SoilAnalyzer::Particle, 0)
-#endif // PARTICLE_H

@@ -5,13 +5,12 @@
  * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015
  */
 
-#ifndef SAMPLE_H
-#define SAMPLE_H
+#pragma once
 
 #include "stdint.h"
 #include <vector>
 #include <string>
-#include "SoilMath.h"
+#include "Stats.h"
 #include "particle.h"
 #include <fstream>
 #include <boost/archive/binary_iarchive.hpp>
@@ -28,20 +27,20 @@ class Sample {
 public:
   Sample();
 
-  uint32_t ID;
-  std::string Location;
-  std::string Name;
+  uint32_t ID; /*!< The sample ID*/
+  std::string Location; /*!< The Location where the sample was taken*/
+  std::string Name; /*!< The sample name identifier*/
 
-  typedef std::vector<Particle> ParticleVector_t;
-  typedef std::vector<float> PSDVector_t;
-  typedef std::vector<uint8_t> ClassVector_t;
+  typedef std::vector<Particle> ParticleVector_t; /*!< a vector consisting of individual particles*/
+  typedef std::vector<float> PSDVector_t; /*!< a vector used in the PSD*/
+  typedef std::vector<uint8_t> ClassVector_t; /*!< a vector used in the classification histogram*/
 
-  ParticleVector_t ParticlePopulation;
+  ParticleVector_t ParticlePopulation; /*!< the individual particles of the sample*/
 
-  floatStat_t PSD;
-  uint32Stat_t Shape;
-  floatStat_t CIELab;
-  floatStat_t RI;
+  floatStat_t PSD; /*!< The Particle Size Distribution*/
+  ucharStat_t Shape; /*!< The Shape classification distribution*/
+  floatStat_t CIELab; /*!< The statistical CIE Lab color data*/
+  floatStat_t RI; /*!< The statistical Redness Index data*/
 
   void Save(const std::string &filename);
   void Load(const std::string &filename);
@@ -49,16 +48,19 @@ public:
   PSDVector_t *GetPSDVector();
   ClassVector_t *GetClassVector();
 
+  bool isPreparedForAnalysis = false; /*!< is the sample ready for analysis, are all the particles extracted*/
+  bool isAnalysed = false; /*!< is the sample analyzed*/
+
 private:
-  PSDVector_t Volume;
-  bool PSDGathered = false;
-  ClassVector_t Class;
-  bool ClassGathered = false;
+  PSDVector_t Volume; /*!< The PSD raw data*/
+  bool PSDGathered = false; /*!< is the raw data gathered*/
+  ClassVector_t Class; /*!< The classification raw data*/
+  bool ClassGathered = false; /*!< is the classification data gathered*/
 
   friend class boost::serialization::access;
   template <class Archive>
   void serialize(Archive &ar, const unsigned int version) {
-    if (version == 0) {
+    if (version >= 0) {
       ar &ID;
       ar &Location;
       ar &Name;
@@ -69,9 +71,10 @@ private:
       ar &Shape;
       ar &CIELab;
       ar &RI;
+      ar &isPreparedForAnalysis;
+      ar &isAnalysed;
     }
   }
 };
 }
 BOOST_CLASS_VERSION(SoilAnalyzer::Sample, 0)
-#endif // SAMPLE_H

@@ -12,6 +12,10 @@ namespace io = boost::iostreams;
 
 Particle::Particle() {}
 
+/*!
+ * \brief Particle::Save
+ * \param filename
+ */
 void Particle::Save(const string &filename) {
   std::ofstream ofs(filename.c_str(), std::ios::out | std::ios::binary);
   {
@@ -27,6 +31,10 @@ void Particle::Save(const string &filename) {
   ofs.close();
 }
 
+/*!
+ * \brief Particle::Load
+ * \param filename
+ */
 void Particle::Load(const string &filename) {
   std::ifstream ifs(filename.c_str(), std::ios::in | std::ios::binary);
   {
@@ -42,6 +50,10 @@ void Particle::Load(const string &filename) {
   ifs.close();
 }
 
+/*!
+ * \brief Particle::GetSIVolume
+ * \return
+ */
 float Particle::GetSIVolume() {
   if (SIVolume == 0.) {
     if (PixelArea == 0) {

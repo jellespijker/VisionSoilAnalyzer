@@ -9,23 +9,32 @@
 
 namespace SoilAnalyzer {
 
-Analyzer::Analyzer(Images_t *snapshots, Sample *results, SoilSettings *settings = nullptr) {
+/*!
+*\brief Analyzer::Analyzer
+*\param snapshots
+*\param results
+*\param settings
+*/
+Analyzer::Analyzer(Images_t *snapshots, Sample *results,
+                   SoilSettings *settings = nullptr) {
   this->Snapshots = snapshots;
   this->Results = results;
   if (settings == nullptr) {
-      Settings = new SoilSettings;
-    }
-  else {
-      this->Settings = settings;
-    }
+    Settings = new SoilSettings;
+  } else {
+    this->Settings = settings;
+  }
 }
 
+/*!
+ * \brief Analyzer::PrepImages
+ */
 void Analyzer::PrepImages() {
   if (Snapshots == nullptr || Snapshots->size() == 0) {
-      throw Exception::SoilAnalyzerException(EXCEPTION_NO_SNAPSHOTS,
-                                             EXCEPTION_NO_SNAPSHOTS_NR);
-    }
-  
+    throw Exception::SoilAnalyzerException(EXCEPTION_NO_SNAPSHOTS,
+                                           EXCEPTION_NO_SNAPSHOTS_NR);
+  }
+
   std::vector<cv::Mat> intensityVector;
   GetEnhancedInt(Snapshots, intensityVector);
 
@@ -33,62 +42,120 @@ void Analyzer::PrepImages() {
   GetBW(intensityVector, BWVector);
   CleanUpMatVector(intensityVector);
 
-  GetParticles(BWVector, Results->ParticlePopulation);
+  GetParticles(BWVector, Snapshots, Results->ParticlePopulation);
+  Results->isPreparedForAnalysis = true;
+
   CleanUpMatVector(BWVector);
   CleanUpMatVector(Snapshots);
-
 }
 
-void Analyzer::Analyse() {}
+/*!
+ * \brief Analyzer::Analyse
+ */
+void Analyzer::Analyse() {
+  CalcMaxProgress();
+  PrepImages();
+  GetFFD(Results->ParticlePopulation);
+  GetPrediction(Results->ParticlePopulation);
+  Results->Shape =
+      ucharStat_t(Results->GetClassVector()->data(),
+                  Results->GetClassVector()->size(), 1, 18, 1, false);
+  emit on_progressUpdate(currentProgress++);
+  Results->PSD = floatStat_t(Results->GetPSDVector()->data(),
+                             Results->GetPSDVector()->size(), 15, 0);
+  emit on_progressUpdate(currentProgress++);
+
+  emit on_AnalysisFinished();
+}
 
 void Analyzer::CleanUpMatVector(std::vector<Mat> &mv) {
-  for_each(mv.begin(), mv.end(),[](cv::Mat &I) {
-    I.release();
-  });
+  for_each(mv.begin(), mv.end(), [](cv::Mat &I) { I.release(); });
   mv.clear();
 }
 
+/*!
+ * \brief Analyzer::CleanUpMatVector
+ * \param mv
+ */
 void Analyzer::CleanUpMatVector(Images_t *mv) {
-  for_each(mv->begin(), mv->end(),[](Image_t &I) {
+  for_each(mv->begin(), mv->end(), [](Image_t &I) {
     I.BackLight.release();
     I.FrontLight.release();
   });
   mv->clear();
 }
 
+/*!
+ * \brief Analyzer::CalcMaxProgress
+ */
 void Analyzer::CalcMaxProgress() {
+  // Static processing steps
+  MaxProgress += Snapshots->size() * 5;
+
+  // Optional processing steps
   if (Settings->useBlur) {
-      MaxProgress = 100;
-    }
+    MaxProgress += Snapshots->size();
+  }
+  if (Settings->useAdaptiveContrast) {
+    MaxProgress += Snapshots->size();
+  }
+  if (Settings->fillHoles) {
+    MaxProgress += Snapshots->size();
+  }
+  if (Settings->ignorePartialBorderParticles) {
+    MaxProgress += Snapshots->size();
+  }
+  if (Settings->morphFilterType != Vision::MorphologicalFilter::NONE) {
+    MaxProgress += Snapshots->size();
+  }
 
   emit on_maxProgressUpdate(MaxProgress);
 }
 
-void Analyzer::GetEnhancedInt(Images_t *snapshots, std::vector<Mat> intensityVector) {
-  if (Settings->useBacklightProjection) {
-      for_each(snapshots->begin(), snapshots->end(),[&](Image_t &I) {
-        cv::Mat intensity;
-        GetEnhancedInt(I.BackLight, intensity);
-        intensityVector.push_back(intensity);
-      });
-    }
-  else {
-      for_each(snapshots->begin(), snapshots->end(),[&](Image_t &I) {
-        cv::Mat intensity;
-        GetEnhancedInt(I.FrontLight, intensity);
-        intensityVector.push_back(intensity);
-      });
-    }
+void Analyzer::CalcMaxProgressAnalyze() {
+  MaxProgress -= STARTING_ESTIMATE_PROGRESS;
+  MaxProgress += Results->ParticlePopulation.size() * 2;
+
+  emit on_maxProgressUpdate(MaxProgress);
 }
 
+/*!
+ * \brief Analyzer::GetEnhancedInt
+ * \param snapshots
+ * \param intensityVector
+ */
+void Analyzer::GetEnhancedInt(Images_t *snapshots,
+                              std::vector<Mat> intensityVector) {
+  if (Settings->useBacklightProjection) {
+    for_each(snapshots->begin(), snapshots->end(), [&](Image_t &I) {
+      cv::Mat intensity;
+      GetEnhancedInt(I.BackLight, intensity);
+      intensityVector.push_back(intensity);
+    });
+  } else {
+    for_each(snapshots->begin(), snapshots->end(), [&](Image_t &I) {
+      cv::Mat intensity;
+      GetEnhancedInt(I.FrontLight, intensity);
+      intensityVector.push_back(intensity);
+    });
+  }
+}
+
+/*!
+ * \brief Analyzer::GetEnhancedInt
+ * \param img
+ * \param intensity
+ */
 void Analyzer::GetEnhancedInt(Mat &img, Mat &intensity) {
   Vision::Conversion IntConvertor(img.clone());
   IntConvertor.Convert(Vision::Conversion::RGB, Vision::Conversion::Intensity);
+  emit on_progressUpdate(currentProgress++);
   SHOW_DEBUG_IMG(IntConvertor.ProcessedImg, uchar, 255, "RGB 2 Int", false);
 
   if (Settings->useBlur) {
     Vision::Enhance IntBlur(IntConvertor.ProcessedImg.clone());
     IntBlur.Blur(Settings->blurKernelSize);
+    emit on_progressUpdate(currentProgress++);
     uint32_t HBK = Settings->blurKernelSize / 2;
     uint32_t BK = Settings->blurKernelSize - 1;
     if (Settings->useAdaptiveContrast) {
@@ -99,20 +166,22 @@ void Analyzer::GetEnhancedInt(Mat &img, Mat &intensity) {
       IntAdaptContrast.AdaptiveContrastStretch(
           Settings->adaptContrastKernelSize,
           Settings->adaptContrastKernelFactor);
+      emit on_progressUpdate(currentProgress++);
       uint32_t HAK = Settings->adaptContrastKernelSize / 2;
       uint32_t AK = Settings->adaptContrastKernelSize - 1;
       intensity = IntAdaptContrast.ProcessedImg(
           cv::Rect(HAK, HAK, IntAdaptContrast.ProcessedImg.cols - AK,
                    IntAdaptContrast.ProcessedImg.rows - AK));
     } else {
-      intensity = IntBlur.ProcessedImg(cv::Rect(HBK, HBK,
-                                          IntBlur.ProcessedImg.cols - BK,
-                                          IntBlur.ProcessedImg.rows - BK));
+      intensity = IntBlur.ProcessedImg(
+          cv::Rect(HBK, HBK, IntBlur.ProcessedImg.cols - BK,
+                   IntBlur.ProcessedImg.rows - BK));
     }
   } else if (Settings->useAdaptiveContrast) {
     Vision::Enhance IntAdaptContrast(IntConvertor.ProcessedImg.clone());
     IntAdaptContrast.AdaptiveContrastStretch(
         Settings->adaptContrastKernelSize, Settings->adaptContrastKernelFactor);
+    emit on_progressUpdate(currentProgress++);
     uint32_t HAK = Settings->adaptContrastKernelSize / 2;
     uint32_t AK = Settings->adaptContrastKernelSize - 1;
     intensity = IntAdaptContrast.ProcessedImg(
@@ -124,13 +193,25 @@ void Analyzer::GetEnhancedInt(Mat &img, Mat &intensity) {
   SHOW_DEBUG_IMG(intensity, uchar, 255, "Enhanced Int", false);
 }
 
-void Analyzer::GetBW(std::vector<cv::Mat> &images, std::vector<cv::Mat> &BWvector) {
-    for_each(images.begin(), images.end(), [&](cv::Mat &I) {
-      cv::Mat BW;
-      GetBW(I, BW);
+/*!
+ * \brief Analyzer::GetBW
+ * \param images
+ * \param BWvector
+ */
+void Analyzer::GetBW(std::vector<cv::Mat> &images,
+                     std::vector<cv::Mat> &BWvector) {
+  for_each(images.begin(), images.end(), [&](cv::Mat &I) {
+    cv::Mat BW;
+    GetBW(I, BW);
+    BWvector.push_back(BW);
   });
 }
 
+/*!
+ * \brief Analyzer::GetBW
+ * \param img
+ * \param BW
+ */
 void Analyzer::GetBW(cv::Mat &img, cv::Mat &BW) {
   Vision::Segment SegBL(img.clone());
   SegBL.sigma = Settings->sigmaFactor;
@@ -180,7 +261,7 @@ void Analyzer::GetBW(cv::Mat &img, cv::Mat &BW) {
     case Vision::MorphologicalFilter::ERODE:
       Morph.Erosion(kernel);
       break;
-   case Vision::MorphologicalFilter::NONE:
+    case Vision::MorphologicalFilter::NONE:
       Morph.ProcessedImg = Morph.OriginalImg;
       break;
     }
@@ -190,5 +271,74 @@ void Analyzer::GetBW(cv::Mat &img, cv::Mat &BW) {
   } else {
     BW = BWholes;
   }
+}
+
+/*!
+ * \brief Analyzer::GetParticles
+ * \param BW
+ * \param snapshots
+ * \param partPopulation
+ */
+void Analyzer::GetParticles(std::vector<Mat> &BW, Images_t *snapshots,
+                            Sample::ParticleVector_t &partPopulation) {
+  for (uint32_t i = 0; i < snapshots->size(); i++) {
+    Vision::Segment prepBW(BW[i]);
+    prepBW.GetBlobList();
+    emit on_progressUpdate(currentProgress++);
+    prepBW.GetEdges();
+    emit on_progressUpdate(currentProgress++);
+    GetParticlesFromBlobList(prepBW.BlobList, &(snapshots->at(i)),
+                             prepBW.ProcessedImg, partPopulation);
+    emit on_progressUpdate(currentProgress++);
+  }
+}
+
+/*!
+ * \brief Analyzer::GetParticlesFromBlobList
+ * \param bloblist
+ * \param snapshot
+ * \param edge
+ * \param partPopulation
+ */
+void Analyzer::GetParticlesFromBlobList(
+    Vision::Segment::BlobList_t &bloblist, Image_t *snapshot, Mat &edge,
+    Sample::ParticleVector_t &partPopulation) {
+  for_each(bloblist.begin(), bloblist.end(), [&](Vision::Segment::Blob_t &B) {
+    Particle part;
+    part.ID = currentParticleID++;
+    part.BW = B.Img;
+    part.PixelArea = B.Area;
+    part.Edge = Vision::Segment::CopyMat<uchar>(edge(B.ROI), B.Img, CV_8UC1);
+    part.RGB = Vision::Segment::CopyMat<uchar>(snapshot->FrontLight(B.ROI),
+                                               B.Img, CV_8UC3);
+    part.SIPixelFactor = snapshot->SIPixelFactor;
+    part.isPreparedForAnalysis = true;
+    partPopulation.push_back(part);
+  });
+}
+
+/*!
+ * \brief Analyzer::GetFFD
+ * \param particalPopulation
+ */
+void Analyzer::GetFFD(Sample::ParticleVector_t &particalPopulation) {
+  SoilMath::FFT fft;
+  for_each(particalPopulation.begin(), particalPopulation.end(),
+           [&](Particle &P) {
+             P.FFDescriptors = fft.GetDescriptors(P.Edge);
+             emit on_progressUpdate(currentProgress++);
+           });
+}
+
+/*!
+ * \brief Analyzer::GetPrediction
+ * \param particlePopulation
+ */
+void Analyzer::GetPrediction(Sample::ParticleVector_t &particlePopulation) {
+  SoilMath::NN nn;
+  nn.LoadState(Settings->NNlocation);
+  for_each(
+      particlePopulation.begin(), particlePopulation.end(),
+      [&](Particle &P) { P.Classification = nn.Predict(P.FFDescriptors); });
 }
 }
