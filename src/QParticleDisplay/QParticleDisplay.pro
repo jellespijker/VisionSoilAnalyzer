@@ -20,24 +20,28 @@ HEADERS  += qparticledisplay.h
 
 FORMS    += qparticledisplay.ui
 
+unix:!macx: LIBS += -L$$PWD/../../build/install/ -lpictureflow-qt
+
+INCLUDEPATH += $$PWD/../pictureflow-qt
+DEPENDPATH += $$PWD/../pictureflow-qt
+
 #MainLib
 unix {
     target.path = $PWD/../../../build/install
     INSTALLS += target
 }
 
-#Soil lib
-unix:!macx: LIBS += -L$$PWD/../../build/install/ -lSoil
+unix:!macx: LIBS += -L$$PWD/../../build/install/ -lSoilAnalyzer
 
-INCLUDEPATH += $$PWD/../Soil
-DEPENDPATH += $$PWD/../Soil
+INCLUDEPATH += $$PWD/../SoilAnalyzer
+DEPENDPATH += $$PWD/../SoilAnalyzer
+
+unix:!macx: LIBS += -L$$PWD/../../build/install/ -lSoilMath
+
+INCLUDEPATH += $$PWD/../SoilMath
+DEPENDPATH += $$PWD/../SoilMath
 
 unix:!macx: LIBS += -L$$PWD/../../build/install/ -lQOpenCVQT
 
 INCLUDEPATH += $$PWD/../QOpenCVQT
 DEPENDPATH += $$PWD/../QOpenCVQT
-
-unix:!macx: LIBS += -L$$PWD/../../build/install/ -lpictureflow-qt
-
-INCLUDEPATH += $$PWD/../pictureflow-qt
-DEPENDPATH += $$PWD/../pictureflow-qt

@@ -5,14 +5,12 @@
  * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015
  */
 
-#ifndef QPARTICLEDISPLAY_H
-#define QPARTICLEDISPLAY_H
-
+#pragma once
 #include <QWidget>
 #include <QImage>
-#include "qopencvqt.h"
+#include <qopencvqt.h>
 
-#include "Sample.h"
+#include "soilanalyzer.h"
 
 namespace Ui {
   class QParticleDisplay;
@@ -25,7 +23,7 @@ class QParticleDisplay : public QWidget
 public:
   explicit QParticleDisplay(QWidget *parent = 0);
   ~QParticleDisplay();
-  void SetParticlePopulation(SoilAnalyzer::Sample::Particles_t *particlePopulation);
+  void SetParticlePopulation(SoilAnalyzer::Sample::ParticleVector_t *particlePopulation);
 
 signals:
   void particleChanged(int newValue);
@@ -38,7 +36,5 @@ private slots:
 
 private:
   Ui::QParticleDisplay *ui;
-  SoilAnalyzer::Sample::Particles_t *ParticlePopulation;
+  SoilAnalyzer::Sample::ParticleVector_t *ParticlePopulation;
 };
-
-#endif // QPARTICLEDISPLAY_H

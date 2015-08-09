@@ -34,7 +34,7 @@ void QParticleDisplay::setSelectedParticle(int newValue) {
   ui->widget->setCenterIndex(newValue);
 }
 
-void QParticleDisplay::SetParticlePopulation(SoilAnalyzer::Sample::Particles_t *particlePopulation) {
+void QParticleDisplay::SetParticlePopulation(SoilAnalyzer::Sample::ParticleVector_t *particlePopulation) {
   this->ParticlePopulation = particlePopulation;
   ui->horizontalSlider->setMaximum(this->ParticlePopulation->size());
   for (uint32_t i = 0; i < ui->widget->slideCount(); i++) {
@@ -42,6 +42,6 @@ void QParticleDisplay::SetParticlePopulation(SoilAnalyzer::Sample::Particles_t *
     }
 
   for (uint32_t i = 0; i < this->ParticlePopulation->size(); i++) {
-      ui->widget->addSlide(QOpenCVQT::Mat2QImage(this->ParticlePopulation[i].RGB));
+      ui->widget->addSlide(QOpenCVQT::Mat2QImage(this->ParticlePopulation->at(i).RGB));
     }
 }
