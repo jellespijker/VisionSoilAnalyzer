@@ -44,6 +44,7 @@ public:
 
   T1 *Data;                /**< Pointer the data*/
   uint32_t *bins;          /**< the histogram*/
+  uint64_t *CFD;           /**< the CFD*/
   bool Calculated = false; /**< indication if the data has been calculated*/
   float Mean = 0.0;        /**< the mean value of the data*/
   uint32_t n = 0;          /**< number of data points*/
@@ -127,6 +128,7 @@ public:
     this->Std = rhs.Std;
     this->Sum = rhs.Sum;
     std::copy(rhs.bins, rhs.bins + rhs.noBins, this->bins);
+    std::copy(rhs.CFD, rhs.CFD + rhs.noBins, this->CFD);
     this->Data = &rhs.Data[0];
     this->StartAtZero = rhs.StartAtZero;
   }
@@ -160,6 +162,7 @@ public:
       this->Sum = rhs.Sum;
       this->Data = &rhs.Data[0];
       std::copy(rhs.bins, rhs.bins + rhs.noBins, this->bins);
+      std::copy(rhs.CFD, rhs.CFD + rhs.noBins, this->CFD);
       this->StartAtZero = rhs.StartAtZero;
     }
     return *this;
@@ -179,6 +182,7 @@ public:
     EndBin = endBin;
     this->noBins = noBins;
     bins = new uint32_t[noBins]{};
+    CFD = new uint64_t[noBins] {};
 
     if (typeid(T1) == typeid(float) || typeid(T1) == typeid(double) ||
         typeid(T1) == typeid(long double)) {
@@ -220,6 +224,7 @@ public:
     Rows = rows;
     Cols = cols;
     bins = new uint32_t[noBins]{};
+    CFD = new uint64_t[noBins] {};
     this->noBins = noBins;
     if (isDiscrete) {
       BasicCalculate();
@@ -261,6 +266,7 @@ public:
     Rows = rows;
     Cols = cols;
     bins = new uint32_t[noBins]{};
+    CFD = new uint64_t[noBins] {};
     this->noBins = noBins;
     if (isDiscrete) {
       BasicCalculate(mask);
@@ -291,6 +297,7 @@ public:
     }
 
     bins = new uint32_t[noBins]{};
+    CFD = new uint64_t[noBins] {};
     while (i-- > 0) {
       bins[i] = binData[i];
       n += binData[i];
@@ -298,7 +305,10 @@ public:
     BinCalculations(startC, endC);
   }
 
-  ~Stats() { delete[] bins; }
+  ~Stats() {
+    delete[] bins;
+    delete[] CFD;
+  }
 
   /*!
    * \brief BasicCalculateFloat execute the basic float data calculations
@@ -339,6 +349,7 @@ public:
       }
     }
     Std = sqrt((float)(sum_dev / n));
+    getCFD();
     Calculated = true;
   }
 
@@ -391,6 +402,7 @@ public:
       }
     }
     Std = sqrt((float)(sum_dev / nmask));
+    getCFD();
     Calculated = true;
   }
 
@@ -433,6 +445,7 @@ public:
       });
     }
     Std = sqrt((float)(sum_dev / n));
+    getCFD();
     Calculated = true;
   }
 
@@ -488,6 +501,7 @@ public:
       });
     }
     Std = sqrt((float)(sum_dev / nmask));
+    getCFD();
     Calculated = true;
   }
 
@@ -530,11 +544,23 @@ public:
       sum_dev += b * pow(((i++ + startC) - Mean), 2);
     });
     Std = sqrt((float)(sum_dev / n));
+    getCFD();
     Calculated = true;
   }
 
 private:
   uint32_t n_end = 0; /**< data end counter used with mask*/
+
+  /*!
+   * \brief getCFD get the CFD matrix;
+   */
+  void getCFD() {
+    CFD[0] = bins[0];
+    for (uint32_t i = 1; i < noBins; i++) {
+        CFD[i] = CFD[i - 1] + bins[i];
+      }
+  }
+
   friend class boost::serialization::access; /**< Serialization class*/
 
   /*!
@@ -552,6 +578,9 @@ private:
     ar &noBins;
     for (size_t dc = 0; dc < noBins; dc++) {
       ar &bins[dc];
+    }
+    for (size_t dc = 0; dc < noBins; dc++) {
+        ar &CFD[dc];
     }
     ar &Calculated;
     ar &Mean;
