@@ -16,11 +16,14 @@ VERSION = 0.1.0
 unix:!macx: QMAKE_RPATHDIR += $$PWD/../../../build/install/
 
 SOURCES += main.cpp\
-        vsamainwindow.cpp
+        vsamainwindow.cpp \
+    dialogsettings.cpp
 
-HEADERS  += vsamainwindow.h
+HEADERS  += vsamainwindow.h \
+    dialogsettings.h
 
-FORMS    += vsamainwindow.ui
+FORMS    += vsamainwindow.ui \
+    dialogsettings.ui
 
 #opencv
 LIBS += -L/usr/local/lib -lopencv_core -lopencv_highgui -lopencv_imgcodecs
@@ -50,18 +53,28 @@ unix:!macx: LIBS += -L$$PWD/../../build/install/ -lSoilVision
 INCLUDEPATH += $$PWD/../SoilVision
 DEPENDPATH += $$PWD/../SoilVision
 
-#Soil lib
-unix:!macx: LIBS += -L$$PWD/../../build/install/ -lSoil
-
-INCLUDEPATH += $$PWD/../Soil
-DEPENDPATH += $$PWD/../Soil
-
 #QCustomplot lib
 DEFINES += QCUSTOMPLOT_USE_LIBRARY
 unix:!macx: LIBS += -L$$PWD/../../build/install/ -lqcustomplot
 
 INCLUDEPATH += $$PWD/../qcustomplot
 DEPENDPATH += $$PWD/../qcustomplot
+
+#NeuralNetFiles
+NNtarget.path += $${OUT_PWD}/NeuralNet
+NNtarget.files += $${PWD}/NeuralNet/*
+INSTALLS += NNtarget
+bNNtarget.path += $${PWD}/../../build/install/NeuralNet
+bNNtarget.files += $${PWD}/NeuralNet/*
+INSTALLS += bNNtarget
+
+#SettingFiles
+INItarget.path += $${OUT_PWD}/Settings
+INItarget.files += $${PWD}/Settings/*
+INSTALLS += INItarget
+bINItarget.path += $$PWD/../../build/install/Settings
+bINItarget.files += $$PWD/Settings/*
+INSTALLS += bINItarget
 
 #SoilSamples
 IMGtarget.path += $${OUT_PWD}/SoilSamples
@@ -89,3 +102,18 @@ unix:!macx: LIBS += -L$$PWD/../../build/install/ -lQParticleDisplay
 
 INCLUDEPATH += $$PWD/../QParticleDisplay
 DEPENDPATH += $$PWD/../QParticleDisplay
+
+unix:!macx: LIBS += -L$$PWD/../../build/install/ -lQOpenCVQT
+
+INCLUDEPATH += $$PWD/../QOpenCVQT
+DEPENDPATH += $$PWD/../QOpenCVQT
+
+unix:!macx: LIBS += -L$$PWD/../../build/install/ -lSoilAnalyzer
+
+INCLUDEPATH += $$PWD/../SoilAnalyzer
+DEPENDPATH += $$PWD/../SoilAnalyzer
+
+DISTFILES += \
+    Settings/Default.ini \
+    NeuralNet/Default.NN \
+    Settings/User.ini

@@ -3,6 +3,13 @@
 
 #include <QMainWindow>
 #include "qparticleselector.h"
+#include "dialogsettings.h"
+#include "soilanalyzer.h"
+#include "Hardware.h"
+#include <QErrorMessage>
+#include "soilanalyzer.h"
+#include <QProgressBar>
+#include <qcustomplot.h>
 
 namespace Ui {
   class VSAMainWindow;
@@ -19,8 +26,23 @@ public:
   explicit VSAMainWindow(QWidget *parent = 0);
   ~VSAMainWindow();
 
+private slots:
+  void on_actionSettings_triggered();
+
+  void on_analyzer_finished();
+
 private:
   Ui::VSAMainWindow *ui;
+  DialogSettings *settingsWindow = nullptr;
+  QProgressBar *Progress;
+  QErrorMessage *CamError;
+
+  SoilAnalyzer::SoilSettings *Settings = nullptr;
+  Hardware::Microscope *Microscope = nullptr;
+  SoilAnalyzer::Sample *Sample = nullptr;
+  SoilAnalyzer::Analyzer *Analyzer = nullptr;
+  SoilAnalyzer::Analyzer::Images_t *Images = nullptr;
+
 };
 
 #endif // VSAMAINWINDOW_H
