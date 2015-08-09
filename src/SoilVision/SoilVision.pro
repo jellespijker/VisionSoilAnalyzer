@@ -33,7 +33,8 @@ HEADERS += \
     EmptyImageException.h \
     ConversionNotSupportedException.h \
     Conversion.h \
-    ChannelMismatchException.h
+    ChannelMismatchException.h \
+    ../SoilMath/Mat_archive.h
 
 unix {
     target.path = $PWD/../../../build/install
