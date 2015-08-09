@@ -27,3 +27,8 @@ unix {
     target.path = $PWD/../../../build/install
     INSTALLS += target
 }
+
+unix:!macx: LIBS += -L$$PWD/../../build/install/ -lSoilMath
+
+INCLUDEPATH += $$PWD/../SoilMath
+DEPENDPATH += $$PWD/../SoilMath
