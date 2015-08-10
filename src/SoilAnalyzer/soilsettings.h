@@ -93,7 +93,8 @@ public:
   int BackLightCompensation_proj =
       1; /*!< cam backlight compensation setting projected light*/
   std::string NNlocation = "NeuralNet/Default.NN";
-  bool useCUDA =  false;
+  bool useCUDA = false; /*!< CUDA enabled*/
+  int selectedResolution = 0;
 private:
   friend class boost::serialization::access;
   template <class Archive>
@@ -136,6 +137,7 @@ private:
       ar &BOOST_SERIALIZATION_NVP(BackLightCompensation_proj);
       ar &BOOST_SERIALIZATION_NVP(NNlocation);
       ar &BOOST_SERIALIZATION_NVP(useCUDA);
+      ar &BOOST_SERIALIZATION_NVP(selectedResolution);
     }
   }
 };
