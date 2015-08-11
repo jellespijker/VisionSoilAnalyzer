@@ -15,6 +15,14 @@ VSAMainWindow::VSAMainWindow(QWidget *parent)
   // Load the Microscope
   Microscope = new Hardware::Microscope;
   try {
+    Microscope->FindCam(Settings->defaultWebcam)->SelectedResolution =
+        &Microscope->FindCam(Settings->defaultWebcam)
+             ->Resolutions[Settings->selectedResolution];
+  } catch (exception &e) {
+    Microscope->FindCam(0)->SelectedResolution =
+        &Microscope->FindCam(0)->Resolutions[Settings->selectedResolution];
+  }
+  try {
     if (!Microscope->openCam(Settings->defaultWebcam)) {
       int defaultCam = 0;
       Microscope->openCam(defaultCam);
@@ -59,7 +67,8 @@ VSAMainWindow::VSAMainWindow(QWidget *parent)
           SLOT(setValue(int)));
   connect(Analyzer, SIGNAL(on_progressUpdate(int)), Progress,
           SLOT(setMaximum(int)));
-  connect(Analyzer, SIGNAL(on_AnalysisFinished()), this, SLOT(on_analyzer_finished()));
+  connect(Analyzer, SIGNAL(on_AnalysisFinished()), this,
+          SLOT(on_analyzer_finished()));
 
   // Setup the Qplots
   ui->Qplot_PSD->addGraph();
@@ -70,7 +79,7 @@ VSAMainWindow::VSAMainWindow(QWidget *parent)
   PSDtitle->setText("Particle Size Distribution");
   PSDtitle->setFont(QFont("sans", 10, QFont::Bold));
   ui->Qplot_PSD->plotLayout()->insertRow(0);
-  ui->Qplot_PSD->plotLayout()->addElement(0,0, PSDtitle);
+  ui->Qplot_PSD->plotLayout()->addElement(0, 0, PSDtitle);
 
   ui->QPlot_Texture->addGraph();
   ui->QPlot_Texture->xAxis->setLabel("Classification");
@@ -79,8 +88,7 @@ VSAMainWindow::VSAMainWindow(QWidget *parent)
   Classtitle->setText("Classification Histogram");
   Classtitle->setFont(QFont("sans", 10, QFont::Bold));
   ui->QPlot_Texture->plotLayout()->insertRow(0);
-  ui->QPlot_Texture->plotLayout()->addElement(0,0, Classtitle);
-
+  ui->QPlot_Texture->plotLayout()->addElement(0, 0, Classtitle);
 }
 
 VSAMainWindow::~VSAMainWindow() { delete ui; }
@@ -95,12 +103,13 @@ void VSAMainWindow::setParticleValue(int newValue) {
 void VSAMainWindow::on_actionSettings_triggered() { settingsWindow->show(); }
 
 void VSAMainWindow::on_analyzer_finished() {
-  ui->widget_ParticleDisplay->SetParticlePopulation(&Sample->ParticlePopulation);
+  ui->widget_ParticleDisplay->SetParticlePopulation(
+      &Sample->ParticlePopulation);
 
-//  float PSD_Y[sample->PSD.noBins];
-//  for (uint32_t i = 0; i < sample->PSD.noBins; i++) {
-//      PSD_Y = i * (1 / sample->PSD.noBins);
-//    }
+  //  float PSD_Y[sample->PSD.noBins];
+  //  for (uint32_t i = 0; i < sample->PSD.noBins; i++) {
+  //      PSD_Y = i * (1 / sample->PSD.noBins);
+  //    }
 
-//  ui->Qplot_PSD->graph(0)->setData(sample->PSD.CFD, PSD_Y);
+  //  ui->Qplot_PSD->graph(0)->setData(sample->PSD.CFD, PSD_Y);
 }

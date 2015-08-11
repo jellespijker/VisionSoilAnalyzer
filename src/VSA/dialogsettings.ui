@@ -80,7 +80,14 @@
             </widget>
            </item>
            <item>
-            <widget class="QComboBox" name="comboBox_Microscopes"/>
+            <widget class="QComboBox" name="comboBox_Microscopes">
+             <property name="minimumSize">
+              <size>
+               <width>180</width>
+               <height>0</height>
+              </size>
+             </property>
+            </widget>
            </item>
           </layout>
          </item>
@@ -97,7 +104,14 @@
             </widget>
            </item>
            <item>
-            <widget class="QComboBox" name="comboBox_Resolution"/>
+            <widget class="QComboBox" name="comboBox_Resolution">
+             <property name="minimumSize">
+              <size>
+               <width>180</width>
+               <height>0</height>
+              </size>
+             </property>
+            </widget>
            </item>
           </layout>
          </item>
@@ -117,7 +131,7 @@
         <enum>QTabWidget::Rounded</enum>
        </property>
        <property name="currentIndex">
-        <number>0</number>
+        <number>1</number>
        </property>
        <property name="elideMode">
         <enum>Qt::ElideNone</enum>
@@ -149,10 +163,22 @@
            </property>
            <item row="0" column="0">
             <widget class="QGroupBox" name="groupBox">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>296</width>
+               <height>296</height>
+              </size>
+             </property>
              <property name="title">
               <string>Settings</string>
              </property>
-             <widget class="QWidget" name="">
+             <widget class="QWidget" name="layoutWidget">
               <property name="geometry">
                <rect>
                 <x>0</x>
@@ -198,7 +224,7 @@
                   </spacer>
                  </item>
                  <item>
-                  <widget class="QLabel" name="label_6">
+                  <widget class="QLabel" name="label_nf">
                    <property name="text">
                     <string>No frames</string>
                    </property>
@@ -247,7 +273,7 @@
                   </spacer>
                  </item>
                  <item>
-                  <widget class="QLabel" name="label_8">
+                  <widget class="QLabel" name="label_ll">
                    <property name="text">
                     <string>Lightlevel</string>
                    </property>
@@ -316,6 +342,8 @@
                </item>
               </layout>
              </widget>
+             <zorder>layoutWidget</zorder>
+             <zorder>groupBox_2</zorder>
             </widget>
            </item>
           </layout>
@@ -326,17 +354,30 @@
             <string>System info</string>
            </property>
            <layout class="QGridLayout" name="gridLayout_3">
+            <item row="4" column="0">
+             <widget class="QLabel" name="label_9">
+              <property name="text">
+               <string>Machine</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1">
+             <widget class="QLabel" name="label_releasename">
+              <property name="text">
+               <string>Release name</string>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
             <item row="3" column="1">
              <widget class="QLabel" name="label_versioname">
               <property name="text">
                <string>Version name</string>
               </property>
-             </widget>
-            </item>
-            <item row="4" column="0">
-             <widget class="QLabel" name="label_9">
-              <property name="text">
-               <string>Machine</string>
+              <property name="wordWrap">
+               <bool>true</bool>
               </property>
              </widget>
             </item>
@@ -352,6 +393,9 @@
               <property name="text">
                <string>node name</string>
               </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
              </widget>
             </item>
             <item row="2" column="0">
@@ -365,6 +409,9 @@
              <widget class="QLabel" name="label_machinename">
               <property name="text">
                <string>Machine name</string>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
               </property>
              </widget>
             </item>
@@ -386,12 +433,8 @@
               <property name="text">
                <string>Sytem name</string>
               </property>
-             </widget>
-            </item>
-            <item row="2" column="1">
-             <widget class="QLabel" name="label_releasename">
-              <property name="text">
-               <string>Release name</string>
+              <property name="wordWrap">
+               <bool>true</bool>
               </property>
              </widget>
             </item>
@@ -965,7 +1008,7 @@
     <string>Restore Default</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>360</x>
@@ -998,6 +1041,10 @@
     </item>
    </layout>
   </widget>
+  <zorder>tabWidget</zorder>
+  <zorder>pushButton_RestoreDefault</zorder>
+  <zorder>layoutWidget</zorder>
+  <zorder>groupBox</zorder>
  </widget>
  <resources/>
  <connections>

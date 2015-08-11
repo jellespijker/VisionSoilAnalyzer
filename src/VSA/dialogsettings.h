@@ -6,6 +6,7 @@
 #include <QFileDialog>
 #include <QString>
 #include <QDir>
+#include <QSlider>
 #include "Hardware.h"
 
 namespace Ui {
@@ -32,9 +33,17 @@ private slots:
 
   void on_checkBox_Backlight_clicked(bool checked);
 
+  void on_comboBox_Microscopes_currentIndexChanged(const QString &arg1);
+
+  void on_comboBox_Resolution_currentIndexChanged(int index);
+
+  void on_checkBox_useHDR_clicked(bool checked);
+
 private:
   Ui::DialogSettings *ui;
   Hardware::Microscope *Microscope;
+  bool initfase = true;
+  void SetCamControl(Hardware::Microscope::Cam_t *selectedCam, QSlider *Brightness, QSlider *Contrast, QSlider *Saturation, QSlider *Hue, QSlider *Sharpness);
 };
 
 #endif // DIALOGSETTINGS_H
