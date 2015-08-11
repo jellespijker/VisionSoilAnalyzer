@@ -131,7 +131,7 @@
         <enum>QTabWidget::Rounded</enum>
        </property>
        <property name="currentIndex">
-        <number>1</number>
+        <number>0</number>
        </property>
        <property name="elideMode">
         <enum>Qt::ElideNone</enum>
@@ -342,8 +342,13 @@
                </item>
               </layout>
              </widget>
-             <zorder>layoutWidget</zorder>
-             <zorder>groupBox_2</zorder>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="Line" name="line_2">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
             </widget>
            </item>
           </layout>
@@ -983,6 +988,238 @@
     <attribute name="title">
      <string>Vision</string>
     </attribute>
+    <layout class="QGridLayout" name="gridLayout_8">
+     <item row="0" column="0">
+      <widget class="QGroupBox" name="groupBox_3">
+       <property name="title">
+        <string>Intensity Transformations</string>
+       </property>
+       <widget class="QWidget" name="layoutWidget_8">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>30</y>
+          <width>315</width>
+          <height>72</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_10">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_25">
+           <item>
+            <widget class="QCheckBox" name="cb_use_adaptContrast_3">
+             <property name="text">
+              <string>Use Adaptive Contrast</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSpinBox" name="sb_adaptContrKernel_3"/>
+           </item>
+           <item>
+            <widget class="QDoubleSpinBox" name="sb_adaptContrastFactor_3"/>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_26">
+           <item>
+            <widget class="QCheckBox" name="cb_useBlur_3">
+             <property name="text">
+              <string>Use Gaussian Blur</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_17">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QSpinBox" name="sb_blurMask_3"/>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QGroupBox" name="groupBox_4">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>110</y>
+          <width>311</width>
+          <height>151</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>Segmentation settings</string>
+        </property>
+        <widget class="QWidget" name="layoutWidget_9">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>20</y>
+           <width>311</width>
+           <height>123</height>
+          </rect>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_11">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_27">
+            <item>
+             <widget class="QRadioButton" name="rb_useLight_3">
+              <property name="text">
+               <string>Light Ob&amp;jects</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="rb_useDark_3">
+              <property name="text">
+               <string>Dar&amp;k Object</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="cb_ignoreBorder_3">
+            <property name="text">
+             <string>Ignore partial border particles</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="cb_fillHoles_3">
+            <property name="text">
+             <string>Fill holes</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_28">
+            <item>
+             <widget class="QLabel" name="label_22">
+              <property name="text">
+               <string>Sigma factor</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_18">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QDoubleSpinBox" name="sb_sigmaFactor_3">
+              <property name="maximum">
+               <double>3.000000000000000</double>
+              </property>
+              <property name="singleStep">
+               <double>0.100000000000000</double>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+       <widget class="QGroupBox" name="groupBox_5">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>260</y>
+          <width>311</width>
+          <height>121</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>Morphological filter</string>
+        </property>
+        <widget class="QWidget" name="layoutWidget_10">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>20</y>
+           <width>311</width>
+           <height>90</height>
+          </rect>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_9">
+          <item row="0" column="0">
+           <widget class="QRadioButton" name="rb_useOpen_3">
+            <property name="text">
+             <string>Open</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QRadioButton" name="rb_useClose_3">
+            <property name="text">
+             <string>Close</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QRadioButton" name="rb_useDilate_3">
+            <property name="text">
+             <string>Dilate</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QRadioButton" name="rb_useErode_3">
+            <property name="text">
+             <string>Erode</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_23">
+            <property name="text">
+             <string>Mask Size</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QSpinBox" name="sb_morphMask_3"/>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+       <widget class="Line" name="line">
+        <property name="geometry">
+         <rect>
+          <x>310</x>
+          <y>20</y>
+          <width>20</width>
+          <height>351</height>
+         </rect>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+      </widget>
+     </item>
+    </layout>
    </widget>
    <widget class="QWidget" name="tab_NN">
     <attribute name="title">
@@ -1041,10 +1278,6 @@
     </item>
    </layout>
   </widget>
-  <zorder>tabWidget</zorder>
-  <zorder>pushButton_RestoreDefault</zorder>
-  <zorder>layoutWidget</zorder>
-  <zorder>groupBox</zorder>
  </widget>
  <resources/>
  <connections>

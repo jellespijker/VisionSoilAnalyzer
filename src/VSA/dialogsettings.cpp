@@ -77,6 +77,60 @@ DialogSettings::DialogSettings(QWidget *parent,
   ui->horizontalSlider_SaturationProj->setValue(Settings->Saturation_proj);
   ui->horizontalSlider_SharpnessProj->setValue(Settings->Sharpness_proj);
 
+  ui->cb_fillHoles_3->setChecked(Settings->fillHoles);
+  ui->cb_ignoreBorder_3->setChecked(Settings->ignorePartialBorderParticles);
+  ui->cb_useBlur_3->setChecked(Settings->useBlur);
+  if (!Settings->useBlur) {
+    ui->sb_blurMask_3->setEnabled(false);
+  }
+  ui->cb_use_adaptContrast_3->setChecked(Settings->useAdaptiveContrast);
+  if (!Settings->useAdaptiveContrast) {
+    ui->sb_adaptContrastFactor_3->setEnabled(false);
+    ui->sb_adaptContrKernel_3->setEnabled(false);
+  }
+  switch (Settings->typeOfObjectsSegmented) {
+  case Vision::Segment::Bright:
+    ui->rb_useDark_3->setChecked(false);
+    ui->rb_useLight_3->setChecked(true);
+    break;
+  case Vision::Segment::Dark:
+    ui->rb_useDark_3->setChecked(true);
+    ui->rb_useLight_3->setChecked(false);
+    break;
+  }
+  switch (Settings->morphFilterType) {
+  case Vision::MorphologicalFilter::CLOSE:
+    ui->rb_useClose_3->setChecked(true);
+    ui->rb_useDilate_3->setChecked(false);
+    ui->rb_useErode_3->setChecked(false);
+    ui->rb_useOpen_3->setChecked(false);
+    break;
+  case Vision::MorphologicalFilter::OPEN:
+    ui->rb_useClose_3->setChecked(false);
+    ui->rb_useDilate_3->setChecked(false);
+    ui->rb_useErode_3->setChecked(false);
+    ui->rb_useOpen_3->setChecked(true);
+    break;
+  case Vision::MorphologicalFilter::ERODE:
+    ui->rb_useClose_3->setChecked(false);
+    ui->rb_useDilate_3->setChecked(false);
+    ui->rb_useErode_3->setChecked(true);
+    ui->rb_useOpen_3->setChecked(false);
+    break;
+  case Vision::MorphologicalFilter::DILATE:
+    ui->rb_useClose_3->setChecked(false);
+    ui->rb_useDilate_3->setChecked(true);
+    ui->rb_useErode_3->setChecked(false);
+    ui->rb_useOpen_3->setChecked(false);
+    break;
+  }
+
+  ui->sb_adaptContrastFactor_3->setValue(Settings->adaptContrastKernelFactor);
+  ui->sb_adaptContrKernel_3->setValue(Settings->adaptContrastKernelSize);
+  ui->sb_blurMask_3->setValue(Settings->blurKernelSize);
+  ui->sb_morphMask_3->setValue(Settings->filterMaskSize);
+  ui->sb_sigmaFactor_3->setValue(Settings->sigmaFactor);
+
   initfase = false;
 }
 
