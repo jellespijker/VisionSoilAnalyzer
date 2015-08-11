@@ -84,6 +84,14 @@ bIMGtarget.path += $${PWD}/../../build/install/SoilSamples
 bIMGtarget.files += $${PWD}/SoilSamples/*
 INSTALLS += bIMGtarget
 
+#Images
+Imgtarget.path += $${OUT_PWD}/Images
+Imgtarget.files += $${PWD}/Images/*
+INSTALLS += Imgtarget
+bImgtarget.path += $${PWD}/../../build/install/Images
+bImgtarget.files += $${PWD}/Images/*
+INSTALLS += bImgtarget
+
 RESOURCES += \
     vsa_resources.qrc
 

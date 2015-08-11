@@ -131,6 +131,10 @@ DialogSettings::DialogSettings(QWidget *parent,
   ui->sb_morphMask_3->setValue(Settings->filterMaskSize);
   ui->sb_sigmaFactor_3->setValue(Settings->sigmaFactor);
 
+  QPixmap NNpix("Images/feedforwardnetwork2.png");
+  ui->label_NNimage->setPixmap(NNpix);
+  ui->label_NNimage->setScaledContents(true);
+
   initfase = false;
 }
 
