@@ -1,9 +1,11 @@
 #include "dialogsettings.h"
 #include "ui_dialogsettings.h"
+#include <opencv2/core.hpp>
 
 DialogSettings::DialogSettings(QWidget *parent,
                                SoilAnalyzer::SoilSettings *settings,
-                               Hardware::Microscope *microscope)
+                               Hardware::Microscope *microscope,
+                               SoilMath::NN *nn)
     : QDialog(parent), ui(new Ui::DialogSettings) {
   ui->setupUi(this);
   if (settings == nullptr) {
@@ -13,8 +15,11 @@ DialogSettings::DialogSettings(QWidget *parent,
   if (microscope == nullptr) {
     microscope = new Hardware::Microscope;
   }
+  if (nn == nullptr) {
+    nn = new SoilMath::NN;
+  }
 
-  // Setup the cam combobox
+  // Setup the Hardware tab
   Microscope = microscope;
   QStringList Cams;
   for (uint32_t i = 0; i < Microscope->AvailableCams.size(); i++) {
@@ -31,13 +36,16 @@ DialogSettings::DialogSettings(QWidget *parent,
   ui->comboBox_Resolution->setCurrentIndex(
       Microscope->SelectedCam->SelectedResolution->ID);
 
-  // Fill the dialog settings
   ui->spinBox_NoFrames->setDisabled(true);
   ui->label_nf->setDisabled(true);
 
   ui->checkBox_Backlight->setChecked(Settings->useBacklightProjection);
   ui->checkBox_InvertEncoder->setChecked(Settings->encInv);
   ui->checkBox_useCUDA->setChecked(Settings->useCUDA);
+
+  Settings->useCUDA = false;
+  ui->checkBox_useCUDA->setDisabled(true);
+
   ui->checkBox_useHDR->setChecked(Settings->useHDR);
   ui->checkBox_useRainbow->setChecked(Settings->enableRainbow);
 
@@ -77,6 +85,7 @@ DialogSettings::DialogSettings(QWidget *parent,
   ui->horizontalSlider_SaturationProj->setValue(Settings->Saturation_proj);
   ui->horizontalSlider_SharpnessProj->setValue(Settings->Sharpness_proj);
 
+  // Setup the Vision tab
   ui->cb_fillHoles_3->setChecked(Settings->fillHoles);
   ui->cb_ignoreBorder_3->setChecked(Settings->ignorePartialBorderParticles);
   ui->cb_useBlur_3->setChecked(Settings->useBlur);
@@ -131,10 +140,23 @@ DialogSettings::DialogSettings(QWidget *parent,
   ui->sb_morphMask_3->setValue(Settings->filterMaskSize);
   ui->sb_sigmaFactor_3->setValue(Settings->sigmaFactor);
 
+  // Setup the neural Network tab
+  NN = nn;
   QPixmap NNpix("Images/feedforwardnetwork2.png");
   ui->label_NNimage->setPixmap(NNpix);
   ui->label_NNimage->setScaledContents(true);
 
+  ui->spinBox_InputNeurons->setValue(NN->GetInputNeurons());
+  ui->spinBox_HiddenNeurons->setValue(NN->GetInputNeurons());
+  ui->spinBox_OutputNeurons->setValue(NN->GetOutputNeurons());
+  ui->spinBox_Elitisme->setValue(NN->ElitismeUsedByGA);
+  ui->spinBox_MaxGen->setValue(NN->MaxGenUsedByGA);
+  ui->spinBox_PopSize->setValue(NN->PopulationSizeUsedByGA);
+  ui->doubleSpinBox_endError->setValue(NN->EndErrorUsedByGA);
+  ui->doubleSpinBox_MutationRate->setValue(NN->MutationrateUsedByGA);
+  ui->doubleSpinBox_Beta->setValue(NN->GetBeta());
+  ui->doubleSpinBox_maxWeight->setValue(NN->MaxWeightUsedByGA);
+  ui->doubleSpinBox_MinWeight->setValue(NN->MinWeightUSedByGa);
   initfase = false;
 }
 
@@ -168,6 +190,7 @@ void DialogSettings::on_pushButton_Save_clicked() {
 
 void DialogSettings::on_checkBox_Backlight_clicked(bool checked) {
   ui->tabWidget_Hardware->setTabEnabled(2, checked);
+  Settings->useBacklightProjection = checked;
 }
 
 void DialogSettings::on_comboBox_Microscopes_currentIndexChanged(
@@ -201,6 +224,7 @@ void DialogSettings::on_comboBox_Resolution_currentIndexChanged(int index) {
 void DialogSettings::on_checkBox_useHDR_clicked(bool checked) {
   ui->spinBox_NoFrames->setDisabled(!checked);
   ui->label_nf->setDisabled(!checked);
+  Settings->useHDR = checked;
 }
 
 void DialogSettings::SetCamControl(Hardware::Microscope::Cam_t *selectedCam,
@@ -225,4 +249,183 @@ void DialogSettings::SetCamControl(Hardware::Microscope::Cam_t *selectedCam,
       Sharpness->setMaximum(selectedCam->Controls[i].maximum);
     }
   }
+}
+
+void DialogSettings::on_spinBox_NoFrames_editingFinished() {
+  Settings->HDRframes = ui->spinBox_NoFrames->value();
+}
+
+void DialogSettings::on_doubleSpinBox_LightLevel_editingFinished() {
+  Settings->lightLevel =
+      static_cast<float>(ui->doubleSpinBox_LightLevel->value());
+}
+
+void DialogSettings::on_checkBox_useRainbow_clicked(bool checked) {
+  Settings->enableRainbow = checked;
+}
+
+void DialogSettings::on_checkBox_InvertEncoder_clicked(bool checked) {
+  Settings->encInv = checked;
+}
+
+void DialogSettings::on_checkBox_useCUDA_clicked(bool checked) {
+  Settings->useCUDA = checked;
+}
+
+void DialogSettings::on_horizontalSlider_BrightFront_valueChanged(int value) {
+  if (!initfase) {
+    Settings->Brightness_front = value;
+  }
+}
+
+void DialogSettings::on_horizontalSlider_ContrastFront_valueChanged(int value) {
+  if (!initfase) {
+    Settings->Contrast_front = value;
+  }
+}
+
+void DialogSettings::on_horizontalSlider_SaturationFront_valueChanged(
+    int value) {
+  if (!initfase) {
+    Settings->Saturation_front = value;
+  }
+}
+
+void DialogSettings::on_horizontalSlider_HueFront_valueChanged(int value) {
+  if (!initfase) {
+    Settings->Hue_front = value;
+  }
+}
+
+void DialogSettings::on_horizontalSlider_SharpnessFront_valueChanged(
+    int value) {
+  if (!initfase) {
+    Settings->Sharpness_front = value;
+  }
+}
+
+void DialogSettings::on_horizontalSlider_BrightProj_valueChanged(int value) {
+  if (!initfase) {
+    Settings->Brightness_proj = value;
+  }
+}
+
+void DialogSettings::on_horizontalSlider_ContrastProj_valueChanged(int value) {
+  if (!initfase) {
+    Settings->Contrast_proj = value;
+  }
+}
+
+void DialogSettings::on_horizontalSlider_SaturationProj_valueChanged(
+    int value) {
+  if (!initfase) {
+    Settings->Saturation_proj = value;
+  }
+}
+
+void DialogSettings::on_horizontalSlider_HueProj_valueChanged(int value) {
+  if (!initfase) {
+    Settings->Hue_proj = value;
+  }
+}
+
+void DialogSettings::on_horizontalSlider_SharpnessProj_valueChanged(int value) {
+  if (!initfase) {
+    Settings->Sharpness_proj = value;
+  }
+}
+
+void DialogSettings::on_cb_use_adaptContrast_3_clicked(bool checked) {
+  Settings->useAdaptiveContrast = checked;
+  ui->sb_adaptContrastFactor_3->setDisabled(!checked);
+  ui->sb_adaptContrKernel_3->setDisabled(!checked);
+}
+
+void DialogSettings::on_cb_useBlur_3_clicked(bool checked) {
+  Settings->useBlur = checked;
+  ui->sb_blurMask_3->setDisabled(!checked);
+}
+
+void DialogSettings::on_rb_useDark_3_toggled(bool checked) {
+  if (checked) {
+    Settings->typeOfObjectsSegmented = Vision::Segment::Dark;
+  } else {
+    Settings->typeOfObjectsSegmented = Vision::Segment::Bright;
+  }
+}
+
+void DialogSettings::on_cb_ignoreBorder_3_clicked(bool checked) {
+  Settings->ignorePartialBorderParticles = checked;
+}
+
+void DialogSettings::on_cb_fillHoles_3_clicked(bool checked) {
+  Settings->fillHoles = checked;
+}
+
+void DialogSettings::on_sb_sigmaFactor_3_editingFinished() {
+  Settings->sigmaFactor = ui->sb_sigmaFactor_3->value();
+}
+
+void DialogSettings::on_rb_useOpen_3_clicked(bool checked) {
+  Settings->morphFilterType = Vision::MorphologicalFilter::OPEN;
+}
+
+void DialogSettings::on_rb_useClose_3_clicked(bool checked) {
+  Settings->morphFilterType = Vision::MorphologicalFilter::CLOSE;
+}
+
+void DialogSettings::on_rb_useErode_3_clicked(bool checked) {
+  Settings->morphFilterType = Vision::MorphologicalFilter::ERODE;
+}
+
+void DialogSettings::on_rb_useDilate_3_clicked(bool checked) {
+  Settings->morphFilterType = Vision::MorphologicalFilter::DILATE;
+}
+
+void DialogSettings::on_sb_morphMask_3_editingFinished() {
+  Settings->filterMaskSize = ui->sb_morphMask_3->value();
+}
+
+void DialogSettings::on_spinBox_MaxGen_editingFinished() {
+  NN->MaxGenUsedByGA = ui->spinBox_MaxGen->value();
+}
+
+void DialogSettings::on_spinBox_PopSize_editingFinished() {
+  NN->PopulationSizeUsedByGA = ui->spinBox_PopSize->value();
+}
+
+void DialogSettings::on_doubleSpinBox_MutationRate_editingFinished() {
+  NN->MutationrateUsedByGA = ui->doubleSpinBox_MutationRate->value();
+}
+
+void DialogSettings::on_spinBox_Elitisme_editingFinished() {
+  NN->ElitismeUsedByGA = ui->spinBox_Elitisme->value();
+}
+
+void DialogSettings::on_doubleSpinBox_endError_editingFinished() {
+  NN->EndErrorUsedByGA = ui->doubleSpinBox_endError->value();
+}
+
+void DialogSettings::on_doubleSpinBox_maxWeight_editingFinished() {
+  NN->MaxWeightUsedByGA = ui->doubleSpinBox_maxWeight->value();
+}
+
+void DialogSettings::on_doubleSpinBox_MinWeight_editingFinished() {
+  NN->MinWeightUSedByGa = ui->doubleSpinBox_MinWeight->value();
+}
+
+void DialogSettings::on_doubleSpinBox_Beta_editingFinished() {
+  NN->SetBeta(ui->doubleSpinBox_Beta->value());
+}
+
+void DialogSettings::on_spinBox_InputNeurons_editingFinished() {
+  NN->SetInputNeurons(ui->spinBox_InputNeurons->value());
+}
+
+void DialogSettings::on_spinBox_HiddenNeurons_editingFinished() {
+  NN->SetHiddenNeurons(ui->spinBox_HiddenNeurons->value());
+}
+
+void DialogSettings::on_spinBox_OutputNeurons_editingFinished() {
+  NN->SetOutputNeurons(ui->spinBox_OutputNeurons->value());
 }
