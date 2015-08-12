@@ -95,6 +95,7 @@ public:
   std::string NNlocation = "NeuralNet/Default.NN";
   bool useCUDA = false; /*!< CUDA enabled*/
   int selectedResolution = 0;
+
 private:
   friend class boost::serialization::access;
   template <class Archive>

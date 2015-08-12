@@ -4,14 +4,10 @@
  * This software is proprietary and confidential
  * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015
  */
-
 #pragma once
 
-#define GENE_MAX 32         /**< maximum number of genes*/
-#define CROSSOVER 16        /**< crossover location*/
-#define MUTATIONRATE 0.075f /**< mutation rate*/
-#define ELITISME 4          /**< total number of the elite bastard*/
-#define END_ERROR 0.005f    /**< acceptable error between last itteration*/
+#define GENE_MAX 32  /**< maximum number of genes*/
+#define CROSSOVER 16 /**< crossover location*/
 
 #include <stdint.h>
 #include <bitset>
@@ -28,10 +24,10 @@ typedef std::complex<double> Complex_t;       /**< complex vector of doubles*/
 typedef std::vector<Complex_t> ComplexVect_t; /**< vector of Complex_t*/
 typedef std::valarray<Complex_t> ComplexArray_t; /**< valarray of Complex_t*/
 typedef std::vector<uint32_t> iContour_t;        /**< vector of uint32_t*/
-
 typedef std::bitset<GENE_MAX> Genome_t; /**< Bitset repressenting a genome*/
 typedef std::pair<std::bitset<CROSSOVER>, std::bitset<GENE_MAX - CROSSOVER>>
-    SplitGenome_t;                       /**< a matted genome*/
+    SplitGenome_t; /**< a matted genome*/
+
 typedef std::vector<float> Weight_t;     /**< a float vector*/
 typedef std::vector<Genome_t> GenVect_t; /**< a vector of genomes*/
 typedef struct PopMemberStruct {
@@ -46,9 +42,9 @@ typedef std::pair<float, float>
 
 typedef struct Predict_struct {
   uint8_t Category; /**< the category number */
-  float RealValue;   /**< category number as float in order to estimate how
-                        precise to outcome is*/
-  float Accuracy;    /**< the accuracy of the category*/
+  float RealValue;  /**< category number as float in order to estimate how
+                       precise to outcome is*/
+  float Accuracy;   /**< the accuracy of the category*/
   std::vector<float> OutputNeurons; /**< the output Neurons*/
 } Predict_t;                        /**< The prediction results*/
 typedef Predict_t (*NNfunctionType)(

@@ -26,6 +26,10 @@ namespace SoilMath {
 
 class GA {
 public:
+  float MUTATIONRATE = 0.075f; /**< mutation rate*/
+  uint32_t ELITISME = 4;       /**< total number of the elite bastard*/
+  float END_ERROR = 0.001f;    /**< acceptable error between last itteration*/
+
   /*!
  * \brief GA Standard constructor
  */
@@ -111,24 +115,30 @@ private:
 
   /*!
    * \brief CrossOver a private function where the partners mate with each other
-   * The values or PopMember_t are expressed as bits or ar cut at the point CROSSOVER
-   * the population members are paired with the nearest neighbor and new members are
-   * created pairing the Genome_t of each other at the CROSSOVER point. Afterwards all
+   * The values or PopMember_t are expressed as bits or ar cut at the point
+   * CROSSOVER
+   * the population members are paired with the nearest neighbor and new members
+   * are
+   * created pairing the Genome_t of each other at the CROSSOVER point.
+   * Afterwards all
    * the top tiers partners are allowed to mate again.
    * \param pop reference to the population
    */
   void CrossOver(Population_t &pop);
 
   /*!
-   * \brief Mutate a private function where individual bits from the Genome_t are mutated
+   * \brief Mutate a private function where individual bits from the Genome_t
+   * are mutated
    * at a random uniform distribution event defined by the MUTATIONRATE
    * \param pop reference to the population
    */
   void Mutate(Population_t &pop);
 
   /*!
-   * \brief GrowToAdulthood a private function where the new population members serve as the
-   * the input for the Neural Network prediction function. The results are weight against
+   * \brief GrowToAdulthood a private function where the new population members
+   * serve as the
+   * the input for the Neural Network prediction function. The results are
+   * weight against
    * the goal and this weight determine the fitness of the population member
    * \param pop reference to the population
    * \param inputValues complex vector with a reference to the inputvalues
@@ -142,8 +152,10 @@ private:
                        float &totalFitness);
 
   /*!
-   * \brief GrowToAdulthood a private function where the new population members serve as the
-   * the input for the Neural Network prediction function. The results are weight against
+   * \brief GrowToAdulthood a private function where the new population members
+   * serve as the
+   * the input for the Neural Network prediction function. The results are
+   * weight against
    * the goal and this weight determine the fitness of the population member
    * \param pop reference to the population
    * \param inputValues a InputLearnVector_t with a reference to the inputvalues
@@ -157,10 +169,14 @@ private:
                        float &totalFitness);
 
   /*!
-   * \brief SurvivalOfTheFittest a private function where a battle to the death commences
-   * The fittest population members have the best chance of survival. Death is instigated
-   * with a random uniform distibution. The elite members don't partake in this desctruction
-   * The ELITISME rate indicate how many top tier members survive this catastrophic event.
+   * \brief SurvivalOfTheFittest a private function where a battle to the death
+   * commences
+   * The fittest population members have the best chance of survival. Death is
+   * instigated
+   * with a random uniform distibution. The elite members don't partake in this
+   * desctruction
+   * The ELITISME rate indicate how many top tier members survive this
+   * catastrophic event.
    * \param inputValues a InputLearnVector_t with a reference to the inputvalues
    * \param totalFitness a reference to the total population fitness
    * \return
@@ -168,7 +184,8 @@ private:
   bool SurvivalOfTheFittest(Population_t &pop, float &totalFitness);
 
   /*!
-   * \brief PopMemberSort a private function where the members are sorted according to
+   * \brief PopMemberSort a private function where the members are sorted
+   * according to
    * there fitness ranking
    * \param i left hand population member
    * \param j right hand population member
@@ -182,7 +199,8 @@ private:
    * \brief Conversion of the value of type T to Genome_t
    * \details Usage: Use <tt>ConvertToGenome<Type>(type, range)</tt>
    * \param value The current value wich should be converted to a Genome_t
-   * \param range the range in which the value should fall, this is to have a Genome_t
+   * \param range the range in which the value should fall, this is to have a
+   * Genome_t
    * which utilizes the complete range 0000...n till 1111...n
    */
   template <typename T>

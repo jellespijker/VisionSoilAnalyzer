@@ -34,6 +34,7 @@ public:
     std::string SampleID;
     bool Learned;
   };
+
 private:
   friend class boost::serialization::access;
   template <class Archive>
@@ -54,8 +55,8 @@ private:
   OutputLearnVector_t OutputDataSet;
   std::vector<std::string> SampleID;
   std::vector<bool> Learned;
-public:
 
+public:
   NN NeuralNet;
 
   NNLearnDataSet();

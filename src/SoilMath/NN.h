@@ -15,6 +15,7 @@
 #include <boost/archive/xml_iarchive.hpp>
 #include <boost/archive/xml_oarchive.hpp>
 #include <boost/serialization/vector.hpp>
+#include <boost/serialization/version.hpp>
 
 #include "GA.h"
 #include "MathException.h"
@@ -94,6 +95,7 @@ public:
    * \param value a floating value ussualy between 0.5 and 1.5
    */
   void SetBeta(float value) { beta = value; }
+  float GetBeta() { return beta; }
 
   /*!
    * \brief Learn the learning function
@@ -123,6 +125,26 @@ public:
   Weight_t iWeights; /**< a vector of real valued floating point input weights*/
   Weight_t hWeights; /**< a vector of real valued floating point hidden weight*/
 
+  uint32_t MaxGenUsedByGA = 200;
+  uint32_t PopulationSizeUsedByGA = 30;
+  float MutationrateUsedByGA = 0.075f;
+  uint32_t ElitismeUsedByGA = 4;
+  float EndErrorUsedByGA = 0.001;
+  uint32_t MaxWeightUsedByGA = 50;
+  uint32_t MinWeightUSedByGa = -50;
+
+  uint32_t GetInputNeurons() { return inputNeurons; }
+  void SetInputNeurons(uint32_t value);
+
+  uint32_t GetHiddenNeurons() { return hiddenNeurons; }
+  void SetHiddenNeurons(uint32_t value);
+
+  uint32_t GetOutputNeurons() { return outputNeurons; }
+  void SetOutputNeurons(uint32_t value);
+
+  bool studied =
+      false; /**< a value indicating if the weights are a results of a
+                learning curve*/
 private:
   std::vector<float> iNeurons; /**< a vector of input values, the bias is
                                   included, the bias is included and
@@ -132,15 +154,12 @@ private:
                      is the first value*/
   std::vector<float> oNeurons; /**< a vector of output values*/
 
-  uint32_t hiddenNeurons; /**< number of hidden neurons minus bias*/
-  uint32_t inputNeurons;  /**< number of input neurons minus bias*/
-  uint32_t outputNeurons; /**< number of output neurons*/
+  uint32_t hiddenNeurons = 50; /**< number of hidden neurons minus bias*/
+  uint32_t inputNeurons = 20;  /**< number of input neurons minus bias*/
+  uint32_t outputNeurons = 18; /**< number of output neurons*/
   float beta; /**< the beta value, this indicates the steepness of the sigmoid
                  function*/
 
-  bool studied =
-      false; /**< a value indicating if the weights are a results of a
-                learning curve*/
   friend class boost::serialization::access; /**< a private friend class so the
                                                 serialization can access all
                                                 the needed functions*/
@@ -150,14 +169,24 @@ private:
    * \param version the version of the class
    */
   template <class Archive>
-  void serialize(Archive &ar, const unsigned int version __attribute__((unused))) {
-    ar &BOOST_SERIALIZATION_NVP(inputNeurons);
-    ar &BOOST_SERIALIZATION_NVP(hiddenNeurons);
-    ar &BOOST_SERIALIZATION_NVP(outputNeurons);
-    ar &BOOST_SERIALIZATION_NVP(iWeights);
-    ar &BOOST_SERIALIZATION_NVP(hWeights);
-    ar &BOOST_SERIALIZATION_NVP(beta);
-    ar &BOOST_SERIALIZATION_NVP(studied);
+  void serialize(Archive &ar, const unsigned int version) {
+    if (version == 0) {
+      ar &BOOST_SERIALIZATION_NVP(inputNeurons);
+      ar &BOOST_SERIALIZATION_NVP(hiddenNeurons);
+      ar &BOOST_SERIALIZATION_NVP(outputNeurons);
+      ar &BOOST_SERIALIZATION_NVP(iWeights);
+      ar &BOOST_SERIALIZATION_NVP(hWeights);
+      ar &BOOST_SERIALIZATION_NVP(beta);
+      ar &BOOST_SERIALIZATION_NVP(studied);
+      ar &BOOST_SERIALIZATION_NVP(MaxGenUsedByGA);
+      ar &BOOST_SERIALIZATION_NVP(PopulationSizeUsedByGA);
+      ar &BOOST_SERIALIZATION_NVP(MutationrateUsedByGA);
+      ar &BOOST_SERIALIZATION_NVP(ElitismeUsedByGA);
+      ar &BOOST_SERIALIZATION_NVP(EndErrorUsedByGA);
+      ar &BOOST_SERIALIZATION_NVP(MaxWeightUsedByGA);
+      ar &BOOST_SERIALIZATION_NVP(MinWeightUSedByGa);
+    }
   }
 };
 }
+BOOST_CLASS_VERSION(SoilMath::NN, 0)
