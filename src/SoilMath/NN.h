@@ -130,8 +130,8 @@ public:
   float MutationrateUsedByGA = 0.075f;
   uint32_t ElitismeUsedByGA = 4;
   float EndErrorUsedByGA = 0.001;
-  uint32_t MaxWeightUsedByGA = 50;
-  uint32_t MinWeightUSedByGa = -50;
+  float MaxWeightUsedByGA = 50;
+  float MinWeightUSedByGa = -50;
 
   uint32_t GetInputNeurons() { return inputNeurons; }
   void SetInputNeurons(uint32_t value);
