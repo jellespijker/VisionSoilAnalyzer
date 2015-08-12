@@ -44,17 +44,25 @@ VSAMainWindow::VSAMainWindow(QWidget *parent)
     }
   }
 
-  if (settingsWindow == nullptr) {
-    settingsWindow = new DialogSettings(this, Settings, Microscope);
-  }
-
-  connect(ui->widget_ParticleSelector, SIGNAL(valueChanged(int)), this,
-          SLOT(setParticleValue(int)));
-
   // Setup the sample
   Sample = new SoilAnalyzer::Sample;
   Images = new SoilAnalyzer::Analyzer::Images_t;
   Analyzer = new SoilAnalyzer::Analyzer(Images, Sample, Settings);
+
+  // Setup the setting Window
+  if (settingsWindow == nullptr) {
+    settingsWindow =
+        new DialogSettings(this, Settings, Microscope, &Analyzer->NeuralNet);
+  }
+
+  // Setup the NN window
+  if (nnWindow == nullptr) {
+    nnWindow =
+        new DialogNN(this, &Analyzer->NeuralNet, Settings, settingsWindow);
+  }
+
+  connect(ui->widget_ParticleSelector, SIGNAL(valueChanged(int)), this,
+          SLOT(setParticleValue(int)));
 
   // Setup the progresbar and connect it to the Analyzer
   Progress = new QProgressBar(ui->statusBar);
@@ -112,4 +120,11 @@ void VSAMainWindow::on_analyzer_finished() {
   //    }
 
   //  ui->Qplot_PSD->graph(0)->setData(sample->PSD.CFD, PSD_Y);
+}
+
+void VSAMainWindow::on_actionNeuralNet_triggered() {
+  if (nnWindow != nullptr) {
+      nnWindow = new DialogNN(this, &Analyzer->NeuralNet, Settings, settingsWindow);
+  }
+  nnWindow->show();
 }

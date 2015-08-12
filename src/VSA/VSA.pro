@@ -17,13 +17,16 @@ unix:!macx: QMAKE_RPATHDIR += $$PWD/../../../build/install/
 
 SOURCES += main.cpp\
         vsamainwindow.cpp \
-    dialogsettings.cpp
+    dialogsettings.cpp \
+    dialognn.cpp
 
 HEADERS  += vsamainwindow.h \
-    dialogsettings.h
+    dialogsettings.h \
+    dialognn.h
 
 FORMS    += vsamainwindow.ui \
-    dialogsettings.ui
+    dialogsettings.ui \
+    dialognn.ui
 
 #opencv
 LIBS += -L/usr/local/lib -lopencv_core -lopencv_highgui -lopencv_imgcodecs

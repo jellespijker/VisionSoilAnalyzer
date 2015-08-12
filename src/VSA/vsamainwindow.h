@@ -10,6 +10,7 @@
 #include "soilanalyzer.h"
 #include <QProgressBar>
 #include <qcustomplot.h>
+#include "dialognn.h"
 
 namespace Ui {
   class VSAMainWindow;
@@ -31,9 +32,12 @@ private slots:
 
   void on_analyzer_finished();
 
+  void on_actionNeuralNet_triggered();
+
 private:
   Ui::VSAMainWindow *ui;
   DialogSettings *settingsWindow = nullptr;
+  DialogNN *nnWindow = nullptr;
   QProgressBar *Progress;
   QErrorMessage *CamError;
 

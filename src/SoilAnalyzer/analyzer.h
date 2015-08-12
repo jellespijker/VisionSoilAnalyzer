@@ -44,6 +44,8 @@ public:
   void Analyse();
   uint32_t MaxProgress = STARTING_ESTIMATE_PROGRESS; /*!< */
 
+  SoilMath::NN NeuralNet; /*!< */
+
 signals:
   void on_progressUpdate(int value);    /*!< */
   void on_maxProgressUpdate(int value); /*!< */
@@ -53,7 +55,6 @@ private:
   uint32_t currentProgress = 0;   /*!< */
   uint32_t currentParticleID = 0; /*!< */
 
-  SoilMath::NN NeuralNet; /*!< */
   SoilMath::FFT fft;      /*!< */
 
   void CalcMaxProgress();
