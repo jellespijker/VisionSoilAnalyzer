@@ -158,6 +158,20 @@ DialogSettings::DialogSettings(QWidget *parent,
   ui->doubleSpinBox_maxWeight->setValue(NN->MaxWeightUsedByGA);
   ui->doubleSpinBox_MinWeight->setValue(NN->MinWeightUSedByGa);
   initfase = false;
+
+  // Setup the preference tab
+  ui->lineEdit_NeuralNetFolder->setText(
+      QString::fromStdString(Settings->NNFolder));
+  ui->lineEdit_Printer->setText(
+      QString::fromStdString(Settings->StandardPrinter));
+  ui->lineEdit_Samplefolder->setText(
+      QString::fromStdString(Settings->SampleFolder));
+  ui->lineEdit_SendTo->setText(
+      (QString::fromStdString(Settings->StandardSentTo)));
+  ui->lineEdit_SettingFolder->setText(
+      QString::fromStdString(Settings->SettingsFolder));
+  ui->lineEdit__NeuralNet->setText(
+      QString::fromStdString(Settings->NNlocation));
 }
 
 DialogSettings::~DialogSettings() { delete ui; }
@@ -428,4 +442,50 @@ void DialogSettings::on_spinBox_HiddenNeurons_editingFinished() {
 
 void DialogSettings::on_spinBox_OutputNeurons_editingFinished() {
   NN->SetOutputNeurons(ui->spinBox_OutputNeurons->value());
+}
+
+void DialogSettings::on_pushButton_selectSampleFolder_clicked() {
+  QString fn = QFileDialog::getExistingDirectory(
+      this, tr("Select the Sample Directory"),
+      QString::fromStdString(Settings->SampleFolder),
+      QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+  if (!fn.isEmpty()) {
+    ui->lineEdit_Samplefolder->setText(fn);
+    Settings->SampleFolder = fn.toStdString();
+  }
+}
+
+void DialogSettings::on_pushButton_SelectSettingFolder_clicked() {
+  QString fn = QFileDialog::getExistingDirectory(
+      this, tr("Select the Setting Directory"),
+      QString::fromStdString(Settings->SettingsFolder),
+      QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+  if (!fn.isEmpty()) {
+    ui->lineEdit_SettingFolder->setText(fn);
+    Settings->SettingsFolder = fn.toStdString();
+  }
+}
+
+void DialogSettings::on_pushButton_SelectNNFolder_clicked() {
+  QString fn = QFileDialog::getExistingDirectory(
+      this, tr("Select the NeuralNet Directory"),
+      QString::fromStdString(Settings->NNFolder),
+      QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+  if (!fn.isEmpty()) {
+    ui->lineEdit_NeuralNetFolder->setText(fn);
+    Settings->NNFolder = fn.toStdString();
+  }
+}
+
+void DialogSettings::on_pushButton_SelectNN_clicked()
+{
+  QString fn = QFileDialog::getOpenFileName(
+      this, tr("Select the standard Neural Net"), QDir::homePath(), tr("NeuralNet (*.NN)"));
+  if (!fn.isEmpty()) {
+    if (!fn.contains(tr(".NN"))) {
+      fn.append(tr(".NN"));
+    }
+    Settings->NNlocation = fn.toStdString();
+    ui->lineEdit__NeuralNet->setText(fn);
+  }
 }

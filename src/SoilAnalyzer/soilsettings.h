@@ -95,6 +95,11 @@ public:
   std::string NNlocation = "NeuralNet/Default.NN";
   bool useCUDA = false; /*!< CUDA enabled*/
   int selectedResolution = 0;
+  std::string SampleFolder = "~/Samples";
+  std::string SettingsFolder = "Settings";
+  std::string NNFolder = "NeuralNet";
+  std::string StandardSentTo = "j.spijker@ihcmerwede.com";
+  std::string StandardPrinter = "PDF printer";
 
 private:
   friend class boost::serialization::access;
@@ -139,6 +144,11 @@ private:
       ar &BOOST_SERIALIZATION_NVP(NNlocation);
       ar &BOOST_SERIALIZATION_NVP(useCUDA);
       ar &BOOST_SERIALIZATION_NVP(selectedResolution);
+      ar &BOOST_SERIALIZATION_NVP(SampleFolder);
+      ar &BOOST_SERIALIZATION_NVP(SettingsFolder);
+      ar &BOOST_SERIALIZATION_NVP(NNFolder);
+      ar &BOOST_SERIALIZATION_NVP(StandardSentTo);
+      ar &BOOST_SERIALIZATION_NVP(StandardPrinter);
     }
   }
 };

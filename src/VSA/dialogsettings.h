@@ -114,6 +114,14 @@ private slots:
 
   void on_spinBox_OutputNeurons_editingFinished();
 
+  void on_pushButton_selectSampleFolder_clicked();
+
+  void on_pushButton_SelectSettingFolder_clicked();
+
+  void on_pushButton_SelectNNFolder_clicked();
+
+  void on_pushButton_SelectNN_clicked();
+
 private:
   Ui::DialogSettings *ui;
   Hardware::Microscope *Microscope;
