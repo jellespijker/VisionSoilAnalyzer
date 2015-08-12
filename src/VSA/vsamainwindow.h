@@ -2,15 +2,18 @@
 #define VSAMAINWINDOW_H
 
 #include <QMainWindow>
-#include "qparticleselector.h"
-#include "dialogsettings.h"
+#include <QErrorMessage>
+#include <QMessageBox>
+#include <QProgressBar>
+
+#include <qcustomplot.h>
+
 #include "soilanalyzer.h"
 #include "Hardware.h"
-#include <QErrorMessage>
-#include "soilanalyzer.h"
-#include <QProgressBar>
-#include <qcustomplot.h>
+
 #include "dialognn.h"
+#include "dialogsettings.h"
+#include "qparticleselector.h"
 
 namespace Ui {
   class VSAMainWindow;
@@ -34,12 +37,21 @@ private slots:
 
   void on_actionNeuralNet_triggered();
 
+  void on_actionNewSample_triggered();
+
+  void on_actionSaveSample_triggered();
+
+  void on_actionLoadSample_triggered();
+
 private:
   Ui::VSAMainWindow *ui;
   DialogSettings *settingsWindow = nullptr;
   DialogNN *nnWindow = nullptr;
   QProgressBar *Progress;
   QErrorMessage *CamError;
+  QMessageBox *SaveMeMessage;
+  QMessageBox *BacklightMessage;
+  QMessageBox *ShakeItBabyMessage;
 
   SoilAnalyzer::SoilSettings *Settings = nullptr;
   Hardware::Microscope *Microscope = nullptr;
@@ -47,6 +59,7 @@ private:
   SoilAnalyzer::Analyzer *Analyzer = nullptr;
   SoilAnalyzer::Analyzer::Images_t *Images = nullptr;
 
+  void TakeSnapShots();
 };
 
 #endif // VSAMAINWINDOW_H

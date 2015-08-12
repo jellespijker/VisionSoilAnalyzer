@@ -9,8 +9,12 @@ VSAMainWindow::VSAMainWindow(QWidget *parent)
   Settings = new SoilAnalyzer::SoilSettings;
   Settings->LoadSettings("Settings/User.ini");
 
-  // Set the Error windows
+  // Set the message windows
   CamError = new QErrorMessage(this);
+  SaveMeMessage = new QMessageBox(this);
+  BacklightMessage = new QMessageBox(this);
+  BacklightMessage->setText("Turn off Frontlight! Turn on Backlight!");
+  ShakeItBabyMessage = new QMessageBox(this);
 
   // Load the Microscope
   Microscope = new Hardware::Microscope;
@@ -124,7 +128,114 @@ void VSAMainWindow::on_analyzer_finished() {
 
 void VSAMainWindow::on_actionNeuralNet_triggered() {
   if (nnWindow != nullptr) {
-      nnWindow = new DialogNN(this, &Analyzer->NeuralNet, Settings, settingsWindow);
+    nnWindow =
+        new DialogNN(this, &Analyzer->NeuralNet, Settings, settingsWindow);
   }
   nnWindow->show();
+}
+
+void VSAMainWindow::on_actionNewSample_triggered() {
+  if (Sample->ChangesSinceLastSave) {
+    SaveMeMessage->setText(tr("Sample is not saved, Save sample?"));
+    SaveMeMessage->addButton(QMessageBox::Abort);
+    SaveMeMessage->addButton(QMessageBox::Close);
+    if (SaveMeMessage->exec() == QMessageBox::Abort) {
+      return;
+    }
+  }
+  delete Sample;
+  delete Images;
+  Sample = new SoilAnalyzer::Sample;
+  Images = new SoilAnalyzer::Analyzer::Images_t;
+  TakeSnapShots();
+  Analyzer->Analyse();
+}
+
+void VSAMainWindow::TakeSnapShots() {
+  if (Settings->useBacklightProjection && !Settings->useHDR) {
+    for (uint32_t i = 0; i < Settings->StandardNumberOfShots; i++) {
+      SoilAnalyzer::Analyzer::Image_t newShot;
+      Microscope->GetFrame(newShot.FrontLight);
+      BacklightMessage->exec();
+      Microscope->GetFrame(newShot.BackLight);
+      Images->push_back(newShot);
+      QString ShakeMsg = "Shake it baby! ";
+      ShakeMsg.append(QString::number(i - Settings->StandardNumberOfShots - 1));
+      ShakeMsg.append(" to go!");
+      ShakeItBabyMessage->setText(ShakeMsg);
+      ShakeItBabyMessage->exec();
+    }
+  } else if (Settings->useBacklightProjection && Settings->useHDR) {
+    for (uint32_t i = 0; i < Settings->StandardNumberOfShots; i++) {
+      SoilAnalyzer::Analyzer::Image_t newShot;
+      Microscope->GetHDRFrame(newShot.FrontLight, Settings->HDRframes);
+      BacklightMessage->exec();
+      Microscope->GetFrame(newShot.BackLight);
+      Images->push_back(newShot);
+      QString ShakeMsg = "Shake it baby! ";
+      ShakeMsg.append(QString::number(i - Settings->StandardNumberOfShots - 1));
+      ShakeMsg.append(" to go!");
+      ShakeItBabyMessage->setText(ShakeMsg);
+      ShakeItBabyMessage->exec();
+    }
+  } else if (!Settings->useBacklightProjection && Settings->useHDR) {
+    for (uint32_t i = 0; i < Settings->StandardNumberOfShots; i++) {
+      SoilAnalyzer::Analyzer::Image_t newShot;
+      Microscope->GetHDRFrame(newShot.FrontLight, Settings->HDRframes);
+      Images->push_back(newShot);
+      QString ShakeMsg = "Shake it baby! ";
+      ShakeMsg.append(QString::number(i - Settings->StandardNumberOfShots - 1));
+      ShakeMsg.append(" to go!");
+      ShakeItBabyMessage->setText(ShakeMsg);
+      ShakeItBabyMessage->exec();
+    }
+  } else if (!Settings->useBacklightProjection && Settings->useHDR) {
+    for (uint32_t i = 0; i < Settings->StandardNumberOfShots; i++) {
+      SoilAnalyzer::Analyzer::Image_t newShot;
+      Microscope->GetFrame(newShot.FrontLight);
+      Images->push_back(newShot);
+      QString ShakeMsg = "Shake it baby! ";
+      ShakeMsg.append(QString::number(Settings->StandardNumberOfShots - i));
+      ShakeMsg.append(" to go!");
+      ShakeItBabyMessage->setText(ShakeMsg);
+      ShakeItBabyMessage->exec();
+    }
+  }
+}
+
+void VSAMainWindow::on_actionSaveSample_triggered() {
+  QString fn = QFileDialog::getSaveFileName(
+      this, tr("Save Sample"), QString::fromStdString(Settings->SampleFolder),
+      tr("Sample (*.VSA)"));
+  if (!fn.isEmpty()) {
+    if (!fn.contains(tr(".VSA"))) {
+      fn.append(tr(".VSA"));
+    }
+    Sample->Save(fn.toStdString());
+  }
+}
+
+void VSAMainWindow::on_actionLoadSample_triggered() {
+  if (Sample->ChangesSinceLastSave) {
+    SaveMeMessage->setText(tr("Sample is not saved, Save sample?"));
+    SaveMeMessage->addButton(QMessageBox::Abort);
+    SaveMeMessage->addButton(QMessageBox::Close);
+    if (SaveMeMessage->exec() == QMessageBox::Abort) {
+      return;
+    }
+  }
+  delete Sample;
+  delete Images;
+  Sample = new SoilAnalyzer::Sample;
+  Images = new SoilAnalyzer::Analyzer::Images_t;
+
+  QString fn = QFileDialog::getOpenFileName(
+      this, tr("Open Sample"), QString::fromStdString(Settings->SampleFolder),
+      tr("Settings (*.VSA)"));
+  if (!fn.isEmpty()) {
+    if (!fn.contains(tr(".VSA"))) {
+      fn.append(tr(".VSA"));
+    }
+    Sample->Load(fn.toStdString());
+  }
 }

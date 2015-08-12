@@ -51,6 +51,7 @@ public:
   bool isPreparedForAnalysis = false; /*!< is the sample ready for analysis, are all the particles extracted*/
   bool isAnalysed = false; /*!< is the sample analyzed*/
 
+  bool ChangesSinceLastSave = false;
 private:
   PSDVector_t Volume; /*!< The PSD raw data*/
   bool PSDGathered = false; /*!< is the raw data gathered*/

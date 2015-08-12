@@ -100,6 +100,7 @@ public:
   std::string NNFolder = "NeuralNet";
   std::string StandardSentTo = "j.spijker@ihcmerwede.com";
   std::string StandardPrinter = "PDF printer";
+  uint32_t StandardNumberOfShots = 10;
 
 private:
   friend class boost::serialization::access;
@@ -149,6 +150,7 @@ private:
       ar &BOOST_SERIALIZATION_NVP(NNFolder);
       ar &BOOST_SERIALIZATION_NVP(StandardSentTo);
       ar &BOOST_SERIALIZATION_NVP(StandardPrinter);
+      ar &BOOST_SERIALIZATION_NVP(StandardNumberOfShots);
     }
   }
 };
