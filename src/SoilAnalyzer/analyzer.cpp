@@ -49,6 +49,14 @@ void Analyzer::PrepImages() {
   CleanUpMatVector(Snapshots);
 }
 
+void Analyzer::Analyse(Images_t *snapshots, Sample *results,
+                       SoilSettings *settings) {
+  Snapshots = snapshots;
+  Results = results;
+  Settings = settings;
+  Analyse();
+}
+
 /*!
  * \brief Analyzer::Analyse
  */
@@ -57,13 +65,13 @@ void Analyzer::Analyse() {
   PrepImages();
   GetFFD(Results->ParticlePopulation);
   GetPrediction(Results->ParticlePopulation);
-  Results->Shape =
-      ucharStat_t(Results->GetClassVector()->data(),
-                  Results->GetClassVector()->size(), 1, 18, 1, false);
-  emit on_progressUpdate(currentProgress++);
-  Results->PSD = floatStat_t(Results->GetPSDVector()->data(),
-                             Results->GetPSDVector()->size(), 15, 0);
-  emit on_progressUpdate(currentProgress++);
+  // Results->Shape =
+  //     ucharStat_t(Results->GetClassVector()->data(),
+  //                 Results->GetClassVector()->size(), 1, 18, 1, false);
+  // emit on_progressUpdate(currentProgress++);
+  // Results->PSD = floatStat_t(Results->GetPSDVector()->data(),
+  //                            Results->GetPSDVector()->size(), 15, 0);
+  // emit on_progressUpdate(currentProgress++);
 
   emit on_AnalysisFinished();
 }
@@ -125,7 +133,7 @@ void Analyzer::CalcMaxProgressAnalyze() {
  * \param intensityVector
  */
 void Analyzer::GetEnhancedInt(Images_t *snapshots,
-                              std::vector<Mat> intensityVector) {
+                              std::vector<Mat> &intensityVector) {
   if (Settings->useBacklightProjection) {
     for_each(snapshots->begin(), snapshots->end(), [&](Image_t &I) {
       cv::Mat intensity;
@@ -309,8 +317,8 @@ void Analyzer::GetParticlesFromBlobList(
     part.BW = B.Img;
     part.PixelArea = B.Area;
     part.Edge = Vision::Segment::CopyMat<uchar>(edge(B.ROI), B.Img, CV_8UC1);
-    part.RGB = Vision::Segment::CopyMat<uchar>(snapshot->FrontLight(B.ROI),
-                                               B.Img, CV_8UC3);
+    part.RGB = Vision::Segment::CopyMat<uchar>(snapshot->FrontLight(B.ROI), B.Img,
+                                        CV_8UC3).clone();
     part.SIPixelFactor = snapshot->SIPixelFactor;
     part.isPreparedForAnalysis = true;
     partPopulation.push_back(part);
@@ -335,10 +343,10 @@ void Analyzer::GetFFD(Sample::ParticleVector_t &particalPopulation) {
  * \param particlePopulation
  */
 void Analyzer::GetPrediction(Sample::ParticleVector_t &particlePopulation) {
-  SoilMath::NN nn;
-  nn.LoadState(Settings->NNlocation);
-  for_each(
-      particlePopulation.begin(), particlePopulation.end(),
-      [&](Particle &P) { P.Classification = nn.Predict(P.FFDescriptors); });
+  //  SoilMath::NN nn;
+  //  nn.LoadState(Settings->NNlocation);
+  //  for_each(
+  //      particlePopulation.begin(), particlePopulation.end(),
+  //      [&](Particle &P) { P.Classification = nn.Predict(P.FFDescriptors); });
 }
 }

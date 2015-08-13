@@ -7,6 +7,9 @@
 
 #pragma once
 #define STARTING_ESTIMATE_PROGRESS 300
+#ifndef DEBUG
+#define DEBUG
+#endif
 
 #include <opencv2/core.hpp>
 #include <vector>
@@ -42,6 +45,7 @@ public:
   Analyzer(Images_t *snapshots, Sample *results, SoilSettings *settings);
 
   void Analyse();
+  void Analyse(Images_t *snapshots, Sample *results, SoilSettings *settings);
   uint32_t MaxProgress = STARTING_ESTIMATE_PROGRESS; /*!< */
 
   SoilMath::NN NeuralNet; /*!< */
@@ -64,7 +68,7 @@ private:
   void GetBW(cv::Mat &img, cv::Mat &BW);
 
   void GetEnhancedInt(Images_t *snapshots,
-                      std::vector<cv::Mat> intensityVector);
+                      std::vector<cv::Mat> &intensityVector);
   void GetEnhancedInt(cv::Mat &img, cv::Mat &intensity);
 
   void GetParticles(std::vector<cv::Mat> &BW, Images_t *snapshots,
