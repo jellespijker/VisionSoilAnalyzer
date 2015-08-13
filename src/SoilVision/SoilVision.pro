@@ -9,7 +9,7 @@ QMAKE_CXXFLAGS += -std=c++11
 
 TARGET = SoilVision
 TEMPLATE = lib
-VERSION = 0.9.0
+VERSION = 0.9.1
 
 DEFINES += SOILVISION_LIBRARY
 unix:!macx: QMAKE_RPATHDIR += $$PWD/../../../build/install/
