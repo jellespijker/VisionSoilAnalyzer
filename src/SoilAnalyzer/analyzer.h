@@ -30,6 +30,7 @@ class Analyzer : public QObject {
   Q_OBJECT
 
 public:
+  bool PredictShape = true;
   struct Image_t {
     cv::Mat FrontLight;
     cv::Mat BackLight;

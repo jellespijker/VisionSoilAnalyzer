@@ -242,3 +242,7 @@ void VSAMainWindow::on_actionLoadSample_triggered() {
     on_analyzer_finished();
   }
 }
+
+void VSAMainWindow::on_actionUseLearning_toggled(bool arg1) {
+  Analyzer->PredictShape = !arg1;
+}

@@ -64,14 +64,17 @@ void Analyzer::Analyse() {
   CalcMaxProgress();
   PrepImages();
   GetFFD(Results->ParticlePopulation);
-  GetPrediction(Results->ParticlePopulation);
+  if (PredictShape) {
+    GetPrediction(Results->ParticlePopulation);
+  }
+
   // Results->Shape =
   //     ucharStat_t(Results->GetClassVector()->data(),
   //                 Results->GetClassVector()->size(), 1, 18, 1, false);
   // emit on_progressUpdate(currentProgress++);
-  // Results->PSD = floatStat_t(Results->GetPSDVector()->data(),
-  //                            Results->GetPSDVector()->size(), 15, 0);
-  // emit on_progressUpdate(currentProgress++);
+  Results->PSD = floatStat_t(Results->GetPSDVector()->data(),
+                             Results->GetPSDVector()->size(), 15, 0);
+  emit on_progressUpdate(currentProgress++);
 
   emit on_AnalysisFinished();
 }
@@ -317,8 +320,8 @@ void Analyzer::GetParticlesFromBlobList(
     part.BW = B.Img;
     part.PixelArea = B.Area;
     part.Edge = Vision::Segment::CopyMat<uchar>(edge(B.ROI), B.Img, CV_8UC1);
-    part.RGB = Vision::Segment::CopyMat<uchar>(snapshot->FrontLight(B.ROI), B.Img,
-                                        CV_8UC3).clone();
+    part.RGB = Vision::Segment::CopyMat<uchar>(snapshot->FrontLight(B.ROI),
+                                               B.Img, CV_8UC3).clone();
     part.SIPixelFactor = snapshot->SIPixelFactor;
     part.isPreparedForAnalysis = true;
     partPopulation.push_back(part);
@@ -333,7 +336,13 @@ void Analyzer::GetFFD(Sample::ParticleVector_t &particalPopulation) {
   SoilMath::FFT fft;
   for_each(particalPopulation.begin(), particalPopulation.end(),
            [&](Particle &P) {
-             P.FFDescriptors = fft.GetDescriptors(P.Edge);
+             try {
+               P.FFDescriptors = fft.GetDescriptors(P.Edge);
+             } catch (SoilMath::Exception::MathException &e) {
+               if (e.id() == EXCEPTION_NO_CONTOUR_FOUND_NR) {
+                 P.isSmall = true;
+               }
+             }
              emit on_progressUpdate(currentProgress++);
            });
 }
@@ -343,10 +352,13 @@ void Analyzer::GetFFD(Sample::ParticleVector_t &particalPopulation) {
  * \param particlePopulation
  */
 void Analyzer::GetPrediction(Sample::ParticleVector_t &particlePopulation) {
-  //  SoilMath::NN nn;
-  //  nn.LoadState(Settings->NNlocation);
-  //  for_each(
-  //      particlePopulation.begin(), particlePopulation.end(),
-  //      [&](Particle &P) { P.Classification = nn.Predict(P.FFDescriptors); });
+  SoilMath::NN nn;
+  nn.LoadState(Settings->NNlocation);
+  for_each(particlePopulation.begin(), particlePopulation.end(),
+           [&](Particle &P) {
+             if (!P.isSmall) {
+               P.Classification = nn.Predict(P.FFDescriptors);
+             }
+           });
 }
 }
