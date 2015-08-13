@@ -79,6 +79,5 @@ NNLearnDataSet &NNLearnDataSet::operator=(NNLearnDataSet const &rhs) {
   return *this;
 }
 
-NNLearnDataSet::~NNLearnDataSet() { }
-
+NNLearnDataSet::~NNLearnDataSet() {}
 }

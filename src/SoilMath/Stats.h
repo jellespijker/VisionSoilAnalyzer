@@ -182,7 +182,7 @@ public:
     EndBin = endBin;
     this->noBins = noBins;
     bins = new uint32_t[noBins]{};
-    CFD = new uint64_t[noBins] {};
+    CFD = new uint64_t[noBins]{};
 
     if (typeid(T1) == typeid(float) || typeid(T1) == typeid(double) ||
         typeid(T1) == typeid(long double)) {
@@ -224,7 +224,7 @@ public:
     Rows = rows;
     Cols = cols;
     bins = new uint32_t[noBins]{};
-    CFD = new uint64_t[noBins] {};
+    CFD = new uint64_t[noBins]{};
     this->noBins = noBins;
     if (isDiscrete) {
       BasicCalculate();
@@ -266,7 +266,7 @@ public:
     Rows = rows;
     Cols = cols;
     bins = new uint32_t[noBins]{};
-    CFD = new uint64_t[noBins] {};
+    CFD = new uint64_t[noBins]{};
     this->noBins = noBins;
     if (isDiscrete) {
       BasicCalculate(mask);
@@ -290,14 +290,14 @@ public:
     if (typeid(T1) == typeid(float) || typeid(T1) == typeid(double) ||
         typeid(T1) == typeid(long double)) {
       isDiscrete = false;
-      throw Exception::MathException(
-          "Calculations using histogram not supported with floating-type!");
+      throw Exception::MathException(EXCEPTION_TYPE_NOT_SUPPORTED,
+                                     EXCEPTION_TYPE_NOT_SUPPORTED_NR);
     } else {
       isDiscrete = true;
     }
 
     bins = new uint32_t[noBins]{};
-    CFD = new uint64_t[noBins] {};
+    CFD = new uint64_t[noBins]{};
     while (i-- > 0) {
       bins[i] = binData[i];
       n += binData[i];
@@ -557,8 +557,8 @@ private:
   void getCFD() {
     CFD[0] = bins[0];
     for (uint32_t i = 1; i < noBins; i++) {
-        CFD[i] = CFD[i - 1] + bins[i];
-      }
+      CFD[i] = CFD[i - 1] + bins[i];
+    }
   }
 
   friend class boost::serialization::access; /**< Serialization class*/
@@ -569,7 +569,8 @@ private:
    * \param version
    */
   template <class Archive>
-  void serialize(Archive &ar, const unsigned int version __attribute__((unused))) {
+  void serialize(Archive &ar,
+                 const unsigned int version __attribute__((unused))) {
     ar &isDiscrete;
     ar &n;
     for (size_t dc = 0; dc < n; dc++) {
@@ -580,7 +581,7 @@ private:
       ar &bins[dc];
     }
     for (size_t dc = 0; dc < noBins; dc++) {
-        ar &CFD[dc];
+      ar &CFD[dc];
     }
     ar &Calculated;
     ar &Mean;

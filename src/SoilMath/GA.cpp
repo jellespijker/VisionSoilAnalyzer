@@ -100,16 +100,16 @@ void GA::CrossOver(Population_t &pop) {
 
     for (uint32_t j = 0; j < pop[i].weights.size(); j++) {
       // Split A
-      Split[0].first = bitset<CROSSOVER>(
+      Split[0].first = std::bitset<CROSSOVER>(
           pop[i].weightsGen[j].to_string().substr(0, CROSSOVER));
-      Split[0].second =
-          bitset<GENE_MAX - CROSSOVER>(pop[i].weightsGen[j].to_string().substr(
-              CROSSOVER, GENE_MAX - CROSSOVER));
+      Split[0].second = std::bitset<GENE_MAX - CROSSOVER>(
+          pop[i].weightsGen[j].to_string().substr(CROSSOVER,
+                                                  GENE_MAX - CROSSOVER));
 
       // Split B
-      Split[1].first = bitset<CROSSOVER>(
+      Split[1].first = std::bitset<CROSSOVER>(
           pop[i + 1].weightsGen[j].to_string().substr(0, CROSSOVER));
-      Split[1].second = bitset<GENE_MAX - CROSSOVER>(
+      Split[1].second = std::bitset<GENE_MAX - CROSSOVER>(
           pop[i + 1].weightsGen[j].to_string().substr(CROSSOVER,
                                                       GENE_MAX - CROSSOVER));
 
@@ -129,15 +129,15 @@ void GA::CrossOver(Population_t &pop) {
   uint32_t halfN = pop.size() / 2;
   for (uint32_t i = 0; i < halfN; i++) {
     for (uint32_t j = 0; j < pop[i].weights.size(); j++) {
-      Split[0].first = bitset<CROSSOVER>(
+      Split[0].first = std::bitset<CROSSOVER>(
           pop[i].weightsGen[j].to_string().substr(0, CROSSOVER));
-      Split[0].second =
-          bitset<GENE_MAX - CROSSOVER>(pop[i].weightsGen[j].to_string().substr(
-              CROSSOVER, GENE_MAX - CROSSOVER));
+      Split[0].second = std::bitset<GENE_MAX - CROSSOVER>(
+          pop[i].weightsGen[j].to_string().substr(CROSSOVER,
+                                                  GENE_MAX - CROSSOVER));
 
-      Split[1].first = bitset<CROSSOVER>(
+      Split[1].first = std::bitset<CROSSOVER>(
           pop[i + 2].weightsGen[j].to_string().substr(0, CROSSOVER));
-      Split[1].second = bitset<GENE_MAX - CROSSOVER>(
+      Split[1].second = std::bitset<GENE_MAX - CROSSOVER>(
           pop[i + 2].weightsGen[j].to_string().substr(CROSSOVER,
                                                       GENE_MAX - CROSSOVER));
 

@@ -114,13 +114,13 @@ public:
    * be reconstructed on a latter stadia.
    * \param filename a string indicating the file location and name
    */
-  void SaveState(string filename);
+  void SaveState(std::string filename);
 
   /*!
    * \brief LoadState Loads the previouse saved Neural Net from disk
    * \param filename a string indicating the file location and name
    */
-  void LoadState(string filename);
+  void LoadState(std::string filename);
 
   Weight_t iWeights; /**< a vector of real valued floating point input weights*/
   Weight_t hWeights; /**< a vector of real valued floating point hidden weight*/

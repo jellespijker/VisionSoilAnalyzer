@@ -45,6 +45,7 @@ public:
 
   bool isPreparedForAnalysis = false; /*!< is the particle ready for analysis*/
   bool isAnalysed = false; /*!< is the particle analyzed*/
+  bool isSmall = false;
 
 private:
   float SIVolume = 0.; /*!< The correspondening SI volume*/

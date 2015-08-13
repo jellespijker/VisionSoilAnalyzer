@@ -6,6 +6,7 @@
  */
 
 #include "NN.h"
+using namespace std;
 
 namespace SoilMath {
 NN::NN() { beta = 0.666; }
@@ -48,10 +49,12 @@ Predict_t NN::PredictLearn(ComplexVect_t input, Weight_t inputweights,
 
 Predict_t NN::Predict(ComplexVect_t input) {
   if (input.size() != inputNeurons) {
-    throw Exception::MathException("Size of input Neurons Exception!");
+    throw Exception::MathException(EXCEPTION_SIZE_OF_INPUT_NEURONS,
+                                   EXCEPTION_SIZE_OF_INPUT_NEURONS_NR);
   }
   if (!studied) {
-    throw Exception::MathException("Neural Net didn't studied!");
+    throw Exception::MathException(EXCEPTION_NEURAL_NET_NOT_STUDIED,
+                                   EXCEPTION_NEURAL_NET_NOT_STUDIED_NR);
   }
 
   iNeurons.clear();
