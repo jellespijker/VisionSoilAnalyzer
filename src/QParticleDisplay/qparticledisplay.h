@@ -9,6 +9,7 @@
 #include <QWidget>
 #include <QImage>
 #include <qopencvqt.h>
+#include <QColor>
 
 #include "soilanalyzer.h"
 
@@ -37,4 +38,5 @@ private slots:
 private:
   Ui::QParticleDisplay *ui;
   SoilAnalyzer::Sample::ParticleVector_t *ParticlePopulation;
+  QImage ConvertParticleToQImage(SoilAnalyzer::Particle *particle);
 };
