@@ -10,12 +10,19 @@
 
 #include <QImage>
 #include <opencv2/core.hpp>
+#include <opencv2/imgproc.hpp>
 #include <vector>
 
 class QOpenCVQT
 {
 public:
   QOpenCVQT();
+  static cv::Mat WhiteBackground(const cv::Mat &src) {
+    cv::Mat dst;
+    cv::floodFill(src, dst, cv::Point(1,1), cv::Scalar_<uchar>(255,255,255));
+    return dst;
+  }
+
   static QImage Mat2QImage(const cv::Mat &src) {
     QImage dest;
     if (src.channels() == 1) {

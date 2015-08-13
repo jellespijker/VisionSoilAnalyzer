@@ -10,7 +10,7 @@ TEMPLATE = lib
 QT += gui
 
 DEFINES += QOPENCVQT_LIBRARY
-VERSION = 1.0.0
+VERSION = 1.1.0
 CONFIG += shared
 
 SOURCES += qopencvqt.cpp
