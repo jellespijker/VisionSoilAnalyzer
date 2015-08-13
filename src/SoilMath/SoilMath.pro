@@ -8,7 +8,7 @@ QT       -= core gui
 
 TARGET = SoilMath
 TEMPLATE = lib
-VERSION = 0.9.2
+VERSION = 0.9.3
 
 DEFINES += SOILMATH_LIBRARY
 QMAKE_CXXFLAGS += -std=c++11
