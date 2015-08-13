@@ -11,7 +11,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport multimedia multimed
 
 TARGET = VSA
 TEMPLATE = app
-VERSION = 0.1.0
+VERSION = 0.2.1
 
 unix:!macx: QMAKE_RPATHDIR += $$PWD/../../../build/install/
 
@@ -127,4 +127,5 @@ DEPENDPATH += $$PWD/../SoilAnalyzer
 DISTFILES += \
     Settings/Default.ini \
     NeuralNet/Default.NN \
-    Settings/User.ini
+    Settings/User.ini \
+    SoilSamples/Samples.VSA

@@ -148,7 +148,8 @@ void VSAMainWindow::on_actionNewSample_triggered() {
   Sample = new SoilAnalyzer::Sample;
   Images = new SoilAnalyzer::Analyzer::Images_t;
   TakeSnapShots();
-  Analyzer->Analyse();
+  Analyzer->Analyse(Images, Sample, Settings);
+  Sample->ChangesSinceLastSave = true;
 }
 
 void VSAMainWindow::TakeSnapShots() {
@@ -211,6 +212,7 @@ void VSAMainWindow::on_actionSaveSample_triggered() {
     if (!fn.contains(tr(".VSA"))) {
       fn.append(tr(".VSA"));
     }
+    Sample->ChangesSinceLastSave = false;
     Sample->Save(fn.toStdString());
   }
 }
@@ -237,5 +239,6 @@ void VSAMainWindow::on_actionLoadSample_triggered() {
       fn.append(tr(".VSA"));
     }
     Sample->Load(fn.toStdString());
+    on_analyzer_finished();
   }
 }
