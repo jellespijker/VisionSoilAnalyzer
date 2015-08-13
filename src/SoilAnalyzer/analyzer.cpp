@@ -339,7 +339,7 @@ void Analyzer::GetFFD(Sample::ParticleVector_t &particalPopulation) {
              try {
                P.FFDescriptors = fft.GetDescriptors(P.Edge);
              } catch (SoilMath::Exception::MathException &e) {
-               if (e.id() == EXCEPTION_NO_CONTOUR_FOUND_NR) {
+               if (*e.id() == EXCEPTION_NO_CONTOUR_FOUND_NR) {
                  P.isSmall = true;
                }
              }

@@ -41,6 +41,8 @@ private:
   uint32_t count = 0;
 
 private Q_SLOTS:
+  void testCase_PSD();
+
   void testCase_Sort();
   void testCase_Sort_withKey();
 
@@ -63,34 +65,52 @@ private Q_SLOTS:
 
 SoilMath_Test::SoilMath_Test() {}
 
+void SoilMath_Test::testCase_PSD() {
+  float *testData =
+      new float[20]{0.12, 0.43, 1.34, 1.2,  0.79, 0.79, 0.23, 0.24, 0.95, 1.01,
+                    2.03, 4.30, 1.57, 1.23, 1.77, 1.99, 1,    0.02, 0.32, 0.55};
+  float *binrange =
+      new float[15]{0.0,  0.038, 0.045, 0.063, 0.075, 0.09, 0.125, 0.18,
+                    0.25, 0.355, 0.5,   0.71,  1.0,   1.4,  2.0};
+
+  uint32_t *resultBins =
+      new uint32_t[15]{1, 0, 0, 0, 0, 1, 0, 2, 1, 1, 1, 4, 4, 3, 2};
+  uint32_t *resultCFD =
+      new uint32_t[15]{1, 1, 1, 1, 1, 2, 2, 4, 5, 6, 7, 11, 15, 18, 20};
+  SoilMath::PSD psd(testData, 20, binrange, 15, 14);
+
+  QCOMPARE_RANGE(psd.bins, resultBins, 15, uint32_t);
+  QCOMPARE_RANGE(psd.CFD, resultCFD, 15, uint32_t);
+}
+
 void SoilMath_Test::testCase_Sort() {
-    uint16_t compArr[10] = {1, 2, 4, 4, 5, 6, 7, 10, 10, 10};
-    uint16_t startArr[10] = {10, 2, 5, 1, 7, 10, 4, 10, 4, 6};
-    SoilMath::Sort::QuickSort<uint16_t>(startArr, 10);
+  uint16_t compArr[10] = {1, 2, 4, 4, 5, 6, 7, 10, 10, 10};
+  uint16_t startArr[10] = {10, 2, 5, 1, 7, 10, 4, 10, 4, 6};
+  SoilMath::Sort::QuickSort<uint16_t>(startArr, 10);
 
-    QCOMPARE_RANGE(startArr, compArr, 10, uint16_t);
+  QCOMPARE_RANGE(startArr, compArr, 10, uint16_t);
 
-    QBENCHMARK {
-        uint16_t sArr[10] = {10, 2, 5, 1, 7, 10, 4, 10, 4, 6};
-        SoilMath::Sort::QuickSort<uint16_t>(sArr, 10);
-    }
+  QBENCHMARK {
+    uint16_t sArr[10] = {10, 2, 5, 1, 7, 10, 4, 10, 4, 6};
+    SoilMath::Sort::QuickSort<uint16_t>(sArr, 10);
+  }
 }
 
 void SoilMath_Test::testCase_Sort_withKey() {
-    uint16_t compArr[10] = {1, 2, 4, 4, 5, 6, 7, 10, 10, 10};
-    uint16_t compKeyArr[10] = {3, 1, 6, 8, 2, 9, 4, 7, 5, 0};
-    uint16_t startArr[10] = {10, 2, 5, 1, 7, 10, 4, 10, 4, 6};
-    uint16_t startKeyarr[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+  uint16_t compArr[10] = {1, 2, 4, 4, 5, 6, 7, 10, 10, 10};
+  uint16_t compKeyArr[10] = {3, 1, 6, 8, 2, 9, 4, 7, 5, 0};
+  uint16_t startArr[10] = {10, 2, 5, 1, 7, 10, 4, 10, 4, 6};
+  uint16_t startKeyarr[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
 
-    SoilMath::Sort::QuickSort<uint16_t>(startArr, startKeyarr, 10);
-    QCOMPARE_RANGE(startArr, compArr, 10, uint16_t);
-    QCOMPARE_RANGE(startKeyarr, compKeyArr, 10, uint16_t);
+  SoilMath::Sort::QuickSort<uint16_t>(startArr, startKeyarr, 10);
+  QCOMPARE_RANGE(startArr, compArr, 10, uint16_t);
+  QCOMPARE_RANGE(startKeyarr, compKeyArr, 10, uint16_t);
 
-    QBENCHMARK {
-        uint16_t sArr[10] = {10, 2, 5, 1, 7, 10, 4, 10, 4, 6};
-        uint16_t sKeyarr[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-        SoilMath::Sort::QuickSort<uint16_t>(sArr, sKeyarr, 10);
-    }
+  QBENCHMARK {
+    uint16_t sArr[10] = {10, 2, 5, 1, 7, 10, 4, 10, 4, 6};
+    uint16_t sKeyarr[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+    SoilMath::Sort::QuickSort<uint16_t>(sArr, sKeyarr, 10);
+  }
 }
 
 void SoilMath_Test::testCase_Stats_BigNoDiscrete() {

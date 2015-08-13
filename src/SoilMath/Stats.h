@@ -8,7 +8,6 @@
 #pragma once
 #define MAX_UINT8_VALUE 256
 #define VECTOR_CALC 1
-#define STATS_VERSION 1
 
 #include <stdint.h>
 #include <utility>
@@ -23,13 +22,12 @@
 
 #include <boost/archive/binary_iarchive.hpp>
 #include <boost/archive/binary_oarchive.hpp>
+#include <boost/serialization/version.hpp>
 #include <boost/math/distributions/students_t.hpp>
 
 #include "MathException.h"
 #include "SoilMathTypes.h"
 #include "CommonOperations.h"
-
-using namespace std;
 
 namespace SoilMath {
 
@@ -44,7 +42,7 @@ public:
 
   T1 *Data;                /**< Pointer the data*/
   uint32_t *bins;          /**< the histogram*/
-  uint64_t *CFD;           /**< the CFD*/
+  uint32_t *CFD;           /**< the CFD*/
   bool Calculated = false; /**< indication if the data has been calculated*/
   float Mean = 0.0;        /**< the mean value of the data*/
   uint32_t n = 0;          /**< number of data points*/
@@ -110,7 +108,7 @@ public:
    * \param rhs Right hand side
    */
   Stats(const Stats &rhs)
-      : Data{new T1[rhs.n]}, bins{new uint32_t[rhs.noBins]} {
+      : bins{new uint32_t[rhs.noBins]}, CFD{new uint32_t[rhs.noBins]} {
     this->binRange = rhs.binRange;
     this->Calculated = rhs.Calculated;
     this->Cols = rhs.Cols;
@@ -143,7 +141,7 @@ public:
       delete[] bins;
       delete[] Data;
       bins = new uint32_t[rhs.noBins];
-      Data = new T1[rhs.n];
+      Data = &rhs.Data;
       this->binRange = rhs.binRange;
       this->Calculated = rhs.Calculated;
       this->Cols = rhs.Cols;
@@ -175,14 +173,14 @@ public:
    * \param endBin end value of the second bin
    */
   Stats(int noBins = 256, T1 startBin = 0, T1 endBin = 255) {
-    min = numeric_limits<T1>::max();
-    max = numeric_limits<T1>::min();
-    Range = numeric_limits<T1>::max();
+    min = std::numeric_limits<T1>::max();
+    max = std::numeric_limits<T1>::min();
+    Range = std::numeric_limits<T1>::max();
     Startbin = startBin;
     EndBin = endBin;
     this->noBins = noBins;
     bins = new uint32_t[noBins]{};
-    CFD = new uint64_t[noBins]{};
+    CFD = new uint32_t[noBins]{};
 
     if (typeid(T1) == typeid(float) || typeid(T1) == typeid(double) ||
         typeid(T1) == typeid(long double)) {
@@ -205,8 +203,8 @@ public:
    */
   Stats(T1 *data, uint16_t rows, uint16_t cols, int noBins = 256,
         T1 startBin = 0, bool startatzero = true) {
-    min = numeric_limits<T1>::max();
-    max = numeric_limits<T1>::min();
+    min = std::numeric_limits<T1>::max();
+    max = std::numeric_limits<T1>::min();
     Range = max - min;
 
     Startbin = startBin;
@@ -224,7 +222,7 @@ public:
     Rows = rows;
     Cols = cols;
     bins = new uint32_t[noBins]{};
-    CFD = new uint64_t[noBins]{};
+    CFD = new uint32_t[noBins]{};
     this->noBins = noBins;
     if (isDiscrete) {
       BasicCalculate();
@@ -247,8 +245,8 @@ public:
    */
   Stats(T1 *data, uint16_t rows, uint16_t cols, uchar *mask, int noBins = 256,
         T1 startBin = 0, bool startatzero = true) {
-    min = numeric_limits<T1>::max();
-    max = numeric_limits<T1>::min();
+    min = std::numeric_limits<T1>::max();
+    max = std::numeric_limits<T1>::min();
     Range = max - min;
 
     Startbin = startBin;
@@ -266,7 +264,7 @@ public:
     Rows = rows;
     Cols = cols;
     bins = new uint32_t[noBins]{};
-    CFD = new uint64_t[noBins]{};
+    CFD = new uint32_t[noBins]{};
     this->noBins = noBins;
     if (isDiscrete) {
       BasicCalculate(mask);
@@ -297,7 +295,7 @@ public:
     }
 
     bins = new uint32_t[noBins]{};
-    CFD = new uint64_t[noBins]{};
+    CFD = new uint32_t[noBins]{};
     while (i-- > 0) {
       bins[i] = binData[i];
       n += binData[i];
@@ -426,7 +424,7 @@ public:
     Range = max - min;
     uint32_t index;
     if (StartAtZero) {
-      for_each(Data, Data + n, [&](T1 &d) {
+      std::for_each(Data, Data + n, [&](T1 &d) {
         index = static_cast<uint32_t>(d / binRange);
         if (index == noBins) {
           index -= 1;
@@ -435,7 +433,7 @@ public:
         sum_dev += pow((d - Mean), 2);
       });
     } else {
-      for_each(Data, Data + n, [&](T1 &d) {
+      std::for_each(Data, Data + n, [&](T1 &d) {
         index = static_cast<uint32_t>((d - min) / binRange);
         if (index == noBins) {
           index -= 1;
@@ -459,7 +457,7 @@ public:
     n = Rows * Cols;
     uint32_t nmask = 0;
     uint32_t i = 0;
-    for_each(Data, Data + n, [&](T1 &d) {
+    std::for_each(Data, Data + n, [&](T1 &d) {
       if (mask[i++] != 0) {
         if (d > max) {
           max = d;
@@ -477,7 +475,7 @@ public:
     uint32_t index;
     if (StartAtZero) {
       i = 0;
-      for_each(Data, Data + n, [&](T1 &d) {
+      std::for_each(Data, Data + n, [&](T1 &d) {
         if (mask[i++] != 0) {
           index = static_cast<uint32_t>(d / binRange);
           if (index == noBins) {
@@ -489,7 +487,7 @@ public:
       });
     } else {
       i = 0;
-      for_each(Data, Data + n, [&](T1 &d) {
+      std::for_each(Data, Data + n, [&](T1 &d) {
         if (mask[i++] != 0) {
           index = static_cast<uint32_t>((d - min) / binRange);
           if (index == noBins) {
@@ -548,7 +546,7 @@ public:
     Calculated = true;
   }
 
-private:
+protected:
   uint32_t n_end = 0; /**< data end counter used with mask*/
 
   /*!
@@ -569,33 +567,34 @@ private:
    * \param version
    */
   template <class Archive>
-  void serialize(Archive &ar,
-                 const unsigned int version __attribute__((unused))) {
-    ar &isDiscrete;
-    ar &n;
-    for (size_t dc = 0; dc < n; dc++) {
-      ar &Data[dc];
+  void serialize(Archive &ar, const unsigned int version) {
+    if (version == 0) {
+      ar &isDiscrete;
+      ar &n;
+      //    for (size_t dc = 0; dc < n; dc++) {
+      //      ar &Data[dc];
+      //    }
+      ar &noBins;
+      for (size_t dc = 0; dc < noBins; dc++) {
+        ar &bins[dc];
+      }
+      for (size_t dc = 0; dc < noBins; dc++) {
+        ar &CFD[dc];
+      }
+      ar &Calculated;
+      ar &Mean;
+      ar &Range;
+      ar &min;
+      ar &max;
+      ar &Startbin;
+      ar &EndBin;
+      ar &binRange;
+      ar &Std;
+      ar &Sum;
+      ar &Rows;
+      ar &Cols;
+      ar &StartAtZero;
     }
-    ar &noBins;
-    for (size_t dc = 0; dc < noBins; dc++) {
-      ar &bins[dc];
-    }
-    for (size_t dc = 0; dc < noBins; dc++) {
-      ar &CFD[dc];
-    }
-    ar &Calculated;
-    ar &Mean;
-    ar &Range;
-    ar &min;
-    ar &max;
-    ar &Startbin;
-    ar &EndBin;
-    ar &binRange;
-    ar &Std;
-    ar &Sum;
-    ar &Rows;
-    ar &Cols;
-    ar &StartAtZero;
   }
 };
 }
@@ -608,3 +607,7 @@ typedef SoilMath::Stats<uint16_t, uint32_t, uint64_t>
     uint16Stat_t; /**< uint16 Stat type*/
 typedef SoilMath::Stats<uint32_t, uint32_t, uint64_t>
     uint32Stat_t; /**< uint32 Stat type*/
+BOOST_CLASS_VERSION(floatStat_t, 0)
+BOOST_CLASS_VERSION(ucharStat_t, 0)
+BOOST_CLASS_VERSION(uint16Stat_t, 0)
+BOOST_CLASS_VERSION(uint32Stat_t, 0)
