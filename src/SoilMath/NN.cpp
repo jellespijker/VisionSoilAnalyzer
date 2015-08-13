@@ -50,6 +50,9 @@ Predict_t NN::Predict(ComplexVect_t input) {
   if (input.size() != inputNeurons) {
     throw Exception::MathException("Size of input Neurons Exception!");
   }
+  if (!studied) {
+    throw Exception::MathException("Neural Net didn't studied!");
+  }
 
   iNeurons.clear();
   hNeurons.clear();
@@ -100,18 +103,51 @@ Predict_t NN::Predict(ComplexVect_t input) {
 void NN::Learn(InputLearnVector_t input, OutputLearnVector_t cat,
                uint32_t noOfDescriptorsUsed __attribute__((unused))) {
   SoilMath::GA optim(PredictLearn, inputNeurons, hiddenNeurons, outputNeurons);
+  optim.ELITISME = ElitismeUsedByGA;
+  optim.END_ERROR = EndErrorUsedByGA;
+  optim.MUTATIONRATE = MutationrateUsedByGA;
+
   ComplexVect_t inputTest;
   std::vector<Weight_t> weights;
   Weight_t weight(((inputNeurons + 1) * hiddenNeurons) +
                       ((hiddenNeurons + 1) * outputNeurons),
                   0);
   // loop through each case and adjust the weights
-  optim.Evolve(input, weight, MinMaxWeight_t(-50, 50), cat, 1000, 50);
+  optim.Evolve(input, weight,
+               MinMaxWeight_t(MinWeightUSedByGa, MaxWeightUsedByGA), cat,
+               MaxGenUsedByGA, PopulationSizeUsedByGA);
 
   this->iWeights = Weight_t(
       weight.begin(), weight.begin() + ((inputNeurons + 1) * hiddenNeurons));
   this->hWeights = Weight_t(
       weight.begin() + ((inputNeurons + 1) * hiddenNeurons), weight.end());
   studied = true;
+}
+
+void NN::SetInputNeurons(uint32_t value) {
+  if (value != inputNeurons) {
+    inputNeurons = value;
+    iNeurons.clear();
+    iNeurons.reserve(inputNeurons + 1);
+    studied = false;
+  }
+}
+
+void NN::SetHiddenNeurons(uint32_t value) {
+  if (value != hiddenNeurons) {
+    hiddenNeurons = value;
+    hNeurons.clear();
+    hNeurons.reserve(hiddenNeurons + 1);
+    studied = false;
+  }
+}
+
+void NN::SetOutputNeurons(uint32_t value) {
+  if (value != outputNeurons) {
+    outputNeurons = value;
+    oNeurons.clear();
+    oNeurons.reserve(outputNeurons);
+    studied = false;
+  }
 }
 }

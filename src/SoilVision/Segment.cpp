@@ -634,8 +634,6 @@ void Segment::FillHoles(bool chain) {
   uint16_t col = static_cast<uint16_t>(itt % OriginalImg.rows);
 
   // Fill the outside
-  // FloodFill(O, P, row, col, 2, 0);
-
   try {
     cv::floodFill(ProcessedImg, cv::Point(col, row), cv::Scalar(2));
   } catch (cv::Exception &e) {
@@ -648,32 +646,6 @@ void Segment::FillHoles(bool chain) {
   while (i <= nData) {
     P[i] = LUT_newVal[P[i]];
     i++;
-  }
-}
-
-/*!
- * \brief Segment::FloodFill
- * \param O
- * \param P
- * \param row
- * \param col
- * \param fillValue
- * \param OldValue
- */
-void Segment::FloodFill(uchar *O, uchar *P, uint16_t row, uint16_t col,
-                        uchar fillValue, uchar OldValue) {
-  if (row < 0 || row > OriginalImg.rows) {
-    return;
-  }
-  if (col < 0 || col > OriginalImg.cols) {
-    return;
-  }
-  if (P[col + row * OriginalImg.rows] == OldValue) {
-    P[col + row * OriginalImg.rows] = fillValue;
-    FloodFill(O, P, row + 1, col, fillValue, OldValue);
-    FloodFill(O, P, row, col + 1, fillValue, OldValue);
-    FloodFill(O, P, row - 1, col, fillValue, OldValue);
-    FloodFill(O, P, row, col - 1, fillValue, OldValue);
   }
 }
 

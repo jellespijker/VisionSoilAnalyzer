@@ -26,6 +26,7 @@
 
 #include <opencv2/core.hpp>
 #include <opencv2/highgui.hpp>
+#include <opencv2/imgproc.hpp>
 
 #include <stdint.h>
 #include <cmath>
@@ -138,6 +139,12 @@ public:
 
     merge(exDst, dst);
 
+    return dst;
+  }
+
+  static cv::Mat WhiteBackground(const cv::Mat &src) {
+    cv::Mat dst;
+    cv::floodFill(src, dst, cv::Point(0,0), cv::Scalar(255,255,255));
     return dst;
   }
 

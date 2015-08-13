@@ -19,7 +19,7 @@
 #include <boost/archive/binary_oarchive.hpp>
 
 #include <opencv2/core/core.hpp>
-#include "../Soil/Mat_archive.h"
+#include "Mat_archive.h"
 #include "predict_t_archive.h"
 #include "NN.h"
 
@@ -34,6 +34,7 @@ public:
     std::string SampleID;
     bool Learned;
   };
+
 private:
   friend class boost::serialization::access;
   template <class Archive>
@@ -54,8 +55,8 @@ private:
   OutputLearnVector_t OutputDataSet;
   std::vector<std::string> SampleID;
   std::vector<bool> Learned;
-public:
 
+public:
   NN NeuralNet;
 
   NNLearnDataSet();

@@ -8,7 +8,7 @@ QT       -= core gui
 
 TARGET = SoilMath
 TEMPLATE = lib
-VERSION = 0.9.2
+VERSION = 0.9.3
 
 DEFINES += SOILMATH_LIBRARY
 QMAKE_CXXFLAGS += -std=c++11
@@ -31,8 +31,8 @@ HEADERS += \
     FFT.h \
     CommonOperations.h \
     nnlearndataset.h \
-    ../Soil/Mat_archive.h \
-    predict_t_archive.h
+    predict_t_archive.h \
+    Mat_archive.h
 
 #opencv
 LIBS += -L/usr/local/lib -lopencv_core -lopencv_highgui

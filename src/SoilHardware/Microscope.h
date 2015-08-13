@@ -27,8 +27,6 @@ Interaction with the USB 5 MP microscope
 #include <linux/v4l2-controls.h>
 #include <linux/v4l2-common.h>
 
-#include <boost/signals2.hpp>
-#include <boost/bind.hpp>
 #include <boost/filesystem.hpp>
 
 #include <opencv2/photo.hpp>
@@ -49,6 +47,20 @@ public:
   struct Resolution_t {
     uint16_t Width = 2048;
     uint16_t Height = 1536;
+    PixelFormat format = PixelFormat::MJPG;
+    std::string to_string() {
+      std::string retVal = std::to_string(Width);
+      retVal.append(" x ");
+      retVal.append(std::to_string(Height));
+      if (format == PixelFormat::MJPG) {
+          retVal.append(" - MJPG");
+        }
+      else {
+          retVal.append(" - YUYV");
+        }
+      return retVal;
+    }
+    uint32_t ID;
   };
 
   struct Control_t {
@@ -81,9 +93,9 @@ public:
     std::string Name;
     std::string devString;
     uint32_t ID;
-    std::vector<std::pair<PixelFormat, Resolution_t>> Resolutions;
+    std::vector<Resolution_t> Resolutions;
     uint32_t delaytrigger = 1;
-    std::pair<PixelFormat, Resolution_t> *SelectedResolution = nullptr;
+    Resolution_t *SelectedResolution = nullptr;
     Controls_t Controls;
     int fd;
     bool operator==(Cam_t const &rhs) {
@@ -106,14 +118,6 @@ public:
   Cam_t *SelectedCam = nullptr;
   Arch RunEnv;
 
-  typedef boost::signals2::signal<void()> Finished_t;
-  typedef boost::signals2::signal<void(int)> Progress_t;
-
-  boost::signals2::connection
-  connect_Finished(const Finished_t::slot_type &subscriber);
-  boost::signals2::connection
-  connect_Progress(const Progress_t::slot_type &subscriber);
-
   Microscope();
   Microscope(const Microscope &rhs);
 
@@ -134,8 +138,8 @@ public:
   Control_t *GetControl(const std::string name);
   void SetControl(Control_t *control);
 
-  Finished_t fin_sig;
-  Progress_t prog_sig;
+  Cam_t *FindCam(std::string cam);
+  Cam_t *FindCam(int cam);
 
 private:
   cv::VideoCapture *cap = nullptr;

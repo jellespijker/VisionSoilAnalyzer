@@ -12,6 +12,9 @@ namespace Hardware {
 Microscope::Microscope() {
   RunEnv = GetCurrentArchitecture();
   AvailableCams = GetAvailableCams();
+  for_each(AvailableCams.begin(), AvailableCams.end(), [](Cam_t &C) {
+    C.SelectedResolution = &C.Resolutions[C.Resolutions.size() - 1];
+  });
 }
 
 Microscope::Microscope(const Microscope &rhs) {
@@ -108,6 +111,8 @@ std::vector<Microscope::Cam_t> Microscope::GetAvailableCams() {
       uint32_t width[5] = {640, 800, 1280, 1600, 2048};
       uint32_t height[6] = {480, 600, 960, 1200, 1536};
 
+      uint32_t ResolutionID = 0;
+
       // YUYV
       for (uint32_t i = 0; i < 5; i++) {
         format.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
@@ -120,9 +125,9 @@ std::vector<Microscope::Cam_t> Microscope::GetAvailableCams() {
           Resolution_t res;
           res.Width = format.fmt.pix.width;
           res.Height = height[i];
-          std::pair<PixelFormat, Resolution_t> currentRes(PixelFormat::YUYV,
-                                                          res);
-          currentCam.Resolutions.push_back(currentRes);
+          res.ID = ResolutionID++;
+          res.format = PixelFormat::YUYV;
+          currentCam.Resolutions.push_back(res);
         }
       }
 
@@ -138,14 +143,11 @@ std::vector<Microscope::Cam_t> Microscope::GetAvailableCams() {
           Resolution_t res;
           res.Width = format.fmt.pix.width;
           res.Height = format.fmt.pix.height;
-          std::pair<PixelFormat, Resolution_t> currentRes(PixelFormat::MJPG,
-                                                          res);
-          currentCam.Resolutions.push_back(currentRes);
+          res.ID = ResolutionID++;
+          res.format = PixelFormat::MJPG;
+          currentCam.Resolutions.push_back(res);
         }
       }
-
-      currentCam.SelectedResolution =
-          &currentCam.Resolutions[currentCam.Resolutions.size() - 1];
 
       close(currentCam.fd);
       retVal.push_back(currentCam);
@@ -171,67 +173,48 @@ bool Microscope::IsOpened() {
 }
 
 bool Microscope::openCam(Cam_t *cam) {
-  bool found = false;
   for (uint32_t i = 0; i < AvailableCams.size(); i++) {
     if (AvailableCams[i] == *cam) {
-      found = true;
-      break;
+      closeCam(SelectedCam);
+      SelectedCam = cam;
+      cap = new cv::VideoCapture(SelectedCam->ID);
+      if (!cap->isOpened()) {
+        throw Exception::MicroscopeException(EXCEPTION_NOCAMS,
+                                             EXCEPTION_NOCAMS_NR);
+      }
+      cap->set(CV_CAP_PROP_FRAME_WIDTH, SelectedCam->SelectedResolution->Width);
+      cap->set(CV_CAP_PROP_FRAME_HEIGHT,
+               SelectedCam->SelectedResolution->Height);
+      for (Controls_t::iterator it = SelectedCam->Controls.begin();
+           it != SelectedCam->Controls.end(); ++it) {
+        SetControl(&*it);
+      }
+      return true;
     }
   }
-  if (found) {
-    closeCam(cam);
-    SelectedCam = cam;
-    cap = new cv::VideoCapture(SelectedCam->ID);
-    if (!cap->isOpened()) {
-      throw Exception::MicroscopeException(EXCEPTION_NOCAMS,
-                                           EXCEPTION_NOCAMS_NR);
-    }
-    cap->set(CV_CAP_PROP_FRAME_WIDTH,
-             SelectedCam->SelectedResolution->second.Width);
-    cap->set(CV_CAP_PROP_FRAME_HEIGHT,
-             SelectedCam->SelectedResolution->second.Height);
-    for (Controls_t::iterator it = SelectedCam->Controls.begin();
-         it != SelectedCam->Controls.end(); ++it) {
-      SetControl(&*it);
-    }
-    return true;
-  } else {
-    return false;
-  }
+  return false;
 }
 
-bool Microscope::openCam(std::string &cam) {
-  bool found = false;
-  Cam_t *camP;
-  for (uint32_t i = 0; i < AvailableCams.size(); i++) {
-    if (cam.compare(AvailableCams[i].Name) == 0) {
-      camP = &AvailableCams[i];
-      found = true;
-      break;
-    }
-  }
-  if (found) {
-    return openCam(camP);
-  } else {
-    return false;
-  }
-}
+bool Microscope::openCam(std::string &cam) { return openCam(FindCam(cam)); }
 
-bool Microscope::openCam(int &cam) {
-  bool found = false;
-  Cam_t *camP;
+bool Microscope::openCam(int &cam) { return openCam(FindCam(cam)); }
+
+Microscope::Cam_t *Microscope::FindCam(int cam) {
   for (uint32_t i = 0; i < AvailableCams.size(); i++) {
     if (cam == AvailableCams[i].ID) {
-      camP = &AvailableCams[i];
-      found = true;
-      break;
+      return &AvailableCams[i];
     }
   }
-  if (found) {
-    return openCam(camP);
-  } else {
-    return false;
+  return nullptr;
+}
+
+Microscope::Cam_t *Microscope::FindCam(string cam) {
+  for (uint32_t i = 0; i < AvailableCams.size(); i++) {
+    if (cam.compare(AvailableCams[i].Name) == 0) {
+      return &AvailableCams[i];
+    }
   }
+  return nullptr;
 }
 
 bool Microscope::closeCam(Cam_t *cam) {
@@ -265,7 +248,6 @@ void Microscope::GetFrame(cv::Mat &dst) {
 }
 
 void Microscope::GetHDRFrame(cv::Mat &dst, uint32_t noframes) {
-  prog_sig(0);
   // create the brightness steps
   Control_t *brightness = GetControl("Brightness");
   Control_t *contrast = GetControl("Contrast");
@@ -276,14 +258,12 @@ void Microscope::GetHDRFrame(cv::Mat &dst, uint32_t noframes) {
   int8_t currentContrast = contrast->current_value;
   contrast->current_value = contrast->maximum;
 
-  int progStep = 70 / noframes;
   cv::Mat currentImg;
   // take the shots at different brightness levels
   for (uint32_t i = 1; i <= noframes; i++) {
     brightness->current_value = brightness->minimum + (i * brightnessStep);
     GetFrame(currentImg);
     HDRframes.push_back(currentImg);
-    prog_sig(i * progStep);
   }
 
   // Set the brightness and back to the previous used level
@@ -294,12 +274,8 @@ void Microscope::GetHDRFrame(cv::Mat &dst, uint32_t noframes) {
   cv::Mat fusion;
   cv::Ptr<cv::MergeMertens> merge_mertens = cv::createMergeMertens();
   merge_mertens->process(HDRframes, fusion);
-  prog_sig(80);
   fusion *= 255;
-  prog_sig(85);
   fusion.convertTo(dst, CV_8UC1);
-  prog_sig(100);
-  // fin_sig();
 }
 
 Microscope::Control_t *Microscope::GetControl(const string name) {
@@ -341,20 +317,11 @@ void Microscope::SetControl(Control_t *control) {
     controlctrl.value = control->current_value;
 
     if (ioctl(SelectedCam->fd, VIDIOC_S_CTRL, &controlctrl) == -1) {
-      throw Exception::MicroscopeException(EXCEPTION_CTRL_VALUE,
-                                           EXCEPTION_CTRL_VALUE_NR);
+      // Fails on auto white balance
+      // throw Exception::MicroscopeException(EXCEPTION_CTRL_VALUE,
+      //                                     EXCEPTION_CTRL_VALUE_NR);
     }
   }
   close(SelectedCam->fd);
-}
-
-boost::signals2::connection
-Microscope::connect_Finished(const Finished_t::slot_type &subscriber) {
-  return fin_sig.connect(subscriber);
-}
-
-boost::signals2::connection
-Microscope::connect_Progress(const Progress_t::slot_type &subscriber) {
-  return prog_sig.connect(subscriber);
 }
 }
