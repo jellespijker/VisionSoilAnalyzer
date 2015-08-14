@@ -246,3 +246,10 @@ void VSAMainWindow::on_actionLoadSample_triggered() {
 void VSAMainWindow::on_actionUseLearning_toggled(bool arg1) {
   Analyzer->PredictShape = !arg1;
 }
+
+void VSAMainWindow::on_actionCalibrate_triggered()
+{
+    cv::Mat calib;
+    Microscope->GetFrame(calib);
+    Analyzer->CalibrateSI(16.25, calib);
+}

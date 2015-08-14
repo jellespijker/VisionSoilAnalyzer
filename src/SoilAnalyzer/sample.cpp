@@ -20,7 +20,7 @@ Sample::Sample() {}
  * \brief Sample::Save
  * \param filename
  */
-void Sample::Save(const string &filename) {
+void Sample::Save(const std::string &filename) {
   std::ofstream ofs(filename.c_str(), std::ios::out | std::ios::binary);
   {
     io::filtering_streambuf<io::output> out;
@@ -39,7 +39,7 @@ void Sample::Save(const string &filename) {
  * \brief Sample::Load
  * \param filename
  */
-void Sample::Load(const string &filename) {
+void Sample::Load(const std::string &filename) {
   std::ifstream ifs(filename.c_str(), std::ios::in | std::ios::binary);
   {
     io::filtering_streambuf<io::input> in;

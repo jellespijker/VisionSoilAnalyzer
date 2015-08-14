@@ -12,6 +12,7 @@
 #endif
 
 #include <opencv2/core.hpp>
+#include <opencv2/imgproc.hpp>
 #include <vector>
 
 #include <boost/bind.hpp>
@@ -22,7 +23,6 @@
 
 #include "SoilMath.h"
 
-//#include <QtCore/qglobal.h>
 #include <QtCore/QObject>
 
 namespace SoilAnalyzer {
@@ -31,10 +31,11 @@ class Analyzer : public QObject {
 
 public:
   bool PredictShape = true;
+  float CurrentSIfactor = 0.005;
   struct Image_t {
     cv::Mat FrontLight;
     cv::Mat BackLight;
-    float SIPixelFactor = 1.;
+    float SIPixelFactor = 0.005;
   }; /*!< */
 
   typedef std::vector<Image_t> Images_t; /*!< */
@@ -47,6 +48,8 @@ public:
 
   void Analyse();
   void Analyse(Images_t *snapshots, Sample *results, SoilSettings *settings);
+  float CalibrateSI(float SI, cv::Mat &img);
+
   uint32_t MaxProgress = STARTING_ESTIMATE_PROGRESS; /*!< */
 
   SoilMath::NN NeuralNet; /*!< */
@@ -54,13 +57,15 @@ public:
 signals:
   void on_progressUpdate(int value);    /*!< */
   void on_maxProgressUpdate(int value); /*!< */
-  void on_AnalysisFinished();  /*!< */
+  void on_AnalysisFinished();           /*!< */
 
 private:
   uint32_t currentProgress = 0;   /*!< */
   uint32_t currentParticleID = 0; /*!< */
+  float BinRanges[15]{0.0,  0.038, 0.045, 0.063, 0.075, 0.09, 0.125, 0.18,
+                      0.25, 0.355, 0.5,   0.71,  1.0,   1.4,  2.0};
 
-  SoilMath::FFT fft;      /*!< */
+  SoilMath::FFT fft; /*!< */
 
   void CalcMaxProgress();
   void CalcMaxProgressAnalyze();

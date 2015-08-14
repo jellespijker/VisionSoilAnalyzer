@@ -11,7 +11,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = SoilAnalyzer
 TEMPLATE = lib
-VERSION = 0.9.91
+VERSION = 0.9.95
 
 DEFINES += SOILANALYZER_LIBRARY
 

@@ -29,14 +29,16 @@ public:
 
   uint32_t ID; /*!< The particle ID*/
 
-  cv::Mat BW; /*!< The binary image of the particle*/
+  cv::Mat BW;   /*!< The binary image of the particle*/
   cv::Mat Edge; /*!< The binary edge image of the particle*/
-  cv::Mat RGB; /*!< The RGB image of the particle*/
+  cv::Mat RGB;  /*!< The RGB image of the particle*/
 
-  std::vector<Complex_t> FFDescriptors; /*!< The Fast Fourier Descriptors describing the contour in the Frequency domain*/
-  Predict_t Classification; /*!< The classification prediction*/
+  std::vector<Complex_t> FFDescriptors; /*!< The Fast Fourier Descriptors
+                                           describing the contour in the
+                                           Frequency domain*/
+  Predict_t Classification;             /*!< The classification prediction*/
   float SIPixelFactor = 1.0; /*!< The conversion factor from pixel to SI*/
-  uint32_t PixelArea = 0; /*!< The total area of the binary image*/
+  uint32_t PixelArea = 0;    /*!< The total area of the binary image*/
 
   float GetSIVolume();
 
@@ -44,7 +46,7 @@ public:
   void Load(const std::string &filename);
 
   bool isPreparedForAnalysis = false; /*!< is the particle ready for analysis*/
-  bool isAnalysed = false; /*!< is the particle analyzed*/
+  bool isAnalysed = false;            /*!< is the particle analyzed*/
   bool isSmall = false;
 
 private:
@@ -53,20 +55,22 @@ private:
   friend class boost::serialization::access;
   template <class Archive>
   void serialize(Archive &ar, const unsigned int version) {
-    if (version == 0) {
-      ar &ID;
-      ar &BW;
-      ar &Edge;
-      ar &RGB;
-      ar &FFDescriptors;
-      ar &Classification;
-      ar &SIPixelFactor;
-      ar &PixelArea;
-      ar &SIVolume;
-      ar &isPreparedForAnalysis;
-      ar &isAnalysed;
+
+    ar &ID;
+    ar &BW;
+    ar &Edge;
+    ar &RGB;
+    ar &FFDescriptors;
+    ar &Classification;
+    ar &SIPixelFactor;
+    ar &PixelArea;
+    ar &SIVolume;
+    ar &isPreparedForAnalysis;
+    ar &isAnalysed;
+    if (version > 1) {
+      ar &isSmall;
     }
   }
 };
 }
-BOOST_CLASS_VERSION(SoilAnalyzer::Particle, 0)
+BOOST_CLASS_VERSION(SoilAnalyzer::Particle, 1)
