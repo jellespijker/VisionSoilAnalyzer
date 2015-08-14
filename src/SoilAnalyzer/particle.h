@@ -41,6 +41,7 @@ public:
   uint32_t PixelArea = 0;    /*!< The total area of the binary image*/
 
   float GetSIVolume();
+  float GetSiDiameter();
 
   void Save(const std::string &filename);
   void Load(const std::string &filename);
@@ -51,6 +52,7 @@ public:
 
 private:
   float SIVolume = 0.; /*!< The correspondening SI volume*/
+  float SIDiameter = 0.;
 
   friend class boost::serialization::access;
   template <class Archive>
@@ -69,6 +71,7 @@ private:
     ar &isAnalysed;
     if (version > 1) {
       ar &isSmall;
+      ar &SIDiameter;
     }
   }
 };

@@ -31,11 +31,12 @@ class Analyzer : public QObject {
 
 public:
   bool PredictShape = true;
-  float CurrentSIfactor = 0.005;
+  float CurrentSIfactor = 0.007;
+  bool SIfactorDet = false;
   struct Image_t {
     cv::Mat FrontLight;
     cv::Mat BackLight;
-    float SIPixelFactor = 0.005;
+    float SIPixelFactor = 0.007;
   }; /*!< */
 
   typedef std::vector<Image_t> Images_t; /*!< */
@@ -62,7 +63,7 @@ signals:
 private:
   uint32_t currentProgress = 0;   /*!< */
   uint32_t currentParticleID = 0; /*!< */
-  float BinRanges[15]{0.0,  0.038, 0.045, 0.063, 0.075, 0.09, 0.125, 0.18,
+  double BinRanges[15]{0.0,  0.038, 0.045, 0.063, 0.075, 0.09, 0.125, 0.18,
                       0.25, 0.355, 0.5,   0.71,  1.0,   1.4,  2.0};
 
   SoilMath::FFT fft; /*!< */

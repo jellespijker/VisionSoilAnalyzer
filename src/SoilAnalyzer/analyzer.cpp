@@ -68,13 +68,13 @@ void Analyzer::Analyse() {
     GetPrediction(Results->ParticlePopulation);
   }
 
-  // Results->Shape =
-  //     ucharStat_t(Results->GetClassVector()->data(),
-  //                 Results->GetClassVector()->size(), 1, 18, 1, false);
-  // emit on_progressUpdate(currentProgress++);
+  Results->Shape =
+      ucharStat_t(Results->GetClassVector()->data(),
+                  Results->GetClassVector()->size(), 1, 18, 1, false);
+  emit on_progressUpdate(currentProgress++);
   Results->PSD =
-      new SoilMath::PSD(Results->GetPSDVector()->data(),
-                        Results->GetPSDVector()->size(), BinRanges, 15, 14);
+      SoilMath::PSD(Results->GetPSDVector()->data(),
+                    Results->GetPSDVector()->size(), BinRanges, 15, 14);
   emit on_progressUpdate(currentProgress++);
 
   emit on_AnalysisFinished();
@@ -364,17 +364,16 @@ void Analyzer::GetPrediction(Sample::ParticleVector_t &particlePopulation) {
 }
 
 float Analyzer::CalibrateSI(float SI, Mat &img) {
-//  Vision::Conversion greyConv(img.clone());
-//  greyConv.Convert(Vision::Conversion::RGB, Vision::Conversion::Intensity);
-//  Vision::Enhance blur(greyConv.ProcessedImg);
-//  blur.Blur(9);
+  //  Vision::Conversion greyConv(img.clone());
+  //  greyConv.Convert(Vision::Conversion::RGB, Vision::Conversion::Intensity);
+  //  Vision::Enhance blur(greyConv.ProcessedImg);
+  //  blur.Blur(9);
   cv::Mat grey;
   cv::cvtColor(img, grey, CV_BGR2GRAY);
   cv::GaussianBlur(grey, grey, cv::Size(9, 9), 2, 2);
   SHOW_DEBUG_IMG(grey, uchar, 255, "blurCalibrate", false);
   std::vector<cv::Vec3f> circles;
-  cv::HoughCircles(grey, circles, CV_HOUGH_GRADIENT, 1,
-                   500, 30, 15, 750, 0);
+  cv::HoughCircles(grey, circles, CV_HOUGH_GRADIENT, 1, 500, 30, 15, 750, 0);
   float maxCircle = 0.0;
   for_each(circles.begin(), circles.end(), [&](cv::Vec3f &F) {
     if (F[2] > maxCircle) {

@@ -60,12 +60,12 @@ void Sample::Load(const std::string &filename) {
  */
 Sample::PSDVector_t *Sample::GetPSDVector() {
   if (!PSDGathered) {
-    Volume.clear();
+    Diameter.clear();
     for_each(ParticlePopulation.begin(), ParticlePopulation.end(),
-             [&](Particle &P) { Volume.push_back(P.GetSIVolume()); });
+             [&](Particle &P) { Diameter.push_back(P.GetSiDiameter()); });
     PSDGathered = true;
   }
-  return &Volume;
+  return &Diameter;
 }
 
 /*!

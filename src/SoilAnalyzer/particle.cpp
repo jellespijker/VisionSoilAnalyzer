@@ -60,9 +60,20 @@ float Particle::GetSIVolume() {
       throw Exception::SoilAnalyzerException(
           EXCEPTION_PARTICLE_NOT_ANALYZED, EXCEPTION_PARTICLE_NOT_ANALYZED_NR);
     }
-    SIVolume = SoilMath::calcVolume(PixelArea) * SIPixelFactor;
+    SIVolume = SoilMath::calcVolume(PixelArea * SIPixelFactor);
   }
   return SIVolume;
+}
+
+float Particle::GetSiDiameter() {
+  if (SIDiameter == 0.) {
+      if (PixelArea == 0) {
+          throw Exception::SoilAnalyzerException(
+              EXCEPTION_PARTICLE_NOT_ANALYZED, EXCEPTION_PARTICLE_NOT_ANALYZED_NR);
+        }
+      SIDiameter = SoilMath::calcDiameter(PixelArea * SIPixelFactor);
+    }
+  return SIDiameter;
 }
 
 }

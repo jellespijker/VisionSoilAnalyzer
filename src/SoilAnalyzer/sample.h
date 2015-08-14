@@ -33,13 +33,13 @@ public:
   std::string Name; /*!< The sample name identifier*/
 
   typedef std::vector<Particle> ParticleVector_t; /*!< a vector consisting of individual particles*/
-  typedef std::vector<float> PSDVector_t; /*!< a vector used in the PSD*/
+  typedef std::vector<double> PSDVector_t; /*!< a vector used in the PSD*/
   typedef std::vector<uint8_t> ClassVector_t; /*!< a vector used in the classification histogram*/
 
   ParticleVector_t ParticlePopulation; /*!< the individual particles of the sample*/
 
-  SoilMath::PSD *PSD; /*!< The Particle Size Distribution*/
-  ucharStat_t *Shape; /*!< The Shape classification distribution*/
+  SoilMath::PSD PSD; /*!< The Particle Size Distribution*/
+  ucharStat_t Shape; /*!< The Shape classification distribution*/
   floatStat_t *CIELab; /*!< The statistical CIE Lab color data*/
   floatStat_t *RI; /*!< The statistical Redness Index data*/
 
@@ -54,7 +54,7 @@ public:
 
   bool ChangesSinceLastSave = false;
 private:
-  PSDVector_t Volume; /*!< The PSD raw data*/
+  PSDVector_t Diameter; /*!< The PSD raw data*/
   bool PSDGathered = false; /*!< is the raw data gathered*/
   ClassVector_t Class; /*!< The classification raw data*/
   bool ClassGathered = false; /*!< is the classification data gathered*/
@@ -67,10 +67,10 @@ private:
       ar &Location;
       ar &Name;
       ar &ParticlePopulation;
-      ar &Volume;
+      ar &Diameter;
       ar &Class;
-      //ar &PSD;
-      //ar &Shape;
+      ar &PSD;
+      ar &Shape;
       //ar &CIELab;
       //ar &RI;
       ar &isPreparedForAnalysis;
