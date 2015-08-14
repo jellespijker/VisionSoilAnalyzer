@@ -66,3 +66,9 @@ QParticleDisplay::ConvertParticleToQImage(SoilAnalyzer::Particle *particle) {
   }
   return dst;
 }
+
+void QParticleDisplay::on_pushButton_delete_clicked()
+{
+  ParticlePopulation->erase(ParticlePopulation->begin() + ui->widget->centerIndex());
+  ui->widget->removeSlide(ui->widget->centerIndex());
+}
