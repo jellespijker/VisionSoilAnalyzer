@@ -115,15 +115,37 @@ void VSAMainWindow::setParticleValue(int newValue) {
 void VSAMainWindow::on_actionSettings_triggered() { settingsWindow->show(); }
 
 void VSAMainWindow::on_analyzer_finished() {
-  ui->widget_ParticleDisplay->SetParticlePopulation(
-      &Sample->ParticlePopulation);
+  ui->widget_ParticleDisplay->SetSample(Sample);
+  SetPSDgraph();
+  SetClassHistogram();
 
-  //  float PSD_Y[sample->PSD.noBins];
-  //  for (uint32_t i = 0; i < sample->PSD.noBins; i++) {
-  //      PSD_Y = i * (1 / sample->PSD.noBins);
-  //    }
+}
 
-  //  ui->Qplot_PSD->graph(0)->setData(sample->PSD.CFD, PSD_Y);
+void VSAMainWindow::SetPSDgraph() {
+  ui->Qplot_PSD->graph(0)->clearData();
+  QVector<double> xPSD(Sample->PSD.noBins), yPSD(Sample->PSD.noBins);
+  for (uint32_t i = 0; i < Sample->PSD.noBins; i++) {
+      xPSD[i] = Sample->PSD.BinRanges[i];
+      yPSD[i] = Sample->PSD.CFD[i];
+    }
+  ui->Qplot_PSD->graph(0)->setData(xPSD, yPSD);
+  ui->Qplot_PSD->xAxis->setRange(0.01, 100);
+  ui->Qplot_PSD->yAxis->setRange(0, 100);
+  ui->Qplot_PSD->replot();
+}
+
+void VSAMainWindow::SetClassHistogram() {
+  ui->QPlot_Texture->graph(0)->clearData();
+
+  QVector<double> xClass(Sample->Shape.noBins), yClass(Sample->Shape.noBins);
+  for (uint32_t i = 0; i < Sample->Shape.noBins; i++) {
+      xClass[i] = i + 1;
+      yClass[i] = Sample->Shape.bins[i];
+    }
+  ui->QPlot_Texture->graph(0)->setData(xClass, yClass);
+  ui->QPlot_Texture->xAxis->setRange(1, Sample->Shape.noBins);
+  ui->QPlot_Texture->yAxis->setRange(0, Sample->Shape.HighestFrequency());
+  ui->QPlot_Texture->replot();
 }
 
 void VSAMainWindow::on_actionNeuralNet_triggered() {
@@ -153,9 +175,19 @@ void VSAMainWindow::on_actionNewSample_triggered() {
 }
 
 void VSAMainWindow::TakeSnapShots() {
+  Analyzer->SIfactorDet = true; // remeber to remove
+  if (!Analyzer->SIfactorDet) {
+    QMessageBox *DetSIFactor = new QMessageBox(this);
+    DetSIFactor->setText("Put calibration Disc under the microscope");
+    DetSIFactor->exec();
+    on_actionCalibrate_triggered();
+    DetSIFactor->setText("Place sample under the microscope");
+    DetSIFactor->exec();
+  }
   if (Settings->useBacklightProjection && !Settings->useHDR) {
     for (uint32_t i = 0; i < Settings->StandardNumberOfShots; i++) {
       SoilAnalyzer::Analyzer::Image_t newShot;
+      newShot.SIPixelFactor = Analyzer->CurrentSIfactor;
       Microscope->GetFrame(newShot.FrontLight);
       BacklightMessage->exec();
       Microscope->GetFrame(newShot.BackLight);
@@ -169,6 +201,7 @@ void VSAMainWindow::TakeSnapShots() {
   } else if (Settings->useBacklightProjection && Settings->useHDR) {
     for (uint32_t i = 0; i < Settings->StandardNumberOfShots; i++) {
       SoilAnalyzer::Analyzer::Image_t newShot;
+      newShot.SIPixelFactor = Analyzer->CurrentSIfactor;
       Microscope->GetHDRFrame(newShot.FrontLight, Settings->HDRframes);
       BacklightMessage->exec();
       Microscope->GetFrame(newShot.BackLight);
@@ -182,6 +215,7 @@ void VSAMainWindow::TakeSnapShots() {
   } else if (!Settings->useBacklightProjection && Settings->useHDR) {
     for (uint32_t i = 0; i < Settings->StandardNumberOfShots; i++) {
       SoilAnalyzer::Analyzer::Image_t newShot;
+      newShot.SIPixelFactor = Analyzer->CurrentSIfactor;
       Microscope->GetHDRFrame(newShot.FrontLight, Settings->HDRframes);
       Images->push_back(newShot);
       QString ShakeMsg = "Shake it baby! ";
@@ -193,6 +227,7 @@ void VSAMainWindow::TakeSnapShots() {
   } else if (!Settings->useBacklightProjection && Settings->useHDR) {
     for (uint32_t i = 0; i < Settings->StandardNumberOfShots; i++) {
       SoilAnalyzer::Analyzer::Image_t newShot;
+      newShot.SIPixelFactor = Analyzer->CurrentSIfactor;
       Microscope->GetFrame(newShot.FrontLight);
       Images->push_back(newShot);
       QString ShakeMsg = "Shake it baby! ";
@@ -247,9 +282,8 @@ void VSAMainWindow::on_actionUseLearning_toggled(bool arg1) {
   Analyzer->PredictShape = !arg1;
 }
 
-void VSAMainWindow::on_actionCalibrate_triggered()
-{
-    cv::Mat calib;
-    Microscope->GetFrame(calib);
-    Analyzer->CalibrateSI(16.25, calib);
+void VSAMainWindow::on_actionCalibrate_triggered() {
+  cv::Mat calib;
+  Microscope->GetFrame(calib);
+  Analyzer->CalibrateSI(16.25, calib);
 }

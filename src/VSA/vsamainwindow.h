@@ -63,6 +63,8 @@ private:
   SoilAnalyzer::Analyzer *Analyzer = nullptr;
   SoilAnalyzer::Analyzer::Images_t *Images = nullptr;
 
+  void SetPSDgraph();
+  void SetClassHistogram();
   void TakeSnapShots();
 };
 

@@ -41,10 +41,10 @@ typedef std::pair<float, float>
     MinMaxWeight_t; /**< floating pair weight range*/
 
 typedef struct Predict_struct {
-  uint8_t Category; /**< the category number */
-  float RealValue;  /**< category number as float in order to estimate how
+  uint8_t Category = 1; /**< the category number */
+  float RealValue = 1.;  /**< category number as float in order to estimate how
                        precise to outcome is*/
-  float Accuracy;   /**< the accuracy of the category*/
+  float Accuracy = 1.;   /**< the accuracy of the category*/
   std::vector<float> OutputNeurons; /**< the output Neurons*/
 } Predict_t;                        /**< The prediction results*/
 typedef Predict_t (*NNfunctionType)(
