@@ -28,6 +28,7 @@ Interaction with the USB 5 MP microscope
 #include <linux/v4l2-common.h>
 
 #include <boost/filesystem.hpp>
+#include <boost/regex.hpp>
 
 #include <opencv2/photo.hpp>
 #include <opencv2/imgcodecs.hpp>

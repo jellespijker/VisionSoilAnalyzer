@@ -50,10 +50,6 @@ std::vector<Microscope::Cam_t> Microscope::GetAvailableCams() {
   struct v4l2_control controlctrl;
 
   // Check if there're videodevices installed
-  if (!boost::filesystem::exists("/sys/class/video4linux/video0")) {
-    throw Exception::MicroscopeException(EXCEPTION_NOCAMS, EXCEPTION_NOCAMS_NR);
-  }
-
   // Itterate through the cams
   for (boost::filesystem::directory_iterator itr(path_ss);
        itr != boost::filesystem::directory_iterator(); ++itr) {
