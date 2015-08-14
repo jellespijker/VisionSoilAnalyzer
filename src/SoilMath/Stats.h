@@ -37,12 +37,15 @@ namespace SoilMath {
  * the same value and concecuative in size
  */
 template <typename T1, typename T2, typename T3> class Stats {
+private:
+  uint32_t highFreq = 0;
+
 public:
   bool isDiscrete = true; /**< indicates if the data is discrete or real*/
 
   T1 *Data;                /**< Pointer the data*/
   uint32_t *bins;          /**< the histogram*/
-  uint32_t *CFD;           /**< the CFD*/
+  double *CFD;             /**< the CFD*/
   bool Calculated = false; /**< indication if the data has been calculated*/
   float Mean = 0.0;        /**< the mean value of the data*/
   uint32_t n = 0;          /**< number of data points*/
@@ -108,7 +111,7 @@ public:
    * \param rhs Right hand side
    */
   Stats(const Stats &rhs)
-      : bins{new uint32_t[rhs.noBins]}, CFD{new uint32_t[rhs.noBins]} {
+      : bins{new uint32_t[rhs.noBins]}, CFD{new double[rhs.noBins]} {
     this->binRange = rhs.binRange;
     this->Calculated = rhs.Calculated;
     this->Cols = rhs.Cols;
@@ -139,8 +142,8 @@ public:
   Stats &operator=(Stats const &rhs) {
     if (&rhs != this) {
       delete[] bins;
-      delete[] Data;
       bins = new uint32_t[rhs.noBins];
+      CFD = new double[rhs.noBins];
       Data = rhs.Data;
       this->binRange = rhs.binRange;
       this->Calculated = rhs.Calculated;
@@ -180,7 +183,7 @@ public:
     EndBin = endBin;
     this->noBins = noBins;
     bins = new uint32_t[noBins]{};
-    CFD = new uint32_t[noBins]{};
+    CFD = new double[noBins]{};
 
     if (typeid(T1) == typeid(float) || typeid(T1) == typeid(double) ||
         typeid(T1) == typeid(long double)) {
@@ -222,7 +225,7 @@ public:
     Rows = rows;
     Cols = cols;
     bins = new uint32_t[noBins]{};
-    CFD = new uint32_t[noBins]{};
+    CFD = new double[noBins]{};
     this->noBins = noBins;
     if (isDiscrete) {
       BasicCalculate();
@@ -264,7 +267,7 @@ public:
     Rows = rows;
     Cols = cols;
     bins = new uint32_t[noBins]{};
-    CFD = new uint32_t[noBins]{};
+    CFD = new double[noBins]{};
     this->noBins = noBins;
     if (isDiscrete) {
       BasicCalculate(mask);
@@ -295,7 +298,7 @@ public:
     }
 
     bins = new uint32_t[noBins]{};
-    CFD = new uint32_t[noBins]{};
+    CFD = new double[noBins]{};
     while (i-- > 0) {
       bins[i] = binData[i];
       n += binData[i];
@@ -420,6 +423,7 @@ public:
       Sum += Data[i];
     }
     binRange = static_cast<T1>(ceil((max - min) / static_cast<float>(noBins)));
+    if (binRange == 0) { binRange = min; }
     Mean = Sum / (float)n;
     Range = max - min;
     uint32_t index;
@@ -546,6 +550,17 @@ public:
     Calculated = true;
   }
 
+  uint32_t HighestFrequency() {
+    if (highFreq == 0) {
+      std::for_each(begin(), end(), [&](uint32_t &B) {
+        if (B > highFreq) {
+          highFreq = B;
+        }
+      });
+    }
+    return highFreq;
+  }
+
 protected:
   uint32_t n_end = 0; /**< data end counter used with mask*/
 
@@ -555,7 +570,7 @@ protected:
   void getCFD() {
     CFD[0] = bins[0];
     for (uint32_t i = 1; i < noBins; i++) {
-      CFD[i] = CFD[i - 1] + bins[i];
+      CFD[i] = ((CFD[i - 1] + bins[i]) / n) * 100;
     }
   }
 
@@ -571,9 +586,6 @@ protected:
     if (version == 0) {
       ar &isDiscrete;
       ar &n;
-      //    for (size_t dc = 0; dc < n; dc++) {
-      //      ar &Data[dc];
-      //    }
       ar &noBins;
       for (size_t dc = 0; dc < noBins; dc++) {
         ar &bins[dc];
@@ -594,6 +606,7 @@ protected:
       ar &Rows;
       ar &Cols;
       ar &StartAtZero;
+      ar &highFreq;
     }
   }
 };
