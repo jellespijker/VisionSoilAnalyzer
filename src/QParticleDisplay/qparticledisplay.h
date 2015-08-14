@@ -24,7 +24,7 @@ class QParticleDisplay : public QWidget
 public:
   explicit QParticleDisplay(QWidget *parent = 0);
   ~QParticleDisplay();
-  void SetParticlePopulation(SoilAnalyzer::Sample::ParticleVector_t *particlePopulation);
+  void SetSample(SoilAnalyzer::Sample *sample);
 
 signals:
   void particleChanged(int newValue);
@@ -39,6 +39,6 @@ private slots:
 
 private:
   Ui::QParticleDisplay *ui;
-  SoilAnalyzer::Sample::ParticleVector_t *ParticlePopulation;
+  SoilAnalyzer::Sample *Sample;
   QImage ConvertParticleToQImage(SoilAnalyzer::Particle *particle);
 };

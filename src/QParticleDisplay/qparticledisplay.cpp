@@ -13,11 +13,13 @@ QParticleDisplay::QParticleDisplay(QWidget *parent)
   ui->setupUi(this);
   ui->widget->setBackgroundColor(QColor("white"));
   ui->widget->setSlideSize(QSize(200, 200));
-  connect(ui->widget, SIGNAL(centerIndexChanged(int)), this, SLOT(on_selectedParticleChanged(int)));
+  connect(ui->widget, SIGNAL(centerIndexChanged(int)), this,
+          SLOT(on_selectedParticleChanged(int)));
   connect(ui->widget, SIGNAL(centerIndexChanged(int)), ui->horizontalSlider,
           SLOT(setValue(int)));
 
-  connect(ui->horizontalSlider, SIGNAL(valueChanged(int)), this, SLOT(on_selectedParticleChanged(int)));
+  connect(ui->horizontalSlider, SIGNAL(valueChanged(int)), this,
+          SLOT(on_selectedParticleChanged(int)));
   connect(ui->horizontalSlider, SIGNAL(valueChanged(int)), ui->widget,
           SLOT(setCenterIndex(int)));
 }
@@ -32,16 +34,16 @@ void QParticleDisplay::setSelectedParticle(int newValue) {
   ui->widget->setCenterIndex(newValue);
 }
 
-void QParticleDisplay::SetParticlePopulation(
-    SoilAnalyzer::Sample::ParticleVector_t *particlePopulation) {
-  this->ParticlePopulation = particlePopulation;
-  ui->horizontalSlider->setMaximum(this->ParticlePopulation->size() - 1);
+void QParticleDisplay::SetSample(SoilAnalyzer::Sample *sample) {
+  this->Sample = sample;
+  ui->horizontalSlider->setMaximum(this->Sample->ParticlePopulation.size() -
+                                   1);
   for (uint32_t i = 0; i < ui->widget->slideCount(); i++) {
     ui->widget->removeSlide(0);
   }
-  for (uint32_t i = 0; i < this->ParticlePopulation->size(); i++) {
+  for (uint32_t i = 0; i < this->Sample->ParticlePopulation.size(); i++) {
     ui->widget->addSlide(
-        ConvertParticleToQImage(&ParticlePopulation->at(i)));
+        ConvertParticleToQImage(&Sample->ParticlePopulation.at(i)));
   }
 }
 
@@ -54,31 +56,43 @@ QParticleDisplay::ConvertParticleToQImage(SoilAnalyzer::Particle *particle) {
   uchar *CVRGB = particle->RGB.data;
   for (uint32_t i = 0; i < nData; i++) {
     if (CVBW[i]) {
-        *(QDst++) = *(CVRGB + 2);
-        *(QDst++) = *(CVRGB + 1);
-        *(QDst++) = *(CVRGB );
-        *(QDst++) = 0;
-        CVRGB += 3;
+      *(QDst++) = *(CVRGB + 2);
+      *(QDst++) = *(CVRGB + 1);
+      *(QDst++) = *(CVRGB);
+      *(QDst++) = 0;
+      CVRGB += 3;
     } else {
-        *(QDst++) = 255;
-        *(QDst++) = 255;
-        *(QDst++) = 255;
-        *(QDst++) = 0;
-        CVRGB += 3;
-      }
+      *(QDst++) = 255;
+      *(QDst++) = 255;
+      *(QDst++) = 255;
+      *(QDst++) = 0;
+      CVRGB += 3;
+    }
   }
   return dst;
 }
 
-void QParticleDisplay::on_pushButton_delete_clicked()
-{
-  ParticlePopulation->erase(ParticlePopulation->begin() + ui->widget->centerIndex());
+void QParticleDisplay::on_pushButton_delete_clicked() {
+  Sample->ParticlePopulation.erase(Sample->ParticlePopulation.begin() +
+                                    ui->widget->centerIndex());
+  if (Sample->GetPSDVector()->size() > 0 &&
+      Sample->GetPSDVector()->size() !=
+          Sample->ParticlePopulation.size()) {
+    Sample->GetPSDVector()->erase(Sample->GetPSDVector()->begin() +
+                               ui->widget->centerIndex());
+  }
+  if (Sample->GetClassVector()->size() > 0 &&
+      Sample->GetClassVector()->size() !=
+          Sample->ParticlePopulation.size()) {
+    Sample->GetClassVector()->erase(Sample->GetClassVector()->begin() +
+                                 ui->widget->centerIndex());
+  }
   ui->widget->removeSlide(ui->widget->centerIndex());
-  ui->horizontalSlider->setMaximum(this->ParticlePopulation->size());
+  ui->horizontalSlider->setMaximum(this->Sample->ParticlePopulation.size() - 1);
 }
 
 void QParticleDisplay::on_selectedParticleChanged(int value) {
   QString volume;
-  volume.sprintf("%+06.2f", ParticlePopulation->at(value).GetSIVolume());
+  volume.sprintf("%+06.2f", Sample->ParticlePopulation.at(value).GetSIVolume());
   ui->label_Volume->setText(volume);
 }
