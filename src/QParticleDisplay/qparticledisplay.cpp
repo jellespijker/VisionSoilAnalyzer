@@ -12,9 +12,12 @@ QParticleDisplay::QParticleDisplay(QWidget *parent)
     : QWidget(parent), ui(new Ui::QParticleDisplay) {
   ui->setupUi(this);
   ui->widget->setBackgroundColor(QColor("white"));
-  ui->widget->setSlideSize(QSize(250, 250));
+  ui->widget->setSlideSize(QSize(200, 200));
+  connect(ui->widget, SIGNAL(centerIndexChanged(int)), this, SLOT(on_selectedParticleChanged(int)));
   connect(ui->widget, SIGNAL(centerIndexChanged(int)), ui->horizontalSlider,
           SLOT(setValue(int)));
+
+  connect(ui->horizontalSlider, SIGNAL(valueChanged(int)), this, SLOT(on_selectedParticleChanged(int)));
   connect(ui->horizontalSlider, SIGNAL(valueChanged(int)), ui->widget,
           SLOT(setCenterIndex(int)));
 }
@@ -32,7 +35,7 @@ void QParticleDisplay::setSelectedParticle(int newValue) {
 void QParticleDisplay::SetParticlePopulation(
     SoilAnalyzer::Sample::ParticleVector_t *particlePopulation) {
   this->ParticlePopulation = particlePopulation;
-  ui->horizontalSlider->setMaximum(this->ParticlePopulation->size());
+  ui->horizontalSlider->setMaximum(this->ParticlePopulation->size() - 1);
   for (uint32_t i = 0; i < ui->widget->slideCount(); i++) {
     ui->widget->removeSlide(0);
   }
@@ -71,4 +74,11 @@ void QParticleDisplay::on_pushButton_delete_clicked()
 {
   ParticlePopulation->erase(ParticlePopulation->begin() + ui->widget->centerIndex());
   ui->widget->removeSlide(ui->widget->centerIndex());
+  ui->horizontalSlider->setMaximum(this->ParticlePopulation->size());
+}
+
+void QParticleDisplay::on_selectedParticleChanged(int value) {
+  QString volume;
+  volume.sprintf("%+06.2f", ParticlePopulation->at(value).GetSIVolume());
+  ui->label_Volume->setText(volume);
 }

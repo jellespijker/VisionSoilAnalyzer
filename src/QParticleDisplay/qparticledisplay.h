@@ -34,7 +34,7 @@ public slots:
 
 private slots:
   void on_horizontalSlider_valueChanged(int value);
-
+  void on_selectedParticleChanged(int value);
   void on_pushButton_delete_clicked();
 
 private:
