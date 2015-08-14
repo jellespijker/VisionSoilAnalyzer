@@ -127,7 +127,7 @@ public:
     this->Sum = rhs.Sum;
     std::copy(rhs.bins, rhs.bins + rhs.noBins, this->bins);
     std::copy(rhs.CFD, rhs.CFD + rhs.noBins, this->CFD);
-    this->Data = &rhs.Data[0];
+    this->Data = rhs.Data;
     this->StartAtZero = rhs.StartAtZero;
   }
 
@@ -141,7 +141,7 @@ public:
       delete[] bins;
       delete[] Data;
       bins = new uint32_t[rhs.noBins];
-      Data = &rhs.Data;
+      Data = rhs.Data;
       this->binRange = rhs.binRange;
       this->Calculated = rhs.Calculated;
       this->Cols = rhs.Cols;

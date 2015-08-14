@@ -16,7 +16,7 @@ Particle::Particle() {}
  * \brief Particle::Save
  * \param filename
  */
-void Particle::Save(const string &filename) {
+void Particle::Save(const std::string &filename) {
   std::ofstream ofs(filename.c_str(), std::ios::out | std::ios::binary);
   {
     io::filtering_streambuf<io::output> out;
@@ -35,7 +35,7 @@ void Particle::Save(const string &filename) {
  * \brief Particle::Load
  * \param filename
  */
-void Particle::Load(const string &filename) {
+void Particle::Load(const std::string &filename) {
   std::ifstream ifs(filename.c_str(), std::ios::in | std::ios::binary);
   {
     io::filtering_streambuf<io::input> in;

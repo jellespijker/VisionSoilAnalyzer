@@ -11,6 +11,7 @@
 #include <vector>
 #include <string>
 #include "Stats.h"
+#include "psd.h"
 #include "particle.h"
 #include <fstream>
 #include <boost/archive/binary_iarchive.hpp>
@@ -37,10 +38,10 @@ public:
 
   ParticleVector_t ParticlePopulation; /*!< the individual particles of the sample*/
 
-  floatStat_t PSD; /*!< The Particle Size Distribution*/
-  ucharStat_t Shape; /*!< The Shape classification distribution*/
-  floatStat_t CIELab; /*!< The statistical CIE Lab color data*/
-  floatStat_t RI; /*!< The statistical Redness Index data*/
+  SoilMath::PSD *PSD; /*!< The Particle Size Distribution*/
+  ucharStat_t *Shape; /*!< The Shape classification distribution*/
+  floatStat_t *CIELab; /*!< The statistical CIE Lab color data*/
+  floatStat_t *RI; /*!< The statistical Redness Index data*/
 
   void Save(const std::string &filename);
   void Load(const std::string &filename);
@@ -68,10 +69,10 @@ private:
       ar &ParticlePopulation;
       ar &Volume;
       ar &Class;
-      ar &PSD;
-      ar &Shape;
-      ar &CIELab;
-      ar &RI;
+      //ar &PSD;
+      //ar &Shape;
+      //ar &CIELab;
+      //ar &RI;
       ar &isPreparedForAnalysis;
       ar &isAnalysed;
     }

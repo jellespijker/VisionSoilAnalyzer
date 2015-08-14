@@ -45,6 +45,8 @@ private slots:
 
   void on_actionUseLearning_toggled(bool arg1);
 
+  void on_actionCalibrate_triggered();
+
 private:
   Ui::VSAMainWindow *ui;
   DialogSettings *settingsWindow = nullptr;
