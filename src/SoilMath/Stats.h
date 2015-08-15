@@ -62,6 +62,7 @@ public:
   uint16_t Cols = 0;       /**< number of cols from the data matrix*/
   bool StartAtZero = true; /**< indication of the minimum value starts at zero
                               or could be less*/
+  double *BinRanges = nullptr;
 
   uint32_t *begin() { return &bins[0]; }    /**< pointer to the first bin*/
   uint32_t *end() { return &bins[noBins]; } /**< pointer to the last + 1 bin*/
@@ -111,7 +112,8 @@ public:
    * \param rhs Right hand side
    */
   Stats(const Stats &rhs)
-      : bins{new uint32_t[rhs.noBins]}, CFD{new double[rhs.noBins]} {
+      : bins{new uint32_t[rhs.noBins]{0}}, CFD{new double[rhs.noBins]},
+        BinRanges{new double[rhs.noBins]} {
     this->binRange = rhs.binRange;
     this->Calculated = rhs.Calculated;
     this->Cols = rhs.Cols;
@@ -130,6 +132,7 @@ public:
     this->Sum = rhs.Sum;
     std::copy(rhs.bins, rhs.bins + rhs.noBins, this->bins);
     std::copy(rhs.CFD, rhs.CFD + rhs.noBins, this->CFD);
+    std::copy(rhs.BinRanges, rhs.BinRanges + rhs.noBins, this->BinRanges);
     this->Data = rhs.Data;
     this->StartAtZero = rhs.StartAtZero;
   }
@@ -142,8 +145,11 @@ public:
   Stats &operator=(Stats const &rhs) {
     if (&rhs != this) {
       delete[] bins;
-      bins = new uint32_t[rhs.noBins];
+      delete[] CFD;
+      delete[] BinRanges;
+      bins = new uint32_t[rhs.noBins]{0};
       CFD = new double[rhs.noBins];
+      BinRanges = new double[rhs.noBins];
       Data = rhs.Data;
       this->binRange = rhs.binRange;
       this->Calculated = rhs.Calculated;
@@ -164,6 +170,7 @@ public:
       this->Data = &rhs.Data[0];
       std::copy(rhs.bins, rhs.bins + rhs.noBins, this->bins);
       std::copy(rhs.CFD, rhs.CFD + rhs.noBins, this->CFD);
+      std::copy(rhs.BinRanges, rhs.BinRanges + rhs.noBins, this->BinRanges);
       this->StartAtZero = rhs.StartAtZero;
     }
     return *this;
@@ -182,8 +189,9 @@ public:
     Startbin = startBin;
     EndBin = endBin;
     this->noBins = noBins;
-    bins = new uint32_t[noBins]{};
-    CFD = new double[noBins]{};
+    bins = new uint32_t[noBins]{0};
+    CFD = new double[noBins];
+    BinRanges = new double[noBins];
 
     if (typeid(T1) == typeid(float) || typeid(T1) == typeid(double) ||
         typeid(T1) == typeid(long double)) {
@@ -224,8 +232,9 @@ public:
     Data = data;
     Rows = rows;
     Cols = cols;
-    bins = new uint32_t[noBins]{};
-    CFD = new double[noBins]{};
+    bins = new uint32_t[noBins]{0};
+    CFD = new double[noBins];
+    BinRanges = new double[noBins];
     this->noBins = noBins;
     if (isDiscrete) {
       BasicCalculate();
@@ -266,8 +275,9 @@ public:
     Data = data;
     Rows = rows;
     Cols = cols;
-    bins = new uint32_t[noBins]{};
-    CFD = new double[noBins]{};
+    bins = new uint32_t[noBins]{0};
+    CFD = new double[noBins];
+    BinRanges = new double[noBins];
     this->noBins = noBins;
     if (isDiscrete) {
       BasicCalculate(mask);
@@ -297,8 +307,9 @@ public:
       isDiscrete = true;
     }
 
-    bins = new uint32_t[noBins]{};
-    CFD = new double[noBins]{};
+    bins = new uint32_t[noBins]{0};
+    CFD = new double[noBins];
+    BinRanges = new double[noBins];
     while (i-- > 0) {
       bins[i] = binData[i];
       n += binData[i];
@@ -309,6 +320,7 @@ public:
   ~Stats() {
     delete[] bins;
     delete[] CFD;
+    delete[] BinRanges;
   }
 
   /*!
@@ -423,7 +435,9 @@ public:
       Sum += Data[i];
     }
     binRange = static_cast<T1>(ceil((max - min) / static_cast<float>(noBins)));
-    if (binRange == 0) { binRange = min; }
+    if (binRange == 0) {
+      binRange = min;
+    }
     Mean = Sum / (float)n;
     Range = max - min;
     uint32_t index;
@@ -568,10 +582,14 @@ protected:
    * \brief getCFD get the CFD matrix;
    */
   void getCFD() {
-    CFD[0] = bins[0];
+    uint32_t *sumBin = new uint32_t[noBins];
+    sumBin[0] = bins[0];
+    CFD[0] = (static_cast<double>(sumBin[0]) / static_cast<double>(n)) * 100.;
     for (uint32_t i = 1; i < noBins; i++) {
-      CFD[i] = ((CFD[i - 1] + bins[i]) / n) * 100;
+      sumBin[i] = (sumBin[i - 1] + bins[i]);
+      CFD[i] = (static_cast<double>(sumBin[i]) / static_cast<double>(n)) * 100.;
     }
+    delete[] sumBin;
   }
 
   friend class boost::serialization::access; /**< Serialization class*/
@@ -592,6 +610,9 @@ protected:
       }
       for (size_t dc = 0; dc < noBins; dc++) {
         ar &CFD[dc];
+      }
+      for (size_t dc = 0; dc < noBins; dc++) {
+        ar &BinRanges[dc];
       }
       ar &Calculated;
       ar &Mean;

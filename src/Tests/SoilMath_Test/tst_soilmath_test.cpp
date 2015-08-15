@@ -66,21 +66,26 @@ private Q_SLOTS:
 SoilMath_Test::SoilMath_Test() {}
 
 void SoilMath_Test::testCase_PSD() {
-  float *testData =
-      new float[20]{0.12, 0.43, 1.34, 1.2,  0.79, 0.79, 0.23, 0.24, 0.95, 1.01,
+  double *testData =
+      new double[20]{0.12, 0.43, 1.34, 1.2,  0.79, 0.79, 0.23, 0.24, 0.95, 1.01,
                     2.03, 4.30, 1.57, 1.23, 1.77, 1.99, 1,    0.02, 0.32, 0.55};
-  float *binrange =
-      new float[15]{0.0,  0.038, 0.045, 0.063, 0.075, 0.09, 0.125, 0.18,
+  double *binrange =
+      new double[15]{0.0,  0.038, 0.045, 0.063, 0.075, 0.09, 0.125, 0.18,
                     0.25, 0.355, 0.5,   0.71,  1.0,   1.4,  2.0};
 
   uint32_t *resultBins =
       new uint32_t[15]{1, 0, 0, 0, 0, 1, 0, 2, 1, 1, 1, 4, 4, 3, 2};
-  uint32_t *resultCFD =
-      new uint32_t[15]{1, 1, 1, 1, 1, 2, 2, 4, 5, 6, 7, 11, 15, 18, 20};
+  double *resultCFD =
+      new double[15]{100 * 1/20, 100 * 1/20, 100 * 1/20, 100 * 1/20, 100 * 1/20, 100 * 2/20, 100 * 2/20, 100 * 4/20, 100 * 5/20, 100 * 6/20, 100 * 7/20, 100 * 11/20, 100 * 15/20, 100 * 18/20, 100 * 20/20};
   SoilMath::PSD psd(testData, 20, binrange, 15, 14);
 
   QCOMPARE_RANGE(psd.bins, resultBins, 15, uint32_t);
-  QCOMPARE_RANGE(psd.CFD, resultCFD, 15, uint32_t);
+  QCOMPARE_RANGE(psd.CFD, resultCFD, 15, double);
+
+  delete[] testData;
+  delete[] binrange;
+  delete[] resultBins;
+  delete[] resultCFD;
 }
 
 void SoilMath_Test::testCase_Sort() {

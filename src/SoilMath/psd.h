@@ -13,7 +13,6 @@
 namespace SoilMath {
 class PSD : public SoilMath::Stats<double, double, long double> {
 private:
-
   uint32_t DetBin(float value) {
     uint32_t i = noBins - 1;
     while (i > 0) {
@@ -56,20 +55,16 @@ private:
     if (version == 0) {
       ar &boost::serialization::base_object<
           SoilMath::Stats<double, double, long double>>(*this);
-      for (size_t dc = 0; dc < noBins; dc++) {
-        ar &BinRanges[dc];
-      }
     }
   }
 
 public:
-  double *BinRanges;
-
   PSD() : SoilMath::Stats<double, double, long double>(1, 0, 0) {}
 
   PSD(double *data, uint32_t nodata, double *binranges, uint32_t nobins,
       uint32_t endbin)
-      : SoilMath::Stats<double, double, long double>(nobins, 0, endbin), BinRanges(binranges) {
+      : SoilMath::Stats<double, double, long double>(nobins, 0, endbin) {
+    std::copy(binranges, binranges + nobins, BinRanges);
     Data = data;
     Rows = nodata;
     Cols = 1;
