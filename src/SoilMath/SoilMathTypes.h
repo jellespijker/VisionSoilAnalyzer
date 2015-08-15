@@ -46,6 +46,7 @@ typedef struct Predict_struct {
                        precise to outcome is*/
   float Accuracy = 1.;   /**< the accuracy of the category*/
   std::vector<float> OutputNeurons; /**< the output Neurons*/
+  bool ManualSet = true;
 } Predict_t;                        /**< The prediction results*/
 typedef Predict_t (*NNfunctionType)(
     ComplexVect_t, Weight_t, Weight_t, uint32_t, uint32_t,
