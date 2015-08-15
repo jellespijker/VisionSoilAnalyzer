@@ -122,6 +122,8 @@ private slots:
 
   void on_pushButton_SelectNN_clicked();
 
+  void on_spinBox_NoShots_editingFinished();
+
 private:
   Ui::DialogSettings *ui;
   Hardware::Microscope *Microscope;

@@ -36,6 +36,9 @@ DialogSettings::DialogSettings(QWidget *parent,
   ui->comboBox_Resolution->setCurrentIndex(
       Microscope->SelectedCam->SelectedResolution->ID);
 
+  ui->spinBox_NoShots->setValue(Settings->StandardNumberOfShots);
+
+  ui->spinBox_NoFrames->setValue(Settings->HDRframes);
   ui->spinBox_NoFrames->setDisabled(true);
   ui->label_nf->setDisabled(true);
 
@@ -488,4 +491,9 @@ void DialogSettings::on_pushButton_SelectNN_clicked()
     Settings->NNlocation = fn.toStdString();
     ui->lineEdit__NeuralNet->setText(fn);
   }
+}
+
+void DialogSettings::on_spinBox_NoShots_editingFinished()
+{
+    Settings->StandardNumberOfShots = ui->spinBox_NoShots->value();
 }
