@@ -111,7 +111,22 @@ VSAMainWindow::VSAMainWindow(QWidget *parent)
           SLOT(on_particle_deleted()));
 }
 
-VSAMainWindow::~VSAMainWindow() { delete ui; }
+VSAMainWindow::~VSAMainWindow()
+{
+  delete Settings;
+  delete Microscope;
+  delete Analyzer;
+  delete Sample;
+  delete Images;
+
+  delete settingsWindow;
+  delete nnWindow;
+  delete CamError;
+  delete SaveMeMessage;
+  delete BacklightMessage;
+  delete ShakeItBabyMessage;
+  delete ui;
+}
 
 void VSAMainWindow::setParticleValue(int newValue) {
   bool test = false;
@@ -135,8 +150,8 @@ void VSAMainWindow::SetPSDgraph() {
   ui->Qplot_PSD->graph(0)->clearData();
   QVector<double> xPSD(Sample->PSD.noBins), yPSD(Sample->PSD.noBins);
   for (uint32_t i = 0; i < Sample->PSD.noBins; i++) {
-    xPSD[i] = Sample->PSD.BinRanges[i];
-    yPSD[i] = Sample->PSD.CFD[i];
+    xPSD[i] = static_cast<double>(Sample->PSD.BinRanges[i]);
+    yPSD[i] = static_cast<double>(Sample->PSD.CFD[i]);
   }
   ui->Qplot_PSD->graph(0)->setData(xPSD, yPSD);
   ui->Qplot_PSD->xAxis->setRange(0.01, 100);

@@ -177,7 +177,10 @@ DialogSettings::DialogSettings(QWidget *parent,
       QString::fromStdString(Settings->NNlocation));
 }
 
-DialogSettings::~DialogSettings() { delete ui; }
+DialogSettings::~DialogSettings()
+{
+  delete ui;
+}
 
 void DialogSettings::on_pushButton_RestoreDefault_clicked() {
   Settings->LoadSettings("Settings/Default.ini");
