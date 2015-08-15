@@ -42,7 +42,7 @@ void QParticleDisplay::SetSample(SoilAnalyzer::Sample *sample) {
 
 QImage
 QParticleDisplay::ConvertParticleToQImage(SoilAnalyzer::Particle *particle) {
-  QImage dst(particle->BW.cols, particle->BW.rows, QImage::Format_ARGB32);
+  QImage dst(particle->BW.cols, particle->BW.rows, QImage::Format_RGB32);
   uint32_t nData = particle->BW.cols * particle->BW.rows;
   uchar *QDst = dst.bits();
   uchar *CVBW = particle->BW.data;
@@ -58,7 +58,7 @@ QParticleDisplay::ConvertParticleToQImage(SoilAnalyzer::Particle *particle) {
       *(QDst++) = 255;
       *(QDst++) = 255;
       *(QDst++) = 255;
-      *(QDst++) = 255;
+      *(QDst++) = 0;
       CVRGB += 3;
     }
   }
