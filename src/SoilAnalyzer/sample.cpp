@@ -59,12 +59,12 @@ void Sample::Load(const std::string &filename) {
  * \return
  */
 Sample::PSDVector_t *Sample::GetPSDVector() {
-  if (!PSDGathered || ParticleDeletedPSD) {
+  if (!PSDGathered || ParticleChangedStatePSD) {
     Diameter.clear();
     for_each(ParticlePopulation.begin(), ParticlePopulation.end(),
              [&](Particle &P) { Diameter.push_back(P.GetSiDiameter()); });
     PSDGathered = true;
-    ParticleDeletedPSD = false;
+    ParticleChangedStatePSD = false;
   }
   return &Diameter;
 }
@@ -74,13 +74,37 @@ Sample::PSDVector_t *Sample::GetPSDVector() {
  * \return
  */
 Sample::ClassVector_t *Sample::GetClassVector() {
-  if (!ClassGathered || ParticleDeletedClass) {
+  if (!ClassGathered || ParticleChangedStateClass) {
     Class.clear();
     for_each(ParticlePopulation.begin(), ParticlePopulation.end(),
              [&](Particle &P) { Class.push_back(P.Classification.Category); });
     ClassGathered = true;
-    ParticleDeletedClass = false;
+    ParticleChangedStateClass = false;
   }
   return &Class;
 }
+
+Sample::ClassVector_t *Sample::GetAngularityVector() {
+    if (!AngularityGathered || ParticleChangedStateAngularity) {
+      AngularityVec.clear();
+      for_each(ParticlePopulation.begin(), ParticlePopulation.end(),
+               [&](Particle &P) { AngularityVec.push_back(P.GetAngularity()); });
+      AngularityGathered = true;
+      ParticleChangedStateAngularity = false;
+    }
+    return &AngularityVec;
+}
+
+Sample::ClassVector_t *Sample::GetRoundnessVector() {
+    if (!RoundnessGathered || ParticleChangedStateRoundness) {
+      RoundnessVec.clear();
+      for_each(ParticlePopulation.begin(), ParticlePopulation.end(), [&](Particle &P) {
+        RoundnessVec.push_back(P.GetRoundness()); });
+      RoundnessGathered = true;
+      ParticleChangedStateRoundness = false;
+    }
+    return &RoundnessVec;
+}
+
+
 }

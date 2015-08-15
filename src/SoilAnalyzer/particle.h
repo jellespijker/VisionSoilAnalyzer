@@ -42,6 +42,8 @@ public:
 
   float GetSIVolume();
   float GetSiDiameter();
+  uint8_t GetRoundness();
+  uint8_t GetAngularity();
 
   void Save(const std::string &filename);
   void Load(const std::string &filename);

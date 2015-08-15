@@ -70,10 +70,15 @@ void Analyzer::Analyse() {
     GetPrediction(Results->ParticlePopulation);
   }
 
-  Results->Shape =
-      ucharStat_t(Results->GetClassVector()->data(),
-                  Results->GetClassVector()->size(), 1, 18, 1, false);
+  Results->Angularity =
+      ucharStat_t(Results->GetAngularityVector()->data(),
+                  Results->GetAngularityVector()->size(), 1, 6, 1, false);
   emit on_progressUpdate(currentProgress++);
+
+  Results->Roundness =
+      ucharStat_t(Results->GetRoundnessVector()->data(),
+                  Results->GetRoundnessVector()->size(), 1, 3, 1, false);
+
   Results->PSD =
       SoilMath::PSD(Results->GetPSDVector()->data(),
                     Results->GetPSDVector()->size(), BinRanges, 15, 14);

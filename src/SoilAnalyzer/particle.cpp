@@ -76,4 +76,11 @@ float Particle::GetSiDiameter() {
   return SIDiameter;
 }
 
+uint8_t Particle::GetAngularity() {
+  return ((Classification.Category - 1) % 6) + 1;
+}
+
+uint8_t Particle::GetRoundness() {
+  return ((Classification.Category - 1) / 3) + 1;
+}
 }
