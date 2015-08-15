@@ -8,7 +8,7 @@
 #pragma once
 #define STARTING_ESTIMATE_PROGRESS 300
 #ifndef DEBUG
-#define DEBUG
+//#define DEBUG
 #endif
 
 #include <opencv2/core.hpp>
@@ -31,12 +31,12 @@ class Analyzer : public QObject {
 
 public:
   bool PredictShape = true;
-  float CurrentSIfactor = 0.007;
+  float CurrentSIfactor = 0.00007;
   bool SIfactorDet = false;
   struct Image_t {
     cv::Mat FrontLight;
     cv::Mat BackLight;
-    float SIPixelFactor = 0.007;
+    float SIPixelFactor = 0.00007;
   }; /*!< */
 
   typedef std::vector<Image_t> Images_t; /*!< */

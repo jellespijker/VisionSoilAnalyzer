@@ -37,7 +37,7 @@ public:
                                            describing the contour in the
                                            Frequency domain*/
   Predict_t Classification;             /*!< The classification prediction*/
-  float SIPixelFactor = 1.0; /*!< The conversion factor from pixel to SI*/
+  float SIPixelFactor = 0.00007; /*!< The conversion factor from pixel to SI*/
   uint32_t PixelArea = 0;    /*!< The total area of the binary image*/
 
   float GetSIVolume();
