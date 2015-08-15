@@ -11,7 +11,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = QParticleSelector
 TEMPLATE = lib
 CONFIG += shared
-VERSION = 0.1.0
+VERSION = 0.1.1
 
 SOURCES += qparticleselector.cpp
 

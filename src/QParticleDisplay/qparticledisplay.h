@@ -25,20 +25,23 @@ public:
   explicit QParticleDisplay(QWidget *parent = 0);
   ~QParticleDisplay();
   void SetSample(SoilAnalyzer::Sample *sample);
+  SoilAnalyzer::Particle *SelectedParticle;
 
 signals:
   void particleChanged(int newValue);
+  void shapeClassificationChanged(int newValue);
 
 public slots:
   void setSelectedParticle(int newValue);
 
 private slots:
-  void on_horizontalSlider_valueChanged(int value);
-  void on_selectedParticleChanged(int value);
+  void on_selectedParticleChangedWidget(int value);
+  void on_selectedParticleChangedSlider(int value);
   void on_pushButton_delete_clicked();
 
 private:
   Ui::QParticleDisplay *ui;
   SoilAnalyzer::Sample *Sample;
   QImage ConvertParticleToQImage(SoilAnalyzer::Particle *particle);
+  bool dontDoIt = false;
 };
