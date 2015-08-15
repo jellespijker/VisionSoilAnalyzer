@@ -93,14 +93,23 @@ VSAMainWindow::VSAMainWindow(QWidget *parent)
   ui->Qplot_PSD->plotLayout()->insertRow(0);
   ui->Qplot_PSD->plotLayout()->addElement(0, 0, PSDtitle);
 
-  ui->QPlot_Texture->addGraph();
-  ui->QPlot_Texture->xAxis->setLabel("Classification");
-  ui->QPlot_Texture->yAxis->setLabel("Count [-]");
-  QCPPlotTitle *Classtitle = new QCPPlotTitle(ui->QPlot_Texture);
-  Classtitle->setText("Classification Histogram");
-  Classtitle->setFont(QFont("sans", 10, QFont::Bold));
-  ui->QPlot_Texture->plotLayout()->insertRow(0);
-  ui->QPlot_Texture->plotLayout()->addElement(0, 0, Classtitle);
+  ui->QPlot_Roudness->addGraph();
+  ui->QPlot_Roudness->xAxis->setLabel("Roundness Class");
+  ui->QPlot_Roudness->yAxis->setLabel("Count [-]");
+  QCPPlotTitle *Roundnesstitle = new QCPPlotTitle(ui->QPlot_Roudness);
+  Roundnesstitle->setText("Roundness Histogram");
+  Roundnesstitle->setFont(QFont("sans", 10, QFont::Bold));
+  ui->QPlot_Roudness->plotLayout()->insertRow(0);
+  ui->QPlot_Roudness->plotLayout()->addElement(0, 0, Roundnesstitle);
+
+  ui->QPlot_Angularity->addGraph();
+  ui->QPlot_Angularity->xAxis->setLabel("Roundness Class");
+  ui->QPlot_Angularity->yAxis->setVisible(false);
+  QCPPlotTitle *Angularitytitle = new QCPPlotTitle(ui->QPlot_Angularity);
+  Angularitytitle->setText("Angularity Histogram");
+  Angularitytitle->setFont(QFont("sans", 10, QFont::Bold));
+  ui->QPlot_Angularity->plotLayout()->insertRow(0);
+  ui->QPlot_Angularity->plotLayout()->addElement(0, 0, Angularitytitle);
 
   // Connect the Particle display and Selector
   connect(ui->widget_ParticleSelector, SIGNAL(valueChanged(int)), this,
@@ -142,7 +151,8 @@ void VSAMainWindow::on_analyzer_finished() {
     ui->widget_ParticleDisplay->SetSample(Sample);
   }
   SetPSDgraph();
-  SetClassHistogram();
+  setRoundnessHistogram();
+  setAngularityHistogram();
   ParticleDisplayerFilled = true;
 }
 
@@ -159,26 +169,48 @@ void VSAMainWindow::SetPSDgraph() {
   ui->Qplot_PSD->replot();
 }
 
-void VSAMainWindow::SetClassHistogram() {
-  ui->QPlot_Texture->removePlottable(0);
-  QVector<double> xClass(Sample->Shape.noBins), yClass(Sample->Shape.noBins);
-  for (uint32_t i = 0; i < Sample->Shape.noBins; i++) {
-    xClass[i] = i + 1;
-    yClass[i] = Sample->Shape.bins[i];
+void VSAMainWindow::setRoundnessHistogram() {
+  ui->QPlot_Roudness->removePlottable(0);
+  QVector<double> xRound(Sample->Roundness.noBins), yRound(Sample->Roundness.noBins);
+  for (uint32_t i = 0; i < Sample->Roundness.noBins; i++) {
+    xRound[i] = i + 1;
+    yRound[i] = Sample->Roundness.bins[i];
+  }
+  QCPBars *RoundBars =
+      new QCPBars(ui->QPlot_Roudness->xAxis, ui->QPlot_Roudness->yAxis);
+  ui->QPlot_Roudness->addPlottable(RoundBars);
+  RoundBars->setName("Roundness Histogram");
+  RoundBars->setData(xRound, yRound);
+  RoundBars->setWidthType(QCPBars::WidthType::wtPlotCoords);
+  RoundBars->setWidth(1);
+  ui->QPlot_Roudness->xAxis->setRange(0.5, Sample->Roundness.noBins + 0.5);
+  ui->QPlot_Roudness->yAxis->setRange(0, Sample->Roundness.HighestFrequency());
+  ui->QPlot_Roudness->xAxis->setAutoTicks(false);
+  ui->QPlot_Roudness->xAxis->setTickVector(xRound);
+  ui->QPlot_Roudness->replot();
+}
+
+void VSAMainWindow::setAngularityHistogram() {
+  ui->QPlot_Angularity->removePlottable(0);
+  QVector<double> xAng(Sample->Angularity.noBins), yAng(Sample->Angularity.noBins);
+  for (uint32_t i = 0; i < Sample->Angularity.noBins; i++) {
+    xAng[i] = i + 1;
+    yAng[i] = Sample->Angularity.bins[i];
   }
   QCPBars *ClassBars =
-      new QCPBars(ui->QPlot_Texture->xAxis, ui->QPlot_Texture->yAxis);
-  ui->QPlot_Texture->addPlottable(ClassBars);
-  ClassBars->setName("Classification Histogram");
-  ClassBars->setData(xClass, yClass);
+      new QCPBars(ui->QPlot_Angularity->xAxis, ui->QPlot_Angularity->yAxis);
+  ui->QPlot_Angularity->addPlottable(ClassBars);
+  ClassBars->setName("Angularity Histogram");
+  ClassBars->setData(xAng, yAng);
   ClassBars->setWidthType(QCPBars::WidthType::wtPlotCoords);
   ClassBars->setWidth(1);
-  ui->QPlot_Texture->xAxis->setRange(0, Sample->Shape.noBins);
-  ui->QPlot_Texture->yAxis->setRange(0, Sample->Shape.HighestFrequency());
-  ui->QPlot_Texture->xAxis->setAutoTicks(false);
-  ui->QPlot_Texture->xAxis->setTickVector(xClass);
-  ui->QPlot_Texture->replot();
+  ui->QPlot_Angularity->xAxis->setRange(0.5, Sample->Angularity.noBins + 0.5);
+  ui->QPlot_Angularity->yAxis->setRange(0, Sample->Angularity.HighestFrequency());
+  ui->QPlot_Angularity->xAxis->setAutoTicks(false);
+  ui->QPlot_Angularity->xAxis->setTickVector(xAng);
+  ui->QPlot_Angularity->replot();
 }
+
 
 void VSAMainWindow::on_actionNeuralNet_triggered() {
   if (nnWindow != nullptr) {
@@ -338,6 +370,10 @@ void VSAMainWindow::on_Classification_changed(int newValue) {
       newValue;
   ui->widget_ParticleDisplay->SelectedParticle->Classification.ManualSet = true;
   Sample->ChangesSinceLastSave = true;
+  Sample->ParticleChangedStateAngularity = true;
+  Sample->ParticleChangedStateClass = true;
+  Sample->ParticleChangedStatePSD = true;
+  Sample->ParticleChangedStateRoundness = true;
   Analyzer->Analyse();
 }
 

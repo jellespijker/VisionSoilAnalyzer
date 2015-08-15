@@ -70,7 +70,8 @@ private:
   bool ParticleDisplayerFilled = false;
 
   void SetPSDgraph();
-  void SetClassHistogram();
+  void setRoundnessHistogram();
+  void setAngularityHistogram();
   void TakeSnapShots();
 };
 

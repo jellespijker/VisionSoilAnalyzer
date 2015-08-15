@@ -70,8 +70,10 @@ void QParticleDisplay::on_pushButton_delete_clicked() {
                                    ui->widget->centerIndex());
   ui->widget->removeSlide(ui->widget->centerIndex());
   ui->horizontalSlider->setMaximum(this->Sample->ParticlePopulation.size() - 1);
-  Sample->ParticleDeletedPSD = true;
-  Sample->ParticleDeletedClass = true;
+  Sample->ParticleChangedStatePSD = true;
+  Sample->ParticleChangedStateClass = true;
+  Sample->ParticleChangedStateAngularity = true;
+  Sample->ParticleChangedStateRoundness = true;
   Sample->ChangesSinceLastSave = true;
   SelectedParticle = &Sample->ParticlePopulation[ui->widget->centerIndex()];
   emit particleDeleted();
