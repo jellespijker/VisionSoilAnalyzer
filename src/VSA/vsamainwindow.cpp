@@ -183,7 +183,7 @@ void VSAMainWindow::setRoundnessHistogram() {
   RoundBars->setData(xRound, yRound);
   RoundBars->setWidthType(QCPBars::WidthType::wtPlotCoords);
   RoundBars->setWidth(1);
-  ui->QPlot_Roudness->xAxis->setRange(0.5, Sample->Roundness.noBins + 0.5);
+  ui->QPlot_Roudness->xAxis->setRange(0, Sample->Roundness.noBins + 1);
   ui->QPlot_Roudness->yAxis->setRange(0, Sample->Roundness.HighestFrequency());
   ui->QPlot_Roudness->xAxis->setAutoTicks(false);
   ui->QPlot_Roudness->xAxis->setTickVector(xRound);
@@ -204,7 +204,7 @@ void VSAMainWindow::setAngularityHistogram() {
   ClassBars->setData(xAng, yAng);
   ClassBars->setWidthType(QCPBars::WidthType::wtPlotCoords);
   ClassBars->setWidth(1);
-  ui->QPlot_Angularity->xAxis->setRange(0.5, Sample->Angularity.noBins + 0.5);
+  ui->QPlot_Angularity->xAxis->setRange(0, Sample->Angularity.noBins + 1);
   ui->QPlot_Angularity->yAxis->setRange(0, Sample->Angularity.HighestFrequency());
   ui->QPlot_Angularity->xAxis->setAutoTicks(false);
   ui->QPlot_Angularity->xAxis->setTickVector(xAng);
@@ -377,4 +377,7 @@ void VSAMainWindow::on_Classification_changed(int newValue) {
   Analyzer->Analyse();
 }
 
-void VSAMainWindow::on_particle_deleted() { Analyzer->Analyse(); }
+void VSAMainWindow::on_particle_deleted()
+{
+  Analyzer->Analyse();
+}

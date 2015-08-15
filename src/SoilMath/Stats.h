@@ -43,25 +43,25 @@ private:
 public:
   bool isDiscrete = true; /**< indicates if the data is discrete or real*/
 
-  T1 *Data;                /**< Pointer the data*/
-  uint32_t *bins;          /**< the histogram*/
-  double *CFD;             /**< the CFD*/
-  bool Calculated = false; /**< indication if the data has been calculated*/
-  float Mean = 0.0;        /**< the mean value of the data*/
-  uint32_t n = 0;          /**< number of data points*/
-  uint32_t noBins = 0;     /**< number of bins*/
-  T1 Range = 0;            /**< range of the data*/
-  T1 min = 0;              /**< minimum value*/
-  T1 max = 0;              /**< maximum value*/
-  T1 Startbin = 0;         /**< First bin value*/
-  T1 EndBin = 0;           /**< End bin value*/
-  T1 binRange = 0;         /**< the range of a single bin*/
-  float Std = 0.0;         /**< standard deviation*/
-  T3 Sum = 0;              /**< total sum of all the data values*/
-  uint16_t Rows = 0;       /**< number of rows from the data matrix*/
-  uint16_t Cols = 0;       /**< number of cols from the data matrix*/
-  bool StartAtZero = true; /**< indication of the minimum value starts at zero
-                              or could be less*/
+  T1 *Data = nullptr;       /**< Pointer the data*/
+  uint32_t *bins = nullptr; /**< the histogram*/
+  double *CFD = nullptr;    /**< the CFD*/
+  bool Calculated = false;  /**< indication if the data has been calculated*/
+  float Mean = 0.0;         /**< the mean value of the data*/
+  uint32_t n = 0;           /**< number of data points*/
+  uint32_t noBins = 0;      /**< number of bins*/
+  T1 Range = 0;             /**< range of the data*/
+  T1 min = 0;               /**< minimum value*/
+  T1 max = 0;               /**< maximum value*/
+  T1 Startbin = 0;          /**< First bin value*/
+  T1 EndBin = 0;            /**< End bin value*/
+  T1 binRange = 0;          /**< the range of a single bin*/
+  float Std = 0.0;          /**< standard deviation*/
+  T3 Sum = 0;               /**< total sum of all the data values*/
+  uint16_t Rows = 0;        /**< number of rows from the data matrix*/
+  uint16_t Cols = 0;        /**< number of cols from the data matrix*/
+  bool StartAtZero = true;  /**< indication of the minimum value starts at zero
+                               or could be less*/
   double *BinRanges = nullptr;
 
   uint32_t *begin() { return &bins[0]; }    /**< pointer to the first bin*/
@@ -144,9 +144,6 @@ public:
    */
   Stats &operator=(Stats const &rhs) {
     if (&rhs != this) {
-      delete[] bins;
-      delete[] CFD;
-      delete[] BinRanges;
       bins = new uint32_t[rhs.noBins]{0};
       CFD = new double[rhs.noBins];
       BinRanges = new double[rhs.noBins];

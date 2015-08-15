@@ -86,10 +86,11 @@ private:
       ar &PSD;
       ar &Roundness;
       ar &Angularity;
-      //ar &CIELab;
-      //ar &RI;
+      ar &CIELab;
+      ar &RI;
       ar &isPreparedForAnalysis;
       ar &isAnalysed;
+      ar &ChangesSinceLastSave;
       ar &ParticleChangedStatePSD;
       ar &ParticleChangedStateClass;
       ar &ParticleChangedStateAngularity;
