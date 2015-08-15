@@ -30,6 +30,7 @@ public:
 signals:
   void particleChanged(int newValue);
   void shapeClassificationChanged(int newValue);
+  void particleDeleted();
 
 public slots:
   void setSelectedParticle(int newValue);

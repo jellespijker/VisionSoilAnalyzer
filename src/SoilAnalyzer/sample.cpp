@@ -59,11 +59,12 @@ void Sample::Load(const std::string &filename) {
  * \return
  */
 Sample::PSDVector_t *Sample::GetPSDVector() {
-  if (!PSDGathered) {
+  if (!PSDGathered || ParticleDeletedPSD) {
     Diameter.clear();
     for_each(ParticlePopulation.begin(), ParticlePopulation.end(),
              [&](Particle &P) { Diameter.push_back(P.GetSiDiameter()); });
     PSDGathered = true;
+    ParticleDeletedPSD = false;
   }
   return &Diameter;
 }
@@ -73,10 +74,12 @@ Sample::PSDVector_t *Sample::GetPSDVector() {
  * \return
  */
 Sample::ClassVector_t *Sample::GetClassVector() {
-  if (!ClassGathered) {
+  if (!ClassGathered || ParticleDeletedClass) {
     Class.clear();
     for_each(ParticlePopulation.begin(), ParticlePopulation.end(),
              [&](Particle &P) { Class.push_back(P.Classification.Category); });
+    ClassGathered = true;
+    ParticleDeletedClass = false;
   }
   return &Class;
 }

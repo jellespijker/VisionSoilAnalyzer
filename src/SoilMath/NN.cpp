@@ -100,6 +100,7 @@ Predict_t NN::Predict(ComplexVect_t input) {
   }
 
   retVal.OutputNeurons = oNeurons;
+  retVal.ManualSet = false;
   return retVal;
 }
 

@@ -37,6 +37,7 @@ void QParticleDisplay::SetSample(SoilAnalyzer::Sample *sample) {
         ConvertParticleToQImage(&Sample->ParticlePopulation.at(i)));
   }
   SelectedParticle = &Sample->ParticlePopulation[ui->widget->centerIndex()];
+  on_selectedParticleChangedSlider(0);
 }
 
 QImage
@@ -67,19 +68,13 @@ QParticleDisplay::ConvertParticleToQImage(SoilAnalyzer::Particle *particle) {
 void QParticleDisplay::on_pushButton_delete_clicked() {
   Sample->ParticlePopulation.erase(Sample->ParticlePopulation.begin() +
                                    ui->widget->centerIndex());
-  if (Sample->GetPSDVector()->size() > 0 &&
-      Sample->GetPSDVector()->size() != Sample->ParticlePopulation.size()) {
-    Sample->GetPSDVector()->erase(Sample->GetPSDVector()->begin() +
-                                  ui->widget->centerIndex());
-  }
-  if (Sample->GetClassVector()->size() > 0 &&
-      Sample->GetClassVector()->size() != Sample->ParticlePopulation.size()) {
-    Sample->GetClassVector()->erase(Sample->GetClassVector()->begin() +
-                                    ui->widget->centerIndex());
-  }
   ui->widget->removeSlide(ui->widget->centerIndex());
   ui->horizontalSlider->setMaximum(this->Sample->ParticlePopulation.size() - 1);
+  Sample->ParticleDeletedPSD = true;
+  Sample->ParticleDeletedClass = true;
+  Sample->ChangesSinceLastSave = true;
   SelectedParticle = &Sample->ParticlePopulation[ui->widget->centerIndex()];
+  emit particleDeleted();
 }
 
 void QParticleDisplay::on_selectedParticleChangedWidget(int value) {

@@ -47,21 +47,27 @@ private slots:
 
   void on_actionCalibrate_triggered();
 
+  void on_Classification_changed(int newValue);
+
+  void on_particle_deleted();
+
 private:
   Ui::VSAMainWindow *ui;
   DialogSettings *settingsWindow = nullptr;
   DialogNN *nnWindow = nullptr;
   QProgressBar *Progress;
-  QErrorMessage *CamError;
-  QMessageBox *SaveMeMessage;
-  QMessageBox *BacklightMessage;
-  QMessageBox *ShakeItBabyMessage;
+  QErrorMessage *CamError = nullptr;
+  QMessageBox *SaveMeMessage = nullptr;
+  QMessageBox *BacklightMessage = nullptr;
+  QMessageBox *ShakeItBabyMessage = nullptr;
 
   SoilAnalyzer::SoilSettings *Settings = nullptr;
   Hardware::Microscope *Microscope = nullptr;
   SoilAnalyzer::Sample *Sample = nullptr;
   SoilAnalyzer::Analyzer *Analyzer = nullptr;
   SoilAnalyzer::Analyzer::Images_t *Images = nullptr;
+
+  bool ParticleDisplayerFilled = false;
 
   void SetPSDgraph();
   void SetClassHistogram();

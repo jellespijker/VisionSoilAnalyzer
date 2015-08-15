@@ -53,6 +53,8 @@ public:
   bool isAnalysed = false; /*!< is the sample analyzed*/
 
   bool ChangesSinceLastSave = false;
+  bool ParticleDeletedPSD = false;
+  bool ParticleDeletedClass = false;
 private:
   PSDVector_t Diameter; /*!< The PSD raw data*/
   bool PSDGathered = false; /*!< is the raw data gathered*/
@@ -75,6 +77,8 @@ private:
       //ar &RI;
       ar &isPreparedForAnalysis;
       ar &isAnalysed;
+      ar &ParticleDeletedPSD;
+      ar &ParticleDeletedClass;
     }
   }
 };

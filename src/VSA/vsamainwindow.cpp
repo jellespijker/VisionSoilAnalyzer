@@ -101,6 +101,14 @@ VSAMainWindow::VSAMainWindow(QWidget *parent)
   Classtitle->setFont(QFont("sans", 10, QFont::Bold));
   ui->QPlot_Texture->plotLayout()->insertRow(0);
   ui->QPlot_Texture->plotLayout()->addElement(0, 0, Classtitle);
+
+  // Connect the Particle display and Selector
+  connect(ui->widget_ParticleSelector, SIGNAL(valueChanged(int)), this,
+          SLOT(on_Classification_changed(int)));
+  connect(ui->widget_ParticleDisplay, SIGNAL(shapeClassificationChanged(int)),
+          ui->widget_ParticleSelector, SLOT(setValue(int)));
+  connect(ui->widget_ParticleDisplay, SIGNAL(particleDeleted()), this,
+          SLOT(on_particle_deleted()));
 }
 
 VSAMainWindow::~VSAMainWindow() { delete ui; }
@@ -115,19 +123,21 @@ void VSAMainWindow::setParticleValue(int newValue) {
 void VSAMainWindow::on_actionSettings_triggered() { settingsWindow->show(); }
 
 void VSAMainWindow::on_analyzer_finished() {
-  ui->widget_ParticleDisplay->SetSample(Sample);
+  if (!ParticleDisplayerFilled) {
+    ui->widget_ParticleDisplay->SetSample(Sample);
+  }
   SetPSDgraph();
   SetClassHistogram();
-
+  ParticleDisplayerFilled = true;
 }
 
 void VSAMainWindow::SetPSDgraph() {
   ui->Qplot_PSD->graph(0)->clearData();
   QVector<double> xPSD(Sample->PSD.noBins), yPSD(Sample->PSD.noBins);
   for (uint32_t i = 0; i < Sample->PSD.noBins; i++) {
-      xPSD[i] = Sample->PSD.BinRanges[i];
-      yPSD[i] = Sample->PSD.CFD[i];
-    }
+    xPSD[i] = Sample->PSD.BinRanges[i];
+    yPSD[i] = Sample->PSD.CFD[i];
+  }
   ui->Qplot_PSD->graph(0)->setData(xPSD, yPSD);
   ui->Qplot_PSD->xAxis->setRange(0.01, 100);
   ui->Qplot_PSD->yAxis->setRange(0, 100);
@@ -135,16 +145,23 @@ void VSAMainWindow::SetPSDgraph() {
 }
 
 void VSAMainWindow::SetClassHistogram() {
-  ui->QPlot_Texture->graph(0)->clearData();
-
+  ui->QPlot_Texture->removePlottable(0);
   QVector<double> xClass(Sample->Shape.noBins), yClass(Sample->Shape.noBins);
   for (uint32_t i = 0; i < Sample->Shape.noBins; i++) {
-      xClass[i] = i + 1;
-      yClass[i] = Sample->Shape.bins[i];
-    }
-  ui->QPlot_Texture->graph(0)->setData(xClass, yClass);
-  ui->QPlot_Texture->xAxis->setRange(1, Sample->Shape.noBins);
+    xClass[i] = i + 1;
+    yClass[i] = Sample->Shape.bins[i];
+  }
+  QCPBars *ClassBars =
+      new QCPBars(ui->QPlot_Texture->xAxis, ui->QPlot_Texture->yAxis);
+  ui->QPlot_Texture->addPlottable(ClassBars);
+  ClassBars->setName("Classification Histogram");
+  ClassBars->setData(xClass, yClass);
+  ClassBars->setWidthType(QCPBars::WidthType::wtPlotCoords);
+  ClassBars->setWidth(1);
+  ui->QPlot_Texture->xAxis->setRange(0, Sample->Shape.noBins);
   ui->QPlot_Texture->yAxis->setRange(0, Sample->Shape.HighestFrequency());
+  ui->QPlot_Texture->xAxis->setAutoTicks(false);
+  ui->QPlot_Texture->xAxis->setTickVector(xClass);
   ui->QPlot_Texture->replot();
 }
 
@@ -170,7 +187,16 @@ void VSAMainWindow::on_actionNewSample_triggered() {
   Sample = new SoilAnalyzer::Sample;
   Images = new SoilAnalyzer::Analyzer::Images_t;
   TakeSnapShots();
-  Analyzer->Analyse(Images, Sample, Settings);
+  try {
+    Analyzer->Analyse(Images, Sample, Settings);
+  } catch (SoilAnalyzer::Exception::SoilAnalyzerException &e) {
+    if (*e.id() == EXCEPTION_NO_SNAPSHOTS_NR) {
+      CamError->showMessage(
+          "No images acquired! Check you microscope settings");
+      return;
+    }
+  }
+
   Sample->ChangesSinceLastSave = true;
 }
 
@@ -193,7 +219,8 @@ void VSAMainWindow::TakeSnapShots() {
       Microscope->GetFrame(newShot.BackLight);
       Images->push_back(newShot);
       QString ShakeMsg = "Shake it baby! ";
-      ShakeMsg.append(QString::number(i - Settings->StandardNumberOfShots - 1));
+      int number = i - Settings->StandardNumberOfShots + 1;
+      ShakeMsg.append(QString::number(number));
       ShakeMsg.append(" to go!");
       ShakeItBabyMessage->setText(ShakeMsg);
       ShakeItBabyMessage->exec();
@@ -207,7 +234,8 @@ void VSAMainWindow::TakeSnapShots() {
       Microscope->GetFrame(newShot.BackLight);
       Images->push_back(newShot);
       QString ShakeMsg = "Shake it baby! ";
-      ShakeMsg.append(QString::number(i - Settings->StandardNumberOfShots - 1));
+      int number = i - Settings->StandardNumberOfShots + 1;
+      ShakeMsg.append(QString::number(number));
       ShakeMsg.append(" to go!");
       ShakeItBabyMessage->setText(ShakeMsg);
       ShakeItBabyMessage->exec();
@@ -219,19 +247,21 @@ void VSAMainWindow::TakeSnapShots() {
       Microscope->GetHDRFrame(newShot.FrontLight, Settings->HDRframes);
       Images->push_back(newShot);
       QString ShakeMsg = "Shake it baby! ";
-      ShakeMsg.append(QString::number(i - Settings->StandardNumberOfShots - 1));
+      int number = i - Settings->StandardNumberOfShots + 1;
+      ShakeMsg.append(QString::number(number));
       ShakeMsg.append(" to go!");
       ShakeItBabyMessage->setText(ShakeMsg);
       ShakeItBabyMessage->exec();
     }
-  } else if (!Settings->useBacklightProjection && Settings->useHDR) {
+  } else if (!Settings->useBacklightProjection && !Settings->useHDR) {
     for (uint32_t i = 0; i < Settings->StandardNumberOfShots; i++) {
       SoilAnalyzer::Analyzer::Image_t newShot;
       newShot.SIPixelFactor = Analyzer->CurrentSIfactor;
       Microscope->GetFrame(newShot.FrontLight);
       Images->push_back(newShot);
       QString ShakeMsg = "Shake it baby! ";
-      ShakeMsg.append(QString::number(Settings->StandardNumberOfShots - i));
+      int number = i - Settings->StandardNumberOfShots + 1;
+      ShakeMsg.append(QString::number(number));
       ShakeMsg.append(" to go!");
       ShakeItBabyMessage->setText(ShakeMsg);
       ShakeItBabyMessage->exec();
@@ -287,3 +317,13 @@ void VSAMainWindow::on_actionCalibrate_triggered() {
   Microscope->GetFrame(calib);
   Analyzer->CalibrateSI(16.25, calib);
 }
+
+void VSAMainWindow::on_Classification_changed(int newValue) {
+  ui->widget_ParticleDisplay->SelectedParticle->Classification.Category =
+      newValue;
+  ui->widget_ParticleDisplay->SelectedParticle->Classification.ManualSet = true;
+  Sample->ChangesSinceLastSave = true;
+  Analyzer->Analyse();
+}
+
+void VSAMainWindow::on_particle_deleted() { Analyzer->Analyse(); }

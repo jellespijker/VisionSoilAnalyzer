@@ -62,7 +62,9 @@ void Analyzer::Analyse(Images_t *snapshots, Sample *results,
  */
 void Analyzer::Analyse() {
   CalcMaxProgress();
-  PrepImages();
+  if (!Results->isPreparedForAnalysis) {
+    PrepImages();
+  }
   GetFFD(Results->ParticlePopulation);
   if (PredictShape) {
     GetPrediction(Results->ParticlePopulation);
@@ -324,7 +326,7 @@ void Analyzer::GetParticlesFromBlobList(
     part.RGB = Vision::Segment::CopyMat<uchar>(snapshot->FrontLight(B.ROI),
                                                B.Img, CV_8UC3).clone();
     part.SIPixelFactor = snapshot->SIPixelFactor;
-    part.isPreparedForAnalysis = true;
+    part.isPreparedForAnalysis = false;
     partPopulation.push_back(part);
   });
 }
@@ -337,14 +339,17 @@ void Analyzer::GetFFD(Sample::ParticleVector_t &particalPopulation) {
   SoilMath::FFT fft;
   for_each(particalPopulation.begin(), particalPopulation.end(),
            [&](Particle &P) {
-             try {
-               P.FFDescriptors = fft.GetDescriptors(P.Edge);
-             } catch (SoilMath::Exception::MathException &e) {
-               if (*e.id() == EXCEPTION_NO_CONTOUR_FOUND_NR) {
-                 P.isSmall = true;
+             if (!P.isPreparedForAnalysis) {
+               try {
+                 P.FFDescriptors = fft.GetDescriptors(P.Edge);
+                 P.isPreparedForAnalysis = true;
+               } catch (SoilMath::Exception::MathException &e) {
+                 if (*e.id() == EXCEPTION_NO_CONTOUR_FOUND_NR) {
+                   P.isSmall = true;
+                 }
                }
+               emit on_progressUpdate(currentProgress++);
              }
-             emit on_progressUpdate(currentProgress++);
            });
 }
 
@@ -357,15 +362,22 @@ void Analyzer::GetPrediction(Sample::ParticleVector_t &particlePopulation) {
   nn.LoadState(Settings->NNlocation);
   for_each(particlePopulation.begin(), particlePopulation.end(),
            [&](Particle &P) {
-             if (!P.isSmall) {
-               P.Classification = nn.Predict(P.FFDescriptors);
+             if (P.isPreparedForAnalysis) {
+               if (!P.isSmall) {
+                 ComplexVect_t usedFFDescr(P.FFDescriptors.begin(),
+                                           P.FFDescriptors.begin() +
+                                               nn.GetInputNeurons());
+                 P.Classification = nn.Predict(usedFFDescr);
+                 P.isAnalysed = true;
+               }
              }
            });
 }
 
 float Analyzer::CalibrateSI(float SI, Mat &img) {
   //  Vision::Conversion greyConv(img.clone());
-  //  greyConv.Convert(Vision::Conversion::RGB, Vision::Conversion::Intensity);
+  //  greyConv.Convert(Vision::Conversion::RGB,
+  //  Vision::Conversion::Intensity);
   //  Vision::Enhance blur(greyConv.ProcessedImg);
   //  blur.Blur(9);
   cv::Mat grey;
