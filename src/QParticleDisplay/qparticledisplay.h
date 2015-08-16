@@ -43,6 +43,7 @@ private slots:
 private:
   Ui::QParticleDisplay *ui;
   SoilAnalyzer::Sample *Sample;
+  QVector<QImage> images;
   QImage ConvertParticleToQImage(SoilAnalyzer::Particle *particle);
   bool dontDoIt = false;
 };

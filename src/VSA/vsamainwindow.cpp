@@ -65,9 +65,6 @@ VSAMainWindow::VSAMainWindow(QWidget *parent)
         new DialogNN(this, &Analyzer->NeuralNet, Settings, settingsWindow);
   }
 
-  connect(ui->widget_ParticleSelector, SIGNAL(valueChanged(int)), this,
-          SLOT(setParticleValue(int)));
-
   // Setup the progresbar and connect it to the Analyzer
   Progress = new QProgressBar(ui->statusBar);
   Progress->setMaximum(Analyzer->MaxProgress);
@@ -82,34 +79,79 @@ VSAMainWindow::VSAMainWindow(QWidget *parent)
   connect(Analyzer, SIGNAL(on_AnalysisFinished()), this,
           SLOT(on_analyzer_finished()));
 
-  // Setup the Qplots
-  ui->Qplot_PSD->addGraph();
-  ui->Qplot_PSD->xAxis->setLabel("Particle size in [mm]");
-  ui->Qplot_PSD->yAxis->setLabel("Percentage [%]");
-  ui->Qplot_PSD->xAxis->setScaleType(QCPAxis::stLogarithmic);
+  // Setup the PSD plot
   QCPPlotTitle *PSDtitle = new QCPPlotTitle(ui->Qplot_PSD);
   PSDtitle->setText("Particle Size Distribution");
-  PSDtitle->setFont(QFont("sans", 10, QFont::Bold));
+  PSDtitle->setFont(QFont("sans", 8, QFont::Bold));
   ui->Qplot_PSD->plotLayout()->insertRow(0);
   ui->Qplot_PSD->plotLayout()->addElement(0, 0, PSDtitle);
 
-  ui->QPlot_Roudness->addGraph();
-  ui->QPlot_Roudness->xAxis->setLabel("Roundness Class");
-  ui->QPlot_Roudness->yAxis->setLabel("Count [-]");
+  ui->Qplot_PSD->addGraph();
+  ui->Qplot_PSD->graph(0)
+      ->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, 8));
+
+  ui->Qplot_PSD->xAxis->setLabel("Particle size [mm]");
+  ui->Qplot_PSD->xAxis->setRange(0.01, 10);
+  ui->Qplot_PSD->xAxis->setScaleType(QCPAxis::stLogarithmic);
+
+  ui->Qplot_PSD->yAxis->setLabel("Percentage [%]");
+  ui->Qplot_PSD->yAxis->setRange(0, 100);
+  ui->Qplot_PSD->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
+  ui->Qplot_PSD->yAxis->grid()->setSubGridVisible(true);
+
+  // Setup the Roundness plot
   QCPPlotTitle *Roundnesstitle = new QCPPlotTitle(ui->QPlot_Roudness);
-  Roundnesstitle->setText("Roundness Histogram");
-  Roundnesstitle->setFont(QFont("sans", 10, QFont::Bold));
+  Roundnesstitle->setText("Sphericity Histogram");
+  Roundnesstitle->setFont(QFont("sans", 8, QFont::Bold));
   ui->QPlot_Roudness->plotLayout()->insertRow(0);
   ui->QPlot_Roudness->plotLayout()->addElement(0, 0, Roundnesstitle);
 
-  ui->QPlot_Angularity->addGraph();
-  ui->QPlot_Angularity->xAxis->setLabel("Roundness Class");
-  ui->QPlot_Angularity->yAxis->setVisible(false);
+  RoundnessBars =
+      new QCPBars(ui->QPlot_Roudness->xAxis, ui->QPlot_Roudness->yAxis);
+  ui->Qplot_PSD->addPlottable(RoundnessBars);
+
+  ui->QPlot_Roudness->xAxis->setAutoTicks(false);
+  ui->QPlot_Roudness->xAxis->setAutoTickLabels(false);
+  ui->QPlot_Roudness->xAxis->setTickVector(RoundnessTicks);
+  ui->QPlot_Roudness->xAxis->setTickVectorLabels(RoundnessCat);
+  ui->QPlot_Roudness->xAxis->setTickLabelRotation(30);
+  ui->QPlot_Roudness->xAxis->setSubTickCount(0);
+  ui->QPlot_Roudness->xAxis->setTickLength(0, 4);
+  ui->QPlot_Roudness->xAxis->grid()->setVisible(true);
+  ui->QPlot_Roudness->xAxis->setRange(0, 4);
+  ui->QPlot_Roudness->xAxis->setLabel("Count [-]");
+  ui->QPlot_Roudness->xAxis->setLabelFont(QFont("sans", 8, QFont::Bold));
+  ui->QPlot_Roudness->xAxis->setTickLabelFont(QFont("sans", 8, QFont::Light));
+  ui->QPlot_Roudness->xAxis->setPadding(25);
+  ui->QPlot_Roudness->yAxis->setLabel("Sphericity [-]");
+  ui->QPlot_Roudness->yAxis->setLabelFont(QFont("sans", 8, QFont::Bold));
+
+  // Setup the angularity plot
+  ui->QPlot_Angularity->addGraph(ui->QPlot_Angularity->xAxis2,
+                                 ui->QPlot_Angularity->yAxis2);
+
   QCPPlotTitle *Angularitytitle = new QCPPlotTitle(ui->QPlot_Angularity);
   Angularitytitle->setText("Angularity Histogram");
-  Angularitytitle->setFont(QFont("sans", 10, QFont::Bold));
+  Angularitytitle->setFont(QFont("sans", 8, QFont::Bold));
   ui->QPlot_Angularity->plotLayout()->insertRow(0);
   ui->QPlot_Angularity->plotLayout()->addElement(0, 0, Angularitytitle);
+  AngularityBars =
+      new QCPBars(ui->QPlot_Angularity->xAxis, ui->QPlot_Angularity->yAxis);
+  ui->QPlot_Angularity->addPlottable(AngularityBars);
+  ui->QPlot_Angularity->xAxis->setAutoTicks(false);
+  ui->QPlot_Angularity->xAxis->setAutoTickLabels(false);
+  ui->QPlot_Angularity->xAxis->setTickVector(AngularityTicks);
+  ui->QPlot_Angularity->xAxis->setTickVectorLabels(AngularityCat);
+  ui->QPlot_Angularity->xAxis->setTickLabelRotation(30);
+  ui->QPlot_Angularity->xAxis->setSubTickCount(0);
+  ui->QPlot_Angularity->xAxis->setTickLength(0, 4);
+  ui->QPlot_Angularity->xAxis->grid()->setVisible(true);
+  ui->QPlot_Angularity->xAxis->setRange(0, 7);
+  ui->QPlot_Angularity->xAxis->setLabel("Count [-]");
+  ui->QPlot_Angularity->xAxis->setLabelFont(QFont("sans", 8, QFont::Bold));
+  ui->QPlot_Angularity->xAxis->setTickLabelFont(QFont("sans", 8, QFont::Light));
+  ui->QPlot_Angularity->yAxis->setLabel("Sphericity [-]");
+  ui->QPlot_Angularity->yAxis->setLabelFont(QFont("sans", 8, QFont::Bold));
 
   // Connect the Particle display and Selector
   connect(ui->widget_ParticleSelector, SIGNAL(valueChanged(int)), this,
@@ -120,8 +162,7 @@ VSAMainWindow::VSAMainWindow(QWidget *parent)
           SLOT(on_particle_deleted()));
 }
 
-VSAMainWindow::~VSAMainWindow()
-{
+VSAMainWindow::~VSAMainWindow() {
   delete Settings;
   delete Microscope;
   delete Analyzer;
@@ -135,13 +176,6 @@ VSAMainWindow::~VSAMainWindow()
   delete BacklightMessage;
   delete ShakeItBabyMessage;
   delete ui;
-}
-
-void VSAMainWindow::setParticleValue(int newValue) {
-  bool test = false;
-  if (newValue == 1) {
-    test = true;
-  }
 }
 
 void VSAMainWindow::on_actionSettings_triggered() { settingsWindow->show(); }
@@ -164,53 +198,30 @@ void VSAMainWindow::SetPSDgraph() {
     yPSD[i] = static_cast<double>(Sample->PSD.CFD[i]);
   }
   ui->Qplot_PSD->graph(0)->setData(xPSD, yPSD);
-  ui->Qplot_PSD->xAxis->setRange(0.01, 100);
-  ui->Qplot_PSD->yAxis->setRange(0, 100);
   ui->Qplot_PSD->replot();
 }
 
 void VSAMainWindow::setRoundnessHistogram() {
-  ui->QPlot_Roudness->removePlottable(0);
-  QVector<double> xRound(Sample->Roundness.noBins), yRound(Sample->Roundness.noBins);
-  for (uint32_t i = 0; i < Sample->Roundness.noBins; i++) {
-    xRound[i] = i + 1;
-    yRound[i] = Sample->Roundness.bins[i];
-  }
-  QCPBars *RoundBars =
-      new QCPBars(ui->QPlot_Roudness->xAxis, ui->QPlot_Roudness->yAxis);
-  ui->QPlot_Roudness->addPlottable(RoundBars);
-  RoundBars->setName("Roundness Histogram");
-  RoundBars->setData(xRound, yRound);
-  RoundBars->setWidthType(QCPBars::WidthType::wtPlotCoords);
-  RoundBars->setWidth(1);
-  ui->QPlot_Roudness->xAxis->setRange(0, Sample->Roundness.noBins + 1);
-  ui->QPlot_Roudness->yAxis->setRange(0, Sample->Roundness.HighestFrequency());
-  ui->QPlot_Roudness->xAxis->setAutoTicks(false);
-  ui->QPlot_Roudness->xAxis->setTickVector(xRound);
+  std::vector<double> stdValues(Sample->Roundness.bins + 1,
+                                Sample->Roundness.bins + 4);
+  QVector<double> Values = QVector<double>::fromStdVector(stdValues);
+
+  ui->QPlot_Roudness->yAxis->setRange(
+      0, static_cast<double>(Sample->Roundness.HighestFrequency()));
+  RoundnessBars->setData(RoundnessTicks, Values);
   ui->QPlot_Roudness->replot();
 }
 
 void VSAMainWindow::setAngularityHistogram() {
-  ui->QPlot_Angularity->removePlottable(0);
-  QVector<double> xAng(Sample->Angularity.noBins), yAng(Sample->Angularity.noBins);
-  for (uint32_t i = 0; i < Sample->Angularity.noBins; i++) {
-    xAng[i] = i + 1;
-    yAng[i] = Sample->Angularity.bins[i];
-  }
-  QCPBars *ClassBars =
-      new QCPBars(ui->QPlot_Angularity->xAxis, ui->QPlot_Angularity->yAxis);
-  ui->QPlot_Angularity->addPlottable(ClassBars);
-  ClassBars->setName("Angularity Histogram");
-  ClassBars->setData(xAng, yAng);
-  ClassBars->setWidthType(QCPBars::WidthType::wtPlotCoords);
-  ClassBars->setWidth(1);
-  ui->QPlot_Angularity->xAxis->setRange(0, Sample->Angularity.noBins + 1);
-  ui->QPlot_Angularity->yAxis->setRange(0, Sample->Angularity.HighestFrequency());
-  ui->QPlot_Angularity->xAxis->setAutoTicks(false);
-  ui->QPlot_Angularity->xAxis->setTickVector(xAng);
+  std::vector<double> stdValues(Sample->Angularity.bins + 1,
+                                Sample->Angularity.bins + 7);
+  QVector<double> Values = QVector<double>::fromStdVector(stdValues);
+
+  ui->QPlot_Angularity->yAxis->setRange(
+      0, static_cast<double>(Sample->Angularity.HighestFrequency()));
+  AngularityBars->setData(AngularityTicks, Values);
   ui->QPlot_Angularity->replot();
 }
-
 
 void VSAMainWindow::on_actionNeuralNet_triggered() {
   if (nnWindow != nullptr) {
@@ -230,7 +241,9 @@ void VSAMainWindow::on_actionNewSample_triggered() {
     }
   }
   delete Sample;
+  Sample = nullptr;
   delete Images;
+  Images = nullptr;
   Sample = new SoilAnalyzer::Sample;
   Images = new SoilAnalyzer::Analyzer::Images_t;
   TakeSnapShots();
@@ -324,8 +337,10 @@ void VSAMainWindow::on_actionSaveSample_triggered() {
     if (!fn.contains(tr(".VSA"))) {
       fn.append(tr(".VSA"));
     }
+    Sample->IsLoadedFromDisk = true;
     Sample->ChangesSinceLastSave = false;
     Sample->Save(fn.toStdString());
+    qDebug() << "Saving finished";
   }
 }
 
@@ -338,10 +353,6 @@ void VSAMainWindow::on_actionLoadSample_triggered() {
       return;
     }
   }
-  delete Sample;
-  delete Images;
-  Sample = new SoilAnalyzer::Sample;
-  Images = new SoilAnalyzer::Analyzer::Images_t;
 
   QString fn = QFileDialog::getOpenFileName(
       this, tr("Open Sample"), QString::fromStdString(Settings->SampleFolder),
@@ -350,7 +361,22 @@ void VSAMainWindow::on_actionLoadSample_triggered() {
     if (!fn.contains(tr(".VSA"))) {
       fn.append(tr(".VSA"));
     }
+    delete Sample;
+    Sample = nullptr;
+    delete Images;
+    Images = nullptr;
+    Sample = new SoilAnalyzer::Sample;
+    Images = new SoilAnalyzer::Analyzer::Images_t;
+    try {
     Sample->Load(fn.toStdString());
+    }
+    catch (boost::archive::archive_exception &e) {
+      //qDebug() << *e.what();
+    }
+    ParticleDisplayerFilled = false;
+    Sample->Angularity.Data = Sample->GetAngularityVector()->data();
+    Sample->Roundness.Data = Sample->GetRoundnessVector()->data();
+    Sample->PSD.Data = Sample->GetPSDVector()->data();
     on_analyzer_finished();
   }
 }
@@ -377,7 +403,4 @@ void VSAMainWindow::on_Classification_changed(int newValue) {
   Analyzer->Analyse();
 }
 
-void VSAMainWindow::on_particle_deleted()
-{
-  Analyzer->Analyse();
-}
+void VSAMainWindow::on_particle_deleted() { Analyzer->Analyse(); }

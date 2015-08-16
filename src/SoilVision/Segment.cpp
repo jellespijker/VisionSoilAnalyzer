@@ -437,6 +437,7 @@ void Segment::GetEdges(bool chain, Connected conn) {
         } else {
           P[i] = 0;
         }
+        delete[] nPixels;
       } else {
         throw Exception::PixelValueOutOfBoundException();
       }
@@ -470,6 +471,7 @@ void Segment::GetEdges(bool chain, Connected conn) {
         } else {
           P[i] = 0;
         }
+        delete[] nPixels;
       } else {
         throw Exception::PixelValueOutOfBoundException();
       }

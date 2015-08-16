@@ -1,6 +1,7 @@
 #ifndef VSAMAINWINDOW_H
 #define VSAMAINWINDOW_H
 
+#include <QDebug>
 #include <QMainWindow>
 #include <QErrorMessage>
 #include <QMessageBox>
@@ -16,15 +17,11 @@
 #include "qparticleselector.h"
 
 namespace Ui {
-  class VSAMainWindow;
+class VSAMainWindow;
 }
 
-class VSAMainWindow : public QMainWindow
-{
+class VSAMainWindow : public QMainWindow {
   Q_OBJECT
-
-public slots:
-  void setParticleValue(int newValue);
 
 public:
   explicit VSAMainWindow(QWidget *parent = 0);
@@ -66,6 +63,13 @@ private:
   SoilAnalyzer::Sample *Sample = nullptr;
   SoilAnalyzer::Analyzer *Analyzer = nullptr;
   SoilAnalyzer::Analyzer::Images_t *Images = nullptr;
+  QCPBars *RoundnessBars = nullptr;
+  QCPBars *AngularityBars = nullptr;
+  QVector<QString> RoundnessCat = {"High", "Medium", "Low"};
+  QVector<double> RoundnessTicks = {1, 2, 3};
+  QVector<QString> AngularityCat = {"Very Angular", "Angular", "Sub Angular",
+                                    "Sub Rounded",  "Rounded", "Well Rounded"};
+  QVector<double> AngularityTicks = {1, 2, 3, 4, 5, 6};
 
   bool ParticleDisplayerFilled = false;
 

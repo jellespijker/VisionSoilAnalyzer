@@ -12,7 +12,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = QParticleDisplay
 TEMPLATE = lib
 CONFIG += shared
-VERSIOn = 1.3.1
+VERSION = 1.3.21
 
 SOURCES += qparticledisplay.cpp
 

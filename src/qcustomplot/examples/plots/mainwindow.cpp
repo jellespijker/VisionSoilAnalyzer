@@ -54,7 +54,7 @@ MainWindow::MainWindow(QWidget *parent) :
   ui->setupUi(this);
   setGeometry(400, 250, 542, 390);
   
-  setupDemo(0);
+  setupDemo(20);
   //setupPlayground(ui->customPlot);
   // 0:  setupQuadraticDemo(ui->customPlot);
   // 1:  setupSimpleDemo(ui->customPlot);
@@ -76,6 +76,7 @@ MainWindow::MainWindow(QWidget *parent) :
   // 17: setupAdvancedAxesDemo(ui->customPlot);
   // 18: setupColorMapDemo(ui->customPlot);
   // 19: setupFinancialDemo(ui->customPlot);
+  // 20: CustomBarShit(ui->customPlot);
   
   // for making screenshots of the current demo or all demos (for website screenshots):
   //QTimer::singleShot(1500, this, SLOT(allScreenShots()));
@@ -106,6 +107,7 @@ void MainWindow::setupDemo(int demoIndex)
     case 17: setupAdvancedAxesDemo(ui->customPlot); break;
     case 18: setupColorMapDemo(ui->customPlot); break;
     case 19: setupFinancialDemo(ui->customPlot); break;
+    case 20: setupCustomBarShit(ui->customPlot); break;
   }
   setWindowTitle("QCustomPlot: "+demoName);
   statusBar()->clearMessage();
@@ -802,6 +804,36 @@ void MainWindow::setupParametricCurveDemo(QCustomPlot *customPlot)
   customPlot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom | QCP::iSelectPlottables);
   customPlot->axisRect()->setupFullAxesBox();
   customPlot->rescaleAxes();
+}
+
+void MainWindow::setupCustomBarShit(QCustomPlot *customPlot) {
+    demoName = "Jelle Test";
+    QCPBars *Histogram = new QCPBars(customPlot->xAxis, customPlot->yAxis);
+    customPlot->addPlottable(Histogram);
+    QVector<double> ticks;
+    QVector<QString> labels;
+    ticks << 1 << 2 << 3 << 4 << 5 << 6 << 7;
+    labels << "USA" << "Japan" << "Germany" << "France" << "UK" << "Italy" << "Canada";
+
+    customPlot->xAxis->setAutoTicks(false);
+    customPlot->xAxis->setAutoTickLabels(false);
+    customPlot->xAxis->setTickVector(ticks);
+    customPlot->xAxis->setTickVectorLabels(labels);
+    customPlot->xAxis->setTickLabelRotation(60);
+    customPlot->xAxis->setSubTickCount(0);
+    customPlot->xAxis->setTickLength(0, 4);
+    customPlot->xAxis->grid()->setVisible(true);
+    customPlot->xAxis->setRange(0, 8);
+
+    customPlot->yAxis->setRange(0, 12.1);
+    customPlot->yAxis->setPadding(5); // a bit more space to the left border
+    customPlot->yAxis->setLabel("Power Consumption in\nKilowatts per Capita (2007)");
+    customPlot->yAxis->grid()->setSubGridVisible(true);
+
+    QVector<double> fossilData;
+    fossilData  << 0 << 0 << 0 << 0.52*5.8 << 0.89*5.2 << 0.90*4.2 << 0.67*11.2;
+    Histogram->setData(ticks, fossilData);
+
 }
 
 void MainWindow::setupBarChartDemo(QCustomPlot *customPlot)

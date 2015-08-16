@@ -62,7 +62,7 @@ void Analyzer::Analyse(Images_t *snapshots, Sample *results,
  */
 void Analyzer::Analyse() {
   CalcMaxProgress();
-  if (!Results->isPreparedForAnalysis) {
+  if (!Results->isPreparedForAnalysis && !Results->IsLoadedFromDisk) {
     PrepImages();
   }
   GetFFD(Results->ParticlePopulation);
@@ -72,12 +72,12 @@ void Analyzer::Analyse() {
 
   Results->Angularity =
       ucharStat_t(Results->GetAngularityVector()->data(),
-                  Results->GetAngularityVector()->size(), 1, 6, 1, false);
+                  Results->GetAngularityVector()->size(), 1, 7, 0, true);
   emit on_progressUpdate(currentProgress++);
 
   Results->Roundness =
       ucharStat_t(Results->GetRoundnessVector()->data(),
-                  Results->GetRoundnessVector()->size(), 1, 3, 1, false);
+                  Results->GetRoundnessVector()->size(), 1, 5, 0, true);
 
   Results->PSD =
       SoilMath::PSD(Results->GetPSDVector()->data(),

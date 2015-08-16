@@ -67,20 +67,22 @@ float Particle::GetSIVolume() {
 
 float Particle::GetSiDiameter() {
   if (SIDiameter == 0.) {
-      if (PixelArea == 0) {
-          throw Exception::SoilAnalyzerException(
-              EXCEPTION_PARTICLE_NOT_ANALYZED, EXCEPTION_PARTICLE_NOT_ANALYZED_NR);
-        }
-      SIDiameter = SoilMath::calcDiameter(PixelArea * SIPixelFactor);
+    if (PixelArea == 0) {
+      throw Exception::SoilAnalyzerException(
+          EXCEPTION_PARTICLE_NOT_ANALYZED, EXCEPTION_PARTICLE_NOT_ANALYZED_NR);
     }
+    SIDiameter = SoilMath::calcDiameter(PixelArea * SIPixelFactor);
+  }
   return SIDiameter;
 }
 
 uint8_t Particle::GetAngularity() {
-  return ((Classification.Category - 1) % 6) + 1;
+  uint8_t angularity = ((Classification.Category - 1) % 6) + 1;
+  return angularity;
 }
 
 uint8_t Particle::GetRoundness() {
-  return ((Classification.Category - 1) / 3) + 1;
+  uint8_t roundness = ((Classification.Category - 1) / 6) + 1;
+  return roundness;
 }
 }

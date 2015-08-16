@@ -61,6 +61,8 @@ public:
   bool ParticleChangedStateClass = false;
   bool ParticleChangedStateRoundness = false;
   bool ParticleChangedStateAngularity = false;
+
+  bool IsLoadedFromDisk = false;
 private:
   PSDVector_t Diameter; /*!< The PSD raw data*/
   bool PSDGathered = false; /*!< is the raw data gathered*/
@@ -99,6 +101,7 @@ private:
       ar &ClassGathered;
       ar &RoundnessGathered;
       ar &AngularityGathered;
+      ar &IsLoadedFromDisk;
     }
   }
 };

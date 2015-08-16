@@ -19,7 +19,12 @@ QParticleDisplay::QParticleDisplay(QWidget *parent)
           SLOT(on_selectedParticleChangedSlider(int)));
 }
 
-QParticleDisplay::~QParticleDisplay() { delete ui; }
+QParticleDisplay::~QParticleDisplay() {
+  for (uint32_t i = 0; i < ui->widget->slideCount(); i++) {
+    ui->widget->removeSlide(0);
+  }
+  delete ui;
+}
 
 void QParticleDisplay::setSelectedParticle(int newValue) {
   ui->widget->setCenterIndex(newValue);
@@ -33,8 +38,9 @@ void QParticleDisplay::SetSample(SoilAnalyzer::Sample *sample) {
     ui->widget->removeSlide(0);
   }
   for (uint32_t i = 0; i < this->Sample->ParticlePopulation.size(); i++) {
-    ui->widget->addSlide(
+    images.push_back(
         ConvertParticleToQImage(&Sample->ParticlePopulation.at(i)));
+    ui->widget->addSlide(images[images.size() - 1]);
   }
   SelectedParticle = &Sample->ParticlePopulation[ui->widget->centerIndex()];
   on_selectedParticleChangedSlider(0);
@@ -42,7 +48,7 @@ void QParticleDisplay::SetSample(SoilAnalyzer::Sample *sample) {
 
 QImage
 QParticleDisplay::ConvertParticleToQImage(SoilAnalyzer::Particle *particle) {
-  QImage dst(particle->BW.cols, particle->BW.rows, QImage::Format_RGB32);
+  QImage dst(particle->BW.cols, particle->BW.rows, QImage::Format_RGB32); // leak
   uint32_t nData = particle->BW.cols * particle->BW.rows;
   uchar *QDst = dst.bits();
   uchar *CVBW = particle->BW.data;

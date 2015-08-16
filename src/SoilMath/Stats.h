@@ -110,8 +110,8 @@ public:
    * \param rhs Right hand side
    */
   Stats(const Stats &rhs)
-      : bins{new uint32_t[rhs.noBins]{0}}, CFD{new double[rhs.noBins]},
-        BinRanges{new double[rhs.noBins]} {
+      : bins{new uint32_t[rhs.noBins]{0}}, CFD{new double[rhs.noBins]{}},
+        BinRanges{new double[rhs.noBins]{}} {
     this->binRange = rhs.binRange;
     this->Calculated = rhs.Calculated;
     this->Cols = rhs.Cols;
@@ -143,10 +143,24 @@ public:
    */
   Stats &operator=(Stats const &rhs) {
     if (&rhs != this) {
-      bins = new uint32_t[rhs.noBins]{0};
-      CFD = new double[rhs.noBins];
-      BinRanges = new double[rhs.noBins];
       Data = rhs.Data;
+
+      if (bins != nullptr) {
+        delete[] bins;
+        bins = nullptr;
+      }
+      if (CFD != nullptr) {
+        delete[] CFD;
+        CFD = nullptr;
+      }
+      if (BinRanges != nullptr) {
+        delete[] BinRanges;
+        BinRanges = nullptr;
+      }
+
+      bins = new uint32_t[rhs.noBins];    // leak
+      CFD = new double[rhs.noBins];       // leak
+      BinRanges = new double[rhs.noBins]; // leak
       this->binRange = rhs.binRange;
       this->Calculated = rhs.Calculated;
       this->Cols = rhs.Cols;
@@ -186,9 +200,9 @@ public:
     Startbin = startBin;
     EndBin = endBin;
     this->noBins = noBins;
-    bins = new uint32_t[noBins]{0};
-    CFD = new double[noBins];
-    BinRanges = new double[noBins];
+    bins = new uint32_t[noBins]{0};   // leak
+    CFD = new double[noBins]{};       // leak
+    BinRanges = new double[noBins]{}; // leak
 
     if (typeid(T1) == typeid(float) || typeid(T1) == typeid(double) ||
         typeid(T1) == typeid(long double)) {
@@ -230,8 +244,8 @@ public:
     Rows = rows;
     Cols = cols;
     bins = new uint32_t[noBins]{0};
-    CFD = new double[noBins];
-    BinRanges = new double[noBins];
+    CFD = new double[noBins]{};
+    BinRanges = new double[noBins]{};
     this->noBins = noBins;
     if (isDiscrete) {
       BasicCalculate();
@@ -273,8 +287,8 @@ public:
     Rows = rows;
     Cols = cols;
     bins = new uint32_t[noBins]{0};
-    CFD = new double[noBins];
-    BinRanges = new double[noBins];
+    CFD = new double[noBins]{};
+    BinRanges = new double[noBins]{};
     this->noBins = noBins;
     if (isDiscrete) {
       BasicCalculate(mask);
@@ -305,8 +319,8 @@ public:
     }
 
     bins = new uint32_t[noBins]{0};
-    CFD = new double[noBins];
-    BinRanges = new double[noBins];
+    CFD = new double[noBins]{};
+    BinRanges = new double[noBins]{};
     while (i-- > 0) {
       bins[i] = binData[i];
       n += binData[i];
@@ -315,9 +329,19 @@ public:
   }
 
   ~Stats() {
-    delete[] bins;
-    delete[] CFD;
-    delete[] BinRanges;
+    Data == nullptr;
+    if (bins != nullptr) {
+      delete[] bins;
+      bins = nullptr;
+    }
+    if (CFD != nullptr) {
+      delete[] CFD;
+      CFD = nullptr;
+    }
+    if (BinRanges != nullptr) {
+      delete[] BinRanges;
+      BinRanges = nullptr;
+    }
   }
 
   /*!
@@ -569,11 +593,11 @@ public:
 
   uint32_t HighestFrequency() {
     uint32_t freq = 0;
-      std::for_each(begin(), end(), [&](uint32_t &B) {
-        if (B > freq) {
-          freq = B;
-        }
-      });
+    std::for_each(begin(), end(), [&](uint32_t &B) {
+      if (B > freq) {
+        freq = B;
+      }
+    });
     return freq;
   }
 
@@ -604,7 +628,9 @@ protected:
     for (uint32_t i = 1; i < noBins; i++) {
       sumBin[i] = (sumBin[i - 1] + bins[i]);
       CFD[i] = (static_cast<double>(sumBin[i]) / static_cast<double>(n)) * 100.;
-      if (CFD[i] > HighestPDF) { HighestPDF = CFD[i]; }
+      if (CFD[i] > HighestPDF) {
+        HighestPDF = CFD[i];
+      }
     }
     delete[] sumBin;
   }

@@ -59,7 +59,7 @@ private:
   }
 
 public:
-  PSD() : SoilMath::Stats<double, double, long double>(1, 0, 0) {}
+  PSD() : SoilMath::Stats<double, double, long double>() {}
 
   PSD(double *data, uint32_t nodata, double *binranges, uint32_t nobins,
       uint32_t endbin)
