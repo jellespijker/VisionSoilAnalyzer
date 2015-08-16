@@ -37,9 +37,6 @@ namespace SoilMath {
  * the same value and concecuative in size
  */
 template <typename T1, typename T2, typename T3> class Stats {
-private:
-  uint32_t highFreq = 0;
-
 public:
   bool isDiscrete = true; /**< indicates if the data is discrete or real*/
 
@@ -63,6 +60,7 @@ public:
   bool StartAtZero = true;  /**< indication of the minimum value starts at zero
                                or could be less*/
   double *BinRanges = nullptr;
+  double HighestPDF = 0.;
 
   uint32_t *begin() { return &bins[0]; }    /**< pointer to the first bin*/
   uint32_t *end() { return &bins[noBins]; } /**< pointer to the last + 1 bin*/
@@ -135,6 +133,7 @@ public:
     std::copy(rhs.BinRanges, rhs.BinRanges + rhs.noBins, this->BinRanges);
     this->Data = rhs.Data;
     this->StartAtZero = rhs.StartAtZero;
+    this->HighestPDF = rhs.HighestPDF;
   }
 
   /*!
@@ -169,6 +168,7 @@ public:
       std::copy(rhs.CFD, rhs.CFD + rhs.noBins, this->CFD);
       std::copy(rhs.BinRanges, rhs.BinRanges + rhs.noBins, this->BinRanges);
       this->StartAtZero = rhs.StartAtZero;
+      this->HighestPDF = rhs.HighestPDF;
     }
     return *this;
   }
@@ -339,6 +339,7 @@ public:
     uint32_t index = 0;
     Mean = Sum / (float)n;
     Range = max - min;
+
     if (StartAtZero) {
       for (uint32_t i = 0; i < n; i++) {
         index = static_cast<uint32_t>(Data[i] / binRange);
@@ -388,6 +389,9 @@ public:
     uint32_t index = 0;
     Mean = Sum / (float)nmask;
     Range = max - min;
+    if (Range == 0) {
+      Range = min;
+    }
     if (StartAtZero) {
       for (uint32_t i = 0; i < n; i++) {
         if (mask[i] != 0) {
@@ -433,10 +437,11 @@ public:
     }
     binRange = static_cast<T1>(ceil((max - min) / static_cast<float>(noBins)));
     if (binRange == 0) {
-      binRange = min;
+      binRange = 1;
     }
     Mean = Sum / (float)n;
     Range = max - min;
+
     uint32_t index;
     if (StartAtZero) {
       std::for_each(Data, Data + n, [&](T1 &d) {
@@ -487,6 +492,7 @@ public:
     binRange = static_cast<T1>(ceil((max - min) / static_cast<float>(noBins)));
     Mean = Sum / (float)nmask;
     Range = max - min;
+
     uint32_t index;
     if (StartAtZero) {
       i = 0;
@@ -548,7 +554,7 @@ public:
       }
     }
 
-    // Get Max;
+    // Get Range;
     Range = max - min;
 
     // Calculate Standard Deviation
@@ -562,14 +568,27 @@ public:
   }
 
   uint32_t HighestFrequency() {
-    if (highFreq == 0) {
+    uint32_t freq = 0;
       std::for_each(begin(), end(), [&](uint32_t &B) {
-        if (B > highFreq) {
-          highFreq = B;
+        if (B > freq) {
+          freq = B;
         }
       });
+    return freq;
+  }
+
+  void GetPDFfunction(std::vector<double> &xAxis, std::vector<double> &yAxis,
+                      double Step, double start = 0, double stop = 7) {
+    uint32_t resolution;
+    resolution = static_cast<uint32_t>(((stop - start) / Step) + 0.5);
+    xAxis.push_back(min);
+    for (uint32_t i = 1; i < resolution; i++) {
+      double xVal = xAxis[xAxis.size() - 1] + Step;
+      xAxis.push_back(xVal);
+      double yVal = (1 / (Std * 2.506628274631)) *
+                    exp(-(pow((xVal - Mean), 2) / (2 * pow(Std, 2))));
+      yAxis.push_back(yVal);
     }
-    return highFreq;
   }
 
 protected:
@@ -585,6 +604,7 @@ protected:
     for (uint32_t i = 1; i < noBins; i++) {
       sumBin[i] = (sumBin[i - 1] + bins[i]);
       CFD[i] = (static_cast<double>(sumBin[i]) / static_cast<double>(n)) * 100.;
+      if (CFD[i] > HighestPDF) { HighestPDF = CFD[i]; }
     }
     delete[] sumBin;
   }
@@ -624,7 +644,7 @@ protected:
       ar &Rows;
       ar &Cols;
       ar &StartAtZero;
-      ar &highFreq;
+      ar &HighestPDF;
     }
   }
 };

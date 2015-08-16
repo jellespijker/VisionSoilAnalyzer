@@ -41,6 +41,8 @@ private:
   uint32_t count = 0;
 
 private Q_SLOTS:
+  void testCase_SingleValueBin();
+
   void testCase_PSD();
 
   void testCase_Sort();
@@ -64,6 +66,17 @@ private Q_SLOTS:
 };
 
 SoilMath_Test::SoilMath_Test() {}
+
+void SoilMath_Test::testCase_SingleValueBin() {
+  uchar *testData = new uchar[10] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
+  ucharStat_t Test;
+  Test = ucharStat_t(testData, 10, 1, 3, 0, true);
+
+  uint32_t *compBin = new uint32_t[3] {0, 10, 0};
+  QCOMPARE_RANGE(Test.bins, compBin, 3, uint32_t);
+  delete[] compBin;
+  delete[] testData;
+}
 
 void SoilMath_Test::testCase_PSD() {
   double *testData =
