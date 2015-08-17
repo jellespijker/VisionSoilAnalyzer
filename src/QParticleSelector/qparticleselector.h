@@ -2,6 +2,7 @@
 #define QPARTICLESELECTOR_H
 
 #include <QWidget>
+#include <QPushButton>
 
 namespace Ui {
   class QParticleSelector;
@@ -14,6 +15,8 @@ class QParticleSelector : public QWidget
 public:
   explicit QParticleSelector(QWidget *parent = 0);
   ~QParticleSelector();
+
+  void setDisabled(bool value);
 
 signals:
   void valueChanged(int newValue);
@@ -59,6 +62,7 @@ private slots:
   void on_pb_18_clicked(bool checked);
 
 private:
+  QVector<QPushButton *> btns;
   Ui::QParticleSelector *ui;
 };
 

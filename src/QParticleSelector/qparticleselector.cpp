@@ -4,70 +4,43 @@
 QParticleSelector::QParticleSelector(QWidget *parent)
     : QWidget(parent), ui(new Ui::QParticleSelector) {
   ui->setupUi(this);
+  btns.push_back(ui->pb_1);
+  btns.push_back(ui->pb_2);
+  btns.push_back(ui->pb_3);
+  btns.push_back(ui->pb_4);
+  btns.push_back(ui->pb_5);
+  btns.push_back(ui->pb_6);
+  btns.push_back(ui->pb_7);
+  btns.push_back(ui->pb_8);
+  btns.push_back(ui->pb_9);
+  btns.push_back(ui->pb_10);
+  btns.push_back(ui->pb_11);
+  btns.push_back(ui->pb_12);
+  btns.push_back(ui->pb_13);
+  btns.push_back(ui->pb_14);
+  btns.push_back(ui->pb_15);
+  btns.push_back(ui->pb_16);
+  btns.push_back(ui->pb_17);
+  btns.push_back(ui->pb_18);
 }
 
-QParticleSelector::~QParticleSelector() { delete ui; }
+QParticleSelector::~QParticleSelector() {
+  for (auto b : btns) {
+    delete b;
+  }
+  btns.clear();
+  delete ui;
+}
 
 void QParticleSelector::setValue(int newValue) {
-  switch (newValue) {
-  case 1:
-    ui->pb_1->setChecked(true);
-    break;
-  case 2:
-    ui->pb_2->setChecked(true);
-    break;
-  case 3:
-    ui->pb_3->setChecked(true);
-    break;
-  case 4:
-    ui->pb_4->setChecked(true);
-    break;
-  case 5:
-    ui->pb_5->setChecked(true);
-    break;
-  case 6:
-    ui->pb_6->setChecked(true);
-    break;
-  case 7:
-    ui->pb_7->setChecked(true);
-    break;
-  case 8:
-    ui->pb_8->setChecked(true);
-    break;
-  case 9:
-    ui->pb_9->setChecked(true);
-    break;
-  case 10:
-    ui->pb_10->setChecked(true);
-    break;
-  case 11:
-    ui->pb_11->setChecked(true);
-    break;
-  case 12:
-    ui->pb_12->setChecked(true);
-    break;
-  case 13:
-    ui->pb_13->setChecked(true);
-    break;
-  case 14:
-    ui->pb_14->setChecked(true);
-    break;
-  case 15:
-    ui->pb_15->setChecked(true);
-    break;
-  case 16:
-    ui->pb_16->setChecked(true);
-    break;
-  case 17:
-    ui->pb_17->setChecked(true);
-    break;
-  case 18:
-    ui->pb_18->setChecked(true);
-    break;
-  default:
-    ui->pb_1->setChecked(true);
-    break;
+  btns[newValue]->setChecked(true);
+}
+
+void QParticleSelector::setDisabled(bool value) {
+  for (auto b : btns) {
+    b->setDisabled(value);
   }
+  btns[0]->setChecked(true);
 }
 
 void QParticleSelector::on_pb_1_clicked(bool checked) {
