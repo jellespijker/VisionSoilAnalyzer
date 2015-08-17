@@ -48,6 +48,8 @@ private slots:
 
   void on_particle_deleted();
 
+  void on_actionAutomatic_Shape_Pediction_triggered(bool checked);
+
 private:
   Ui::VSAMainWindow *ui;
   DialogSettings *settingsWindow = nullptr;
@@ -65,11 +67,14 @@ private:
   SoilAnalyzer::Analyzer::Images_t *Images = nullptr;
   QCPBars *RoundnessBars = nullptr;
   QCPBars *AngularityBars = nullptr;
+  std::vector<double> PSDTicks = {0.0,  0.038, 0.045, 0.063, 0.075,
+                              0.09, 0.125, 0.18,  0.25,  0.355,
+                              0.5,  0.71,  1.0,   1.4,   2.0};
   QVector<QString> RoundnessCat = {"High", "Medium", "Low"};
-  QVector<double> RoundnessTicks = {1, 2, 3};
+  std::vector<double> RoundnessTicks = {1, 2, 3};
   QVector<QString> AngularityCat = {"Very Angular", "Angular", "Sub Angular",
                                     "Sub Rounded",  "Rounded", "Well Rounded"};
-  QVector<double> AngularityTicks = {1, 2, 3, 4, 5, 6};
+  std::vector<double> AngularityTicks = {1, 2, 3, 4, 5, 6};
 
   bool ParticleDisplayerFilled = false;
 
