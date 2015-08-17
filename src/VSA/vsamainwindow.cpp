@@ -477,6 +477,7 @@ void VSAMainWindow::on_Classification_changed(int newValue) {
   ui->widget_ParticleDisplay->SelectedParticle->Classification.ManualSet = true;
   Sample->ChangesSinceLastSave = true;
   Analyzer->Analyse();
+  ui->widget_ParticleDisplay->next();
 }
 
 void VSAMainWindow::on_particle_deleted() { Analyzer->Analyse(); }

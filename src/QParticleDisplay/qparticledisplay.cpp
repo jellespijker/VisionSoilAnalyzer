@@ -124,3 +124,15 @@ void QParticleDisplay::wheelEvent(QWheelEvent *event) {
   ui->widget->setCenterIndex(i);
   on_selectedParticleChangedWidget(i);
 }
+
+void QParticleDisplay::next() {
+  int i = ui->widget->centerIndex();
+  i++;
+  if (i < 0) {
+    i = ui->widget->slideCount() - abs(i) - 1;
+  } else if (i >= ui->widget->slideCount()) {
+    i = 0;
+  }
+  ui->widget->setCenterIndex(i);
+  on_selectedParticleChangedWidget(i);
+}

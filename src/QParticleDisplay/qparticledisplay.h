@@ -28,6 +28,7 @@ public:
   void SetSample(SoilAnalyzer::Sample *sample);
   SoilAnalyzer::Particle *SelectedParticle;
   void wheelEvent( QWheelEvent * event );
+  void next();
 
 signals:
   void particleChanged(int newValue);
