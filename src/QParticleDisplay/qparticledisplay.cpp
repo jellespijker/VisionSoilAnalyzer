@@ -48,7 +48,8 @@ void QParticleDisplay::SetSample(SoilAnalyzer::Sample *sample) {
 
 QImage
 QParticleDisplay::ConvertParticleToQImage(SoilAnalyzer::Particle *particle) {
-  QImage dst(particle->BW.cols, particle->BW.rows, QImage::Format_RGB32); // leak
+  QImage dst(particle->BW.cols, particle->BW.rows,
+             QImage::Format_RGB32); // leak
   uint32_t nData = particle->BW.cols * particle->BW.rows;
   uchar *QDst = dst.bits();
   uchar *CVBW = particle->BW.data;
@@ -77,7 +78,6 @@ void QParticleDisplay::on_pushButton_delete_clicked() {
   ui->widget->removeSlide(ui->widget->centerIndex());
   ui->horizontalSlider->setMaximum(this->Sample->ParticlePopulation.size() - 1);
   Sample->ParticleChangedStatePSD = true;
-  Sample->ParticleChangedStateClass = true;
   Sample->ParticleChangedStateAngularity = true;
   Sample->ParticleChangedStateRoundness = true;
   Sample->ChangesSinceLastSave = true;
@@ -111,4 +111,16 @@ void QParticleDisplay::on_selectedParticleChangedSlider(int value) {
     emit shapeClassificationChanged(SelectedParticle->Classification.Category);
     dontDoIt = false;
   }
+}
+
+void QParticleDisplay::wheelEvent(QWheelEvent *event) {
+  int i = ui->widget->centerIndex();
+  i -= event->delta() / 120;
+  if (i < 0) {
+    i = ui->widget->slideCount() - abs(i) - 1;
+  } else if (i >= ui->widget->slideCount()) {
+    i = 0;
+  }
+  ui->widget->setCenterIndex(i);
+  on_selectedParticleChangedWidget(i);
 }

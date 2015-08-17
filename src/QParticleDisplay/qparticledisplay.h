@@ -10,6 +10,7 @@
 #include <QImage>
 #include <qopencvqt.h>
 #include <QColor>
+#include <QWheelEvent>
 
 #include "soilanalyzer.h"
 
@@ -26,6 +27,7 @@ public:
   ~QParticleDisplay();
   void SetSample(SoilAnalyzer::Sample *sample);
   SoilAnalyzer::Particle *SelectedParticle;
+  void wheelEvent( QWheelEvent * event );
 
 signals:
   void particleChanged(int newValue);
