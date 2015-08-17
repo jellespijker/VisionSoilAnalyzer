@@ -14545,6 +14545,21 @@ void QCPGraph::setData(const QVector<double> &key, const QVector<double> &value)
   }
 }
 
+/*! Add by Jelle Spijker 2015 to accomedate std container types
+ */
+void QCPGraph::setData(const std::vector<double> &key, const std::vector<double> &value) {
+  mData->clear();
+  int n = key.size();
+  n = (n < value.size()) ? n : value.size();
+  QCPData newData;
+  for (int i=0; i<n; ++i)
+  {
+    newData.key = key[i];
+    newData.value = value[i];
+    mData->insertMulti(newData.key, newData);
+  }
+}
+
 /*!
   Replaces the current data with the provided points in \a key and \a value pairs. Additionally the
   symmetrical value error of the data points are set to the values in \a valueError.
@@ -18561,6 +18576,20 @@ void QCPBars::setData(const QVector<double> &key, const QVector<double> &value)
   mData->clear();
   int n = key.size();
   n = qMin(n, value.size());
+  QCPBarData newData;
+  for (int i=0; i<n; ++i)
+  {
+    newData.key = key[i];
+    newData.value = value[i];
+    mData->insertMulti(newData.key, newData);
+  }
+}
+
+void QCPBars::setData(const std::vector<double> &key, const std::vector<double> &value)
+{
+  mData->clear();
+  int n = key.size();
+  n = (n < value.size()) ? n : value.size();
   QCPBarData newData;
   for (int i=0; i<n; ++i)
   {

@@ -45,6 +45,7 @@
 #include <QMargins>
 #include <qmath.h>
 #include <limits>
+#include <vector>
 #if QT_VERSION < QT_VERSION_CHECK(5, 0, 0)
 #  include <qnumeric.h>
 #  include <QPrinter>
@@ -2542,6 +2543,7 @@ public:
   // setters:
   void setData(QCPDataMap *data, bool copy=false);
   void setData(const QVector<double> &key, const QVector<double> &value);
+  void setData(const std::vector<double> &key, const std::vector<double> &value); // added by Jelle Spijker 2015
   void setDataKeyError(const QVector<double> &key, const QVector<double> &value, const QVector<double> &keyError);
   void setDataKeyError(const QVector<double> &key, const QVector<double> &value, const QVector<double> &keyErrorMinus, const QVector<double> &keyErrorPlus);
   void setDataValueError(const QVector<double> &key, const QVector<double> &value, const QVector<double> &valueError);
@@ -2863,7 +2865,8 @@ public:
   void setBaseValue(double baseValue);
   void setData(QCPBarDataMap *data, bool copy=false);
   void setData(const QVector<double> &key, const QVector<double> &value);
-  
+  void setData(const std::vector<double> &key, const std::vector<double> &value); // Added by Jelle Spijker
+
   // non-property methods:
   void moveBelow(QCPBars *bars);
   void moveAbove(QCPBars *bars);
