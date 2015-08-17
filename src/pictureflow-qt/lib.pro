@@ -1,7 +1,7 @@
 TARGET = pictureflow-qt
 QT += core widgets
 TEMPLATE = lib
-VERSION = 1.0.0
+VERSION = 1.0.1
 CONFIG += shared
 SOURCES = pictureflow.cpp
 HEADERS = pictureflow.h

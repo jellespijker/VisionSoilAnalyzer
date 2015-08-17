@@ -214,8 +214,9 @@ PictureFlowState::PictureFlowState():
 
 PictureFlowState::~PictureFlowState()
 {
-    for (int i = 0; i < (int)slideImages.count(); i++)
+    for (int i = 0; i < (int)slideImages.size(); i++)
         delete slideImages[i];
+    slideImages.clear();
 }
 
 // readjust the settings, call this when slide dimension is changed
