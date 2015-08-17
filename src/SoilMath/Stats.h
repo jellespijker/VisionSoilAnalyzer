@@ -413,9 +413,6 @@ public:
     uint32_t index = 0;
     Mean = Sum / (float)nmask;
     Range = max - min;
-    if (Range == 0) {
-      Range = min;
-    }
     if (StartAtZero) {
       for (uint32_t i = 0; i < n; i++) {
         if (mask[i] != 0) {
