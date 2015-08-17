@@ -602,13 +602,21 @@ public:
                       double Step, double start = 0, double stop = 7) {
     uint32_t resolution;
     resolution = static_cast<uint32_t>(((stop - start) / Step) + 0.5);
-    xAxis.push_back(min);
+
+    xAxis.push_back(start);
+    double yVal0 = (1 / (Std * 2.506628274631)) *
+                   exp(-(pow((start - Mean), 2) / (2 * pow(Std, 2))));
+    yAxis.push_back(yVal0);
+    HighestPDF = yVal0;
     for (uint32_t i = 1; i < resolution; i++) {
       double xVal = xAxis[xAxis.size() - 1] + Step;
       xAxis.push_back(xVal);
       double yVal = (1 / (Std * 2.506628274631)) *
                     exp(-(pow((xVal - Mean), 2) / (2 * pow(Std, 2))));
       yAxis.push_back(yVal);
+      if (yVal > HighestPDF) {
+        HighestPDF = yVal;
+      }
     }
   }
 
