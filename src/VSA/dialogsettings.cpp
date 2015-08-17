@@ -162,7 +162,7 @@ DialogSettings::DialogSettings(QWidget *parent,
   ui->doubleSpinBox_Beta->setValue(NN->GetBeta());
   ui->doubleSpinBox_maxWeight->setValue(NN->MaxWeightUsedByGA);
   ui->doubleSpinBox_MinWeight->setValue(NN->MinWeightUSedByGa);
-  initfase = false;
+  ui->checkBox_PredictShape->setChecked(Settings->PredictTheShape);
 
   // Setup the preference tab
   ui->lineEdit_NeuralNetFolder->setText(
@@ -181,6 +181,7 @@ DialogSettings::DialogSettings(QWidget *parent,
   if (openNN) {
     ui->tabWidget->setCurrentIndex(3);
   }
+  initfase = false;
 }
 
 DialogSettings::~DialogSettings() { delete ui; }
@@ -507,4 +508,8 @@ void DialogSettings::on_pushButton_SelectNN_clicked() {
 
 void DialogSettings::on_spinBox_NoShots_editingFinished() {
   Settings->StandardNumberOfShots = ui->spinBox_NoShots->value();
+}
+
+void DialogSettings::on_checkBox_PredictShape_clicked(bool checked) {
+  Settings->PredictTheShape = checked;
 }

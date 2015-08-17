@@ -66,7 +66,7 @@ void Analyzer::Analyse() {
     PrepImages();
   }
   GetFFD(Results->ParticlePopulation);
-  if (PredictShape) {
+  if (PredictShape && Settings->PredictTheShape) {
     GetPrediction(Results->ParticlePopulation);
   }
 

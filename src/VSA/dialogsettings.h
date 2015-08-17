@@ -125,6 +125,8 @@ private slots:
 
   void on_spinBox_NoShots_editingFinished();
 
+  void on_checkBox_PredictShape_clicked(bool checked);
+
 private:
   Ui::DialogSettings *ui;
   Hardware::Microscope *Microscope;
