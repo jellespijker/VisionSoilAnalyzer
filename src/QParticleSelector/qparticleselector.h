@@ -16,7 +16,7 @@ public:
   explicit QParticleSelector(QWidget *parent = 0);
   ~QParticleSelector();
 
-  void setDisabled(bool value);
+  void setDisabled(bool value, int currentClass = 1);
 
 signals:
   void valueChanged(int newValue);

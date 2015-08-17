@@ -33,14 +33,18 @@ QParticleSelector::~QParticleSelector() {
 }
 
 void QParticleSelector::setValue(int newValue) {
-  btns[newValue]->setChecked(true);
+  btns[newValue - 1]->setChecked(true);
 }
 
-void QParticleSelector::setDisabled(bool value) {
+void QParticleSelector::setDisabled(bool value, int currentClass) {
   for (auto b : btns) {
     b->setDisabled(value);
   }
-  btns[0]->setChecked(true);
+  if (currentClass > 18 || currentClass < 1) {
+    btns[0]->setChecked(true);
+  } else {
+    btns[currentClass - 1]->setChecked(true);
+  }
 }
 
 void QParticleSelector::on_pb_1_clicked(bool checked) {
