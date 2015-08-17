@@ -107,13 +107,19 @@ VSAMainWindow::VSAMainWindow(QWidget *parent)
   ui->Qplot_PSD->graph(0)->setPen(binPen);
 
   ui->Qplot_PSD->xAxis->setLabel("Particle size [mm]");
-  ui->Qplot_PSD->xAxis->setRange(0.01, 10);
+  ui->Qplot_PSD->xAxis->setRange(0.01, 2);
+  ui->Qplot_PSD->xAxis->setAutoTicks(false);
+  ui->Qplot_PSD->xAxis->setTickVector(QVector<double>::fromStdVector(PSDTicks));
+  ui->Qplot_PSD->xAxis->setTickLabelRotation(30);
+  ui->Qplot_PSD->xAxis->setTickLabelFont(QFont("sans", 8, QFont::Normal));
   ui->Qplot_PSD->xAxis->setScaleType(QCPAxis::stLogarithmic);
 
   ui->Qplot_PSD->yAxis->setLabel("Percentage [%]");
   ui->Qplot_PSD->yAxis->setRange(0, 100);
   ui->Qplot_PSD->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
   ui->Qplot_PSD->yAxis->grid()->setSubGridVisible(true);
+
+  connect(ui->Qplot_PSD, SIGNAL(mouseDoubleClick(QMouseEvent*)), this, SLOT(on_reset_graph(QMouseEvent*)));
 
   // Setup the Roundness plot
   QCPPlotTitle *Roundnesstitle = new QCPPlotTitle(ui->QPlot_Roudness);
@@ -136,7 +142,8 @@ VSAMainWindow::VSAMainWindow(QWidget *parent)
 
   ui->QPlot_Roudness->xAxis->setAutoTicks(false);
   ui->QPlot_Roudness->xAxis->setAutoTickLabels(false);
-  ui->QPlot_Roudness->xAxis->setTickVector(QVector<double>::fromStdVector(RoundnessTicks));
+  ui->QPlot_Roudness->xAxis->setTickVector(
+      QVector<double>::fromStdVector(RoundnessTicks));
   ui->QPlot_Roudness->xAxis->setTickVectorLabels(RoundnessCat);
   ui->QPlot_Roudness->xAxis->setTickLabelRotation(30);
   ui->QPlot_Roudness->xAxis->setSubTickCount(0);
@@ -145,7 +152,7 @@ VSAMainWindow::VSAMainWindow(QWidget *parent)
   ui->QPlot_Roudness->xAxis->setRange(0, 4);
   ui->QPlot_Roudness->xAxis->setLabel("Count [-]");
   ui->QPlot_Roudness->xAxis->setLabelFont(QFont("sans", 8, QFont::Bold));
-  ui->QPlot_Roudness->xAxis->setTickLabelFont(QFont("sans", 8, QFont::Light));
+  ui->QPlot_Roudness->xAxis->setTickLabelFont(QFont("sans", 8, QFont::Normal));
   ui->QPlot_Roudness->xAxis->setPadding(25);
   ui->QPlot_Roudness->yAxis->setLabel("Sphericity [-]");
   ui->QPlot_Roudness->yAxis->setLabelFont(QFont("sans", 8, QFont::Bold));
@@ -168,7 +175,8 @@ VSAMainWindow::VSAMainWindow(QWidget *parent)
 
   ui->QPlot_Angularity->xAxis->setAutoTicks(false);
   ui->QPlot_Angularity->xAxis->setAutoTickLabels(false);
-  ui->QPlot_Angularity->xAxis->setTickVector(QVector<double>::fromStdVector(AngularityTicks));
+  ui->QPlot_Angularity->xAxis->setTickVector(
+      QVector<double>::fromStdVector(AngularityTicks));
   ui->QPlot_Angularity->xAxis->setTickVectorLabels(AngularityCat);
   ui->QPlot_Angularity->xAxis->setTickLabelRotation(30);
   ui->QPlot_Angularity->xAxis->setSubTickCount(0);
@@ -177,7 +185,7 @@ VSAMainWindow::VSAMainWindow(QWidget *parent)
   ui->QPlot_Angularity->xAxis->setRange(0, 7);
   ui->QPlot_Angularity->xAxis->setLabel("Count [-]");
   ui->QPlot_Angularity->xAxis->setLabelFont(QFont("sans", 8, QFont::Bold));
-  ui->QPlot_Angularity->xAxis->setTickLabelFont(QFont("sans", 8, QFont::Light));
+  ui->QPlot_Angularity->xAxis->setTickLabelFont(QFont("sans", 8, QFont::Normal));
   ui->QPlot_Angularity->yAxis->setLabel("Sphericity [-]");
   ui->QPlot_Angularity->yAxis->setLabelFont(QFont("sans", 8, QFont::Bold));
   ui->QPlot_Angularity->graph(0)->setPen(pdfPen);
@@ -457,14 +465,17 @@ void VSAMainWindow::on_actionCalibrate_triggered() {
 }
 
 void VSAMainWindow::on_Classification_changed(int newValue) {
+  uint8_t *Cat = &ui->widget_ParticleDisplay->SelectedParticle->Classification.Category;
+  if ((*Cat - 1) % 6 != (newValue - 1) % 6) {
+    Sample->ParticleChangedStateAngularity = true;
+  }
+  if ((*Cat - 1) / 6 != (newValue - 1) / 6) {
+    Sample->ParticleChangedStateRoundness = true;
+  }
   ui->widget_ParticleDisplay->SelectedParticle->Classification.Category =
       newValue;
   ui->widget_ParticleDisplay->SelectedParticle->Classification.ManualSet = true;
   Sample->ChangesSinceLastSave = true;
-  Sample->ParticleChangedStateAngularity = true;
-  Sample->ParticleChangedStateClass = true;
-  Sample->ParticleChangedStatePSD = true;
-  Sample->ParticleChangedStateRoundness = true;
   Analyzer->Analyse();
 }
 
@@ -472,4 +483,11 @@ void VSAMainWindow::on_particle_deleted() { Analyzer->Analyse(); }
 
 void VSAMainWindow::on_actionAutomatic_Shape_Pediction_triggered(bool checked) {
   Settings->PredictTheShape = checked;
+}
+
+void VSAMainWindow::on_reset_graph(QMouseEvent *e) {
+  ui->Qplot_PSD->xAxis->setRange(0,2);
+  ui->Qplot_PSD->yAxis->setRange(0,100);
+  ui->Qplot_PSD->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
+  ui->Qplot_PSD->replot();
 }

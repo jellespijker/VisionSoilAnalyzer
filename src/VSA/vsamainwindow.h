@@ -7,6 +7,8 @@
 #include <QMessageBox>
 #include <QProgressBar>
 
+#include <stdint.h>
+
 #include <qcustomplot.h>
 
 #include "soilanalyzer.h"
@@ -49,6 +51,8 @@ private slots:
   void on_particle_deleted();
 
   void on_actionAutomatic_Shape_Pediction_triggered(bool checked);
+
+  void on_reset_graph(QMouseEvent * e);
 
 private:
   Ui::VSAMainWindow *ui;
