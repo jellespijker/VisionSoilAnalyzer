@@ -55,9 +55,9 @@ QParticleDisplay::ConvertParticleToQImage(SoilAnalyzer::Particle *particle) {
   uchar *CVRGB = particle->RGB.data;
   for (uint32_t i = 0; i < nData; i++) {
     if (CVBW[i]) {
-      *(QDst++) = *(CVRGB + 2);
-      *(QDst++) = *(CVRGB + 1);
       *(QDst++) = *(CVRGB);
+      *(QDst++) = *(CVRGB + 1);
+      *(QDst++) = *(CVRGB + 2);
       *(QDst++) = 0;
       CVRGB += 3;
     } else {
