@@ -21,9 +21,10 @@ public:
   explicit DialogSettings(QWidget *parent = 0,
                           SoilAnalyzer::SoilSettings *settings = nullptr,
                           Hardware::Microscope *microscope = nullptr,
-                          SoilMath::NN *nn = nullptr);
+                          SoilMath::NN *nn = nullptr, bool openNN = false);
   ~DialogSettings();
 
+  void openTab(int newValue);
 private slots:
 
   void on_pushButton_RestoreDefault_clicked();

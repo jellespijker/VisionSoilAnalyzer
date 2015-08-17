@@ -160,6 +160,8 @@ VSAMainWindow::VSAMainWindow(QWidget *parent)
           ui->widget_ParticleSelector, SLOT(setValue(int)));
   connect(ui->widget_ParticleDisplay, SIGNAL(particleDeleted()), this,
           SLOT(on_particle_deleted()));
+
+  ui->widget_ParticleSelector->setDisabled(true);
 }
 
 VSAMainWindow::~VSAMainWindow() {
@@ -178,7 +180,11 @@ VSAMainWindow::~VSAMainWindow() {
   delete ui;
 }
 
-void VSAMainWindow::on_actionSettings_triggered() { settingsWindow->show(); }
+void VSAMainWindow::on_actionSettings_triggered()
+{
+  settingsWindow->openTab(0);
+  settingsWindow->show();
+}
 
 void VSAMainWindow::on_analyzer_finished() {
   if (!ParticleDisplayerFilled) {
@@ -188,6 +194,7 @@ void VSAMainWindow::on_analyzer_finished() {
   setRoundnessHistogram();
   setAngularityHistogram();
   ParticleDisplayerFilled = true;
+  ui->widget_ParticleSelector->setDisabled(false);
 }
 
 void VSAMainWindow::SetPSDgraph() {

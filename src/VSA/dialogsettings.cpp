@@ -5,7 +5,7 @@
 DialogSettings::DialogSettings(QWidget *parent,
                                SoilAnalyzer::SoilSettings *settings,
                                Hardware::Microscope *microscope,
-                               SoilMath::NN *nn)
+                               SoilMath::NN *nn, bool openNN)
     : QDialog(parent), ui(new Ui::DialogSettings) {
   ui->setupUi(this);
   if (settings == nullptr) {
@@ -43,6 +43,8 @@ DialogSettings::DialogSettings(QWidget *parent,
   ui->label_nf->setDisabled(true);
 
   ui->checkBox_Backlight->setChecked(Settings->useBacklightProjection);
+  ui->tabWidget_Hardware->setTabEnabled(2, Settings->useBacklightProjection);
+
   ui->checkBox_InvertEncoder->setChecked(Settings->encInv);
   ui->checkBox_useCUDA->setChecked(Settings->useCUDA);
 
@@ -175,11 +177,18 @@ DialogSettings::DialogSettings(QWidget *parent,
       QString::fromStdString(Settings->SettingsFolder));
   ui->lineEdit__NeuralNet->setText(
       QString::fromStdString(Settings->NNlocation));
+
+  if (openNN) {
+    ui->tabWidget->setCurrentIndex(3);
+  }
 }
 
-DialogSettings::~DialogSettings()
-{
-  delete ui;
+DialogSettings::~DialogSettings() { delete ui; }
+
+void DialogSettings::openTab(int newValue) {
+  if (newValue > ui->tabWidget->count()) {
+    ui->tabWidget->setCurrentIndex(newValue);
+  }
 }
 
 void DialogSettings::on_pushButton_RestoreDefault_clicked() {
@@ -483,10 +492,10 @@ void DialogSettings::on_pushButton_SelectNNFolder_clicked() {
   }
 }
 
-void DialogSettings::on_pushButton_SelectNN_clicked()
-{
-  QString fn = QFileDialog::getOpenFileName(
-      this, tr("Select the standard Neural Net"), QDir::homePath(), tr("NeuralNet (*.NN)"));
+void DialogSettings::on_pushButton_SelectNN_clicked() {
+  QString fn =
+      QFileDialog::getOpenFileName(this, tr("Select the standard Neural Net"),
+                                   QDir::homePath(), tr("NeuralNet (*.NN)"));
   if (!fn.isEmpty()) {
     if (!fn.contains(tr(".NN"))) {
       fn.append(tr(".NN"));
@@ -496,7 +505,6 @@ void DialogSettings::on_pushButton_SelectNN_clicked()
   }
 }
 
-void DialogSettings::on_spinBox_NoShots_editingFinished()
-{
-    Settings->StandardNumberOfShots = ui->spinBox_NoShots->value();
+void DialogSettings::on_spinBox_NoShots_editingFinished() {
+  Settings->StandardNumberOfShots = ui->spinBox_NoShots->value();
 }

@@ -19,6 +19,10 @@ public:
   explicit DialogNN(QWidget *parent = 0, SoilMath::NN *neuralnet = nullptr, SoilAnalyzer::SoilSettings *settings = nullptr, DialogSettings *settingWindow = nullptr);
   ~DialogNN();
 
+private slots:
+
+  void on_pushButton_Settings_clicked();
+
 private:
   Ui::DialogNN *ui;
   DialogSettings *SettingsWindow = nullptr;

@@ -12,15 +12,15 @@ DialogNN::DialogNN(QWidget *parent, SoilMath::NN *neuralnet,
   }
   NeuralNet = neuralnet;
   if (settings == nullptr) {
-      settings = new SoilAnalyzer::SoilSettings;
-    }
+    settings = new SoilAnalyzer::SoilSettings;
+  }
   Settings = settings;
   if (settingsWindow == nullptr) {
-      settingsWindow = new DialogSettings;
-    }
+    settingsWindow = new DialogSettings;
+  }
   SettingsWindow = settingsWindow;
 
-    // Setup the Qplots
+  // Setup the Qplots
   ui->widget_NNError->addGraph();
   ui->widget_NNError->xAxis->setLabel("Generation [-]");
   ui->widget_NNError->yAxis->setLabel("Error [%]");
@@ -32,3 +32,8 @@ DialogNN::DialogNN(QWidget *parent, SoilMath::NN *neuralnet,
 }
 
 DialogNN::~DialogNN() { delete ui; }
+
+void DialogNN::on_pushButton_Settings_clicked() {
+  SettingsWindow->openTab(2);
+  SettingsWindow->show();
+}
