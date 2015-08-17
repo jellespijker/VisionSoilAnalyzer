@@ -128,4 +128,5 @@ DISTFILES += \
     Settings/Default.ini \
     NeuralNet/Default.NN \
     Settings/User.ini \
-    SoilSamples/Samples.VSA
+    SoilSamples/Eurogrit_B3_01__Cat.VSA \
+    SoilSamples/Gran_K1_0.5_2.5__01_Cat.VSA
