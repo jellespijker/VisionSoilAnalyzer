@@ -33,10 +33,9 @@ void QParticleDisplay::setSelectedParticle(int newValue) {
 
 void QParticleDisplay::SetSample(SoilAnalyzer::Sample *sample) {
   this->Sample = sample;
+  images.clear();
+  ui->widget->clear();
   ui->horizontalSlider->setMaximum(this->Sample->ParticlePopulation.size() - 1);
-  for (uint32_t i = 0; i < ui->widget->slideCount(); i++) {
-    ui->widget->removeSlide(0);
-  }
   for (uint32_t i = 0; i < this->Sample->ParticlePopulation.size(); i++) {
     images.push_back(
         ConvertParticleToQImage(&Sample->ParticlePopulation.at(i)));
@@ -51,7 +50,7 @@ QParticleDisplay::ConvertParticleToQImage(SoilAnalyzer::Particle *particle) {
   QImage dst(particle->BW.cols + 10, particle->BW.rows + 10,
              QImage::Format_RGB32);
   uint32_t nData = particle->BW.cols * particle->BW.rows;
-  uint32_t sData = ((dst.width() - 1)* 5) + 5;
+  uint32_t sData = ((dst.width() - 1) * 5) + 5;
   uchar *QDst = dst.bits();
   uchar *CVBW = particle->BW.data;
   uchar *CVRGB = particle->RGB.data;
