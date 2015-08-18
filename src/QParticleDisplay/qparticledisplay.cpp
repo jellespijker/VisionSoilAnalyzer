@@ -48,13 +48,28 @@ void QParticleDisplay::SetSample(SoilAnalyzer::Sample *sample) {
 
 QImage
 QParticleDisplay::ConvertParticleToQImage(SoilAnalyzer::Particle *particle) {
-  QImage dst(particle->BW.cols, particle->BW.rows,
-             QImage::Format_RGB32); // leak
+  QImage dst(particle->BW.cols + 10, particle->BW.rows + 10,
+             QImage::Format_RGB32);
   uint32_t nData = particle->BW.cols * particle->BW.rows;
+  uint32_t sData = ((dst.width() - 1)* 5) + 5;
   uchar *QDst = dst.bits();
   uchar *CVBW = particle->BW.data;
   uchar *CVRGB = particle->RGB.data;
+  for (uint32_t i = 0; i < sData; i++) {
+    *(QDst++) = 255;
+    *(QDst++) = 255;
+    *(QDst++) = 255;
+    *(QDst++) = 0;
+  }
   for (uint32_t i = 0; i < nData; i++) {
+    if ((i % particle->BW.cols) == 0) {
+      for (uint32_t j = 0; j < 10; j++) {
+        *(QDst++) = 255;
+        *(QDst++) = 255;
+        *(QDst++) = 255;
+        *(QDst++) = 0;
+      }
+    }
     if (CVBW[i]) {
       *(QDst++) = *(CVRGB);
       *(QDst++) = *(CVRGB + 1);
@@ -68,6 +83,12 @@ QParticleDisplay::ConvertParticleToQImage(SoilAnalyzer::Particle *particle) {
       *(QDst++) = 0;
       CVRGB += 3;
     }
+  }
+  for (uint32_t i = 0; i < sData; i++) {
+    *(QDst++) = 255;
+    *(QDst++) = 255;
+    *(QDst++) = 255;
+    *(QDst++) = 0;
   }
   return dst;
 }
