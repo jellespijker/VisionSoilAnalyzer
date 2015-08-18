@@ -24,6 +24,7 @@ Analyzer::Analyzer(Images_t *snapshots, Sample *results,
   } else {
     this->Settings = settings;
   }
+  NeuralNet.LoadState(Settings->NNlocation);
 }
 
 /*!
@@ -363,16 +364,14 @@ void Analyzer::GetFFD(Sample::ParticleVector_t &particalPopulation) {
  * \param particlePopulation
  */
 void Analyzer::GetPrediction(Sample::ParticleVector_t &particlePopulation) {
-  SoilMath::NN nn;
-  nn.LoadState(Settings->NNlocation);
   for_each(particlePopulation.begin(), particlePopulation.end(),
            [&](Particle &P) {
              if (P.isPreparedForAnalysis) {
                if (!P.isSmall) {
                  ComplexVect_t usedFFDescr(P.FFDescriptors.begin(),
                                            P.FFDescriptors.begin() +
-                                               nn.GetInputNeurons());
-                 P.Classification = nn.Predict(usedFFDescr);
+                                               NeuralNet.GetInputNeurons());
+                 P.Classification = NeuralNet.Predict(usedFFDescr);
                  P.isAnalysed = true;
                }
              }

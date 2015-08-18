@@ -68,7 +68,7 @@ void DialogNN::setupErrorGraph() {
   ui->widget_NNError->xAxis->setAutoTicks(false);
   ui->widget_NNError->xAxis->setTickVector(errorTicks);
   ui->widget_NNError->xAxis->setTickLabels(false);
-  ui->widget_NNError->yAxis->setScaleType(QCPAxis::stLogarithmic);
+  //ui->widget_NNError->yAxis->setScaleType(QCPAxis::stLogarithmic);
   ui->widget_NNError->replot();
 }
 
