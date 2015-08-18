@@ -18,7 +18,6 @@
 #include <boost/serialization/vector.hpp>
 #include <boost/iostreams/filter/zlib.hpp>
 #include <boost/iostreams/filtering_streambuf.hpp>
-#include "Mat_archive.h"
 #include "zlib.h"
 #include "soilanalyzerexception.h"
 

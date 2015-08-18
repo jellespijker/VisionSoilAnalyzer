@@ -11,6 +11,7 @@
 #include <algorithm>
 #include <stdint.h>
 #include <math.h>
+#include <vector>
 
 namespace SoilMath {
 inline uint16_t MinNotZero(uint16_t a, uint16_t b) {
@@ -98,6 +99,12 @@ static inline long float2intRound(double d) {
  */
 static inline float calcVolume(float A) {
   return (pow(A, 1.5)) / 10.6347f;
+}
+
+static inline std::vector<float> makeOutput(uint8_t value, uint32_t noNeurons) {
+  std::vector<float> retVal(noNeurons, -1);
+  retVal[value - 1] = 1;
+  return retVal;
 }
 
 /*!

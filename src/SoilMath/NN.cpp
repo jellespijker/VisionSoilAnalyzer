@@ -24,7 +24,12 @@ NN::NN(uint32_t inputneurons, uint32_t hiddenneurons, uint32_t outputneurons) {
   beta = 0.666;
 }
 
-NN::~NN() {}
+NN::~NN()
+{
+  if (optim != nullptr) {
+      delete optim;
+    }
+}
 
 void NN::LoadState(string filename) {
   std::ifstream ifs(filename.c_str());
@@ -42,6 +47,7 @@ Predict_t NN::PredictLearn(ComplexVect_t input, Weight_t inputweights,
                            Weight_t hiddenweights, uint32_t inputneurons,
                            uint32_t hiddenneurons, uint32_t outputneurons) {
   NN neural(inputneurons, hiddenneurons, outputneurons);
+  neural.studied = true;
   neural.SetInputWeights(inputweights);
   neural.SetHiddenWeights(hiddenweights);
   return neural.Predict(input);
@@ -106,10 +112,14 @@ Predict_t NN::Predict(ComplexVect_t input) {
 
 void NN::Learn(InputLearnVector_t input, OutputLearnVector_t cat,
                uint32_t noOfDescriptorsUsed __attribute__((unused))) {
-  SoilMath::GA optim(PredictLearn, inputNeurons, hiddenNeurons, outputNeurons);
-  optim.ELITISME = ElitismeUsedByGA;
-  optim.END_ERROR = EndErrorUsedByGA;
-  optim.MUTATIONRATE = MutationrateUsedByGA;
+  if (optim == nullptr) {
+      optim = new SoilMath::GA(PredictLearn, inputNeurons, hiddenNeurons, outputNeurons);
+    }
+  connect(optim, SIGNAL(learnErrorUpdate(double)), this, SIGNAL(learnErrorUpdate(double)));
+
+  optim->ELITISME = ElitismeUsedByGA;
+  optim->END_ERROR = EndErrorUsedByGA;
+  optim->MUTATIONRATE = MutationrateUsedByGA;
 
   ComplexVect_t inputTest;
   std::vector<Weight_t> weights;
@@ -117,7 +127,7 @@ void NN::Learn(InputLearnVector_t input, OutputLearnVector_t cat,
                       ((hiddenNeurons + 1) * outputNeurons),
                   0);
   // loop through each case and adjust the weights
-  optim.Evolve(input, weight,
+  optim->Evolve(input, weight,
                MinMaxWeight_t(MinWeightUSedByGa, MaxWeightUsedByGA), cat,
                MaxGenUsedByGA, PopulationSizeUsedByGA);
 

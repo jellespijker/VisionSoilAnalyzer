@@ -246,6 +246,7 @@ bool GA::SurvivalOfTheFittest(Population_t &pop, float &totalFitness) {
     i++;
   }
 
+  emit learnErrorUpdate(static_cast<double>(pop[0].Fitness));
   if (pop[0].Fitness < END_ERROR) {
     retVal = true;
   }

@@ -4,7 +4,8 @@
 #
 #-------------------------------------------------
 
-QT       -= core gui
+QT       += core
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 QMAKE_CXXFLAGS += -std=c++11
 
 TARGET = SoilVision
@@ -33,8 +34,7 @@ HEADERS += \
     EmptyImageException.h \
     ConversionNotSupportedException.h \
     Conversion.h \
-    ChannelMismatchException.h \
-    ../SoilMath/Mat_archive.h
+    ChannelMismatchException.h
 
 unix {
     target.path = $PWD/../../../build/install

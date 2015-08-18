@@ -18,13 +18,17 @@
 #include <algorithm>
 #include <chrono>
 
-#include "NN.h"
+//#include "NN.h"
 #include "SoilMathTypes.h"
 #include "MathException.h"
 
+#include <QtCore/QObject>
+
 namespace SoilMath {
 
-class GA {
+class GA : public QObject {
+  Q_OBJECT
+
 public:
   float MUTATIONRATE = 0.075f; /**< mutation rate*/
   uint32_t ELITISME = 4;       /**< total number of the elite bastard*/
@@ -94,6 +98,8 @@ public:
   void Evolve(const InputLearnVector_t &inputValues, Weight_t &weights,
               MinMaxWeight_t rangeweights, OutputLearnVector_t &goal,
               uint32_t maxGenerations = 200, uint32_t popSize = 30);
+signals:
+  void learnErrorUpdate(double newError);
 
 private:
   NNfunctionType NNfuction; /**< The Neural Net work function*/

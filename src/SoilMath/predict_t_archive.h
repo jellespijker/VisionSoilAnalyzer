@@ -13,6 +13,7 @@
 #include <boost/archive/binary_oarchive.hpp>
 #include <boost/serialization/access.hpp>
 #include <boost/serialization/vector.hpp>
+#include <boost/serialization/complex.hpp>
 #include "SoilMathTypes.h"
 
 namespace boost {

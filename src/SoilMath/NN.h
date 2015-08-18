@@ -22,13 +22,17 @@
 #include "SoilMathTypes.h"
 #include "FFT.h"
 
+#include <QtCore/QObject>
+
 namespace SoilMath {
 /*!
  * \brief The Neural Network class
  * \details This class is used to make prediction on large data set. Using self
  * learning algoritmes
  */
-class NN {
+class NN : public QObject {
+  Q_OBJECT
+
 public:
   /*!
  * \brief NN constructor for the Neural Net
@@ -145,7 +149,12 @@ public:
   bool studied =
       false; /**< a value indicating if the weights are a results of a
                 learning curve*/
+
+signals:
+  void learnErrorUpdate(double newError);
+
 private:
+  GA *optim = nullptr;
   std::vector<float> iNeurons; /**< a vector of input values, the bias is
                                   included, the bias is included and
                                     is the first value*/

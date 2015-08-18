@@ -4,11 +4,12 @@
 #
 #-------------------------------------------------
 
-QT       -= core gui
+QT       += core gui
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = SoilMath
 TEMPLATE = lib
-VERSION = 0.9.61
+VERSION = 0.9.7
 
 DEFINES += SOILMATH_LIBRARY
 QMAKE_CXXFLAGS += -std=c++11
@@ -17,8 +18,7 @@ unix:!macx: QMAKE_RPATHDIR += $$PWD/../../../build/install/
 SOURCES += \
     NN.cpp \
     GA.cpp \
-    FFT.cpp \
-    nnlearndataset.cpp
+    FFT.cpp
 
 HEADERS += \
     Stats.h \
@@ -30,7 +30,6 @@ HEADERS += \
     GA.h \
     FFT.h \
     CommonOperations.h \
-    nnlearndataset.h \
     predict_t_archive.h \
     Mat_archive.h \
     psd.h

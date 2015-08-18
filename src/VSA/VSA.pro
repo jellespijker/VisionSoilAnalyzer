@@ -2,6 +2,7 @@
 #
 # Project created by QtCreator 2015-08-07T16:50:24
 #
+#
 #-------------------------------------------------
 
 QT       += core gui
@@ -11,7 +12,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport multimedia multimed
 
 TARGET = VSA
 TEMPLATE = app
-VERSION = 0.2.1
+VERSION = 0.9.7
 
 unix:!macx: QMAKE_RPATHDIR += $$PWD/../../../build/install/
 
@@ -65,26 +66,26 @@ DEPENDPATH += $$PWD/../qcustomplot
 
 #NeuralNetFiles
 NNtarget.path += $${OUT_PWD}/NeuralNet
-NNtarget.files += $${PWD}/NeuralNet/*
+NNtarget.files += $${PWD}/NeuralNet/*.NN
 INSTALLS += NNtarget
 bNNtarget.path += $${PWD}/../../build/install/NeuralNet
-bNNtarget.files += $${PWD}/NeuralNet/*
+bNNtarget.files += $${PWD}/NeuralNet/*.NN
 INSTALLS += bNNtarget
 
 #SettingFiles
 INItarget.path += $${OUT_PWD}/Settings
-INItarget.files += $${PWD}/Settings/*
+INItarget.files += $${PWD}/Settings/*.ini
 INSTALLS += INItarget
 bINItarget.path += $$PWD/../../build/install/Settings
-bINItarget.files += $$PWD/Settings/*
+bINItarget.files += $$PWD/Settings/*.ini
 INSTALLS += bINItarget
 
 #SoilSamples
 IMGtarget.path += $${OUT_PWD}/SoilSamples
-IMGtarget.files += $${PWD}/SoilSamples/*
+IMGtarget.files += $${PWD}/SoilSamples/*.VSA
 INSTALLS += IMGtarget
 bIMGtarget.path += $${PWD}/../../build/install/SoilSamples
-bIMGtarget.files += $${PWD}/SoilSamples/*
+bIMGtarget.files += $${PWD}/SoilSamples/*.VSA
 INSTALLS += bIMGtarget
 
 #Images

@@ -27,7 +27,6 @@ HEADERS +=\
     particle.h \
     analyzer.h \
     soilanalyzerexception.h \
-    ../SoilMath/Mat_archive.h \
     soilanalyzer.h
 
 #opencv

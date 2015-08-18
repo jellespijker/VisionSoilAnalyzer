@@ -426,7 +426,7 @@ void VSAMainWindow::on_actionLoadSample_triggered() {
 
   QString fn = QFileDialog::getOpenFileName(
       this, tr("Open Sample"), QString::fromStdString(Settings->SampleFolder),
-      tr("Settings (*.VSA)"));
+      tr("Sample (*.VSA)"));
   if (!fn.isEmpty()) {
     if (!fn.contains(tr(".VSA"))) {
       fn.append(tr(".VSA"));
