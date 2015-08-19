@@ -119,7 +119,8 @@ VSAMainWindow::VSAMainWindow(QWidget *parent)
   ui->Qplot_PSD->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
   ui->Qplot_PSD->yAxis->grid()->setSubGridVisible(true);
 
-  connect(ui->Qplot_PSD, SIGNAL(mouseDoubleClick(QMouseEvent*)), this, SLOT(on_reset_graph(QMouseEvent*)));
+  connect(ui->Qplot_PSD, SIGNAL(mouseDoubleClick(QMouseEvent *)), this,
+          SLOT(on_reset_graph(QMouseEvent *)));
 
   // Setup the Roundness plot
   QCPPlotTitle *Roundnesstitle = new QCPPlotTitle(ui->QPlot_Roudness);
@@ -185,7 +186,8 @@ VSAMainWindow::VSAMainWindow(QWidget *parent)
   ui->QPlot_Angularity->xAxis->setRange(0, 7);
   ui->QPlot_Angularity->xAxis->setLabel("Count [-]");
   ui->QPlot_Angularity->xAxis->setLabelFont(QFont("sans", 8, QFont::Bold));
-  ui->QPlot_Angularity->xAxis->setTickLabelFont(QFont("sans", 8, QFont::Normal));
+  ui->QPlot_Angularity->xAxis->setTickLabelFont(
+      QFont("sans", 8, QFont::Normal));
   ui->QPlot_Angularity->yAxis->setLabel("Sphericity [-]");
   ui->QPlot_Angularity->yAxis->setLabelFont(QFont("sans", 8, QFont::Bold));
   ui->QPlot_Angularity->graph(0)->setPen(pdfPen);
@@ -325,9 +327,11 @@ void VSAMainWindow::on_actionNewSample_triggered() {
     }
   }
   Sample->ChangesSinceLastSave = true;
-  ui->widget_ParticleSelector->setDisabled(
-      false,
-      ui->widget_ParticleDisplay->SelectedParticle->Classification.Category);
+  if (Sample->ParticlePopulation.size() > 0) {
+    ui->widget_ParticleSelector->setDisabled(
+        false,
+        ui->widget_ParticleDisplay->SelectedParticle->Classification.Category);
+  }
 }
 
 void VSAMainWindow::TakeSnapShots() {
@@ -465,7 +469,8 @@ void VSAMainWindow::on_actionCalibrate_triggered() {
 }
 
 void VSAMainWindow::on_Classification_changed(int newValue) {
-  uint8_t *Cat = &ui->widget_ParticleDisplay->SelectedParticle->Classification.Category;
+  uint8_t *Cat =
+      &ui->widget_ParticleDisplay->SelectedParticle->Classification.Category;
   if ((*Cat - 1) % 6 != (newValue - 1) % 6) {
     Sample->ParticleChangedStateAngularity = true;
   }
@@ -487,8 +492,8 @@ void VSAMainWindow::on_actionAutomatic_Shape_Pediction_triggered(bool checked) {
 }
 
 void VSAMainWindow::on_reset_graph(QMouseEvent *e) {
-  ui->Qplot_PSD->xAxis->setRange(0,2);
-  ui->Qplot_PSD->yAxis->setRange(0,100);
+  ui->Qplot_PSD->xAxis->setRange(0, 2);
+  ui->Qplot_PSD->yAxis->setRange(0, 100);
   ui->Qplot_PSD->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
   ui->Qplot_PSD->replot();
 }
