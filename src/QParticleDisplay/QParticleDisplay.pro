@@ -45,3 +45,7 @@ unix:!macx: LIBS += -L$$PWD/../../build/install/ -lQOpenCVQT
 
 INCLUDEPATH += $$PWD/../QOpenCVQT
 DEPENDPATH += $$PWD/../QOpenCVQT
+
+unix:!macx: LIBS += -L$$PWD/../../build/install/ -lSoilVision
+INCLUDEPATH += $$PWD/../SoilVision
+DEPENDPATH += $$PWD/../SoilVision

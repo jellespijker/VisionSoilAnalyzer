@@ -8,6 +8,9 @@ QT       += core gui concurrent
 QMAKE_CXXFLAGS += -std=c++11
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+@
+CONFIG(release, debug|release):DEFINES += QT_NO_DEBUG_OUTPUT
+@
 
 TARGET = SoilAnalyzer
 TEMPLATE = lib
@@ -55,4 +58,5 @@ DEPENDPATH += $$PWD/../SoilVision
 
 target.path = $PWD/../../../build/install
 INSTALLS += target
+
 

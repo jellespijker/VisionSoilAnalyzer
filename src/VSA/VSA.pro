@@ -16,6 +16,10 @@ VERSION = 0.9.7
 
 unix:!macx: QMAKE_RPATHDIR += $$PWD/../../../build/install/
 
+@
+CONFIG(release, debug|release):DEFINES += QT_NO_DEBUG_OUTPUT
+@
+
 SOURCES += main.cpp\
         vsamainwindow.cpp \
     dialogsettings.cpp \

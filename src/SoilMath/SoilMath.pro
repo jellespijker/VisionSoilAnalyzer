@@ -15,6 +15,10 @@ DEFINES += SOILMATH_LIBRARY
 QMAKE_CXXFLAGS += -std=c++11
 unix:!macx: QMAKE_RPATHDIR += $$PWD/../../../build/install/
 
+@
+CONFIG(release, debug|release):DEFINES += QT_NO_DEBUG_OUTPUT
+@
+
 SOURCES += \
     NN.cpp \
     GA.cpp \
