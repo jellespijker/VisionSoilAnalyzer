@@ -23,9 +23,9 @@ GA::~GA() {}
 void GA::Evolve(const InputLearnVector_t &inputValues, Weight_t &weights,
                 MinMaxWeight_t rangeweights, OutputLearnVector_t &goal,
                 uint32_t maxGenerations, uint32_t popSize) {
-  minOptim = inputValues.size() * goal[0].OutputNeurons.size();
+  minOptim = goal[0].OutputNeurons.size();
   minOptim = -minOptim;
-  maxOptim = 3 * goal[0].OutputNeurons.size() * inputValues.size();
+  maxOptim = 2 * goal[0].OutputNeurons.size();
   oldElit = Elitisme;
   oldMutation = MutationRate;
   this->inputValues = inputValues;
@@ -140,7 +140,7 @@ void GA::Mutate(Population_t &pop) {
   std::default_random_engine genGen(seed);
   std::uniform_int_distribution<int> disGen(0, (GENE_MAX - 1));
 
-  QtConcurrent::blockingMap<Population_t>(pop, [&](PopMember_t &P){
+  QtConcurrent::blockingMap<Population_t>(pop, [&](PopMember_t &P) {
     for (uint32_t j = 0; j < P.weightsGen.size(); j++) {
       if (dis(gen) < MutationRate) {
         P.weightsGen[j][disGen(genGen)].flip();
@@ -151,46 +151,39 @@ void GA::Mutate(Population_t &pop) {
 
 void GA::GrowToAdulthood(Population_t &pop, float &totalFitness) {
 
-  QtConcurrent::blockingMap<Population_t>(
-      pop, [&](PopMember_t &P) {
-        for (uint32_t j = 0; j < P.weightsGen.size(); j++) {
-          P.weights.push_back(
-              ConvertToValue<float>(P.weightsGen[j], rangeweights));
-          }
-          Weight_t iWeight(P.weights.begin(),
-                           P.weights.begin() +
-                               ((inputneurons + 1) * hiddenneurons));
-          Weight_t hWeight(P.weights.begin() +
-                               ((inputneurons + 1) * hiddenneurons),
-                           P.weights.end());
+  QtConcurrent::blockingMap<Population_t>(pop, [&](PopMember_t &P) {
+    // std::for_each(pop.begin(), pop.end(), [&](PopMember_t &P) {
+    for (uint32_t j = 0; j < P.weightsGen.size(); j++) {
+      P.weights.push_back(ConvertToValue<float>(P.weightsGen[j], rangeweights));
+    }
+    Weight_t iWeight(P.weights.begin(),
+                     P.weights.begin() + ((inputneurons + 1) * hiddenneurons));
+    Weight_t hWeight(P.weights.begin() + ((inputneurons + 1) * hiddenneurons),
+                     P.weights.end());
 
-          for (uint32_t j = 0; j < inputValues.size(); j++) {
-            Predict_t results =
-                NNfuction(inputValues[j], iWeight, hWeight, inputneurons,
-                          hiddenneurons, outputneurons);
-            // See issue #85
-            bool allGood = true;
-            bool oneGood = true;
-            float fitness = 0.0;
-            for (uint32_t k = 0; k < results.OutputNeurons.size(); k++) {
-              bool resultSign = std::signbit(results.OutputNeurons[k]);
-              bool goalSign = std::signbit(goal[j].OutputNeurons[k]);
-              fitness += (resultSign == goalSign) ? 1 : -1;
-              if (resultSign != goalSign) {
-                if (goalSign == false) {
-                  oneGood = false;
-                }
-                allGood = false;
-              }
-            }
-            fitness += (allGood) ? results.OutputNeurons.size() : 0;
-            fitness += (oneGood) ? results.OutputNeurons.size() : 0;
-            P.Fitness += fitness;
-          }
-      });
+    for (uint32_t j = 0; j < inputValues.size(); j++) {
+      Predict_t results = NNfuction(inputValues[j], iWeight, hWeight,
+                                    inputneurons, hiddenneurons, outputneurons);
+      // See issue #85
+      bool allGood = true;
+      float fitness = 0.0;
+      for (uint32_t k = 0; k < results.OutputNeurons.size(); k++) {
+        bool resultSign = std::signbit(results.OutputNeurons[k]);
+        bool goalSign = std::signbit(goal[j].OutputNeurons[k]);
+        fitness += results.OutputNeurons[k] / goal[j].OutputNeurons[k];
+        if (resultSign != goalSign) {
+          allGood = false;
+        }
+      }
+      fitness += (allGood) ? results.OutputNeurons.size() : 0;
+      P.Fitness += fitness;
+    }
+  });
 
-  for_each(pop.begin(), pop.end(),
-           [&](PopMember_t &P) { totalFitness += P.Fitness; });
+  for_each(pop.begin(), pop.end(), [&](PopMember_t &P) {
+    P.Fitness /= inputValues.size();
+    totalFitness += P.Fitness;
+  });
 }
 
 bool GA::SurvivalOfTheFittest(Population_t &pop, float &totalFitness) {
