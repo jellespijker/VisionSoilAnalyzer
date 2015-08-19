@@ -24,6 +24,8 @@
 #include "SoilMath.h"
 
 #include <QtCore/QObject>
+#include <QThread>
+#include <QtConcurrent>
 
 namespace SoilAnalyzer {
 class Analyzer : public QObject {
