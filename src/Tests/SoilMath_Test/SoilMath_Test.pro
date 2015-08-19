@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += testlib
+QT       += testlib concurrent
 QMAKE_CXXFLAGS += -std=c++11
 
 QT       -= gui

@@ -63,6 +63,8 @@ private Q_SLOTS:
   void testCase_benchmark_quickPow();
   void testCase_benchmark_fastPow();
   void testCase_benchmark_normalPow();
+
+  void testCase_NN_predict();
 };
 
 SoilMath_Test::SoilMath_Test() {}
@@ -248,6 +250,22 @@ void SoilMath_Test::testCase_benchmark_fastPow() {
 
 void SoilMath_Test::testCase_benchmark_normalPow() {
   QBENCHMARK { std::pow(127, 2); }
+}
+
+void SoilMath_Test::testCase_NN_predict() {
+  SoilMath::NN neuralnet;
+  neuralnet.SetInputNeurons(2);
+  neuralnet.SetHiddenNeurons(3);
+  neuralnet.SetOutputNeurons(3);
+  neuralnet.SetBeta(0.3);
+  Weight_t iWeight = {10, 1, 4, 5, 0, 1, 1, 2, 3};
+  neuralnet.SetInputWeights(iWeight);
+  Weight_t hWeight = {3, 4, 0, 5, 1, 0, 3, 2, 0, 2, 4, 5};
+  neuralnet.SetHiddenWeights(hWeight);
+  neuralnet.studied = true;
+
+  ComplexVect_t input = {std::complex<float>(1,1), std::complex<float>(0,0)};
+  neuralnet.Predict(input);
 }
 
 QTEST_APPLESS_MAIN(SoilMath_Test)
