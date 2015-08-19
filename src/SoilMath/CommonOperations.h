@@ -113,6 +113,7 @@ static inline std::vector<float> makeOutput(uint8_t value, uint32_t noNeurons) {
  * \return
  */
 static inline float calcDiameter(float A) {
-  return sqrt((4 * A) / M_PI);
+  //return sqrt((4 * A) / M_PI);
+  return 1.1283791670955 * sqrt(A);
 }
 }

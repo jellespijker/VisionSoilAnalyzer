@@ -27,18 +27,20 @@
 #include <QThread>
 #include <QtConcurrent>
 
+#include "Vision.h"
+
 namespace SoilAnalyzer {
 class Analyzer : public QObject {
   Q_OBJECT
 
 public:
   bool PredictShape = true;
-  float CurrentSIfactor = 0.00007;
+  float CurrentSIfactor = 0.0111915;
   bool SIfactorDet = false;
   struct Image_t {
     cv::Mat FrontLight;
     cv::Mat BackLight;
-    float SIPixelFactor = 0.00007;
+    float SIPixelFactor = 0.0111915;
   }; /*!< */
 
   typedef std::vector<Image_t> Images_t; /*!< */

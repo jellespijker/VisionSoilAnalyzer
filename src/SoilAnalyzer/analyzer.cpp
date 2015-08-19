@@ -383,24 +383,24 @@ void Analyzer::GetPrediction(Sample::ParticleVector_t &particlePopulation) {
 }
 
 float Analyzer::CalibrateSI(float SI, Mat &img) {
-  //  Vision::Conversion greyConv(img.clone());
-  //  greyConv.Convert(Vision::Conversion::RGB,
-  //  Vision::Conversion::Intensity);
-  //  Vision::Enhance blur(greyConv.ProcessedImg);
-  //  blur.Blur(9);
-  cv::Mat grey;
-  cv::cvtColor(img, grey, CV_BGR2GRAY);
-  cv::GaussianBlur(grey, grey, cv::Size(9, 9), 2, 2);
-  SHOW_DEBUG_IMG(grey, uchar, 255, "blurCalibrate", false);
-  std::vector<cv::Vec3f> circles;
-  cv::HoughCircles(grey, circles, CV_HOUGH_GRADIENT, 1, 500, 30, 15, 750, 0);
-  float maxCircle = 0.0;
-  for_each(circles.begin(), circles.end(), [&](cv::Vec3f &F) {
-    if (F[2] > maxCircle) {
-      maxCircle = F[2];
-    }
-  });
-  CurrentSIfactor = SI / (maxCircle * 2);
+  Vision::Conversion greyConv(img);
+  greyConv.Convert(Vision::Conversion::RGB, Vision::Conversion::Intensity);
+  Vision::Segment segment(greyConv.ProcessedImg);
+  segment.ConvertToBW(Vision::Segment::Dark);
+  segment.GetBlobList(true);
+  uint32_t maxCircle = 0;
+  for_each(segment.BlobList.begin(), segment.BlobList.end(),
+           [&](Vision::Segment::Blob_t &B) {
+             if (B.ROI.height > maxCircle) {
+               maxCircle = B.ROI.height;
+             }
+             if (B.ROI.width > maxCircle) {
+               maxCircle = B.ROI.width;
+             }
+           });
+  qDebug() << "Maximum circle in pixels: " << maxCircle;
+  CurrentSIfactor = SI / maxCircle;
+  qDebug() << "Current SI factor : " << CurrentSIfactor;
   return CurrentSIfactor;
 }
 }

@@ -71,7 +71,7 @@ float Particle::GetSiDiameter() {
       throw Exception::SoilAnalyzerException(
           EXCEPTION_PARTICLE_NOT_ANALYZED, EXCEPTION_PARTICLE_NOT_ANALYZED_NR);
     }
-    SIDiameter = SoilMath::calcDiameter(PixelArea * SIPixelFactor);
+    SIDiameter = SoilMath::calcDiameter(PixelArea) * SIPixelFactor;
   }
   return SIDiameter;
 }
