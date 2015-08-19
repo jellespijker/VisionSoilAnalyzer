@@ -4,12 +4,12 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui concurrent
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = SoilMath
 TEMPLATE = lib
-VERSION = 0.9.7
+VERSION = 0.9.8
 
 DEFINES += SOILMATH_LIBRARY
 QMAKE_CXXFLAGS += -std=c++11

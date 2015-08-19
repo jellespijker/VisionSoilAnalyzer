@@ -26,6 +26,10 @@
 
 #include <QtCore/QObject>
 #include <QDebug>
+#include <QThread>
+#include <QtConcurrent>
+
+#include <boost/bind.hpp>
 
 namespace SoilMath {
 
@@ -35,7 +39,7 @@ class GA : public QObject {
 public:
   float MutationRate = 0.075f; /**< mutation rate*/
   uint32_t Elitisme = 4;       /**< total number of the elite bastard*/
-  float EndError = 0.001f;    /**< acceptable error between last itteration*/
+  float EndError = 0.001f;     /**< acceptable error between last itteration*/
   bool Revolution = true;
 
   /*!
@@ -69,28 +73,6 @@ public:
    * error is acceptable
    * \param inputValues complex vector with a reference to the inputvalues
    * \param weights reference to the vector of weights which will be optimized
-   * \param prevWeights pointer to the pevious weight results
-   * \param rangeweights pointer to the range of weights, currently it doesn't
-   * support indivudal ranges
-   * this is because of the crossing
-   * \param goal target value towards the Neural Network prediction function
-   * will be optimized
-   * \param maxGenerations maximum number of itterations default value is 200
-   * \param popSize maximum number of population, this should be an even number
-   */
-  void Evolve(const ComplexVect_t &inputValues, Weight_t &weights,
-              std::vector<Weight_t> &prevWeights, MinMaxWeight_t rangeweights,
-              Predict_t goal, uint32_t maxGenerations = 200,
-              uint32_t popSize = 30);
-
-  /*!
-   * \brief Evolve Darwin would be proud!!! This function creates a population
-   * and itterates
-   * through the generation till the maximum number off itterations has been
-   * reached of the
-   * error is acceptable
-   * \param inputValues complex vector with a reference to the inputvalues
-   * \param weights reference to the vector of weights which will be optimized
    * \param rangeweights reference to the range of weights, currently it doesn't
    * support indivudal ranges
    * this is because of the crossing
@@ -111,11 +93,15 @@ private:
   uint32_t hiddenneurons;   /**< the total number of hidden neurons*/
   uint32_t outputneurons;   /**< the total number of output neurons*/
 
+  MinMaxWeight_t rangeweights;
+  InputLearnVector_t inputValues;
+  OutputLearnVector_t goal;
+
   float minOptim = 0;
   float maxOptim = 0;
   uint32_t oldElit = 0;
   float oldMutation = 0.;
-  std::list<float> last10Gen;
+  std::list<double> last10Gen;
   uint32_t currentGeneration = 0;
   bool revolutionOngoing = false;
 
@@ -128,8 +114,7 @@ private:
    * \param popSize maximum number of population, this should be an even number
    * \return
    */
-  Population_t Genesis(const Weight_t &weights, MinMaxWeight_t rangeweights,
-                       uint32_t popSize);
+  Population_t Genesis(const Weight_t &weights, uint32_t popSize);
 
   /*!
    * \brief CrossOver a private function where the partners mate with each other
@@ -159,32 +144,13 @@ private:
    * weight against
    * the goal and this weight determine the fitness of the population member
    * \param pop reference to the population
-   * \param inputValues complex vector with a reference to the inputvalues
-   * \param rangeweights pointer to the range of weights, currently it doesn't
-   * support indivudal ranges
-   * \param goal a Predict_t type with the expected value
-   * \param totalFitness a reference to the total population fitness
-   */
-  void GrowToAdulthood(Population_t &pop, const ComplexVect_t &inputValues,
-                       MinMaxWeight_t rangeweights, Predict_t goal,
-                       float &totalFitness);
-
-  /*!
-   * \brief GrowToAdulthood a private function where the new population members
-   * serve as the
-   * the input for the Neural Network prediction function. The results are
-   * weight against
-   * the goal and this weight determine the fitness of the population member
-   * \param pop reference to the population
    * \param inputValues a InputLearnVector_t with a reference to the inputvalues
    * \param rangeweights pointer to the range of weights, currently it doesn't
    * support indivudal ranges
    * \param goal a Predict_t type with the expected value
    * \param totalFitness a reference to the total population fitness
    */
-  void GrowToAdulthood(Population_t &pop, const InputLearnVector_t &inputValues,
-                       MinMaxWeight_t rangeweights, OutputLearnVector_t &goal,
-                       float &totalFitness);
+  void GrowToAdulthood(Population_t &pop, float &totalFitness);
 
   /*!
    * \brief SurvivalOfTheFittest a private function where a battle to the death

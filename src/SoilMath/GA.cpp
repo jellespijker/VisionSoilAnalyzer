@@ -20,57 +20,26 @@ GA::GA(NNfunctionType nnfunction, uint32_t inputneurons, uint32_t hiddenneurons,
 
 GA::~GA() {}
 
-void GA::Evolve(const ComplexVect_t &inputValues, Weight_t &weights,
-                std::vector<Weight_t> &prevWeights, MinMaxWeight_t rangeweights,
-                Predict_t goal, uint32_t maxGenerations, uint32_t popSize) {
-  // Create the population
-  uint32_t NOprevPopUsed =
-      prevWeights.size() < popSize ? prevWeights.size() : popSize;
-  Population_t pop = Genesis(weights, rangeweights, popSize - NOprevPopUsed);
-  for (uint32_t i = 0; i < NOprevPopUsed; i++) {
-    PopMember_t newMember;
-    newMember.weights = prevWeights[i];
-    for (uint32_t j = 0; j < newMember.weights.size(); j++) {
-      newMember.weightsGen.push_back(
-          ConvertToGenome<float>(newMember.weights[j], rangeweights));
-    }
-    pop.push_back(newMember);
-  }
-  minOptim = inputValues.size();
-  minOptim = -minOptim;
-  maxOptim = 11 * inputValues.size();
-  oldElit = Elitisme;
-  oldMutation = MutationRate;
-  float totalFitness = 0.0;
-  for (uint32_t i = 0; i < maxGenerations; i++) {
-    CrossOver(pop);
-    Mutate(pop);
-    totalFitness = 0.0;
-    GrowToAdulthood(pop, inputValues, rangeweights, goal, totalFitness);
-    if (SurvivalOfTheFittest(pop, totalFitness)) {
-      break;
-    }
-  }
-
-  weights = pop[0].weights;
-}
-
 void GA::Evolve(const InputLearnVector_t &inputValues, Weight_t &weights,
                 MinMaxWeight_t rangeweights, OutputLearnVector_t &goal,
                 uint32_t maxGenerations, uint32_t popSize) {
-  // Create the population
-  Population_t pop = Genesis(weights, rangeweights, popSize);
-  float totalFitness = 0.0;
-  minOptim = inputValues.size();
+  minOptim = inputValues.size() * goal[0].OutputNeurons.size();
   minOptim = -minOptim;
-  maxOptim = 11 * inputValues.size();
+  maxOptim = 3 * goal[0].OutputNeurons.size() * inputValues.size();
   oldElit = Elitisme;
   oldMutation = MutationRate;
+  this->inputValues = inputValues;
+  this->rangeweights = rangeweights;
+  this->goal = goal;
+
+  // Create the population
+  Population_t pop = Genesis(weights, popSize);
+  float totalFitness = 0.0;
   for (uint32_t i = 0; i < maxGenerations; i++) {
     CrossOver(pop);
     Mutate(pop);
     totalFitness = 0.0;
-    GrowToAdulthood(pop, inputValues, rangeweights, goal, totalFitness);
+    GrowToAdulthood(pop, totalFitness);
     if (SurvivalOfTheFittest(pop, totalFitness)) {
       break;
     }
@@ -78,8 +47,7 @@ void GA::Evolve(const InputLearnVector_t &inputValues, Weight_t &weights,
   weights = pop[0].weights;
 }
 
-Population_t GA::Genesis(const Weight_t &weights, MinMaxWeight_t rangeweights,
-                         uint32_t popSize) {
+Population_t GA::Genesis(const Weight_t &weights, uint32_t popSize) {
   if (popSize < 1)
     return Population_t();
 
@@ -166,86 +134,63 @@ void GA::CrossOver(Population_t &pop) {
 
 void GA::Mutate(Population_t &pop) {
   unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
-
   std::default_random_engine gen(seed);
   std::uniform_real_distribution<float> dis(0, 1);
 
   std::default_random_engine genGen(seed);
   std::uniform_int_distribution<int> disGen(0, (GENE_MAX - 1));
 
-  for (uint32_t i = 0; i < pop.size(); i++) {
-    for (uint32_t j = 0; j < pop[i].weightsGen.size(); j++) {
+  QtConcurrent::blockingMap<Population_t>(pop, [&](PopMember_t &P){
+    for (uint32_t j = 0; j < P.weightsGen.size(); j++) {
       if (dis(gen) < MutationRate) {
-        pop[i].weightsGen[j][disGen(genGen)].flip();
+        P.weightsGen[j][disGen(genGen)].flip();
       }
     }
-  }
+  });
 }
 
-void GA::GrowToAdulthood(Population_t &pop, const ComplexVect_t &inputValues,
-                         MinMaxWeight_t rangeweights, Predict_t goal,
-                         float &totalFitness) {
-  for (uint32_t i = 0; i < pop.size(); i++) {
-    for (uint32_t j = 0; j < pop[i].weightsGen.size(); j++) {
-      pop[i].weights.push_back(
-          ConvertToValue<float>(pop[i].weightsGen[j], rangeweights));
-    }
-    Weight_t iWeight(pop[i].weights.begin(),
-                     pop[i].weights.begin() +
-                         ((inputneurons + 1) * hiddenneurons));
-    Weight_t hWeight(pop[i].weights.begin() +
-                         ((inputneurons + 1) * hiddenneurons),
-                     pop[i].weights.end());
-    Predict_t results = NNfuction(inputValues, iWeight, hWeight, inputneurons,
-                                  hiddenneurons, outputneurons);
-    for (uint32_t j = 0; j < results.OutputNeurons.size(); j++) {
-      pop[i].Fitness -= results.OutputNeurons[j] / goal.OutputNeurons[j];
-    }
-    pop[i].Fitness += results.OutputNeurons.size();
-    totalFitness += pop[i].Fitness;
-  }
-}
+void GA::GrowToAdulthood(Population_t &pop, float &totalFitness) {
 
-void GA::GrowToAdulthood(Population_t &pop,
-                         const InputLearnVector_t &inputValues,
-                         MinMaxWeight_t rangeweights, OutputLearnVector_t &goal,
-                         float &totalFitness) {
-  for (uint32_t i = 0; i < pop.size(); i++) {
-    for (uint32_t j = 0; j < pop[i].weightsGen.size(); j++) {
-      pop[i].weights.push_back(
-          ConvertToValue<float>(pop[i].weightsGen[j], rangeweights));
-    }
-    Weight_t iWeight(pop[i].weights.begin(),
-                     pop[i].weights.begin() +
-                         ((inputneurons + 1) * hiddenneurons));
-    Weight_t hWeight(pop[i].weights.begin() +
-                         ((inputneurons + 1) * hiddenneurons),
-                     pop[i].weights.end());
-    for (uint32_t j = 0; j < inputValues.size(); j++) {
-      Predict_t results = NNfuction(inputValues[j], iWeight, hWeight,
-                                    inputneurons, hiddenneurons, outputneurons);
-      // See issue #85
-      bool allGood = true;
-      bool oneGood = true;
-      float fitness = 0.0;
-      for (uint32_t k = 0; k < results.OutputNeurons.size(); k++) {
-        bool resultSign = std::signbit(results.OutputNeurons[k]);
-        bool goalSign = std::signbit(goal[j].OutputNeurons[k]);
-        fitness += (resultSign == goalSign) ? 1 : -1;
-        if (resultSign != goalSign) {
-          if (goalSign == false) {
-            oneGood = false;
+  QtConcurrent::blockingMap<Population_t>(
+      pop, [&](PopMember_t &P) {
+        for (uint32_t j = 0; j < P.weightsGen.size(); j++) {
+          P.weights.push_back(
+              ConvertToValue<float>(P.weightsGen[j], rangeweights));
           }
-          allGood = false;
-        }
-      }
-      fitness /= results.OutputNeurons.size();
-      fitness += (allGood) ? 5 : 0;
-      fitness += (oneGood) ? 5 : 0;
-      pop[i].Fitness += fitness;
-    }
-    totalFitness += pop[i].Fitness;
-  }
+          Weight_t iWeight(P.weights.begin(),
+                           P.weights.begin() +
+                               ((inputneurons + 1) * hiddenneurons));
+          Weight_t hWeight(P.weights.begin() +
+                               ((inputneurons + 1) * hiddenneurons),
+                           P.weights.end());
+
+          for (uint32_t j = 0; j < inputValues.size(); j++) {
+            Predict_t results =
+                NNfuction(inputValues[j], iWeight, hWeight, inputneurons,
+                          hiddenneurons, outputneurons);
+            // See issue #85
+            bool allGood = true;
+            bool oneGood = true;
+            float fitness = 0.0;
+            for (uint32_t k = 0; k < results.OutputNeurons.size(); k++) {
+              bool resultSign = std::signbit(results.OutputNeurons[k]);
+              bool goalSign = std::signbit(goal[j].OutputNeurons[k]);
+              fitness += (resultSign == goalSign) ? 1 : -1;
+              if (resultSign != goalSign) {
+                if (goalSign == false) {
+                  oneGood = false;
+                }
+                allGood = false;
+              }
+            }
+            fitness += (allGood) ? results.OutputNeurons.size() : 0;
+            fitness += (oneGood) ? results.OutputNeurons.size() : 0;
+            P.Fitness += fitness;
+          }
+      });
+
+  for_each(pop.begin(), pop.end(),
+           [&](PopMember_t &P) { totalFitness += P.Fitness; });
 }
 
 bool GA::SurvivalOfTheFittest(Population_t &pop, float &totalFitness) {
@@ -283,10 +228,10 @@ bool GA::SurvivalOfTheFittest(Population_t &pop, float &totalFitness) {
 
   // Viva la Revolution
   if (currentGeneration > 9) {
-    float avg = 0;
-    for_each(last10Gen.begin(), last10Gen.end(), [&](float &G) { avg += G; });
+    double avg = 0;
+    for_each(last10Gen.begin(), last10Gen.end(), [&](double &G) { avg += G; });
     avg /= 10;
-    float minMax[2] = {avg * 0.98, avg * 1.02};
+    double minMax[2] = {avg * 0.98, avg * 1.02};
     if (learnError > minMax[0] && learnError < minMax[1]) {
       if (!revolutionOngoing) {
         qDebug() << "Viva la revolution!";
@@ -296,7 +241,7 @@ bool GA::SurvivalOfTheFittest(Population_t &pop, float &totalFitness) {
         MutationRate = 0.25;
         revolutionOngoing = true;
       }
-    } else if (revolution) {
+    } else if (revolutionOngoing) {
       qDebug() << "Peace has been restort";
       Elitisme = oldElit;
       MutationRate = oldMutation;
