@@ -117,9 +117,9 @@ void NN::Learn(InputLearnVector_t input, OutputLearnVector_t cat,
     }
   connect(optim, SIGNAL(learnErrorUpdate(double)), this, SIGNAL(learnErrorUpdate(double)));
 
-  optim->ELITISME = ElitismeUsedByGA;
-  optim->END_ERROR = EndErrorUsedByGA;
-  optim->MUTATIONRATE = MutationrateUsedByGA;
+  optim->Elitisme = ElitismeUsedByGA;
+  optim->EndError = EndErrorUsedByGA;
+  optim->MutationRate = MutationrateUsedByGA;
 
   ComplexVect_t inputTest;
   std::vector<Weight_t> weights;

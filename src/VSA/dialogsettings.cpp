@@ -152,7 +152,7 @@ DialogSettings::DialogSettings(QWidget *parent,
   ui->label_NNimage->setScaledContents(true);
 
   ui->spinBox_InputNeurons->setValue(NN->GetInputNeurons());
-  ui->spinBox_HiddenNeurons->setValue(NN->GetInputNeurons());
+  ui->spinBox_HiddenNeurons->setValue(NN->GetHiddenNeurons());
   ui->spinBox_OutputNeurons->setValue(NN->GetOutputNeurons());
   ui->spinBox_Elitisme->setValue(NN->ElitismeUsedByGA);
   ui->spinBox_MaxGen->setValue(NN->MaxGenUsedByGA);
@@ -163,6 +163,7 @@ DialogSettings::DialogSettings(QWidget *parent,
   ui->doubleSpinBox_maxWeight->setValue(NN->MaxWeightUsedByGA);
   ui->doubleSpinBox_MinWeight->setValue(NN->MinWeightUSedByGa);
   ui->checkBox_PredictShape->setChecked(Settings->PredictTheShape);
+  ui->checkBox_revolt->setChecked(Settings->Revolution);
 
   // Setup the preference tab
   ui->lineEdit_NeuralNetFolder->setText(
@@ -512,4 +513,9 @@ void DialogSettings::on_spinBox_NoShots_editingFinished() {
 
 void DialogSettings::on_checkBox_PredictShape_clicked(bool checked) {
   Settings->PredictTheShape = checked;
+}
+
+void DialogSettings::on_checkBox_revolt_clicked(bool checked)
+{
+    Settings->Revolution = checked;
 }

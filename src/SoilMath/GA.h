@@ -17,12 +17,15 @@
 #include <string>
 #include <algorithm>
 #include <chrono>
+#include <math.h>
+#include <list>
 
 //#include "NN.h"
 #include "SoilMathTypes.h"
 #include "MathException.h"
 
 #include <QtCore/QObject>
+#include <QDebug>
 
 namespace SoilMath {
 
@@ -30,9 +33,10 @@ class GA : public QObject {
   Q_OBJECT
 
 public:
-  float MUTATIONRATE = 0.075f; /**< mutation rate*/
-  uint32_t ELITISME = 4;       /**< total number of the elite bastard*/
-  float END_ERROR = 0.001f;    /**< acceptable error between last itteration*/
+  float MutationRate = 0.075f; /**< mutation rate*/
+  uint32_t Elitisme = 4;       /**< total number of the elite bastard*/
+  float EndError = 0.001f;    /**< acceptable error between last itteration*/
+  bool Revolution = true;
 
   /*!
  * \brief GA Standard constructor
@@ -106,6 +110,14 @@ private:
   uint32_t inputneurons;    /**< the total number of input neurons*/
   uint32_t hiddenneurons;   /**< the total number of hidden neurons*/
   uint32_t outputneurons;   /**< the total number of output neurons*/
+
+  float minOptim = 0;
+  float maxOptim = 0;
+  uint32_t oldElit = 0;
+  float oldMutation = 0.;
+  std::list<float> last10Gen;
+  uint32_t currentGeneration = 0;
+  bool revolutionOngoing = false;
 
   /*!
    * \brief Genesis private function which is the spark of live, using a random

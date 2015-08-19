@@ -127,6 +127,8 @@ private slots:
 
   void on_checkBox_PredictShape_clicked(bool checked);
 
+  void on_checkBox_revolt_clicked(bool checked);
+
 private:
   Ui::DialogSettings *ui;
   Hardware::Microscope *Microscope;

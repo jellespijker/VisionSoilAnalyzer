@@ -102,6 +102,7 @@ public:
   std::string StandardPrinter = "PDF printer";
   uint32_t StandardNumberOfShots = 10;
   bool PredictTheShape = true;
+  bool Revolution = true;
 private:
   friend class boost::serialization::access;
   template <class Archive>
@@ -152,6 +153,7 @@ private:
       ar &BOOST_SERIALIZATION_NVP(StandardPrinter);
       ar &BOOST_SERIALIZATION_NVP(StandardNumberOfShots);
       ar &BOOST_SERIALIZATION_NVP(PredictTheShape);
+      ar &BOOST_SERIALIZATION_NVP(Revolution);
     }
   }
 };

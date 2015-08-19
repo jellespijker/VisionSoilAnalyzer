@@ -36,6 +36,11 @@ void GA::Evolve(const ComplexVect_t &inputValues, Weight_t &weights,
     }
     pop.push_back(newMember);
   }
+  minOptim = inputValues.size();
+  minOptim = -minOptim;
+  maxOptim = 11 * inputValues.size();
+  oldElit = Elitisme;
+  oldMutation = MutationRate;
   float totalFitness = 0.0;
   for (uint32_t i = 0; i < maxGenerations; i++) {
     CrossOver(pop);
@@ -56,6 +61,11 @@ void GA::Evolve(const InputLearnVector_t &inputValues, Weight_t &weights,
   // Create the population
   Population_t pop = Genesis(weights, rangeweights, popSize);
   float totalFitness = 0.0;
+  minOptim = inputValues.size();
+  minOptim = -minOptim;
+  maxOptim = 11 * inputValues.size();
+  oldElit = Elitisme;
+  oldMutation = MutationRate;
   for (uint32_t i = 0; i < maxGenerations; i++) {
     CrossOver(pop);
     Mutate(pop);
@@ -165,7 +175,7 @@ void GA::Mutate(Population_t &pop) {
 
   for (uint32_t i = 0; i < pop.size(); i++) {
     for (uint32_t j = 0; j < pop[i].weightsGen.size(); j++) {
-      if (dis(gen) < MUTATIONRATE) {
+      if (dis(gen) < MutationRate) {
         pop[i].weightsGen[j][disGen(genGen)].flip();
       }
     }
@@ -214,12 +224,26 @@ void GA::GrowToAdulthood(Population_t &pop,
     for (uint32_t j = 0; j < inputValues.size(); j++) {
       Predict_t results = NNfuction(inputValues[j], iWeight, hWeight,
                                     inputneurons, hiddenneurons, outputneurons);
+      // See issue #85
+      bool allGood = true;
+      bool oneGood = true;
+      float fitness = 0.0;
       for (uint32_t k = 0; k < results.OutputNeurons.size(); k++) {
-        pop[i].Fitness -= results.OutputNeurons[k] / goal[j].OutputNeurons[k];
+        bool resultSign = std::signbit(results.OutputNeurons[k]);
+        bool goalSign = std::signbit(goal[j].OutputNeurons[k]);
+        fitness += (resultSign == goalSign) ? 1 : -1;
+        if (resultSign != goalSign) {
+          if (goalSign == false) {
+            oneGood = false;
+          }
+          allGood = false;
+        }
       }
-      pop[i].Fitness += results.OutputNeurons.size();
+      fitness /= results.OutputNeurons.size();
+      fitness += (allGood) ? 5 : 0;
+      fitness += (oneGood) ? 5 : 0;
+      pop[i].Fitness += fitness;
     }
-    pop[i].Fitness /= inputValues.size();
     totalFitness += pop[i].Fitness;
   }
 }
@@ -231,23 +255,61 @@ bool GA::SurvivalOfTheFittest(Population_t &pop, float &totalFitness) {
   unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
   std::default_random_engine gen(seed);
 
-  std::sort(pop.begin(), pop.end(), PopMemberSort);
+  std::sort(pop.begin(), pop.end(),
+            [](const PopMember_t &L, const PopMember_t &R) {
+              return L.Fitness < R.Fitness;
+            });
 
-  uint32_t i = ELITISME;
+  float maxFitness = pop[pop.size() - 1].Fitness * pop.size();
+  uint32_t i = Elitisme;
   while (pop.size() > decimationCount) {
-    if (i >= pop.size()) {
-      i = ELITISME;
+    if (i == pop.size()) {
+      i = Elitisme;
     }
-    std::uniform_real_distribution<float> dis(0, totalFitness);
-    if (dis(gen) < pop[i].Fitness) {
-      pop.erase(pop.begin() + i--);
+    std::uniform_real_distribution<float> dis(0, maxFitness);
+    if (dis(gen) > pop[i].Fitness) {
       totalFitness -= pop[i].Fitness;
+      pop.erase(pop.begin() + i);
     }
     i++;
   }
 
-  emit learnErrorUpdate(static_cast<double>(pop[0].Fitness));
-  if (pop[0].Fitness < END_ERROR) {
+  std::sort(pop.begin(), pop.end(),
+            [](const PopMember_t &L, const PopMember_t &R) {
+              return L.Fitness > R.Fitness;
+            });
+
+  float learnError = 1 - ((pop[0].Fitness - minOptim) / (maxOptim - minOptim));
+
+  // Viva la Revolution
+  if (currentGeneration > 9) {
+    float avg = 0;
+    for_each(last10Gen.begin(), last10Gen.end(), [&](float &G) { avg += G; });
+    avg /= 10;
+    float minMax[2] = {avg * 0.98, avg * 1.02};
+    if (learnError > minMax[0] && learnError < minMax[1]) {
+      if (!revolutionOngoing) {
+        qDebug() << "Viva la revolution!";
+        oldElit = Elitisme;
+        Elitisme = 0;
+        oldMutation = MutationRate;
+        MutationRate = 0.25;
+        revolutionOngoing = true;
+      }
+    } else if (revolution) {
+      qDebug() << "Peace has been restort";
+      Elitisme = oldElit;
+      MutationRate = oldMutation;
+      revolutionOngoing = false;
+    }
+    last10Gen.pop_front();
+    last10Gen.push_back(learnError);
+  } else {
+    last10Gen.push_back(learnError);
+  }
+  currentGeneration++;
+  emit learnErrorUpdate(static_cast<double>(learnError));
+  if (learnError < EndError) {
     retVal = true;
   }
   return retVal;

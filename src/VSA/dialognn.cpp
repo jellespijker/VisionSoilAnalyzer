@@ -50,8 +50,8 @@ void DialogNN::on_pushButton_Settings_clicked() {
 void DialogNN::on_learnErrorUpdate(double newError) {
   ui->widget_NNError->graph(0)->addData(currentGeneration, newError);
   currentGeneration += 1;
-  // ui->widget_NNError->yAxis->rescale();
-  ui->widget_NNError->yAxis->setRange(0, 100);
+  ui->widget_NNError->yAxis->rescale();
+  //ui->widget_NNError->yAxis->setRange(0, 20);
   ui->widget_NNError->replot();
 }
 
