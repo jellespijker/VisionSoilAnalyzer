@@ -91,6 +91,7 @@ void DialogNN::on_pushButton_Learn_clicked() {
   OutputLearnVector_t OutputVec;
   makeLearnVectors(InputVec, OutputVec);
   NeuralNet->Learn(InputVec, OutputVec, NeuralNet->GetInputNeurons());
+  setupErrorGraph();
 }
 
 void DialogNN::makeLearnVectors(InputLearnVector_t &input,
@@ -107,7 +108,7 @@ void DialogNN::makeLearnVectors(InputLearnVector_t &input,
                  }
                  input.push_back(ffdesc);
                  Predict_t predict = P.Classification;
-                 predict.OutputNeurons = SoilMath::makeOutput(P.Classification.Category, NeuralNet->GetOutputNeurons());
+                 predict.OutputNeurons = SoilMath::makeOutput(P.GetAngularity(), NeuralNet->GetOutputNeurons());
                  output.push_back(predict);
                }
              });
