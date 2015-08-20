@@ -39,10 +39,11 @@ QReportGenerator::QReportGenerator(QWidget *parent,
   // Setup the layout
   TitleFormat.setAlignment(Qt::AlignCenter);
   TitleFont.setBold(true);
-  TitleFont.setPointSize(24);
+  TitleFont.setPointSize(36);
   TitleTextFormat.setFont(TitleFont);
 
   HeaderFormat.setAlignment(Qt::AlignCenter);
+  HeaderFormat.setPageBreakPolicy(QTextFormat::PageBreak_AlwaysBefore);
   HeaderFormat.setTopMargin(40);
   HeaderFormat.setBottomMargin(10);
   HeaderFont.setBold(true);
@@ -73,6 +74,7 @@ QReportGenerator::QReportGenerator(QWidget *parent,
   // Setup the Title
   rCurs.setBlockFormat(TitleFormat);
   rCurs.insertText("Soil Report", TitleTextFormat);
+  rCurs.insertBlock();
 
   // Setup the general Text
   rCurs.insertBlock(ImageGraphFormat);
@@ -105,6 +107,7 @@ QReportGenerator::QReportGenerator(QWidget *parent,
   rCurs.insertText(QString::number(Sample->Depth), GtxtFormat);
   rCurs.insertText(" [m]", GtxtFormat);
   rCurs.movePosition(QTextCursor::NextBlock);
+  rCurs.insertBlock();
 
   // Insert the Google map
   getLocationMap(Sample->Latitude, Sample->Longtitude);
@@ -154,7 +157,7 @@ QReportGenerator::QReportGenerator(QWidget *parent,
   // Setup the PSD
   rCurs.insertBlock(ImageGraphFormat);
   rCurs.insertText(QString(QChar::ObjectReplacementCharacter),
-                   QCPDocumentObject::generatePlotFormat(PSD, 600, 400));
+                   QCPDocumentObject::generatePlotFormat(PSD, 600, 350));
 
   rCurs.insertBlock(ImageGraphFormat);
   QTextTable *PSDdata = rCurs.insertTable(16, 3, GeneralTextTableFormat);
@@ -348,7 +351,7 @@ void QReportGenerator::getLocationMap(double &latitude, double &longtitude) {
   locationURL.append(QString::number(latitude));
   locationURL.append(",");
   locationURL.append(QString::number(longtitude));
-  locationURL.append("&zoom=17&size=600x400&maptype=hybrid&&format=png&visual_"
+  locationURL.append("&zoom=17&size=600x750&maptype=hybrid&&format=png&visual_"
                      "refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:S%"
                      "7C");
   locationURL.append(QString::number(latitude));
@@ -369,11 +372,44 @@ void QReportGenerator::on_locationImageDownloaded(QNetworkReply *reply) {
     mapLocation->load("Maps/SampleLocation.png");
   }
 
-  QTextBlock location = Report->findBlockByNumber(13);
+  QTextBlock location = Report->findBlockByNumber(15);
   QTextCursor insertMap(location);
   insertMap.setBlockFormat(ImageGraphFormat);
   insertMap.insertImage(*mapLocation);
   insertMap.insertBlock();
+  insertMap.insertHtml("<br>");
 }
 
 QReportGenerator::~QReportGenerator() { delete ui; }
+
+void QReportGenerator::on_actionSave_triggered()
+{
+  QString fn = QFileDialog::getSaveFileName(
+      this, tr("Save Report"), QString::fromStdString(Settings->SampleFolder),
+      tr("Report (*.odf)"));
+  if (!fn.isEmpty()) {
+    if (!fn.contains(tr(".odf"))) {
+      fn.append(tr(".odf"));
+    }
+    QTextDocumentWriter m_write;
+    m_write.setFileName(fn);
+    m_write.setFormat("odf");
+    m_write.write(Report);
+    }
+}
+
+void QReportGenerator::on_actionExport_to_PDF_triggered()
+{
+  QString fn = QFileDialog::getSaveFileName(
+      this, tr("Save Report"), QString::fromStdString(Settings->SampleFolder),
+      tr("Report (*.pdf)"));
+  if (!fn.isEmpty()) {
+    if (!fn.contains(tr(".pdf"))) {
+      fn.append(tr(".pdf"));
+    }
+    QPrinter printer;
+    printer.setOutputFormat(QPrinter::PdfFormat);
+    printer.setOutputFileName(fn);
+    Report->print(&printer);
+    }
+}

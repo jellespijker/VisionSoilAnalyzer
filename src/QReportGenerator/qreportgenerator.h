@@ -9,6 +9,8 @@
 #include <QTextBlock>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
+#include <QTextDocumentWriter>
+#include <QPrinter>
 
 #include "soilanalyzer.h"
 #include "SoilMath.h"
@@ -37,6 +39,10 @@ public:
 
 private slots:
   void on_locationImageDownloaded(QNetworkReply *reply);
+
+  void on_actionSave_triggered();
+
+  void on_actionExport_to_PDF_triggered();
 
 private:
   Ui::QReportGenerator *ui;
