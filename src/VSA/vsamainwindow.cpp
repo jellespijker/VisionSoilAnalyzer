@@ -497,3 +497,12 @@ void VSAMainWindow::on_reset_graph(QMouseEvent *e) {
   ui->Qplot_PSD->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
   ui->Qplot_PSD->replot();
 }
+
+void VSAMainWindow::on_actionReport_Generator_triggered()
+{
+  if (ReportGenWindow == nullptr) {
+      ReportGenWindow = new QReportGenerator(this, Sample, Settings, ui->Qplot_PSD);
+    }
+  ReportGenWindow->show();
+
+}

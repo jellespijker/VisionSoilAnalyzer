@@ -45,28 +45,49 @@ LIBS += -L/usr/lib/x86_64-linux-gnu/ -lboost_filesystem -lboost_serialization -l
 
 #SoilMath lib
 unix:!macx: LIBS += -L$$PWD/../../build/install/ -lSoilMath
-
 INCLUDEPATH += $$PWD/../SoilMath
 DEPENDPATH += $$PWD/../SoilMath
 
 #SoilHardware lib
 unix:!macx: LIBS += -L$$PWD/../../build/install/ -lSoilHardware
-
 INCLUDEPATH += $$PWD/../SoilHardware
 DEPENDPATH += $$PWD/../SoilHardware
 
 #SoilVision lib
 unix:!macx: LIBS += -L$$PWD/../../build/install/ -lSoilVision
-
 INCLUDEPATH += $$PWD/../SoilVision
 DEPENDPATH += $$PWD/../SoilVision
 
 #QCustomplot lib
 DEFINES += QCUSTOMPLOT_USE_LIBRARY
 unix:!macx: LIBS += -L$$PWD/../../build/install/ -lqcustomplot
-
 INCLUDEPATH += $$PWD/../qcustomplot
 DEPENDPATH += $$PWD/../qcustomplot
+
+#QParticleSelector
+unix:!macx: LIBS += -L$$PWD/../../build/install/ -lQParticleSelector
+INCLUDEPATH += $$PWD/../QParticleSelector
+DEPENDPATH += $$PWD/../QParticleSelector
+
+#QParticleDisplay
+unix:!macx: LIBS += -L$$PWD/../../build/install/ -lQParticleDisplay
+INCLUDEPATH += $$PWD/../QParticleDisplay
+DEPENDPATH += $$PWD/../QParticleDisplay
+
+#QOpenCVQT
+unix:!macx: LIBS += -L$$PWD/../../build/install/ -lQOpenCVQT
+INCLUDEPATH += $$PWD/../QOpenCVQT
+DEPENDPATH += $$PWD/../QOpenCVQT
+
+#QSoilAnalyzer
+unix:!macx: LIBS += -L$$PWD/../../build/install/ -lSoilAnalyzer
+INCLUDEPATH += $$PWD/../SoilAnalyzer
+DEPENDPATH += $$PWD/../SoilAnalyzer
+
+#QReportGenerator
+unix:!macx: LIBS += -L$$PWD/../../build/install/ -lQReportGenerator
+INCLUDEPATH += $$PWD/../QReportGenerator
+DEPENDPATH += $$PWD/../QReportGenerator
 
 #NeuralNetFiles
 NNtarget.path += $${OUT_PWD}/NeuralNet
@@ -108,26 +129,6 @@ unix {
     target.path = $PWD/../../../build/install
     INSTALLS += target
 }
-
-unix:!macx: LIBS += -L$$PWD/../../build/install/ -lQParticleSelector
-
-INCLUDEPATH += $$PWD/../QParticleSelector
-DEPENDPATH += $$PWD/../QParticleSelector
-
-unix:!macx: LIBS += -L$$PWD/../../build/install/ -lQParticleDisplay
-
-INCLUDEPATH += $$PWD/../QParticleDisplay
-DEPENDPATH += $$PWD/../QParticleDisplay
-
-unix:!macx: LIBS += -L$$PWD/../../build/install/ -lQOpenCVQT
-
-INCLUDEPATH += $$PWD/../QOpenCVQT
-DEPENDPATH += $$PWD/../QOpenCVQT
-
-unix:!macx: LIBS += -L$$PWD/../../build/install/ -lSoilAnalyzer
-
-INCLUDEPATH += $$PWD/../SoilAnalyzer
-DEPENDPATH += $$PWD/../SoilAnalyzer
 
 DISTFILES += \
     Settings/Default.ini \

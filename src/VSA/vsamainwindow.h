@@ -17,6 +17,7 @@
 #include "dialognn.h"
 #include "dialogsettings.h"
 #include "qparticleselector.h"
+#include "qreportgenerator.h"
 
 namespace Ui {
 class VSAMainWindow;
@@ -54,6 +55,8 @@ private slots:
 
   void on_reset_graph(QMouseEvent * e);
 
+  void on_actionReport_Generator_triggered();
+
 private:
   Ui::VSAMainWindow *ui;
   DialogSettings *settingsWindow = nullptr;
@@ -63,6 +66,7 @@ private:
   QMessageBox *SaveMeMessage = nullptr;
   QMessageBox *BacklightMessage = nullptr;
   QMessageBox *ShakeItBabyMessage = nullptr;
+  QReportGenerator *ReportGenWindow = nullptr;
 
   SoilAnalyzer::SoilSettings *Settings = nullptr;
   Hardware::Microscope *Microscope = nullptr;
