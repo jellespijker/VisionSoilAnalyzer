@@ -29,8 +29,10 @@ public:
   SoilAnalyzer::Sample *Sample = nullptr;
   SoilAnalyzer::SoilSettings *Settings = nullptr;
   QCustomPlot *PSD = nullptr;
+  QCustomPlot *Roundness = nullptr;
+  QCustomPlot *Angularity = nullptr;
 
-  explicit QReportGenerator(QWidget *parent = 0, SoilAnalyzer::Sample *sample = nullptr, SoilAnalyzer::SoilSettings *settings = nullptr, QCustomPlot *psd = nullptr);
+  explicit QReportGenerator(QWidget *parent = 0, SoilAnalyzer::Sample *sample = nullptr, SoilAnalyzer::SoilSettings *settings = nullptr, QCustomPlot *psd = nullptr, QCustomPlot *roundness = nullptr, QCustomPlot *angularity = nullptr);
   ~QReportGenerator();
 
 private slots:
@@ -42,18 +44,28 @@ private:
   void getLocationMap(double &latitude, double &longtitude);
 
   QImage *mapLocation = nullptr;
-  QTextCursor *ReportCursor = nullptr;
 
-  // Text formats
-  QTextBlockFormat *TitleFormat = nullptr;
-  QTextCharFormat *TitleTextFormat = nullptr;
-  QFont *TitleFont = nullptr;
-  QTextBlockFormat *GeneralFormat = nullptr;
-  QTextCharFormat *GeneralTextFormat = nullptr;
-  QFont *GeneralFont = nullptr;
-  QTextCharFormat *GeneralFieldTextFormat = nullptr;
-  QFont *FieldFont = nullptr;
-  QTextListFormat *GeneralSampleList = nullptr;
+  QTextCursor rCurs;
+
+  // Layout formats
+  QTextBlockFormat TitleFormat;
+  QTextBlockFormat HeaderFormat;
+  QTextBlockFormat GeneralFormat;
+  QTextBlockFormat ImageGraphFormat;
+
+  QTextCharFormat TitleTextFormat;
+  QTextCharFormat HeaderTextFormat;
+  QTextCharFormat GtxtFormat;
+  QTextCharFormat GFieldtxtFormat;
+
+  QTextListFormat GeneralSampleList;
+  QTextTableFormat GeneralTextTableFormat;
+
+
+  QFont TitleFont;
+  QFont HeaderFont;
+  QFont GeneralFont;
+  QFont FieldFont;
 };
 
 #endif // QREPORTGENERATOR_H

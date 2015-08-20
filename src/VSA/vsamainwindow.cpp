@@ -501,7 +501,7 @@ void VSAMainWindow::on_reset_graph(QMouseEvent *e) {
 void VSAMainWindow::on_actionReport_Generator_triggered()
 {
   if (ReportGenWindow == nullptr) {
-      ReportGenWindow = new QReportGenerator(this, Sample, Settings, ui->Qplot_PSD);
+      ReportGenWindow = new QReportGenerator(this, Sample, Settings, ui->Qplot_PSD, ui->QPlot_Roudness, ui->QPlot_Angularity);
     }
   ReportGenWindow->show();
 
