@@ -33,7 +33,7 @@ public:
     uint16_t rightX; /*!< Right X coordinate*/
     uint16_t rightY; /*!< Right Y coordinate*/
     Rect(uint16_t lx, uint16_t ly, uint16_t rx, uint16_t ry)
-        : leftX(lx), leftY(ly), rightX(rx), rightY(ry){};
+        : leftX(lx), leftY(ly), rightX(rx), rightY(ry){}
   } Rect_t;
 
   typedef std::vector<Vision::Segment::Rect_t> RectList_t;
@@ -46,7 +46,9 @@ public:
     cv::Rect ROI;  /*!< Coordinates for the blob in the original picture as a
                       cv::Rect*/
     uint32_t Area; /*!< Calculated stats of the blob*/
-    Blob(uint16_t label, uint32_t area) : Label(label), Area(area){};
+    cv::Point_<double> Centroid;
+    double Theta;
+    Blob(uint16_t label, uint32_t area) : Label(label), Area(area){}
   } Blob_t;
 
   typedef std::vector<Blob_t> BlobList_t;

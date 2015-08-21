@@ -48,7 +48,6 @@ public:
   SoilMath::PSD PSD; /*!< The Particle Size Distribution*/
   ucharStat_t Roundness;
   ucharStat_t Angularity;
-  // ucharStat_t Shape; /*!< The Shape classification distribution*/
   floatStat_t CIELab; /*!< The statistical CIE Lab color data*/
   floatStat_t RI;     /*!< The statistical Redness Index data*/
 

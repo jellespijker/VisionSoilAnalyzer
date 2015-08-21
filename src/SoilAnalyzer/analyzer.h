@@ -14,8 +14,7 @@
 #include <opencv2/core.hpp>
 #include <opencv2/imgproc.hpp>
 #include <vector>
-
-#include <boost/bind.hpp>
+#include <cmath>
 
 #include "sample.h"
 #include "soilsettings.h"
@@ -85,7 +84,7 @@ private:
   void GetParticles(std::vector<cv::Mat> &BW, Images_t *snapshots,
                     Sample::ParticleVector_t &partPopulation);
   void GetParticlesFromBlobList(Vision::Segment::BlobList_t &bloblist,
-                                Image_t *snapshot, cv::Mat &edge,
+                                Image_t *snapshot,
                                 Sample::ParticleVector_t &partPopulation);
 
   void CleanUpMatVector(std::vector<cv::Mat> &mv);

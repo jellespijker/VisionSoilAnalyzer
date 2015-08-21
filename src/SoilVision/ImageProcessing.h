@@ -63,6 +63,10 @@ public:
   Mat OriginalImg;
   Mat ProcessedImg;
 
+  static void getOrientented(Mat &BW, cv::Point_<double> &centroid,
+                             double &theta);
+  static void RotateImg(Mat &src, Mat &dst, double &theta, cv::Point_<double> &Centroid, Rect &ROI);
+
   double currentProg = 0.;
   double ProgStep = 0.;
 
@@ -144,7 +148,7 @@ public:
 
   static cv::Mat WhiteBackground(const cv::Mat &src) {
     cv::Mat dst;
-    cv::floodFill(src, dst, cv::Point(0,0), cv::Scalar(255,255,255));
+    cv::floodFill(src, dst, cv::Point(0, 0), cv::Scalar(255, 255, 255));
     return dst;
   }
 

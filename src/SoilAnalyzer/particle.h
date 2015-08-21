@@ -26,12 +26,18 @@ class Particle {
 public:
   Particle();
 
+  struct Point {
+    double x;
+    double y;
+  };
+
   uint32_t ID; /*!< The particle ID*/
 
   cv::Mat BW;   /*!< The binary image of the particle*/
   cv::Mat Edge; /*!< The binary edge image of the particle*/
   cv::Mat RGB;  /*!< The RGB image of the particle*/
 
+  Point Centroid= {0,0};
   std::vector<Complex_t> FFDescriptors; /*!< The Fast Fourier Descriptors
                                            describing the contour in the
                                            Frequency domain*/
@@ -73,7 +79,15 @@ private:
     if (version > 1) {
       ar &isSmall;
       ar &SIDiameter;
+      ar &Centroid.x;
+      ar &Centroid.y;
     }
+    else {
+        isSmall = false;
+        SIDiameter = GetSiDiameter();
+        Centroid.x = 0;
+        Centroid.y = 0;
+      }
   }
 };
 }

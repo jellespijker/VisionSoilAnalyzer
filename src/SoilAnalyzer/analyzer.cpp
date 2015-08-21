@@ -44,10 +44,11 @@ void Analyzer::PrepImages() {
   CleanUpMatVector(intensityVector);
 
   GetParticles(BWVector, Snapshots, Results->ParticlePopulation);
-  Results->isPreparedForAnalysis = true;
 
   CleanUpMatVector(BWVector);
   CleanUpMatVector(Snapshots);
+
+  Results->isPreparedForAnalysis = true;
 }
 
 void Analyzer::Analyse(Images_t *snapshots, Sample *results,
@@ -308,10 +309,8 @@ void Analyzer::GetParticles(std::vector<Mat> &BW, Images_t *snapshots,
     Vision::Segment prepBW(BW[i]);
     prepBW.GetBlobList();
     emit on_progressUpdate(currentProgress++);
-    prepBW.GetEdges();
-    emit on_progressUpdate(currentProgress++);
     GetParticlesFromBlobList(prepBW.BlobList, &(snapshots->at(i)),
-                             prepBW.ProcessedImg, partPopulation);
+                             partPopulation);
     emit on_progressUpdate(currentProgress++);
   }
 }
@@ -324,16 +323,21 @@ void Analyzer::GetParticles(std::vector<Mat> &BW, Images_t *snapshots,
  * \param partPopulation
  */
 void Analyzer::GetParticlesFromBlobList(
-    Vision::Segment::BlobList_t &bloblist, Image_t *snapshot, Mat &edge,
+    Vision::Segment::BlobList_t &bloblist, Image_t *snapshot,
     Sample::ParticleVector_t &partPopulation) {
   for_each(bloblist.begin(), bloblist.end(), [&](Vision::Segment::Blob_t &B) {
     Particle part;
     part.ID = currentParticleID++;
-    part.BW = B.Img;
     part.PixelArea = B.Area;
-    part.Edge = Vision::Segment::CopyMat<uchar>(edge(B.ROI), B.Img, CV_8UC1);
-    part.RGB = Vision::Segment::CopyMat<uchar>(snapshot->FrontLight(B.ROI),
-                                               B.Img, CV_8UC3).clone();
+    Vision::Segment::getOrientented(B.Img, B.Centroid, B.Theta);
+    cv::Mat RGB = Vision::Segment::CopyMat<uchar>(snapshot->FrontLight(B.ROI),
+                                                  B.Img, CV_8UC3).clone();
+    cv::Rect ROI;
+    Vision::Segment::RotateImg(B.Img, part.BW, B.Theta, B.Centroid ,ROI);
+    Vision::Segment::RotateImg(RGB, part.RGB, B.Theta, B.Centroid ,ROI);
+    Vision::Segment edgeSeg(part.BW);
+    edgeSeg.GetEdgesEroding();
+    part.Edge = edgeSeg.ProcessedImg.clone();
     part.SIPixelFactor = snapshot->SIPixelFactor;
     part.isPreparedForAnalysis = false;
     partPopulation.push_back(part);

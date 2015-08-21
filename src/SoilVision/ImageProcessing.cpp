@@ -45,6 +45,70 @@ std::vector<Mat> ImageProcessing::extractChannel(const Mat &src) {
   return chans;
 }
 
+void ImageProcessing::getOrientented(cv::Mat &BW, cv::Point_<double> &centroid,
+                                     double &theta) {
+  cv::Moments Mu = cv::moments(BW, true);
+
+  centroid.x = Mu.m10 / Mu.m00;
+  centroid.y = Mu.m01 / Mu.m00;
+
+  theta = 0;
+  double muPrime20 = (Mu.m20 / Mu.m00) - pow(centroid.x, 2);
+  double muPrime02 = (Mu.m02 / Mu.m00) - pow(centroid.y, 2);
+  double diffmuprime2 = muPrime20 - muPrime02;
+  if (diffmuprime2 != 0) {
+    double muPrime11 = (Mu.m11 / Mu.m00) - (centroid.x * centroid.y);
+    theta = 0.5 * atan((2 * muPrime11) / diffmuprime2);
+  }
+}
+
+void ImageProcessing::RotateImg(Mat &src, Mat &dst, double &theta,
+                                cv::Point_<double> &Centroid, cv::Rect &ROI) {
+  cv::Mat temp;
+  temp.setTo(0);
+  double alpha = cos(theta);
+  double beta = sin(theta);
+  double dx = (src.cols / 2) - Centroid.x;
+  double dy = (src.cols / 2) - Centroid.y;
+  double rotData[2][3] {{alpha, beta, alpha * dx + beta * dy + Centroid.x},
+                     {-beta, alpha, alpha * dy + beta * dx + Centroid.y}};
+  cv::Mat totalrot(2, 3, CV_64FC1, rotData);
+
+  cv::warpAffine(src, temp, totalrot, cv::Size(src.rows * 2, src.cols * 2), INTER_LANCZOS4);
+  // determine the actual ROI
+  if (src.channels() == 1) {
+    uchar *O = temp.data;
+    uint32_t nData = temp.rows * temp.cols;
+    cv::Point minP;
+    minP.x = temp.rows;
+    minP.y = temp.cols;
+    cv::Point maxP(0, 0);
+    int X, Y;
+    for (uint32_t i = 0; i < nData; i++) {
+      if (O[i] != 0) {
+        Y = floor(i / temp.cols);
+        X = (i % temp.cols);
+        if (X < minP.x) {
+          minP.x = X;
+        }
+        if (Y < minP.y) {
+          minP.y = Y;
+        }
+        if (X > maxP.x) {
+          maxP.x = X;
+        }
+        if (Y > maxP.y) {
+          maxP.y = Y;
+        }
+      }
+    }
+    ROI = cv::Rect(minP, maxP);
+  }
+
+  // Todo translate the Centroid postion
+  dst = temp(ROI).clone();
+}
+
 boost::signals2::connection
 ImageProcessing::connect_Progress(const Progress_t::slot_type &subscriber) {
   return prog_sig.connect(subscriber);
