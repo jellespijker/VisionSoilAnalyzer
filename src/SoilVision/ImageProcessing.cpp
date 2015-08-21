@@ -64,7 +64,7 @@ void ImageProcessing::getOrientented(cv::Mat &BW, cv::Point_<double> &centroid,
 
   double term1 = (muPrime20 + muPrime02) /2;
   double term2 = sqrt(4 * pow(muPrime11, 2) + pow(diffmuprime2, 2)) / 2;
-  eccentricty = 1 - sqrt(1-(term1 - term2)/ (term1 + term2));
+  eccentricty = sqrt(1-(term1 - term2)/ (term1 + term2));
 }
 
 void ImageProcessing::RotateImg(Mat &src, Mat &dst, double &theta,
@@ -81,8 +81,8 @@ void ImageProcessing::RotateImg(Mat &src, Mat &dst, double &theta,
                        {-beta, alpha, alpha * dy + beta * dx + Centroid.y}};
   cv::Mat totalrot(2, 3, CV_64FC1, rotData);
 
-  cv::warpAffine(src, temp, totalrot, cv::Size(src.rows * 2, src.cols * 2),
-                 INTER_LANCZOS4);
+  cv::warpAffine(src, temp, totalrot, cv::Size(src.rows * 2.5, src.cols * 2.5),
+                 INTER_LINEAR);
   // determine the actual ROI
   cv::Point minP(0, 0);
   if (src.channels() == 1) {

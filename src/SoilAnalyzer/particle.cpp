@@ -85,4 +85,11 @@ uint8_t Particle::GetRoundness() {
   uint8_t roundness = ((Classification.Category - 1) / 6) + 1;
   return roundness;
 }
+
+void Particle::SetRoundness() {
+  uint8_t ang = GetAngularity() - 1;
+  Classification.Category +=
+      ang + (static_cast<uint8_t>(floor(Eccentricty / 0.33)) * 6);
+  Classification.ManualSet = true;
+}
 }

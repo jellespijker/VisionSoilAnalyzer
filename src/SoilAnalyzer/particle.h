@@ -51,6 +51,8 @@ public:
   uint8_t GetRoundness();
   uint8_t GetAngularity();
 
+  void SetRoundness();
+
   void Save(const std::string &filename);
   void Load(const std::string &filename);
 
