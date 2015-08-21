@@ -107,7 +107,7 @@ VSAMainWindow::VSAMainWindow(QWidget *parent)
   ui->Qplot_PSD->graph(0)->setPen(binPen);
 
   ui->Qplot_PSD->xAxis->setLabel("Particle size [mm]");
-  ui->Qplot_PSD->xAxis->setRange(0.01, 2);
+  ui->Qplot_PSD->xAxis->setRange(0.01, 10);
   ui->Qplot_PSD->xAxis->setAutoTicks(false);
   ui->Qplot_PSD->xAxis->setTickVector(QVector<double>::fromStdVector(PSDTicks));
   ui->Qplot_PSD->xAxis->setTickLabelRotation(30);
@@ -498,11 +498,11 @@ void VSAMainWindow::on_reset_graph(QMouseEvent *e) {
   ui->Qplot_PSD->replot();
 }
 
-void VSAMainWindow::on_actionReport_Generator_triggered()
-{
+void VSAMainWindow::on_actionReport_Generator_triggered() {
   if (ReportGenWindow == nullptr) {
-      ReportGenWindow = new QReportGenerator(this, Sample, Settings, ui->Qplot_PSD, ui->QPlot_Roudness, ui->QPlot_Angularity);
-    }
+    ReportGenWindow =
+        new QReportGenerator(this, Sample, Settings, ui->Qplot_PSD,
+                             ui->QPlot_Roudness, ui->QPlot_Angularity);
+  }
   ReportGenWindow->show();
-
 }

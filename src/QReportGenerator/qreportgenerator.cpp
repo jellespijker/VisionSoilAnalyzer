@@ -209,7 +209,7 @@ QReportGenerator::QReportGenerator(QWidget *parent,
   rCurs.movePosition(QTextCursor::NextCell);
   rCurs.insertText(QString::number(Sample->PSD.bins[8]), GtxtFormat);
   rCurs.movePosition(QTextCursor::NextCell);
-  rCurs.insertText("0.18 [mm]", GFieldtxtFormat);
+  rCurs.insertText("0.18", GFieldtxtFormat);
   rCurs.movePosition(QTextCursor::NextCell);
   rCurs.insertText(QString::number(Sample->PSD.CFD[7]), GtxtFormat);
   rCurs.movePosition(QTextCursor::NextCell);
