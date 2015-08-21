@@ -64,7 +64,7 @@ public:
   Mat ProcessedImg;
 
   static void getOrientented(Mat &BW, cv::Point_<double> &centroid,
-                             double &theta);
+                             double &theta, double &eccentricty);
   static void RotateImg(Mat &src, Mat &dst, double &theta, cv::Point_<double> &Centroid, Rect &ROI);
 
   double currentProg = 0.;

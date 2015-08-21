@@ -329,7 +329,7 @@ void Analyzer::GetParticlesFromBlobList(
     Particle part;
     part.ID = currentParticleID++;
     part.PixelArea = B.Area;
-    Vision::Segment::getOrientented(B.Img, B.Centroid, B.Theta);
+    Vision::Segment::getOrientented(B.Img, B.Centroid, B.Theta, part.Eccentricty);
     cv::Mat RGB = Vision::Segment::CopyMat<uchar>(snapshot->FrontLight(B.ROI),
                                                   B.Img, CV_8UC3).clone();
     cv::Rect ROI;

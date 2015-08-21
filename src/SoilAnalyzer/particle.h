@@ -37,13 +37,14 @@ public:
   cv::Mat Edge; /*!< The binary edge image of the particle*/
   cv::Mat RGB;  /*!< The RGB image of the particle*/
 
-  Point Centroid= {0,0};
+  Point Centroid = {0, 0};
   std::vector<Complex_t> FFDescriptors; /*!< The Fast Fourier Descriptors
                                            describing the contour in the
                                            Frequency domain*/
   Predict_t Classification;             /*!< The classification prediction*/
-  float SIPixelFactor = 0.0111915; /*!< The conversion factor from pixel to SI*/
-  uint32_t PixelArea = 0;    /*!< The total area of the binary image*/
+  double SIPixelFactor = 0.0111915; /*!< The conversion factor from pixel to SI*/
+  uint32_t PixelArea = 0;          /*!< The total area of the binary image*/
+  double Eccentricty = 1;
 
   float GetSIVolume();
   float GetSiDiameter();
@@ -81,13 +82,14 @@ private:
       ar &SIDiameter;
       ar &Centroid.x;
       ar &Centroid.y;
+      ar &Eccentricty;
+    } else {
+      isSmall = false;
+      SIDiameter = GetSiDiameter();
+      Centroid.x = 0;
+      Centroid.y = 0;
+      Eccentricty = 1;
     }
-    else {
-        isSmall = false;
-        SIDiameter = GetSiDiameter();
-        Centroid.x = 0;
-        Centroid.y = 0;
-      }
   }
 };
 }
