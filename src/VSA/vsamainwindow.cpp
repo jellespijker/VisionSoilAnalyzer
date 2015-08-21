@@ -193,6 +193,27 @@ VSAMainWindow::VSAMainWindow(QWidget *parent)
   ui->QPlot_Angularity->graph(0)->setPen(pdfPen);
   ui->QPlot_Angularity->graph(1)->setPen(meanPen);
 
+  // Setup the Amplitude diagram
+  QCPPlotTitle *Amptitle = new QCPPlotTitle(ui->QPlot_Amp);
+  Amptitle->setText("Fast Fourier Amplitude for the current particle");
+  Amptitle->setFont(QFont("sans", 8, QFont::Bold));
+  ui->QPlot_Amp->plotLayout()->insertRow(0);
+  ui->QPlot_Amp->plotLayout()->addElement(0, 0, Amptitle);
+
+  ui->QPlot_Amp->addGraph(ui->QPlot_Amp->xAxis, ui->QPlot_Amp->yAxis);
+
+  ui->QPlot_Amp->xAxis->setTickLabelRotation(30);
+  ui->QPlot_Amp->xAxis->setSubTickCount(0);
+  ui->QPlot_Amp->xAxis->setTickLength(0, 4);
+  ui->QPlot_Amp->xAxis->grid()->setVisible(true);
+  ui->QPlot_Amp->xAxis->setRange(0, 512);
+  ui->QPlot_Amp->xAxis->setLabel("Frequency [-]");
+  ui->QPlot_Amp->xAxis->setLabelFont(QFont("sans", 8, QFont::Bold));
+  ui->QPlot_Amp->xAxis->setTickLabelFont(QFont("sans", 8, QFont::Normal));
+  ui->QPlot_Amp->yAxis->setLabel("Amplitude [-]");
+  ui->QPlot_Amp->yAxis->setLabelFont(QFont("sans", 8, QFont::Bold));
+  ui->QPlot_Amp->graph(0)->setPen(pdfPen);
+
   // Connect the Particle display and Selector
   connect(ui->widget_ParticleSelector, SIGNAL(valueChanged(int)), this,
           SLOT(on_Classification_changed(int)));
@@ -200,6 +221,8 @@ VSAMainWindow::VSAMainWindow(QWidget *parent)
           ui->widget_ParticleSelector, SLOT(setValue(int)));
   connect(ui->widget_ParticleDisplay, SIGNAL(particleDeleted()), this,
           SLOT(on_particle_deleted()));
+  connect(ui->widget_ParticleDisplay, SIGNAL(particleChanged(int)), this,
+          SLOT(on_particleChanged(int)));
 
   // Setup the bar
   ui->actionUseLearning->setChecked(Settings->PredictTheShape);
@@ -292,6 +315,20 @@ void VSAMainWindow::setAngularityHistogram() {
   ui->QPlot_Angularity->graph(1)->setData(meanKey, meanValue);
   ui->QPlot_Angularity->replot();
 }
+
+void VSAMainWindow::setAmpgraph() {
+  ui->QPlot_Amp->graph(0)->clearData();
+  ComplexVect_t *comp =
+      &ui->widget_ParticleDisplay->SelectedParticle->FFDescriptors;
+  uint32_t count = (comp->size() > 32) ? 32 : comp->size();
+  for (uint32_t i = 0; i < count; i++) {
+    ui->QPlot_Amp->graph(0)->addData(i, abs(comp->at(i)));
+  }
+  ui->QPlot_Amp->rescaleAxes();
+  ui->QPlot_Amp->replot();
+}
+
+void VSAMainWindow::on_particleChanged(int newPart) { setAmpgraph(); }
 
 void VSAMainWindow::on_actionNeuralNet_triggered() {
   if (nnWindow != nullptr) {

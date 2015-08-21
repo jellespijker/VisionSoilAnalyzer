@@ -57,6 +57,8 @@ private slots:
 
   void on_actionReport_Generator_triggered();
 
+  void on_particleChanged(int newPart);
+
 private:
   Ui::VSAMainWindow *ui;
   DialogSettings *settingsWindow = nullptr;
@@ -89,6 +91,7 @@ private:
   void SetPSDgraph();
   void setRoundnessHistogram();
   void setAngularityHistogram();
+  void setAmpgraph();
   void TakeSnapShots();
 };
 
