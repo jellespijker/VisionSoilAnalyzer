@@ -46,8 +46,10 @@ private slots:
 
 private:
   Ui::QReportGenerator *ui;
+  QCustomPlot *CIElabPlot = nullptr;
 
   void getLocationMap(double &latitude, double &longtitude);
+  void SetupCIElabPLot();
 
   QImage *mapLocation = nullptr;
 

@@ -58,7 +58,7 @@ void Sample::Load(const std::string &filename) {
  * \brief Sample::GetPSDVector
  * \return
  */
-Sample::PSDVector_t *Sample::GetPSDVector() {
+  Particle::PSDVector_t *Sample::GetPSDVector() {
   if (!PSDGathered || ParticleChangedStatePSD) {
     Diameter.clear();
     for_each(ParticlePopulation.begin(), ParticlePopulation.end(),
@@ -69,42 +69,56 @@ Sample::PSDVector_t *Sample::GetPSDVector() {
   return &Diameter;
 }
 
-/*!
- * \brief Sample::GetClassVector
- * \return
- */
-Sample::ClassVector_t *Sample::GetClassVector() {
-  if (!ClassGathered || ParticleChangedStateClass) {
-    Class.clear();
+  Particle::ClassVector_t *Sample::GetAngularityVector() {
+  if (!AngularityGathered || ParticleChangedStateAngularity) {
+    AngularityVec.clear();
     for_each(ParticlePopulation.begin(), ParticlePopulation.end(),
-             [&](Particle &P) { Class.push_back(P.Classification.Category); });
-    ClassGathered = true;
-    ParticleChangedStateClass = false;
+             [&](Particle &P) { AngularityVec.push_back(P.GetAngularity()); });
+    AngularityGathered = true;
+    ParticleChangedStateAngularity = false;
   }
-  return &Class;
+  return &AngularityVec;
 }
 
-Sample::ClassVector_t *Sample::GetAngularityVector() {
-    if (!AngularityGathered || ParticleChangedStateAngularity) {
-      AngularityVec.clear();
-      for_each(ParticlePopulation.begin(), ParticlePopulation.end(),
-               [&](Particle &P) { AngularityVec.push_back(P.GetAngularity()); });
-      AngularityGathered = true;
-      ParticleChangedStateAngularity = false;
-    }
-    return &AngularityVec;
+  Particle::ClassVector_t *Sample::GetRoundnessVector() {
+  if (!RoundnessGathered || ParticleChangedStateRoundness) {
+    RoundnessVec.clear();
+    for_each(ParticlePopulation.begin(), ParticlePopulation.end(),
+             [&](Particle &P) { RoundnessVec.push_back(P.GetRoundness()); });
+    RoundnessGathered = true;
+    ParticleChangedStateRoundness = false;
+  }
+  return &RoundnessVec;
 }
 
-Sample::ClassVector_t *Sample::GetRoundnessVector() {
-    if (!RoundnessGathered || ParticleChangedStateRoundness) {
-      RoundnessVec.clear();
-      for_each(ParticlePopulation.begin(), ParticlePopulation.end(), [&](Particle &P) {
-        RoundnessVec.push_back(P.GetRoundness()); });
-      RoundnessGathered = true;
-      ParticleChangedStateRoundness = false;
-    }
-    return &RoundnessVec;
+  Particle::floatVector_t *Sample::GetCIELab_aVector() {
+  if (!CIELab_aGathered || ColorChange) {
+    CIELab_aVec.clear();
+    for_each(ParticlePopulation.begin(), ParticlePopulation.end(),
+             [&](Particle &P) { CIELab_aVec.push_back(P.getMeanLab().a); });
+    CIELab_aGathered = true;
+  }
+  return &CIELab_aVec;
 }
 
+  Particle::floatVector_t *Sample::GetCIELab_bVector() {
+  if (!CIELab_bGathered || ColorChange) {
+    CIELab_bVec.clear();
+    for_each(ParticlePopulation.begin(), ParticlePopulation.end(),
+             [&](Particle &P) { CIELab_bVec.push_back(P.getMeanLab().b); });
+    CIELab_bGathered = true;
+  }
+  return &CIELab_bVec;
+}
+
+  Particle::floatVector_t *Sample::GetRI_vector() {
+  if (!RIGathered || ColorChange) {
+    RIVec.clear();
+    for_each(ParticlePopulation.begin(), ParticlePopulation.end(),
+             [&](Particle &P) { RIVec.push_back(P.getMeanLab().b); });
+    RIGathered = true;
+  }
+  return &RIVec;
+}
 
 }

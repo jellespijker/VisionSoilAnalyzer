@@ -30,7 +30,9 @@ HEADERS +=\
     particle.h \
     analyzer.h \
     soilanalyzerexception.h \
-    soilanalyzer.h
+    soilanalyzer.h \
+    lab_t_archive.h \
+    soilanalyzertypes.h
 
 #opencv
 LIBS += -L/usr/local/lib -lopencv_core -lopencv_highgui

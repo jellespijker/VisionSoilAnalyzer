@@ -92,4 +92,52 @@ void Particle::SetRoundness() {
       ang + (static_cast<uint8_t>(floor(Eccentricty / 0.33)) * 6);
   Classification.ManualSet = true;
 }
+
+Lab_t Particle::getMeanLab() {
+  if (BW.empty() || RGB.empty()) {
+    throw SoilAnalyzer::Exception::SoilAnalyzerException(
+        EXCEPTION_NO_IMAGES_PRESENT, EXCEPTION_NO_IMAGES_PRESENT_NR);
+  }
+  if (meanLab.L == 0 && meanLab.a == 0 && meanLab.b == 0) {
+    // convert to Lab
+    if (LAB.empty()) {
+      getLabImg();
+    }
+    std::vector<cv::Mat> LABvect = Vision::Conversion::extractChannel(LAB);
+    std::vector<float> labvect(3);
+    for_each(LABvect.begin(), LABvect.end(), [&](cv::Mat &I) {
+      floatStat_t labStat((float *)I.data, I.rows, I.cols, (uchar *)BW.data, 1,
+                          0, true);
+      labvect.push_back(labStat.Mean);
+    });
+    meanLab.L = labvect[0];
+    meanLab.a = labvect[1];
+    meanLab.b = labvect[2];
+  }
+  return meanLab;
+}
+
+float Particle::GetMeanRI() {
+  if (BW.empty() || RGB.empty()) {
+    throw SoilAnalyzer::Exception::SoilAnalyzerException(
+        EXCEPTION_NO_IMAGES_PRESENT, EXCEPTION_NO_IMAGES_PRESENT_NR);
+  }
+  if (meanRI == 0) {
+    if (LAB.empty()) {
+      getLabImg();
+    }
+    Vision::Conversion convertor(LAB);
+    convertor.Convert(Vision::Conversion::CIE_lab, Vision::Conversion::RI);
+    floatStat_t RIstat((float *)convertor.ProcessedImg.data, LAB.rows, LAB.cols,
+                       (uchar *)BW.data, 1, 0, true);
+    meanRI = RIstat.Mean;
+  }
+  return meanRI;
+}
+
+void Particle::getLabImg() {
+  Vision::Conversion convertor(RGB);
+  convertor.Convert(Vision::Conversion::RGB, Vision::Conversion::CIE_lab);
+  LAB = convertor.ProcessedImg.clone();
+}
 }

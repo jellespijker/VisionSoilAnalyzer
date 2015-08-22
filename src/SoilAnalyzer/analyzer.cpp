@@ -302,7 +302,7 @@ void Analyzer::GetBW(cv::Mat &img, cv::Mat &BW) {
  * \param partPopulation
  */
 void Analyzer::GetParticles(std::vector<Mat> &BW, Images_t *snapshots,
-                            Sample::ParticleVector_t &partPopulation) {
+                            Particle::ParticleVector_t &partPopulation) {
   for (uint32_t i = 0; i < snapshots->size(); i++) {
     Vision::Segment prepBW(BW[i]);
     prepBW.GetBlobList();
@@ -322,7 +322,7 @@ void Analyzer::GetParticles(std::vector<Mat> &BW, Images_t *snapshots,
  */
 void Analyzer::GetParticlesFromBlobList(
     Vision::Segment::BlobList_t &bloblist, Image_t *snapshot,
-    Sample::ParticleVector_t &partPopulation) {
+    Particle::ParticleVector_t &partPopulation) {
   for_each(bloblist.begin(), bloblist.end(), [&](Vision::Segment::Blob_t &B) {
     Particle part;
     part.ID = currentParticleID++;
@@ -348,9 +348,9 @@ void Analyzer::GetParticlesFromBlobList(
  * \brief Analyzer::GetFFD
  * \param particalPopulation
  */
-void Analyzer::GetFFD(Sample::ParticleVector_t &particalPopulation) {
+void Analyzer::GetFFD(Particle::ParticleVector_t &particalPopulation) {
   //for_each(particalPopulation.begin(), particalPopulation.end(),  [&](Particle &P) {
-  QtConcurrent::blockingMap<Sample::ParticleVector_t>(
+  QtConcurrent::blockingMap<Particle::ParticleVector_t>(
       particalPopulation, [&](Particle &P) {
         if (!P.isPreparedForAnalysis) {
           try {
@@ -371,7 +371,7 @@ void Analyzer::GetFFD(Sample::ParticleVector_t &particalPopulation) {
  * \brief Analyzer::GetPrediction
  * \param particlePopulation
  */
-void Analyzer::GetPrediction(Sample::ParticleVector_t &particlePopulation) {
+void Analyzer::GetPrediction(Particle::ParticleVector_t &particlePopulation) {
   for_each(particlePopulation.begin(), particlePopulation.end(),
            [&](Particle &P) {
              if (P.isPreparedForAnalysis) {

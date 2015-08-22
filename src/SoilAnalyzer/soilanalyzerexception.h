@@ -8,6 +8,8 @@
 #define EXCEPTION_PARTICLE_NOT_ANALYZED_NR 0
 #define EXCEPTION_NO_SNAPSHOTS "No snapshots Exception!"
 #define EXCEPTION_NO_SNAPSHOTS_NR 1
+#define EXCEPTION_NO_IMAGES_PRESENT "No images to analyse exception!"
+#define EXCEPTION_NO_IMAGES_PRESENT_NR 2
 
 #pragma once
 #include <exception>

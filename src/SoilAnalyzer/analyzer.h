@@ -82,16 +82,16 @@ private:
   void GetEnhancedInt(cv::Mat &img, cv::Mat &intensity);
 
   void GetParticles(std::vector<cv::Mat> &BW, Images_t *snapshots,
-                    Sample::ParticleVector_t &partPopulation);
+                      Particle::ParticleVector_t &partPopulation);
   void GetParticlesFromBlobList(Vision::Segment::BlobList_t &bloblist,
                                 Image_t *snapshot,
-                                Sample::ParticleVector_t &partPopulation);
+                                Particle::ParticleVector_t &partPopulation);
 
   void CleanUpMatVector(std::vector<cv::Mat> &mv);
   void CleanUpMatVector(Images_t *mv);
 
-  void GetFFD(Sample::ParticleVector_t &particalPopulation);
+  void GetFFD(Particle::ParticleVector_t &particalPopulation);
 
-  void GetPrediction(Sample::ParticleVector_t &particlePopulation);
+  void GetPrediction(Particle::ParticleVector_t &particlePopulation);
 };
 }

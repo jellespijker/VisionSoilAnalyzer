@@ -382,8 +382,7 @@ void QReportGenerator::on_locationImageDownloaded(QNetworkReply *reply) {
 
 QReportGenerator::~QReportGenerator() { delete ui; }
 
-void QReportGenerator::on_actionSave_triggered()
-{
+void QReportGenerator::on_actionSave_triggered() {
   QString fn = QFileDialog::getSaveFileName(
       this, tr("Save Report"), QString::fromStdString(Settings->SampleFolder),
       tr("Report (*.odf)"));
@@ -395,11 +394,10 @@ void QReportGenerator::on_actionSave_triggered()
     m_write.setFileName(fn);
     m_write.setFormat("odf");
     m_write.write(Report);
-    }
+  }
 }
 
-void QReportGenerator::on_actionExport_to_PDF_triggered()
-{
+void QReportGenerator::on_actionExport_to_PDF_triggered() {
   QString fn = QFileDialog::getSaveFileName(
       this, tr("Save Report"), QString::fromStdString(Settings->SampleFolder),
       tr("Report (*.pdf)"));
@@ -411,5 +409,11 @@ void QReportGenerator::on_actionExport_to_PDF_triggered()
     printer.setOutputFormat(QPrinter::PdfFormat);
     printer.setOutputFileName(fn);
     Report->print(&printer);
+  }
+}
+
+void QReportGenerator::SetupCIElabPLot() {
+  if (CIElabPlot == nullptr) {
+      CIElabPlot = new QCustomPlot;
     }
 }

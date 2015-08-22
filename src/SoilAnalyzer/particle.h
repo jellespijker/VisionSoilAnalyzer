@@ -20,16 +20,21 @@
 #include <boost/iostreams/filtering_streambuf.hpp>
 #include "zlib.h"
 #include "soilanalyzerexception.h"
+#include "lab_t_archive.h"
+#include "soilanalyzertypes.h"
+#include "Vision.h"
 
 namespace SoilAnalyzer {
 class Particle {
 public:
-  Particle();
+  typedef std::vector<Particle>
+      ParticleVector_t; /*!< a vector consisting of individual particles*/
+  typedef std::vector<double> PSDVector_t; /*!< a vector used in the PSD*/
+  typedef std::vector<uint8_t>
+      ClassVector_t; /*!< a vector used in the classification histogram*/
+  typedef std::vector<float> floatVector_t;
 
-  struct Point {
-    double x;
-    double y;
-  };
+  Particle();
 
   uint32_t ID; /*!< The particle ID*/
 
@@ -37,7 +42,7 @@ public:
   cv::Mat Edge; /*!< The binary edge image of the particle*/
   cv::Mat RGB;  /*!< The RGB image of the particle*/
 
-  Point Centroid = {0, 0};
+  Point_t Centroid = {0, 0};
   std::vector<Complex_t> FFDescriptors; /*!< The Fast Fourier Descriptors
                                            describing the contour in the
                                            Frequency domain*/
@@ -50,6 +55,8 @@ public:
   float GetSiDiameter();
   uint8_t GetRoundness();
   uint8_t GetAngularity();
+  float GetMeanRI();
+  Lab_t getMeanLab();
 
   void SetRoundness();
 
@@ -63,6 +70,12 @@ public:
 private:
   float SIVolume = 0.; /*!< The correspondening SI volume*/
   float SIDiameter = 0.;
+
+  float meanRI = 0;
+  Lab_t meanLab{0,0,0};
+  cv::Mat LAB;
+
+  void getLabImg();
 
   friend class boost::serialization::access;
   template <class Archive>
@@ -79,7 +92,7 @@ private:
     ar &SIVolume;
     ar &isPreparedForAnalysis;
     ar &isAnalysed;
-    if (version > 1) {
+    if (version > 0) {
       ar &isSmall;
       ar &SIDiameter;
       ar &Centroid.x;
@@ -92,7 +105,16 @@ private:
       Centroid.y = 0;
       Eccentricty = 1;
     }
+    if (version > 1) {
+        ar &meanLab;
+        ar &meanRI;
+      }
+    else {
+        meanLab.L = 0;
+        meanLab.a = 0;
+        meanLab.b = 0;
+      }
   }
 };
 }
-BOOST_CLASS_VERSION(SoilAnalyzer::Particle, 1)
+BOOST_CLASS_VERSION(SoilAnalyzer::Particle, 2)

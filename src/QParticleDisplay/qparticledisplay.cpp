@@ -101,6 +101,7 @@ void QParticleDisplay::on_pushButton_delete_clicked() {
   Sample->ParticleChangedStateAngularity = true;
   Sample->ParticleChangedStateRoundness = true;
   Sample->ChangesSinceLastSave = true;
+  Sample->ColorChange = true;
   SelectedParticle = &Sample->ParticlePopulation[ui->widget->centerIndex()];
   emit particleDeleted();
 }
