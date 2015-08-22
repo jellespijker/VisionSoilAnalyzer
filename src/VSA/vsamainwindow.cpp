@@ -226,7 +226,9 @@ VSAMainWindow::VSAMainWindow(QWidget *parent)
   ui->QPlot_Amp->yAxis->setLabel("Amplitude [-]");
   ui->QPlot_Amp->yAxis->setLabelFont(QFont("sans", 8, QFont::Bold));
   ui->QPlot_Amp->yAxis->setScaleType(QCPAxis::stLogarithmic);
-  ui->QPlot_Amp->graph(0)->setPen(binPen);
+  ui->QPlot_Amp->graph()->setPen(binPen);
+  ui->QPlot_Amp->graph()->setLineStyle(QCPGraph::lsLine);
+  ui->QPlot_Amp->graph()->setBrush(QBrush(QColor(50,50,200,40)));
 
   // Connect the Particle display and Selector
   connect(ui->widget_ParticleSelector, SIGNAL(valueChanged(int)), this,

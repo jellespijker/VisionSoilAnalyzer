@@ -6,6 +6,7 @@
 #include <QErrorMessage>
 #include <QMessageBox>
 #include <QProgressBar>
+#include <QBrush>
 
 #include <stdint.h>
 
