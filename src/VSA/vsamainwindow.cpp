@@ -105,6 +105,8 @@ VSAMainWindow::VSAMainWindow(QWidget *parent)
   ui->Qplot_PSD->graph(0)
       ->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, 8));
   ui->Qplot_PSD->graph(0)->setPen(binPen);
+  ui->Qplot_PSD->graph(0)->setName("Particle Size Distribution");
+  ui->Qplot_PSD->graph(0)->addToLegend();
 
   ui->Qplot_PSD->xAxis->setLabel("Particle size [mm]");
   ui->Qplot_PSD->xAxis->setRange(0.01, 10);
@@ -114,6 +116,14 @@ VSAMainWindow::VSAMainWindow(QWidget *parent)
   ui->Qplot_PSD->xAxis->setTickLabelFont(QFont("sans", 8, QFont::Normal));
   ui->Qplot_PSD->xAxis->setScaleType(QCPAxis::stLogarithmic);
 
+  QFont legendfont;
+  legendfont.setPointSize(10);
+  ui->Qplot_PSD->legend->setFont(legendfont);
+  ui->Qplot_PSD->legend->setSelectedFont(legendfont);
+  ui->Qplot_PSD->legend->setVisible(true);
+  ui->Qplot_PSD->axisRect()->insetLayout()->setInsetAlignment(
+      0, Qt::AlignTop | Qt::AlignLeft);
+
   ui->Qplot_PSD->yAxis->setLabel("Percentage [%]");
   ui->Qplot_PSD->yAxis->setRange(0, 100);
   ui->Qplot_PSD->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
@@ -121,6 +131,9 @@ VSAMainWindow::VSAMainWindow(QWidget *parent)
 
   connect(ui->Qplot_PSD, SIGNAL(mouseDoubleClick(QMouseEvent *)), this,
           SLOT(on_reset_graph(QMouseEvent *)));
+  ui->Qplot_PSD->setContextMenuPolicy(Qt::CustomContextMenu);
+  connect(ui->Qplot_PSD, SIGNAL(customContextMenuRequested(QPoint)), this,
+          SLOT(on_PSD_contextMenuRequest(QPoint)));
 
   // Setup the Roundness plot
   QCPPlotTitle *Roundnesstitle = new QCPPlotTitle(ui->QPlot_Roudness);
@@ -530,7 +543,7 @@ void VSAMainWindow::on_actionAutomatic_Shape_Pediction_triggered(bool checked) {
 }
 
 void VSAMainWindow::on_reset_graph(QMouseEvent *e) {
-  ui->Qplot_PSD->xAxis->setRange(0, 2);
+  ui->Qplot_PSD->xAxis->setRange(0, 10);
   ui->Qplot_PSD->yAxis->setRange(0, 100);
   ui->Qplot_PSD->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
   ui->Qplot_PSD->replot();
@@ -543,4 +556,79 @@ void VSAMainWindow::on_actionReport_Generator_triggered() {
                              ui->QPlot_Roudness, ui->QPlot_Angularity);
   }
   ReportGenWindow->show();
+}
+
+void VSAMainWindow::on_PSD_contextMenuRequest(QPoint point) {
+  QMenu *menu = new QMenu(this);
+  menu->setAttribute(Qt::WA_DeleteOnClose);
+
+  menu->addAction("Compare against...", this, SLOT(on_compare_against()));
+  menu->addAction("Restore", this, SLOT(on_restore_PSD()));
+  menu->popup(ui->Qplot_PSD->mapToGlobal(point));
+}
+
+void VSAMainWindow::on_compare_against() {
+  QString fn = QFileDialog::getOpenFileName(
+      this, tr("Open CSV"), QString::fromStdString(Settings->SampleFolder),
+      tr("Comma Seperated Value (*.csv)"));
+  if (!fn.isEmpty()) {
+    if (!fn.contains(tr(".csv"))) {
+      fn.append(tr(".csv"));
+    }
+
+    if (ui->Qplot_PSD->graphCount() > 1) {
+      ui->Qplot_PSD->legend->removeItem(1);
+      ui->Qplot_PSD->removeGraph(1);
+    }
+
+    QStringList rows;
+    QStringList cellValues;
+
+    QFile f(fn);
+    if (f.open(QIODevice::ReadOnly)) {
+      QString data;
+      data = f.readAll();
+      rows = data.split('\n');
+      f.close();
+      for (uint32_t i = 0; i < rows.size(); i++) {
+        QStringList cols = rows[i].split(',');
+        for (uint32_t j = 0; j < cols.size(); j++) {
+          cellValues.append(cols[j]);
+        }
+      }
+      cellValues.removeLast();
+
+      std::vector<double> compValues(15);
+      for (uint32_t i = 0; i < cellValues.size(); i += 4) {
+        bool conversionSucces = false;
+        double binValue = cellValues[i].toDouble(&conversionSucces);
+        qDebug() << cellValues[i + 3];
+        if (conversionSucces) {
+          for (uint32_t j = 0; j < 15; j++) {
+            if (binValue == PSDTicks[j]) {
+              compValues[j] = cellValues[i + 3].toDouble();
+            }
+          }
+        }
+      }
+      ui->Qplot_PSD->addGraph(ui->Qplot_PSD->xAxis, ui->Qplot_PSD->yAxis);
+      ui->Qplot_PSD->graph(1)->setData(PSDTicks, compValues);
+      QPen compPen;
+      compPen.setColor(QColor("darkBlue"));
+      compPen.setStyle(Qt::DashLine);
+      compPen.setWidthF(1);
+      ui->Qplot_PSD->graph(1)->setPen(compPen);
+      ui->Qplot_PSD->graph(1)->setName("Compared Particle Size Distribution");
+      ui->Qplot_PSD->graph(1)->addToLegend();
+      ui->Qplot_PSD->replot();
+    }
+  }
+}
+
+void VSAMainWindow::on_restore_PSD() {
+  if (ui->Qplot_PSD->graphCount() > 1) {
+    ui->Qplot_PSD->legend->removeItem(1);
+    ui->Qplot_PSD->removeGraph(1);
+  }
+  on_reset_graph(nullptr);
 }

@@ -148,15 +148,13 @@ void Analyzer::CalcMaxProgressAnalyze() {
 void Analyzer::GetEnhancedInt(Images_t *snapshots,
                               std::vector<Mat> &intensityVector) {
   if (Settings->useBacklightProjection) {
-    // for_each(snapshots->begin(), snapshots->end(), [&](Image_t &I) {
-    QtConcurrent::blockingMap<Images_t>(*snapshots, [&](Image_t &I) {
+   for_each(snapshots->begin(), snapshots->end(), [&](Image_t &I) {
       cv::Mat intensity;
       GetEnhancedInt(I.BackLight, intensity);
       intensityVector.push_back(intensity);
     });
   } else {
-    // for_each(snapshots->begin(), snapshots->end(), [&](Image_t &I) {
-    QtConcurrent::blockingMap<Images_t>(*snapshots, [&](Image_t &I) {
+    for_each(snapshots->begin(), snapshots->end(), [&](Image_t &I) {
       cv::Mat intensity;
       GetEnhancedInt(I.FrontLight, intensity);
       intensityVector.push_back(intensity);
@@ -223,8 +221,8 @@ void Analyzer::GetEnhancedInt(Mat &img, Mat &intensity) {
  */
 void Analyzer::GetBW(std::vector<cv::Mat> &images,
                      std::vector<cv::Mat> &BWvector) {
-  // for_each(images.begin(), images.end(), [&](cv::Mat &I) {
-  QtConcurrent::blockingMap<std::vector<cv::Mat>>(images, [&](cv::Mat &I) {
+  for_each(images.begin(), images.end(), [&](cv::Mat &I) {
+  //QtConcurrent::blockingMap<std::vector<cv::Mat>>(images, [&](cv::Mat &I) {
     cv::Mat BW;
     GetBW(I, BW);
     BWvector.push_back(BW);

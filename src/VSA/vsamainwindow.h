@@ -59,6 +59,12 @@ private slots:
 
   void on_particleChanged(int newPart);
 
+  void on_PSD_contextMenuRequest(QPoint point);
+
+  void on_compare_against();
+
+  void on_restore_PSD();
+
 private:
   Ui::VSAMainWindow *ui;
   DialogSettings *settingsWindow = nullptr;

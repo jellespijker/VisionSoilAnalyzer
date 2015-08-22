@@ -121,6 +121,14 @@ bImgtarget.path += $${PWD}/../../build/install/Images
 bImgtarget.files += $${PWD}/Images/*
 INSTALLS += bImgtarget
 
+#TestedSample
+TestedSamplesTarget.path += $${OUT_PWD}/TestedSamples
+TestedSamplesTarget.files += $${PWD}/TestedSamples/*
+INSTALLS += Imgtarget
+bTestedSamplesTarget.path += $${PWD}/../../build/install/TestedSamples
+bTestedSamplesTarget.files += $${PWD}/TestedSamples/*
+INSTALLS += bImgtarget
+
 RESOURCES += \
     vsa_resources.qrc
 
@@ -135,4 +143,11 @@ DISTFILES += \
     NeuralNet/Default.NN \
     Settings/User.ini \
     SoilSamples/Eurogrit_B3_01__Cat.VSA \
-    SoilSamples/Gran_K1_0.5_2.5__01_Cat.VSA
+    SoilSamples/Gran_K1_0.5_2.5__01_Cat.VSA \
+    TestedSamples/Filterzand_0.2_1.6.csv \
+    TestedSamples/Magro_dol.csv \
+    TestedSamples/Gran_K1.csv \
+    TestedSamples/GL70.csv \
+    TestedSamples/Gannet_20_40.csv \
+    TestedSamples/Eurogrit.csv \
+    TestedSamples/0.8_1.25.csv
