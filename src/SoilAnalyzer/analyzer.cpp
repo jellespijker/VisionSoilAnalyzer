@@ -351,12 +351,12 @@ void Analyzer::GetParticlesFromBlobList(
  * \param particalPopulation
  */
 void Analyzer::GetFFD(Sample::ParticleVector_t &particalPopulation) {
-  SoilMath::FFT fft;
-  // for_each(particalPopulation.begin(), particalPopulation.end(),
+  //for_each(particalPopulation.begin(), particalPopulation.end(),  [&](Particle &P) {
   QtConcurrent::blockingMap<Sample::ParticleVector_t>(
       particalPopulation, [&](Particle &P) {
         if (!P.isPreparedForAnalysis) {
           try {
+            SoilMath::FFT fft;
             P.FFDescriptors = fft.GetDescriptors(P.Edge);
             P.isPreparedForAnalysis = true;
           } catch (SoilMath::Exception::MathException &e) {

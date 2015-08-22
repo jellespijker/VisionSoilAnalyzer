@@ -212,7 +212,8 @@ VSAMainWindow::VSAMainWindow(QWidget *parent)
   ui->QPlot_Amp->xAxis->setTickLabelFont(QFont("sans", 8, QFont::Normal));
   ui->QPlot_Amp->yAxis->setLabel("Amplitude [-]");
   ui->QPlot_Amp->yAxis->setLabelFont(QFont("sans", 8, QFont::Bold));
-  ui->QPlot_Amp->graph(0)->setPen(pdfPen);
+  ui->QPlot_Amp->yAxis->setScaleType(QCPAxis::stLogarithmic);
+  ui->QPlot_Amp->graph(0)->setPen(binPen);
 
   // Connect the Particle display and Selector
   connect(ui->widget_ParticleSelector, SIGNAL(valueChanged(int)), this,
@@ -320,7 +321,7 @@ void VSAMainWindow::setAmpgraph() {
   ui->QPlot_Amp->graph(0)->clearData();
   ComplexVect_t *comp =
       &ui->widget_ParticleDisplay->SelectedParticle->FFDescriptors;
-  uint32_t count = (comp->size() > 32) ? 32 : comp->size();
+  uint32_t count = (comp->size() > 64) ? 64 : comp->size();
   for (uint32_t i = 0; i < count; i++) {
     ui->QPlot_Amp->graph(0)->addData(i, abs(comp->at(i)));
   }
