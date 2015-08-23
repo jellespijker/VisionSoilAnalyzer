@@ -33,6 +33,7 @@ public:
   typedef std::vector<uint8_t>
       ClassVector_t; /*!< a vector used in the classification histogram*/
   typedef std::vector<float> floatVector_t;
+  typedef std::vector<double> doubleVector_t;
 
   Particle();
 

@@ -51,8 +51,8 @@ public:
   Particle::PSDVector_t *GetPSDVector();
   Particle::ClassVector_t *GetRoundnessVector();
   Particle::ClassVector_t *GetAngularityVector();
-  Particle::floatVector_t *GetCIELab_aVector();
-  Particle::floatVector_t *GetCIELab_bVector();
+  Particle::doubleVector_t *GetCIELab_aVector();
+  Particle::doubleVector_t *GetCIELab_bVector();
   Particle::floatVector_t *GetRI_vector();
 
   bool isPreparedForAnalysis =
@@ -76,9 +76,9 @@ private:
   bool RoundnessGathered = false;
     Particle::ClassVector_t AngularityVec;
   bool AngularityGathered = false;
-    Particle::floatVector_t CIELab_aVec;
+    Particle::doubleVector_t CIELab_aVec;
   bool CIELab_aGathered = false;
-    Particle::floatVector_t CIELab_bVec;
+    Particle::doubleVector_t CIELab_bVec;
   bool CIELab_bGathered = false;
     Particle::floatVector_t RIVec;
   bool RIGathered = false;
@@ -127,9 +127,9 @@ private:
       Longtitude = 4.629618299999947;
       Date = "01-10-2015";
       Depth = 0;
-      CIELab_aVec =   Particle::floatVector_t();
+      CIELab_aVec =   Particle::doubleVector_t();
       CIELab_aGathered = false;
-      CIELab_bVec =   Particle::floatVector_t();
+      CIELab_bVec =   Particle::doubleVector_t();
       CIELab_bGathered = false;
       RIVec =   Particle::floatVector_t();
       RIGathered = false;

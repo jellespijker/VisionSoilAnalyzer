@@ -104,7 +104,7 @@ Lab_t Particle::getMeanLab() {
       getLabImg();
     }
     std::vector<cv::Mat> LABvect = Vision::Conversion::extractChannel(LAB);
-    std::vector<float> labvect(3);
+    std::vector<float> labvect;
     for_each(LABvect.begin(), LABvect.end(), [&](cv::Mat &I) {
       floatStat_t labStat((float *)I.data, I.rows, I.cols, (uchar *)BW.data, 1,
                           0, true);

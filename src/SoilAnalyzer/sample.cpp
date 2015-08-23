@@ -91,7 +91,7 @@ void Sample::Load(const std::string &filename) {
   return &RoundnessVec;
 }
 
-  Particle::floatVector_t *Sample::GetCIELab_aVector() {
+  Particle::doubleVector_t *Sample::GetCIELab_aVector() {
   if (!CIELab_aGathered || ColorChange) {
     CIELab_aVec.clear();
     for_each(ParticlePopulation.begin(), ParticlePopulation.end(),
@@ -101,7 +101,7 @@ void Sample::Load(const std::string &filename) {
   return &CIELab_aVec;
 }
 
-  Particle::floatVector_t *Sample::GetCIELab_bVector() {
+  Particle::doubleVector_t *Sample::GetCIELab_bVector() {
   if (!CIELab_bGathered || ColorChange) {
     CIELab_bVec.clear();
     for_each(ParticlePopulation.begin(), ParticlePopulation.end(),

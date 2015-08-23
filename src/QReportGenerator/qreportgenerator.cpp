@@ -341,6 +341,17 @@ QReportGenerator::QReportGenerator(QWidget *parent,
   rCurs.insertBlock(ImageGraphFormat);
   rCurs.insertText(QString(QChar::ObjectReplacementCharacter),
                    QCPDocumentObject::generatePlotFormat(Angularity, 600, 400));
+
+  // Setup the CIE La*b* graph
+  // Setup the Textdata for the Roundness
+  rCurs.insertBlock(HeaderFormat, HeaderTextFormat);
+  rCurs.insertText("CIE La*b*");
+
+  SetupCIElabPLot();
+  rCurs.insertBlock(ImageGraphFormat);
+  rCurs.insertText(QString(QChar::ObjectReplacementCharacter),
+                   QCPDocumentObject::generatePlotFormat(CIElabPlot, 600, 400));
+
 }
 
 void QReportGenerator::getLocationMap(double &latitude, double &longtitude) {
@@ -414,6 +425,39 @@ void QReportGenerator::on_actionExport_to_PDF_triggered() {
 
 void QReportGenerator::SetupCIElabPLot() {
   if (CIElabPlot == nullptr) {
-      CIElabPlot = new QCustomPlot;
+      CIElabPlot = new QCustomPlot();
     }
+
+  QPen binPen;
+  binPen.setColor((QColor("blue")));
+  binPen.setStyle(Qt::SolidLine);
+  binPen.setWidthF(1);
+
+  // Setup the CIElabplot plot
+  QCPPlotTitle *CIEtitle = new QCPPlotTitle(CIElabPlot);
+  CIEtitle->setText("mean CIE Lab - a* vs. b*");
+  CIEtitle->setFont(QFont("sans", 8, QFont::Bold));
+  CIElabPlot->plotLayout()->insertRow(0);
+  CIElabPlot->plotLayout()->addElement(0, 0, CIEtitle);
+
+  CIElabPlot->addGraph(CIElabPlot->xAxis, CIElabPlot->yAxis);
+  CIElabPlot->graph(0)
+      ->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, 8));
+  CIElabPlot->graph(0)->setPen(binPen);
+  CIElabPlot->graph(0)->setName("a* vs. b*");
+  CIElabPlot->graph(0)->setData(*Sample->GetCIELab_bVector(), *Sample->GetCIELab_aVector());
+  CIElabPlot->graph(0)->setScatterStyle(QCPScatterStyle::ssCross);
+  CIElabPlot->graph(0)->setLineStyle(QCPGraph::lsNone);
+
+  CIElabPlot->xAxis->setLabel("mean chromatic b*");
+  CIElabPlot->xAxis->setTickLabelFont(QFont("sans", 8, QFont::Normal));
+  CIElabPlot->xAxis->setScaleType(QCPAxis::stLinear);
+  CIElabPlot->xAxis->setRange(-128,128);
+
+  CIElabPlot->yAxis->setLabel("mean chromatic a*");
+  CIElabPlot->yAxis->setTickLabelFont(QFont("sans", 8, QFont::Normal));
+  CIElabPlot->yAxis->setScaleType(QCPAxis::stLinear);
+  CIElabPlot->yAxis->setRange(-128,128);
+  CIElabPlot->replot();
+
 }
