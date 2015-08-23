@@ -53,7 +53,6 @@ public:
   Particle::ClassVector_t *GetAngularityVector();
   Particle::doubleVector_t *GetCIELab_aVector();
   Particle::doubleVector_t *GetCIELab_bVector();
-  Particle::floatVector_t *GetRI_vector();
 
   bool isPreparedForAnalysis =
       false; /*!< is the sample ready for analysis, are all the particles
@@ -70,18 +69,16 @@ public:
   bool IsLoadedFromDisk = false;
 
 private:
-   Particle::PSDVector_t Diameter;     /*!< The PSD raw data*/
-  bool PSDGathered = false; /*!< is the raw data gathered*/
-    Particle::ClassVector_t RoundnessVec;
+  Particle::PSDVector_t Diameter; /*!< The PSD raw data*/
+  bool PSDGathered = false;       /*!< is the raw data gathered*/
+  Particle::ClassVector_t RoundnessVec;
   bool RoundnessGathered = false;
-    Particle::ClassVector_t AngularityVec;
+  Particle::ClassVector_t AngularityVec;
   bool AngularityGathered = false;
-    Particle::doubleVector_t CIELab_aVec;
+  Particle::doubleVector_t CIELab_aVec;
   bool CIELab_aGathered = false;
-    Particle::doubleVector_t CIELab_bVec;
+  Particle::doubleVector_t CIELab_bVec;
   bool CIELab_bGathered = false;
-    Particle::floatVector_t RIVec;
-  bool RIGathered = false;
 
   friend class boost::serialization::access;
   template <class Archive>
@@ -119,20 +116,16 @@ private:
       ar &CIELab_aGathered;
       ar &CIELab_bVec;
       ar &CIELab_bGathered;
-      ar &RIVec;
-      ar &RIGathered;
       ar &ColorChange;
     } else {
       Latitude = 51.8849149;
       Longtitude = 4.629618299999947;
       Date = "01-10-2015";
       Depth = 0;
-      CIELab_aVec =   Particle::doubleVector_t();
+      CIELab_aVec = Particle::doubleVector_t();
       CIELab_aGathered = false;
-      CIELab_bVec =   Particle::doubleVector_t();
+      CIELab_bVec = Particle::doubleVector_t();
       CIELab_bGathered = false;
-      RIVec =   Particle::floatVector_t();
-      RIGathered = false;
       ColorChange = false;
     }
   }

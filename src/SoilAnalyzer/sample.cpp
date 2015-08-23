@@ -58,7 +58,7 @@ void Sample::Load(const std::string &filename) {
  * \brief Sample::GetPSDVector
  * \return
  */
-  Particle::PSDVector_t *Sample::GetPSDVector() {
+Particle::PSDVector_t *Sample::GetPSDVector() {
   if (!PSDGathered || ParticleChangedStatePSD) {
     Diameter.clear();
     for_each(ParticlePopulation.begin(), ParticlePopulation.end(),
@@ -69,7 +69,7 @@ void Sample::Load(const std::string &filename) {
   return &Diameter;
 }
 
-  Particle::ClassVector_t *Sample::GetAngularityVector() {
+Particle::ClassVector_t *Sample::GetAngularityVector() {
   if (!AngularityGathered || ParticleChangedStateAngularity) {
     AngularityVec.clear();
     for_each(ParticlePopulation.begin(), ParticlePopulation.end(),
@@ -80,7 +80,7 @@ void Sample::Load(const std::string &filename) {
   return &AngularityVec;
 }
 
-  Particle::ClassVector_t *Sample::GetRoundnessVector() {
+Particle::ClassVector_t *Sample::GetRoundnessVector() {
   if (!RoundnessGathered || ParticleChangedStateRoundness) {
     RoundnessVec.clear();
     for_each(ParticlePopulation.begin(), ParticlePopulation.end(),
@@ -91,7 +91,7 @@ void Sample::Load(const std::string &filename) {
   return &RoundnessVec;
 }
 
-  Particle::doubleVector_t *Sample::GetCIELab_aVector() {
+Particle::doubleVector_t *Sample::GetCIELab_aVector() {
   if (!CIELab_aGathered || ColorChange) {
     CIELab_aVec.clear();
     for_each(ParticlePopulation.begin(), ParticlePopulation.end(),
@@ -101,7 +101,7 @@ void Sample::Load(const std::string &filename) {
   return &CIELab_aVec;
 }
 
-  Particle::doubleVector_t *Sample::GetCIELab_bVector() {
+Particle::doubleVector_t *Sample::GetCIELab_bVector() {
   if (!CIELab_bGathered || ColorChange) {
     CIELab_bVec.clear();
     for_each(ParticlePopulation.begin(), ParticlePopulation.end(),
@@ -110,15 +110,4 @@ void Sample::Load(const std::string &filename) {
   }
   return &CIELab_bVec;
 }
-
-  Particle::floatVector_t *Sample::GetRI_vector() {
-  if (!RIGathered || ColorChange) {
-    RIVec.clear();
-    for_each(ParticlePopulation.begin(), ParticlePopulation.end(),
-             [&](Particle &P) { RIVec.push_back(P.getMeanLab().b); });
-    RIGathered = true;
-  }
-  return &RIVec;
-}
-
 }

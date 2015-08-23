@@ -86,8 +86,6 @@ void Analyzer::Analyse() {
                     Results->GetPSDVector()->size(), BinRanges, 15, 14);
   emit on_progressUpdate(currentProgress++);
 
-  Results->RI = floatStat_t(Results->GetRI_vector()->data(), Results->GetRI_vector()->size(), 1);
-
   emit on_AnalysisFinished();
 }
 
