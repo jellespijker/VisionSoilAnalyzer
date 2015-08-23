@@ -23,6 +23,7 @@ QParticleDisplay::~QParticleDisplay() {
   for (uint32_t i = 0; i < ui->widget->slideCount(); i++) {
     ui->widget->removeSlide(0);
   }
+  delete ui->widget;
   delete ui;
 }
 
