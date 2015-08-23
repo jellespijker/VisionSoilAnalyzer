@@ -12,6 +12,10 @@ VSAMainWindow::VSAMainWindow(QWidget *parent)
   // Set the message windows
   CamError = new QErrorMessage(this);
   SaveMeMessage = new QMessageBox(this);
+  SaveMeMessage->setText(tr("Sample is not saved, Save sample?"));
+  SaveMeMessage->addButton(QMessageBox::Abort);
+  SaveMeMessage->addButton(QMessageBox::Close);
+
   BacklightMessage = new QMessageBox(this);
   BacklightMessage->setText("Turn off Frontlight! Turn on Backlight!");
   ShakeItBabyMessage = new QMessageBox(this);
@@ -356,9 +360,6 @@ void VSAMainWindow::on_actionNeuralNet_triggered() {
 
 void VSAMainWindow::on_actionNewSample_triggered() {
   if (Sample->ChangesSinceLastSave) {
-    SaveMeMessage->setText(tr("Sample is not saved, Save sample?"));
-    SaveMeMessage->addButton(QMessageBox::Abort);
-    SaveMeMessage->addButton(QMessageBox::Close);
     if (SaveMeMessage->exec() == QMessageBox::Abort) {
       return;
     }
@@ -473,9 +474,6 @@ void VSAMainWindow::on_actionSaveSample_triggered() {
 
 void VSAMainWindow::on_actionLoadSample_triggered() {
   if (Sample->ChangesSinceLastSave) {
-    SaveMeMessage->setText(tr("Sample is not saved, Save sample?"));
-    SaveMeMessage->addButton(QMessageBox::Abort);
-    SaveMeMessage->addButton(QMessageBox::Close);
     if (SaveMeMessage->exec() == QMessageBox::Abort) {
       return;
     }
