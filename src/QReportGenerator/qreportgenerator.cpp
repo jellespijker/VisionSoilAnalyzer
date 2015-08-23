@@ -391,7 +391,12 @@ void QReportGenerator::on_locationImageDownloaded(QNetworkReply *reply) {
   insertMap.insertHtml("<br>");
 }
 
-QReportGenerator::~QReportGenerator() { delete ui; }
+QReportGenerator::~QReportGenerator()
+{
+  delete CIElabPlot;
+  delete mapLocation;
+  delete ui;
+}
 
 void QReportGenerator::on_actionSave_triggered() {
   QString fn = QFileDialog::getSaveFileName(

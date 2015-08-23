@@ -224,7 +224,6 @@ void Analyzer::GetEnhancedInt(Mat &img, Mat &intensity) {
 void Analyzer::GetBW(std::vector<cv::Mat> &images,
                      std::vector<cv::Mat> &BWvector) {
   for_each(images.begin(), images.end(), [&](cv::Mat &I) {
-  //QtConcurrent::blockingMap<std::vector<cv::Mat>>(images, [&](cv::Mat &I) {
     cv::Mat BW;
     GetBW(I, BW);
     BWvector.push_back(BW);
