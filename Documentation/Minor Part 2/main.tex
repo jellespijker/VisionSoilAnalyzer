@@ -41,7 +41,7 @@
 %	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
 
-\documentclass[11pt,fleqn]{book} % Default font size and left-justified equations
+\documentclass[11pt,fleqn,,a4paper,twoside,openright]{book} % Default font size and left-justified equations
 
 %----------------------------------------------------------------------------------------
 
@@ -94,7 +94,7 @@ B.V.” \\ % License information
 %	TABLE OF CONTENTS
 %----------------------------------------------------------------------------------------
 
-\chapterimage{rocky-soil.jpg} % Table of contents heading image
+\chapterimage{sand_1_banner.jpg} % Table of contents heading image
 
 \pagestyle{empty} % No headers
 
@@ -105,22 +105,22 @@ B.V.” \\ % License information
 \pagestyle{fancy} % Print headers again
 
 %----------------------------------------------------------------------------------------
-%	PART
-%----------------------------------------------------------------------------------------
-\newpage
-\part{Part One}
-
-%----------------------------------------------------------------------------------------
 %	Introduction
 %----------------------------------------------------------------------------------------
 \chapter{Introduction}
 \lipsum[3-5]
 
 %----------------------------------------------------------------------------------------
+%	PART
+%----------------------------------------------------------------------------------------
+\newpage
+\part{Design}
+
+%----------------------------------------------------------------------------------------
 %	CHAPTER 1
 %----------------------------------------------------------------------------------------
 
-\chapterimage{rocky-soil.jpg} % Chapter heading image
+\chapterimage{sand_2_banner.jpg} % Chapter heading image
 
 \chapter{Functional Design}
 
@@ -201,7 +201,9 @@ a vector space is denoted by $\mathcal{D}(G)$.
 \end{notation}
 
 %------------------------------------------------
-\part{Two}
+\part{Realisation}
+
+\chapterimage{sand_3_banner.jpg} % Chapter heading image
 \chapter{Technical Realisation}
 
 \subsection{Electrical design}
@@ -305,13 +307,13 @@ Definition of word.
 %	PART
 %----------------------------------------------------------------------------------------
 
-\part{Part Two}
+\part{Verification}
 
 %----------------------------------------------------------------------------------------
 %	CHAPTER 3
 %----------------------------------------------------------------------------------------
 
-\chapterimage{chapter_head_1.pdf} % Chapter heading image
+\chapterimage{sand_4_banner.jpg} % Chapter heading image
 
 \chapter{Presenting Information}
 
@@ -340,11 +342,11 @@ Treatment 3 & 0.0009271 & 0.296 \\
 \caption{Figure caption}
 \end{figure}
 
-\part[part]{Part Three}
+\part{Addenda}
 %----------------------------------------------------------------------------------------
 %	BIBLIOGRAPHY
 %----------------------------------------------------------------------------------------
-
+\chapterimage{books_banner.jpg}
 \chapter*{Bibliography}
 \addcontentsline{toc}{chapter}{\textcolor{ocre}{Bibliography}}
 \section*{Books}
@@ -357,7 +359,7 @@ Treatment 3 & 0.0009271 & 0.296 \\
 %----------------------------------------------------------------------------------------
 %	INDEX
 %----------------------------------------------------------------------------------------
-
+\chapterimage{Index_banner.jpg}
 \cleardoublepage
 \phantomsection
 \setlength{\columnsep}{0.75cm}
@@ -371,6 +373,7 @@ Treatment 3 & 0.0009271 & 0.296 \\
 \newpage
 \onecolumn
 \appendix
+\chapterimage{code_banner.jpg}
 \chapter{SoilMath Library}
 \subsection{Genetic Algorithm Class}
 \lstinputlisting[language=C++]{../../src/SoilMath/GA.h}
@@ -407,6 +410,7 @@ Treatment 3 & 0.0009271 & 0.296 \\
 \newpage
 \lstinputlisting[language=C++]{../../src/SoilMath/Sort.h}
 
+\chapterimage{code_banner.jpg}
 \chapter{Hardware Library}
 \subsection{Microscope Class}
 \lstinputlisting[language=C++]{../../src/SoilHardware/Microscope.h}
