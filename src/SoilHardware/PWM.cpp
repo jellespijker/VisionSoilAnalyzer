@@ -21,36 +21,30 @@ PWM::PWM(Pin pin) {
   }
 
   // Init the pin
-  basepath = OCP_PATH;
   switch (pin) {
   case Hardware::PWM::P8_13:
-    if (!CapeLoaded(P8_13_CAPE)) {
-      Write(SLOTS, P8_13_CAPE_LOAD);
-    }
-    basepath.append(FindPath(P8_13_FIND));
+    system("config-pin P8.13 pwm");
+    basepath = OCP_PATH;
+    basepath.append("pwmchip4/pwm1");
     break;
   case Hardware::PWM::P8_19:
-    if (!CapeLoaded(P8_19_CAPE)) {
-      Write(SLOTS, P8_19_CAPE_LOAD);
-    }
-    basepath.append(FindPath(P8_19_FIND));
+    system("config-pin P8.19 pwm");
+    basepath = OCP_PATH;
+    basepath.append("pwmchip4/pwm0");
     break;
   case Hardware::PWM::P9_14:
-    if (!CapeLoaded(P9_14_CAPE)) {
-      Write(SLOTS, P9_14_CAPE_LOAD);
-    }
-    basepath.append(FindPath(P9_14_FIND));
+    system("config-pin P9.14 pwm");
+    basepath = OCP_PATH;
+    basepath.append("pwmchip2/pwm0");
     break;
   case Hardware::PWM::P9_16:
-    if (!CapeLoaded(P9_16_CAPE)) {
-      Write(SLOTS, P9_16_CAPE_LOAD);
-    }
-    basepath.append(FindPath(P9_16_FIND));
+    system("config-pin P9.16 pwm");
+    basepath.append("pwmchip2/pwm1");
     break;
   }
 
   // Get the working paths
-  dutypath = basepath + "/duty";
+  dutypath = basepath + "/duty_cycle";
   periodpath = basepath + "/period";
   runpath = basepath + "/run";
   polaritypath = basepath + "/polarity";
@@ -157,25 +151,5 @@ void PWM::SetPolarity(Polarity value) {
   string valstr = NumberToString<int>(valInt);
   Write(runpath, valstr);
   polarity = value;
-}
-
-/// <summary>
-/// Find the current PWM path in the OCP.3 directory
-/// </summary>
-/// <param name="value">part a the path name</param>
-/// <returns>Returns the first found value</returns>
-string PWM::FindPath(string value) {
-  auto dir = opendir(OCP_PATH);
-  auto entity = readdir(dir);
-  while (entity != NULL) {
-    if (entity->d_type == DT_DIR) {
-      string str = static_cast<string>(entity->d_name);
-      if (str.find(value) != string::npos) {
-        return str;
-      }
-    }
-    entity = readdir(dir);
-  }
-  return "";
 }
 }
