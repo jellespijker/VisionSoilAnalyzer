@@ -86,7 +86,8 @@ void GPIO::SetEdge(Edge edge) {
   WritesEdge(gpiopath, edge);
 }
 
-bool GPIO::isExported(int number __attribute__((unused)), Direction &dir, Edge &edge) {
+bool GPIO::isExported(int number __attribute__((unused)), Direction &dir,
+                      Edge &edge) {
   // Checks if directory exist and therefore is exported
   if (!DirectoryExist(gpiopath)) {
     return false;
@@ -99,12 +100,106 @@ bool GPIO::isExported(int number __attribute__((unused)), Direction &dir, Edge &
 }
 
 bool GPIO::ExportPin(int number) {
-  Write(EXPORT_PIN, NumberToString<int>(number));
+  switch (number) {
+  case 7:
+    system("config-pin P9.42 gpio");
+    break;
+  case 116:
+    system("config-pin P9.91 gpio");
+    break;
+  case 112:
+    system("config-pin P9.30 gpio");
+    break;
+  case 115:
+    system("config-pin P9.27 gpio");
+    break;
+  case 14:
+    system("config-pin P9.26 gpio");
+    break;
+  case 15:
+    system("config-pin P9.24 gpio");
+    break;
+  case 49:
+    system("config-pin P9.23 gpio");
+    break;
+  case 2:
+    system("config-pin P9.22 gpio");
+    break;
+  case 3:
+    system("config-pin P9.21 gpio");
+    break;
+  case 4:
+    system("config-pin P9.18 gpio");
+    break;
+  case 5:
+    system("config-pin P9.17 gpio");
+    break;
+  case 51:
+    system("config-pin P9.16 gpio");
+    break;
+  case 48:
+    system("config-pin P9.15 gpio");
+    break;
+  case 50:
+    system("config-pin P9.14 gpio");
+    break;
+  case 31:
+    system("config-pin P9.13 gpio");
+    break;
+  case 60:
+    system("config-pin P9.12 gpio");
+    break;
+  case 30:
+    system("config-pin P9.11 gpio");
+    break;
+  case 61:
+    system("config-pin P8.26 gpio");
+    break;
+  case 22:
+    system("config-pin P8.19 gpio");
+    break;
+  case 65:
+    system("config-pin P8.18 gpio");
+    break;
+  case 27:
+    system("config-pin P8.17 gpio");
+    break;
+  case 46:
+    system("config-pin P8.16 gpio");
+    break;
+  case 47:
+    system("config-pin P8.15 gpio");
+    break;
+  case 26:
+    system("config-pin P8.14 gpio");
+    break;
+  case 23:
+    system("config-pin P8.13 gpio");
+    break;
+  case 44:
+    system("config-pin P8.12 gpio");
+    break;
+  case 45:
+    system("config-pin P8.11 gpio");
+    break;
+  case 68:
+    system("config-pin P8.10 gpio");
+    break;
+  case 69:
+    system("config-pin P8.09 gpio");
+    break;
+  case 67:
+    system("config-pin P8.08 gpio");
+    break;
+  case 66:
+    system("config-pin P8.07 gpio");
+    break;
+  }
   usleep(250000);
 }
 
 bool GPIO::UnexportPin(int number) {
-  Write(UNEXPORT_PIN, NumberToString<int>(number));
+  //Write(UNEXPORT_PIN, NumberToString<int>(number));
 }
 
 GPIO::Direction GPIO::ReadsDirection(const string &gpiopath) {
