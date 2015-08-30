@@ -1,0 +1,15 @@
+Image enhancement prepares the RGB image for conversion to a binary image. It eliminates noise and brings out wanted features, by using filters.
+\paragraph{Intensity image}\index{Intensity image} The first step in this process step is the conversion from the RGB color space to an scalar valued image which represent the luminosity, also known as a intensity image. This luminosity is calculated using a weighted average and is done for bright field and back lit images.
+\begin{sBox}
+	Let $\mat{I}$ and $\mat{R}, \mat{G}, \mat{B}$  be a matrices with dimensions $n \times m$ derived from the color matrix $\mat{RGB}$ with dimensions $n \times m \times 3$; The weighted average can be calculated with the following equation:
+	\begin{equation}
+		\mat{I} =0.2126\times \mat{R} + 0.7152\times \mat{G} + 0.0722\times \mat{B}
+	\end{equation}
+\end{sBox}
+
+\paragraph{Adaptive contrast stretch}\index{Adaptive contrast stretch}\label{Adaptive contrast stretch} After the conversion from RGB to an intensity image, the user has the choice to apply an adaptive contrast stretch to the bright field images. This process is used to enhance the contrast of the intensity image. For every pixel and its surrounding area the mean and standard deviation are calculated. If the value of the pixel is above or below the mean than the following rule is used to determine the new value: $\mat{I}_{n,m}=\mat{I}_{n,m} \times \alpha \pm \sigma$, where $\alpha$ is a scaling factor and $\sigma$ is the standard deviation of the old pixel value with it's neighboring kernel pixels.
+
+\paragraph{Blur}\index{Blur}\label{Blur} As a second enhancement the user can apply a blurring operation to the bright field images, in essence the opposite of the contrast stretch. The blur operation also determines the mean for every pixels within a given area: the kernel. The mean value of the kernel is assigned to the pixel.
+
+\paragraph{Cropping}
+The above operations described in the paragraph \ref{Blur} and \ref{Adaptive contrast stretch}, leave the border pixels unaffected in their calculations. This offset is determined by half of the biggest kernel size. These pixels are discarded for the next step.
