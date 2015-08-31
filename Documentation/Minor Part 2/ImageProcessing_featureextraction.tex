@@ -1,23 +1,11 @@
-In order to tell something about the individual particles, they first have to be identified and separated from the background. If there are only bright field images in the image vector, the segmentation operations are performed on these otherwise the back lit images are used. 
+In order to tell something about the individual particles, they first have to be identified and separated from the background. This is done with the enhanced intensity matrix. Which is taken from the bright field matrix or if available the back lit intensity matrix.
 
 \paragraph{Segmentation}\index{Segmentation}
-The images are segmented by calculating a threshold value\index{Threshold}. This value is determined by using the Otsu\index{Otsu's method} threshold. \citeauthor{Xu2011956} describe that the Otsu threshold is equal to the average of the mean levels of two classes partitioned by this threshold. This threshold can be iteratively determined using the algorithm \ref{threshold_alg}. Let $\mat{H}$ be a histogram representing the count of pixel values in the intensity matrix $\mat{I}$
-\begin{algorithm}\label{threshold_alg}
-	\caption{Otsu's threshold}
-	\begin{algorithmic}[1]
-		\Statex
-		\Function{GetThresholdLevel}{$\mat{H}$}
-		\State $\sigma_r=0$
-		\State $\sigma_l=0$
-		\State $\bar{l}=0$
-		\State $\bar{r}=0$
-		\State $T_p=0$
-		\State $T_c=\frac{1}{n \times m} \sum\limits_{i=1}^{n \times m} \mat{H}_{i} \times i$
-		\While{$T_p != T_c$}
-			\State $\sigma=1$
-		\EndWhile
-	
-		\State \Return{$\delta$}
-		\EndFunction
-	\end{algorithmic}
-\end{algorithm}
+The images are segmented by calculating a threshold value\index{Threshold}. This value is determined by using the Otsu\index{Otsu's method} threshold. \citeauthor{Xu2011956} \cite{Xu2011956} describe that the Otsu threshold is equal to the average of the mean levels of two classes partitioned by this threshold. This threshold can be iteratively determined.
+
+\begin{sBox}
+	Let $\vec{h}$ be a vector of dimension $256$ which represent a count of values in the enhanced intensity matrix $\mat{I}$ with dimensions $m \times n$
+	\begin{equation}
+		\frac{1}{t}\sum\limits_{i=1}^t \vec{h}_i = t - \frac{1}{256-t}\sum\limits_{i=t}^{256} \vec{h}_i
+	\end{equation}
+\end{sBox}
