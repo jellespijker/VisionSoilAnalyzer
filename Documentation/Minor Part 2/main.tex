@@ -52,9 +52,8 @@
 \chapter{Functional Design}
 
 \section{Global Input-Proces-Output}\index{Global Input-Proces-Output}
-
-\lipsum[1-7] % Dummy text
-
+\input{SystemDescription.tex}
+\input{mainIPO.tex}
 \section{Specifications}\index{Citation}
 
 
@@ -74,6 +73,7 @@
 \chapter{User Interface}
 
 \section{Graphical User Interface}
+\input{GUI.tex}
 
 \section{Hardware User Interface}
 
@@ -128,8 +128,8 @@ This is a theorem consisting of just one line.
 
 \subsection{Fast Fourier Descriptors}\index{Fast Fourier Descriptors}\index{FFT}\label{FFT}
 
-\subsection{SI equivalent diameter}
-
+\subsection{Particle Size Distribution}
+\input{ParticleSizeDistribution.tex}
 
 \section{Classification}\index{Classification}
 
@@ -193,11 +193,45 @@ Treatment 3 & 0.0009271 & 0.296 \\
 
 \appendix
 \chapterimage{books_banner.jpg}
+\chapter{Graphical User Interface}
+\begin{figure}[h]
+	\includegraphics[width=\textwidth]{maingui.png}
+	\caption{Main Graphical User Interface}
+\end{figure}
+\begin{figure}[h]
+	\includegraphics[width=\textwidth]{settingHardware.png}
+	\caption{Settings Hardware Interface}
+\end{figure}
+\begin{figure}[h]
+	\includegraphics[width=\textwidth]{settingsHardwareCam.png}
+	\caption{Settings Hardware Cam Interface}
+\end{figure}
+\begin{figure}[h]
+	\includegraphics[width=\textwidth]{settingsVision.png}
+	\caption{Settings Vision Interface}
+\end{figure}
+\begin{figure}[h]
+	\includegraphics[width=\textwidth]{settingsPref.png}
+	\caption{Settings Preference Interface}
+\end{figure}
+\begin{figure}[h]
+	\includegraphics[width=\textwidth]{settingsNN.png}
+	\caption{Settings Neural Network Interface}
+\end{figure}
+\begin{figure}[h]
+	\includegraphics[width=\textwidth]{NNLearn.png}
+	\caption{Neural Network Learning Interface}
+\end{figure}
+
+\chapter{Example Soil Report}
+\includepdf[pages={1-5}, height=\textheight ,pagecommand=\paragraph{}]{SampleReport.pdf}
+
 \chapter{RDM campus: Student project}\label{RDM_Campus}
 \input{RDM_projectpropesition.tex}
-
-\chapter{Literature review}
-\includepdf{../Minor Part 1/Literatuurstudie - Grond en Computer Vision.pdf}
+\chapter{Current project status}
+\includepdf[pages={1-7}, height=\textheight ,pagecommand=\paragraph{}]{../IHC/Current Status 150617.pdf}
+\chapter{Soil and computer vision flyer}
+\includepdf[pages={1-15}, height=\textheight ,pagecommand=\paragraph{}]{../IHC/Soil and computer vision.pdf}
 
 \chapterimage{code_banner.jpg}
 \chapter{SoilMath Library}
