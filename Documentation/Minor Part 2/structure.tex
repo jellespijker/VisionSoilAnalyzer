@@ -27,6 +27,7 @@
 \usepackage{lipsum} % Inserts dummy text
 
 \usepackage{tikz} % Required for drawing custom shapes
+\usetikzlibrary{arrows}
 
 \usepackage[english]{babel} % English language/hyphenation
 
@@ -60,14 +61,16 @@
 \usepackage{mathtools}
 \newcommand\mat[1]{\mathbf{#1}}
 
-\usepackage{algpseudocode,algorithm,algorithmicx}
-\newcommand*\DNA{\textsc{dna}}
-
-\newcommand*\Let[2]{\State #1 $\gets$ #2}
-\algrenewcommand\algorithmicrequire{\textbf{Precondition:}}
-\algrenewcommand\algorithmicensure{\textbf{Postcondition:}}
+\usepackage[]{algorithm2e}
 
 \usepackage{float}
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\usepackage{todonotes}
+\usepackage{wrapfig}
+
 %----------------------------------------------------------------------------------------
 %	FONTS
 %----------------------------------------------------------------------------------------
