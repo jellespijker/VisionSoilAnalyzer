@@ -1,0 +1,89 @@
+The beaglebone black (BBB) is a device created by Texas Instruments.
+
+\paragraph{Building the Kernel}
+First setup the cross-compile environment on the develpment PC.
+
+\subparagraph{Linaro}
+\begin{sBox}
+	wget -c https://releases.linaro.org/14.09/components/toolchain/binaries/gcc-linaro-arm-linux-gnueabihf-4.9-2014.09\_linux.tar.xz\\
+	tar xf gcc-linaro-arm-linux-gnueabihf-4.9-2014.09\_linux.tar.xz\\
+	export CC=`pwd`/gcc-linaro-arm-linux-gnueabihf-4.9-2014.09\_linux/bin/arm-linux-gnueabihf-\\
+\end{sBox}
+
+\subparagraph{Bootloader: U-Boot}
+\begin{sBox}
+	git clone git://git.denx.de/u-boot.git\\
+	cd u-boot/\\
+	git checkout v2015.10-rc2 -b tmp\\
+
+	Apply the Beaglebone patch against the cloned boot-loader, make sure you are in the \~{}/u-boot directory  
+	
+	git revert --no-edit 0a9e34056fcf86fb64e70bd281875eb7bbdbabde\\
+	wget -c https://rcn-ee.com/repos/git/u-boot-patches/v2015.10-rc2/0001-am335x\_evm-uEnv.txt-bootz-n-fixes.patch\\
+	patch -p1 < 0001-am335x\_evm-uEnv.txt-bootz-n-fixes.patch\\
+\end{sBox}
+
+\subparagraph{OS ubuntu 14.04}
+Download the Ubuntu 14.04 OS  
+\begin{sBox}
+	wget -c https://rcn-ee.com/rootfs/eewiki/minfs/ubuntu-14.04.2-minimal-armhf-2015-06-09.tar.xz  
+	tar xf ubuntu-14.04.2-minimal-armhf-2015-06-09.tar.xz\\
+\end{sBox}
+
+\paragraph{Setup the SD card}
+\begin{sBox}
+	export DISK=/dev/mmcblk0\\
+	sudo dd if=/dev/zero of=\$\{DISK\} bs=1M count=10\\
+	sudo dd if=./u-boot/MLO of=\$\{DISK\} count=1 seek=1 bs=128k\\
+	sudo dd if=./u-boot/u-boot.img of=\$\{DISK\} count=2 seek=1 bs=384k\\
+	sudo sfdisk --in-order --Linux --unit M \$\{DISK\} <<-\_\_EOF\_\_\\
+	1,,0x83,*\\
+	\_\_EOF\_\_\\
+	sudo mkfs.ext4 /dev/mmcblk0p1 -L rootfs\\
+\end{sBox}
+
+\todo{Describe the process further}
+remember that initial user and password are \textbf{ubuntu} and \textbf{temppwd} 
+
+\paragraph{Setup pinmuxing}
+Enable Beaglebone overlays for kernel 4.1.x by cloning Robert C. Nelson bb.org-overlays do this on the BBB. Check if the kernel has the CONFIG\_BONE\_CAPEMGR=y option  
+\begin{sBox}
+	zcat /proc/config.gz | grep CONFIG\_BONE\_CAPEMGR
+\end{sBox}
+
+Update the kernel, not needed on a fresh build.  
+\begin{sBox}
+	cd /opt/scripts/tools\\
+	git pull\\
+	sudo ./update\_kernel.sh --lts --bone-channel\\
+\end{sBox}
+
+check if the  DTC version is atleast Version: DTC 1.4.1-g2341721b  
+\begin{sBox}
+	dtc --version
+\end{sBox}
+
+Install the overlays
+\begin{sBox}
+	git clone https://github.com/RobertCNelson/bb.org-overlays.git\\
+	cd bb.org-overlays\\
+	sudo ./dtc-overlay.sh\\
+	sudo ./install.sh\\
+\end{sBox}
+
+Install the universal IO device tree for easy PWM and GPIO acces  
+\begin{sBox}
+	git clone https://github.com/cdsteinkuehler/beaglebone-universal-io.git\\
+	sudo sh -c "echo 'cape-universaln' > /sys/devices/platform/bone\_capemgr/slots"\\
+	sudo cp config-pin /bin/\\
+\end{sBox}
+
+
+\# Setting up the software
+
+The following software should be installed on the BBB
+
+\paragraph{OpenCV}
+\begin{sBox}
+	cmake -D CMAKE\_BUILD\_TYPE=RELEASE -D CMAKE\_INSTALL\_PREFIX=/usr/local -D WITH\_CUDA=OFF -D WITH\_CUFFT=OFF -D WITH\_CUBLAS=OFF -D WITH\_NVCUVID=OFF -D WITH\_OPENCL=OFF -D WITH\_OPENCLAMDFFT=OFF -D WITH\_OPENCLAMDBLAS=OFF -D BUILD\_opencv\_apps=OFF -D BUILD\_DOCS=OFF -D BUILD\_PERF\_TESTS=OFF -D BUILD\_TESTS=OFF -D ENABLE\_NEON=on ..
+\end{sBox}

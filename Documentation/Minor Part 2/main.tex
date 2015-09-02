@@ -33,15 +33,18 @@
 \noindent \textit{First printing, September 2015} % Printing/edition date
 
 \chapterimage{sand_1_banner.jpg} % Table of contents heading image
-
 \pagestyle{empty} % No headers
+\chapter*{Foreword}
 
+\chapter*{Summary}
+\input{Summary.tex}
 \tableofcontents % Print the table of contents itself
 
 \cleardoublepage % Forces the first chapter to start on an odd page so it's on the right
 
 \pagestyle{fancy} % Print headers again
 
+\mainmatter
 \chapter{Introduction}
 \input{Introduction.tex}
 
@@ -50,34 +53,32 @@
 
 \chapterimage{sand_2_banner.jpg} % Chapter heading image
 \chapter{Functional Design}
+\input{functionalDesign.tex}
 
-\section{Global Input-Proces-Output}\index{Global Input-Proces-Output}
-\input{SystemDescription.tex}
+\section{Global Input-Process-Output}\index{Global Input-Process-Output}
 \input{mainIPO.tex}
-\section{Specifications}\index{Citation}
+
+\section{Specifications}\index{Citation}\label{Specification}
+\input{Specifications.tex}
+
+\subsection{Functional requirements}\label{FunctionalRequirements}
 
 
-\subsection{Functional requirements}
-\begin{description}
-	\item[Name] Description
-	\item[Word] Definition
-	\item[Comment] Elaboration
-\end{description}
-\subsection{Technical requirements}
+\subsection{Technical requirements}\label{TechnicalRequirements}
 \begin{description}
 \item[Name] Description
 \item[Word] Definition
 \item[Comment] Elaboration
 \end{description}
 
-\chapter{User Interface}
-
+\chapter{User Interface}\label{UserInterface}
+\input{SystemDescription.tex}
 \section{Graphical User Interface}
 \input{GUI.tex}
 
 \section{Hardware User Interface}
 
-\chapter{Manuals}
+\chapter{Manuals}\label{manuals}
 
 \section{User manual}
 
@@ -106,6 +107,12 @@ This is a theorem consisting of just one line.
 \part{Realization}
 
 \chapterimage{sand_3_banner.jpg} % Chapter heading image
+\chapter{Software Development Environment}
+\input{SDE.tex}
+
+\chapter{Run Environment}
+\input{RE.tex}
+
 \chapter{Technical Realization}
 
 \subsection{Electrical design}
@@ -236,23 +243,28 @@ Treatment 3 & 0.0009271 & 0.296 \\
 
 \chapterimage{code_banner.jpg}
 \chapter{SoilMath Library}
-\subsection{Genetic Algorithm Class}
+\subsection*{Genetic Algorithm Class}
+\addcontentsline{toc}{section}{Genetic Algorithm Class}
 \lstinputlisting[language=C++]{../../src/SoilMath/GA.h}
 \lstinputlisting[language=C++]{../../src/SoilMath/GA.cpp}
 \newpage
-\subsection{Fast Fourier Transform Class}
+\subsection*{Fast Fourier Transform Class}
+\addcontentsline{toc}{section}{Fast Fourier Transform Class}
 \lstinputlisting[language=C++]{../../src/SoilMath/FFT.h}
 \lstinputlisting[language=C++]{../../src/SoilMath/FFT.cpp}
 \newpage
-\subsection{Neural Network Class}
+\subsection*{Neural Network Class}
+\addcontentsline{toc}{section}{Neural Network Class}
 \lstinputlisting[language=C++]{../../src/SoilMath/NN.h}
 \lstinputlisting[language=C++]{../../src/SoilMath/NN.cpp}
 \newpage
-\subsection{Statistical Class}
+\subsection*{Statistical Class}
+\addcontentsline{toc}{section}{Statistical Class}
 \lstinputlisting[language=C++]{../../src/SoilMath/Stats.h}
 \lstinputlisting[language=C++]{../../src/SoilMath/psd.h}
 \newpage
-\subsection{General project files}
+\subsection*{General project files}
+\addcontentsline{toc}{section}{General project files}
 \lstinputlisting[language=C++]{../../src/SoilMath/SoilMath.pro}
 \lstinputlisting[language=C++]{../../src/SoilMath/SoilMath.h}
 \lstinputlisting[language=C++]{../../src/SoilMath/CommonOperations.h}
@@ -264,43 +276,53 @@ Treatment 3 & 0.0009271 & 0.296 \\
 
 \chapterimage{code_banner.jpg}
 \chapter{Hardware Library}
-\subsection{Microscope Class}
+\subsection*{Microscope Class}
+\addcontentsline{toc}{section}{Microscope Class}
 \lstinputlisting[language=C++]{../../src/SoilHardware/Microscope.h}
 \lstinputlisting[language=C++]{../../src/SoilHardware/Microscope.cpp}
 \newpage
-\subsection{Beaglebone Black Class}
+\subsection*{Beaglebone Black Class}
+\addcontentsline{toc}{section}{Beaglebone Black Class}
 \lstinputlisting[language=C++]{../../src/SoilHardware/BBB.h}
 \lstinputlisting[language=C++]{../../src/SoilHardware/BBB.cpp}
 \newpage
-\subsection{GPIO Class}
+\subsection*{GPIO Class}
+\addcontentsline{toc}{section}{GPIO Class}
 \lstinputlisting[language=C++]{../../src/SoilHardware/GPIO.h}
 \lstinputlisting[language=C++]{../../src/SoilHardware/GPIO.cpp}
 \newpage
-\subsection{PWM Class}
+\subsection*{PWM Class}
+\addcontentsline{toc}{section}{PWM Class}
 \lstinputlisting[language=C++]{../../src/SoilHardware/PWM.h}
 \lstinputlisting[language=C++]{../../src/SoilHardware/PWM.cpp}
 \newpage
-\subsection{ADC Class}
+\subsection*{ADC Class}
+\addcontentsline{toc}{section}{ADC Class}
 \lstinputlisting[language=C++]{../../src/SoilHardware/ADC.h}
 \lstinputlisting[language=C++]{../../src/SoilHardware/ADC.cpp}
 \newpage
-\subsection{EC12P Class}
+\subsection*{EC12P Class}
+\addcontentsline{toc}{section}{EC12P Classs}
 \lstinputlisting[language=C++]{../../src/SoilHardware/EC12P.h}
 \lstinputlisting[language=C++]{../../src/SoilHardware/EC12P.cpp}
 \newpage
-\subsection{eQep Class}
+\subsection*{eQep Class}
+\addcontentsline{toc}{section}{eQep Class}
 \lstinputlisting[language=C++]{../../src/SoilHardware/eqep.h}
 \lstinputlisting[language=C++]{../../src/SoilHardware/eqep.cpp}
 \newpage
-\subsection{SoilCape Class}
+\subsection*{SoilCape Class}
+\addcontentsline{toc}{section}{SoilCape Class}
 \lstinputlisting[language=C++]{../../src/SoilHardware/SoilCape.h}
 \lstinputlisting[language=C++]{../../src/SoilHardware/SoilCape.cpp}
 \newpage
-\subsection{USB Class}
+\subsection*{USB Class}
+\addcontentsline{toc}{section}{USB Class}
 \lstinputlisting[language=C++]{../../src/SoilHardware/USB.h}
 \lstinputlisting[language=C++]{../../src/SoilHardware/USB.cpp}
 \newpage
-\subsection{General project files}
+\subsection*{General project files}
+\addcontentsline{toc}{section}{General project files}
 \lstinputlisting[language=C++]{../../src/SoilHardware/SoilHardware.pro}
 \lstinputlisting[language=C++]{../../src/SoilHardware/Hardware.h}
 \lstinputlisting[language=C++]{../../src/SoilHardware/ValueOutOfBoundsException.h}
@@ -314,27 +336,33 @@ Treatment 3 & 0.0009271 & 0.296 \\
 
 \chapterimage{code_banner.jpg}
 \chapter{Vision Library}
-\subsection{Image processing Class}
+\subsection*{Image processing Class}
+\addcontentsline{toc}{section}{Image processing Class}
 \lstinputlisting[language=C++]{../../src/SoilVision/ImageProcessing.h}
 \lstinputlisting[language=C++]{../../src/SoilVision/ImageProcessing.cpp}
 \newpage
-\subsection{Conversion Class}
+\subsection*{Conversion Class}
+\addcontentsline{toc}{section}{Conversion Class}
 \lstinputlisting[language=C++]{../../src/SoilVision/Conversion.h}
 \lstinputlisting[language=C++]{../../src/SoilVision/Conversion.cpp}
 \newpage
-\subsection{Enhance Class}
+\subsection*{Enhance Class}
+\addcontentsline{toc}{section}{Enhance Class}
 \lstinputlisting[language=C++]{../../src/SoilVision/Enhance.h}
 \lstinputlisting[language=C++]{../../src/SoilVision/Enhance.cpp}
 \newpage
-\subsection{Morphological filter Class}
+\subsection*{Morphological filter Class}
+\addcontentsline{toc}{section}{Morphological filter Class}
 \lstinputlisting[language=C++]{../../src/SoilVision/MorphologicalFilter.h}
 \lstinputlisting[language=C++]{../../src/SoilVision/MorphologicalFilter.cpp}
 \newpage
-\subsection{Segment Class}
+\subsection*{Segment Class}
+\addcontentsline{toc}{section}{Segment Class}
 \lstinputlisting[language=C++]{../../src/SoilVision/Segment.h}
 \lstinputlisting[language=C++]{../../src/SoilVision/Segment.cpp}
 \newpage
-\subsection{General project files}
+\subsection*{General project files}
+\addcontentsline{toc}{section}{General project files}
 \lstinputlisting[language=C++]{../../src/SoilVision/SoilVision.pro}
 \lstinputlisting[language=C++]{../../src/SoilVision/Vision.h}
 \lstinputlisting[language=C++]{../../src/SoilVision/VisionDebug.h}
@@ -346,23 +374,28 @@ Treatment 3 & 0.0009271 & 0.296 \\
 
 \chapterimage{code_banner.jpg}
 \chapter{Analyzer Library}
-\subsection{Analyzer Class}
+\subsection*{Analyzer Class}
+\addcontentsline{toc}{section}{Analyzer Class}
 \lstinputlisting[language=C++]{../../src/SoilAnalyzer/analyzer.h}
 \lstinputlisting[language=C++]{../../src/SoilAnalyzer/analyzer.cpp}
 \newpage
-\subsection{Sample Class}
+\subsection*{Sample Class}
+\addcontentsline{toc}{section}{Sample Class}
 \lstinputlisting[language=C++]{../../src/SoilAnalyzer/sample.h}
 \lstinputlisting[language=C++]{../../src/SoilAnalyzer/sample.cpp}
 \newpage
-\subsection{Particle Class}
+\subsection*{Particle Class}
+\addcontentsline{toc}{section}{Particle Class}
 \lstinputlisting[language=C++]{../../src/SoilAnalyzer/particle.h}
 \lstinputlisting[language=C++]{../../src/SoilAnalyzer/particle.cpp}
 \newpage
-\subsection{Settings Class}
+\subsection*{Settings Class}
+\addcontentsline{toc}{section}{Settings Class}
 \lstinputlisting[language=C++]{../../src/SoilAnalyzer/soilsettings.h}
 \lstinputlisting[language=C++]{../../src/SoilAnalyzer/soilsettings.cpp}
 \newpage
-\subsection{General project files}
+\subsection*{General project files}
+\addcontentsline{toc}{section}{General project files}
 \lstinputlisting[language=C++]{../../src/SoilAnalyzer/SoilAnalyzer.pro}
 \lstinputlisting[language=C++]{../../src/SoilAnalyzer/lab_t_archive.h}
 \lstinputlisting[language=C++]{../../src/SoilAnalyzer/soilanalyzerexception.h}
@@ -399,19 +432,23 @@ Treatment 3 & 0.0009271 & 0.296 \\
 
 \chapterimage{code_banner.jpg}
 \chapter{Vision Soil Analyzer Program}
-\subsection{General project files}
+\subsection*{General project files}
+\addcontentsline{toc}{section}{General project files}
 \lstinputlisting[language=C++]{../../src/VSA/VSA.pro}
 \lstinputlisting[language=C++]{../../src/VSA/main.cpp}
 \newpage
-\subsection{Main window Class}
+\subsection*{Main window Class}
+\addcontentsline{toc}{section}{Main window Class}
 \lstinputlisting[language=C++]{../../src/VSA/vsamainwindow.h}
 \lstinputlisting[language=C++]{../../src/VSA/vsamainwindow.cpp}
 \newpage
-\subsection{Dialog window Class}
+\subsection*{Dialog window Class}
+\addcontentsline{toc}{section}{Dialog window Class}
 \lstinputlisting[language=C++]{../../src/VSA/dialogsettings.h}
 \lstinputlisting[language=C++]{../../src/VSA/dialogsettings.cpp}
 \newpage
-\subsection{Dialog Neural Network Class}
+\subsection*{Dialog Neural Network Class}
+\addcontentsline{toc}{section}{Dialog Neural Network Class}
 \lstinputlisting[language=C++]{../../src/VSA/dialognn.h}
 \lstinputlisting[language=C++]{../../src/VSA/dialognn.cpp}
 \newpage

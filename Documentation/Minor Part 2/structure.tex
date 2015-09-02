@@ -27,7 +27,7 @@
 \usepackage{lipsum} % Inserts dummy text
 
 \usepackage{tikz} % Required for drawing custom shapes
-\usetikzlibrary{arrows}
+\usetikzlibrary{shapes, arrows}
 
 \usepackage[english]{babel} % English language/hyphenation
 
@@ -38,6 +38,8 @@
 
 \usepackage{xcolor} % Required for specifying colors by name
 \definecolor{ocre}{RGB}{243,102,25} % Define the orange color used for highlighting throughout the book
+
+\usepackage{url}
 
 \usepackage{appendix}
 
@@ -71,6 +73,7 @@
 \usepackage{todonotes}
 \usepackage{wrapfig}
 
+\newcommand*{\SkipTocEntry}{\addtocontents{toc}{\gobblefour}}
 %----------------------------------------------------------------------------------------
 %	FONTS
 %----------------------------------------------------------------------------------------
@@ -535,3 +538,9 @@ addtohook={%
 \fi
 }
 }
+
+%IPO graphs
+\tikzstyle{block} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=ocre!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+\tikzstyle{input} = [coordinate]
+\tikzstyle{output} = [coordinate]
