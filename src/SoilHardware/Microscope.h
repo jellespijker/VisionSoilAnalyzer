@@ -6,7 +6,7 @@
  */
 
 /*! \class Microscope
-Interaction with the USB 5 MP microscope
+Interaction with the microscope
 */
 
 #pragma once
@@ -35,15 +35,24 @@ Interaction with the USB 5 MP microscope
 #include <opencv2/opencv.hpp>
 #include <opencv2/core.hpp>
 
+#include <gst/gst.h>
+#include <gst/app/gstappsink.h>
+
+#include <QtCore/QObject>
+#include <QEventLoop>
+#include <QDebug>
+
 #include "MicroscopeNotFoundException.h"
 #include "CouldNotGrabImageException.h"
 
 namespace Hardware {
-class Microscope {
+class Microscope : public QObject {
+  Q_OBJECT
+
 public:
   enum Arch { ARM, X64 };
 
-  enum PixelFormat { YUYV, MJPG };
+  enum PixelFormat { YUYV, MJPG, GREY };
 
   struct Resolution_t {
     uint16_t Width = 2048;
@@ -56,8 +65,11 @@ public:
       if (format == PixelFormat::MJPG) {
           retVal.append(" - MJPG");
         }
-      else {
+      else if (format == PixelFormat::YUYV){
           retVal.append(" - YUYV");
+        }
+      else {
+          retVal.append(" - GREY");
         }
       return retVal;
     }
@@ -90,6 +102,23 @@ public:
 
   typedef std::vector<Control_t> Controls_t;
 
+  typedef struct _CustomData {
+  GMainLoop *main_loop;
+  GstElement *pipeline;
+  GstElement *source;
+  GstElement *capsfilter;
+  GstElement *tisvideobuffer;
+  GstElement *tiscolorize;
+  GstElement *bayer;
+  GstElement *queue;
+  GstElement *colorspace;
+  GstElement *convert;
+  GstElement *sink;
+  GstBus *bus;
+  GstCaps *caps;
+  Hardware::Microscope *currentMicroscope;
+  } CustomData;
+
   struct Cam_t {
     std::string Name;
     std::string devString;
@@ -98,6 +127,7 @@ public:
     uint32_t delaytrigger = 1;
     Resolution_t *SelectedResolution = nullptr;
     Controls_t Controls;
+    CustomData Pipe;
     int fd;
     bool operator==(Cam_t const &rhs) {
       if (this->ID == rhs.ID || this->Name == rhs.Name) {
@@ -134,6 +164,7 @@ public:
   bool closeCam(Cam_t *cam);
 
   void GetFrame(cv::Mat &dst);
+  void GetGstreamFrame(cv::Mat &dst);
   void GetHDRFrame(cv::Mat &dst, uint32_t noframes = 3);
 
   Control_t *GetControl(const std::string name);
@@ -141,8 +172,20 @@ public:
 
   Cam_t *FindCam(std::string cam);
   Cam_t *FindCam(int cam);
+  cv::Mat lastFrame;
+
+  void SendImageRetrieved();
+
+public slots:
+  void on_imageretrieved();
+
+signals:
+  void imageretrieved();
 
 private:
+  static void new_buffer(GstElement *sink, CustomData *data);
+  void getResolutions(Cam_t &currentCam, int FormatType);
+
   cv::VideoCapture *cap = nullptr;
 
   std::vector<cv::Mat> HDRframes;

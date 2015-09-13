@@ -248,6 +248,7 @@ void DialogSettings::on_comboBox_Resolution_currentIndexChanged(int index) {
   if (!initfase) {
     Microscope->SelectedCam->SelectedResolution =
         &Microscope->SelectedCam->Resolutions[index];
+    Microscope->openCam(Microscope->SelectedCam);
     Settings->selectedResolution = index;
   }
 }

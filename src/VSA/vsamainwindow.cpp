@@ -7,7 +7,7 @@ VSAMainWindow::VSAMainWindow(QWidget *parent)
 
   // Load the usersettings
   Settings = new SoilAnalyzer::SoilSettings;
-  Settings->LoadSettings("Settings/User.ini");
+  Settings->LoadSettings("Settings/Default.ini");
 
   // Set the message windows
   CamError = new QErrorMessage(this);

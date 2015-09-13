@@ -43,6 +43,13 @@ DEFINES += BOOST_ALL_DYN_LINK
 INCLUDEPATH += /usr/include/boost
 LIBS += -L/usr/lib/x86_64-linux-gnu/ -lboost_filesystem -lboost_serialization -lboost_system -lboost_iostreams
 
+#Gstreamer
+INCLUDEPATH += /usr/include/gstreamer-0.10
+INCLUDEPATH += /usr/include/glib-2.0/
+INCLUDEPATH += /usr/lib/x86_64-linux-gnu/glib-2.0/include/
+INCLUDEPATH += /usr/include/libxml2/
+LIBS += `pkg-config --cflags --libs gstreamer-0.10`
+
 #SoilMath lib
 unix:!macx: LIBS += -L$$PWD/../../build/install/ -lSoilMath
 INCLUDEPATH += $$PWD/../SoilMath

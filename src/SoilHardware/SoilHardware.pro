@@ -3,12 +3,12 @@
 # Project created by QtCreator 2015-06-06T10:49:23
 #
 #-------------------------------------------------
-
-QT       -= core gui
+QT       += core gui concurrent
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = SoilHardware
 TEMPLATE = lib
-VERSION = 0.9.1
+VERSION = 0.9.2
 
 DEFINES += SOILHARDWARE_LIBRARY
 QMAKE_CXXFLAGS += -std=c++11 -pthread
@@ -58,3 +58,10 @@ unix {
     target.path = $PWD/../../../build/install
     INSTALLS += target
 }
+
+#Gstreamer
+INCLUDEPATH += /usr/include/gstreamer-0.10
+INCLUDEPATH += /usr/include/glib-2.0/
+INCLUDEPATH += /usr/lib/x86_64-linux-gnu/glib-2.0/include/
+INCLUDEPATH += /usr/include/libxml2/
+LIBS += `pkg-config --cflags --libs gstreamer-0.10`

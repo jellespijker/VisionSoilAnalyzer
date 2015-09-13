@@ -16,7 +16,13 @@
 #define EXCEPTION_CTRL_NOT_FOUND_NR 5
 #define EXCEPTION_CTRL_VALUE "Control value not set!"
 #define EXCEPTION_CTRL_VALUE_NR 5
-
+#define EXCEPTION_GSTREAM_INIT_EXCEPTION "Gstream could not be initialize exception!"
+#define EXCEPTION_GSTREAM_INIT_EXCEPTION_NR 6
+#define EXCEPTION_GSTREAM_ELEM_EXCEPTION "Gstream elements could not be linked exception!"
+#define EXCEPTION_GSTREAM_ELEM_EXCEPTION_NR 7
+#define EXCEPTION_GSTREAM_PLAYSTATE_EXCEPTION "Gstream unable to set playstate exception!"
+#define EXCEPTION_GSTREAM_PLAYSTATE_EXCEPTION_NR 9
+#define EXCEPTION_GSTREAM_VARIOUS_EXCEPTION_NR 10
 
 #pragma once
 #include <exception>
