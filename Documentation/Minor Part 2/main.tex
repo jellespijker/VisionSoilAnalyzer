@@ -52,7 +52,7 @@
 
 \chapterimage{sand_2_banner.jpg} % Chapter heading image
 \chapter{Functional Design}
-\input{functionalDesign.tex}
+The functional design lays at the heart of a product. It is an abstract representation of the device and it illustrates its main function. This chapter describes the working of a vision based soil analyzer. It explains which role it need to fulfills to satisfy an user generated need. This main functionality and its output it visualized in an Input-Process-Output (IPO) diagram. This will aid in determining specification and setting up a user interface, which in turn dictates the interaction with the outside world.
 
 \section{Global Input-Process-Output}\index{Global Input-Process-Output}
 \input{mainIPO.tex}
@@ -96,7 +96,7 @@ This is a theorem consisting of several equations.
 This is a theorem consisting of just one line.
 
 \subsection{Led driver}
-
+\input{LEDDriver.tex}
 \subsection{Global position unit}
 
 \subsection{Controller}
@@ -106,11 +106,34 @@ This is a theorem consisting of just one line.
 \part{Realization}
 
 \chapterimage{sand_3_banner.jpg} % Chapter heading image
-\chapter{Software Development Environment}
-\input{SDE.tex}
+\chapter{Development Environment}
+The project is developed using three major disciplines, each which each own setup and tools. These are mechanical, electrical and software. All three are described in each own section below. As indicated in previous chapters \todo{reference explanation of the project and its fases} the focus of this project in this stage lies on development of the software and algorithms. \\
+At the basis of these three development environment lies the hardware. The current development computer is a:
+\begin{itemize}
+	\item Intel(R) Core(TM) i5-4210U CPU @ 1.70GHz
+	\item 8gb memory
+	\item Nvidia 820M
+	\item SSD 128 gb
+	\item HDD 500 gb
+	\item Dual boot Ubuntu 15.04 / Windows 10	
+\end{itemize}
+
+\subsection{Software development environment}
+Since the running environment is an embedded Linux device, it is highly recommended that the software development setup mirror this configuration. By developing in a Linux environment, a tight integration with the prototype is ensured. Eliminating the need to setup the environmental settings and script for multiple operating systems. This also adds the option to debug the software on the development computer. 
+
+\paragraph{Programming language}
+The software for the VSA is written in C++. As Bjarne Stroustrup, the creator of C++, puts it in \cite{_c++_2013} : C++ is a general-purpose programming language providing a direct and efficient model of hardware combined with facilities for defining lightweight abstractions
+
+The software for the VSA is written in C++ on a Desktop computer running Linux 3.19.0-18-generic \#. Ubuntu 15.04.   is the environment of choice. The prefered IDE is \textbf{QT Creator Community edition}. This is an opensource IDE and available for Linux/Windows/Mac. Version control is done via \textbf{Github} the main project page is VisionSoilAnalyzer - project page (\url{http://peer23peer.github.io/VisionSoilAnalyzer/}). The packages and installation steps depicted in appendix \ref{SDE} is the minimum needed environment to start with development. It is advised to make a clone of your harddisk after the development environment setup is complete. Clonezilla is the recommended tool for this. 
+
+\subsection{Modeling development environment}
+
+\subsection{Electronic development environment}
 
 \chapter{Run Environment}
-\input{RE.tex}
+Although the software is build to run on any Linux enable device, it is intended to be run on embedded ARM device. The choice for the basic run environment is made for the Beaglebone black
+
+To steps which are set out in appendix \ref{RE}
 
 \chapter{Technical Realization}
 
@@ -182,13 +205,13 @@ Treatment 3 & 0.0009271 & 0.296 \\
 \chapter*{Bibliography}
 \addcontentsline{toc}{chapter}{\textcolor{ocre}{Bibliography}}
 \section*{Books}
-\addcontentsline{toc}{section}{Books}
+%\addcontentsline{toc}{section}{Books}
 \printbibliography[heading=bibempty,type=book]
 \section*{Reports}
-\addcontentsline{toc}{section}{Reports}
+%\addcontentsline{toc}{section}{Reports}
 \printbibliography[heading=bibempty,type=report]
 \section*{Articles}
-\addcontentsline{toc}{section}{Articles}
+%\addcontentsline{toc}{section}{Articles}
 \printbibliography[heading=bibempty,type=article]
 
 \chapterimage{Index_banner.jpg}
@@ -235,6 +258,11 @@ Treatment 3 & 0.0009271 & 0.296 \\
 
 \chapter{RDM campus: Student project}\label{RDM_Campus}
 \input{RDM_projectpropesition.tex}
+\chapter{Development Environment setup}\label{SDE}
+\input{SDE.tex}
+\chapter{Run Environment setup}\label{RE}
+\input{RE.tex}
+
 \chapter{Current project status}
 \includepdf[pages={1-7}, height=\textheight ,pagecommand=\paragraph{}]{../IHC/Current Status 150617.pdf}
 \chapter{Soil and computer vision flyer}
@@ -243,27 +271,27 @@ Treatment 3 & 0.0009271 & 0.296 \\
 \chapterimage{code_banner.jpg}
 \chapter{SoilMath Library}
 \subsection*{Genetic Algorithm Class}
-\addcontentsline{toc}{section}{Genetic Algorithm Class}
+%\addcontentsline{toc}{section}{Genetic Algorithm Class}
 \lstinputlisting[language=C++]{../../src/SoilMath/GA.h}
 \lstinputlisting[language=C++]{../../src/SoilMath/GA.cpp}
 \newpage
 \subsection*{Fast Fourier Transform Class}
-\addcontentsline{toc}{section}{Fast Fourier Transform Class}
+%\addcontentsline{toc}{section}{Fast Fourier Transform Class}
 \lstinputlisting[language=C++]{../../src/SoilMath/FFT.h}
 \lstinputlisting[language=C++]{../../src/SoilMath/FFT.cpp}
 \newpage
 \subsection*{Neural Network Class}
-\addcontentsline{toc}{section}{Neural Network Class}
+%\addcontentsline{toc}{section}{Neural Network Class}
 \lstinputlisting[language=C++]{../../src/SoilMath/NN.h}
 \lstinputlisting[language=C++]{../../src/SoilMath/NN.cpp}
 \newpage
 \subsection*{Statistical Class}
-\addcontentsline{toc}{section}{Statistical Class}
+%\addcontentsline{toc}{section}{Statistical Class}
 \lstinputlisting[language=C++]{../../src/SoilMath/Stats.h}
 \lstinputlisting[language=C++]{../../src/SoilMath/psd.h}
 \newpage
 \subsection*{General project files}
-\addcontentsline{toc}{section}{General project files}
+%\addcontentsline{toc}{section}{General project files}
 \lstinputlisting[language=C++]{../../src/SoilMath/SoilMath.pro}
 \lstinputlisting[language=C++]{../../src/SoilMath/SoilMath.h}
 \lstinputlisting[language=C++]{../../src/SoilMath/CommonOperations.h}
@@ -276,52 +304,52 @@ Treatment 3 & 0.0009271 & 0.296 \\
 \chapterimage{code_banner.jpg}
 \chapter{Hardware Library}
 \subsection*{Microscope Class}
-\addcontentsline{toc}{section}{Microscope Class}
+%\addcontentsline{toc}{section}{Microscope Class}
 \lstinputlisting[language=C++]{../../src/SoilHardware/Microscope.h}
 \lstinputlisting[language=C++]{../../src/SoilHardware/Microscope.cpp}
 \newpage
 \subsection*{Beaglebone Black Class}
-\addcontentsline{toc}{section}{Beaglebone Black Class}
+%\addcontentsline{toc}{section}{Beaglebone Black Class}
 \lstinputlisting[language=C++]{../../src/SoilHardware/BBB.h}
 \lstinputlisting[language=C++]{../../src/SoilHardware/BBB.cpp}
 \newpage
 \subsection*{GPIO Class}
-\addcontentsline{toc}{section}{GPIO Class}
+%\addcontentsline{toc}{section}{GPIO Class}
 \lstinputlisting[language=C++]{../../src/SoilHardware/GPIO.h}
 \lstinputlisting[language=C++]{../../src/SoilHardware/GPIO.cpp}
 \newpage
 \subsection*{PWM Class}
-\addcontentsline{toc}{section}{PWM Class}
+%\addcontentsline{toc}{section}{PWM Class}
 \lstinputlisting[language=C++]{../../src/SoilHardware/PWM.h}
 \lstinputlisting[language=C++]{../../src/SoilHardware/PWM.cpp}
 \newpage
 \subsection*{ADC Class}
-\addcontentsline{toc}{section}{ADC Class}
+%\addcontentsline{toc}{section}{ADC Class}
 \lstinputlisting[language=C++]{../../src/SoilHardware/ADC.h}
 \lstinputlisting[language=C++]{../../src/SoilHardware/ADC.cpp}
 \newpage
 \subsection*{EC12P Class}
-\addcontentsline{toc}{section}{EC12P Classs}
+%\addcontentsline{toc}{section}{EC12P Classs}
 \lstinputlisting[language=C++]{../../src/SoilHardware/EC12P.h}
 \lstinputlisting[language=C++]{../../src/SoilHardware/EC12P.cpp}
 \newpage
 \subsection*{eQep Class}
-\addcontentsline{toc}{section}{eQep Class}
+%\addcontentsline{toc}{section}{eQep Class}
 \lstinputlisting[language=C++]{../../src/SoilHardware/eqep.h}
 \lstinputlisting[language=C++]{../../src/SoilHardware/eqep.cpp}
 \newpage
 \subsection*{SoilCape Class}
-\addcontentsline{toc}{section}{SoilCape Class}
+%\addcontentsline{toc}{section}{SoilCape Class}
 \lstinputlisting[language=C++]{../../src/SoilHardware/SoilCape.h}
 \lstinputlisting[language=C++]{../../src/SoilHardware/SoilCape.cpp}
 \newpage
 \subsection*{USB Class}
-\addcontentsline{toc}{section}{USB Class}
+%\addcontentsline{toc}{section}{USB Class}
 \lstinputlisting[language=C++]{../../src/SoilHardware/USB.h}
 \lstinputlisting[language=C++]{../../src/SoilHardware/USB.cpp}
 \newpage
 \subsection*{General project files}
-\addcontentsline{toc}{section}{General project files}
+%\addcontentsline{toc}{section}{General project files}
 \lstinputlisting[language=C++]{../../src/SoilHardware/SoilHardware.pro}
 \lstinputlisting[language=C++]{../../src/SoilHardware/Hardware.h}
 \lstinputlisting[language=C++]{../../src/SoilHardware/ValueOutOfBoundsException.h}
@@ -336,32 +364,32 @@ Treatment 3 & 0.0009271 & 0.296 \\
 \chapterimage{code_banner.jpg}
 \chapter{Vision Library}
 \subsection*{Image processing Class}
-\addcontentsline{toc}{section}{Image processing Class}
+%\addcontentsline{toc}{section}{Image processing Class}
 \lstinputlisting[language=C++]{../../src/SoilVision/ImageProcessing.h}
 \lstinputlisting[language=C++]{../../src/SoilVision/ImageProcessing.cpp}
 \newpage
 \subsection*{Conversion Class}
-\addcontentsline{toc}{section}{Conversion Class}
+%\addcontentsline{toc}{section}{Conversion Class}
 \lstinputlisting[language=C++]{../../src/SoilVision/Conversion.h}
 \lstinputlisting[language=C++]{../../src/SoilVision/Conversion.cpp}
 \newpage
 \subsection*{Enhance Class}
-\addcontentsline{toc}{section}{Enhance Class}
+%\addcontentsline{toc}{section}{Enhance Class}
 \lstinputlisting[language=C++]{../../src/SoilVision/Enhance.h}
 \lstinputlisting[language=C++]{../../src/SoilVision/Enhance.cpp}
 \newpage
 \subsection*{Morphological filter Class}
-\addcontentsline{toc}{section}{Morphological filter Class}
+%\addcontentsline{toc}{section}{Morphological filter Class}
 \lstinputlisting[language=C++]{../../src/SoilVision/MorphologicalFilter.h}
 \lstinputlisting[language=C++]{../../src/SoilVision/MorphologicalFilter.cpp}
 \newpage
 \subsection*{Segment Class}
-\addcontentsline{toc}{section}{Segment Class}
+%\addcontentsline{toc}{section}{Segment Class}
 \lstinputlisting[language=C++]{../../src/SoilVision/Segment.h}
 \lstinputlisting[language=C++]{../../src/SoilVision/Segment.cpp}
 \newpage
 \subsection*{General project files}
-\addcontentsline{toc}{section}{General project files}
+%\addcontentsline{toc}{section}{General project files}
 \lstinputlisting[language=C++]{../../src/SoilVision/SoilVision.pro}
 \lstinputlisting[language=C++]{../../src/SoilVision/Vision.h}
 \lstinputlisting[language=C++]{../../src/SoilVision/VisionDebug.h}
@@ -374,27 +402,27 @@ Treatment 3 & 0.0009271 & 0.296 \\
 \chapterimage{code_banner.jpg}
 \chapter{Analyzer Library}
 \subsection*{Analyzer Class}
-\addcontentsline{toc}{section}{Analyzer Class}
+%\addcontentsline{toc}{section}{Analyzer Class}
 \lstinputlisting[language=C++]{../../src/SoilAnalyzer/analyzer.h}
 \lstinputlisting[language=C++]{../../src/SoilAnalyzer/analyzer.cpp}
 \newpage
 \subsection*{Sample Class}
-\addcontentsline{toc}{section}{Sample Class}
+%\addcontentsline{toc}{section}{Sample Class}
 \lstinputlisting[language=C++]{../../src/SoilAnalyzer/sample.h}
 \lstinputlisting[language=C++]{../../src/SoilAnalyzer/sample.cpp}
 \newpage
 \subsection*{Particle Class}
-\addcontentsline{toc}{section}{Particle Class}
+%\addcontentsline{toc}{section}{Particle Class}
 \lstinputlisting[language=C++]{../../src/SoilAnalyzer/particle.h}
 \lstinputlisting[language=C++]{../../src/SoilAnalyzer/particle.cpp}
 \newpage
 \subsection*{Settings Class}
-\addcontentsline{toc}{section}{Settings Class}
+%\addcontentsline{toc}{section}{Settings Class}
 \lstinputlisting[language=C++]{../../src/SoilAnalyzer/soilsettings.h}
 \lstinputlisting[language=C++]{../../src/SoilAnalyzer/soilsettings.cpp}
 \newpage
 \subsection*{General project files}
-\addcontentsline{toc}{section}{General project files}
+%\addcontentsline{toc}{section}{General project files}
 \lstinputlisting[language=C++]{../../src/SoilAnalyzer/SoilAnalyzer.pro}
 \lstinputlisting[language=C++]{../../src/SoilAnalyzer/lab_t_archive.h}
 \lstinputlisting[language=C++]{../../src/SoilAnalyzer/soilanalyzerexception.h}
@@ -432,22 +460,22 @@ Treatment 3 & 0.0009271 & 0.296 \\
 \chapterimage{code_banner.jpg}
 \chapter{Vision Soil Analyzer Program}
 \subsection*{General project files}
-\addcontentsline{toc}{section}{General project files}
+%\addcontentsline{toc}{section}{General project files}
 \lstinputlisting[language=C++]{../../src/VSA/VSA.pro}
 \lstinputlisting[language=C++]{../../src/VSA/main.cpp}
 \newpage
 \subsection*{Main window Class}
-\addcontentsline{toc}{section}{Main window Class}
+%\addcontentsline{toc}{section}{Main window Class}
 \lstinputlisting[language=C++]{../../src/VSA/vsamainwindow.h}
 \lstinputlisting[language=C++]{../../src/VSA/vsamainwindow.cpp}
 \newpage
 \subsection*{Dialog window Class}
-\addcontentsline{toc}{section}{Dialog window Class}
+%\addcontentsline{toc}{section}{Dialog window Class}
 \lstinputlisting[language=C++]{../../src/VSA/dialogsettings.h}
 \lstinputlisting[language=C++]{../../src/VSA/dialogsettings.cpp}
 \newpage
 \subsection*{Dialog Neural Network Class}
-\addcontentsline{toc}{section}{Dialog Neural Network Class}
+%\addcontentsline{toc}{section}{Dialog Neural Network Class}
 \lstinputlisting[language=C++]{../../src/VSA/dialognn.h}
 \lstinputlisting[language=C++]{../../src/VSA/dialognn.cpp}
 \newpage
