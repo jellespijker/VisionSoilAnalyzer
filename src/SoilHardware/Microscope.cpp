@@ -162,12 +162,12 @@ void Microscope::getResolutions(Cam_t &currentCam, int FormatType) {
   }
 }
 
-bool Microscope::IsOpened() {}
+bool Microscope::IsOpened() { return openedUptheCam; }
 
 bool Microscope::openCam(Cam_t *cam) {
   for (uint32_t i = 0; i < AvailableCams.size(); i++) {
     if (AvailableCams[i] == *cam) {
-      // closeCam(SelectedCam);
+      closeCam(SelectedCam);
       SelectedCam = cam;
       for (Controls_t::iterator it = SelectedCam->Controls.begin();
            it != SelectedCam->Controls.end(); ++it) {
@@ -194,7 +194,8 @@ bool Microscope::openCam(Cam_t *cam) {
       SelectedCam->Pipe.sink = gst_element_factory_make("appsink", "output");
 
       if (!SelectedCam->Pipe.source || !SelectedCam->Pipe.capsfilter ||
-          !SelectedCam->Pipe.colorspace || !SelectedCam->Pipe.sink || !SelectedCam->Pipe.convert) {
+          !SelectedCam->Pipe.colorspace || !SelectedCam->Pipe.sink ||
+          !SelectedCam->Pipe.convert) {
         throw Exception::MicroscopeException(
             EXCEPTION_GSTREAM_ELEM_EXCEPTION,
             EXCEPTION_GSTREAM_ELEM_EXCEPTION_NR);
@@ -245,10 +246,11 @@ bool Microscope::openCam(Cam_t *cam) {
                    NULL);
       gst_caps_unref(SelectedCam->Pipe.caps);
       SelectedCam->Pipe.caps = gst_caps_new_simple(
-            "video/x-raw-rgb",
-            "width",  G_TYPE_INT, SelectedCam->SelectedResolution->Width,
-            "height", G_TYPE_INT,  SelectedCam->SelectedResolution->Height, NULL);
-      g_object_set(SelectedCam->Pipe.convert, "caps", SelectedCam->Pipe.caps, NULL);
+          "video/x-raw-rgb", "width", G_TYPE_INT,
+          SelectedCam->SelectedResolution->Width, "height", G_TYPE_INT,
+          SelectedCam->SelectedResolution->Height, NULL);
+      g_object_set(SelectedCam->Pipe.convert, "caps", SelectedCam->Pipe.caps,
+                   NULL);
 
       SelectedCam->Pipe.bus = gst_element_get_bus(SelectedCam->Pipe.pipeline);
       g_object_set(SelectedCam->Pipe.sink, "emit-signals", TRUE, NULL);
@@ -260,30 +262,27 @@ bool Microscope::openCam(Cam_t *cam) {
                          SelectedCam->Pipe.source, SelectedCam->Pipe.capsfilter,
                          SelectedCam->Pipe.tisvideobuffer,
                          SelectedCam->Pipe.tiscolorize, SelectedCam->Pipe.queue,
-                         SelectedCam->Pipe.bayer,
-                         /*SelectedCam->Pipe.colorspace,
-                         SelectedCam->Pipe.convert,*/
-                         SelectedCam->Pipe.sink, NULL);
+                         SelectedCam->Pipe.bayer, SelectedCam->Pipe.sink, NULL);
         gst_element_link_many(
             SelectedCam->Pipe.source, SelectedCam->Pipe.capsfilter,
             SelectedCam->Pipe.tisvideobuffer, SelectedCam->Pipe.tiscolorize,
             SelectedCam->Pipe.queue, SelectedCam->Pipe.bayer,
-            /*SelectedCam->Pipe.colorspace,
-            SelectedCam->Pipe.convert,*/
             SelectedCam->Pipe.sink, NULL);
       } else {
-        gst_bin_add_many(GST_BIN(SelectedCam->Pipe.pipeline),
-                         SelectedCam->Pipe.source, SelectedCam->Pipe.capsfilter,
-                         SelectedCam->Pipe.colorspace, SelectedCam->Pipe.convert,
-                         SelectedCam->Pipe.sink, NULL);
+        gst_bin_add_many(
+            GST_BIN(SelectedCam->Pipe.pipeline), SelectedCam->Pipe.source,
+            SelectedCam->Pipe.capsfilter, SelectedCam->Pipe.colorspace,
+            SelectedCam->Pipe.convert, SelectedCam->Pipe.sink, NULL);
         gst_element_link_many(
             SelectedCam->Pipe.source, SelectedCam->Pipe.capsfilter,
-            SelectedCam->Pipe.colorspace, SelectedCam->Pipe.convert, SelectedCam->Pipe.sink,
-            NULL);
+            SelectedCam->Pipe.colorspace, SelectedCam->Pipe.convert,
+            SelectedCam->Pipe.sink, NULL);
       }
+      openedUptheCam = true;
       return true;
     }
   }
+  openedUptheCam = false;
   return false;
 }
 
@@ -310,22 +309,26 @@ Microscope::Cam_t *Microscope::FindCam(string cam) {
 }
 
 bool Microscope::closeCam(Cam_t *cam) {
-  gst_element_set_state(cam->Pipe.pipeline, GST_STATE_NULL);
-  gst_object_unref(GST_OBJECT(cam->Pipe.pipeline));
+  if (openedUptheCam) {
+    gst_element_set_state(cam->Pipe.pipeline, GST_STATE_NULL);
+    gst_object_unref(GST_OBJECT(cam->Pipe.pipeline));
+    openedUptheCam = false;
+  }
 }
 
 void Microscope::GetFrame(cv::Mat &dst) {
+  if (!IsOpened()) {
+      openCam(SelectedCam);
+    }
   QEventLoop loop;
   loop.connect(this, SIGNAL(imageretrieved()), SLOT(quit()));
   gst_element_set_state(SelectedCam->Pipe.pipeline, GST_STATE_PLAYING);
   loop.exec();
   dst = lastFrame;
+  closeCam(SelectedCam);
 }
 
-void Microscope::on_imageretrieved()
-{
-  return;
-}
+void Microscope::on_imageretrieved() { return; }
 
 void Microscope::GetHDRFrame(cv::Mat &dst, uint32_t noframes) {
   // create the brightness steps
@@ -405,29 +408,27 @@ void Microscope::SetControl(Control_t *control) {
   close(SelectedCam->fd);
 }
 
-void Microscope::SendImageRetrieved() {
-  emit imageretrieved();
-}
+void Microscope::SendImageRetrieved() { emit imageretrieved(); }
 
 void Microscope::new_buffer(GstElement *sink, CustomData *data) {
   GstBuffer *buffer;
   g_signal_emit_by_name(sink, "pull-buffer", &buffer);
   if (buffer) {
-      cv::Mat bufferMat(
-            data->currentMicroscope->SelectedCam->SelectedResolution->Height,
-            data->currentMicroscope->SelectedCam->SelectedResolution->Width,
-            CV_8UC4, (uchar *)buffer->data);
-      std::vector<cv::Mat> chans;
-      cv::split(bufferMat, chans);
-      chans.erase(chans.begin()+4);
-      cv::merge(chans, data->currentMicroscope->lastFrame);
-      cv::namedWindow("test");
-      cv::imshow("test", data->currentMicroscope->lastFrame);
-      cv::waitKey(0);
-      data->currentMicroscope->SendImageRetrieved();
-//      gst_element_set_state(data->currentMicroscope->SelectedCam->Pipe.pipeline,
-//                          GST_STATE_PAUSED);
-       gst_buffer_unref(buffer);
+    cv::Mat bufferMat(
+        data->currentMicroscope->SelectedCam->SelectedResolution->Height,
+        data->currentMicroscope->SelectedCam->SelectedResolution->Width,
+        CV_8UC4, (uchar *)buffer->data);
+    std::vector<cv::Mat> chans;
+    cv::split(bufferMat, chans);
+    chans.erase(chans.begin() + 4);
+    cv::merge(chans, data->currentMicroscope->lastFrame);
+    cv::namedWindow("test");
+    cv::imshow("test", data->currentMicroscope->lastFrame);
+    cv::waitKey(0);
+    data->currentMicroscope->SendImageRetrieved();
+    //      gst_element_set_state(data->currentMicroscope->SelectedCam->Pipe.pipeline,
+    //                          GST_STATE_PAUSED);
+    gst_buffer_unref(buffer);
   }
 }
 }

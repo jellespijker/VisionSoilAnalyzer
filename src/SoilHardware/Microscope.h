@@ -185,7 +185,7 @@ signals:
 private:
   static void new_buffer(GstElement *sink, CustomData *data);
   void getResolutions(Cam_t &currentCam, int FormatType);
-
+  bool openedUptheCam = false;
   cv::VideoCapture *cap = nullptr;
 
   std::vector<cv::Mat> HDRframes;
