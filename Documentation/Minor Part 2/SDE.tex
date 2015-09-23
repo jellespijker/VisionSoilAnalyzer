@@ -68,8 +68,72 @@ Below is a list of used libraries during and their installation instructions:
 	sudo make install\\
 \end{sBox}
 
-\paragraph{Testing and benchmarking}
-Testing is done using the \textbf{QT unit test framework} results are verified against know results. Which are calculated via \textbf{Matlab},\textbf{Mathematica} or \textbf{Python}. Benchmarks are done using the QT unit test framework and will test multiple solutions. Solutions that are deemed obsolete by the benchmark results will not be removed but be renamed with a \_ in front of the function name \_FunctionName. \textbf{Valgrind} is used to determine memory leakages and function profiles. These profiles will be the guide which determine the priority of functions to be optimized.
-
-\paragraph{Source documentation}
-The detailed Doxygen documentation of the current program and libs can be found [source documentation](\url{http://peer23peer.github.io/VisionSoilAnalyzer/Doxygen/html/index.html}). It consists of detailed graphs, the complete source code and the internal structure of the program. This page is generated using \textbf{Doxygen}. This programs grabs source code comments and converts them to documentation. 
+\newpage
+\paragraph{Folder structure}
+\dirtree{%
+	.1 /.
+	.2 src.
+	.3 pictureflow-qt.
+	.3 qcustomplot.
+	.3 QOpenCVQT.
+	.3 QParticleDisplay.
+	.3 QReportGenerator.
+	.3 SoilAnalyzer.
+	.3 SoilHardware.
+	.3 SoilMath.
+	.3 SoilVision.
+	.3 Tests.
+	.4 ComparisionPictures.
+	.4 Microscope\_Test.
+	.4 SoilMath\_Test.
+	.4 Soil\_Test.
+	.4 Vision\_Test.
+	.3 tiscamera.
+	.3 VSA.
+	.4 Icons.
+	.4 Images.
+	.4 NeuralNet.
+	.4 Settings.
+	.4 SoilSamples.
+	.4 TestedSamples.
+	.2 build.
+	.3 debug.
+	.4 pictureflow-qt.
+	.4 qcustomplot.
+	.4 QOpenCVQT.
+	.4 QParticleDisplay.
+	.4 QReportGenerator.
+	.4 SoilAnalyzer.
+	.4 SoilHardware.
+	.4 SoilMath.
+	.4 SoilVision.
+	.3 install.
+	.4 pictureflow-qt.
+	.4 qcustomplot.
+	.4 QOpenCVQT.
+	.4 QParticleDisplay.
+	.4 QReportGenerator.
+	.4 SoilAnalyzer.
+	.4 SoilHardware.
+	.4 SoilMath.
+	.4 SoilVision.
+	.3 release.
+	.4 pictureflow-qt.
+	.4 qcustomplot.
+	.4 QOpenCVQT.
+	.4 QParticleDisplay.
+	.4 QReportGenerator.
+	.4 SoilAnalyzer.
+	.4 SoilHardware.
+	.4 SoilMath.
+	.4 SoilVision.
+	.3 Tests.
+	.4 ComparisionPictures.
+	.4 Microscope\_Test.
+	.4 SoilMath\_Test.
+	.4 Soil\_Test.
+	.4 Vision\_Test.
+	.2 doxygen.
+	.3 html.
+	.3 latex.
+}

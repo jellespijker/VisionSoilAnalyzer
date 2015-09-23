@@ -37,7 +37,13 @@
 \chapter*{Foreword}
 
 \chapter*{Summary}
-\input{Summary.tex}
+This project finds its roots in the minor Embedded Vision Design (EVD) taught at the university of applied sciences HAN. During this minor a portable embedded device was developed which analyses soil samples using a microscope. This Vision Soil Analyser hereafter referred to as VSA, analyses soil samples using the optical properties. It’s main function is: Presenting quantifiable information to a user on the properties of soil: such as colour, texture and structure.
+
+The VSA takes a snapshot from a soil sample, which is placed under a microscope in an closed environment. This digital image is analysed using a multitude of computer vision algorithms. Statistical data is presented to the user in the form a Particle Size Distribution (PSD) and a histogram of the shape classification. The PSD is obtained by calculating the number of pixels for each individual particle, whilst shape classification is determined by describing the contour of each individual particle as mathematical function which undergoes a transformation to the frequency domain. This complex vector then serves as input for an Artificial Neural Network (ANN) where the output classifies each particle in a certain category.
+
+The prototype developed during the minor EVD will serve as a basis for a graduation project of that same student, which initialized the project. This is done for his main course mechanical engineering at the HAN. This graduation project is done under the auspices of MTI Holland. The goal during this second stage is to develop a field ready prototype. In conjunction with the necessary documentation (Technical Dossier). 
+Due to the scale of the project, several key problems are identified and separated from the main project. These problems can be tackled by separated student groups.
+
 \tableofcontents % Print the table of contents itself
 
 \cleardoublepage % Forces the first chapter to start on an odd page so it's on the right
@@ -45,20 +51,135 @@
 \pagestyle{fancy} % Print headers again
 
 \chapter{Introduction}
-\input{Introduction.tex}
+This project finds its roots in the minor Embedded Vision Design @ HAN, hereafter named EVD. During this minor an embedded device was developed which analyses soil samples using a microscope. This Vision Soil Analyzer hereafter refereed to as VSA, analyzes samples using the optical properties. It gives an user information on color, texture and structure.
+
+This is developed in collaboration with Royal IHC and MTI Holland. Royal IHC is one of Holland major shipyard companies and specializes in dredging and offshore. MTI Holland BV is royal IHC dredging knowledge center. They're worldwide leading centre of expertise in the area of translating knowledge of dredging, mining and deep-sea mining processes into the specification, design and application of equipment.
+
+Both companies have an interests in knowing the properties of soil, be it to advise their customers or to further facilitate their own research and services. Current methods, like the Particle Size Analysis using a sieve and hydrometer are time consuming and non portable. To facilitate quick, accurate and on location soil research an embedded device has been developed. This VSA analyzes soil samples using a microscope and gives the user acceptable and quick results on the soil visual properties.
+
+Quick and reliable results are a welcome addition into any laboratory, this combined with a device that is light and portable gives it's users an added benefit of shortened logistical operations for their soil samples. This results in some serious time benefits.
+
+During the first period of the minor a basic prototype has been developed. This prototype ran in Matlab on a X64 desktop computer and was a first test case for the algorithms and idea's. In the second period this prototype is developed on an ARMv7 embedded Linux device and is compiled in C++. The goal of the software is to analyze soil samples and presenting the user with information regarding it's color, texture and structure.
+
+Information regarding the color of a sample is presented to the user in the CIE Lab and Redness Index color-models. These color models show correlation between different soil properties, such as iron content and fertility. Conversion between different color-models are CPU intensive, because each pixel will be transformed using multiple algorithms. It's therefore paramount that calculations are done with an minimum of machine instructions and with acceptable errors.
+
+Texture information is presented to a user via a Particle Size Distribution, hereafter named PSD. This is a cumulative function representing the ratio of different particle sizes in the soil sample. Due to the nature of a two dimensional digital image numerous problems arise. These are overlap of smaller particles by bigger particles, this gives a distortion in the PSD results, because the smaller particle is registered as part of the bigger particle. And another problem is the fact that soil particles are three dimensional. but the image is two dimensional.
+
+Information about the structure of the soil is extrapolated from the individual particles shapes. These shapes are describes in the frequency domain, using a Fast Fourier Transform and fed into a Neural Network which classifies these shapes into standard soil categories. These are time consuming operations and therefore should be done with a minimum of machine instructions and efficient programming.
+
+This wiki / product documentation gives the developer(s) and customers, namely MTI and IHC a tool to further the development of the VSA in to a full fledge market ready product. The development environment and the used protocols are described in order to guard the quality of the work. The product itself is designed by determining a global IPO Input-Process-Output diagram. This leads to the functional specifications. To illustrate the working of the device further the User Interface will be designed which will be supplemented with a short manual. All the above design tools will come together in a detailed IPO. Correct working of the device is guaranteed with various testing protocols. The current working principles follows a set global workflow. The vision related algorithms are describe in order to determine the most efficient working order. This results in the complete image processing steps
+
+The following project setup is proposed for the release candidate. Future release will follow the roadmap
 
 \newpage
 \part{Design}
 
 \chapterimage{sand_2_banner.jpg} % Chapter heading image
 \chapter{Functional Design}
-The functional design lays at the heart of a product. It is an abstract representation of the device and it illustrates its main function. This chapter describes the working of a vision based soil analyzer. It explains which role it need to fulfills to satisfy an user generated need. This main functionality and its output it visualized in an Input-Process-Output (IPO) diagram. This will aid in determining specification and setting up a user interface, which in turn dictates the interaction with the outside world.
+The idea to develop a vision based soil analyzer arouse at the start of the minor embedded vision design. During the first period of this minor a strategy was developed to analyze soil using relevant optical characteristics of the individual particles. This first concept was tested in a Matlab environment and it was deemed a viable solution. At it's current development stage a prototype is being developed. This chapter reports the functional design of this first generation prototype.
+
+A functional design lays at the heart of a product. It is an abstract representation of the device and it illustrates its main function. In this chapter the workings of a vision based soil analyzer is laid out. It explains which role a vision based soil analyzer needs to fulfills in order to satisfy an user generated need. This main functionality and its output is visualized in an Input-Process-Output (IPO) diagram. This diagram aids in deciding the specification and setting up a user interface. These in turn dictate the interaction with the outside world.
 
 \section{Global Input-Process-Output}\index{Global Input-Process-Output}
-\input{mainIPO.tex}
+The main function of a vision based soil analyzer is evident from its name. The user can expect a device which performs an analysis of a soil sample. It does so by capturing and digitizing reflected light of the individual soil particles. This function is illustrated below in an Input-Process-Output\index{Input-Process-Output} (IPO) diagram, see figure \ref{mainIPO}. This is a so called black box approach. It shows an input, an output and a process, where the inner workings are not yet relevant. At this stage it isn't relevant to know what happens in this process.  
+\paragraph{Technical system}\index{Technical system}
+\begin{sBox}
+	Prototype of an intelligent soil microscope
+\end{sBox}
+
+\paragraph{Main function}\index{Main function}
+\begin{sBox}
+	To analyses a dried soil sample, consisting of particle in the range of $ 0.02 [mm] \leq P \leq 2.0 [mm] $ and present a user with information regarding color, texture and structure.
+\end{sBox}
+
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}[auto, node distance=5cm, >=latex']
+	\node [input, name=input] {};
+	\node [block, right of=input] (process) {Process};
+	\node [output, right of=process] (output) {};
+	
+	\draw [draw,->] (input) -- node {Soil sample} (process);
+	\draw [->] (process) -- node {Analysis results} (output);
+	\end{tikzpicture}
+	\caption{Main Input-Process-Output diagram}\index{IPO}\index{Input-Process-Output}\label{mainIPO}
+\end{figure}
+
 
 \section{Specifications}\index{Citation}\label{Specification}
-\input{Specifications.tex}
+With the global Input-Process-Output in mind the functional specifications can be written. This is done by identifying requirements that lie at the hearth of it's main functionality. These are specification that define a product. It is important to note that there are two types of requirements: functional and  technical requirements; Each requirement can either be constant or a variable. The constant requirements are the baseline. If the product doesn't fulfills these, it can't be called a soil analyzer. Whilst variable requirement determine how well a product performs. 
+
+\paragraph{Functional Requirements}
+Functional requirements describe the purpose of the product.
+\begin{figure}[h]
+	\begin{tabular}{|p{1cm}| p{10cm} p{1.5cm}|}
+		\rowcolor{ocre}
+		\hline \textbf{ID} & \textbf{Description} & \textbf{Type} \\ 
+		\rowcolor{bananamania}
+		\hline \textbf{F1}\label{F1} & \textbf{Quantify color} &  \\ 
+		\hline \textbf{F1.1}\label{F1.1} & Determine the color in a RGB color model, from all visually (by human eye) discernible particles & Const. \\ 
+		\hline \textbf{F1.2}\label{F1.2} & Chromatic a* values must lie within $3 \sigma$ & Const. \\ 
+		\hline \textbf{F1.3}\label{F1.3} & Chromatic b* values must lie within $3 \sigma$ & Const. \\ 
+		\rowcolor{bananamania}
+		\hline \textbf{F2}\label{F2} & \textbf{Quantify texture} &  \\ 
+		\hline \textbf{F2.1}\label{F2.1} & The result of an analyzed sample should fall within a probability of at least $P = 0.95$ \% when compared against the result of the same sample, but obtained using the established sieve method. These results are to be compared by Welch's t-test  &  Const. \\ 
+		\hline \textbf{F2.2}\label{F2.2} & PSD bins should have the same range as the fractions used in the sieving method & \\
+		\rowcolor{bananamania}
+		\hline \textbf{F3}\label{F3} & \textbf{Quantify structure}  &  \\ 
+		\hline \textbf{F3.1}\label{F3.1} & Roundness should be assigned in three categories  & Const. \\ 
+		\hline \textbf{F3.2}\label{F3.2} & Angularity should be assigned in six categories  & Const. \\ 
+		\hline \textbf{F3.3}\label{F3.3} & Predicted values should have at least a linear regression value of $ R \geq 0.9 $ when compared to expertly classified particles & Const.  \\ 
+		\rowcolor{bananamania}
+		\hline \textbf{F4}\label{F4} & \textbf{General specifications} &  \\ 
+		\hline \textbf{F4.1}\label{F4.1} & Analyze particle with sizes within the range $ 200 \mu m\ \leq P_{size} \leq 2 mm $& Const. \\ 
+		\hline \textbf{F4.2}\label{F4.2} & No more then 2\% of the extracted blobs may be connected particles & Const. \\ 
+		\hline \textbf{F4.3}\label{F4.3} & Analyzing a sample should take no longer then $ 1 min$ (rearanging of sample between shot disregarded) & Const. \\
+		\rowcolor{bananamania}
+		\hline \textbf{F5}\label{F5} & \textbf{Interaction} &  \\ 
+		\hline \textbf{F5.1}\label{F5.1} & Show individual particles  & Const. \\ 
+		\hline \textbf{F5.2}\label{F5.2} & Show PSD graph with particle size in logarithmic scale  & Const.  \\ 
+		\hline \textbf{F5.3}\label{F5.3} & Show Angularity in histogram  & Const. \\ 
+		\hline \textbf{F5.4}\label{F5.4} & Show Roundness in histogram & Const. \\ 
+		\hline \textbf{F5.5}\label{F5.5} & Show probability distribution function in the histogram &  \\ 
+		\hline \textbf{F5.6}\label{F5.6} & Information can be shown on a screen & Const. \\
+		\hline \textbf{F5.7}\label{F5.7} & Exporting to pdf file & Const. \\
+	\end{tabular} 
+	\caption{Functional Requirements}\label{Functional Requirements}
+\end{figure}
+
+\paragraph{Technical Requirements}
+Technical requirements describe the functionality of the device with regards to its peripherals and its technical environment. They're described in such a way that they are either true or false.
+
+\begin{figure}[h]
+	\begin{tabular}{|p{1cm}| p{10cm} p{1.5cm}|}
+		\rowcolor{ocre}
+		\hline \textbf{ID} & \textbf{Description} & \textbf{Type} \\ 
+		\rowcolor{bananamania}
+		\hline \textbf{T1}\label{T1} & \textbf{Software environment} &  \\ 
+		\hline \textbf{T1.1}\label{T1.1} & The software should run on an Linux device & Const. \\ 
+		\hline \textbf{T1.2}\label{T1.2} & The software should be written in C++ & Const. \\ 
+		\hline \textbf{T1.3}\label{T1.3} & The software should be written as OOP and be reusable & Const. \\ 
+		\hline \textbf{T1.4}\label{T1.4} & The software should be written with revision control & Const. \\
+		\hline \textbf{T1.5}\label{T1.5} & Easily portable to Windows environment & Const. \\
+		\hline \textbf{T1.6}\label{T1.6} & Easily portable to Android environment & Const. \\
+		\rowcolor{bananamania}
+		\hline \textbf{T2}\label{T2} & \textbf{Hardware environment} &  \\ 
+		\hline \textbf{T2.1}\label{T2.1} & Should run on an ARMv7 or higher device &  Const. \\ 
+		\hline \textbf{T2.2}\label{T2.2} & Should run on a x86 or x64 device & Const. \\
+		\hline \textbf{T2.3}\label{T2.3} & At least $1 GHz$ processing power & Const. \\
+		\hline \textbf{T2.4}\label{T2.4} & At least $1 GB$ memory & Const. \\
+		\rowcolor{bananamania}
+		\hline \textbf{T3}\label{T3} & \textbf{Peripherals}  &  \\ 
+		\hline \textbf{T3.1}\label{T3.1} & USB connection  & Const. \\ 
+		\hline \textbf{T3.2}\label{T3.2} & Ethernet LAN and/or WAN connection  & Const. \\ 
+		\hline \textbf{T3.3}\label{T3.3} & GPS unit & Optional  \\ 
+		\hline \textbf{T3.4}\label{T3.4} & Light controller & Const. \\
+		\rowcolor{bananamania}
+		\hline \textbf{T4}\label{T4} & \textbf{General specifications} &  \\ 
+		\hline \textbf{T5.8}\label{T4.1} & Sample file size should not exceed $ 10 mb $ & Const. \\
+		\hline \textbf{T4.1}\label{T4.2} & Guard the maximum size of particles to $ 2 mm $ & Const.	\end{tabular} 
+	\caption{Technical Requirements}\label{Technical Requirements}
+\end{figure}
 
 \subsection{Functional requirements}\label{FunctionalRequirements}
 
@@ -71,9 +192,23 @@ The functional design lays at the heart of a product. It is an abstract represen
 \end{description}
 
 \chapter{User Interface}\label{UserInterface}
-\input{SystemDescription.tex}
+\paragraph{Global workflow}
+The soil sample is dried and the user makes sure the particle don’t bond together. A small portion of the sample is placed on a sample plate. Taking care to separate the individual particles as much as possible. The cover is closed and a microscopic camera is positions, in an environment where the light conditions are controlled.
+
+The embedded Linux device takes a snapshot which is analyzed using the following computer algorithms: First the individual soil particles are identified in the image, using various algorithms, such as adaptive contrast stretch, Gaussian blurring, OTSU – optimal thresholds separation. The color information is determined with various matrix calculations, translating the RGB pixel value tot CIE Lab and Redness Index.
+
+The texture information is determined by counting the number of discrete pixels for each individual article. From this the volume is determined. If the scale of each pixel is known, the volume can be given in SI units.
+
+The structure of an individual particle is determined by getting the edge of the pixels. This is done by creating a mask with a morphological erosion algorithm this mask is subtracted of the original image. The contour is translated to a function using the Dijkstra shortest path algorithm. Where each pixel is described as an imaginary complex number representing the radius towards the center of the particle. The vector holding these values are transformed to the frequency space using the Fast Fourier Transformation. The describing complex numbers gained during this transformation are fed into a feedforward Neural Network, which is optimized using Genetic Algorithms and a previously determined learning data set. The output is presented as probability that a certain particle belongs to a predefined category.
+
+The results are presented to the user via a graphical user interface which are show when the device is hooked to a monitor carrying a HDMI input. It’s also possible to present a report in pdf or a native format which can downloaded from the device using a LAN network device or optional Wi-Fi or Bluetooth. Basic human interaction can be performed via an on-board encoder, or optional USB keyboard and/or mouse.
+
 \section{Graphical User Interface}
-\input{GUI.tex}
+
+\begin{figure}[h]
+	\includegraphics[width=\textwidth]{maingui.png}
+	\caption{Main Graphical User Interface}
+\end{figure}
 
 \section{Hardware User Interface}
 
@@ -96,7 +231,8 @@ This is a theorem consisting of several equations.
 This is a theorem consisting of just one line.
 
 \subsection{Led driver}
-\input{LEDDriver.tex}
+The light meter is connected to the 12-bit ADC (Analogue Digital Convertor)
+
 \subsection{Global position unit}
 
 \subsection{Controller}
@@ -107,8 +243,9 @@ This is a theorem consisting of just one line.
 
 \chapterimage{sand_3_banner.jpg} % Chapter heading image
 \chapter{Development Environment}
-The project is developed using three major disciplines, each which each own setup and tools. These are mechanical, electrical and software. All three are described in each own section below. As indicated in previous chapters \todo{reference explanation of the project and its fases} the focus of this project in this stage lies on development of the software and algorithms. \\
-At the basis of these three development environment lies the hardware. The current development computer is a:
+The project is developed using three major disciplines; These are mechanical, electrical and software engineering. Each of these disciplines require their own setup and tools. All three are described in their own section below. As indicated in previous chapters \todo{reference explanation of the project and its fases} the current focus lies on the software development stage, electrical en mechanical systems are described, but with less detail.
+
+At the basis of all three development environments lies the hardware. The specifications given below, describe the current development computer. It is guaranteed that the project can be recreated with a similar computer. 
 \begin{itemize}
 	\item Intel(R) Core(TM) i5-4210U CPU @ 1.70GHz
 	\item 8gb memory
@@ -119,18 +256,66 @@ At the basis of these three development environment lies the hardware. The curre
 \end{itemize}
 
 \subsection{Software development environment}
-Since the running environment is an embedded Linux device, it is highly recommended that the software development setup mirror this configuration. By developing in a Linux environment, a tight integration with the prototype is ensured. Eliminating the need to setup the environmental settings and script for multiple operating systems. This also adds the option to debug the software on the development computer. 
+The software for the VSA runs on an embedded Linux device. This environment is described in chapter \ref{RunEnvironment}. It is highly recommended that the software development environment mirrors this configuration. From the kernel and the operating system towards the package and libraries.
+
+When development takes place in a Linux environment, a tight integration with the prototype is ensured. Eliminating the need to setup the environmental settings and script for multiple operating systems. This also adds the option to debug the software on the development computer. 
 
 \paragraph{Programming language}
-The software for the VSA is written in C++. As Bjarne Stroustrup, the creator of C++, puts it in \cite{_c++_2013} : C++ is a general-purpose programming language providing a direct and efficient model of hardware combined with facilities for defining lightweight abstractions
+The software for the VSA is written in C++. This language was chosen because of its efficiency and high level of abstraction. Most image processing algorithms look at each individual pixel. Since the image obtained with the VSA microscope are in the order of $ 10 \times 10^6 [Pixels]$ a lot of machine instructions can be eliminated by programming in C++. One of its main strength is, that it allows for direct memory access without type checking and error checking. As Bjarne Stroustrup, the creator of C++, puts it \citeauthor{_c++_2013} \cite{_c++_2013} : \begin{quote}
+	C++ is a general-purpose programming language providing a direct and efficient model of hardware combined with facilities for defining lightweight abstractions.
+\end{quote}
 
-The software for the VSA is written in C++ on a Desktop computer running Linux 3.19.0-18-generic \#. Ubuntu 15.04.   is the environment of choice. The prefered IDE is \textbf{QT Creator Community edition}. This is an opensource IDE and available for Linux/Windows/Mac. Version control is done via \textbf{Github} the main project page is VisionSoilAnalyzer - project page (\url{http://peer23peer.github.io/VisionSoilAnalyzer/}). The packages and installation steps depicted in appendix \ref{SDE} is the minimum needed environment to start with development. It is advised to make a clone of your harddisk after the development environment setup is complete. Clonezilla is the recommended tool for this. 
+\paragraph{Integrated Development Environment}
+Development is performed on a desktop computer running Linux 3.19.0-18-generic \#. Ubuntu 15.04. The preferred Integrated Development Environment, or IDE is QT Creator Community edition. This is open-source IDE and available for Linux / Windows / Mac. Version control is handled using the services of Github the main project page is VisionSoilAnalyzer - project page (\url{http://peer23peer.github.io/VisionSoilAnalyzer/Webpage/index.html}). Access to the Github page requires collaboration privileges.
+
+The basic list of installed packages is given below. The complete list of packages and installation steps are depicted in appendix \ref{SDE}.
+\begin{itemize}
+	\item Environment
+	\begin{itemize}
+		\item Kernel Linux 3.19.0-18-generic
+		\item Ubuntu 15.04
+	\end{itemize}
+	\item IDE-tools
+	\begin{itemize}
+		\item Clang 3.6 compiler
+		\item C++ GNU compiler
+		\item QT Creator
+		\item Valgrind
+		\item Doxygen
+		\item Git
+		\item Cmake
+	\end{itemize}
+	\item Libraries
+	\begin{itemize}
+		\item OpenCV 3.0 beta
+		\item CUDA 7.0 SDK
+		\item ZLib
+		\item Boost 1.58
+		\item Video4Linux
+		\item GStreamer
+	\end{itemize}
+\end{itemize}
+ 
+ \begin{remark}
+ 	It is a fact that computers and their environment evolve. New settings, packages and development changes are described in the project wiki. Which is actively maintained during the complete development phase. This wiki can be found at \url{https://github.com/peer23peer/VisionSoilAnalyzer/wiki} 
+ \end{remark}
+
+\paragraph{Object Orientated}
+The software for the VSA is object orientated and written in such a way that external parties can work on section of the code while remaining unaware of the complete picture. This is achieved by writing classes, or so called shared libraries. These are individual projects, which are compiled individually and will be called from the main program during runtime. These classes can be reused with other projects.
+\paragraph{Readability}
+It is common practice to document the routines and functions, explaining the code to third parties and improving the overall readability. These comments are scattered through out the source code and can be extracted with Doxygen into software references documentation.
+
+\paragraph{Directory structure}
+When cloning the git the folder structure is automatically applied. This is not the case for the build folder. This folder hold the compiled source code and from here te program is executed. Since it is important that links between project are maintained, the directory structure as given in appendix \ref{SDE} has to be obeyed.
+
+\paragraph{Testing and benchmarking}
+Testing is done using the \textbf{QT unit test framework} results are verified against know results. Which are calculated via \textbf{Matlab},\textbf{Mathematica} or \textbf{Python}. Benchmarks are done using the QT unit test framework and will test multiple solutions. Solutions that are deemed obsolete by the benchmark results will not be removed but be renamed with a \_ in front of the function name \_FunctionName. \textbf{Valgrind} is used to determine memory leakages and function profiles. These profiles will be the guide which determine the priority of functions to be optimized.
 
 \subsection{Modeling development environment}
 
 \subsection{Electronic development environment}
 
-\chapter{Run Environment}
+\chapter{Run Environment}\label{RunEnvironment}
 Although the software is build to run on any Linux enable device, it is intended to be run on embedded ARM device. The choice for the basic run environment is made for the Beaglebone black
 
 To steps which are set out in appendix \ref{RE}
@@ -142,31 +327,230 @@ To steps which are set out in appendix \ref{RE}
 \subsection{Design}
 
 \chapter{Vision realization}
-\input{Realisation_main.tex}
+This chapter describes the used vision processing techniques. The current prototype and work flow is developed to allow for different routines. The user has multiple options and strategies available to achieve optimum results. Each of these are explained in the sequential subsection below. It begins with the acquisition of image(s), which are then enhanced to allow for optimal segmentation of pixels related to sand particles. These pixels are used to determine the features of each particle, which serve as input for the classification algorithms.
 
 \section{Image acquisition}\index{Acquisition}
-\input{ImageProcessing_acquisition.tex}
+A thorough review of the current literature \cite{Spijker14a} identified three properties that can be used in vision based analyzing. These properties are structure \index{structure} (shape), color and texture \index{Texture} (size). When looking closely at sand sample, you notice a multitude of shapes, colors and sizes, each particle is unique and differs from its neighbor. This diversity brings it own challenges. The shape of a particle determines how it will rest on the sample plate. The color and the translucency of the particle, determines how easily it can be segmented or identified from the background. Whilst the size determines the needed focus depth of the microscope. 
+\begin{remark}
+	In samples, where the particles show a huge spread in size, compared to the mean size, there will be a noticeable difference in focus, between big and small particles. 
+\end{remark}
+
+\paragraph{Acquisition strategies}The first prototype is developed in such a way that multiple acquisition strategies\index{acquisition strategies} can be implemented. Each of these tackle different challenges. The quality of the acquired image is the biggest factor in the successful extraction of a particle, but in order to make any valid claim about the sample, a certain amount of particles have to examined. To determine the minimum sample size \index{Minimum sample size}, the following equation can be derived:
+\begin{sBox}
+	Let the reliability be $95\% \therefore z=1.96$, the probability be $P=50\%$ and the accuracy be $\alpha=5\%$; consider the function:
+	\begin{equation}
+	z\sqrt{\frac{p\times(1-P)}{n}}\leq\alpha \rightarrow n\geq\frac{-p\times(P-1)\times z^2}{\alpha^2}
+	\end{equation}
+\end{sBox}
+This brings the minimum amount of particles to $384$. With the predefined range of particle sizes ($0.2[mm]\leq P_{size} \leq 2[mm]$ where $P$ defines a particle) and the limited work area under the microscope, multiple shots have to be taken. Where the sample is rearranged. Between fifteen and twenty shots are usually enough.
+\begin{remark}
+	The process of rearranging the particles, will be automated in the future. Student of the minor Offshore \& Construction taught at the University of Applied Sciences Rotterdam will work on this challenge. This is done on the RDM Campus. This minor starts in September 2015. Their product will serve as input for the second prototype. Their assignment is described in appendix \ref{RDM_Campus} and will be executed under the auspice of MTI Holland and the author.
+\end{remark}
+
+\paragraph{Acquisition} \index{Acquisition} Each sample is placed in a light condition room, and laid out on a semitransparent white acrylate plate. The sample can be illuminated with a bright field light source, where the light is aimed directly at an object or the particle can be lit with back lighting. See the course notes \cite{ypma_course_2014} for a more in-depth description. The choice for back lighting can be made because translucent particle are harder to segment in a bright field light. The trade off is extra processing time.
+
+After the sample is placed in the light condition room, the microscope takes a image with bright field illumination \index{Bright field illumination} and, if the option is selected, another one with back lighting. \index{Back lighting} Hereafter the sample is rearranged, this is a manual procedure. Once the sample is rearranged a new set of shots is taken. Each image that is acquired from the microscope is defined by a matrix were the values are triples for the RGB \index{RGB} (red, green and blue) values and these are defined by an unsigned byte. 
+
+Each image is stored in a vector using a custom container. This container consists of a bright field image, back light image and a SI-conversion factor \index{SI-conversion factor}. Each time the height is changed, the microscope has to be calibrated so that the relation between pixel and [mm] can be determined. This is done by taking a shot of a disc with known dimensions. A single euro cent can serve for this purpose.
+
+\begin{remark}
+	The image is stored in the OpenCV matrix (cv::Mat) container. This container is  designed to handle image processing data and routines. It makes use of memory management and smart pointers to handle the data effectively. 
+\end{remark}
 
 \section{Image enhancement}\index{Enhancement}
-\input{ImageProcessing_enhancement.tex}
+Image enhancement prepares the RGB image for conversion to a binary image. It eliminates noise and brings out wanted features, by using filters.
+\paragraph{Intensity image}\index{Intensity image}\label{IntensityImg} The first step in this process step is the conversion from the RGB color space to an scalar valued image which represent the luminosity, also known as a intensity image. This luminosity is calculated using a weighted average and is done for bright field and back lit images.
+\begin{sBox}
+	Let $\mat{I}$ and $\mat{R}, \mat{G}, \mat{B}$  be a matrices with dimensions $n \times m$ derived from the color matrix $\mat{RGB}$ with dimensions $n \times m \times 3$; The weighted average can be calculated with the following equation:
+	\begin{equation}
+	\mat{I} =0.2126\times \mat{R} + 0.7152\times \mat{G} + 0.0722\times \mat{B}
+	\end{equation}
+\end{sBox}
+
+\paragraph{Adaptive contrast stretch}\index{Adaptive contrast stretch}\label{Adaptive contrast stretch} After the conversion from RGB to an intensity image, the user has the choice to apply an adaptive contrast stretch to the bright field images. This process is used to enhance the contrast of the intensity image. For every pixel and its surrounding area the mean and standard deviation are calculated. If the value of the pixel is above or below the mean than the following rule is used to determine the new value: $\mat{I}_{n,m}=\mat{I}_{n,m} \times \alpha \pm \sigma$, where $\alpha$ is a scaling factor and $\sigma$ is the standard deviation of the old pixel value with it's neighboring kernel pixels.
+
+\paragraph{Blur}\index{Blur}\label{Blur} As a second enhancement the user can apply a blurring operation to the bright field images, in essence the opposite of the contrast stretch. The blur operation also determines the mean for every pixels within a given area: the kernel. The mean value of the kernel is assigned to the pixel.
+
+\paragraph{Cropping}
+The above operations described in the paragraph \ref{Blur} and \ref{Adaptive contrast stretch}, leave the border pixels unaffected in their calculations. This offset is determined by half of the biggest kernel size. These pixels are discarded for the next step. The enhanced intensity matrix is used for particle segmentation, see section \ref{Segmentation}. Whilst the intensity matrix of the bright field image is used for the conversion to the CIE La*b* colorspace, as explained in section \ref{CIELab}.
 
 \section{Feature extraction}\index{Feature extraction}\label{Segmentation}
-\input{ImageProcessing_featureextraction.tex}
+The individual particles have to be identified end segmented from the background. These operations are performed on the enhanced intensity matrix. If the user opted to use back lit and bright field matrices, the enhanced intensity matrices where calculated from the back lit intensity matrices. Otherwise the bright field intensity matrices are used.
+
+\subsection{Shape features}\index{Shape}\index{Features}
+One of the main features that are of interest are those that describe shape, be it the contour or area of a particle. The feature are extracted using the algorithms below.
+
+\paragraph{Segmentation}\index{Segmentation}
+The images are segmented by calculating a threshold value\index{Threshold}. This value is determined by using the Otsu\index{Otsu's method} threshold. \citeauthor{Xu2011956} \cite{Xu2011956} describe that the Otsu threshold is equal to the average of the mean levels of two classes partitioned by this threshold. This threshold value can be iteratively determined.
+
+\begin{sBox}
+	Let $\vec{h}$ be a vector of dimension $256$ which represent a count of values in the enhanced intensity matrix $\mat{I} \subset \mathbb{Z}^n \rightarrow \{0, 255\}$ with dimensions $m \times n$
+	\begin{equation}\label{OtsuMethodEq}
+	\frac{1}{t_o}\sum\limits_{i=1}^{t_o} \vec{h}_i = t_o - \frac{1}{256 - t_o}\sum\limits_{i=t_o}^{256} \vec{h}_i
+	\end{equation}
+\end{sBox}
+
+In order to get more control over the segmentation process, the normal Otsu's method\index{Otsu's method}, as shown above is altered. A user now has the option to choose whether bright or dark object are segmented and how much the intensity values may deviation from the mean value. The mean value obtained from equation \ref{OtsuMethodEq} is modified with a scaling factor and the standard deviation, as shown in equation \ref{darkObjEq} and \ref{brightObjEq}.
+\begin{sBox}
+	Let $ t_o \subset \mathbb{Z}^n \rightarrow \{0\leq t \leq 255\}$ be the threshold value obtained with the iteration algorithm used to solve equation \ref{OtsuMethodEq}, $ \alpha $ be the a multiplication factor given by the user and let $\vec{h} \subset \mathbb{Z}^n$ be a vector of dimension $256$ which represent a count of values in the enhanced intensity matrix $\mat{I} \subset \mathbb{Z}^n \rightarrow \{0, 255\}$ with dimensions $m \times n$\\	
+	If dark objects are to be obtained
+	\begin{equation}\label{darkObjEq}
+	t = \frac{1}{t_o}\mu + \frac{1}{2}\alpha\sigma {\rm \ \ where\ \ }\sigma = \sqrt{\frac{1}{t_o} \sum\limits_{i=1}^t (\vec{h}_i - \mu)^2}, {\rm \ \ and\ \ } \mu = \frac{1}{t_o} \sum\limits_{i=1}^t \vec{h}_i
+	\end{equation}
+	else
+	\begin{equation}\label{brightObjEq}
+	t = \frac{1}{t_o}\mu - \frac{1}{2}\alpha\sigma {\rm \ \ where\ \ }\sigma = \sqrt{\frac{1}{256 - t_o} \sum\limits_{i=t}^{256} (\vec{h}_i - \mu)^2}, {\rm \ \ and\ \ } \mu = \frac{1}{256 - t_o} \sum\limits_{i=t}^{256} \vec{h}_i
+	\end{equation} 
+\end{sBox}
+
+\paragraph{Binary Image}\index{Binary Image}\index{BW}\label{binaryImage} The binary image is calculated by using the previous obtained threshold value as illustrated in equation \ref{BWeq}.
+\begin{sBox}
+	Let $\mat{B} \subset \mathbb{Z}^n \rightarrow \{0, 1\}$ and $\mat{I} \subset \mathbb{Z}^n \rightarrow \{0, 255\}$ both with dimensions $ m \times n $ and let $t \subset \mathbb{Z}^n \rightarrow \{0\leq t \leq 255\}$
+	\begin{equation}\label{BWeq}
+	\mat{B} = \floor*{\frac{\mat{I}}{t}}
+	\end{equation}
+\end{sBox}
+
+\paragraph{Labeled blobs}\index{Blobs}\index{Labeled blobs}
+\begin{wrapfigure}{r}{0.50\textwidth}
+	\begin{center}
+		\includegraphics[width=0.495\textwidth]{nBors.png}
+	\end{center}
+	\caption{Neighboring elements Source: \cite{he_fast_2009}}
+	\label{fig:Neighboring_elements}
+\end{wrapfigure}
+If the threshold value\index{Threshold} was correctly ascertained then the binary image will consist of zeros and ones. Particles are represented by islands of connected elements with a designated value of one in an ocean of zeros. The individual particles, which are dubbed "blobs"\index{Blob} will be identified with a two-pass connected-component labeling algorithm. 
+
+This algorithm passes each element in a binary image in a consecutive manner. When the current element belongs to a particle, it will check if previously processed neighboring pixels belong to an earlier labeled blob. If this is not the case it will assign a new label value to the current element. If it finds that one of the neighbors belong to one or more blobs, it assigns the lowest value and writes the other value to a queue. To store the connected labels.
+
+In order to determine the lowest value of the connected component\index{Connected component}, a graphs matrix\index{Graph matrix} is generated, see figure \ref{ConnQue}. Each branch on these trees are followed till the lowest value is ascertained. All the leafs on the tree are then set to this value. These values are placed in a Look-Up-Table\index{Look-Up-Table}. With the second loop through the previously labeled image each value is replaced by looking up the lowest value in LUT.  
+
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}[->,>=stealth', shorten >=1pt,auto,node distance=2cm, thick,main node/.style={circle,fill=ocre!20,draw}]
+	\node[main node] (1) {1};
+	\node[main node] (2) [below of=1] {2};
+	\node[main node] (3) [right of=2] {3};
+	\node[main node] (4) [right of=3] {5};
+	\node[main node] (5) [below of=3] {6};
+	\node[main node] (6) [right of=5] {9};
+	\node[main node] (7) [below of=5] {10};
+	\node[main node] (8) [below of=7] {12};
+	
+	
+	\path[-]
+	(1) edge node {} (2)
+	(2) edge node {} (5)
+	(3) edge node {} (5)
+	(5) edge node {} (7)
+	(4) edge node {} (6)
+	(6) edge node {} (7)
+	(7) edge node {} (8);
+	\end{tikzpicture}
+	\caption{Connected Queue}
+	\label{ConnQue}
+\end{figure}
+
+\begin{remark}
+	A Look-Up-Table (LUT)\index{Look-Up-Table} is an array where a new value can be obtained with a simple array indexing operation. This is a very effective operation since looking up a value in memory cost less machine instructions then perform computation on each matrix element. A LUT consist of 256 elements for a unsigned byte, while a image matrix has roughly 5 million elements. 
+\end{remark}
+
+The numbering of the labels are made consecutive using an adapted quick sorting algorithm. These numbers are used to identify the individual particles in a sample. For each unique particle a type is created. This type is stored in vector and represent the sample. 
+
+For each particle a region of interest\index{Region of Index} or ROI is obtained looking for the minimum and maximum value of the labeled blob within the labeled image\index{Labeled image}. This ROI, is used to extract the same blob from the bright field RGB image.
+
+\paragraph{Hu moments}\index{Hu moments}\label{Hu moments}
+The Hu moments are determined for the individual blobs. A Hu moment is a certain particular weighted average, or moment, of pixels in an image and can be defined as follows for a discrete image.
+\begin{sBox}
+	Let $\mat{B} \subset \mathbb{Z}^n \rightarrow \{0, 1\}$ with dimensions $ m \times n $
+	\begin{equation}
+		M_{i,j}=\sum_m \sum_n m^i n^j B_{m,n}
+	\end{equation}
+\end{sBox}
+The first order or raw moment gives the total area of the particle, while the second order gives the centroid. Which is used when describing complex contour\index{Complex contour}. This will be explained later on. The second order can be used to determine the orientation of the particle. By constructing a covariance matrix the rotation can be extracted from the angle of the eigenvector associated with the largest eigenvalue.
+\begin{sBox}
+	\begin{equation}
+	\Theta = \frac{1}{2} \arctan \left( \frac{2 (M_{11}/M_{00} - \bar{x}\bar{y})}{(M_{20}/M_{00} - \bar{x}^2) - (M_{02}/M_{00} - \bar{y}^2)} \right)
+	\end{equation}
+\end{sBox}
+
+\paragraph{Particle rotation}\index{Rotation}\
+When the above orientation deviates from a horizontal or vertical axis, the particle is rotated. This is done by expanding the matrix in all four directions. Padding the borders. And applying the rotation matrix. When old pixels don't completely fall within the new grid. The new pixel value is obtained with linear interpolation.
+
+\begin{remark}
+	The orientation of a particle is relevant because it allows for easy determination of the smallest diameter. The VSA uses a equivalent diameter to calculate the Particle Size Distribution. Normally this equivalent diameter\index{Equivalant diameter} is calculated with the assumption that the particle is round. This gives a distortion when comparing against particles that are sieved. The mesh size of the sieve allows oval particle to pass by their smallest cross-section.
+\end{remark}
+
+\paragraph{Particle edge}\index{Edge}\index{Particle edge}
+Using the binary image from the individual particle an edge is obtained. This is done by applying the morphological operation\index{Morphological operation} of erosion\index{Morphological operation:Erosion}. With this algorithm the blobs are eroded using the following principle
+\begin{sBox}
+	Let $\mat{B} \subset \mathbb{Z}^n \rightarrow \{0, 1\}$ and $ \mat{K} = \begin{bmatrix}
+	0 & 1 & 0 \\
+	1 & 1 & 1 \\
+	0 & 1 & 0 \\
+	\end{bmatrix} $
+	\begin{equation}
+	\mat{B}  \ominus \mat{K} = \bigcap_{k\in \mat{K}} \mat{K}_{-b}
+	\end{equation}
+\end{sBox}
+
+The previous obtained ROI is used to extract the edges from the individual particles. This edge is used in the Fast Fourier Transformation. In order to obtained a continuous function from the edge, a depth-first searching algorithm is applied. 
+
+\paragraph{Depth-first search}\label{Depth-first search}\index{Depth-first search}
+This starts at the top-left edge pixels and looks at its neighboring pixels. If it finds more then two neighboring pixels it stores the additional values in a queue and it moves to the first pixel new pixel. Here it performs the above decision process again. If it doesn't it only finds one neighboring pixel it know it's at a dead end. The algorithm will backtrack and start at the first branch in the queue. Subsequently storing the previously walked path, so it doesn't traverses again down this branch. This process is repeated until it find the starting pixel. Each individual branch that is processed in this way is stored in a vector of coordinates.
+
+\paragraph{Complex contour}\index{Complex contour}\label{Complex contour}
+These coordinate are stored as complex numbers where the real part is the row and the imaginary part is the column. Both are taken with respect to the center of gravity, which is obtained with the first order of the Hu-moments, see earlier paragraph.
+The shortest vector of connected coordinates that form a loop is determined to represent the edge of the particle. 
+
+\begin{remark}
+	By choosing the shortest path of neighboring edge pixels as a complex contour. The roughness of the edge is represented slightly less rough then the pixel suggest that is. This effect is negated, because of the discrete nature of the digital representative of a particle compared with continuous real curve of actual particle.	
+\end{remark}
 
 \subsection{CIE La*b* extraction}\index{CIE La*b*}\label{CIELab}
-\input{CIELabExtraction.tex}
+In 
+The bright field RGB images serve as the starting point 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.6\textwidth]{colormodelConversion.png}
+	\caption{Conversion steps to different colormodels (Source: \cite{viscarra_rossel_using_2008})}
+\end{figure}
 
 \subsection{Fast Fourier Descriptors}\index{Fast Fourier Descriptors}\index{FFT}\label{FFT}
 
 \subsection{Particle Size Distribution}
-\input{ParticleSizeDistribution.tex}
+
+The normal procedure for creating a Particle Size Distribution uses sieves and weights, to determine the volume of the the particle.
+
+The Sieve mesh size can be perceived as a cross section of a particle, since the particle is only retained in a sieve when it passes through the top sieve but can't pass through the sieve below. The cross section of the particle is at minimum the sieve mesh size of the top sieve, but other dimensions of the particle can exceed the sieve mesh size at which it last passes.
+\todo{Work this argument to explain why it's oke to use a 2 dimensional representation of a 3 dimensional particle}
 
 \section{Classification}\index{Classification}
 
 \subsection{Roundness using Hu-moments}\index{Roundness} \index{Hu-moments}\label{HuMoments}
 
 \subsection{Angularity using a Neural Network}\index{Angularity} \index{Neural Network}\label{NeuralNet}
-\input{NeuralNetwork.tex}
+Angularity of particle can be described as 
+
+
+\begin{figure}[h, center]
+	\begin{center}
+		\begin{neuralnetwork}[height=4, nodespacing=40]
+			\newcommand{\nodetextclear}[2]{}
+			\newcommand{\nodetextx}[2]{$FFT_#2$}
+			\newcommand{\nodetexty}[2]{$Class_#2$}
+			\inputlayer[count=4, bias=false, title=Input layer, text=\nodetextx]
+			\hiddenlayer[count=5, bias=false, title=Hidden layer, text=\nodetextclear] \linklayers
+			\outputlayer[count=3, title=Output layer, text=\nodetexty] \linklayers
+		\end{neuralnetwork}
+	\end{center}
+	\caption{Neural Network}
+\end{figure}
+
+
+\subsection{Genetic Algorithm}
+
+\paragraph{Viva la revolution!}
 
 This is an example of examples.
 
