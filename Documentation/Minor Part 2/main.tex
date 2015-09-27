@@ -344,7 +344,7 @@ A thorough review of the current literature \cite{Spijker14a} identified three p
 \end{sBox}
 This brings the minimum amount of particles to $384$. With the predefined range of particle sizes ($0.2[mm]\leq P_{size} \leq 2[mm]$ where $P$ defines a particle) and the limited work area under the microscope, multiple shots have to be taken. Where the sample is rearranged. Between fifteen and twenty shots are usually enough.
 \begin{remark}
-	The process of rearranging the particles, will be automated in the future. Student of the minor Offshore \& Construction taught at the University of Applied Sciences Rotterdam will work on this challenge. This is done on the RDM Campus. This minor starts in September 2015. Their product will serve as input for the second prototype. Their assignment is described in appendix \ref{RDM_Campus} and will be executed under the auspice of MTI Holland and the author.
+	\todo{rewrite for the two outstanding assigments} The process of rearranging the particles, will be automated in the future. Student of the minor Offshore \& Construction taught at the University of Applied Sciences Rotterdam will work on this challenge. This is done on the RDM Campus. This minor starts in September 2015. Their product will serve as input for the second prototype. Their assignment is described in appendix %\ref{RDM_Campus} and will be executed under the auspice of MTI Holland and the author.
 \end{remark}
 
 \paragraph{Acquisition} \index{Acquisition} Each sample is placed in a light condition room, and laid out on a semitransparent white acrylate plate. The sample can be illuminated with a bright field light source, where the light is aimed directly at an object or the particle can be lit with back lighting. See the course notes \cite{ypma_course_2014} for a more in-depth description. The choice for back lighting can be made because translucent particle are harder to segment in a bright field light. The trade off is extra processing time.
@@ -463,7 +463,7 @@ For each particle a region of interest\index{Region of Index} or ROI is obtained
 The Hu moments are determined for the individual blobs. A Hu moment is a certain particular weighted average, or moment, of pixels in an image and can be defined as follows for a discrete image.
 \begin{sBox}
 	Let $\mat{B} \subset \mathbb{Z}^n \rightarrow \{0, 1\}$ with dimensions $ m \times n $
-	\begin{equation}
+	\begin{equation}\label{eq:humoment}
 		M_{i,j}=\sum_m \sum_n m^i n^j B_{m,n}
 	\end{equation}
 \end{sBox}
@@ -474,7 +474,7 @@ The first order or raw moment gives the total area of the particle, while the se
 	\end{equation}
 \end{sBox}
 
-\paragraph{Particle rotation}\index{Rotation}\
+\paragraph{Particle rotation}\index{Rotation}\label{Particle rotation}
 When the above orientation deviates from a horizontal or vertical axis, the particle is rotated. This is done by expanding the matrix in all four directions. Padding the borders. And applying the rotation matrix. When old pixels don't completely fall within the new grid. The new pixel value is obtained with linear interpolation.
 
 \begin{remark}
@@ -508,30 +508,150 @@ The shortest vector of connected coordinates that form a loop is determined to r
 \end{remark}
 
 \subsection{CIE La*b* extraction}\index{CIE La*b*}\label{CIELab}
-In 
-The bright field RGB images serve as the starting point 
+The conversion from the RGB color model to the CIE La*b* model is done for each individual particle. According to \citeauthor{Spijker14a} \cite{Spijker14a} its easier to ascertain a correlation between the amount of organic carbon (OC) in a soil samples when the data is presented on the chromatic a* and b* axis then in the RGB space. The L value represent the luminosity value of a pixel while the a* values indicate the color on a chromatic axis between green (negative) and magenta (positive)
+
+The relation diagram below show that there has to be a conversion from RGB to CIE XYZ first in order to traverse to CIE La*b*. The bright field RGB images serve as a starting point. From this image the blobs are extracted, using the previously obtained ROI or region of interests. The calculations are only performed on pixels that belong to a particle. Background pixels are ignored. After these conversions, the mean a* and b* values are calculated for each particle.
+
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.6\textwidth]{colormodelConversion.png}
-	\caption{Conversion steps to different colormodels (Source: \cite{viscarra_rossel_using_2008})}
+	\includegraphics[width=0.7\textwidth]{colormodelConversion.png}
+	\caption{Conversion steps to different color models (Source: \citeauthor{viscarra_rossel_using_2008} \cite{viscarra_rossel_using_2008})}
+	\label{fig:ConversionSteps}
 \end{figure}
 
+\begin{sBox}
+	Let $\mat{XYZ} \subset \mathbb{R}^n \rightarrow \{0 \leq \mat{XYZ}_{m,n} \leq 1\} $ and $\mat{RGB} \subset \mathbb{Z}^n \rightarrow \{1 \leq \mat{RGB}_{m,n} \leq 256\} $ both with dimension $ m \times n $ The following transformation takes place for each pixel that belongs to a particle. 
+	\begin{equation}
+		\begin{bmatrix}
+		\mat{XYZ}_{i,j,1} \\
+		\mat{XYZ}_{i,j,2} \\
+		\mat{XYZ}_{i,j,3} 
+		\end{bmatrix}
+		= \begin{bmatrix}
+		0.412453 & 0.357580 & 0.180423 \\
+		0.212671 & 0.715160 & 0.072169 \\
+		0.019334 & 0.119194 & 0.950227
+		\end{bmatrix}
+		\cdot 
+		\begin{bmatrix}
+			\mat{RGB}_{i,j, 1} \\
+			\mat{RGB}_{i,j, 2} \\
+			\mat{RGB}_{i,j, 3} 
+		\end{bmatrix}
+	\end{equation}
+\end{sBox}
+
+After the conversion to the CIE XYZ color model the particle pixels are converted to the CIE La*b* color model. This is done with the equations depicted below.
+\begin{sBox}
+	Here the following definitions stand $\mat{LAB} \subset \mathbb{R}^n \rightarrow \{-128 \leq \mat{LAb}_{m,n} \leq 128\} $ and $\mat{XYZ} \subset \mathbb{R}^n \rightarrow \{0 \leq \mat{XYZ}_{m,n} \leq 1\} $ These transformations are performed for each pixel that belongs to a particle.
+	\begin{equation}
+	\begin{array}{ll}
+		\mat{LAB}_{i,j,1} = \left\{
+		\begin{array}{ll}
+		116(\frac{\mat{XYZ}_{i,j,1}}{100})^{\frac{1}{3}} & ,\frac{\mat{XYZ}_{i,j,1}}{100} > 0.008856 \\[0.3cm]
+		903.3(\frac{\mat{XYZ}_{i,j,1}}{100})^{\frac{1}{3}} & ,\frac{\mat{XYZ}_{i,j,1}}{100} \geq 0.008856 
+		\end{array} 
+		\right. \\[0.5cm]
+	    \mat{LAB}_{i,j,2} = \left[\left(\frac{\mat{XYZ}_{i,j,1}}{95.047}\right)^{1/_3} - \left(\frac{\mat{XYZ}_{i,j,2}}{100}\right)^{1/_3}\right] \\[0.5cm]
+ 	    \mat{LAB}_{i,j,3} = \left[\left(\frac{\mat{XYZ}_{i,j,2}}{100}\right)^{1/_3} - \left(\frac{\mat{XYZ}_{i,j,3}}{108.883}\right)^{1/_3}\right]  	    
+	\end{array}
+	\end{equation}
+\end{sBox}
+
 \subsection{Fast Fourier Descriptors}\index{Fast Fourier Descriptors}\index{FFT}\label{FFT}
+Fourier descriptor provide away to describe a shape of a two-dimensional object by taking the Fourier transform of the boundary. Every row and column in the sparse matrix that belong to the edge of a particle, is mapped to a complex number $ c + i r $ with its relation to an earlier obtained center of gravity. The process of obtaining the complex vector of coordinates is explained in detail in section \ref{Complex contour}.
+
+\begin{wrapfigure}{r}{0.33\textwidth}
+	\begin{center}
+		\includegraphics[width=0.3\textwidth]{DFT2.png}
+	\end{center}
+	\caption{Butterfly network that represent the fundamental computation (Source: \citeauthor{canale2014numerical})}
+	\label{fig:DFT_Pseudo}
+\end{wrapfigure}
+The Fast Fourier Transform is obtained, with an divide and conquer technique and is based upon the \textit{Cooley-Tukey algorithm}. According to \citeauthor{canale2014numerical} \cite{canale2014numerical} the idea behind the these algorithms is that a DFT (Discrete Fourier Transform) of length \textit{N} is decomposed, or "decimated" in to successively smaller DFTs. This process is illustrated in figure \ref{fig:DFT_Pseudo} and \ref{fig:DecimationDFT} for a $ m = 8 $ DFT.
+\begin{figure}[h]
+	\centering
+	\begin{sBox}
+		\includegraphics[width=1\textwidth]{DFT.png}	
+	\end{sBox}
+	\caption{Decimation of a $ m = 8 $ DFT (Source: \citeauthor{canale2014numerical})}
+	\label{fig:DecimationDFT}
+\end{figure}
+The decimation takes place in the frequency domain and is sliced between even and odd steps. The only constrained that is placed on the computations is that $ N = 2^m $ where $ m $ is the number of complex coordinates describing the contour. This complex contour first has to be validate with this constrained. This can be tested with equation \ref{mTest}, if  it holds false, then the complex vector is appended with $ 0 + i 0 $.
+\begin{sBox}
+	This condition can be tested with the equation below 
+	\begin{equation}\label{mTest}
+		\floor*{\frac{\log_{10} m}{\log_{10} 2.0}} = \frac{\log_{10} m}{\log_{10} 2.0}
+	\end{equation}
+\end{sBox} 
+
+The flow diagram depicted in figure \ref{fig:DecimationDFT} is implemented as algorithm \ref{pcode:FFT} \\
+\begin{sBox}
+	Let $ \vec{c} $ be a complex vector of which size is assumed to be an integral of power 2 \\
+	\begin{pseudocode}{FFT}{\vec{c}}\label{pcode:FFT}
+	N \GETS {size( \vec{c})}
+	\IF N <= 1 \THEN \RETURN 0 \\
+	i \GETS {0} \\
+	\vec{e} \GETS {null} \\
+	\vec{o} \GETS{null} \\
+	\FOREACH c \in \vec{c} \DO
+	\BEGIN
+		\IF \mod{\frac{i}{2}} = 0 \THEN \vec{e}_{\floor{i/2}} \GETS \vec{c}_i
+		\ELSE \vec{o}_{\floor{i/2}} \GETS \vec{c}_i \\
+		i \GETS {i + 1}\\
+	\END \\
+	
+	\CALL{FFT}{\vec{e}} \\
+	\CALL{FFT}{\vec{o}} \\
+	
+	\FOR k \GETS 0 \TO \frac{N}{2} \DO
+	\BEGIN
+		\vec{t} \GETS {\CALL{std::polar}{1, \frac{-2 \cdot \pi \cdot k}{N}} \cdot \vec{o}_k} \\
+		\vec{c}_k = \vec{a}_{k} + \vec{t} \\
+		\vec{c}_{k + N/2} = \vec{k} - \vec{t} \\
+	\END
+	
+	\end{pseudocode}
+\end{sBox}
 
 \subsection{Particle Size Distribution}
+A common test to measure a Particle Size Distribution is the sieve analysis method. In this test the PSD is obtained by allowing the soil sample to pass through a stack of sieves, which are placed in a consecutive order. Where the biggest mesh size is placed on top and the smallest below. The stack of sieves is placed in a mechanical shaker and shakes for approximately $ 10 [min] $. This results a separation of the soil sample in to ranges, where the demarcation is between the last mesh size that allowed a particle to pass and the first one that retained it.
 
-The normal procedure for creating a Particle Size Distribution uses sieves and weights, to determine the volume of the the particle.
+Because the sieve analysis method is commonly accepted test, the visual measured PSD has to mimic its characteristics traits. It is therefore important that the visual measured particle size is corrected with a certain factor. For now it is presumed that this factor has a correlation with the sphericity of a particle. The following theory has yet to be validated but seems to hold to true during the initial tests.
 
-The Sieve mesh size can be perceived as a cross section of a particle, since the particle is only retained in a sieve when it passes through the top sieve but can't pass through the sieve below. The cross section of the particle is at minimum the sieve mesh size of the top sieve, but other dimensions of the particle can exceed the sieve mesh size at which it last passes.
-\todo{Work this argument to explain why it's oke to use a 2 dimensional representation of a 3 dimensional particle}
+\begin{theorem}[Correlation between sphericity and particle diameter (obtained by sieving)]
+	The sieve mesh size can be perceived as a cross-section of a particle. A particle that passes a certain mesh has to have at least a cross-section that is smaller then that mesh size. When a particle is assumed as being oval. It consist of two radii that describe it shape. If both radii are equal it is a sphere. Since most particles aren't perfect spheres, it stands to reason that cross-sections of a particle vary at different orientations.
+	
+	The orientation of a particle is therefore relevant in the passing through the sieve. The shaking motion introduced by the sieve analysis method allows oval shaped particle, to stand upright when passing the cross-section of the sieve. Once the tip of the oval particle is caught in the mesh cross-section, the momentum of that same particle and the constrained of the mesh wires allow it to orient itself upright. Thus passing the mesh by it smallest cross-section. Since the volume (and therefore the weight) of an oval particle is bigger then a sphere of the same (smallest) radius. The effect that oval particles have in the bin ranges will be higher then that of round particles. This factor can be determined by then roundness obtained with the hu moment ascertained in section \ref{Hu moments}.
+\end{theorem}
+
+The size of each individual particle can be obtained by counting the pixels that belong to that particle and converting this area 
+\begin{sBox}
+	Let $\mat{B} \subset \mathbb{Z}^n \rightarrow \{0, 1\}$ with dimensions $ m \times n $ where the particle is either orientated along the columns or rows. Also define $ \alpha \subset \mathbb{R}^n \rightarrow \{0, 1\} $ as a conversion factor between pixel and mm. And define $ \epsilon \subset \mathbb{R}^n \rightarrow \{0, 1\} $ as the eccentricity obtained using equation \ref{eq:eccentricty}, see section\ref{HuMoments}
+	\begin{equation}\label{key}
+		\frac{\alpha \epsilon}{2} \sum\limits_{i=1}^{m}\sum\limits_{j=1}^{n}\mat{B}_{m,n} 
+	\end{equation}
+\end{sBox}
 
 \section{Classification}\index{Classification}
 
-\subsection{Roundness using Hu-moments}\index{Roundness} \index{Hu-moments}\label{HuMoments}
+\subsection{Eccentricity using Hu-moments}\index{Roundness} \index{Hu-moments}\label{HuMoments}
+
+\begin{sBox}
+	Let the hu moments $ M_{i,j} $ be obtained using equation \ref{eq:humoment}
+	\begin{equation}\label{eq:eccentricty}
+	\begin{array}{ll}
+	\mu_{20}^{\prime} =\frac{M_{20}}{M_{00}} - \left(\frac{M_{10}}{M_{00}}\right)^2 \\[0.3cm]
+	\mu_{02}^{\prime} =\frac{M_{02}}{M_{00}} - \left(\frac{M_{01}}{M_{00}}\right)^2 \\[0.3cm]
+	\mu_{11}^{\prime} =\frac{M_{11}}{M_{00}} - \frac{M_{10}}{M_{00}} \frac{M_{01}}{M_{00}} \\[0.3cm]
+	\Delta \mu_2 = \mu_{20}^{\prime} - \mu_{02}^{\prime} \\[0.3cm]
+	\epsilon = \sqrt{1 - \frac{2 \sqrt{\Delta \mu_2 + 4 {\mu_{11}^{\prime}}^2}}{\sqrt{\Delta \mu_2 + 4 {\mu_{11}^{\prime}}^2} + \mu_{02}^{\prime} + \mu_{20}^{\prime}}}
+	\end{array} 
+	\end{equation}
+\end{sBox}
 
 \subsection{Angularity using a Neural Network}\index{Angularity} \index{Neural Network}\label{NeuralNet}
 Angularity of particle can be described as 
-
 
 \begin{figure}[h, center]
 	\begin{center}
@@ -640,17 +760,16 @@ Treatment 3 & 0.0009271 & 0.296 \\
 \chapter{Example Soil Report}
 \includepdf[pages={1-5}, height=\textheight ,pagecommand=\paragraph{}]{SampleReport.pdf}
 
-\chapter{RDM campus: Student project}\label{RDM_Campus}
+\chapter{HAN minor Machine design: Student assessment}\label{HAN_assignment_Machine}
 \input{RDM_projectpropesition.tex}
+
+\chapter{HAN Electrical and electronic engineering: Student assessment}\label{HAN_assignement_Electrical}
+\input{RDM_projectpropesition.tex}
+
 \chapter{Development Environment setup}\label{SDE}
 \input{SDE.tex}
 \chapter{Run Environment setup}\label{RE}
 \input{RE.tex}
-
-\chapter{Current project status}
-\includepdf[pages={1-7}, height=\textheight ,pagecommand=\paragraph{}]{../IHC/Current Status 150617.pdf}
-\chapter{Soil and computer vision flyer}
-\includepdf[pages={1-15}, height=\textheight ,pagecommand=\paragraph{}]{../IHC/Soil and computer vision.pdf}
 
 \chapterimage{code_banner.jpg}
 \chapter{SoilMath Library}
