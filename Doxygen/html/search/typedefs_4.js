@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['icontour_5ft',['iContour_t',['../_soil_math_types_8h.html#a1ade796add2f13888dfa9e6bde0bdc37',1,'SoilMathTypes.h']]],
-  ['inputlearnvector_5ft',['InputLearnVector_t',['../_soil_math_types_8h.html#a45aa81992bf0ddf272907bd4fa0b96cf',1,'SoilMathTypes.h']]]
+  ['genome_5ft',['Genome_t',['../_soil_math_types_8h.html#a58f6ab36d2cb0527a73caec36d14a0e0',1,'SoilMathTypes.h']]],
+  ['genvect_5ft',['GenVect_t',['../_soil_math_types_8h.html#a1447b70c8b8604a379eb96cdce9d2152',1,'SoilMathTypes.h']]]
 ];

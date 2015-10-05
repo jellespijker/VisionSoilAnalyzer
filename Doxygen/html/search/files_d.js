@@ -1,23 +1,11 @@
 var searchData=
 [
-  ['sample_2ecpp',['Sample.cpp',['../_sample_8cpp.html',1,'']]],
-  ['sample_2eh',['Sample.h',['../_sample_8h.html',1,'']]],
-  ['sampleanalysisresult_2ecpp',['SampleAnalysisResult.cpp',['../_sample_analysis_result_8cpp.html',1,'']]],
-  ['sampleanalysisresult_2eh',['SampleAnalysisResult.h',['../_sample_analysis_result_8h.html',1,'']]],
-  ['segment_2ecpp',['Segment.cpp',['../_segment_8cpp.html',1,'']]],
-  ['segment_2eh',['Segment.h',['../_segment_8h.html',1,'']]],
-  ['shapeclassification_2ecpp',['ShapeClassification.cpp',['../_shape_classification_8cpp.html',1,'']]],
-  ['shapeclassification_2eh',['ShapeClassification.h',['../_shape_classification_8h.html',1,'']]],
-  ['soil_2ecpp',['Soil.cpp',['../_soil_8cpp.html',1,'']]],
-  ['soil_2eh',['Soil.h',['../_soil_8h.html',1,'']]],
-  ['soilcape_2ecpp',['SoilCape.cpp',['../_soil_cape_8cpp.html',1,'']]],
-  ['soilcape_2eh',['SoilCape.h',['../_soil_cape_8h.html',1,'']]],
-  ['soilmath_2eh',['SoilMath.h',['../_soil_math_8h.html',1,'']]],
-  ['soilmathtypes_2eh',['SoilMathTypes.h',['../_soil_math_types_8h.html',1,'']]],
-  ['soilsettings_2ecpp',['soilsettings.cpp',['../soilsettings_8cpp.html',1,'']]],
-  ['soilsettings_2eh',['soilsettings.h',['../soilsettings_8h.html',1,'']]],
-  ['sort_2eh',['Sort.h',['../_sort_8h.html',1,'']]],
-  ['statisticalcomparisondefinition_2eh',['StatisticalComparisonDefinition.h',['../_soil_math___test_2_statistical_comparison_definition_8h.html',1,'']]],
-  ['statisticalcomparisondefinition_2eh',['StatisticalComparisonDefinition.h',['../_v_s_a___u_t_2_statistical_comparison_definition_8h.html',1,'']]],
-  ['stats_2eh',['Stats.h',['../_stats_8h.html',1,'']]]
+  ['qopencvqt_2ecpp',['qopencvqt.cpp',['../qopencvqt_8cpp.html',1,'']]],
+  ['qopencvqt_2eh',['qopencvqt.h',['../qopencvqt_8h.html',1,'']]],
+  ['qparticledisplay_2ecpp',['qparticledisplay.cpp',['../qparticledisplay_8cpp.html',1,'']]],
+  ['qparticledisplay_2eh',['qparticledisplay.h',['../qparticledisplay_8h.html',1,'']]],
+  ['qparticleselector_2ecpp',['qparticleselector.cpp',['../qparticleselector_8cpp.html',1,'']]],
+  ['qparticleselector_2eh',['qparticleselector.h',['../qparticleselector_8h.html',1,'']]],
+  ['qreportgenerator_2ecpp',['qreportgenerator.cpp',['../qreportgenerator_8cpp.html',1,'']]],
+  ['qreportgenerator_2eh',['qreportgenerator.h',['../qreportgenerator_8h.html',1,'']]]
 ];

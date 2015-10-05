@@ -1,9 +1,4 @@
 var searchData=
 [
-  ['l_5fmax',['L_MAX',['../_soil_math___test_2_statistical_comparison_definition_8h.html#ad0dec0ae332d6eaac4b48b3caec998c0',1,'L_MAX():&#160;StatisticalComparisonDefinition.h'],['../_v_s_a___u_t_2_statistical_comparison_definition_8h.html#ad0dec0ae332d6eaac4b48b3caec998c0',1,'L_MAX():&#160;StatisticalComparisonDefinition.h']]],
-  ['l_5fmean',['L_MEAN',['../_soil_math___test_2_statistical_comparison_definition_8h.html#ad359e6e0410dfeab955063dfc2ef2210',1,'L_MEAN():&#160;StatisticalComparisonDefinition.h'],['../_v_s_a___u_t_2_statistical_comparison_definition_8h.html#ad359e6e0410dfeab955063dfc2ef2210',1,'L_MEAN():&#160;StatisticalComparisonDefinition.h']]],
-  ['l_5fmin',['L_MIN',['../_soil_math___test_2_statistical_comparison_definition_8h.html#a031fa71002d09f1144c7237a4653312c',1,'L_MIN():&#160;StatisticalComparisonDefinition.h'],['../_v_s_a___u_t_2_statistical_comparison_definition_8h.html#a031fa71002d09f1144c7237a4653312c',1,'L_MIN():&#160;StatisticalComparisonDefinition.h']]],
-  ['l_5frange',['L_RANGE',['../_soil_math___test_2_statistical_comparison_definition_8h.html#a4de63e4556e9d3eff9838d5c15fb37cf',1,'L_RANGE():&#160;StatisticalComparisonDefinition.h'],['../_v_s_a___u_t_2_statistical_comparison_definition_8h.html#a4de63e4556e9d3eff9838d5c15fb37cf',1,'L_RANGE():&#160;StatisticalComparisonDefinition.h']]],
-  ['l_5fstd',['L_STD',['../_soil_math___test_2_statistical_comparison_definition_8h.html#ad9349198f0347aedc0e3be6d5370a91c',1,'L_STD():&#160;StatisticalComparisonDefinition.h'],['../_v_s_a___u_t_2_statistical_comparison_definition_8h.html#ad9349198f0347aedc0e3be6d5370a91c',1,'L_STD():&#160;StatisticalComparisonDefinition.h']]],
-  ['l_5fsum',['L_SUM',['../_soil_math___test_2_statistical_comparison_definition_8h.html#a20023b33415a91e2702716dd5b8a8871',1,'L_SUM():&#160;StatisticalComparisonDefinition.h'],['../_v_s_a___u_t_2_statistical_comparison_definition_8h.html#a20023b33415a91e2702716dd5b8a8871',1,'L_SUM():&#160;StatisticalComparisonDefinition.h']]]
+  ['pwm_5fcape',['PWM_CAPE',['../_p_w_m_8h.html#a107564a7febd186a238d8af86893ca9b',1,'PWM.h']]]
 ];

@@ -1,20 +1,6 @@
 var searchData=
 [
-  ['max_5fbrightness',['MAX_BRIGHTNESS',['../_microscope_8h.html#a2134a5a06f0865c945543a1f07eba387',1,'Microscope.h']]],
-  ['max_5fcontrast',['MAX_CONTRAST',['../_microscope_8h.html#a328501bf918536ed7b99f60400548a2d',1,'Microscope.h']]],
-  ['max_5fgamma',['MAX_GAMMA',['../_microscope_8h.html#a7307baab149844198c7075f7bdb4330c',1,'Microscope.h']]],
-  ['max_5fhue',['MAX_HUE',['../_microscope_8h.html#a9260b36b7e213ce91f9c7af75503581f',1,'Microscope.h']]],
-  ['max_5fsaturation',['MAX_SATURATION',['../_microscope_8h.html#a6d638a302ba4d276b68fa4c92ad69022',1,'Microscope.h']]],
-  ['max_5fsharpness',['MAX_SHARPNESS',['../_microscope_8h.html#a765c36e500e1e831106e75caa7cac743',1,'Microscope.h']]],
-  ['max_5fuint8_5fvalue',['MAX_UINT8_VALUE',['../_stats_8h.html#a3db36e4d6027332cc759a581cfc715e2',1,'Stats.h']]],
-  ['microscope_5fversion',['MICROSCOPE_VERSION',['../_microscope_8h.html#a76771e092943667b16272539ebf2300d',1,'Microscope.h']]],
-  ['min_5fbrightness',['MIN_BRIGHTNESS',['../_microscope_8h.html#a6a2272749c65f1491ef78f03201987d1',1,'Microscope.h']]],
-  ['min_5fcontrast',['MIN_CONTRAST',['../_microscope_8h.html#a16f0d77a4cbef51d5e6c105d16471cba',1,'Microscope.h']]],
-  ['min_5fedge_5fpixels',['MIN_EDGE_PIXELS',['../_particle_analysis_results_8h.html#a15cb286aacddff91b8a40d64bcdc3322',1,'ParticleAnalysisResults.h']]],
-  ['min_5fgamma',['MIN_GAMMA',['../_microscope_8h.html#a730cd6a37517702fe0f3d4012b031220',1,'Microscope.h']]],
-  ['min_5fhue',['MIN_HUE',['../_microscope_8h.html#a5e6c03d8634818167281383307d9e9c7',1,'Microscope.h']]],
-  ['min_5fsaturation',['MIN_SATURATION',['../_microscope_8h.html#a3c645fd6171458aecb7ae50bbaee7c6f',1,'Microscope.h']]],
-  ['min_5fsharpness',['MIN_SHARPNESS',['../_microscope_8h.html#a8aae393e2be9d64b8264db339a5b01f6',1,'Microscope.h']]],
-  ['morphologicalfilter_5fversion',['MORPHOLOGICALFILTER_VERSION',['../_morphological_filter_8h.html#ad5e6aaf9e97133c1801b6ed9c10046e7',1,'MorphologicalFilter.h']]],
-  ['mutationrate',['MUTATIONRATE',['../_soil_math_types_8h.html#a609754629b7669df73d7e8edda337162',1,'SoilMathTypes.h']]]
+  ['show_5fdebug_5fimg',['SHOW_DEBUG_IMG',['../_vision_debug_8h.html#aae864fa4f990213a4184a209ff236202',1,'VisionDebug.h']]],
+  ['slots',['SLOTS',['../_b_b_b_8h.html#a3de26a5dbd2276c1486afbba5fc8de59',1,'BBB.h']]],
+  ['starting_5festimate_5fprogress',['STARTING_ESTIMATE_PROGRESS',['../analyzer_8h.html#a7376114637d76e3bb5d1e28c37d7de94',1,'analyzer.h']]]
 ];

@@ -1,11 +1,11 @@
-\hypertarget{namespace_hardware}{}\section{Hardware Namespace Reference}
+\hypertarget{namespace_hardware}{}\subsection{Hardware Namespace Reference}
 \label{namespace_hardware}\index{Hardware@{Hardware}}
-\subsection*{Namespaces}
+\subsubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
  \hyperlink{namespace_hardware_1_1_exception}{Exception}
 \end{DoxyCompactItemize}
-\subsection*{Classes}
+\subsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 class \hyperlink{class_hardware_1_1_a_d_c}{A\+D\+C}
@@ -26,12 +26,12 @@ class \hyperlink{class_hardware_1_1_soil_cape}{Soil\+Cape}
 \item 
 class \hyperlink{class_hardware_1_1_u_s_b}{U\+S\+B}
 \end{DoxyCompactItemize}
-\subsection*{Typedefs}
+\subsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
 typedef int($\ast$ \hyperlink{namespace_hardware_a5ba2e4bdfa2bbd8b551b1d5b2a0c61fd}{Callback\+Type}) (int)
 \end{DoxyCompactItemize}
-\subsection*{Functions}
+\subsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 void $\ast$ \hyperlink{namespace_hardware_a594324488333eeaa49790a5391626fad}{threaded\+Poll\+A\+D\+C} (void $\ast$value)
@@ -44,53 +44,36 @@ void $\ast$ \hyperlink{namespace_hardware_af5f1bde915012872fc6b800981948aaa}{thr
 \end{DoxyCompactItemize}
 
 
-\subsection{Typedef Documentation}
+\subsubsection{Typedef Documentation}
 \hypertarget{namespace_hardware_a5ba2e4bdfa2bbd8b551b1d5b2a0c61fd}{}\index{Hardware@{Hardware}!Callback\+Type@{Callback\+Type}}
 \index{Callback\+Type@{Callback\+Type}!Hardware@{Hardware}}
-\subsubsection[{Callback\+Type}]{\setlength{\rightskip}{0pt plus 5cm}typedef int($\ast$ Hardware\+::\+Callback\+Type) (int)}\label{namespace_hardware_a5ba2e4bdfa2bbd8b551b1d5b2a0c61fd}
+\paragraph[{Callback\+Type}]{\setlength{\rightskip}{0pt plus 5cm}typedef int($\ast$ Hardware\+::\+Callback\+Type) (int)}\label{namespace_hardware_a5ba2e4bdfa2bbd8b551b1d5b2a0c61fd}
 Callback\+Type used to pass a function to a thread 
 
-Definition at line 37 of file B\+B\+B.\+h.
+Definition at line \hyperlink{_b_b_b_8h_source_l00037}{37} of file \hyperlink{_b_b_b_8h_source}{B\+B\+B.\+h}.
 
 
 
-\subsection{Function Documentation}
+\subsubsection{Function Documentation}
 \hypertarget{namespace_hardware_a999708509591fcc4884019c76b9f74ed}{}\index{Hardware@{Hardware}!color\+Loop@{color\+Loop}}
 \index{color\+Loop@{color\+Loop}!Hardware@{Hardware}}
-\subsubsection[{color\+Loop}]{\setlength{\rightskip}{0pt plus 5cm}void $\ast$ Hardware\+::color\+Loop (
+\paragraph[{color\+Loop}]{\setlength{\rightskip}{0pt plus 5cm}void $\ast$ Hardware\+::color\+Loop (
 \begin{DoxyParamCaption}
 \item[{void $\ast$}]{value}
 \end{DoxyParamCaption}
 )}\label{namespace_hardware_a999708509591fcc4884019c76b9f74ed}
 The thread function that runs trough all the colors 
 
-Definition at line 91 of file E\+C12\+P.\+cpp.
+Definition at line \hyperlink{_e_c12_p_8cpp_source_l00091}{91} of file \hyperlink{_e_c12_p_8cpp_source}{E\+C12\+P.\+cpp}.
 
 
 
-References i, Hardware\+::\+E\+C12\+P\+::\+Set\+Pixel\+Color(), Hardware\+::\+E\+C12\+P\+::sleepperiod, and Hardware\+::\+E\+C12\+P\+::thread\+Running.
+References \hyperlink{_e_c12_p_8cpp_source_l00035}{Hardware\+::\+E\+C12\+P\+::\+Set\+Pixel\+Color()}, \hyperlink{_e_c12_p_8h_source_l00058}{Hardware\+::\+E\+C12\+P\+::sleepperiod}, and \hyperlink{_e_c12_p_8h_source_l00057}{Hardware\+::\+E\+C12\+P\+::thread\+Running}.
 
 
-\begin{DoxyCode}
-91                              \{
-92   \textcolor{keywordtype}{int} \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0;
-93   \hyperlink{class_e_c12_p}{EC12P} *ec12p = \textcolor{keyword}{static\_cast<}\hyperlink{class_e_c12_p}{EC12P} *\textcolor{keyword}{>}(value);
-94   EC12P::Color pcolor;
-95   \textcolor{keywordflow}{while} (ec12p->threadRunning) \{
-96     pcolor = \textcolor{keyword}{static\_cast<}EC12P::Color\textcolor{keyword}{>}(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i});
-97     ec12p->SetPixelColor(pcolor);
-98     usleep(ec12p->sleepperiod);
-99     i++;
-100     \textcolor{keywordflow}{if} (i == 6) \{
-101       i = 0;
-102     \}
-103   \}
-104   \textcolor{keywordflow}{return} ec12p;
-105 \}
-\end{DoxyCode}
 
-
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -101,32 +84,23 @@ Here is the call graph for this function\+:\nopagebreak
 
 \hypertarget{namespace_hardware_a594324488333eeaa49790a5391626fad}{}\index{Hardware@{Hardware}!threaded\+Poll\+A\+D\+C@{threaded\+Poll\+A\+D\+C}}
 \index{threaded\+Poll\+A\+D\+C@{threaded\+Poll\+A\+D\+C}!Hardware@{Hardware}}
-\subsubsection[{threaded\+Poll\+A\+D\+C}]{\setlength{\rightskip}{0pt plus 5cm}void $\ast$ Hardware\+::threaded\+Poll\+A\+D\+C (
+\paragraph[{threaded\+Poll\+A\+D\+C}]{\setlength{\rightskip}{0pt plus 5cm}void $\ast$ Hardware\+::threaded\+Poll\+A\+D\+C (
 \begin{DoxyParamCaption}
 \item[{void $\ast$}]{value}
 \end{DoxyParamCaption}
 )}\label{namespace_hardware_a594324488333eeaa49790a5391626fad}
 friendly function to start the threading 
 
-Definition at line 121 of file A\+D\+C.\+cpp.
+Definition at line \hyperlink{_a_d_c_8cpp_source_l00121}{121} of file \hyperlink{_a_d_c_8cpp_source}{A\+D\+C.\+cpp}.
 
 
 
-References Hardware\+::\+B\+B\+B\+::callback\+Function, Hardware\+::\+B\+B\+B\+::thread\+Running, and Hardware\+::\+A\+D\+C\+::\+Wait\+For\+Value\+Change().
+References \hyperlink{_b_b_b_8h_source_l00050}{Hardware\+::\+B\+B\+B\+::callback\+Function}, \hyperlink{_b_b_b_8h_source_l00048}{Hardware\+::\+B\+B\+B\+::thread\+Running}, and \hyperlink{_a_d_c_8cpp_source_l00088}{Hardware\+::\+A\+D\+C\+::\+Wait\+For\+Value\+Change()}.
 
 
-\begin{DoxyCode}
-121                                    \{
-122   \hyperlink{class_a_d_c}{ADC} *adc = \textcolor{keyword}{static\_cast<}\hyperlink{class_a_d_c}{ADC} *\textcolor{keyword}{>}(value);
-123   \textcolor{keywordflow}{while} (adc->threadRunning) \{
-124     adc->callbackFunction(adc->WaitForValueChange());
-125     usleep(200000);
-126   \}
-127 \}
-\end{DoxyCode}
 
-
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -137,33 +111,23 @@ Here is the call graph for this function\+:\nopagebreak
 
 \hypertarget{namespace_hardware_abb5f0943d53124cfc6df04c91ffcb21b}{}\index{Hardware@{Hardware}!threaded\+Polleqep@{threaded\+Polleqep}}
 \index{threaded\+Polleqep@{threaded\+Polleqep}!Hardware@{Hardware}}
-\subsubsection[{threaded\+Polleqep}]{\setlength{\rightskip}{0pt plus 5cm}void $\ast$ Hardware\+::threaded\+Polleqep (
+\paragraph[{threaded\+Polleqep}]{\setlength{\rightskip}{0pt plus 5cm}void $\ast$ Hardware\+::threaded\+Polleqep (
 \begin{DoxyParamCaption}
 \item[{void $\ast$}]{value}
 \end{DoxyParamCaption}
 )}\label{namespace_hardware_abb5f0943d53124cfc6df04c91ffcb21b}
 
 
-Definition at line 242 of file eqep.\+cpp.
+Definition at line \hyperlink{eqep_8cpp_source_l00242}{242} of file \hyperlink{eqep_8cpp_source}{eqep.\+cpp}.
 
 
 
-References Hardware\+::\+B\+B\+B\+::callback\+Function, Hardware\+::\+B\+B\+B\+::debounce\+Time, Hardware\+::e\+Q\+E\+P\+::get\+\_\+position(), and Hardware\+::\+B\+B\+B\+::thread\+Running.
+References \hyperlink{_b_b_b_8h_source_l00050}{Hardware\+::\+B\+B\+B\+::callback\+Function}, \hyperlink{_b_b_b_8h_source_l00042}{Hardware\+::\+B\+B\+B\+::debounce\+Time}, \hyperlink{eqep_8cpp_source_l00137}{Hardware\+::e\+Q\+E\+P\+::get\+\_\+position()}, and \hyperlink{_b_b_b_8h_source_l00048}{Hardware\+::\+B\+B\+B\+::thread\+Running}.
 
 
-\begin{DoxyCode}
-242                                     \{
-243   eQEP *eqep = \textcolor{keyword}{static\_cast<}eQEP *\textcolor{keyword}{>}(value);
-244   \textcolor{keywordflow}{while} (eqep->threadRunning) \{
-245     eqep->callbackFunction(eqep->get\_position(\textcolor{keyword}{true}));
-246     usleep(eqep->debounceTime * 1000);
-247   \}
-248   \textcolor{keywordflow}{return} 0;
-249 \}
-\end{DoxyCode}
 
-
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -174,33 +138,23 @@ Here is the call graph for this function\+:\nopagebreak
 
 \hypertarget{namespace_hardware_af5f1bde915012872fc6b800981948aaa}{}\index{Hardware@{Hardware}!threaded\+Poll\+G\+P\+I\+O@{threaded\+Poll\+G\+P\+I\+O}}
 \index{threaded\+Poll\+G\+P\+I\+O@{threaded\+Poll\+G\+P\+I\+O}!Hardware@{Hardware}}
-\subsubsection[{threaded\+Poll\+G\+P\+I\+O}]{\setlength{\rightskip}{0pt plus 5cm}void $\ast$ Hardware\+::threaded\+Poll\+G\+P\+I\+O (
+\paragraph[{threaded\+Poll\+G\+P\+I\+O}]{\setlength{\rightskip}{0pt plus 5cm}void $\ast$ Hardware\+::threaded\+Poll\+G\+P\+I\+O (
 \begin{DoxyParamCaption}
 \item[{void $\ast$}]{value}
 \end{DoxyParamCaption}
 )}\label{namespace_hardware_af5f1bde915012872fc6b800981948aaa}
 
 
-Definition at line 171 of file G\+P\+I\+O.\+cpp.
+Definition at line \hyperlink{_g_p_i_o_8cpp_source_l00266}{266} of file \hyperlink{_g_p_i_o_8cpp_source}{G\+P\+I\+O.\+cpp}.
 
 
 
-References Hardware\+::\+B\+B\+B\+::callback\+Function, Hardware\+::\+B\+B\+B\+::debounce\+Time, Hardware\+::\+B\+B\+B\+::thread\+Running, and Hardware\+::\+G\+P\+I\+O\+::\+Wait\+For\+Edge().
+References \hyperlink{_b_b_b_8h_source_l00050}{Hardware\+::\+B\+B\+B\+::callback\+Function}, \hyperlink{_b_b_b_8h_source_l00042}{Hardware\+::\+B\+B\+B\+::debounce\+Time}, \hyperlink{_b_b_b_8h_source_l00048}{Hardware\+::\+B\+B\+B\+::thread\+Running}, and \hyperlink{_g_p_i_o_8cpp_source_l00037}{Hardware\+::\+G\+P\+I\+O\+::\+Wait\+For\+Edge()}.
 
 
-\begin{DoxyCode}
-171                                     \{
-172   GPIO *gpio = \textcolor{keyword}{static\_cast<}GPIO *\textcolor{keyword}{>}(value);
-173   \textcolor{keywordflow}{while} (gpio->threadRunning) \{
-174     gpio->callbackFunction(gpio->WaitForEdge());
-175     usleep(gpio->debounceTime * 1000);
-176   \}
-177   \textcolor{keywordflow}{return} 0;
-178 \}
-\end{DoxyCode}
 
-
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

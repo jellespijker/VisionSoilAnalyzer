@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.9.1"/>
-<title>Vision Soil Analyzer: /home/peer23peer/VisionSoilAnalyzer/src/SoilMath/Sort.h Source File</title>
+<title>Vision Soil Analyzer: /home/peer23peer/programmingspace/VSA/VisionSoilAnalyzer/src/SoilMath/Sort.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -30,7 +30,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="IHClogo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Vision Soil Analyzer
    &#160;<span id="projectnumber">1.0.0</span>
@@ -49,7 +48,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -127,7 +125,7 @@ $(document).ready(function(){initNavTree('_sort_8h_source.html','');});
 <div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_soil_math_1_1_sort.html#ac5553af8753454e71e6d621690fdab3f">   17</a></span>&#160;  <a class="code" href="class_soil_math_1_1_sort.html#ac5553af8753454e71e6d621690fdab3f">Sort</a>() {}</div>
 <div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_soil_math_1_1_sort.html#a62273dbd3620f999201abacdff5e2557">   18</a></span>&#160;  <a class="code" href="class_soil_math_1_1_sort.html#a62273dbd3620f999201abacdff5e2557">~Sort</a>() {}</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="class_soil_math_1_1_sort.html#adca7b48be7482f89767b806ad2016d67">   26</a></span>&#160;  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_soil_math_1_1_sort.html#adca7b48be7482f89767b806ad2016d67">QuickSort</a>(T *arr, <span class="keywordtype">int</span> <a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a>) {</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="class_soil_math_1_1_sort.html#adca7b48be7482f89767b806ad2016d67">   26</a></span>&#160;  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_soil_math_1_1_sort.html#adca7b48be7482f89767b806ad2016d67">QuickSort</a>(T *arr, <span class="keywordtype">int</span> i) {</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordflow">if</span> (i &lt; 2)</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;      <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
@@ -140,7 +138,7 @@ $(document).ready(function(){initNavTree('_sort_8h_source.html','');});
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;      } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (*r &gt; p) {</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        r--;</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;      } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordtype">int</span> t = *l;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        T t = *l;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        *l = *r;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        *r = t;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        l++;</div>
@@ -150,12 +148,53 @@ $(document).ready(function(){initNavTree('_sort_8h_source.html','');});
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    Sort::QuickSort&lt;T&gt;(arr, r - arr + 1);</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    Sort::QuickSort&lt;T&gt;(l, arr + i - l);</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  }</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;};</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="class_soil_math_1_1_sort.html#ae30ea06713b1cff25f22498724d6f74c">   58</a></span>&#160;  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_soil_math_1_1_sort.html#ae30ea06713b1cff25f22498724d6f74c">QuickSort</a>(T *arr, T *key, <span class="keywordtype">int</span> i) {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">if</span> (i &lt; 2)</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;      <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    T p = arr[i / 2];</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    T *l = arr;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    T *r = arr + i - 1;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    T *lkey = key;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    T *rkey = key + i - 1;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">while</span> (l &lt;= r) {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;      <span class="keywordflow">if</span> (*l &lt; p) {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        l++;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        lkey++;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (*r &gt; p) {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        r--;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        rkey--;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;       <span class="keywordflow">if</span> (*l != *r) {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;          T t = *l;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;          *l = *r;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;          *r = t;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;          T tkey = *lkey;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;          *lkey = *rkey;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;          *rkey = tkey;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        }</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        l++;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        r--;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        lkey++;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        rkey--;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;      }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    Sort::QuickSort&lt;T&gt;(arr, key, r - arr + 1);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    Sort::QuickSort&lt;T&gt;(l, lkey, arr + i - l);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  }</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;};</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}</div>
 <div class="ttc" id="class_soil_math_1_1_sort_html"><div class="ttname"><a href="class_soil_math_1_1_sort.html">SoilMath::Sort</a></div><div class="ttdoc">The Sort template class. </div><div class="ttdef"><b>Definition:</b> <a href="_sort_8h_source.html#l00015">Sort.h:15</a></div></div>
 <div class="ttc" id="class_soil_math_1_1_sort_html_ac5553af8753454e71e6d621690fdab3f"><div class="ttname"><a href="class_soil_math_1_1_sort.html#ac5553af8753454e71e6d621690fdab3f">SoilMath::Sort::Sort</a></div><div class="ttdeci">Sort()</div><div class="ttdef"><b>Definition:</b> <a href="_sort_8h_source.html#l00017">Sort.h:17</a></div></div>
-<div class="ttc" id="_comparision_pictures_2_createtest_image_8m_html_a6f6ccfcf58b31cb6412107d9d5281426"><div class="ttname"><a href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a></div><div class="ttdeci">for i</div><div class="ttdef"><b>Definition:</b> <a href="_comparision_pictures_2_createtest_image_8m_source.html#l00006">CreatetestImage.m:6</a></div></div>
-<div class="ttc" id="namespace_soil_math_html"><div class="ttname"><a href="namespace_soil_math.html">SoilMath</a></div><div class="ttdoc">Genetic Algorithmes used for optimization problems. </div><div class="ttdef"><b>Definition:</b> <a href="_common_operations_8h_source.html#l00014">CommonOperations.h:14</a></div></div>
+<div class="ttc" id="class_soil_math_1_1_sort_html_ae30ea06713b1cff25f22498724d6f74c"><div class="ttname"><a href="class_soil_math_1_1_sort.html#ae30ea06713b1cff25f22498724d6f74c">SoilMath::Sort::QuickSort</a></div><div class="ttdeci">static void QuickSort(T *arr, T *key, int i)</div><div class="ttdoc">QuickSort a static sort a Type T array with i values where the key are also changed accordingly...</div><div class="ttdef"><b>Definition:</b> <a href="_sort_8h_source.html#l00058">Sort.h:58</a></div></div>
+<div class="ttc" id="namespace_soil_math_html"><div class="ttname"><a href="namespace_soil_math.html">SoilMath</a></div><div class="ttdoc">Genetic Algorithmes used for optimization problems. </div><div class="ttdef"><b>Definition:</b> <a href="_common_operations_8h_source.html#l00016">CommonOperations.h:16</a></div></div>
 <div class="ttc" id="class_soil_math_1_1_sort_html_a62273dbd3620f999201abacdff5e2557"><div class="ttname"><a href="class_soil_math_1_1_sort.html#a62273dbd3620f999201abacdff5e2557">SoilMath::Sort::~Sort</a></div><div class="ttdeci">~Sort()</div><div class="ttdef"><b>Definition:</b> <a href="_sort_8h_source.html#l00018">Sort.h:18</a></div></div>
 <div class="ttc" id="class_soil_math_1_1_sort_html_adca7b48be7482f89767b806ad2016d67"><div class="ttname"><a href="class_soil_math_1_1_sort.html#adca7b48be7482f89767b806ad2016d67">SoilMath::Sort::QuickSort</a></div><div class="ttdeci">static void QuickSort(T *arr, int i)</div><div class="ttdoc">QuickSort a static sort a Type T array with i values. </div><div class="ttdef"><b>Definition:</b> <a href="_sort_8h_source.html#l00026">Sort.h:26</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -164,7 +203,7 @@ $(document).ready(function(){initNavTree('_sort_8h_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_38989e3f393d92babfcacf51a2b05fb4.html">SoilMath</a></li><li class="navelem"><a class="el" href="_sort_8h.html">Sort.h</a></li>
-    <li class="footer">Generated on Sat Jun 20 2015 18:57:03 for Vision Soil Analyzer by
+    <li class="footer">Generated on Mon Oct 5 2015 21:06:38 for Vision Soil Analyzer by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

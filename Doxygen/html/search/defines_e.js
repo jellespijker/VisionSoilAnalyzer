@@ -1,9 +1,0 @@
-var searchData=
-[
-  ['ri_5fmax',['RI_MAX',['../_soil_math___test_2_statistical_comparison_definition_8h.html#a1c6127344ddbc7a878a696721731fe20',1,'RI_MAX():&#160;StatisticalComparisonDefinition.h'],['../_v_s_a___u_t_2_statistical_comparison_definition_8h.html#a1c6127344ddbc7a878a696721731fe20',1,'RI_MAX():&#160;StatisticalComparisonDefinition.h']]],
-  ['ri_5fmean',['RI_MEAN',['../_soil_math___test_2_statistical_comparison_definition_8h.html#af57fec96d216b09ac322413487b76ac6',1,'RI_MEAN():&#160;StatisticalComparisonDefinition.h'],['../_v_s_a___u_t_2_statistical_comparison_definition_8h.html#af57fec96d216b09ac322413487b76ac6',1,'RI_MEAN():&#160;StatisticalComparisonDefinition.h']]],
-  ['ri_5fmin',['RI_MIN',['../_soil_math___test_2_statistical_comparison_definition_8h.html#a8f9e591735dafec30029ab70008cb978',1,'RI_MIN():&#160;StatisticalComparisonDefinition.h'],['../_v_s_a___u_t_2_statistical_comparison_definition_8h.html#a8f9e591735dafec30029ab70008cb978',1,'RI_MIN():&#160;StatisticalComparisonDefinition.h']]],
-  ['ri_5frange',['RI_RANGE',['../_soil_math___test_2_statistical_comparison_definition_8h.html#add55d693c4ea62b2f21ef0785966363d',1,'RI_RANGE():&#160;StatisticalComparisonDefinition.h'],['../_v_s_a___u_t_2_statistical_comparison_definition_8h.html#add55d693c4ea62b2f21ef0785966363d',1,'RI_RANGE():&#160;StatisticalComparisonDefinition.h']]],
-  ['ri_5fstd',['RI_STD',['../_soil_math___test_2_statistical_comparison_definition_8h.html#a7f738afe747dd2b938260f50607770fa',1,'RI_STD():&#160;StatisticalComparisonDefinition.h'],['../_v_s_a___u_t_2_statistical_comparison_definition_8h.html#a7f738afe747dd2b938260f50607770fa',1,'RI_STD():&#160;StatisticalComparisonDefinition.h']]],
-  ['ri_5fsum',['RI_SUM',['../tst__soilmath__test_8cpp.html#a82b14f5fb6975ddc95c5244b2d8d7fa6',1,'RI_SUM():&#160;tst_soilmath_test.cpp'],['../_v_s_a___u_t_8cpp.html#a82b14f5fb6975ddc95c5244b2d8d7fa6',1,'RI_SUM():&#160;VSA_UT.cpp']]]
-];

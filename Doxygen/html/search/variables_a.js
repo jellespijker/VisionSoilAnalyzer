@@ -1,7 +1,29 @@
 var searchData=
 [
-  ['k',['K',['../_comparision_pictures_2_createtest_image_8m.html#a16e4ef534cec559430e07e05eb71c719',1,'K():&#160;CreatetestImage.m'],['../_v_s_a___u_t_2_comparision_pictures_2_createtest_image_8m.html#a16e4ef534cec559430e07e05eb71c719',1,'K():&#160;CreatetestImage.m']]],
-  ['key',['key',['../class_q_c_p_data.html#a2f5ba9aca61bb74f88516e148a4cf71b',1,'QCPData::key()'],['../class_q_c_p_curve_data.html#a8a4ec5f2b9a396149fd842e309701bd4',1,'QCPCurveData::key()'],['../class_q_c_p_bar_data.html#afe544b035ef19027ea3d65adeaf81b42',1,'QCPBarData::key()'],['../class_q_c_p_financial_data.html#a18bc92126f28c214b05b0161e5f5958b',1,'QCPFinancialData::key()']]],
-  ['keyerrorminus',['keyErrorMinus',['../class_q_c_p_data.html#af107d650b8ee5c3b2961ecddcfb1bccb',1,'QCPData']]],
-  ['keyerrorplus',['keyErrorPlus',['../class_q_c_p_data.html#ae468c3808107c2fd23052481156ab5b5',1,'QCPData']]]
+  ['main_5floop',['main_loop',['../struct_hardware_1_1_microscope_1_1___custom_data.html#ae91d22ab690eff7f086d4fc6fdda7e50',1,'Hardware::Microscope::_CustomData']]],
+  ['manualset',['ManualSet',['../struct_predict__struct.html#a9e16b308d69246f0954a4a9100fc0660',1,'Predict_struct']]],
+  ['maplocation',['mapLocation',['../class_q_report_generator.html#a1369081e13fce26f60a10eb846551515',1,'QReportGenerator']]],
+  ['max',['max',['../class_soil_math_1_1_stats.html#ad49ee1f533564ec587cf98a094b8c564',1,'SoilMath::Stats']]],
+  ['maxgenusedbyga',['MaxGenUsedByGA',['../class_soil_math_1_1_n_n.html#a360b26e66639b4eed186a62cdbac37e0',1,'SoilMath::NN']]],
+  ['maximum',['maximum',['../struct_hardware_1_1_microscope_1_1_control__t.html#ac9b27cf29b495f9539931166cc3b41e2',1,'Hardware::Microscope::Control_t']]],
+  ['maxintensity',['MaxIntensity',['../class_hardware_1_1_a_d_c.html#a8fb4ac4b41ff54a44e57e9ce8bc5bd93',1,'Hardware::ADC']]],
+  ['maxlabel',['MaxLabel',['../class_vision_1_1_segment.html#a22d2a688de65f4d25b164f8b2a03f4a9',1,'Vision::Segment']]],
+  ['maxoptim',['maxOptim',['../class_soil_math_1_1_g_a.html#a99565a1789513769c2cf0e6971854ef6',1,'SoilMath::GA']]],
+  ['maxprogress',['MaxProgress',['../class_soil_analyzer_1_1_analyzer.html#aef988b5c2c2349b544dabe8882c8931a',1,'SoilAnalyzer::Analyzer']]],
+  ['maxweightusedbyga',['MaxWeightUsedByGA',['../class_soil_math_1_1_n_n.html#a2e6360ebc99e10072eb378f9d7f2e915',1,'SoilMath::NN']]],
+  ['mean',['Mean',['../class_soil_math_1_1_stats.html#a6f53982d52cf492ddd4df9b56bd014e7',1,'SoilMath::Stats']]],
+  ['meanlab',['meanLab',['../class_soil_analyzer_1_1_particle.html#a29dfce4053a62ae088e7220dea1954d9',1,'SoilAnalyzer::Particle']]],
+  ['meanri',['meanRI',['../class_soil_analyzer_1_1_particle.html#a872cff805a22cab5a04b76c58f9f1584',1,'SoilAnalyzer::Particle']]],
+  ['microscope',['Microscope',['../class_dialog_settings.html#a0aca616bb0f9b57776d49bc5bb8eeeae',1,'DialogSettings::Microscope()'],['../class_v_s_a_main_window.html#a63378add125c78c9a83a3babe03318d7',1,'VSAMainWindow::Microscope()']]],
+  ['microscopeldr',['MicroscopeLDR',['../class_hardware_1_1_soil_cape.html#a7a6d0bcfcba2d65f4c19ab41cbaace46',1,'Hardware::SoilCape']]],
+  ['microscopeleds',['MicroscopeLEDs',['../class_hardware_1_1_soil_cape.html#a80d499485dddb861cddaffa439b655dd',1,'Hardware::SoilCape']]],
+  ['min',['min',['../class_soil_math_1_1_stats.html#aa44c07a23b1c2ce0f0407e7cee4f39a9',1,'SoilMath::Stats']]],
+  ['minimum',['minimum',['../struct_hardware_1_1_microscope_1_1_control__t.html#a3695825b54ec92981f3d9f7f5a6c6cac',1,'Hardware::Microscope::Control_t']]],
+  ['minintensity',['MinIntensity',['../class_hardware_1_1_a_d_c.html#af73224014dddfdd80f77b80e6ed82c13',1,'Hardware::ADC']]],
+  ['minoptim',['minOptim',['../class_soil_math_1_1_g_a.html#af8fab109094e0730304ba1c462b4e2bf',1,'SoilMath::GA']]],
+  ['minweightusedbyga',['MinWeightUSedByGa',['../class_soil_math_1_1_n_n.html#a653c42b4f2fe2f685d5f4e922e0126b2',1,'SoilMath::NN']]],
+  ['morphfiltertype',['morphFilterType',['../class_soil_analyzer_1_1_soil_settings.html#ad1420c4800badb3eb07eba4767e3df81',1,'SoilAnalyzer::SoilSettings']]],
+  ['msg',['msg',['../class_soil_math_1_1_exception_1_1_math_exception.html#afa15e6f8ef6ac7ed599656b0ade760cc',1,'SoilMath::Exception::MathException::msg()'],['../class_hardware_1_1_exception_1_1_a_d_c_read_exception.html#a42211528535b1f00abf6b86d8c3429c9',1,'Hardware::Exception::ADCReadException::msg()'],['../class_hardware_1_1_exception_1_1_could_not_grab_image_exception.html#a3fe61759aec4ce332a968f49ced6b12a',1,'Hardware::Exception::CouldNotGrabImageException::msg()'],['../class_hardware_1_1_exception_1_1_failed_to_create_g_p_i_o_polling_thread_exception.html#a950f16e537a9e9126487d831ce055e7e',1,'Hardware::Exception::FailedToCreateGPIOPollingThreadException::msg()'],['../class_hardware_1_1_exception_1_1_failed_to_create_thread_exception.html#a095cd7250c0a527623cf993c991572a8',1,'Hardware::Exception::FailedToCreateThreadException::msg()'],['../class_hardware_1_1_exception_1_1_g_p_i_o_read_exception.html#a51fe12853bc4ee2ef0f6cabd117b844e',1,'Hardware::Exception::GPIOReadException::msg()'],['../class_hardware_1_1_exception_1_1_microscope_exception.html#aa3aa54f72b20d3510f9a9f8163ba1207',1,'Hardware::Exception::MicroscopeException::msg()'],['../class_hardware_1_1_exception_1_1_value_out_of_bounds_exception.html#a9a118d00116fbc47c0eaa7e502a8ea68',1,'Hardware::Exception::ValueOutOfBoundsException::msg()'],['../class_vision_1_1_exception_1_1_channel_mismatch_exception.html#afa6ced18d6bf6cde0f907cb722470d60',1,'Vision::Exception::ChannelMismatchException::msg()'],['../class_vision_1_1_exception_1_1_conversion_not_supported_exception.html#a1cd5dd7edfb67cf5055374402b846daa',1,'Vision::Exception::ConversionNotSupportedException::msg()'],['../class_vision_1_1_exception_1_1_emtpy_image_exception.html#a170fca455cf8c837ce36f26076d094c5',1,'Vision::Exception::EmtpyImageException::msg()'],['../class_vision_1_1_exception_1_1_pixel_value_out_of_bound_exception.html#a5e1cb97c34bdedca34b733d5cf16f8c2',1,'Vision::Exception::PixelValueOutOfBoundException::msg()'],['../class_vision_1_1_exception_1_1_wrong_kernel_size_exception.html#a1d5f333a2deb78a3c696ec11f6bc7224',1,'Vision::Exception::WrongKernelSizeException::msg()'],['../class_soil_analyzer_1_1_exception_1_1_soil_analyzer_exception.html#a5376a12e65d4efd59f335f1b9ac61282',1,'SoilAnalyzer::Exception::SoilAnalyzerException::msg()']]],
+  ['mutationrate',['MutationRate',['../class_soil_math_1_1_g_a.html#a82996d544a2f25b5a75ae8ba1e82d661',1,'SoilMath::GA']]],
+  ['mutationrateusedbyga',['MutationrateUsedByGA',['../class_soil_math_1_1_n_n.html#a4969171a8362796a1633b1ac1f11ba74',1,'SoilMath::NN']]]
 ];

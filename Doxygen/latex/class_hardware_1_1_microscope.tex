@@ -1,4 +1,4 @@
-\hypertarget{class_hardware_1_1_microscope}{}\section{Hardware\+:\+:Microscope Class Reference}
+\hypertarget{class_hardware_1_1_microscope}{}\subsection{Hardware\+:\+:Microscope Class Reference}
 \label{class_hardware_1_1_microscope}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
 
 
@@ -6,546 +6,931 @@
 
 
 
-Collaboration diagram for Hardware\+:\+:Microscope\+:\nopagebreak
+Inheritance diagram for Hardware\+:\+:Microscope\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=199pt]{class_hardware_1_1_microscope__coll__graph}
+\includegraphics[width=209pt]{class_hardware_1_1_microscope__inherit__graph}
 \end{center}
 \end{figure}
-\subsection*{Classes}
+
+
+Collaboration diagram for Hardware\+:\+:Microscope\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_hardware_1_1_microscope__coll__graph}
+\end{center}
+\end{figure}
+\subsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-struct \hyperlink{struct_hardware_1_1_microscope_1_1_resolution}{Resolution}
+struct \hyperlink{struct_hardware_1_1_microscope_1_1___custom_data}{\+\_\+\+Custom\+Data}
+\item 
+struct \hyperlink{struct_hardware_1_1_microscope_1_1_cam__t}{Cam\+\_\+t}
+\item 
+struct \hyperlink{struct_hardware_1_1_microscope_1_1_control__t}{Control\+\_\+t}
+\item 
+struct \hyperlink{struct_hardware_1_1_microscope_1_1_resolution__t}{Resolution\+\_\+t}
 \end{DoxyCompactItemize}
-\subsection*{Public Types}
+\subsubsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
-typedef boost\+::signals2\+::signal$<$ void()$>$ \hyperlink{class_hardware_1_1_microscope_a40676fa031cfc911b9b180f902f1e00d}{Finished\+\_\+t}
+enum \hyperlink{class_hardware_1_1_microscope_ae1afa6a1a1d5b560a5ad8f94c78a336b}{Arch} \{ \hyperlink{class_hardware_1_1_microscope_ae1afa6a1a1d5b560a5ad8f94c78a336ba6bdc0aef36aa37ed611a4630810e1228}{A\+R\+M}, 
+\hyperlink{class_hardware_1_1_microscope_ae1afa6a1a1d5b560a5ad8f94c78a336baa3fff72b9355de46f67b5aec00640186}{X64}
+ \}
 \item 
-typedef boost\+::signals2\+::signal$<$ void(int)$>$ \hyperlink{class_hardware_1_1_microscope_a2b031f9b1c8b0294da0c989dbf728d79}{Progress\+\_\+t}
+enum \hyperlink{class_hardware_1_1_microscope_a1ca86e9e414d0497f2b2d88b258be1a7}{Pixel\+Format} \{ \hyperlink{class_hardware_1_1_microscope_a1ca86e9e414d0497f2b2d88b258be1a7ae4293cf0122f710943984fbffafde554}{Y\+U\+Y\+V}, 
+\hyperlink{class_hardware_1_1_microscope_a1ca86e9e414d0497f2b2d88b258be1a7a65e77f52422117bd4aa6b9fc2026e8db}{M\+J\+P\+G}, 
+\hyperlink{class_hardware_1_1_microscope_a1ca86e9e414d0497f2b2d88b258be1a7a7e8165097462456be1df041fd54fda5b}{G\+R\+E\+Y}
+ \}
+\item 
+typedef std\+::vector$<$ \hyperlink{struct_hardware_1_1_microscope_1_1_control__t}{Control\+\_\+t} $>$ \hyperlink{class_hardware_1_1_microscope_a6e46a385288c3e0a8d9866fc8e147b09}{Controls\+\_\+t}
+\item 
+typedef struct \hyperlink{struct_hardware_1_1_microscope_1_1___custom_data}{Hardware\+::\+Microscope\+::\+\_\+\+Custom\+Data} \hyperlink{class_hardware_1_1_microscope_aba8ff1662f7d8a74e4aca943ccce7df4}{Custom\+Data}
 \end{DoxyCompactItemize}
-\subsection*{Public Member Functions}
+\subsubsection*{Public Slots}
 \begin{DoxyCompactItemize}
 \item 
-boost\+::signals2\+::connection \hyperlink{class_hardware_1_1_microscope_abc3f008ec7cf00e6ddf31b0a4ed392cb}{connect\+\_\+\+Finished} (const Finished\+\_\+t\+::slot\+\_\+type \&subscriber)
+void \hyperlink{class_hardware_1_1_microscope_a30346757ffd5d2f9d42b5a483842431e}{on\+\_\+imageretrieved} ()
+\end{DoxyCompactItemize}
+\subsubsection*{Signals}
+\begin{DoxyCompactItemize}
 \item 
-boost\+::signals2\+::connection \hyperlink{class_hardware_1_1_microscope_abc29f83a2f0ba536df3eb7ccc250b111}{connect\+\_\+\+Progress} (const Progress\+\_\+t\+::slot\+\_\+type \&subscriber)
+void \hyperlink{class_hardware_1_1_microscope_a9ffc9b16e733b23c97d7dca4ef3210f5}{imageretrieved} ()
+\end{DoxyCompactItemize}
+\subsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_hardware_1_1_microscope_a335599c313acd6f5e2f94c09a3475620}{Microscope} (uint8\+\_\+t frame\+Delay\+Trigger=3, \hyperlink{struct_hardware_1_1_microscope_1_1_resolution}{Resolution} dimensions=\hyperlink{struct_hardware_1_1_microscope_1_1_resolution}{Resolution}\{2048, 1536\}, bool firstdefault=true)
+\hyperlink{class_hardware_1_1_microscope_a447e1c2d17d75090120b22ad6323de2a}{Microscope} ()
+\item 
+\hyperlink{class_hardware_1_1_microscope_a1f40641ce0c8dfc2611af33eeb985160}{Microscope} (const \hyperlink{class_hardware_1_1_microscope}{Microscope} \&rhs)
 \item 
 \hyperlink{class_hardware_1_1_microscope_afb6b20021157077feaf8df0e465a1f0e}{$\sim$\+Microscope} ()
 \item 
-std\+::vector$<$ std\+::string $>$ \hyperlink{class_hardware_1_1_microscope_a48c34d1597a9d90f61427cbd2a25bdb9}{Available\+Cams} ()
-\item 
-void \hyperlink{class_hardware_1_1_microscope_a1ec5c792320ae4db3f3b39830e74f880}{Get\+Frame} (cv\+::\+Mat \&dst)
-\item 
-void \hyperlink{class_hardware_1_1_microscope_a8cec2eacbd3f0ea164d16100a6078d5b}{Get\+H\+D\+R\+Frame} (cv\+::\+Mat \&dst, uint32\+\_\+t noframes=5)
+\hyperlink{class_hardware_1_1_microscope}{Microscope} \hyperlink{class_hardware_1_1_microscope_ac8b63097048e3651bb6ba57ccb25e336}{operator=} (\hyperlink{class_hardware_1_1_microscope}{Microscope} const \&rhs)
 \item 
 bool \hyperlink{class_hardware_1_1_microscope_ae799dbdff39787d3226e8e8ce25386de}{Is\+Opened} ()
 \item 
-void \hyperlink{class_hardware_1_1_microscope_a87119548948d7af1e3c38af2e2afa482}{Release} ()
+bool \hyperlink{class_hardware_1_1_microscope_a71ac92fc7c1cc19c7735a9c0b93b1eef}{open\+Cam} (\hyperlink{struct_hardware_1_1_microscope_1_1_cam__t}{Cam\+\_\+t} $\ast$cam)
 \item 
-void \hyperlink{class_hardware_1_1_microscope_abc753dfc72956ef7285d0e373fb7e1f1}{open\+Cam} (int dev)
+bool \hyperlink{class_hardware_1_1_microscope_a7298405c4115400b8d949703b0bcad0c}{open\+Cam} (int \&cam)
+\item 
+bool \hyperlink{class_hardware_1_1_microscope_abd1bb8c3f37dac9f06b0d61cba98ac0a}{open\+Cam} (std\+::string \&cam)
+\item 
+bool \hyperlink{class_hardware_1_1_microscope_af59bbe16ae9efaaf05027ff35d900dee}{close\+Cam} (\hyperlink{struct_hardware_1_1_microscope_1_1_cam__t}{Cam\+\_\+t} $\ast$cam)
+\item 
+void \hyperlink{class_hardware_1_1_microscope_a1ec5c792320ae4db3f3b39830e74f880}{Get\+Frame} (cv\+::\+Mat \&dst)
+\item 
+void \hyperlink{class_hardware_1_1_microscope_aefd18afbdfca9ed200ad18e68bcfd340}{Get\+Gstream\+Frame} (cv\+::\+Mat \&dst)
+\item 
+void \hyperlink{class_hardware_1_1_microscope_a1287dba9130379a9e7d035eeaf47d059}{Get\+H\+D\+R\+Frame} (cv\+::\+Mat \&dst, \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} noframes=3)
+\item 
+\hyperlink{struct_hardware_1_1_microscope_1_1_control__t}{Control\+\_\+t} $\ast$ \hyperlink{class_hardware_1_1_microscope_abc794f35d5b68458634507bf7e90e501}{Get\+Control} (const std\+::string name)
+\item 
+void \hyperlink{class_hardware_1_1_microscope_a3b963a4b53aae0e215a20e9d59493e48}{Set\+Control} (\hyperlink{struct_hardware_1_1_microscope_1_1_control__t}{Control\+\_\+t} $\ast$control)
+\item 
+\hyperlink{struct_hardware_1_1_microscope_1_1_cam__t}{Cam\+\_\+t} $\ast$ \hyperlink{class_hardware_1_1_microscope_a64f57bcfcf93d75f7a27d0723487f35b}{Find\+Cam} (std\+::string cam)
+\item 
+\hyperlink{struct_hardware_1_1_microscope_1_1_cam__t}{Cam\+\_\+t} $\ast$ \hyperlink{class_hardware_1_1_microscope_a2050e5699079f24b73a91245441c63ca}{Find\+Cam} (int cam)
+\item 
+void \hyperlink{class_hardware_1_1_microscope_ada1437dd2c64a0dc6f8b9e92187108f9}{Send\+Image\+Retrieved} ()
 \end{DoxyCompactItemize}
-\subsection*{Public Attributes}
+\subsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-uint8\+\_\+t \hyperlink{class_hardware_1_1_microscope_ac2da14781a22924a389fc287df3dbfda}{Frame\+Delay\+Trigger}
+std\+::vector$<$ \hyperlink{struct_hardware_1_1_microscope_1_1_cam__t}{Cam\+\_\+t} $>$ \hyperlink{class_hardware_1_1_microscope_a49a52c74d900f217ed190d36b29ff27d}{Available\+Cams}
 \item 
-cv\+::\+Mat \hyperlink{class_hardware_1_1_microscope_afbbec8a14cd277cec7c3ee6ce0ba54a1}{Last\+Frame}
+\hyperlink{struct_hardware_1_1_microscope_1_1_cam__t}{Cam\+\_\+t} $\ast$ \hyperlink{class_hardware_1_1_microscope_a059d62ec28e85f1c3f3225c9c78a877f}{Selected\+Cam} = nullptr
 \item 
-\hyperlink{struct_hardware_1_1_microscope_1_1_resolution}{Resolution} \hyperlink{class_hardware_1_1_microscope_ae89c25318a095e2efcdf48fb8f769038}{Dimensions}
+\hyperlink{class_hardware_1_1_microscope_ae1afa6a1a1d5b560a5ad8f94c78a336b}{Arch} \hyperlink{class_hardware_1_1_microscope_a544911a6d1eec986001087e5d9278604}{Run\+Env}
+\item 
+cv\+::\+Mat \hyperlink{class_hardware_1_1_microscope_afd9597ab8447b75fdf5e74783fdcf7b2}{last\+Frame}
 \end{DoxyCompactItemize}
-\subsection*{Private Member Functions}
+\subsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{class_hardware_1_1_microscope_ad045b565e258b1b3b68c2c55273b3058}{Startup\+Seq} (bool firstdefault)
+void \hyperlink{class_hardware_1_1_microscope_ab4b24bd8062cafb1bfe47967ac66254e}{get\+Resolutions} (\hyperlink{struct_hardware_1_1_microscope_1_1_cam__t}{Cam\+\_\+t} \&current\+Cam, int Format\+Type)
 \item 
-bool \hyperlink{class_hardware_1_1_microscope_a44da9ff8054b51b4659238cc7eda2baf}{exist} (const std\+::string \&name)
+std\+::vector$<$ \hyperlink{struct_hardware_1_1_microscope_1_1_cam__t}{Cam\+\_\+t} $>$ \hyperlink{class_hardware_1_1_microscope_a71a409aae67baf63fd27678eda462e38}{Get\+Available\+Cams} ()
+\item 
+\hyperlink{class_hardware_1_1_microscope_ae1afa6a1a1d5b560a5ad8f94c78a336b}{Arch} \hyperlink{class_hardware_1_1_microscope_a24538a26545c6138b2e922ed4feb9376}{Get\+Current\+Architecture} ()
 \end{DoxyCompactItemize}
-\subsection*{Private Attributes}
+\subsubsection*{Static Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_hardware_1_1_microscope_a40676fa031cfc911b9b180f902f1e00d}{Finished\+\_\+t} \hyperlink{class_hardware_1_1_microscope_a8c23e6a55ef77443e861418a15c6e244}{fin\+\_\+sig}
+static void \hyperlink{class_hardware_1_1_microscope_a857987ccdcdb8d6b3cb9545eb7a616e8}{new\+\_\+buffer} (Gst\+Element $\ast$sink, \hyperlink{class_hardware_1_1_microscope_aba8ff1662f7d8a74e4aca943ccce7df4}{Custom\+Data} $\ast$data)
+\end{DoxyCompactItemize}
+\subsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_hardware_1_1_microscope_a2b031f9b1c8b0294da0c989dbf728d79}{Progress\+\_\+t} \hyperlink{class_hardware_1_1_microscope_a819e11c0bfdb12b4c42b7ee2d330cb4d}{prog\+\_\+sig}
+bool \hyperlink{class_hardware_1_1_microscope_ab1033afe167ab113639ea90c6b66544f}{opened\+Upthe\+Cam} = false
 \item 
-std\+::string \hyperlink{class_hardware_1_1_microscope_a2e74ed11f3426a1a6adf05ec2d842066}{arch}
-\item 
-cv\+::\+Video\+Capture \hyperlink{class_hardware_1_1_microscope_a8fd921d7c937e808c5bc44c0294aa490}{capture\+Device}
+cv\+::\+Video\+Capture $\ast$ \hyperlink{class_hardware_1_1_microscope_a80c5ad94099d7b9d175e1a1cd4179fcd}{cap} = nullptr
 \item 
 std\+::vector$<$ cv\+::\+Mat $>$ \hyperlink{class_hardware_1_1_microscope_a2c73db8010320428db3fd41d840dd0eb}{H\+D\+Rframes}
 \item 
-std\+::vector$<$ float $>$ \hyperlink{class_hardware_1_1_microscope_a5aababdeaa4cc4da051c0e44cba20003}{times}
+int \hyperlink{class_hardware_1_1_microscope_a2ca84cff524b286b3fb452c4bd813303}{fd}
 \end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
+\subsubsection{Detailed Description}
 
 
-Definition at line 50 of file Microscope.\+h.
-
-
-
-\subsection{Member Typedef Documentation}
-\hypertarget{class_hardware_1_1_microscope_a40676fa031cfc911b9b180f902f1e00d}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!Finished\+\_\+t@{Finished\+\_\+t}}
-\index{Finished\+\_\+t@{Finished\+\_\+t}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
-\subsubsection[{Finished\+\_\+t}]{\setlength{\rightskip}{0pt plus 5cm}typedef boost\+::signals2\+::signal$<$void()$>$ {\bf Hardware\+::\+Microscope\+::\+Finished\+\_\+t}}\label{class_hardware_1_1_microscope_a40676fa031cfc911b9b180f902f1e00d}
-
-
-Definition at line 59 of file Microscope.\+h.
-
-\hypertarget{class_hardware_1_1_microscope_a2b031f9b1c8b0294da0c989dbf728d79}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!Progress\+\_\+t@{Progress\+\_\+t}}
-\index{Progress\+\_\+t@{Progress\+\_\+t}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
-\subsubsection[{Progress\+\_\+t}]{\setlength{\rightskip}{0pt plus 5cm}typedef boost\+::signals2\+::signal$<$void(int)$>$ {\bf Hardware\+::\+Microscope\+::\+Progress\+\_\+t}}\label{class_hardware_1_1_microscope_a2b031f9b1c8b0294da0c989dbf728d79}
-
-
-Definition at line 60 of file Microscope.\+h.
+Definition at line \hyperlink{_microscope_8h_source_l00049}{49} of file \hyperlink{_microscope_8h_source}{Microscope.\+h}.
 
 
 
-\subsection{Constructor \& Destructor Documentation}
-\hypertarget{class_hardware_1_1_microscope_a335599c313acd6f5e2f94c09a3475620}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!Microscope@{Microscope}}
+\subsubsection{Member Typedef Documentation}
+\hypertarget{class_hardware_1_1_microscope_a6e46a385288c3e0a8d9866fc8e147b09}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!Controls\+\_\+t@{Controls\+\_\+t}}
+\index{Controls\+\_\+t@{Controls\+\_\+t}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
+\paragraph[{Controls\+\_\+t}]{\setlength{\rightskip}{0pt plus 5cm}typedef std\+::vector$<${\bf Control\+\_\+t}$>$ {\bf Hardware\+::\+Microscope\+::\+Controls\+\_\+t}}\label{class_hardware_1_1_microscope_a6e46a385288c3e0a8d9866fc8e147b09}
+
+
+Definition at line \hyperlink{_microscope_8h_source_l00103}{103} of file \hyperlink{_microscope_8h_source}{Microscope.\+h}.
+
+\hypertarget{class_hardware_1_1_microscope_aba8ff1662f7d8a74e4aca943ccce7df4}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!Custom\+Data@{Custom\+Data}}
+\index{Custom\+Data@{Custom\+Data}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
+\paragraph[{Custom\+Data}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf Hardware\+::\+Microscope\+::\+\_\+\+Custom\+Data}  {\bf Hardware\+::\+Microscope\+::\+Custom\+Data}}\label{class_hardware_1_1_microscope_aba8ff1662f7d8a74e4aca943ccce7df4}
+
+
+\subsubsection{Member Enumeration Documentation}
+\hypertarget{class_hardware_1_1_microscope_ae1afa6a1a1d5b560a5ad8f94c78a336b}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!Arch@{Arch}}
+\index{Arch@{Arch}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
+\paragraph[{Arch}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Hardware\+::\+Microscope\+::\+Arch}}\label{class_hardware_1_1_microscope_ae1afa6a1a1d5b560a5ad8f94c78a336b}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{A\+R\+M@{A\+R\+M}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!A\+R\+M@{A\+R\+M}}\item[{\em 
+\hypertarget{class_hardware_1_1_microscope_ae1afa6a1a1d5b560a5ad8f94c78a336ba6bdc0aef36aa37ed611a4630810e1228}{}A\+R\+M\label{class_hardware_1_1_microscope_ae1afa6a1a1d5b560a5ad8f94c78a336ba6bdc0aef36aa37ed611a4630810e1228}
+}]\index{X64@{X64}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!X64@{X64}}\item[{\em 
+\hypertarget{class_hardware_1_1_microscope_ae1afa6a1a1d5b560a5ad8f94c78a336baa3fff72b9355de46f67b5aec00640186}{}X64\label{class_hardware_1_1_microscope_ae1afa6a1a1d5b560a5ad8f94c78a336baa3fff72b9355de46f67b5aec00640186}
+}]\end{description}
+\end{Desc}
+
+
+Definition at line \hyperlink{_microscope_8h_source_l00053}{53} of file \hyperlink{_microscope_8h_source}{Microscope.\+h}.
+
+\hypertarget{class_hardware_1_1_microscope_a1ca86e9e414d0497f2b2d88b258be1a7}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!Pixel\+Format@{Pixel\+Format}}
+\index{Pixel\+Format@{Pixel\+Format}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
+\paragraph[{Pixel\+Format}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Hardware\+::\+Microscope\+::\+Pixel\+Format}}\label{class_hardware_1_1_microscope_a1ca86e9e414d0497f2b2d88b258be1a7}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{Y\+U\+Y\+V@{Y\+U\+Y\+V}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!Y\+U\+Y\+V@{Y\+U\+Y\+V}}\item[{\em 
+\hypertarget{class_hardware_1_1_microscope_a1ca86e9e414d0497f2b2d88b258be1a7ae4293cf0122f710943984fbffafde554}{}Y\+U\+Y\+V\label{class_hardware_1_1_microscope_a1ca86e9e414d0497f2b2d88b258be1a7ae4293cf0122f710943984fbffafde554}
+}]\index{M\+J\+P\+G@{M\+J\+P\+G}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!M\+J\+P\+G@{M\+J\+P\+G}}\item[{\em 
+\hypertarget{class_hardware_1_1_microscope_a1ca86e9e414d0497f2b2d88b258be1a7a65e77f52422117bd4aa6b9fc2026e8db}{}M\+J\+P\+G\label{class_hardware_1_1_microscope_a1ca86e9e414d0497f2b2d88b258be1a7a65e77f52422117bd4aa6b9fc2026e8db}
+}]\index{G\+R\+E\+Y@{G\+R\+E\+Y}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!G\+R\+E\+Y@{G\+R\+E\+Y}}\item[{\em 
+\hypertarget{class_hardware_1_1_microscope_a1ca86e9e414d0497f2b2d88b258be1a7a7e8165097462456be1df041fd54fda5b}{}G\+R\+E\+Y\label{class_hardware_1_1_microscope_a1ca86e9e414d0497f2b2d88b258be1a7a7e8165097462456be1df041fd54fda5b}
+}]\end{description}
+\end{Desc}
+
+
+Definition at line \hyperlink{_microscope_8h_source_l00055}{55} of file \hyperlink{_microscope_8h_source}{Microscope.\+h}.
+
+
+
+\subsubsection{Constructor \& Destructor Documentation}
+\hypertarget{class_hardware_1_1_microscope_a447e1c2d17d75090120b22ad6323de2a}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!Microscope@{Microscope}}
 \index{Microscope@{Microscope}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
-\subsubsection[{Microscope}]{\setlength{\rightskip}{0pt plus 5cm}Microscope\+::\+Microscope (
+\paragraph[{Microscope}]{\setlength{\rightskip}{0pt plus 5cm}Microscope\+::\+Microscope (
 \begin{DoxyParamCaption}
-\item[{uint8\+\_\+t}]{frame\+Delay\+Trigger = {\ttfamily 3}, }
-\item[{{\bf Resolution}}]{dimensions = {\ttfamily {\bf Resolution}\{2048,~1536\}}, }
-\item[{bool}]{firstdefault = {\ttfamily true}}
+{}
 \end{DoxyParamCaption}
-)}\label{class_hardware_1_1_microscope_a335599c313acd6f5e2f94c09a3475620}
-Constructor of the class which initializes the \hyperlink{class_hardware_1_1_u_s_b}{U\+S\+B} microscope 
-\begin{DoxyParams}{Parameters}
-{\em frame\+Delay\+Trigger} & the delay between the first initialization of the microscope and the retrivial of the image expressed in seconds. Default value is 3 seconds \\
-\hline
-{\em dimension} & A resolution Struct indicating which resolution the webcam should use. Default is 2592 x 1944 \\
-\hline
-\end{DoxyParams}
+)}\label{class_hardware_1_1_microscope_a447e1c2d17d75090120b22ad6323de2a}
 
 
-Definition at line 27 of file Microscope.\+cpp.
+Definition at line \hyperlink{_microscope_8cpp_source_l00012}{12} of file \hyperlink{_microscope_8cpp_source}{Microscope.\+cpp}.
 
 
-\begin{DoxyCode}
-28                                           \{
-29   \hyperlink{class_hardware_1_1_microscope_ac2da14781a22924a389fc287df3dbfda}{FrameDelayTrigger} = frameDelayTrigger;
-30   \hyperlink{class_hardware_1_1_microscope_ae89c25318a095e2efcdf48fb8f769038}{Dimensions} = dimensions;
-31 
-32   \hyperlink{class_hardware_1_1_microscope_ad045b565e258b1b3b68c2c55273b3058}{StartupSeq}(firstdefault);
-33 \}
-\end{DoxyCode}
+
+References \hyperlink{_microscope_8h_source_l00148}{Available\+Cams}, \hyperlink{_microscope_8cpp_source_l00047}{Get\+Available\+Cams()}, \hyperlink{_microscope_8cpp_source_l00034}{Get\+Current\+Architecture()}, \hyperlink{class_hardware_1_1_microscope_a9ffc9b16e733b23c97d7dca4ef3210f5}{imageretrieved()}, \hyperlink{_microscope_8cpp_source_l00331}{on\+\_\+imageretrieved()}, and \hyperlink{_microscope_8h_source_l00150}{Run\+Env}.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_hardware_1_1_microscope_a447e1c2d17d75090120b22ad6323de2a_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_hardware_1_1_microscope_a1f40641ce0c8dfc2611af33eeb985160}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!Microscope@{Microscope}}
+\index{Microscope@{Microscope}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
+\paragraph[{Microscope}]{\setlength{\rightskip}{0pt plus 5cm}Microscope\+::\+Microscope (
+\begin{DoxyParamCaption}
+\item[{const {\bf Microscope} \&}]{rhs}
+\end{DoxyParamCaption}
+)}\label{class_hardware_1_1_microscope_a1f40641ce0c8dfc2611af33eeb985160}
+
+
+Definition at line \hyperlink{_microscope_8cpp_source_l00021}{21} of file \hyperlink{_microscope_8cpp_source}{Microscope.\+cpp}.
+
+
+
+References \hyperlink{_microscope_8h_source_l00148}{Available\+Cams}, \hyperlink{_microscope_8h_source_l00189}{cap}, \hyperlink{_microscope_8h_source_l00195}{fd}, \hyperlink{_microscope_8h_source_l00191}{H\+D\+Rframes}, \hyperlink{class_hardware_1_1_microscope_a9ffc9b16e733b23c97d7dca4ef3210f5}{imageretrieved()}, \hyperlink{_microscope_8cpp_source_l00331}{on\+\_\+imageretrieved()}, \hyperlink{_microscope_8h_source_l00150}{Run\+Env}, and \hyperlink{_microscope_8h_source_l00149}{Selected\+Cam}.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=346pt]{class_hardware_1_1_microscope_a1f40641ce0c8dfc2611af33eeb985160_cgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{class_hardware_1_1_microscope_afb6b20021157077feaf8df0e465a1f0e}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!````~Microscope@{$\sim$\+Microscope}}
 \index{````~Microscope@{$\sim$\+Microscope}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
-\subsubsection[{$\sim$\+Microscope}]{\setlength{\rightskip}{0pt plus 5cm}Microscope\+::$\sim$\+Microscope (
+\paragraph[{$\sim$\+Microscope}]{\setlength{\rightskip}{0pt plus 5cm}Microscope\+::$\sim$\+Microscope (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
 )}\label{class_hardware_1_1_microscope_afb6b20021157077feaf8df0e465a1f0e}
 
 
-Definition at line 64 of file Microscope.\+cpp.
+Definition at line \hyperlink{_microscope_8cpp_source_l00032}{32} of file \hyperlink{_microscope_8cpp_source}{Microscope.\+cpp}.
 
 
-\begin{DoxyCode}
-64 \{ \hyperlink{class_hardware_1_1_microscope_a8fd921d7c937e808c5bc44c0294aa490}{captureDevice}.~VideoCapture(); \}
-\end{DoxyCode}
+
+References \hyperlink{_microscope_8h_source_l00189}{cap}.
 
 
-\subsection{Member Function Documentation}
-\hypertarget{class_hardware_1_1_microscope_a48c34d1597a9d90f61427cbd2a25bdb9}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!Available\+Cams@{Available\+Cams}}
-\index{Available\+Cams@{Available\+Cams}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
-\subsubsection[{Available\+Cams}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ std\+::string $>$ Microscope\+::\+Available\+Cams (
+
+\subsubsection{Member Function Documentation}
+\hypertarget{class_hardware_1_1_microscope_af59bbe16ae9efaaf05027ff35d900dee}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!close\+Cam@{close\+Cam}}
+\index{close\+Cam@{close\+Cam}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
+\paragraph[{close\+Cam}]{\setlength{\rightskip}{0pt plus 5cm}bool Microscope\+::close\+Cam (
+\begin{DoxyParamCaption}
+\item[{{\bf Cam\+\_\+t} $\ast$}]{cam}
+\end{DoxyParamCaption}
+)}\label{class_hardware_1_1_microscope_af59bbe16ae9efaaf05027ff35d900dee}
+
+
+Definition at line \hyperlink{_microscope_8cpp_source_l00311}{311} of file \hyperlink{_microscope_8cpp_source}{Microscope.\+cpp}.
+
+
+
+References \hyperlink{_microscope_8h_source_l00188}{opened\+Upthe\+Cam}, \hyperlink{_microscope_8h_source_l00130}{Hardware\+::\+Microscope\+::\+Cam\+\_\+t\+::\+Pipe}, and \hyperlink{_microscope_8h_source_l00107}{Hardware\+::\+Microscope\+::\+\_\+\+Custom\+Data\+::pipeline}.
+
+
+
+Referenced by \hyperlink{_microscope_8cpp_source_l00319}{Get\+Frame()}, and \hyperlink{_microscope_8cpp_source_l00167}{open\+Cam()}.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_hardware_1_1_microscope_af59bbe16ae9efaaf05027ff35d900dee_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_hardware_1_1_microscope_a64f57bcfcf93d75f7a27d0723487f35b}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!Find\+Cam@{Find\+Cam}}
+\index{Find\+Cam@{Find\+Cam}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
+\paragraph[{Find\+Cam}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Cam\+\_\+t}$\ast$ Hardware\+::\+Microscope\+::\+Find\+Cam (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{cam}
+\end{DoxyParamCaption}
+)}\label{class_hardware_1_1_microscope_a64f57bcfcf93d75f7a27d0723487f35b}
+
+
+Referenced by \hyperlink{_microscope_8cpp_source_l00289}{open\+Cam()}.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=346pt]{class_hardware_1_1_microscope_a64f57bcfcf93d75f7a27d0723487f35b_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_hardware_1_1_microscope_a2050e5699079f24b73a91245441c63ca}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!Find\+Cam@{Find\+Cam}}
+\index{Find\+Cam@{Find\+Cam}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
+\paragraph[{Find\+Cam}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Microscope\+::\+Cam\+\_\+t} $\ast$ Microscope\+::\+Find\+Cam (
+\begin{DoxyParamCaption}
+\item[{int}]{cam}
+\end{DoxyParamCaption}
+)}\label{class_hardware_1_1_microscope_a2050e5699079f24b73a91245441c63ca}
+
+
+Definition at line \hyperlink{_microscope_8cpp_source_l00293}{293} of file \hyperlink{_microscope_8cpp_source}{Microscope.\+cpp}.
+
+
+
+References \hyperlink{_microscope_8h_source_l00148}{Available\+Cams}.
+
+\hypertarget{class_hardware_1_1_microscope_a71a409aae67baf63fd27678eda462e38}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!Get\+Available\+Cams@{Get\+Available\+Cams}}
+\index{Get\+Available\+Cams@{Get\+Available\+Cams}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
+\paragraph[{Get\+Available\+Cams}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ {\bf Microscope\+::\+Cam\+\_\+t} $>$ Microscope\+::\+Get\+Available\+Cams (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}\label{class_hardware_1_1_microscope_a48c34d1597a9d90f61427cbd2a25bdb9}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_hardware_1_1_microscope_a71a409aae67baf63fd27678eda462e38}
 
 
-Definition at line 148 of file Microscope.\+cpp.
+Definition at line \hyperlink{_microscope_8cpp_source_l00047}{47} of file \hyperlink{_microscope_8cpp_source}{Microscope.\+cpp}.
 
 
 
-Referenced by V\+S\+A\+G\+U\+I\+::\+V\+S\+A\+G\+U\+I().
+References \hyperlink{_microscope_8h_source_l00129}{Hardware\+::\+Microscope\+::\+Cam\+\_\+t\+::\+Controls}, \hyperlink{_microscope_8h_source_l00085}{Hardware\+::\+Microscope\+::\+Control\+\_\+t\+::current\+\_\+value}, \hyperlink{_microscope_8h_source_l00084}{Hardware\+::\+Microscope\+::\+Control\+\_\+t\+::default\+\_\+value}, \hyperlink{_microscope_8h_source_l00124}{Hardware\+::\+Microscope\+::\+Cam\+\_\+t\+::dev\+String}, \hyperlink{_microscope_not_found_exception_8h_source_l00009}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+N\+O\+C\+A\+M\+S}, \hyperlink{_microscope_not_found_exception_8h_source_l00010}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+N\+O\+C\+A\+M\+S\+\_\+\+N\+R}, \hyperlink{_microscope_not_found_exception_8h_source_l00011}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+Q\+U\+E\+R\+Y}, \hyperlink{_microscope_not_found_exception_8h_source_l00012}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+Q\+U\+E\+R\+Y\+\_\+\+N\+R}, \hyperlink{_microscope_8h_source_l00131}{Hardware\+::\+Microscope\+::\+Cam\+\_\+t\+::fd}, \hyperlink{_microscope_8cpp_source_l00123}{get\+Resolutions()}, \hyperlink{_microscope_8h_source_l00086}{Hardware\+::\+Microscope\+::\+Control\+\_\+t\+::\+I\+D}, \hyperlink{_microscope_8h_source_l00125}{Hardware\+::\+Microscope\+::\+Cam\+\_\+t\+::\+I\+D}, \hyperlink{_microscope_8h_source_l00082}{Hardware\+::\+Microscope\+::\+Control\+\_\+t\+::maximum}, \hyperlink{_microscope_8h_source_l00081}{Hardware\+::\+Microscope\+::\+Control\+\_\+t\+::minimum}, \hyperlink{_microscope_8h_source_l00080}{Hardware\+::\+Microscope\+::\+Control\+\_\+t\+::name}, \hyperlink{_microscope_8h_source_l00123}{Hardware\+::\+Microscope\+::\+Cam\+\_\+t\+::\+Name}, and \hyperlink{_microscope_8h_source_l00083}{Hardware\+::\+Microscope\+::\+Control\+\_\+t\+::step}.
 
 
-\begin{DoxyCode}
-148                                                \{
-149   std::vector<std::string> cams;
-150   \textcolor{keyword}{const} \textcolor{keywordtype}{string} path\_ss = \textcolor{stringliteral}{"/sys/class/video4linux"};
-151 
-152   \textcolor{keywordflow}{if} (!\hyperlink{class_hardware_1_1_microscope_a44da9ff8054b51b4659238cc7eda2baf}{exist}(path\_ss))
-153     \textcolor{keywordflow}{return} cams;
-154 
-155   \textcolor{keywordflow}{for} (directory\_iterator itr(path\_ss); itr != directory\_iterator(); ++itr) \{
-156     \textcolor{keywordtype}{string} videoln = itr->path().string();
-157     videoln.append(\textcolor{stringliteral}{"/name"});
-158     \textcolor{keywordflow}{if} (\hyperlink{class_hardware_1_1_microscope_a44da9ff8054b51b4659238cc7eda2baf}{exist}(videoln)) \{
-159       std::ifstream camName;
-160       camName.open(videoln);
-161       std::string name;
-162       std::getline(camName, name);
-163       cams.push\_back(name);
-164       camName.close();
-165     \}
-166   \}
-167 
-168   \textcolor{keywordflow}{return} cams;
-169 \}
-\end{DoxyCode}
+
+Referenced by \hyperlink{_microscope_8cpp_source_l00012}{Microscope()}.
 
 
-Here is the caller graph for this function\+:\nopagebreak
+
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=330pt]{class_hardware_1_1_microscope_a48c34d1597a9d90f61427cbd2a25bdb9_icgraph}
+\includegraphics[width=346pt]{class_hardware_1_1_microscope_a71a409aae67baf63fd27678eda462e38_cgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{class_hardware_1_1_microscope_abc3f008ec7cf00e6ddf31b0a4ed392cb}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!connect\+\_\+\+Finished@{connect\+\_\+\+Finished}}
-\index{connect\+\_\+\+Finished@{connect\+\_\+\+Finished}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
-\subsubsection[{connect\+\_\+\+Finished}]{\setlength{\rightskip}{0pt plus 5cm}boost\+::signals2\+::connection Microscope\+::connect\+\_\+\+Finished (
-\begin{DoxyParamCaption}
-\item[{const Finished\+\_\+t\+::slot\+\_\+type \&}]{subscriber}
-\end{DoxyParamCaption}
-)}\label{class_hardware_1_1_microscope_abc3f008ec7cf00e6ddf31b0a4ed392cb}
 
 
-Definition at line 177 of file Microscope.\+cpp.
-
-
-
-Referenced by V\+S\+A\+G\+U\+I\+::on\+\_\+\+Snapshot\+Button\+\_\+clicked(), and V\+S\+A\+G\+U\+I\+::\+V\+S\+A\+G\+U\+I().
-
-
-\begin{DoxyCode}
-177                                                                   \{
-178   \textcolor{keywordflow}{return} \hyperlink{class_hardware_1_1_microscope_a8c23e6a55ef77443e861418a15c6e244}{fin\_sig}.connect(subscriber);
-179 \}
-\end{DoxyCode}
-
-
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{class_hardware_1_1_microscope_abc3f008ec7cf00e6ddf31b0a4ed392cb_icgraph}
+\includegraphics[width=346pt]{class_hardware_1_1_microscope_a71a409aae67baf63fd27678eda462e38_icgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{class_hardware_1_1_microscope_abc29f83a2f0ba536df3eb7ccc250b111}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!connect\+\_\+\+Progress@{connect\+\_\+\+Progress}}
-\index{connect\+\_\+\+Progress@{connect\+\_\+\+Progress}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
-\subsubsection[{connect\+\_\+\+Progress}]{\setlength{\rightskip}{0pt plus 5cm}boost\+::signals2\+::connection Microscope\+::connect\+\_\+\+Progress (
+\hypertarget{class_hardware_1_1_microscope_abc794f35d5b68458634507bf7e90e501}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!Get\+Control@{Get\+Control}}
+\index{Get\+Control@{Get\+Control}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
+\paragraph[{Get\+Control}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Microscope\+::\+Control\+\_\+t} $\ast$ Microscope\+::\+Get\+Control (
 \begin{DoxyParamCaption}
-\item[{const Progress\+\_\+t\+::slot\+\_\+type \&}]{subscriber}
+\item[{const std\+::string}]{name}
 \end{DoxyParamCaption}
-)}\label{class_hardware_1_1_microscope_abc29f83a2f0ba536df3eb7ccc250b111}
+)}\label{class_hardware_1_1_microscope_abc794f35d5b68458634507bf7e90e501}
 
 
-Definition at line 182 of file Microscope.\+cpp.
+Definition at line \hyperlink{_microscope_8cpp_source_l00364}{364} of file \hyperlink{_microscope_8cpp_source}{Microscope.\+cpp}.
 
 
 
-Referenced by V\+S\+A\+G\+U\+I\+::on\+\_\+\+Snapshot\+Button\+\_\+clicked(), and V\+S\+A\+G\+U\+I\+::\+V\+S\+A\+G\+U\+I().
+References \hyperlink{_microscope_8h_source_l00129}{Hardware\+::\+Microscope\+::\+Cam\+\_\+t\+::\+Controls}, and \hyperlink{_microscope_8h_source_l00149}{Selected\+Cam}.
 
 
-\begin{DoxyCode}
-182                                                                   \{
-183   \textcolor{keywordflow}{return} \hyperlink{class_hardware_1_1_microscope_a819e11c0bfdb12b4c42b7ee2d330cb4d}{prog\_sig}.connect(subscriber);
-184 \}
-\end{DoxyCode}
+
+Referenced by \hyperlink{_microscope_8cpp_source_l00333}{Get\+H\+D\+R\+Frame()}.
 
 
-Here is the caller graph for this function\+:\nopagebreak
+
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{class_hardware_1_1_microscope_abc29f83a2f0ba536df3eb7ccc250b111_icgraph}
+\includegraphics[width=346pt]{class_hardware_1_1_microscope_abc794f35d5b68458634507bf7e90e501_icgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{class_hardware_1_1_microscope_a44da9ff8054b51b4659238cc7eda2baf}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!exist@{exist}}
-\index{exist@{exist}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
-\subsubsection[{exist}]{\setlength{\rightskip}{0pt plus 5cm}bool Microscope\+::exist (
+\hypertarget{class_hardware_1_1_microscope_a24538a26545c6138b2e922ed4feb9376}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!Get\+Current\+Architecture@{Get\+Current\+Architecture}}
+\index{Get\+Current\+Architecture@{Get\+Current\+Architecture}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
+\paragraph[{Get\+Current\+Architecture}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Microscope\+::\+Arch} Microscope\+::\+Get\+Current\+Architecture (
 \begin{DoxyParamCaption}
-\item[{const std\+::string \&}]{name}
+{}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [private]}}\label{class_hardware_1_1_microscope_a44da9ff8054b51b4659238cc7eda2baf}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_hardware_1_1_microscope_a24538a26545c6138b2e922ed4feb9376}
 
 
-Definition at line 171 of file Microscope.\+cpp.
+Definition at line \hyperlink{_microscope_8cpp_source_l00034}{34} of file \hyperlink{_microscope_8cpp_source}{Microscope.\+cpp}.
 
 
-\begin{DoxyCode}
-171                                          \{
-172   \textcolor{keyword}{struct }stat buffer;
-173   \textcolor{keywordflow}{return} (stat(name.c\_str(), &buffer) == 0);
-174 \}
-\end{DoxyCode}
+
+Referenced by \hyperlink{_microscope_8cpp_source_l00012}{Microscope()}.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_hardware_1_1_microscope_a24538a26545c6138b2e922ed4feb9376_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{class_hardware_1_1_microscope_a1ec5c792320ae4db3f3b39830e74f880}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!Get\+Frame@{Get\+Frame}}
 \index{Get\+Frame@{Get\+Frame}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
-\subsubsection[{Get\+Frame}]{\setlength{\rightskip}{0pt plus 5cm}void Microscope\+::\+Get\+Frame (
+\paragraph[{Get\+Frame}]{\setlength{\rightskip}{0pt plus 5cm}void Microscope\+::\+Get\+Frame (
 \begin{DoxyParamCaption}
 \item[{cv\+::\+Mat \&}]{dst}
 \end{DoxyParamCaption}
 )}\label{class_hardware_1_1_microscope_a1ec5c792320ae4db3f3b39830e74f880}
-Get the frame after the set initialization period 
-\begin{DoxyParams}{Parameters}
-{\em dst} & a cv\+::\+Mat construct which stores the retrieved image \\
-\hline
-\end{DoxyParams}
 
 
-Definition at line 69 of file Microscope.\+cpp.
+Definition at line \hyperlink{_microscope_8cpp_source_l00319}{319} of file \hyperlink{_microscope_8cpp_source}{Microscope.\+cpp}.
 
 
 
-Referenced by V\+S\+A\+G\+U\+I\+::\+V\+S\+A\+G\+U\+I().
+References \hyperlink{_microscope_8cpp_source_l00311}{close\+Cam()}, \hyperlink{class_hardware_1_1_microscope_a9ffc9b16e733b23c97d7dca4ef3210f5}{imageretrieved()}, \hyperlink{_microscope_8cpp_source_l00165}{Is\+Opened()}, \hyperlink{_microscope_8h_source_l00175}{last\+Frame}, \hyperlink{_microscope_8cpp_source_l00167}{open\+Cam()}, \hyperlink{_microscope_8h_source_l00130}{Hardware\+::\+Microscope\+::\+Cam\+\_\+t\+::\+Pipe}, \hyperlink{_microscope_8h_source_l00107}{Hardware\+::\+Microscope\+::\+\_\+\+Custom\+Data\+::pipeline}, and \hyperlink{_microscope_8h_source_l00149}{Selected\+Cam}.
 
 
-\begin{DoxyCode}
-69                                     \{
-70   \textcolor{comment}{// Work around for crappy cam retrival of the BBB}
-71   \textcolor{keywordflow}{if} (\hyperlink{class_hardware_1_1_microscope_a2e74ed11f3426a1a6adf05ec2d842066}{arch}.find(\textcolor{stringliteral}{"armv7l"}) != string::npos) \{
-72     \textcolor{keywordflow}{if} (!\hyperlink{class_hardware_1_1_microscope_a8fd921d7c937e808c5bc44c0294aa490}{captureDevice}.grab()) \{
-73       \textcolor{keywordflow}{throw} Exception::CouldNotGrabImageException();
-74     \}
-75     sleep(\hyperlink{class_hardware_1_1_microscope_ac2da14781a22924a389fc287df3dbfda}{FrameDelayTrigger}); \textcolor{comment}{// Needed otherwise scrambled picture}
-76     \textcolor{keywordflow}{if} (!\hyperlink{class_hardware_1_1_microscope_a8fd921d7c937e808c5bc44c0294aa490}{captureDevice}.grab()) \{
-77       \textcolor{keywordflow}{throw} Exception::CouldNotGrabImageException();
-78     \}
-79     \hyperlink{class_hardware_1_1_microscope_a8fd921d7c937e808c5bc44c0294aa490}{captureDevice}.retrieve(dst);
-80   \} \textcolor{keywordflow}{else} \{
-81     \textcolor{keywordflow}{if} (!\hyperlink{class_hardware_1_1_microscope_a8fd921d7c937e808c5bc44c0294aa490}{captureDevice}.read(dst)) \{
-82       \textcolor{keywordflow}{throw} Exception::CouldNotGrabImageException();
-83     \}
-84   \}
-85 \}
-\end{DoxyCode}
+
+Referenced by \hyperlink{_microscope_8cpp_source_l00333}{Get\+H\+D\+R\+Frame()}.
 
 
-Here is the caller graph for this function\+:\nopagebreak
+
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=330pt]{class_hardware_1_1_microscope_a1ec5c792320ae4db3f3b39830e74f880_icgraph}
+\includegraphics[width=350pt]{class_hardware_1_1_microscope_a1ec5c792320ae4db3f3b39830e74f880_cgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{class_hardware_1_1_microscope_a8cec2eacbd3f0ea164d16100a6078d5b}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!Get\+H\+D\+R\+Frame@{Get\+H\+D\+R\+Frame}}
-\index{Get\+H\+D\+R\+Frame@{Get\+H\+D\+R\+Frame}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
-\subsubsection[{Get\+H\+D\+R\+Frame}]{\setlength{\rightskip}{0pt plus 5cm}void Microscope\+::\+Get\+H\+D\+R\+Frame (
-\begin{DoxyParamCaption}
-\item[{cv\+::\+Mat \&}]{dst, }
-\item[{uint32\+\_\+t}]{noframes = {\ttfamily 5}}
-\end{DoxyParamCaption}
-)}\label{class_hardware_1_1_microscope_a8cec2eacbd3f0ea164d16100a6078d5b}
-Get an H\+D\+R capture of the cam using a user defined number of frames differently lit frames. Due to hardware limitations each frames take roughly 3 seconds to grab. This function is based upon the tutorial from open\+C\+V \href{http://docs.opencv.org/trunk/doc/tutorials/photo/hdr_imaging/hdr_imaging.html}{\tt http\+://docs.\+opencv.\+org/trunk/doc/tutorials/photo/hdr\+\_\+imaging/hdr\+\_\+imaging.\+html} 
-\begin{DoxyParams}{Parameters}
-{\em dst} & a cv\+::\+Mat construct with the retrieved H\+D\+R result \\
-\hline
-{\em noframes} & is the number of frames that create the H\+D\+R image -\/ default = 5 Checks if the capture device is open and returns the status as a bool /return Status of the capture device expressed as a bool \\
-\hline
-\end{DoxyParams}
 
 
-Definition at line 94 of file Microscope.\+cpp.
-
-
-
-References i, M\+A\+X\+\_\+\+B\+R\+I\+G\+H\+T\+N\+E\+S\+S, M\+A\+X\+\_\+\+C\+O\+N\+T\+R\+A\+S\+T, and M\+I\+N\+\_\+\+B\+R\+I\+G\+H\+T\+N\+E\+S\+S.
-
-
-
-Referenced by V\+S\+A\+G\+U\+I\+::on\+\_\+\+Snapshot\+Button\+\_\+clicked(), and V\+S\+A\+G\+U\+I\+::\+V\+S\+A\+G\+U\+I().
-
-
-
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{class_hardware_1_1_microscope_a8cec2eacbd3f0ea164d16100a6078d5b_icgraph}
+\includegraphics[width=346pt]{class_hardware_1_1_microscope_a1ec5c792320ae4db3f3b39830e74f880_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_hardware_1_1_microscope_aefd18afbdfca9ed200ad18e68bcfd340}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!Get\+Gstream\+Frame@{Get\+Gstream\+Frame}}
+\index{Get\+Gstream\+Frame@{Get\+Gstream\+Frame}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
+\paragraph[{Get\+Gstream\+Frame}]{\setlength{\rightskip}{0pt plus 5cm}void Hardware\+::\+Microscope\+::\+Get\+Gstream\+Frame (
+\begin{DoxyParamCaption}
+\item[{cv\+::\+Mat \&}]{dst}
+\end{DoxyParamCaption}
+)}\label{class_hardware_1_1_microscope_aefd18afbdfca9ed200ad18e68bcfd340}
+\hypertarget{class_hardware_1_1_microscope_a1287dba9130379a9e7d035eeaf47d059}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!Get\+H\+D\+R\+Frame@{Get\+H\+D\+R\+Frame}}
+\index{Get\+H\+D\+R\+Frame@{Get\+H\+D\+R\+Frame}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
+\paragraph[{Get\+H\+D\+R\+Frame}]{\setlength{\rightskip}{0pt plus 5cm}void Microscope\+::\+Get\+H\+D\+R\+Frame (
+\begin{DoxyParamCaption}
+\item[{cv\+::\+Mat \&}]{dst, }
+\item[{{\bf uint32\+\_\+t}}]{noframes = {\ttfamily 3}}
+\end{DoxyParamCaption}
+)}\label{class_hardware_1_1_microscope_a1287dba9130379a9e7d035eeaf47d059}
+
+
+Definition at line \hyperlink{_microscope_8cpp_source_l00333}{333} of file \hyperlink{_microscope_8cpp_source}{Microscope.\+cpp}.
+
+
+
+References \hyperlink{_microscope_8h_source_l00085}{Hardware\+::\+Microscope\+::\+Control\+\_\+t\+::current\+\_\+value}, \hyperlink{_microscope_8cpp_source_l00364}{Get\+Control()}, \hyperlink{_microscope_8cpp_source_l00319}{Get\+Frame()}, \hyperlink{_microscope_8h_source_l00191}{H\+D\+Rframes}, \hyperlink{_microscope_8h_source_l00082}{Hardware\+::\+Microscope\+::\+Control\+\_\+t\+::maximum}, and \hyperlink{_microscope_8h_source_l00081}{Hardware\+::\+Microscope\+::\+Control\+\_\+t\+::minimum}.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_hardware_1_1_microscope_a1287dba9130379a9e7d035eeaf47d059_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_hardware_1_1_microscope_ab4b24bd8062cafb1bfe47967ac66254e}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!get\+Resolutions@{get\+Resolutions}}
+\index{get\+Resolutions@{get\+Resolutions}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
+\paragraph[{get\+Resolutions}]{\setlength{\rightskip}{0pt plus 5cm}void Microscope\+::get\+Resolutions (
+\begin{DoxyParamCaption}
+\item[{{\bf Cam\+\_\+t} \&}]{current\+Cam, }
+\item[{int}]{Format\+Type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_hardware_1_1_microscope_ab4b24bd8062cafb1bfe47967ac66254e}
+
+
+Definition at line \hyperlink{_microscope_8cpp_source_l00123}{123} of file \hyperlink{_microscope_8cpp_source}{Microscope.\+cpp}.
+
+
+
+References \hyperlink{_microscope_8h_source_l00131}{Hardware\+::\+Microscope\+::\+Cam\+\_\+t\+::fd}, \hyperlink{_microscope_8h_source_l00060}{Hardware\+::\+Microscope\+::\+Resolution\+\_\+t\+::format}, \hyperlink{_microscope_8h_source_l00059}{Hardware\+::\+Microscope\+::\+Resolution\+\_\+t\+::\+Height}, \hyperlink{_microscope_8h_source_l00076}{Hardware\+::\+Microscope\+::\+Resolution\+\_\+t\+::\+I\+D}, \hyperlink{_microscope_8h_source_l00126}{Hardware\+::\+Microscope\+::\+Cam\+\_\+t\+::\+Resolutions}, and \hyperlink{_microscope_8h_source_l00058}{Hardware\+::\+Microscope\+::\+Resolution\+\_\+t\+::\+Width}.
+
+
+
+Referenced by \hyperlink{_microscope_8cpp_source_l00047}{Get\+Available\+Cams()}.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_hardware_1_1_microscope_ab4b24bd8062cafb1bfe47967ac66254e_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_hardware_1_1_microscope_a9ffc9b16e733b23c97d7dca4ef3210f5}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!imageretrieved@{imageretrieved}}
+\index{imageretrieved@{imageretrieved}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
+\paragraph[{imageretrieved}]{\setlength{\rightskip}{0pt plus 5cm}void Hardware\+::\+Microscope\+::imageretrieved (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}\label{class_hardware_1_1_microscope_a9ffc9b16e733b23c97d7dca4ef3210f5}
+
+
+Referenced by \hyperlink{_microscope_8cpp_source_l00319}{Get\+Frame()}, \hyperlink{_microscope_8cpp_source_l00012}{Microscope()}, and \hyperlink{_microscope_8cpp_source_l00411}{Send\+Image\+Retrieved()}.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_hardware_1_1_microscope_a9ffc9b16e733b23c97d7dca4ef3210f5_icgraph}
 \end{center}
 \end{figure}
 
 
 \hypertarget{class_hardware_1_1_microscope_ae799dbdff39787d3226e8e8ce25386de}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!Is\+Opened@{Is\+Opened}}
 \index{Is\+Opened@{Is\+Opened}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
-\subsubsection[{Is\+Opened}]{\setlength{\rightskip}{0pt plus 5cm}bool Microscope\+::\+Is\+Opened (
+\paragraph[{Is\+Opened}]{\setlength{\rightskip}{0pt plus 5cm}bool Microscope\+::\+Is\+Opened (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
 )}\label{class_hardware_1_1_microscope_ae799dbdff39787d3226e8e8ce25386de}
-Safely release the capture device 
-
-Definition at line 133 of file Microscope.\+cpp.
 
 
-
-Referenced by V\+S\+A\+G\+U\+I\+::\+V\+S\+A\+G\+U\+I().
+Definition at line \hyperlink{_microscope_8cpp_source_l00165}{165} of file \hyperlink{_microscope_8cpp_source}{Microscope.\+cpp}.
 
 
 
-Here is the caller graph for this function\+:\nopagebreak
+References \hyperlink{_microscope_8h_source_l00188}{opened\+Upthe\+Cam}.
+
+
+
+Referenced by \hyperlink{_microscope_8cpp_source_l00319}{Get\+Frame()}.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=330pt]{class_hardware_1_1_microscope_ae799dbdff39787d3226e8e8ce25386de_icgraph}
+\includegraphics[width=350pt]{class_hardware_1_1_microscope_ae799dbdff39787d3226e8e8ce25386de_icgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{class_hardware_1_1_microscope_abc753dfc72956ef7285d0e373fb7e1f1}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!open\+Cam@{open\+Cam}}
-\index{open\+Cam@{open\+Cam}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
-\subsubsection[{open\+Cam}]{\setlength{\rightskip}{0pt plus 5cm}void Microscope\+::open\+Cam (
+\hypertarget{class_hardware_1_1_microscope_a857987ccdcdb8d6b3cb9545eb7a616e8}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!new\+\_\+buffer@{new\+\_\+buffer}}
+\index{new\+\_\+buffer@{new\+\_\+buffer}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
+\paragraph[{new\+\_\+buffer}]{\setlength{\rightskip}{0pt plus 5cm}void Microscope\+::new\+\_\+buffer (
 \begin{DoxyParamCaption}
-\item[{int}]{dev}
+\item[{Gst\+Element $\ast$}]{sink, }
+\item[{{\bf Custom\+Data} $\ast$}]{data}
 \end{DoxyParamCaption}
-)}\label{class_hardware_1_1_microscope_abc753dfc72956ef7285d0e373fb7e1f1}
+)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\label{class_hardware_1_1_microscope_a857987ccdcdb8d6b3cb9545eb7a616e8}
 
 
-Definition at line 139 of file Microscope.\+cpp.
+Definition at line \hyperlink{_microscope_8cpp_source_l00413}{413} of file \hyperlink{_microscope_8cpp_source}{Microscope.\+cpp}.
 
 
 
-Referenced by V\+S\+A\+G\+U\+I\+::\+V\+S\+A\+G\+U\+I().
+References \hyperlink{_microscope_8h_source_l00119}{Hardware\+::\+Microscope\+::\+\_\+\+Custom\+Data\+::current\+Microscope}, \hyperlink{_microscope_8h_source_l00059}{Hardware\+::\+Microscope\+::\+Resolution\+\_\+t\+::\+Height}, \hyperlink{_microscope_8h_source_l00175}{last\+Frame}, \hyperlink{_microscope_8h_source_l00149}{Selected\+Cam}, \hyperlink{_microscope_8h_source_l00128}{Hardware\+::\+Microscope\+::\+Cam\+\_\+t\+::\+Selected\+Resolution}, \hyperlink{_microscope_8cpp_source_l00411}{Send\+Image\+Retrieved()}, and \hyperlink{_microscope_8h_source_l00058}{Hardware\+::\+Microscope\+::\+Resolution\+\_\+t\+::\+Width}.
 
 
-\begin{DoxyCode}
-139                                 \{
-140   \hyperlink{class_hardware_1_1_microscope_a8fd921d7c937e808c5bc44c0294aa490}{captureDevice}.open(dev);
-141   \textcolor{keywordflow}{if} (!\hyperlink{class_hardware_1_1_microscope_a8fd921d7c937e808c5bc44c0294aa490}{captureDevice}.isOpened()) \{
-142     \textcolor{keywordflow}{throw} Exception::MicroscopeNotFoundException();
-143   \}
-144   \hyperlink{class_hardware_1_1_microscope_a8fd921d7c937e808c5bc44c0294aa490}{captureDevice}.set(CV\_CAP\_PROP\_FRAME\_WIDTH, \hyperlink{class_hardware_1_1_microscope_ae89c25318a095e2efcdf48fb8f769038}{Dimensions}.
-      \hyperlink{struct_hardware_1_1_microscope_1_1_resolution_a0e1ef543db0224230559cd9c6531aad2}{Width});
-145   \hyperlink{class_hardware_1_1_microscope_a8fd921d7c937e808c5bc44c0294aa490}{captureDevice}.set(CV\_CAP\_PROP\_FRAME\_HEIGHT, \hyperlink{class_hardware_1_1_microscope_ae89c25318a095e2efcdf48fb8f769038}{Dimensions}.
-      \hyperlink{struct_hardware_1_1_microscope_1_1_resolution_aaa54a929acd6e8c224182a97264c85d1}{Height});
-146 \}
-\end{DoxyCode}
+
+Referenced by \hyperlink{_microscope_8cpp_source_l00167}{open\+Cam()}.
 
 
-Here is the caller graph for this function\+:\nopagebreak
+
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=330pt]{class_hardware_1_1_microscope_abc753dfc72956ef7285d0e373fb7e1f1_icgraph}
+\includegraphics[width=346pt]{class_hardware_1_1_microscope_a857987ccdcdb8d6b3cb9545eb7a616e8_cgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{class_hardware_1_1_microscope_a87119548948d7af1e3c38af2e2afa482}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!Release@{Release}}
-\index{Release@{Release}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
-\subsubsection[{Release}]{\setlength{\rightskip}{0pt plus 5cm}void Microscope\+::\+Release (
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_hardware_1_1_microscope_a857987ccdcdb8d6b3cb9545eb7a616e8_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_hardware_1_1_microscope_a30346757ffd5d2f9d42b5a483842431e}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!on\+\_\+imageretrieved@{on\+\_\+imageretrieved}}
+\index{on\+\_\+imageretrieved@{on\+\_\+imageretrieved}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
+\paragraph[{on\+\_\+imageretrieved}]{\setlength{\rightskip}{0pt plus 5cm}void Microscope\+::on\+\_\+imageretrieved (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}\label{class_hardware_1_1_microscope_a87119548948d7af1e3c38af2e2afa482}
-Opens the webcam 
+)\hspace{0.3cm}{\ttfamily [slot]}}\label{class_hardware_1_1_microscope_a30346757ffd5d2f9d42b5a483842431e}
 
-Definition at line 136 of file Microscope.\+cpp.
 
-\hypertarget{class_hardware_1_1_microscope_ad045b565e258b1b3b68c2c55273b3058}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!Startup\+Seq@{Startup\+Seq}}
-\index{Startup\+Seq@{Startup\+Seq}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
-\subsubsection[{Startup\+Seq}]{\setlength{\rightskip}{0pt plus 5cm}void Microscope\+::\+Startup\+Seq (
-\begin{DoxyParamCaption}
-\item[{bool}]{firstdefault}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [private]}}\label{class_hardware_1_1_microscope_ad045b565e258b1b3b68c2c55273b3058}
-De-\/constructor 
-
-Definition at line 35 of file Microscope.\+cpp.
+Definition at line \hyperlink{_microscope_8cpp_source_l00331}{331} of file \hyperlink{_microscope_8cpp_source}{Microscope.\+cpp}.
 
 
 
-References Hardware\+::\+U\+S\+B\+::\+Reset\+U\+S\+B().
+Referenced by \hyperlink{_microscope_8cpp_source_l00012}{Microscope()}.
 
 
 
-Here is the call graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{class_hardware_1_1_microscope_ad045b565e258b1b3b68c2c55273b3058_cgraph}
+\includegraphics[width=346pt]{class_hardware_1_1_microscope_a30346757ffd5d2f9d42b5a483842431e_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_hardware_1_1_microscope_a71ac92fc7c1cc19c7735a9c0b93b1eef}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!open\+Cam@{open\+Cam}}
+\index{open\+Cam@{open\+Cam}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
+\paragraph[{open\+Cam}]{\setlength{\rightskip}{0pt plus 5cm}bool Microscope\+::open\+Cam (
+\begin{DoxyParamCaption}
+\item[{{\bf Cam\+\_\+t} $\ast$}]{cam}
+\end{DoxyParamCaption}
+)}\label{class_hardware_1_1_microscope_a71ac92fc7c1cc19c7735a9c0b93b1eef}
+
+
+Definition at line \hyperlink{_microscope_8cpp_source_l00167}{167} of file \hyperlink{_microscope_8cpp_source}{Microscope.\+cpp}.
+
+
+
+References \hyperlink{_microscope_8h_source_l00148}{Available\+Cams}, \hyperlink{_microscope_8h_source_l00112}{Hardware\+::\+Microscope\+::\+\_\+\+Custom\+Data\+::bayer}, \hyperlink{_microscope_8h_source_l00117}{Hardware\+::\+Microscope\+::\+\_\+\+Custom\+Data\+::bus}, \hyperlink{_microscope_8h_source_l00118}{Hardware\+::\+Microscope\+::\+\_\+\+Custom\+Data\+::caps}, \hyperlink{_microscope_8h_source_l00109}{Hardware\+::\+Microscope\+::\+\_\+\+Custom\+Data\+::capsfilter}, \hyperlink{_microscope_8cpp_source_l00311}{close\+Cam()}, \hyperlink{_microscope_8h_source_l00114}{Hardware\+::\+Microscope\+::\+\_\+\+Custom\+Data\+::colorspace}, \hyperlink{_microscope_8h_source_l00129}{Hardware\+::\+Microscope\+::\+Cam\+\_\+t\+::\+Controls}, \hyperlink{_microscope_8h_source_l00115}{Hardware\+::\+Microscope\+::\+\_\+\+Custom\+Data\+::convert}, \hyperlink{_microscope_8h_source_l00119}{Hardware\+::\+Microscope\+::\+\_\+\+Custom\+Data\+::current\+Microscope}, \hyperlink{_microscope_8h_source_l00124}{Hardware\+::\+Microscope\+::\+Cam\+\_\+t\+::dev\+String}, \hyperlink{_microscope_not_found_exception_8h_source_l00021}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+G\+S\+T\+R\+E\+A\+M\+\_\+\+E\+L\+E\+M\+\_\+\+E\+X\+C\+E\+P\+T\+I\+O\+N}, \hyperlink{_microscope_not_found_exception_8h_source_l00022}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+G\+S\+T\+R\+E\+A\+M\+\_\+\+E\+L\+E\+M\+\_\+\+E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+N\+R}, \hyperlink{_microscope_not_found_exception_8h_source_l00019}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+G\+S\+T\+R\+E\+A\+M\+\_\+\+I\+N\+I\+T\+\_\+\+E\+X\+C\+E\+P\+T\+I\+O\+N}, \hyperlink{_microscope_not_found_exception_8h_source_l00020}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+G\+S\+T\+R\+E\+A\+M\+\_\+\+I\+N\+I\+T\+\_\+\+E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+N\+R}, \hyperlink{_microscope_8h_source_l00060}{Hardware\+::\+Microscope\+::\+Resolution\+\_\+t\+::format}, \hyperlink{_microscope_8h_source_l00059}{Hardware\+::\+Microscope\+::\+Resolution\+\_\+t\+::\+Height}, \hyperlink{_microscope_8h_source_l00123}{Hardware\+::\+Microscope\+::\+Cam\+\_\+t\+::\+Name}, \hyperlink{_microscope_8cpp_source_l00413}{new\+\_\+buffer()}, \hyperlink{_microscope_8h_source_l00188}{opened\+Upthe\+Cam}, \hyperlink{_microscope_8h_source_l00130}{Hardware\+::\+Microscope\+::\+Cam\+\_\+t\+::\+Pipe}, \hyperlink{_microscope_8h_source_l00107}{Hardware\+::\+Microscope\+::\+\_\+\+Custom\+Data\+::pipeline}, \hyperlink{_microscope_8h_source_l00113}{Hardware\+::\+Microscope\+::\+\_\+\+Custom\+Data\+::queue}, \hyperlink{_microscope_8h_source_l00149}{Selected\+Cam}, \hyperlink{_microscope_8h_source_l00128}{Hardware\+::\+Microscope\+::\+Cam\+\_\+t\+::\+Selected\+Resolution}, \hyperlink{_microscope_8cpp_source_l00374}{Set\+Control()}, \hyperlink{_microscope_8h_source_l00116}{Hardware\+::\+Microscope\+::\+\_\+\+Custom\+Data\+::sink}, \hyperlink{_microscope_8h_source_l00108}{Hardware\+::\+Microscope\+::\+\_\+\+Custom\+Data\+::source}, \hyperlink{_microscope_8h_source_l00111}{Hardware\+::\+Microscope\+::\+\_\+\+Custom\+Data\+::tiscolorize}, \hyperlink{_microscope_8h_source_l00110}{Hardware\+::\+Microscope\+::\+\_\+\+Custom\+Data\+::tisvideobuffer}, and \hyperlink{_microscope_8h_source_l00058}{Hardware\+::\+Microscope\+::\+Resolution\+\_\+t\+::\+Width}.
+
+
+
+Referenced by \hyperlink{_microscope_8cpp_source_l00319}{Get\+Frame()}, and \hyperlink{_microscope_8cpp_source_l00289}{open\+Cam()}.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_hardware_1_1_microscope_a71ac92fc7c1cc19c7735a9c0b93b1eef_cgraph}
 \end{center}
 \end{figure}
 
 
 
 
-\subsection{Member Data Documentation}
-\hypertarget{class_hardware_1_1_microscope_a2e74ed11f3426a1a6adf05ec2d842066}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!arch@{arch}}
-\index{arch@{arch}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
-\subsubsection[{arch}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Hardware\+::\+Microscope\+::arch\hspace{0.3cm}{\ttfamily [private]}}\label{class_hardware_1_1_microscope_a2e74ed11f3426a1a6adf05ec2d842066}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_hardware_1_1_microscope_a71ac92fc7c1cc19c7735a9c0b93b1eef_icgraph}
+\end{center}
+\end{figure}
 
 
-Definition at line 90 of file Microscope.\+h.
-
-\hypertarget{class_hardware_1_1_microscope_a8fd921d7c937e808c5bc44c0294aa490}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!capture\+Device@{capture\+Device}}
-\index{capture\+Device@{capture\+Device}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
-\subsubsection[{capture\+Device}]{\setlength{\rightskip}{0pt plus 5cm}cv\+::\+Video\+Capture Hardware\+::\+Microscope\+::capture\+Device\hspace{0.3cm}{\ttfamily [private]}}\label{class_hardware_1_1_microscope_a8fd921d7c937e808c5bc44c0294aa490}
-An open\+C\+V instance of the capture device 
-
-Definition at line 93 of file Microscope.\+h.
-
-\hypertarget{class_hardware_1_1_microscope_ae89c25318a095e2efcdf48fb8f769038}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!Dimensions@{Dimensions}}
-\index{Dimensions@{Dimensions}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
-\subsubsection[{Dimensions}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Resolution} Hardware\+::\+Microscope\+::\+Dimensions}\label{class_hardware_1_1_microscope_ae89c25318a095e2efcdf48fb8f769038}
-Dimensions of the frame 
-
-Definition at line 69 of file Microscope.\+h.
-
-\hypertarget{class_hardware_1_1_microscope_a8c23e6a55ef77443e861418a15c6e244}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!fin\+\_\+sig@{fin\+\_\+sig}}
-\index{fin\+\_\+sig@{fin\+\_\+sig}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
-\subsubsection[{fin\+\_\+sig}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Finished\+\_\+t} Hardware\+::\+Microscope\+::fin\+\_\+sig\hspace{0.3cm}{\ttfamily [private]}}\label{class_hardware_1_1_microscope_a8c23e6a55ef77443e861418a15c6e244}
+\hypertarget{class_hardware_1_1_microscope_a7298405c4115400b8d949703b0bcad0c}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!open\+Cam@{open\+Cam}}
+\index{open\+Cam@{open\+Cam}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
+\paragraph[{open\+Cam}]{\setlength{\rightskip}{0pt plus 5cm}bool Microscope\+::open\+Cam (
+\begin{DoxyParamCaption}
+\item[{int \&}]{cam}
+\end{DoxyParamCaption}
+)}\label{class_hardware_1_1_microscope_a7298405c4115400b8d949703b0bcad0c}
 
 
-Definition at line 87 of file Microscope.\+h.
+Definition at line \hyperlink{_microscope_8cpp_source_l00291}{291} of file \hyperlink{_microscope_8cpp_source}{Microscope.\+cpp}.
 
-\hypertarget{class_hardware_1_1_microscope_ac2da14781a22924a389fc287df3dbfda}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!Frame\+Delay\+Trigger@{Frame\+Delay\+Trigger}}
-\index{Frame\+Delay\+Trigger@{Frame\+Delay\+Trigger}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
-\subsubsection[{Frame\+Delay\+Trigger}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t Hardware\+::\+Microscope\+::\+Frame\+Delay\+Trigger}\label{class_hardware_1_1_microscope_ac2da14781a22924a389fc287df3dbfda}
-Delay in seconds 
 
-Definition at line 67 of file Microscope.\+h.
+
+References \hyperlink{class_hardware_1_1_microscope_a64f57bcfcf93d75f7a27d0723487f35b}{Find\+Cam()}, and \hyperlink{_microscope_8cpp_source_l00167}{open\+Cam()}.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_hardware_1_1_microscope_a7298405c4115400b8d949703b0bcad0c_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_hardware_1_1_microscope_abd1bb8c3f37dac9f06b0d61cba98ac0a}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!open\+Cam@{open\+Cam}}
+\index{open\+Cam@{open\+Cam}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
+\paragraph[{open\+Cam}]{\setlength{\rightskip}{0pt plus 5cm}bool Microscope\+::open\+Cam (
+\begin{DoxyParamCaption}
+\item[{std\+::string \&}]{cam}
+\end{DoxyParamCaption}
+)}\label{class_hardware_1_1_microscope_abd1bb8c3f37dac9f06b0d61cba98ac0a}
+
+
+Definition at line \hyperlink{_microscope_8cpp_source_l00289}{289} of file \hyperlink{_microscope_8cpp_source}{Microscope.\+cpp}.
+
+
+
+References \hyperlink{class_hardware_1_1_microscope_a64f57bcfcf93d75f7a27d0723487f35b}{Find\+Cam()}, and \hyperlink{_microscope_8cpp_source_l00167}{open\+Cam()}.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_hardware_1_1_microscope_abd1bb8c3f37dac9f06b0d61cba98ac0a_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_hardware_1_1_microscope_ac8b63097048e3651bb6ba57ccb25e336}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!operator=@{operator=}}
+\index{operator=@{operator=}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
+\paragraph[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Microscope} Hardware\+::\+Microscope\+::operator= (
+\begin{DoxyParamCaption}
+\item[{{\bf Microscope} const \&}]{rhs}
+\end{DoxyParamCaption}
+)}\label{class_hardware_1_1_microscope_ac8b63097048e3651bb6ba57ccb25e336}
+\hypertarget{class_hardware_1_1_microscope_ada1437dd2c64a0dc6f8b9e92187108f9}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!Send\+Image\+Retrieved@{Send\+Image\+Retrieved}}
+\index{Send\+Image\+Retrieved@{Send\+Image\+Retrieved}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
+\paragraph[{Send\+Image\+Retrieved}]{\setlength{\rightskip}{0pt plus 5cm}void Microscope\+::\+Send\+Image\+Retrieved (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_hardware_1_1_microscope_ada1437dd2c64a0dc6f8b9e92187108f9}
+
+
+Definition at line \hyperlink{_microscope_8cpp_source_l00411}{411} of file \hyperlink{_microscope_8cpp_source}{Microscope.\+cpp}.
+
+
+
+References \hyperlink{class_hardware_1_1_microscope_a9ffc9b16e733b23c97d7dca4ef3210f5}{imageretrieved()}.
+
+
+
+Referenced by \hyperlink{_microscope_8cpp_source_l00413}{new\+\_\+buffer()}.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_hardware_1_1_microscope_ada1437dd2c64a0dc6f8b9e92187108f9_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_hardware_1_1_microscope_a3b963a4b53aae0e215a20e9d59493e48}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!Set\+Control@{Set\+Control}}
+\index{Set\+Control@{Set\+Control}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
+\paragraph[{Set\+Control}]{\setlength{\rightskip}{0pt plus 5cm}void Microscope\+::\+Set\+Control (
+\begin{DoxyParamCaption}
+\item[{{\bf Control\+\_\+t} $\ast$}]{control}
+\end{DoxyParamCaption}
+)}\label{class_hardware_1_1_microscope_a3b963a4b53aae0e215a20e9d59493e48}
+
+
+Definition at line \hyperlink{_microscope_8cpp_source_l00374}{374} of file \hyperlink{_microscope_8cpp_source}{Microscope.\+cpp}.
+
+
+
+References \hyperlink{_microscope_8h_source_l00085}{Hardware\+::\+Microscope\+::\+Control\+\_\+t\+::current\+\_\+value}, \hyperlink{_microscope_8h_source_l00124}{Hardware\+::\+Microscope\+::\+Cam\+\_\+t\+::dev\+String}, \hyperlink{_microscope_not_found_exception_8h_source_l00015}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+C\+T\+R\+L\+\_\+\+N\+O\+T\+\_\+\+F\+O\+U\+N\+D}, \hyperlink{_microscope_not_found_exception_8h_source_l00016}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+C\+T\+R\+L\+\_\+\+N\+O\+T\+\_\+\+F\+O\+U\+N\+D\+\_\+\+N\+R}, \hyperlink{_microscope_not_found_exception_8h_source_l00009}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+N\+O\+C\+A\+M\+S}, \hyperlink{_microscope_not_found_exception_8h_source_l00010}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+N\+O\+C\+A\+M\+S\+\_\+\+N\+R}, \hyperlink{_microscope_not_found_exception_8h_source_l00011}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+Q\+U\+E\+R\+Y}, \hyperlink{_microscope_not_found_exception_8h_source_l00012}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+Q\+U\+E\+R\+Y\+\_\+\+N\+R}, \hyperlink{_microscope_8h_source_l00131}{Hardware\+::\+Microscope\+::\+Cam\+\_\+t\+::fd}, \hyperlink{_microscope_8h_source_l00086}{Hardware\+::\+Microscope\+::\+Control\+\_\+t\+::\+I\+D}, and \hyperlink{_microscope_8h_source_l00149}{Selected\+Cam}.
+
+
+
+Referenced by \hyperlink{_microscope_8cpp_source_l00167}{open\+Cam()}.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_hardware_1_1_microscope_a3b963a4b53aae0e215a20e9d59493e48_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsubsection{Member Data Documentation}
+\hypertarget{class_hardware_1_1_microscope_a49a52c74d900f217ed190d36b29ff27d}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!Available\+Cams@{Available\+Cams}}
+\index{Available\+Cams@{Available\+Cams}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
+\paragraph[{Available\+Cams}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Cam\+\_\+t}$>$ Hardware\+::\+Microscope\+::\+Available\+Cams}\label{class_hardware_1_1_microscope_a49a52c74d900f217ed190d36b29ff27d}
+
+
+Definition at line \hyperlink{_microscope_8h_source_l00148}{148} of file \hyperlink{_microscope_8h_source}{Microscope.\+h}.
+
+
+
+Referenced by \hyperlink{_microscope_8cpp_source_l00293}{Find\+Cam()}, \hyperlink{_microscope_8cpp_source_l00012}{Microscope()}, and \hyperlink{_microscope_8cpp_source_l00167}{open\+Cam()}.
+
+\hypertarget{class_hardware_1_1_microscope_a80c5ad94099d7b9d175e1a1cd4179fcd}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!cap@{cap}}
+\index{cap@{cap}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
+\paragraph[{cap}]{\setlength{\rightskip}{0pt plus 5cm}cv\+::\+Video\+Capture$\ast$ Hardware\+::\+Microscope\+::cap = nullptr\hspace{0.3cm}{\ttfamily [private]}}\label{class_hardware_1_1_microscope_a80c5ad94099d7b9d175e1a1cd4179fcd}
+
+
+Definition at line \hyperlink{_microscope_8h_source_l00189}{189} of file \hyperlink{_microscope_8h_source}{Microscope.\+h}.
+
+
+
+Referenced by \hyperlink{_microscope_8cpp_source_l00021}{Microscope()}, and \hyperlink{_microscope_8cpp_source_l00032}{$\sim$\+Microscope()}.
+
+\hypertarget{class_hardware_1_1_microscope_a2ca84cff524b286b3fb452c4bd813303}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!fd@{fd}}
+\index{fd@{fd}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
+\paragraph[{fd}]{\setlength{\rightskip}{0pt plus 5cm}int Hardware\+::\+Microscope\+::fd\hspace{0.3cm}{\ttfamily [private]}}\label{class_hardware_1_1_microscope_a2ca84cff524b286b3fb452c4bd813303}
+
+
+Definition at line \hyperlink{_microscope_8h_source_l00195}{195} of file \hyperlink{_microscope_8h_source}{Microscope.\+h}.
+
+
+
+Referenced by \hyperlink{_microscope_8cpp_source_l00021}{Microscope()}.
 
 \hypertarget{class_hardware_1_1_microscope_a2c73db8010320428db3fd41d840dd0eb}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!H\+D\+Rframes@{H\+D\+Rframes}}
 \index{H\+D\+Rframes@{H\+D\+Rframes}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
-\subsubsection[{H\+D\+Rframes}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$cv\+::\+Mat$>$ Hardware\+::\+Microscope\+::\+H\+D\+Rframes\hspace{0.3cm}{\ttfamily [private]}}\label{class_hardware_1_1_microscope_a2c73db8010320428db3fd41d840dd0eb}
+\paragraph[{H\+D\+Rframes}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$cv\+::\+Mat$>$ Hardware\+::\+Microscope\+::\+H\+D\+Rframes\hspace{0.3cm}{\ttfamily [private]}}\label{class_hardware_1_1_microscope_a2c73db8010320428db3fd41d840dd0eb}
 
 
-Definition at line 96 of file Microscope.\+h.
-
-\hypertarget{class_hardware_1_1_microscope_afbbec8a14cd277cec7c3ee6ce0ba54a1}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!Last\+Frame@{Last\+Frame}}
-\index{Last\+Frame@{Last\+Frame}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
-\subsubsection[{Last\+Frame}]{\setlength{\rightskip}{0pt plus 5cm}cv\+::\+Mat Hardware\+::\+Microscope\+::\+Last\+Frame}\label{class_hardware_1_1_microscope_afbbec8a14cd277cec7c3ee6ce0ba54a1}
-Last grabbed and processed frame 
-
-Definition at line 68 of file Microscope.\+h.
-
-\hypertarget{class_hardware_1_1_microscope_a819e11c0bfdb12b4c42b7ee2d330cb4d}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!prog\+\_\+sig@{prog\+\_\+sig}}
-\index{prog\+\_\+sig@{prog\+\_\+sig}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
-\subsubsection[{prog\+\_\+sig}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Progress\+\_\+t} Hardware\+::\+Microscope\+::prog\+\_\+sig\hspace{0.3cm}{\ttfamily [private]}}\label{class_hardware_1_1_microscope_a819e11c0bfdb12b4c42b7ee2d330cb4d}
+Definition at line \hyperlink{_microscope_8h_source_l00191}{191} of file \hyperlink{_microscope_8h_source}{Microscope.\+h}.
 
 
-Definition at line 88 of file Microscope.\+h.
 
-\hypertarget{class_hardware_1_1_microscope_a5aababdeaa4cc4da051c0e44cba20003}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!times@{times}}
-\index{times@{times}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
-\subsubsection[{times}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$float$>$ Hardware\+::\+Microscope\+::times\hspace{0.3cm}{\ttfamily [private]}}\label{class_hardware_1_1_microscope_a5aababdeaa4cc4da051c0e44cba20003}
+Referenced by \hyperlink{_microscope_8cpp_source_l00333}{Get\+H\+D\+R\+Frame()}, and \hyperlink{_microscope_8cpp_source_l00021}{Microscope()}.
+
+\hypertarget{class_hardware_1_1_microscope_afd9597ab8447b75fdf5e74783fdcf7b2}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!last\+Frame@{last\+Frame}}
+\index{last\+Frame@{last\+Frame}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
+\paragraph[{last\+Frame}]{\setlength{\rightskip}{0pt plus 5cm}cv\+::\+Mat Hardware\+::\+Microscope\+::last\+Frame}\label{class_hardware_1_1_microscope_afd9597ab8447b75fdf5e74783fdcf7b2}
 
 
-Definition at line 97 of file Microscope.\+h.
+Definition at line \hyperlink{_microscope_8h_source_l00175}{175} of file \hyperlink{_microscope_8h_source}{Microscope.\+h}.
+
+
+
+Referenced by \hyperlink{_microscope_8cpp_source_l00319}{Get\+Frame()}, and \hyperlink{_microscope_8cpp_source_l00413}{new\+\_\+buffer()}.
+
+\hypertarget{class_hardware_1_1_microscope_ab1033afe167ab113639ea90c6b66544f}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!opened\+Upthe\+Cam@{opened\+Upthe\+Cam}}
+\index{opened\+Upthe\+Cam@{opened\+Upthe\+Cam}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
+\paragraph[{opened\+Upthe\+Cam}]{\setlength{\rightskip}{0pt plus 5cm}bool Hardware\+::\+Microscope\+::opened\+Upthe\+Cam = false\hspace{0.3cm}{\ttfamily [private]}}\label{class_hardware_1_1_microscope_ab1033afe167ab113639ea90c6b66544f}
+
+
+Definition at line \hyperlink{_microscope_8h_source_l00188}{188} of file \hyperlink{_microscope_8h_source}{Microscope.\+h}.
+
+
+
+Referenced by \hyperlink{_microscope_8cpp_source_l00311}{close\+Cam()}, \hyperlink{_microscope_8cpp_source_l00165}{Is\+Opened()}, and \hyperlink{_microscope_8cpp_source_l00167}{open\+Cam()}.
+
+\hypertarget{class_hardware_1_1_microscope_a544911a6d1eec986001087e5d9278604}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!Run\+Env@{Run\+Env}}
+\index{Run\+Env@{Run\+Env}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
+\paragraph[{Run\+Env}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Arch} Hardware\+::\+Microscope\+::\+Run\+Env}\label{class_hardware_1_1_microscope_a544911a6d1eec986001087e5d9278604}
+
+
+Definition at line \hyperlink{_microscope_8h_source_l00150}{150} of file \hyperlink{_microscope_8h_source}{Microscope.\+h}.
+
+
+
+Referenced by \hyperlink{_microscope_8cpp_source_l00012}{Microscope()}.
+
+\hypertarget{class_hardware_1_1_microscope_a059d62ec28e85f1c3f3225c9c78a877f}{}\index{Hardware\+::\+Microscope@{Hardware\+::\+Microscope}!Selected\+Cam@{Selected\+Cam}}
+\index{Selected\+Cam@{Selected\+Cam}!Hardware\+::\+Microscope@{Hardware\+::\+Microscope}}
+\paragraph[{Selected\+Cam}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Cam\+\_\+t}$\ast$ Hardware\+::\+Microscope\+::\+Selected\+Cam = nullptr}\label{class_hardware_1_1_microscope_a059d62ec28e85f1c3f3225c9c78a877f}
+
+
+Definition at line \hyperlink{_microscope_8h_source_l00149}{149} of file \hyperlink{_microscope_8h_source}{Microscope.\+h}.
+
+
+
+Referenced by \hyperlink{_microscope_8cpp_source_l00364}{Get\+Control()}, \hyperlink{_microscope_8cpp_source_l00319}{Get\+Frame()}, \hyperlink{_microscope_8cpp_source_l00021}{Microscope()}, \hyperlink{_microscope_8cpp_source_l00413}{new\+\_\+buffer()}, \hyperlink{_microscope_8cpp_source_l00167}{open\+Cam()}, and \hyperlink{_microscope_8cpp_source_l00374}{Set\+Control()}.
 
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/home/peer23peer/\+Vision\+Soil\+Analyzer/src/\+Soil\+Hardware/\hyperlink{_microscope_8h}{Microscope.\+h}\item 
-/home/peer23peer/\+Vision\+Soil\+Analyzer/src/\+Soil\+Hardware/\hyperlink{_microscope_8cpp}{Microscope.\+cpp}\end{DoxyCompactItemize}
+/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Hardware/\hyperlink{_microscope_8h}{Microscope.\+h}\item 
+/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Hardware/\hyperlink{_microscope_8cpp}{Microscope.\+cpp}\end{DoxyCompactItemize}

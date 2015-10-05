@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['filtertype',['FilterType',['../class_vision_1_1_morphological_filter.html#a1f19c9cb13f0d68778c77d6fd0370868',1,'Vision::MorphologicalFilter']]]
+  ['pin',['Pin',['../class_hardware_1_1_p_w_m.html#a7cc6acf1c28f0eaef16246635dc0353a',1,'Hardware::PWM']]],
+  ['pixelformat',['PixelFormat',['../class_hardware_1_1_microscope.html#a1ca86e9e414d0497f2b2d88b258be1a7',1,'Hardware::Microscope']]],
+  ['polarity',['Polarity',['../class_hardware_1_1_p_w_m.html#a728111433109229b4da1efc953a107c1',1,'Hardware::PWM']]]
 ];

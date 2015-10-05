@@ -1,4 +1,4 @@
-\hypertarget{class_vision_1_1_image_processing}{}\section{Vision\+:\+:Image\+Processing Class Reference}
+\hypertarget{class_vision_1_1_image_processing}{}\subsection{Vision\+:\+:Image\+Processing Class Reference}
 \label{class_vision_1_1_image_processing}\index{Vision\+::\+Image\+Processing@{Vision\+::\+Image\+Processing}}
 
 
@@ -6,7 +6,8 @@
 
 
 
-Inheritance diagram for Vision\+:\+:Image\+Processing\+:\nopagebreak
+Inheritance diagram for Vision\+:\+:Image\+Processing\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -15,19 +16,20 @@ Inheritance diagram for Vision\+:\+:Image\+Processing\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for Vision\+:\+:Image\+Processing\+:\nopagebreak
+Collaboration diagram for Vision\+:\+:Image\+Processing\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=205pt]{class_vision_1_1_image_processing__coll__graph}
 \end{center}
 \end{figure}
-\subsection*{Public Types}
+\subsubsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
 typedef boost\+::signals2\+::signal$<$ void(float, std\+::string)$>$ \hyperlink{class_vision_1_1_image_processing_ade0de8f6751f8d19b8fbb9533a009d3c}{Progress\+\_\+t}
 \end{DoxyCompactItemize}
-\subsection*{Public Member Functions}
+\subsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 boost\+::signals2\+::connection \hyperlink{class_vision_1_1_image_processing_a013b9623c6a2933ec5f78b13a450994d}{connect\+\_\+\+Progress} (const Progress\+\_\+t\+::slot\+\_\+type \&subscriber)
@@ -36,18 +38,24 @@ boost\+::signals2\+::connection \hyperlink{class_vision_1_1_image_processing_a01
 \item 
 \hyperlink{class_vision_1_1_image_processing_a1d4bd00ec1862112552c663034cebabc}{$\sim$\+Image\+Processing} ()
 \end{DoxyCompactItemize}
-\subsection*{Static Public Member Functions}
+\subsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{class_vision_1_1_image_processing_a052aaae527703c3991310b9b1e704576}{get\+Orientented} (Mat \&B\+W, cv\+::\+Point\+\_\+$<$ double $>$ \&centroid, double \&theta, double \&eccentricty)
+\item 
+static void \hyperlink{class_vision_1_1_image_processing_a2cbae1b5d9542edab2e59da8e3e23d2a}{Rotate\+Img} (Mat \&src, Mat \&dst, double \&theta, cv\+::\+Point\+\_\+$<$ double $>$ \&Centroid, Rect \&R\+O\+I)
 \item 
 static std\+::vector$<$ Mat $>$ \hyperlink{class_vision_1_1_image_processing_ad5fa51caaabb8cb0fc2c15f645695a3c}{extract\+Channel} (const Mat \&src)
 \item 
 {\footnotesize template$<$typename T1 , typename T2 $>$ }\\static Mat \hyperlink{class_vision_1_1_image_processing_a16f96c26c7c5c6feb7ac103b9b478682}{Copy\+Mat} (const Mat \&src, T1 $\ast$L\+U\+T, int cv\+Type)
 \item 
-{\footnotesize template$<$typename T1 $>$ }\\static Mat \hyperlink{class_vision_1_1_image_processing_a5a255d7f5b10bcb199e66d1e00ab9d1a}{Copy\+Mat} (const Mat \&src, const Mat \&\hyperlink{_gen_blob_8m_a2f6787d513f2bdbca6833c1c1ee04329}{mask}, int cv\+Type)
+{\footnotesize template$<$typename T1 $>$ }\\static Mat \hyperlink{class_vision_1_1_image_processing_a5a255d7f5b10bcb199e66d1e00ab9d1a}{Copy\+Mat} (const Mat \&src, const Mat \&mask, int cv\+Type)
+\item 
+static cv\+::\+Mat \hyperlink{class_vision_1_1_image_processing_aaa8b17b356ca4300857f05a6d6558a43}{White\+Background} (const cv\+::\+Mat \&src)
 \item 
 {\footnotesize template$<$typename T1 $>$ }\\static void \hyperlink{class_vision_1_1_image_processing_a97407ef83de37496d30d6defe3165edd}{Show\+Debug\+Img} (cv\+::\+Mat img, T1 max\+Val, std\+::string window\+Name, bool scale=true)
 \end{DoxyCompactItemize}
-\subsection*{Public Attributes}
+\subsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 Mat \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{Original\+Img}
@@ -58,12 +66,12 @@ double \hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986
 \item 
 double \hyperlink{class_vision_1_1_image_processing_a7438451f9a447a33e9f04bf8e73eae31}{Prog\+Step} = 0.
 \end{DoxyCompactItemize}
-\subsection*{Protected Member Functions}
+\subsubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} $\ast$ \hyperlink{class_vision_1_1_image_processing_a56e17515a15eb7d246985e550fc89610}{Get\+N\+Row} (int n\+Data, int h\+Ksize, int n\+Cols, uint32\+\_\+t total\+Rows)
+\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} $\ast$ \hyperlink{class_vision_1_1_image_processing_a56e17515a15eb7d246985e550fc89610}{Get\+N\+Row} (int n\+Data, int h\+Ksize, int n\+Cols, \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} total\+Rows)
 \end{DoxyCompactItemize}
-\subsection*{Protected Attributes}
+\subsubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
 Mat \hyperlink{class_vision_1_1_image_processing_a5371ad8d6f7aac9d43ee5c902ade7435}{Temp\+Img}
@@ -72,81 +80,67 @@ Mat \hyperlink{class_vision_1_1_image_processing_a5371ad8d6f7aac9d43ee5c902ade74
 \end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
+\subsubsection{Detailed Description}
 
 
-Definition at line 47 of file Image\+Processing.\+h.
+Definition at line \hyperlink{_image_processing_8h_source_l00048}{48} of file \hyperlink{_image_processing_8h_source}{Image\+Processing.\+h}.
 
 
 
-\subsection{Member Typedef Documentation}
+\subsubsection{Member Typedef Documentation}
 \hypertarget{class_vision_1_1_image_processing_ade0de8f6751f8d19b8fbb9533a009d3c}{}\index{Vision\+::\+Image\+Processing@{Vision\+::\+Image\+Processing}!Progress\+\_\+t@{Progress\+\_\+t}}
 \index{Progress\+\_\+t@{Progress\+\_\+t}!Vision\+::\+Image\+Processing@{Vision\+::\+Image\+Processing}}
-\subsubsection[{Progress\+\_\+t}]{\setlength{\rightskip}{0pt plus 5cm}typedef boost\+::signals2\+::signal$<$void(float, std\+::string)$>$ {\bf Vision\+::\+Image\+Processing\+::\+Progress\+\_\+t}}\label{class_vision_1_1_image_processing_ade0de8f6751f8d19b8fbb9533a009d3c}
+\paragraph[{Progress\+\_\+t}]{\setlength{\rightskip}{0pt plus 5cm}typedef boost\+::signals2\+::signal$<$void(float, std\+::string)$>$ {\bf Vision\+::\+Image\+Processing\+::\+Progress\+\_\+t}}\label{class_vision_1_1_image_processing_ade0de8f6751f8d19b8fbb9533a009d3c}
 
 
-Definition at line 49 of file Image\+Processing.\+h.
+Definition at line \hyperlink{_image_processing_8h_source_l00050}{50} of file \hyperlink{_image_processing_8h_source}{Image\+Processing.\+h}.
 
 
 
-\subsection{Constructor \& Destructor Documentation}
+\subsubsection{Constructor \& Destructor Documentation}
 \hypertarget{class_vision_1_1_image_processing_a0090ffe36a912d6df5d7a1f507f6252e}{}\index{Vision\+::\+Image\+Processing@{Vision\+::\+Image\+Processing}!Image\+Processing@{Image\+Processing}}
 \index{Image\+Processing@{Image\+Processing}!Vision\+::\+Image\+Processing@{Vision\+::\+Image\+Processing}}
-\subsubsection[{Image\+Processing}]{\setlength{\rightskip}{0pt plus 5cm}Image\+Processing\+::\+Image\+Processing (
+\paragraph[{Image\+Processing}]{\setlength{\rightskip}{0pt plus 5cm}Image\+Processing\+::\+Image\+Processing (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
 )}\label{class_vision_1_1_image_processing_a0090ffe36a912d6df5d7a1f507f6252e}
 Constructor of the core class 
 
-Definition at line 17 of file Image\+Processing.\+cpp.
+Definition at line \hyperlink{_image_processing_8cpp_source_l00017}{17} of file \hyperlink{_image_processing_8cpp_source}{Image\+Processing.\+cpp}.
 
-
-\begin{DoxyCode}
-17 \{\}
-\end{DoxyCode}
 \hypertarget{class_vision_1_1_image_processing_a1d4bd00ec1862112552c663034cebabc}{}\index{Vision\+::\+Image\+Processing@{Vision\+::\+Image\+Processing}!````~Image\+Processing@{$\sim$\+Image\+Processing}}
 \index{````~Image\+Processing@{$\sim$\+Image\+Processing}!Vision\+::\+Image\+Processing@{Vision\+::\+Image\+Processing}}
-\subsubsection[{$\sim$\+Image\+Processing}]{\setlength{\rightskip}{0pt plus 5cm}Image\+Processing\+::$\sim$\+Image\+Processing (
+\paragraph[{$\sim$\+Image\+Processing}]{\setlength{\rightskip}{0pt plus 5cm}Image\+Processing\+::$\sim$\+Image\+Processing (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
 )}\label{class_vision_1_1_image_processing_a1d4bd00ec1862112552c663034cebabc}
 De-\/constructor of the core class 
 
-Definition at line 20 of file Image\+Processing.\+cpp.
+Definition at line \hyperlink{_image_processing_8cpp_source_l00020}{20} of file \hyperlink{_image_processing_8cpp_source}{Image\+Processing.\+cpp}.
 
 
-\begin{DoxyCode}
-20 \{\}
-\end{DoxyCode}
 
-
-\subsection{Member Function Documentation}
+\subsubsection{Member Function Documentation}
 \hypertarget{class_vision_1_1_image_processing_a013b9623c6a2933ec5f78b13a450994d}{}\index{Vision\+::\+Image\+Processing@{Vision\+::\+Image\+Processing}!connect\+\_\+\+Progress@{connect\+\_\+\+Progress}}
 \index{connect\+\_\+\+Progress@{connect\+\_\+\+Progress}!Vision\+::\+Image\+Processing@{Vision\+::\+Image\+Processing}}
-\subsubsection[{connect\+\_\+\+Progress}]{\setlength{\rightskip}{0pt plus 5cm}boost\+::signals2\+::connection Image\+Processing\+::connect\+\_\+\+Progress (
+\paragraph[{connect\+\_\+\+Progress}]{\setlength{\rightskip}{0pt plus 5cm}boost\+::signals2\+::connection Image\+Processing\+::connect\+\_\+\+Progress (
 \begin{DoxyParamCaption}
 \item[{const Progress\+\_\+t\+::slot\+\_\+type \&}]{subscriber}
 \end{DoxyParamCaption}
 )}\label{class_vision_1_1_image_processing_a013b9623c6a2933ec5f78b13a450994d}
 
 
-Definition at line 49 of file Image\+Processing.\+cpp.
+Definition at line \hyperlink{_image_processing_8cpp_source_l00130}{130} of file \hyperlink{_image_processing_8cpp_source}{Image\+Processing.\+cpp}.
 
 
 
-References prog\+\_\+sig.
+References \hyperlink{_image_processing_8h_source_l00058}{prog\+\_\+sig}.
 
-
-\begin{DoxyCode}
-49                                                                        \{
-50   \textcolor{keywordflow}{return} \hyperlink{class_vision_1_1_image_processing_ac0c168e16365ff5941791f67ec895663}{prog\_sig}.connect(subscriber);
-51 \}
-\end{DoxyCode}
 \hypertarget{class_vision_1_1_image_processing_a16f96c26c7c5c6feb7ac103b9b478682}{}\index{Vision\+::\+Image\+Processing@{Vision\+::\+Image\+Processing}!Copy\+Mat@{Copy\+Mat}}
 \index{Copy\+Mat@{Copy\+Mat}!Vision\+::\+Image\+Processing@{Vision\+::\+Image\+Processing}}
-\subsubsection[{Copy\+Mat}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T1 , typename T2 $>$ static Mat Vision\+::\+Image\+Processing\+::\+Copy\+Mat (
+\paragraph[{Copy\+Mat}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T1 , typename T2 $>$ static Mat Vision\+::\+Image\+Processing\+::\+Copy\+Mat (
 \begin{DoxyParamCaption}
 \item[{const Mat \&}]{src, }
 \item[{T1 $\ast$}]{L\+U\+T, }
@@ -167,64 +161,11 @@ The new matrix
 \end{DoxyReturn}
 
 
-Definition at line 77 of file Image\+Processing.\+h.
-
-
-
-References i.
-
-
-
-Referenced by Soil\+Analyzer\+::\+Sample\+::\+Prep\+Img().
-
-
-\begin{DoxyCode}
-77                                                           \{
-78     Mat dst(src.size(), cvType);
-79     uint32\_t nData = src.rows * src.cols * dst.step[1];
-80     \textcolor{keywordflow}{if} (cvType == 0 || cvType == 8 || cvType == 16 || cvType == 24) \{
-81       \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < nData; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} += dst.step[1]) \{
-82         dst.data[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] =
-83             \textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(LUT[*(T2 *)(src.data + (\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} * src.step[1]))]);
-84       \}
-85     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (cvType == 1 || cvType == 9 || cvType == 17 || cvType == 25) \{
-86       \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < nData; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} += src.step[1]) \{
-87         dst.data[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] =
-88             \textcolor{keyword}{static\_cast<}int8\_t\textcolor{keyword}{>}(LUT[*(T2 *)(src.data + (\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} * src.step[1]))]);
-89       \}
-90     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (cvType == 2 || cvType == 10 || cvType == 18 || cvType == 26) \{
-91       \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < nData; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} += src.step[1]) \{
-92         dst.data[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] =
-93             \textcolor{keyword}{static\_cast<}uint16\_t\textcolor{keyword}{>}(LUT[*(T2 *)(src.data + (\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} * src.step[1]))]);
-94       \}
-95     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (cvType == 3 || cvType == 11 || cvType == 19 || cvType == 27) \{
-96       \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < nData; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} += src.step[1]) \{
-97         dst.data[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] =
-98             \textcolor{keyword}{static\_cast<}int16\_t\textcolor{keyword}{>}(LUT[*(T2 *)(src.data + (\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} * src.step[1]))]);
-99       \}
-100     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (cvType == 4 || cvType == 12 || cvType == 20 || cvType == 28) \{
-101       \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < nData; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} += src.step[1]) \{
-102         dst.data[\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] =
-103             \textcolor{keyword}{static\_cast<}int32\_t\textcolor{keyword}{>}(LUT[*(T2 *)(src.data + (\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} * src.step[1]))]);
-104       \}
-105     \}
-106     \textcolor{keywordflow}{return} dst;
-107   \}
-\end{DoxyCode}
-
-
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{class_vision_1_1_image_processing_a16f96c26c7c5c6feb7ac103b9b478682_icgraph}
-\end{center}
-\end{figure}
-
+Definition at line \hyperlink{_image_processing_8h_source_l00082}{82} of file \hyperlink{_image_processing_8h_source}{Image\+Processing.\+h}.
 
 \hypertarget{class_vision_1_1_image_processing_a5a255d7f5b10bcb199e66d1e00ab9d1a}{}\index{Vision\+::\+Image\+Processing@{Vision\+::\+Image\+Processing}!Copy\+Mat@{Copy\+Mat}}
 \index{Copy\+Mat@{Copy\+Mat}!Vision\+::\+Image\+Processing@{Vision\+::\+Image\+Processing}}
-\subsubsection[{Copy\+Mat}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T1 $>$ static Mat Vision\+::\+Image\+Processing\+::\+Copy\+Mat (
+\paragraph[{Copy\+Mat}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T1 $>$ static Mat Vision\+::\+Image\+Processing\+::\+Copy\+Mat (
 \begin{DoxyParamCaption}
 \item[{const Mat \&}]{src, }
 \item[{const Mat \&}]{mask, }
@@ -245,46 +186,16 @@ The new matrix
 \end{DoxyReturn}
 
 
-Definition at line 116 of file Image\+Processing.\+h.
+Definition at line \hyperlink{_image_processing_8h_source_l00121}{121} of file \hyperlink{_image_processing_8h_source}{Image\+Processing.\+h}.
 
 
 
-References extract\+Channel(), and m.
+References \hyperlink{_image_processing_8cpp_source_l00042}{extract\+Channel()}.
 
 
-\begin{DoxyCode}
-116                                                                   \{
-117     \textcolor{keywordflow}{if} (src.size != \hyperlink{_gen_blob_8m_a5d76cc2129e79ba1941d2cc2f53b9e8e}{mask}.size) \{
-118       \textcolor{keywordflow}{throw} Exception::WrongKernelSizeException(
-119           \textcolor{stringliteral}{"Mask not the same size as src Exception!"});
-120     \}
-121     \textcolor{keywordflow}{if} (\hyperlink{_gen_blob_8m_a5d76cc2129e79ba1941d2cc2f53b9e8e}{mask}.channels() != 1) \{
-122       \textcolor{keywordflow}{throw} Exception::WrongKernelSizeException(
-123           \textcolor{stringliteral}{"Mask has more then 1 channel Exception!"});
-124     \}
-125     Mat dst(src.size(), cvType);
-126 
-127     vector<Mat> exSrc = \hyperlink{class_vision_1_1_image_processing_ad5fa51caaabb8cb0fc2c15f645695a3c}{Vision::ImageProcessing::extractChannel}(src)
-      ;
-128     vector<Mat> exDst;
-129 
-130     \textcolor{keywordtype}{int} cvBaseType = cvType % 8;
-131     for\_each(exSrc.begin(), exSrc.end(), [&](\textcolor{keyword}{const} Mat &sItem) \{
-132       Mat dItem(src.size(), cvBaseType);
-133       std::transform(sItem.begin<T1>(), sItem.end<T1>(), \hyperlink{_gen_blob_8m_a5d76cc2129e79ba1941d2cc2f53b9e8e}{mask}.begin<T1>(),
-134                      dItem.begin<T1>(),
-135                      [](\textcolor{keyword}{const} T1 &s, \textcolor{keyword}{const} T1 &\hyperlink{_gen_blob_8m_ab3cd915d758008bd19d0f2428fbb354a}{m}) -> T1 \{ return s * m; \});
-136       exDst.push\_back(dItem);
-137     \});
-138 
-139     merge(exDst, dst);
-140 
-141     \textcolor{keywordflow}{return} dst;
-142   \}
-\end{DoxyCode}
 
-
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -295,30 +206,23 @@ Here is the call graph for this function\+:\nopagebreak
 
 \hypertarget{class_vision_1_1_image_processing_ad5fa51caaabb8cb0fc2c15f645695a3c}{}\index{Vision\+::\+Image\+Processing@{Vision\+::\+Image\+Processing}!extract\+Channel@{extract\+Channel}}
 \index{extract\+Channel@{extract\+Channel}!Vision\+::\+Image\+Processing@{Vision\+::\+Image\+Processing}}
-\subsubsection[{extract\+Channel}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ Mat $>$ Image\+Processing\+::extract\+Channel (
+\paragraph[{extract\+Channel}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ Mat $>$ Image\+Processing\+::extract\+Channel (
 \begin{DoxyParamCaption}
 \item[{const Mat \&}]{src}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [static]}}\label{class_vision_1_1_image_processing_ad5fa51caaabb8cb0fc2c15f645695a3c}
 
 
-Definition at line 42 of file Image\+Processing.\+cpp.
+Definition at line \hyperlink{_image_processing_8cpp_source_l00042}{42} of file \hyperlink{_image_processing_8cpp_source}{Image\+Processing.\+cpp}.
 
 
 
-Referenced by Soil\+Analyzer\+::\+Particle\+::\+Analyze(), B\+O\+O\+S\+T\+\_\+\+F\+I\+X\+T\+U\+R\+E\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E(), and Copy\+Mat().
+Referenced by \hyperlink{_image_processing_8h_source_l00121}{Copy\+Mat()}, and \hyperlink{particle_8cpp_source_l00096}{Soil\+Analyzer\+::\+Particle\+::get\+Mean\+Lab()}.
 
 
-\begin{DoxyCode}
-42                                                              \{
-43   vector<Mat> chans;
-44   split(src, chans);
-45   \textcolor{keywordflow}{return} chans;
-46 \}
-\end{DoxyCode}
 
-
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -329,12 +233,12 @@ Here is the caller graph for this function\+:\nopagebreak
 
 \hypertarget{class_vision_1_1_image_processing_a56e17515a15eb7d246985e550fc89610}{}\index{Vision\+::\+Image\+Processing@{Vision\+::\+Image\+Processing}!Get\+N\+Row@{Get\+N\+Row}}
 \index{Get\+N\+Row@{Get\+N\+Row}!Vision\+::\+Image\+Processing@{Vision\+::\+Image\+Processing}}
-\subsubsection[{Get\+N\+Row}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uchar} $\ast$ Image\+Processing\+::\+Get\+N\+Row (
+\paragraph[{Get\+N\+Row}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uchar} $\ast$ Image\+Processing\+::\+Get\+N\+Row (
 \begin{DoxyParamCaption}
 \item[{int}]{n\+Data, }
 \item[{int}]{h\+Ksize, }
 \item[{int}]{n\+Cols, }
-\item[{uint32\+\_\+t}]{total\+Rows}
+\item[{{\bf uint32\+\_\+t}}]{total\+Rows}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [protected]}}\label{class_vision_1_1_image_processing_a56e17515a15eb7d246985e550fc89610}
 Create a L\+U\+T indicating which iteration variable i is the end of an row 
@@ -351,32 +255,16 @@ array of uchars where a zero is a middle column and a 1 indicates an end of an r
 \end{DoxyReturn}
 
 
-Definition at line 30 of file Image\+Processing.\+cpp.
+Definition at line \hyperlink{_image_processing_8cpp_source_l00030}{30} of file \hyperlink{_image_processing_8cpp_source}{Image\+Processing.\+cpp}.
 
 
 
-References i.
+Referenced by \hyperlink{_morphological_filter_8cpp_source_l00089}{Vision\+::\+Morphological\+Filter\+::\+Filter()}.
 
 
 
-Referenced by Vision\+::\+Morphological\+Filter\+::\+Filter().
-
-
-\begin{DoxyCode}
-31                                                     \{
-32   \textcolor{comment}{// Create LUT to determine when there is an new row}
-33   \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *nRow = \textcolor{keyword}{new} \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}[nData + 1]\{\};
-34   \textcolor{comment}{// int i = 0;}
-35   \textcolor{keywordtype}{int} shift = nCols - hKsize - 1;
-36   \textcolor{keywordflow}{for} (uint32\_t \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < totalRows; \hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++) \{
-37     nRow[(\hyperlink{_comparision_pictures_2_createtest_image_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} * nCols) + shift] = 1;
-38   \}
-39   \textcolor{keywordflow}{return} nRow;
-40 \}
-\end{DoxyCode}
-
-
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -385,9 +273,70 @@ Here is the caller graph for this function\+:\nopagebreak
 \end{figure}
 
 
+\hypertarget{class_vision_1_1_image_processing_a052aaae527703c3991310b9b1e704576}{}\index{Vision\+::\+Image\+Processing@{Vision\+::\+Image\+Processing}!get\+Orientented@{get\+Orientented}}
+\index{get\+Orientented@{get\+Orientented}!Vision\+::\+Image\+Processing@{Vision\+::\+Image\+Processing}}
+\paragraph[{get\+Orientented}]{\setlength{\rightskip}{0pt plus 5cm}void Image\+Processing\+::get\+Orientented (
+\begin{DoxyParamCaption}
+\item[{Mat \&}]{B\+W, }
+\item[{cv\+::\+Point\+\_\+$<$ double $>$ \&}]{centroid, }
+\item[{double \&}]{theta, }
+\item[{double \&}]{eccentricty}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{class_vision_1_1_image_processing_a052aaae527703c3991310b9b1e704576}
+
+
+Definition at line \hyperlink{_image_processing_8cpp_source_l00048}{48} of file \hyperlink{_image_processing_8cpp_source}{Image\+Processing.\+cpp}.
+
+
+
+Referenced by \hyperlink{analyzer_8cpp_source_l00322}{Soil\+Analyzer\+::\+Analyzer\+::\+Get\+Particles\+From\+Blob\+List()}.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_vision_1_1_image_processing_a052aaae527703c3991310b9b1e704576_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_vision_1_1_image_processing_a2cbae1b5d9542edab2e59da8e3e23d2a}{}\index{Vision\+::\+Image\+Processing@{Vision\+::\+Image\+Processing}!Rotate\+Img@{Rotate\+Img}}
+\index{Rotate\+Img@{Rotate\+Img}!Vision\+::\+Image\+Processing@{Vision\+::\+Image\+Processing}}
+\paragraph[{Rotate\+Img}]{\setlength{\rightskip}{0pt plus 5cm}void Image\+Processing\+::\+Rotate\+Img (
+\begin{DoxyParamCaption}
+\item[{Mat \&}]{src, }
+\item[{Mat \&}]{dst, }
+\item[{double \&}]{theta, }
+\item[{cv\+::\+Point\+\_\+$<$ double $>$ \&}]{Centroid, }
+\item[{Rect \&}]{R\+O\+I}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{class_vision_1_1_image_processing_a2cbae1b5d9542edab2e59da8e3e23d2a}
+
+
+Definition at line \hyperlink{_image_processing_8cpp_source_l00070}{70} of file \hyperlink{_image_processing_8cpp_source}{Image\+Processing.\+cpp}.
+
+
+
+Referenced by \hyperlink{analyzer_8cpp_source_l00322}{Soil\+Analyzer\+::\+Analyzer\+::\+Get\+Particles\+From\+Blob\+List()}.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_vision_1_1_image_processing_a2cbae1b5d9542edab2e59da8e3e23d2a_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{class_vision_1_1_image_processing_a97407ef83de37496d30d6defe3165edd}{}\index{Vision\+::\+Image\+Processing@{Vision\+::\+Image\+Processing}!Show\+Debug\+Img@{Show\+Debug\+Img}}
 \index{Show\+Debug\+Img@{Show\+Debug\+Img}!Vision\+::\+Image\+Processing@{Vision\+::\+Image\+Processing}}
-\subsubsection[{Show\+Debug\+Img}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T1 $>$ static void Vision\+::\+Image\+Processing\+::\+Show\+Debug\+Img (
+\paragraph[{Show\+Debug\+Img}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T1 $>$ static void Vision\+::\+Image\+Processing\+::\+Show\+Debug\+Img (
 \begin{DoxyParamCaption}
 \item[{cv\+::\+Mat}]{img, }
 \item[{T1}]{max\+Val, }
@@ -397,143 +346,91 @@ Here is the caller graph for this function\+:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{class_vision_1_1_image_processing_a97407ef83de37496d30d6defe3165edd}
 
 
-Definition at line 145 of file Image\+Processing.\+h.
+Definition at line \hyperlink{_image_processing_8h_source_l00156}{156} of file \hyperlink{_image_processing_8h_source}{Image\+Processing.\+h}.
+
+\hypertarget{class_vision_1_1_image_processing_aaa8b17b356ca4300857f05a6d6558a43}{}\index{Vision\+::\+Image\+Processing@{Vision\+::\+Image\+Processing}!White\+Background@{White\+Background}}
+\index{White\+Background@{White\+Background}!Vision\+::\+Image\+Processing@{Vision\+::\+Image\+Processing}}
+\paragraph[{White\+Background}]{\setlength{\rightskip}{0pt plus 5cm}static cv\+::\+Mat Vision\+::\+Image\+Processing\+::\+White\+Background (
+\begin{DoxyParamCaption}
+\item[{const cv\+::\+Mat \&}]{src}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{class_vision_1_1_image_processing_aaa8b17b356ca4300857f05a6d6558a43}
+
+
+Definition at line \hyperlink{_image_processing_8h_source_l00149}{149} of file \hyperlink{_image_processing_8h_source}{Image\+Processing.\+h}.
 
 
 
-References imshow().
-
-
-\begin{DoxyCode}
-146                                               \{
-147     \textcolor{keywordflow}{if} (img.rows > 0 && img.cols > 0) \{
-148       cv::Mat tempImg(img.size(), img.type());
-149       \textcolor{keywordflow}{if} (scale == \textcolor{keyword}{true}) \{
-150         std::vector<cv::Mat> exSrc = \hyperlink{class_vision_1_1_image_processing_ad5fa51caaabb8cb0fc2c15f645695a3c}{extractChannel}(img);
-151         std::vector<cv::Mat> exDst;
-152         \textcolor{keywordtype}{int} cvBaseType = img.type() % 8;
-153         T1 MatMin = std::numeric\_limits<T1>::max();
-154         T1 MatMax = std::numeric\_limits<T1>::min();
-155 
-156         \textcolor{comment}{// Find the global max and min}
-157         for\_each(exSrc.begin(), exSrc.end(), [&](\textcolor{keyword}{const} Mat &sItem) \{
-158           std::for\_each(sItem.begin<T1>(), sItem.end<T1>(), [&](\textcolor{keyword}{const} T1 &s) \{
-159             if (s > MatMax) \{
-160               MatMax = s;
-161             \} \textcolor{keywordflow}{else} if (s < MatMin) \{
-162               MatMin = s;
-163             \}
-164           \});
-165         \});
-166 
-167         \textcolor{keywordtype}{int} Range = MatMax - MatMin;
-168         \textcolor{keywordflow}{if} (Range < 1)
-169           Range = maxVal;
-170 
-171         \textcolor{comment}{// Convert the values}
-172         for\_each(exSrc.begin(), exSrc.end(), [&](\textcolor{keyword}{const} cv::Mat &sItem) \{
-173           Mat dItem(img.size(), cvBaseType);
-174           std::transform(sItem.begin<T1>(), sItem.end<T1>(), dItem.begin<T1>(),
-175                          [&](\textcolor{keyword}{const} T1 &s) -> T1 \{
-176                            return (T1)round(((s - MatMin) * maxVal) / Range);
-177                          \});
-178           exDst.push\_back(dItem);
-179         \});
-180 
-181         merge(exDst, tempImg);
-182       \} \textcolor{keywordflow}{else} \{
-183         tempImg = img;
-184       \}
-185       cv::namedWindow(windowName, cv::WINDOW\_NORMAL);
-186       \hyperlink{_comparision_pictures_2_createtest_image_8m_ab203292116da4a8a72763ec58b04da8f}{cv::imshow}(windowName, tempImg);
-187       cv::waitKey(0);
-188       cv::destroyWindow(windowName);
-189     \};
-190   \};
-\end{DoxyCode}
-
-
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=291pt]{class_vision_1_1_image_processing_a97407ef83de37496d30d6defe3165edd_cgraph}
-\end{center}
-\end{figure}
-
-
-
-
-\subsection{Member Data Documentation}
+\subsubsection{Member Data Documentation}
 \hypertarget{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{}\index{Vision\+::\+Image\+Processing@{Vision\+::\+Image\+Processing}!current\+Prog@{current\+Prog}}
 \index{current\+Prog@{current\+Prog}!Vision\+::\+Image\+Processing@{Vision\+::\+Image\+Processing}}
-\subsubsection[{current\+Prog}]{\setlength{\rightskip}{0pt plus 5cm}double Vision\+::\+Image\+Processing\+::current\+Prog = 0.}\label{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}
+\paragraph[{current\+Prog}]{\setlength{\rightskip}{0pt plus 5cm}double Vision\+::\+Image\+Processing\+::current\+Prog = 0.}\label{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}
 
 
-Definition at line 65 of file Image\+Processing.\+h.
+Definition at line \hyperlink{_image_processing_8h_source_l00070}{70} of file \hyperlink{_image_processing_8h_source}{Image\+Processing.\+h}.
 
 
 
-Referenced by Vision\+::\+Conversion\+::\+Convert().
+Referenced by \hyperlink{_conversion_8cpp_source_l00086}{Vision\+::\+Conversion\+::\+Convert()}.
 
 \hypertarget{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{}\index{Vision\+::\+Image\+Processing@{Vision\+::\+Image\+Processing}!Original\+Img@{Original\+Img}}
 \index{Original\+Img@{Original\+Img}!Vision\+::\+Image\+Processing@{Vision\+::\+Image\+Processing}}
-\subsubsection[{Original\+Img}]{\setlength{\rightskip}{0pt plus 5cm}Mat Vision\+::\+Image\+Processing\+::\+Original\+Img}\label{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}
+\paragraph[{Original\+Img}]{\setlength{\rightskip}{0pt plus 5cm}Mat Vision\+::\+Image\+Processing\+::\+Original\+Img}\label{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}
 
 
-Definition at line 62 of file Image\+Processing.\+h.
+Definition at line \hyperlink{_image_processing_8h_source_l00063}{63} of file \hyperlink{_image_processing_8h_source}{Image\+Processing.\+h}.
 
 
 
-Referenced by Vision\+::\+Conversion\+::\+Conversion(), Vision\+::\+Conversion\+::\+Convert(), Vision\+::\+Segment\+::\+Convert\+To\+B\+W(), Vision\+::\+Enhance\+::\+Enhance(), Vision\+::\+Segment\+::\+Fill\+Holes(), Vision\+::\+Morphological\+Filter\+::\+Filter(), Vision\+::\+Segment\+::\+Flood\+Fill(), Vision\+::\+Segment\+::\+Get\+Blob\+List(), Vision\+::\+Segment\+::\+Get\+Edges(), Vision\+::\+Segment\+::\+Get\+Edges\+Eroding(), Vision\+::\+Segment\+::\+Get\+Threshold\+Level(), Vision\+::\+Enhance\+::\+Histogram\+Equalization(), Vision\+::\+Segment\+::\+Label\+Blobs(), Vision\+::\+Segment\+::\+Load\+Original\+Img(), Vision\+::\+Morphological\+Filter\+::\+Morphological\+Filter(), Vision\+::\+Morphological\+Filter\+::operator=(), Vision\+::\+Conversion\+::operator=(), Vision\+::\+Enhance\+::operator=(), Vision\+::\+Segment\+::operator=(), Soil\+Analyzer\+::\+Sample\+::\+Prep\+Img(), Vision\+::\+Segment\+::\+Remove\+Border\+Blobs(), Vision\+::\+Conversion\+::\+R\+G\+B2\+X\+Y\+Z(), Vision\+::\+Segment\+::\+Segment(), Vision\+::\+Segment\+::\+Set\+Border(), and Vision\+::\+Segment\+::\+Threshold().
+Referenced by \hyperlink{_segment_8cpp_source_l00688}{Vision\+::\+Segment\+::\+Connected\+Blobs()}, \hyperlink{_conversion_8cpp_source_l00022}{Vision\+::\+Conversion\+::\+Conversion()}, \hyperlink{_conversion_8cpp_source_l00066}{Vision\+::\+Conversion\+::\+Convert()}, \hyperlink{_segment_8cpp_source_l00153}{Vision\+::\+Segment\+::\+Convert\+To\+B\+W()}, \hyperlink{_enhance_8cpp_source_l00020}{Vision\+::\+Enhance\+::\+Enhance()}, \hyperlink{_segment_8cpp_source_l00615}{Vision\+::\+Segment\+::\+Fill\+Holes()}, \hyperlink{_morphological_filter_8cpp_source_l00089}{Vision\+::\+Morphological\+Filter\+::\+Filter()}, \hyperlink{_segment_8cpp_source_l00534}{Vision\+::\+Segment\+::\+Get\+Blob\+List()}, \hyperlink{_segment_8cpp_source_l00389}{Vision\+::\+Segment\+::\+Get\+Edges()}, \hyperlink{_segment_8cpp_source_l00483}{Vision\+::\+Segment\+::\+Get\+Edges\+Eroding()}, \hyperlink{_segment_8cpp_source_l00069}{Vision\+::\+Segment\+::\+Get\+Threshold\+Level()}, \hyperlink{_enhance_8cpp_source_l00277}{Vision\+::\+Enhance\+::\+Histogram\+Equalization()}, \hyperlink{_segment_8cpp_source_l00316}{Vision\+::\+Segment\+::\+Label\+Blobs()}, \hyperlink{_segment_8cpp_source_l00056}{Vision\+::\+Segment\+::\+Load\+Original\+Img()}, \hyperlink{_morphological_filter_8cpp_source_l00013}{Vision\+::\+Morphological\+Filter\+::\+Morphological\+Filter()}, \hyperlink{_morphological_filter_8cpp_source_l00062}{Vision\+::\+Morphological\+Filter\+::operator=()}, \hyperlink{_conversion_8cpp_source_l00041}{Vision\+::\+Conversion\+::operator=()}, \hyperlink{_enhance_8cpp_source_l00062}{Vision\+::\+Enhance\+::operator=()}, \hyperlink{_segment_8cpp_source_l00041}{Vision\+::\+Segment\+::operator=()}, \hyperlink{_segment_8cpp_source_l00245}{Vision\+::\+Segment\+::\+Remove\+Border\+Blobs()}, \hyperlink{_conversion_8cpp_source_l00207}{Vision\+::\+Conversion\+::\+R\+G\+B2\+X\+Y\+Z()}, \hyperlink{_segment_8cpp_source_l00020}{Vision\+::\+Segment\+::\+Segment()}, \hyperlink{_segment_8cpp_source_l00208}{Vision\+::\+Segment\+::\+Set\+Border()}, and \hyperlink{_segment_8cpp_source_l00176}{Vision\+::\+Segment\+::\+Threshold()}.
 
 \hypertarget{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{}\index{Vision\+::\+Image\+Processing@{Vision\+::\+Image\+Processing}!Processed\+Img@{Processed\+Img}}
 \index{Processed\+Img@{Processed\+Img}!Vision\+::\+Image\+Processing@{Vision\+::\+Image\+Processing}}
-\subsubsection[{Processed\+Img}]{\setlength{\rightskip}{0pt plus 5cm}Mat Vision\+::\+Image\+Processing\+::\+Processed\+Img}\label{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}
+\paragraph[{Processed\+Img}]{\setlength{\rightskip}{0pt plus 5cm}Mat Vision\+::\+Image\+Processing\+::\+Processed\+Img}\label{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}
 
 
-Definition at line 63 of file Image\+Processing.\+h.
+Definition at line \hyperlink{_image_processing_8h_source_l00064}{64} of file \hyperlink{_image_processing_8h_source}{Image\+Processing.\+h}.
 
 
 
-Referenced by B\+O\+O\+S\+T\+\_\+\+A\+U\+T\+O\+\_\+\+T\+E\+S\+T\+\_\+\+C\+A\+S\+E(), Vision\+::\+Conversion\+::\+Conversion(), Vision\+::\+Conversion\+::\+Convert(), Vision\+::\+Segment\+::\+Convert\+To\+B\+W(), Vision\+::\+Enhance\+::\+Enhance(), Vision\+::\+Segment\+::\+Fill\+Holes(), Vision\+::\+Morphological\+Filter\+::\+Filter(), Vision\+::\+Segment\+::\+Get\+Edges(), Vision\+::\+Segment\+::\+Get\+Edges\+Eroding(), Vision\+::\+Enhance\+::\+Histogram\+Equalization(), Vision\+::\+Segment\+::\+Load\+Original\+Img(), Vision\+::\+Morphological\+Filter\+::\+Morphological\+Filter(), Vision\+::\+Morphological\+Filter\+::operator=(), Vision\+::\+Conversion\+::operator=(), Vision\+::\+Enhance\+::operator=(), Vision\+::\+Segment\+::operator=(), Soil\+Analyzer\+::\+Sample\+::\+Prep\+Img(), Vision\+::\+Segment\+::\+Remove\+Border\+Blobs(), Vision\+::\+Segment\+::\+Segment(), Soil\+Analyzer\+::\+Sample\+::\+Segment\+Particles(), and Vision\+::\+Segment\+::\+Threshold().
+Referenced by \hyperlink{analyzer_8cpp_source_l00388}{Soil\+Analyzer\+::\+Analyzer\+::\+Calibrate\+S\+I()}, \hyperlink{_conversion_8cpp_source_l00029}{Vision\+::\+Conversion\+::\+Conversion()}, \hyperlink{_conversion_8cpp_source_l00066}{Vision\+::\+Conversion\+::\+Convert()}, \hyperlink{_segment_8cpp_source_l00153}{Vision\+::\+Segment\+::\+Convert\+To\+B\+W()}, \hyperlink{_enhance_8cpp_source_l00020}{Vision\+::\+Enhance\+::\+Enhance()}, \hyperlink{_segment_8cpp_source_l00615}{Vision\+::\+Segment\+::\+Fill\+Holes()}, \hyperlink{_morphological_filter_8cpp_source_l00089}{Vision\+::\+Morphological\+Filter\+::\+Filter()}, \hyperlink{analyzer_8cpp_source_l00236}{Soil\+Analyzer\+::\+Analyzer\+::\+Get\+B\+W()}, \hyperlink{_segment_8cpp_source_l00389}{Vision\+::\+Segment\+::\+Get\+Edges()}, \hyperlink{_segment_8cpp_source_l00483}{Vision\+::\+Segment\+::\+Get\+Edges\+Eroding()}, \hyperlink{particle_8cpp_source_l00138}{Soil\+Analyzer\+::\+Particle\+::get\+Lab\+Img()}, \hyperlink{particle_8cpp_source_l00120}{Soil\+Analyzer\+::\+Particle\+::\+Get\+Mean\+R\+I()}, \hyperlink{analyzer_8cpp_source_l00322}{Soil\+Analyzer\+::\+Analyzer\+::\+Get\+Particles\+From\+Blob\+List()}, \hyperlink{_enhance_8cpp_source_l00277}{Vision\+::\+Enhance\+::\+Histogram\+Equalization()}, \hyperlink{_segment_8cpp_source_l00316}{Vision\+::\+Segment\+::\+Label\+Blobs()}, \hyperlink{_segment_8cpp_source_l00056}{Vision\+::\+Segment\+::\+Load\+Original\+Img()}, \hyperlink{_morphological_filter_8cpp_source_l00032}{Vision\+::\+Morphological\+Filter\+::\+Morphological\+Filter()}, \hyperlink{_morphological_filter_8cpp_source_l00062}{Vision\+::\+Morphological\+Filter\+::operator=()}, \hyperlink{_conversion_8cpp_source_l00041}{Vision\+::\+Conversion\+::operator=()}, \hyperlink{_enhance_8cpp_source_l00062}{Vision\+::\+Enhance\+::operator=()}, \hyperlink{_segment_8cpp_source_l00041}{Vision\+::\+Segment\+::operator=()}, \hyperlink{_segment_8cpp_source_l00245}{Vision\+::\+Segment\+::\+Remove\+Border\+Blobs()}, \hyperlink{_segment_8cpp_source_l00020}{Vision\+::\+Segment\+::\+Segment()}, and \hyperlink{_segment_8cpp_source_l00176}{Vision\+::\+Segment\+::\+Threshold()}.
 
 \hypertarget{class_vision_1_1_image_processing_ac0c168e16365ff5941791f67ec895663}{}\index{Vision\+::\+Image\+Processing@{Vision\+::\+Image\+Processing}!prog\+\_\+sig@{prog\+\_\+sig}}
 \index{prog\+\_\+sig@{prog\+\_\+sig}!Vision\+::\+Image\+Processing@{Vision\+::\+Image\+Processing}}
-\subsubsection[{prog\+\_\+sig}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Progress\+\_\+t} Vision\+::\+Image\+Processing\+::prog\+\_\+sig\hspace{0.3cm}{\ttfamily [protected]}}\label{class_vision_1_1_image_processing_ac0c168e16365ff5941791f67ec895663}
+\paragraph[{prog\+\_\+sig}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Progress\+\_\+t} Vision\+::\+Image\+Processing\+::prog\+\_\+sig\hspace{0.3cm}{\ttfamily [protected]}}\label{class_vision_1_1_image_processing_ac0c168e16365ff5941791f67ec895663}
 
 
-Definition at line 57 of file Image\+Processing.\+h.
+Definition at line \hyperlink{_image_processing_8h_source_l00058}{58} of file \hyperlink{_image_processing_8h_source}{Image\+Processing.\+h}.
 
 
 
-Referenced by connect\+\_\+\+Progress(), and Vision\+::\+Conversion\+::\+Convert().
+Referenced by \hyperlink{_image_processing_8cpp_source_l00130}{connect\+\_\+\+Progress()}, and \hyperlink{_conversion_8cpp_source_l00086}{Vision\+::\+Conversion\+::\+Convert()}.
 
 \hypertarget{class_vision_1_1_image_processing_a7438451f9a447a33e9f04bf8e73eae31}{}\index{Vision\+::\+Image\+Processing@{Vision\+::\+Image\+Processing}!Prog\+Step@{Prog\+Step}}
 \index{Prog\+Step@{Prog\+Step}!Vision\+::\+Image\+Processing@{Vision\+::\+Image\+Processing}}
-\subsubsection[{Prog\+Step}]{\setlength{\rightskip}{0pt plus 5cm}double Vision\+::\+Image\+Processing\+::\+Prog\+Step = 0.}\label{class_vision_1_1_image_processing_a7438451f9a447a33e9f04bf8e73eae31}
+\paragraph[{Prog\+Step}]{\setlength{\rightskip}{0pt plus 5cm}double Vision\+::\+Image\+Processing\+::\+Prog\+Step = 0.}\label{class_vision_1_1_image_processing_a7438451f9a447a33e9f04bf8e73eae31}
 
 
-Definition at line 66 of file Image\+Processing.\+h.
+Definition at line \hyperlink{_image_processing_8h_source_l00071}{71} of file \hyperlink{_image_processing_8h_source}{Image\+Processing.\+h}.
 
 
 
-Referenced by Vision\+::\+Conversion\+::\+Convert().
+Referenced by \hyperlink{_conversion_8cpp_source_l00086}{Vision\+::\+Conversion\+::\+Convert()}.
 
 \hypertarget{class_vision_1_1_image_processing_a5371ad8d6f7aac9d43ee5c902ade7435}{}\index{Vision\+::\+Image\+Processing@{Vision\+::\+Image\+Processing}!Temp\+Img@{Temp\+Img}}
 \index{Temp\+Img@{Temp\+Img}!Vision\+::\+Image\+Processing@{Vision\+::\+Image\+Processing}}
-\subsubsection[{Temp\+Img}]{\setlength{\rightskip}{0pt plus 5cm}Mat Vision\+::\+Image\+Processing\+::\+Temp\+Img\hspace{0.3cm}{\ttfamily [protected]}}\label{class_vision_1_1_image_processing_a5371ad8d6f7aac9d43ee5c902ade7435}
+\paragraph[{Temp\+Img}]{\setlength{\rightskip}{0pt plus 5cm}Mat Vision\+::\+Image\+Processing\+::\+Temp\+Img\hspace{0.3cm}{\ttfamily [protected]}}\label{class_vision_1_1_image_processing_a5371ad8d6f7aac9d43ee5c902ade7435}
 
 
-Definition at line 55 of file Image\+Processing.\+h.
+Definition at line \hyperlink{_image_processing_8h_source_l00056}{56} of file \hyperlink{_image_processing_8h_source}{Image\+Processing.\+h}.
 
 
 
-Referenced by Vision\+::\+Conversion\+::\+Conversion(), Vision\+::\+Enhance\+::\+Enhance(), Vision\+::\+Segment\+::\+Fill\+Holes(), Vision\+::\+Segment\+::\+Get\+Edges\+Eroding(), Vision\+::\+Morphological\+Filter\+::\+Morphological\+Filter(), Vision\+::\+Morphological\+Filter\+::operator=(), Vision\+::\+Conversion\+::operator=(), Vision\+::\+Enhance\+::operator=(), Vision\+::\+Segment\+::operator=(), Vision\+::\+Segment\+::\+Remove\+Border\+Blobs(), and Vision\+::\+Segment\+::\+Segment().
+Referenced by \hyperlink{_conversion_8cpp_source_l00029}{Vision\+::\+Conversion\+::\+Conversion()}, \hyperlink{_enhance_8cpp_source_l00025}{Vision\+::\+Enhance\+::\+Enhance()}, \hyperlink{_segment_8cpp_source_l00615}{Vision\+::\+Segment\+::\+Fill\+Holes()}, \hyperlink{_segment_8cpp_source_l00483}{Vision\+::\+Segment\+::\+Get\+Edges\+Eroding()}, \hyperlink{_segment_8cpp_source_l00316}{Vision\+::\+Segment\+::\+Label\+Blobs()}, \hyperlink{_morphological_filter_8cpp_source_l00054}{Vision\+::\+Morphological\+Filter\+::\+Morphological\+Filter()}, \hyperlink{_morphological_filter_8cpp_source_l00062}{Vision\+::\+Morphological\+Filter\+::operator=()}, \hyperlink{_conversion_8cpp_source_l00041}{Vision\+::\+Conversion\+::operator=()}, \hyperlink{_enhance_8cpp_source_l00062}{Vision\+::\+Enhance\+::operator=()}, \hyperlink{_segment_8cpp_source_l00041}{Vision\+::\+Segment\+::operator=()}, \hyperlink{_segment_8cpp_source_l00245}{Vision\+::\+Segment\+::\+Remove\+Border\+Blobs()}, and \hyperlink{_segment_8cpp_source_l00026}{Vision\+::\+Segment\+::\+Segment()}.
 
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/home/peer23peer/\+Vision\+Soil\+Analyzer/src/\+Soil\+Vision/\hyperlink{_image_processing_8h}{Image\+Processing.\+h}\item 
-/home/peer23peer/\+Vision\+Soil\+Analyzer/src/\+Soil\+Vision/\hyperlink{_image_processing_8cpp}{Image\+Processing.\+cpp}\end{DoxyCompactItemize}
+/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Vision/\hyperlink{_image_processing_8h}{Image\+Processing.\+h}\item 
+/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Vision/\hyperlink{_image_processing_8cpp}{Image\+Processing.\+cpp}\end{DoxyCompactItemize}
