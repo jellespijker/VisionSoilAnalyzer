@@ -14,7 +14,7 @@ polling and threading
 #pragma once
 
 #define SLOTS                                                                  \
-  "/sys/devices/bone_capemgr.9/slots" /*!< Beaglebone capemanager slots file*/
+  "/sys/devices/platform/bone_capemgr/slots" /*!< Beaglebone capemanager slots file*/
 
 #include <fstream>
 #include <sstream>

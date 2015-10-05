@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['marginside',['MarginSide',['../namespace_q_c_p.html#a7e487e3e2ccb62ab7771065bab7cae54',1,'QCP']]]
+  ['value',['Value',['../class_hardware_1_1_g_p_i_o.html#ad357201dc1ad13ad96ba1773108a5f6d',1,'Hardware::GPIO']]]
 ];

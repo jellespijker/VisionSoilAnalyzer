@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.9.1"/>
-<title>Vision Soil Analyzer: /home/peer23peer/VisionSoilAnalyzer/src/SoilMath/MathException.h Source File</title>
+<title>Vision Soil Analyzer: /home/peer23peer/programmingspace/VSA/VisionSoilAnalyzer/src/SoilMath/MathException.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -30,7 +30,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="IHClogo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Vision Soil Analyzer
    &#160;<span id="projectnumber">1.0.0</span>
@@ -49,7 +48,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -118,39 +116,57 @@ $(document).ready(function(){initNavTree('_math_exception_8h_source.html','');})
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * Written by Jelle Spijker &lt;spijker.jelle@gmail.com&gt;, 2015</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;exception&gt;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_soil_math.html">SoilMath</a> {</div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="namespace_soil_math_1_1_exception.html">   15</a></span>&#160;<span class="keyword">namespace </span>Exception {</div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_soil_math_1_1_exception_1_1_math_exception.html">   16</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_soil_math_1_1_exception_1_1_math_exception.html">MathException</a> : <span class="keyword">public</span> std::exception {</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_soil_math_1_1_exception_1_1_math_exception.html#aced894f0b464ca294ea5a8e2e8c81d3b">   18</a></span>&#160;  <a class="code" href="class_soil_math_1_1_exception_1_1_math_exception.html#aced894f0b464ca294ea5a8e2e8c81d3b">MathException</a>(<span class="keywordtype">string</span> <a class="code" href="_gen_blob_8m.html#ab3cd915d758008bd19d0f2428fbb354a">m</a> = <span class="stringliteral">&quot;Math Exception!&quot;</span>) : msg(<a class="code" href="_gen_blob_8m.html#ab3cd915d758008bd19d0f2428fbb354a">m</a>){};</div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_soil_math_1_1_exception_1_1_math_exception.html#ac0af07cbf4a152c7e5e6e372ff73ceb8">   19</a></span>&#160;  <a class="code" href="class_soil_math_1_1_exception_1_1_math_exception.html#ac0af07cbf4a152c7e5e6e372ff73ceb8">~MathException</a>() _GLIBCXX_USE_NOEXCEPT{};</div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_soil_math_1_1_exception_1_1_math_exception.html#a1b94d5f7f10fe22caa2416c9ffcb1f38">   20</a></span>&#160;  <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="class_soil_math_1_1_exception_1_1_math_exception.html#a1b94d5f7f10fe22caa2416c9ffcb1f38">what</a>() const _GLIBCXX_USE_NOEXCEPT { <span class="keywordflow">return</span> msg.c_str(); };</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="_math_exception_8h.html#a5c678225d975a600ef77313d82a247b0">    8</a></span>&#160;<span class="preprocessor">#define EXCEPTION_MATH &quot;Math Exception!&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="_math_exception_8h.html#a2ad831fc7963b41855b14ace07bbdf84">    9</a></span>&#160;<span class="preprocessor">#define EXCEPTION_MATH_NR 0</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="_math_exception_8h.html#a39b49da54ac54198f948ea87cd429c1c">   10</a></span>&#160;<span class="preprocessor">#define EXCEPTION_NO_CONTOUR_FOUND                                             \</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">  &quot;No continuous contour found, or less then 8 pixels long!&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="_math_exception_8h.html#a3c2849e602d9d4c0dba3f2d3301d9cbf">   12</a></span>&#160;<span class="preprocessor">#define EXCEPTION_NO_CONTOUR_FOUND_NR 1</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="_math_exception_8h.html#ab0eb22f73fea0163f06029cbc3f05825">   13</a></span>&#160;<span class="preprocessor">#define EXCEPTION_SIZE_OF_INPUT_NEURONS                                        \</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">  &quot;Size of input unequal to input neurons exception!&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="_math_exception_8h.html#ad3576b2d374be2f14816abdf843432c7">   15</a></span>&#160;<span class="preprocessor">#define EXCEPTION_SIZE_OF_INPUT_NEURONS_NR 2</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="_math_exception_8h.html#ac412424987d9143f59b48a2cf9e0c21b">   16</a></span>&#160;<span class="preprocessor">#define EXCEPTION_NEURAL_NET_NOT_STUDIED &quot;Neural net didn&#39;t study exception!&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="_math_exception_8h.html#a3afb80cde76bdd1c929d352c41efabc8">   17</a></span>&#160;<span class="preprocessor">#define EXCEPTION_NEURAL_NET_NOT_STUDIED_NR 3</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="_math_exception_8h.html#a17c65ecafe069371fe919795d9680138">   18</a></span>&#160;<span class="preprocessor">#define EXCEPTION_TYPE_NOT_SUPPORTED                                           \</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">  &quot;Type not supported for operation exception!&quot;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="_math_exception_8h.html#acb96f1baa08302e9497abb62d8959960">   20</a></span>&#160;<span class="preprocessor">#define EXCEPTION_TYPE_NOT_SUPPORTED_NR 4</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <span class="keywordtype">string</span> msg;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;};</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;}</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;}</div>
-<div class="ttc" id="class_soil_math_1_1_exception_1_1_math_exception_html_a1b94d5f7f10fe22caa2416c9ffcb1f38"><div class="ttname"><a href="class_soil_math_1_1_exception_1_1_math_exception.html#a1b94d5f7f10fe22caa2416c9ffcb1f38">SoilMath::Exception::MathException::what</a></div><div class="ttdeci">const char * what() const _GLIBCXX_USE_NOEXCEPT</div><div class="ttdef"><b>Definition:</b> <a href="_math_exception_8h_source.html#l00020">MathException.h:20</a></div></div>
-<div class="ttc" id="namespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div></div>
-<div class="ttc" id="class_soil_math_1_1_exception_1_1_math_exception_html_aced894f0b464ca294ea5a8e2e8c81d3b"><div class="ttname"><a href="class_soil_math_1_1_exception_1_1_math_exception.html#aced894f0b464ca294ea5a8e2e8c81d3b">SoilMath::Exception::MathException::MathException</a></div><div class="ttdeci">MathException(string m=&quot;Math Exception!&quot;)</div><div class="ttdef"><b>Definition:</b> <a href="_math_exception_8h_source.html#l00018">MathException.h:18</a></div></div>
-<div class="ttc" id="namespace_soil_math_html"><div class="ttname"><a href="namespace_soil_math.html">SoilMath</a></div><div class="ttdoc">Genetic Algorithmes used for optimization problems. </div><div class="ttdef"><b>Definition:</b> <a href="_common_operations_8h_source.html#l00014">CommonOperations.h:14</a></div></div>
-<div class="ttc" id="_gen_blob_8m_html_ab3cd915d758008bd19d0f2428fbb354a"><div class="ttname"><a href="_gen_blob_8m.html#ab3cd915d758008bd19d0f2428fbb354a">m</a></div><div class="ttdeci">m</div><div class="ttdef"><b>Definition:</b> <a href="_gen_blob_8m_source.html#l00020">GenBlob.m:20</a></div></div>
-<div class="ttc" id="class_soil_math_1_1_exception_1_1_math_exception_html_ac0af07cbf4a152c7e5e6e372ff73ceb8"><div class="ttname"><a href="class_soil_math_1_1_exception_1_1_math_exception.html#ac0af07cbf4a152c7e5e6e372ff73ceb8">SoilMath::Exception::MathException::~MathException</a></div><div class="ttdeci">~MathException() _GLIBCXX_USE_NOEXCEPT</div><div class="ttdef"><b>Definition:</b> <a href="_math_exception_8h_source.html#l00019">MathException.h:19</a></div></div>
-<div class="ttc" id="class_soil_math_1_1_exception_1_1_math_exception_html"><div class="ttname"><a href="class_soil_math_1_1_exception_1_1_math_exception.html">SoilMath::Exception::MathException</a></div><div class="ttdef"><b>Definition:</b> <a href="_math_exception_8h_source.html#l00016">MathException.h:16</a></div></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;exception&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_soil_math.html">SoilMath</a> {</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="namespace_soil_math_1_1_exception.html">   27</a></span>&#160;<span class="keyword">namespace </span>Exception {</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="class_soil_math_1_1_exception_1_1_math_exception.html">   28</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_soil_math_1_1_exception_1_1_math_exception.html">MathException</a> : <span class="keyword">public</span> std::exception {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="class_soil_math_1_1_exception_1_1_math_exception.html#a27eb82d0d823880fc774381245b58968">   30</a></span>&#160;  <a class="code" href="class_soil_math_1_1_exception_1_1_math_exception.html#a27eb82d0d823880fc774381245b58968">MathException</a>(std::string m = <a class="code" href="_math_exception_8h.html#a5c678225d975a600ef77313d82a247b0">EXCEPTION_MATH</a>, <span class="keywordtype">int</span> n = <a class="code" href="_math_exception_8h.html#a2ad831fc7963b41855b14ace07bbdf84">EXCEPTION_MATH_NR</a>)</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;      : <a class="code" href="class_soil_math_1_1_exception_1_1_math_exception.html#afa15e6f8ef6ac7ed599656b0ade760cc">msg</a>(m), <a class="code" href="class_soil_math_1_1_exception_1_1_math_exception.html#aa9a6f85505030c25c55f2eb6e9f0aea1">nr</a>(n){};</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_soil_math_1_1_exception_1_1_math_exception.html#ac0af07cbf4a152c7e5e6e372ff73ceb8">   32</a></span>&#160;  <a class="code" href="class_soil_math_1_1_exception_1_1_math_exception.html#ac0af07cbf4a152c7e5e6e372ff73ceb8">~MathException</a>() _GLIBCXX_USE_NOEXCEPT{};</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="class_soil_math_1_1_exception_1_1_math_exception.html#a1b94d5f7f10fe22caa2416c9ffcb1f38">   33</a></span>&#160;  <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="class_soil_math_1_1_exception_1_1_math_exception.html#a1b94d5f7f10fe22caa2416c9ffcb1f38">what</a>() const _GLIBCXX_USE_NOEXCEPT { <span class="keywordflow">return</span> <a class="code" href="class_soil_math_1_1_exception_1_1_math_exception.html#afa15e6f8ef6ac7ed599656b0ade760cc">msg</a>.c_str(); };</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="class_soil_math_1_1_exception_1_1_math_exception.html#aa8666225e202dd62eca2af0f826908be">   34</a></span>&#160;  <span class="keyword">const</span> <span class="keywordtype">int</span> *<a class="code" href="class_soil_math_1_1_exception_1_1_math_exception.html#aa8666225e202dd62eca2af0f826908be">id</a>() const _GLIBCXX_USE_NOEXCEPT { <span class="keywordflow">return</span> &amp;<a class="code" href="class_soil_math_1_1_exception_1_1_math_exception.html#aa9a6f85505030c25c55f2eb6e9f0aea1">nr</a>; }</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="class_soil_math_1_1_exception_1_1_math_exception.html#afa15e6f8ef6ac7ed599656b0ade760cc">   37</a></span>&#160;  std::string <a class="code" href="class_soil_math_1_1_exception_1_1_math_exception.html#afa15e6f8ef6ac7ed599656b0ade760cc">msg</a>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="class_soil_math_1_1_exception_1_1_math_exception.html#aa9a6f85505030c25c55f2eb6e9f0aea1">   38</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="class_soil_math_1_1_exception_1_1_math_exception.html#aa9a6f85505030c25c55f2eb6e9f0aea1">nr</a>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;};</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
+<div class="ttc" id="_math_exception_8h_html_a2ad831fc7963b41855b14ace07bbdf84"><div class="ttname"><a href="_math_exception_8h.html#a2ad831fc7963b41855b14ace07bbdf84">EXCEPTION_MATH_NR</a></div><div class="ttdeci">#define EXCEPTION_MATH_NR</div><div class="ttdef"><b>Definition:</b> <a href="_math_exception_8h_source.html#l00009">MathException.h:9</a></div></div>
+<div class="ttc" id="class_soil_math_1_1_exception_1_1_math_exception_html_a1b94d5f7f10fe22caa2416c9ffcb1f38"><div class="ttname"><a href="class_soil_math_1_1_exception_1_1_math_exception.html#a1b94d5f7f10fe22caa2416c9ffcb1f38">SoilMath::Exception::MathException::what</a></div><div class="ttdeci">const char * what() const _GLIBCXX_USE_NOEXCEPT</div><div class="ttdef"><b>Definition:</b> <a href="_math_exception_8h_source.html#l00033">MathException.h:33</a></div></div>
+<div class="ttc" id="class_soil_math_1_1_exception_1_1_math_exception_html_a27eb82d0d823880fc774381245b58968"><div class="ttname"><a href="class_soil_math_1_1_exception_1_1_math_exception.html#a27eb82d0d823880fc774381245b58968">SoilMath::Exception::MathException::MathException</a></div><div class="ttdeci">MathException(std::string m=EXCEPTION_MATH, int n=EXCEPTION_MATH_NR)</div><div class="ttdef"><b>Definition:</b> <a href="_math_exception_8h_source.html#l00030">MathException.h:30</a></div></div>
+<div class="ttc" id="_math_exception_8h_html_a5c678225d975a600ef77313d82a247b0"><div class="ttname"><a href="_math_exception_8h.html#a5c678225d975a600ef77313d82a247b0">EXCEPTION_MATH</a></div><div class="ttdeci">#define EXCEPTION_MATH</div><div class="ttdef"><b>Definition:</b> <a href="_math_exception_8h_source.html#l00008">MathException.h:8</a></div></div>
+<div class="ttc" id="class_soil_math_1_1_exception_1_1_math_exception_html_aa8666225e202dd62eca2af0f826908be"><div class="ttname"><a href="class_soil_math_1_1_exception_1_1_math_exception.html#aa8666225e202dd62eca2af0f826908be">SoilMath::Exception::MathException::id</a></div><div class="ttdeci">const int * id() const _GLIBCXX_USE_NOEXCEPT</div><div class="ttdef"><b>Definition:</b> <a href="_math_exception_8h_source.html#l00034">MathException.h:34</a></div></div>
+<div class="ttc" id="namespace_soil_math_html"><div class="ttname"><a href="namespace_soil_math.html">SoilMath</a></div><div class="ttdoc">Genetic Algorithmes used for optimization problems. </div><div class="ttdef"><b>Definition:</b> <a href="_common_operations_8h_source.html#l00016">CommonOperations.h:16</a></div></div>
+<div class="ttc" id="class_soil_math_1_1_exception_1_1_math_exception_html_afa15e6f8ef6ac7ed599656b0ade760cc"><div class="ttname"><a href="class_soil_math_1_1_exception_1_1_math_exception.html#afa15e6f8ef6ac7ed599656b0ade760cc">SoilMath::Exception::MathException::msg</a></div><div class="ttdeci">std::string msg</div><div class="ttdef"><b>Definition:</b> <a href="_math_exception_8h_source.html#l00037">MathException.h:37</a></div></div>
+<div class="ttc" id="class_soil_math_1_1_exception_1_1_math_exception_html_aa9a6f85505030c25c55f2eb6e9f0aea1"><div class="ttname"><a href="class_soil_math_1_1_exception_1_1_math_exception.html#aa9a6f85505030c25c55f2eb6e9f0aea1">SoilMath::Exception::MathException::nr</a></div><div class="ttdeci">int nr</div><div class="ttdef"><b>Definition:</b> <a href="_math_exception_8h_source.html#l00038">MathException.h:38</a></div></div>
+<div class="ttc" id="class_soil_math_1_1_exception_1_1_math_exception_html_ac0af07cbf4a152c7e5e6e372ff73ceb8"><div class="ttname"><a href="class_soil_math_1_1_exception_1_1_math_exception.html#ac0af07cbf4a152c7e5e6e372ff73ceb8">SoilMath::Exception::MathException::~MathException</a></div><div class="ttdeci">~MathException() _GLIBCXX_USE_NOEXCEPT</div><div class="ttdef"><b>Definition:</b> <a href="_math_exception_8h_source.html#l00032">MathException.h:32</a></div></div>
+<div class="ttc" id="class_soil_math_1_1_exception_1_1_math_exception_html"><div class="ttname"><a href="class_soil_math_1_1_exception_1_1_math_exception.html">SoilMath::Exception::MathException</a></div><div class="ttdef"><b>Definition:</b> <a href="_math_exception_8h_source.html#l00028">MathException.h:28</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_38989e3f393d92babfcacf51a2b05fb4.html">SoilMath</a></li><li class="navelem"><a class="el" href="_math_exception_8h.html">MathException.h</a></li>
-    <li class="footer">Generated on Sat Jun 20 2015 18:57:03 for Vision Soil Analyzer by
+    <li class="footer">Generated on Mon Oct 5 2015 21:06:38 for Vision Soil Analyzer by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

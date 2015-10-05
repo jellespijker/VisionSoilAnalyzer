@@ -9,22 +9,8 @@
 #include "BBB.h"
 #include <dirent.h>
 
-#define OCP_PATH "/sys/devices/ocp.3/"
-#define P8_13_FIND "bs_pwm_test_P8_13"
-#define P8_19_FIND "bs_pwm_test_P8_19"
-#define P9_14_FIND "bs_pwm_test_P9_14"
-#define P9_16_FIND "bs_pwm_test_P9_16"
-
-#define PWM_CAPE "am33xx_pwm"
-#define P8_13_CAPE "bspwm_P8_13" //_14
-#define P8_19_CAPE "bspwm_P8_13" //_14
-#define P9_14_CAPE "bspwm_P9_14" //_16
-#define P9_16_CAPE "bspwm_P9_16" //_16
-
-#define P8_13_CAPE_LOAD "bspwm_P8_13_14"
-#define P8_19_CAPE_LOAD "bspwm_P8_13_14"
-#define P9_14_CAPE_LOAD "bspwm_P9_14_16"
-#define P9_16_CAPE_LOAD "bspwm_P9_16_16"
+#define OCP_PATH "/sys/class/pwm/"
+#define PWM_CAPE "Override Board Name,00A0,Override Manuf,cape-universaln"
 
 namespace Hardware {
 class PWM : public BBB {
@@ -73,13 +59,12 @@ private:
   Run run;            // current run state
   Polarity polarity;  // current polaity
 
-  string basepath;     // the basepath ocp.3
+  string basepath;     // the basepath ocp
   string dutypath;     // base + duty path
   string periodpath;   // base + period path
   string runpath;      // base + run path
   string polaritypath; // base + polarity path
 
   void calcIntensity();
-  string FindPath(string value);
 };
 }

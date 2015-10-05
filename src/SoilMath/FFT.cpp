@@ -80,7 +80,8 @@ ComplexVect_t FFT::Contour2Complex(const cv::Mat &img, float centerCol,
   }
 
   if (sCont.front().size() < 1) {
-    throw Exception::MathException("No contour found in image!");
+    throw Exception::MathException(EXCEPTION_NO_CONTOUR_FOUND,
+                                   EXCEPTION_NO_CONTOUR_FOUND_NR);
   } // Exception handling
 
   uint32_t prev = -1;
@@ -119,8 +120,8 @@ ComplexVect_t FFT::Contour2Complex(const cv::Mat &img, float centerCol,
       i = sCont.front().back();
     } // If it isn't the end set i to the last node of the first queue
     if (sCont.size() == 0) {
-      throw Exception::MathException(
-          "No continuous contour found, or less then 8 pixels long!");
+      throw Exception::MathException(EXCEPTION_NO_CONTOUR_FOUND,
+                                     EXCEPTION_NO_CONTOUR_FOUND_NR);
     }
   }
 

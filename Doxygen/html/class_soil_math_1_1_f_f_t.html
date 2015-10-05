@@ -30,7 +30,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="IHClogo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Vision Soil Analyzer
    &#160;<span id="projectnumber">1.0.0</span>
@@ -49,7 +48,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -127,6 +125,8 @@ $(document).ready(function(){initNavTree('class_soil_math_1_1_f_f_t.html','');})
 Collaboration diagram for SoilMath::FFT:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_soil_math_1_1_f_f_t__coll__graph.png" border="0" usemap="#_soil_math_1_1_f_f_t_coll__map" alt="Collaboration graph"/></div>
+<map name="_soil_math_1_1_f_f_t_coll__map" id="_soil_math_1_1_f_f_t_coll__map">
+</map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -146,11 +146,11 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a18a95490ea8e929584c2af6569dec3b6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_soil_math_types_8h.html#a7567e521c2b2c408dcb62dbff72390f7">ComplexVect_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_soil_math_1_1_f_f_t.html#a18a95490ea8e929584c2af6569dec3b6">Contour2Complex</a> (const cv::Mat &amp;img, float centerCol, float centerRow)</td></tr>
 <tr class="memdesc:a18a95490ea8e929584c2af6569dec3b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contour2Complex a private function which translates a continous contour image to a vector of complex values. The contour is found using a depth first search with extension list. The alghorithm is based upon <a href="http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-034-artificial-intelligence-fall-2010/lecture-videos/lecture-4-search-depth-first-hill-climbing-beam/">MIT opencourseware 6-034-artificial-intelligence lecture 4</a>  <a href="#a18a95490ea8e929584c2af6569dec3b6">More...</a><br /></td></tr>
 <tr class="separator:a18a95490ea8e929584c2af6569dec3b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a45b32ad009154112d2fc4e467fc7c5ac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_soil_math_types_8h.html#a1ade796add2f13888dfa9e6bde0bdc37">iContour_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_soil_math_1_1_f_f_t.html#a45b32ad009154112d2fc4e467fc7c5ac">Neighbors</a> (<a class="el" href="_soil_math_types_8h.html#a65f85814a8290f9797005d3b28e7e5fc">uchar</a> *O, int pixel, uint32_t columns, uint32_t rows)</td></tr>
+<tr class="memitem:a45b32ad009154112d2fc4e467fc7c5ac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_soil_math_types_8h.html#a1ade796add2f13888dfa9e6bde0bdc37">iContour_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_soil_math_1_1_f_f_t.html#a45b32ad009154112d2fc4e467fc7c5ac">Neighbors</a> (<a class="el" href="_soil_math_types_8h.html#a65f85814a8290f9797005d3b28e7e5fc">uchar</a> *O, int pixel, <a class="el" href="_soil_math_types_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> columns, <a class="el" href="_soil_math_types_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> rows)</td></tr>
 <tr class="memdesc:a45b32ad009154112d2fc4e467fc7c5ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Neighbors a private function returning the neighboring pixels which belong to a contour.  <a href="#a45b32ad009154112d2fc4e467fc7c5ac">More...</a><br /></td></tr>
 <tr class="separator:a45b32ad009154112d2fc4e467fc7c5ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a48bc7ad948d820d6f87b3e353b6d1cd4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_soil_math_1_1_f_f_t.html#a48bc7ad948d820d6f87b3e353b6d1cd4">fft</a> (<a class="el" href="_soil_math_types_8h.html#a5118c9f6b02a06945c93a3893e51febe">ComplexArray_t</a> &amp;CA)</td></tr>
-<tr class="memdesc:a48bc7ad948d820d6f87b3e353b6d1cd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">fft a private function calculating the Fast Fourier Transform let <img class="formulaInl" alt="$ m $" src="form_2.png"/> be an integer and let <img class="formulaInl" alt="$ N=2^m $" src="form_3.png"/> also <img class="formulaInl" alt="$ CA=[x_0,\ldots,x_{N-1}] $" src="form_4.png"/> is an <img class="formulaInl" alt="$ N $" src="form_5.png"/> dimensional complex vector let <img class="formulaInl" alt="$ \omega=\exp({-2\pi i\over N}) $" src="form_6.png"/> then <img class="formulaInl" alt="$ c_k={\frac{1}{N}}\sum_{j=0}^{j=N-1}CA_j\omega^{jk} $" src="form_9.png"/>  <a href="#a48bc7ad948d820d6f87b3e353b6d1cd4">More...</a><br /></td></tr>
+<tr class="memdesc:a48bc7ad948d820d6f87b3e353b6d1cd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">fft a private function calculating the Fast Fourier Transform let <img class="formulaInl" alt="$ m $" src="form_1.png"/> be an integer and let <img class="formulaInl" alt="$ N=2^m $" src="form_2.png"/> also <img class="formulaInl" alt="$ CA=[x_0,\ldots,x_{N-1}] $" src="form_3.png"/> is an <img class="formulaInl" alt="$ N $" src="form_4.png"/> dimensional complex vector let <img class="formulaInl" alt="$ \omega=\exp({-2\pi i\over N}) $" src="form_5.png"/> then <img class="formulaInl" alt="$ c_k={\frac{1}{N}}\sum_{j=0}^{j=N-1}CA_j\omega^{jk} $" src="form_6.png"/>  <a href="#a48bc7ad948d820d6f87b3e353b6d1cd4">More...</a><br /></td></tr>
 <tr class="separator:a48bc7ad948d820d6f87b3e353b6d1cd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b7f18d1cb2d728584414d8660d52586"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_soil_math_1_1_f_f_t.html#a5b7f18d1cb2d728584414d8660d52586">ifft</a> (<a class="el" href="_soil_math_types_8h.html#a5118c9f6b02a06945c93a3893e51febe">ComplexArray_t</a> &amp;CA)</td></tr>
 <tr class="memdesc:a5b7f18d1cb2d728584414d8660d52586"><td class="mdescLeft">&#160;</td><td class="mdescRight">ifft  <a href="#a5b7f18d1cb2d728584414d8660d52586">More...</a><br /></td></tr>
@@ -187,8 +187,7 @@ Private Attributes</h2></td></tr>
 <p>Standard constructor. </p>
 
 <p>Definition at line <a class="el" href="_f_f_t_8cpp_source.html#l00011">11</a> of file <a class="el" href="_f_f_t_8cpp_source.html">FFT.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{}</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="a279862b286d865ebc5aa707f94f19d73"></a>
@@ -207,8 +206,7 @@ Private Attributes</h2></td></tr>
 <p>Standard deconstructor. </p>
 
 <p>Definition at line <a class="el" href="_f_f_t_8cpp_source.html#l00013">13</a> of file <a class="el" href="_f_f_t_8cpp_source.html">FFT.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{}</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -253,7 +251,7 @@ Private Attributes</h2></td></tr>
 <p>Contour2Complex a private function which translates a continous contour image to a vector of complex values. The contour is found using a depth first search with extension list. The alghorithm is based upon <a href="http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-034-artificial-intelligence-fall-2010/lecture-videos/lecture-4-search-depth-first-hill-climbing-beam/">MIT opencourseware 6-034-artificial-intelligence lecture 4</a> </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">img</td><td>contour in the form of a cv::Mat type CV_8UC1. Which should consist of a continous contour. <img class="formulaInl" alt="$ \{ img \in \mathbb{Z} | 0 \leq img \leq 1 \} $" src="form_1.png"/> </td></tr>
+    <tr><td class="paramname">img</td><td>contour in the form of a cv::Mat type CV_8UC1. Which should consist of a continous contour. <img class="formulaInl" alt="$ \{ img \in \mathbb{Z} | 0 \leq img \leq 1 \} $" src="form_0.png"/> </td></tr>
     <tr><td class="paramname">centerCol</td><td>centre of the contour X value </td></tr>
     <tr><td class="paramname">centerRow</td><td>centre of the contour Y value </td></tr>
   </table>
@@ -263,99 +261,10 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_f_f_t_8cpp_source.html#l00064">64</a> of file <a class="el" href="_f_f_t_8cpp_source.html">FFT.cpp</a>.</p>
 
-<p>References <a class="el" href="_comparision_pictures_2_createtest_image_8m_source.html#l00006">i</a>, <a class="el" href="_comparision_pictures_2_createtest_image_8m_source.html#l00019">j</a>, and <a class="el" href="_f_f_t_8cpp_source.html#l00043">Neighbors()</a>.</p>
+<p>References <a class="el" href="_math_exception_8h_source.html#l00010">EXCEPTION_NO_CONTOUR_FOUND</a>, <a class="el" href="_math_exception_8h_source.html#l00012">EXCEPTION_NO_CONTOUR_FOUND_NR</a>, and <a class="el" href="_f_f_t_8cpp_source.html#l00043">Neighbors()</a>.</p>
 
 <p>Referenced by <a class="el" href="_f_f_t_8cpp_source.html#l00015">GetDescriptors()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                                                    {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <a class="code" href="_soil_math_types_8h.html#a65f85814a8290f9797005d3b28e7e5fc">uchar</a> *O = img.data;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  uint32_t pEnd = img.cols * img.rows;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  std::deque&lt;std::deque&lt;uint32_t&gt;&gt; sCont;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  std::deque&lt;uint32_t&gt; eList;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="comment">// Initialize the queue</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="keywordflow">for</span> (uint32_t <a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> = 0; <a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> &lt; pEnd; <a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a>++) {</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">if</span> (O[<a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a>] == 1) {</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      std::deque&lt;uint32_t&gt; tmpQ;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      tmpQ.push_back(<a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a>);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      sCont.push_back(tmpQ);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    }</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  }</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="keywordflow">if</span> (sCont.front().size() &lt; 1) {</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordflow">throw</span> Exception::MathException(<span class="stringliteral">&quot;No contour found in image!&quot;</span>);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  } <span class="comment">// Exception handling</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  uint32_t prev = -1;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  <span class="comment">// Extend path on queue</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <span class="keywordflow">for</span> (uint32_t <a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> = sCont.front().front(); <a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> &lt; pEnd;) {</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <a class="code" href="_soil_math_types_8h.html#a1ade796add2f13888dfa9e6bde0bdc37">iContour_t</a> nBors =</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <a class="code" href="class_soil_math_1_1_f_f_t.html#a45b32ad009154112d2fc4e467fc7c5ac">Neighbors</a>(O, <a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a>, img.cols, img.rows); <span class="comment">// find neighboring pixels</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    std::deque&lt;uint32_t&gt; cQ = sCont.front(); <span class="comment">// store first queue;</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    sCont.erase(sCont.begin());              <span class="comment">// erase first queue from beginning</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordflow">if</span> (cQ.size() &gt; 1) {</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;      prev = cQ.size() - 2;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;      prev = 0;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    }</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="comment">// Loop through each neighbor</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordflow">for</span> (uint32_t <a class="code" href="_comparision_pictures_2_createtest_image_8m.html#ac86694252f8dfdb19aaeadc4b7c342c6">j</a> = 0; <a class="code" href="_comparision_pictures_2_createtest_image_8m.html#ac86694252f8dfdb19aaeadc4b7c342c6">j</a> &lt; nBors.size(); <a class="code" href="_comparision_pictures_2_createtest_image_8m.html#ac86694252f8dfdb19aaeadc4b7c342c6">j</a>++) {</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;      <span class="keywordflow">if</span> (nBors[<a class="code" href="_comparision_pictures_2_createtest_image_8m.html#ac86694252f8dfdb19aaeadc4b7c342c6">j</a>] != cQ[prev]) <span class="comment">// No backtracking</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;      {</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keywordflow">if</span> (nBors[<a class="code" href="_comparision_pictures_2_createtest_image_8m.html#ac86694252f8dfdb19aaeadc4b7c342c6">j</a>] == cQ.front() &amp;&amp; cQ.size() &gt; 8) {</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;          <a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> = pEnd;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        } <span class="comment">// Back at first node</span></div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="keywordflow">if</span> (std::find(eList.begin(), eList.end(), nBors[<a class="code" href="_comparision_pictures_2_createtest_image_8m.html#ac86694252f8dfdb19aaeadc4b7c342c6">j</a>]) ==</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            eList.end()) <span class="comment">// Check if this current route is extended elsewhere</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        {</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;          std::deque&lt;uint32_t&gt; nQ = cQ;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;          nQ.push_back(nBors[<a class="code" href="_comparision_pictures_2_createtest_image_8m.html#ac86694252f8dfdb19aaeadc4b7c342c6">j</a>]); <span class="comment">// Add the neighbor to the queue</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;          sCont.push_front(nQ);   <span class="comment">// add the sequence to the front of the queue</span></div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        }</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;      }</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    }</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordflow">if</span> (nBors.size() &gt; 2) {</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;      eList.push_back(<a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a>);</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    } <span class="comment">// if there are multiple choices put current node in extension List</span></div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> != pEnd) {</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;      <a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> = sCont.front().back();</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    } <span class="comment">// If it isn&#39;t the end set i to the last node of the first queue</span></div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordflow">if</span> (sCont.size() == 0) {</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;      <span class="keywordflow">throw</span> Exception::MathException(</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;          <span class="stringliteral">&quot;No continuous contour found, or less then 8 pixels long!&quot;</span>);</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    }</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  }</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  <span class="comment">// convert the first queue to a complex normalized vector</span></div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  <a class="code" href="_soil_math_types_8h.html#a26c307796ad803485b0376c90026d8f7">Complex_t</a> cPoint;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  <a class="code" href="_soil_math_types_8h.html#a7567e521c2b2c408dcb62dbff72390f7">ComplexVect_t</a> contour;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  <span class="keywordtype">float</span> col = 0.0;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  <span class="comment">// Normalize and convert the complex function</span></div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  for_each(</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;      sCont.front().begin(), sCont.front().end(),</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;      [&amp;img, &amp;cPoint, &amp;contour, &amp;centerCol, &amp;centerRow, &amp;col](uint32_t &amp;e) {</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        col = (float)((e % img.cols) - centerCol);</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <span class="keywordflow">if</span> (col == 0.0) {</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;          cPoint.real(1.0);</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;          cPoint.real((<span class="keywordtype">float</span>)(col / centerCol));</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        }</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        cPoint.imag((<span class="keywordtype">float</span>)((floorf(e / img.cols) - centerRow) / centerRow));</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        contour.push_back(cPoint);</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;      });</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;  <span class="keywordflow">return</span> contour;</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;}</div>
-<div class="ttc" id="_comparision_pictures_2_createtest_image_8m_html_ac86694252f8dfdb19aaeadc4b7c342c6"><div class="ttname"><a href="_comparision_pictures_2_createtest_image_8m.html#ac86694252f8dfdb19aaeadc4b7c342c6">j</a></div><div class="ttdeci">for j</div><div class="ttdef"><b>Definition:</b> <a href="_comparision_pictures_2_createtest_image_8m_source.html#l00019">CreatetestImage.m:19</a></div></div>
-<div class="ttc" id="_soil_math_types_8h_html_a1ade796add2f13888dfa9e6bde0bdc37"><div class="ttname"><a href="_soil_math_types_8h.html#a1ade796add2f13888dfa9e6bde0bdc37">iContour_t</a></div><div class="ttdeci">std::vector&lt; uint32_t &gt; iContour_t</div><div class="ttdef"><b>Definition:</b> <a href="_soil_math_types_8h_source.html#l00029">SoilMathTypes.h:29</a></div></div>
-<div class="ttc" id="_soil_math_types_8h_html_a65f85814a8290f9797005d3b28e7e5fc"><div class="ttname"><a href="_soil_math_types_8h.html#a65f85814a8290f9797005d3b28e7e5fc">uchar</a></div><div class="ttdeci">unsigned char uchar</div><div class="ttdef"><b>Definition:</b> <a href="_soil_math_types_8h_source.html#l00023">SoilMathTypes.h:23</a></div></div>
-<div class="ttc" id="_soil_math_types_8h_html_a7567e521c2b2c408dcb62dbff72390f7"><div class="ttname"><a href="_soil_math_types_8h.html#a7567e521c2b2c408dcb62dbff72390f7">ComplexVect_t</a></div><div class="ttdeci">std::vector&lt; Complex_t &gt; ComplexVect_t</div><div class="ttdef"><b>Definition:</b> <a href="_soil_math_types_8h_source.html#l00027">SoilMathTypes.h:27</a></div></div>
-<div class="ttc" id="_comparision_pictures_2_createtest_image_8m_html_a6f6ccfcf58b31cb6412107d9d5281426"><div class="ttname"><a href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a></div><div class="ttdeci">for i</div><div class="ttdef"><b>Definition:</b> <a href="_comparision_pictures_2_createtest_image_8m_source.html#l00006">CreatetestImage.m:6</a></div></div>
-<div class="ttc" id="_soil_math_types_8h_html_a26c307796ad803485b0376c90026d8f7"><div class="ttname"><a href="_soil_math_types_8h.html#a26c307796ad803485b0376c90026d8f7">Complex_t</a></div><div class="ttdeci">std::complex&lt; double &gt; Complex_t</div><div class="ttdef"><b>Definition:</b> <a href="_soil_math_types_8h_source.html#l00026">SoilMathTypes.h:26</a></div></div>
-<div class="ttc" id="class_soil_math_1_1_f_f_t_html_a45b32ad009154112d2fc4e467fc7c5ac"><div class="ttname"><a href="class_soil_math_1_1_f_f_t.html#a45b32ad009154112d2fc4e467fc7c5ac">SoilMath::FFT::Neighbors</a></div><div class="ttdeci">iContour_t Neighbors(uchar *O, int pixel, uint32_t columns, uint32_t rows)</div><div class="ttdoc">Neighbors a private function returning the neighboring pixels which belong to a contour. </div><div class="ttdef"><b>Definition:</b> <a href="_f_f_t_8cpp_source.html#l00043">FFT.cpp:43</a></div></div>
-</div><!-- fragment -->
+
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -370,7 +279,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_soil_math_1_1_f_f_t_a18a95490ea8e929584c2af6569dec3b6_icgraph.png" border="0" usemap="#class_soil_math_1_1_f_f_t_a18a95490ea8e929584c2af6569dec3b6_icgraph" alt=""/></div>
 <map name="class_soil_math_1_1_f_f_t_a18a95490ea8e929584c2af6569dec3b6_icgraph" id="class_soil_math_1_1_f_f_t_a18a95490ea8e929584c2af6569dec3b6_icgraph">
-<area shape="rect" id="node2" href="class_soil_math_1_1_f_f_t.html#af5fb6f4804079ee184a314e2f0a0f2fc" title="Transforming the img to the frequency domain and returning the Fourier Descriptors. " alt="" coords="272,42,473,69"/><area shape="rect" id="node3" href="class_soil_analyzer_1_1_particle.html#aeb4ed9f49b88f5d6563b993154aabe50" title="Analyze the function which analyses the particle. " alt="" coords="547,5,693,47"/><area shape="rect" id="node4" href="_v_s_a___u_t_8cpp.html#a9cc36511e6538414d328e1b0c941f4d3" title="BOOST_AUTO_TEST_CASE" alt="" coords="521,71,719,98"/></map>
+<area shape="rect" id="node2" href="class_soil_math_1_1_f_f_t.html#af5fb6f4804079ee184a314e2f0a0f2fc" title="Transforming the img to the frequency domain and returning the Fourier Descriptors. " alt="" coords="272,111,473,138"/><area shape="rect" id="node3" href="class_soil_analyzer_1_1_analyzer.html#aeed5e3b158ff37d5fecb2816e12c3c31" title="Analyzer::GetFFD. " alt="" coords="521,104,676,145"/><area shape="rect" id="node4" href="class_soil_analyzer_1_1_analyzer.html#a1cb605c255d35e85ccaae06a76917188" title="Analyzer::Analyse. " alt="" coords="724,104,879,145"/><area shape="rect" id="node5" href="class_soil_analyzer_1_1_analyzer.html#afcbb3b1a583d1fe9a7b9e424a7ded3df" title="SoilAnalyzer::Analyzer\l::Analyse" alt="" coords="965,5,1120,47"/><area shape="rect" id="node6" href="class_v_s_a_main_window.html#a671264c6cb0136f83fc24075545c8c0c" title="VSAMainWindow::on_action\lNewSample_triggered" alt="" coords="949,71,1137,112"/><area shape="rect" id="node7" href="class_v_s_a_main_window.html#af670cbc8db47377e395cadd2d4c59772" title="VSAMainWindow::on_Classification\l_changed" alt="" coords="927,136,1159,177"/><area shape="rect" id="node9" href="class_v_s_a_main_window.html#afb86baadff8bf9e00b4d487de68e5b80" title="VSAMainWindow::on_particle\l_deleted" alt="" coords="945,201,1140,243"/><area shape="rect" id="node8" href="class_v_s_a_main_window.html#a7fa18757c1fce5c8f41f25277f9e1a70" title="VSAMainWindow::VSAMainWindow" alt="" coords="1207,177,1441,203"/></map>
 </div>
 </p>
 
@@ -398,45 +307,24 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>fft a private function calculating the Fast Fourier Transform let <img class="formulaInl" alt="$ m $" src="form_2.png"/> be an integer and let <img class="formulaInl" alt="$ N=2^m $" src="form_3.png"/> also <img class="formulaInl" alt="$ CA=[x_0,\ldots,x_{N-1}] $" src="form_4.png"/> is an <img class="formulaInl" alt="$ N $" src="form_5.png"/> dimensional complex vector let <img class="formulaInl" alt="$ \omega=\exp({-2\pi i\over N}) $" src="form_6.png"/> then <img class="formulaInl" alt="$ c_k={\frac{1}{N}}\sum_{j=0}^{j=N-1}CA_j\omega^{jk} $" src="form_9.png"/> </p>
+<p>fft a private function calculating the Fast Fourier Transform let <img class="formulaInl" alt="$ m $" src="form_1.png"/> be an integer and let <img class="formulaInl" alt="$ N=2^m $" src="form_2.png"/> also <img class="formulaInl" alt="$ CA=[x_0,\ldots,x_{N-1}] $" src="form_3.png"/> is an <img class="formulaInl" alt="$ N $" src="form_4.png"/> dimensional complex vector let <img class="formulaInl" alt="$ \omega=\exp({-2\pi i\over N}) $" src="form_5.png"/> then <img class="formulaInl" alt="$ c_k={\frac{1}{N}}\sum_{j=0}^{j=N-1}CA_j\omega^{jk} $" src="form_6.png"/> </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">CA</td><td>a <img class="formulaInl" alt="$ CA=[x_0,\ldots,x_{N-1}] $" src="form_4.png"/> is an <img class="formulaInl" alt="$ N $" src="form_5.png"/> dimensional complex vector </td></tr>
+    <tr><td class="paramname">CA</td><td>a <img class="formulaInl" alt="$ CA=[x_0,\ldots,x_{N-1}] $" src="form_3.png"/> is an <img class="formulaInl" alt="$ N $" src="form_4.png"/> dimensional complex vector </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_f_f_t_8cpp_source.html#l00148">148</a> of file <a class="el" href="_f_f_t_8cpp_source.html">FFT.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_f_f_t_8cpp_source.html#l00149">149</a> of file <a class="el" href="_f_f_t_8cpp_source.html">FFT.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="_f_f_t_8cpp_source.html#l00015">GetDescriptors()</a>, and <a class="el" href="_f_f_t_8cpp_source.html#l00168">ifft()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                                {</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">size_t</span> N = CA.size();</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  <span class="keywordflow">if</span> (N &lt;= 1) {</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  }</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;  <a class="code" href="_soil_math_types_8h.html#a5118c9f6b02a06945c93a3893e51febe">ComplexArray_t</a> even = CA[std::slice(0, N / 2, 2)];</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  <a class="code" href="_soil_math_types_8h.html#a5118c9f6b02a06945c93a3893e51febe">ComplexArray_t</a> odd = CA[std::slice(1, N / 2, 2)];</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  <a class="code" href="class_soil_math_1_1_f_f_t.html#a48bc7ad948d820d6f87b3e353b6d1cd4">fft</a>(even);</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;  <a class="code" href="class_soil_math_1_1_f_f_t.html#a48bc7ad948d820d6f87b3e353b6d1cd4">fft</a>(odd);</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> k = 0; k &lt; N / 2; ++k) {</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <a class="code" href="_soil_math_types_8h.html#a26c307796ad803485b0376c90026d8f7">Complex_t</a> ct = std::polar(1.0, -2 * M_PI * k / N) * odd[k];</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    CA[k] = even[k] + ct;</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    CA[k + N / 2] = even[k] - ct;</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  }</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;}</div>
-<div class="ttc" id="_soil_math_types_8h_html_a5118c9f6b02a06945c93a3893e51febe"><div class="ttname"><a href="_soil_math_types_8h.html#a5118c9f6b02a06945c93a3893e51febe">ComplexArray_t</a></div><div class="ttdeci">std::valarray&lt; Complex_t &gt; ComplexArray_t</div><div class="ttdef"><b>Definition:</b> <a href="_soil_math_types_8h_source.html#l00028">SoilMathTypes.h:28</a></div></div>
-<div class="ttc" id="_soil_math_types_8h_html_a26c307796ad803485b0376c90026d8f7"><div class="ttname"><a href="_soil_math_types_8h.html#a26c307796ad803485b0376c90026d8f7">Complex_t</a></div><div class="ttdeci">std::complex&lt; double &gt; Complex_t</div><div class="ttdef"><b>Definition:</b> <a href="_soil_math_types_8h_source.html#l00026">SoilMathTypes.h:26</a></div></div>
-<div class="ttc" id="class_soil_math_1_1_f_f_t_html_a48bc7ad948d820d6f87b3e353b6d1cd4"><div class="ttname"><a href="class_soil_math_1_1_f_f_t.html#a48bc7ad948d820d6f87b3e353b6d1cd4">SoilMath::FFT::fft</a></div><div class="ttdeci">void fft(ComplexArray_t &amp;CA)</div><div class="ttdoc">fft a private function calculating the Fast Fourier Transform let  be an integer and let  also  is an...</div><div class="ttdef"><b>Definition:</b> <a href="_f_f_t_8cpp_source.html#l00148">FFT.cpp:148</a></div></div>
-</div><!-- fragment -->
+<p>Referenced by <a class="el" href="_f_f_t_8cpp_source.html#l00015">GetDescriptors()</a>, and <a class="el" href="_f_f_t_8cpp_source.html#l00169">ifft()</a>.</p>
+
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_soil_math_1_1_f_f_t_a48bc7ad948d820d6f87b3e353b6d1cd4_icgraph.png" border="0" usemap="#class_soil_math_1_1_f_f_t_a48bc7ad948d820d6f87b3e353b6d1cd4_icgraph" alt=""/></div>
 <map name="class_soil_math_1_1_f_f_t_a48bc7ad948d820d6f87b3e353b6d1cd4_icgraph" id="class_soil_math_1_1_f_f_t_a48bc7ad948d820d6f87b3e353b6d1cd4_icgraph">
-<area shape="rect" id="node2" href="class_soil_math_1_1_f_f_t.html#af5fb6f4804079ee184a314e2f0a0f2fc" title="Transforming the img to the frequency domain and returning the Fourier Descriptors. " alt="" coords="179,42,380,69"/><area shape="rect" id="node5" href="class_soil_math_1_1_f_f_t.html#a5b7f18d1cb2d728584414d8660d52586" title="ifft " alt="" coords="215,93,343,119"/><area shape="rect" id="node3" href="class_soil_analyzer_1_1_particle.html#aeb4ed9f49b88f5d6563b993154aabe50" title="Analyze the function which analyses the particle. " alt="" coords="453,5,600,47"/><area shape="rect" id="node4" href="_v_s_a___u_t_8cpp.html#a9cc36511e6538414d328e1b0c941f4d3" title="BOOST_AUTO_TEST_CASE" alt="" coords="428,71,625,98"/></map>
+<area shape="rect" id="node2" href="class_soil_math_1_1_f_f_t.html#af5fb6f4804079ee184a314e2f0a0f2fc" title="Transforming the img to the frequency domain and returning the Fourier Descriptors. " alt="" coords="179,111,380,138"/><area shape="rect" id="node10" href="class_soil_math_1_1_f_f_t.html#a5b7f18d1cb2d728584414d8660d52586" title="ifft " alt="" coords="215,162,343,189"/><area shape="rect" id="node3" href="class_soil_analyzer_1_1_analyzer.html#aeed5e3b158ff37d5fecb2816e12c3c31" title="Analyzer::GetFFD. " alt="" coords="428,104,583,145"/><area shape="rect" id="node4" href="class_soil_analyzer_1_1_analyzer.html#a1cb605c255d35e85ccaae06a76917188" title="Analyzer::Analyse. " alt="" coords="631,104,785,145"/><area shape="rect" id="node5" href="class_soil_analyzer_1_1_analyzer.html#afcbb3b1a583d1fe9a7b9e424a7ded3df" title="SoilAnalyzer::Analyzer\l::Analyse" alt="" coords="872,5,1027,47"/><area shape="rect" id="node6" href="class_v_s_a_main_window.html#a671264c6cb0136f83fc24075545c8c0c" title="VSAMainWindow::on_action\lNewSample_triggered" alt="" coords="855,71,1043,112"/><area shape="rect" id="node7" href="class_v_s_a_main_window.html#af670cbc8db47377e395cadd2d4c59772" title="VSAMainWindow::on_Classification\l_changed" alt="" coords="833,136,1065,177"/><area shape="rect" id="node9" href="class_v_s_a_main_window.html#afb86baadff8bf9e00b4d487de68e5b80" title="VSAMainWindow::on_particle\l_deleted" alt="" coords="852,201,1047,243"/><area shape="rect" id="node8" href="class_v_s_a_main_window.html#a7fa18757c1fce5c8f41f25277f9e1a70" title="VSAMainWindow::VSAMainWindow" alt="" coords="1113,177,1348,203"/></map>
 </div>
 </p>
 
@@ -459,7 +347,7 @@ Here is the caller graph for this function:</div>
 <p>Transforming the img to the frequency domain and returning the Fourier Descriptors. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">img</td><td>contour in the form of a cv::Mat type CV_8UC1. Which should consist of a continous contour. <img class="formulaInl" alt="$ \{ img \in \mathbb{Z} | 0 \leq img \leq 1 \} $" src="form_1.png"/> </td></tr>
+    <tr><td class="paramname">img</td><td>contour in the form of a cv::Mat type CV_8UC1. Which should consist of a continous contour. <img class="formulaInl" alt="$ \{ img \in \mathbb{Z} | 0 \leq img \leq 1 \} $" src="form_0.png"/> </td></tr>
   </table>
   </dd>
 </dl>
@@ -467,44 +355,10 @@ Here is the caller graph for this function:</div>
 
 <p>Definition at line <a class="el" href="_f_f_t_8cpp_source.html#l00015">15</a> of file <a class="el" href="_f_f_t_8cpp_source.html">FFT.cpp</a>.</p>
 
-<p>References <a class="el" href="_f_f_t_8h_source.html#l00059">complexcontour</a>, <a class="el" href="_f_f_t_8cpp_source.html#l00064">Contour2Complex()</a>, <a class="el" href="_f_f_t_8cpp_source.html#l00148">fft()</a>, <a class="el" href="_f_f_t_8h_source.html#l00056">fftDescriptors</a>, and <a class="el" href="_comparision_pictures_2_createtest_image_8m_source.html#l00006">i</a>.</p>
+<p>References <a class="el" href="_f_f_t_8h_source.html#l00059">complexcontour</a>, <a class="el" href="_f_f_t_8cpp_source.html#l00064">Contour2Complex()</a>, <a class="el" href="_f_f_t_8cpp_source.html#l00149">fft()</a>, and <a class="el" href="_f_f_t_8h_source.html#l00056">fftDescriptors</a>.</p>
 
-<p>Referenced by <a class="el" href="_particle_8cpp_source.html#l00027">SoilAnalyzer::Particle::Analyze()</a>, and <a class="el" href="_v_s_a___u_t_8cpp_source.html#l00305">BOOST_AUTO_TEST_CASE()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                                                  {</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <span class="keywordflow">if</span> (!<a class="code" href="class_soil_math_1_1_f_f_t.html#a466b360529319d0e6e3220f446f703be">fftDescriptors</a>.empty()) {</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_soil_math_1_1_f_f_t.html#a466b360529319d0e6e3220f446f703be">fftDescriptors</a>;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  }</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <a class="code" href="class_soil_math_1_1_f_f_t.html#a48141f0c777ca86f2e536f88b509b639">complexcontour</a> = <a class="code" href="class_soil_math_1_1_f_f_t.html#a18a95490ea8e929584c2af6569dec3b6">Contour2Complex</a>(img, img.cols / 2, img.rows / 2);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <span class="comment">// Supplement the vector of complex numbers so that N = 2^m</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  uint32_t N = <a class="code" href="class_soil_math_1_1_f_f_t.html#a48141f0c777ca86f2e536f88b509b639">complexcontour</a>.size();</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keywordtype">double</span> logN = log(static_cast&lt;double&gt;(N)) / log(2.0);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="keywordflow">if</span> (floor(logN) != logN) {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="comment">// Get the next power of 2</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">double</span> nextLogN = floor(logN + 1.0);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    N = <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(pow(2, nextLogN));</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    uint32_t <a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> = <a class="code" href="class_soil_math_1_1_f_f_t.html#a48141f0c777ca86f2e536f88b509b639">complexcontour</a>.size();</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="comment">// Append the vector with zeros</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordflow">while</span> (i++ &lt; N) {</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;      <a class="code" href="class_soil_math_1_1_f_f_t.html#a48141f0c777ca86f2e536f88b509b639">complexcontour</a>.push_back(<a class="code" href="_soil_math_types_8h.html#a26c307796ad803485b0376c90026d8f7">Complex_t</a>(0.0, 0.0));</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    }</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  }</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <a class="code" href="_soil_math_types_8h.html#a5118c9f6b02a06945c93a3893e51febe">ComplexArray_t</a> ca(<a class="code" href="class_soil_math_1_1_f_f_t.html#a48141f0c777ca86f2e536f88b509b639">complexcontour</a>.data(), <a class="code" href="class_soil_math_1_1_f_f_t.html#a48141f0c777ca86f2e536f88b509b639">complexcontour</a>.size());</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <a class="code" href="class_soil_math_1_1_f_f_t.html#a48bc7ad948d820d6f87b3e353b6d1cd4">fft</a>(ca);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <a class="code" href="class_soil_math_1_1_f_f_t.html#a466b360529319d0e6e3220f446f703be">fftDescriptors</a>.assign(std::begin(ca), std::end(ca));</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="class_soil_math_1_1_f_f_t.html#a466b360529319d0e6e3220f446f703be">fftDescriptors</a>;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
-<div class="ttc" id="class_soil_math_1_1_f_f_t_html_a48141f0c777ca86f2e536f88b509b639"><div class="ttname"><a href="class_soil_math_1_1_f_f_t.html#a48141f0c777ca86f2e536f88b509b639">SoilMath::FFT::complexcontour</a></div><div class="ttdeci">ComplexVect_t complexcontour</div><div class="ttdef"><b>Definition:</b> <a href="_f_f_t_8h_source.html#l00059">FFT.h:59</a></div></div>
-<div class="ttc" id="_soil_math_types_8h_html_a5118c9f6b02a06945c93a3893e51febe"><div class="ttname"><a href="_soil_math_types_8h.html#a5118c9f6b02a06945c93a3893e51febe">ComplexArray_t</a></div><div class="ttdeci">std::valarray&lt; Complex_t &gt; ComplexArray_t</div><div class="ttdef"><b>Definition:</b> <a href="_soil_math_types_8h_source.html#l00028">SoilMathTypes.h:28</a></div></div>
-<div class="ttc" id="class_soil_math_1_1_f_f_t_html_a466b360529319d0e6e3220f446f703be"><div class="ttname"><a href="class_soil_math_1_1_f_f_t.html#a466b360529319d0e6e3220f446f703be">SoilMath::FFT::fftDescriptors</a></div><div class="ttdeci">ComplexVect_t fftDescriptors</div><div class="ttdef"><b>Definition:</b> <a href="_f_f_t_8h_source.html#l00056">FFT.h:56</a></div></div>
-<div class="ttc" id="_comparision_pictures_2_createtest_image_8m_html_a6f6ccfcf58b31cb6412107d9d5281426"><div class="ttname"><a href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a></div><div class="ttdeci">for i</div><div class="ttdef"><b>Definition:</b> <a href="_comparision_pictures_2_createtest_image_8m_source.html#l00006">CreatetestImage.m:6</a></div></div>
-<div class="ttc" id="_soil_math_types_8h_html_a26c307796ad803485b0376c90026d8f7"><div class="ttname"><a href="_soil_math_types_8h.html#a26c307796ad803485b0376c90026d8f7">Complex_t</a></div><div class="ttdeci">std::complex&lt; double &gt; Complex_t</div><div class="ttdef"><b>Definition:</b> <a href="_soil_math_types_8h_source.html#l00026">SoilMathTypes.h:26</a></div></div>
-<div class="ttc" id="class_soil_math_1_1_f_f_t_html_a18a95490ea8e929584c2af6569dec3b6"><div class="ttname"><a href="class_soil_math_1_1_f_f_t.html#a18a95490ea8e929584c2af6569dec3b6">SoilMath::FFT::Contour2Complex</a></div><div class="ttdeci">ComplexVect_t Contour2Complex(const cv::Mat &amp;img, float centerCol, float centerRow)</div><div class="ttdoc">Contour2Complex a private function which translates a continous contour image to a vector of complex ...</div><div class="ttdef"><b>Definition:</b> <a href="_f_f_t_8cpp_source.html#l00064">FFT.cpp:64</a></div></div>
-<div class="ttc" id="class_soil_math_1_1_f_f_t_html_a48bc7ad948d820d6f87b3e353b6d1cd4"><div class="ttname"><a href="class_soil_math_1_1_f_f_t.html#a48bc7ad948d820d6f87b3e353b6d1cd4">SoilMath::FFT::fft</a></div><div class="ttdeci">void fft(ComplexArray_t &amp;CA)</div><div class="ttdoc">fft a private function calculating the Fast Fourier Transform let  be an integer and let  also  is an...</div><div class="ttdef"><b>Definition:</b> <a href="_f_f_t_8cpp_source.html#l00148">FFT.cpp:148</a></div></div>
-</div><!-- fragment -->
+<p>Referenced by <a class="el" href="analyzer_8cpp_source.html#l00350">SoilAnalyzer::Analyzer::GetFFD()</a>.</p>
+
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -519,7 +373,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_soil_math_1_1_f_f_t_af5fb6f4804079ee184a314e2f0a0f2fc_icgraph.png" border="0" usemap="#class_soil_math_1_1_f_f_t_af5fb6f4804079ee184a314e2f0a0f2fc_icgraph" alt=""/></div>
 <map name="class_soil_math_1_1_f_f_t_af5fb6f4804079ee184a314e2f0a0f2fc_icgraph" id="class_soil_math_1_1_f_f_t_af5fb6f4804079ee184a314e2f0a0f2fc_icgraph">
-<area shape="rect" id="node2" href="class_soil_analyzer_1_1_particle.html#aeb4ed9f49b88f5d6563b993154aabe50" title="Analyze the function which analyses the particle. " alt="" coords="280,5,427,47"/><area shape="rect" id="node3" href="_v_s_a___u_t_8cpp.html#a9cc36511e6538414d328e1b0c941f4d3" title="BOOST_AUTO_TEST_CASE" alt="" coords="255,71,452,98"/></map>
+<area shape="rect" id="node2" href="class_soil_analyzer_1_1_analyzer.html#aeed5e3b158ff37d5fecb2816e12c3c31" title="Analyzer::GetFFD. " alt="" coords="255,104,409,145"/><area shape="rect" id="node3" href="class_soil_analyzer_1_1_analyzer.html#a1cb605c255d35e85ccaae06a76917188" title="Analyzer::Analyse. " alt="" coords="457,104,612,145"/><area shape="rect" id="node4" href="class_soil_analyzer_1_1_analyzer.html#afcbb3b1a583d1fe9a7b9e424a7ded3df" title="SoilAnalyzer::Analyzer\l::Analyse" alt="" coords="699,5,853,47"/><area shape="rect" id="node5" href="class_v_s_a_main_window.html#a671264c6cb0136f83fc24075545c8c0c" title="VSAMainWindow::on_action\lNewSample_triggered" alt="" coords="682,71,870,112"/><area shape="rect" id="node6" href="class_v_s_a_main_window.html#af670cbc8db47377e395cadd2d4c59772" title="VSAMainWindow::on_Classification\l_changed" alt="" coords="660,136,892,177"/><area shape="rect" id="node8" href="class_v_s_a_main_window.html#afb86baadff8bf9e00b4d487de68e5b80" title="VSAMainWindow::on_particle\l_deleted" alt="" coords="679,201,873,243"/><area shape="rect" id="node7" href="class_v_s_a_main_window.html#a7fa18757c1fce5c8f41f25277f9e1a70" title="VSAMainWindow::VSAMainWindow" alt="" coords="940,177,1175,203"/></map>
 </div>
 </p>
 
@@ -555,17 +409,10 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_f_f_t_8cpp_source.html#l00168">168</a> of file <a class="el" href="_f_f_t_8cpp_source.html">FFT.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_f_f_t_8cpp_source.html#l00169">169</a> of file <a class="el" href="_f_f_t_8cpp_source.html">FFT.cpp</a>.</p>
 
-<p>References <a class="el" href="_f_f_t_8cpp_source.html#l00148">fft()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                                 {</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;  CA = CA.apply(std::conj);</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;  <a class="code" href="class_soil_math_1_1_f_f_t.html#a48bc7ad948d820d6f87b3e353b6d1cd4">fft</a>(CA);</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;  CA = CA.apply(std::conj);</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;  CA /= CA.size();</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;}</div>
-<div class="ttc" id="class_soil_math_1_1_f_f_t_html_a48bc7ad948d820d6f87b3e353b6d1cd4"><div class="ttname"><a href="class_soil_math_1_1_f_f_t.html#a48bc7ad948d820d6f87b3e353b6d1cd4">SoilMath::FFT::fft</a></div><div class="ttdeci">void fft(ComplexArray_t &amp;CA)</div><div class="ttdoc">fft a private function calculating the Fast Fourier Transform let  be an integer and let  also  is an...</div><div class="ttdef"><b>Definition:</b> <a href="_f_f_t_8cpp_source.html#l00148">FFT.cpp:148</a></div></div>
-</div><!-- fragment -->
+<p>References <a class="el" href="_f_f_t_8cpp_source.html#l00149">fft()</a>.</p>
+
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -599,13 +446,13 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramtype"><a class="el" href="_soil_math_types_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a>&#160;</td>
           <td class="paramname"><em>columns</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramtype"><a class="el" href="_soil_math_types_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a>&#160;</td>
           <td class="paramname"><em>rows</em>&#160;</td>
         </tr>
         <tr>
@@ -635,38 +482,14 @@ Here is the call graph for this function:</div>
 
 <p>Definition at line <a class="el" href="_f_f_t_8cpp_source.html#l00043">43</a> of file <a class="el" href="_f_f_t_8cpp_source.html">FFT.cpp</a>.</p>
 
-<p>References <a class="el" href="_comparision_pictures_2_createtest_image_8m_source.html#l00018">count</a>, and <a class="el" href="_comparision_pictures_2_createtest_image_8m_source.html#l00006">i</a>.</p>
-
 <p>Referenced by <a class="el" href="_f_f_t_8cpp_source.html#l00064">Contour2Complex()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                                         {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="keywordtype">long</span> <span class="keywordtype">int</span> LUT_nBore[8] = {-columns + 1, -columns, -columns - 1, -1,</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                           columns - 1,  columns,  1 + columns,  1};</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <a class="code" href="_soil_math_types_8h.html#a1ade796add2f13888dfa9e6bde0bdc37">iContour_t</a> neighbors;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  uint32_t pEnd = rows * columns;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  uint32_t <a class="code" href="_comparision_pictures_2_createtest_image_8m.html#ae11b3deb3de3df7dc48e439074023e35">count</a> = 0;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keywordflow">for</span> (uint32_t <a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> = 0; <a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> &lt; 8; <a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a>++) {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    count = pixel + LUT_nBore[<a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a>];</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">while</span> (count &gt;= pEnd &amp;&amp; <a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> &lt; 8) {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;      count = pixel + LUT_nBore[++<a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a>];</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    }</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> &gt;= 8) {</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    }</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">if</span> (O[count] == 1)</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;      neighbors.push_back(count);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  }</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="keywordflow">return</span> neighbors;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
-<div class="ttc" id="_soil_math_types_8h_html_a1ade796add2f13888dfa9e6bde0bdc37"><div class="ttname"><a href="_soil_math_types_8h.html#a1ade796add2f13888dfa9e6bde0bdc37">iContour_t</a></div><div class="ttdeci">std::vector&lt; uint32_t &gt; iContour_t</div><div class="ttdef"><b>Definition:</b> <a href="_soil_math_types_8h_source.html#l00029">SoilMathTypes.h:29</a></div></div>
-<div class="ttc" id="_comparision_pictures_2_createtest_image_8m_html_a6f6ccfcf58b31cb6412107d9d5281426"><div class="ttname"><a href="_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a></div><div class="ttdeci">for i</div><div class="ttdef"><b>Definition:</b> <a href="_comparision_pictures_2_createtest_image_8m_source.html#l00006">CreatetestImage.m:6</a></div></div>
-<div class="ttc" id="_comparision_pictures_2_createtest_image_8m_html_ae11b3deb3de3df7dc48e439074023e35"><div class="ttname"><a href="_comparision_pictures_2_createtest_image_8m.html#ae11b3deb3de3df7dc48e439074023e35">count</a></div><div class="ttdeci">count</div><div class="ttdef"><b>Definition:</b> <a href="_comparision_pictures_2_createtest_image_8m_source.html#l00018">CreatetestImage.m:18</a></div></div>
-</div><!-- fragment -->
+
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_soil_math_1_1_f_f_t_a45b32ad009154112d2fc4e467fc7c5ac_icgraph.png" border="0" usemap="#class_soil_math_1_1_f_f_t_a45b32ad009154112d2fc4e467fc7c5ac_icgraph" alt=""/></div>
 <map name="class_soil_math_1_1_f_f_t_a45b32ad009154112d2fc4e467fc7c5ac_icgraph" id="class_soil_math_1_1_f_f_t_a45b32ad009154112d2fc4e467fc7c5ac_icgraph">
-<area shape="rect" id="node2" href="class_soil_math_1_1_f_f_t.html#a18a95490ea8e929584c2af6569dec3b6" title="Contour2Complex a private function which translates a continous contour image to a vector of complex ..." alt="" coords="225,42,444,69"/><area shape="rect" id="node3" href="class_soil_math_1_1_f_f_t.html#af5fb6f4804079ee184a314e2f0a0f2fc" title="Transforming the img to the frequency domain and returning the Fourier Descriptors. " alt="" coords="492,42,693,69"/><area shape="rect" id="node4" href="class_soil_analyzer_1_1_particle.html#aeb4ed9f49b88f5d6563b993154aabe50" title="Analyze the function which analyses the particle. " alt="" coords="767,5,913,47"/><area shape="rect" id="node5" href="_v_s_a___u_t_8cpp.html#a9cc36511e6538414d328e1b0c941f4d3" title="BOOST_AUTO_TEST_CASE" alt="" coords="741,71,939,98"/></map>
+<area shape="rect" id="node2" href="class_soil_math_1_1_f_f_t.html#a18a95490ea8e929584c2af6569dec3b6" title="Contour2Complex a private function which translates a continous contour image to a vector of complex ..." alt="" coords="225,111,444,138"/><area shape="rect" id="node3" href="class_soil_math_1_1_f_f_t.html#af5fb6f4804079ee184a314e2f0a0f2fc" title="Transforming the img to the frequency domain and returning the Fourier Descriptors. " alt="" coords="492,111,693,138"/><area shape="rect" id="node4" href="class_soil_analyzer_1_1_analyzer.html#aeed5e3b158ff37d5fecb2816e12c3c31" title="Analyzer::GetFFD. " alt="" coords="741,104,896,145"/><area shape="rect" id="node5" href="class_soil_analyzer_1_1_analyzer.html#a1cb605c255d35e85ccaae06a76917188" title="Analyzer::Analyse. " alt="" coords="944,104,1099,145"/><area shape="rect" id="node6" href="class_soil_analyzer_1_1_analyzer.html#afcbb3b1a583d1fe9a7b9e424a7ded3df" title="SoilAnalyzer::Analyzer\l::Analyse" alt="" coords="1185,5,1340,47"/><area shape="rect" id="node7" href="class_v_s_a_main_window.html#a671264c6cb0136f83fc24075545c8c0c" title="VSAMainWindow::on_action\lNewSample_triggered" alt="" coords="1169,71,1357,112"/><area shape="rect" id="node8" href="class_v_s_a_main_window.html#af670cbc8db47377e395cadd2d4c59772" title="VSAMainWindow::on_Classification\l_changed" alt="" coords="1147,136,1379,177"/><area shape="rect" id="node10" href="class_v_s_a_main_window.html#afb86baadff8bf9e00b4d487de68e5b80" title="VSAMainWindow::on_particle\l_deleted" alt="" coords="1165,201,1360,243"/><area shape="rect" id="node9" href="class_v_s_a_main_window.html#a7fa18757c1fce5c8f41f25277f9e1a70" title="VSAMainWindow::VSAMainWindow" alt="" coords="1427,177,1661,203"/></map>
 </div>
 </p>
 
@@ -747,8 +570,8 @@ Here is the caller graph for this function:</div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/peer23peer/VisionSoilAnalyzer/src/SoilMath/<a class="el" href="_f_f_t_8h_source.html">FFT.h</a></li>
-<li>/home/peer23peer/VisionSoilAnalyzer/src/SoilMath/<a class="el" href="_f_f_t_8cpp_source.html">FFT.cpp</a></li>
+<li>/home/peer23peer/programmingspace/VSA/VisionSoilAnalyzer/src/SoilMath/<a class="el" href="_f_f_t_8h_source.html">FFT.h</a></li>
+<li>/home/peer23peer/programmingspace/VSA/VisionSoilAnalyzer/src/SoilMath/<a class="el" href="_f_f_t_8cpp_source.html">FFT.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -756,7 +579,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_soil_math.html">SoilMath</a></li><li class="navelem"><a class="el" href="class_soil_math_1_1_f_f_t.html">FFT</a></li>
-    <li class="footer">Generated on Sat Jun 20 2015 18:57:14 for Vision Soil Analyzer by
+    <li class="footer">Generated on Mon Oct 5 2015 21:06:39 for Vision Soil Analyzer by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

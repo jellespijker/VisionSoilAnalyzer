@@ -6,6 +6,7 @@
  */
 
 #include "NN.h"
+using namespace std;
 
 namespace SoilMath {
 NN::NN() { beta = 0.666; }
@@ -23,7 +24,12 @@ NN::NN(uint32_t inputneurons, uint32_t hiddenneurons, uint32_t outputneurons) {
   beta = 0.666;
 }
 
-NN::~NN() {}
+NN::~NN()
+{
+  if (optim != nullptr) {
+      delete optim;
+    }
+}
 
 void NN::LoadState(string filename) {
   std::ifstream ifs(filename.c_str());
@@ -41,6 +47,7 @@ Predict_t NN::PredictLearn(ComplexVect_t input, Weight_t inputweights,
                            Weight_t hiddenweights, uint32_t inputneurons,
                            uint32_t hiddenneurons, uint32_t outputneurons) {
   NN neural(inputneurons, hiddenneurons, outputneurons);
+  neural.studied = true;
   neural.SetInputWeights(inputweights);
   neural.SetHiddenWeights(hiddenweights);
   return neural.Predict(input);
@@ -48,7 +55,12 @@ Predict_t NN::PredictLearn(ComplexVect_t input, Weight_t inputweights,
 
 Predict_t NN::Predict(ComplexVect_t input) {
   if (input.size() != inputNeurons) {
-    throw Exception::MathException("Size of input Neurons Exception!");
+    throw Exception::MathException(EXCEPTION_SIZE_OF_INPUT_NEURONS,
+                                   EXCEPTION_SIZE_OF_INPUT_NEURONS_NR);
+  }
+  if (!studied) {
+    throw Exception::MathException(EXCEPTION_NEURAL_NET_NOT_STUDIED,
+                                   EXCEPTION_NEURAL_NET_NOT_STUDIED_NR);
   }
 
   iNeurons.clear();
@@ -94,24 +106,62 @@ Predict_t NN::Predict(ComplexVect_t input) {
   }
 
   retVal.OutputNeurons = oNeurons;
+  retVal.ManualSet = false;
   return retVal;
 }
 
 void NN::Learn(InputLearnVector_t input, OutputLearnVector_t cat,
                uint32_t noOfDescriptorsUsed __attribute__((unused))) {
-  SoilMath::GA optim(PredictLearn, inputNeurons, hiddenNeurons, outputNeurons);
+  if (optim == nullptr) {
+      optim = new SoilMath::GA(PredictLearn, inputNeurons, hiddenNeurons, outputNeurons);
+    }
+  connect(optim, SIGNAL(learnErrorUpdate(double)), this, SIGNAL(learnErrorUpdate(double)));
+
+  optim->Elitisme = ElitismeUsedByGA;
+  optim->EndError = EndErrorUsedByGA;
+  optim->MutationRate = MutationrateUsedByGA;
+
   ComplexVect_t inputTest;
   std::vector<Weight_t> weights;
   Weight_t weight(((inputNeurons + 1) * hiddenNeurons) +
                       ((hiddenNeurons + 1) * outputNeurons),
                   0);
   // loop through each case and adjust the weights
-  optim.Evolve(input, weight, MinMaxWeight_t(-50, 50), cat, 1000, 50);
+  optim->Evolve(input, weight,
+               MinMaxWeight_t(MinWeightUSedByGa, MaxWeightUsedByGA), cat,
+               MaxGenUsedByGA, PopulationSizeUsedByGA);
 
   this->iWeights = Weight_t(
       weight.begin(), weight.begin() + ((inputNeurons + 1) * hiddenNeurons));
   this->hWeights = Weight_t(
       weight.begin() + ((inputNeurons + 1) * hiddenNeurons), weight.end());
   studied = true;
+}
+
+void NN::SetInputNeurons(uint32_t value) {
+  if (value != inputNeurons) {
+    inputNeurons = value;
+    iNeurons.clear();
+    iNeurons.reserve(inputNeurons + 1);
+    studied = false;
+  }
+}
+
+void NN::SetHiddenNeurons(uint32_t value) {
+  if (value != hiddenNeurons) {
+    hiddenNeurons = value;
+    hNeurons.clear();
+    hNeurons.reserve(hiddenNeurons + 1);
+    studied = false;
+  }
+}
+
+void NN::SetOutputNeurons(uint32_t value) {
+  if (value != outputNeurons) {
+    outputNeurons = value;
+    oNeurons.clear();
+    oNeurons.reserve(outputNeurons);
+    studied = false;
+  }
 }
 }

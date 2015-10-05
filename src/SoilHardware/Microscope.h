@@ -6,97 +6,192 @@
  */
 
 /*! \class Microscope
-Interaction with the USB 5 MP microscope
+Interaction with the microscope
 */
 
 #pragma once
-#define MICROSCOPE_VERSION 1 /*!< Version of the class*/
 
-#define MICROSCOPE_NAME "USB Microscope"
-#define MIN_BRIGHTNESS -64
-#define MAX_BRIGHTNESS 64
-#define MIN_CONTRAST 0
-#define MAX_CONTRAST 64
-#define MIN_SATURATION 0
-#define MAX_SATURATION 128
-#define MIN_HUE -40
-#define MAX_HUE 40
-#define MIN_GAMMA 40
-#define MAX_GAMMA 500
-#define MIN_SHARPNESS 1
-#define MAX_SHARPNESS 25
-
-#include "stdint.h"
+#include <stdint.h>
 #include <vector>
 #include <string>
+#include <utility>
+#include <algorithm>
+
 #include <sys/stat.h>
 #include <sys/utsname.h>
+#include <sys/ioctl.h>
+#include <fstream>
+#include <fcntl.h>
 
-#include <boost/signals2.hpp>
-#include <boost/bind.hpp>
+#include <linux/videodev2.h>
+#include <linux/v4l2-controls.h>
+#include <linux/v4l2-common.h>
 
-#include "USB.h"
+#include <boost/filesystem.hpp>
+#include <boost/regex.hpp>
 
 #include <opencv2/photo.hpp>
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/opencv.hpp>
-#include <opencv/highgui.h>
-#include <opencv2/videoio.hpp>
+#include <opencv2/core.hpp>
 
-#include <boost/filesystem.hpp>
+#include <gst/gst.h>
+#include <gst/app/gstappsink.h>
 
-#include <fstream>
+#include <QtCore/QObject>
+#include <QEventLoop>
+#include <QDebug>
+
+#include "MicroscopeNotFoundException.h"
+#include "CouldNotGrabImageException.h"
 
 namespace Hardware {
-class Microscope {
+class Microscope : public QObject {
+  Q_OBJECT
+
 public:
-  /*! Struct that represent the Resolution that is used */
-  struct Resolution {
-  public:
-    uint16_t Width;  /*!< Width of the image*/
-    uint16_t Height; /*!< Height of the image*/
+  enum Arch { ARM, X64 };
+
+  enum PixelFormat { YUYV, MJPG, GREY };
+
+  struct Resolution_t {
+    uint16_t Width = 2048;
+    uint16_t Height = 1536;
+    PixelFormat format = PixelFormat::MJPG;
+    std::string to_string() {
+      std::string retVal = std::to_string(Width);
+      retVal.append(" x ");
+      retVal.append(std::to_string(Height));
+      if (format == PixelFormat::MJPG) {
+          retVal.append(" - MJPG");
+        }
+      else if (format == PixelFormat::YUYV){
+          retVal.append(" - YUYV");
+        }
+      else {
+          retVal.append(" - GREY");
+        }
+      return retVal;
+    }
+    uint32_t ID;
   };
 
-  typedef boost::signals2::signal<void()> Finished_t;
-  typedef boost::signals2::signal<void(int)> Progress_t;
+  struct Control_t {
+    std::string name;
+    int minimum;
+    int maximum;
+    int step;
+    int default_value;
+    int current_value;
+    uint32_t ID = V4L2_CID_BASE;
+    bool operator==(Control_t &rhs) {
+      if (this->name.compare(rhs.name) == 0) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    bool operator!=(Control_t &rhs) {
+      if (this->name.compare(rhs.name) != 0) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  };
 
-  boost::signals2::connection
-  connect_Finished(const Finished_t::slot_type &subscriber);
-  boost::signals2::connection
-  connect_Progress(const Progress_t::slot_type &subscriber);
+  typedef std::vector<Control_t> Controls_t;
 
-  uint8_t FrameDelayTrigger; /*!< Delay in seconds */
-  cv::Mat LastFrame;         /*!< Last grabbed and processed frame */
-  Resolution Dimensions;     /*!< Dimensions of the frame */
+  typedef struct _CustomData {
+  GMainLoop *main_loop;
+  GstElement *pipeline;
+  GstElement *source;
+  GstElement *capsfilter;
+  GstElement *tisvideobuffer;
+  GstElement *tiscolorize;
+  GstElement *bayer;
+  GstElement *queue;
+  GstElement *colorspace;
+  GstElement *convert;
+  GstElement *sink;
+  GstBus *bus;
+  GstCaps *caps;
+  Hardware::Microscope *currentMicroscope;
+  } CustomData;
 
-  Microscope(uint8_t frameDelayTrigger = 3,
-             Resolution dimensions = Resolution{2048, 1536},
-             bool firstdefault = true);
+  struct Cam_t {
+    std::string Name;
+    std::string devString;
+    uint32_t ID;
+    std::vector<Resolution_t> Resolutions;
+    uint32_t delaytrigger = 1;
+    Resolution_t *SelectedResolution = nullptr;
+    Controls_t Controls;
+    CustomData Pipe;
+    int fd;
+    bool operator==(Cam_t const &rhs) {
+      if (this->ID == rhs.ID || this->Name == rhs.Name) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    bool operator!=(Cam_t const &rhs) {
+      if (this->ID != rhs.ID && this->Name != rhs.Name) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  };
+
+  std::vector<Cam_t> AvailableCams;
+  Cam_t *SelectedCam = nullptr;
+  Arch RunEnv;
+
+  Microscope();
+  Microscope(const Microscope &rhs);
+
   ~Microscope();
 
-  static std::vector<std::string> AvailableCams();
-
-  void GetFrame(cv::Mat &dst);
-  void GetHDRFrame(cv::Mat &dst, uint32_t noframes = 5);
+  Microscope operator=(Microscope const &rhs);
 
   bool IsOpened();
-  void Release();
+  bool openCam(Cam_t *cam);
+  bool openCam(int &cam);
+  bool openCam(std::string &cam);
 
-  void openCam(int dev);
+  bool closeCam(Cam_t *cam);
+
+  void GetFrame(cv::Mat &dst);
+  void GetGstreamFrame(cv::Mat &dst);
+  void GetHDRFrame(cv::Mat &dst, uint32_t noframes = 3);
+
+  Control_t *GetControl(const std::string name);
+  void SetControl(Control_t *control);
+
+  Cam_t *FindCam(std::string cam);
+  Cam_t *FindCam(int cam);
+  cv::Mat lastFrame;
+
+  void SendImageRetrieved();
+
+public slots:
+  void on_imageretrieved();
+
+signals:
+  void imageretrieved();
 
 private:
-  Finished_t fin_sig;
-  Progress_t prog_sig;
-
-  std::string arch;
-
-  cv::VideoCapture
-      captureDevice; /*!< An openCV instance of the capture device*/
-  void StartupSeq(bool firstdefault);
+  static void new_buffer(GstElement *sink, CustomData *data);
+  void getResolutions(Cam_t &currentCam, int FormatType);
+  bool openedUptheCam = false;
+  cv::VideoCapture *cap = nullptr;
 
   std::vector<cv::Mat> HDRframes;
-  std::vector<float> times;
 
-  static bool exist(const std::string &name);
+  std::vector<Cam_t> GetAvailableCams();
+  Arch GetCurrentArchitecture();
+  int fd;
 };
 }

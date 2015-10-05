@@ -27,10 +27,14 @@ var dir_7d1931b727af368c927c89b2ad19148d =
     ] ],
     [ "Hardware.h", "_hardware_8h.html", null ],
     [ "Microscope.cpp", "_microscope_8cpp.html", null ],
-    [ "Microscope.h", "_microscope_8h.html", "_microscope_8h" ],
-    [ "MicroscopeNotFoundException.h", "_microscope_not_found_exception_8h.html", [
-      [ "MicroscopeNotFoundException", "class_hardware_1_1_exception_1_1_microscope_not_found_exception.html", "class_hardware_1_1_exception_1_1_microscope_not_found_exception" ]
+    [ "Microscope.h", "_microscope_8h.html", [
+      [ "Microscope", "class_hardware_1_1_microscope.html", "class_hardware_1_1_microscope" ],
+      [ "Resolution_t", "struct_hardware_1_1_microscope_1_1_resolution__t.html", "struct_hardware_1_1_microscope_1_1_resolution__t" ],
+      [ "Control_t", "struct_hardware_1_1_microscope_1_1_control__t.html", "struct_hardware_1_1_microscope_1_1_control__t" ],
+      [ "_CustomData", "struct_hardware_1_1_microscope_1_1___custom_data.html", "struct_hardware_1_1_microscope_1_1___custom_data" ],
+      [ "Cam_t", "struct_hardware_1_1_microscope_1_1_cam__t.html", "struct_hardware_1_1_microscope_1_1_cam__t" ]
     ] ],
+    [ "MicroscopeNotFoundException.h", "_microscope_not_found_exception_8h.html", "_microscope_not_found_exception_8h" ],
     [ "PWM.cpp", "_p_w_m_8cpp.html", null ],
     [ "PWM.h", "_p_w_m_8h.html", "_p_w_m_8h" ],
     [ "SoilCape.cpp", "_soil_cape_8cpp.html", null ],

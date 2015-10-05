@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['white',['White',['../class_hardware_1_1_e_c12_p.html#a8341f410cd939bf03160fe239bc782aaacd1663fa4d06aa68eca32bbf370d9e15',1,'Hardware::EC12P']]],
-  ['wtabsolute',['wtAbsolute',['../class_q_c_p_bars.html#a65dbbf1ab41cbe993d71521096ed4649ab74315c9aa77df593c58dd25dfc0de35',1,'QCPBars']]],
-  ['wtaxisrectratio',['wtAxisRectRatio',['../class_q_c_p_bars.html#a65dbbf1ab41cbe993d71521096ed4649a90bc09899361ad3422ff277f7c790ffe',1,'QCPBars']]],
-  ['wtplotcoords',['wtPlotCoords',['../class_q_c_p_bars.html#a65dbbf1ab41cbe993d71521096ed4649aad3cc60ae1bfb1160a30237bee9eaf10',1,'QCPBars']]]
+  ['yellow',['Yellow',['../class_hardware_1_1_e_c12_p.html#a8341f410cd939bf03160fe239bc782aaa25b4723962c85776a4ce70b8eee81263',1,'Hardware::EC12P']]],
+  ['yuyv',['YUYV',['../class_hardware_1_1_microscope.html#a1ca86e9e414d0497f2b2d88b258be1a7ae4293cf0122f710943984fbffafde554',1,'Hardware::Microscope']]]
 ];

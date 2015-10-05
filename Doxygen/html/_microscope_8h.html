@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.9.1"/>
-<title>Vision Soil Analyzer: /home/peer23peer/VisionSoilAnalyzer/src/SoilHardware/Microscope.h File Reference</title>
+<title>Vision Soil Analyzer: /home/peer23peer/programmingspace/VSA/VisionSoilAnalyzer/src/SoilHardware/Microscope.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -30,7 +30,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="IHClogo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Vision Soil Analyzer
    &#160;<span id="projectnumber">1.0.0</span>
@@ -49,7 +48,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -109,40 +107,50 @@ $(document).ready(function(){initNavTree('_microscope_8h.html','');});
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a> &#124;
-<a href="#define-members">Macros</a>  </div>
+<a href="#namespaces">Namespaces</a>  </div>
   <div class="headertitle">
 <div class="title">Microscope.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;stdint.h&quot;</code><br />
+<div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
+<code>#include &lt;utility&gt;</code><br />
+<code>#include &lt;algorithm&gt;</code><br />
 <code>#include &lt;sys/stat.h&gt;</code><br />
 <code>#include &lt;sys/utsname.h&gt;</code><br />
-<code>#include &lt;boost/signals2.hpp&gt;</code><br />
-<code>#include &lt;boost/bind.hpp&gt;</code><br />
-<code>#include &quot;<a class="el" href="_u_s_b_8h_source.html">USB.h</a>&quot;</code><br />
+<code>#include &lt;sys/ioctl.h&gt;</code><br />
+<code>#include &lt;fstream&gt;</code><br />
+<code>#include &lt;fcntl.h&gt;</code><br />
+<code>#include &lt;linux/videodev2.h&gt;</code><br />
+<code>#include &lt;linux/v4l2-controls.h&gt;</code><br />
+<code>#include &lt;linux/v4l2-common.h&gt;</code><br />
+<code>#include &lt;boost/filesystem.hpp&gt;</code><br />
+<code>#include &lt;boost/regex.hpp&gt;</code><br />
 <code>#include &lt;opencv2/photo.hpp&gt;</code><br />
 <code>#include &lt;opencv2/imgcodecs.hpp&gt;</code><br />
 <code>#include &lt;opencv2/opencv.hpp&gt;</code><br />
-<code>#include &lt;opencv/highgui.h&gt;</code><br />
-<code>#include &lt;opencv2/videoio.hpp&gt;</code><br />
-<code>#include &lt;boost/filesystem.hpp&gt;</code><br />
-<code>#include &lt;fstream&gt;</code><br />
+<code>#include &lt;opencv2/core.hpp&gt;</code><br />
+<code>#include &lt;gst/gst.h&gt;</code><br />
+<code>#include &lt;gst/app/gstappsink.h&gt;</code><br />
+<code>#include &lt;QtCore/QObject&gt;</code><br />
+<code>#include &lt;QEventLoop&gt;</code><br />
+<code>#include &lt;QDebug&gt;</code><br />
+<code>#include &quot;<a class="el" href="_microscope_not_found_exception_8h_source.html">MicroscopeNotFoundException.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_could_not_grab_image_exception_8h_source.html">CouldNotGrabImageException.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Microscope.h:</div>
 <div class="dyncontent">
-<div class="center"><img src="_microscope_8h__incl.png" border="0" usemap="#_2home_2peer23peer_2_vision_soil_analyzer_2src_2_soil_hardware_2_microscope_8h" alt=""/></div>
-<map name="_2home_2peer23peer_2_vision_soil_analyzer_2src_2_soil_hardware_2_microscope_8h" id="_2home_2peer23peer_2_vision_soil_analyzer_2src_2_soil_hardware_2_microscope_8h">
-<area shape="rect" id="node9" href="_u_s_b_8h.html" title="USB.h" alt="" coords="781,109,842,136"/></map>
+<div class="center"><img src="_microscope_8h__incl.png" border="0" usemap="#_2home_2peer23peer_2programmingspace_2_v_s_a_2_vision_soil_analyzer_2src_2_soil_hardware_2_microscope_8h" alt=""/></div>
+<map name="_2home_2peer23peer_2programmingspace_2_v_s_a_2_vision_soil_analyzer_2src_2_soil_hardware_2_microscope_8h" id="_2home_2peer23peer_2programmingspace_2_v_s_a_2_vision_soil_analyzer_2src_2_soil_hardware_2_microscope_8h">
+<area shape="rect" id="node26" href="_microscope_not_found_exception_8h.html" title="MicroscopeNotFoundException.h" alt="" coords="229,109,444,136"/><area shape="rect" id="node28" href="_could_not_grab_image_exception_8h.html" title="CouldNotGrabImageException.h" alt="" coords="469,109,679,136"/></map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><img src="_microscope_8h__dep__incl.png" border="0" usemap="#_2home_2peer23peer_2_vision_soil_analyzer_2src_2_soil_hardware_2_microscope_8hdep" alt=""/></div>
-<map name="_2home_2peer23peer_2_vision_soil_analyzer_2src_2_soil_hardware_2_microscope_8hdep" id="_2home_2peer23peer_2_vision_soil_analyzer_2src_2_soil_hardware_2_microscope_8hdep">
-<area shape="rect" id="node2" href="_hardware_8h.html" title="/home/peer23peer/VisionSoil\lAnalyzer/src/SoilHardware\l/Hardware.h" alt="" coords="132,109,320,165"/><area shape="rect" id="node6" href="_microscope_8cpp.html" title="/home/peer23peer/VisionSoil\lAnalyzer/src/SoilHardware\l/Microscope.cpp" alt="" coords="344,109,532,165"/><area shape="rect" id="node3" href="vsagui_8h.html" title="/home/peer23peer/VisionSoil\lAnalyzer/src/VSAGUI/vsagui.h" alt="" coords="125,213,327,255"/><area shape="rect" id="node4" href="main_8cpp.html" title="/home/peer23peer/VisionSoil\lAnalyzer/src/VSAGUI/main.cpp" alt="" coords="5,303,212,344"/><area shape="rect" id="node5" href="vsagui_8cpp.html" title="/home/peer23peer/VisionSoil\lAnalyzer/src/VSAGUI/vsagui.cpp" alt="" coords="236,303,453,344"/></map>
+<div class="center"><img src="_microscope_8h__dep__incl.png" border="0" usemap="#_2home_2peer23peer_2programmingspace_2_v_s_a_2_vision_soil_analyzer_2src_2_soil_hardware_2_microscope_8hdep" alt=""/></div>
+<map name="_2home_2peer23peer_2programmingspace_2_v_s_a_2_vision_soil_analyzer_2src_2_soil_hardware_2_microscope_8hdep" id="_2home_2peer23peer_2programmingspace_2_v_s_a_2_vision_soil_analyzer_2src_2_soil_hardware_2_microscope_8hdep">
+<area shape="rect" id="node2" href="_hardware_8h.html" title="/home/peer23peer/programmingspace\l/VSA/VisionSoilAnalyzer/src\l/SoilHardware/Hardware.h" alt="" coords="452,109,692,165"/><area shape="rect" id="node10" href="_microscope_8cpp.html" title="/home/peer23peer/programmingspace\l/VSA/VisionSoilAnalyzer/src\l/SoilHardware/Microscope.cpp" alt="" coords="716,109,956,165"/><area shape="rect" id="node3" href="dialogsettings_8h.html" title="/home/peer23peer/programmingspace\l/VSA/VisionSoilAnalyzer/src\l/VSA/dialogsettings.h" alt="" coords="295,213,535,269"/><area shape="rect" id="node6" href="vsamainwindow_8h.html" title="/home/peer23peer/programmingspace\l/VSA/VisionSoilAnalyzer/src\l/VSA/vsamainwindow.h" alt="" coords="269,421,509,477"/><area shape="rect" id="node4" href="dialognn_8h.html" title="/home/peer23peer/programmingspace\l/VSA/VisionSoilAnalyzer/src\l/VSA/dialognn.h" alt="" coords="59,317,299,373"/><area shape="rect" id="node9" href="dialogsettings_8cpp.html" title="/home/peer23peer/programmingspace\l/VSA/VisionSoilAnalyzer/src\l/VSA/dialogsettings.cpp" alt="" coords="373,317,613,373"/><area shape="rect" id="node5" href="dialognn_8cpp.html" title="/home/peer23peer/programmingspace\l/VSA/VisionSoilAnalyzer/src\l/VSA/dialognn.cpp" alt="" coords="5,421,245,477"/><area shape="rect" id="node7" href="main_8cpp.html" title="/home/peer23peer/programmingspace\l/VSA/VisionSoilAnalyzer/src\l/VSA/main.cpp" alt="" coords="137,525,377,581"/><area shape="rect" id="node8" href="vsamainwindow_8cpp.html" title="/home/peer23peer/programmingspace\l/VSA/VisionSoilAnalyzer/src\l/VSA/vsamainwindow.cpp" alt="" coords="401,525,641,581"/></map>
 </div>
 </div>
 <p><a href="_microscope_8h_source.html">Go to the source code of this file.</a></p>
@@ -151,240 +159,27 @@ This graph shows which files directly or indirectly include this file:</div>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hardware_1_1_microscope.html">Hardware::Microscope</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_hardware_1_1_microscope_1_1_resolution.html">Hardware::Microscope::Resolution</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_hardware_1_1_microscope_1_1_resolution__t.html">Hardware::Microscope::Resolution_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_hardware_1_1_microscope_1_1_control__t.html">Hardware::Microscope::Control_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_hardware_1_1_microscope_1_1___custom_data.html">Hardware::Microscope::_CustomData</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_hardware_1_1_microscope_1_1_cam__t.html">Hardware::Microscope::Cam_t</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespace_hardware"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_hardware.html">Hardware</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a76771e092943667b16272539ebf2300d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_microscope_8h.html#a76771e092943667b16272539ebf2300d">MICROSCOPE_VERSION</a>&#160;&#160;&#160;1</td></tr>
-<tr class="separator:a76771e092943667b16272539ebf2300d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a2272749c65f1491ef78f03201987d1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_microscope_8h.html#a6a2272749c65f1491ef78f03201987d1">MIN_BRIGHTNESS</a>&#160;&#160;&#160;-64</td></tr>
-<tr class="separator:a6a2272749c65f1491ef78f03201987d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2134a5a06f0865c945543a1f07eba387"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_microscope_8h.html#a2134a5a06f0865c945543a1f07eba387">MAX_BRIGHTNESS</a>&#160;&#160;&#160;64</td></tr>
-<tr class="separator:a2134a5a06f0865c945543a1f07eba387"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a16f0d77a4cbef51d5e6c105d16471cba"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_microscope_8h.html#a16f0d77a4cbef51d5e6c105d16471cba">MIN_CONTRAST</a>&#160;&#160;&#160;0</td></tr>
-<tr class="separator:a16f0d77a4cbef51d5e6c105d16471cba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a328501bf918536ed7b99f60400548a2d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_microscope_8h.html#a328501bf918536ed7b99f60400548a2d">MAX_CONTRAST</a>&#160;&#160;&#160;64</td></tr>
-<tr class="separator:a328501bf918536ed7b99f60400548a2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3c645fd6171458aecb7ae50bbaee7c6f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_microscope_8h.html#a3c645fd6171458aecb7ae50bbaee7c6f">MIN_SATURATION</a>&#160;&#160;&#160;0</td></tr>
-<tr class="separator:a3c645fd6171458aecb7ae50bbaee7c6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d638a302ba4d276b68fa4c92ad69022"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_microscope_8h.html#a6d638a302ba4d276b68fa4c92ad69022">MAX_SATURATION</a>&#160;&#160;&#160;128</td></tr>
-<tr class="separator:a6d638a302ba4d276b68fa4c92ad69022"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e6c03d8634818167281383307d9e9c7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_microscope_8h.html#a5e6c03d8634818167281383307d9e9c7">MIN_HUE</a>&#160;&#160;&#160;-40</td></tr>
-<tr class="separator:a5e6c03d8634818167281383307d9e9c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9260b36b7e213ce91f9c7af75503581f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_microscope_8h.html#a9260b36b7e213ce91f9c7af75503581f">MAX_HUE</a>&#160;&#160;&#160;40</td></tr>
-<tr class="separator:a9260b36b7e213ce91f9c7af75503581f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a730cd6a37517702fe0f3d4012b031220"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_microscope_8h.html#a730cd6a37517702fe0f3d4012b031220">MIN_GAMMA</a>&#160;&#160;&#160;40</td></tr>
-<tr class="separator:a730cd6a37517702fe0f3d4012b031220"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7307baab149844198c7075f7bdb4330c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_microscope_8h.html#a7307baab149844198c7075f7bdb4330c">MAX_GAMMA</a>&#160;&#160;&#160;500</td></tr>
-<tr class="separator:a7307baab149844198c7075f7bdb4330c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8aae393e2be9d64b8264db339a5b01f6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_microscope_8h.html#a8aae393e2be9d64b8264db339a5b01f6">MIN_SHARPNESS</a>&#160;&#160;&#160;1</td></tr>
-<tr class="separator:a8aae393e2be9d64b8264db339a5b01f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a765c36e500e1e831106e75caa7cac743"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_microscope_8h.html#a765c36e500e1e831106e75caa7cac743">MAX_SHARPNESS</a>&#160;&#160;&#160;25</td></tr>
-<tr class="separator:a765c36e500e1e831106e75caa7cac743"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="a2134a5a06f0865c945543a1f07eba387"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define MAX_BRIGHTNESS&#160;&#160;&#160;64</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="_microscope_8h_source.html#l00016">16</a> of file <a class="el" href="_microscope_8h_source.html">Microscope.h</a>.</p>
-
-<p>Referenced by <a class="el" href="_microscope_8cpp_source.html#l00094">Hardware::Microscope::GetHDRFrame()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a328501bf918536ed7b99f60400548a2d"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define MAX_CONTRAST&#160;&#160;&#160;64</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="_microscope_8h_source.html#l00018">18</a> of file <a class="el" href="_microscope_8h_source.html">Microscope.h</a>.</p>
-
-<p>Referenced by <a class="el" href="_microscope_8cpp_source.html#l00094">Hardware::Microscope::GetHDRFrame()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a7307baab149844198c7075f7bdb4330c"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define MAX_GAMMA&#160;&#160;&#160;500</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="_microscope_8h_source.html#l00024">24</a> of file <a class="el" href="_microscope_8h_source.html">Microscope.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a9260b36b7e213ce91f9c7af75503581f"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define MAX_HUE&#160;&#160;&#160;40</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="_microscope_8h_source.html#l00022">22</a> of file <a class="el" href="_microscope_8h_source.html">Microscope.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a6d638a302ba4d276b68fa4c92ad69022"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define MAX_SATURATION&#160;&#160;&#160;128</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="_microscope_8h_source.html#l00020">20</a> of file <a class="el" href="_microscope_8h_source.html">Microscope.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a765c36e500e1e831106e75caa7cac743"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define MAX_SHARPNESS&#160;&#160;&#160;25</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="_microscope_8h_source.html#l00026">26</a> of file <a class="el" href="_microscope_8h_source.html">Microscope.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a76771e092943667b16272539ebf2300d"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define MICROSCOPE_VERSION&#160;&#160;&#160;1</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Version of the class </p>
-
-<p>Definition at line <a class="el" href="_microscope_8h_source.html#l00013">13</a> of file <a class="el" href="_microscope_8h_source.html">Microscope.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a6a2272749c65f1491ef78f03201987d1"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define MIN_BRIGHTNESS&#160;&#160;&#160;-64</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="_microscope_8h_source.html#l00015">15</a> of file <a class="el" href="_microscope_8h_source.html">Microscope.h</a>.</p>
-
-<p>Referenced by <a class="el" href="_microscope_8cpp_source.html#l00094">Hardware::Microscope::GetHDRFrame()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a16f0d77a4cbef51d5e6c105d16471cba"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define MIN_CONTRAST&#160;&#160;&#160;0</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="_microscope_8h_source.html#l00017">17</a> of file <a class="el" href="_microscope_8h_source.html">Microscope.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a730cd6a37517702fe0f3d4012b031220"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define MIN_GAMMA&#160;&#160;&#160;40</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="_microscope_8h_source.html#l00023">23</a> of file <a class="el" href="_microscope_8h_source.html">Microscope.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a5e6c03d8634818167281383307d9e9c7"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define MIN_HUE&#160;&#160;&#160;-40</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="_microscope_8h_source.html#l00021">21</a> of file <a class="el" href="_microscope_8h_source.html">Microscope.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a3c645fd6171458aecb7ae50bbaee7c6f"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define MIN_SATURATION&#160;&#160;&#160;0</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="_microscope_8h_source.html#l00019">19</a> of file <a class="el" href="_microscope_8h_source.html">Microscope.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a8aae393e2be9d64b8264db339a5b01f6"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define MIN_SHARPNESS&#160;&#160;&#160;1</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="_microscope_8h_source.html#l00025">25</a> of file <a class="el" href="_microscope_8h_source.html">Microscope.h</a>.</p>
-
-</div>
-</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_7d1931b727af368c927c89b2ad19148d.html">SoilHardware</a></li><li class="navelem"><a class="el" href="_microscope_8h.html">Microscope.h</a></li>
-    <li class="footer">Generated on Sat Jun 20 2015 18:57:04 for Vision Soil Analyzer by
+    <li class="footer">Generated on Mon Oct 5 2015 21:06:39 for Vision Soil Analyzer by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

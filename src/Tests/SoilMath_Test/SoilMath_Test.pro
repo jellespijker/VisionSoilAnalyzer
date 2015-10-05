@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += testlib
+QT       += testlib concurrent
 QMAKE_CXXFLAGS += -std=c++11
 
 QT       -= gui
@@ -17,7 +17,6 @@ TEMPLATE = app
 
 
 SOURCES += tst_soilmath_test.cpp
-#DEFINES += SRCDIR=\\\"$$PWD/\\\"
 
 #boost
 DEFINES += BOOST_ALL_DYN_LINK
@@ -39,7 +38,6 @@ HEADERS += \
 IMGtarget.path += $${OUT_PWD}/Images
 IMGtarget.files += $${PWD}/../ComparisionPictures/*
 INSTALLS += IMGtarget
-
 
 unix:!macx: LIBS += -L$$PWD/../../../build/install/ -lSoilMath
 

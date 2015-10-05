@@ -1,13 +1,19 @@
 var searchData=
 [
-  ['i',['I',['../_comparision_pictures_2_createtest_image_8m.html#aa7400a30a3cc1d4ef58923b44ecb7719',1,'I():&#160;CreatetestImage.m'],['../_v_s_a___u_t_2_comparision_pictures_2_createtest_image_8m.html#a66cc12e3c6d68de3fef6de89cf033f67',1,'I():&#160;CreatetestImage.m'],['../_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426',1,'i():&#160;CreatetestImage.m'],['../_v_s_a___u_t_2_comparision_pictures_2_createtest_image_8m.html#a6f6ccfcf58b31cb6412107d9d5281426',1,'i():&#160;CreatetestImage.m']]],
-  ['id',['ID',['../class_soil_analyzer_1_1_soil.html#a0011c3cd2a504e34c5962cbf72e397da',1,'SoilAnalyzer::Soil']]],
+  ['id',['ID',['../struct_hardware_1_1_microscope_1_1_resolution__t.html#a953e7a65311a4861b6db47b4faf74d4e',1,'Hardware::Microscope::Resolution_t::ID()'],['../struct_hardware_1_1_microscope_1_1_control__t.html#a7eb33f4df690ac0f388be1305722576d',1,'Hardware::Microscope::Control_t::ID()'],['../struct_hardware_1_1_microscope_1_1_cam__t.html#a870c5b29e3b987dce2a82308165cd178',1,'Hardware::Microscope::Cam_t::ID()'],['../class_soil_analyzer_1_1_particle.html#a2e8100d7c87bd754929fa957982ff5e5',1,'SoilAnalyzer::Particle::ID()'],['../class_soil_analyzer_1_1_sample.html#a5eab03e759ae5754000ad10c30e75d15',1,'SoilAnalyzer::Sample::ID()']]],
   ['ignorepartialborderparticles',['ignorePartialBorderParticles',['../class_soil_analyzer_1_1_soil_settings.html#a24fb1d7da2247da77a17d853ea1494d7',1,'SoilAnalyzer::SoilSettings']]],
+  ['imagegraphformat',['ImageGraphFormat',['../class_q_report_generator.html#a19451127788bb6c68907b312a0a8b750',1,'QReportGenerator']]],
+  ['images',['images',['../class_q_particle_display.html#a6b976ba18b8aac401d79c768c5b81ed4',1,'QParticleDisplay::images()'],['../class_v_s_a_main_window.html#a5976cf149c1aff5011c75d058f7f1c8a',1,'VSAMainWindow::Images()']]],
   ['img',['Img',['../class_soil_math_1_1_f_f_t.html#a2efda8f90cd255a2c18352636352044f',1,'SoilMath::FFT::Img()'],['../struct_vision_1_1_segment_1_1_blob.html#a776f587282c775375052461a14b0a304',1,'Vision::Segment::Blob::Img()']]],
-  ['imgprepped',['imgPrepped',['../class_soil_analyzer_1_1_sample.html#ab025a26f7276128a5a974cae15b51dfc',1,'SoilAnalyzer::Sample']]],
   ['ineurons',['iNeurons',['../class_soil_math_1_1_n_n.html#aa5a6a6014722338fb8af2f79d6187998',1,'SoilMath::NN']]],
+  ['initfase',['initfase',['../class_dialog_settings.html#aeff07458ed6d4469cc16f90971bc5083',1,'DialogSettings']]],
   ['inputneurons',['inputneurons',['../class_soil_math_1_1_g_a.html#ac32591e30dde5ac854ae57a7b9e33298',1,'SoilMath::GA::inputneurons()'],['../class_soil_math_1_1_n_n.html#a51723ae01e9b0a95c9aa6ac4f4c569fc',1,'SoilMath::NN::inputNeurons()']]],
-  ['intensity',['Intensity',['../class_soil_analyzer_1_1_soil.html#a6f56200f2722df5b849d8cddd094c852',1,'SoilAnalyzer::Soil::Intensity()'],['../class_hardware_1_1_a_d_c.html#a38a0f00558a3de01b3bce567643dae4a',1,'Hardware::ADC::Intensity()'],['../class_hardware_1_1_p_w_m.html#afcfc81ddeeb9c510ad4d00b215477d7a',1,'Hardware::PWM::intensity()']]],
+  ['inputvalues',['inputValues',['../class_soil_math_1_1_g_a.html#a99276ad62b9616d0f18becc4fbb22980',1,'SoilMath::GA']]],
+  ['intensity',['Intensity',['../class_hardware_1_1_a_d_c.html#a38a0f00558a3de01b3bce567643dae4a',1,'Hardware::ADC::Intensity()'],['../class_hardware_1_1_p_w_m.html#afcfc81ddeeb9c510ad4d00b215477d7a',1,'Hardware::PWM::intensity()']]],
+  ['isanalysed',['isAnalysed',['../class_soil_analyzer_1_1_particle.html#aeae83a2d48d7682f7017210a2730b48b',1,'SoilAnalyzer::Particle::isAnalysed()'],['../class_soil_analyzer_1_1_sample.html#a7534ad473783de2ffd2b34c97ae86902',1,'SoilAnalyzer::Sample::isAnalysed()']]],
   ['isdiscrete',['isDiscrete',['../class_soil_math_1_1_stats.html#a2f54bbc8d815345b23ebbd4ba2b302bf',1,'SoilMath::Stats']]],
+  ['isloadedfromdisk',['IsLoadedFromDisk',['../class_soil_analyzer_1_1_sample.html#ad078b5aae9d86f5d8fc7ec871381b138',1,'SoilAnalyzer::Sample']]],
+  ['ispreparedforanalysis',['isPreparedForAnalysis',['../class_soil_analyzer_1_1_particle.html#aead45a461f496be6fa4a200fb0d8a150',1,'SoilAnalyzer::Particle::isPreparedForAnalysis()'],['../class_soil_analyzer_1_1_sample.html#a0bbd1340cc91d63420ecd9fb4c9dac83',1,'SoilAnalyzer::Sample::isPreparedForAnalysis()']]],
+  ['issmall',['isSmall',['../class_soil_analyzer_1_1_particle.html#a56c5d77365850a29011cf069cce90445',1,'SoilAnalyzer::Particle']]],
   ['iweights',['iWeights',['../class_soil_math_1_1_n_n.html#a96b0fe3caeed3d285204a6b4506075c9',1,'SoilMath::NN']]]
 ];

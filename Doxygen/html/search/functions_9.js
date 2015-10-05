@@ -1,8 +1,11 @@
 var searchData=
 [
-  ['key',['key',['../class_q_c_p_item_position.html#ac3cb2bddf5f89e5181830be30b93d090',1,'QCPItemPosition::key()'],['../class_q_c_p_statistical_box.html#a767af754f39872d6308b900a0d1758ca',1,'QCPStatisticalBox::key()']]],
-  ['keyaxis',['keyAxis',['../class_q_c_p_abstract_plottable.html#a72c7a09c22963f2c943f07112b311103',1,'QCPAbstractPlottable::keyAxis()'],['../class_q_c_p_item_position.html#ab99de7ae5766d246defb2de9f47eaf51',1,'QCPItemPosition::keyAxis()']]],
-  ['keypixeloffset',['keyPixelOffset',['../class_q_c_p_bars_group.html#a8e2ca6002e7bab49670144d048a2bcc9',1,'QCPBarsGroup']]],
-  ['keyrange',['keyRange',['../class_q_c_p_color_map_data.html#a4765180639742460f64ab6c97c745c08',1,'QCPColorMapData']]],
-  ['keysize',['keySize',['../class_q_c_p_color_map_data.html#aa8d7811686fdfea964947715210c4af8',1,'QCPColorMapData']]]
+  ['lab2ri',['Lab2RI',['../class_vision_1_1_conversion.html#adf3ad076d44a9986332f5078c5fa2cc7',1,'Vision::Conversion']]],
+  ['labelblobs',['LabelBlobs',['../class_vision_1_1_segment.html#ac10de08f4c3b0f8cb91f0469b6cf37c9',1,'Vision::Segment']]],
+  ['learn',['Learn',['../class_soil_math_1_1_n_n.html#a8550b524ed096712bb2fad9fa57b8c8d',1,'SoilMath::NN']]],
+  ['learnerrorupdate',['learnErrorUpdate',['../class_soil_math_1_1_g_a.html#a3b7d8649411ccebc8cb6f44ed1ba2365',1,'SoilMath::GA::learnErrorUpdate()'],['../class_soil_math_1_1_n_n.html#ae207eda16ae755e5bce5eb48ab8fe45c',1,'SoilMath::NN::learnErrorUpdate()']]],
+  ['load',['Load',['../class_soil_analyzer_1_1_particle.html#a555bb4744ce9579c4b67878b6c3d70f7',1,'SoilAnalyzer::Particle::Load()'],['../class_soil_analyzer_1_1_sample.html#afbb2db434d2e0a317c5b056371bf43fe',1,'SoilAnalyzer::Sample::Load()']]],
+  ['loadoriginalimg',['LoadOriginalImg',['../class_vision_1_1_segment.html#a8b5edc7f5a69d961e47f61a2191b8745',1,'Vision::Segment']]],
+  ['loadsettings',['LoadSettings',['../class_soil_analyzer_1_1_soil_settings.html#a438bf660eeb7a49a676eef5da129f8d5',1,'SoilAnalyzer::SoilSettings']]],
+  ['loadstate',['LoadState',['../class_soil_math_1_1_n_n.html#aaa63195dc11ca8c02f3ce044a5d086b5',1,'SoilMath::NN']]]
 ];

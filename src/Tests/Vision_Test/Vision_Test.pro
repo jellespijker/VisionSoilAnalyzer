@@ -20,13 +20,14 @@ LIBS += -L/usr/local/lib -lopencv_core -lopencv_highgui -lopencv_imgproc -lopenc
 INCLUDEPATH += /usr/local/include/opencv
 INCLUDEPATH += /usr/local/include
 
-SOURCES += tst_vision_test.cpp
+SOURCES += \
+    tst_vision_test.cpp \
+    VisionFunctions.cpp \
+
+HEADERS += \
+    VisionFunctions.h
+
 DEFINES += SRCDIR=\\\"$$PWD/\\\"
-
-unix:!macx: LIBS += -L$$PWD/../../../build/install/ -lSoilVision
-
-INCLUDEPATH += $$PWD/../../SoilVision
-DEPENDPATH += $$PWD/../../SoilVision
 
 unix {
     target.files += 379_blobs.ppm
@@ -35,4 +36,11 @@ unix {
 }
 
 DISTFILES += \
-    379_blobs.ppm
+    379_blobs.ppm \
+    ../ComparisionPictures/berg1_image_1.png
+
+unix:!macx: QMAKE_RPATHDIR += $$PWD/../../../build/install/
+unix:!macx: LIBS += -L$$PWD/../../../build/install/ -lSoilVision
+
+INCLUDEPATH += $$PWD/../../SoilVision
+DEPENDPATH += $$PWD/../../SoilVision

@@ -3,10 +3,7 @@ var _soil_math_types_8h =
     [ "PopMemberStruct", "struct_pop_member_struct.html", "struct_pop_member_struct" ],
     [ "Predict_struct", "struct_predict__struct.html", "struct_predict__struct" ],
     [ "CROSSOVER", "_soil_math_types_8h.html#ae84e527452fcf9dfc8ef8fd0dd5cd598", null ],
-    [ "ELITISME", "_soil_math_types_8h.html#aa2f6faf3ad4bc7b9d4df4f766203a2ff", null ],
-    [ "END_ERROR", "_soil_math_types_8h.html#ae9ddcafe7b5c7bc5956b50623aa31747", null ],
     [ "GENE_MAX", "_soil_math_types_8h.html#aa5e1eb1a998e5ed69af2076cf318df4b", null ],
-    [ "MUTATIONRATE", "_soil_math_types_8h.html#a609754629b7669df73d7e8edda337162", null ],
     [ "Complex_t", "_soil_math_types_8h.html#a26c307796ad803485b0376c90026d8f7", null ],
     [ "ComplexArray_t", "_soil_math_types_8h.html#a5118c9f6b02a06945c93a3893e51febe", null ],
     [ "ComplexVect_t", "_soil_math_types_8h.html#a7567e521c2b2c408dcb62dbff72390f7", null ],
@@ -22,6 +19,7 @@ var _soil_math_types_8h =
     [ "Predict_t", "_soil_math_types_8h.html#aaeba766195a440b2539f0438d3d41f95", null ],
     [ "SplitGenome_t", "_soil_math_types_8h.html#a44bbe64bbeb237fd8918433d5f6f85b7", null ],
     [ "uchar", "_soil_math_types_8h.html#a65f85814a8290f9797005d3b28e7e5fc", null ],
+    [ "uint32_t", "_soil_math_types_8h.html#a435d1572bf3f880d55459d9805097f62", null ],
     [ "ushort", "_soil_math_types_8h.html#ab95f123a6c9bcfee6a343170ef8c5f69", null ],
     [ "Weight_t", "_soil_math_types_8h.html#ac56ad2b88186620fd0de0d213aa715dd", null ]
 ];

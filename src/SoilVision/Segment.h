@@ -13,6 +13,9 @@
 #include <stdint.h>
 #include <iostream>
 #include <algorithm>
+#include <utility>
+
+#include <boost/range/adaptor/reversed.hpp>
 
 #include "opencv2/imgproc/imgproc.hpp"
 
@@ -30,7 +33,7 @@ public:
     uint16_t rightX; /*!< Right X coordinate*/
     uint16_t rightY; /*!< Right Y coordinate*/
     Rect(uint16_t lx, uint16_t ly, uint16_t rx, uint16_t ry)
-        : leftX(lx), leftY(ly), rightX(rx), rightY(ry){};
+        : leftX(lx), leftY(ly), rightX(rx), rightY(ry){}
   } Rect_t;
 
   typedef std::vector<Vision::Segment::Rect_t> RectList_t;
@@ -43,7 +46,9 @@ public:
     cv::Rect ROI;  /*!< Coordinates for the blob in the original picture as a
                       cv::Rect*/
     uint32_t Area; /*!< Calculated stats of the blob*/
-    Blob(uint16_t label, uint32_t area) : Label(label), Area(area){};
+    cv::Point_<double> Centroid;
+    double Theta;
+    Blob(uint16_t label, uint32_t area) : Label(label), Area(area){}
   } Blob_t;
 
   typedef std::vector<Blob_t> BlobList_t;
@@ -58,10 +63,12 @@ public:
   /*! Enumerator to indicate how the pixel correlate between each other in a
    * blob*/
   enum Connected {
-    Four = 2, /*!< Enum Four connected, relation between Center, North, East, South
-             and West*/
-    Eight = 4 /*!< Enum Eight connected, relation between Center, North, NorthEast,
-             East, SouthEast, South, SouthWest, West and NorthWest */
+    Four =
+        2, /*!< Enum Four connected, relation between Center, North, East, South
+          and West*/
+    Eight =
+        4 /*!< Enum Eight connected, relation between Center, North, NorthEast,
+         East, SouthEast, South, SouthWest, West and NorthWest */
   };
 
   /*!< Enumerator which indicate which Segmentation technique should be used */
@@ -121,7 +128,14 @@ private:
   void SetBorder(uchar *P, uchar setValue);
   void FloodFill(uchar *O, uchar *P, uint16_t x, uint16_t y, uchar fillValue,
                  uchar OldValue);
-  void makeConsecutive(uint16_t LastLabelUsed, uint16_t *tempLUT,
-                       uint16_t *LUT_newVal);
+  void MakeConsecutive(uint16_t *valueArr, uint32_t noElem, uint16_t &maxlabel);
+  void MakeConsecutive(uint16_t *valueArr, uint16_t *keyArr, uint16_t noElem,
+                       uint16_t &maxlabel);
+  void SortAdjacencyList(std::vector<std::vector<uint16_t>> &adj);
+  void ConnectedBlobs(uchar *O, uint16_t *P,
+                      std::vector<std::vector<uint16_t>> &adj, uint32_t nCols,
+                      uint32_t nRows, Connected conn);
+  void InvertAdjacencyList(std::vector<std::vector<uint16_t>> &adj,
+                           std::vector<std::vector<uint16_t>> &adjInv);
 };
 }

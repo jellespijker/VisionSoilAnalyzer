@@ -252,7 +252,7 @@ void Enhance::Blur(uchar kernelsize, bool chain) {
   int noNeighboursPix = kernelsize * kernelsize;
   uint32_t sum;
 
-  uint32_t i;
+  int i;
   uchar *nRow = GetNRow(nData, hKsize, nCols, OriginalImg.rows);
   i = pStart;
   while (i++ < pEnd) {

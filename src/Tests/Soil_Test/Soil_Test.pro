@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2015-05-24T16:11:40
+# Project created by QtCreator 2015-07-31T20:12:46
 #
 #-------------------------------------------------
 
@@ -8,26 +8,29 @@ QT       += testlib
 
 QT       -= gui
 
+QMAKE_CXXFLAGS += -std=c++11
+
 TARGET = tst_soil_testtest
 CONFIG   += console
 CONFIG   -= app_bundle
 
 TEMPLATE = app
 
-#opencv
-LIBS += -L/usr/local/lib -lopencv_calib3d -lopencv_core -lopencv_features2d -lopencv_imgproc -lopencv_flann -lopencv_highgui -lopencv_imgcodecs -lopencv_ml -lopencv_objdetect -lopencv_photo -lopencv_shape -lopencv_stitching -lopencv_superres -lopencv_ts -lopencv_video -lopencv_videoio -lopencv_videostab
-INCLUDEPATH += /usr/local/include/opencv
-INCLUDEPATH += /usr/local/include
 
 SOURCES += tst_soil_testtest.cpp
 DEFINES += SRCDIR=\\\"$$PWD/\\\"
 
-unix:!macx: LIBS += -L$$PWD/../VSA/ -lSoil
+unix:!macx: LIBS += -L$$PWD/../../../build/install/ -lSoil
 
-INCLUDEPATH += $$PWD/../Soil
-DEPENDPATH += $$PWD/../Soil
+INCLUDEPATH += $$PWD/../../Soil
+DEPENDPATH += $$PWD/../../Soil
 
-#Comparision Pictures
-IMGtarget.path += $${OUT_PWD}/Images
-IMGtarget.files += $${PWD}/../ComparisionPictures/*
-INSTALLS += IMGtarget
+unix:!macx: LIBS += -L$$PWD/../../../build/install/ -lSoilVision
+
+INCLUDEPATH += $$PWD/../../SoilVision
+DEPENDPATH += $$PWD/../../SoilVision
+
+unix:!macx: LIBS += -L$$PWD/../../../build/install/ -lSoilMath
+
+INCLUDEPATH += $$PWD/../../SoilMath
+DEPENDPATH += $$PWD/../../SoilMath

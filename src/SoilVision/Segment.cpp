@@ -333,164 +333,51 @@ void Segment::LabelBlobs(bool chain, uint16_t minBlobArea, Connected conn) {
   uint32_t nRows = OriginalImg.rows;
   uint32_t nData = nCols * nRows;
 
-  // Determine the size of the array for beginning and endrow and middle of a
-  // row
-  uint32_t noConn[3] = {static_cast<uint32_t>(conn),
-                        (static_cast<uint32_t>(conn) / 2),
-                        (static_cast<uint32_t>(conn) / 2) + 1};
-  uint32_t lastConn[3] = {noConn[0] - 1, noConn[1] - 1, noConn[2] - 1};
+  vector<vector<uint16_t>> CLdownstream;
 
-  uint16_t currentlbl = 0;
-  vector<vector<uint16_t>> connectedLabels;
-  vector<uint16_t> zeroVector;
-  zeroVector.push_back(currentlbl);
-  connectedLabels.push_back(zeroVector);
+  ConnectedBlobs(O, P, CLdownstream, nCols, nRows,
+                 conn); // First loop through the image
+  SortAdjacencyList(
+      CLdownstream); // Sort all the adjacencylists and make unique,
 
-  // Determine which borderpixels should be handled differently
-  uchar *nRow = new uchar[nData]{};
-  for (uint32_t i = nCols; i < nData; i += nCols) {
-    nRow[i] = 1;
-    nRow[i - 1] = 2;
-  }
+  // identify all the lowest values in the adjacent list
+  uint16_t *valueArr = new uint16_t[CLdownstream.size()];
+  for (int i = CLdownstream.size() - 1; i >= 0; --i) {
+    std::vector<uint16_t *> route;
+    uint16_t minVal = i;
 
-  // Set the first pixel
-  if (O[0] == 0) {
-    P[0] = 0;
-  } else if (O[0] == 1) {
-    P[0] = 1;
-  } else {
-    throw Exception::PixelValueOutOfBoundException();
-  }
+    for (uint32_t j = 0; j < CLdownstream[i].size(); j++) {
 
-  // Walk through the toprow and determine if it's a new blob or it's connected
-  // with previously determine blob
-  for (uint32_t i = 1; i < nCols; i++) {
-    if (O[i] == 0) {
-      P[i] = 0;
-    } else if (O[i] == 1) {
-      // If West is zero assume this is a new blob
-      if (P[i - 1] == 0) {
-        P[i] = ++currentlbl;
-        vector<uint16_t> cVector;
-        cVector.push_back(currentlbl);
-        connectedLabels.push_back(cVector);
-      } else { // set as previous blob
-        P[i] = P[i - 1];
-      }
-    } else { // Value of of bounds
-      throw Exception::PixelValueOutOfBoundException();
-    }
-  }
+      // add the first node to the queue;
+      route.push_back(&CLdownstream[i][j]);
 
-  // walk through each pixel and determine if it's a new blob or it's connected
-  // with previously determine blob
-  for (uint32_t i = OriginalImg.cols; i < nData; i++) {
-    if (O[i] == 0) { // Original pixel = 0
-      P[i] = 0;
-    } else if (O[i] == 1) {
-      // Get an array of Neighboring Pixels
-      uint16_t *nPixels = new uint16_t[noConn[nRow[i]]];
-      if (nRow[i] != 1) {
-        nPixels[0] = P[i - 1];
-      }
-      uint32_t j = i - nCols - ((nRow[i] == 1) ? 0 : ((conn == Four) ? 0 : 1));
-      for_each(nPixels + ((nRow[i] != 1) ? 1 : 0), nPixels + noConn[nRow[i]],
-               [&](uint16_t &N) { N = P[j++]; });
-
-      // Sort the neighbors for easier checking
-      SoilMath::Sort::QuickSort<uint16_t>(nPixels, noConn[nRow[i]]);
-
-      // If all are zero assume this is a new blob
-      if (nPixels[lastConn[nRow[i]]] == 0) {
-        P[i] = ++currentlbl;
-        vector<uint16_t> cVector;
-        cVector.push_back(currentlbl);
-        connectedLabels.push_back(cVector);
-      } else {
-        /* Sets the processed value to the smallest non-zero value and update
-         * the connectedLabels */
-        for (uint32_t j = 0; j < noConn[nRow[i]]; j++) {
-          if (nPixels[j] > 0) {
-            P[i] = nPixels[j];
-            break;
-          }
+      // itterate till the last node
+      bool lastNodeReached = false;
+      while (!lastNodeReached) {
+        uint32_t nodesVisited = route.size() - 1;
+        if (*route[nodesVisited] < minVal) {
+          minVal = *route[nodesVisited];
         }
-
-        /* If previous blobs belong to different connected components set the
-         * current processed value to the lowest value and remember that the
-         * other values should be the lowest value*/
-        if (P[i] != nPixels[lastConn[nRow[i]]]) {
-          for (int j = lastConn[nRow[i]]; j >= 0; --j) {
-            if (nPixels[j] <= P[i]) {
-              break;
-            } else {
-              connectedLabels[nPixels[j]].push_back(P[i]);
-            }
-          }
+        route.push_back(&CLdownstream[*route[nodesVisited]][0]);
+        if (route[nodesVisited] == route[nodesVisited + 1]) {
+          route.pop_back();
+          lastNodeReached = true;
         }
       }
-      delete[] nPixels;
-    } else {
-      throw Exception::PixelValueOutOfBoundException();
+      // Set all values to the lowest value
+      for (uint32_t k = 0; k < route.size(); k++) {
+        *route[k] = minVal;
+      }
     }
+    valueArr[i] = minVal;
   }
-  delete[] nRow;
-
-  // Sort all the vectors and make unique,
-  uint32_t j = 0;
-  for_each(connectedLabels.begin(), connectedLabels.end(),
-           [&](std::vector<uint16_t> &L) {
-             std::sort(L.begin(), L.end());
-             std::vector<uint16_t>::iterator it;
-             it = std::unique(L.begin(), L.end());
-             L.resize(std::distance(L.begin(), it));
-             if (L.size() > 1) {
-               for (std::vector<uint16_t>::iterator iter = L.begin();
-                    iter != L.end(); ++iter) {
-                 if (*iter == j) {
-                   L.erase(iter);
-                   break;
-                 }
-               }
-             }
-             j++;
-           });
-
-  // Down the rabbit hole
-  for (uint32_t i = 0; i < connectedLabels.size(); i++) {
-      for (uint32_t j = 0; j < connectedLabels[i].size(); j++) {
-          uint16_t CurrentVal = connectedLabels[i][j];
-          uint16_t PrevVal = i;
-          while (CurrentVal != PrevVal) {
-              PrevVal = CurrentVal;
-              CurrentVal = connectedLabels[PrevVal][0];
-            }
-          connectedLabels[i][j] = CurrentVal;
-        }
-    }
 
   // Make numbers consecutive
-  uint16_t *valueArr = new uint16_t[connectedLabels.size()];
-  uint16_t *keyArr = new uint16_t[connectedLabels.size()];
-  for (uint16_t i = 0; i < connectedLabels.size(); i++) {
-      valueArr[i] = connectedLabels[i][0];
-      keyArr[i] = i;
-    }
-
-  SoilMath::Sort::QuickSort<uint16_t>(valueArr, keyArr, connectedLabels.size());
-  uint16_t count = 0;
-  for (uint32_t i = 1; i < connectedLabels.size(); i++) {
-      if (valueArr[i] != valueArr[i - 1]) { count++; }
-      valueArr[i] = count;
-    }
-  SoilMath::Sort::QuickSort<uint16_t>(keyArr, valueArr, connectedLabels.size());
-  delete[] keyArr;
-  MaxLabel = count;
+  MakeConsecutive(valueArr, CLdownstream.size(), MaxLabel);
 
   // Second loop through the pixels to give the values a final value
   for_each(P, P + nData, [&](uint16_t &V) { V = valueArr[V]; });
   delete[] valueArr;
-  SHOW_DEBUG_IMG(LabelledImg, uint16_t, uint16_t(-1), "LabbeldImg", true);
 }
 
 /*! Create a BW image with only edges from a BW image
@@ -550,6 +437,7 @@ void Segment::GetEdges(bool chain, Connected conn) {
         } else {
           P[i] = 0;
         }
+        delete[] nPixels;
       } else {
         throw Exception::PixelValueOutOfBoundException();
       }
@@ -583,6 +471,7 @@ void Segment::GetEdges(bool chain, Connected conn) {
         } else {
           P[i] = 0;
         }
+        delete[] nPixels;
       } else {
         throw Exception::PixelValueOutOfBoundException();
       }
@@ -662,13 +551,13 @@ void Segment::GetBlobList(bool chain, Connected conn) {
   uint16Stat_t LabelStats((uint16_t *)LabelledImg.data, LabelledImg.cols,
                           LabelledImg.rows, MaxLabel + 1, 0, MaxLabel);
 
-  BlobList.reserve(MaxLabel + 1);
-  rectList.reserve(MaxLabel + 1);
+  BlobList.reserve(LabelStats.EndBin);
+  rectList.reserve(LabelStats.EndBin);
 
   BlobList.push_back(Blob_t(0, 0));
   rectList.push_back(Rect_t(0, 0, 0, 0));
 
-  for (uint32_t i = 1; i <= MaxLabel; i++) {
+  for (uint32_t i = 1; i < LabelStats.EndBin; i++) {
     BlobList.push_back(Blob_t(i, LabelStats.bins[i]));
     rectList.push_back(Rect_t(nCols, nRows, 0, 0));
   }
@@ -683,8 +572,8 @@ void Segment::GetBlobList(bool chain, Connected conn) {
     if (L[i] != 0) {
       /* Determine the current x and y value of the current blob and
       checks if it is min/max */
-      currentX = i / nCols;
-      currentY = i % nCols;
+      currentY = i / nCols;
+      currentX = i % nCols;
 
       // Min value
       if (currentX < rectList[L[i]].leftX) {
@@ -708,24 +597,13 @@ void Segment::GetBlobList(bool chain, Connected conn) {
   uint8_t *LUT_filter = new uint8_t[MaxLabel + 1]{};
   for (uint32_t i = 1; i <= MaxLabel; i++) {
     LUT_filter[i] = 1;
-    BlobList[i].ROI.y = rectList[i].leftX;
-    BlobList[i].ROI.x = rectList[i].leftY;
-    BlobList[i].ROI.height = rectList[i].rightX - rectList[i].leftX;
-    BlobList[i].ROI.width = rectList[i].rightY - rectList[i].leftY;
-    if (BlobList[i].ROI.height < 0) {
-      BlobList[i].ROI.height -= BlobList[i].ROI.height;
-      BlobList[i].ROI.y = rectList[i].rightX;
-    } else if (BlobList[i].ROI.height == 0) {
-      BlobList[i].ROI.height++;
-    }
-    if (BlobList[i].ROI.width < 0) {
-      BlobList[i].ROI.width -= BlobList[i].ROI.width;
-      BlobList[i].ROI.x = rectList[i].rightY;
-    } else if (BlobList[i].ROI.width == 0) {
-      BlobList[i].ROI.width++;
-    }
+    BlobList[i].ROI.y = rectList[i].leftY;
+    BlobList[i].ROI.x = rectList[i].leftX;
+    BlobList[i].ROI.height = rectList[i].rightY - rectList[i].leftY + 1;
+    BlobList[i].ROI.width = rectList[i].rightX - rectList[i].leftX + 1;
     BlobList[i].Img = CopyMat<uint8_t, uint16_t>(
         LabelledImg(BlobList[i].ROI).clone(), LUT_filter, CV_8UC1);
+    //SHOW_DEBUG_IMG(BlobList[i].Img, uchar, 255, "Blob", true);
     LUT_filter[i] = 0;
   }
   delete[] LUT_filter;
@@ -758,8 +636,6 @@ void Segment::FillHoles(bool chain) {
   uint16_t col = static_cast<uint16_t>(itt % OriginalImg.rows);
 
   // Fill the outside
-  // FloodFill(O, P, row, col, 2, 0);
-
   try {
     cv::floodFill(ProcessedImg, cv::Point(col, row), cv::Scalar(2));
   } catch (cv::Exception &e) {
@@ -775,20 +651,209 @@ void Segment::FillHoles(bool chain) {
   }
 }
 
-void Segment::FloodFill(uchar *O, uchar *P, uint16_t row, uint16_t col,
-                        uchar fillValue, uchar OldValue) {
-  if (row < 0 || row > OriginalImg.rows) {
-    return;
+/*!
+ * \brief Segment::SortAdjacencyList Sort the the sub vectors
+ * \param adj std::vector<std::vector<uint16_t>> &adj
+ */
+void Segment::SortAdjacencyList(std::vector<std::vector<uint16_t>> &adj) {
+  uint32_t j = 0;
+  for_each(adj.begin(), adj.end(), [&](std::vector<uint16_t> &L) {
+    std::sort(L.begin(), L.end());
+    std::vector<uint16_t>::iterator it;
+    it = std::unique(L.begin(), L.end());
+    L.resize(std::distance(L.begin(), it));
+    if (L.size() > 1) {
+      for (std::vector<uint16_t>::iterator iter = L.begin(); iter != L.end();
+           ++iter) {
+        if (*iter == j) {
+          L.erase(iter);
+          break;
+        }
+      }
+    }
+    j++;
+  });
+}
+
+/*!
+ * \brief Segment::ConnectedBlobs Connect all the blobs and created the
+ * adjacency list
+ * \param O
+ * \param P
+ * \param adj
+ * \param nCols
+ * \param nRows
+ * \param conn
+ */
+void Segment::ConnectedBlobs(uchar *O, uint16_t *P,
+                             std::vector<std::vector<uint16_t>> &adj,
+                             uint32_t nCols, uint32_t nRows, Connected conn) {
+  // Determine the size of the array for beginning and endrow and middle of a
+  // row
+  uint32_t noConn[3] = {static_cast<uint32_t>(conn),
+                        (static_cast<uint32_t>(conn) / 2),
+                        (static_cast<uint32_t>(conn) / 2) + 1};
+  uint32_t lastConn[3] = {noConn[0] - 1, noConn[1] - 1, noConn[2] - 1};
+  uint32_t nData = nCols * nRows;
+
+  uint16_t currentlbl = 0;
+  vector<uint16_t> zeroVector;
+  zeroVector.push_back(currentlbl);
+  adj.push_back(zeroVector);
+
+  // Determine which borderpixels should be handled differently
+  uchar *nRow = new uchar[nData]{};
+  for (uint32_t i = nCols; i < nData; i += nCols) {
+    nRow[i] = 1;
+    nRow[i - 1] = 2;
   }
-  if (col < 0 || col > OriginalImg.cols) {
-    return;
+
+  // Set the first pixel
+  if (O[0] == 0) {
+    P[0] = 0;
+  } else if (O[0] == 1) {
+    P[0] = 1;
+  } else {
+    throw Exception::PixelValueOutOfBoundException();
   }
-  if (P[col + row * OriginalImg.rows] == OldValue) {
-    P[col + row * OriginalImg.rows] = fillValue;
-    FloodFill(O, P, row + 1, col, fillValue, OldValue);
-    FloodFill(O, P, row, col + 1, fillValue, OldValue);
-    FloodFill(O, P, row - 1, col, fillValue, OldValue);
-    FloodFill(O, P, row, col - 1, fillValue, OldValue);
+
+  // Walk through the toprow and determine if it's a new blob or it's connected
+  // with previously determine blob
+  for (uint32_t i = 1; i < nCols; i++) {
+    if (O[i] == 0) {
+      P[i] = 0;
+    } else if (O[i] == 1) {
+      // If West is zero assume this is a new blob
+      if (P[i - 1] == 0) {
+        P[i] = ++currentlbl;
+        vector<uint16_t> cVector;
+        cVector.push_back(currentlbl);
+        adj.push_back(cVector);
+      } else { // set as previous blob
+        P[i] = P[i - 1];
+      }
+    } else { // Value of of bounds
+      throw Exception::PixelValueOutOfBoundException();
+    }
   }
+
+  // walk through each pixel and determine if it's a new blob or it's connected
+  // with previously determine blob
+  for (uint32_t i = OriginalImg.cols; i < nData; i++) {
+    if (O[i] == 0) { // Original pixel = 0
+      P[i] = 0;
+    } else if (O[i] == 1) {
+      // Get an array of Neighboring Pixels
+      uint16_t *nPixels = new uint16_t[noConn[nRow[i]]];
+      if (nRow[i] != 1) {
+        nPixels[0] = P[i - 1];
+      }
+      uint32_t j = i - nCols - ((nRow[i] == 1) ? 0 : ((conn == Four) ? 0 : 1));
+      for_each(nPixels + ((nRow[i] != 1) ? 1 : 0), nPixels + noConn[nRow[i]],
+               [&](uint16_t &N) { N = P[j++]; });
+
+      // Sort the neighbors for easier checking
+      SoilMath::Sort::QuickSort<uint16_t>(nPixels, noConn[nRow[i]]);
+
+      // If all are zero assume this is a new blob
+      if (nPixels[lastConn[nRow[i]]] == 0) {
+        P[i] = ++currentlbl;
+        vector<uint16_t> cVector;
+        cVector.push_back(currentlbl);
+        adj.push_back(cVector);
+      } else {
+        /* Sets the processed value to the smallest non-zero value and update
+         * the connectedLabels */
+        for (uint32_t j = 0; j < noConn[nRow[i]]; j++) {
+          if (nPixels[j] > 0) {
+            P[i] = nPixels[j];
+            break;
+          }
+        }
+
+        /* If previous blobs belong to different connected components set the
+         * current processed value to the lowest value and remember that the
+         * other values should be the lowest value*/
+        if (P[i] != nPixels[lastConn[nRow[i]]]) {
+          for (int j = lastConn[nRow[i]]; j >= 0; --j) {
+            if (nPixels[j] <= P[i]) {
+              break;
+            } else {
+              adj[nPixels[j]].push_back(P[i]);
+            }
+          }
+        }
+      }
+      delete[] nPixels;
+    } else {
+      throw Exception::PixelValueOutOfBoundException();
+    }
+  }
+  delete[] nRow;
+}
+
+/*!
+ * \brief Segment::InvertAdjacencyList invert the adjecencylist for upstream
+ * (unused)
+ * \param adj
+ * \param adjInv
+ */
+void Segment::InvertAdjacencyList(std::vector<std::vector<uint16_t>> &adj,
+                                  std::vector<std::vector<uint16_t>> &adjInv) {
+  // Build the inverted vector
+  adjInv.resize(adj.size());
+  uint16_t count = 0;
+  for_each(adj.begin(), adj.end(), [&](std::vector<uint16_t> &V) {
+    for_each(V.begin(), V.end(),
+             [&](uint16_t &C) { adjInv[C].push_back(count); });
+    count++;
+  });
+}
+
+/*!
+ * \brief Segment::MakeConsecutive make the valueArr consequative numbers
+ * \param valueArr
+ * \param noElem
+ * \param maxLabel
+ */
+void Segment::MakeConsecutive(uint16_t *valueArr, uint32_t noElem,
+                              uint16_t &maxLabel) {
+  std::vector<std::vector<uint16_t>> conseq;
+  conseq.resize(noElem);
+  for (uint32_t i = 0; i < noElem; i++) {
+    conseq[valueArr[i]].push_back(i);
+  }
+  uint32_t count = 1;
+  for (uint32_t i = 1; i < noElem; i++) {
+    if (conseq[i].size() > 0) {
+      for (uint32_t j = 0; j < conseq[i].size(); j++) {
+        valueArr[conseq[i][j]] = count;
+      }
+      count++;
+    }
+  }
+  maxLabel = count - 1;
+}
+
+/*!
+ * \brief Segment::MakeConsecutive probably a fault in this function. Don't use
+ * \param valueArr
+ * \param keyArr
+ * \param noElem
+ * \param maxlabel
+ */
+void Segment::MakeConsecutive(uint16_t *valueArr, uint16_t *keyArr,
+                              uint16_t noElem, uint16_t &maxlabel) {
+  SoilMath::Sort::QuickSort<uint16_t>(valueArr, keyArr, noElem);
+  uint16_t count = 0;
+  for (uint32_t i = 1; i < noElem; i++) {
+    if (valueArr[i] != valueArr[i - 1]) {
+      count++;
+    }
+    valueArr[i] = count;
+  }
+  SoilMath::Sort::QuickSort<uint16_t>(keyArr, valueArr, noElem);
+  delete[] keyArr;
+  maxlabel = count;
 }
 }

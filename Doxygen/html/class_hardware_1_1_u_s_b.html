@@ -30,7 +30,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="IHClogo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Vision Soil Analyzer
    &#160;<span id="projectnumber">1.0.0</span>
@@ -49,7 +48,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -122,6 +120,8 @@ $(document).ready(function(){initNavTree('class_hardware_1_1_u_s_b.html','');});
 Collaboration diagram for Hardware::USB:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_hardware_1_1_u_s_b__coll__graph.png" border="0" usemap="#_hardware_1_1_u_s_b_coll__map" alt="Collaboration graph"/></div>
+<map name="_hardware_1_1_u_s_b_coll__map" id="_hardware_1_1_u_s_b_coll__map">
+</map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -151,8 +151,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Definition at line <a class="el" href="_u_s_b_8cpp_source.html#l00011">11</a> of file <a class="el" href="_u_s_b_8cpp_source.html">USB.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{}</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a class="anchor" id="a808f13d66ce9bdf66a043fd02b4b8cf2"></a>
@@ -169,8 +168,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Definition at line <a class="el" href="_u_s_b_8cpp_source.html#l00013">13</a> of file <a class="el" href="_u_s_b_8cpp_source.html">USB.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{}</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -189,32 +187,11 @@ Public Member Functions</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_u_s_b_8cpp_source.html#l00015">15</a> of file <a class="el" href="_u_s_b_8cpp_source.html">USB.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="_microscope_8cpp_source.html#l00035">Hardware::Microscope::StartupSeq()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                   {</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <span class="keywordtype">int</span> fd, rc;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  fd = open(<span class="stringliteral">&quot;/dev/bus/usb/001/002&quot;</span>, O_WRONLY);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  rc = ioctl(fd, USBDEVFS_RESET, 0);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <span class="keywordflow">if</span> (rc &lt; 0) {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordflow">throw</span> - 1;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  }</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  close(fd);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
-</div><!-- fragment -->
-<p><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_hardware_1_1_u_s_b_af387867ec84f4c709b55e3605f9e313e_icgraph.png" border="0" usemap="#class_hardware_1_1_u_s_b_af387867ec84f4c709b55e3605f9e313e_icgraph" alt=""/></div>
-<map name="class_hardware_1_1_u_s_b_af387867ec84f4c709b55e3605f9e313e_icgraph" id="class_hardware_1_1_u_s_b_af387867ec84f4c709b55e3605f9e313e_icgraph">
-<area shape="rect" id="node2" href="class_hardware_1_1_microscope.html#ad045b565e258b1b3b68c2c55273b3058" title="Hardware::Microscope\l::StartupSeq" alt="" coords="239,5,392,47"/></map>
-</div>
-</p>
-
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/peer23peer/VisionSoilAnalyzer/src/SoilHardware/<a class="el" href="_u_s_b_8h_source.html">USB.h</a></li>
-<li>/home/peer23peer/VisionSoilAnalyzer/src/SoilHardware/<a class="el" href="_u_s_b_8cpp_source.html">USB.cpp</a></li>
+<li>/home/peer23peer/programmingspace/VSA/VisionSoilAnalyzer/src/SoilHardware/<a class="el" href="_u_s_b_8h_source.html">USB.h</a></li>
+<li>/home/peer23peer/programmingspace/VSA/VisionSoilAnalyzer/src/SoilHardware/<a class="el" href="_u_s_b_8cpp_source.html">USB.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -222,7 +199,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_hardware.html">Hardware</a></li><li class="navelem"><a class="el" href="class_hardware_1_1_u_s_b.html">USB</a></li>
-    <li class="footer">Generated on Sat Jun 20 2015 18:57:14 for Vision Soil Analyzer by
+    <li class="footer">Generated on Mon Oct 5 2015 21:06:39 for Vision Soil Analyzer by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

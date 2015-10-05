@@ -1,32 +1,25 @@
-/* Copyright (C) Jelle Spijker - All Rights Reserved
- * Unauthorized copying of this file, via any medium is strictly prohibited
- * and only allowed with the written consent of the author (Jelle Spijker)
- * This software is proprietary and confidential
- * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015
- */
-
-
 #include <QString>
 #include <QtTest>
+#include "Soil.h"
 
 class Soil_TestTest : public QObject
 {
-    Q_OBJECT
+  Q_OBJECT
 
 public:
-    Soil_TestTest();
+  Soil_TestTest();
 
 private Q_SLOTS:
-    void testCase1();
+  void GetSimplePSD_testCase();
 };
 
 Soil_TestTest::Soil_TestTest()
 {
 }
 
-void Soil_TestTest::testCase1()
+void Soil_TestTest::GetSimplePSD_testCase()
 {
-    QVERIFY2(true, "Failure");
+  QVERIFY2(true, "Failure");
 }
 
 QTEST_APPLESS_MAIN(Soil_TestTest)

@@ -8,7 +8,7 @@
 #pragma once
 // Debuging helper macros
 #ifndef DEBUG
-#define DEBUG
+//#define DEBUG
 #endif
 
 #ifdef DEBUG

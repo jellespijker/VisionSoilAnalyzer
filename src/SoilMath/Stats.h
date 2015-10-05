@@ -8,7 +8,6 @@
 #pragma once
 #define MAX_UINT8_VALUE 256
 #define VECTOR_CALC 1
-#define STATS_VERSION 1
 
 #include <stdint.h>
 #include <utility>
@@ -23,13 +22,12 @@
 
 #include <boost/archive/binary_iarchive.hpp>
 #include <boost/archive/binary_oarchive.hpp>
+#include <boost/serialization/version.hpp>
 #include <boost/math/distributions/students_t.hpp>
 
 #include "MathException.h"
 #include "SoilMathTypes.h"
 #include "CommonOperations.h"
-
-using namespace std;
 
 namespace SoilMath {
 
@@ -42,24 +40,27 @@ template <typename T1, typename T2, typename T3> class Stats {
 public:
   bool isDiscrete = true; /**< indicates if the data is discrete or real*/
 
-  T1 *Data;                /**< Pointer the data*/
-  uint32_t *bins;          /**< the histogram*/
-  bool Calculated = false; /**< indication if the data has been calculated*/
-  float Mean = 0.0;        /**< the mean value of the data*/
-  uint32_t n = 0;          /**< number of data points*/
-  uint32_t noBins = 0;     /**< number of bins*/
-  T1 Range = 0;            /**< range of the data*/
-  T1 min = 0;              /**< minimum value*/
-  T1 max = 0;              /**< maximum value*/
-  T1 Startbin = 0;         /**< First bin value*/
-  T1 EndBin = 0;           /**< End bin value*/
-  T1 binRange = 0;         /**< the range of a single bin*/
-  float Std = 0.0;         /**< standard deviation*/
-  T3 Sum = 0;              /**< total sum of all the data values*/
-  uint16_t Rows = 0;       /**< number of rows from the data matrix*/
-  uint16_t Cols = 0;       /**< number of cols from the data matrix*/
-  bool StartAtZero = true; /**< indication of the minimum value starts at zero
-                              or could be less*/
+  T1 *Data = nullptr;       /**< Pointer the data*/
+  uint32_t *bins = nullptr; /**< the histogram*/
+  double *CFD = nullptr;    /**< the CFD*/
+  bool Calculated = false;  /**< indication if the data has been calculated*/
+  float Mean = 0.0;         /**< the mean value of the data*/
+  uint32_t n = 0;           /**< number of data points*/
+  uint32_t noBins = 0;      /**< number of bins*/
+  T1 Range = 0;             /**< range of the data*/
+  T1 min = 0;               /**< minimum value*/
+  T1 max = 0;               /**< maximum value*/
+  T1 Startbin = 0;          /**< First bin value*/
+  T1 EndBin = 0;            /**< End bin value*/
+  T1 binRange = 0;          /**< the range of a single bin*/
+  float Std = 0.0;          /**< standard deviation*/
+  T3 Sum = 0;               /**< total sum of all the data values*/
+  uint16_t Rows = 0;        /**< number of rows from the data matrix*/
+  uint16_t Cols = 0;        /**< number of cols from the data matrix*/
+  bool StartAtZero = true;  /**< indication of the minimum value starts at zero
+                               or could be less*/
+  double *BinRanges = nullptr;
+  double HighestPDF = 0.;
 
   uint32_t *begin() { return &bins[0]; }    /**< pointer to the first bin*/
   uint32_t *end() { return &bins[noBins]; } /**< pointer to the last + 1 bin*/
@@ -109,7 +110,8 @@ public:
    * \param rhs Right hand side
    */
   Stats(const Stats &rhs)
-      : Data{new T1[rhs.n]}, bins{new uint32_t[rhs.noBins]} {
+      : bins{new uint32_t[rhs.noBins]{0}}, CFD{new double[rhs.noBins]{}},
+        BinRanges{new double[rhs.noBins]{}} {
     this->binRange = rhs.binRange;
     this->Calculated = rhs.Calculated;
     this->Cols = rhs.Cols;
@@ -127,8 +129,11 @@ public:
     this->Std = rhs.Std;
     this->Sum = rhs.Sum;
     std::copy(rhs.bins, rhs.bins + rhs.noBins, this->bins);
-    this->Data = &rhs.Data[0];
+    std::copy(rhs.CFD, rhs.CFD + rhs.noBins, this->CFD);
+    std::copy(rhs.BinRanges, rhs.BinRanges + rhs.noBins, this->BinRanges);
+    this->Data = rhs.Data;
     this->StartAtZero = rhs.StartAtZero;
+    this->HighestPDF = rhs.HighestPDF;
   }
 
   /*!
@@ -138,10 +143,24 @@ public:
    */
   Stats &operator=(Stats const &rhs) {
     if (&rhs != this) {
-      delete[] bins;
-      delete[] Data;
-      bins = new uint32_t[rhs.noBins];
-      Data = new T1[rhs.n];
+      Data = rhs.Data;
+
+      if (bins != nullptr) {
+        delete[] bins;
+        bins = nullptr;
+      }
+      if (CFD != nullptr) {
+        delete[] CFD;
+        CFD = nullptr;
+      }
+      if (BinRanges != nullptr) {
+        delete[] BinRanges;
+        BinRanges = nullptr;
+      }
+
+      bins = new uint32_t[rhs.noBins];    // leak
+      CFD = new double[rhs.noBins];       // leak
+      BinRanges = new double[rhs.noBins]; // leak
       this->binRange = rhs.binRange;
       this->Calculated = rhs.Calculated;
       this->Cols = rhs.Cols;
@@ -160,7 +179,10 @@ public:
       this->Sum = rhs.Sum;
       this->Data = &rhs.Data[0];
       std::copy(rhs.bins, rhs.bins + rhs.noBins, this->bins);
+      std::copy(rhs.CFD, rhs.CFD + rhs.noBins, this->CFD);
+      std::copy(rhs.BinRanges, rhs.BinRanges + rhs.noBins, this->BinRanges);
       this->StartAtZero = rhs.StartAtZero;
+      this->HighestPDF = rhs.HighestPDF;
     }
     return *this;
   }
@@ -172,13 +194,15 @@ public:
    * \param endBin end value of the second bin
    */
   Stats(int noBins = 256, T1 startBin = 0, T1 endBin = 255) {
-    min = numeric_limits<T1>::max();
-    max = numeric_limits<T1>::min();
-    Range = numeric_limits<T1>::max();
+    min = std::numeric_limits<T1>::max();
+    max = std::numeric_limits<T1>::min();
+    Range = std::numeric_limits<T1>::max();
     Startbin = startBin;
     EndBin = endBin;
     this->noBins = noBins;
-    bins = new uint32_t[noBins]{};
+    bins = new uint32_t[noBins]{0};   // leak
+    CFD = new double[noBins]{};       // leak
+    BinRanges = new double[noBins]{}; // leak
 
     if (typeid(T1) == typeid(float) || typeid(T1) == typeid(double) ||
         typeid(T1) == typeid(long double)) {
@@ -201,8 +225,8 @@ public:
    */
   Stats(T1 *data, uint16_t rows, uint16_t cols, int noBins = 256,
         T1 startBin = 0, bool startatzero = true) {
-    min = numeric_limits<T1>::max();
-    max = numeric_limits<T1>::min();
+    min = std::numeric_limits<T1>::max();
+    max = std::numeric_limits<T1>::min();
     Range = max - min;
 
     Startbin = startBin;
@@ -219,7 +243,9 @@ public:
     Data = data;
     Rows = rows;
     Cols = cols;
-    bins = new uint32_t[noBins]{};
+    bins = new uint32_t[noBins]{0};
+    CFD = new double[noBins]{};
+    BinRanges = new double[noBins]{};
     this->noBins = noBins;
     if (isDiscrete) {
       BasicCalculate();
@@ -242,8 +268,8 @@ public:
    */
   Stats(T1 *data, uint16_t rows, uint16_t cols, uchar *mask, int noBins = 256,
         T1 startBin = 0, bool startatzero = true) {
-    min = numeric_limits<T1>::max();
-    max = numeric_limits<T1>::min();
+    min = std::numeric_limits<T1>::max();
+    max = std::numeric_limits<T1>::min();
     Range = max - min;
 
     Startbin = startBin;
@@ -260,7 +286,9 @@ public:
     Data = data;
     Rows = rows;
     Cols = cols;
-    bins = new uint32_t[noBins]{};
+    bins = new uint32_t[noBins]{0};
+    CFD = new double[noBins]{};
+    BinRanges = new double[noBins]{};
     this->noBins = noBins;
     if (isDiscrete) {
       BasicCalculate(mask);
@@ -284,13 +312,15 @@ public:
     if (typeid(T1) == typeid(float) || typeid(T1) == typeid(double) ||
         typeid(T1) == typeid(long double)) {
       isDiscrete = false;
-      throw Exception::MathException(
-          "Calculations using histogram not supported with floating-type!");
+      throw Exception::MathException(EXCEPTION_TYPE_NOT_SUPPORTED,
+                                     EXCEPTION_TYPE_NOT_SUPPORTED_NR);
     } else {
       isDiscrete = true;
     }
 
-    bins = new uint32_t[noBins]{};
+    bins = new uint32_t[noBins]{0};
+    CFD = new double[noBins]{};
+    BinRanges = new double[noBins]{};
     while (i-- > 0) {
       bins[i] = binData[i];
       n += binData[i];
@@ -298,7 +328,21 @@ public:
     BinCalculations(startC, endC);
   }
 
-  ~Stats() { delete[] bins; }
+  ~Stats() {
+    Data == nullptr;
+    if (bins != nullptr) {
+      delete[] bins;
+      bins = nullptr;
+    }
+    if (CFD != nullptr) {
+      delete[] CFD;
+      CFD = nullptr;
+    }
+    if (BinRanges != nullptr) {
+      delete[] BinRanges;
+      BinRanges = nullptr;
+    }
+  }
 
   /*!
    * \brief BasicCalculateFloat execute the basic float data calculations
@@ -319,6 +363,7 @@ public:
     uint32_t index = 0;
     Mean = Sum / (float)n;
     Range = max - min;
+
     if (StartAtZero) {
       for (uint32_t i = 0; i < n; i++) {
         index = static_cast<uint32_t>(Data[i] / binRange);
@@ -339,6 +384,7 @@ public:
       }
     }
     Std = sqrt((float)(sum_dev / n));
+    getCFD();
     Calculated = true;
   }
 
@@ -391,6 +437,7 @@ public:
       }
     }
     Std = sqrt((float)(sum_dev / nmask));
+    getCFD();
     Calculated = true;
   }
 
@@ -410,11 +457,15 @@ public:
       Sum += Data[i];
     }
     binRange = static_cast<T1>(ceil((max - min) / static_cast<float>(noBins)));
+    if (binRange == 0) {
+      binRange = 1;
+    }
     Mean = Sum / (float)n;
     Range = max - min;
+
     uint32_t index;
     if (StartAtZero) {
-      for_each(Data, Data + n, [&](T1 &d) {
+      std::for_each(Data, Data + n, [&](T1 &d) {
         index = static_cast<uint32_t>(d / binRange);
         if (index == noBins) {
           index -= 1;
@@ -423,7 +474,7 @@ public:
         sum_dev += pow((d - Mean), 2);
       });
     } else {
-      for_each(Data, Data + n, [&](T1 &d) {
+      std::for_each(Data, Data + n, [&](T1 &d) {
         index = static_cast<uint32_t>((d - min) / binRange);
         if (index == noBins) {
           index -= 1;
@@ -433,6 +484,7 @@ public:
       });
     }
     Std = sqrt((float)(sum_dev / n));
+    getCFD();
     Calculated = true;
   }
 
@@ -446,7 +498,7 @@ public:
     n = Rows * Cols;
     uint32_t nmask = 0;
     uint32_t i = 0;
-    for_each(Data, Data + n, [&](T1 &d) {
+    std::for_each(Data, Data + n, [&](T1 &d) {
       if (mask[i++] != 0) {
         if (d > max) {
           max = d;
@@ -461,10 +513,11 @@ public:
     binRange = static_cast<T1>(ceil((max - min) / static_cast<float>(noBins)));
     Mean = Sum / (float)nmask;
     Range = max - min;
+
     uint32_t index;
     if (StartAtZero) {
       i = 0;
-      for_each(Data, Data + n, [&](T1 &d) {
+      std::for_each(Data, Data + n, [&](T1 &d) {
         if (mask[i++] != 0) {
           index = static_cast<uint32_t>(d / binRange);
           if (index == noBins) {
@@ -476,7 +529,7 @@ public:
       });
     } else {
       i = 0;
-      for_each(Data, Data + n, [&](T1 &d) {
+      std::for_each(Data, Data + n, [&](T1 &d) {
         if (mask[i++] != 0) {
           index = static_cast<uint32_t>((d - min) / binRange);
           if (index == noBins) {
@@ -488,6 +541,7 @@ public:
       });
     }
     Std = sqrt((float)(sum_dev / nmask));
+    getCFD();
     Calculated = true;
   }
 
@@ -521,7 +575,7 @@ public:
       }
     }
 
-    // Get Max;
+    // Get Range;
     Range = max - min;
 
     // Calculate Standard Deviation
@@ -530,11 +584,62 @@ public:
       sum_dev += b * pow(((i++ + startC) - Mean), 2);
     });
     Std = sqrt((float)(sum_dev / n));
+    getCFD();
     Calculated = true;
   }
 
-private:
+  uint32_t HighestFrequency() {
+    uint32_t freq = 0;
+    std::for_each(begin(), end(), [&](uint32_t &B) {
+      if (B > freq) {
+        freq = B;
+      }
+    });
+    return freq;
+  }
+
+  void GetPDFfunction(std::vector<double> &xAxis, std::vector<double> &yAxis,
+                      double Step, double start = 0, double stop = 7) {
+    uint32_t resolution;
+    resolution = static_cast<uint32_t>(((stop - start) / Step) + 0.5);
+
+    xAxis.push_back(start);
+    double yVal0 = (1 / (Std * 2.506628274631)) *
+                   exp(-(pow((start - Mean), 2) / (2 * pow(Std, 2))));
+    yAxis.push_back(yVal0);
+    HighestPDF = yVal0;
+    for (uint32_t i = 1; i < resolution; i++) {
+      double xVal = xAxis[xAxis.size() - 1] + Step;
+      xAxis.push_back(xVal);
+      double yVal = (1 / (Std * 2.506628274631)) *
+                    exp(-(pow((xVal - Mean), 2) / (2 * pow(Std, 2))));
+      yAxis.push_back(yVal);
+      if (yVal > HighestPDF) {
+        HighestPDF = yVal;
+      }
+    }
+  }
+
+protected:
   uint32_t n_end = 0; /**< data end counter used with mask*/
+
+  /*!
+   * \brief getCFD get the CFD matrix;
+   */
+  void getCFD() {
+    uint32_t *sumBin = new uint32_t[noBins];
+    sumBin[0] = bins[0];
+    CFD[0] = (static_cast<double>(sumBin[0]) / static_cast<double>(n)) * 100.;
+    for (uint32_t i = 1; i < noBins; i++) {
+      sumBin[i] = (sumBin[i - 1] + bins[i]);
+      CFD[i] = (static_cast<double>(sumBin[i]) / static_cast<double>(n)) * 100.;
+      if (CFD[i] > HighestPDF) {
+        HighestPDF = CFD[i];
+      }
+    }
+    delete[] sumBin;
+  }
+
   friend class boost::serialization::access; /**< Serialization class*/
 
   /*!
@@ -543,29 +648,35 @@ private:
    * \param version
    */
   template <class Archive>
-  void serialize(Archive &ar, const unsigned int version __attribute__((unused))) {
-    ar &isDiscrete;
-    ar &n;
-    for (size_t dc = 0; dc < n; dc++) {
-      ar &Data[dc];
+  void serialize(Archive &ar, const unsigned int version) {
+    if (version == 0) {
+      ar &isDiscrete;
+      ar &n;
+      ar &noBins;
+      for (size_t dc = 0; dc < noBins; dc++) {
+        ar &bins[dc];
+      }
+      for (size_t dc = 0; dc < noBins; dc++) {
+        ar &CFD[dc];
+      }
+      for (size_t dc = 0; dc < noBins; dc++) {
+        ar &BinRanges[dc];
+      }
+      ar &Calculated;
+      ar &Mean;
+      ar &Range;
+      ar &min;
+      ar &max;
+      ar &Startbin;
+      ar &EndBin;
+      ar &binRange;
+      ar &Std;
+      ar &Sum;
+      ar &Rows;
+      ar &Cols;
+      ar &StartAtZero;
+      ar &HighestPDF;
     }
-    ar &noBins;
-    for (size_t dc = 0; dc < noBins; dc++) {
-      ar &bins[dc];
-    }
-    ar &Calculated;
-    ar &Mean;
-    ar &Range;
-    ar &min;
-    ar &max;
-    ar &Startbin;
-    ar &EndBin;
-    ar &binRange;
-    ar &Std;
-    ar &Sum;
-    ar &Rows;
-    ar &Cols;
-    ar &StartAtZero;
   }
 };
 }
@@ -578,3 +689,7 @@ typedef SoilMath::Stats<uint16_t, uint32_t, uint64_t>
     uint16Stat_t; /**< uint16 Stat type*/
 typedef SoilMath::Stats<uint32_t, uint32_t, uint64_t>
     uint32Stat_t; /**< uint32 Stat type*/
+BOOST_CLASS_VERSION(floatStat_t, 0)
+BOOST_CLASS_VERSION(ucharStat_t, 0)
+BOOST_CLASS_VERSION(uint16Stat_t, 0)
+BOOST_CLASS_VERSION(uint32Stat_t, 0)

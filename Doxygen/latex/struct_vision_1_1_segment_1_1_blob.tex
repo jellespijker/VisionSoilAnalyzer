@@ -1,4 +1,4 @@
-\hypertarget{struct_vision_1_1_segment_1_1_blob}{}\section{Vision\+:\+:Segment\+:\+:Blob Struct Reference}
+\hypertarget{struct_vision_1_1_segment_1_1_blob}{}\subsection{Vision\+:\+:Segment\+:\+:Blob Struct Reference}
 \label{struct_vision_1_1_segment_1_1_blob}\index{Vision\+::\+Segment\+::\+Blob@{Vision\+::\+Segment\+::\+Blob}}
 
 
@@ -6,19 +6,20 @@
 
 
 
-Collaboration diagram for Vision\+:\+:Segment\+:\+:Blob\+:\nopagebreak
+Collaboration diagram for Vision\+:\+:Segment\+:\+:Blob\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=194pt]{struct_vision_1_1_segment_1_1_blob__coll__graph}
 \end{center}
 \end{figure}
-\subsection*{Public Member Functions}
+\subsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{struct_vision_1_1_segment_1_1_blob_a4133b605534057e3747506d03e4041cb}{Blob} (uint16\+\_\+t label, uint32\+\_\+t area)
+\hyperlink{struct_vision_1_1_segment_1_1_blob_a4133b605534057e3747506d03e4041cb}{Blob} (uint16\+\_\+t label, \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} area)
 \end{DoxyCompactItemize}
-\subsection*{Public Attributes}
+\subsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 uint16\+\_\+t \hyperlink{struct_vision_1_1_segment_1_1_blob_aaa4c2a0d3f0c920fb8b59417dd54f82b}{Label}
@@ -27,67 +28,81 @@ cv\+::\+Mat \hyperlink{struct_vision_1_1_segment_1_1_blob_a776f587282c7753750524
 \item 
 cv\+::\+Rect \hyperlink{struct_vision_1_1_segment_1_1_blob_aceb3e938bb4489c08edd9324fdee7465}{R\+O\+I}
 \item 
-uint32\+\_\+t \hyperlink{struct_vision_1_1_segment_1_1_blob_a391697e1f49d65415c6c0ed8c3221a74}{Area}
+\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} \hyperlink{struct_vision_1_1_segment_1_1_blob_a391697e1f49d65415c6c0ed8c3221a74}{Area}
+\item 
+cv\+::\+Point\+\_\+$<$ double $>$ \hyperlink{struct_vision_1_1_segment_1_1_blob_ac8a647379e87cd42d666edf835862611}{Centroid}
+\item 
+double \hyperlink{struct_vision_1_1_segment_1_1_blob_a1a48ef74a8b707aa02bb93fd5f75a080}{Theta}
 \end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
+\subsubsection{Detailed Description}
 Individual blob 
 
-Definition at line 39 of file Segment.\+h.
+Definition at line \hyperlink{_segment_8h_source_l00042}{42} of file \hyperlink{_segment_8h_source}{Segment.\+h}.
 
 
 
-\subsection{Constructor \& Destructor Documentation}
+\subsubsection{Constructor \& Destructor Documentation}
 \hypertarget{struct_vision_1_1_segment_1_1_blob_a4133b605534057e3747506d03e4041cb}{}\index{Vision\+::\+Segment\+::\+Blob@{Vision\+::\+Segment\+::\+Blob}!Blob@{Blob}}
 \index{Blob@{Blob}!Vision\+::\+Segment\+::\+Blob@{Vision\+::\+Segment\+::\+Blob}}
-\subsubsection[{Blob}]{\setlength{\rightskip}{0pt plus 5cm}Vision\+::\+Segment\+::\+Blob\+::\+Blob (
+\paragraph[{Blob}]{\setlength{\rightskip}{0pt plus 5cm}Vision\+::\+Segment\+::\+Blob\+::\+Blob (
 \begin{DoxyParamCaption}
 \item[{uint16\+\_\+t}]{label, }
-\item[{uint32\+\_\+t}]{area}
+\item[{{\bf uint32\+\_\+t}}]{area}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [inline]}}\label{struct_vision_1_1_segment_1_1_blob_a4133b605534057e3747506d03e4041cb}
 
 
-Definition at line 46 of file Segment.\+h.
+Definition at line \hyperlink{_segment_8h_source_l00051}{51} of file \hyperlink{_segment_8h_source}{Segment.\+h}.
 
 
-\begin{DoxyCode}
-46 : \hyperlink{struct_vision_1_1_segment_1_1_blob_aaa4c2a0d3f0c920fb8b59417dd54f82b}{Label}(label), \hyperlink{struct_vision_1_1_segment_1_1_blob_a391697e1f49d65415c6c0ed8c3221a74}{Area}(area)\{\};
-\end{DoxyCode}
 
-
-\subsection{Member Data Documentation}
+\subsubsection{Member Data Documentation}
 \hypertarget{struct_vision_1_1_segment_1_1_blob_a391697e1f49d65415c6c0ed8c3221a74}{}\index{Vision\+::\+Segment\+::\+Blob@{Vision\+::\+Segment\+::\+Blob}!Area@{Area}}
 \index{Area@{Area}!Vision\+::\+Segment\+::\+Blob@{Vision\+::\+Segment\+::\+Blob}}
-\subsubsection[{Area}]{\setlength{\rightskip}{0pt plus 5cm}uint32\+\_\+t Vision\+::\+Segment\+::\+Blob\+::\+Area}\label{struct_vision_1_1_segment_1_1_blob_a391697e1f49d65415c6c0ed8c3221a74}
+\paragraph[{Area}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32\+\_\+t} Vision\+::\+Segment\+::\+Blob\+::\+Area}\label{struct_vision_1_1_segment_1_1_blob_a391697e1f49d65415c6c0ed8c3221a74}
 Calculated stats of the blob 
 
-Definition at line 45 of file Segment.\+h.
+Definition at line \hyperlink{_segment_8h_source_l00048}{48} of file \hyperlink{_segment_8h_source}{Segment.\+h}.
+
+\hypertarget{struct_vision_1_1_segment_1_1_blob_ac8a647379e87cd42d666edf835862611}{}\index{Vision\+::\+Segment\+::\+Blob@{Vision\+::\+Segment\+::\+Blob}!Centroid@{Centroid}}
+\index{Centroid@{Centroid}!Vision\+::\+Segment\+::\+Blob@{Vision\+::\+Segment\+::\+Blob}}
+\paragraph[{Centroid}]{\setlength{\rightskip}{0pt plus 5cm}cv\+::\+Point\+\_\+$<$double$>$ Vision\+::\+Segment\+::\+Blob\+::\+Centroid}\label{struct_vision_1_1_segment_1_1_blob_ac8a647379e87cd42d666edf835862611}
+
+
+Definition at line \hyperlink{_segment_8h_source_l00049}{49} of file \hyperlink{_segment_8h_source}{Segment.\+h}.
 
 \hypertarget{struct_vision_1_1_segment_1_1_blob_a776f587282c775375052461a14b0a304}{}\index{Vision\+::\+Segment\+::\+Blob@{Vision\+::\+Segment\+::\+Blob}!Img@{Img}}
 \index{Img@{Img}!Vision\+::\+Segment\+::\+Blob@{Vision\+::\+Segment\+::\+Blob}}
-\subsubsection[{Img}]{\setlength{\rightskip}{0pt plus 5cm}cv\+::\+Mat Vision\+::\+Segment\+::\+Blob\+::\+Img}\label{struct_vision_1_1_segment_1_1_blob_a776f587282c775375052461a14b0a304}
+\paragraph[{Img}]{\setlength{\rightskip}{0pt plus 5cm}cv\+::\+Mat Vision\+::\+Segment\+::\+Blob\+::\+Img}\label{struct_vision_1_1_segment_1_1_blob_a776f587282c775375052461a14b0a304}
 B\+W image of the blob all the pixel belonging to the blob are set to 1 others are 0 
 
-Definition at line 41 of file Segment.\+h.
+Definition at line \hyperlink{_segment_8h_source_l00044}{44} of file \hyperlink{_segment_8h_source}{Segment.\+h}.
 
 \hypertarget{struct_vision_1_1_segment_1_1_blob_aaa4c2a0d3f0c920fb8b59417dd54f82b}{}\index{Vision\+::\+Segment\+::\+Blob@{Vision\+::\+Segment\+::\+Blob}!Label@{Label}}
 \index{Label@{Label}!Vision\+::\+Segment\+::\+Blob@{Vision\+::\+Segment\+::\+Blob}}
-\subsubsection[{Label}]{\setlength{\rightskip}{0pt plus 5cm}uint16\+\_\+t Vision\+::\+Segment\+::\+Blob\+::\+Label}\label{struct_vision_1_1_segment_1_1_blob_aaa4c2a0d3f0c920fb8b59417dd54f82b}
+\paragraph[{Label}]{\setlength{\rightskip}{0pt plus 5cm}uint16\+\_\+t Vision\+::\+Segment\+::\+Blob\+::\+Label}\label{struct_vision_1_1_segment_1_1_blob_aaa4c2a0d3f0c920fb8b59417dd54f82b}
 I\+D of the blob 
 
-Definition at line 40 of file Segment.\+h.
+Definition at line \hyperlink{_segment_8h_source_l00043}{43} of file \hyperlink{_segment_8h_source}{Segment.\+h}.
 
 \hypertarget{struct_vision_1_1_segment_1_1_blob_aceb3e938bb4489c08edd9324fdee7465}{}\index{Vision\+::\+Segment\+::\+Blob@{Vision\+::\+Segment\+::\+Blob}!R\+O\+I@{R\+O\+I}}
 \index{R\+O\+I@{R\+O\+I}!Vision\+::\+Segment\+::\+Blob@{Vision\+::\+Segment\+::\+Blob}}
-\subsubsection[{R\+O\+I}]{\setlength{\rightskip}{0pt plus 5cm}cv\+::\+Rect Vision\+::\+Segment\+::\+Blob\+::\+R\+O\+I}\label{struct_vision_1_1_segment_1_1_blob_aceb3e938bb4489c08edd9324fdee7465}
+\paragraph[{R\+O\+I}]{\setlength{\rightskip}{0pt plus 5cm}cv\+::\+Rect Vision\+::\+Segment\+::\+Blob\+::\+R\+O\+I}\label{struct_vision_1_1_segment_1_1_blob_aceb3e938bb4489c08edd9324fdee7465}
 Coordinates for the blob in the original picture as a cv\+::\+Rect 
 
-Definition at line 43 of file Segment.\+h.
+Definition at line \hyperlink{_segment_8h_source_l00046}{46} of file \hyperlink{_segment_8h_source}{Segment.\+h}.
+
+\hypertarget{struct_vision_1_1_segment_1_1_blob_a1a48ef74a8b707aa02bb93fd5f75a080}{}\index{Vision\+::\+Segment\+::\+Blob@{Vision\+::\+Segment\+::\+Blob}!Theta@{Theta}}
+\index{Theta@{Theta}!Vision\+::\+Segment\+::\+Blob@{Vision\+::\+Segment\+::\+Blob}}
+\paragraph[{Theta}]{\setlength{\rightskip}{0pt plus 5cm}double Vision\+::\+Segment\+::\+Blob\+::\+Theta}\label{struct_vision_1_1_segment_1_1_blob_a1a48ef74a8b707aa02bb93fd5f75a080}
+
+
+Definition at line \hyperlink{_segment_8h_source_l00050}{50} of file \hyperlink{_segment_8h_source}{Segment.\+h}.
 
 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-/home/peer23peer/\+Vision\+Soil\+Analyzer/src/\+Soil\+Vision/\hyperlink{_segment_8h}{Segment.\+h}\end{DoxyCompactItemize}
+/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Vision/\hyperlink{_segment_8h}{Segment.\+h}\end{DoxyCompactItemize}

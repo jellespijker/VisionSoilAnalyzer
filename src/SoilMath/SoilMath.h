@@ -6,8 +6,8 @@
  */
 
 /*! \brief Collection of the public SoilMath headers
- *         Commonpractice is to include this header when you want to add
- * Soilmath routines
+ * Commonpractice is to include this header when you want to add Soilmath
+ * routines
  */
 #pragma once
 
@@ -18,3 +18,6 @@
 #include "GA.h"
 #include "CommonOperations.h"
 #include "SoilMathTypes.h"
+#include "psd.h"
+#include "Mat_archive.h"
+#include "predict_t_archive.h"

@@ -1,0 +1,139 @@
+Below is a list of used libraries during and their installation instructions:
+
+\paragraph{Common packages}
+\begin{sBox}
+	sudo apt-get install build-essential cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev libv4l-dev v4l-utils libqt5multimediawidgets5 clang libboost-all-dev cheese cmake-qt-gui qt-sdk libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev libv4l-dev libtbb-dev libqt4-dev libfaac-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev libtheora-dev libvorbis-dev libxvidcore-dev x264 v4l-utils unzip libopencv-dev build-essential cmake git libgtk2.0-dev pkg-config python-dev python-numpy libdc1394-22 libdc1394-22-dev libjpeg-dev libpng12-dev libjasper-dev libavcodec-dev libavformat-dev libswscale-dev libxine2-dev libtiff5-dev libgstreamer0.10-dev libpython3-all-dev libpython-all-dev libbz2-dev valgrind python3-numpy
+\end{sBox}
+
+\paragraph{Nvidia driver (820M)}
+\begin{sBox}
+	sudo apt-get purge nvidia*\\
+	sudo add-apt-repository ppa:graphics-drivers/ppa\\
+	sudo apt-get update\\
+	sudo apt-get install nvidia-355 nvidia-settings\\
+	sudo nvidia-xconfig\\
+	sudo apt-get install bumblebee bbswitch-dkms primus\\
+	sudo systemctl enable bumblebeed\\
+	sudo echo "i915" >> /etc/modules-load.d/modules.conf \&\& sudo echo "bbswitch" >> /etc/modules-load.d/modules.conf\\  
+	sudo ln -s /usr/lib/nvidia-current /usr/lib/nvidia-355\\
+	sudo ln -s /usr/lib32/nvidia-current /usr/lib32/nvidia-355\\
+	sudo nano /etc/bumblebee/bumblebee.conf\\
+	change the parameter `Driver=` > `Driver=nvidia\\
+	change the parameter `KernelDriver=nvidia-current` > `KernelDriver=nvidia-355\\
+	restart the computer\\
+\end{sBox}
+
+
+\paragraph{CUDA}
+\begin{sBox}
+	wget http://developer.download.nvidia.com/compute/cuda/7\_0/Prod/local\_installers/rpmdeb/cuda-repo-ubuntu1410-7-0-local\_7.0-28\_amd64.deb\\
+	sudo dpkg -i cuda-repo-ubuntu1410-7-0-local\_7.0-28\_amd64.deb\\
+	sudo apt-get update\\
+	sudo apt-get install cuda\\
+	export PATH=/usr/local/cuda-7.0/bin:\$PATH\\
+	export LD\_LIBRARY\_PATH=/usr/local/cuda-7.0/lib64:\$LD\_LIBRARY\_PATH\
+\end{sBox}  
+ 
+\paragraph{Qt and Qt Creator}
+\begin{sBox}
+	wget http://download.qt.io/official\_releases/online\_installers/qt-unified-linux-x64-online.run\\
+	sudo chmod +x qt-unified-linux-x64-online.run\\
+	./qt-unified-linux-x64-online.run\\
+\end{sBox}
+ 
+\paragraph{OpenCV 3.0 beta}
+\begin{sBox}
+	cd \~\\   
+	git clone https://github.com/Itseez/opencv.git\\
+	cd opencv\\
+	mkdir release\\
+	cd release\\
+	Enter the following command for an NVIDIA CUDA enabled environment:\\
+	cmake -D CMAKE\_BUILD\_TYPE=RELEASE -D CMAKE\_INSTALL\_PREFIX=/usr/local -D BUILD\_CUDA\_STUBS=ON -D BUILD\_DOCS=OFF -D BUILD\_JPEG=ON -D BUILD\_PNG=ON -D BUILD\_TESTS=OFF -D BUILD\_WITH\_DEBUG\_INFO=OFF -D CUDA\_FAST\_MATH=ON -D ENABLE\_FAST\_MATH=ON -D WITH\_CUBLAS=ON WITH\_OPENGL=ON WITH\_QT=ON ..\\
+	Or the command below for a computer that has no NVIDIA CUDA capabilities:\\  
+	cmake -D CMAKE\_BUILD\_TYPE=RELEASE -D CMAKE\_INSTALL\_PREFIX=/usr/local -D WITH\_CUDA=OFF -D BUILD\_DOCS=OFF -D BUILD\_JPEG=ON -D BUILD\_PNG=ON -D BUILD\_TESTS=OFF -D BUILD\_WITH\_DEBUG\_INFO=OFF -D ENABLE\_FAST\_MATH=ON -D WITH\_OPENGL=ON -D WITH\_QT=ON ..\\
+	make -jnumber of processors\\
+	sudo make install\\
+	sudo /bin/bash -c 'echo "/usr/local/lib" > /etc/ld.so.conf.d/opencv.conf'\\
+	sudo ldconfig\\
+\end{sBox}  
+  
+\paragraph{ZLib}
+\begin{sBox}
+	wget http://zlib.net/zlib-1.2.8.tar.gz\\
+	tar xf zlib-1.2.8.tar.gz\\
+	cd zlib-1.2.8\\
+	./configure\\
+	make -jnumber of processors\\
+	sudo make install\\
+\end{sBox}
+
+\newpage
+\paragraph{Folder structure}
+\dirtree{%
+	.1 /.
+	.2 src.
+	.3 pictureflow-qt.
+	.3 qcustomplot.
+	.3 QOpenCVQT.
+	.3 QParticleDisplay.
+	.3 QReportGenerator.
+	.3 SoilAnalyzer.
+	.3 SoilHardware.
+	.3 SoilMath.
+	.3 SoilVision.
+	.3 Tests.
+	.4 ComparisionPictures.
+	.4 Microscope\_Test.
+	.4 SoilMath\_Test.
+	.4 Soil\_Test.
+	.4 Vision\_Test.
+	.3 tiscamera.
+	.3 VSA.
+	.4 Icons.
+	.4 Images.
+	.4 NeuralNet.
+	.4 Settings.
+	.4 SoilSamples.
+	.4 TestedSamples.
+	.2 build.
+	.3 debug.
+	.4 pictureflow-qt.
+	.4 qcustomplot.
+	.4 QOpenCVQT.
+	.4 QParticleDisplay.
+	.4 QReportGenerator.
+	.4 SoilAnalyzer.
+	.4 SoilHardware.
+	.4 SoilMath.
+	.4 SoilVision.
+	.3 install.
+	.4 pictureflow-qt.
+	.4 qcustomplot.
+	.4 QOpenCVQT.
+	.4 QParticleDisplay.
+	.4 QReportGenerator.
+	.4 SoilAnalyzer.
+	.4 SoilHardware.
+	.4 SoilMath.
+	.4 SoilVision.
+	.3 release.
+	.4 pictureflow-qt.
+	.4 qcustomplot.
+	.4 QOpenCVQT.
+	.4 QParticleDisplay.
+	.4 QReportGenerator.
+	.4 SoilAnalyzer.
+	.4 SoilHardware.
+	.4 SoilMath.
+	.4 SoilVision.
+	.3 Tests.
+	.4 ComparisionPictures.
+	.4 Microscope\_Test.
+	.4 SoilMath\_Test.
+	.4 Soil\_Test.
+	.4 Vision\_Test.
+	.2 doxygen.
+	.3 html.
+	.3 latex.
+}

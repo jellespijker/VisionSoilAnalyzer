@@ -1,10 +1,12 @@
 var searchData=
 [
-  ['ec12p',['EC12P',['../class_e_c12_p.html',1,'']]],
-  ['ec12p',['EC12P',['../class_hardware_1_1_e_c12_p.html',1,'Hardware']]],
-  ['emtpyimageexception',['EmtpyImageException',['../class_emtpy_image_exception.html',1,'']]],
-  ['emtpyimageexception',['EmtpyImageException',['../class_vision_1_1_exception_1_1_emtpy_image_exception.html',1,'Vision::Exception']]],
-  ['enhance',['Enhance',['../class_enhance.html',1,'']]],
-  ['enhance',['Enhance',['../class_vision_1_1_enhance.html',1,'Vision']]],
-  ['eqep',['eQEP',['../class_hardware_1_1e_q_e_p.html',1,'Hardware']]]
+  ['cam_5ft',['Cam_t',['../struct_hardware_1_1_microscope_1_1_cam__t.html',1,'Hardware::Microscope']]],
+  ['channelmismatchexception',['ChannelMismatchException',['../class_vision_1_1_exception_1_1_channel_mismatch_exception.html',1,'Vision::Exception']]],
+  ['channelmismatchexception',['ChannelMismatchException',['../class_channel_mismatch_exception.html',1,'']]],
+  ['control_5ft',['Control_t',['../struct_hardware_1_1_microscope_1_1_control__t.html',1,'Hardware::Microscope']]],
+  ['conversion',['Conversion',['../class_vision_1_1_conversion.html',1,'Vision']]],
+  ['conversion',['Conversion',['../class_conversion.html',1,'']]],
+  ['conversionnotsupportedexception',['ConversionNotSupportedException',['../class_conversion_not_supported_exception.html',1,'']]],
+  ['conversionnotsupportedexception',['ConversionNotSupportedException',['../class_vision_1_1_exception_1_1_conversion_not_supported_exception.html',1,'Vision::Exception']]],
+  ['couldnotgrabimageexception',['CouldNotGrabImageException',['../class_hardware_1_1_exception_1_1_could_not_grab_image_exception.html',1,'Hardware::Exception']]]
 ];

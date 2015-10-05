@@ -17,7 +17,6 @@ var class_hardware_1_1_p_w_m =
     [ "PWM", "class_hardware_1_1_p_w_m.html#ac5608137ddc798aa26c505ec6edb8458", null ],
     [ "~PWM", "class_hardware_1_1_p_w_m.html#a2867d5a260e3b6069926a3282e66ebba", null ],
     [ "calcIntensity", "class_hardware_1_1_p_w_m.html#a891abdbbd00aae4f0a4afdf0a9e3a160", null ],
-    [ "FindPath", "class_hardware_1_1_p_w_m.html#ad826f2fc67d34bc3c6d5fc859c32c1cc", null ],
     [ "GetDuty", "class_hardware_1_1_p_w_m.html#abc213166a3e5f725fe8eb810bdf63085", null ],
     [ "GetIntensity", "class_hardware_1_1_p_w_m.html#a03b291fccd76436faf7d8efb415a4aa7", null ],
     [ "GetPeriod", "class_hardware_1_1_p_w_m.html#a61652657a00420607e184d7cf2627202", null ],

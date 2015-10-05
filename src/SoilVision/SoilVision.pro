@@ -4,13 +4,16 @@
 #
 #-------------------------------------------------
 
-QT       -= core gui
+QT       += core concurrent
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 QMAKE_CXXFLAGS += -std=c++11
 
 TARGET = SoilVision
 TEMPLATE = lib
+VERSION = 0.9.2
 
 DEFINES += SOILVISION_LIBRARY
+unix:!macx: QMAKE_RPATHDIR += $$PWD/../../../build/install/
 
 SOURCES += \
     Segment.cpp \

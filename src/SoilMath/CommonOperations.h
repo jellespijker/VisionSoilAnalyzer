@@ -10,6 +10,8 @@
 
 #include <algorithm>
 #include <stdint.h>
+#include <math.h>
+#include <vector>
 
 namespace SoilMath {
 inline uint16_t MinNotZero(uint16_t a, uint16_t b) {
@@ -38,7 +40,7 @@ static inline double quick_pow10(int n) {
                              1000000000000, 10000000000000, 100000000000000,
                              1000000000000000, 10000000000000000,
                              100000000000000000, 1000000000000000000};
-  return pow10[n];
+  return pow10[(n >= 0) ? n : -n];
 }
 
 
@@ -88,5 +90,30 @@ static inline double quick_pow2(int n) {
 static inline long float2intRound(double d) {
   d += 6755399441055744.0;
   return reinterpret_cast<int &>(d);
+}
+
+/*!
+ * \brief calcVolume according to ISO 9276-6
+ * \param A
+ * \return
+ */
+static inline float calcVolume(float A) {
+  return (pow(A, 1.5)) / 10.6347f;
+}
+
+static inline std::vector<float> makeOutput(uint8_t value, uint32_t noNeurons) {
+  std::vector<float> retVal(noNeurons, -1);
+  retVal[value - 1] = 1;
+  return retVal;
+}
+
+/*!
+ * \brief calcDiameter according to ISO 9276-6
+ * \param A
+ * \return
+ */
+static inline float calcDiameter(float A) {
+  //return sqrt((4 * A) / M_PI);
+  return 1.1283791670955 * sqrt(A);
 }
 }
