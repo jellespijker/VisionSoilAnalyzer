@@ -1,0 +1,668 @@
+\hypertarget{vsamainwindow_8cpp_source}{}\subsection{vsamainwindow.\+cpp}
+\label{vsamainwindow_8cpp_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+V\+S\+A/vsamainwindow.\+cpp@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+V\+S\+A/vsamainwindow.\+cpp}}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#include "\hyperlink{vsamainwindow_8h}{vsamainwindow.h}"}
+00002 \textcolor{preprocessor}{#include "ui\_vsamainwindow.h"}
+00003 
+\hypertarget{vsamainwindow_8cpp_source_l00004}{}\hyperlink{class_v_s_a_main_window_a7fa18757c1fce5c8f41f25277f9e1a70}{00004} \hyperlink{class_v_s_a_main_window_a7fa18757c1fce5c8f41f25277f9e1a70}{VSAMainWindow::VSAMainWindow}(QWidget *parent)
+00005     : QMainWindow(parent), ui(new \hyperlink{namespace_ui}{Ui}::\hyperlink{class_v_s_a_main_window}{VSAMainWindow}) \{
+00006   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->setupUi(\textcolor{keyword}{this});
+00007 
+00008   \textcolor{comment}{// Load the usersettings}
+00009   \hyperlink{class_v_s_a_main_window_a429310b9a60f66c4283dc609f869b48d}{Settings} = \textcolor{keyword}{new} \hyperlink{class_soil_analyzer_1_1_soil_settings}{SoilAnalyzer::SoilSettings};
+00010   \hyperlink{class_v_s_a_main_window_a429310b9a60f66c4283dc609f869b48d}{Settings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a438bf660eeb7a49a676eef5da129f8d5}{LoadSettings}(\textcolor{stringliteral}{"Settings/Default.ini"});
+00011 
+00012   \textcolor{comment}{// Set the message windows}
+00013   \hyperlink{class_v_s_a_main_window_ae59279edd83472b7096db4b119ceb45b}{CamError} = \textcolor{keyword}{new} QErrorMessage(\textcolor{keyword}{this});
+00014   \hyperlink{class_v_s_a_main_window_a9d76854fefeb5abf8f2fd6089987a31c}{SaveMeMessage} = \textcolor{keyword}{new} QMessageBox(\textcolor{keyword}{this});
+00015   \hyperlink{class_v_s_a_main_window_a9d76854fefeb5abf8f2fd6089987a31c}{SaveMeMessage}->setText(tr(\textcolor{stringliteral}{"Sample is not saved, Save sample?"}));
+00016   \hyperlink{class_v_s_a_main_window_a9d76854fefeb5abf8f2fd6089987a31c}{SaveMeMessage}->addButton(QMessageBox::Abort);
+00017   \hyperlink{class_v_s_a_main_window_a9d76854fefeb5abf8f2fd6089987a31c}{SaveMeMessage}->addButton(QMessageBox::Close);
+00018 
+00019   \hyperlink{class_v_s_a_main_window_a2202203116e6126f9361de629986b7b4}{BacklightMessage} = \textcolor{keyword}{new} QMessageBox(\textcolor{keyword}{this});
+00020   \hyperlink{class_v_s_a_main_window_a2202203116e6126f9361de629986b7b4}{BacklightMessage}->setText(\textcolor{stringliteral}{"Turn off Frontlight! Turn on Backlight!"});
+00021   \hyperlink{class_v_s_a_main_window_a819fbdf1137bb5f88c6638b0a9213f8c}{ShakeItBabyMessage} = \textcolor{keyword}{new} QMessageBox(\textcolor{keyword}{this});
+00022 
+00023   \textcolor{comment}{// Load the Microscope}
+00024   \hyperlink{class_microscope}{Microscope} = \textcolor{keyword}{new} \hyperlink{class_hardware_1_1_microscope}{Hardware::Microscope};
+00025   \textcolor{keywordflow}{try} \{
+00026     \hyperlink{class_microscope}{Microscope}->FindCam(\hyperlink{class_v_s_a_main_window_a429310b9a60f66c4283dc609f869b48d}{Settings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a8dbe6065562599e544b55fb49564fd2d}{defaultWebcam})->SelectedResolution =
+00027         &\hyperlink{class_microscope}{Microscope}->FindCam(\hyperlink{class_v_s_a_main_window_a429310b9a60f66c4283dc609f869b48d}{Settings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a8dbe6065562599e544b55fb49564fd2d}{defaultWebcam})
+00028              ->Resolutions[\hyperlink{class_v_s_a_main_window_a429310b9a60f66c4283dc609f869b48d}{Settings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a115a9feb41cc836d28d4ae1ceb536356}{selectedResolution}];
+00029   \} \textcolor{keywordflow}{catch} (exception &e) \{
+00030     \hyperlink{class_microscope}{Microscope}->FindCam(0)->SelectedResolution =
+00031         &\hyperlink{class_microscope}{Microscope}->FindCam(0)->Resolutions[\hyperlink{class_v_s_a_main_window_a429310b9a60f66c4283dc609f869b48d}{Settings}->
+      \hyperlink{class_soil_analyzer_1_1_soil_settings_a115a9feb41cc836d28d4ae1ceb536356}{selectedResolution}];
+00032   \}
+00033   \textcolor{keywordflow}{try} \{
+00034     \textcolor{keywordflow}{if} (!\hyperlink{class_microscope}{Microscope}->openCam(\hyperlink{class_v_s_a_main_window_a429310b9a60f66c4283dc609f869b48d}{Settings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a8dbe6065562599e544b55fb49564fd2d}{defaultWebcam})) \{
+00035       \textcolor{keywordtype}{int} defaultCam = 0;
+00036       \hyperlink{class_microscope}{Microscope}->openCam(defaultCam);
+00037       \hyperlink{class_v_s_a_main_window_a429310b9a60f66c4283dc609f869b48d}{Settings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a8dbe6065562599e544b55fb49564fd2d}{defaultWebcam} = \hyperlink{class_microscope}{Microscope}->SelectedCam->Name;
+00038     \}
+00039   \} \textcolor{keywordflow}{catch} (\hyperlink{class_hardware_1_1_exception_1_1_microscope_exception}{Hardware::Exception::MicroscopeException} &e) \{
+00040     \textcolor{keywordflow}{if} (*e.\hyperlink{class_hardware_1_1_exception_1_1_microscope_exception_a906b2af72a1be641ee6f679771e8db9a}{id}() == \hyperlink{_microscope_not_found_exception_8h_af8282326d2a9ad43efdb6ad3727b5afa}{EXCEPTION\_OPENCAM\_NR}) \{
+00041       \textcolor{keywordflow}{try} \{
+00042         \textcolor{keywordtype}{int} defaultCam = 0;
+00043         \hyperlink{class_microscope}{Microscope}->openCam(defaultCam);
+00044         \hyperlink{class_v_s_a_main_window_a429310b9a60f66c4283dc609f869b48d}{Settings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a8dbe6065562599e544b55fb49564fd2d}{defaultWebcam} = \hyperlink{class_microscope}{Microscope}->SelectedCam->Name;
+00045       \} \textcolor{keywordflow}{catch} (\hyperlink{class_hardware_1_1_exception_1_1_microscope_exception}{Hardware::Exception::MicroscopeException} &e) \{
+00046         \textcolor{keywordflow}{if} (*e.\hyperlink{class_hardware_1_1_exception_1_1_microscope_exception_a906b2af72a1be641ee6f679771e8db9a}{id}() == \hyperlink{_microscope_not_found_exception_8h_aea497321765f9a7c7cafc933aff14866}{EXCEPTION\_NOCAMS\_NR}) \{
+00047           \hyperlink{class_v_s_a_main_window_ae59279edd83472b7096db4b119ceb45b}{CamError}->showMessage(
+00048               tr(\textcolor{stringliteral}{"No cams found! Connect the cam and set the default"}));
+00049           \hyperlink{class_v_s_a_main_window_ae79d86cfa0c3adab847438b5b3dc34d6}{settingsWindow} = \textcolor{keyword}{new} \hyperlink{class_dialog_settings}{DialogSettings}(\textcolor{keyword}{this}, 
+      \hyperlink{class_v_s_a_main_window_a429310b9a60f66c4283dc609f869b48d}{Settings}, \hyperlink{class_microscope}{Microscope});
+00050         \}
+00051       \}
+00052     \}
+00053   \}
+00054 
+00055   \textcolor{comment}{// Setup the sample}
+00056   \hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample} = \textcolor{keyword}{new} \hyperlink{class_soil_analyzer_1_1_sample}{SoilAnalyzer::Sample};
+00057   \hyperlink{class_v_s_a_main_window_a5976cf149c1aff5011c75d058f7f1c8a}{Images} = \textcolor{keyword}{new} \hyperlink{class_soil_analyzer_1_1_analyzer_a55e2c84ab42cb967d718dd18295c1f91}{SoilAnalyzer::Analyzer::Images\_t};
+00058   \hyperlink{class_v_s_a_main_window_a15db0a815b5c9abb5b8ea1bae21e17c9}{Analyzer} = \textcolor{keyword}{new} \hyperlink{class_soil_analyzer_1_1_analyzer}{SoilAnalyzer::Analyzer}(\hyperlink{class_v_s_a_main_window_a5976cf149c1aff5011c75d058f7f1c8a}{Images}, 
+      \hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample}, \hyperlink{class_v_s_a_main_window_a429310b9a60f66c4283dc609f869b48d}{Settings});
+00059 
+00060   \textcolor{comment}{// Setup the setting Window}
+00061   \textcolor{keywordflow}{if} (\hyperlink{class_v_s_a_main_window_ae79d86cfa0c3adab847438b5b3dc34d6}{settingsWindow} == \textcolor{keyword}{nullptr}) \{
+00062     \hyperlink{class_v_s_a_main_window_ae79d86cfa0c3adab847438b5b3dc34d6}{settingsWindow} =
+00063         \textcolor{keyword}{new} \hyperlink{class_dialog_settings}{DialogSettings}(\textcolor{keyword}{this}, \hyperlink{class_v_s_a_main_window_a429310b9a60f66c4283dc609f869b48d}{Settings}, \hyperlink{class_microscope}{Microscope}, &
+      \hyperlink{class_v_s_a_main_window_a15db0a815b5c9abb5b8ea1bae21e17c9}{Analyzer}->\hyperlink{class_soil_analyzer_1_1_analyzer_a6ea3af4b49fef5b5f289bcc2046e615e}{NeuralNet});
+00064   \}
+00065 
+00066   \textcolor{comment}{// Setup the NN window}
+00067   \textcolor{keywordflow}{if} (\hyperlink{class_v_s_a_main_window_a48dca9faab39674c88d8eb862995f11e}{nnWindow} == \textcolor{keyword}{nullptr}) \{
+00068     \hyperlink{class_v_s_a_main_window_a48dca9faab39674c88d8eb862995f11e}{nnWindow} =
+00069         \textcolor{keyword}{new} \hyperlink{class_dialog_n_n}{DialogNN}(\textcolor{keyword}{this}, &\hyperlink{class_v_s_a_main_window_a15db0a815b5c9abb5b8ea1bae21e17c9}{Analyzer}->\hyperlink{class_soil_analyzer_1_1_analyzer_a6ea3af4b49fef5b5f289bcc2046e615e}{NeuralNet}, 
+      \hyperlink{class_v_s_a_main_window_a429310b9a60f66c4283dc609f869b48d}{Settings}, \hyperlink{class_v_s_a_main_window_ae79d86cfa0c3adab847438b5b3dc34d6}{settingsWindow});
+00070   \}
+00071 
+00072   \textcolor{comment}{// Setup the progresbar and connect it to the Analyzer}
+00073   \hyperlink{class_v_s_a_main_window_af5c6186795a53ecfe3efffc95b6619dd}{Progress} = \textcolor{keyword}{new} QProgressBar(\hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->statusBar);
+00074   \hyperlink{class_v_s_a_main_window_af5c6186795a53ecfe3efffc95b6619dd}{Progress}->setMaximum(\hyperlink{class_v_s_a_main_window_a15db0a815b5c9abb5b8ea1bae21e17c9}{Analyzer}->\hyperlink{class_soil_analyzer_1_1_analyzer_aef988b5c2c2349b544dabe8882c8931a}{MaxProgress});
+00075   \hyperlink{class_v_s_a_main_window_af5c6186795a53ecfe3efffc95b6619dd}{Progress}->setValue(0);
+00076   \hyperlink{class_v_s_a_main_window_af5c6186795a53ecfe3efffc95b6619dd}{Progress}->setAlignment(Qt::AlignLeft);
+00077   \hyperlink{class_v_s_a_main_window_af5c6186795a53ecfe3efffc95b6619dd}{Progress}->setMinimumSize(750, 19);
+00078   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->statusBar->addWidget(\hyperlink{class_v_s_a_main_window_af5c6186795a53ecfe3efffc95b6619dd}{Progress});
+00079   connect(\hyperlink{class_v_s_a_main_window_a15db0a815b5c9abb5b8ea1bae21e17c9}{Analyzer}, SIGNAL(on\_progressUpdate(\textcolor{keywordtype}{int})), \hyperlink{class_v_s_a_main_window_af5c6186795a53ecfe3efffc95b6619dd}{Progress},
+00080           SLOT(setValue(\textcolor{keywordtype}{int})));
+00081   connect(\hyperlink{class_v_s_a_main_window_a15db0a815b5c9abb5b8ea1bae21e17c9}{Analyzer}, SIGNAL(on\_progressUpdate(\textcolor{keywordtype}{int})), \hyperlink{class_v_s_a_main_window_af5c6186795a53ecfe3efffc95b6619dd}{Progress},
+00082           SLOT(setMaximum(\textcolor{keywordtype}{int})));
+00083   connect(\hyperlink{class_v_s_a_main_window_a15db0a815b5c9abb5b8ea1bae21e17c9}{Analyzer}, SIGNAL(on\_AnalysisFinished()), \textcolor{keyword}{this},
+00084           SLOT(\hyperlink{class_v_s_a_main_window_a33a4896e2b25348d5e1344e4b37bbd33}{on\_analyzer\_finished}()));
+00085   \textcolor{comment}{// Setup the plot linestyles;}
+00086   QPen pdfPen;
+00087   pdfPen.setColor(QColor(\textcolor{stringliteral}{"gray"}));
+00088   pdfPen.setStyle(Qt::DashDotDotLine);
+00089   pdfPen.setWidthF(1);
+00090 
+00091   QPen meanPen;
+00092   meanPen.setColor(QColor(\textcolor{stringliteral}{"darkBlue"}));
+00093   meanPen.setStyle(Qt::DashLine);
+00094   meanPen.setWidthF(1);
+00095 
+00096   QPen binPen;
+00097   binPen.setColor((QColor(\textcolor{stringliteral}{"blue"})));
+00098   binPen.setStyle(Qt::SolidLine);
+00099   binPen.setWidthF(2);
+00100 
+00101   \textcolor{comment}{// Setup the PSD plot}
+00102   QCPPlotTitle *PSDtitle = \textcolor{keyword}{new} QCPPlotTitle(\hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD);
+00103   PSDtitle->setText(\textcolor{stringliteral}{"Particle Size Distribution"});
+00104   PSDtitle->setFont(QFont(\textcolor{stringliteral}{"sans"}, 8, QFont::Bold));
+00105   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->plotLayout()->insertRow(0);
+00106   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->plotLayout()->addElement(0, 0, PSDtitle);
+00107 
+00108   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->addGraph(\hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->xAxis, \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->yAxis);
+00109   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->graph(0)
+00110       ->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, 8));
+00111   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->graph(0)->setPen(binPen);
+00112   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->graph(0)->setName(\textcolor{stringliteral}{"Particle Size Distribution"});
+00113   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->graph(0)->addToLegend();
+00114 
+00115   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->xAxis->setLabel(\textcolor{stringliteral}{"Particle size [mm]"});
+00116   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->xAxis->setRange(0.01, 10);
+00117   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->xAxis->setAutoTicks(\textcolor{keyword}{false});
+00118   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->xAxis->setTickVector(QVector<double>::fromStdVector(\hyperlink{class_v_s_a_main_window_a43651d26dd4d6d8971317d902294317c}{PSDTicks}));
+00119   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->xAxis->setTickLabelRotation(30);
+00120   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->xAxis->setTickLabelFont(QFont(\textcolor{stringliteral}{"sans"}, 8, QFont::Normal));
+00121   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->xAxis->setScaleType(QCPAxis::stLogarithmic);
+00122 
+00123   QFont legendfont;
+00124   legendfont.setPointSize(10);
+00125   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->legend->setFont(legendfont);
+00126   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->legend->setSelectedFont(legendfont);
+00127   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->legend->setVisible(\textcolor{keyword}{true});
+00128   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->axisRect()->insetLayout()->setInsetAlignment(
+00129       0, Qt::AlignTop | Qt::AlignLeft);
+00130 
+00131   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->yAxis->setLabel(\textcolor{stringliteral}{"Percentage [%]"});
+00132   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->yAxis->setRange(0, 100);
+00133   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
+00134   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->yAxis->grid()->setSubGridVisible(\textcolor{keyword}{true});
+00135 
+00136   connect(\hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD, SIGNAL(mouseDoubleClick(QMouseEvent *)), \textcolor{keyword}{this},
+00137           SLOT(\hyperlink{class_v_s_a_main_window_ad7658d814c3f41b673ba3d888ef68b00}{on\_reset\_graph}(QMouseEvent *)));
+00138   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->setContextMenuPolicy(Qt::CustomContextMenu);
+00139   connect(\hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD, SIGNAL(customContextMenuRequested(QPoint)), \textcolor{keyword}{this},
+00140           SLOT(\hyperlink{class_v_s_a_main_window_a8d9025970a6a3b27c1f83a92df6c1bad}{on\_PSD\_contextMenuRequest}(QPoint)));
+00141 
+00142   \textcolor{comment}{// Setup the Roundness plot}
+00143   QCPPlotTitle *Roundnesstitle = \textcolor{keyword}{new} QCPPlotTitle(\hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Roudness);
+00144   Roundnesstitle->setText(\textcolor{stringliteral}{"Sphericity Histogram"});
+00145   Roundnesstitle->setFont(QFont(\textcolor{stringliteral}{"sans"}, 8, QFont::Bold));
+00146   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Roudness->plotLayout()->insertRow(0);
+00147   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Roudness->plotLayout()->addElement(0, 0, Roundnesstitle);
+00148 
+00149   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Roudness->addGraph(\hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Roudness->xAxis,
+00150                                \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Roudness->yAxis2);
+00151   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Roudness->addGraph(\hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Roudness->xAxis,
+00152                                \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Roudness->yAxis2);
+00153   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Roudness->graph(0)->setPen(pdfPen);
+00154   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Roudness->graph(1)->setPen(meanPen);
+00155 
+00156   \hyperlink{class_v_s_a_main_window_afe7a5404f6f35af0c40eb277d91b82ac}{RoundnessBars} =
+00157       \textcolor{keyword}{new} QCPBars(\hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Roudness->xAxis, \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Roudness->yAxis);
+00158   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Roudness->addPlottable(\hyperlink{class_v_s_a_main_window_afe7a5404f6f35af0c40eb277d91b82ac}{RoundnessBars});
+00159   \hyperlink{class_v_s_a_main_window_afe7a5404f6f35af0c40eb277d91b82ac}{RoundnessBars}->setPen(binPen);
+00160 
+00161   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Roudness->xAxis->setAutoTicks(\textcolor{keyword}{false});
+00162   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Roudness->xAxis->setAutoTickLabels(\textcolor{keyword}{false});
+00163   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Roudness->xAxis->setTickVector(
+00164       QVector<double>::fromStdVector(\hyperlink{class_v_s_a_main_window_ace4471ce32443a495cd2c2bb500bef7d}{RoundnessTicks}));
+00165   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Roudness->xAxis->setTickVectorLabels(\hyperlink{class_v_s_a_main_window_a8e54a490d67520e7dedd06addd3eaaa9}{RoundnessCat});
+00166   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Roudness->xAxis->setTickLabelRotation(30);
+00167   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Roudness->xAxis->setSubTickCount(0);
+00168   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Roudness->xAxis->setTickLength(0, 4);
+00169   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Roudness->xAxis->grid()->setVisible(\textcolor{keyword}{true});
+00170   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Roudness->xAxis->setRange(0, 4);
+00171   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Roudness->xAxis->setLabel(\textcolor{stringliteral}{"Count [-]"});
+00172   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Roudness->xAxis->setLabelFont(QFont(\textcolor{stringliteral}{"sans"}, 8, QFont::Bold));
+00173   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Roudness->xAxis->setTickLabelFont(QFont(\textcolor{stringliteral}{"sans"}, 8, QFont::Normal));
+00174   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Roudness->xAxis->setPadding(25);
+00175   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Roudness->yAxis->setLabel(\textcolor{stringliteral}{"Sphericity [-]"});
+00176   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Roudness->yAxis->setLabelFont(QFont(\textcolor{stringliteral}{"sans"}, 8, QFont::Bold));
+00177 
+00178   \textcolor{comment}{// Setup the angularity plot}
+00179   QCPPlotTitle *Angularitytitle = \textcolor{keyword}{new} QCPPlotTitle(\hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Angularity);
+00180   Angularitytitle->setText(\textcolor{stringliteral}{"Angularity Histogram"});
+00181   Angularitytitle->setFont(QFont(\textcolor{stringliteral}{"sans"}, 8, QFont::Bold));
+00182   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Angularity->plotLayout()->insertRow(0);
+00183   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Angularity->plotLayout()->addElement(0, 0, Angularitytitle);
+00184 
+00185   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Angularity->addGraph(\hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Angularity->xAxis,
+00186                                  \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Angularity->yAxis2);
+00187   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Angularity->addGraph(\hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Angularity->xAxis,
+00188                                  \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Angularity->yAxis2);
+00189   \hyperlink{class_v_s_a_main_window_ac4dc27e6a351ad60f434357aeac9f1c0}{AngularityBars} =
+00190       \textcolor{keyword}{new} QCPBars(\hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Angularity->xAxis, \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Angularity->yAxis);
+00191   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Angularity->addPlottable(\hyperlink{class_v_s_a_main_window_ac4dc27e6a351ad60f434357aeac9f1c0}{AngularityBars});
+00192   \hyperlink{class_v_s_a_main_window_ac4dc27e6a351ad60f434357aeac9f1c0}{AngularityBars}->setPen(binPen);
+00193 
+00194   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Angularity->xAxis->setAutoTicks(\textcolor{keyword}{false});
+00195   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Angularity->xAxis->setAutoTickLabels(\textcolor{keyword}{false});
+00196   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Angularity->xAxis->setTickVector(
+00197       QVector<double>::fromStdVector(\hyperlink{class_v_s_a_main_window_ab3adb6772a4766285b7b96e0fb407f62}{AngularityTicks}));
+00198   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Angularity->xAxis->setTickVectorLabels(\hyperlink{class_v_s_a_main_window_ab30d8e8d4b71e2aaad2efa825286e64d}{AngularityCat});
+00199   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Angularity->xAxis->setTickLabelRotation(30);
+00200   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Angularity->xAxis->setSubTickCount(0);
+00201   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Angularity->xAxis->setTickLength(0, 4);
+00202   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Angularity->xAxis->grid()->setVisible(\textcolor{keyword}{true});
+00203   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Angularity->xAxis->setRange(0, 7);
+00204   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Angularity->xAxis->setLabel(\textcolor{stringliteral}{"Count [-]"});
+00205   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Angularity->xAxis->setLabelFont(QFont(\textcolor{stringliteral}{"sans"}, 8, QFont::Bold));
+00206   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Angularity->xAxis->setTickLabelFont(
+00207       QFont(\textcolor{stringliteral}{"sans"}, 8, QFont::Normal));
+00208   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Angularity->yAxis->setLabel(\textcolor{stringliteral}{"Sphericity [-]"});
+00209   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Angularity->yAxis->setLabelFont(QFont(\textcolor{stringliteral}{"sans"}, 8, QFont::Bold));
+00210   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Angularity->graph(0)->setPen(pdfPen);
+00211   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Angularity->graph(1)->setPen(meanPen);
+00212 
+00213   \textcolor{comment}{// Setup the Amplitude diagram}
+00214   QCPPlotTitle *Amptitle = \textcolor{keyword}{new} QCPPlotTitle(\hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Amp);
+00215   Amptitle->setText(\textcolor{stringliteral}{"Fast Fourier Amplitude for the current particle"});
+00216   Amptitle->setFont(QFont(\textcolor{stringliteral}{"sans"}, 8, QFont::Bold));
+00217   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Amp->plotLayout()->insertRow(0);
+00218   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Amp->plotLayout()->addElement(0, 0, Amptitle);
+00219 
+00220   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Amp->addGraph(\hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Amp->xAxis, \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Amp->yAxis);
+00221 
+00222   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Amp->xAxis->setTickLabelRotation(30);
+00223   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Amp->xAxis->setSubTickCount(0);
+00224   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Amp->xAxis->setTickLength(0, 4);
+00225   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Amp->xAxis->grid()->setVisible(\textcolor{keyword}{true});
+00226   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Amp->xAxis->setRange(0, 512);
+00227   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Amp->xAxis->setLabel(\textcolor{stringliteral}{"Frequency [-]"});
+00228   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Amp->xAxis->setLabelFont(QFont(\textcolor{stringliteral}{"sans"}, 8, QFont::Bold));
+00229   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Amp->xAxis->setTickLabelFont(QFont(\textcolor{stringliteral}{"sans"}, 8, QFont::Normal));
+00230   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Amp->yAxis->setLabel(\textcolor{stringliteral}{"Amplitude [-]"});
+00231   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Amp->yAxis->setLabelFont(QFont(\textcolor{stringliteral}{"sans"}, 8, QFont::Bold));
+00232   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Amp->yAxis->setScaleType(QCPAxis::stLogarithmic);
+00233   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Amp->graph()->setPen(binPen);
+00234   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Amp->graph()->setLineStyle(QCPGraph::lsLine);
+00235   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Amp->graph()->setBrush(QBrush(QColor(50,50,200,40)));
+00236 
+00237   \textcolor{comment}{// Connect the Particle display and Selector}
+00238   connect(\hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->widget\_ParticleSelector, SIGNAL(valueChanged(\textcolor{keywordtype}{int})), \textcolor{keyword}{this},
+00239           SLOT(\hyperlink{class_v_s_a_main_window_af670cbc8db47377e395cadd2d4c59772}{on\_Classification\_changed}(\textcolor{keywordtype}{int})));
+00240   connect(\hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->widget\_ParticleDisplay, SIGNAL(shapeClassificationChanged(\textcolor{keywordtype}{int})),
+00241           \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->widget\_ParticleSelector, SLOT(setValue(\textcolor{keywordtype}{int})));
+00242   connect(\hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->widget\_ParticleDisplay, SIGNAL(particleDeleted()), \textcolor{keyword}{this},
+00243           SLOT(\hyperlink{class_v_s_a_main_window_afb86baadff8bf9e00b4d487de68e5b80}{on\_particle\_deleted}()));
+00244   connect(\hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->widget\_ParticleDisplay, SIGNAL(particleChanged(\textcolor{keywordtype}{int})), \textcolor{keyword}{this},
+00245           SLOT(\hyperlink{class_v_s_a_main_window_a5fcffc892d83090533418aa159c11bf0}{on\_particleChanged}(\textcolor{keywordtype}{int})));
+00246 
+00247   \textcolor{comment}{// Setup the bar}
+00248   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->actionUseLearning->setChecked(\hyperlink{class_v_s_a_main_window_a429310b9a60f66c4283dc609f869b48d}{Settings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a369593522ac29f7dfa48fd6ca2afebef}{PredictTheShape});
+00249 
+00250   \textcolor{comment}{// Setup the widgets}
+00251   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->widget\_ParticleSelector->setDisabled(\textcolor{keyword}{true});
+00252 \}
+00253 
+\hypertarget{vsamainwindow_8cpp_source_l00254}{}\hyperlink{class_v_s_a_main_window_ae796e5df1630b2c8ce6d92e84984c071}{00254} \hyperlink{class_v_s_a_main_window_ae796e5df1630b2c8ce6d92e84984c071}{VSAMainWindow::~VSAMainWindow}() \{
+00255   \textcolor{keyword}{delete} \hyperlink{class_v_s_a_main_window_a429310b9a60f66c4283dc609f869b48d}{Settings};
+00256   \textcolor{keyword}{delete} \hyperlink{class_v_s_a_main_window_a63378add125c78c9a83a3babe03318d7}{Microscope};
+00257   \textcolor{keyword}{delete} \hyperlink{class_v_s_a_main_window_a15db0a815b5c9abb5b8ea1bae21e17c9}{Analyzer};
+00258   \textcolor{keyword}{delete} \hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample};
+00259   \textcolor{keyword}{delete} \hyperlink{class_v_s_a_main_window_a5976cf149c1aff5011c75d058f7f1c8a}{Images};
+00260 
+00261   \textcolor{keyword}{delete} \hyperlink{class_v_s_a_main_window_ae79d86cfa0c3adab847438b5b3dc34d6}{settingsWindow};
+00262   \textcolor{keyword}{delete} \hyperlink{class_v_s_a_main_window_a48dca9faab39674c88d8eb862995f11e}{nnWindow};
+00263   \textcolor{keyword}{delete} \hyperlink{class_v_s_a_main_window_ae59279edd83472b7096db4b119ceb45b}{CamError};
+00264   \textcolor{keyword}{delete} \hyperlink{class_v_s_a_main_window_a9d76854fefeb5abf8f2fd6089987a31c}{SaveMeMessage};
+00265   \textcolor{keyword}{delete} \hyperlink{class_v_s_a_main_window_a2202203116e6126f9361de629986b7b4}{BacklightMessage};
+00266   \textcolor{keyword}{delete} \hyperlink{class_v_s_a_main_window_a819fbdf1137bb5f88c6638b0a9213f8c}{ShakeItBabyMessage};
+00267   \textcolor{keyword}{delete} \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui};
+00268 \}
+00269 
+\hypertarget{vsamainwindow_8cpp_source_l00270}{}\hyperlink{class_v_s_a_main_window_a5f8da8de2112e083b8bf1851a7fb123c}{00270} \textcolor{keywordtype}{void} \hyperlink{class_v_s_a_main_window_a5f8da8de2112e083b8bf1851a7fb123c}{VSAMainWindow::on\_actionSettings\_triggered}() \{
+00271   \hyperlink{class_v_s_a_main_window_ae79d86cfa0c3adab847438b5b3dc34d6}{settingsWindow}->\hyperlink{class_dialog_settings_ac22fca3a8ea77953fb667c0118860221}{openTab}(0);
+00272   \hyperlink{class_v_s_a_main_window_ae79d86cfa0c3adab847438b5b3dc34d6}{settingsWindow}->show();
+00273 \}
+00274 
+\hypertarget{vsamainwindow_8cpp_source_l00275}{}\hyperlink{class_v_s_a_main_window_a33a4896e2b25348d5e1344e4b37bbd33}{00275} \textcolor{keywordtype}{void} \hyperlink{class_v_s_a_main_window_a33a4896e2b25348d5e1344e4b37bbd33}{VSAMainWindow::on\_analyzer\_finished}() \{
+00276   \textcolor{keywordflow}{if} (!\hyperlink{class_v_s_a_main_window_a503125fe2f31e5abd394790fc2768501}{ParticleDisplayerFilled} && \hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample}->
+      \hyperlink{class_soil_analyzer_1_1_sample_a877bf12069fe09d2c8f9636f19ed5335}{ParticlePopulation}.size() > 0) \{
+00277     \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->widget\_ParticleDisplay->SetSample(\hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample});
+00278   \}
+00279   \hyperlink{class_v_s_a_main_window_aded6489314d39f8071bf02b041ad81b3}{SetPSDgraph}();
+00280   \hyperlink{class_v_s_a_main_window_ac574f6d81ce3ab1c7e78f00a95e24d9d}{setRoundnessHistogram}();
+00281   \hyperlink{class_v_s_a_main_window_ab0063e1c86effb8e2b1bf2584f237669}{setAngularityHistogram}();
+00282   \hyperlink{class_v_s_a_main_window_a503125fe2f31e5abd394790fc2768501}{ParticleDisplayerFilled} = \textcolor{keyword}{true};
+00283 \}
+00284 
+\hypertarget{vsamainwindow_8cpp_source_l00285}{}\hyperlink{class_v_s_a_main_window_aded6489314d39f8071bf02b041ad81b3}{00285} \textcolor{keywordtype}{void} \hyperlink{class_v_s_a_main_window_aded6489314d39f8071bf02b041ad81b3}{VSAMainWindow::SetPSDgraph}() \{
+00286   std::vector<double> stdPSDvalue(\hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a3a2cd7007e7867a6b3fb346f51b2ba60}{PSD}.\hyperlink{class_soil_math_1_1_stats_a0d68c6fb52cb445c413aa187038bb1fe}{CFD}, \hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a3a2cd7007e7867a6b3fb346f51b2ba60}{PSD}.
+      \hyperlink{class_soil_math_1_1_stats_a0d68c6fb52cb445c413aa187038bb1fe}{CFD} + 15);
+00287   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->graph(0)->setData(\hyperlink{class_v_s_a_main_window_a43651d26dd4d6d8971317d902294317c}{PSDTicks}, stdPSDvalue);
+00288   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->replot();
+00289 \}
+00290 
+\hypertarget{vsamainwindow_8cpp_source_l00291}{}\hyperlink{class_v_s_a_main_window_ac574f6d81ce3ab1c7e78f00a95e24d9d}{00291} \textcolor{keywordtype}{void} \hyperlink{class_v_s_a_main_window_ac574f6d81ce3ab1c7e78f00a95e24d9d}{VSAMainWindow::setRoundnessHistogram}() \{
+00292   \textcolor{comment}{// Setup the Histogram bins}
+00293   std::vector<double> stdValues(\hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a36b7e98ebd5d162fa0cda77fa4c7f0be}{Roundness}.\hyperlink{class_soil_math_1_1_stats_a00778b298b1ebb335eb0c4eed69e471c}{bins} + 1,
+00294                                 \hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a36b7e98ebd5d162fa0cda77fa4c7f0be}{Roundness}.\hyperlink{class_soil_math_1_1_stats_a00778b298b1ebb335eb0c4eed69e471c}{bins} + 4);
+00295 
+00296   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Roudness->yAxis->setRange(
+00297       0, static\_cast<double>(\hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a36b7e98ebd5d162fa0cda77fa4c7f0be}{Roundness}.HighestFrequency()));
+00298   \hyperlink{class_v_s_a_main_window_afe7a5404f6f35af0c40eb277d91b82ac}{RoundnessBars}->setData(\hyperlink{class_v_s_a_main_window_ace4471ce32443a495cd2c2bb500bef7d}{RoundnessTicks}, stdValues);
+00299 
+00300   \textcolor{comment}{// Setup the Prediction Density Function}
+00301   std::vector<double> stdPDFkey, stdPDFvalues;
+00302   \hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a36b7e98ebd5d162fa0cda77fa4c7f0be}{Roundness}.GetPDFfunction(stdPDFkey, stdPDFvalues, 0.2, 0, 4);
+00303   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Roudness->graph(0)->setData(stdPDFkey, stdPDFvalues);
+00304   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Roudness->yAxis2->setRange(0, \hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a36b7e98ebd5d162fa0cda77fa4c7f0be}{Roundness}.
+      \hyperlink{class_soil_math_1_1_stats_a85da0692f7d25c9d5add1f8ffd67bdf2}{HighestPDF});
+00305 
+00306   \textcolor{comment}{// Setup the mean Vector}
+00307   QVector<double> meanKey(2, static\_cast<double>(\hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a36b7e98ebd5d162fa0cda77fa4c7f0be}{Roundness}.
+      \hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{Mean}));
+00308   QVector<double> meanValue(2);
+00309   meanValue[0] = 0;
+00310   meanValue[1] = \hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a36b7e98ebd5d162fa0cda77fa4c7f0be}{Roundness}.\hyperlink{class_soil_math_1_1_stats_a85da0692f7d25c9d5add1f8ffd67bdf2}{HighestPDF};
+00311   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Roudness->graph(1)->setData(meanKey, meanValue);
+00312   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Roudness->replot();
+00313 \}
+00314 
+\hypertarget{vsamainwindow_8cpp_source_l00315}{}\hyperlink{class_v_s_a_main_window_ab0063e1c86effb8e2b1bf2584f237669}{00315} \textcolor{keywordtype}{void} \hyperlink{class_v_s_a_main_window_ab0063e1c86effb8e2b1bf2584f237669}{VSAMainWindow::setAngularityHistogram}() \{
+00316   \textcolor{comment}{// Setup the Histogram bins}
+00317   std::vector<double> stdValues(\hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_aac706ea1206fea6b708227c88481081d}{Angularity}.\hyperlink{class_soil_math_1_1_stats_a00778b298b1ebb335eb0c4eed69e471c}{bins} + 1,
+00318                                 \hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_aac706ea1206fea6b708227c88481081d}{Angularity}.\hyperlink{class_soil_math_1_1_stats_a00778b298b1ebb335eb0c4eed69e471c}{bins} + 7);
+00319 
+00320   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Angularity->yAxis->setRange(
+00321       0, static\_cast<double>(\hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_aac706ea1206fea6b708227c88481081d}{Angularity}.HighestFrequency()));
+00322   \hyperlink{class_v_s_a_main_window_ac4dc27e6a351ad60f434357aeac9f1c0}{AngularityBars}->setData(\hyperlink{class_v_s_a_main_window_ab3adb6772a4766285b7b96e0fb407f62}{AngularityTicks}, stdValues);
+00323 
+00324   \textcolor{comment}{// Setup the Prediction Density Function}
+00325   std::vector<double> stdPDFkey, stdPDFvalues;
+00326   \hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_aac706ea1206fea6b708227c88481081d}{Angularity}.GetPDFfunction(stdPDFkey, stdPDFvalues, 0.2, 0, 7);
+00327   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Angularity->graph(0)->setData(stdPDFkey, stdPDFvalues);
+00328   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Angularity->yAxis2->setRange(0, \hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_aac706ea1206fea6b708227c88481081d}{Angularity}.
+      \hyperlink{class_soil_math_1_1_stats_a85da0692f7d25c9d5add1f8ffd67bdf2}{HighestPDF});
+00329 
+00330   \textcolor{comment}{// Setup the mean Vector}
+00331   QVector<double> meanKey(2, static\_cast<double>(\hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_aac706ea1206fea6b708227c88481081d}{Angularity}.
+      \hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{Mean}));
+00332   QVector<double> meanValue(2);
+00333   meanValue[0] = 0;
+00334   meanValue[1] = \hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_aac706ea1206fea6b708227c88481081d}{Angularity}.\hyperlink{class_soil_math_1_1_stats_a85da0692f7d25c9d5add1f8ffd67bdf2}{HighestPDF};
+00335   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Angularity->graph(1)->setData(meanKey, meanValue);
+00336   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Angularity->replot();
+00337 \}
+00338 
+\hypertarget{vsamainwindow_8cpp_source_l00339}{}\hyperlink{class_v_s_a_main_window_a4de6c895ab070a8e4a9a858b819a7d1c}{00339} \textcolor{keywordtype}{void} \hyperlink{class_v_s_a_main_window_a4de6c895ab070a8e4a9a858b819a7d1c}{VSAMainWindow::setAmpgraph}() \{
+00340   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Amp->graph(0)->clearData();
+00341   \hyperlink{_soil_math_types_8h_a7567e521c2b2c408dcb62dbff72390f7}{ComplexVect\_t} *comp =
+00342       &\hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->widget\_ParticleDisplay->SelectedParticle->FFDescriptors;
+00343   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} count = (comp->size() > 64) ? 64 : comp->size();
+00344   \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i < count; i++) \{
+00345     \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Amp->graph(0)->addData(i, abs(comp->at(i)));
+00346   \}
+00347   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Amp->rescaleAxes();
+00348   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Amp->replot();
+00349 \}
+00350 
+\hypertarget{vsamainwindow_8cpp_source_l00351}{}\hyperlink{class_v_s_a_main_window_a5fcffc892d83090533418aa159c11bf0}{00351} \textcolor{keywordtype}{void} \hyperlink{class_v_s_a_main_window_a5fcffc892d83090533418aa159c11bf0}{VSAMainWindow::on\_particleChanged}(\textcolor{keywordtype}{int} newPart) \{ 
+      \hyperlink{class_v_s_a_main_window_a4de6c895ab070a8e4a9a858b819a7d1c}{setAmpgraph}(); \}
+00352 
+\hypertarget{vsamainwindow_8cpp_source_l00353}{}\hyperlink{class_v_s_a_main_window_a131d34b899c7b16b58ff317d77486529}{00353} \textcolor{keywordtype}{void} \hyperlink{class_v_s_a_main_window_a131d34b899c7b16b58ff317d77486529}{VSAMainWindow::on\_actionNeuralNet\_triggered}() \{
+00354   \textcolor{keywordflow}{if} (\hyperlink{class_v_s_a_main_window_a48dca9faab39674c88d8eb862995f11e}{nnWindow} != \textcolor{keyword}{nullptr}) \{
+00355     \hyperlink{class_v_s_a_main_window_a48dca9faab39674c88d8eb862995f11e}{nnWindow} =
+00356         \textcolor{keyword}{new} \hyperlink{class_dialog_n_n}{DialogNN}(\textcolor{keyword}{this}, &\hyperlink{class_v_s_a_main_window_a15db0a815b5c9abb5b8ea1bae21e17c9}{Analyzer}->\hyperlink{class_soil_analyzer_1_1_analyzer_a6ea3af4b49fef5b5f289bcc2046e615e}{NeuralNet}, 
+      \hyperlink{class_v_s_a_main_window_a429310b9a60f66c4283dc609f869b48d}{Settings}, \hyperlink{class_v_s_a_main_window_ae79d86cfa0c3adab847438b5b3dc34d6}{settingsWindow});
+00357   \}
+00358   \hyperlink{class_v_s_a_main_window_a48dca9faab39674c88d8eb862995f11e}{nnWindow}->show();
+00359 \}
+00360 
+\hypertarget{vsamainwindow_8cpp_source_l00361}{}\hyperlink{class_v_s_a_main_window_a671264c6cb0136f83fc24075545c8c0c}{00361} \textcolor{keywordtype}{void} \hyperlink{class_v_s_a_main_window_a671264c6cb0136f83fc24075545c8c0c}{VSAMainWindow::on\_actionNewSample\_triggered}() \{
+00362   \textcolor{keywordflow}{if} (\hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_aee3c3cf30c0201c695d82ca3a8dd0d8b}{ChangesSinceLastSave}) \{
+00363     \textcolor{keywordflow}{if} (\hyperlink{class_v_s_a_main_window_a9d76854fefeb5abf8f2fd6089987a31c}{SaveMeMessage}->exec() == QMessageBox::Abort) \{
+00364       \textcolor{keywordflow}{return};
+00365     \}
+00366   \}
+00367   \textcolor{keyword}{delete} \hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample};
+00368   \hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample} = \textcolor{keyword}{nullptr};
+00369   \textcolor{keyword}{delete} \hyperlink{class_v_s_a_main_window_a5976cf149c1aff5011c75d058f7f1c8a}{Images};
+00370   \hyperlink{class_v_s_a_main_window_a5976cf149c1aff5011c75d058f7f1c8a}{Images} = \textcolor{keyword}{nullptr};
+00371   \hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample} = \textcolor{keyword}{new} \hyperlink{class_soil_analyzer_1_1_sample}{SoilAnalyzer::Sample};
+00372   \hyperlink{class_v_s_a_main_window_a5976cf149c1aff5011c75d058f7f1c8a}{Images} = \textcolor{keyword}{new} \hyperlink{class_soil_analyzer_1_1_analyzer_a55e2c84ab42cb967d718dd18295c1f91}{SoilAnalyzer::Analyzer::Images\_t};
+00373   \hyperlink{class_v_s_a_main_window_aed2fd5f5e0a932f8de7751d144ee74fe}{TakeSnapShots}();
+00374   \textcolor{keywordflow}{try} \{
+00375     \hyperlink{class_v_s_a_main_window_a15db0a815b5c9abb5b8ea1bae21e17c9}{Analyzer}->\hyperlink{class_soil_analyzer_1_1_analyzer_a1cb605c255d35e85ccaae06a76917188}{Analyse}(\hyperlink{class_v_s_a_main_window_a5976cf149c1aff5011c75d058f7f1c8a}{Images}, \hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample}, \hyperlink{class_v_s_a_main_window_a429310b9a60f66c4283dc609f869b48d}{Settings});
+00376   \} \textcolor{keywordflow}{catch} (\hyperlink{class_soil_analyzer_1_1_exception_1_1_soil_analyzer_exception}{SoilAnalyzer::Exception::SoilAnalyzerException} &e)
+       \{
+00377     \textcolor{keywordflow}{if} (*e.\hyperlink{class_soil_analyzer_1_1_exception_1_1_soil_analyzer_exception_a7cf48c7c8e400fe2c8789a78b9d9ad7b}{id}() == \hyperlink{soilanalyzerexception_8h_a3269cc147400cdea97b49375c228b3de}{EXCEPTION\_NO\_SNAPSHOTS\_NR}) \{
+00378       \hyperlink{class_v_s_a_main_window_ae59279edd83472b7096db4b119ceb45b}{CamError}->showMessage(
+00379           \textcolor{stringliteral}{"No images acquired! Check you microscope settings"});
+00380       \textcolor{keywordflow}{return};
+00381     \}
+00382   \}
+00383   \hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_aee3c3cf30c0201c695d82ca3a8dd0d8b}{ChangesSinceLastSave} = \textcolor{keyword}{true};
+00384   \textcolor{keywordflow}{if} (\hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a877bf12069fe09d2c8f9636f19ed5335}{ParticlePopulation}.size() > 0) \{
+00385     \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->widget\_ParticleSelector->setDisabled(
+00386         \textcolor{keyword}{false},
+00387         \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->widget\_ParticleDisplay->SelectedParticle->Classification.Category);
+00388   \}
+00389 \}
+00390 
+\hypertarget{vsamainwindow_8cpp_source_l00391}{}\hyperlink{class_v_s_a_main_window_aed2fd5f5e0a932f8de7751d144ee74fe}{00391} \textcolor{keywordtype}{void} \hyperlink{class_v_s_a_main_window_aed2fd5f5e0a932f8de7751d144ee74fe}{VSAMainWindow::TakeSnapShots}() \{
+00392   \hyperlink{class_v_s_a_main_window_a15db0a815b5c9abb5b8ea1bae21e17c9}{Analyzer}->\hyperlink{class_soil_analyzer_1_1_analyzer_a144dea5736f2c1e2d86c9f655910be1f}{SIfactorDet} = \textcolor{keyword}{true}; \textcolor{comment}{// remeber to remove}
+00393   \textcolor{keywordflow}{if} (!\hyperlink{class_v_s_a_main_window_a15db0a815b5c9abb5b8ea1bae21e17c9}{Analyzer}->\hyperlink{class_soil_analyzer_1_1_analyzer_a144dea5736f2c1e2d86c9f655910be1f}{SIfactorDet}) \{
+00394     QMessageBox *DetSIFactor = \textcolor{keyword}{new} QMessageBox(\textcolor{keyword}{this});
+00395     DetSIFactor->setText(\textcolor{stringliteral}{"Put calibration Disc under the microscope"});
+00396     DetSIFactor->exec();
+00397     \hyperlink{class_v_s_a_main_window_a0051e5a6f9f17e898e962da6debb8d8b}{on\_actionCalibrate\_triggered}();
+00398     DetSIFactor->setText(\textcolor{stringliteral}{"Place sample under the microscope"});
+00399     DetSIFactor->exec();
+00400   \}
+00401   \textcolor{keywordflow}{if} (\hyperlink{class_v_s_a_main_window_a429310b9a60f66c4283dc609f869b48d}{Settings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a4945fc8b592a2585d3719175e3b80c88}{useBacklightProjection} && !
+      \hyperlink{class_v_s_a_main_window_a429310b9a60f66c4283dc609f869b48d}{Settings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a6851d04a1d2a5acbc99c6d9665c40edf}{useHDR}) \{
+00402     \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i < \hyperlink{class_v_s_a_main_window_a429310b9a60f66c4283dc609f869b48d}{Settings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a290567ffd8fe54f1c800654395ca7a71}{StandardNumberOfShots}; i++) \{
+00403       \hyperlink{struct_soil_analyzer_1_1_analyzer_1_1_image__t}{SoilAnalyzer::Analyzer::Image\_t} newShot;
+00404       newShot.\hyperlink{struct_soil_analyzer_1_1_analyzer_1_1_image__t_a7b7c4dfb4d2ed5da141feed7cfc9cfe9}{SIPixelFactor} = \hyperlink{class_v_s_a_main_window_a15db0a815b5c9abb5b8ea1bae21e17c9}{Analyzer}->\hyperlink{class_soil_analyzer_1_1_analyzer_a8fb13bb3f69f3f87e1cb61e453c8f5b3}{CurrentSIfactor};
+00405       \hyperlink{class_microscope}{Microscope}->GetFrame(newShot.\hyperlink{struct_soil_analyzer_1_1_analyzer_1_1_image__t_aea2974c543b090703237f17d0c192699}{FrontLight});
+00406       \hyperlink{class_v_s_a_main_window_a2202203116e6126f9361de629986b7b4}{BacklightMessage}->exec();
+00407       \hyperlink{class_microscope}{Microscope}->GetFrame(newShot.\hyperlink{struct_soil_analyzer_1_1_analyzer_1_1_image__t_a504fc04b0d64945e742c9ac7a48f2598}{BackLight});
+00408       \hyperlink{class_v_s_a_main_window_a5976cf149c1aff5011c75d058f7f1c8a}{Images}->push\_back(newShot);
+00409       QString ShakeMsg = \textcolor{stringliteral}{"Shake it baby! "};
+00410       \textcolor{keywordtype}{int} number = \hyperlink{class_v_s_a_main_window_a429310b9a60f66c4283dc609f869b48d}{Settings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a290567ffd8fe54f1c800654395ca7a71}{StandardNumberOfShots} - i;
+00411       ShakeMsg.append(QString::number(number));
+00412       ShakeMsg.append(\textcolor{stringliteral}{" to go!"});
+00413       \hyperlink{class_v_s_a_main_window_a819fbdf1137bb5f88c6638b0a9213f8c}{ShakeItBabyMessage}->setText(ShakeMsg);
+00414       \hyperlink{class_v_s_a_main_window_a819fbdf1137bb5f88c6638b0a9213f8c}{ShakeItBabyMessage}->exec();
+00415     \}
+00416   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\hyperlink{class_v_s_a_main_window_a429310b9a60f66c4283dc609f869b48d}{Settings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a4945fc8b592a2585d3719175e3b80c88}{useBacklightProjection} && 
+      \hyperlink{class_v_s_a_main_window_a429310b9a60f66c4283dc609f869b48d}{Settings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a6851d04a1d2a5acbc99c6d9665c40edf}{useHDR}) \{
+00417     \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i < \hyperlink{class_v_s_a_main_window_a429310b9a60f66c4283dc609f869b48d}{Settings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a290567ffd8fe54f1c800654395ca7a71}{StandardNumberOfShots}; i++) \{
+00418       \hyperlink{struct_soil_analyzer_1_1_analyzer_1_1_image__t}{SoilAnalyzer::Analyzer::Image\_t} newShot;
+00419       newShot.\hyperlink{struct_soil_analyzer_1_1_analyzer_1_1_image__t_a7b7c4dfb4d2ed5da141feed7cfc9cfe9}{SIPixelFactor} = \hyperlink{class_v_s_a_main_window_a15db0a815b5c9abb5b8ea1bae21e17c9}{Analyzer}->\hyperlink{class_soil_analyzer_1_1_analyzer_a8fb13bb3f69f3f87e1cb61e453c8f5b3}{CurrentSIfactor};
+00420       \hyperlink{class_microscope}{Microscope}->GetHDRFrame(newShot.\hyperlink{struct_soil_analyzer_1_1_analyzer_1_1_image__t_aea2974c543b090703237f17d0c192699}{FrontLight}, \hyperlink{class_v_s_a_main_window_a429310b9a60f66c4283dc609f869b48d}{Settings}->
+      \hyperlink{class_soil_analyzer_1_1_soil_settings_a77e631ff44efe74762b5adaa2eb2cd11}{HDRframes});
+00421       \hyperlink{class_v_s_a_main_window_a2202203116e6126f9361de629986b7b4}{BacklightMessage}->exec();
+00422       \hyperlink{class_microscope}{Microscope}->GetFrame(newShot.\hyperlink{struct_soil_analyzer_1_1_analyzer_1_1_image__t_a504fc04b0d64945e742c9ac7a48f2598}{BackLight});
+00423       \hyperlink{class_v_s_a_main_window_a5976cf149c1aff5011c75d058f7f1c8a}{Images}->push\_back(newShot);
+00424       QString ShakeMsg = \textcolor{stringliteral}{"Shake it baby! "};
+00425       \textcolor{keywordtype}{int} number = \hyperlink{class_v_s_a_main_window_a429310b9a60f66c4283dc609f869b48d}{Settings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a290567ffd8fe54f1c800654395ca7a71}{StandardNumberOfShots} - i - 1;
+00426       ShakeMsg.append(QString::number(number));
+00427       ShakeMsg.append(\textcolor{stringliteral}{" to go!"});
+00428       \hyperlink{class_v_s_a_main_window_a819fbdf1137bb5f88c6638b0a9213f8c}{ShakeItBabyMessage}->setText(ShakeMsg);
+00429       \hyperlink{class_v_s_a_main_window_a819fbdf1137bb5f88c6638b0a9213f8c}{ShakeItBabyMessage}->exec();
+00430     \}
+00431   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!\hyperlink{class_v_s_a_main_window_a429310b9a60f66c4283dc609f869b48d}{Settings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a4945fc8b592a2585d3719175e3b80c88}{useBacklightProjection} && 
+      \hyperlink{class_v_s_a_main_window_a429310b9a60f66c4283dc609f869b48d}{Settings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a6851d04a1d2a5acbc99c6d9665c40edf}{useHDR}) \{
+00432     \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i < \hyperlink{class_v_s_a_main_window_a429310b9a60f66c4283dc609f869b48d}{Settings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a290567ffd8fe54f1c800654395ca7a71}{StandardNumberOfShots}; i++) \{
+00433       \hyperlink{struct_soil_analyzer_1_1_analyzer_1_1_image__t}{SoilAnalyzer::Analyzer::Image\_t} newShot;
+00434       newShot.\hyperlink{struct_soil_analyzer_1_1_analyzer_1_1_image__t_a7b7c4dfb4d2ed5da141feed7cfc9cfe9}{SIPixelFactor} = \hyperlink{class_v_s_a_main_window_a15db0a815b5c9abb5b8ea1bae21e17c9}{Analyzer}->\hyperlink{class_soil_analyzer_1_1_analyzer_a8fb13bb3f69f3f87e1cb61e453c8f5b3}{CurrentSIfactor};
+00435       \hyperlink{class_microscope}{Microscope}->GetHDRFrame(newShot.\hyperlink{struct_soil_analyzer_1_1_analyzer_1_1_image__t_aea2974c543b090703237f17d0c192699}{FrontLight}, \hyperlink{class_v_s_a_main_window_a429310b9a60f66c4283dc609f869b48d}{Settings}->
+      \hyperlink{class_soil_analyzer_1_1_soil_settings_a77e631ff44efe74762b5adaa2eb2cd11}{HDRframes});
+00436       \hyperlink{class_v_s_a_main_window_a5976cf149c1aff5011c75d058f7f1c8a}{Images}->push\_back(newShot);
+00437       QString ShakeMsg = \textcolor{stringliteral}{"Shake it baby! "};
+00438       \textcolor{keywordtype}{int} number = \hyperlink{class_v_s_a_main_window_a429310b9a60f66c4283dc609f869b48d}{Settings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a290567ffd8fe54f1c800654395ca7a71}{StandardNumberOfShots} - i - 1;
+00439       ShakeMsg.append(QString::number(number));
+00440       ShakeMsg.append(\textcolor{stringliteral}{" to go!"});
+00441       \hyperlink{class_v_s_a_main_window_a819fbdf1137bb5f88c6638b0a9213f8c}{ShakeItBabyMessage}->setText(ShakeMsg);
+00442       \hyperlink{class_v_s_a_main_window_a819fbdf1137bb5f88c6638b0a9213f8c}{ShakeItBabyMessage}->exec();
+00443     \}
+00444   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (!\hyperlink{class_v_s_a_main_window_a429310b9a60f66c4283dc609f869b48d}{Settings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a4945fc8b592a2585d3719175e3b80c88}{useBacklightProjection} && !
+      \hyperlink{class_v_s_a_main_window_a429310b9a60f66c4283dc609f869b48d}{Settings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a6851d04a1d2a5acbc99c6d9665c40edf}{useHDR}) \{
+00445     \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i < \hyperlink{class_v_s_a_main_window_a429310b9a60f66c4283dc609f869b48d}{Settings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a290567ffd8fe54f1c800654395ca7a71}{StandardNumberOfShots}; i++) \{
+00446       \hyperlink{struct_soil_analyzer_1_1_analyzer_1_1_image__t}{SoilAnalyzer::Analyzer::Image\_t} newShot;
+00447       newShot.\hyperlink{struct_soil_analyzer_1_1_analyzer_1_1_image__t_a7b7c4dfb4d2ed5da141feed7cfc9cfe9}{SIPixelFactor} = \hyperlink{class_v_s_a_main_window_a15db0a815b5c9abb5b8ea1bae21e17c9}{Analyzer}->\hyperlink{class_soil_analyzer_1_1_analyzer_a8fb13bb3f69f3f87e1cb61e453c8f5b3}{CurrentSIfactor};
+00448       \hyperlink{class_microscope}{Microscope}->GetFrame(newShot.\hyperlink{struct_soil_analyzer_1_1_analyzer_1_1_image__t_aea2974c543b090703237f17d0c192699}{FrontLight});
+00449       \hyperlink{class_v_s_a_main_window_a5976cf149c1aff5011c75d058f7f1c8a}{Images}->push\_back(newShot);
+00450       QString ShakeMsg = \textcolor{stringliteral}{"Shake it baby! "};
+00451       \textcolor{keywordtype}{int} number = \hyperlink{class_v_s_a_main_window_a429310b9a60f66c4283dc609f869b48d}{Settings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a290567ffd8fe54f1c800654395ca7a71}{StandardNumberOfShots} - i - 1;
+00452       ShakeMsg.append(QString::number(number));
+00453       ShakeMsg.append(\textcolor{stringliteral}{" to go!"});
+00454       \hyperlink{class_v_s_a_main_window_a819fbdf1137bb5f88c6638b0a9213f8c}{ShakeItBabyMessage}->setText(ShakeMsg);
+00455       \hyperlink{class_v_s_a_main_window_a819fbdf1137bb5f88c6638b0a9213f8c}{ShakeItBabyMessage}->exec();
+00456     \}
+00457   \}
+00458 \}
+00459 
+\hypertarget{vsamainwindow_8cpp_source_l00460}{}\hyperlink{class_v_s_a_main_window_a343178f350d9f2cb3067c75f995169f3}{00460} \textcolor{keywordtype}{void} \hyperlink{class_v_s_a_main_window_a343178f350d9f2cb3067c75f995169f3}{VSAMainWindow::on\_actionSaveSample\_triggered}() \{
+00461   QString fn = QFileDialog::getSaveFileName(
+00462       \textcolor{keyword}{this}, tr(\textcolor{stringliteral}{"Save Sample"}), QString::fromStdString(\hyperlink{class_v_s_a_main_window_a429310b9a60f66c4283dc609f869b48d}{Settings}->
+      \hyperlink{class_soil_analyzer_1_1_soil_settings_adfd46a349d927988c955fa064fc7bf1a}{SampleFolder}),
+00463       tr(\textcolor{stringliteral}{"Sample (*.VSA)"}));
+00464   \textcolor{keywordflow}{if} (!fn.isEmpty()) \{
+00465     \textcolor{keywordflow}{if} (!fn.contains(tr(\textcolor{stringliteral}{".VSA"}))) \{
+00466       fn.append(tr(\textcolor{stringliteral}{".VSA"}));
+00467     \}
+00468     \hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_ad078b5aae9d86f5d8fc7ec871381b138}{IsLoadedFromDisk} = \textcolor{keyword}{true};
+00469     \hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_aee3c3cf30c0201c695d82ca3a8dd0d8b}{ChangesSinceLastSave} = \textcolor{keyword}{false};
+00470     \hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_acb0fa4729d078f7c8fba70411469a67d}{Save}(fn.toStdString());
+00471     qDebug() << \textcolor{stringliteral}{"Saving finished"};
+00472   \}
+00473 \}
+00474 
+\hypertarget{vsamainwindow_8cpp_source_l00475}{}\hyperlink{class_v_s_a_main_window_a09c50b7552a1636c01c4f2f2817a223c}{00475} \textcolor{keywordtype}{void} \hyperlink{class_v_s_a_main_window_a09c50b7552a1636c01c4f2f2817a223c}{VSAMainWindow::on\_actionLoadSample\_triggered}() \{
+00476   \textcolor{keywordflow}{if} (\hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_aee3c3cf30c0201c695d82ca3a8dd0d8b}{ChangesSinceLastSave}) \{
+00477     \textcolor{keywordflow}{if} (\hyperlink{class_v_s_a_main_window_a9d76854fefeb5abf8f2fd6089987a31c}{SaveMeMessage}->exec() == QMessageBox::Abort) \{
+00478       \textcolor{keywordflow}{return};
+00479     \}
+00480   \}
+00481 
+00482   QString fn = QFileDialog::getOpenFileName(
+00483       \textcolor{keyword}{this}, tr(\textcolor{stringliteral}{"Open Sample"}), QString::fromStdString(\hyperlink{class_v_s_a_main_window_a429310b9a60f66c4283dc609f869b48d}{Settings}->
+      \hyperlink{class_soil_analyzer_1_1_soil_settings_adfd46a349d927988c955fa064fc7bf1a}{SampleFolder}),
+00484       tr(\textcolor{stringliteral}{"Sample (*.VSA)"}));
+00485   \textcolor{keywordflow}{if} (!fn.isEmpty()) \{
+00486     \textcolor{keywordflow}{if} (!fn.contains(tr(\textcolor{stringliteral}{".VSA"}))) \{
+00487       fn.append(tr(\textcolor{stringliteral}{".VSA"}));
+00488     \}
+00489     \textcolor{keyword}{delete} \hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample};
+00490     \hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample} = \textcolor{keyword}{nullptr};
+00491     \textcolor{keyword}{delete} \hyperlink{class_v_s_a_main_window_a5976cf149c1aff5011c75d058f7f1c8a}{Images};
+00492     \hyperlink{class_v_s_a_main_window_a5976cf149c1aff5011c75d058f7f1c8a}{Images} = \textcolor{keyword}{nullptr};
+00493     \hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample} = \textcolor{keyword}{new} \hyperlink{class_soil_analyzer_1_1_sample}{SoilAnalyzer::Sample};
+00494     \hyperlink{class_v_s_a_main_window_a5976cf149c1aff5011c75d058f7f1c8a}{Images} = \textcolor{keyword}{new} \hyperlink{class_soil_analyzer_1_1_analyzer_a55e2c84ab42cb967d718dd18295c1f91}{SoilAnalyzer::Analyzer::Images\_t};
+00495     \textcolor{keywordflow}{try} \{
+00496       \hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_afbb2db434d2e0a317c5b056371bf43fe}{Load}(fn.toStdString());
+00497     \} \textcolor{keywordflow}{catch} (boost::archive::archive\_exception &e) \{
+00498       \textcolor{comment}{// qDebug() << *e.what();}
+00499     \}
+00500     \hyperlink{class_v_s_a_main_window_a503125fe2f31e5abd394790fc2768501}{ParticleDisplayerFilled} = \textcolor{keyword}{false};
+00501     \hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_aac706ea1206fea6b708227c88481081d}{Angularity}.\hyperlink{class_soil_math_1_1_stats_affce366ceab8419a3f732e3c3a358f65}{Data} = \hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample}->
+      \hyperlink{class_soil_analyzer_1_1_sample_a9936205e5975ea3351eb371ec5b8c83f}{GetAngularityVector}()->data();
+00502     \hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a36b7e98ebd5d162fa0cda77fa4c7f0be}{Roundness}.\hyperlink{class_soil_math_1_1_stats_affce366ceab8419a3f732e3c3a358f65}{Data} = \hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_af08f7ebab2816d7bd1461ef3be6a1ea7}{GetRoundnessVector}()->data(
+      );
+00503     \hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a3a2cd7007e7867a6b3fb346f51b2ba60}{PSD}.\hyperlink{class_soil_math_1_1_stats_affce366ceab8419a3f732e3c3a358f65}{Data} = \hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_ae16f0b1abc2872738e25e9d6a865f3f2}{GetPSDVector}()->data();
+00504     \hyperlink{class_v_s_a_main_window_a15db0a815b5c9abb5b8ea1bae21e17c9}{Analyzer}->\hyperlink{class_soil_analyzer_1_1_analyzer_af80f9fa5784aa6518b3cf80de2c430fe}{Results} = \hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample};
+00505     \hyperlink{class_v_s_a_main_window_a33a4896e2b25348d5e1344e4b37bbd33}{on\_analyzer\_finished}();
+00506     \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->widget\_ParticleSelector->setDisabled(
+00507         \textcolor{keyword}{false},
+00508         \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->widget\_ParticleDisplay->SelectedParticle->Classification.Category);
+00509   \}
+00510 \}
+00511 
+\hypertarget{vsamainwindow_8cpp_source_l00512}{}\hyperlink{class_v_s_a_main_window_ae995dc5e5832a1be3a77c36f7df5f982}{00512} \textcolor{keywordtype}{void} \hyperlink{class_v_s_a_main_window_ae995dc5e5832a1be3a77c36f7df5f982}{VSAMainWindow::on\_actionUseLearning\_toggled}(\textcolor{keywordtype}{bool} arg1) \{
+00513   \hyperlink{class_v_s_a_main_window_a15db0a815b5c9abb5b8ea1bae21e17c9}{Analyzer}->\hyperlink{class_soil_analyzer_1_1_analyzer_a43c2a39174daac9059e48860936e38f3}{PredictShape} = !arg1;
+00514 \}
+00515 
+\hypertarget{vsamainwindow_8cpp_source_l00516}{}\hyperlink{class_v_s_a_main_window_a0051e5a6f9f17e898e962da6debb8d8b}{00516} \textcolor{keywordtype}{void} \hyperlink{class_v_s_a_main_window_a0051e5a6f9f17e898e962da6debb8d8b}{VSAMainWindow::on\_actionCalibrate\_triggered}() \{
+00517   cv::Mat calib;
+00518   \hyperlink{class_microscope}{Microscope}->GetFrame(calib);
+00519   \hyperlink{class_v_s_a_main_window_a15db0a815b5c9abb5b8ea1bae21e17c9}{Analyzer}->\hyperlink{class_soil_analyzer_1_1_analyzer_a79914fb56b7d9b71ae2fa049329f9413}{CalibrateSI}(16.25, calib);
+00520 \}
+00521 
+\hypertarget{vsamainwindow_8cpp_source_l00522}{}\hyperlink{class_v_s_a_main_window_af670cbc8db47377e395cadd2d4c59772}{00522} \textcolor{keywordtype}{void} \hyperlink{class_v_s_a_main_window_af670cbc8db47377e395cadd2d4c59772}{VSAMainWindow::on\_Classification\_changed}(\textcolor{keywordtype}{int} newValue) \{
+00523   uint8\_t *Cat =
+00524       &\hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->widget\_ParticleDisplay->SelectedParticle->Classification.Category;
+00525   \textcolor{keywordflow}{if} ((*Cat - 1) % 6 != (newValue - 1) % 6) \{
+00526     \hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a7ee3c324a437d466c014cbbfcfb4a244}{ParticleChangedStateAngularity} = \textcolor{keyword}{true};
+00527   \}
+00528   \textcolor{keywordflow}{if} ((*Cat - 1) / 6 != (newValue - 1) / 6) \{
+00529     \hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_af2ed93f3cbdc06660e7b846bd4feb7fc}{ParticleChangedStateRoundness} = \textcolor{keyword}{true};
+00530   \}
+00531   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->widget\_ParticleDisplay->SelectedParticle->Classification.Category =
+00532       newValue;
+00533   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->widget\_ParticleDisplay->SelectedParticle->Classification.ManualSet = \textcolor{keyword}{true};
+00534   \hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_aee3c3cf30c0201c695d82ca3a8dd0d8b}{ChangesSinceLastSave} = \textcolor{keyword}{true};
+00535   \hyperlink{class_v_s_a_main_window_a15db0a815b5c9abb5b8ea1bae21e17c9}{Analyzer}->\hyperlink{class_soil_analyzer_1_1_analyzer_a1cb605c255d35e85ccaae06a76917188}{Analyse}();
+00536   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->widget\_ParticleDisplay->next();
+00537 \}
+00538 
+\hypertarget{vsamainwindow_8cpp_source_l00539}{}\hyperlink{class_v_s_a_main_window_afb86baadff8bf9e00b4d487de68e5b80}{00539} \textcolor{keywordtype}{void} \hyperlink{class_v_s_a_main_window_afb86baadff8bf9e00b4d487de68e5b80}{VSAMainWindow::on\_particle\_deleted}() \{ 
+      \hyperlink{class_v_s_a_main_window_a15db0a815b5c9abb5b8ea1bae21e17c9}{Analyzer}->\hyperlink{class_soil_analyzer_1_1_analyzer_a1cb605c255d35e85ccaae06a76917188}{Analyse}(); \}
+00540 
+\hypertarget{vsamainwindow_8cpp_source_l00541}{}\hyperlink{class_v_s_a_main_window_a5aa928cf40e92cd184f1f959b87d9acf}{00541} \textcolor{keywordtype}{void} \hyperlink{class_v_s_a_main_window_a5aa928cf40e92cd184f1f959b87d9acf}{VSAMainWindow::on\_actionAutomatic\_Shape\_Pediction\_triggered}
+      (\textcolor{keywordtype}{bool} checked) \{
+00542   \hyperlink{class_v_s_a_main_window_a429310b9a60f66c4283dc609f869b48d}{Settings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_a369593522ac29f7dfa48fd6ca2afebef}{PredictTheShape} = checked;
+00543 \}
+00544 
+\hypertarget{vsamainwindow_8cpp_source_l00545}{}\hyperlink{class_v_s_a_main_window_ad7658d814c3f41b673ba3d888ef68b00}{00545} \textcolor{keywordtype}{void} \hyperlink{class_v_s_a_main_window_ad7658d814c3f41b673ba3d888ef68b00}{VSAMainWindow::on\_reset\_graph}(QMouseEvent *e) \{
+00546   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->xAxis->setRange(0, 10);
+00547   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->yAxis->setRange(0, 100);
+00548   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
+00549   \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->replot();
+00550 \}
+00551 
+\hypertarget{vsamainwindow_8cpp_source_l00552}{}\hyperlink{class_v_s_a_main_window_aaeec63d325c863eba2b1bce5e0eaa05e}{00552} \textcolor{keywordtype}{void} \hyperlink{class_v_s_a_main_window_aaeec63d325c863eba2b1bce5e0eaa05e}{VSAMainWindow::on\_actionReport\_Generator\_triggered}()
+       \{
+00553   \textcolor{keywordflow}{if} (\hyperlink{class_v_s_a_main_window_a38a41496820a4c6ad8220c02d19ab77c}{ReportGenWindow} == \textcolor{keyword}{nullptr}) \{
+00554     \hyperlink{class_v_s_a_main_window_a38a41496820a4c6ad8220c02d19ab77c}{ReportGenWindow} =
+00555         \textcolor{keyword}{new} \hyperlink{class_q_report_generator}{QReportGenerator}(\textcolor{keyword}{this}, \hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample}, \hyperlink{class_v_s_a_main_window_a429310b9a60f66c4283dc609f869b48d}{Settings}, 
+      \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD,
+00556                              \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Roudness, \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->QPlot\_Angularity);
+00557   \}
+00558   \hyperlink{class_v_s_a_main_window_a38a41496820a4c6ad8220c02d19ab77c}{ReportGenWindow}->show();
+00559 \}
+00560 
+\hypertarget{vsamainwindow_8cpp_source_l00561}{}\hyperlink{class_v_s_a_main_window_a8d9025970a6a3b27c1f83a92df6c1bad}{00561} \textcolor{keywordtype}{void} \hyperlink{class_v_s_a_main_window_a8d9025970a6a3b27c1f83a92df6c1bad}{VSAMainWindow::on\_PSD\_contextMenuRequest}(QPoint point) \{
+00562   QMenu *menu = \textcolor{keyword}{new} QMenu(\textcolor{keyword}{this});
+00563   menu->setAttribute(Qt::WA\_DeleteOnClose);
+00564 
+00565   menu->addAction(\textcolor{stringliteral}{"Compare against..."}, \textcolor{keyword}{this}, SLOT(\hyperlink{class_v_s_a_main_window_a26fbb5e4ad62a0aeef99b8ae23c0e85e}{on\_compare\_against}()));
+00566   menu->addAction(\textcolor{stringliteral}{"Restore"}, \textcolor{keyword}{this}, SLOT(\hyperlink{class_v_s_a_main_window_ad336ffb25b343972e0dbd6d2584a492e}{on\_restore\_PSD}()));
+00567   menu->popup(\hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->mapToGlobal(point));
+00568 \}
+00569 
+\hypertarget{vsamainwindow_8cpp_source_l00570}{}\hyperlink{class_v_s_a_main_window_a26fbb5e4ad62a0aeef99b8ae23c0e85e}{00570} \textcolor{keywordtype}{void} \hyperlink{class_v_s_a_main_window_a26fbb5e4ad62a0aeef99b8ae23c0e85e}{VSAMainWindow::on\_compare\_against}() \{
+00571   QString fn = QFileDialog::getOpenFileName(
+00572       \textcolor{keyword}{this}, tr(\textcolor{stringliteral}{"Open CSV"}), QString::fromStdString(\hyperlink{class_v_s_a_main_window_a429310b9a60f66c4283dc609f869b48d}{Settings}->
+      \hyperlink{class_soil_analyzer_1_1_soil_settings_adfd46a349d927988c955fa064fc7bf1a}{SampleFolder}),
+00573       tr(\textcolor{stringliteral}{"Comma Seperated Value (*.csv)"}));
+00574   \textcolor{keywordflow}{if} (!fn.isEmpty()) \{
+00575     \textcolor{keywordflow}{if} (!fn.contains(tr(\textcolor{stringliteral}{".csv"}))) \{
+00576       fn.append(tr(\textcolor{stringliteral}{".csv"}));
+00577     \}
+00578 
+00579     \textcolor{keywordflow}{if} (\hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->graphCount() > 1) \{
+00580       \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->legend->removeItem(1);
+00581       \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->removeGraph(1);
+00582     \}
+00583 
+00584     QStringList rows;
+00585     QStringList cellValues;
+00586 
+00587     QFile f(fn);
+00588     \textcolor{keywordflow}{if} (f.open(QIODevice::ReadOnly)) \{
+00589       QString data;
+00590       data = f.readAll();
+00591       rows = data.split(\textcolor{charliteral}{'\(\backslash\)n'});
+00592       f.close();
+00593       \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i < rows.size(); i++) \{
+00594         QStringList cols = rows[i].split(\textcolor{charliteral}{','});
+00595         \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} j = 0; j < cols.size(); j++) \{
+00596           cellValues.append(cols[j]);
+00597         \}
+00598       \}
+00599       cellValues.removeLast();
+00600 
+00601       std::vector<double> compValues(15);
+00602       \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i < cellValues.size(); i += 4) \{
+00603         \textcolor{keywordtype}{bool} conversionSucces = \textcolor{keyword}{false};
+00604         \textcolor{keywordtype}{double} binValue = cellValues[i].toDouble(&conversionSucces);
+00605         qDebug() << cellValues[i + 3];
+00606         \textcolor{keywordflow}{if} (conversionSucces) \{
+00607           \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} j = 0; j < 15; j++) \{
+00608             \textcolor{keywordflow}{if} (binValue == \hyperlink{class_v_s_a_main_window_a43651d26dd4d6d8971317d902294317c}{PSDTicks}[j]) \{
+00609               compValues[j] = cellValues[i + 3].toDouble();
+00610             \}
+00611           \}
+00612         \}
+00613       \}
+00614       \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->addGraph(\hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->xAxis, \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->yAxis);
+00615       \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->graph(1)->setData(\hyperlink{class_v_s_a_main_window_a43651d26dd4d6d8971317d902294317c}{PSDTicks}, compValues);
+00616       QPen compPen;
+00617       compPen.setColor(QColor(\textcolor{stringliteral}{"darkBlue"}));
+00618       compPen.setStyle(Qt::DashLine);
+00619       compPen.setWidthF(1);
+00620       \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->graph(1)->setPen(compPen);
+00621       \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->graph(1)->setName(\textcolor{stringliteral}{"Compared Particle Size Distribution"});
+00622       \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->graph(1)->addToLegend();
+00623       \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->replot();
+00624     \}
+00625   \}
+00626 \}
+00627 
+\hypertarget{vsamainwindow_8cpp_source_l00628}{}\hyperlink{class_v_s_a_main_window_ad336ffb25b343972e0dbd6d2584a492e}{00628} \textcolor{keywordtype}{void} \hyperlink{class_v_s_a_main_window_ad336ffb25b343972e0dbd6d2584a492e}{VSAMainWindow::on\_restore\_PSD}() \{
+00629   \textcolor{keywordflow}{if} (\hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->graphCount() > 1) \{
+00630     \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->legend->removeItem(1);
+00631     \hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui}->Qplot\_PSD->removeGraph(1);
+00632   \}
+00633   \hyperlink{class_v_s_a_main_window_ad7658d814c3f41b673ba3d888ef68b00}{on\_reset\_graph}(\textcolor{keyword}{nullptr});
+00634 \}
+\end{DoxyCode}

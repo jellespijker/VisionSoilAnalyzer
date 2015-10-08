@@ -1,0 +1,161 @@
+\hypertarget{qparticleselector_8cpp_source}{}\subsection{qparticleselector.\+cpp}
+\label{qparticleselector_8cpp_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Q\+Particle\+Selector/qparticleselector.\+cpp@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Q\+Particle\+Selector/qparticleselector.\+cpp}}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#include "\hyperlink{qparticleselector_8h}{qparticleselector.h}"}
+00002 \textcolor{preprocessor}{#include "ui\_qparticleselector.h"}
+00003 
+\hypertarget{qparticleselector_8cpp_source_l00004}{}\hyperlink{class_q_particle_selector_acf2293b16d970f2e61caab8c45ece3c3}{00004} \hyperlink{class_q_particle_selector_acf2293b16d970f2e61caab8c45ece3c3}{QParticleSelector::QParticleSelector}(QWidget *parent)
+00005     : QWidget(parent), ui(new \hyperlink{namespace_ui}{Ui}::\hyperlink{class_q_particle_selector}{QParticleSelector}) \{
+00006   \hyperlink{class_q_particle_selector_afc6d3b0296f0842e3e3f410916ab1e70}{ui}->setupUi(\textcolor{keyword}{this});
+00007   \hyperlink{class_q_particle_selector_ad3396ef1085219165de749b7e1cbcebd}{btns}.push\_back(\hyperlink{class_q_particle_selector_afc6d3b0296f0842e3e3f410916ab1e70}{ui}->pb\_1);
+00008   \hyperlink{class_q_particle_selector_ad3396ef1085219165de749b7e1cbcebd}{btns}.push\_back(\hyperlink{class_q_particle_selector_afc6d3b0296f0842e3e3f410916ab1e70}{ui}->pb\_2);
+00009   \hyperlink{class_q_particle_selector_ad3396ef1085219165de749b7e1cbcebd}{btns}.push\_back(\hyperlink{class_q_particle_selector_afc6d3b0296f0842e3e3f410916ab1e70}{ui}->pb\_3);
+00010   \hyperlink{class_q_particle_selector_ad3396ef1085219165de749b7e1cbcebd}{btns}.push\_back(\hyperlink{class_q_particle_selector_afc6d3b0296f0842e3e3f410916ab1e70}{ui}->pb\_4);
+00011   \hyperlink{class_q_particle_selector_ad3396ef1085219165de749b7e1cbcebd}{btns}.push\_back(\hyperlink{class_q_particle_selector_afc6d3b0296f0842e3e3f410916ab1e70}{ui}->pb\_5);
+00012   \hyperlink{class_q_particle_selector_ad3396ef1085219165de749b7e1cbcebd}{btns}.push\_back(\hyperlink{class_q_particle_selector_afc6d3b0296f0842e3e3f410916ab1e70}{ui}->pb\_6);
+00013   \hyperlink{class_q_particle_selector_ad3396ef1085219165de749b7e1cbcebd}{btns}.push\_back(\hyperlink{class_q_particle_selector_afc6d3b0296f0842e3e3f410916ab1e70}{ui}->pb\_7);
+00014   \hyperlink{class_q_particle_selector_ad3396ef1085219165de749b7e1cbcebd}{btns}.push\_back(\hyperlink{class_q_particle_selector_afc6d3b0296f0842e3e3f410916ab1e70}{ui}->pb\_8);
+00015   \hyperlink{class_q_particle_selector_ad3396ef1085219165de749b7e1cbcebd}{btns}.push\_back(\hyperlink{class_q_particle_selector_afc6d3b0296f0842e3e3f410916ab1e70}{ui}->pb\_9);
+00016   \hyperlink{class_q_particle_selector_ad3396ef1085219165de749b7e1cbcebd}{btns}.push\_back(\hyperlink{class_q_particle_selector_afc6d3b0296f0842e3e3f410916ab1e70}{ui}->pb\_10);
+00017   \hyperlink{class_q_particle_selector_ad3396ef1085219165de749b7e1cbcebd}{btns}.push\_back(\hyperlink{class_q_particle_selector_afc6d3b0296f0842e3e3f410916ab1e70}{ui}->pb\_11);
+00018   \hyperlink{class_q_particle_selector_ad3396ef1085219165de749b7e1cbcebd}{btns}.push\_back(\hyperlink{class_q_particle_selector_afc6d3b0296f0842e3e3f410916ab1e70}{ui}->pb\_12);
+00019   \hyperlink{class_q_particle_selector_ad3396ef1085219165de749b7e1cbcebd}{btns}.push\_back(\hyperlink{class_q_particle_selector_afc6d3b0296f0842e3e3f410916ab1e70}{ui}->pb\_13);
+00020   \hyperlink{class_q_particle_selector_ad3396ef1085219165de749b7e1cbcebd}{btns}.push\_back(\hyperlink{class_q_particle_selector_afc6d3b0296f0842e3e3f410916ab1e70}{ui}->pb\_14);
+00021   \hyperlink{class_q_particle_selector_ad3396ef1085219165de749b7e1cbcebd}{btns}.push\_back(\hyperlink{class_q_particle_selector_afc6d3b0296f0842e3e3f410916ab1e70}{ui}->pb\_15);
+00022   \hyperlink{class_q_particle_selector_ad3396ef1085219165de749b7e1cbcebd}{btns}.push\_back(\hyperlink{class_q_particle_selector_afc6d3b0296f0842e3e3f410916ab1e70}{ui}->pb\_16);
+00023   \hyperlink{class_q_particle_selector_ad3396ef1085219165de749b7e1cbcebd}{btns}.push\_back(\hyperlink{class_q_particle_selector_afc6d3b0296f0842e3e3f410916ab1e70}{ui}->pb\_17);
+00024   \hyperlink{class_q_particle_selector_ad3396ef1085219165de749b7e1cbcebd}{btns}.push\_back(\hyperlink{class_q_particle_selector_afc6d3b0296f0842e3e3f410916ab1e70}{ui}->pb\_18);
+00025 \}
+00026 
+\hypertarget{qparticleselector_8cpp_source_l00027}{}\hyperlink{class_q_particle_selector_ae7f05ca170c3dce228229b6ccdb869ed}{00027} \hyperlink{class_q_particle_selector_ae7f05ca170c3dce228229b6ccdb869ed}{QParticleSelector::~QParticleSelector}() \{
+00028   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} b : \hyperlink{class_q_particle_selector_ad3396ef1085219165de749b7e1cbcebd}{btns}) \{
+00029     \textcolor{keyword}{delete} b;
+00030   \}
+00031   btns.clear();
+00032   \textcolor{keyword}{delete} \hyperlink{class_q_particle_selector_afc6d3b0296f0842e3e3f410916ab1e70}{ui};
+00033 \}
+00034 
+\hypertarget{qparticleselector_8cpp_source_l00035}{}\hyperlink{class_q_particle_selector_a023ce0a57b716e2d1613a90bd4f81c5d}{00035} \textcolor{keywordtype}{void} \hyperlink{class_q_particle_selector_a023ce0a57b716e2d1613a90bd4f81c5d}{QParticleSelector::setValue}(\textcolor{keywordtype}{int} newValue) \{
+00036   \hyperlink{class_q_particle_selector_ad3396ef1085219165de749b7e1cbcebd}{btns}[newValue - 1]->setChecked(\textcolor{keyword}{true});
+00037 \}
+00038 
+\hypertarget{qparticleselector_8cpp_source_l00039}{}\hyperlink{class_q_particle_selector_ab9401ea22f778fa8ed02577da7888897}{00039} \textcolor{keywordtype}{void} \hyperlink{class_q_particle_selector_ab9401ea22f778fa8ed02577da7888897}{QParticleSelector::setDisabled}(\textcolor{keywordtype}{bool} value, \textcolor{keywordtype}{int} currentClass) \{
+00040   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} b : \hyperlink{class_q_particle_selector_ad3396ef1085219165de749b7e1cbcebd}{btns}) \{
+00041     b->setDisabled(value);
+00042   \}
+00043   \textcolor{keywordflow}{if} (currentClass > 18 || currentClass < 1) \{
+00044     btns[0]->setChecked(\textcolor{keyword}{true});
+00045   \} \textcolor{keywordflow}{else} \{
+00046     btns[currentClass - 1]->setChecked(\textcolor{keyword}{true});
+00047   \}
+00048 \}
+00049 
+\hypertarget{qparticleselector_8cpp_source_l00050}{}\hyperlink{class_q_particle_selector_aba68bd4d35a15b2ed3f701f0fa4f2bfd}{00050} \textcolor{keywordtype}{void} \hyperlink{class_q_particle_selector_aba68bd4d35a15b2ed3f701f0fa4f2bfd}{QParticleSelector::on\_pb\_1\_clicked}(\textcolor{keywordtype}{bool} checked) \{
+00051   \textcolor{keywordflow}{if} (checked) \{
+00052     emit \hyperlink{class_q_particle_selector_ac9562cf3ebd13e54ff69ac6cd5e53c6d}{valueChanged}(1);
+00053   \}
+00054 \}
+00055 
+\hypertarget{qparticleselector_8cpp_source_l00056}{}\hyperlink{class_q_particle_selector_a1fbc0e7f1df72ee334d9877a98966285}{00056} \textcolor{keywordtype}{void} \hyperlink{class_q_particle_selector_a1fbc0e7f1df72ee334d9877a98966285}{QParticleSelector::on\_pb\_2\_clicked}(\textcolor{keywordtype}{bool} checked) \{
+00057   \textcolor{keywordflow}{if} (checked) \{
+00058     emit \hyperlink{class_q_particle_selector_ac9562cf3ebd13e54ff69ac6cd5e53c6d}{valueChanged}(2);
+00059   \}
+00060 \}
+00061 
+\hypertarget{qparticleselector_8cpp_source_l00062}{}\hyperlink{class_q_particle_selector_a91a4d1eb835be6e238220188653fda2f}{00062} \textcolor{keywordtype}{void} \hyperlink{class_q_particle_selector_a91a4d1eb835be6e238220188653fda2f}{QParticleSelector::on\_pb\_3\_clicked}(\textcolor{keywordtype}{bool} checked) \{
+00063   \textcolor{keywordflow}{if} (checked) \{
+00064     emit \hyperlink{class_q_particle_selector_ac9562cf3ebd13e54ff69ac6cd5e53c6d}{valueChanged}(3);
+00065   \}
+00066 \}
+00067 
+\hypertarget{qparticleselector_8cpp_source_l00068}{}\hyperlink{class_q_particle_selector_ac890967c44a09dc1ee86c695f63b8669}{00068} \textcolor{keywordtype}{void} \hyperlink{class_q_particle_selector_ac890967c44a09dc1ee86c695f63b8669}{QParticleSelector::on\_pb\_4\_clicked}(\textcolor{keywordtype}{bool} checked) \{
+00069   \textcolor{keywordflow}{if} (checked) \{
+00070     emit \hyperlink{class_q_particle_selector_ac9562cf3ebd13e54ff69ac6cd5e53c6d}{valueChanged}(4);
+00071   \}
+00072 \}
+00073 
+\hypertarget{qparticleselector_8cpp_source_l00074}{}\hyperlink{class_q_particle_selector_af34569174a7e169cb6ad5d4885d3ca03}{00074} \textcolor{keywordtype}{void} \hyperlink{class_q_particle_selector_af34569174a7e169cb6ad5d4885d3ca03}{QParticleSelector::on\_pb\_5\_clicked}(\textcolor{keywordtype}{bool} checked) \{
+00075   \textcolor{keywordflow}{if} (checked) \{
+00076     emit \hyperlink{class_q_particle_selector_ac9562cf3ebd13e54ff69ac6cd5e53c6d}{valueChanged}(5);
+00077   \}
+00078 \}
+00079 
+\hypertarget{qparticleselector_8cpp_source_l00080}{}\hyperlink{class_q_particle_selector_ad5d9d3c5c15f5ef7d9092050c9ac0605}{00080} \textcolor{keywordtype}{void} \hyperlink{class_q_particle_selector_ad5d9d3c5c15f5ef7d9092050c9ac0605}{QParticleSelector::on\_pb\_6\_clicked}(\textcolor{keywordtype}{bool} checked) \{
+00081   \textcolor{keywordflow}{if} (checked) \{
+00082     emit \hyperlink{class_q_particle_selector_ac9562cf3ebd13e54ff69ac6cd5e53c6d}{valueChanged}(6);
+00083   \}
+00084 \}
+00085 
+\hypertarget{qparticleselector_8cpp_source_l00086}{}\hyperlink{class_q_particle_selector_aec22e6856b1843f908d0c8c91d7cc6a2}{00086} \textcolor{keywordtype}{void} \hyperlink{class_q_particle_selector_aec22e6856b1843f908d0c8c91d7cc6a2}{QParticleSelector::on\_pb\_7\_clicked}(\textcolor{keywordtype}{bool} checked) \{
+00087   \textcolor{keywordflow}{if} (checked) \{
+00088     emit \hyperlink{class_q_particle_selector_ac9562cf3ebd13e54ff69ac6cd5e53c6d}{valueChanged}(7);
+00089   \}
+00090 \}
+00091 
+\hypertarget{qparticleselector_8cpp_source_l00092}{}\hyperlink{class_q_particle_selector_a3090ac1884e50099892a858f1ab6ed49}{00092} \textcolor{keywordtype}{void} \hyperlink{class_q_particle_selector_a3090ac1884e50099892a858f1ab6ed49}{QParticleSelector::on\_pb\_8\_clicked}(\textcolor{keywordtype}{bool} checked) \{
+00093   \textcolor{keywordflow}{if} (checked) \{
+00094     emit \hyperlink{class_q_particle_selector_ac9562cf3ebd13e54ff69ac6cd5e53c6d}{valueChanged}(8);
+00095   \}
+00096 \}
+00097 
+\hypertarget{qparticleselector_8cpp_source_l00098}{}\hyperlink{class_q_particle_selector_a0c4331be0e9768977484c994cc12be3f}{00098} \textcolor{keywordtype}{void} \hyperlink{class_q_particle_selector_a0c4331be0e9768977484c994cc12be3f}{QParticleSelector::on\_pb\_9\_clicked}(\textcolor{keywordtype}{bool} checked) \{
+00099   \textcolor{keywordflow}{if} (checked) \{
+00100     emit \hyperlink{class_q_particle_selector_ac9562cf3ebd13e54ff69ac6cd5e53c6d}{valueChanged}(9);
+00101   \}
+00102 \}
+00103 
+\hypertarget{qparticleselector_8cpp_source_l00104}{}\hyperlink{class_q_particle_selector_a79857d47ec9fcd6335c212e1716da9e8}{00104} \textcolor{keywordtype}{void} \hyperlink{class_q_particle_selector_a79857d47ec9fcd6335c212e1716da9e8}{QParticleSelector::on\_pb\_10\_clicked}(\textcolor{keywordtype}{bool} checked) \{
+00105   \textcolor{keywordflow}{if} (checked) \{
+00106     emit \hyperlink{class_q_particle_selector_ac9562cf3ebd13e54ff69ac6cd5e53c6d}{valueChanged}(10);
+00107   \}
+00108 \}
+00109 
+\hypertarget{qparticleselector_8cpp_source_l00110}{}\hyperlink{class_q_particle_selector_adb4c0bfb05e06d1836e2efcea670c313}{00110} \textcolor{keywordtype}{void} \hyperlink{class_q_particle_selector_adb4c0bfb05e06d1836e2efcea670c313}{QParticleSelector::on\_pb\_11\_clicked}(\textcolor{keywordtype}{bool} checked) \{
+00111   \textcolor{keywordflow}{if} (checked) \{
+00112     emit \hyperlink{class_q_particle_selector_ac9562cf3ebd13e54ff69ac6cd5e53c6d}{valueChanged}(11);
+00113   \}
+00114 \}
+00115 
+\hypertarget{qparticleselector_8cpp_source_l00116}{}\hyperlink{class_q_particle_selector_af9df7fa0e88957f393e44d8094335ba8}{00116} \textcolor{keywordtype}{void} \hyperlink{class_q_particle_selector_af9df7fa0e88957f393e44d8094335ba8}{QParticleSelector::on\_pb\_12\_clicked}(\textcolor{keywordtype}{bool} checked) \{
+00117   \textcolor{keywordflow}{if} (checked) \{
+00118     emit \hyperlink{class_q_particle_selector_ac9562cf3ebd13e54ff69ac6cd5e53c6d}{valueChanged}(12);
+00119   \}
+00120 \}
+00121 
+\hypertarget{qparticleselector_8cpp_source_l00122}{}\hyperlink{class_q_particle_selector_a334b8722c5697bbc2797d126c74622df}{00122} \textcolor{keywordtype}{void} \hyperlink{class_q_particle_selector_a334b8722c5697bbc2797d126c74622df}{QParticleSelector::on\_pb\_13\_clicked}(\textcolor{keywordtype}{bool} checked) \{
+00123   \textcolor{keywordflow}{if} (checked) \{
+00124     emit \hyperlink{class_q_particle_selector_ac9562cf3ebd13e54ff69ac6cd5e53c6d}{valueChanged}(13);
+00125   \}
+00126 \}
+00127 
+\hypertarget{qparticleselector_8cpp_source_l00128}{}\hyperlink{class_q_particle_selector_a83d819f119feba5cc774c469b20217a0}{00128} \textcolor{keywordtype}{void} \hyperlink{class_q_particle_selector_a83d819f119feba5cc774c469b20217a0}{QParticleSelector::on\_pb\_14\_clicked}(\textcolor{keywordtype}{bool} checked) \{
+00129   \textcolor{keywordflow}{if} (checked) \{
+00130     emit \hyperlink{class_q_particle_selector_ac9562cf3ebd13e54ff69ac6cd5e53c6d}{valueChanged}(14);
+00131   \}
+00132 \}
+00133 
+\hypertarget{qparticleselector_8cpp_source_l00134}{}\hyperlink{class_q_particle_selector_a3490c642b91a205d7f5d46d374c8f231}{00134} \textcolor{keywordtype}{void} \hyperlink{class_q_particle_selector_a3490c642b91a205d7f5d46d374c8f231}{QParticleSelector::on\_pb\_15\_clicked}(\textcolor{keywordtype}{bool} checked) \{
+00135   \textcolor{keywordflow}{if} (checked) \{
+00136     emit \hyperlink{class_q_particle_selector_ac9562cf3ebd13e54ff69ac6cd5e53c6d}{valueChanged}(15);
+00137   \}
+00138 \}
+00139 
+\hypertarget{qparticleselector_8cpp_source_l00140}{}\hyperlink{class_q_particle_selector_a10b1561ccbed76443f4544c34d8cf49b}{00140} \textcolor{keywordtype}{void} \hyperlink{class_q_particle_selector_a10b1561ccbed76443f4544c34d8cf49b}{QParticleSelector::on\_pb\_16\_clicked}(\textcolor{keywordtype}{bool} checked) \{
+00141   \textcolor{keywordflow}{if} (checked) \{
+00142     emit \hyperlink{class_q_particle_selector_ac9562cf3ebd13e54ff69ac6cd5e53c6d}{valueChanged}(16);
+00143   \}
+00144 \}
+00145 
+\hypertarget{qparticleselector_8cpp_source_l00146}{}\hyperlink{class_q_particle_selector_a140809a6b17a98efdc64aea3b223b89b}{00146} \textcolor{keywordtype}{void} \hyperlink{class_q_particle_selector_a140809a6b17a98efdc64aea3b223b89b}{QParticleSelector::on\_pb\_17\_clicked}(\textcolor{keywordtype}{bool} checked) \{
+00147   \textcolor{keywordflow}{if} (checked) \{
+00148     emit \hyperlink{class_q_particle_selector_ac9562cf3ebd13e54ff69ac6cd5e53c6d}{valueChanged}(17);
+00149   \}
+00150 \}
+00151 
+\hypertarget{qparticleselector_8cpp_source_l00152}{}\hyperlink{class_q_particle_selector_a1cac4a0543af7ab335a44730cd04fc76}{00152} \textcolor{keywordtype}{void} \hyperlink{class_q_particle_selector_a1cac4a0543af7ab335a44730cd04fc76}{QParticleSelector::on\_pb\_18\_clicked}(\textcolor{keywordtype}{bool} checked) \{
+00153   \textcolor{keywordflow}{if} (checked) \{
+00154     emit \hyperlink{class_q_particle_selector_ac9562cf3ebd13e54ff69ac6cd5e53c6d}{valueChanged}(18);
+00155   \}
+00156 \}
+\end{DoxyCode}

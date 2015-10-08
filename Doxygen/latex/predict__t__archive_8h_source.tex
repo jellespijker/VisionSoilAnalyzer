@@ -1,0 +1,35 @@
+\hypertarget{predict__t__archive_8h_source}{}\subsection{predict\+\_\+t\+\_\+archive.\+h}
+\label{predict__t__archive_8h_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Math/predict\+\_\+t\+\_\+archive.\+h@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Math/predict\+\_\+t\+\_\+archive.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/* Copyright (C) Jelle Spijker - All Rights Reserved}
+00002 \textcolor{comment}{ * Unauthorized copying of this file, via any medium is strictly prohibited}
+00003 \textcolor{comment}{ * and only allowed with the written consent of the author (Jelle Spijker)}
+00004 \textcolor{comment}{ * This software is proprietary and confidential}
+00005 \textcolor{comment}{ * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015}
+00006 \textcolor{comment}{ */}
+00007 
+00008 \textcolor{comment}{// Source:}
+00009 \textcolor{comment}{// http://stackoverflow.com/questions/16125574/how-to-serialize-opencv-mat-with-boost-xml-archive}
+00010 \textcolor{preprocessor}{#pragma once}
+00011 
+00012 \textcolor{preprocessor}{#include <boost/archive/binary\_iarchive.hpp>}
+00013 \textcolor{preprocessor}{#include <boost/archive/binary\_oarchive.hpp>}
+00014 \textcolor{preprocessor}{#include <boost/serialization/access.hpp>}
+00015 \textcolor{preprocessor}{#include <boost/serialization/vector.hpp>}
+00016 \textcolor{preprocessor}{#include <boost/serialization/complex.hpp>}
+00017 \textcolor{preprocessor}{#include "\hyperlink{_soil_math_types_8h}{SoilMathTypes.h}"}
+00018 
+00019 \textcolor{keyword}{namespace }\hyperlink{namespaceboost}{boost} \{
+00020 \textcolor{keyword}{namespace }serialization \{
+00024 \textcolor{keyword}{template} <\textcolor{keyword}{class} Archive>
+\hypertarget{predict__t__archive_8h_source_l00025}{}\hyperlink{namespaceboost_1_1serialization_ad463c4b6874e90eced139f8b1a7abdc3}{00025} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \hyperlink{namespaceboost_1_1serialization_acf3ecd0fdaa3726a2332e266a4ecfe47}{serialize}(Archive &ar, \hyperlink{struct_predict__struct}{Predict\_t} &P, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} version \_\_attribute\_\_
+      ((unused))) \{
+00026   ar &P.\hyperlink{struct_predict__struct_a587f18ac05cd65437327a54261d1e22c}{Accuracy};
+00027   ar &P.\hyperlink{struct_predict__struct_a7d1bc56f771ba19cb333163557648714}{Category};
+00028   ar &P.\hyperlink{struct_predict__struct_aa0708cae93baa061f21452537e86d3bd}{OutputNeurons};
+00029   ar &P.\hyperlink{struct_predict__struct_a09932ff9ac15e4b182bf6e53232eba0f}{RealValue};
+00030 \}
+00031 \}
+00032 \}
+\end{DoxyCode}

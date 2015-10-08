@@ -1,0 +1,174 @@
+\hypertarget{_n_n_8cpp_source}{}\subsection{N\+N.\+cpp}
+\label{_n_n_8cpp_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Math/\+N\+N.\+cpp@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Math/\+N\+N.\+cpp}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/* Copyright (C) Jelle Spijker - All Rights Reserved}
+00002 \textcolor{comment}{ * Unauthorized copying of this file, via any medium is strictly prohibited}
+00003 \textcolor{comment}{ * and only allowed with the written consent of the author (Jelle Spijker)}
+00004 \textcolor{comment}{ * This software is proprietary and confidential}
+00005 \textcolor{comment}{ * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015}
+00006 \textcolor{comment}{ */}
+00007 
+00008 \textcolor{preprocessor}{#include "\hyperlink{_n_n_8h}{NN.h}"}
+00009 \textcolor{keyword}{using namespace }\hyperlink{namespacestd}{std};
+00010 
+00011 \textcolor{keyword}{namespace }\hyperlink{namespace_soil_math}{SoilMath} \{
+\hypertarget{_n_n_8cpp_source_l00012}{}\hyperlink{class_soil_math_1_1_n_n_a778606ea8a193479da233a030d1df234}{00012} NN::NN() \{ beta = 0.666; \}
+00013 
+\hypertarget{_n_n_8cpp_source_l00014}{}\hyperlink{class_soil_math_1_1_n_n_a46efd1eb7e31be2818c9858b640fcb5b}{00014} NN::NN(\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} inputneurons, \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} hiddenneurons, \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} outputneurons) \{
+00015   \textcolor{comment}{// Set the number of neurons in the network}
+00016   inputNeurons = inputneurons;
+00017   hiddenNeurons = hiddenneurons;
+00018   outputNeurons = outputneurons;
+00019   \textcolor{comment}{// Reserve the vector space}
+00020   iNeurons.reserve(inputNeurons + 1);  \textcolor{comment}{// input neurons + bias}
+00021   hNeurons.reserve(hiddenNeurons + 1); \textcolor{comment}{// hidden neurons + bias}
+00022   oNeurons.reserve(outputNeurons);     \textcolor{comment}{// output neurons}
+00023 
+00024   beta = 0.666;
+00025 \}
+00026 
+\hypertarget{_n_n_8cpp_source_l00027}{}\hyperlink{class_soil_math_1_1_n_n_a37cb0ebe3576af3cf47c2e6330e1b34a}{00027} NN::~NN()
+00028 \{
+00029   \textcolor{keywordflow}{if} (optim != \textcolor{keyword}{nullptr}) \{
+00030       \textcolor{keyword}{delete} optim;
+00031     \}
+00032 \}
+00033 
+\hypertarget{_n_n_8cpp_source_l00034}{}\hyperlink{class_soil_math_1_1_n_n_aaa63195dc11ca8c02f3ce044a5d086b5}{00034} \textcolor{keywordtype}{void} NN::LoadState(\textcolor{keywordtype}{string} filename) \{
+00035   std::ifstream ifs(filename.c\_str());
+00036   boost::archive::xml\_iarchive ia(ifs);
+00037   ia >> boost::serialization::make\_nvp(\textcolor{stringliteral}{"NeuralNet"}, *\textcolor{keyword}{this});
+00038 \}
+00039 
+\hypertarget{_n_n_8cpp_source_l00040}{}\hyperlink{class_soil_math_1_1_n_n_a970fda7e79dd4c34f2c3be69afaf4742}{00040} \textcolor{keywordtype}{void} NN::SaveState(\textcolor{keywordtype}{string} filename) \{
+00041   std::ofstream ofs(filename.c\_str());
+00042   boost::archive::xml\_oarchive oa(ofs);
+00043   oa << boost::serialization::make\_nvp(\textcolor{stringliteral}{"NeuralNet"}, *\textcolor{keyword}{this});
+00044 \}
+00045 
+\hypertarget{_n_n_8cpp_source_l00046}{}\hyperlink{class_soil_math_1_1_n_n_ac758bdef758439af30a62c486dff79ca}{00046} \hyperlink{struct_predict__struct}{Predict\_t} NN::PredictLearn(\hyperlink{_soil_math_types_8h_a7567e521c2b2c408dcb62dbff72390f7}{ComplexVect\_t} input, \hyperlink{_soil_math_types_8h_ac56ad2b88186620fd0de0d213aa715dd}{Weight\_t} inputweights,
+00047                            \hyperlink{_soil_math_types_8h_ac56ad2b88186620fd0de0d213aa715dd}{Weight\_t} hiddenweights, \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} inputneurons,
+00048                            \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} hiddenneurons, \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} outputneurons) \{
+00049   \hyperlink{class_soil_math_1_1_n_n}{NN} neural(inputneurons, hiddenneurons, outputneurons);
+00050   neural.\hyperlink{class_soil_math_1_1_n_n_aed36297c9221a837fee94f4774b614bf}{studied} = \textcolor{keyword}{true};
+00051   neural.\hyperlink{class_soil_math_1_1_n_n_a411371d8297e9d1ff10c919d1293d80e}{SetInputWeights}(inputweights);
+00052   neural.\hyperlink{class_soil_math_1_1_n_n_a8465f4fd2aebe181601c4be31df47ffd}{SetHiddenWeights}(hiddenweights);
+00053   \textcolor{keywordflow}{return} neural.\hyperlink{class_soil_math_1_1_n_n_aa7f23fcdb8383a74586c9c30b8bc0af7}{Predict}(input);
+00054 \}
+00055 
+\hypertarget{_n_n_8cpp_source_l00056}{}\hyperlink{class_soil_math_1_1_n_n_aa7f23fcdb8383a74586c9c30b8bc0af7}{00056} \hyperlink{struct_predict__struct}{Predict\_t} NN::Predict(\hyperlink{_soil_math_types_8h_a7567e521c2b2c408dcb62dbff72390f7}{ComplexVect\_t} input) \{
+00057   \textcolor{keywordflow}{if} (input.size() != inputNeurons) \{
+00058     \textcolor{keywordflow}{throw} \hyperlink{class_soil_math_1_1_exception_1_1_math_exception}{Exception::MathException}(
+      \hyperlink{_math_exception_8h_ab0eb22f73fea0163f06029cbc3f05825}{EXCEPTION\_SIZE\_OF\_INPUT\_NEURONS},
+00059                                    \hyperlink{_math_exception_8h_ad3576b2d374be2f14816abdf843432c7}{EXCEPTION\_SIZE\_OF\_INPUT\_NEURONS\_NR});
+00060   \}
+00061   \textcolor{keywordflow}{if} (!studied) \{
+00062     \textcolor{keywordflow}{throw} \hyperlink{class_soil_math_1_1_exception_1_1_math_exception}{Exception::MathException}(
+      \hyperlink{_math_exception_8h_ac412424987d9143f59b48a2cf9e0c21b}{EXCEPTION\_NEURAL\_NET\_NOT\_STUDIED},
+00063                                    \hyperlink{_math_exception_8h_a3afb80cde76bdd1c929d352c41efabc8}{EXCEPTION\_NEURAL\_NET\_NOT\_STUDIED\_NR});
+00064   \}
+00065 
+00066   iNeurons.clear();
+00067   hNeurons.clear();
+00068   oNeurons.clear();
+00069 
+00070   \textcolor{comment}{// Set the bias in the input and hidden vector to 1 (real number)}
+00071   iNeurons.push\_back(1.0f);
+00072   hNeurons.push\_back(1.0f);
+00073 
+00074   \hyperlink{struct_predict__struct}{Predict\_t} retVal;
+00075   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} wCount = 0;
+00076 
+00077   \textcolor{comment}{// Init the network}
+00078   \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i < inputNeurons; i++) \{
+00079     iNeurons.push\_back(static\_cast<float>(abs(input[i])));
+00080   \}
+00081   \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i < hiddenNeurons; i++) \{
+00082     hNeurons.push\_back(0.0f);
+00083   \}
+00084   \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i < outputNeurons; i++) \{
+00085     oNeurons.push\_back(0.0f);
+00086   \}
+00087 
+00088   \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 1; i < hNeurons.size(); i++) \{
+00089     wCount = i - 1;
+00090     \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} j = 0; j < iNeurons.size(); j++) \{
+00091       hNeurons[i] += iNeurons[j] * iWeights[wCount];
+00092       wCount += hNeurons.size() - 1;
+00093     \}
+00094     hNeurons[i] = 1 / (1 + pow(2.71828f, (-hNeurons[i] * beta)));
+00095   \}
+00096 
+00097   \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i < oNeurons.size(); i++) \{
+00098     wCount = i;
+00099     \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} j = 0; j < hNeurons.size(); j++) \{
+00100       oNeurons[i] += hNeurons[j] * hWeights[wCount];
+00101       wCount += oNeurons.size();
+00102     \}
+00103     oNeurons[i] =
+00104         (2 / (1.0f + pow(2.71828f, (-oNeurons[i] * beta)))) -
+00105         1; \textcolor{comment}{// Shift plus scale so the learning function can be calculated}
+00106   \}
+00107 
+00108   retVal.\hyperlink{struct_predict__struct_aa0708cae93baa061f21452537e86d3bd}{OutputNeurons} = oNeurons;
+00109   retVal.\hyperlink{struct_predict__struct_a9e16b308d69246f0954a4a9100fc0660}{ManualSet} = \textcolor{keyword}{false};
+00110   \textcolor{keywordflow}{return} retVal;
+00111 \}
+00112 
+\hypertarget{_n_n_8cpp_source_l00113}{}\hyperlink{class_soil_math_1_1_n_n_a8550b524ed096712bb2fad9fa57b8c8d}{00113} \textcolor{keywordtype}{void} NN::Learn(\hyperlink{_soil_math_types_8h_a45aa81992bf0ddf272907bd4fa0b96cf}{InputLearnVector\_t} input, \hyperlink{_soil_math_types_8h_a2d8b5a261688166d724b68addd8561e6}{OutputLearnVector\_t} cat,
+00114                \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} noOfDescriptorsUsed \_\_attribute\_\_((unused))) \{
+00115   \textcolor{keywordflow}{if} (optim == \textcolor{keyword}{nullptr}) \{
+00116       optim = \textcolor{keyword}{new} \hyperlink{class_soil_math_1_1_g_a}{SoilMath::GA}(PredictLearn, inputNeurons, hiddenNeurons, outputNeurons);
+00117     \}
+00118   connect(optim, SIGNAL(learnErrorUpdate(\textcolor{keywordtype}{double})), \textcolor{keyword}{this}, SIGNAL(learnErrorUpdate(\textcolor{keywordtype}{double})));
+00119 
+00120   optim->Elitisme = ElitismeUsedByGA;
+00121   optim->EndError = EndErrorUsedByGA;
+00122   optim->MutationRate = MutationrateUsedByGA;
+00123 
+00124   \hyperlink{_soil_math_types_8h_a7567e521c2b2c408dcb62dbff72390f7}{ComplexVect\_t} inputTest;
+00125   std::vector<Weight\_t> weights;
+00126   \hyperlink{_soil_math_types_8h_ac56ad2b88186620fd0de0d213aa715dd}{Weight\_t} weight(((inputNeurons + 1) * hiddenNeurons) +
+00127                       ((hiddenNeurons + 1) * outputNeurons),
+00128                   0);
+00129   \textcolor{comment}{// loop through each case and adjust the weights}
+00130   optim->Evolve(input, weight,
+00131                \hyperlink{_soil_math_types_8h_aaa919636507bcd52b19efa301aa80b9a}{MinMaxWeight\_t}(MinWeightUSedByGa, MaxWeightUsedByGA), cat,
+00132                MaxGenUsedByGA, PopulationSizeUsedByGA);
+00133 
+00134   this->iWeights = \hyperlink{_soil_math_types_8h_ac56ad2b88186620fd0de0d213aa715dd}{Weight\_t}(
+00135       weight.begin(), weight.begin() + ((inputNeurons + 1) * hiddenNeurons));
+00136   this->hWeights = \hyperlink{_soil_math_types_8h_ac56ad2b88186620fd0de0d213aa715dd}{Weight\_t}(
+00137       weight.begin() + ((inputNeurons + 1) * hiddenNeurons), weight.end());
+00138   studied = \textcolor{keyword}{true};
+00139 \}
+00140 
+\hypertarget{_n_n_8cpp_source_l00141}{}\hyperlink{class_soil_math_1_1_n_n_a3a08c0f82d5f57895ccd28ae0a6274a3}{00141} \textcolor{keywordtype}{void} NN::SetInputNeurons(\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} value) \{
+00142   \textcolor{keywordflow}{if} (value != inputNeurons) \{
+00143     inputNeurons = value;
+00144     iNeurons.clear();
+00145     iNeurons.reserve(inputNeurons + 1);
+00146     studied = \textcolor{keyword}{false};
+00147   \}
+00148 \}
+00149 
+\hypertarget{_n_n_8cpp_source_l00150}{}\hyperlink{class_soil_math_1_1_n_n_ad4fd78afb9c34634464548c0196d2346}{00150} \textcolor{keywordtype}{void} NN::SetHiddenNeurons(\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} value) \{
+00151   \textcolor{keywordflow}{if} (value != hiddenNeurons) \{
+00152     hiddenNeurons = value;
+00153     hNeurons.clear();
+00154     hNeurons.reserve(hiddenNeurons + 1);
+00155     studied = \textcolor{keyword}{false};
+00156   \}
+00157 \}
+00158 
+\hypertarget{_n_n_8cpp_source_l00159}{}\hyperlink{class_soil_math_1_1_n_n_a3fc439de707dde0ba6a55d2941bd898b}{00159} \textcolor{keywordtype}{void} NN::SetOutputNeurons(\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} value) \{
+00160   \textcolor{keywordflow}{if} (value != outputNeurons) \{
+00161     outputNeurons = value;
+00162     oNeurons.clear();
+00163     oNeurons.reserve(outputNeurons);
+00164     studied = \textcolor{keyword}{false};
+00165   \}
+00166 \}
+00167 \}
+\end{DoxyCode}

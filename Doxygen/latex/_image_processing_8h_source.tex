@@ -1,0 +1,195 @@
+\hypertarget{_image_processing_8h_source}{}\subsection{Image\+Processing.\+h}
+\label{_image_processing_8h_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Vision/\+Image\+Processing.\+h@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Vision/\+Image\+Processing.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/* Copyright (C) Jelle Spijker - All Rights Reserved}
+00002 \textcolor{comment}{ * Unauthorized copying of this file, via any medium is strictly prohibited}
+00003 \textcolor{comment}{ * and only allowed with the written consent of the author (Jelle Spijker)}
+00004 \textcolor{comment}{ * This software is proprietary and confidential}
+00005 \textcolor{comment}{ * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015}
+00006 \textcolor{comment}{ */}
+00007 
+00008 \textcolor{preprocessor}{#pragma once}
+00009 
+\hypertarget{_image_processing_8h_source_l00010}{}\hyperlink{_image_processing_8h_a394287dd68e2ecc54ccb312685bc2fd0}{00010} \textcolor{preprocessor}{#define IMAGEPROCESSING\_VERSION 1}
+00011 
+\hypertarget{_image_processing_8h_source_l00014}{}\hyperlink{_image_processing_8h_a6e6f0183cb53c76ef458d4fd34e07bcd}{00014} \textcolor{preprocessor}{#define CHAIN\_PROCESS(chain, O, type)                                          \(\backslash\)}
+00015 \textcolor{preprocessor}{  if (chain) \{                                                                 \(\backslash\)}
+00016 \textcolor{preprocessor}{    TempImg = ProcessedImg.clone();                                            \(\backslash\)}
+00017 \textcolor{preprocessor}{    O = (type *)TempImg.data;                                                  \(\backslash\)}
+00018 \textcolor{preprocessor}{  \} else \{                                                                     \(\backslash\)}
+00019 \textcolor{preprocessor}{    O = (type *)OriginalImg.data;                                              \(\backslash\)}
+00020 \textcolor{preprocessor}{  \}}
+00021 
+\hypertarget{_image_processing_8h_source_l00022}{}\hyperlink{_image_processing_8h_a27c4e53b88a0f9f2c097add555131056}{00022} \textcolor{preprocessor}{#define EMPTY\_CHECK(img)                                                       \(\backslash\)}
+00023 \textcolor{preprocessor}{  if (img.empty()) \{                                                           \(\backslash\)}
+00024 \textcolor{preprocessor}{    throw Exception::EmtpyImageException();                                    \(\backslash\)}
+00025 \textcolor{preprocessor}{  \}}
+00026 
+00027 \textcolor{preprocessor}{#include <opencv2/core.hpp>}
+00028 \textcolor{preprocessor}{#include <opencv2/highgui.hpp>}
+00029 \textcolor{preprocessor}{#include <opencv2/imgproc.hpp>}
+00030 
+00031 \textcolor{preprocessor}{#include <stdint.h>}
+00032 \textcolor{preprocessor}{#include <cmath>}
+00033 \textcolor{preprocessor}{#include <vector>}
+00034 \textcolor{preprocessor}{#include <string>}
+00035 
+00036 \textcolor{preprocessor}{#include <boost/signals2.hpp>}
+00037 \textcolor{preprocessor}{#include <boost/bind.hpp>}
+00038 
+00039 \textcolor{preprocessor}{#include "\hyperlink{_empty_image_exception_8h}{EmptyImageException.h}"}
+00040 \textcolor{preprocessor}{#include "\hyperlink{_wrong_kernel_size_exception_8h}{WrongKernelSizeException.h}"}
+00041 \textcolor{preprocessor}{#include "\hyperlink{_channel_mismatch_exception_8h}{ChannelMismatchException.h}"}
+00042 \textcolor{preprocessor}{#include "\hyperlink{_pixel_value_out_of_bound_exception_8h}{PixelValueOutOfBoundException.h}"}
+00043 \textcolor{preprocessor}{#include "\hyperlink{_vision_debug_8h}{VisionDebug.h}"}
+00044 
+00045 \textcolor{keyword}{using namespace }\hyperlink{namespacecv}{cv};
+00046 
+00047 \textcolor{keyword}{namespace }\hyperlink{namespace_vision}{Vision} \{
+\hypertarget{_image_processing_8h_source_l00048}{}\hyperlink{class_vision_1_1_image_processing}{00048} \textcolor{keyword}{class }\hyperlink{class_vision_1_1_image_processing}{ImageProcessing} \{
+00049 \textcolor{keyword}{public}:
+\hypertarget{_image_processing_8h_source_l00050}{}\hyperlink{class_vision_1_1_image_processing_ade0de8f6751f8d19b8fbb9533a009d3c}{00050}   \textcolor{keyword}{typedef} boost::signals2::signal<void(float, std::string)> \hyperlink{class_vision_1_1_image_processing_ade0de8f6751f8d19b8fbb9533a009d3c}{Progress\_t};
+00051   boost::signals2::connection
+00052   connect\_Progress(\textcolor{keyword}{const} Progress\_t::slot\_type &subscriber);
+00053 
+00054 \textcolor{keyword}{protected}:
+00055   \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *GetNRow(\textcolor{keywordtype}{int} nData, \textcolor{keywordtype}{int} hKsize, \textcolor{keywordtype}{int} nCols, \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} totalRows);
+\hypertarget{_image_processing_8h_source_l00056}{}\hyperlink{class_vision_1_1_image_processing_a5371ad8d6f7aac9d43ee5c902ade7435}{00056}   Mat \hyperlink{class_vision_1_1_image_processing_a5371ad8d6f7aac9d43ee5c902ade7435}{TempImg};
+00057 
+\hypertarget{_image_processing_8h_source_l00058}{}\hyperlink{class_vision_1_1_image_processing_ac0c168e16365ff5941791f67ec895663}{00058}   Progress\_t \hyperlink{class_vision_1_1_image_processing_ac0c168e16365ff5941791f67ec895663}{prog\_sig};
+00059 
+00060 \textcolor{keyword}{public}:
+00061   \hyperlink{class_vision_1_1_image_processing}{ImageProcessing}();
+00062   ~\hyperlink{class_vision_1_1_image_processing}{ImageProcessing}();
+\hypertarget{_image_processing_8h_source_l00063}{}\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{00063}   Mat \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg};
+\hypertarget{_image_processing_8h_source_l00064}{}\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{00064}   Mat \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg};
+00065 
+00066   \textcolor{keyword}{static} \textcolor{keywordtype}{void} getOrientented(Mat &BW, cv::Point\_<double> &centroid,
+00067                              \textcolor{keywordtype}{double} &theta, \textcolor{keywordtype}{double} &eccentricty);
+00068   \textcolor{keyword}{static} \textcolor{keywordtype}{void} RotateImg(Mat &src, Mat &dst, \textcolor{keywordtype}{double} &theta, cv::Point\_<double> &Centroid, Rect &ROI);
+00069 
+\hypertarget{_image_processing_8h_source_l00070}{}\hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{00070}   \textcolor{keywordtype}{double} currentProg = 0.;
+\hypertarget{_image_processing_8h_source_l00071}{}\hyperlink{class_vision_1_1_image_processing_a7438451f9a447a33e9f04bf8e73eae31}{00071}   \textcolor{keywordtype}{double} ProgStep = 0.;
+00072 
+00073   \textcolor{keyword}{static} std::vector<Mat> extractChannel(\textcolor{keyword}{const} Mat &src);
+00074 
+00081   \textcolor{keyword}{template} <\textcolor{keyword}{typename} T1, \textcolor{keyword}{typename} T2>
+\hypertarget{_image_processing_8h_source_l00082}{}\hyperlink{class_vision_1_1_image_processing_a16f96c26c7c5c6feb7ac103b9b478682}{00082}   \textcolor{keyword}{static} Mat \hyperlink{class_vision_1_1_image_processing_a16f96c26c7c5c6feb7ac103b9b478682}{CopyMat}(\textcolor{keyword}{const} Mat &src, T1 *LUT, \textcolor{keywordtype}{int} cvType) \{
+00083     Mat dst(src.size(), cvType);
+00084     \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} nData = src.rows * src.cols * dst.step[1];
+00085     \textcolor{keywordflow}{if} (cvType == 0 || cvType == 8 || cvType == 16 || cvType == 24) \{
+00086       \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i < nData; i += dst.step[1]) \{
+00087         dst.data[i] =
+00088             \textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(LUT[*(T2 *)(src.data + (i * src.step[1]))]);
+00089       \}
+00090     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (cvType == 1 || cvType == 9 || cvType == 17 || cvType == 25) \{
+00091       \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i < nData; i += src.step[1]) \{
+00092         dst.data[i] =
+00093             \textcolor{keyword}{static\_cast<}int8\_t\textcolor{keyword}{>}(LUT[*(T2 *)(src.data + (i * src.step[1]))]);
+00094       \}
+00095     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (cvType == 2 || cvType == 10 || cvType == 18 || cvType == 26) \{
+00096       \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i < nData; i += src.step[1]) \{
+00097         dst.data[i] =
+00098             \textcolor{keyword}{static\_cast<}uint16\_t\textcolor{keyword}{>}(LUT[*(T2 *)(src.data + (i * src.step[1]))]);
+00099       \}
+00100     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (cvType == 3 || cvType == 11 || cvType == 19 || cvType == 27) \{
+00101       \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i < nData; i += src.step[1]) \{
+00102         dst.data[i] =
+00103             \textcolor{keyword}{static\_cast<}int16\_t\textcolor{keyword}{>}(LUT[*(T2 *)(src.data + (i * src.step[1]))]);
+00104       \}
+00105     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (cvType == 4 || cvType == 12 || cvType == 20 || cvType == 28) \{
+00106       \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i < nData; i += src.step[1]) \{
+00107         dst.data[i] =
+00108             \textcolor{keyword}{static\_cast<}int32\_t\textcolor{keyword}{>}(LUT[*(T2 *)(src.data + (i * src.step[1]))]);
+00109       \}
+00110     \}
+00111     \textcolor{keywordflow}{return} dst;
+00112   \}
+00113 
+00120   \textcolor{keyword}{template} <\textcolor{keyword}{typename} T1>
+\hypertarget{_image_processing_8h_source_l00121}{}\hyperlink{class_vision_1_1_image_processing_a5a255d7f5b10bcb199e66d1e00ab9d1a}{00121}   \textcolor{keyword}{static} Mat \hyperlink{class_vision_1_1_image_processing_a5a255d7f5b10bcb199e66d1e00ab9d1a}{CopyMat}(\textcolor{keyword}{const} Mat &src, \textcolor{keyword}{const} Mat &mask, \textcolor{keywordtype}{int} cvType) \{
+00122     \textcolor{keywordflow}{if} (src.size != mask.size) \{
+00123       \textcolor{keywordflow}{throw} \hyperlink{class_vision_1_1_exception_1_1_wrong_kernel_size_exception}{Exception::WrongKernelSizeException}(
+00124           \textcolor{stringliteral}{"Mask not the same size as src Exception!"});
+00125     \}
+00126     \textcolor{keywordflow}{if} (mask.channels() != 1) \{
+00127       \textcolor{keywordflow}{throw} \hyperlink{class_vision_1_1_exception_1_1_wrong_kernel_size_exception}{Exception::WrongKernelSizeException}(
+00128           \textcolor{stringliteral}{"Mask has more then 1 channel Exception!"});
+00129     \}
+00130     Mat dst(src.size(), cvType);
+00131 
+00132     vector<Mat> exSrc = \hyperlink{class_vision_1_1_image_processing_ad5fa51caaabb8cb0fc2c15f645695a3c}{Vision::ImageProcessing::extractChannel}(src)
+      ;
+00133     vector<Mat> exDst;
+00134 
+00135     \textcolor{keywordtype}{int} cvBaseType = cvType % 8;
+00136     for\_each(exSrc.begin(), exSrc.end(), [&](\textcolor{keyword}{const} Mat &sItem) \{
+00137       Mat dItem(src.size(), cvBaseType);
+00138       std::transform(sItem.begin<T1>(), sItem.end<T1>(), mask.begin<T1>(),
+00139                      dItem.begin<T1>(),
+00140                      [](\textcolor{keyword}{const} T1 &s, \textcolor{keyword}{const} T1 &m) -> T1 \{ return s * m; \});
+00141       exDst.push\_back(dItem);
+00142     \});
+00143 
+00144     merge(exDst, dst);
+00145 
+00146     \textcolor{keywordflow}{return} dst;
+00147   \}
+00148 
+\hypertarget{_image_processing_8h_source_l00149}{}\hyperlink{class_vision_1_1_image_processing_aaa8b17b356ca4300857f05a6d6558a43}{00149}   \textcolor{keyword}{static} cv::Mat \hyperlink{class_vision_1_1_image_processing_aaa8b17b356ca4300857f05a6d6558a43}{WhiteBackground}(\textcolor{keyword}{const} cv::Mat &src) \{
+00150     cv::Mat dst;
+00151     cv::floodFill(src, dst, cv::Point(0, 0), cv::Scalar(255, 255, 255));
+00152     \textcolor{keywordflow}{return} dst;
+00153   \}
+00154 
+00155   \textcolor{keyword}{template} <\textcolor{keyword}{typename} T1>
+\hypertarget{_image_processing_8h_source_l00156}{}\hyperlink{class_vision_1_1_image_processing_a97407ef83de37496d30d6defe3165edd}{00156}   \textcolor{keyword}{static} \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_image_processing_a97407ef83de37496d30d6defe3165edd}{ShowDebugImg}(cv::Mat img, T1 maxVal, std::string windowName,
+00157                            \textcolor{keywordtype}{bool} scale = \textcolor{keyword}{true}) \{
+00158     \textcolor{keywordflow}{if} (img.rows > 0 && img.cols > 0) \{
+00159       cv::Mat tempImg(img.size(), img.type());
+00160       \textcolor{keywordflow}{if} (scale == \textcolor{keyword}{true}) \{
+00161         std::vector<cv::Mat> exSrc = extractChannel(img);
+00162         std::vector<cv::Mat> exDst;
+00163         \textcolor{keywordtype}{int} cvBaseType = img.type() % 8;
+00164         T1 MatMin = std::numeric\_limits<T1>::max();
+00165         T1 MatMax = std::numeric\_limits<T1>::min();
+00166 
+00167         \textcolor{comment}{// Find the global max and min}
+00168         for\_each(exSrc.begin(), exSrc.end(), [&](\textcolor{keyword}{const} Mat &sItem) \{
+00169           std::for\_each(sItem.begin<T1>(), sItem.end<T1>(), [&](\textcolor{keyword}{const} T1 &s) \{
+00170             if (s > MatMax) \{
+00171               MatMax = s;
+00172             \} \textcolor{keywordflow}{else} if (s < MatMin) \{
+00173               MatMin = s;
+00174             \}
+00175           \});
+00176         \});
+00177 
+00178         \textcolor{keywordtype}{int} Range = MatMax - MatMin;
+00179         \textcolor{keywordflow}{if} (Range < 1)
+00180           Range = maxVal;
+00181 
+00182         \textcolor{comment}{// Convert the values}
+00183         for\_each(exSrc.begin(), exSrc.end(), [&](\textcolor{keyword}{const} cv::Mat &sItem) \{
+00184           Mat dItem(img.size(), cvBaseType);
+00185           std::transform(sItem.begin<T1>(), sItem.end<T1>(), dItem.begin<T1>(),
+00186                          [&](\textcolor{keyword}{const} T1 &s) -> T1 \{
+00187                            return (T1)round(((s - MatMin) * maxVal) / Range);
+00188                          \});
+00189           exDst.push\_back(dItem);
+00190         \});
+00191 
+00192         merge(exDst, tempImg);
+00193       \} \textcolor{keywordflow}{else} \{
+00194         tempImg = img;
+00195       \}
+00196       cv::namedWindow(windowName, cv::WINDOW\_NORMAL);
+00197       cv::imshow(windowName, tempImg);
+00198       cv::waitKey(0);
+00199       cv::destroyWindow(windowName);
+00200     \};
+00201   \};
+00202 \};
+00203 \}
+\end{DoxyCode}

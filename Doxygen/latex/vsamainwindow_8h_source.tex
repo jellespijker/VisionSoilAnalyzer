@@ -1,0 +1,111 @@
+\hypertarget{vsamainwindow_8h_source}{}\subsection{vsamainwindow.\+h}
+\label{vsamainwindow_8h_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+V\+S\+A/vsamainwindow.\+h@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+V\+S\+A/vsamainwindow.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#ifndef VSAMAINWINDOW\_H}
+00002 \textcolor{preprocessor}{#define VSAMAINWINDOW\_H}
+00003 
+00004 \textcolor{preprocessor}{#include <QDebug>}
+00005 \textcolor{preprocessor}{#include <QMainWindow>}
+00006 \textcolor{preprocessor}{#include <QErrorMessage>}
+00007 \textcolor{preprocessor}{#include <QMessageBox>}
+00008 \textcolor{preprocessor}{#include <QProgressBar>}
+00009 \textcolor{preprocessor}{#include <QBrush>}
+00010 
+00011 \textcolor{preprocessor}{#include <stdint.h>}
+00012 
+00013 \textcolor{preprocessor}{#include <qcustomplot.h>}
+00014 
+00015 \textcolor{preprocessor}{#include "\hyperlink{soilanalyzer_8h}{soilanalyzer.h}"}
+00016 \textcolor{preprocessor}{#include "\hyperlink{_hardware_8h}{Hardware.h}"}
+00017 
+00018 \textcolor{preprocessor}{#include "\hyperlink{dialognn_8h}{dialognn.h}"}
+00019 \textcolor{preprocessor}{#include "\hyperlink{dialogsettings_8h}{dialogsettings.h}"}
+00020 \textcolor{preprocessor}{#include "\hyperlink{qparticleselector_8h}{qparticleselector.h}"}
+00021 \textcolor{preprocessor}{#include "\hyperlink{qreportgenerator_8h}{qreportgenerator.h}"}
+00022 
+00023 \textcolor{keyword}{namespace }\hyperlink{namespace_ui}{Ui} \{
+00024 \textcolor{keyword}{class }\hyperlink{class_v_s_a_main_window}{VSAMainWindow};
+00025 \}
+00026 
+\hypertarget{vsamainwindow_8h_source_l00027}{}\hyperlink{class_v_s_a_main_window}{00027} \textcolor{keyword}{class }\hyperlink{class_v_s_a_main_window}{VSAMainWindow} : \textcolor{keyword}{public} QMainWindow \{
+00028   Q\_OBJECT
+00029 
+00030 \textcolor{keyword}{public}:
+00031   \textcolor{keyword}{explicit} \hyperlink{class_v_s_a_main_window_a7fa18757c1fce5c8f41f25277f9e1a70}{VSAMainWindow}(QWidget *parent = 0);
+00032   \hyperlink{class_v_s_a_main_window_ae796e5df1630b2c8ce6d92e84984c071}{~VSAMainWindow}();
+00033 
+00034 \textcolor{keyword}{private} slots:
+00035   \textcolor{keywordtype}{void} \hyperlink{class_v_s_a_main_window_a5f8da8de2112e083b8bf1851a7fb123c}{on\_actionSettings\_triggered}();
+00036 
+00037   \textcolor{keywordtype}{void} \hyperlink{class_v_s_a_main_window_a33a4896e2b25348d5e1344e4b37bbd33}{on\_analyzer\_finished}();
+00038 
+00039   \textcolor{keywordtype}{void} \hyperlink{class_v_s_a_main_window_a131d34b899c7b16b58ff317d77486529}{on\_actionNeuralNet\_triggered}();
+00040 
+00041   \textcolor{keywordtype}{void} \hyperlink{class_v_s_a_main_window_a671264c6cb0136f83fc24075545c8c0c}{on\_actionNewSample\_triggered}();
+00042 
+00043   \textcolor{keywordtype}{void} \hyperlink{class_v_s_a_main_window_a343178f350d9f2cb3067c75f995169f3}{on\_actionSaveSample\_triggered}();
+00044 
+00045   \textcolor{keywordtype}{void} \hyperlink{class_v_s_a_main_window_a09c50b7552a1636c01c4f2f2817a223c}{on\_actionLoadSample\_triggered}();
+00046 
+00047   \textcolor{keywordtype}{void} \hyperlink{class_v_s_a_main_window_ae995dc5e5832a1be3a77c36f7df5f982}{on\_actionUseLearning\_toggled}(\textcolor{keywordtype}{bool} arg1);
+00048 
+00049   \textcolor{keywordtype}{void} \hyperlink{class_v_s_a_main_window_a0051e5a6f9f17e898e962da6debb8d8b}{on\_actionCalibrate\_triggered}();
+00050 
+00051   \textcolor{keywordtype}{void} \hyperlink{class_v_s_a_main_window_af670cbc8db47377e395cadd2d4c59772}{on\_Classification\_changed}(\textcolor{keywordtype}{int} newValue);
+00052 
+00053   \textcolor{keywordtype}{void} \hyperlink{class_v_s_a_main_window_afb86baadff8bf9e00b4d487de68e5b80}{on\_particle\_deleted}();
+00054 
+00055   \textcolor{keywordtype}{void} \hyperlink{class_v_s_a_main_window_a5aa928cf40e92cd184f1f959b87d9acf}{on\_actionAutomatic\_Shape\_Pediction\_triggered}(\textcolor{keywordtype}{bool} 
+      checked);
+00056 
+00057   \textcolor{keywordtype}{void} \hyperlink{class_v_s_a_main_window_ad7658d814c3f41b673ba3d888ef68b00}{on\_reset\_graph}(QMouseEvent * e);
+00058 
+00059   \textcolor{keywordtype}{void} \hyperlink{class_v_s_a_main_window_aaeec63d325c863eba2b1bce5e0eaa05e}{on\_actionReport\_Generator\_triggered}();
+00060 
+00061   \textcolor{keywordtype}{void} \hyperlink{class_v_s_a_main_window_a5fcffc892d83090533418aa159c11bf0}{on\_particleChanged}(\textcolor{keywordtype}{int} newPart);
+00062 
+00063   \textcolor{keywordtype}{void} \hyperlink{class_v_s_a_main_window_a8d9025970a6a3b27c1f83a92df6c1bad}{on\_PSD\_contextMenuRequest}(QPoint point);
+00064 
+00065   \textcolor{keywordtype}{void} \hyperlink{class_v_s_a_main_window_a26fbb5e4ad62a0aeef99b8ae23c0e85e}{on\_compare\_against}();
+00066 
+00067   \textcolor{keywordtype}{void} \hyperlink{class_v_s_a_main_window_ad336ffb25b343972e0dbd6d2584a492e}{on\_restore\_PSD}();
+00068 
+00069 \textcolor{keyword}{private}:
+\hypertarget{vsamainwindow_8h_source_l00070}{}\hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{00070}   Ui::VSAMainWindow *\hyperlink{class_v_s_a_main_window_a958a0581d2bf1bfe020c3b5d8f738640}{ui};
+\hypertarget{vsamainwindow_8h_source_l00071}{}\hyperlink{class_v_s_a_main_window_ae79d86cfa0c3adab847438b5b3dc34d6}{00071}   \hyperlink{class_dialog_settings}{DialogSettings} *\hyperlink{class_v_s_a_main_window_ae79d86cfa0c3adab847438b5b3dc34d6}{settingsWindow} = \textcolor{keyword}{nullptr};
+\hypertarget{vsamainwindow_8h_source_l00072}{}\hyperlink{class_v_s_a_main_window_a48dca9faab39674c88d8eb862995f11e}{00072}   \hyperlink{class_dialog_n_n}{DialogNN} *\hyperlink{class_v_s_a_main_window_a48dca9faab39674c88d8eb862995f11e}{nnWindow} = \textcolor{keyword}{nullptr};
+\hypertarget{vsamainwindow_8h_source_l00073}{}\hyperlink{class_v_s_a_main_window_af5c6186795a53ecfe3efffc95b6619dd}{00073}   QProgressBar *\hyperlink{class_v_s_a_main_window_af5c6186795a53ecfe3efffc95b6619dd}{Progress};
+\hypertarget{vsamainwindow_8h_source_l00074}{}\hyperlink{class_v_s_a_main_window_ae59279edd83472b7096db4b119ceb45b}{00074}   QErrorMessage *\hyperlink{class_v_s_a_main_window_ae59279edd83472b7096db4b119ceb45b}{CamError} = \textcolor{keyword}{nullptr};
+\hypertarget{vsamainwindow_8h_source_l00075}{}\hyperlink{class_v_s_a_main_window_a9d76854fefeb5abf8f2fd6089987a31c}{00075}   QMessageBox *\hyperlink{class_v_s_a_main_window_a9d76854fefeb5abf8f2fd6089987a31c}{SaveMeMessage} = \textcolor{keyword}{nullptr};
+\hypertarget{vsamainwindow_8h_source_l00076}{}\hyperlink{class_v_s_a_main_window_a2202203116e6126f9361de629986b7b4}{00076}   QMessageBox *\hyperlink{class_v_s_a_main_window_a2202203116e6126f9361de629986b7b4}{BacklightMessage} = \textcolor{keyword}{nullptr};
+\hypertarget{vsamainwindow_8h_source_l00077}{}\hyperlink{class_v_s_a_main_window_a819fbdf1137bb5f88c6638b0a9213f8c}{00077}   QMessageBox *\hyperlink{class_v_s_a_main_window_a819fbdf1137bb5f88c6638b0a9213f8c}{ShakeItBabyMessage} = \textcolor{keyword}{nullptr};
+\hypertarget{vsamainwindow_8h_source_l00078}{}\hyperlink{class_v_s_a_main_window_a38a41496820a4c6ad8220c02d19ab77c}{00078}   \hyperlink{class_q_report_generator}{QReportGenerator} *\hyperlink{class_v_s_a_main_window_a38a41496820a4c6ad8220c02d19ab77c}{ReportGenWindow} = \textcolor{keyword}{nullptr};
+00079 
+\hypertarget{vsamainwindow_8h_source_l00080}{}\hyperlink{class_v_s_a_main_window_a429310b9a60f66c4283dc609f869b48d}{00080}   \hyperlink{class_soil_analyzer_1_1_soil_settings}{SoilAnalyzer::SoilSettings} *\hyperlink{class_v_s_a_main_window_a429310b9a60f66c4283dc609f869b48d}{Settings} = \textcolor{keyword}{nullptr};
+\hypertarget{vsamainwindow_8h_source_l00081}{}\hyperlink{class_v_s_a_main_window_a63378add125c78c9a83a3babe03318d7}{00081}   \hyperlink{class_hardware_1_1_microscope}{Hardware::Microscope} *\hyperlink{class_microscope}{Microscope} = \textcolor{keyword}{nullptr};
+\hypertarget{vsamainwindow_8h_source_l00082}{}\hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{00082}   \hyperlink{class_soil_analyzer_1_1_sample}{SoilAnalyzer::Sample} *\hyperlink{class_v_s_a_main_window_a09d2f0c3ef8247e9c46932f866cab132}{Sample} = \textcolor{keyword}{nullptr};
+\hypertarget{vsamainwindow_8h_source_l00083}{}\hyperlink{class_v_s_a_main_window_a15db0a815b5c9abb5b8ea1bae21e17c9}{00083}   \hyperlink{class_soil_analyzer_1_1_analyzer}{SoilAnalyzer::Analyzer} *\hyperlink{class_v_s_a_main_window_a15db0a815b5c9abb5b8ea1bae21e17c9}{Analyzer} = \textcolor{keyword}{nullptr};
+\hypertarget{vsamainwindow_8h_source_l00084}{}\hyperlink{class_v_s_a_main_window_a5976cf149c1aff5011c75d058f7f1c8a}{00084}   \hyperlink{class_soil_analyzer_1_1_analyzer_a55e2c84ab42cb967d718dd18295c1f91}{SoilAnalyzer::Analyzer::Images\_t} *\hyperlink{class_v_s_a_main_window_a5976cf149c1aff5011c75d058f7f1c8a}{Images} = \textcolor{keyword}{nullptr};
+\hypertarget{vsamainwindow_8h_source_l00085}{}\hyperlink{class_v_s_a_main_window_afe7a5404f6f35af0c40eb277d91b82ac}{00085}   QCPBars *\hyperlink{class_v_s_a_main_window_afe7a5404f6f35af0c40eb277d91b82ac}{RoundnessBars} = \textcolor{keyword}{nullptr};
+\hypertarget{vsamainwindow_8h_source_l00086}{}\hyperlink{class_v_s_a_main_window_ac4dc27e6a351ad60f434357aeac9f1c0}{00086}   QCPBars *\hyperlink{class_v_s_a_main_window_ac4dc27e6a351ad60f434357aeac9f1c0}{AngularityBars} = \textcolor{keyword}{nullptr};
+\hypertarget{vsamainwindow_8h_source_l00087}{}\hyperlink{class_v_s_a_main_window_a43651d26dd4d6d8971317d902294317c}{00087}   std::vector<double> \hyperlink{class_v_s_a_main_window_a43651d26dd4d6d8971317d902294317c}{PSDTicks} = \{0.0,  0.038, 0.045, 0.063, 0.075,
+00088                               0.09, 0.125, 0.18,  0.25,  0.355,
+00089                               0.5,  0.71,  1.0,   1.4,   2.0\};
+\hypertarget{vsamainwindow_8h_source_l00090}{}\hyperlink{class_v_s_a_main_window_a8e54a490d67520e7dedd06addd3eaaa9}{00090}   QVector<QString> \hyperlink{class_v_s_a_main_window_a8e54a490d67520e7dedd06addd3eaaa9}{RoundnessCat} = \{\textcolor{stringliteral}{"High"}, \textcolor{stringliteral}{"Medium"}, \textcolor{stringliteral}{"Low"}\};
+\hypertarget{vsamainwindow_8h_source_l00091}{}\hyperlink{class_v_s_a_main_window_ace4471ce32443a495cd2c2bb500bef7d}{00091}   std::vector<double> \hyperlink{class_v_s_a_main_window_ace4471ce32443a495cd2c2bb500bef7d}{RoundnessTicks} = \{1, 2, 3\};
+\hypertarget{vsamainwindow_8h_source_l00092}{}\hyperlink{class_v_s_a_main_window_ab30d8e8d4b71e2aaad2efa825286e64d}{00092}   QVector<QString> \hyperlink{class_v_s_a_main_window_ab30d8e8d4b71e2aaad2efa825286e64d}{AngularityCat} = \{\textcolor{stringliteral}{"Very Angular"}, \textcolor{stringliteral}{"Angular"}, \textcolor{stringliteral}{"Sub Angular"},
+00093                                     \textcolor{stringliteral}{"Sub Rounded"},  \textcolor{stringliteral}{"Rounded"}, \textcolor{stringliteral}{"Well Rounded"}\};
+\hypertarget{vsamainwindow_8h_source_l00094}{}\hyperlink{class_v_s_a_main_window_ab3adb6772a4766285b7b96e0fb407f62}{00094}   std::vector<double> \hyperlink{class_v_s_a_main_window_ab3adb6772a4766285b7b96e0fb407f62}{AngularityTicks} = \{1, 2, 3, 4, 5, 6\};
+00095 
+\hypertarget{vsamainwindow_8h_source_l00096}{}\hyperlink{class_v_s_a_main_window_a503125fe2f31e5abd394790fc2768501}{00096}   \textcolor{keywordtype}{bool} \hyperlink{class_v_s_a_main_window_a503125fe2f31e5abd394790fc2768501}{ParticleDisplayerFilled} = \textcolor{keyword}{false};
+00097 
+00098   \textcolor{keywordtype}{void} \hyperlink{class_v_s_a_main_window_aded6489314d39f8071bf02b041ad81b3}{SetPSDgraph}();
+00099   \textcolor{keywordtype}{void} \hyperlink{class_v_s_a_main_window_ac574f6d81ce3ab1c7e78f00a95e24d9d}{setRoundnessHistogram}();
+00100   \textcolor{keywordtype}{void} \hyperlink{class_v_s_a_main_window_ab0063e1c86effb8e2b1bf2584f237669}{setAngularityHistogram}();
+00101   \textcolor{keywordtype}{void} \hyperlink{class_v_s_a_main_window_a4de6c895ab070a8e4a9a858b819a7d1c}{setAmpgraph}();
+00102   \textcolor{keywordtype}{void} \hyperlink{class_v_s_a_main_window_aed2fd5f5e0a932f8de7751d144ee74fe}{TakeSnapShots}();
+00103 \};
+00104 
+00105 \textcolor{preprocessor}{#endif // VSAMAINWINDOW\_H}
+\end{DoxyCode}

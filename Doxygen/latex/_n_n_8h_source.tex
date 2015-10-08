@@ -1,0 +1,121 @@
+\hypertarget{_n_n_8h_source}{}\subsection{N\+N.\+h}
+\label{_n_n_8h_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Math/\+N\+N.\+h@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Math/\+N\+N.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/* Copyright (C) Jelle Spijker - All Rights Reserved}
+00002 \textcolor{comment}{ * Unauthorized copying of this file, via any medium is strictly prohibited}
+00003 \textcolor{comment}{ * and only allowed with the written consent of the author (Jelle Spijker)}
+00004 \textcolor{comment}{ * This software is proprietary and confidential}
+00005 \textcolor{comment}{ * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015}
+00006 \textcolor{comment}{ */}
+00007 
+00008 \textcolor{preprocessor}{#pragma once}
+00009 
+00010 \textcolor{preprocessor}{#include <stdint.h>}
+00011 \textcolor{preprocessor}{#include <vector>}
+00012 \textcolor{preprocessor}{#include <string>}
+00013 \textcolor{preprocessor}{#include <fstream>}
+00014 
+00015 \textcolor{preprocessor}{#include <boost/archive/xml\_iarchive.hpp>}
+00016 \textcolor{preprocessor}{#include <boost/archive/xml\_oarchive.hpp>}
+00017 \textcolor{preprocessor}{#include <boost/serialization/vector.hpp>}
+00018 \textcolor{preprocessor}{#include <boost/serialization/version.hpp>}
+00019 
+00020 \textcolor{preprocessor}{#include "\hyperlink{_g_a_8h}{GA.h}"}
+00021 \textcolor{preprocessor}{#include "\hyperlink{_math_exception_8h}{MathException.h}"}
+00022 \textcolor{preprocessor}{#include "\hyperlink{_soil_math_types_8h}{SoilMathTypes.h}"}
+00023 \textcolor{preprocessor}{#include "\hyperlink{_f_f_t_8h}{FFT.h}"}
+00024 
+00025 \textcolor{preprocessor}{#include <QtCore/QObject>}
+00026 
+00027 \textcolor{keyword}{namespace }\hyperlink{namespace_soil_math}{SoilMath} \{
+\hypertarget{_n_n_8h_source_l00033}{}\hyperlink{class_soil_math_1_1_n_n}{00033} \textcolor{keyword}{class }\hyperlink{class_soil_math_1_1_n_n}{NN} : \textcolor{keyword}{public} QObject \{
+00034   Q\_OBJECT
+00035 
+00036 \textcolor{keyword}{public}:
+00043   \hyperlink{class_soil_math_1_1_n_n_a778606ea8a193479da233a030d1df234}{NN}(\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} inputneurons, \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} hiddenneurons, \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} outputneurons);
+00044 
+00048   \hyperlink{class_soil_math_1_1_n_n_a778606ea8a193479da233a030d1df234}{NN}();
+00049 
+00053   \textcolor{keyword}{virtual} \hyperlink{class_soil_math_1_1_n_n_a37cb0ebe3576af3cf47c2e6330e1b34a}{~NN}();
+00054 
+00065   \hyperlink{struct_predict__struct}{Predict\_t} \hyperlink{class_soil_math_1_1_n_n_aa7f23fcdb8383a74586c9c30b8bc0af7}{Predict}(\hyperlink{_soil_math_types_8h_a7567e521c2b2c408dcb62dbff72390f7}{ComplexVect\_t} input);
+00066 
+00081   \textcolor{keyword}{static} \hyperlink{struct_predict__struct}{Predict\_t} \hyperlink{class_soil_math_1_1_n_n_ac758bdef758439af30a62c486dff79ca}{PredictLearn}(\hyperlink{_soil_math_types_8h_a7567e521c2b2c408dcb62dbff72390f7}{ComplexVect\_t} input, 
+      \hyperlink{_soil_math_types_8h_ac56ad2b88186620fd0de0d213aa715dd}{Weight\_t} inputweights,
+00082                                 \hyperlink{_soil_math_types_8h_ac56ad2b88186620fd0de0d213aa715dd}{Weight\_t} hiddenweights, \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} inputneurons,
+00083                                 \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} hiddenneurons, \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} outputneurons);
+00084 
+\hypertarget{_n_n_8h_source_l00089}{}\hyperlink{class_soil_math_1_1_n_n_a411371d8297e9d1ff10c919d1293d80e}{00089}   \textcolor{keywordtype}{void} \hyperlink{class_soil_math_1_1_n_n_a411371d8297e9d1ff10c919d1293d80e}{SetInputWeights}(\hyperlink{_soil_math_types_8h_ac56ad2b88186620fd0de0d213aa715dd}{Weight\_t} value) \{ \hyperlink{class_soil_math_1_1_n_n_a96b0fe3caeed3d285204a6b4506075c9}{iWeights} = value; \}
+00090 
+\hypertarget{_n_n_8h_source_l00095}{}\hyperlink{class_soil_math_1_1_n_n_a8465f4fd2aebe181601c4be31df47ffd}{00095}   \textcolor{keywordtype}{void} \hyperlink{class_soil_math_1_1_n_n_a8465f4fd2aebe181601c4be31df47ffd}{SetHiddenWeights}(\hyperlink{_soil_math_types_8h_ac56ad2b88186620fd0de0d213aa715dd}{Weight\_t} value) \{ \hyperlink{class_soil_math_1_1_n_n_a46db1b2814215509a7345fccc8928efe}{hWeights} = value; \}
+00096 
+\hypertarget{_n_n_8h_source_l00101}{}\hyperlink{class_soil_math_1_1_n_n_a5a73fdf65b39d81b6185de3a3b315cdb}{00101}   \textcolor{keywordtype}{void} \hyperlink{class_soil_math_1_1_n_n_a5a73fdf65b39d81b6185de3a3b315cdb}{SetBeta}(\textcolor{keywordtype}{float} value) \{ \hyperlink{class_soil_math_1_1_n_n_a4bb773955d78fa6f064b39a9149b78c8}{beta} = value; \}
+\hypertarget{_n_n_8h_source_l00102}{}\hyperlink{class_soil_math_1_1_n_n_a636ce6a7a04b4e39b393a25530490c35}{00102}   \textcolor{keywordtype}{float} \hyperlink{class_soil_math_1_1_n_n_a636ce6a7a04b4e39b393a25530490c35}{GetBeta}() \{ \textcolor{keywordflow}{return} \hyperlink{class_soil_math_1_1_n_n_a4bb773955d78fa6f064b39a9149b78c8}{beta}; \}
+00103 
+00111   \textcolor{keywordtype}{void} \hyperlink{class_soil_math_1_1_n_n_a8550b524ed096712bb2fad9fa57b8c8d}{Learn}(\hyperlink{_soil_math_types_8h_a45aa81992bf0ddf272907bd4fa0b96cf}{InputLearnVector\_t} input, 
+      \hyperlink{_soil_math_types_8h_a2d8b5a261688166d724b68addd8561e6}{OutputLearnVector\_t} cat,
+00112              \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} noOfDescriptorsUsed);
+00113 
+00121   \textcolor{keywordtype}{void} \hyperlink{class_soil_math_1_1_n_n_a970fda7e79dd4c34f2c3be69afaf4742}{SaveState}(std::string filename);
+00122 
+00127   \textcolor{keywordtype}{void} \hyperlink{class_soil_math_1_1_n_n_aaa63195dc11ca8c02f3ce044a5d086b5}{LoadState}(std::string filename);
+00128 
+\hypertarget{_n_n_8h_source_l00129}{}\hyperlink{class_soil_math_1_1_n_n_a96b0fe3caeed3d285204a6b4506075c9}{00129}   \hyperlink{_soil_math_types_8h_ac56ad2b88186620fd0de0d213aa715dd}{Weight\_t} \hyperlink{class_soil_math_1_1_n_n_a96b0fe3caeed3d285204a6b4506075c9}{iWeights}; 
+\hypertarget{_n_n_8h_source_l00130}{}\hyperlink{class_soil_math_1_1_n_n_a46db1b2814215509a7345fccc8928efe}{00130}   \hyperlink{_soil_math_types_8h_ac56ad2b88186620fd0de0d213aa715dd}{Weight\_t} \hyperlink{class_soil_math_1_1_n_n_a46db1b2814215509a7345fccc8928efe}{hWeights}; 
+\hypertarget{_n_n_8h_source_l00132}{}\hyperlink{class_soil_math_1_1_n_n_a360b26e66639b4eed186a62cdbac37e0}{00132}   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} \hyperlink{class_soil_math_1_1_n_n_a360b26e66639b4eed186a62cdbac37e0}{MaxGenUsedByGA} = 200;
+\hypertarget{_n_n_8h_source_l00133}{}\hyperlink{class_soil_math_1_1_n_n_ac6acaf7e9572edbee9c0179ccd584b6f}{00133}   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} \hyperlink{class_soil_math_1_1_n_n_ac6acaf7e9572edbee9c0179ccd584b6f}{PopulationSizeUsedByGA} = 30;
+\hypertarget{_n_n_8h_source_l00134}{}\hyperlink{class_soil_math_1_1_n_n_a4969171a8362796a1633b1ac1f11ba74}{00134}   \textcolor{keywordtype}{float} \hyperlink{class_soil_math_1_1_n_n_a4969171a8362796a1633b1ac1f11ba74}{MutationrateUsedByGA} = 0.075f;
+\hypertarget{_n_n_8h_source_l00135}{}\hyperlink{class_soil_math_1_1_n_n_aee7f8d1feb35f3230c10894dacf69740}{00135}   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} \hyperlink{class_soil_math_1_1_n_n_aee7f8d1feb35f3230c10894dacf69740}{ElitismeUsedByGA} = 4;
+\hypertarget{_n_n_8h_source_l00136}{}\hyperlink{class_soil_math_1_1_n_n_aa29b48e0711848633d5cdbb22055910d}{00136}   \textcolor{keywordtype}{float} \hyperlink{class_soil_math_1_1_n_n_aa29b48e0711848633d5cdbb22055910d}{EndErrorUsedByGA} = 0.001;
+\hypertarget{_n_n_8h_source_l00137}{}\hyperlink{class_soil_math_1_1_n_n_a2e6360ebc99e10072eb378f9d7f2e915}{00137}   \textcolor{keywordtype}{float} \hyperlink{class_soil_math_1_1_n_n_a2e6360ebc99e10072eb378f9d7f2e915}{MaxWeightUsedByGA} = 50;
+\hypertarget{_n_n_8h_source_l00138}{}\hyperlink{class_soil_math_1_1_n_n_a653c42b4f2fe2f685d5f4e922e0126b2}{00138}   \textcolor{keywordtype}{float} \hyperlink{class_soil_math_1_1_n_n_a653c42b4f2fe2f685d5f4e922e0126b2}{MinWeightUSedByGa} = -50;
+00139 
+\hypertarget{_n_n_8h_source_l00140}{}\hyperlink{class_soil_math_1_1_n_n_a747371e8a53d1dd498e3f56c2ecece15}{00140}   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} \hyperlink{class_soil_math_1_1_n_n_a747371e8a53d1dd498e3f56c2ecece15}{GetInputNeurons}() \{ \textcolor{keywordflow}{return} \hyperlink{class_soil_math_1_1_n_n_a51723ae01e9b0a95c9aa6ac4f4c569fc}{inputNeurons}; \}
+00141   \textcolor{keywordtype}{void} \hyperlink{class_soil_math_1_1_n_n_a3a08c0f82d5f57895ccd28ae0a6274a3}{SetInputNeurons}(\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} value);
+00142 
+\hypertarget{_n_n_8h_source_l00143}{}\hyperlink{class_soil_math_1_1_n_n_a72a24fe997d16dea985f1a8c4ea24196}{00143}   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} \hyperlink{class_soil_math_1_1_n_n_a72a24fe997d16dea985f1a8c4ea24196}{GetHiddenNeurons}() \{ \textcolor{keywordflow}{return} \hyperlink{class_soil_math_1_1_n_n_aedf4b2ddaae281d83e666c308e5d67c4}{hiddenNeurons}; \}
+00144   \textcolor{keywordtype}{void} \hyperlink{class_soil_math_1_1_n_n_ad4fd78afb9c34634464548c0196d2346}{SetHiddenNeurons}(\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} value);
+00145 
+\hypertarget{_n_n_8h_source_l00146}{}\hyperlink{class_soil_math_1_1_n_n_ad993359d249d3a2a91d998df3cd7d85a}{00146}   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} \hyperlink{class_soil_math_1_1_n_n_ad993359d249d3a2a91d998df3cd7d85a}{GetOutputNeurons}() \{ \textcolor{keywordflow}{return} \hyperlink{class_soil_math_1_1_n_n_a65ce6c65168fbe7051c25dccf4bf2b0c}{outputNeurons}; \}
+00147   \textcolor{keywordtype}{void} \hyperlink{class_soil_math_1_1_n_n_a3fc439de707dde0ba6a55d2941bd898b}{SetOutputNeurons}(\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} value);
+00148 
+\hypertarget{_n_n_8h_source_l00149}{}\hyperlink{class_soil_math_1_1_n_n_aed36297c9221a837fee94f4774b614bf}{00149}   \textcolor{keywordtype}{bool} \hyperlink{class_soil_math_1_1_n_n_aed36297c9221a837fee94f4774b614bf}{studied} =
+00150       \textcolor{keyword}{false}; 
+00153 signals:
+00154   \textcolor{keywordtype}{void} \hyperlink{class_soil_math_1_1_n_n_ae207eda16ae755e5bce5eb48ab8fe45c}{learnErrorUpdate}(\textcolor{keywordtype}{double} newError);
+00155 
+00156 \textcolor{keyword}{private}:
+\hypertarget{_n_n_8h_source_l00157}{}\hyperlink{class_soil_math_1_1_n_n_a88b760a795d84bf6e1c99c7620200c43}{00157}   \hyperlink{class_soil_math_1_1_g_a}{GA} *\hyperlink{class_soil_math_1_1_n_n_a88b760a795d84bf6e1c99c7620200c43}{optim} = \textcolor{keyword}{nullptr};
+\hypertarget{_n_n_8h_source_l00158}{}\hyperlink{class_soil_math_1_1_n_n_aa5a6a6014722338fb8af2f79d6187998}{00158}   std::vector<float> \hyperlink{class_soil_math_1_1_n_n_aa5a6a6014722338fb8af2f79d6187998}{iNeurons}; 
+00161   std::vector<float>
+\hypertarget{_n_n_8h_source_l00162}{}\hyperlink{class_soil_math_1_1_n_n_a459bde01ce33e0b27803cbe4a3b114b4}{00162}       \hyperlink{class_soil_math_1_1_n_n_a459bde01ce33e0b27803cbe4a3b114b4}{hNeurons}; 
+\hypertarget{_n_n_8h_source_l00164}{}\hyperlink{class_soil_math_1_1_n_n_a50a52b41982f6845dc5294f17607774b}{00164}   std::vector<float> \hyperlink{class_soil_math_1_1_n_n_a50a52b41982f6845dc5294f17607774b}{oNeurons}; 
+\hypertarget{_n_n_8h_source_l00166}{}\hyperlink{class_soil_math_1_1_n_n_aedf4b2ddaae281d83e666c308e5d67c4}{00166}   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} \hyperlink{class_soil_math_1_1_n_n_aedf4b2ddaae281d83e666c308e5d67c4}{hiddenNeurons} = 50; 
+\hypertarget{_n_n_8h_source_l00167}{}\hyperlink{class_soil_math_1_1_n_n_a51723ae01e9b0a95c9aa6ac4f4c569fc}{00167}   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} \hyperlink{class_soil_math_1_1_n_n_a51723ae01e9b0a95c9aa6ac4f4c569fc}{inputNeurons} = 20;  
+\hypertarget{_n_n_8h_source_l00168}{}\hyperlink{class_soil_math_1_1_n_n_a65ce6c65168fbe7051c25dccf4bf2b0c}{00168}   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} \hyperlink{class_soil_math_1_1_n_n_a65ce6c65168fbe7051c25dccf4bf2b0c}{outputNeurons} = 18; 
+\hypertarget{_n_n_8h_source_l00169}{}\hyperlink{class_soil_math_1_1_n_n_a4bb773955d78fa6f064b39a9149b78c8}{00169}   \textcolor{keywordtype}{float} \hyperlink{class_soil_math_1_1_n_n_a4bb773955d78fa6f064b39a9149b78c8}{beta}; 
+\hypertarget{_n_n_8h_source_l00172}{}\hyperlink{class_soil_math_1_1_n_n_ac98d07dd8f7b70e16ccb9a01abf56b9c}{00172}   \textcolor{keyword}{friend} \textcolor{keyword}{class }\hyperlink{class_soil_math_1_1_n_n_ac98d07dd8f7b70e16ccb9a01abf56b9c}{boost::serialization::access}; 
+00180   \textcolor{keyword}{template} <\textcolor{keyword}{class} Archive>
+\hypertarget{_n_n_8h_source_l00181}{}\hyperlink{class_soil_math_1_1_n_n_a110f1834e96d352572fcf5124e1a26b0}{00181}   \textcolor{keywordtype}{void} \hyperlink{class_soil_math_1_1_n_n_a110f1834e96d352572fcf5124e1a26b0}{serialize}(Archive &ar, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} version) \{
+00182     \textcolor{keywordflow}{if} (version == 0) \{
+00183       ar &BOOST\_SERIALIZATION\_NVP(inputNeurons);
+00184       ar &BOOST\_SERIALIZATION\_NVP(hiddenNeurons);
+00185       ar &BOOST\_SERIALIZATION\_NVP(outputNeurons);
+00186       ar &BOOST\_SERIALIZATION\_NVP(iWeights);
+00187       ar &BOOST\_SERIALIZATION\_NVP(hWeights);
+00188       ar &BOOST\_SERIALIZATION\_NVP(beta);
+00189       ar &BOOST\_SERIALIZATION\_NVP(studied);
+00190       ar &BOOST\_SERIALIZATION\_NVP(MaxGenUsedByGA);
+00191       ar &BOOST\_SERIALIZATION\_NVP(PopulationSizeUsedByGA);
+00192       ar &BOOST\_SERIALIZATION\_NVP(MutationrateUsedByGA);
+00193       ar &BOOST\_SERIALIZATION\_NVP(ElitismeUsedByGA);
+00194       ar &BOOST\_SERIALIZATION\_NVP(EndErrorUsedByGA);
+00195       ar &BOOST\_SERIALIZATION\_NVP(MaxWeightUsedByGA);
+00196       ar &BOOST\_SERIALIZATION\_NVP(MinWeightUSedByGa);
+00197     \}
+00198   \}
+00199 \};
+00200 \}
+00201 BOOST\_CLASS\_VERSION(\hyperlink{class_soil_math_1_1_n_n}{SoilMath::NN}, 0)
+\end{DoxyCode}

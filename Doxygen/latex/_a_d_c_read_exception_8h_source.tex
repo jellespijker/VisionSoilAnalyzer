@@ -1,0 +1,31 @@
+\hypertarget{_a_d_c_read_exception_8h_source}{}\subsection{A\+D\+C\+Read\+Exception.\+h}
+\label{_a_d_c_read_exception_8h_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Hardware/\+A\+D\+C\+Read\+Exception.\+h@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Hardware/\+A\+D\+C\+Read\+Exception.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/* Copyright (C) Jelle Spijker - All Rights Reserved}
+00002 \textcolor{comment}{ * Unauthorized copying of this file, via any medium is strictly prohibited}
+00003 \textcolor{comment}{ * and only allowed with the written consent of the author (Jelle Spijker)}
+00004 \textcolor{comment}{ * This software is proprietary and confidential}
+00005 \textcolor{comment}{ * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015}
+00006 \textcolor{comment}{ */}
+00007 
+00008 \textcolor{preprocessor}{#pragma once}
+00009 \textcolor{preprocessor}{#include <exception>}
+00010 \textcolor{preprocessor}{#include <string>}
+00011 
+00012 \textcolor{keyword}{using namespace }\hyperlink{namespacestd}{std};
+00013 
+00014 \textcolor{keyword}{namespace }\hyperlink{namespace_hardware}{Hardware} \{
+\hypertarget{_a_d_c_read_exception_8h_source_l00015}{}\hyperlink{namespace_hardware_1_1_exception}{00015} \textcolor{keyword}{namespace }Exception \{
+\hypertarget{_a_d_c_read_exception_8h_source_l00016}{}\hyperlink{class_hardware_1_1_exception_1_1_a_d_c_read_exception}{00016} \textcolor{keyword}{class }\hyperlink{class_hardware_1_1_exception_1_1_a_d_c_read_exception}{ADCReadException} : \textcolor{keyword}{public} std::exception \{
+00017 \textcolor{keyword}{public}:
+\hypertarget{_a_d_c_read_exception_8h_source_l00018}{}\hyperlink{class_hardware_1_1_exception_1_1_a_d_c_read_exception_aaa76cf7aa3fe32c27ea600c72ea4335a}{00018}   \hyperlink{class_hardware_1_1_exception_1_1_a_d_c_read_exception_aaa76cf7aa3fe32c27ea600c72ea4335a}{ADCReadException}(\textcolor{keywordtype}{string} m = \textcolor{stringliteral}{"Can't read ADC data!"}) : msg(m)\{\};
+\hypertarget{_a_d_c_read_exception_8h_source_l00019}{}\hyperlink{class_hardware_1_1_exception_1_1_a_d_c_read_exception_ad59cb380b2b8eee90a87a398a3511d50}{00019}   \hyperlink{class_hardware_1_1_exception_1_1_a_d_c_read_exception_ad59cb380b2b8eee90a87a398a3511d50}{~ADCReadException}() \_GLIBCXX\_USE\_NOEXCEPT\{\};
+\hypertarget{_a_d_c_read_exception_8h_source_l00020}{}\hyperlink{class_hardware_1_1_exception_1_1_a_d_c_read_exception_aa2c8ee0d183837450a0dea15901e3dc4}{00020}   \textcolor{keyword}{const} \textcolor{keywordtype}{char} *\hyperlink{class_hardware_1_1_exception_1_1_a_d_c_read_exception_aa2c8ee0d183837450a0dea15901e3dc4}{what}() const \_GLIBCXX\_USE\_NOEXCEPT \{ \textcolor{keywordflow}{return} msg.c\_str(); \};
+00021 
+00022 \textcolor{keyword}{private}:
+00023   \textcolor{keywordtype}{string} msg;
+00024 \};
+00025 \}
+00026 \}
+\end{DoxyCode}

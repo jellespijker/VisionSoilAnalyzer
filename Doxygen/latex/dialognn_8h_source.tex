@@ -1,0 +1,62 @@
+\hypertarget{dialognn_8h_source}{}\subsection{dialognn.\+h}
+\label{dialognn_8h_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+V\+S\+A/dialognn.\+h@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+V\+S\+A/dialognn.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#ifndef DIALOGNN\_H}
+00002 \textcolor{preprocessor}{#define DIALOGNN\_H}
+00003 
+00004 \textcolor{preprocessor}{#include <QDialog>}
+00005 \textcolor{preprocessor}{#include "\hyperlink{_soil_math_8h}{SoilMath.h}"}
+00006 \textcolor{preprocessor}{#include "\hyperlink{soilanalyzer_8h}{soilanalyzer.h}"}
+00007 \textcolor{preprocessor}{#include "\hyperlink{dialogsettings_8h}{dialogsettings.h}"}
+00008 \textcolor{preprocessor}{#include <qcustomplot.h>}
+00009 \textcolor{preprocessor}{#include <QDebug>}
+00010 
+\hypertarget{dialognn_8h_source_l00011}{}\hyperlink{namespace_ui}{00011} \textcolor{keyword}{namespace }\hyperlink{namespace_ui}{Ui} \{
+00012   \textcolor{keyword}{class }\hyperlink{class_dialog_n_n}{DialogNN};
+00013 \}
+00014 
+\hypertarget{dialognn_8h_source_l00015}{}\hyperlink{class_dialog_n_n}{00015} \textcolor{keyword}{class }\hyperlink{class_dialog_n_n}{DialogNN} : \textcolor{keyword}{public} QDialog
+00016 \{
+00017   Q\_OBJECT
+00018 
+00019 \textcolor{keyword}{public}:
+00020   \textcolor{keyword}{explicit} \hyperlink{class_dialog_n_n_a53065cfe16eeaf3cf1b1e94058738c3f}{DialogNN}(QWidget *parent = 0, \hyperlink{class_soil_math_1_1_n_n}{SoilMath::NN} *neuralnet = \textcolor{keyword}{nullptr}, 
+      \hyperlink{class_soil_analyzer_1_1_soil_settings}{SoilAnalyzer::SoilSettings} *settings = \textcolor{keyword}{nullptr}, 
+      \hyperlink{class_dialog_settings}{DialogSettings} *settingWindow = \textcolor{keyword}{nullptr});
+00021   \hyperlink{class_dialog_n_n_a128ab0c8ba3e7a140545eb2dd37f4aab}{~DialogNN}();
+00022 
+00023 \textcolor{keyword}{private} slots:
+00024 
+00025   \textcolor{keywordtype}{void} \hyperlink{class_dialog_n_n_a4a203b679f42761eae157b445bcfc57d}{on\_pushButton\_Settings\_clicked}();
+00026 
+00027   \textcolor{keywordtype}{void} \hyperlink{class_dialog_n_n_a24e8d08c95de8dd392e81409b9500ab6}{on\_learnErrorUpdate}(\textcolor{keywordtype}{double} newError);
+00028 
+00029   \textcolor{keywordtype}{void} \hyperlink{class_dialog_n_n_a7394140277f980979c9285fa88bee382}{on\_pushButton\_SelectSamples\_clicked}();
+00030 
+00031   \textcolor{keywordtype}{void} \hyperlink{class_dialog_n_n_ac62a7698eca8514c5629f5ee1e08f3bd}{on\_pushButton\_Learn\_clicked}();
+00032 
+00033   \textcolor{keywordtype}{void} \hyperlink{class_dialog_n_n_aaa6a74ab07099e65b19feceed3dda9f2}{on\_pushButton\_SaveNN\_clicked}();
+00034 
+00035   \textcolor{keywordtype}{void} \hyperlink{class_dialog_n_n_abd4b8adf422cc857506bb3e69066ff02}{on\_pushButton\_OpenNN\_clicked}();
+00036 
+00037   \textcolor{keywordtype}{void} \hyperlink{class_dialog_n_n_ac814ace2a51a7054e0f81a8f3963cd33}{on\_actionAbort\_triggered}();
+00038 
+00039 \textcolor{keyword}{private}:
+\hypertarget{dialognn_8h_source_l00040}{}\hyperlink{class_dialog_n_n_affd6ce2909be5826c52fd862d1963eee}{00040}   Ui::DialogNN *\hyperlink{class_dialog_n_n_affd6ce2909be5826c52fd862d1963eee}{ui};
+\hypertarget{dialognn_8h_source_l00041}{}\hyperlink{class_dialog_n_n_aeaad085b1b2c7e4613228aa612d725f4}{00041}   \hyperlink{class_dialog_settings}{DialogSettings} *\hyperlink{class_dialog_n_n_aeaad085b1b2c7e4613228aa612d725f4}{SettingsWindow} = \textcolor{keyword}{nullptr};
+\hypertarget{dialognn_8h_source_l00042}{}\hyperlink{class_dialog_n_n_a1d38f96a8f11697068e805fdaa3267b2}{00042}   \hyperlink{class_soil_math_1_1_n_n}{SoilMath::NN} *\hyperlink{class_dialog_n_n_a1d38f96a8f11697068e805fdaa3267b2}{NeuralNet} = \textcolor{keyword}{nullptr};
+\hypertarget{dialognn_8h_source_l00043}{}\hyperlink{class_dialog_n_n_afdf8c81b845ec58a3f495c2dd3423377}{00043}   \hyperlink{class_soil_analyzer_1_1_soil_settings}{SoilAnalyzer::SoilSettings} *\hyperlink{class_dialog_n_n_afdf8c81b845ec58a3f495c2dd3423377}{Settings} = \textcolor{keyword}{nullptr};
+00044 
+00045   \textcolor{keywordtype}{void} \hyperlink{class_dialog_n_n_ae3abaadf57d6614cddb1a9c244da721d}{setupErrorGraph}();
+00046   \textcolor{keywordtype}{void} \hyperlink{class_dialog_n_n_a832ef2838d6b6fd1e06b6c0d2a4783d4}{makeLearnVectors}(\hyperlink{_soil_math_types_8h_a45aa81992bf0ddf272907bd4fa0b96cf}{InputLearnVector\_t} &input, 
+      \hyperlink{_soil_math_types_8h_a2d8b5a261688166d724b68addd8561e6}{OutputLearnVector\_t} &output);
+00047 
+\hypertarget{dialognn_8h_source_l00048}{}\hyperlink{class_dialog_n_n_a4ef13ab4b2de7e544686065a41ef1b74}{00048}   QVector<double> \hyperlink{class_dialog_n_n_a4ef13ab4b2de7e544686065a41ef1b74}{currentError};
+\hypertarget{dialognn_8h_source_l00049}{}\hyperlink{class_dialog_n_n_af0eb5fbc415d948bedf5120bdd256e1c}{00049}   QVector<double> \hyperlink{class_dialog_n_n_af0eb5fbc415d948bedf5120bdd256e1c}{errorTicks};
+\hypertarget{dialognn_8h_source_l00050}{}\hyperlink{class_dialog_n_n_a886cc6b16f26f822a3a39ed7812f26a5}{00050}   \textcolor{keywordtype}{double} \hyperlink{class_dialog_n_n_a886cc6b16f26f822a3a39ed7812f26a5}{currentGeneration} = 0;
+\hypertarget{dialognn_8h_source_l00051}{}\hyperlink{class_dialog_n_n_ac37477ba2781da043e5b2ce9495ea45f}{00051}   QStringList \hyperlink{class_dialog_n_n_ac37477ba2781da043e5b2ce9495ea45f}{fn};
+00052 \};
+00053 
+00054 \textcolor{preprocessor}{#endif // DIALOGNN\_H}
+\end{DoxyCode}

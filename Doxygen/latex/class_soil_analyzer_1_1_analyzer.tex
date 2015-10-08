@@ -1,0 +1,987 @@
+\hypertarget{class_soil_analyzer_1_1_analyzer}{}\subsection{Soil\+Analyzer\+:\+:Analyzer Class Reference}
+\label{class_soil_analyzer_1_1_analyzer}\index{Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}}
+
+
+{\ttfamily \#include $<$analyzer.\+h$>$}
+
+
+
+Inheritance diagram for Soil\+Analyzer\+:\+:Analyzer\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{class_soil_analyzer_1_1_analyzer__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Soil\+Analyzer\+:\+:Analyzer\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_soil_analyzer_1_1_analyzer__coll__graph}
+\end{center}
+\end{figure}
+\subsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_soil_analyzer_1_1_analyzer_1_1_image__t}{Image\+\_\+t}
+\end{DoxyCompactItemize}
+\subsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::vector$<$ \hyperlink{struct_soil_analyzer_1_1_analyzer_1_1_image__t}{Image\+\_\+t} $>$ \hyperlink{class_soil_analyzer_1_1_analyzer_a55e2c84ab42cb967d718dd18295c1f91}{Images\+\_\+t}
+\end{DoxyCompactItemize}
+\subsubsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_soil_analyzer_1_1_analyzer_a808a8c21029471c4af0be996cb67d14c}{on\+\_\+progress\+Update} (int value)
+\item 
+void \hyperlink{class_soil_analyzer_1_1_analyzer_ac22302563bb30934efe2365831d5a1a6}{on\+\_\+max\+Progress\+Update} (int value)
+\item 
+void \hyperlink{class_soil_analyzer_1_1_analyzer_a49245eaf7ee46c065e0a1a71135b6904}{on\+\_\+\+Analysis\+Finished} ()
+\end{DoxyCompactItemize}
+\subsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_soil_analyzer_1_1_analyzer_a4e67707b0c63f6898f753dd1f2e08e6a}{Analyzer} (\hyperlink{class_soil_analyzer_1_1_analyzer_a55e2c84ab42cb967d718dd18295c1f91}{Images\+\_\+t} $\ast$snapshots, \hyperlink{class_soil_analyzer_1_1_sample}{Sample} $\ast$results, \hyperlink{class_soil_analyzer_1_1_soil_settings}{Soil\+Settings} $\ast$settings)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_soil_analyzer_1_1_analyzer_a4e67707b0c63f6898f753dd1f2e08e6a}{Analyzer\+::\+Analyzer}. \end{DoxyCompactList}\item 
+void \hyperlink{class_soil_analyzer_1_1_analyzer_a1cb605c255d35e85ccaae06a76917188}{Analyse} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_soil_analyzer_1_1_analyzer_a1cb605c255d35e85ccaae06a76917188}{Analyzer\+::\+Analyse}. \end{DoxyCompactList}\item 
+void \hyperlink{class_soil_analyzer_1_1_analyzer_afcbb3b1a583d1fe9a7b9e424a7ded3df}{Analyse} (\hyperlink{class_soil_analyzer_1_1_analyzer_a55e2c84ab42cb967d718dd18295c1f91}{Images\+\_\+t} $\ast$snapshots, \hyperlink{class_soil_analyzer_1_1_sample}{Sample} $\ast$results, \hyperlink{class_soil_analyzer_1_1_soil_settings}{Soil\+Settings} $\ast$settings)
+\item 
+float \hyperlink{class_soil_analyzer_1_1_analyzer_a79914fb56b7d9b71ae2fa049329f9413}{Calibrate\+S\+I} (float S\+I, cv\+::\+Mat \&img)
+\end{DoxyCompactItemize}
+\subsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_soil_analyzer_1_1_analyzer_a43c2a39174daac9059e48860936e38f3}{Predict\+Shape} = true
+\item 
+float \hyperlink{class_soil_analyzer_1_1_analyzer_a8fb13bb3f69f3f87e1cb61e453c8f5b3}{Current\+S\+Ifactor} = 0.\+0111915
+\item 
+bool \hyperlink{class_soil_analyzer_1_1_analyzer_a144dea5736f2c1e2d86c9f655910be1f}{S\+Ifactor\+Det} = false
+\item 
+\hyperlink{class_soil_analyzer_1_1_analyzer_a55e2c84ab42cb967d718dd18295c1f91}{Images\+\_\+t} $\ast$ \hyperlink{class_soil_analyzer_1_1_analyzer_a483f7f65076cdbafe109ddfdfa2a0640}{Snapshots} = nullptr
+\item 
+\hyperlink{class_soil_analyzer_1_1_soil_settings}{Soil\+Settings} $\ast$ \hyperlink{class_soil_analyzer_1_1_analyzer_a0a17b8f11ce60cd5b22d03b9925ee16e}{Settings} = nullptr
+\item 
+\hyperlink{class_soil_analyzer_1_1_sample}{Sample} $\ast$ \hyperlink{class_soil_analyzer_1_1_analyzer_af80f9fa5784aa6518b3cf80de2c430fe}{Results}
+\item 
+\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} \hyperlink{class_soil_analyzer_1_1_analyzer_aef988b5c2c2349b544dabe8882c8931a}{Max\+Progress} = \hyperlink{analyzer_8h_a7376114637d76e3bb5d1e28c37d7de94}{S\+T\+A\+R\+T\+I\+N\+G\+\_\+\+E\+S\+T\+I\+M\+A\+T\+E\+\_\+\+P\+R\+O\+G\+R\+E\+S\+S}
+\item 
+\hyperlink{class_soil_math_1_1_n_n}{Soil\+Math\+::\+N\+N} \hyperlink{class_soil_analyzer_1_1_analyzer_a6ea3af4b49fef5b5f289bcc2046e615e}{Neural\+Net}
+\end{DoxyCompactItemize}
+\subsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_soil_analyzer_1_1_analyzer_a9c4225822dd3c0ff246f5d81cfead0d4}{Calc\+Max\+Progress} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_soil_analyzer_1_1_analyzer_a9c4225822dd3c0ff246f5d81cfead0d4}{Analyzer\+::\+Calc\+Max\+Progress}. \end{DoxyCompactList}\item 
+void \hyperlink{class_soil_analyzer_1_1_analyzer_a0c9b739e2147ffc18f241e0eb542b487}{Calc\+Max\+Progress\+Analyze} ()
+\item 
+void \hyperlink{class_soil_analyzer_1_1_analyzer_a5b299a425580620ba409112971bc787e}{Prep\+Images} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_soil_analyzer_1_1_analyzer_a5b299a425580620ba409112971bc787e}{Analyzer\+::\+Prep\+Images}. \end{DoxyCompactList}\item 
+void \hyperlink{class_soil_analyzer_1_1_analyzer_a13975656889dddd31bb9cff565fd3c9f}{Get\+B\+W} (std\+::vector$<$ cv\+::\+Mat $>$ \&images, std\+::vector$<$ cv\+::\+Mat $>$ \&B\+Wvector)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_soil_analyzer_1_1_analyzer_a13975656889dddd31bb9cff565fd3c9f}{Analyzer\+::\+Get\+B\+W}. \end{DoxyCompactList}\item 
+void \hyperlink{class_soil_analyzer_1_1_analyzer_a1ecbbb5125d67ccff940ed3b1a377eb2}{Get\+B\+W} (cv\+::\+Mat \&img, cv\+::\+Mat \&B\+W)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_soil_analyzer_1_1_analyzer_a13975656889dddd31bb9cff565fd3c9f}{Analyzer\+::\+Get\+B\+W}. \end{DoxyCompactList}\item 
+void \hyperlink{class_soil_analyzer_1_1_analyzer_a0d15b639bbfa2becde2dbf5605d00757}{Get\+Enhanced\+Int} (\hyperlink{class_soil_analyzer_1_1_analyzer_a55e2c84ab42cb967d718dd18295c1f91}{Images\+\_\+t} $\ast$snapshots, std\+::vector$<$ cv\+::\+Mat $>$ \&intensity\+Vector)
+\item 
+void \hyperlink{class_soil_analyzer_1_1_analyzer_a9c018641de5278b9db39ce668ebc0920}{Get\+Enhanced\+Int} (cv\+::\+Mat \&img, cv\+::\+Mat \&intensity)
+\item 
+void \hyperlink{class_soil_analyzer_1_1_analyzer_af014193f37cc1cac631491687c292060}{Get\+Particles} (std\+::vector$<$ cv\+::\+Mat $>$ \&B\+W, \hyperlink{class_soil_analyzer_1_1_analyzer_a55e2c84ab42cb967d718dd18295c1f91}{Images\+\_\+t} $\ast$snapshots, \hyperlink{class_soil_analyzer_1_1_particle_a4e43dab999d36d5a5f809bb4be5ff3a7}{Particle\+::\+Particle\+Vector\+\_\+t} \&part\+Population)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_soil_analyzer_1_1_analyzer_af014193f37cc1cac631491687c292060}{Analyzer\+::\+Get\+Particles}. \end{DoxyCompactList}\item 
+void \hyperlink{class_soil_analyzer_1_1_analyzer_acfe01406c180dd154fefbe13e7f18a4d}{Get\+Particles\+From\+Blob\+List} (\hyperlink{class_vision_1_1_segment_a60e08251e2ab94239e245044c31cde51}{Vision\+::\+Segment\+::\+Blob\+List\+\_\+t} \&bloblist, \hyperlink{struct_soil_analyzer_1_1_analyzer_1_1_image__t}{Image\+\_\+t} $\ast$snapshot, \hyperlink{class_soil_analyzer_1_1_particle_a4e43dab999d36d5a5f809bb4be5ff3a7}{Particle\+::\+Particle\+Vector\+\_\+t} \&part\+Population)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_soil_analyzer_1_1_analyzer_acfe01406c180dd154fefbe13e7f18a4d}{Analyzer\+::\+Get\+Particles\+From\+Blob\+List}. \end{DoxyCompactList}\item 
+void \hyperlink{class_soil_analyzer_1_1_analyzer_a9b143f9920d90ecd54a3b0bb3b0e28fc}{Clean\+Up\+Mat\+Vector} (std\+::vector$<$ cv\+::\+Mat $>$ \&mv)
+\item 
+void \hyperlink{class_soil_analyzer_1_1_analyzer_ae984518e891a93fd885d2d9bd345b934}{Clean\+Up\+Mat\+Vector} (\hyperlink{class_soil_analyzer_1_1_analyzer_a55e2c84ab42cb967d718dd18295c1f91}{Images\+\_\+t} $\ast$mv)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_soil_analyzer_1_1_analyzer_a9b143f9920d90ecd54a3b0bb3b0e28fc}{Analyzer\+::\+Clean\+Up\+Mat\+Vector}. \end{DoxyCompactList}\item 
+void \hyperlink{class_soil_analyzer_1_1_analyzer_aeed5e3b158ff37d5fecb2816e12c3c31}{Get\+F\+F\+D} (\hyperlink{class_soil_analyzer_1_1_particle_a4e43dab999d36d5a5f809bb4be5ff3a7}{Particle\+::\+Particle\+Vector\+\_\+t} \&partical\+Population)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_soil_analyzer_1_1_analyzer_aeed5e3b158ff37d5fecb2816e12c3c31}{Analyzer\+::\+Get\+F\+F\+D}. \end{DoxyCompactList}\item 
+void \hyperlink{class_soil_analyzer_1_1_analyzer_a7eb1a2676660f536b366f9aaf1326f80}{Get\+Prediction} (\hyperlink{class_soil_analyzer_1_1_particle_a4e43dab999d36d5a5f809bb4be5ff3a7}{Particle\+::\+Particle\+Vector\+\_\+t} \&particle\+Population)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_soil_analyzer_1_1_analyzer_a7eb1a2676660f536b366f9aaf1326f80}{Analyzer\+::\+Get\+Prediction}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} \hyperlink{class_soil_analyzer_1_1_analyzer_a068a9d419064799836bb8caff60a2141}{current\+Progress} = 0
+\item 
+\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} \hyperlink{class_soil_analyzer_1_1_analyzer_a9cf8e0b0a007a986d2b5d1e2653e43bf}{current\+Particle\+I\+D} = 0
+\item 
+double \hyperlink{class_soil_analyzer_1_1_analyzer_a5a8ee87a3017f91d7624ad700d2c14c6}{Bin\+Ranges} \mbox{[}15\mbox{]}
+\item 
+\hyperlink{class_soil_math_1_1_f_f_t}{Soil\+Math\+::\+F\+F\+T} \hyperlink{class_soil_analyzer_1_1_analyzer_a5a88bb8ae9ce9a8a1e199f3760f9db48}{fft}
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+
+
+Definition at line \hyperlink{analyzer_8h_source_l00032}{32} of file \hyperlink{analyzer_8h_source}{analyzer.\+h}.
+
+
+
+\subsubsection{Member Typedef Documentation}
+\hypertarget{class_soil_analyzer_1_1_analyzer_a55e2c84ab42cb967d718dd18295c1f91}{}\index{Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}!Images\+\_\+t@{Images\+\_\+t}}
+\index{Images\+\_\+t@{Images\+\_\+t}!Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}}
+\paragraph[{Images\+\_\+t}]{\setlength{\rightskip}{0pt plus 5cm}typedef std\+::vector$<${\bf Image\+\_\+t}$>$ {\bf Soil\+Analyzer\+::\+Analyzer\+::\+Images\+\_\+t}}\label{class_soil_analyzer_1_1_analyzer_a55e2c84ab42cb967d718dd18295c1f91}
+
+
+Definition at line \hyperlink{analyzer_8h_source_l00045}{45} of file \hyperlink{analyzer_8h_source}{analyzer.\+h}.
+
+
+
+\subsubsection{Constructor \& Destructor Documentation}
+\hypertarget{class_soil_analyzer_1_1_analyzer_a4e67707b0c63f6898f753dd1f2e08e6a}{}\index{Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}!Analyzer@{Analyzer}}
+\index{Analyzer@{Analyzer}!Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}}
+\paragraph[{Analyzer}]{\setlength{\rightskip}{0pt plus 5cm}Soil\+Analyzer\+::\+Analyzer\+::\+Analyzer (
+\begin{DoxyParamCaption}
+\item[{{\bf Images\+\_\+t} $\ast$}]{snapshots, }
+\item[{{\bf Sample} $\ast$}]{results, }
+\item[{{\bf Soil\+Settings} $\ast$}]{settings = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)}\label{class_soil_analyzer_1_1_analyzer_a4e67707b0c63f6898f753dd1f2e08e6a}
+
+
+\hyperlink{class_soil_analyzer_1_1_analyzer_a4e67707b0c63f6898f753dd1f2e08e6a}{Analyzer\+::\+Analyzer}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em snapshots} & \\
+\hline
+{\em results} & \\
+\hline
+{\em settings} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{analyzer_8cpp_source_l00018}{18} of file \hyperlink{analyzer_8cpp_source}{analyzer.\+cpp}.
+
+
+
+References \hyperlink{_n_n_8cpp_source_l00034}{Soil\+Math\+::\+N\+N\+::\+Load\+State()}, \hyperlink{analyzer_8h_source_l00059}{Neural\+Net}, \hyperlink{soilsettings_8h_source_l00095}{Soil\+Analyzer\+::\+Soil\+Settings\+::\+N\+Nlocation}, \hyperlink{analyzer_8h_source_l00049}{Results}, \hyperlink{analyzer_8h_source_l00047}{Settings}, and \hyperlink{analyzer_8h_source_l00046}{Snapshots}.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_soil_analyzer_1_1_analyzer_a4e67707b0c63f6898f753dd1f2e08e6a_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsubsection{Member Function Documentation}
+\hypertarget{class_soil_analyzer_1_1_analyzer_a1cb605c255d35e85ccaae06a76917188}{}\index{Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}!Analyse@{Analyse}}
+\index{Analyse@{Analyse}!Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}}
+\paragraph[{Analyse}]{\setlength{\rightskip}{0pt plus 5cm}void Soil\+Analyzer\+::\+Analyzer\+::\+Analyse (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_soil_analyzer_1_1_analyzer_a1cb605c255d35e85ccaae06a76917188}
+
+
+\hyperlink{class_soil_analyzer_1_1_analyzer_a1cb605c255d35e85ccaae06a76917188}{Analyzer\+::\+Analyse}. 
+
+
+
+Definition at line \hyperlink{analyzer_8cpp_source_l00065}{65} of file \hyperlink{analyzer_8cpp_source}{analyzer.\+cpp}.
+
+
+
+References \hyperlink{sample_8h_source_l00045}{Soil\+Analyzer\+::\+Sample\+::\+Angularity}, \hyperlink{analyzer_8h_source_l00069}{Bin\+Ranges}, \hyperlink{analyzer_8cpp_source_l00112}{Calc\+Max\+Progress()}, \hyperlink{analyzer_8h_source_l00067}{current\+Progress}, \hyperlink{sample_8cpp_source_l00072}{Soil\+Analyzer\+::\+Sample\+::\+Get\+Angularity\+Vector()}, \hyperlink{analyzer_8cpp_source_l00350}{Get\+F\+F\+D()}, \hyperlink{analyzer_8cpp_source_l00373}{Get\+Prediction()}, \hyperlink{sample_8cpp_source_l00061}{Soil\+Analyzer\+::\+Sample\+::\+Get\+P\+S\+D\+Vector()}, \hyperlink{sample_8cpp_source_l00083}{Soil\+Analyzer\+::\+Sample\+::\+Get\+Roundness\+Vector()}, \hyperlink{sample_8h_source_l00069}{Soil\+Analyzer\+::\+Sample\+::\+Is\+Loaded\+From\+Disk}, \hyperlink{sample_8h_source_l00057}{Soil\+Analyzer\+::\+Sample\+::is\+Prepared\+For\+Analysis}, \hyperlink{class_soil_analyzer_1_1_analyzer_a49245eaf7ee46c065e0a1a71135b6904}{on\+\_\+\+Analysis\+Finished()}, \hyperlink{class_soil_analyzer_1_1_analyzer_a808a8c21029471c4af0be996cb67d14c}{on\+\_\+progress\+Update()}, \hyperlink{sample_8h_source_l00041}{Soil\+Analyzer\+::\+Sample\+::\+Particle\+Population}, \hyperlink{analyzer_8h_source_l00036}{Predict\+Shape}, \hyperlink{soilsettings_8h_source_l00104}{Soil\+Analyzer\+::\+Soil\+Settings\+::\+Predict\+The\+Shape}, \hyperlink{analyzer_8cpp_source_l00033}{Prep\+Images()}, \hyperlink{sample_8h_source_l00043}{Soil\+Analyzer\+::\+Sample\+::\+P\+S\+D}, \hyperlink{analyzer_8h_source_l00049}{Results}, \hyperlink{sample_8h_source_l00044}{Soil\+Analyzer\+::\+Sample\+::\+Roundness}, and \hyperlink{analyzer_8h_source_l00047}{Settings}.
+
+
+
+Referenced by \hyperlink{analyzer_8cpp_source_l00054}{Analyse()}, \hyperlink{vsamainwindow_8cpp_source_l00361}{V\+S\+A\+Main\+Window\+::on\+\_\+action\+New\+Sample\+\_\+triggered()}, \hyperlink{vsamainwindow_8cpp_source_l00522}{V\+S\+A\+Main\+Window\+::on\+\_\+\+Classification\+\_\+changed()}, and \hyperlink{vsamainwindow_8cpp_source_l00539}{V\+S\+A\+Main\+Window\+::on\+\_\+particle\+\_\+deleted()}.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_soil_analyzer_1_1_analyzer_a1cb605c255d35e85ccaae06a76917188_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_soil_analyzer_1_1_analyzer_a1cb605c255d35e85ccaae06a76917188_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_soil_analyzer_1_1_analyzer_afcbb3b1a583d1fe9a7b9e424a7ded3df}{}\index{Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}!Analyse@{Analyse}}
+\index{Analyse@{Analyse}!Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}}
+\paragraph[{Analyse}]{\setlength{\rightskip}{0pt plus 5cm}void Soil\+Analyzer\+::\+Analyzer\+::\+Analyse (
+\begin{DoxyParamCaption}
+\item[{{\bf Images\+\_\+t} $\ast$}]{snapshots, }
+\item[{{\bf Sample} $\ast$}]{results, }
+\item[{{\bf Soil\+Settings} $\ast$}]{settings}
+\end{DoxyParamCaption}
+)}\label{class_soil_analyzer_1_1_analyzer_afcbb3b1a583d1fe9a7b9e424a7ded3df}
+
+
+Definition at line \hyperlink{analyzer_8cpp_source_l00054}{54} of file \hyperlink{analyzer_8cpp_source}{analyzer.\+cpp}.
+
+
+
+References \hyperlink{analyzer_8cpp_source_l00065}{Analyse()}, \hyperlink{analyzer_8h_source_l00049}{Results}, \hyperlink{analyzer_8h_source_l00047}{Settings}, and \hyperlink{analyzer_8h_source_l00046}{Snapshots}.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_soil_analyzer_1_1_analyzer_afcbb3b1a583d1fe9a7b9e424a7ded3df_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_soil_analyzer_1_1_analyzer_a9c4225822dd3c0ff246f5d81cfead0d4}{}\index{Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}!Calc\+Max\+Progress@{Calc\+Max\+Progress}}
+\index{Calc\+Max\+Progress@{Calc\+Max\+Progress}!Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}}
+\paragraph[{Calc\+Max\+Progress}]{\setlength{\rightskip}{0pt plus 5cm}void Soil\+Analyzer\+::\+Analyzer\+::\+Calc\+Max\+Progress (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_soil_analyzer_1_1_analyzer_a9c4225822dd3c0ff246f5d81cfead0d4}
+
+
+\hyperlink{class_soil_analyzer_1_1_analyzer_a9c4225822dd3c0ff246f5d81cfead0d4}{Analyzer\+::\+Calc\+Max\+Progress}. 
+
+
+
+Definition at line \hyperlink{analyzer_8cpp_source_l00112}{112} of file \hyperlink{analyzer_8cpp_source}{analyzer.\+cpp}.
+
+
+
+References \hyperlink{soilsettings_8h_source_l00055}{Soil\+Analyzer\+::\+Soil\+Settings\+::fill\+Holes}, \hyperlink{soilsettings_8h_source_l00053}{Soil\+Analyzer\+::\+Soil\+Settings\+::ignore\+Partial\+Border\+Particles}, \hyperlink{analyzer_8h_source_l00057}{Max\+Progress}, \hyperlink{soilsettings_8h_source_l00060}{Soil\+Analyzer\+::\+Soil\+Settings\+::morph\+Filter\+Type}, \hyperlink{_morphological_filter_8h_source_l00016}{Vision\+::\+Morphological\+Filter\+::\+N\+O\+N\+E}, \hyperlink{class_soil_analyzer_1_1_analyzer_ac22302563bb30934efe2365831d5a1a6}{on\+\_\+max\+Progress\+Update()}, \hyperlink{analyzer_8h_source_l00047}{Settings}, \hyperlink{analyzer_8h_source_l00046}{Snapshots}, \hyperlink{soilsettings_8h_source_l00040}{Soil\+Analyzer\+::\+Soil\+Settings\+::use\+Adaptive\+Contrast}, and \hyperlink{soilsettings_8h_source_l00048}{Soil\+Analyzer\+::\+Soil\+Settings\+::use\+Blur}.
+
+
+
+Referenced by \hyperlink{analyzer_8cpp_source_l00065}{Analyse()}.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_soil_analyzer_1_1_analyzer_a9c4225822dd3c0ff246f5d81cfead0d4_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_soil_analyzer_1_1_analyzer_a0c9b739e2147ffc18f241e0eb542b487}{}\index{Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}!Calc\+Max\+Progress\+Analyze@{Calc\+Max\+Progress\+Analyze}}
+\index{Calc\+Max\+Progress\+Analyze@{Calc\+Max\+Progress\+Analyze}!Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}}
+\paragraph[{Calc\+Max\+Progress\+Analyze}]{\setlength{\rightskip}{0pt plus 5cm}void Soil\+Analyzer\+::\+Analyzer\+::\+Calc\+Max\+Progress\+Analyze (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_soil_analyzer_1_1_analyzer_a0c9b739e2147ffc18f241e0eb542b487}
+
+
+Definition at line \hyperlink{analyzer_8cpp_source_l00136}{136} of file \hyperlink{analyzer_8cpp_source}{analyzer.\+cpp}.
+
+
+
+References \hyperlink{analyzer_8h_source_l00057}{Max\+Progress}, \hyperlink{class_soil_analyzer_1_1_analyzer_ac22302563bb30934efe2365831d5a1a6}{on\+\_\+max\+Progress\+Update()}, \hyperlink{sample_8h_source_l00041}{Soil\+Analyzer\+::\+Sample\+::\+Particle\+Population}, \hyperlink{analyzer_8h_source_l00049}{Results}, and \hyperlink{analyzer_8h_source_l00009}{S\+T\+A\+R\+T\+I\+N\+G\+\_\+\+E\+S\+T\+I\+M\+A\+T\+E\+\_\+\+P\+R\+O\+G\+R\+E\+S\+S}.
+
+\hypertarget{class_soil_analyzer_1_1_analyzer_a79914fb56b7d9b71ae2fa049329f9413}{}\index{Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}!Calibrate\+S\+I@{Calibrate\+S\+I}}
+\index{Calibrate\+S\+I@{Calibrate\+S\+I}!Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}}
+\paragraph[{Calibrate\+S\+I}]{\setlength{\rightskip}{0pt plus 5cm}float Soil\+Analyzer\+::\+Analyzer\+::\+Calibrate\+S\+I (
+\begin{DoxyParamCaption}
+\item[{float}]{S\+I, }
+\item[{cv\+::\+Mat \&}]{img}
+\end{DoxyParamCaption}
+)}\label{class_soil_analyzer_1_1_analyzer_a79914fb56b7d9b71ae2fa049329f9413}
+
+
+Definition at line \hyperlink{analyzer_8cpp_source_l00388}{388} of file \hyperlink{analyzer_8cpp_source}{analyzer.\+cpp}.
+
+
+
+References \hyperlink{_segment_8h_source_l00055}{Vision\+::\+Segment\+::\+Blob\+List}, \hyperlink{_conversion_8cpp_source_l00086}{Vision\+::\+Conversion\+::\+Convert()}, \hyperlink{_segment_8cpp_source_l00164}{Vision\+::\+Segment\+::\+Convert\+To\+B\+W()}, \hyperlink{analyzer_8h_source_l00037}{Current\+S\+Ifactor}, \hyperlink{_segment_8h_source_l00060}{Vision\+::\+Segment\+::\+Dark}, \hyperlink{_segment_8cpp_source_l00534}{Vision\+::\+Segment\+::\+Get\+Blob\+List()}, \hyperlink{_conversion_8h_source_l00021}{Vision\+::\+Conversion\+::\+Intensity}, \hyperlink{_image_processing_8h_source_l00064}{Vision\+::\+Image\+Processing\+::\+Processed\+Img}, and \hyperlink{_conversion_8h_source_l00020}{Vision\+::\+Conversion\+::\+R\+G\+B}.
+
+
+
+Referenced by \hyperlink{vsamainwindow_8cpp_source_l00516}{V\+S\+A\+Main\+Window\+::on\+\_\+action\+Calibrate\+\_\+triggered()}.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_soil_analyzer_1_1_analyzer_a79914fb56b7d9b71ae2fa049329f9413_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_soil_analyzer_1_1_analyzer_a79914fb56b7d9b71ae2fa049329f9413_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_soil_analyzer_1_1_analyzer_a9b143f9920d90ecd54a3b0bb3b0e28fc}{}\index{Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}!Clean\+Up\+Mat\+Vector@{Clean\+Up\+Mat\+Vector}}
+\index{Clean\+Up\+Mat\+Vector@{Clean\+Up\+Mat\+Vector}!Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}}
+\paragraph[{Clean\+Up\+Mat\+Vector}]{\setlength{\rightskip}{0pt plus 5cm}void Soil\+Analyzer\+::\+Analyzer\+::\+Clean\+Up\+Mat\+Vector (
+\begin{DoxyParamCaption}
+\item[{std\+::vector$<$ cv\+::\+Mat $>$ \&}]{mv}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_soil_analyzer_1_1_analyzer_a9b143f9920d90ecd54a3b0bb3b0e28fc}
+
+
+Referenced by \hyperlink{analyzer_8cpp_source_l00033}{Prep\+Images()}.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_soil_analyzer_1_1_analyzer_a9b143f9920d90ecd54a3b0bb3b0e28fc_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_soil_analyzer_1_1_analyzer_ae984518e891a93fd885d2d9bd345b934}{}\index{Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}!Clean\+Up\+Mat\+Vector@{Clean\+Up\+Mat\+Vector}}
+\index{Clean\+Up\+Mat\+Vector@{Clean\+Up\+Mat\+Vector}!Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}}
+\paragraph[{Clean\+Up\+Mat\+Vector}]{\setlength{\rightskip}{0pt plus 5cm}void Soil\+Analyzer\+::\+Analyzer\+::\+Clean\+Up\+Mat\+Vector (
+\begin{DoxyParamCaption}
+\item[{{\bf Images\+\_\+t} $\ast$}]{mv}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_soil_analyzer_1_1_analyzer_ae984518e891a93fd885d2d9bd345b934}
+
+
+\hyperlink{class_soil_analyzer_1_1_analyzer_a9b143f9920d90ecd54a3b0bb3b0e28fc}{Analyzer\+::\+Clean\+Up\+Mat\+Vector}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mv} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{analyzer_8cpp_source_l00101}{101} of file \hyperlink{analyzer_8cpp_source}{analyzer.\+cpp}.
+
+\hypertarget{class_soil_analyzer_1_1_analyzer_a13975656889dddd31bb9cff565fd3c9f}{}\index{Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}!Get\+B\+W@{Get\+B\+W}}
+\index{Get\+B\+W@{Get\+B\+W}!Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}}
+\paragraph[{Get\+B\+W}]{\setlength{\rightskip}{0pt plus 5cm}void Soil\+Analyzer\+::\+Analyzer\+::\+Get\+B\+W (
+\begin{DoxyParamCaption}
+\item[{std\+::vector$<$ cv\+::\+Mat $>$ \&}]{images, }
+\item[{std\+::vector$<$ cv\+::\+Mat $>$ \&}]{B\+Wvector}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_soil_analyzer_1_1_analyzer_a13975656889dddd31bb9cff565fd3c9f}
+
+
+\hyperlink{class_soil_analyzer_1_1_analyzer_a13975656889dddd31bb9cff565fd3c9f}{Analyzer\+::\+Get\+B\+W}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em images} & \\
+\hline
+{\em B\+Wvector} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{analyzer_8cpp_source_l00222}{222} of file \hyperlink{analyzer_8cpp_source}{analyzer.\+cpp}.
+
+
+
+Referenced by \hyperlink{analyzer_8cpp_source_l00033}{Prep\+Images()}.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_soil_analyzer_1_1_analyzer_a13975656889dddd31bb9cff565fd3c9f_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_soil_analyzer_1_1_analyzer_a1ecbbb5125d67ccff940ed3b1a377eb2}{}\index{Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}!Get\+B\+W@{Get\+B\+W}}
+\index{Get\+B\+W@{Get\+B\+W}!Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}}
+\paragraph[{Get\+B\+W}]{\setlength{\rightskip}{0pt plus 5cm}void Soil\+Analyzer\+::\+Analyzer\+::\+Get\+B\+W (
+\begin{DoxyParamCaption}
+\item[{cv\+::\+Mat \&}]{img, }
+\item[{cv\+::\+Mat \&}]{B\+W}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_soil_analyzer_1_1_analyzer_a1ecbbb5125d67ccff940ed3b1a377eb2}
+
+
+\hyperlink{class_soil_analyzer_1_1_analyzer_a13975656889dddd31bb9cff565fd3c9f}{Analyzer\+::\+Get\+B\+W}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em img} & \\
+\hline
+{\em B\+W} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{analyzer_8cpp_source_l00236}{236} of file \hyperlink{analyzer_8cpp_source}{analyzer.\+cpp}.
+
+
+
+References \hyperlink{_morphological_filter_8h_source_l00016}{Vision\+::\+Morphological\+Filter\+::\+C\+L\+O\+S\+E}, \hyperlink{analyzer_8h_source_l00067}{current\+Progress}, \hyperlink{_morphological_filter_8h_source_l00016}{Vision\+::\+Morphological\+Filter\+::\+D\+I\+L\+A\+T\+E}, \hyperlink{_morphological_filter_8h_source_l00016}{Vision\+::\+Morphological\+Filter\+::\+E\+R\+O\+D\+E}, \hyperlink{soilsettings_8h_source_l00055}{Soil\+Analyzer\+::\+Soil\+Settings\+::fill\+Holes}, \hyperlink{_segment_8cpp_source_l00615}{Vision\+::\+Segment\+::\+Fill\+Holes()}, \hyperlink{soilsettings_8h_source_l00064}{Soil\+Analyzer\+::\+Soil\+Settings\+::filter\+Mask\+Size}, \hyperlink{soilsettings_8h_source_l00053}{Soil\+Analyzer\+::\+Soil\+Settings\+::ignore\+Partial\+Border\+Particles}, \hyperlink{soilsettings_8h_source_l00060}{Soil\+Analyzer\+::\+Soil\+Settings\+::morph\+Filter\+Type}, \hyperlink{_morphological_filter_8h_source_l00016}{Vision\+::\+Morphological\+Filter\+::\+N\+O\+N\+E}, \hyperlink{class_soil_analyzer_1_1_analyzer_a808a8c21029471c4af0be996cb67d14c}{on\+\_\+progress\+Update()}, \hyperlink{_morphological_filter_8h_source_l00016}{Vision\+::\+Morphological\+Filter\+::\+O\+P\+E\+N}, \hyperlink{_image_processing_8h_source_l00064}{Vision\+::\+Image\+Processing\+::\+Processed\+Img}, \hyperlink{_segment_8cpp_source_l00245}{Vision\+::\+Segment\+::\+Remove\+Border\+Blobs()}, \hyperlink{analyzer_8h_source_l00047}{Settings}, \hyperlink{_vision_debug_8h_source_l00025}{S\+H\+O\+W\+\_\+\+D\+E\+B\+U\+G\+\_\+\+I\+M\+G}, \hyperlink{_segment_8h_source_l00093}{Vision\+::\+Segment\+::sigma}, \hyperlink{soilsettings_8h_source_l00056}{Soil\+Analyzer\+::\+Soil\+Settings\+::sigma\+Factor}, \hyperlink{soilsettings_8h_source_l00058}{Soil\+Analyzer\+::\+Soil\+Settings\+::threshold\+Offset\+Value}, and \hyperlink{soilsettings_8h_source_l00051}{Soil\+Analyzer\+::\+Soil\+Settings\+::type\+Of\+Objects\+Segmented}.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_soil_analyzer_1_1_analyzer_a1ecbbb5125d67ccff940ed3b1a377eb2_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_soil_analyzer_1_1_analyzer_a0d15b639bbfa2becde2dbf5605d00757}{}\index{Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}!Get\+Enhanced\+Int@{Get\+Enhanced\+Int}}
+\index{Get\+Enhanced\+Int@{Get\+Enhanced\+Int}!Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}}
+\paragraph[{Get\+Enhanced\+Int}]{\setlength{\rightskip}{0pt plus 5cm}void Soil\+Analyzer\+::\+Analyzer\+::\+Get\+Enhanced\+Int (
+\begin{DoxyParamCaption}
+\item[{{\bf Images\+\_\+t} $\ast$}]{snapshots, }
+\item[{std\+::vector$<$ cv\+::\+Mat $>$ \&}]{intensity\+Vector}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_soil_analyzer_1_1_analyzer_a0d15b639bbfa2becde2dbf5605d00757}
+
+
+Referenced by \hyperlink{analyzer_8cpp_source_l00033}{Prep\+Images()}.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_soil_analyzer_1_1_analyzer_a0d15b639bbfa2becde2dbf5605d00757_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_soil_analyzer_1_1_analyzer_a9c018641de5278b9db39ce668ebc0920}{}\index{Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}!Get\+Enhanced\+Int@{Get\+Enhanced\+Int}}
+\index{Get\+Enhanced\+Int@{Get\+Enhanced\+Int}!Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}}
+\paragraph[{Get\+Enhanced\+Int}]{\setlength{\rightskip}{0pt plus 5cm}void Soil\+Analyzer\+::\+Analyzer\+::\+Get\+Enhanced\+Int (
+\begin{DoxyParamCaption}
+\item[{cv\+::\+Mat \&}]{img, }
+\item[{cv\+::\+Mat \&}]{intensity}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_soil_analyzer_1_1_analyzer_a9c018641de5278b9db39ce668ebc0920}
+\hypertarget{class_soil_analyzer_1_1_analyzer_aeed5e3b158ff37d5fecb2816e12c3c31}{}\index{Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}!Get\+F\+F\+D@{Get\+F\+F\+D}}
+\index{Get\+F\+F\+D@{Get\+F\+F\+D}!Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}}
+\paragraph[{Get\+F\+F\+D}]{\setlength{\rightskip}{0pt plus 5cm}void Soil\+Analyzer\+::\+Analyzer\+::\+Get\+F\+F\+D (
+\begin{DoxyParamCaption}
+\item[{{\bf Particle\+::\+Particle\+Vector\+\_\+t} \&}]{partical\+Population}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_soil_analyzer_1_1_analyzer_aeed5e3b158ff37d5fecb2816e12c3c31}
+
+
+\hyperlink{class_soil_analyzer_1_1_analyzer_aeed5e3b158ff37d5fecb2816e12c3c31}{Analyzer\+::\+Get\+F\+F\+D}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em partical\+Population} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{analyzer_8cpp_source_l00350}{350} of file \hyperlink{analyzer_8cpp_source}{analyzer.\+cpp}.
+
+
+
+References \hyperlink{analyzer_8h_source_l00067}{current\+Progress}, \hyperlink{_math_exception_8h_source_l00012}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+N\+O\+\_\+\+C\+O\+N\+T\+O\+U\+R\+\_\+\+F\+O\+U\+N\+D\+\_\+\+N\+R}, \hyperlink{analyzer_8h_source_l00072}{fft}, \hyperlink{_f_f_t_8cpp_source_l00015}{Soil\+Math\+::\+F\+F\+T\+::\+Get\+Descriptors()}, \hyperlink{_math_exception_8h_source_l00034}{Soil\+Math\+::\+Exception\+::\+Math\+Exception\+::id()}, and \hyperlink{class_soil_analyzer_1_1_analyzer_a808a8c21029471c4af0be996cb67d14c}{on\+\_\+progress\+Update()}.
+
+
+
+Referenced by \hyperlink{analyzer_8cpp_source_l00065}{Analyse()}.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_soil_analyzer_1_1_analyzer_aeed5e3b158ff37d5fecb2816e12c3c31_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_soil_analyzer_1_1_analyzer_aeed5e3b158ff37d5fecb2816e12c3c31_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_soil_analyzer_1_1_analyzer_af014193f37cc1cac631491687c292060}{}\index{Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}!Get\+Particles@{Get\+Particles}}
+\index{Get\+Particles@{Get\+Particles}!Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}}
+\paragraph[{Get\+Particles}]{\setlength{\rightskip}{0pt plus 5cm}void Soil\+Analyzer\+::\+Analyzer\+::\+Get\+Particles (
+\begin{DoxyParamCaption}
+\item[{std\+::vector$<$ cv\+::\+Mat $>$ \&}]{B\+W, }
+\item[{{\bf Images\+\_\+t} $\ast$}]{snapshots, }
+\item[{{\bf Particle\+::\+Particle\+Vector\+\_\+t} \&}]{part\+Population}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_soil_analyzer_1_1_analyzer_af014193f37cc1cac631491687c292060}
+
+
+\hyperlink{class_soil_analyzer_1_1_analyzer_af014193f37cc1cac631491687c292060}{Analyzer\+::\+Get\+Particles}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em B\+W} & \\
+\hline
+{\em snapshots} & \\
+\hline
+{\em part\+Population} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{analyzer_8cpp_source_l00303}{303} of file \hyperlink{analyzer_8cpp_source}{analyzer.\+cpp}.
+
+
+
+References \hyperlink{_segment_8h_source_l00055}{Vision\+::\+Segment\+::\+Blob\+List}, \hyperlink{analyzer_8h_source_l00067}{current\+Progress}, \hyperlink{_segment_8cpp_source_l00534}{Vision\+::\+Segment\+::\+Get\+Blob\+List()}, \hyperlink{analyzer_8cpp_source_l00322}{Get\+Particles\+From\+Blob\+List()}, and \hyperlink{class_soil_analyzer_1_1_analyzer_a808a8c21029471c4af0be996cb67d14c}{on\+\_\+progress\+Update()}.
+
+
+
+Referenced by \hyperlink{analyzer_8cpp_source_l00033}{Prep\+Images()}.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_soil_analyzer_1_1_analyzer_af014193f37cc1cac631491687c292060_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_soil_analyzer_1_1_analyzer_af014193f37cc1cac631491687c292060_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_soil_analyzer_1_1_analyzer_acfe01406c180dd154fefbe13e7f18a4d}{}\index{Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}!Get\+Particles\+From\+Blob\+List@{Get\+Particles\+From\+Blob\+List}}
+\index{Get\+Particles\+From\+Blob\+List@{Get\+Particles\+From\+Blob\+List}!Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}}
+\paragraph[{Get\+Particles\+From\+Blob\+List}]{\setlength{\rightskip}{0pt plus 5cm}void Soil\+Analyzer\+::\+Analyzer\+::\+Get\+Particles\+From\+Blob\+List (
+\begin{DoxyParamCaption}
+\item[{{\bf Vision\+::\+Segment\+::\+Blob\+List\+\_\+t} \&}]{bloblist, }
+\item[{{\bf Image\+\_\+t} $\ast$}]{snapshot, }
+\item[{{\bf Particle\+::\+Particle\+Vector\+\_\+t} \&}]{part\+Population}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_soil_analyzer_1_1_analyzer_acfe01406c180dd154fefbe13e7f18a4d}
+
+
+\hyperlink{class_soil_analyzer_1_1_analyzer_acfe01406c180dd154fefbe13e7f18a4d}{Analyzer\+::\+Get\+Particles\+From\+Blob\+List}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bloblist} & \\
+\hline
+{\em snapshot} & \\
+\hline
+{\em edge} & \\
+\hline
+{\em part\+Population} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{analyzer_8cpp_source_l00322}{322} of file \hyperlink{analyzer_8cpp_source}{analyzer.\+cpp}.
+
+
+
+References \hyperlink{particle_8h_source_l00042}{Soil\+Analyzer\+::\+Particle\+::\+B\+W}, \hyperlink{analyzer_8h_source_l00068}{current\+Particle\+I\+D}, \hyperlink{particle_8h_source_l00053}{Soil\+Analyzer\+::\+Particle\+::\+Eccentricty}, \hyperlink{particle_8h_source_l00043}{Soil\+Analyzer\+::\+Particle\+::\+Edge}, \hyperlink{analyzer_8h_source_l00040}{Soil\+Analyzer\+::\+Analyzer\+::\+Image\+\_\+t\+::\+Front\+Light}, \hyperlink{_segment_8cpp_source_l00483}{Vision\+::\+Segment\+::\+Get\+Edges\+Eroding()}, \hyperlink{_image_processing_8cpp_source_l00048}{Vision\+::\+Image\+Processing\+::get\+Orientented()}, \hyperlink{particle_8h_source_l00040}{Soil\+Analyzer\+::\+Particle\+::\+I\+D}, \hyperlink{particle_8h_source_l00067}{Soil\+Analyzer\+::\+Particle\+::is\+Prepared\+For\+Analysis}, \hyperlink{particle_8h_source_l00052}{Soil\+Analyzer\+::\+Particle\+::\+Pixel\+Area}, \hyperlink{_image_processing_8h_source_l00064}{Vision\+::\+Image\+Processing\+::\+Processed\+Img}, \hyperlink{particle_8h_source_l00044}{Soil\+Analyzer\+::\+Particle\+::\+R\+G\+B}, \hyperlink{_image_processing_8cpp_source_l00070}{Vision\+::\+Image\+Processing\+::\+Rotate\+Img()}, \hyperlink{particle_8cpp_source_l00089}{Soil\+Analyzer\+::\+Particle\+::\+Set\+Roundness()}, \hyperlink{analyzer_8h_source_l00042}{Soil\+Analyzer\+::\+Analyzer\+::\+Image\+\_\+t\+::\+S\+I\+Pixel\+Factor}, and \hyperlink{particle_8h_source_l00051}{Soil\+Analyzer\+::\+Particle\+::\+S\+I\+Pixel\+Factor}.
+
+
+
+Referenced by \hyperlink{analyzer_8cpp_source_l00303}{Get\+Particles()}.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_soil_analyzer_1_1_analyzer_acfe01406c180dd154fefbe13e7f18a4d_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_soil_analyzer_1_1_analyzer_acfe01406c180dd154fefbe13e7f18a4d_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_soil_analyzer_1_1_analyzer_a7eb1a2676660f536b366f9aaf1326f80}{}\index{Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}!Get\+Prediction@{Get\+Prediction}}
+\index{Get\+Prediction@{Get\+Prediction}!Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}}
+\paragraph[{Get\+Prediction}]{\setlength{\rightskip}{0pt plus 5cm}void Soil\+Analyzer\+::\+Analyzer\+::\+Get\+Prediction (
+\begin{DoxyParamCaption}
+\item[{{\bf Particle\+::\+Particle\+Vector\+\_\+t} \&}]{particle\+Population}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_soil_analyzer_1_1_analyzer_a7eb1a2676660f536b366f9aaf1326f80}
+
+
+\hyperlink{class_soil_analyzer_1_1_analyzer_a7eb1a2676660f536b366f9aaf1326f80}{Analyzer\+::\+Get\+Prediction}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em particle\+Population} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{analyzer_8cpp_source_l00373}{373} of file \hyperlink{analyzer_8cpp_source}{analyzer.\+cpp}.
+
+
+
+References \hyperlink{_n_n_8h_source_l00140}{Soil\+Math\+::\+N\+N\+::\+Get\+Input\+Neurons()}, \hyperlink{analyzer_8h_source_l00059}{Neural\+Net}, and \hyperlink{_n_n_8cpp_source_l00056}{Soil\+Math\+::\+N\+N\+::\+Predict()}.
+
+
+
+Referenced by \hyperlink{analyzer_8cpp_source_l00065}{Analyse()}.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_soil_analyzer_1_1_analyzer_a7eb1a2676660f536b366f9aaf1326f80_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_soil_analyzer_1_1_analyzer_a7eb1a2676660f536b366f9aaf1326f80_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_soil_analyzer_1_1_analyzer_a49245eaf7ee46c065e0a1a71135b6904}{}\index{Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}!on\+\_\+\+Analysis\+Finished@{on\+\_\+\+Analysis\+Finished}}
+\index{on\+\_\+\+Analysis\+Finished@{on\+\_\+\+Analysis\+Finished}!Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}}
+\paragraph[{on\+\_\+\+Analysis\+Finished}]{\setlength{\rightskip}{0pt plus 5cm}void Soil\+Analyzer\+::\+Analyzer\+::on\+\_\+\+Analysis\+Finished (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}\label{class_soil_analyzer_1_1_analyzer_a49245eaf7ee46c065e0a1a71135b6904}
+
+
+Referenced by \hyperlink{analyzer_8cpp_source_l00065}{Analyse()}.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_soil_analyzer_1_1_analyzer_a49245eaf7ee46c065e0a1a71135b6904_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_soil_analyzer_1_1_analyzer_ac22302563bb30934efe2365831d5a1a6}{}\index{Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}!on\+\_\+max\+Progress\+Update@{on\+\_\+max\+Progress\+Update}}
+\index{on\+\_\+max\+Progress\+Update@{on\+\_\+max\+Progress\+Update}!Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}}
+\paragraph[{on\+\_\+max\+Progress\+Update}]{\setlength{\rightskip}{0pt plus 5cm}void Soil\+Analyzer\+::\+Analyzer\+::on\+\_\+max\+Progress\+Update (
+\begin{DoxyParamCaption}
+\item[{int}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}\label{class_soil_analyzer_1_1_analyzer_ac22302563bb30934efe2365831d5a1a6}
+
+
+Referenced by \hyperlink{analyzer_8cpp_source_l00112}{Calc\+Max\+Progress()}, and \hyperlink{analyzer_8cpp_source_l00136}{Calc\+Max\+Progress\+Analyze()}.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_soil_analyzer_1_1_analyzer_ac22302563bb30934efe2365831d5a1a6_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_soil_analyzer_1_1_analyzer_a808a8c21029471c4af0be996cb67d14c}{}\index{Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}!on\+\_\+progress\+Update@{on\+\_\+progress\+Update}}
+\index{on\+\_\+progress\+Update@{on\+\_\+progress\+Update}!Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}}
+\paragraph[{on\+\_\+progress\+Update}]{\setlength{\rightskip}{0pt plus 5cm}void Soil\+Analyzer\+::\+Analyzer\+::on\+\_\+progress\+Update (
+\begin{DoxyParamCaption}
+\item[{int}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}\label{class_soil_analyzer_1_1_analyzer_a808a8c21029471c4af0be996cb67d14c}
+
+
+Referenced by \hyperlink{analyzer_8cpp_source_l00065}{Analyse()}, \hyperlink{analyzer_8cpp_source_l00236}{Get\+B\+W()}, \hyperlink{analyzer_8cpp_source_l00350}{Get\+F\+F\+D()}, and \hyperlink{analyzer_8cpp_source_l00303}{Get\+Particles()}.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_soil_analyzer_1_1_analyzer_a808a8c21029471c4af0be996cb67d14c_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_soil_analyzer_1_1_analyzer_a5b299a425580620ba409112971bc787e}{}\index{Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}!Prep\+Images@{Prep\+Images}}
+\index{Prep\+Images@{Prep\+Images}!Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}}
+\paragraph[{Prep\+Images}]{\setlength{\rightskip}{0pt plus 5cm}void Soil\+Analyzer\+::\+Analyzer\+::\+Prep\+Images (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_soil_analyzer_1_1_analyzer_a5b299a425580620ba409112971bc787e}
+
+
+\hyperlink{class_soil_analyzer_1_1_analyzer_a5b299a425580620ba409112971bc787e}{Analyzer\+::\+Prep\+Images}. 
+
+
+
+Definition at line \hyperlink{analyzer_8cpp_source_l00033}{33} of file \hyperlink{analyzer_8cpp_source}{analyzer.\+cpp}.
+
+
+
+References \hyperlink{class_soil_analyzer_1_1_analyzer_a9b143f9920d90ecd54a3b0bb3b0e28fc}{Clean\+Up\+Mat\+Vector()}, \hyperlink{soilanalyzerexception_8h_source_l00009}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+N\+O\+\_\+\+S\+N\+A\+P\+S\+H\+O\+T\+S}, \hyperlink{soilanalyzerexception_8h_source_l00010}{E\+X\+C\+E\+P\+T\+I\+O\+N\+\_\+\+N\+O\+\_\+\+S\+N\+A\+P\+S\+H\+O\+T\+S\+\_\+\+N\+R}, \hyperlink{analyzer_8cpp_source_l00222}{Get\+B\+W()}, \hyperlink{class_soil_analyzer_1_1_analyzer_a0d15b639bbfa2becde2dbf5605d00757}{Get\+Enhanced\+Int()}, \hyperlink{analyzer_8cpp_source_l00303}{Get\+Particles()}, \hyperlink{sample_8h_source_l00057}{Soil\+Analyzer\+::\+Sample\+::is\+Prepared\+For\+Analysis}, \hyperlink{sample_8h_source_l00041}{Soil\+Analyzer\+::\+Sample\+::\+Particle\+Population}, \hyperlink{analyzer_8h_source_l00049}{Results}, and \hyperlink{analyzer_8h_source_l00046}{Snapshots}.
+
+
+
+Referenced by \hyperlink{analyzer_8cpp_source_l00065}{Analyse()}.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_soil_analyzer_1_1_analyzer_a5b299a425580620ba409112971bc787e_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_soil_analyzer_1_1_analyzer_a5b299a425580620ba409112971bc787e_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsubsection{Member Data Documentation}
+\hypertarget{class_soil_analyzer_1_1_analyzer_a5a8ee87a3017f91d7624ad700d2c14c6}{}\index{Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}!Bin\+Ranges@{Bin\+Ranges}}
+\index{Bin\+Ranges@{Bin\+Ranges}!Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}}
+\paragraph[{Bin\+Ranges}]{\setlength{\rightskip}{0pt plus 5cm}double Soil\+Analyzer\+::\+Analyzer\+::\+Bin\+Ranges\mbox{[}15\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}\label{class_soil_analyzer_1_1_analyzer_a5a8ee87a3017f91d7624ad700d2c14c6}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+\{0.0,  0.038, 0.045, 0.063, 0.075, 0.09, 0.125, 0.18,
+                      0.25, 0.355, 0.5,   0.71,  1.0,   1.4,  2.0\}
+\end{DoxyCode}
+
+
+Definition at line \hyperlink{analyzer_8h_source_l00069}{69} of file \hyperlink{analyzer_8h_source}{analyzer.\+h}.
+
+
+
+Referenced by \hyperlink{analyzer_8cpp_source_l00065}{Analyse()}.
+
+\hypertarget{class_soil_analyzer_1_1_analyzer_a9cf8e0b0a007a986d2b5d1e2653e43bf}{}\index{Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}!current\+Particle\+I\+D@{current\+Particle\+I\+D}}
+\index{current\+Particle\+I\+D@{current\+Particle\+I\+D}!Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}}
+\paragraph[{current\+Particle\+I\+D}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32\+\_\+t} Soil\+Analyzer\+::\+Analyzer\+::current\+Particle\+I\+D = 0\hspace{0.3cm}{\ttfamily [private]}}\label{class_soil_analyzer_1_1_analyzer_a9cf8e0b0a007a986d2b5d1e2653e43bf}
+
+
+Definition at line \hyperlink{analyzer_8h_source_l00068}{68} of file \hyperlink{analyzer_8h_source}{analyzer.\+h}.
+
+
+
+Referenced by \hyperlink{analyzer_8cpp_source_l00322}{Get\+Particles\+From\+Blob\+List()}.
+
+\hypertarget{class_soil_analyzer_1_1_analyzer_a068a9d419064799836bb8caff60a2141}{}\index{Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}!current\+Progress@{current\+Progress}}
+\index{current\+Progress@{current\+Progress}!Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}}
+\paragraph[{current\+Progress}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32\+\_\+t} Soil\+Analyzer\+::\+Analyzer\+::current\+Progress = 0\hspace{0.3cm}{\ttfamily [private]}}\label{class_soil_analyzer_1_1_analyzer_a068a9d419064799836bb8caff60a2141}
+
+
+Definition at line \hyperlink{analyzer_8h_source_l00067}{67} of file \hyperlink{analyzer_8h_source}{analyzer.\+h}.
+
+
+
+Referenced by \hyperlink{analyzer_8cpp_source_l00065}{Analyse()}, \hyperlink{analyzer_8cpp_source_l00236}{Get\+B\+W()}, \hyperlink{analyzer_8cpp_source_l00350}{Get\+F\+F\+D()}, and \hyperlink{analyzer_8cpp_source_l00303}{Get\+Particles()}.
+
+\hypertarget{class_soil_analyzer_1_1_analyzer_a8fb13bb3f69f3f87e1cb61e453c8f5b3}{}\index{Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}!Current\+S\+Ifactor@{Current\+S\+Ifactor}}
+\index{Current\+S\+Ifactor@{Current\+S\+Ifactor}!Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}}
+\paragraph[{Current\+S\+Ifactor}]{\setlength{\rightskip}{0pt plus 5cm}float Soil\+Analyzer\+::\+Analyzer\+::\+Current\+S\+Ifactor = 0.\+0111915}\label{class_soil_analyzer_1_1_analyzer_a8fb13bb3f69f3f87e1cb61e453c8f5b3}
+
+
+Definition at line \hyperlink{analyzer_8h_source_l00037}{37} of file \hyperlink{analyzer_8h_source}{analyzer.\+h}.
+
+
+
+Referenced by \hyperlink{analyzer_8cpp_source_l00388}{Calibrate\+S\+I()}, and \hyperlink{vsamainwindow_8cpp_source_l00391}{V\+S\+A\+Main\+Window\+::\+Take\+Snap\+Shots()}.
+
+\hypertarget{class_soil_analyzer_1_1_analyzer_a5a88bb8ae9ce9a8a1e199f3760f9db48}{}\index{Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}!fft@{fft}}
+\index{fft@{fft}!Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}}
+\paragraph[{fft}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Soil\+Math\+::\+F\+F\+T} Soil\+Analyzer\+::\+Analyzer\+::fft\hspace{0.3cm}{\ttfamily [private]}}\label{class_soil_analyzer_1_1_analyzer_a5a88bb8ae9ce9a8a1e199f3760f9db48}
+
+
+Definition at line \hyperlink{analyzer_8h_source_l00072}{72} of file \hyperlink{analyzer_8h_source}{analyzer.\+h}.
+
+
+
+Referenced by \hyperlink{analyzer_8cpp_source_l00350}{Get\+F\+F\+D()}.
+
+\hypertarget{class_soil_analyzer_1_1_analyzer_aef988b5c2c2349b544dabe8882c8931a}{}\index{Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}!Max\+Progress@{Max\+Progress}}
+\index{Max\+Progress@{Max\+Progress}!Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}}
+\paragraph[{Max\+Progress}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32\+\_\+t} Soil\+Analyzer\+::\+Analyzer\+::\+Max\+Progress = {\bf S\+T\+A\+R\+T\+I\+N\+G\+\_\+\+E\+S\+T\+I\+M\+A\+T\+E\+\_\+\+P\+R\+O\+G\+R\+E\+S\+S}}\label{class_soil_analyzer_1_1_analyzer_aef988b5c2c2349b544dabe8882c8931a}
+
+
+Definition at line \hyperlink{analyzer_8h_source_l00057}{57} of file \hyperlink{analyzer_8h_source}{analyzer.\+h}.
+
+
+
+Referenced by \hyperlink{analyzer_8cpp_source_l00112}{Calc\+Max\+Progress()}, \hyperlink{analyzer_8cpp_source_l00136}{Calc\+Max\+Progress\+Analyze()}, and \hyperlink{vsamainwindow_8cpp_source_l00004}{V\+S\+A\+Main\+Window\+::\+V\+S\+A\+Main\+Window()}.
+
+\hypertarget{class_soil_analyzer_1_1_analyzer_a6ea3af4b49fef5b5f289bcc2046e615e}{}\index{Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}!Neural\+Net@{Neural\+Net}}
+\index{Neural\+Net@{Neural\+Net}!Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}}
+\paragraph[{Neural\+Net}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Soil\+Math\+::\+N\+N} Soil\+Analyzer\+::\+Analyzer\+::\+Neural\+Net}\label{class_soil_analyzer_1_1_analyzer_a6ea3af4b49fef5b5f289bcc2046e615e}
+
+
+Definition at line \hyperlink{analyzer_8h_source_l00059}{59} of file \hyperlink{analyzer_8h_source}{analyzer.\+h}.
+
+
+
+Referenced by \hyperlink{analyzer_8cpp_source_l00018}{Analyzer()}, \hyperlink{analyzer_8cpp_source_l00373}{Get\+Prediction()}, \hyperlink{vsamainwindow_8cpp_source_l00353}{V\+S\+A\+Main\+Window\+::on\+\_\+action\+Neural\+Net\+\_\+triggered()}, and \hyperlink{vsamainwindow_8cpp_source_l00004}{V\+S\+A\+Main\+Window\+::\+V\+S\+A\+Main\+Window()}.
+
+\hypertarget{class_soil_analyzer_1_1_analyzer_a43c2a39174daac9059e48860936e38f3}{}\index{Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}!Predict\+Shape@{Predict\+Shape}}
+\index{Predict\+Shape@{Predict\+Shape}!Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}}
+\paragraph[{Predict\+Shape}]{\setlength{\rightskip}{0pt plus 5cm}bool Soil\+Analyzer\+::\+Analyzer\+::\+Predict\+Shape = true}\label{class_soil_analyzer_1_1_analyzer_a43c2a39174daac9059e48860936e38f3}
+
+
+Definition at line \hyperlink{analyzer_8h_source_l00036}{36} of file \hyperlink{analyzer_8h_source}{analyzer.\+h}.
+
+
+
+Referenced by \hyperlink{analyzer_8cpp_source_l00065}{Analyse()}, and \hyperlink{vsamainwindow_8cpp_source_l00512}{V\+S\+A\+Main\+Window\+::on\+\_\+action\+Use\+Learning\+\_\+toggled()}.
+
+\hypertarget{class_soil_analyzer_1_1_analyzer_af80f9fa5784aa6518b3cf80de2c430fe}{}\index{Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}!Results@{Results}}
+\index{Results@{Results}!Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}}
+\paragraph[{Results}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Sample}$\ast$ Soil\+Analyzer\+::\+Analyzer\+::\+Results}\label{class_soil_analyzer_1_1_analyzer_af80f9fa5784aa6518b3cf80de2c430fe}
+
+
+Definition at line \hyperlink{analyzer_8h_source_l00049}{49} of file \hyperlink{analyzer_8h_source}{analyzer.\+h}.
+
+
+
+Referenced by \hyperlink{analyzer_8cpp_source_l00054}{Analyse()}, \hyperlink{analyzer_8cpp_source_l00018}{Analyzer()}, \hyperlink{analyzer_8cpp_source_l00136}{Calc\+Max\+Progress\+Analyze()}, \hyperlink{vsamainwindow_8cpp_source_l00475}{V\+S\+A\+Main\+Window\+::on\+\_\+action\+Load\+Sample\+\_\+triggered()}, and \hyperlink{analyzer_8cpp_source_l00033}{Prep\+Images()}.
+
+\hypertarget{class_soil_analyzer_1_1_analyzer_a0a17b8f11ce60cd5b22d03b9925ee16e}{}\index{Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}!Settings@{Settings}}
+\index{Settings@{Settings}!Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}}
+\paragraph[{Settings}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Soil\+Settings}$\ast$ Soil\+Analyzer\+::\+Analyzer\+::\+Settings = nullptr}\label{class_soil_analyzer_1_1_analyzer_a0a17b8f11ce60cd5b22d03b9925ee16e}
+
+
+Definition at line \hyperlink{analyzer_8h_source_l00047}{47} of file \hyperlink{analyzer_8h_source}{analyzer.\+h}.
+
+
+
+Referenced by \hyperlink{analyzer_8cpp_source_l00054}{Analyse()}, \hyperlink{analyzer_8cpp_source_l00018}{Analyzer()}, \hyperlink{analyzer_8cpp_source_l00112}{Calc\+Max\+Progress()}, and \hyperlink{analyzer_8cpp_source_l00236}{Get\+B\+W()}.
+
+\hypertarget{class_soil_analyzer_1_1_analyzer_a144dea5736f2c1e2d86c9f655910be1f}{}\index{Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}!S\+Ifactor\+Det@{S\+Ifactor\+Det}}
+\index{S\+Ifactor\+Det@{S\+Ifactor\+Det}!Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}}
+\paragraph[{S\+Ifactor\+Det}]{\setlength{\rightskip}{0pt plus 5cm}bool Soil\+Analyzer\+::\+Analyzer\+::\+S\+Ifactor\+Det = false}\label{class_soil_analyzer_1_1_analyzer_a144dea5736f2c1e2d86c9f655910be1f}
+
+
+Definition at line \hyperlink{analyzer_8h_source_l00038}{38} of file \hyperlink{analyzer_8h_source}{analyzer.\+h}.
+
+
+
+Referenced by \hyperlink{vsamainwindow_8cpp_source_l00391}{V\+S\+A\+Main\+Window\+::\+Take\+Snap\+Shots()}.
+
+\hypertarget{class_soil_analyzer_1_1_analyzer_a483f7f65076cdbafe109ddfdfa2a0640}{}\index{Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}!Snapshots@{Snapshots}}
+\index{Snapshots@{Snapshots}!Soil\+Analyzer\+::\+Analyzer@{Soil\+Analyzer\+::\+Analyzer}}
+\paragraph[{Snapshots}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Images\+\_\+t}$\ast$ Soil\+Analyzer\+::\+Analyzer\+::\+Snapshots = nullptr}\label{class_soil_analyzer_1_1_analyzer_a483f7f65076cdbafe109ddfdfa2a0640}
+
+
+Definition at line \hyperlink{analyzer_8h_source_l00046}{46} of file \hyperlink{analyzer_8h_source}{analyzer.\+h}.
+
+
+
+Referenced by \hyperlink{analyzer_8cpp_source_l00054}{Analyse()}, \hyperlink{analyzer_8cpp_source_l00018}{Analyzer()}, \hyperlink{analyzer_8cpp_source_l00112}{Calc\+Max\+Progress()}, and \hyperlink{analyzer_8cpp_source_l00033}{Prep\+Images()}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Analyzer/\hyperlink{analyzer_8h}{analyzer.\+h}\item 
+/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Analyzer/\hyperlink{analyzer_8cpp}{analyzer.\+cpp}\end{DoxyCompactItemize}

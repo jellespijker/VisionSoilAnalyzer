@@ -1,0 +1,787 @@
+\hypertarget{_segment_8cpp_source}{}\subsection{Segment.\+cpp}
+\label{_segment_8cpp_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Vision/\+Segment.\+cpp@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Vision/\+Segment.\+cpp}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/* Copyright (C) Jelle Spijker - All Rights Reserved}
+00002 \textcolor{comment}{ * Unauthorized copying of this file, via any medium is strictly prohibited}
+00003 \textcolor{comment}{ * and only allowed with the written consent of the author (Jelle Spijker)}
+00004 \textcolor{comment}{ * This software is proprietary and confidential}
+00005 \textcolor{comment}{ * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015}
+00006 \textcolor{comment}{ */}
+00007 
+00013 \textcolor{preprocessor}{#include "\hyperlink{_segment_8h}{Segment.h}"}
+00014 
+00015 \textcolor{keyword}{namespace }\hyperlink{namespace_vision}{Vision} \{
+\hypertarget{_segment_8cpp_source_l00017}{}\hyperlink{class_vision_1_1_segment_adfe9fc7ffcc7269f961d4b1f6720d1e8}{00017} \hyperlink{class_vision_1_1_segment_adfe9fc7ffcc7269f961d4b1f6720d1e8}{Segment::Segment}() \{\}
+00018 
+\hypertarget{_segment_8cpp_source_l00020}{}\hyperlink{class_vision_1_1_segment_ad3c4765e0e519f8d5fc7ac2e567608ee}{00020} \hyperlink{class_vision_1_1_segment_adfe9fc7ffcc7269f961d4b1f6720d1e8}{Segment::Segment}(\textcolor{keyword}{const} Mat &src) \{
+00021   \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg} = src;
+00022   \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.create(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.size(), CV\_8UC1);
+00023   \hyperlink{class_vision_1_1_segment_a4daa143f6cd4a753d3bbe45c6a67d27f}{LabelledImg}.create(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.size(), CV\_16UC1);
+00024 \}
+00025 
+\hypertarget{_segment_8cpp_source_l00026}{}\hyperlink{class_vision_1_1_segment_a365b40b1f7886344c063c881c5cd27ca}{00026} \hyperlink{class_vision_1_1_segment_adfe9fc7ffcc7269f961d4b1f6720d1e8}{Segment::Segment}(\textcolor{keyword}{const} \hyperlink{class_vision_1_1_segment}{Segment} &rhs) \{
+00027   this->\hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{BlobList} = rhs.\hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{BlobList};
+00028   this->\hyperlink{class_vision_1_1_segment_a4daa143f6cd4a753d3bbe45c6a67d27f}{LabelledImg} = rhs.\hyperlink{class_vision_1_1_segment_a4daa143f6cd4a753d3bbe45c6a67d27f}{LabelledImg};
+00029   this->\hyperlink{class_vision_1_1_segment_a22d2a688de65f4d25b164f8b2a03f4a9}{MaxLabel} = rhs.\hyperlink{class_vision_1_1_segment_a22d2a688de65f4d25b164f8b2a03f4a9}{MaxLabel};
+00030   this->\hyperlink{class_vision_1_1_segment_a97077da3a144e800073bc06f5d4722d4}{noOfFilteredBlobs} = rhs.\hyperlink{class_vision_1_1_segment_a97077da3a144e800073bc06f5d4722d4}{noOfFilteredBlobs};
+00031   this->\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg} = rhs.\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg};
+00032   this->\hyperlink{class_vision_1_1_segment_ab35cfe5504de7e5ea327991468e6cf3b}{OriginalImgStats} = rhs.\hyperlink{class_vision_1_1_segment_ab35cfe5504de7e5ea327991468e6cf3b}{OriginalImgStats};
+00033   this->\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg} = rhs.\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg};
+00034   this->\hyperlink{class_vision_1_1_image_processing_a5371ad8d6f7aac9d43ee5c902ade7435}{TempImg} = rhs.\hyperlink{class_vision_1_1_image_processing_a5371ad8d6f7aac9d43ee5c902ade7435}{TempImg};
+00035   this->\hyperlink{class_vision_1_1_segment_a44f45a7d08ba6fed38e5c31bc9108291}{ThresholdLevel} = rhs.\hyperlink{class_vision_1_1_segment_a44f45a7d08ba6fed38e5c31bc9108291}{ThresholdLevel};
+00036 \}
+00037 
+\hypertarget{_segment_8cpp_source_l00039}{}\hyperlink{class_vision_1_1_segment_a76b45a453304f1f485e3bc2fcad58b59}{00039} \hyperlink{class_vision_1_1_segment_a76b45a453304f1f485e3bc2fcad58b59}{Segment::~Segment}() \{\}
+00040 
+\hypertarget{_segment_8cpp_source_l00041}{}\hyperlink{class_vision_1_1_segment_a1bfc12c503f6e07cca595ec884273e13}{00041} \hyperlink{class_vision_1_1_segment}{Segment} &\hyperlink{class_vision_1_1_segment_a1bfc12c503f6e07cca595ec884273e13}{Segment::operator=}(\hyperlink{class_vision_1_1_segment}{Segment} &rhs) \{
+00042   \textcolor{keywordflow}{if} (&rhs != \textcolor{keyword}{this}) \{
+00043     this->\hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{BlobList} = rhs.\hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{BlobList};
+00044     this->\hyperlink{class_vision_1_1_segment_a4daa143f6cd4a753d3bbe45c6a67d27f}{LabelledImg} = rhs.\hyperlink{class_vision_1_1_segment_a4daa143f6cd4a753d3bbe45c6a67d27f}{LabelledImg};
+00045     this->\hyperlink{class_vision_1_1_segment_a22d2a688de65f4d25b164f8b2a03f4a9}{MaxLabel} = rhs.\hyperlink{class_vision_1_1_segment_a22d2a688de65f4d25b164f8b2a03f4a9}{MaxLabel};
+00046     this->\hyperlink{class_vision_1_1_segment_a97077da3a144e800073bc06f5d4722d4}{noOfFilteredBlobs} = rhs.\hyperlink{class_vision_1_1_segment_a97077da3a144e800073bc06f5d4722d4}{noOfFilteredBlobs};
+00047     this->\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg} = rhs.\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg};
+00048     this->\hyperlink{class_vision_1_1_segment_ab35cfe5504de7e5ea327991468e6cf3b}{OriginalImgStats} = rhs.\hyperlink{class_vision_1_1_segment_ab35cfe5504de7e5ea327991468e6cf3b}{OriginalImgStats};
+00049     this->\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg} = rhs.\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg};
+00050     this->\hyperlink{class_vision_1_1_image_processing_a5371ad8d6f7aac9d43ee5c902ade7435}{TempImg} = rhs.\hyperlink{class_vision_1_1_image_processing_a5371ad8d6f7aac9d43ee5c902ade7435}{TempImg};
+00051     this->\hyperlink{class_vision_1_1_segment_a44f45a7d08ba6fed38e5c31bc9108291}{ThresholdLevel} = rhs.\hyperlink{class_vision_1_1_segment_a44f45a7d08ba6fed38e5c31bc9108291}{ThresholdLevel};
+00052   \}
+00053   \textcolor{keywordflow}{return} *\textcolor{keyword}{this};
+00054 \}
+00055 
+\hypertarget{_segment_8cpp_source_l00056}{}\hyperlink{class_vision_1_1_segment_a8b5edc7f5a69d961e47f61a2191b8745}{00056} \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_segment_a8b5edc7f5a69d961e47f61a2191b8745}{Segment::LoadOriginalImg}(\textcolor{keyword}{const} Mat &src) \{
+00057   \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg} = src;
+00058   \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.create(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.size(), CV\_8UC1);
+00059   \hyperlink{class_vision_1_1_segment_a4daa143f6cd4a753d3bbe45c6a67d27f}{LabelledImg}.create(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.size(), CV\_16UC1);
+00060 \}
+00061 
+\hypertarget{_segment_8cpp_source_l00069}{}\hyperlink{class_vision_1_1_segment_a1b15d616db9cbdcd0b07bb267f60895b}{00069} uint8\_t \hyperlink{class_vision_1_1_segment_a1b15d616db9cbdcd0b07bb267f60895b}{Segment::GetThresholdLevel}(\hyperlink{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7dd}{TypeOfObjects} TypeObject) \{
+00070   \textcolor{comment}{// Exception handling}
+00071   \hyperlink{_image_processing_8h_a27c4e53b88a0f9f2c097add555131056}{EMPTY\_CHECK}(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg});
+00072   CV\_Assert(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.depth() != \textcolor{keyword}{sizeof}(\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}));
+00073 
+00074   \textcolor{comment}{// Calculate the statistics of the whole picture}
+00075   \hyperlink{class_soil_math_1_1_stats}{ucharStat\_t} \hyperlink{class_vision_1_1_segment_ab35cfe5504de7e5ea327991468e6cf3b}{OriginalImgStats}(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.data, 
+      \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.rows,
+00076                                \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.cols);
+00077 
+00078   \textcolor{comment}{// Sets the initial threshold with the mean of the total picture}
+00079   pair<uchar, uchar> T;
+00080   T.first = (\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar})(OriginalImgStats.\hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{Mean} + 0.5);
+00081   T.second = 0;
+00082 
+00083   \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} Rstd = 0;
+00084   \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} Lstd = 0;
+00085   \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} Rmean = 0;
+00086   \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} Lmean = 0;
+00087 
+00088   \textcolor{comment}{// Iterate till optimum Threshold is found between back- & foreground}
+00089   \textcolor{keywordflow}{while} (T.first != T.second) \{
+00090     \textcolor{comment}{// Gets an array of the left part of the histogram}
+00091     \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = T.first;
+00092     \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} *Left = \textcolor{keyword}{new} \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t}[i]\{\};
+00093     \textcolor{keywordflow}{while} (i-- > 0) \{
+00094       Left[i] = OriginalImgStats.\hyperlink{class_soil_math_1_1_stats_a00778b298b1ebb335eb0c4eed69e471c}{bins}[i];
+00095     \}
+00096 
+00097     \textcolor{comment}{// Gets an array of the right part of the histogram}
+00098     \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} rightEnd = 256 - T.first;
+00099     \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} *Right = \textcolor{keyword}{new} \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t}[rightEnd]\{\};
+00100     i = rightEnd;
+00101     \textcolor{keywordflow}{while} (i-- > 0) \{
+00102       Right[i] = OriginalImgStats.\hyperlink{class_soil_math_1_1_stats_a00778b298b1ebb335eb0c4eed69e471c}{bins}[i + T.first];
+00103     \}
+00104 
+00105     \textcolor{comment}{// Calculate the statistics of both histograms,}
+00106     \textcolor{comment}{// taking into account the current threshold}
+00107     \hyperlink{class_soil_math_1_1_stats}{ucharStat\_t} sLeft(Left, 0, T.first);
+00108     \hyperlink{class_soil_math_1_1_stats}{ucharStat\_t} sRight(Right, T.first, 256);
+00109 
+00110     \textcolor{comment}{// Calculate the new threshold the mean of the means}
+00111     T.second = T.first;
+00112     T.first = (\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar})(((sLeft.\hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{Mean} + sRight.\hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{Mean}) / 2) + 0.5);
+00113 
+00114     Rmean = (\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar})(sRight.\hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{Mean} + 0.5);
+00115     Lmean = (\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar})(sLeft.\hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{Mean} + 0.5);
+00116     Rstd = (\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar})(sRight.\hyperlink{class_soil_math_1_1_stats_a6af590b7d033d882d5428c0d7a1f5e59}{Std} + 0.5);
+00117     Lstd = (\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar})(sLeft.\hyperlink{class_soil_math_1_1_stats_a6af590b7d033d882d5428c0d7a1f5e59}{Std} + 0.5);
+00118     \textcolor{keyword}{delete}[] Left;
+00119     \textcolor{keyword}{delete}[] Right;
+00120   \}
+00121 
+00122   \textcolor{comment}{// Assumes the pixel value of the sought object lies between 2 sigma}
+00123   \textcolor{keywordtype}{int} val = 0;
+00124   \textcolor{keywordflow}{switch} (TypeObject) \{
+00125   \textcolor{keywordflow}{case} \hyperlink{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7ddad37a09a08a5a4fdf88cb15f21e5ff28b}{Bright}:
+00126     val = Rmean - (\hyperlink{class_vision_1_1_segment_a0d2c607a6064d8d8fea925fc7bfbbc53}{sigma} * Rstd) - \hyperlink{class_vision_1_1_segment_a1338fc42ead26c6b1dd661f4281f5674}{thresholdOffset};
+00127     \textcolor{keywordflow}{if} (val < 0) \{
+00128       val = 0;
+00129     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (val > 255) \{
+00130       val = 255;
+00131     \}
+00132     T.first = (\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar})val;
+00133     \textcolor{keywordflow}{break};
+00134   \textcolor{keywordflow}{case} \hyperlink{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7dda962a0c0955809f63df036dbd41824c54}{Dark}:
+00135     val = Lmean + (\hyperlink{class_vision_1_1_segment_a0d2c607a6064d8d8fea925fc7bfbbc53}{sigma} * Lstd) + \hyperlink{class_vision_1_1_segment_a1338fc42ead26c6b1dd661f4281f5674}{thresholdOffset};
+00136     \textcolor{keywordflow}{if} (val < 0) \{
+00137       val = 0;
+00138     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (val > 255) \{
+00139       val = 255;
+00140     \}
+00141     T.first = (\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar})val;
+00142     \textcolor{keywordflow}{break};
+00143   \}
+00144 
+00145   \textcolor{keywordflow}{return} T.first;
+00146 \}
+00147 
+\hypertarget{_segment_8cpp_source_l00153}{}\hyperlink{class_vision_1_1_segment_a513af00e29683fa172ce1844ffd7f98f}{00153} \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_segment_a4272ceb22f9cb20c6f65d9536149d3c0}{Segment::ConvertToBW}(\textcolor{keyword}{const} Mat &src, Mat &dst, 
+      \hyperlink{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7dd}{TypeOfObjects} Typeobjects) \{
+00154   \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg} = src;
+00155   \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.create(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.size(), CV\_8UC1);
+00156   \hyperlink{class_vision_1_1_segment_a4daa143f6cd4a753d3bbe45c6a67d27f}{LabelledImg}.create(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.size(), CV\_16UC1);
+00157   \hyperlink{class_vision_1_1_segment_a4272ceb22f9cb20c6f65d9536149d3c0}{ConvertToBW}(Typeobjects);
+00158   dst = \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg};
+00159 \}
+00160 
+\hypertarget{_segment_8cpp_source_l00164}{}\hyperlink{class_vision_1_1_segment_a4272ceb22f9cb20c6f65d9536149d3c0}{00164} \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_segment_a4272ceb22f9cb20c6f65d9536149d3c0}{Segment::ConvertToBW}(\hyperlink{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7dd}{TypeOfObjects} Typeobjects) \{
+00165   \textcolor{comment}{// Determine the threshold}
+00166   \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} T = \hyperlink{class_vision_1_1_segment_a1b15d616db9cbdcd0b07bb267f60895b}{GetThresholdLevel}(Typeobjects);
+00167 
+00168   \textcolor{comment}{// Threshold the picture}
+00169   \hyperlink{class_vision_1_1_segment_a1d486dd3b67e1e1208c9ca04be8f6659}{Threshold}(T, Typeobjects);
+00170 \}
+00171 
+\hypertarget{_segment_8cpp_source_l00176}{}\hyperlink{class_vision_1_1_segment_a1d486dd3b67e1e1208c9ca04be8f6659}{00176} \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_segment_a1d486dd3b67e1e1208c9ca04be8f6659}{Segment::Threshold}(\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} t, \hyperlink{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7dd}{TypeOfObjects} Typeobjects) \{
+00177   \textcolor{comment}{// Exception handling}
+00178   \hyperlink{_image_processing_8h_a27c4e53b88a0f9f2c097add555131056}{EMPTY\_CHECK}(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg});
+00179   CV\_Assert(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.depth() != \textcolor{keyword}{sizeof}(\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}) ||
+00180             \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.depth() != \textcolor{keyword}{sizeof}(uint16\_t));
+00181 
+00182   \textcolor{comment}{// Create LUT}
+00183   \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} LUT\_newValue[256]\{0\};
+00184   \textcolor{keywordflow}{if} (Typeobjects == \hyperlink{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7ddad37a09a08a5a4fdf88cb15f21e5ff28b}{Bright}) \{
+00185     \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = t; i < 256; i++) \{
+00186       LUT\_newValue[i] = 1;
+00187     \}
+00188   \} \textcolor{keywordflow}{else} \{
+00189     \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i <= t; i++) \{
+00190       LUT\_newValue[i] = 1;
+00191     \}
+00192   \}
+00193 
+00194   \textcolor{comment}{// Create the pointers to the data}
+00195   \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *P = \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.data;
+00196   \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *O = \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.data;
+00197 
+00198   \textcolor{comment}{// Fills the ProcessedImg with either a 0 or 1}
+00199   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.cols * \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.rows; i++) \{
+00200     P[i] = LUT\_newValue[O[i]];
+00201   \}
+00202 \}
+00203 
+\hypertarget{_segment_8cpp_source_l00208}{}\hyperlink{class_vision_1_1_segment_ae3349aa3725f883943fb316c0d52752d}{00208} \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_segment_ae3349aa3725f883943fb316c0d52752d}{Segment::SetBorder}(\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *P, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} setValue) \{
+00209   \textcolor{comment}{// Exception handling}
+00210   \hyperlink{_image_processing_8h_a27c4e53b88a0f9f2c097add555131056}{EMPTY\_CHECK}(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg});
+00211   CV\_Assert(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.depth() != \textcolor{keyword}{sizeof}(\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}) ||
+00212             \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.depth() != \textcolor{keyword}{sizeof}(uint16\_t));
+00213 
+00214   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} nData = \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.cols * \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.rows;
+00215 
+00216   \textcolor{comment}{// Set borderPixels to 2}
+00217   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0;
+00218   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} pEnd = \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.cols + 1;
+00219 
+00220   \textcolor{comment}{// Set the top row to value 2}
+00221   \textcolor{keywordflow}{while} (i < pEnd) \{
+00222     P[i++] = setValue;
+00223   \}
+00224 
+00225   \textcolor{comment}{// Set the bottom row to value 2}
+00226   i = nData + 1;
+00227   pEnd = nData - \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.cols;
+00228   \textcolor{keywordflow}{while} (i-- > pEnd) \{
+00229     P[i] = setValue;
+00230   \}
+00231 
+00232   \textcolor{comment}{// Sets the first and the last Column to 2}
+00233   i = 1;
+00234   pEnd = \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.rows;
+00235   \textcolor{keywordflow}{while} (i < pEnd) \{
+00236     P[(i * \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.cols) - 1] = setValue;
+00237     P[(i++ * \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.cols)] = setValue;
+00238   \}
+00239 \}
+00240 
+\hypertarget{_segment_8cpp_source_l00245}{}\hyperlink{class_vision_1_1_segment_a65a50340b5a1a0fb08a1b5749b7145b6}{00245} \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_segment_a65a50340b5a1a0fb08a1b5749b7145b6}{Segment::RemoveBorderBlobs}(\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} border, \textcolor{keywordtype}{bool} chain) \{
+00246   CV\_Assert(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.depth() != \textcolor{keyword}{sizeof}(\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}));
+00247   \hyperlink{_image_processing_8h_a27c4e53b88a0f9f2c097add555131056}{EMPTY\_CHECK}(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg});
+00248   \textcolor{comment}{// make Pointers}
+00249   \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *O;
+00250   \hyperlink{_image_processing_8h_a6e6f0183cb53c76ef458d4fd34e07bcd}{CHAIN\_PROCESS}(chain, O, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar});
+00251   \textcolor{keywordflow}{if} (chain) \{
+00252     \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg} = \hyperlink{class_vision_1_1_image_processing_a5371ad8d6f7aac9d43ee5c902ade7435}{TempImg}.clone();
+00253   \} \textcolor{keywordflow}{else} \{
+00254     \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg} = \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.clone();
+00255   \}
+00256 
+00257   \hyperlink{_vision_debug_8h_aae864fa4f990213a4184a209ff236202}{SHOW\_DEBUG\_IMG}(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}, 255, \textcolor{stringliteral}{"Original Image RemoverBorderBlobs!
+      "},
+00258                  \textcolor{keyword}{true});
+00259   \hyperlink{_vision_debug_8h_aae864fa4f990213a4184a209ff236202}{SHOW\_DEBUG\_IMG}(\hyperlink{class_vision_1_1_image_processing_a5371ad8d6f7aac9d43ee5c902ade7435}{TempImg}, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}, 255, \textcolor{stringliteral}{"Temp Image RemoverBorderBlobs!"}, \textcolor{keyword}{true});
+00260 
+00261   \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *P = \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.data;
+00262   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} cols = \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.cols;
+00263   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} rows = \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.rows;
+00264 
+00265   \textcolor{keywordflow}{try} \{
+00266     \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i < border; i++) \{
+00267       \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} j = 0; j < cols; j++) \{
+00268         \textcolor{keywordflow}{if} (O[(i * cols) + j] == 1 && P[(i * cols) + j] != 2) \{
+00269           cv::floodFill(\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}, cv::Point(j, i), (\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar})2);
+00270         \}
+00271       \}
+00272     \}
+00273 
+00274     \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = rows - border - 1; i < rows; i++) \{
+00275       \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} j = 0; j < cols; j++) \{
+00276         \textcolor{keywordflow}{if} (O[(i * cols) + j] == 1 && P[(i * cols) + j] != 2) \{
+00277           cv::floodFill(\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}, cv::Point(j, i), (\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar})2);
+00278         \}
+00279       \}
+00280     \}
+00281 
+00282     \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = border; i < rows - border; i++) \{
+00283       \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} j = 0; j < border; j++) \{
+00284         \textcolor{keywordflow}{if} (O[(i * cols) + j] == 1 && P[(i * cols) + j] != 2) \{
+00285           cv::floodFill(\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}, cv::Point(j, i), (\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar})2);
+00286         \}
+00287         \textcolor{keywordflow}{if} (O[(i * cols) + (cols - j - 1)] == 1 &&
+00288             P[(i * cols) + (cols - j - 1)] != 2) \{
+00289           cv::floodFill(\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}, cv::Point(cols - j - 1, i), (
+      \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar})2);
+00290         \}
+00291       \}
+00292     \}
+00293   \} \textcolor{keywordflow}{catch} (cv::Exception &e) \{
+00294   \}
+00295   \hyperlink{_vision_debug_8h_aae864fa4f990213a4184a209ff236202}{SHOW\_DEBUG\_IMG}(\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}, 255,
+00296                  \textcolor{stringliteral}{"Processed Image RemoverBorderBlobs before LUT!"}, \textcolor{keyword}{true});
+00297 
+00298   \textcolor{comment}{// Change values 2 -> 0}
+00299   \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} LUT\_newValue[3]\{0, 1, 0\};
+00300   P = \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.data;
+00301   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} nData = rows * cols;
+00302   \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i < nData; i++) \{
+00303     P[i] = LUT\_newValue[P[i]];
+00304   \}
+00305 
+00306   \hyperlink{_vision_debug_8h_aae864fa4f990213a4184a209ff236202}{SHOW\_DEBUG\_IMG}(\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}, 255,
+00307                  \textcolor{stringliteral}{"Processed Image RemoverBorderBlobs!"}, \textcolor{keyword}{true});
+00308 \}
+00309 
+\hypertarget{_segment_8cpp_source_l00316}{}\hyperlink{class_vision_1_1_segment_ac10de08f4c3b0f8cb91f0469b6cf37c9}{00316} \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_segment_ac10de08f4c3b0f8cb91f0469b6cf37c9}{Segment::LabelBlobs}(\textcolor{keywordtype}{bool} chain, uint16\_t minBlobArea, 
+      \hyperlink{class_vision_1_1_segment_a330240c08320e72270fac0aa83d5e27e}{Connected} conn) \{
+00317   \textcolor{comment}{// Exception handling}
+00318   CV\_Assert(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.depth() != \textcolor{keyword}{sizeof}(\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}));
+00319   \hyperlink{_image_processing_8h_a27c4e53b88a0f9f2c097add555131056}{EMPTY\_CHECK}(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg});
+00320 
+00321   \textcolor{comment}{// make the Pointers to the data}
+00322   \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *O;
+00323   \textcolor{keywordflow}{if} (chain) \{
+00324     \hyperlink{class_vision_1_1_image_processing_a5371ad8d6f7aac9d43ee5c902ade7435}{TempImg} = \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.clone();
+00325     \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg} = cv::Mat(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.rows, \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.cols, CV\_16UC1);
+00326     O = (\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *)\hyperlink{class_vision_1_1_image_processing_a5371ad8d6f7aac9d43ee5c902ade7435}{TempImg}.data;
+00327   \} \textcolor{keywordflow}{else} \{
+00328     O = (\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *)\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.data;
+00329   \}
+00330   uint16\_t *P = (uint16\_t *)\hyperlink{class_vision_1_1_segment_a4daa143f6cd4a753d3bbe45c6a67d27f}{LabelledImg}.data;
+00331 
+00332   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} nCols = \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.cols;
+00333   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} nRows = \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.rows;
+00334   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} nData = nCols * nRows;
+00335 
+00336   vector<vector<uint16\_t>> CLdownstream;
+00337 
+00338   \hyperlink{class_vision_1_1_segment_a77bbb909901188d02a42c7df29186289}{ConnectedBlobs}(O, P, CLdownstream, nCols, nRows,
+00339                  conn); \textcolor{comment}{// First loop through the image}
+00340   \hyperlink{class_vision_1_1_segment_a3d369e9d8b65dc96a3d4ac5ab8887960}{SortAdjacencyList}(
+00341       CLdownstream); \textcolor{comment}{// Sort all the adjacencylists and make unique,}
+00342 
+00343   \textcolor{comment}{// identify all the lowest values in the adjacent list}
+00344   uint16\_t *valueArr = \textcolor{keyword}{new} uint16\_t[CLdownstream.size()];
+00345   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = CLdownstream.size() - 1; i >= 0; --i) \{
+00346     std::vector<uint16\_t *> route;
+00347     uint16\_t minVal = i;
+00348 
+00349     \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} j = 0; j < CLdownstream[i].size(); j++) \{
+00350 
+00351       \textcolor{comment}{// add the first node to the queue;}
+00352       route.push\_back(&CLdownstream[i][j]);
+00353 
+00354       \textcolor{comment}{// itterate till the last node}
+00355       \textcolor{keywordtype}{bool} lastNodeReached = \textcolor{keyword}{false};
+00356       \textcolor{keywordflow}{while} (!lastNodeReached) \{
+00357         \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} nodesVisited = route.size() - 1;
+00358         \textcolor{keywordflow}{if} (*route[nodesVisited] < minVal) \{
+00359           minVal = *route[nodesVisited];
+00360         \}
+00361         route.push\_back(&CLdownstream[*route[nodesVisited]][0]);
+00362         \textcolor{keywordflow}{if} (route[nodesVisited] == route[nodesVisited + 1]) \{
+00363           route.pop\_back();
+00364           lastNodeReached = \textcolor{keyword}{true};
+00365         \}
+00366       \}
+00367       \textcolor{comment}{// Set all values to the lowest value}
+00368       \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} k = 0; k < route.size(); k++) \{
+00369         *route[k] = minVal;
+00370       \}
+00371     \}
+00372     valueArr[i] = minVal;
+00373   \}
+00374 
+00375   \textcolor{comment}{// Make numbers consecutive}
+00376   \hyperlink{class_vision_1_1_segment_ad1d04c97a79dbbf1cf10e8587985e5e5}{MakeConsecutive}(valueArr, CLdownstream.size(), \hyperlink{class_vision_1_1_segment_a22d2a688de65f4d25b164f8b2a03f4a9}{MaxLabel});
+00377 
+00378   \textcolor{comment}{// Second loop through the pixels to give the values a final value}
+00379   for\_each(P, P + nData, [&](uint16\_t &V) \{ V = valueArr[V]; \});
+00380   \textcolor{keyword}{delete}[] valueArr;
+00381 \}
+00382 
+\hypertarget{_segment_8cpp_source_l00389}{}\hyperlink{class_vision_1_1_segment_a427f6a51ce04127927ae60d8b9ba8e12}{00389} \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_segment_ad002015511d2d8a4d42106c14e163623}{Segment::GetEdges}(\textcolor{keyword}{const} Mat &src, Mat &dst, \textcolor{keywordtype}{bool} chain, 
+      \hyperlink{class_vision_1_1_segment_a330240c08320e72270fac0aa83d5e27e}{Connected} conn) \{
+00390   \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg} = src;
+00391   \hyperlink{class_vision_1_1_segment_ad002015511d2d8a4d42106c14e163623}{GetEdges}(chain, conn);
+00392   dst = \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg};
+00393 \}
+00394 
+\hypertarget{_segment_8cpp_source_l00399}{}\hyperlink{class_vision_1_1_segment_ad002015511d2d8a4d42106c14e163623}{00399} \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_segment_ad002015511d2d8a4d42106c14e163623}{Segment::GetEdges}(\textcolor{keywordtype}{bool} chain, \hyperlink{class_vision_1_1_segment_a330240c08320e72270fac0aa83d5e27e}{Connected} conn) \{
+00400   \textcolor{comment}{// Exception handling}
+00401   CV\_Assert(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.depth() != \textcolor{keyword}{sizeof}(\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}));
+00402   \hyperlink{_image_processing_8h_a27c4e53b88a0f9f2c097add555131056}{EMPTY\_CHECK}(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg});
+00403 
+00404   \textcolor{comment}{// make Pointers}
+00405   \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *O;
+00406   \hyperlink{_image_processing_8h_a6e6f0183cb53c76ef458d4fd34e07bcd}{CHAIN\_PROCESS}(chain, O, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar});
+00407   \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *P = \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.data;
+00408 
+00409   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} nCols = \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.cols;
+00410   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} nRows = \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.rows;
+00411   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} nData = nCols * nRows;
+00412   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} pEnd = nData + 1;
+00413   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0;
+00414 
+00415   \textcolor{comment}{// Loop through the image and set each pixel which has a zero neighbor set it}
+00416   \textcolor{comment}{// to two.}
+00417   \textcolor{keywordflow}{if} (conn == \hyperlink{class_vision_1_1_segment_a330240c08320e72270fac0aa83d5e27ea1fca5ab1c285c0edd2bdc3072cab0c01}{Four}) \{
+00418     \textcolor{comment}{// Loop through the picture}
+00419     \textcolor{keywordflow}{while} (i < pEnd) \{
+00420       \textcolor{comment}{// If current value = zero processed value = zero}
+00421       \textcolor{keywordflow}{if} (O[i] == 0) \{
+00422         P[i] = 0;
+00423       \}
+00424       \textcolor{comment}{// If current value = 1 check North West, South and East and act}
+00425       \textcolor{comment}{// accordingly}
+00426       \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (O[i] == 1) \{
+00427         \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *nPixels = \textcolor{keyword}{new} \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}[4];
+00428         nPixels[0] = O[i - 1];
+00429         nPixels[1] = O[i - nCols];
+00430         nPixels[2] = O[i + 1];
+00431         nPixels[3] = O[i + nCols];
+00432 
+00433         \textcolor{comment}{// Sort the neighbors for easier checking}
+00434         SoilMath::Sort::QuickSort<uchar>(nPixels, 4);
+00435         \textcolor{keywordflow}{if} (nPixels[0] == 0) \{
+00436           P[i] = 1;
+00437         \} \textcolor{keywordflow}{else} \{
+00438           P[i] = 0;
+00439         \}
+00440         \textcolor{keyword}{delete}[] nPixels;
+00441       \} \textcolor{keywordflow}{else} \{
+00442         \textcolor{keywordflow}{throw} \hyperlink{class_vision_1_1_exception_1_1_pixel_value_out_of_bound_exception}{Exception::PixelValueOutOfBoundException}();
+00443       \}
+00444       i++;
+00445     \}
+00446   \} \textcolor{keywordflow}{else} \{
+00447     \textcolor{comment}{// Loop through the picture}
+00448     \textcolor{keywordflow}{while} (i < pEnd) \{
+00449       \textcolor{comment}{// If current value = zero processed value = zero}
+00450       \textcolor{keywordflow}{if} (O[i] == 0) \{
+00451         P[i] = 0;
+00452       \}
+00453       \textcolor{comment}{// If current value = 1 check North West, South and East and act}
+00454       \textcolor{comment}{// accordingly}
+00455       \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (O[i] == 1) \{
+00456         \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *nPixels = \textcolor{keyword}{new} \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}[8];
+00457         nPixels[0] = O[i - 1];
+00458         nPixels[1] = O[i - nCols];
+00459         nPixels[2] = O[i - nCols - 1];
+00460         nPixels[3] = O[i - nCols + 1];
+00461         nPixels[4] = O[i + 1];
+00462         nPixels[5] = O[i + nCols + 1];
+00463         nPixels[6] = O[i + nCols];
+00464         nPixels[7] = O[i + nCols - 1];
+00465 
+00466         \textcolor{comment}{// Sort the neighbors for easier checking}
+00467         SoilMath::Sort::QuickSort<uchar>(nPixels, 8);
+00468 
+00469         \textcolor{keywordflow}{if} (nPixels[0] == 0) \{
+00470           P[i] = 1;
+00471         \} \textcolor{keywordflow}{else} \{
+00472           P[i] = 0;
+00473         \}
+00474         \textcolor{keyword}{delete}[] nPixels;
+00475       \} \textcolor{keywordflow}{else} \{
+00476         \textcolor{keywordflow}{throw} \hyperlink{class_vision_1_1_exception_1_1_pixel_value_out_of_bound_exception}{Exception::PixelValueOutOfBoundException}();
+00477       \}
+00478       i++;
+00479     \}
+00480   \}
+00481 \}
+00482 
+\hypertarget{_segment_8cpp_source_l00483}{}\hyperlink{class_vision_1_1_segment_af4fe7471c44ded04653f8e3f74162c86}{00483} \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_segment_af4fe7471c44ded04653f8e3f74162c86}{Segment::GetEdgesEroding}(\textcolor{keywordtype}{bool} chain) \{
+00484   \textcolor{comment}{// Exception handling}
+00485   CV\_Assert(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.depth() != \textcolor{keyword}{sizeof}(\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}));
+00486   \hyperlink{_image_processing_8h_a27c4e53b88a0f9f2c097add555131056}{EMPTY\_CHECK}(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg});
+00487 
+00488   \textcolor{comment}{// make Pointers}
+00489   \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *O;
+00490   \hyperlink{_image_processing_8h_a6e6f0183cb53c76ef458d4fd34e07bcd}{CHAIN\_PROCESS}(chain, O, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar});
+00491   \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *P = \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.data;
+00492 
+00493   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} nCols = \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.cols;
+00494   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} nRows = \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.rows;
+00495   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} nData = nCols * nRows;
+00496 
+00497   \textcolor{comment}{// Setup the erosion}
+00498   \hyperlink{class_vision_1_1_morphological_filter}{MorphologicalFilter} eroder;
+00499   \textcolor{keywordflow}{if} (chain) \{
+00500     eroder.\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg} = \hyperlink{class_vision_1_1_image_processing_a5371ad8d6f7aac9d43ee5c902ade7435}{TempImg};
+00501   \} \textcolor{keywordflow}{else} \{
+00502     eroder.\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg} = \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg};
+00503   \}
+00504   \textcolor{comment}{// Setup the processed image of the eroder}
+00505   eroder.\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.create(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.size(), CV\_8UC1);
+00506   eroder.\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.setTo(0);
+00507   \textcolor{comment}{// Setup the mask}
+00508   Mat mask(3, 3, CV\_8UC1, 1);
+00509   \textcolor{comment}{// Erode the image}
+00510   eroder.\hyperlink{class_vision_1_1_morphological_filter_a62ad82519dc19be6367193a5d539c98b}{Erosion}(mask, \textcolor{keyword}{false});
+00511 
+00512   \textcolor{comment}{// Loop through the image and set the not eroded pixels to zero}
+00513   \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i < nData; i++) \{
+00514     \textcolor{keywordflow}{if} (O[i] != eroder.\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.data[i]) \{
+00515       P[i] = 1;
+00516     \} \textcolor{keywordflow}{else} \{
+00517       P[i] = 0;
+00518     \}
+00519   \}
+00520 
+00521   \textcolor{comment}{// ProcessedImg = OriginalImg.clone() - eroder.ProcessedImg.clone();}
+00522 
+00523   \hyperlink{_vision_debug_8h_aae864fa4f990213a4184a209ff236202}{SHOW\_DEBUG\_IMG}(eroder.\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}, 255, \textcolor{stringliteral}{"Eroded img Processed
+       Image!"},
+00524                  \textcolor{keyword}{true});
+00525   \hyperlink{_vision_debug_8h_aae864fa4f990213a4184a209ff236202}{SHOW\_DEBUG\_IMG}(\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}, 255, \textcolor{stringliteral}{"GetEdgesEroding Processed Image!
+      "},
+00526                  \textcolor{keyword}{true});
+00527 \}
+00528 
+\hypertarget{_segment_8cpp_source_l00534}{}\hyperlink{class_vision_1_1_segment_a6dba1b8506fe7e8054e99ea5330d4abc}{00534} \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_segment_a6dba1b8506fe7e8054e99ea5330d4abc}{Segment::GetBlobList}(\textcolor{keywordtype}{bool} chain, \hyperlink{class_vision_1_1_segment_a330240c08320e72270fac0aa83d5e27e}{Connected} conn) \{
+00535   \textcolor{comment}{// Exception handling}
+00536   CV\_Assert(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.depth() != \textcolor{keyword}{sizeof}(\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}));
+00537   \hyperlink{_image_processing_8h_a27c4e53b88a0f9f2c097add555131056}{EMPTY\_CHECK}(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg});
+00538 
+00539   \textcolor{comment}{// If there isn't a labelledImg make one}
+00540   \textcolor{keywordflow}{if} (\hyperlink{class_vision_1_1_segment_a22d2a688de65f4d25b164f8b2a03f4a9}{MaxLabel} < 1) \{
+00541     \hyperlink{class_vision_1_1_segment_ac10de08f4c3b0f8cb91f0469b6cf37c9}{LabelBlobs}(chain, 5, conn);
+00542   \}
+00543 
+00544   \textcolor{comment}{// Make an empty BlobList}
+00545   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} nCols = \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.cols;
+00546   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} nRows = \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.rows;
+00547   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} nData = nCols * nRows;
+00548   \hyperlink{class_vision_1_1_segment_aaaa7a3b37f6fa4402bc1309e9bf74bec}{RectList\_t} rectList;
+00549 
+00550   \textcolor{comment}{// Calculate Stats the statistics}
+00551   \hyperlink{class_soil_math_1_1_stats}{uint16Stat\_t} LabelStats((uint16\_t *)\hyperlink{class_vision_1_1_segment_a4daa143f6cd4a753d3bbe45c6a67d27f}{LabelledImg}.data, 
+      \hyperlink{class_vision_1_1_segment_a4daa143f6cd4a753d3bbe45c6a67d27f}{LabelledImg}.cols,
+00552                           \hyperlink{class_vision_1_1_segment_a4daa143f6cd4a753d3bbe45c6a67d27f}{LabelledImg}.rows, \hyperlink{class_vision_1_1_segment_a22d2a688de65f4d25b164f8b2a03f4a9}{MaxLabel} + 1, 0, 
+      \hyperlink{class_vision_1_1_segment_a22d2a688de65f4d25b164f8b2a03f4a9}{MaxLabel});
+00553 
+00554   \hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{BlobList}.reserve(LabelStats.\hyperlink{class_soil_math_1_1_stats_a0db07157ff238d0d40c4e1f4d67afd46}{EndBin});
+00555   rectList.reserve(LabelStats.\hyperlink{class_soil_math_1_1_stats_a0db07157ff238d0d40c4e1f4d67afd46}{EndBin});
+00556 
+00557   \hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{BlobList}.push\_back(\hyperlink{class_vision_1_1_segment_add6c81230e499b159218c5232e3b76ae}{Blob\_t}(0, 0));
+00558   rectList.push\_back(\hyperlink{class_vision_1_1_segment_af9428422a82edaab8a1e5ba59acc8c16}{Rect\_t}(0, 0, 0, 0));
+00559 
+00560   \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 1; i < LabelStats.\hyperlink{class_soil_math_1_1_stats_a0db07157ff238d0d40c4e1f4d67afd46}{EndBin}; i++) \{
+00561     \hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{BlobList}.push\_back(\hyperlink{class_vision_1_1_segment_add6c81230e499b159218c5232e3b76ae}{Blob\_t}(i, LabelStats.\hyperlink{class_soil_math_1_1_stats_a00778b298b1ebb335eb0c4eed69e471c}{bins}[i]));
+00562     rectList.push\_back(\hyperlink{class_vision_1_1_segment_af9428422a82edaab8a1e5ba59acc8c16}{Rect\_t}(nCols, nRows, 0, 0));
+00563   \}
+00564 
+00565   \textcolor{comment}{// make Pointers}
+00566   uint16\_t *L = (uint16\_t *)\hyperlink{class_vision_1_1_segment_a4daa143f6cd4a753d3bbe45c6a67d27f}{LabelledImg}.data;
+00567 
+00568   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} currentX, currentY;
+00569   \textcolor{comment}{// uint16\_t leftX, leftY, rightX, rightY;}
+00570   \textcolor{comment}{// Loop through the labeled image and extract the Blobs}
+00571   for (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i < nData; i++) \{
+00572     \textcolor{keywordflow}{if} (L[i] != 0) \{
+00573       \textcolor{comment}{/* Determine the current x and y value of the current blob and}
+00574 \textcolor{comment}{      checks if it is min/max */}
+00575       currentY = i / nCols;
+00576       currentX = i % nCols;
+00577 
+00578       \textcolor{comment}{// Min value}
+00579       \textcolor{keywordflow}{if} (currentX < rectList[L[i]].leftX) \{
+00580         rectList[L[i]].leftX = currentX;
+00581       \}
+00582       \textcolor{keywordflow}{if} (currentY < rectList[L[i]].leftY) \{
+00583         rectList[L[i]].leftY = currentY;
+00584       \}
+00585 
+00586       \textcolor{comment}{// Max value}
+00587       \textcolor{keywordflow}{if} (currentX > rectList[L[i]].rightX) \{
+00588         rectList[L[i]].rightX = currentX;
+00589       \}
+00590       \textcolor{keywordflow}{if} (currentY > rectList[L[i]].rightY) \{
+00591         rectList[L[i]].rightY = currentY;
+00592       \}
+00593     \}
+00594   \}
+00595 
+00596   \textcolor{comment}{// Loop through the BlobList and finalize it}
+00597   uint8\_t *LUT\_filter = \textcolor{keyword}{new} uint8\_t[\hyperlink{class_vision_1_1_segment_a22d2a688de65f4d25b164f8b2a03f4a9}{MaxLabel} + 1]\{\};
+00598   \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 1; i <= \hyperlink{class_vision_1_1_segment_a22d2a688de65f4d25b164f8b2a03f4a9}{MaxLabel}; i++) \{
+00599     LUT\_filter[i] = 1;
+00600     \hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{BlobList}[i].ROI.y = rectList[i].leftY;
+00601     \hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{BlobList}[i].ROI.x = rectList[i].leftX;
+00602     \hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{BlobList}[i].ROI.height = rectList[i].rightY - rectList[i].leftY + 1;
+00603     \hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{BlobList}[i].ROI.width = rectList[i].rightX - rectList[i].leftX + 1;
+00604     \hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{BlobList}[i].Img = CopyMat<uint8\_t, uint16\_t>(
+00605         \hyperlink{class_vision_1_1_segment_a4daa143f6cd4a753d3bbe45c6a67d27f}{LabelledImg}(\hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{BlobList}[i].ROI).clone(), LUT\_filter, CV\_8UC1);
+00606     \textcolor{comment}{//SHOW\_DEBUG\_IMG(BlobList[i].Img, uchar, 255, "Blob", true);}
+00607     LUT\_filter[i] = 0;
+00608   \}
+00609   \textcolor{keyword}{delete}[] LUT\_filter;
+00610 
+00611   \textcolor{comment}{// Remove background blob}
+00612   \hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{BlobList}.erase(\hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{BlobList}.begin());
+00613 \}
+00614 
+\hypertarget{_segment_8cpp_source_l00615}{}\hyperlink{class_vision_1_1_segment_a9b1476507a27dbef21acca64efd217b8}{00615} \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_segment_a9b1476507a27dbef21acca64efd217b8}{Segment::FillHoles}(\textcolor{keywordtype}{bool} chain) \{
+00616   \textcolor{comment}{// Exception handling}
+00617   CV\_Assert(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.depth() != \textcolor{keyword}{sizeof}(\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}));
+00618   \hyperlink{_image_processing_8h_a27c4e53b88a0f9f2c097add555131056}{EMPTY\_CHECK}(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg});
+00619 
+00620   \textcolor{comment}{// make Pointers}
+00621   \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *O;
+00622   \hyperlink{_image_processing_8h_a6e6f0183cb53c76ef458d4fd34e07bcd}{CHAIN\_PROCESS}(chain, O, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar});
+00623   \textcolor{keywordflow}{if} (chain) \{
+00624     \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg} = \hyperlink{class_vision_1_1_image_processing_a5371ad8d6f7aac9d43ee5c902ade7435}{TempImg}.clone();
+00625   \} \textcolor{keywordflow}{else} \{
+00626     \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg} = \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.clone();
+00627   \}
+00628 
+00629   \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *P = \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.data;
+00630 
+00631   \textcolor{comment}{// Determine the starting point of the floodfill}
+00632   \textcolor{keywordtype}{int} itt = -1;
+00633   \textcolor{keywordflow}{while} (P[++itt] != 0)
+00634     ;
+00635   uint16\_t row = \textcolor{keyword}{static\_cast<}uint16\_t\textcolor{keyword}{>}(itt / \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.rows);
+00636   uint16\_t col = \textcolor{keyword}{static\_cast<}uint16\_t\textcolor{keyword}{>}(itt % \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.rows);
+00637 
+00638   \textcolor{comment}{// Fill the outside}
+00639   \textcolor{keywordflow}{try} \{
+00640     cv::floodFill(\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}, cv::Point(col, row), cv::Scalar(2));
+00641   \} \textcolor{keywordflow}{catch} (cv::Exception &e) \{
+00642   \}
+00643 
+00644   \textcolor{comment}{// Set the unreached areas to 1 and the outside to 0;}
+00645   \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} LUT\_newVal[3] = \{1, 1, 0\};
+00646   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} nData = \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.rows * \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.cols;
+00647   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0;
+00648   \textcolor{keywordflow}{while} (i <= nData) \{
+00649     P[i] = LUT\_newVal[P[i]];
+00650     i++;
+00651   \}
+00652 \}
+00653 
+\hypertarget{_segment_8cpp_source_l00658}{}\hyperlink{class_vision_1_1_segment_a3d369e9d8b65dc96a3d4ac5ab8887960}{00658} \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_segment_a3d369e9d8b65dc96a3d4ac5ab8887960}{Segment::SortAdjacencyList}(std::vector<std::vector<uint16\_t>> &adj) \{
+00659   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} j = 0;
+00660   for\_each(adj.begin(), adj.end(), [&](std::vector<uint16\_t> &L) \{
+00661     std::sort(L.begin(), L.end());
+00662     std::vector<uint16\_t>::iterator it;
+00663     it = std::unique(L.begin(), L.end());
+00664     L.resize(std::distance(L.begin(), it));
+00665     \textcolor{keywordflow}{if} (L.size() > 1) \{
+00666       \textcolor{keywordflow}{for} (std::vector<uint16\_t>::iterator iter = L.begin(); iter != L.end();
+00667            ++iter) \{
+00668         \textcolor{keywordflow}{if} (*iter == j) \{
+00669           L.erase(iter);
+00670           \textcolor{keywordflow}{break};
+00671         \}
+00672       \}
+00673     \}
+00674     j++;
+00675   \});
+00676 \}
+00677 
+\hypertarget{_segment_8cpp_source_l00688}{}\hyperlink{class_vision_1_1_segment_a77bbb909901188d02a42c7df29186289}{00688} \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_segment_a77bbb909901188d02a42c7df29186289}{Segment::ConnectedBlobs}(\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *O, uint16\_t *P,
+00689                              std::vector<std::vector<uint16\_t>> &adj,
+00690                              \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} nCols, \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} nRows, 
+      \hyperlink{class_vision_1_1_segment_a330240c08320e72270fac0aa83d5e27e}{Connected} conn) \{
+00691   \textcolor{comment}{// Determine the size of the array for beginning and endrow and middle of a}
+00692   \textcolor{comment}{// row}
+00693   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} noConn[3] = \{\textcolor{keyword}{static\_cast<}\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t}\textcolor{keyword}{>}(conn),
+00694                         (static\_cast<uint32\_t>(conn) / 2),
+00695                         (static\_cast<uint32\_t>(conn) / 2) + 1\};
+00696   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} lastConn[3] = \{noConn[0] - 1, noConn[1] - 1, noConn[2] - 1\};
+00697   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} nData = nCols * nRows;
+00698 
+00699   uint16\_t currentlbl = 0;
+00700   vector<uint16\_t> zeroVector;
+00701   zeroVector.push\_back(currentlbl);
+00702   adj.push\_back(zeroVector);
+00703 
+00704   \textcolor{comment}{// Determine which borderpixels should be handled differently}
+00705   \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *nRow = \textcolor{keyword}{new} \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}[nData]\{\};
+00706   \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = nCols; i < nData; i += nCols) \{
+00707     nRow[i] = 1;
+00708     nRow[i - 1] = 2;
+00709   \}
+00710 
+00711   \textcolor{comment}{// Set the first pixel}
+00712   \textcolor{keywordflow}{if} (O[0] == 0) \{
+00713     P[0] = 0;
+00714   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (O[0] == 1) \{
+00715     P[0] = 1;
+00716   \} \textcolor{keywordflow}{else} \{
+00717     \textcolor{keywordflow}{throw} \hyperlink{class_vision_1_1_exception_1_1_pixel_value_out_of_bound_exception}{Exception::PixelValueOutOfBoundException}();
+00718   \}
+00719 
+00720   \textcolor{comment}{// Walk through the toprow and determine if it's a new blob or it's connected}
+00721   \textcolor{comment}{// with previously determine blob}
+00722   \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 1; i < nCols; i++) \{
+00723     \textcolor{keywordflow}{if} (O[i] == 0) \{
+00724       P[i] = 0;
+00725     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (O[i] == 1) \{
+00726       \textcolor{comment}{// If West is zero assume this is a new blob}
+00727       \textcolor{keywordflow}{if} (P[i - 1] == 0) \{
+00728         P[i] = ++currentlbl;
+00729         vector<uint16\_t> cVector;
+00730         cVector.push\_back(currentlbl);
+00731         adj.push\_back(cVector);
+00732       \} \textcolor{keywordflow}{else} \{ \textcolor{comment}{// set as previous blob}
+00733         P[i] = P[i - 1];
+00734       \}
+00735     \} \textcolor{keywordflow}{else} \{ \textcolor{comment}{// Value of of bounds}
+00736       \textcolor{keywordflow}{throw} \hyperlink{class_vision_1_1_exception_1_1_pixel_value_out_of_bound_exception}{Exception::PixelValueOutOfBoundException}();
+00737     \}
+00738   \}
+00739 
+00740   \textcolor{comment}{// walk through each pixel and determine if it's a new blob or it's connected}
+00741   \textcolor{comment}{// with previously determine blob}
+00742   \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.cols; i < nData; i++) \{
+00743     \textcolor{keywordflow}{if} (O[i] == 0) \{ \textcolor{comment}{// Original pixel = 0}
+00744       P[i] = 0;
+00745     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (O[i] == 1) \{
+00746       \textcolor{comment}{// Get an array of Neighboring Pixels}
+00747       uint16\_t *nPixels = \textcolor{keyword}{new} uint16\_t[noConn[nRow[i]]];
+00748       \textcolor{keywordflow}{if} (nRow[i] != 1) \{
+00749         nPixels[0] = P[i - 1];
+00750       \}
+00751       \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} j = i - nCols - ((nRow[i] == 1) ? 0 : ((conn == \hyperlink{class_vision_1_1_segment_a330240c08320e72270fac0aa83d5e27ea1fca5ab1c285c0edd2bdc3072cab0c01}{Four}) ? 0 : 1));
+00752       for\_each(nPixels + ((nRow[i] != 1) ? 1 : 0), nPixels + noConn[nRow[i]],
+00753                [&](uint16\_t &N) \{ N = P[j++]; \});
+00754 
+00755       \textcolor{comment}{// Sort the neighbors for easier checking}
+00756       SoilMath::Sort::QuickSort<uint16\_t>(nPixels, noConn[nRow[i]]);
+00757 
+00758       \textcolor{comment}{// If all are zero assume this is a new blob}
+00759       \textcolor{keywordflow}{if} (nPixels[lastConn[nRow[i]]] == 0) \{
+00760         P[i] = ++currentlbl;
+00761         vector<uint16\_t> cVector;
+00762         cVector.push\_back(currentlbl);
+00763         adj.push\_back(cVector);
+00764       \} \textcolor{keywordflow}{else} \{
+00765         \textcolor{comment}{/* Sets the processed value to the smallest non-zero value and update}
+00766 \textcolor{comment}{         * the connectedLabels */}
+00767         \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} j = 0; j < noConn[nRow[i]]; j++) \{
+00768           \textcolor{keywordflow}{if} (nPixels[j] > 0) \{
+00769             P[i] = nPixels[j];
+00770             \textcolor{keywordflow}{break};
+00771           \}
+00772         \}
+00773 
+00774         \textcolor{comment}{/* If previous blobs belong to different connected components set the}
+00775 \textcolor{comment}{         * current processed value to the lowest value and remember that the}
+00776 \textcolor{comment}{         * other values should be the lowest value*/}
+00777         \textcolor{keywordflow}{if} (P[i] != nPixels[lastConn[nRow[i]]]) \{
+00778           \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = lastConn[nRow[i]]; j >= 0; --j) \{
+00779             \textcolor{keywordflow}{if} (nPixels[j] <= P[i]) \{
+00780               \textcolor{keywordflow}{break};
+00781             \} \textcolor{keywordflow}{else} \{
+00782               adj[nPixels[j]].push\_back(P[i]);
+00783             \}
+00784           \}
+00785         \}
+00786       \}
+00787       \textcolor{keyword}{delete}[] nPixels;
+00788     \} \textcolor{keywordflow}{else} \{
+00789       \textcolor{keywordflow}{throw} \hyperlink{class_vision_1_1_exception_1_1_pixel_value_out_of_bound_exception}{Exception::PixelValueOutOfBoundException}();
+00790     \}
+00791   \}
+00792   \textcolor{keyword}{delete}[] nRow;
+00793 \}
+00794 
+\hypertarget{_segment_8cpp_source_l00801}{}\hyperlink{class_vision_1_1_segment_aac70975917e231c4879ff4f837ac9f73}{00801} \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_segment_aac70975917e231c4879ff4f837ac9f73}{Segment::InvertAdjacencyList}(std::vector<std::vector<uint16\_t>> &adj,
+00802                                   std::vector<std::vector<uint16\_t>> &adjInv) \{
+00803   \textcolor{comment}{// Build the inverted vector}
+00804   adjInv.resize(adj.size());
+00805   uint16\_t count = 0;
+00806   for\_each(adj.begin(), adj.end(), [&](std::vector<uint16\_t> &V) \{
+00807     for\_each(V.begin(), V.end(),
+00808              [&](uint16\_t &C) \{ adjInv[C].push\_back(count); \});
+00809     count++;
+00810   \});
+00811 \}
+00812 
+\hypertarget{_segment_8cpp_source_l00819}{}\hyperlink{class_vision_1_1_segment_ad1d04c97a79dbbf1cf10e8587985e5e5}{00819} \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_segment_ad1d04c97a79dbbf1cf10e8587985e5e5}{Segment::MakeConsecutive}(uint16\_t *valueArr, 
+      \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} noElem,
+00820                               uint16\_t &maxLabel) \{
+00821   std::vector<std::vector<uint16\_t>> conseq;
+00822   conseq.resize(noElem);
+00823   \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i < noElem; i++) \{
+00824     conseq[valueArr[i]].push\_back(i);
+00825   \}
+00826   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} count = 1;
+00827   \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 1; i < noElem; i++) \{
+00828     \textcolor{keywordflow}{if} (conseq[i].size() > 0) \{
+00829       \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} j = 0; j < conseq[i].size(); j++) \{
+00830         valueArr[conseq[i][j]] = count;
+00831       \}
+00832       count++;
+00833     \}
+00834   \}
+00835   maxLabel = count - 1;
+00836 \}
+00837 
+\hypertarget{_segment_8cpp_source_l00845}{}\hyperlink{class_vision_1_1_segment_abbcd44154f3be5c7a0ee7fec67838f59}{00845} \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_segment_ad1d04c97a79dbbf1cf10e8587985e5e5}{Segment::MakeConsecutive}(uint16\_t *valueArr, uint16\_t *keyArr,
+00846                               uint16\_t noElem, uint16\_t &maxlabel) \{
+00847   SoilMath::Sort::QuickSort<uint16\_t>(valueArr, keyArr, noElem);
+00848   uint16\_t count = 0;
+00849   \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 1; i < noElem; i++) \{
+00850     \textcolor{keywordflow}{if} (valueArr[i] != valueArr[i - 1]) \{
+00851       count++;
+00852     \}
+00853     valueArr[i] = count;
+00854   \}
+00855   SoilMath::Sort::QuickSort<uint16\_t>(keyArr, valueArr, noElem);
+00856   \textcolor{keyword}{delete}[] keyArr;
+00857   maxlabel = count;
+00858 \}
+00859 \}
+\end{DoxyCode}

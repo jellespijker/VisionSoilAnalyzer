@@ -1,0 +1,97 @@
+\hypertarget{analyzer_8h_source}{}\subsection{analyzer.\+h}
+\label{analyzer_8h_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Analyzer/analyzer.\+h@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Analyzer/analyzer.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/* Copyright (C) Jelle Spijker - All Rights Reserved}
+00002 \textcolor{comment}{ * Unauthorized copying of this file, via any medium is strictly prohibited}
+00003 \textcolor{comment}{ * and only allowed with the written consent of the author (Jelle Spijker)}
+00004 \textcolor{comment}{ * This software is proprietary and confidential}
+00005 \textcolor{comment}{ * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015}
+00006 \textcolor{comment}{ */}
+00007 
+00008 \textcolor{preprocessor}{#pragma once}
+\hypertarget{analyzer_8h_source_l00009}{}\hyperlink{analyzer_8h_a7376114637d76e3bb5d1e28c37d7de94}{00009} \textcolor{preprocessor}{#define STARTING\_ESTIMATE\_PROGRESS 300}
+00010 \textcolor{preprocessor}{#ifndef DEBUG}
+00011 \textcolor{comment}{//#define DEBUG}
+00012 \textcolor{preprocessor}{#endif}
+00013 
+00014 \textcolor{preprocessor}{#include <opencv2/core.hpp>}
+00015 \textcolor{preprocessor}{#include <opencv2/imgproc.hpp>}
+00016 \textcolor{preprocessor}{#include <vector>}
+00017 \textcolor{preprocessor}{#include <cmath>}
+00018 
+00019 \textcolor{preprocessor}{#include "\hyperlink{sample_8h}{sample.h}"}
+00020 \textcolor{preprocessor}{#include "\hyperlink{soilsettings_8h}{soilsettings.h}"}
+00021 \textcolor{preprocessor}{#include "\hyperlink{soilanalyzerexception_8h}{soilanalyzerexception.h}"}
+00022 
+00023 \textcolor{preprocessor}{#include "\hyperlink{_soil_math_8h}{SoilMath.h}"}
+00024 
+00025 \textcolor{preprocessor}{#include <QtCore/QObject>}
+00026 \textcolor{preprocessor}{#include <QThread>}
+00027 \textcolor{preprocessor}{#include <QtConcurrent>}
+00028 
+00029 \textcolor{preprocessor}{#include "\hyperlink{_vision_8h}{Vision.h}"}
+00030 
+00031 \textcolor{keyword}{namespace }\hyperlink{namespace_soil_analyzer}{SoilAnalyzer} \{
+\hypertarget{analyzer_8h_source_l00032}{}\hyperlink{class_soil_analyzer_1_1_analyzer}{00032} \textcolor{keyword}{class }\hyperlink{class_soil_analyzer_1_1_analyzer}{Analyzer} : \textcolor{keyword}{public} QObject \{
+00033   Q\_OBJECT
+00034 
+00035 \textcolor{keyword}{public}:
+\hypertarget{analyzer_8h_source_l00036}{}\hyperlink{class_soil_analyzer_1_1_analyzer_a43c2a39174daac9059e48860936e38f3}{00036}   \textcolor{keywordtype}{bool} \hyperlink{class_soil_analyzer_1_1_analyzer_a43c2a39174daac9059e48860936e38f3}{PredictShape} = \textcolor{keyword}{true};
+\hypertarget{analyzer_8h_source_l00037}{}\hyperlink{class_soil_analyzer_1_1_analyzer_a8fb13bb3f69f3f87e1cb61e453c8f5b3}{00037}   \textcolor{keywordtype}{float} \hyperlink{class_soil_analyzer_1_1_analyzer_a8fb13bb3f69f3f87e1cb61e453c8f5b3}{CurrentSIfactor} = 0.0111915;
+\hypertarget{analyzer_8h_source_l00038}{}\hyperlink{class_soil_analyzer_1_1_analyzer_a144dea5736f2c1e2d86c9f655910be1f}{00038}   \textcolor{keywordtype}{bool} \hyperlink{class_soil_analyzer_1_1_analyzer_a144dea5736f2c1e2d86c9f655910be1f}{SIfactorDet} = \textcolor{keyword}{false};
+\hypertarget{analyzer_8h_source_l00039}{}\hyperlink{struct_soil_analyzer_1_1_analyzer_1_1_image__t}{00039}   \textcolor{keyword}{struct }\hyperlink{struct_soil_analyzer_1_1_analyzer_1_1_image__t}{Image\_t} \{
+\hypertarget{analyzer_8h_source_l00040}{}\hyperlink{struct_soil_analyzer_1_1_analyzer_1_1_image__t_aea2974c543b090703237f17d0c192699}{00040}     cv::Mat \hyperlink{struct_soil_analyzer_1_1_analyzer_1_1_image__t_aea2974c543b090703237f17d0c192699}{FrontLight};
+\hypertarget{analyzer_8h_source_l00041}{}\hyperlink{struct_soil_analyzer_1_1_analyzer_1_1_image__t_a504fc04b0d64945e742c9ac7a48f2598}{00041}     cv::Mat \hyperlink{struct_soil_analyzer_1_1_analyzer_1_1_image__t_a504fc04b0d64945e742c9ac7a48f2598}{BackLight};
+\hypertarget{analyzer_8h_source_l00042}{}\hyperlink{struct_soil_analyzer_1_1_analyzer_1_1_image__t_a7b7c4dfb4d2ed5da141feed7cfc9cfe9}{00042}     \textcolor{keywordtype}{float} \hyperlink{struct_soil_analyzer_1_1_analyzer_1_1_image__t_a7b7c4dfb4d2ed5da141feed7cfc9cfe9}{SIPixelFactor} = 0.0111915;
+00043   \}; 
+\hypertarget{analyzer_8h_source_l00045}{}\hyperlink{class_soil_analyzer_1_1_analyzer_a55e2c84ab42cb967d718dd18295c1f91}{00045}   \textcolor{keyword}{typedef} std::vector<Image\_t> \hyperlink{class_soil_analyzer_1_1_analyzer_a55e2c84ab42cb967d718dd18295c1f91}{Images\_t}; 
+\hypertarget{analyzer_8h_source_l00046}{}\hyperlink{class_soil_analyzer_1_1_analyzer_a483f7f65076cdbafe109ddfdfa2a0640}{00046}   Images\_t *\hyperlink{class_soil_analyzer_1_1_analyzer_a483f7f65076cdbafe109ddfdfa2a0640}{Snapshots} = \textcolor{keyword}{nullptr};         
+\hypertarget{analyzer_8h_source_l00047}{}\hyperlink{class_soil_analyzer_1_1_analyzer_a0a17b8f11ce60cd5b22d03b9925ee16e}{00047}   \hyperlink{class_soil_analyzer_1_1_soil_settings}{SoilSettings} *\hyperlink{class_soil_analyzer_1_1_analyzer_a0a17b8f11ce60cd5b22d03b9925ee16e}{Settings} = \textcolor{keyword}{nullptr};      
+\hypertarget{analyzer_8h_source_l00049}{}\hyperlink{class_soil_analyzer_1_1_analyzer_af80f9fa5784aa6518b3cf80de2c430fe}{00049}   \hyperlink{class_soil_analyzer_1_1_sample}{Sample} *\hyperlink{class_soil_analyzer_1_1_analyzer_af80f9fa5784aa6518b3cf80de2c430fe}{Results}; 
+00051   \hyperlink{class_soil_analyzer_1_1_analyzer_a4e67707b0c63f6898f753dd1f2e08e6a}{Analyzer}(Images\_t *snapshots, \hyperlink{class_soil_analyzer_1_1_sample}{Sample} *results, \hyperlink{class_soil_analyzer_1_1_soil_settings}{SoilSettings} *settings);
+00052 
+00053   \textcolor{keywordtype}{void} \hyperlink{class_soil_analyzer_1_1_analyzer_a1cb605c255d35e85ccaae06a76917188}{Analyse}();
+00054   \textcolor{keywordtype}{void} \hyperlink{class_soil_analyzer_1_1_analyzer_a1cb605c255d35e85ccaae06a76917188}{Analyse}(Images\_t *snapshots, \hyperlink{class_soil_analyzer_1_1_sample}{Sample} *results, \hyperlink{class_soil_analyzer_1_1_soil_settings}{SoilSettings} *settings);
+00055   \textcolor{keywordtype}{float} \hyperlink{class_soil_analyzer_1_1_analyzer_a79914fb56b7d9b71ae2fa049329f9413}{CalibrateSI}(\textcolor{keywordtype}{float} SI, cv::Mat &img);
+00056 
+\hypertarget{analyzer_8h_source_l00057}{}\hyperlink{class_soil_analyzer_1_1_analyzer_aef988b5c2c2349b544dabe8882c8931a}{00057}   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} \hyperlink{class_soil_analyzer_1_1_analyzer_aef988b5c2c2349b544dabe8882c8931a}{MaxProgress} = \hyperlink{analyzer_8h_a7376114637d76e3bb5d1e28c37d7de94}{STARTING\_ESTIMATE\_PROGRESS}; 
+\hypertarget{analyzer_8h_source_l00059}{}\hyperlink{class_soil_analyzer_1_1_analyzer_a6ea3af4b49fef5b5f289bcc2046e615e}{00059}   \hyperlink{class_soil_math_1_1_n_n}{SoilMath::NN} \hyperlink{class_soil_analyzer_1_1_analyzer_a6ea3af4b49fef5b5f289bcc2046e615e}{NeuralNet}; 
+00061 signals:
+00062   \textcolor{keywordtype}{void} \hyperlink{class_soil_analyzer_1_1_analyzer_a808a8c21029471c4af0be996cb67d14c}{on\_progressUpdate}(\textcolor{keywordtype}{int} value);    
+00063   \textcolor{keywordtype}{void} \hyperlink{class_soil_analyzer_1_1_analyzer_ac22302563bb30934efe2365831d5a1a6}{on\_maxProgressUpdate}(\textcolor{keywordtype}{int} value); 
+00064   \textcolor{keywordtype}{void} \hyperlink{class_soil_analyzer_1_1_analyzer_a49245eaf7ee46c065e0a1a71135b6904}{on\_AnalysisFinished}();           
+00066 \textcolor{keyword}{private}:
+\hypertarget{analyzer_8h_source_l00067}{}\hyperlink{class_soil_analyzer_1_1_analyzer_a068a9d419064799836bb8caff60a2141}{00067}   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} \hyperlink{class_soil_analyzer_1_1_analyzer_a068a9d419064799836bb8caff60a2141}{currentProgress} = 0;   
+\hypertarget{analyzer_8h_source_l00068}{}\hyperlink{class_soil_analyzer_1_1_analyzer_a9cf8e0b0a007a986d2b5d1e2653e43bf}{00068}   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} \hyperlink{class_soil_analyzer_1_1_analyzer_a9cf8e0b0a007a986d2b5d1e2653e43bf}{currentParticleID} = 0; 
+\hypertarget{analyzer_8h_source_l00069}{}\hyperlink{class_soil_analyzer_1_1_analyzer_a5a8ee87a3017f91d7624ad700d2c14c6}{00069}   \textcolor{keywordtype}{double} \hyperlink{class_soil_analyzer_1_1_analyzer_a5a8ee87a3017f91d7624ad700d2c14c6}{BinRanges}[15]\{0.0,  0.038, 0.045, 0.063, 0.075, 0.09, 0.125, 0.18,
+00070                       0.25, 0.355, 0.5,   0.71,  1.0,   1.4,  2.0\};
+00071 
+\hypertarget{analyzer_8h_source_l00072}{}\hyperlink{class_soil_analyzer_1_1_analyzer_a5a88bb8ae9ce9a8a1e199f3760f9db48}{00072}   \hyperlink{class_soil_math_1_1_f_f_t}{SoilMath::FFT} \hyperlink{class_soil_analyzer_1_1_analyzer_a5a88bb8ae9ce9a8a1e199f3760f9db48}{fft}; 
+00074   \textcolor{keywordtype}{void} \hyperlink{class_soil_analyzer_1_1_analyzer_a9c4225822dd3c0ff246f5d81cfead0d4}{CalcMaxProgress}();
+00075   \textcolor{keywordtype}{void} \hyperlink{class_soil_analyzer_1_1_analyzer_a0c9b739e2147ffc18f241e0eb542b487}{CalcMaxProgressAnalyze}();
+00076   \textcolor{keywordtype}{void} \hyperlink{class_soil_analyzer_1_1_analyzer_a5b299a425580620ba409112971bc787e}{PrepImages}();
+00077   \textcolor{keywordtype}{void} \hyperlink{class_soil_analyzer_1_1_analyzer_a13975656889dddd31bb9cff565fd3c9f}{GetBW}(std::vector<cv::Mat> &images, std::vector<cv::Mat> &BWvector);
+00078   \textcolor{keywordtype}{void} \hyperlink{class_soil_analyzer_1_1_analyzer_a13975656889dddd31bb9cff565fd3c9f}{GetBW}(cv::Mat &img, cv::Mat &BW);
+00079 
+00080   \textcolor{keywordtype}{void} \hyperlink{class_soil_analyzer_1_1_analyzer_a0d15b639bbfa2becde2dbf5605d00757}{GetEnhancedInt}(Images\_t *snapshots,
+00081                       std::vector<cv::Mat> &intensityVector);
+00082   \textcolor{keywordtype}{void} \hyperlink{class_soil_analyzer_1_1_analyzer_a0d15b639bbfa2becde2dbf5605d00757}{GetEnhancedInt}(cv::Mat &img, cv::Mat &intensity);
+00083 
+00084   \textcolor{keywordtype}{void} \hyperlink{class_soil_analyzer_1_1_analyzer_af014193f37cc1cac631491687c292060}{GetParticles}(std::vector<cv::Mat> &BW, Images\_t *snapshots,
+00085                       \hyperlink{class_soil_analyzer_1_1_particle_a4e43dab999d36d5a5f809bb4be5ff3a7}{Particle::ParticleVector\_t} &partPopulation);
+00086   \textcolor{keywordtype}{void} \hyperlink{class_soil_analyzer_1_1_analyzer_acfe01406c180dd154fefbe13e7f18a4d}{GetParticlesFromBlobList}(
+      \hyperlink{class_vision_1_1_segment_a60e08251e2ab94239e245044c31cde51}{Vision::Segment::BlobList\_t} &bloblist,
+00087                                 \hyperlink{struct_soil_analyzer_1_1_analyzer_1_1_image__t}{Image\_t} *snapshot,
+00088                                 \hyperlink{class_soil_analyzer_1_1_particle_a4e43dab999d36d5a5f809bb4be5ff3a7}{Particle::ParticleVector\_t} &partPopulation);
+00089 
+00090   \textcolor{keywordtype}{void} \hyperlink{class_soil_analyzer_1_1_analyzer_a9b143f9920d90ecd54a3b0bb3b0e28fc}{CleanUpMatVector}(std::vector<cv::Mat> &mv);
+00091   \textcolor{keywordtype}{void} \hyperlink{class_soil_analyzer_1_1_analyzer_a9b143f9920d90ecd54a3b0bb3b0e28fc}{CleanUpMatVector}(Images\_t *mv);
+00092 
+00093   \textcolor{keywordtype}{void} \hyperlink{class_soil_analyzer_1_1_analyzer_aeed5e3b158ff37d5fecb2816e12c3c31}{GetFFD}(\hyperlink{class_soil_analyzer_1_1_particle_a4e43dab999d36d5a5f809bb4be5ff3a7}{Particle::ParticleVector\_t} &particalPopulation);
+00094 
+00095   \textcolor{keywordtype}{void} \hyperlink{class_soil_analyzer_1_1_analyzer_a7eb1a2676660f536b366f9aaf1326f80}{GetPrediction}(\hyperlink{class_soil_analyzer_1_1_particle_a4e43dab999d36d5a5f809bb4be5ff3a7}{Particle::ParticleVector\_t} &particlePopulation)
+      ;
+00096 \};
+00097 \}
+\end{DoxyCode}

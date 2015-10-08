@@ -1,0 +1,59 @@
+\hypertarget{_soil_math_types_8h_source}{}\subsection{Soil\+Math\+Types.\+h}
+\label{_soil_math_types_8h_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Math/\+Soil\+Math\+Types.\+h@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Math/\+Soil\+Math\+Types.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/* Copyright (C) Jelle Spijker - All Rights Reserved}
+00002 \textcolor{comment}{ * Unauthorized copying of this file, via any medium is strictly prohibited}
+00003 \textcolor{comment}{ * and only allowed with the written consent of the author (Jelle Spijker)}
+00004 \textcolor{comment}{ * This software is proprietary and confidential}
+00005 \textcolor{comment}{ * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015}
+00006 \textcolor{comment}{ */}
+00007 \textcolor{preprocessor}{#pragma once}
+00008 
+\hypertarget{_soil_math_types_8h_source_l00009}{}\hyperlink{_soil_math_types_8h_aa5e1eb1a998e5ed69af2076cf318df4b}{00009} \textcolor{preprocessor}{#define GENE\_MAX 32  }
+\hypertarget{_soil_math_types_8h_source_l00010}{}\hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{00010} \textcolor{preprocessor}{#define CROSSOVER 16 }
+00012 \textcolor{preprocessor}{#include <stdint.h>}
+00013 \textcolor{preprocessor}{#include <bitset>}
+00014 \textcolor{preprocessor}{#include <vector>}
+00015 \textcolor{preprocessor}{#include <complex>}
+00016 \textcolor{preprocessor}{#include <valarray>}
+00017 \textcolor{preprocessor}{#include <array>}
+00018 
+\hypertarget{_soil_math_types_8h_source_l00019}{}\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{00019} \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar};   
+\hypertarget{_soil_math_types_8h_source_l00020}{}\hyperlink{_soil_math_types_8h_ab95f123a6c9bcfee6a343170ef8c5f69}{00020} \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} \hyperlink{_soil_math_types_8h_ab95f123a6c9bcfee6a343170ef8c5f69}{ushort}; 
+\hypertarget{_soil_math_types_8h_source_l00021}{}\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{00021} \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t};
+00022 
+\hypertarget{_soil_math_types_8h_source_l00023}{}\hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{00023} \textcolor{keyword}{typedef} std::complex<double> \hyperlink{_soil_math_types_8h_a26c307796ad803485b0376c90026d8f7}{Complex\_t};       
+\hypertarget{_soil_math_types_8h_source_l00024}{}\hyperlink{_soil_math_types_8h_a7567e521c2b2c408dcb62dbff72390f7}{00024} \textcolor{keyword}{typedef} std::vector<Complex\_t> \hyperlink{_soil_math_types_8h_a7567e521c2b2c408dcb62dbff72390f7}{ComplexVect\_t}; 
+\hypertarget{_soil_math_types_8h_source_l00025}{}\hyperlink{_soil_math_types_8h_a5118c9f6b02a06945c93a3893e51febe}{00025} \textcolor{keyword}{typedef} std::valarray<Complex\_t> \hyperlink{_soil_math_types_8h_a5118c9f6b02a06945c93a3893e51febe}{ComplexArray\_t}; 
+\hypertarget{_soil_math_types_8h_source_l00026}{}\hyperlink{_soil_math_types_8h_a1ade796add2f13888dfa9e6bde0bdc37}{00026} \textcolor{keyword}{typedef} std::vector<uint32\_t> \hyperlink{_soil_math_types_8h_a1ade796add2f13888dfa9e6bde0bdc37}{iContour\_t};        
+\hypertarget{_soil_math_types_8h_source_l00027}{}\hyperlink{_soil_math_types_8h_a58f6ab36d2cb0527a73caec36d14a0e0}{00027} \textcolor{keyword}{typedef} std::bitset<GENE\_MAX> \hyperlink{_soil_math_types_8h_a58f6ab36d2cb0527a73caec36d14a0e0}{Genome\_t}; 
+00028 \textcolor{keyword}{typedef} std::pair<std::bitset<CROSSOVER>, std::bitset<\hyperlink{_soil_math_types_8h_aa5e1eb1a998e5ed69af2076cf318df4b}{GENE\_MAX} - 
+      \hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER}>>
+\hypertarget{_soil_math_types_8h_source_l00029}{}\hyperlink{_soil_math_types_8h_a44bbe64bbeb237fd8918433d5f6f85b7}{00029}     \hyperlink{_soil_math_types_8h_a44bbe64bbeb237fd8918433d5f6f85b7}{SplitGenome\_t}; 
+\hypertarget{_soil_math_types_8h_source_l00031}{}\hyperlink{_soil_math_types_8h_ac56ad2b88186620fd0de0d213aa715dd}{00031} \textcolor{keyword}{typedef} std::vector<float> \hyperlink{_soil_math_types_8h_ac56ad2b88186620fd0de0d213aa715dd}{Weight\_t};     
+\hypertarget{_soil_math_types_8h_source_l00032}{}\hyperlink{_soil_math_types_8h_a1447b70c8b8604a379eb96cdce9d2152}{00032} \textcolor{keyword}{typedef} std::vector<Genome\_t> \hyperlink{_soil_math_types_8h_a1447b70c8b8604a379eb96cdce9d2152}{GenVect\_t}; 
+\hypertarget{_soil_math_types_8h_source_l00033}{}\hyperlink{struct_pop_member_struct}{00033} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\hyperlink{struct_pop_member_struct}{PopMemberStruct} \{
+\hypertarget{_soil_math_types_8h_source_l00034}{}\hyperlink{struct_pop_member_struct_aeba960170ef60a906c730cc24cd90367}{00034}   \hyperlink{_soil_math_types_8h_ac56ad2b88186620fd0de0d213aa715dd}{Weight\_t} \hyperlink{struct_pop_member_struct_aeba960170ef60a906c730cc24cd90367}{weights};       
+\hypertarget{_soil_math_types_8h_source_l00035}{}\hyperlink{struct_pop_member_struct_a072fadb4863e0cf77b55ad3b46b62522}{00035}   \hyperlink{_soil_math_types_8h_a1447b70c8b8604a379eb96cdce9d2152}{GenVect\_t} \hyperlink{struct_pop_member_struct_a072fadb4863e0cf77b55ad3b46b62522}{weightsGen};   
+\hypertarget{_soil_math_types_8h_source_l00036}{}\hyperlink{struct_pop_member_struct_a8e76eeb476bc89f765b1d872d399fe0c}{00036}   \textcolor{keywordtype}{float} \hyperlink{struct_pop_member_struct_a8e76eeb476bc89f765b1d872d399fe0c}{Calculated} = 0.0; 
+\hypertarget{_soil_math_types_8h_source_l00037}{}\hyperlink{struct_pop_member_struct_a750ec8010731e3e2a876051475c31b14}{00037}   \textcolor{keywordtype}{float} \hyperlink{struct_pop_member_struct_a750ec8010731e3e2a876051475c31b14}{Fitness} = 0.0;    
+00038 \} \hyperlink{_soil_math_types_8h_a7ded6c03705047ebe50207b22395dcd1}{PopMember\_t};            
+\hypertarget{_soil_math_types_8h_source_l00039}{}\hyperlink{_soil_math_types_8h_a8d2d4c736cf817d048a2d66dec8b12ec}{00039} \textcolor{keyword}{typedef} std::vector<PopMember\_t> \hyperlink{_soil_math_types_8h_a8d2d4c736cf817d048a2d66dec8b12ec}{Population\_t}; 
+00040 \textcolor{keyword}{typedef} std::pair<float, float>
+\hypertarget{_soil_math_types_8h_source_l00041}{}\hyperlink{_soil_math_types_8h_aaa919636507bcd52b19efa301aa80b9a}{00041}     \hyperlink{_soil_math_types_8h_aaa919636507bcd52b19efa301aa80b9a}{MinMaxWeight\_t}; 
+\hypertarget{_soil_math_types_8h_source_l00043}{}\hyperlink{struct_predict__struct}{00043} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\hyperlink{struct_predict__struct}{Predict\_struct} \{
+\hypertarget{_soil_math_types_8h_source_l00044}{}\hyperlink{struct_predict__struct_a7d1bc56f771ba19cb333163557648714}{00044}   uint8\_t \hyperlink{struct_predict__struct_a7d1bc56f771ba19cb333163557648714}{Category} = 1; 
+\hypertarget{_soil_math_types_8h_source_l00045}{}\hyperlink{struct_predict__struct_a09932ff9ac15e4b182bf6e53232eba0f}{00045}   \textcolor{keywordtype}{float} \hyperlink{struct_predict__struct_a09932ff9ac15e4b182bf6e53232eba0f}{RealValue} = 1.;  
+\hypertarget{_soil_math_types_8h_source_l00047}{}\hyperlink{struct_predict__struct_a587f18ac05cd65437327a54261d1e22c}{00047}   \textcolor{keywordtype}{float} \hyperlink{struct_predict__struct_a587f18ac05cd65437327a54261d1e22c}{Accuracy} = 1.;   
+\hypertarget{_soil_math_types_8h_source_l00048}{}\hyperlink{struct_predict__struct_aa0708cae93baa061f21452537e86d3bd}{00048}   std::vector<float> \hyperlink{struct_predict__struct_aa0708cae93baa061f21452537e86d3bd}{OutputNeurons}; 
+\hypertarget{_soil_math_types_8h_source_l00049}{}\hyperlink{struct_predict__struct_a9e16b308d69246f0954a4a9100fc0660}{00049}   \textcolor{keywordtype}{bool} \hyperlink{struct_predict__struct_a9e16b308d69246f0954a4a9100fc0660}{ManualSet} = \textcolor{keyword}{true};
+00050 \} \hyperlink{_soil_math_types_8h_aaeba766195a440b2539f0438d3d41f95}{Predict\_t};                        
+\hypertarget{_soil_math_types_8h_source_l00051}{}\hyperlink{_soil_math_types_8h_a7791f1b8f92a964847637c5d657c1b10}{00051} \textcolor{keyword}{typedef} \hyperlink{_soil_math_types_8h_aaeba766195a440b2539f0438d3d41f95}{Predict\_t} (*\hyperlink{_soil_math_types_8h_a7791f1b8f92a964847637c5d657c1b10}{NNfunctionType})(
+00052     \hyperlink{_soil_math_types_8h_a7567e521c2b2c408dcb62dbff72390f7}{ComplexVect\_t}, \hyperlink{_soil_math_types_8h_ac56ad2b88186620fd0de0d213aa715dd}{Weight\_t}, \hyperlink{_soil_math_types_8h_ac56ad2b88186620fd0de0d213aa715dd}{Weight\_t}, \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t}, 
+      \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t},
+00053     \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t}); 
+00055 \textcolor{keyword}{typedef} std::vector<ComplexVect\_t>
+\hypertarget{_soil_math_types_8h_source_l00056}{}\hyperlink{_soil_math_types_8h_a45aa81992bf0ddf272907bd4fa0b96cf}{00056}     \hyperlink{_soil_math_types_8h_a45aa81992bf0ddf272907bd4fa0b96cf}{InputLearnVector\_t}; 
+\hypertarget{_soil_math_types_8h_source_l00057}{}\hyperlink{_soil_math_types_8h_a2d8b5a261688166d724b68addd8561e6}{00057} \textcolor{keyword}{typedef} std::vector<Predict\_t> \hyperlink{_soil_math_types_8h_a2d8b5a261688166d724b68addd8561e6}{OutputLearnVector\_t}; 
+\end{DoxyCode}

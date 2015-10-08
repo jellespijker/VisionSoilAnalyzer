@@ -1,0 +1,48 @@
+\hypertarget{qopencvqt_8h_source}{}\subsection{qopencvqt.\+h}
+\label{qopencvqt_8h_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Q\+Open\+C\+V\+Q\+T/qopencvqt.\+h@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Q\+Open\+C\+V\+Q\+T/qopencvqt.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/* Copyright (C) Jelle Spijker - All Rights Reserved}
+00002 \textcolor{comment}{ * Unauthorized copying of this file, via any medium is strictly prohibited}
+00003 \textcolor{comment}{ * and only allowed with the written consent of the author (Jelle Spijker)}
+00004 \textcolor{comment}{ * This software is proprietary and confidential}
+00005 \textcolor{comment}{ * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015}
+00006 \textcolor{comment}{ */}
+00007 
+00008 \textcolor{preprocessor}{#ifndef QOPENCVQT\_H}
+00009 \textcolor{preprocessor}{#define QOPENCVQT\_H}
+00010 
+00011 \textcolor{preprocessor}{#include <QImage>}
+00012 \textcolor{preprocessor}{#include <opencv2/core.hpp>}
+00013 \textcolor{preprocessor}{#include <opencv2/imgproc.hpp>}
+00014 \textcolor{preprocessor}{#include <vector>}
+00015 
+\hypertarget{qopencvqt_8h_source_l00016}{}\hyperlink{class_q_open_c_v_q_t}{00016} \textcolor{keyword}{class }\hyperlink{class_q_open_c_v_q_t}{QOpenCVQT}
+00017 \{
+00018 \textcolor{keyword}{public}:
+00019   \hyperlink{class_q_open_c_v_q_t_a6c108b923cac9d18ae3fd75215aca6a5}{QOpenCVQT}();
+\hypertarget{qopencvqt_8h_source_l00020}{}\hyperlink{class_q_open_c_v_q_t_a3aa480e80e8d70328811d0ac75b2df52}{00020}   \textcolor{keyword}{static} cv::Mat \hyperlink{class_q_open_c_v_q_t_a3aa480e80e8d70328811d0ac75b2df52}{WhiteBackground}(\textcolor{keyword}{const} cv::Mat &src) \{
+00021     cv::Mat dst;
+00022     cv::floodFill(src, dst, cv::Point(1,1), cv::Scalar\_<uchar>(255,255,255));
+00023     \textcolor{keywordflow}{return} dst;
+00024   \}
+00025 
+\hypertarget{qopencvqt_8h_source_l00026}{}\hyperlink{class_q_open_c_v_q_t_ab1d34f10d11fbf4ddc00ce55c0255023}{00026}   \textcolor{keyword}{static} QImage \hyperlink{class_q_open_c_v_q_t_ab1d34f10d11fbf4ddc00ce55c0255023}{Mat2QImage}(\textcolor{keyword}{const} cv::Mat &src) \{
+00027     QImage dest;
+00028     \textcolor{keywordflow}{if} (src.channels() == 1) \{
+00029       cv::Mat destRGB;
+00030       std::vector<cv::Mat> grayRGB(3, src);
+00031       cv::merge(grayRGB, destRGB);
+00032       dest = QImage((\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *)destRGB.data, destRGB.cols, destRGB.rows,
+00033                     destRGB.step, QImage::Format\_RGB888);
+00034     \} \textcolor{keywordflow}{else} \{
+00035       dest = QImage((\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *)src.data, src.cols, src.rows, src.step,
+00036                     QImage::Format\_RGB888);
+00037       dest = dest.rgbSwapped();
+00038     \}
+00039     \textcolor{keywordflow}{return} dest;
+00040   \}
+00041 \};
+00042 
+00043 \textcolor{preprocessor}{#endif // QOPENCVQT\_H}
+\end{DoxyCode}

@@ -1,0 +1,111 @@
+\hypertarget{_g_a_8h_source}{}\subsection{G\+A.\+h}
+\label{_g_a_8h_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Math/\+G\+A.\+h@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Math/\+G\+A.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/* Copyright (C) Jelle Spijker - All Rights Reserved}
+00002 \textcolor{comment}{ * Unauthorized copying of this file, via any medium is strictly prohibited}
+00003 \textcolor{comment}{ * and only allowed with the written consent of the author (Jelle Spijker)}
+00004 \textcolor{comment}{ * This software is proprietary and confidential}
+00005 \textcolor{comment}{ * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015}
+00006 \textcolor{comment}{ */}
+00007 
+00009 
+00013 \textcolor{preprocessor}{#pragma once}
+00014 
+00015 \textcolor{preprocessor}{#include <bitset>}
+00016 \textcolor{preprocessor}{#include <random>}
+00017 \textcolor{preprocessor}{#include <string>}
+00018 \textcolor{preprocessor}{#include <algorithm>}
+00019 \textcolor{preprocessor}{#include <chrono>}
+00020 \textcolor{preprocessor}{#include <math.h>}
+00021 \textcolor{preprocessor}{#include <list>}
+00022 
+00023 \textcolor{comment}{//#include "NN.h"}
+00024 \textcolor{preprocessor}{#include "\hyperlink{_soil_math_types_8h}{SoilMathTypes.h}"}
+00025 \textcolor{preprocessor}{#include "\hyperlink{_math_exception_8h}{MathException.h}"}
+00026 
+00027 \textcolor{preprocessor}{#include <QtCore/QObject>}
+00028 \textcolor{preprocessor}{#include <QDebug>}
+00029 \textcolor{preprocessor}{#include <QThread>}
+00030 \textcolor{preprocessor}{#include <QtConcurrent>}
+00031 
+00032 \textcolor{preprocessor}{#include <boost/bind.hpp>}
+00033 
+00034 \textcolor{keyword}{namespace }\hyperlink{namespace_soil_math}{SoilMath} \{
+00035 
+\hypertarget{_g_a_8h_source_l00036}{}\hyperlink{class_soil_math_1_1_g_a}{00036} \textcolor{keyword}{class }\hyperlink{class_soil_math_1_1_g_a}{GA} : \textcolor{keyword}{public} QObject \{
+00037   Q\_OBJECT
+00038 
+00039 \textcolor{keyword}{public}:
+\hypertarget{_g_a_8h_source_l00040}{}\hyperlink{class_soil_math_1_1_g_a_a82996d544a2f25b5a75ae8ba1e82d661}{00040}   \textcolor{keywordtype}{float} \hyperlink{class_soil_math_1_1_g_a_a82996d544a2f25b5a75ae8ba1e82d661}{MutationRate} = 0.075f; 
+\hypertarget{_g_a_8h_source_l00041}{}\hyperlink{class_soil_math_1_1_g_a_a381e62f146aacfa86fec6e0dc40053ab}{00041}   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} \hyperlink{class_soil_math_1_1_g_a_a381e62f146aacfa86fec6e0dc40053ab}{Elitisme} = 4;       
+\hypertarget{_g_a_8h_source_l00042}{}\hyperlink{class_soil_math_1_1_g_a_ad5d1226dba5df72a3419e9af62f4e9d9}{00042}   \textcolor{keywordtype}{float} \hyperlink{class_soil_math_1_1_g_a_ad5d1226dba5df72a3419e9af62f4e9d9}{EndError} = 0.001f;     
+\hypertarget{_g_a_8h_source_l00043}{}\hyperlink{class_soil_math_1_1_g_a_a2f3a405dfd8e11eecf581e66e7418d40}{00043}   \textcolor{keywordtype}{bool} \hyperlink{class_soil_math_1_1_g_a_a2f3a405dfd8e11eecf581e66e7418d40}{Revolution} = \textcolor{keyword}{true};
+00044 
+00048   \hyperlink{class_soil_math_1_1_g_a_a759b77fbe44fa1d5df5bcbdee9d97c4e}{GA}();
+00049 
+00060   \hyperlink{class_soil_math_1_1_g_a_a759b77fbe44fa1d5df5bcbdee9d97c4e}{GA}(\hyperlink{_soil_math_types_8h_a7791f1b8f92a964847637c5d657c1b10}{NNfunctionType} nnfunction, \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} \hyperlink{class_soil_math_1_1_g_a_ac32591e30dde5ac854ae57a7b9e33298}{inputneurons}, 
+      \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} \hyperlink{class_soil_math_1_1_g_a_a3f1eee7492f68a05b9b06ee8afb2ec20}{hiddenneurons},
+00061      \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} \hyperlink{class_soil_math_1_1_g_a_ab454f9968d5ce2a294b89f85c9d3a74f}{outputneurons});
+00062 
+00066   \hyperlink{class_soil_math_1_1_g_a_a7a7087b2c5a268a1a9bccc04600537f6}{~GA}();
+00067 
+00084   \textcolor{keywordtype}{void} \hyperlink{class_soil_math_1_1_g_a_aca448f36c1f98b4906d0754cf354cccf}{Evolve}(\textcolor{keyword}{const} \hyperlink{_soil_math_types_8h_a45aa81992bf0ddf272907bd4fa0b96cf}{InputLearnVector\_t} &\hyperlink{class_soil_math_1_1_g_a_a99276ad62b9616d0f18becc4fbb22980}{inputValues}, 
+      \hyperlink{_soil_math_types_8h_ac56ad2b88186620fd0de0d213aa715dd}{Weight\_t} &weights,
+00085               \hyperlink{_soil_math_types_8h_aaa919636507bcd52b19efa301aa80b9a}{MinMaxWeight\_t} \hyperlink{class_soil_math_1_1_g_a_a7613e87f93e42724d03008e3603cf21b}{rangeweights}, 
+      \hyperlink{_soil_math_types_8h_a2d8b5a261688166d724b68addd8561e6}{OutputLearnVector\_t} &\hyperlink{class_soil_math_1_1_g_a_a4366c8f0852e8ec2bf37b3d5324b57cb}{goal},
+00086               \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} maxGenerations = 200, \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} popSize = 30);
+00087 signals:
+00088   \textcolor{keywordtype}{void} \hyperlink{class_soil_math_1_1_g_a_a3b7d8649411ccebc8cb6f44ed1ba2365}{learnErrorUpdate}(\textcolor{keywordtype}{double} newError);
+00089 
+00090 \textcolor{keyword}{private}:
+\hypertarget{_g_a_8h_source_l00091}{}\hyperlink{class_soil_math_1_1_g_a_a9b690048c89c32e3153457378b5e1c31}{00091}   \hyperlink{_soil_math_types_8h_a7791f1b8f92a964847637c5d657c1b10}{NNfunctionType} \hyperlink{class_soil_math_1_1_g_a_a9b690048c89c32e3153457378b5e1c31}{NNfuction}; 
+\hypertarget{_g_a_8h_source_l00092}{}\hyperlink{class_soil_math_1_1_g_a_ac32591e30dde5ac854ae57a7b9e33298}{00092}   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} \hyperlink{class_soil_math_1_1_g_a_ac32591e30dde5ac854ae57a7b9e33298}{inputneurons};    
+\hypertarget{_g_a_8h_source_l00093}{}\hyperlink{class_soil_math_1_1_g_a_a3f1eee7492f68a05b9b06ee8afb2ec20}{00093}   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} \hyperlink{class_soil_math_1_1_g_a_a3f1eee7492f68a05b9b06ee8afb2ec20}{hiddenneurons};   
+\hypertarget{_g_a_8h_source_l00094}{}\hyperlink{class_soil_math_1_1_g_a_ab454f9968d5ce2a294b89f85c9d3a74f}{00094}   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} \hyperlink{class_soil_math_1_1_g_a_ab454f9968d5ce2a294b89f85c9d3a74f}{outputneurons};   
+\hypertarget{_g_a_8h_source_l00096}{}\hyperlink{class_soil_math_1_1_g_a_a7613e87f93e42724d03008e3603cf21b}{00096}   \hyperlink{_soil_math_types_8h_aaa919636507bcd52b19efa301aa80b9a}{MinMaxWeight\_t} \hyperlink{class_soil_math_1_1_g_a_a7613e87f93e42724d03008e3603cf21b}{rangeweights};
+\hypertarget{_g_a_8h_source_l00097}{}\hyperlink{class_soil_math_1_1_g_a_a99276ad62b9616d0f18becc4fbb22980}{00097}   \hyperlink{_soil_math_types_8h_a45aa81992bf0ddf272907bd4fa0b96cf}{InputLearnVector\_t} \hyperlink{class_soil_math_1_1_g_a_a99276ad62b9616d0f18becc4fbb22980}{inputValues};
+\hypertarget{_g_a_8h_source_l00098}{}\hyperlink{class_soil_math_1_1_g_a_a4366c8f0852e8ec2bf37b3d5324b57cb}{00098}   \hyperlink{_soil_math_types_8h_a2d8b5a261688166d724b68addd8561e6}{OutputLearnVector\_t} \hyperlink{class_soil_math_1_1_g_a_a4366c8f0852e8ec2bf37b3d5324b57cb}{goal};
+00099 
+\hypertarget{_g_a_8h_source_l00100}{}\hyperlink{class_soil_math_1_1_g_a_af8fab109094e0730304ba1c462b4e2bf}{00100}   \textcolor{keywordtype}{float} \hyperlink{class_soil_math_1_1_g_a_af8fab109094e0730304ba1c462b4e2bf}{minOptim} = 0;
+\hypertarget{_g_a_8h_source_l00101}{}\hyperlink{class_soil_math_1_1_g_a_a99565a1789513769c2cf0e6971854ef6}{00101}   \textcolor{keywordtype}{float} \hyperlink{class_soil_math_1_1_g_a_a99565a1789513769c2cf0e6971854ef6}{maxOptim} = 0;
+\hypertarget{_g_a_8h_source_l00102}{}\hyperlink{class_soil_math_1_1_g_a_a9ee328c3a2d3f43b8fccabb06e5ebb18}{00102}   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} \hyperlink{class_soil_math_1_1_g_a_a9ee328c3a2d3f43b8fccabb06e5ebb18}{oldElit} = 0;
+\hypertarget{_g_a_8h_source_l00103}{}\hyperlink{class_soil_math_1_1_g_a_a437db38d6fdb7953a5d83f120b020130}{00103}   \textcolor{keywordtype}{float} \hyperlink{class_soil_math_1_1_g_a_a437db38d6fdb7953a5d83f120b020130}{oldMutation} = 0.;
+\hypertarget{_g_a_8h_source_l00104}{}\hyperlink{class_soil_math_1_1_g_a_a1e78adf31886d887ae192537e68aa236}{00104}   std::list<double> \hyperlink{class_soil_math_1_1_g_a_a1e78adf31886d887ae192537e68aa236}{last10Gen};
+\hypertarget{_g_a_8h_source_l00105}{}\hyperlink{class_soil_math_1_1_g_a_ad1d08c52d5160714a997bcd30de028e3}{00105}   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} \hyperlink{class_soil_math_1_1_g_a_ad1d08c52d5160714a997bcd30de028e3}{currentGeneration} = 0;
+\hypertarget{_g_a_8h_source_l00106}{}\hyperlink{class_soil_math_1_1_g_a_a8883b6114388bb8a992b7f057ec565a8}{00106}   \textcolor{keywordtype}{bool} \hyperlink{class_soil_math_1_1_g_a_a8883b6114388bb8a992b7f057ec565a8}{revolutionOngoing} = \textcolor{keyword}{false};
+00107 
+00117   \hyperlink{_soil_math_types_8h_a8d2d4c736cf817d048a2d66dec8b12ec}{Population\_t} \hyperlink{class_soil_math_1_1_g_a_a141afd2573d2323f67915e6cea4f1a9f}{Genesis}(\textcolor{keyword}{const} \hyperlink{_soil_math_types_8h_ac56ad2b88186620fd0de0d213aa715dd}{Weight\_t} &weights, 
+      \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} popSize);
+00118 
+00130   \textcolor{keywordtype}{void} \hyperlink{class_soil_math_1_1_g_a_abf408d603b2afb188a6d265eb6309b69}{CrossOver}(\hyperlink{_soil_math_types_8h_a8d2d4c736cf817d048a2d66dec8b12ec}{Population\_t} &pop);
+00131 
+00138   \textcolor{keywordtype}{void} \hyperlink{class_soil_math_1_1_g_a_a489f2afd54086c14f45b654aeec0fe3c}{Mutate}(\hyperlink{_soil_math_types_8h_a8d2d4c736cf817d048a2d66dec8b12ec}{Population\_t} &pop);
+00139 
+00153   \textcolor{keywordtype}{void} \hyperlink{class_soil_math_1_1_g_a_a7b84b10bfb6069fe44bbd137e3a9dbb0}{GrowToAdulthood}(\hyperlink{_soil_math_types_8h_a8d2d4c736cf817d048a2d66dec8b12ec}{Population\_t} &pop, \textcolor{keywordtype}{float} &totalFitness);
+00154 
+00168   \textcolor{keywordtype}{bool} \hyperlink{class_soil_math_1_1_g_a_ac2c10631815408d044738f678c67e98b}{SurvivalOfTheFittest}(\hyperlink{_soil_math_types_8h_a8d2d4c736cf817d048a2d66dec8b12ec}{Population\_t} &pop, \textcolor{keywordtype}{float} &totalFitness);
+00169 
+\hypertarget{_g_a_8h_source_l00178}{}\hyperlink{class_soil_math_1_1_g_a_a1e950022fa3ea792a36cbc62f9b8528b}{00178}   \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \hyperlink{class_soil_math_1_1_g_a_a1e950022fa3ea792a36cbc62f9b8528b}{PopMemberSort}(\hyperlink{struct_pop_member_struct}{PopMember\_t} i, \hyperlink{struct_pop_member_struct}{PopMember\_t} j) \{
+00179     \textcolor{keywordflow}{return} (i.\hyperlink{struct_pop_member_struct_a750ec8010731e3e2a876051475c31b14}{Fitness} < j.\hyperlink{struct_pop_member_struct_a750ec8010731e3e2a876051475c31b14}{Fitness});
+00180   \}
+00181 
+00190   \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>
+\hypertarget{_g_a_8h_source_l00191}{}\hyperlink{class_soil_math_1_1_g_a_a360250150f348af461259baf41477899}{00191}   \textcolor{keyword}{inline} \hyperlink{_soil_math_types_8h_a58f6ab36d2cb0527a73caec36d14a0e0}{Genome\_t} \hyperlink{class_soil_math_1_1_g_a_a360250150f348af461259baf41477899}{ConvertToGenome}(T value, std::pair<T, T> range) \{
+00192     \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} intVal = \textcolor{keyword}{static\_cast<}\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t}\textcolor{keyword}{>}(
+00193         (UINT32\_MAX * (range.first + value)) / (range.second - range.first));
+00194     \hyperlink{_soil_math_types_8h_a58f6ab36d2cb0527a73caec36d14a0e0}{Genome\_t} retVal(intVal);
+00195     \textcolor{keywordflow}{return} retVal;
+00196   \}
+00197 
+00204   \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>
+\hypertarget{_g_a_8h_source_l00205}{}\hyperlink{class_soil_math_1_1_g_a_aa4a6f59bd2e88d432a94d0159b8e8914}{00205}   \textcolor{keyword}{inline} T \hyperlink{class_soil_math_1_1_g_a_aa4a6f59bd2e88d432a94d0159b8e8914}{ConvertToValue}(\hyperlink{_soil_math_types_8h_a58f6ab36d2cb0527a73caec36d14a0e0}{Genome\_t} gen, std::pair<T, T> range) \{
+00206     T retVal =
+00207         range.first +
+00208         (((range.second - range.first) * static\_cast<T>(gen.to\_ulong())) /
+00209          UINT32\_MAX);
+00210     \textcolor{keywordflow}{return} retVal;
+00211   \}
+00212 \};
+00213 \}
+\end{DoxyCode}

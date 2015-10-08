@@ -1,0 +1,81 @@
+\hypertarget{psd_8h_source}{}\subsection{psd.\+h}
+\label{psd_8h_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Math/psd.\+h@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Math/psd.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/* Copyright (C) Jelle Spijker - All Rights Reserved}
+00002 \textcolor{comment}{ * Unauthorized copying of this file, via any medium is strictly prohibited}
+00003 \textcolor{comment}{ * and only allowed with the written consent of the author (Jelle Spijker)}
+00004 \textcolor{comment}{ * This software is proprietary and confidential}
+00005 \textcolor{comment}{ * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015}
+00006 \textcolor{comment}{ */}
+00007 
+00008 \textcolor{preprocessor}{#pragma once}
+00009 
+00010 \textcolor{preprocessor}{#include "\hyperlink{_stats_8h}{Stats.h}"}
+00011 \textcolor{preprocessor}{#include <boost/serialization/base\_object.hpp>}
+00012 
+00013 \textcolor{keyword}{namespace }\hyperlink{namespace_soil_math}{SoilMath} \{
+\hypertarget{psd_8h_source_l00014}{}\hyperlink{class_soil_math_1_1_p_s_d}{00014} \textcolor{keyword}{class }\hyperlink{class_soil_math_1_1_p_s_d}{PSD} : \textcolor{keyword}{public} \hyperlink{class_soil_math_1_1_stats}{SoilMath::Stats}<double, double, long double> \{
+00015 \textcolor{keyword}{private}:
+\hypertarget{psd_8h_source_l00016}{}\hyperlink{class_soil_math_1_1_p_s_d_adec9cd4f565f8edb2bc2c91d5d53e584}{00016}   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} \hyperlink{class_soil_math_1_1_p_s_d_adec9cd4f565f8edb2bc2c91d5d53e584}{DetBin}(\textcolor{keywordtype}{float} value) \{
+00017     \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = \hyperlink{class_soil_math_1_1_stats_a4202c9085eacaff2e04eda84fc90e92b}{noBins} - 1;
+00018     \textcolor{keywordflow}{while} (i > 0) \{
+00019       \textcolor{keywordflow}{if} (value > \hyperlink{class_soil_math_1_1_stats_a0d452c96b6f499f054432bd3b52d1302}{BinRanges}[i]) \{
+00020         \textcolor{keywordflow}{return} i;
+00021       \}
+00022       i--;
+00023     \}
+00024     \textcolor{keywordflow}{return} 0;
+00025   \}
+00026 
+\hypertarget{psd_8h_source_l00027}{}\hyperlink{class_soil_math_1_1_p_s_d_aa8809250300c581de1e67118156c5255}{00027}   \textcolor{keywordtype}{void} \hyperlink{class_soil_math_1_1_p_s_d_aa8809250300c581de1e67118156c5255}{BasicCalculatePSD}() \{
+00028     \textcolor{keywordtype}{float} sum\_dev = 0.0;
+00029     \hyperlink{class_soil_math_1_1_stats_a7bc57af334b68253832ebac17f85d091}{n} = \hyperlink{class_soil_math_1_1_stats_a0e462c013f12f02e31e9ae03334151c3}{Rows} * \hyperlink{class_soil_math_1_1_stats_a971f1ec23c32137805c4577f05454d83}{Cols};
+00030     \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i < \hyperlink{class_soil_math_1_1_stats_a7bc57af334b68253832ebac17f85d091}{n}; i++) \{
+00031       \textcolor{keywordflow}{if} (\hyperlink{class_soil_math_1_1_stats_affce366ceab8419a3f732e3c3a358f65}{Data}[i] > \hyperlink{class_soil_math_1_1_stats_ad49ee1f533564ec587cf98a094b8c564}{max}) \{
+00032         \hyperlink{class_soil_math_1_1_stats_ad49ee1f533564ec587cf98a094b8c564}{max} = \hyperlink{class_soil_math_1_1_stats_affce366ceab8419a3f732e3c3a358f65}{Data}[i];
+00033       \}
+00034       \textcolor{keywordflow}{if} (\hyperlink{class_soil_math_1_1_stats_affce366ceab8419a3f732e3c3a358f65}{Data}[i] < \hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min}) \{
+00035         \hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min} = \hyperlink{class_soil_math_1_1_stats_affce366ceab8419a3f732e3c3a358f65}{Data}[i];
+00036       \}
+00037       \hyperlink{class_soil_math_1_1_stats_af326fa61048522fc146b799759e345f9}{Sum} += \hyperlink{class_soil_math_1_1_stats_affce366ceab8419a3f732e3c3a358f65}{Data}[i];
+00038     \}
+00039     \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} index = 0;
+00040     \hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{Mean} = \hyperlink{class_soil_math_1_1_stats_af326fa61048522fc146b799759e345f9}{Sum} / (float)n;
+00041     \hyperlink{class_soil_math_1_1_stats_a7154ac6c97dc2e83bdff7fef3cbdac5b}{Range} = \hyperlink{class_soil_math_1_1_stats_ad49ee1f533564ec587cf98a094b8c564}{max} - \hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min};
+00042     \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i < \hyperlink{class_soil_math_1_1_stats_a7bc57af334b68253832ebac17f85d091}{n}; i++) \{
+00043       index = \hyperlink{class_soil_math_1_1_p_s_d_adec9cd4f565f8edb2bc2c91d5d53e584}{DetBin}(\hyperlink{class_soil_math_1_1_stats_affce366ceab8419a3f732e3c3a358f65}{Data}[i]);
+00044       \hyperlink{class_soil_math_1_1_stats_a00778b298b1ebb335eb0c4eed69e471c}{bins}[index]++;
+00045       sum\_dev += pow((\hyperlink{class_soil_math_1_1_stats_affce366ceab8419a3f732e3c3a358f65}{Data}[i] - \hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{Mean}), 2);
+00046     \}
+00047     \hyperlink{class_soil_math_1_1_stats_a6af590b7d033d882d5428c0d7a1f5e59}{Std} = sqrt((\textcolor{keywordtype}{float})(sum\_dev / n));
+00048     \hyperlink{class_soil_math_1_1_stats_a5508190fbea17bfec505ff8c47b1a45e}{getCFD}();
+00049     \hyperlink{class_soil_math_1_1_stats_a3d3cd491b829b2e30f6752fee38fe261}{Calculated} = \textcolor{keyword}{true};
+00050   \}
+\hypertarget{psd_8h_source_l00051}{}\hyperlink{class_soil_math_1_1_p_s_d_ac98d07dd8f7b70e16ccb9a01abf56b9c}{00051}   \textcolor{keyword}{friend} \textcolor{keyword}{class }\hyperlink{class_soil_math_1_1_p_s_d_ac98d07dd8f7b70e16ccb9a01abf56b9c}{boost::serialization::access};
+00052 
+00053   \textcolor{keyword}{template} <\textcolor{keyword}{class} Archive>
+\hypertarget{psd_8h_source_l00054}{}\hyperlink{class_soil_math_1_1_p_s_d_aa9a27d9acb424ed5f879c5e3eb77332a}{00054}   \textcolor{keywordtype}{void} \hyperlink{class_soil_math_1_1_p_s_d_aa9a27d9acb424ed5f879c5e3eb77332a}{serialize}(Archive &ar, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} version) \{
+00055     \textcolor{keywordflow}{if} (version == 0) \{
+00056       ar &boost::serialization::base\_object<
+00057           \hyperlink{class_soil_math_1_1_stats}{SoilMath::Stats<double, double, long double>}>(*this);
+00058     \}
+00059   \}
+00060 
+00061 \textcolor{keyword}{public}:
+\hypertarget{psd_8h_source_l00062}{}\hyperlink{class_soil_math_1_1_p_s_d_aa19d9f4a6b79dd5c36024cf143f499c8}{00062}   \hyperlink{class_soil_math_1_1_p_s_d_aa19d9f4a6b79dd5c36024cf143f499c8}{PSD}() : \hyperlink{namespace_soil_math}{SoilMath}::\hyperlink{class_soil_math_1_1_stats}{Stats}<double, double, long double>() \{\}
+00063 
+\hypertarget{psd_8h_source_l00064}{}\hyperlink{class_soil_math_1_1_p_s_d_a80f35959df186e0f69b1afc32098741a}{00064}   \hyperlink{class_soil_math_1_1_p_s_d_a80f35959df186e0f69b1afc32098741a}{PSD}(\textcolor{keywordtype}{double} *data, \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} nodata, \textcolor{keywordtype}{double} *binranges, \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} nobins,
+00065       \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} endbin)
+00066       : \hyperlink{namespace_soil_math}{SoilMath}::\hyperlink{class_soil_math_1_1_stats}{Stats}<double, double, long double>(nobins, 0, endbin) \{
+00067     std::copy(binranges, binranges + nobins, \hyperlink{class_soil_math_1_1_stats_a0d452c96b6f499f054432bd3b52d1302}{BinRanges});
+00068     \hyperlink{class_soil_math_1_1_stats_affce366ceab8419a3f732e3c3a358f65}{Data} = data;
+00069     \hyperlink{class_soil_math_1_1_stats_a0e462c013f12f02e31e9ae03334151c3}{Rows} = nodata;
+00070     \hyperlink{class_soil_math_1_1_stats_a971f1ec23c32137805c4577f05454d83}{Cols} = 1;
+00071 
+00072     \hyperlink{class_soil_math_1_1_p_s_d_aa8809250300c581de1e67118156c5255}{BasicCalculatePSD}();
+00073   \}
+00074 \};
+00075 \}
+00076 BOOST\_CLASS\_VERSION(\hyperlink{class_soil_math_1_1_p_s_d}{SoilMath::PSD}, 0)
+\end{DoxyCode}

@@ -1,0 +1,145 @@
+\hypertarget{soilsettings_8h_source}{}\subsection{soilsettings.\+h}
+\label{soilsettings_8h_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Analyzer/soilsettings.\+h@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Analyzer/soilsettings.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/* Copyright (C) Jelle Spijker - All Rights Reserved}
+00002 \textcolor{comment}{ * Unauthorized copying of this file, via any medium is strictly prohibited}
+00003 \textcolor{comment}{ * and only allowed with the written consent of the author (Jelle Spijker)}
+00004 \textcolor{comment}{ * This software is proprietary and confidential}
+00005 \textcolor{comment}{ * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015}
+00006 \textcolor{comment}{ */}
+00007 
+00008 \textcolor{preprocessor}{#pragma once}
+00009 
+00010 \textcolor{preprocessor}{#include <string>}
+00011 \textcolor{preprocessor}{#include <fstream>}
+00012 \textcolor{preprocessor}{#include <boost/archive/xml\_iarchive.hpp>}
+00013 \textcolor{preprocessor}{#include <boost/archive/xml\_oarchive.hpp>}
+00014 \textcolor{preprocessor}{#include <boost/serialization/version.hpp>}
+00015 \textcolor{preprocessor}{#include "../SoilVision/Vision.h"}
+00016 
+00017 \textcolor{keyword}{namespace }\hyperlink{namespace_soil_analyzer}{SoilAnalyzer} \{
+\hypertarget{soilsettings_8h_source_l00024}{}\hyperlink{class_soil_analyzer_1_1_soil_settings}{00024} \textcolor{keyword}{class }\hyperlink{class_soil_analyzer_1_1_soil_settings}{SoilSettings} \{
+00025 \textcolor{keyword}{public}:
+00026   \hyperlink{class_soil_analyzer_1_1_soil_settings_ab8359b9a5ea27e6296e79a82789c8719}{SoilSettings}();
+00027 
+00032   \textcolor{keywordtype}{void} \hyperlink{class_soil_analyzer_1_1_soil_settings_ab211c361df454e8e1e29a4bddedeba81}{SaveSettings}(std::string filename);
+00033 
+00038   \textcolor{keywordtype}{void} \hyperlink{class_soil_analyzer_1_1_soil_settings_a438bf660eeb7a49a676eef5da129f8d5}{LoadSettings}(std::string filename);
+00039 
+\hypertarget{soilsettings_8h_source_l00040}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_a0e27335d05aed8f3f084744062368578}{00040}   \textcolor{keywordtype}{bool} \hyperlink{class_soil_analyzer_1_1_soil_settings_a0e27335d05aed8f3f084744062368578}{useAdaptiveContrast} =
+00041       \textcolor{keyword}{false}; 
+\hypertarget{soilsettings_8h_source_l00042}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_a73f627b092dbdbda37b66ef6c2eef95c}{00042}   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} \hyperlink{class_soil_analyzer_1_1_soil_settings_a73f627b092dbdbda37b66ef6c2eef95c}{adaptContrastKernelSize} =
+00043       9; 
+\hypertarget{soilsettings_8h_source_l00044}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_ace12c0f4bc35d420ef528cc390fc2cdb}{00044}   \textcolor{keywordtype}{float} \hyperlink{class_soil_analyzer_1_1_soil_settings_ace12c0f4bc35d420ef528cc390fc2cdb}{adaptContrastKernelFactor} = 1.; 
+\hypertarget{soilsettings_8h_source_l00048}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_a21bd246a48a712734af86f592030e18b}{00048}   \textcolor{keywordtype}{bool} \hyperlink{class_soil_analyzer_1_1_soil_settings_a21bd246a48a712734af86f592030e18b}{useBlur} = \textcolor{keyword}{false}; 
+\hypertarget{soilsettings_8h_source_l00049}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_afa46542d30045e00fadbdd5a6ab9a1e1}{00049}   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} \hyperlink{class_soil_analyzer_1_1_soil_settings_afa46542d30045e00fadbdd5a6ab9a1e1}{blurKernelSize} = 5; 
+\hypertarget{soilsettings_8h_source_l00051}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_a21ae88dba6b9b0b07d9c26812bc739fb}{00051}   \hyperlink{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7dd}{Vision::Segment::TypeOfObjects} 
+      \hyperlink{class_soil_analyzer_1_1_soil_settings_a21ae88dba6b9b0b07d9c26812bc739fb}{typeOfObjectsSegmented} =
+00052       \hyperlink{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7dda962a0c0955809f63df036dbd41824c54}{Vision::Segment::Dark}; 
+\hypertarget{soilsettings_8h_source_l00053}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_a24fb1d7da2247da77a17d853ea1494d7}{00053}   \textcolor{keywordtype}{bool} \hyperlink{class_soil_analyzer_1_1_soil_settings_a24fb1d7da2247da77a17d853ea1494d7}{ignorePartialBorderParticles} =
+00054       \textcolor{keyword}{true}; 
+\hypertarget{soilsettings_8h_source_l00055}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_a2c9dbe9429742aed1da9d9683da5cc1e}{00055}   \textcolor{keywordtype}{bool} \hyperlink{class_soil_analyzer_1_1_soil_settings_a2c9dbe9429742aed1da9d9683da5cc1e}{fillHoles} = \textcolor{keyword}{true}; 
+\hypertarget{soilsettings_8h_source_l00056}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_a97e62512e12a2ba9210fd93950b6e717}{00056}   \textcolor{keywordtype}{float} \hyperlink{class_soil_analyzer_1_1_soil_settings_a97e62512e12a2ba9210fd93950b6e717}{sigmaFactor} = 2; 
+\hypertarget{soilsettings_8h_source_l00058}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_a48330eb812672b50a94483f264614e8f}{00058}   \textcolor{keywordtype}{int} \hyperlink{class_soil_analyzer_1_1_soil_settings_a48330eb812672b50a94483f264614e8f}{thresholdOffsetValue} = 0; 
+\hypertarget{soilsettings_8h_source_l00060}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_ad1420c4800badb3eb07eba4767e3df81}{00060}   \hyperlink{class_vision_1_1_morphological_filter_a1f19c9cb13f0d68778c77d6fd0370868}{Vision::MorphologicalFilter::FilterType} 
+      \hyperlink{class_soil_analyzer_1_1_soil_settings_ad1420c4800badb3eb07eba4767e3df81}{morphFilterType} =
+00061       \hyperlink{class_vision_1_1_morphological_filter_a1f19c9cb13f0d68778c77d6fd0370868afd436eed00afa15b23eeac4de3509303}{Vision::MorphologicalFilter::OPEN}; 
+\hypertarget{soilsettings_8h_source_l00064}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_ad9d5071bbf6d10638df024e883c6199f}{00064}   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} \hyperlink{class_soil_analyzer_1_1_soil_settings_ad9d5071bbf6d10638df024e883c6199f}{filterMaskSize} = 5;           
+\hypertarget{soilsettings_8h_source_l00066}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_a77e631ff44efe74762b5adaa2eb2cd11}{00066}   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} \hyperlink{class_soil_analyzer_1_1_soil_settings_a77e631ff44efe74762b5adaa2eb2cd11}{HDRframes} =
+00067       5; 
+\hypertarget{soilsettings_8h_source_l00068}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_aa4d3ed8c1ab6551bfa4763e8a1ffc148}{00068}   \textcolor{keywordtype}{float} \hyperlink{class_soil_analyzer_1_1_soil_settings_aa4d3ed8c1ab6551bfa4763e8a1ffc148}{lightLevel} = 0.5; 
+\hypertarget{soilsettings_8h_source_l00069}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_ad831e13b61fc2097219bbf7252f045d5}{00069}   \textcolor{keywordtype}{bool} \hyperlink{class_soil_analyzer_1_1_soil_settings_ad831e13b61fc2097219bbf7252f045d5}{encInv} = \textcolor{keyword}{false};    
+\hypertarget{soilsettings_8h_source_l00070}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_a9ece0b96eb8614a497fba3a19d8b4da1}{00070}   \textcolor{keywordtype}{bool} \hyperlink{class_soil_analyzer_1_1_soil_settings_a9ece0b96eb8614a497fba3a19d8b4da1}{enableRainbow} =
+00071       \textcolor{keyword}{true}; 
+\hypertarget{soilsettings_8h_source_l00072}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_a4945fc8b592a2585d3719175e3b80c88}{00072}   \textcolor{keywordtype}{bool} \hyperlink{class_soil_analyzer_1_1_soil_settings_a4945fc8b592a2585d3719175e3b80c88}{useBacklightProjection} = \textcolor{keyword}{true};           
+\hypertarget{soilsettings_8h_source_l00073}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_a6851d04a1d2a5acbc99c6d9665c40edf}{00073}   \textcolor{keywordtype}{bool} \hyperlink{class_soil_analyzer_1_1_soil_settings_a6851d04a1d2a5acbc99c6d9665c40edf}{useHDR} = \textcolor{keyword}{false};                          
+\hypertarget{soilsettings_8h_source_l00074}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_a8dbe6065562599e544b55fb49564fd2d}{00074}   std::string \hyperlink{class_soil_analyzer_1_1_soil_settings_a8dbe6065562599e544b55fb49564fd2d}{defaultWebcam} = \textcolor{stringliteral}{"USB Microscope"}; 
+\hypertarget{soilsettings_8h_source_l00075}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_a2989997cfcc00500bba496dd8c8213ce}{00075}   \textcolor{keywordtype}{int} \hyperlink{class_soil_analyzer_1_1_soil_settings_a2989997cfcc00500bba496dd8c8213ce}{Brightness\_front} = 0;  
+\hypertarget{soilsettings_8h_source_l00076}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_a1411d6f8eadfbedd8e23973b11d00c29}{00076}   \textcolor{keywordtype}{int} \hyperlink{class_soil_analyzer_1_1_soil_settings_a1411d6f8eadfbedd8e23973b11d00c29}{Brightness\_proj} = -10; 
+\hypertarget{soilsettings_8h_source_l00077}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_ae4fbf0e9cd99cfa5a4f9cb8aaf0be652}{00077}   \textcolor{keywordtype}{int} \hyperlink{class_soil_analyzer_1_1_soil_settings_ae4fbf0e9cd99cfa5a4f9cb8aaf0be652}{Contrast\_front} = 36;   
+\hypertarget{soilsettings_8h_source_l00078}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_afb573e7bfd1fb5e3c13b84b91fbb0092}{00078}   \textcolor{keywordtype}{int} \hyperlink{class_soil_analyzer_1_1_soil_settings_afb573e7bfd1fb5e3c13b84b91fbb0092}{Contrast\_proj} = 36;    
+\hypertarget{soilsettings_8h_source_l00079}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_aacd4da6bfa26ee6aaec3d57c6653ac09}{00079}   \textcolor{keywordtype}{int} \hyperlink{class_soil_analyzer_1_1_soil_settings_aacd4da6bfa26ee6aaec3d57c6653ac09}{Saturation\_front} = 64; 
+\hypertarget{soilsettings_8h_source_l00080}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_a6157c2f85f3249e49617f23343076909}{00080}   \textcolor{keywordtype}{int} \hyperlink{class_soil_analyzer_1_1_soil_settings_a6157c2f85f3249e49617f23343076909}{Saturation\_proj} = 0;   
+\hypertarget{soilsettings_8h_source_l00081}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_a85e56e16b6faa940d4a8f36c9a19d14c}{00081}   \textcolor{keywordtype}{int} \hyperlink{class_soil_analyzer_1_1_soil_settings_a85e56e16b6faa940d4a8f36c9a19d14c}{Hue\_front} = 0;         
+\hypertarget{soilsettings_8h_source_l00082}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_a5267e7cdb6f8bfb18e35cb972b6b7cf3}{00082}   \textcolor{keywordtype}{int} \hyperlink{class_soil_analyzer_1_1_soil_settings_a5267e7cdb6f8bfb18e35cb972b6b7cf3}{Hue\_proj} = -40;        
+\hypertarget{soilsettings_8h_source_l00083}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_adee4687a4c0637a04b49d70ad7d45dc4}{00083}   \textcolor{keywordtype}{int} \hyperlink{class_soil_analyzer_1_1_soil_settings_adee4687a4c0637a04b49d70ad7d45dc4}{Gamma\_front} = 100;     
+\hypertarget{soilsettings_8h_source_l00084}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_a1d66dc760c4b2f857f8660d60c257b71}{00084}   \textcolor{keywordtype}{int} \hyperlink{class_soil_analyzer_1_1_soil_settings_a1d66dc760c4b2f857f8660d60c257b71}{Gamma\_proj} = 200;      
+\hypertarget{soilsettings_8h_source_l00085}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_a4fa556e97efddb93d8d5e382ab33c6fd}{00085}   \textcolor{keywordtype}{int} \hyperlink{class_soil_analyzer_1_1_soil_settings_a4fa556e97efddb93d8d5e382ab33c6fd}{PowerLineFrequency\_front} =
+00086       1; 
+\hypertarget{soilsettings_8h_source_l00087}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_a08370685977bf9a200a13da5008f743f}{00087}   \textcolor{keywordtype}{int} \hyperlink{class_soil_analyzer_1_1_soil_settings_a08370685977bf9a200a13da5008f743f}{PowerLineFrequency\_proj} =
+00088       1;                    
+\hypertarget{soilsettings_8h_source_l00089}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_a599f28eae821227f5c00aa24b1571b8d}{00089}   \textcolor{keywordtype}{int} \hyperlink{class_soil_analyzer_1_1_soil_settings_a599f28eae821227f5c00aa24b1571b8d}{Sharpness\_front} = 12; 
+\hypertarget{soilsettings_8h_source_l00090}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_a393383ada5fb2a451b89245de34b27de}{00090}   \textcolor{keywordtype}{int} \hyperlink{class_soil_analyzer_1_1_soil_settings_a393383ada5fb2a451b89245de34b27de}{Sharpness\_proj} = 25;  
+\hypertarget{soilsettings_8h_source_l00091}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_ae066beb7ff7d4274b5b370140cf3deb5}{00091}   \textcolor{keywordtype}{int} \hyperlink{class_soil_analyzer_1_1_soil_settings_ae066beb7ff7d4274b5b370140cf3deb5}{BackLightCompensation\_front} =
+00092       1; 
+\hypertarget{soilsettings_8h_source_l00093}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_a34c82ebc3bd8920275fd9f38265d35d2}{00093}   \textcolor{keywordtype}{int} \hyperlink{class_soil_analyzer_1_1_soil_settings_a34c82ebc3bd8920275fd9f38265d35d2}{BackLightCompensation\_proj} =
+00094       1; 
+\hypertarget{soilsettings_8h_source_l00095}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_a61bb233b0deaed4039b3eb05884a4854}{00095}   std::string \hyperlink{class_soil_analyzer_1_1_soil_settings_a61bb233b0deaed4039b3eb05884a4854}{NNlocation} = \textcolor{stringliteral}{"NeuralNet/Default.NN"};
+\hypertarget{soilsettings_8h_source_l00096}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_adfeabd89b897cf220e3575e64c97b4fc}{00096}   \textcolor{keywordtype}{bool} \hyperlink{class_soil_analyzer_1_1_soil_settings_adfeabd89b897cf220e3575e64c97b4fc}{useCUDA} = \textcolor{keyword}{false}; 
+\hypertarget{soilsettings_8h_source_l00097}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_a115a9feb41cc836d28d4ae1ceb536356}{00097}   \textcolor{keywordtype}{int} \hyperlink{class_soil_analyzer_1_1_soil_settings_a115a9feb41cc836d28d4ae1ceb536356}{selectedResolution} = 0;
+\hypertarget{soilsettings_8h_source_l00098}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_adfd46a349d927988c955fa064fc7bf1a}{00098}   std::string \hyperlink{class_soil_analyzer_1_1_soil_settings_adfd46a349d927988c955fa064fc7bf1a}{SampleFolder} = \textcolor{stringliteral}{"~/Samples"};
+\hypertarget{soilsettings_8h_source_l00099}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_a2107a9c59b4b04e1edf148c5d5308d17}{00099}   std::string \hyperlink{class_soil_analyzer_1_1_soil_settings_a2107a9c59b4b04e1edf148c5d5308d17}{SettingsFolder} = \textcolor{stringliteral}{"Settings"};
+\hypertarget{soilsettings_8h_source_l00100}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_a3c10433119931ebd347fb830c3020f39}{00100}   std::string \hyperlink{class_soil_analyzer_1_1_soil_settings_a3c10433119931ebd347fb830c3020f39}{NNFolder} = \textcolor{stringliteral}{"NeuralNet"};
+\hypertarget{soilsettings_8h_source_l00101}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_ac5010d7e2c8019f090147f8b9d89cb95}{00101}   std::string \hyperlink{class_soil_analyzer_1_1_soil_settings_ac5010d7e2c8019f090147f8b9d89cb95}{StandardSentTo} = \textcolor{stringliteral}{"j.spijker@ihcmerwede.com"};
+\hypertarget{soilsettings_8h_source_l00102}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_a5cc51f50ef63440c6f65e2a9a6562be8}{00102}   std::string \hyperlink{class_soil_analyzer_1_1_soil_settings_a5cc51f50ef63440c6f65e2a9a6562be8}{StandardPrinter} = \textcolor{stringliteral}{"PDF printer"};
+\hypertarget{soilsettings_8h_source_l00103}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_a290567ffd8fe54f1c800654395ca7a71}{00103}   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} \hyperlink{class_soil_analyzer_1_1_soil_settings_a290567ffd8fe54f1c800654395ca7a71}{StandardNumberOfShots} = 10;
+\hypertarget{soilsettings_8h_source_l00104}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_a369593522ac29f7dfa48fd6ca2afebef}{00104}   \textcolor{keywordtype}{bool} \hyperlink{class_soil_analyzer_1_1_soil_settings_a369593522ac29f7dfa48fd6ca2afebef}{PredictTheShape} = \textcolor{keyword}{true};
+\hypertarget{soilsettings_8h_source_l00105}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_a72cdc805222bbb57772cb3d9bba7555a}{00105}   \textcolor{keywordtype}{bool} \hyperlink{class_soil_analyzer_1_1_soil_settings_a72cdc805222bbb57772cb3d9bba7555a}{Revolution} = \textcolor{keyword}{true};
+00106 \textcolor{keyword}{private}:
+\hypertarget{soilsettings_8h_source_l00107}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_ac98d07dd8f7b70e16ccb9a01abf56b9c}{00107}   \textcolor{keyword}{friend} \textcolor{keyword}{class }\hyperlink{class_soil_analyzer_1_1_soil_settings_ac98d07dd8f7b70e16ccb9a01abf56b9c}{boost::serialization::access};
+00108   \textcolor{keyword}{template} <\textcolor{keyword}{class} Archive>
+\hypertarget{soilsettings_8h_source_l00109}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_ad52138eef4b72905cdaed60bed902646}{00109}   \textcolor{keywordtype}{void} \hyperlink{class_soil_analyzer_1_1_soil_settings_ad52138eef4b72905cdaed60bed902646}{serialize}(Archive &ar, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} version) \{
+00110     \textcolor{keywordflow}{if} (version >= 0) \{
+00111       ar &BOOST\_SERIALIZATION\_NVP(useAdaptiveContrast);
+00112       ar &BOOST\_SERIALIZATION\_NVP(adaptContrastKernelFactor);
+00113       ar &BOOST\_SERIALIZATION\_NVP(adaptContrastKernelSize);
+00114       ar &BOOST\_SERIALIZATION\_NVP(useBlur);
+00115       ar &BOOST\_SERIALIZATION\_NVP(blurKernelSize);
+00116       ar &BOOST\_SERIALIZATION\_NVP(typeOfObjectsSegmented);
+00117       ar &BOOST\_SERIALIZATION\_NVP(ignorePartialBorderParticles);
+00118       ar &BOOST\_SERIALIZATION\_NVP(fillHoles);
+00119       ar &BOOST\_SERIALIZATION\_NVP(sigmaFactor);
+00120       ar &BOOST\_SERIALIZATION\_NVP(morphFilterType);
+00121       ar &BOOST\_SERIALIZATION\_NVP(filterMaskSize);
+00122       ar &BOOST\_SERIALIZATION\_NVP(thresholdOffsetValue);
+00123       ar &BOOST\_SERIALIZATION\_NVP(HDRframes);
+00124       ar &BOOST\_SERIALIZATION\_NVP(lightLevel);
+00125       ar &BOOST\_SERIALIZATION\_NVP(encInv);
+00126       ar &BOOST\_SERIALIZATION\_NVP(enableRainbow);
+00127       ar &BOOST\_SERIALIZATION\_NVP(useBacklightProjection);
+00128       ar &BOOST\_SERIALIZATION\_NVP(useHDR);
+00129       ar &BOOST\_SERIALIZATION\_NVP(defaultWebcam);
+00130       ar &BOOST\_SERIALIZATION\_NVP(Brightness\_front);
+00131       ar &BOOST\_SERIALIZATION\_NVP(Brightness\_proj);
+00132       ar &BOOST\_SERIALIZATION\_NVP(Contrast\_front);
+00133       ar &BOOST\_SERIALIZATION\_NVP(Contrast\_proj);
+00134       ar &BOOST\_SERIALIZATION\_NVP(Saturation\_front);
+00135       ar &BOOST\_SERIALIZATION\_NVP(Saturation\_proj);
+00136       ar &BOOST\_SERIALIZATION\_NVP(Hue\_front);
+00137       ar &BOOST\_SERIALIZATION\_NVP(Hue\_proj);
+00138       ar &BOOST\_SERIALIZATION\_NVP(Gamma\_front);
+00139       ar &BOOST\_SERIALIZATION\_NVP(Gamma\_proj);
+00140       ar &BOOST\_SERIALIZATION\_NVP(PowerLineFrequency\_front);
+00141       ar &BOOST\_SERIALIZATION\_NVP(PowerLineFrequency\_proj);
+00142       ar &BOOST\_SERIALIZATION\_NVP(Sharpness\_front);
+00143       ar &BOOST\_SERIALIZATION\_NVP(Sharpness\_proj);
+00144       ar &BOOST\_SERIALIZATION\_NVP(BackLightCompensation\_front);
+00145       ar &BOOST\_SERIALIZATION\_NVP(BackLightCompensation\_proj);
+00146       ar &BOOST\_SERIALIZATION\_NVP(NNlocation);
+00147       ar &BOOST\_SERIALIZATION\_NVP(useCUDA);
+00148       ar &BOOST\_SERIALIZATION\_NVP(selectedResolution);
+00149       ar &BOOST\_SERIALIZATION\_NVP(SampleFolder);
+00150       ar &BOOST\_SERIALIZATION\_NVP(SettingsFolder);
+00151       ar &BOOST\_SERIALIZATION\_NVP(NNFolder);
+00152       ar &BOOST\_SERIALIZATION\_NVP(StandardSentTo);
+00153       ar &BOOST\_SERIALIZATION\_NVP(StandardPrinter);
+00154       ar &BOOST\_SERIALIZATION\_NVP(StandardNumberOfShots);
+00155       ar &BOOST\_SERIALIZATION\_NVP(PredictTheShape);
+00156       ar &BOOST\_SERIALIZATION\_NVP(Revolution);
+00157     \}
+00158   \}
+00159 \};
+00160 \}
+00161 BOOST\_CLASS\_VERSION(\hyperlink{class_soil_analyzer_1_1_soil_settings}{SoilAnalyzer::SoilSettings}, 0)
+\end{DoxyCode}

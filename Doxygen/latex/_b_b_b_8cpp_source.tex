@@ -1,0 +1,74 @@
+\hypertarget{_b_b_b_8cpp_source}{}\subsection{B\+B\+B.\+cpp}
+\label{_b_b_b_8cpp_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Hardware/\+B\+B\+B.\+cpp@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Hardware/\+B\+B\+B.\+cpp}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/* Copyright (C) Jelle Spijker - All Rights Reserved}
+00002 \textcolor{comment}{ * Unauthorized copying of this file, via any medium is strictly prohibited}
+00003 \textcolor{comment}{ * and only allowed with the written consent of the author (Jelle Spijker)}
+00004 \textcolor{comment}{ * This software is proprietary and confidential}
+00005 \textcolor{comment}{ * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015}
+00006 \textcolor{comment}{ */}
+00007 
+00008 \textcolor{preprocessor}{#include "\hyperlink{_b_b_b_8h}{BBB.h}"}
+00009 
+00010 \textcolor{keyword}{namespace }\hyperlink{namespace_hardware}{Hardware} \{
+\hypertarget{_b_b_b_8cpp_source_l00012}{}\hyperlink{class_hardware_1_1_b_b_b_ab26c0f13cc9488b757e309495ef398d7}{00012} \hyperlink{class_hardware_1_1_b_b_b_ab26c0f13cc9488b757e309495ef398d7}{BBB::BBB}() \{
+00013   \hyperlink{class_hardware_1_1_b_b_b_a0d9d8c56afb37955e0d0c6baf0f418df}{threadRunning} = \textcolor{keyword}{false};
+00014   \hyperlink{class_hardware_1_1_b_b_b_a66d583952f3949a732ee15eea81e80e5}{callbackFunction} = NULL;
+00015   \hyperlink{class_hardware_1_1_b_b_b_a353a2d7d4fbade337e5173b484b20b22}{debounceTime} = 0;
+00016   \hyperlink{class_hardware_1_1_b_b_b_a3ad3fe886705bfc242ef58dc5329166e}{thread} = (pthread\_t)NULL;
+00017 \}
+00018 
+\hypertarget{_b_b_b_8cpp_source_l00020}{}\hyperlink{class_hardware_1_1_b_b_b_a34ee1e17e06e6d229be6d718b9ad1f02}{00020} \hyperlink{class_hardware_1_1_b_b_b_a34ee1e17e06e6d229be6d718b9ad1f02}{BBB::~BBB}() \{\}
+00021 
+\hypertarget{_b_b_b_8cpp_source_l00026}{}\hyperlink{class_hardware_1_1_b_b_b_a8b287ded7bcb2cfab361d1fca2b62e9f}{00026} \textcolor{keywordtype}{string} \hyperlink{class_hardware_1_1_b_b_b_a8b287ded7bcb2cfab361d1fca2b62e9f}{BBB::Read}(\textcolor{keyword}{const} \textcolor{keywordtype}{string} &path) \{
+00027   ifstream fs;
+00028   fs.open(path.c\_str());
+00029   \textcolor{keywordflow}{if} (!fs.is\_open()) \{
+00030     \textcolor{keywordflow}{throw} \hyperlink{class_hardware_1_1_exception_1_1_g_p_i_o_read_exception}{Exception::GPIOReadException}((\textcolor{stringliteral}{"Can't open: "} + path).c\_str());
+00031   \}
+00032   \textcolor{keywordtype}{string} input;
+00033   getline(fs, input);
+00034   fs.close();
+00035   \textcolor{keywordflow}{return} input;
+00036 \}
+00037 
+\hypertarget{_b_b_b_8cpp_source_l00042}{}\hyperlink{class_hardware_1_1_b_b_b_a155cc06f76d82a6b690ce5ea08e7c68e}{00042} \textcolor{keywordtype}{void} \hyperlink{class_hardware_1_1_b_b_b_a155cc06f76d82a6b690ce5ea08e7c68e}{BBB::Write}(\textcolor{keyword}{const} \textcolor{keywordtype}{string} &path, \textcolor{keyword}{const} \textcolor{keywordtype}{string} &value) \{
+00043   ofstream fs;
+00044   fs.open(path.c\_str());
+00045   \textcolor{keywordflow}{if} (!fs.is\_open()) \{
+00046     \textcolor{keywordflow}{throw} \hyperlink{class_hardware_1_1_exception_1_1_g_p_i_o_read_exception}{Exception::GPIOReadException}((\textcolor{stringliteral}{"Can't open: "} + path).c\_str());
+00047   \}
+00048   fs << value;
+00049   fs.close();
+00050 \}
+00051 
+\hypertarget{_b_b_b_8cpp_source_l00055}{}\hyperlink{class_hardware_1_1_b_b_b_adf431d8e0e8899f7aa16c350a2270e79}{00055} \textcolor{keywordtype}{bool} \hyperlink{class_hardware_1_1_b_b_b_adf431d8e0e8899f7aa16c350a2270e79}{BBB::DirectoryExist}(\textcolor{keyword}{const} \textcolor{keywordtype}{string} &path) \{
+00056   \textcolor{keyword}{struct }stat st;
+00057   \textcolor{keywordflow}{if} (stat((\textcolor{keywordtype}{char} *)path.c\_str(), &st) != 0) \{
+00058     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00059   \}
+00060   \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+00061 \}
+00062 
+\hypertarget{_b_b_b_8cpp_source_l00067}{}\hyperlink{class_hardware_1_1_b_b_b_aaf2f732c771eac0b1ee984dbc0bca784}{00067} \textcolor{keywordtype}{bool} \hyperlink{class_hardware_1_1_b_b_b_aaf2f732c771eac0b1ee984dbc0bca784}{BBB::CapeLoaded}(\textcolor{keyword}{const} \textcolor{keywordtype}{string} &shield) \{
+00068   \textcolor{keywordtype}{bool} shieldFound = \textcolor{keyword}{false};
+00069 
+00070   ifstream fs;
+00071   fs.open(\hyperlink{_b_b_b_8h_a3de26a5dbd2276c1486afbba5fc8de59}{SLOTS});
+00072   \textcolor{keywordflow}{if} (!fs.is\_open()) \{
+00073     \textcolor{keywordflow}{throw} \hyperlink{class_hardware_1_1_exception_1_1_g_p_i_o_read_exception}{Exception::GPIOReadException}(\textcolor{stringliteral}{"Can't open SLOTS"});
+00074   \}
+00075 
+00076   \textcolor{keywordtype}{string} line;
+00077   \textcolor{keywordflow}{while} (getline(fs, line)) \{
+00078     \textcolor{keywordflow}{if} (line.find(shield) != string::npos) \{
+00079       shieldFound = \textcolor{keyword}{true};
+00080       \textcolor{keywordflow}{break};
+00081     \}
+00082   \}
+00083   fs.close();
+00084   \textcolor{keywordflow}{return} shieldFound;
+00085 \}
+00086 \}
+\end{DoxyCode}

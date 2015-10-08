@@ -1,0 +1,131 @@
+\hypertarget{_segment_8h_source}{}\subsection{Segment.\+h}
+\label{_segment_8h_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Vision/\+Segment.\+h@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Vision/\+Segment.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/* Copyright (C) Jelle Spijker - All Rights Reserved}
+00002 \textcolor{comment}{ * Unauthorized copying of this file, via any medium is strictly prohibited}
+00003 \textcolor{comment}{ * and only allowed with the written consent of the author (Jelle Spijker)}
+00004 \textcolor{comment}{ * This software is proprietary and confidential}
+00005 \textcolor{comment}{ * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015}
+00006 \textcolor{comment}{ */}
+00007 
+00008 \textcolor{preprocessor}{#pragma once}
+00009 
+00010 \textcolor{preprocessor}{#include <vector>}
+00011 \textcolor{preprocessor}{#include <queue>}
+00012 \textcolor{preprocessor}{#include <string>}
+00013 \textcolor{preprocessor}{#include <stdint.h>}
+00014 \textcolor{preprocessor}{#include <iostream>}
+00015 \textcolor{preprocessor}{#include <algorithm>}
+00016 \textcolor{preprocessor}{#include <utility>}
+00017 
+00018 \textcolor{preprocessor}{#include <boost/range/adaptor/reversed.hpp>}
+00019 
+00020 \textcolor{preprocessor}{#include "opencv2/imgproc/imgproc.hpp"}
+00021 
+00022 \textcolor{preprocessor}{#include "\hyperlink{_image_processing_8h}{ImageProcessing.h}"}
+00023 \textcolor{preprocessor}{#include "\hyperlink{_morphological_filter_8h}{MorphologicalFilter.h}"}
+00024 \textcolor{preprocessor}{#include "../SoilMath/SoilMath.h"}
+00025 
+00026 \textcolor{keyword}{namespace }\hyperlink{namespace_vision}{Vision} \{
+\hypertarget{_segment_8h_source_l00027}{}\hyperlink{class_vision_1_1_segment}{00027} \textcolor{keyword}{class }\hyperlink{class_vision_1_1_segment}{Segment} : \textcolor{keyword}{public} \hyperlink{class_vision_1_1_image_processing}{ImageProcessing} \{
+00028 \textcolor{keyword}{public}:
+\hypertarget{_segment_8h_source_l00030}{}\hyperlink{struct_vision_1_1_segment_1_1_rect}{00030}   \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\hyperlink{struct_vision_1_1_segment_1_1_rect}{Rect} \{
+\hypertarget{_segment_8h_source_l00031}{}\hyperlink{struct_vision_1_1_segment_1_1_rect_acf3a2a045d75348971e57df5eeb7808e}{00031}     uint16\_t \hyperlink{struct_vision_1_1_segment_1_1_rect_acf3a2a045d75348971e57df5eeb7808e}{leftX};  
+\hypertarget{_segment_8h_source_l00032}{}\hyperlink{struct_vision_1_1_segment_1_1_rect_ac6d22f96862077f159abc7e1accc20ab}{00032}     uint16\_t \hyperlink{struct_vision_1_1_segment_1_1_rect_ac6d22f96862077f159abc7e1accc20ab}{leftY};  
+\hypertarget{_segment_8h_source_l00033}{}\hyperlink{struct_vision_1_1_segment_1_1_rect_a6de0dfefe6b8360ee4d57027d1fba928}{00033}     uint16\_t \hyperlink{struct_vision_1_1_segment_1_1_rect_a6de0dfefe6b8360ee4d57027d1fba928}{rightX}; 
+\hypertarget{_segment_8h_source_l00034}{}\hyperlink{struct_vision_1_1_segment_1_1_rect_ab1a913248c715c25362c478498246983}{00034}     uint16\_t \hyperlink{struct_vision_1_1_segment_1_1_rect_ab1a913248c715c25362c478498246983}{rightY}; 
+\hypertarget{_segment_8h_source_l00035}{}\hyperlink{struct_vision_1_1_segment_1_1_rect_acfc8bc65045c6d7d6949f11db26c248a}{00035}     \hyperlink{struct_vision_1_1_segment_1_1_rect_acfc8bc65045c6d7d6949f11db26c248a}{Rect}(uint16\_t lx, uint16\_t ly, uint16\_t rx, uint16\_t ry)
+00036         : leftX(lx), leftY(ly), rightX(rx), rightY(ry)\{\}
+00037   \} \hyperlink{class_vision_1_1_segment_af9428422a82edaab8a1e5ba59acc8c16}{Rect\_t};
+00038 
+\hypertarget{_segment_8h_source_l00039}{}\hyperlink{class_vision_1_1_segment_aaaa7a3b37f6fa4402bc1309e9bf74bec}{00039}   \textcolor{keyword}{typedef} std::vector<Vision::Segment::Rect\_t> \hyperlink{class_vision_1_1_segment_aaaa7a3b37f6fa4402bc1309e9bf74bec}{RectList\_t};
+00040 
+\hypertarget{_segment_8h_source_l00042}{}\hyperlink{struct_vision_1_1_segment_1_1_blob}{00042}   \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\hyperlink{struct_vision_1_1_segment_1_1_blob}{Blob} \{
+\hypertarget{_segment_8h_source_l00043}{}\hyperlink{struct_vision_1_1_segment_1_1_blob_aaa4c2a0d3f0c920fb8b59417dd54f82b}{00043}     uint16\_t \hyperlink{struct_vision_1_1_segment_1_1_blob_aaa4c2a0d3f0c920fb8b59417dd54f82b}{Label}; 
+\hypertarget{_segment_8h_source_l00044}{}\hyperlink{struct_vision_1_1_segment_1_1_blob_a776f587282c775375052461a14b0a304}{00044}     cv::Mat \hyperlink{struct_vision_1_1_segment_1_1_blob_a776f587282c775375052461a14b0a304}{Img};   
+\hypertarget{_segment_8h_source_l00046}{}\hyperlink{struct_vision_1_1_segment_1_1_blob_aceb3e938bb4489c08edd9324fdee7465}{00046}     cv::Rect \hyperlink{struct_vision_1_1_segment_1_1_blob_aceb3e938bb4489c08edd9324fdee7465}{ROI};  
+\hypertarget{_segment_8h_source_l00048}{}\hyperlink{struct_vision_1_1_segment_1_1_blob_a391697e1f49d65415c6c0ed8c3221a74}{00048}     \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} \hyperlink{struct_vision_1_1_segment_1_1_blob_a391697e1f49d65415c6c0ed8c3221a74}{Area}; 
+\hypertarget{_segment_8h_source_l00049}{}\hyperlink{struct_vision_1_1_segment_1_1_blob_ac8a647379e87cd42d666edf835862611}{00049}     cv::Point\_<double> \hyperlink{struct_vision_1_1_segment_1_1_blob_ac8a647379e87cd42d666edf835862611}{Centroid};
+\hypertarget{_segment_8h_source_l00050}{}\hyperlink{struct_vision_1_1_segment_1_1_blob_a1a48ef74a8b707aa02bb93fd5f75a080}{00050}     \textcolor{keywordtype}{double} \hyperlink{struct_vision_1_1_segment_1_1_blob_a1a48ef74a8b707aa02bb93fd5f75a080}{Theta};
+\hypertarget{_segment_8h_source_l00051}{}\hyperlink{struct_vision_1_1_segment_1_1_blob_a4133b605534057e3747506d03e4041cb}{00051}     \hyperlink{struct_vision_1_1_segment_1_1_blob_a4133b605534057e3747506d03e4041cb}{Blob}(uint16\_t label, \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} area) : Label(label), Area(area)\{\}
+00052   \} \hyperlink{class_vision_1_1_segment_add6c81230e499b159218c5232e3b76ae}{Blob\_t};
+00053 
+\hypertarget{_segment_8h_source_l00054}{}\hyperlink{class_vision_1_1_segment_a60e08251e2ab94239e245044c31cde51}{00054}   \textcolor{keyword}{typedef} std::vector<Blob\_t> \hyperlink{class_vision_1_1_segment_a60e08251e2ab94239e245044c31cde51}{BlobList\_t};
+\hypertarget{_segment_8h_source_l00055}{}\hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{00055}   BlobList\_t \hyperlink{class_vision_1_1_segment_a74e0600a7dd49bd7110ee27bb4cd6e0e}{BlobList}; 
+\hypertarget{_segment_8h_source_l00058}{}\hyperlink{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7dd}{00058}   \textcolor{keyword}{enum} \hyperlink{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7dd}{TypeOfObjects} \{
+\hypertarget{_segment_8h_source_l00059}{}\hyperlink{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7ddad37a09a08a5a4fdf88cb15f21e5ff28b}{00059}     \hyperlink{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7ddad37a09a08a5a4fdf88cb15f21e5ff28b}{Bright}, 
+\hypertarget{_segment_8h_source_l00060}{}\hyperlink{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7dda962a0c0955809f63df036dbd41824c54}{00060}     \hyperlink{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7dda962a0c0955809f63df036dbd41824c54}{Dark}    
+00061   \};
+00062 
+\hypertarget{_segment_8h_source_l00065}{}\hyperlink{class_vision_1_1_segment_a330240c08320e72270fac0aa83d5e27e}{00065}   \textcolor{keyword}{enum} \hyperlink{class_vision_1_1_segment_a330240c08320e72270fac0aa83d5e27e}{Connected} \{
+\hypertarget{_segment_8h_source_l00066}{}\hyperlink{class_vision_1_1_segment_a330240c08320e72270fac0aa83d5e27ea1fca5ab1c285c0edd2bdc3072cab0c01}{00066}     \hyperlink{class_vision_1_1_segment_a330240c08320e72270fac0aa83d5e27ea1fca5ab1c285c0edd2bdc3072cab0c01}{Four} =
+00067         2, 
+\hypertarget{_segment_8h_source_l00069}{}\hyperlink{class_vision_1_1_segment_a330240c08320e72270fac0aa83d5e27eae8e2b0fa6d15448f10cddc0390284a39}{00069}     \hyperlink{class_vision_1_1_segment_a330240c08320e72270fac0aa83d5e27eae8e2b0fa6d15448f10cddc0390284a39}{Eight} =
+00070         4 
+00072   \};
+00073 
+\hypertarget{_segment_8h_source_l00075}{}\hyperlink{class_vision_1_1_segment_af3a2b992526eac54bca53e34cf2db4da}{00075}   \textcolor{keyword}{enum} \hyperlink{class_vision_1_1_segment_af3a2b992526eac54bca53e34cf2db4da}{SegmentationType} \{
+\hypertarget{_segment_8h_source_l00076}{}\hyperlink{class_vision_1_1_segment_af3a2b992526eac54bca53e34cf2db4daae000cfc8d629752d6cdbba0d3d750184}{00076}     \hyperlink{class_vision_1_1_segment_af3a2b992526eac54bca53e34cf2db4daae000cfc8d629752d6cdbba0d3d750184}{Normal}, 
+\hypertarget{_segment_8h_source_l00077}{}\hyperlink{class_vision_1_1_segment_af3a2b992526eac54bca53e34cf2db4daa6ddef558061ee58899a362608a5b163b}{00077}     \hyperlink{class_vision_1_1_segment_af3a2b992526eac54bca53e34cf2db4daa6ddef558061ee58899a362608a5b163b}{LabNeuralNet}, 
+\hypertarget{_segment_8h_source_l00080}{}\hyperlink{class_vision_1_1_segment_af3a2b992526eac54bca53e34cf2db4daa0291c0ff93e52e8e78f86698b0288353}{00080}     \hyperlink{class_vision_1_1_segment_af3a2b992526eac54bca53e34cf2db4daa0291c0ff93e52e8e78f86698b0288353}{GraphMinCut} 
+00081   \};
+00082 
+\hypertarget{_segment_8h_source_l00083}{}\hyperlink{class_vision_1_1_segment_a4daa143f6cd4a753d3bbe45c6a67d27f}{00083}   cv::Mat \hyperlink{class_vision_1_1_segment_a4daa143f6cd4a753d3bbe45c6a67d27f}{LabelledImg};   
+\hypertarget{_segment_8h_source_l00085}{}\hyperlink{class_vision_1_1_segment_a22d2a688de65f4d25b164f8b2a03f4a9}{00085}   uint16\_t \hyperlink{class_vision_1_1_segment_a22d2a688de65f4d25b164f8b2a03f4a9}{MaxLabel} = 0; 
+\hypertarget{_segment_8h_source_l00086}{}\hyperlink{class_vision_1_1_segment_a97077da3a144e800073bc06f5d4722d4}{00086}   uint16\_t \hyperlink{class_vision_1_1_segment_a97077da3a144e800073bc06f5d4722d4}{noOfFilteredBlobs} =
+00087       0; 
+\hypertarget{_segment_8h_source_l00090}{}\hyperlink{class_vision_1_1_segment_ab35cfe5504de7e5ea327991468e6cf3b}{00090}   \hyperlink{class_soil_math_1_1_stats}{ucharStat\_t} \hyperlink{class_vision_1_1_segment_ab35cfe5504de7e5ea327991468e6cf3b}{OriginalImgStats}; 
+\hypertarget{_segment_8h_source_l00091}{}\hyperlink{class_vision_1_1_segment_a44f45a7d08ba6fed38e5c31bc9108291}{00091}   uint8\_t \hyperlink{class_vision_1_1_segment_a44f45a7d08ba6fed38e5c31bc9108291}{ThresholdLevel} = 0;   
+\hypertarget{_segment_8h_source_l00093}{}\hyperlink{class_vision_1_1_segment_a0d2c607a6064d8d8fea925fc7bfbbc53}{00093}   \textcolor{keywordtype}{float} \hyperlink{class_vision_1_1_segment_a0d2c607a6064d8d8fea925fc7bfbbc53}{sigma} = 2;
+\hypertarget{_segment_8h_source_l00094}{}\hyperlink{class_vision_1_1_segment_a1338fc42ead26c6b1dd661f4281f5674}{00094}   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} \hyperlink{class_vision_1_1_segment_a1338fc42ead26c6b1dd661f4281f5674}{thresholdOffset} = 4;
+00095 
+00096   \hyperlink{class_vision_1_1_segment_adfe9fc7ffcc7269f961d4b1f6720d1e8}{Segment}();
+00097   \hyperlink{class_vision_1_1_segment_adfe9fc7ffcc7269f961d4b1f6720d1e8}{Segment}(\textcolor{keyword}{const} Mat &src);
+00098   \hyperlink{class_vision_1_1_segment_adfe9fc7ffcc7269f961d4b1f6720d1e8}{Segment}(\textcolor{keyword}{const} \hyperlink{class_vision_1_1_segment}{Segment} &rhs);
+00099 
+00100   \hyperlink{class_vision_1_1_segment_a76b45a453304f1f485e3bc2fcad58b59}{~Segment}();
+00101 
+00102   \hyperlink{class_vision_1_1_segment}{Segment} &\hyperlink{class_vision_1_1_segment_a1bfc12c503f6e07cca595ec884273e13}{operator=}(\hyperlink{class_vision_1_1_segment}{Segment} &rhs);
+00103 
+00104   \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_segment_a8b5edc7f5a69d961e47f61a2191b8745}{LoadOriginalImg}(\textcolor{keyword}{const} Mat &src);
+00105 
+00106   \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_segment_a4272ceb22f9cb20c6f65d9536149d3c0}{ConvertToBW}(\hyperlink{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7dd}{TypeOfObjects} Typeobjects);
+00107   \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_segment_a4272ceb22f9cb20c6f65d9536149d3c0}{ConvertToBW}(\textcolor{keyword}{const} Mat &src, Mat &dst, \hyperlink{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7dd}{TypeOfObjects} Typeobjects);
+00108 
+00109   \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_segment_ad002015511d2d8a4d42106c14e163623}{GetEdges}(\textcolor{keywordtype}{bool} chain = \textcolor{keyword}{false}, \hyperlink{class_vision_1_1_segment_a330240c08320e72270fac0aa83d5e27e}{Connected} conn = \hyperlink{class_vision_1_1_segment_a330240c08320e72270fac0aa83d5e27eae8e2b0fa6d15448f10cddc0390284a39}{Eight});
+00110   \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_segment_ad002015511d2d8a4d42106c14e163623}{GetEdges}(\textcolor{keyword}{const} Mat &src, Mat &dst, \textcolor{keywordtype}{bool} chain = \textcolor{keyword}{false},
+00111                 \hyperlink{class_vision_1_1_segment_a330240c08320e72270fac0aa83d5e27e}{Connected} conn = \hyperlink{class_vision_1_1_segment_a330240c08320e72270fac0aa83d5e27eae8e2b0fa6d15448f10cddc0390284a39}{Eight});
+00112 
+00113   \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_segment_af4fe7471c44ded04653f8e3f74162c86}{GetEdgesEroding}(\textcolor{keywordtype}{bool} chain = \textcolor{keyword}{false});
+00114 
+00115   \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_segment_a6dba1b8506fe7e8054e99ea5330d4abc}{GetBlobList}(\textcolor{keywordtype}{bool} chain = \textcolor{keyword}{false}, \hyperlink{class_vision_1_1_segment_a330240c08320e72270fac0aa83d5e27e}{Connected} conn = 
+      \hyperlink{class_vision_1_1_segment_a330240c08320e72270fac0aa83d5e27eae8e2b0fa6d15448f10cddc0390284a39}{Eight});
+00116 
+00117   \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_segment_a1d486dd3b67e1e1208c9ca04be8f6659}{Threshold}(\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} t, \hyperlink{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7dd}{TypeOfObjects} Typeobjects);
+00118 
+00119   \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_segment_ac10de08f4c3b0f8cb91f0469b6cf37c9}{LabelBlobs}(\textcolor{keywordtype}{bool} chain = \textcolor{keyword}{false}, uint16\_t minBlobArea = 25,
+00120                   \hyperlink{class_vision_1_1_segment_a330240c08320e72270fac0aa83d5e27e}{Connected} conn = \hyperlink{class_vision_1_1_segment_a330240c08320e72270fac0aa83d5e27eae8e2b0fa6d15448f10cddc0390284a39}{Eight});
+00121 
+00122   \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_segment_a65a50340b5a1a0fb08a1b5749b7145b6}{RemoveBorderBlobs}(\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} border = 1, \textcolor{keywordtype}{bool} chain = \textcolor{keyword}{false});
+00123 
+00124   \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_segment_a9b1476507a27dbef21acca64efd217b8}{FillHoles}(\textcolor{keywordtype}{bool} chain = \textcolor{keyword}{false});
+00125 
+00126 \textcolor{keyword}{private}:
+00127   uint8\_t \hyperlink{class_vision_1_1_segment_a1b15d616db9cbdcd0b07bb267f60895b}{GetThresholdLevel}(\hyperlink{class_vision_1_1_segment_ac3ddf2c72ee6333007510b680db1e7dd}{TypeOfObjects} TypeObject);
+00128   \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_segment_ae3349aa3725f883943fb316c0d52752d}{SetBorder}(\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *P, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} setValue);
+00129   \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_segment_a5d8f5daae7e5ca64c5e273464624f6bd}{FloodFill}(\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *O, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *P, uint16\_t x, uint16\_t y, 
+      \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} fillValue,
+00130                  \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} OldValue);
+00131   \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_segment_ad1d04c97a79dbbf1cf10e8587985e5e5}{MakeConsecutive}(uint16\_t *valueArr, \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} noElem, uint16\_t &maxlabel);
+00132   \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_segment_ad1d04c97a79dbbf1cf10e8587985e5e5}{MakeConsecutive}(uint16\_t *valueArr, uint16\_t *keyArr, uint16\_t noElem,
+00133                        uint16\_t &maxlabel);
+00134   \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_segment_a3d369e9d8b65dc96a3d4ac5ab8887960}{SortAdjacencyList}(std::vector<std::vector<uint16\_t>> &adj);
+00135   \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_segment_a77bbb909901188d02a42c7df29186289}{ConnectedBlobs}(\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *O, uint16\_t *P,
+00136                       std::vector<std::vector<uint16\_t>> &adj, \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} nCols,
+00137                       \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} nRows, \hyperlink{class_vision_1_1_segment_a330240c08320e72270fac0aa83d5e27e}{Connected} conn);
+00138   \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_segment_aac70975917e231c4879ff4f837ac9f73}{InvertAdjacencyList}(std::vector<std::vector<uint16\_t>> &adj,
+00139                            std::vector<std::vector<uint16\_t>> &adjInv);
+00140 \};
+00141 \}
+\end{DoxyCode}

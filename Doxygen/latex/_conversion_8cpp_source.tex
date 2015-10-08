@@ -1,0 +1,217 @@
+\hypertarget{_conversion_8cpp_source}{}\subsection{Conversion.\+cpp}
+\label{_conversion_8cpp_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Vision/\+Conversion.\+cpp@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Vision/\+Conversion.\+cpp}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/* Copyright (C) Jelle Spijker - All Rights Reserved}
+00002 \textcolor{comment}{ * Unauthorized copying of this file, via any medium is strictly prohibited}
+00003 \textcolor{comment}{ * and only allowed with the written consent of the author (Jelle Spijker)}
+00004 \textcolor{comment}{ * This software is proprietary and confidential}
+00005 \textcolor{comment}{ * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015}
+00006 \textcolor{comment}{ */}
+00007 
+00011 \textcolor{preprocessor}{#include "\hyperlink{_conversion_8h}{Conversion.h}"}
+00012 \textcolor{keyword}{namespace }\hyperlink{namespace_vision}{Vision} \{
+\hypertarget{_conversion_8cpp_source_l00014}{}\hyperlink{class_vision_1_1_conversion_ade9665873e1ebd5e07f458d9dcf10996}{00014} \hyperlink{class_vision_1_1_conversion_ade9665873e1ebd5e07f458d9dcf10996}{Conversion::Conversion}() \{
+00015   \hyperlink{class_vision_1_1_conversion_a3fd4bac8a8d6788b6a1886916c5464b4}{OriginalColorSpace} = \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388a471c24ee3ed6a2bce23140af4ee3a00d}{None};
+00016   \hyperlink{class_vision_1_1_conversion_a57337750cb60b9ff7ed269c184d1fda7}{ProcessedColorSpace} = \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388a471c24ee3ed6a2bce23140af4ee3a00d}{None};
+00017 \}
+00018 
+\hypertarget{_conversion_8cpp_source_l00022}{}\hyperlink{class_vision_1_1_conversion_a9d881d8a0fc29f26afb84422fd8599f4}{00022} \hyperlink{class_vision_1_1_conversion_ade9665873e1ebd5e07f458d9dcf10996}{Conversion::Conversion}(\textcolor{keyword}{const} Mat &src) \{
+00023   \hyperlink{class_vision_1_1_conversion_a3fd4bac8a8d6788b6a1886916c5464b4}{OriginalColorSpace} = \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388a471c24ee3ed6a2bce23140af4ee3a00d}{None};
+00024   \hyperlink{class_vision_1_1_conversion_a57337750cb60b9ff7ed269c184d1fda7}{ProcessedColorSpace} = \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388a471c24ee3ed6a2bce23140af4ee3a00d}{None};
+00025   \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg} = src;
+00026 \}
+00027 
+\hypertarget{_conversion_8cpp_source_l00029}{}\hyperlink{class_vision_1_1_conversion_ada85747609dcedb2a117f06fd5c033ce}{00029} \hyperlink{class_vision_1_1_conversion_ade9665873e1ebd5e07f458d9dcf10996}{Conversion::Conversion}(\textcolor{keyword}{const} \hyperlink{class_vision_1_1_conversion}{Conversion} &rhs) \{
+00030   this->\hyperlink{class_vision_1_1_conversion_a3fd4bac8a8d6788b6a1886916c5464b4}{OriginalColorSpace} = rhs.\hyperlink{class_vision_1_1_conversion_a3fd4bac8a8d6788b6a1886916c5464b4}{OriginalColorSpace};
+00031   this->\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg} = rhs.\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg};
+00032   this->\hyperlink{class_vision_1_1_conversion_a57337750cb60b9ff7ed269c184d1fda7}{ProcessedColorSpace} = rhs.\hyperlink{class_vision_1_1_conversion_a57337750cb60b9ff7ed269c184d1fda7}{ProcessedColorSpace};
+00033   this->\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg} = rhs.\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg};
+00034   this->\hyperlink{class_vision_1_1_image_processing_a5371ad8d6f7aac9d43ee5c902ade7435}{TempImg} = rhs.\hyperlink{class_vision_1_1_image_processing_a5371ad8d6f7aac9d43ee5c902ade7435}{TempImg};
+00035 \}
+00036 
+\hypertarget{_conversion_8cpp_source_l00038}{}\hyperlink{class_vision_1_1_conversion_a9a22cb622c0e847fa4635e7194c76d4d}{00038} \hyperlink{class_vision_1_1_conversion_a9a22cb622c0e847fa4635e7194c76d4d}{Conversion::~Conversion}() \{\}
+00039 
+\hypertarget{_conversion_8cpp_source_l00041}{}\hyperlink{class_vision_1_1_conversion_ac1a6958a4d331108ad61f346f06319c7}{00041} \hyperlink{class_vision_1_1_conversion}{Conversion} &\hyperlink{class_vision_1_1_conversion_ac1a6958a4d331108ad61f346f06319c7}{Conversion::operator=}(\hyperlink{class_vision_1_1_conversion}{Conversion} rhs) \{
+00042   \textcolor{keywordflow}{if} (&rhs != \textcolor{keyword}{this}) \{
+00043     this->\hyperlink{class_vision_1_1_conversion_a3fd4bac8a8d6788b6a1886916c5464b4}{OriginalColorSpace} = rhs.\hyperlink{class_vision_1_1_conversion_a3fd4bac8a8d6788b6a1886916c5464b4}{OriginalColorSpace};
+00044     this->\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg} = rhs.\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg};
+00045     this->\hyperlink{class_vision_1_1_conversion_a57337750cb60b9ff7ed269c184d1fda7}{ProcessedColorSpace} = rhs.\hyperlink{class_vision_1_1_conversion_a57337750cb60b9ff7ed269c184d1fda7}{ProcessedColorSpace};
+00046     this->\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg} = rhs.\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg};
+00047     this->\hyperlink{class_vision_1_1_image_processing_a5371ad8d6f7aac9d43ee5c902ade7435}{TempImg} = rhs.\hyperlink{class_vision_1_1_image_processing_a5371ad8d6f7aac9d43ee5c902ade7435}{TempImg};
+00048   \}
+00049   \textcolor{keywordflow}{return} *\textcolor{keyword}{this};
+00050 \}
+00051 
+\hypertarget{_conversion_8cpp_source_l00066}{}\hyperlink{class_vision_1_1_conversion_a7795d9d544e89e672acff2747b2218f0}{00066} \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_conversion_ac78b687a5b6cdf4c0ae812b5d76b13fc}{Conversion::Convert}(\textcolor{keyword}{const} Mat &src, Mat &dst, \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388}{ColorSpace} convertFrom,
+00067                          \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388}{ColorSpace} convertTo, \textcolor{keywordtype}{bool} chain) \{
+00068   \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg} = src;
+00069   \hyperlink{class_vision_1_1_conversion_ac78b687a5b6cdf4c0ae812b5d76b13fc}{Convert}(convertFrom, convertTo, chain);
+00070   dst = \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg};
+00071 \}
+00072 
+\hypertarget{_conversion_8cpp_source_l00086}{}\hyperlink{class_vision_1_1_conversion_ac78b687a5b6cdf4c0ae812b5d76b13fc}{00086} \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_conversion_ac78b687a5b6cdf4c0ae812b5d76b13fc}{Conversion::Convert}(\hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388}{ColorSpace} convertFrom, 
+      \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388}{ColorSpace} convertTo,
+00087                          \textcolor{keywordtype}{bool} chain) \{
+00088   \hyperlink{class_vision_1_1_conversion_a3fd4bac8a8d6788b6a1886916c5464b4}{OriginalColorSpace} = convertFrom;
+00089   \hyperlink{class_vision_1_1_conversion_a57337750cb60b9ff7ed269c184d1fda7}{ProcessedColorSpace} = convertTo;
+00090 
+00091   \textcolor{comment}{// Exception handling}
+00092   \hyperlink{_image_processing_8h_a27c4e53b88a0f9f2c097add555131056}{EMPTY\_CHECK}(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg});
+00093   \hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg} = 0.;
+00094   \hyperlink{class_vision_1_1_image_processing_ac0c168e16365ff5941791f67ec895663}{prog\_sig}(\hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg}, \textcolor{stringliteral}{"Converting colorspace"});
+00095 
+00096   \textcolor{keywordtype}{int} nData = \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.rows * \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.cols;
+00097   \textcolor{comment}{// uint32\_t i, j;}
+00098 
+00099   \textcolor{keywordflow}{if} (convertFrom == \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388af3fab43e1e6d8ffab1bf27050866a8d5}{RGB} && convertTo == \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388abfa5e56d2444f73ce850195468885fdd}{Intensity}) \textcolor{comment}{// RGB 2 Intensity}
+00100   \{
+00101     \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.create(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.size(), CV\_8UC1);
+00102     \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *P = \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.data;
+00103     \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *O;
+00104     \hyperlink{_image_processing_8h_a6e6f0183cb53c76ef458d4fd34e07bcd}{CHAIN\_PROCESS}(chain, O, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar});
+00105 
+00106     \hyperlink{class_vision_1_1_image_processing_ac0c168e16365ff5941791f67ec895663}{prog\_sig}(\hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg}, \textcolor{stringliteral}{"RGB 2 Intensity conversion"});
+00107     \hyperlink{class_vision_1_1_conversion_a93626e56872b99ed79fd3540c6adf776}{RGB2Intensity}(O, P, nData);
+00108     \hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg} += \hyperlink{class_vision_1_1_image_processing_a7438451f9a447a33e9f04bf8e73eae31}{ProgStep};
+00109     \hyperlink{class_vision_1_1_image_processing_ac0c168e16365ff5941791f67ec895663}{prog\_sig}(\hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg}, \textcolor{stringliteral}{"RGB 2 Intensity conversion Finished"});
+00110   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (convertFrom == \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388af3fab43e1e6d8ffab1bf27050866a8d5}{RGB} && convertTo == \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388ad4dfd3a535a86b69dd0e32ae7598b590}{CIE\_XYZ}) \textcolor{comment}{// RGB 2 XYZ}
+00111   \{
+00112     \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.create(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.size(), CV\_32FC3);
+00113     \textcolor{keywordtype}{float} *P = (\textcolor{keywordtype}{float} *)\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.data;
+00114     \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *O;
+00115     \hyperlink{_image_processing_8h_a6e6f0183cb53c76ef458d4fd34e07bcd}{CHAIN\_PROCESS}(chain, O, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar});
+00116 
+00117     \hyperlink{class_vision_1_1_image_processing_ac0c168e16365ff5941791f67ec895663}{prog\_sig}(\hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg}, \textcolor{stringliteral}{"RGB 2 CIE XYZ conversion"});
+00118     \hyperlink{class_vision_1_1_conversion_afe7b24da82f77ff1116f8bc3d0a62fcc}{RGB2XYZ}(O, P, nData);
+00119     \hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg} += \hyperlink{class_vision_1_1_image_processing_a7438451f9a447a33e9f04bf8e73eae31}{ProgStep};
+00120     \hyperlink{class_vision_1_1_image_processing_ac0c168e16365ff5941791f67ec895663}{prog\_sig}(\hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg}, \textcolor{stringliteral}{"RGB 2 CIE XYZ conversion Finished"});
+00121   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (convertFrom == \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388af3fab43e1e6d8ffab1bf27050866a8d5}{RGB} && convertTo == \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388afd9ec9933d500e5eeec6ce3359321b0e}{CIE\_lab}) \textcolor{comment}{// RGB 2 Lab}
+00122   \{
+00123     \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.create(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.size(), CV\_32FC3);
+00124     \textcolor{keywordtype}{float} *P = (\textcolor{keywordtype}{float} *)\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.data;
+00125     \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *O;
+00126     \hyperlink{_image_processing_8h_a6e6f0183cb53c76ef458d4fd34e07bcd}{CHAIN\_PROCESS}(chain, O, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar});
+00127 
+00128     \hyperlink{class_vision_1_1_image_processing_ac0c168e16365ff5941791f67ec895663}{prog\_sig}(\hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg}, \textcolor{stringliteral}{"RGB 2 CIE XYZ conversion"});
+00129     \hyperlink{class_vision_1_1_conversion_afe7b24da82f77ff1116f8bc3d0a62fcc}{RGB2XYZ}(O, P, nData);
+00130     \hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg} += \hyperlink{class_vision_1_1_image_processing_a7438451f9a447a33e9f04bf8e73eae31}{ProgStep};
+00131     \hyperlink{class_vision_1_1_image_processing_ac0c168e16365ff5941791f67ec895663}{prog\_sig}(\hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg}, \textcolor{stringliteral}{"RGB 2 CIE XYZ conversion Finished"});
+00132     \hyperlink{class_vision_1_1_conversion_ac78b687a5b6cdf4c0ae812b5d76b13fc}{Convert}(\hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388ad4dfd3a535a86b69dd0e32ae7598b590}{CIE\_XYZ}, \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388afd9ec9933d500e5eeec6ce3359321b0e}{CIE\_lab}, \textcolor{keyword}{true});
+00133   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (convertFrom == \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388af3fab43e1e6d8ffab1bf27050866a8d5}{RGB} && convertTo == \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388addf2a4063c4fe27e2675fafccdcdd9c1}{RI}) \textcolor{comment}{// RGB 2 RI}
+00134   \{
+00135     \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.create(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.size(), CV\_32FC3);
+00136     \textcolor{keywordtype}{float} *P = (\textcolor{keywordtype}{float} *)\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.data;
+00137     \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *O;
+00138     \hyperlink{_image_processing_8h_a6e6f0183cb53c76ef458d4fd34e07bcd}{CHAIN\_PROCESS}(chain, O, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar});
+00139 
+00140     \hyperlink{class_vision_1_1_image_processing_ac0c168e16365ff5941791f67ec895663}{prog\_sig}(\hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg}, \textcolor{stringliteral}{"RGB 2 CIE XYZ conversion"});
+00141     \hyperlink{class_vision_1_1_conversion_afe7b24da82f77ff1116f8bc3d0a62fcc}{RGB2XYZ}(O, P, nData);
+00142     \hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg} += \hyperlink{class_vision_1_1_image_processing_a7438451f9a447a33e9f04bf8e73eae31}{ProgStep};
+00143     \hyperlink{class_vision_1_1_image_processing_ac0c168e16365ff5941791f67ec895663}{prog\_sig}(\hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg}, \textcolor{stringliteral}{"RGB 2 CIE XYZ conversion Finished"});
+00144     \hyperlink{class_vision_1_1_conversion_ac78b687a5b6cdf4c0ae812b5d76b13fc}{Convert}(\hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388ad4dfd3a535a86b69dd0e32ae7598b590}{CIE\_XYZ}, \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388afd9ec9933d500e5eeec6ce3359321b0e}{CIE\_lab}, \textcolor{keyword}{true});
+00145     \hyperlink{class_vision_1_1_conversion_ac78b687a5b6cdf4c0ae812b5d76b13fc}{Convert}(\hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388afd9ec9933d500e5eeec6ce3359321b0e}{CIE\_lab}, \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388addf2a4063c4fe27e2675fafccdcdd9c1}{RI}, \textcolor{keyword}{true});
+00146   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (convertFrom == \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388ad4dfd3a535a86b69dd0e32ae7598b590}{CIE\_XYZ} && convertTo == \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388afd9ec9933d500e5eeec6ce3359321b0e}{CIE\_lab}) \textcolor{comment}{// XYZ 2 Lab}
+00147   \{
+00148     \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.create(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.size(), CV\_32FC3);
+00149     \textcolor{keywordtype}{float} *P = (\textcolor{keywordtype}{float} *)\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.data;
+00150     \textcolor{keywordtype}{float} *O;
+00151     \hyperlink{_image_processing_8h_a6e6f0183cb53c76ef458d4fd34e07bcd}{CHAIN\_PROCESS}(chain, O, \textcolor{keywordtype}{float});
+00152 
+00153     \hyperlink{class_vision_1_1_image_processing_ac0c168e16365ff5941791f67ec895663}{prog\_sig}(\hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg}, \textcolor{stringliteral}{"CIE XYZ 2 CIE La*b* conversion"});
+00154     \hyperlink{class_vision_1_1_conversion_a9ecc41c4226eafc55d0ee0cc550e593b}{XYZ2Lab}(O, P, nData);
+00155     \hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg} += \hyperlink{class_vision_1_1_image_processing_a7438451f9a447a33e9f04bf8e73eae31}{ProgStep};
+00156     \hyperlink{class_vision_1_1_image_processing_ac0c168e16365ff5941791f67ec895663}{prog\_sig}(\hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg}, \textcolor{stringliteral}{"CIE XYZ 2 CIE La*b* conversion Finished"});
+00157   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (convertFrom == \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388ad4dfd3a535a86b69dd0e32ae7598b590}{CIE\_XYZ} && convertTo == \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388addf2a4063c4fe27e2675fafccdcdd9c1}{RI}) \textcolor{comment}{// XYZ 2 RI}
+00158   \{
+00159     \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.create(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.size(), CV\_32FC3);
+00160     \textcolor{keywordtype}{float} *P = (\textcolor{keywordtype}{float} *)\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.data;
+00161     \textcolor{keywordtype}{float} *O;
+00162     \hyperlink{_image_processing_8h_a6e6f0183cb53c76ef458d4fd34e07bcd}{CHAIN\_PROCESS}(chain, O, \textcolor{keywordtype}{float});
+00163 
+00164     \hyperlink{class_vision_1_1_image_processing_ac0c168e16365ff5941791f67ec895663}{prog\_sig}(\hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg}, \textcolor{stringliteral}{"CIE XYZ 2 CIE La*b* conversion"});
+00165     \hyperlink{class_vision_1_1_conversion_a9ecc41c4226eafc55d0ee0cc550e593b}{XYZ2Lab}(O, P, nData);
+00166     \hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg} += \hyperlink{class_vision_1_1_image_processing_a7438451f9a447a33e9f04bf8e73eae31}{ProgStep};
+00167     \hyperlink{class_vision_1_1_image_processing_ac0c168e16365ff5941791f67ec895663}{prog\_sig}(\hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg}, \textcolor{stringliteral}{"CIE XYZ 2 CIE La*b* conversion Finished"});
+00168     \hyperlink{class_vision_1_1_conversion_ac78b687a5b6cdf4c0ae812b5d76b13fc}{Convert}(\hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388afd9ec9933d500e5eeec6ce3359321b0e}{CIE\_lab}, \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388addf2a4063c4fe27e2675fafccdcdd9c1}{RI}, \textcolor{keyword}{true});
+00169   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (convertFrom == \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388afd9ec9933d500e5eeec6ce3359321b0e}{CIE\_lab} && convertTo == \hyperlink{class_vision_1_1_conversion_a0a21d4ccbb013185f1974d35ec86e388addf2a4063c4fe27e2675fafccdcdd9c1}{RI}) \textcolor{comment}{// Lab 2 RI}
+00170   \{
+00171     \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.create(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.size(), CV\_32FC1);
+00172     \textcolor{keywordtype}{float} *P = (\textcolor{keywordtype}{float} *)\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.data;
+00173     \textcolor{keywordtype}{float} *O;
+00174     \hyperlink{_image_processing_8h_a6e6f0183cb53c76ef458d4fd34e07bcd}{CHAIN\_PROCESS}(chain, O, \textcolor{keywordtype}{float});
+00175 
+00176     \hyperlink{class_vision_1_1_image_processing_ac0c168e16365ff5941791f67ec895663}{prog\_sig}(\hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg}, \textcolor{stringliteral}{"CIE La*b* 2 Redness Index conversion"});
+00177     \hyperlink{class_vision_1_1_conversion_adf3ad076d44a9986332f5078c5fa2cc7}{Lab2RI}(O, P, nData * 3);
+00178     \hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg} += \hyperlink{class_vision_1_1_image_processing_a7438451f9a447a33e9f04bf8e73eae31}{ProgStep};
+00179     \hyperlink{class_vision_1_1_image_processing_ac0c168e16365ff5941791f67ec895663}{prog\_sig}(\hyperlink{class_vision_1_1_image_processing_ac06b3b9501cde8e742aaf99d986af256}{currentProg}, \textcolor{stringliteral}{"CIE La*b* 2 Redness Index conversion Finsihed"});
+00180   \} \textcolor{keywordflow}{else} \{
+00181     \textcolor{keywordflow}{throw} \hyperlink{class_vision_1_1_exception_1_1_conversion_not_supported_exception}{Exception::ConversionNotSupportedException}();
+00182   \}
+00183 \}
+00184 
+\hypertarget{_conversion_8cpp_source_l00190}{}\hyperlink{class_vision_1_1_conversion_a93626e56872b99ed79fd3540c6adf776}{00190} \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_conversion_a93626e56872b99ed79fd3540c6adf776}{Conversion::RGB2Intensity}(\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *O, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *P, \textcolor{keywordtype}{int} nData) \{
+00191   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i;
+00192   \textcolor{keywordtype}{int} j;
+00193   i = 0;
+00194   j = 0;
+00195   \textcolor{keywordflow}{while} (j < nData) \{
+00196     P[j++] = (*(O + i + 2) * 0.2126 + *(O + i + 1) * 0.7152 +
+00197               *(O + i) * 0.0722); \textcolor{comment}{// Grey value}
+00198     i += 3;
+00199   \}
+00200 \}
+00201 
+\hypertarget{_conversion_8cpp_source_l00207}{}\hyperlink{class_vision_1_1_conversion_afe7b24da82f77ff1116f8bc3d0a62fcc}{00207} \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_conversion_afe7b24da82f77ff1116f8bc3d0a62fcc}{Conversion::RGB2XYZ}(\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *O, \textcolor{keywordtype}{float} *P, \textcolor{keywordtype}{int} nData) \{
+00208   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} endData = nData * \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.step.buf[1];
+00209   \textcolor{keywordtype}{float} R, G, B;
+00210   \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i < endData; i += \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.step.buf[1]) \{
+00211     R = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(*(O + i + 2) / 255.0f);
+00212     B = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(*(O + i + 1) / 255.0f);
+00213     G = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(*(O + i) / 255.0f);
+00214     P[i] = (\hyperlink{class_vision_1_1_conversion_ad0c6e6c63380927c63da7f967b5e61d1}{XYZmat}[0][0] * R) + (\hyperlink{class_vision_1_1_conversion_ad0c6e6c63380927c63da7f967b5e61d1}{XYZmat}[0][1] * B) + (\hyperlink{class_vision_1_1_conversion_ad0c6e6c63380927c63da7f967b5e61d1}{XYZmat}[0][2] * G); \textcolor{comment}{// X}
+00215     P[i + 1] = (\hyperlink{class_vision_1_1_conversion_ad0c6e6c63380927c63da7f967b5e61d1}{XYZmat}[1][0] * R) + (\hyperlink{class_vision_1_1_conversion_ad0c6e6c63380927c63da7f967b5e61d1}{XYZmat}[1][1] * B) + (\hyperlink{class_vision_1_1_conversion_ad0c6e6c63380927c63da7f967b5e61d1}{XYZmat}[1][2] * G); \textcolor{comment}{// Y}
+00216     P[i + 2] = (\hyperlink{class_vision_1_1_conversion_ad0c6e6c63380927c63da7f967b5e61d1}{XYZmat}[2][0] * R) + (\hyperlink{class_vision_1_1_conversion_ad0c6e6c63380927c63da7f967b5e61d1}{XYZmat}[2][1] * B) + (\hyperlink{class_vision_1_1_conversion_ad0c6e6c63380927c63da7f967b5e61d1}{XYZmat}[2][2] * G); \textcolor{comment}{// Z}
+00217   \}
+00218 \}
+00219 
+\hypertarget{_conversion_8cpp_source_l00225}{}\hyperlink{class_vision_1_1_conversion_a9ecc41c4226eafc55d0ee0cc550e593b}{00225} \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_conversion_a9ecc41c4226eafc55d0ee0cc550e593b}{Conversion::XYZ2Lab}(\textcolor{keywordtype}{float} *O, \textcolor{keywordtype}{float} *P, \textcolor{keywordtype}{int} nData) \{
+00226   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} endData = nData * 3;
+00227   \textcolor{keywordtype}{float} yy0, xx0, zz0;
+00228   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < endData; i += 3) \{
+00229     xx0 = *(O + i) / \hyperlink{class_vision_1_1_conversion_adbaed406827f7ffb583d003815a9f3f8}{whitePoint}[0];
+00230     yy0 = *(O + i + 1) / \hyperlink{class_vision_1_1_conversion_adbaed406827f7ffb583d003815a9f3f8}{whitePoint}[1];
+00231     zz0 = *(O + i + 2) / \hyperlink{class_vision_1_1_conversion_adbaed406827f7ffb583d003815a9f3f8}{whitePoint}[2];
+00232 
+00233     \textcolor{keywordflow}{if} (yy0 > 0.008856) \{
+00234       P[i] = (116 * pow(yy0, 0.333f)) - 16; \textcolor{comment}{// L}
+00235     \} \textcolor{keywordflow}{else} \{
+00236       P[i] = 903.3 * yy0; \textcolor{comment}{// L}
+00237     \}
+00238 
+00239     P[i + 1] = 500 * (\hyperlink{class_vision_1_1_conversion_aea73f90915cd0459dcaf70fb3e109a82}{f\_xyz2lab}(xx0) - \hyperlink{class_vision_1_1_conversion_aea73f90915cd0459dcaf70fb3e109a82}{f\_xyz2lab}(yy0));
+00240     P[i + 2] = 200 * (\hyperlink{class_vision_1_1_conversion_aea73f90915cd0459dcaf70fb3e109a82}{f\_xyz2lab}(yy0) - \hyperlink{class_vision_1_1_conversion_aea73f90915cd0459dcaf70fb3e109a82}{f\_xyz2lab}(zz0));
+00241   \}
+00242 \}
+00243 
+\hypertarget{_conversion_8cpp_source_l00244}{}\hyperlink{class_vision_1_1_conversion_aea73f90915cd0459dcaf70fb3e109a82}{00244} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} \hyperlink{class_vision_1_1_conversion_aea73f90915cd0459dcaf70fb3e109a82}{Conversion::f\_xyz2lab}(\textcolor{keywordtype}{float} t) \{
+00245   \textcolor{keywordflow}{if} (t > 0.008856) \{
+00246     \textcolor{keywordflow}{return} pow(t, 0.3333333333f);
+00247   \}
+00248   \textcolor{keywordflow}{return} 7.787 * t + 0.137931034482759f;
+00249 \}
+00250 
+\hypertarget{_conversion_8cpp_source_l00256}{}\hyperlink{class_vision_1_1_conversion_adf3ad076d44a9986332f5078c5fa2cc7}{00256} \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_conversion_adf3ad076d44a9986332f5078c5fa2cc7}{Conversion::Lab2RI}(\textcolor{keywordtype}{float} *O, \textcolor{keywordtype}{float} *P, \textcolor{keywordtype}{int} nData) \{
+00257   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} j = 0;
+00258   \textcolor{keywordtype}{float} L, a, b;
+00259   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < nData; i += 3) \{
+00260     L = *(O + i);
+00261     a = *(O + i + 1);
+00262     b = *(O + i + 2);
+00263     P[j++] =
+00264         (L * (pow((pow(a, 2.0f) + pow(b, 2.0f)), 0.5f) * (pow(10, 8.2f)))) /
+00265         (b * pow(L, 6.0f));
+00266   \}
+00267 \}
+00268 \}
+\end{DoxyCode}

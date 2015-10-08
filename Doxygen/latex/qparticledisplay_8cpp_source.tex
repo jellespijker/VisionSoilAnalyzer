@@ -1,0 +1,177 @@
+\hypertarget{qparticledisplay_8cpp_source}{}\subsection{qparticledisplay.\+cpp}
+\label{qparticledisplay_8cpp_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Q\+Particle\+Display/qparticledisplay.\+cpp@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Q\+Particle\+Display/qparticledisplay.\+cpp}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/* Copyright (C) Jelle Spijker - All Rights Reserved}
+00002 \textcolor{comment}{ * Unauthorized copying of this file, via any medium is strictly prohibited}
+00003 \textcolor{comment}{ * and only allowed with the written consent of the author (Jelle Spijker)}
+00004 \textcolor{comment}{ * This software is proprietary and confidential}
+00005 \textcolor{comment}{ * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015}
+00006 \textcolor{comment}{ */}
+00007 
+00008 \textcolor{preprocessor}{#include "\hyperlink{qparticledisplay_8h}{qparticledisplay.h}"}
+00009 \textcolor{preprocessor}{#include "ui\_qparticledisplay.h"}
+00010 
+\hypertarget{qparticledisplay_8cpp_source_l00011}{}\hyperlink{class_q_particle_display_a552bc093c084d6212b6b4ace6f14c3d1}{00011} \hyperlink{class_q_particle_display_a552bc093c084d6212b6b4ace6f14c3d1}{QParticleDisplay::QParticleDisplay}(QWidget *parent)
+00012     : QWidget(parent), ui(new \hyperlink{namespace_ui}{Ui}::\hyperlink{class_q_particle_display}{QParticleDisplay}) \{
+00013   \hyperlink{class_q_particle_display_ae4e6c27c6c2059b4e08358938044a18c}{ui}->setupUi(\textcolor{keyword}{this});
+00014   \hyperlink{class_q_particle_display_ae4e6c27c6c2059b4e08358938044a18c}{ui}->widget->setBackgroundColor(QColor(\textcolor{stringliteral}{"white"}));
+00015   \hyperlink{class_q_particle_display_ae4e6c27c6c2059b4e08358938044a18c}{ui}->widget->setSlideSize(QSize(230, 230));
+00016   connect(\hyperlink{class_q_particle_display_ae4e6c27c6c2059b4e08358938044a18c}{ui}->widget, SIGNAL(centerIndexChanged(\textcolor{keywordtype}{int})), \textcolor{keyword}{this},
+00017           SLOT(\hyperlink{class_q_particle_display_aa19e1abd163291e87e8b4f2547e90155}{on\_selectedParticleChangedWidget}(\textcolor{keywordtype}{int})));
+00018   connect(\hyperlink{class_q_particle_display_ae4e6c27c6c2059b4e08358938044a18c}{ui}->horizontalSlider, SIGNAL(valueChanged(\textcolor{keywordtype}{int})), \textcolor{keyword}{this},
+00019           SLOT(\hyperlink{class_q_particle_display_ae532d16adee8293f3ee5fb984b614bdf}{on\_selectedParticleChangedSlider}(\textcolor{keywordtype}{int})));
+00020 \}
+00021 
+\hypertarget{qparticledisplay_8cpp_source_l00022}{}\hyperlink{class_q_particle_display_af942373a3774f1fbe7f8465a263ff473}{00022} \hyperlink{class_q_particle_display_af942373a3774f1fbe7f8465a263ff473}{QParticleDisplay::~QParticleDisplay}() \{
+00023   \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i < \hyperlink{class_q_particle_display_ae4e6c27c6c2059b4e08358938044a18c}{ui}->widget->slideCount(); i++) \{
+00024     \hyperlink{class_q_particle_display_ae4e6c27c6c2059b4e08358938044a18c}{ui}->widget->removeSlide(0);
+00025   \}
+00026   \textcolor{keyword}{delete} \hyperlink{class_q_particle_display_ae4e6c27c6c2059b4e08358938044a18c}{ui}->widget;
+00027   \textcolor{keyword}{delete} \hyperlink{class_q_particle_display_ae4e6c27c6c2059b4e08358938044a18c}{ui};
+00028 \}
+00029 
+\hypertarget{qparticledisplay_8cpp_source_l00030}{}\hyperlink{class_q_particle_display_a2b6454aa1ddef3eca338780f66b91654}{00030} \textcolor{keywordtype}{void} \hyperlink{class_q_particle_display_a2b6454aa1ddef3eca338780f66b91654}{QParticleDisplay::setSelectedParticle}(\textcolor{keywordtype}{int} newValue) \{
+00031   \hyperlink{class_q_particle_display_ae4e6c27c6c2059b4e08358938044a18c}{ui}->widget->setCenterIndex(newValue);
+00032   \hyperlink{class_q_particle_display_ae4e6c27c6c2059b4e08358938044a18c}{ui}->horizontalSlider->setValue(newValue);
+00033 \}
+00034 
+\hypertarget{qparticledisplay_8cpp_source_l00035}{}\hyperlink{class_q_particle_display_a31d8350736e4d39b9d2391ee8e6edc65}{00035} \textcolor{keywordtype}{void} \hyperlink{class_q_particle_display_a31d8350736e4d39b9d2391ee8e6edc65}{QParticleDisplay::SetSample}(\hyperlink{class_soil_analyzer_1_1_sample}{SoilAnalyzer::Sample} *
+      sample) \{
+00036   this->\hyperlink{class_q_particle_display_a24a25733ffa557a66bf7d776b7af8536}{Sample} = sample;
+00037   \hyperlink{class_q_particle_display_a6b976ba18b8aac401d79c768c5b81ed4}{images}.clear();
+00038   \hyperlink{class_q_particle_display_ae4e6c27c6c2059b4e08358938044a18c}{ui}->widget->clear();
+00039   \hyperlink{class_q_particle_display_ae4e6c27c6c2059b4e08358938044a18c}{ui}->horizontalSlider->setMaximum(this->\hyperlink{class_q_particle_display_a24a25733ffa557a66bf7d776b7af8536}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a877bf12069fe09d2c8f9636f19ed5335}{ParticlePopulation}.size() - 1);
+00040   \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i < this->\hyperlink{class_q_particle_display_a24a25733ffa557a66bf7d776b7af8536}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a877bf12069fe09d2c8f9636f19ed5335}{ParticlePopulation}.size(); i++) \{
+00041     \hyperlink{class_q_particle_display_a6b976ba18b8aac401d79c768c5b81ed4}{images}.push\_back(
+00042         \hyperlink{class_q_particle_display_a185ca2afdcd24fa6107bfd6ff630b5ec}{ConvertParticleToQImage}(&\hyperlink{class_q_particle_display_a24a25733ffa557a66bf7d776b7af8536}{Sample}->
+      \hyperlink{class_soil_analyzer_1_1_sample_a877bf12069fe09d2c8f9636f19ed5335}{ParticlePopulation}.at(i)));
+00043     \hyperlink{class_q_particle_display_ae4e6c27c6c2059b4e08358938044a18c}{ui}->widget->addSlide(\hyperlink{class_q_particle_display_a6b976ba18b8aac401d79c768c5b81ed4}{images}[\hyperlink{class_q_particle_display_a6b976ba18b8aac401d79c768c5b81ed4}{images}.size() - 1]);
+00044   \}
+00045   \hyperlink{class_q_particle_display_ab89d53c5fd63b606de0a3c2e4446d8c1}{SelectedParticle} = &\hyperlink{class_q_particle_display_a24a25733ffa557a66bf7d776b7af8536}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a877bf12069fe09d2c8f9636f19ed5335}{ParticlePopulation}[
+      \hyperlink{class_q_particle_display_ae4e6c27c6c2059b4e08358938044a18c}{ui}->widget->centerIndex()];
+00046   \hyperlink{class_q_particle_display_ae532d16adee8293f3ee5fb984b614bdf}{on\_selectedParticleChangedSlider}(0);
+00047 \}
+00048 
+00049 QImage
+\hypertarget{qparticledisplay_8cpp_source_l00050}{}\hyperlink{class_q_particle_display_a185ca2afdcd24fa6107bfd6ff630b5ec}{00050} \hyperlink{class_q_particle_display_a185ca2afdcd24fa6107bfd6ff630b5ec}{QParticleDisplay::ConvertParticleToQImage}(
+      \hyperlink{class_soil_analyzer_1_1_particle}{SoilAnalyzer::Particle} *particle) \{
+00051   QImage dst(particle->\hyperlink{class_soil_analyzer_1_1_particle_a885a9f3ca828244a72c5866fff7d2e89}{BW}.cols + 10, particle->\hyperlink{class_soil_analyzer_1_1_particle_a885a9f3ca828244a72c5866fff7d2e89}{BW}.rows + 10,
+00052              QImage::Format\_RGB32);
+00053   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} nData = particle->\hyperlink{class_soil_analyzer_1_1_particle_a885a9f3ca828244a72c5866fff7d2e89}{BW}.cols * particle->\hyperlink{class_soil_analyzer_1_1_particle_a885a9f3ca828244a72c5866fff7d2e89}{BW}.rows;
+00054   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} sData = ((dst.width() - 1) * 5) + 5;
+00055   \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *QDst = dst.bits();
+00056   \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *CVBW = particle->\hyperlink{class_soil_analyzer_1_1_particle_a885a9f3ca828244a72c5866fff7d2e89}{BW}.data;
+00057   \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *CVRGB = particle->\hyperlink{class_soil_analyzer_1_1_particle_a5c3457748fc4f3309bffdcb635c70458}{RGB}.data;
+00058   \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i < sData; i++) \{
+00059     *(QDst++) = 255;
+00060     *(QDst++) = 255;
+00061     *(QDst++) = 255;
+00062     *(QDst++) = 0;
+00063   \}
+00064   \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i < nData; i++) \{
+00065     \textcolor{keywordflow}{if} ((i % particle->\hyperlink{class_soil_analyzer_1_1_particle_a885a9f3ca828244a72c5866fff7d2e89}{BW}.cols) == 0) \{
+00066       \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} j = 0; j < 10; j++) \{
+00067         *(QDst++) = 255;
+00068         *(QDst++) = 255;
+00069         *(QDst++) = 255;
+00070         *(QDst++) = 0;
+00071       \}
+00072     \}
+00073     \textcolor{keywordflow}{if} (CVBW[i]) \{
+00074       *(QDst++) = *(CVRGB);
+00075       *(QDst++) = *(CVRGB + 1);
+00076       *(QDst++) = *(CVRGB + 2);
+00077       *(QDst++) = 0;
+00078       CVRGB += 3;
+00079     \} \textcolor{keywordflow}{else} \{
+00080       *(QDst++) = 255;
+00081       *(QDst++) = 255;
+00082       *(QDst++) = 255;
+00083       *(QDst++) = 0;
+00084       CVRGB += 3;
+00085     \}
+00086   \}
+00087   \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i < sData; i++) \{
+00088     *(QDst++) = 255;
+00089     *(QDst++) = 255;
+00090     *(QDst++) = 255;
+00091     *(QDst++) = 0;
+00092   \}
+00093   \textcolor{keywordflow}{return} dst;
+00094 \}
+00095 
+\hypertarget{qparticledisplay_8cpp_source_l00096}{}\hyperlink{class_q_particle_display_a234e7c98453cad1e0d63c12b7495003a}{00096} \textcolor{keywordtype}{void} \hyperlink{class_q_particle_display_a234e7c98453cad1e0d63c12b7495003a}{QParticleDisplay::on\_pushButton\_delete\_clicked}() \{
+00097   \hyperlink{class_q_particle_display_a24a25733ffa557a66bf7d776b7af8536}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a877bf12069fe09d2c8f9636f19ed5335}{ParticlePopulation}.erase(\hyperlink{class_q_particle_display_a24a25733ffa557a66bf7d776b7af8536}{Sample}->
+      \hyperlink{class_soil_analyzer_1_1_sample_a877bf12069fe09d2c8f9636f19ed5335}{ParticlePopulation}.begin() +
+00098                                    \hyperlink{class_q_particle_display_ae4e6c27c6c2059b4e08358938044a18c}{ui}->widget->centerIndex());
+00099   \hyperlink{class_q_particle_display_ae4e6c27c6c2059b4e08358938044a18c}{ui}->widget->removeSlide(\hyperlink{class_q_particle_display_ae4e6c27c6c2059b4e08358938044a18c}{ui}->widget->centerIndex());
+00100   \hyperlink{class_q_particle_display_ae4e6c27c6c2059b4e08358938044a18c}{ui}->horizontalSlider->setMaximum(this->\hyperlink{class_q_particle_display_a24a25733ffa557a66bf7d776b7af8536}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a877bf12069fe09d2c8f9636f19ed5335}{ParticlePopulation}.size() - 1);
+00101   \hyperlink{class_q_particle_display_a24a25733ffa557a66bf7d776b7af8536}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_af35befb868658ac10fe18fb544000377}{ParticleChangedStatePSD} = \textcolor{keyword}{true};
+00102   \hyperlink{class_q_particle_display_a24a25733ffa557a66bf7d776b7af8536}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a7ee3c324a437d466c014cbbfcfb4a244}{ParticleChangedStateAngularity} = \textcolor{keyword}{true};
+00103   \hyperlink{class_q_particle_display_a24a25733ffa557a66bf7d776b7af8536}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_af2ed93f3cbdc06660e7b846bd4feb7fc}{ParticleChangedStateRoundness} = \textcolor{keyword}{true};
+00104   \hyperlink{class_q_particle_display_a24a25733ffa557a66bf7d776b7af8536}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_aee3c3cf30c0201c695d82ca3a8dd0d8b}{ChangesSinceLastSave} = \textcolor{keyword}{true};
+00105   \hyperlink{class_q_particle_display_a24a25733ffa557a66bf7d776b7af8536}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_accbcd4ae4cc33c94a1b1a4d255d4868f}{ColorChange} = \textcolor{keyword}{true};
+00106   \hyperlink{class_q_particle_display_ab89d53c5fd63b606de0a3c2e4446d8c1}{SelectedParticle} = &\hyperlink{class_q_particle_display_a24a25733ffa557a66bf7d776b7af8536}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a877bf12069fe09d2c8f9636f19ed5335}{ParticlePopulation}[
+      \hyperlink{class_q_particle_display_ae4e6c27c6c2059b4e08358938044a18c}{ui}->widget->centerIndex()];
+00107   emit \hyperlink{class_q_particle_display_a5a3d6ec47c2b43e92d8279ba42c2a997}{particleDeleted}();
+00108 \}
+00109 
+\hypertarget{qparticledisplay_8cpp_source_l00110}{}\hyperlink{class_q_particle_display_aa19e1abd163291e87e8b4f2547e90155}{00110} \textcolor{keywordtype}{void} \hyperlink{class_q_particle_display_aa19e1abd163291e87e8b4f2547e90155}{QParticleDisplay::on\_selectedParticleChangedWidget}(\textcolor{keywordtype}{
+      int} value) \{
+00111   \textcolor{keywordflow}{if} (!\hyperlink{class_q_particle_display_a5ee3723fa6aa59107e808a0a45c03b74}{dontDoIt}) \{
+00112     \hyperlink{class_q_particle_display_a5ee3723fa6aa59107e808a0a45c03b74}{dontDoIt} = \textcolor{keyword}{true};
+00113     \hyperlink{class_q_particle_display_ae4e6c27c6c2059b4e08358938044a18c}{ui}->horizontalSlider->setValue(value);
+00114     \hyperlink{class_q_particle_display_ab89d53c5fd63b606de0a3c2e4446d8c1}{SelectedParticle} = &\hyperlink{class_q_particle_display_a24a25733ffa557a66bf7d776b7af8536}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a877bf12069fe09d2c8f9636f19ed5335}{ParticlePopulation}[
+      \hyperlink{class_q_particle_display_ae4e6c27c6c2059b4e08358938044a18c}{ui}->widget->centerIndex()];
+00115     QString volume;
+00116     volume.sprintf(\textcolor{stringliteral}{"%+06.2f"}, \hyperlink{class_q_particle_display_ab89d53c5fd63b606de0a3c2e4446d8c1}{SelectedParticle}->\hyperlink{class_soil_analyzer_1_1_particle_aacde58abc866af8873c73044db80820b}{GetSiDiameter}());
+00117     \hyperlink{class_q_particle_display_ae4e6c27c6c2059b4e08358938044a18c}{ui}->label\_Volume->setText(volume);
+00118     emit \hyperlink{class_q_particle_display_a0418875b751dfe3e15771b994f4293ad}{particleChanged}(value);
+00119     emit \hyperlink{class_q_particle_display_a73adb2e0e1981fc6042d2e94a6e3be03}{shapeClassificationChanged}(\hyperlink{class_q_particle_display_ab89d53c5fd63b606de0a3c2e4446d8c1}{SelectedParticle}->
+      \hyperlink{class_soil_analyzer_1_1_particle_aaa5091f3028af9e5ff9aee5548c8783c}{Classification}.\hyperlink{struct_predict__struct_a7d1bc56f771ba19cb333163557648714}{Category});
+00120     \hyperlink{class_q_particle_display_a5ee3723fa6aa59107e808a0a45c03b74}{dontDoIt} = \textcolor{keyword}{false};
+00121   \}
+00122 \}
+00123 
+\hypertarget{qparticledisplay_8cpp_source_l00124}{}\hyperlink{class_q_particle_display_ae532d16adee8293f3ee5fb984b614bdf}{00124} \textcolor{keywordtype}{void} \hyperlink{class_q_particle_display_ae532d16adee8293f3ee5fb984b614bdf}{QParticleDisplay::on\_selectedParticleChangedSlider}(\textcolor{keywordtype}{
+      int} value) \{
+00125   \textcolor{keywordflow}{if} (!\hyperlink{class_q_particle_display_a5ee3723fa6aa59107e808a0a45c03b74}{dontDoIt}) \{
+00126     \hyperlink{class_q_particle_display_a5ee3723fa6aa59107e808a0a45c03b74}{dontDoIt} = \textcolor{keyword}{true};
+00127     \hyperlink{class_q_particle_display_ae4e6c27c6c2059b4e08358938044a18c}{ui}->widget->setCenterIndex(value);
+00128     \hyperlink{class_q_particle_display_ab89d53c5fd63b606de0a3c2e4446d8c1}{SelectedParticle} = &\hyperlink{class_q_particle_display_a24a25733ffa557a66bf7d776b7af8536}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a877bf12069fe09d2c8f9636f19ed5335}{ParticlePopulation}[
+      \hyperlink{class_q_particle_display_ae4e6c27c6c2059b4e08358938044a18c}{ui}->widget->centerIndex()];
+00129     QString volume;
+00130     volume.sprintf(\textcolor{stringliteral}{"%+06.2f"}, \hyperlink{class_q_particle_display_ab89d53c5fd63b606de0a3c2e4446d8c1}{SelectedParticle}->\hyperlink{class_soil_analyzer_1_1_particle_aacde58abc866af8873c73044db80820b}{GetSiDiameter}());
+00131     \hyperlink{class_q_particle_display_ae4e6c27c6c2059b4e08358938044a18c}{ui}->label\_Volume->setText(volume);
+00132     emit \hyperlink{class_q_particle_display_a0418875b751dfe3e15771b994f4293ad}{particleChanged}(value);
+00133     emit \hyperlink{class_q_particle_display_a73adb2e0e1981fc6042d2e94a6e3be03}{shapeClassificationChanged}(\hyperlink{class_q_particle_display_ab89d53c5fd63b606de0a3c2e4446d8c1}{SelectedParticle}->
+      \hyperlink{class_soil_analyzer_1_1_particle_aaa5091f3028af9e5ff9aee5548c8783c}{Classification}.\hyperlink{struct_predict__struct_a7d1bc56f771ba19cb333163557648714}{Category});
+00134     \hyperlink{class_q_particle_display_a5ee3723fa6aa59107e808a0a45c03b74}{dontDoIt} = \textcolor{keyword}{false};
+00135   \}
+00136 \}
+00137 
+\hypertarget{qparticledisplay_8cpp_source_l00138}{}\hyperlink{class_q_particle_display_ac73da9c324d8cb6e4d8ce378a0394f50}{00138} \textcolor{keywordtype}{void} \hyperlink{class_q_particle_display_ac73da9c324d8cb6e4d8ce378a0394f50}{QParticleDisplay::wheelEvent}(QWheelEvent *event) \{
+00139   \textcolor{keywordtype}{int} i = \hyperlink{class_q_particle_display_ae4e6c27c6c2059b4e08358938044a18c}{ui}->widget->centerIndex();
+00140   i -= \textcolor{keyword}{event}->delta() / 120;
+00141   \textcolor{keywordflow}{if} (i < 0) \{
+00142     i = \hyperlink{class_q_particle_display_ae4e6c27c6c2059b4e08358938044a18c}{ui}->widget->slideCount() - abs(i) - 1;
+00143   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (i >= \hyperlink{class_q_particle_display_ae4e6c27c6c2059b4e08358938044a18c}{ui}->widget->slideCount()) \{
+00144     i = 0;
+00145   \}
+00146   \hyperlink{class_q_particle_display_ae4e6c27c6c2059b4e08358938044a18c}{ui}->widget->setCenterIndex(i);
+00147   \hyperlink{class_q_particle_display_aa19e1abd163291e87e8b4f2547e90155}{on\_selectedParticleChangedWidget}(i);
+00148 \}
+00149 
+\hypertarget{qparticledisplay_8cpp_source_l00150}{}\hyperlink{class_q_particle_display_a9c0978636ba55d8986f60c2630b59e45}{00150} \textcolor{keywordtype}{void} \hyperlink{class_q_particle_display_a9c0978636ba55d8986f60c2630b59e45}{QParticleDisplay::next}() \{
+00151   \textcolor{keywordtype}{int} i = \hyperlink{class_q_particle_display_ae4e6c27c6c2059b4e08358938044a18c}{ui}->widget->centerIndex();
+00152   i++;
+00153   \textcolor{keywordflow}{if} (i < 0) \{
+00154     i = \hyperlink{class_q_particle_display_ae4e6c27c6c2059b4e08358938044a18c}{ui}->widget->slideCount() - abs(i) - 1;
+00155   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (i >= \hyperlink{class_q_particle_display_ae4e6c27c6c2059b4e08358938044a18c}{ui}->widget->slideCount()) \{
+00156     i = 0;
+00157   \}
+00158   \hyperlink{class_q_particle_display_ae4e6c27c6c2059b4e08358938044a18c}{ui}->widget->setCenterIndex(i);
+00159   \hyperlink{class_q_particle_display_aa19e1abd163291e87e8b4f2547e90155}{on\_selectedParticleChangedWidget}(i);
+00160 \}
+\end{DoxyCode}

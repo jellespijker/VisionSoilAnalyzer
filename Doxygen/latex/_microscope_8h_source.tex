@@ -1,0 +1,198 @@
+\hypertarget{_microscope_8h_source}{}\subsection{Microscope.\+h}
+\label{_microscope_8h_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Hardware/\+Microscope.\+h@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Hardware/\+Microscope.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/* Copyright (C) Jelle Spijker - All Rights Reserved}
+00002 \textcolor{comment}{ * Unauthorized copying of this file, via any medium is strictly prohibited}
+00003 \textcolor{comment}{ * and only allowed with the written consent of the author (Jelle Spijker)}
+00004 \textcolor{comment}{ * This software is proprietary and confidential}
+00005 \textcolor{comment}{ * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015}
+00006 \textcolor{comment}{ */}
+00007 
+00012 \textcolor{preprocessor}{#pragma once}
+00013 
+00014 \textcolor{preprocessor}{#include <stdint.h>}
+00015 \textcolor{preprocessor}{#include <vector>}
+00016 \textcolor{preprocessor}{#include <string>}
+00017 \textcolor{preprocessor}{#include <utility>}
+00018 \textcolor{preprocessor}{#include <algorithm>}
+00019 
+00020 \textcolor{preprocessor}{#include <sys/stat.h>}
+00021 \textcolor{preprocessor}{#include <sys/utsname.h>}
+00022 \textcolor{preprocessor}{#include <sys/ioctl.h>}
+00023 \textcolor{preprocessor}{#include <fstream>}
+00024 \textcolor{preprocessor}{#include <fcntl.h>}
+00025 
+00026 \textcolor{preprocessor}{#include <linux/videodev2.h>}
+00027 \textcolor{preprocessor}{#include <linux/v4l2-controls.h>}
+00028 \textcolor{preprocessor}{#include <linux/v4l2-common.h>}
+00029 
+00030 \textcolor{preprocessor}{#include <boost/filesystem.hpp>}
+00031 \textcolor{preprocessor}{#include <boost/regex.hpp>}
+00032 
+00033 \textcolor{preprocessor}{#include <opencv2/photo.hpp>}
+00034 \textcolor{preprocessor}{#include <opencv2/imgcodecs.hpp>}
+00035 \textcolor{preprocessor}{#include <opencv2/opencv.hpp>}
+00036 \textcolor{preprocessor}{#include <opencv2/core.hpp>}
+00037 
+00038 \textcolor{preprocessor}{#include <gst/gst.h>}
+00039 \textcolor{preprocessor}{#include <gst/app/gstappsink.h>}
+00040 
+00041 \textcolor{preprocessor}{#include <QtCore/QObject>}
+00042 \textcolor{preprocessor}{#include <QEventLoop>}
+00043 \textcolor{preprocessor}{#include <QDebug>}
+00044 
+00045 \textcolor{preprocessor}{#include "\hyperlink{_microscope_not_found_exception_8h}{MicroscopeNotFoundException.h}"}
+00046 \textcolor{preprocessor}{#include "\hyperlink{_could_not_grab_image_exception_8h}{CouldNotGrabImageException.h}"}
+00047 
+00048 \textcolor{keyword}{namespace }\hyperlink{namespace_hardware}{Hardware} \{
+\hypertarget{_microscope_8h_source_l00049}{}\hyperlink{class_hardware_1_1_microscope}{00049} \textcolor{keyword}{class }\hyperlink{class_hardware_1_1_microscope}{Microscope} : \textcolor{keyword}{public} QObject \{
+00050   Q\_OBJECT
+00051 
+00052 \textcolor{keyword}{public}:
+\hypertarget{_microscope_8h_source_l00053}{}\hyperlink{class_hardware_1_1_microscope_ae1afa6a1a1d5b560a5ad8f94c78a336baa3fff72b9355de46f67b5aec00640186}{00053}   \textcolor{keyword}{enum} \hyperlink{class_hardware_1_1_microscope_ae1afa6a1a1d5b560a5ad8f94c78a336b}{Arch} \{ \hyperlink{class_hardware_1_1_microscope_ae1afa6a1a1d5b560a5ad8f94c78a336ba6bdc0aef36aa37ed611a4630810e1228}{ARM}, \hyperlink{class_hardware_1_1_microscope_ae1afa6a1a1d5b560a5ad8f94c78a336baa3fff72b9355de46f67b5aec00640186}{X64} \};
+00054 
+\hypertarget{_microscope_8h_source_l00055}{}\hyperlink{class_hardware_1_1_microscope_a1ca86e9e414d0497f2b2d88b258be1a7ae4293cf0122f710943984fbffafde554}{00055}   \textcolor{keyword}{enum} \hyperlink{class_hardware_1_1_microscope_a1ca86e9e414d0497f2b2d88b258be1a7}{PixelFormat} \{ \hyperlink{class_hardware_1_1_microscope_a1ca86e9e414d0497f2b2d88b258be1a7ae4293cf0122f710943984fbffafde554}{YUYV}, \hyperlink{class_hardware_1_1_microscope_a1ca86e9e414d0497f2b2d88b258be1a7a65e77f52422117bd4aa6b9fc2026e8db}{MJPG}, \hyperlink{class_hardware_1_1_microscope_a1ca86e9e414d0497f2b2d88b258be1a7a7e8165097462456be1df041fd54fda5b}{GREY} \};
+00056 
+\hypertarget{_microscope_8h_source_l00057}{}\hyperlink{struct_hardware_1_1_microscope_1_1_resolution__t}{00057}   \textcolor{keyword}{struct }\hyperlink{struct_hardware_1_1_microscope_1_1_resolution__t}{Resolution\_t} \{
+\hypertarget{_microscope_8h_source_l00058}{}\hyperlink{struct_hardware_1_1_microscope_1_1_resolution__t_a806e65c6ee59267a6a1c312c61a905dd}{00058}     uint16\_t \hyperlink{struct_hardware_1_1_microscope_1_1_resolution__t_a806e65c6ee59267a6a1c312c61a905dd}{Width} = 2048;
+\hypertarget{_microscope_8h_source_l00059}{}\hyperlink{struct_hardware_1_1_microscope_1_1_resolution__t_a0f56bb68dbaf77d47159e46d5384ee60}{00059}     uint16\_t \hyperlink{struct_hardware_1_1_microscope_1_1_resolution__t_a0f56bb68dbaf77d47159e46d5384ee60}{Height} = 1536;
+\hypertarget{_microscope_8h_source_l00060}{}\hyperlink{struct_hardware_1_1_microscope_1_1_resolution__t_a541b9faa798790e33aa42391d4b451b7}{00060}     \hyperlink{class_hardware_1_1_microscope_a1ca86e9e414d0497f2b2d88b258be1a7}{PixelFormat} \hyperlink{struct_hardware_1_1_microscope_1_1_resolution__t_a541b9faa798790e33aa42391d4b451b7}{format} = PixelFormat::MJPG;
+\hypertarget{_microscope_8h_source_l00061}{}\hyperlink{struct_hardware_1_1_microscope_1_1_resolution__t_a7cbc6a0a1253a83e514f0c7c97aa1971}{00061}     std::string \hyperlink{struct_hardware_1_1_microscope_1_1_resolution__t_a7cbc6a0a1253a83e514f0c7c97aa1971}{to\_string}() \{
+00062       std::string retVal = std::to\_string(Width);
+00063       retVal.append(\textcolor{stringliteral}{" x "});
+00064       retVal.append(std::to\_string(Height));
+00065       \textcolor{keywordflow}{if} (format == PixelFormat::MJPG) \{
+00066           retVal.append(\textcolor{stringliteral}{" - MJPG"});
+00067         \}
+00068       \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (format == PixelFormat::YUYV)\{
+00069           retVal.append(\textcolor{stringliteral}{" - YUYV"});
+00070         \}
+00071       \textcolor{keywordflow}{else} \{
+00072           retVal.append(\textcolor{stringliteral}{" - GREY"});
+00073         \}
+00074       \textcolor{keywordflow}{return} retVal;
+00075     \}
+\hypertarget{_microscope_8h_source_l00076}{}\hyperlink{struct_hardware_1_1_microscope_1_1_resolution__t_a953e7a65311a4861b6db47b4faf74d4e}{00076}     \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} \hyperlink{struct_hardware_1_1_microscope_1_1_resolution__t_a953e7a65311a4861b6db47b4faf74d4e}{ID};
+00077   \};
+00078 
+\hypertarget{_microscope_8h_source_l00079}{}\hyperlink{struct_hardware_1_1_microscope_1_1_control__t}{00079}   \textcolor{keyword}{struct }\hyperlink{struct_hardware_1_1_microscope_1_1_control__t}{Control\_t} \{
+\hypertarget{_microscope_8h_source_l00080}{}\hyperlink{struct_hardware_1_1_microscope_1_1_control__t_a7e6d24c2ba366a688ede19b4309dff66}{00080}     std::string \hyperlink{struct_hardware_1_1_microscope_1_1_control__t_a7e6d24c2ba366a688ede19b4309dff66}{name};
+\hypertarget{_microscope_8h_source_l00081}{}\hyperlink{struct_hardware_1_1_microscope_1_1_control__t_a3695825b54ec92981f3d9f7f5a6c6cac}{00081}     \textcolor{keywordtype}{int} \hyperlink{struct_hardware_1_1_microscope_1_1_control__t_a3695825b54ec92981f3d9f7f5a6c6cac}{minimum};
+\hypertarget{_microscope_8h_source_l00082}{}\hyperlink{struct_hardware_1_1_microscope_1_1_control__t_ac9b27cf29b495f9539931166cc3b41e2}{00082}     \textcolor{keywordtype}{int} \hyperlink{struct_hardware_1_1_microscope_1_1_control__t_ac9b27cf29b495f9539931166cc3b41e2}{maximum};
+\hypertarget{_microscope_8h_source_l00083}{}\hyperlink{struct_hardware_1_1_microscope_1_1_control__t_a3151af96b23b2f4d536c74da12d81049}{00083}     \textcolor{keywordtype}{int} \hyperlink{struct_hardware_1_1_microscope_1_1_control__t_a3151af96b23b2f4d536c74da12d81049}{step};
+\hypertarget{_microscope_8h_source_l00084}{}\hyperlink{struct_hardware_1_1_microscope_1_1_control__t_a6d10bf874987471188802081f0eb10f3}{00084}     \textcolor{keywordtype}{int} \hyperlink{struct_hardware_1_1_microscope_1_1_control__t_a6d10bf874987471188802081f0eb10f3}{default\_value};
+\hypertarget{_microscope_8h_source_l00085}{}\hyperlink{struct_hardware_1_1_microscope_1_1_control__t_ac86486f4807d9c9e7fe75d1983b057d3}{00085}     \textcolor{keywordtype}{int} \hyperlink{struct_hardware_1_1_microscope_1_1_control__t_ac86486f4807d9c9e7fe75d1983b057d3}{current\_value};
+\hypertarget{_microscope_8h_source_l00086}{}\hyperlink{struct_hardware_1_1_microscope_1_1_control__t_a7eb33f4df690ac0f388be1305722576d}{00086}     \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} \hyperlink{struct_hardware_1_1_microscope_1_1_control__t_a7eb33f4df690ac0f388be1305722576d}{ID} = V4L2\_CID\_BASE;
+\hypertarget{_microscope_8h_source_l00087}{}\hyperlink{struct_hardware_1_1_microscope_1_1_control__t_ac0d0495a006e660371bb79efec65c985}{00087}     \textcolor{keywordtype}{bool} \hyperlink{struct_hardware_1_1_microscope_1_1_control__t_ac0d0495a006e660371bb79efec65c985}{operator==}(\hyperlink{struct_hardware_1_1_microscope_1_1_control__t}{Control\_t} &rhs) \{
+00088       \textcolor{keywordflow}{if} (this->name.compare(rhs.\hyperlink{struct_hardware_1_1_microscope_1_1_control__t_a7e6d24c2ba366a688ede19b4309dff66}{name}) == 0) \{
+00089         \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+00090       \} \textcolor{keywordflow}{else} \{
+00091         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00092       \}
+00093     \}
+\hypertarget{_microscope_8h_source_l00094}{}\hyperlink{struct_hardware_1_1_microscope_1_1_control__t_a7bc64551eaa1568673551e780661121a}{00094}     \textcolor{keywordtype}{bool} \hyperlink{struct_hardware_1_1_microscope_1_1_control__t_a7bc64551eaa1568673551e780661121a}{operator!=}(\hyperlink{struct_hardware_1_1_microscope_1_1_control__t}{Control\_t} &rhs) \{
+00095       \textcolor{keywordflow}{if} (this->name.compare(rhs.\hyperlink{struct_hardware_1_1_microscope_1_1_control__t_a7e6d24c2ba366a688ede19b4309dff66}{name}) != 0) \{
+00096         \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+00097       \} \textcolor{keywordflow}{else} \{
+00098         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00099       \}
+00100     \}
+00101   \};
+00102 
+\hypertarget{_microscope_8h_source_l00103}{}\hyperlink{class_hardware_1_1_microscope_a6e46a385288c3e0a8d9866fc8e147b09}{00103}   \textcolor{keyword}{typedef} std::vector<Control\_t> \hyperlink{class_hardware_1_1_microscope_a6e46a385288c3e0a8d9866fc8e147b09}{Controls\_t};
+00104 
+\hypertarget{_microscope_8h_source_l00105}{}\hyperlink{struct_hardware_1_1_microscope_1_1___custom_data}{00105}   \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\hyperlink{struct_hardware_1_1_microscope_1_1___custom_data}{\_CustomData} \{
+\hypertarget{_microscope_8h_source_l00106}{}\hyperlink{struct_hardware_1_1_microscope_1_1___custom_data_ae91d22ab690eff7f086d4fc6fdda7e50}{00106}   GMainLoop *\hyperlink{struct_hardware_1_1_microscope_1_1___custom_data_ae91d22ab690eff7f086d4fc6fdda7e50}{main\_loop};
+\hypertarget{_microscope_8h_source_l00107}{}\hyperlink{struct_hardware_1_1_microscope_1_1___custom_data_aaf39f1862740897f67661ac21e22cc5d}{00107}   GstElement *\hyperlink{struct_hardware_1_1_microscope_1_1___custom_data_aaf39f1862740897f67661ac21e22cc5d}{pipeline};
+\hypertarget{_microscope_8h_source_l00108}{}\hyperlink{struct_hardware_1_1_microscope_1_1___custom_data_a2bc62de54f6ee34ef2fda4f8b1f17808}{00108}   GstElement *\hyperlink{struct_hardware_1_1_microscope_1_1___custom_data_a2bc62de54f6ee34ef2fda4f8b1f17808}{source};
+\hypertarget{_microscope_8h_source_l00109}{}\hyperlink{struct_hardware_1_1_microscope_1_1___custom_data_ae1032439e4a4cffefd06929d5aa8d283}{00109}   GstElement *\hyperlink{struct_hardware_1_1_microscope_1_1___custom_data_ae1032439e4a4cffefd06929d5aa8d283}{capsfilter};
+\hypertarget{_microscope_8h_source_l00110}{}\hyperlink{struct_hardware_1_1_microscope_1_1___custom_data_a22c00ed28d0ebc1418b096f36d8f2d50}{00110}   GstElement *\hyperlink{struct_hardware_1_1_microscope_1_1___custom_data_a22c00ed28d0ebc1418b096f36d8f2d50}{tisvideobuffer};
+\hypertarget{_microscope_8h_source_l00111}{}\hyperlink{struct_hardware_1_1_microscope_1_1___custom_data_aead275427306139fd257703992709499}{00111}   GstElement *\hyperlink{struct_hardware_1_1_microscope_1_1___custom_data_aead275427306139fd257703992709499}{tiscolorize};
+\hypertarget{_microscope_8h_source_l00112}{}\hyperlink{struct_hardware_1_1_microscope_1_1___custom_data_af7aa9d3b405cad2f564537954c3b70e7}{00112}   GstElement *\hyperlink{struct_hardware_1_1_microscope_1_1___custom_data_af7aa9d3b405cad2f564537954c3b70e7}{bayer};
+\hypertarget{_microscope_8h_source_l00113}{}\hyperlink{struct_hardware_1_1_microscope_1_1___custom_data_a035f8650ed7e1d28459fbbb8f680a4bf}{00113}   GstElement *\hyperlink{struct_hardware_1_1_microscope_1_1___custom_data_a035f8650ed7e1d28459fbbb8f680a4bf}{queue};
+\hypertarget{_microscope_8h_source_l00114}{}\hyperlink{struct_hardware_1_1_microscope_1_1___custom_data_ab745c37a5d761e71a8b60581d23284ec}{00114}   GstElement *\hyperlink{struct_hardware_1_1_microscope_1_1___custom_data_ab745c37a5d761e71a8b60581d23284ec}{colorspace};
+\hypertarget{_microscope_8h_source_l00115}{}\hyperlink{struct_hardware_1_1_microscope_1_1___custom_data_a6f1ebafe6122de462774fbe2d3d3e3bd}{00115}   GstElement *\hyperlink{struct_hardware_1_1_microscope_1_1___custom_data_a6f1ebafe6122de462774fbe2d3d3e3bd}{convert};
+\hypertarget{_microscope_8h_source_l00116}{}\hyperlink{struct_hardware_1_1_microscope_1_1___custom_data_afc35bf0fc822422a2b979fdfca74b14c}{00116}   GstElement *\hyperlink{struct_hardware_1_1_microscope_1_1___custom_data_afc35bf0fc822422a2b979fdfca74b14c}{sink};
+\hypertarget{_microscope_8h_source_l00117}{}\hyperlink{struct_hardware_1_1_microscope_1_1___custom_data_a92300301898e4dbcedf3d74ca3db3825}{00117}   GstBus *\hyperlink{struct_hardware_1_1_microscope_1_1___custom_data_a92300301898e4dbcedf3d74ca3db3825}{bus};
+\hypertarget{_microscope_8h_source_l00118}{}\hyperlink{struct_hardware_1_1_microscope_1_1___custom_data_ad068f72fc8487744c2e5e71e9096abf1}{00118}   GstCaps *\hyperlink{struct_hardware_1_1_microscope_1_1___custom_data_ad068f72fc8487744c2e5e71e9096abf1}{caps};
+\hypertarget{_microscope_8h_source_l00119}{}\hyperlink{struct_hardware_1_1_microscope_1_1___custom_data_a8356f8298aaff0788bac41d1746eaaba}{00119}   \hyperlink{class_hardware_1_1_microscope}{Hardware::Microscope} *\hyperlink{struct_hardware_1_1_microscope_1_1___custom_data_a8356f8298aaff0788bac41d1746eaaba}{currentMicroscope};
+00120   \} \hyperlink{class_hardware_1_1_microscope_aba8ff1662f7d8a74e4aca943ccce7df4}{CustomData};
+00121 
+\hypertarget{_microscope_8h_source_l00122}{}\hyperlink{struct_hardware_1_1_microscope_1_1_cam__t}{00122}   \textcolor{keyword}{struct }\hyperlink{struct_hardware_1_1_microscope_1_1_cam__t}{Cam\_t} \{
+\hypertarget{_microscope_8h_source_l00123}{}\hyperlink{struct_hardware_1_1_microscope_1_1_cam__t_abadd87f124923661f2e94d78cee3dbf4}{00123}     std::string \hyperlink{struct_hardware_1_1_microscope_1_1_cam__t_abadd87f124923661f2e94d78cee3dbf4}{Name};
+\hypertarget{_microscope_8h_source_l00124}{}\hyperlink{struct_hardware_1_1_microscope_1_1_cam__t_ab179002870eff0055f9f61b0bae276aa}{00124}     std::string \hyperlink{struct_hardware_1_1_microscope_1_1_cam__t_ab179002870eff0055f9f61b0bae276aa}{devString};
+\hypertarget{_microscope_8h_source_l00125}{}\hyperlink{struct_hardware_1_1_microscope_1_1_cam__t_a870c5b29e3b987dce2a82308165cd178}{00125}     \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} \hyperlink{struct_hardware_1_1_microscope_1_1_cam__t_a870c5b29e3b987dce2a82308165cd178}{ID};
+\hypertarget{_microscope_8h_source_l00126}{}\hyperlink{struct_hardware_1_1_microscope_1_1_cam__t_a28496beff27af86c6305e0dd950001e9}{00126}     std::vector<Resolution\_t> \hyperlink{struct_hardware_1_1_microscope_1_1_cam__t_a28496beff27af86c6305e0dd950001e9}{Resolutions};
+\hypertarget{_microscope_8h_source_l00127}{}\hyperlink{struct_hardware_1_1_microscope_1_1_cam__t_a097619bda34a25968a4ecf7bd1097405}{00127}     \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} \hyperlink{struct_hardware_1_1_microscope_1_1_cam__t_a097619bda34a25968a4ecf7bd1097405}{delaytrigger} = 1;
+\hypertarget{_microscope_8h_source_l00128}{}\hyperlink{struct_hardware_1_1_microscope_1_1_cam__t_a85e4d902ee8a096450dbe544ec0ce773}{00128}     \hyperlink{struct_hardware_1_1_microscope_1_1_resolution__t}{Resolution\_t} *\hyperlink{struct_hardware_1_1_microscope_1_1_cam__t_a85e4d902ee8a096450dbe544ec0ce773}{SelectedResolution} = \textcolor{keyword}{nullptr};
+\hypertarget{_microscope_8h_source_l00129}{}\hyperlink{struct_hardware_1_1_microscope_1_1_cam__t_ab86ea92620f15288753a980b6f5d6c9f}{00129}     Controls\_t \hyperlink{struct_hardware_1_1_microscope_1_1_cam__t_ab86ea92620f15288753a980b6f5d6c9f}{Controls};
+\hypertarget{_microscope_8h_source_l00130}{}\hyperlink{struct_hardware_1_1_microscope_1_1_cam__t_a5cadb56c325736da812520b51c7fd65c}{00130}     \hyperlink{struct_hardware_1_1_microscope_1_1___custom_data}{CustomData} \hyperlink{struct_hardware_1_1_microscope_1_1_cam__t_a5cadb56c325736da812520b51c7fd65c}{Pipe};
+\hypertarget{_microscope_8h_source_l00131}{}\hyperlink{struct_hardware_1_1_microscope_1_1_cam__t_ab8d692f05f97f5f3cc0401f750d9ad2e}{00131}     \textcolor{keywordtype}{int} \hyperlink{struct_hardware_1_1_microscope_1_1_cam__t_ab8d692f05f97f5f3cc0401f750d9ad2e}{fd};
+\hypertarget{_microscope_8h_source_l00132}{}\hyperlink{struct_hardware_1_1_microscope_1_1_cam__t_a72212f71f8e4595ea2b535c04f70b35c}{00132}     \textcolor{keywordtype}{bool} \hyperlink{struct_hardware_1_1_microscope_1_1_cam__t_a72212f71f8e4595ea2b535c04f70b35c}{operator==}(\hyperlink{struct_hardware_1_1_microscope_1_1_cam__t}{Cam\_t} \textcolor{keyword}{const} &rhs) \{
+00133       \textcolor{keywordflow}{if} (this->ID == rhs.\hyperlink{struct_hardware_1_1_microscope_1_1_cam__t_a870c5b29e3b987dce2a82308165cd178}{ID} || this->Name == rhs.\hyperlink{struct_hardware_1_1_microscope_1_1_cam__t_abadd87f124923661f2e94d78cee3dbf4}{Name}) \{
+00134         \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+00135       \} \textcolor{keywordflow}{else} \{
+00136         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00137       \}
+00138     \}
+\hypertarget{_microscope_8h_source_l00139}{}\hyperlink{struct_hardware_1_1_microscope_1_1_cam__t_a55d11560610eb5319529d82e57bf8804}{00139}     \textcolor{keywordtype}{bool} \hyperlink{struct_hardware_1_1_microscope_1_1_cam__t_a55d11560610eb5319529d82e57bf8804}{operator!=}(\hyperlink{struct_hardware_1_1_microscope_1_1_cam__t}{Cam\_t} \textcolor{keyword}{const} &rhs) \{
+00140       \textcolor{keywordflow}{if} (this->ID != rhs.\hyperlink{struct_hardware_1_1_microscope_1_1_cam__t_a870c5b29e3b987dce2a82308165cd178}{ID} && this->Name != rhs.\hyperlink{struct_hardware_1_1_microscope_1_1_cam__t_abadd87f124923661f2e94d78cee3dbf4}{Name}) \{
+00141         \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+00142       \} \textcolor{keywordflow}{else} \{
+00143         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00144       \}
+00145     \}
+00146   \};
+00147 
+\hypertarget{_microscope_8h_source_l00148}{}\hyperlink{class_hardware_1_1_microscope_a49a52c74d900f217ed190d36b29ff27d}{00148}   std::vector<Cam\_t> \hyperlink{class_hardware_1_1_microscope_a49a52c74d900f217ed190d36b29ff27d}{AvailableCams};
+\hypertarget{_microscope_8h_source_l00149}{}\hyperlink{class_hardware_1_1_microscope_a059d62ec28e85f1c3f3225c9c78a877f}{00149}   \hyperlink{struct_hardware_1_1_microscope_1_1_cam__t}{Cam\_t} *\hyperlink{class_hardware_1_1_microscope_a059d62ec28e85f1c3f3225c9c78a877f}{SelectedCam} = \textcolor{keyword}{nullptr};
+\hypertarget{_microscope_8h_source_l00150}{}\hyperlink{class_hardware_1_1_microscope_a544911a6d1eec986001087e5d9278604}{00150}   \hyperlink{class_hardware_1_1_microscope_ae1afa6a1a1d5b560a5ad8f94c78a336b}{Arch} \hyperlink{class_hardware_1_1_microscope_a544911a6d1eec986001087e5d9278604}{RunEnv};
+00151 
+00152   \hyperlink{class_hardware_1_1_microscope_a447e1c2d17d75090120b22ad6323de2a}{Microscope}();
+00153   \hyperlink{class_hardware_1_1_microscope_a447e1c2d17d75090120b22ad6323de2a}{Microscope}(\textcolor{keyword}{const} \hyperlink{class_hardware_1_1_microscope}{Microscope} &rhs);
+00154 
+00155   \hyperlink{class_hardware_1_1_microscope_afb6b20021157077feaf8df0e465a1f0e}{~Microscope}();
+00156 
+00157   \hyperlink{class_hardware_1_1_microscope}{Microscope} \hyperlink{class_hardware_1_1_microscope_ac8b63097048e3651bb6ba57ccb25e336}{operator=}(\hyperlink{class_hardware_1_1_microscope}{Microscope} \textcolor{keyword}{const} &rhs);
+00158 
+00159   \textcolor{keywordtype}{bool} \hyperlink{class_hardware_1_1_microscope_ae799dbdff39787d3226e8e8ce25386de}{IsOpened}();
+00160   \textcolor{keywordtype}{bool} \hyperlink{class_hardware_1_1_microscope_a71ac92fc7c1cc19c7735a9c0b93b1eef}{openCam}(\hyperlink{struct_hardware_1_1_microscope_1_1_cam__t}{Cam\_t} *cam);
+00161   \textcolor{keywordtype}{bool} \hyperlink{class_hardware_1_1_microscope_a71ac92fc7c1cc19c7735a9c0b93b1eef}{openCam}(\textcolor{keywordtype}{int} &cam);
+00162   \textcolor{keywordtype}{bool} \hyperlink{class_hardware_1_1_microscope_a71ac92fc7c1cc19c7735a9c0b93b1eef}{openCam}(std::string &cam);
+00163 
+00164   \textcolor{keywordtype}{bool} \hyperlink{class_hardware_1_1_microscope_af59bbe16ae9efaaf05027ff35d900dee}{closeCam}(\hyperlink{struct_hardware_1_1_microscope_1_1_cam__t}{Cam\_t} *cam);
+00165 
+00166   \textcolor{keywordtype}{void} \hyperlink{class_hardware_1_1_microscope_a1ec5c792320ae4db3f3b39830e74f880}{GetFrame}(cv::Mat &dst);
+00167   \textcolor{keywordtype}{void} \hyperlink{class_hardware_1_1_microscope_aefd18afbdfca9ed200ad18e68bcfd340}{GetGstreamFrame}(cv::Mat &dst);
+00168   \textcolor{keywordtype}{void} \hyperlink{class_hardware_1_1_microscope_a1287dba9130379a9e7d035eeaf47d059}{GetHDRFrame}(cv::Mat &dst, \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} noframes = 3);
+00169 
+00170   \hyperlink{struct_hardware_1_1_microscope_1_1_control__t}{Control\_t} *\hyperlink{class_hardware_1_1_microscope_abc794f35d5b68458634507bf7e90e501}{GetControl}(\textcolor{keyword}{const} std::string name);
+00171   \textcolor{keywordtype}{void} \hyperlink{class_hardware_1_1_microscope_a3b963a4b53aae0e215a20e9d59493e48}{SetControl}(\hyperlink{struct_hardware_1_1_microscope_1_1_control__t}{Control\_t} *control);
+00172 
+00173   \hyperlink{struct_hardware_1_1_microscope_1_1_cam__t}{Cam\_t} *\hyperlink{class_hardware_1_1_microscope_a64f57bcfcf93d75f7a27d0723487f35b}{FindCam}(std::string cam);
+00174   \hyperlink{struct_hardware_1_1_microscope_1_1_cam__t}{Cam\_t} *\hyperlink{class_hardware_1_1_microscope_a64f57bcfcf93d75f7a27d0723487f35b}{FindCam}(\textcolor{keywordtype}{int} cam);
+\hypertarget{_microscope_8h_source_l00175}{}\hyperlink{class_hardware_1_1_microscope_afd9597ab8447b75fdf5e74783fdcf7b2}{00175}   cv::Mat \hyperlink{class_hardware_1_1_microscope_afd9597ab8447b75fdf5e74783fdcf7b2}{lastFrame};
+00176 
+00177   \textcolor{keywordtype}{void} \hyperlink{class_hardware_1_1_microscope_ada1437dd2c64a0dc6f8b9e92187108f9}{SendImageRetrieved}();
+00178 
+00179 \textcolor{keyword}{public} slots:
+00180   \textcolor{keywordtype}{void} \hyperlink{class_hardware_1_1_microscope_a30346757ffd5d2f9d42b5a483842431e}{on\_imageretrieved}();
+00181 
+00182 signals:
+00183   \textcolor{keywordtype}{void} \hyperlink{class_hardware_1_1_microscope_a9ffc9b16e733b23c97d7dca4ef3210f5}{imageretrieved}();
+00184 
+00185 \textcolor{keyword}{private}:
+00186   \textcolor{keyword}{static} \textcolor{keywordtype}{void} \hyperlink{class_hardware_1_1_microscope_a857987ccdcdb8d6b3cb9545eb7a616e8}{new\_buffer}(GstElement *sink, \hyperlink{struct_hardware_1_1_microscope_1_1___custom_data}{CustomData} *data);
+00187   \textcolor{keywordtype}{void} \hyperlink{class_hardware_1_1_microscope_ab4b24bd8062cafb1bfe47967ac66254e}{getResolutions}(\hyperlink{struct_hardware_1_1_microscope_1_1_cam__t}{Cam\_t} &currentCam, \textcolor{keywordtype}{int} FormatType);
+\hypertarget{_microscope_8h_source_l00188}{}\hyperlink{class_hardware_1_1_microscope_ab1033afe167ab113639ea90c6b66544f}{00188}   \textcolor{keywordtype}{bool} \hyperlink{class_hardware_1_1_microscope_ab1033afe167ab113639ea90c6b66544f}{openedUptheCam} = \textcolor{keyword}{false};
+\hypertarget{_microscope_8h_source_l00189}{}\hyperlink{class_hardware_1_1_microscope_a80c5ad94099d7b9d175e1a1cd4179fcd}{00189}   cv::VideoCapture *\hyperlink{class_hardware_1_1_microscope_a80c5ad94099d7b9d175e1a1cd4179fcd}{cap} = \textcolor{keyword}{nullptr};
+00190 
+\hypertarget{_microscope_8h_source_l00191}{}\hyperlink{class_hardware_1_1_microscope_a2c73db8010320428db3fd41d840dd0eb}{00191}   std::vector<cv::Mat> \hyperlink{class_hardware_1_1_microscope_a2c73db8010320428db3fd41d840dd0eb}{HDRframes};
+00192 
+00193   std::vector<Cam\_t> \hyperlink{class_hardware_1_1_microscope_a71a409aae67baf63fd27678eda462e38}{GetAvailableCams}();
+00194   \hyperlink{class_hardware_1_1_microscope_ae1afa6a1a1d5b560a5ad8f94c78a336b}{Arch} \hyperlink{class_hardware_1_1_microscope_a24538a26545c6138b2e922ed4feb9376}{GetCurrentArchitecture}();
+\hypertarget{_microscope_8h_source_l00195}{}\hyperlink{class_hardware_1_1_microscope_a2ca84cff524b286b3fb452c4bd813303}{00195}   \textcolor{keywordtype}{int} \hyperlink{class_hardware_1_1_microscope_a2ca84cff524b286b3fb452c4bd813303}{fd};
+00196 \};
+00197 \}
+\end{DoxyCode}

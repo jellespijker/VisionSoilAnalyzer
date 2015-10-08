@@ -1,0 +1,247 @@
+\hypertarget{_enhance_8cpp_source}{}\subsection{Enhance.\+cpp}
+\label{_enhance_8cpp_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Vision/\+Enhance.\+cpp@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Vision/\+Enhance.\+cpp}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/* Copyright (C) Jelle Spijker - All Rights Reserved}
+00002 \textcolor{comment}{ * Unauthorized copying of this file, via any medium is strictly prohibited}
+00003 \textcolor{comment}{ * and only allowed with the written consent of the author (Jelle Spijker)}
+00004 \textcolor{comment}{ * This software is proprietary and confidential}
+00005 \textcolor{comment}{ * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015}
+00006 \textcolor{comment}{ */}
+00007 
+00011 \textcolor{preprocessor}{#include "\hyperlink{_enhance_8h}{Enhance.h}"}
+00012 
+00013 \textcolor{keyword}{namespace }\hyperlink{namespace_vision}{Vision} \{
+\hypertarget{_enhance_8cpp_source_l00015}{}\hyperlink{class_vision_1_1_enhance_ac22cbe167e6de1ba724c2ad54dc6eafa}{00015} \hyperlink{class_vision_1_1_enhance_ac22cbe167e6de1ba724c2ad54dc6eafa}{Enhance::Enhance}() \{\}
+00016 
+\hypertarget{_enhance_8cpp_source_l00020}{}\hyperlink{class_vision_1_1_enhance_af3872f07fef0911b32e81f6968b3d737}{00020} \hyperlink{class_vision_1_1_enhance_ac22cbe167e6de1ba724c2ad54dc6eafa}{Enhance::Enhance}(\textcolor{keyword}{const} Mat &src) \{
+00021   \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg} = src;
+00022   \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.create(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.size(), CV\_8UC1);
+00023 \}
+00024 
+\hypertarget{_enhance_8cpp_source_l00025}{}\hyperlink{class_vision_1_1_enhance_acd901de386620bb44184e6929570dc09}{00025} \hyperlink{class_vision_1_1_enhance_ac22cbe167e6de1ba724c2ad54dc6eafa}{Enhance::Enhance}(\textcolor{keyword}{const} \hyperlink{class_vision_1_1_enhance}{Enhance} &rhs) \{
+00026   this->\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg} = rhs.\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg};
+00027   this->\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg} = rhs.\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg};
+00028   this->\hyperlink{class_vision_1_1_image_processing_a5371ad8d6f7aac9d43ee5c902ade7435}{TempImg} = rhs.\hyperlink{class_vision_1_1_image_processing_a5371ad8d6f7aac9d43ee5c902ade7435}{TempImg};
+00029 \}
+00030 
+00041 \hyperlink{class_vision_1_1_enhance_ac22cbe167e6de1ba724c2ad54dc6eafa}{Enhance::Enhance}(\textcolor{keyword}{const} Mat &src, Mat &dst, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} kernelsize, \textcolor{keywordtype}{float} factor,
+00042                  EnhanceOperation operation) \{
+00043   \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg} = src;
+00044   \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.create(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.size(), CV\_8UC1);
+00045   \textcolor{keywordflow}{switch} (operation) \{
+00046   \textcolor{keywordflow}{case} \hyperlink{class_vision_1_1_enhance_a36caf2ddf5cb2575bfae8bcdca04e58eae6586f260ee8f32c3b9497731524e9ae}{Vision::Enhance::\_AdaptiveContrastStretch}:
+00047     \hyperlink{class_vision_1_1_enhance_a7aa0dfb4808ffc7abddd7fe4e30f6601}{AdaptiveContrastStretch}(kernelsize, factor);
+00048     \textcolor{keywordflow}{break};
+00049   \textcolor{keywordflow}{case} \hyperlink{class_vision_1_1_enhance_a36caf2ddf5cb2575bfae8bcdca04e58ea5245bfc56341cd91a53b2fcb676c8fc8}{Vision::Enhance::\_Blur}:
+00050     \hyperlink{class_vision_1_1_enhance_a5062a7481326dce9ab7ece19bc3b44c9}{Blur}(kernelsize);
+00051     \textcolor{keywordflow}{break};
+00052   \textcolor{keywordflow}{case} \hyperlink{class_vision_1_1_enhance_a36caf2ddf5cb2575bfae8bcdca04e58eaa1c2d6e2989e60cf5a5f0c320f83bc08}{Vision::Enhance::\_HistogramEqualization}:
+00053     \hyperlink{class_vision_1_1_enhance_aa22bf01c06e941aa40e0075fac9aad8f}{HistogramEqualization}();
+00054     \textcolor{keywordflow}{break};
+00055   \}
+00056   dst = \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg};
+00057 \}
+00058 
+\hypertarget{_enhance_8cpp_source_l00060}{}\hyperlink{class_vision_1_1_enhance_a21a664b0a5994ce163c3f8958adfd733}{00060} \hyperlink{class_vision_1_1_enhance_a21a664b0a5994ce163c3f8958adfd733}{Enhance::~Enhance}() \{\}
+00061 
+\hypertarget{_enhance_8cpp_source_l00062}{}\hyperlink{class_vision_1_1_enhance_ab8663acdb0dbdb047f3e2d135a7faed2}{00062} \hyperlink{class_vision_1_1_enhance}{Enhance} &\hyperlink{class_vision_1_1_enhance_ab8663acdb0dbdb047f3e2d135a7faed2}{Enhance::operator=}(\hyperlink{class_vision_1_1_enhance}{Enhance} rhs) \{
+00063   \textcolor{keywordflow}{if} (&rhs != \textcolor{keyword}{this}) \{
+00064     this->\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg} = rhs.\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg};
+00065     this->\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg} = rhs.\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg};
+00066     this->\hyperlink{class_vision_1_1_image_processing_a5371ad8d6f7aac9d43ee5c902ade7435}{TempImg} = rhs.\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg};
+00067   \}
+00068   \textcolor{keywordflow}{return} *\textcolor{keyword}{this};
+00069 \}
+00070 
+\hypertarget{_enhance_8cpp_source_l00080}{}\hyperlink{class_vision_1_1_enhance_ac03740bd6b3cd2936a579644c9646ce0}{00080} \textcolor{keywordtype}{float} \hyperlink{class_vision_1_1_enhance_ac03740bd6b3cd2936a579644c9646ce0}{Enhance::CalculateStdOfNeighboringPixels}(
+      \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *O, \textcolor{keywordtype}{int} i, \textcolor{keywordtype}{int} hKsize,
+00081                                                \textcolor{keywordtype}{int} nCols, \textcolor{keywordtype}{int} noNeighboursPix,
+00082                                                \textcolor{keywordtype}{float} mean) \{
+00083   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} sum\_dev = 0.0;
+00084   \textcolor{keywordtype}{float} Std = 0.0;
+00085   sum\_dev = 0.0;
+00086   Std = 0.0;
+00087   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = -hKsize; j < hKsize; j++) \{
+00088     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k = -hKsize; k < hKsize; k++) \{
+00089       \textcolor{comment}{// sum\_dev += pow((O[i + j * nCols + k] - mean), 2);}
+00090       sum\_dev += \hyperlink{namespace_soil_math_a69d186af0e164a5f98c42985aabec919}{SoilMath::quick\_pow2}((O[i + j * nCols + k] - mean));
+00091     \}
+00092   \}
+00093   \textcolor{comment}{// Std = sqrt(sum\_dev / noNeighboursPix);}
+00094   Std = \hyperlink{namespace_soil_math_ab3886ae2a670a717bbe01f94543922a0}{SoilMath::fastPow}((static\_cast<double>(sum\_dev) / noNeighboursPix), 2);
+00095   \textcolor{keywordflow}{return} Std;
+00096 \}
+00097 
+\hypertarget{_enhance_8cpp_source_l00105}{}\hyperlink{class_vision_1_1_enhance_a6ff043acf8f40873141ef3bb0af4994d}{00105} \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_enhance_a6ff043acf8f40873141ef3bb0af4994d}{Enhance::CalculateSumOfNeighboringPixels}(
+      \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *O, \textcolor{keywordtype}{int} i, \textcolor{keywordtype}{int} hKsize,
+00106                                               \textcolor{keywordtype}{int} nCols, \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} &sum) \{
+00107   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = -hKsize; j < hKsize; j++) \{
+00108     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} k = -hKsize; k < hKsize; k++) \{
+00109       sum += O[i + j * nCols + k];
+00110     \}
+00111   \}
+00112 \}
+00113 
+00125 \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_enhance_a7aa0dfb4808ffc7abddd7fe4e30f6601}{Enhance::AdaptiveContrastStretch}(\textcolor{keyword}{const} Mat &src, Mat &dst,
+00126                                       \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} kernelsize, \textcolor{keywordtype}{float} factor) \{
+00127   \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg} = src;
+00128   \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.create(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.size(), CV\_8UC1);
+00129   \hyperlink{class_vision_1_1_enhance_a7aa0dfb4808ffc7abddd7fe4e30f6601}{AdaptiveContrastStretch}(kernelsize, factor);
+00130   dst = \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg};
+00131 \}
+00132 
+00143 \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_enhance_a7aa0dfb4808ffc7abddd7fe4e30f6601}{Enhance::AdaptiveContrastStretch}(\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} kernelsize, \textcolor{keywordtype}{float} factor,
+00144                                       \textcolor{keywordtype}{bool} chain) \{
+00145   \textcolor{comment}{// Exception handling}
+00146   \hyperlink{_image_processing_8h_a27c4e53b88a0f9f2c097add555131056}{EMPTY\_CHECK}(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg});
+00147   \textcolor{keywordflow}{if} (kernelsize < 3 || (kernelsize % 2) == 0) \{
+00148     \textcolor{keywordflow}{throw} Exception::WrongKernelSizeException();
+00149   \}
+00150   CV\_Assert(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.depth() != \textcolor{keyword}{sizeof}(\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}));
+00151 
+00152   \textcolor{comment}{// Make the pointers to the Data}
+00153   \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *O;
+00154   \hyperlink{_image_processing_8h_a6e6f0183cb53c76ef458d4fd34e07bcd}{CHAIN\_PROCESS}(chain, O, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar});
+00155   \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *P = \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.data;
+00156 
+00157   \textcolor{keywordtype}{int} i = 0;
+00158   \textcolor{keywordtype}{int} hKsize = kernelsize / 2;
+00159   \textcolor{keywordtype}{int} nCols = \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.cols;
+00160   \textcolor{keywordtype}{int} pStart = (hKsize * nCols) + hKsize + 1;
+00161 
+00162   \textcolor{keywordtype}{int} nData = \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.rows * \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.cols;
+00163   \textcolor{keywordtype}{int} pEnd = nData - pStart;
+00164   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} noNeighboursPix = kernelsize * kernelsize;
+00165   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} sum;
+00166   \textcolor{keywordtype}{float} mean = 0.0;
+00167 
+00168   \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *nRow = \hyperlink{class_vision_1_1_image_processing_a56e17515a15eb7d246985e550fc89610}{GetNRow}(nData, hKsize, nCols, \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.rows);
+00169 
+00170   i = pStart;
+00171   \textcolor{keywordflow}{while} (i++ < pEnd) \{
+00172     \textcolor{comment}{// Checks if pixel isn't a border pixel and progresses to the new row}
+00173     \textcolor{keywordflow}{if} (nRow[i] == 1) \{
+00174       i += kernelsize;
+00175     \}
+00176 
+00177     \textcolor{comment}{// Fill the neighboring pixel array}
+00178     sum = 0;
+00179     mean = 0;
+00180 
+00181     \textcolor{comment}{// Calculate the statistics}
+00182     \hyperlink{class_vision_1_1_enhance_a6ff043acf8f40873141ef3bb0af4994d}{CalculateSumOfNeighboringPixels}(O, i, hKsize, nCols, sum);
+00183     mean = (float)(sum / noNeighboursPix);
+00184     \textcolor{keywordtype}{float} Std = \hyperlink{class_vision_1_1_enhance_ac03740bd6b3cd2936a579644c9646ce0}{CalculateStdOfNeighboringPixels}(O, i, hKsize, nCols,
+00185                                                 noNeighboursPix, mean);
+00186 
+00187     \textcolor{comment}{// Stretch}
+00188 
+00189     \textcolor{keywordflow}{if} (O[i] > mean) \{
+00190       \textcolor{comment}{// int addValue = O[i] + (int)(round(factor * Std));}
+00191       \textcolor{keywordtype}{int} addValue = O[i] + \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(round(factor * Std));
+00192       \textcolor{keywordflow}{if} (addValue < 255) \{
+00193         P[i] = addValue;
+00194       \} \textcolor{keywordflow}{else} \{
+00195         P[i] = 255;
+00196       \}
+00197     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (O[i] < mean) \{
+00198       \textcolor{comment}{// int subValue = O[i] - (int)(round(factor * Std));}
+00199       \textcolor{keywordtype}{int} subValue = O[i] - \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(round(factor * Std));
+00200       \textcolor{keywordflow}{if} (subValue > 0) \{
+00201         P[i] = subValue;
+00202       \} \textcolor{keywordflow}{else} \{
+00203         P[i] = 0;
+00204       \}
+00205     \} \textcolor{keywordflow}{else} \{
+00206       P[i] = O[i];
+00207     \}
+00208   \}
+00209 
+00210   \textcolor{comment}{// Stretch the image with an normal histogram equalization}
+00211   \hyperlink{class_vision_1_1_enhance_aa22bf01c06e941aa40e0075fac9aad8f}{HistogramEqualization}(\textcolor{keyword}{true});
+00212 
+00213   \textcolor{keyword}{delete}[] nRow;
+00214 \}
+00215 
+00222 \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_enhance_a5062a7481326dce9ab7ece19bc3b44c9}{Enhance::Blur}(\textcolor{keyword}{const} Mat &src, Mat &dst, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} kernelsize) \{
+00223   \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg} = src;
+00224   \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.create(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.size(), CV\_8UC1);
+00225   \hyperlink{class_vision_1_1_enhance_a5062a7481326dce9ab7ece19bc3b44c9}{Blur}(kernelsize);
+00226   dst = \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg};
+00227 \}
+00228 
+00234 \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_enhance_a5062a7481326dce9ab7ece19bc3b44c9}{Enhance::Blur}(\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} kernelsize, \textcolor{keywordtype}{bool} chain) \{
+00235   \textcolor{comment}{// Exception handling}
+00236   \hyperlink{_image_processing_8h_a27c4e53b88a0f9f2c097add555131056}{EMPTY\_CHECK}(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg});
+00237   \textcolor{keywordflow}{if} (kernelsize < 3 || (kernelsize % 2) == 0) \{
+00238     \textcolor{keywordflow}{throw} Exception::WrongKernelSizeException();
+00239   \}
+00240   CV\_Assert(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.depth() != \textcolor{keyword}{sizeof}(\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}));
+00241 
+00242   \textcolor{comment}{// Make the pointers to the Data}
+00243   \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *O;
+00244   \hyperlink{_image_processing_8h_a6e6f0183cb53c76ef458d4fd34e07bcd}{CHAIN\_PROCESS}(chain, O, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar});
+00245   \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *P = \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.data;
+00246 
+00247   \textcolor{keywordtype}{int} nData = \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.rows * \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.cols;
+00248   \textcolor{keywordtype}{int} hKsize = kernelsize / 2;
+00249   \textcolor{keywordtype}{int} nCols = \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.cols;
+00250   \textcolor{keywordtype}{int} pStart = (hKsize * nCols) + hKsize + 1;
+00251   \textcolor{keywordtype}{int} pEnd = nData - pStart;
+00252   \textcolor{keywordtype}{int} noNeighboursPix = kernelsize * kernelsize;
+00253   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} sum;
+00254 
+00255   \textcolor{keywordtype}{int} i;
+00256   \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *nRow = \hyperlink{class_vision_1_1_image_processing_a56e17515a15eb7d246985e550fc89610}{GetNRow}(nData, hKsize, nCols, \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.rows);
+00257   i = pStart;
+00258   \textcolor{keywordflow}{while} (i++ < pEnd) \{
+00259     \textcolor{comment}{// Checks if pixel isn't a border pixel and progresses to the new row}
+00260     \textcolor{keywordflow}{if} (nRow[i] == 1) \{
+00261       i += kernelsize;
+00262     \}
+00263 
+00264     \textcolor{comment}{// Calculate the sum of the kernel}
+00265     sum = 0;
+00266     \hyperlink{class_vision_1_1_enhance_a6ff043acf8f40873141ef3bb0af4994d}{CalculateSumOfNeighboringPixels}(O, i, hKsize, nCols, sum);
+00267 
+00268     P[i] = (\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar})(round(sum / noNeighboursPix));
+00269   \}
+00270 
+00271   \textcolor{keyword}{delete}[] nRow;
+00272 \}
+00273 
+\hypertarget{_enhance_8cpp_source_l00277}{}\hyperlink{class_vision_1_1_enhance_aa22bf01c06e941aa40e0075fac9aad8f}{00277} \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_enhance_aa22bf01c06e941aa40e0075fac9aad8f}{Enhance::HistogramEqualization}(\textcolor{keywordtype}{bool} chain) \{
+00278   \textcolor{comment}{// Exception handling}
+00279   \hyperlink{_image_processing_8h_a27c4e53b88a0f9f2c097add555131056}{EMPTY\_CHECK}(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg});
+00280   CV\_Assert(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.depth() != \textcolor{keyword}{sizeof}(\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}));
+00281 
+00282   \textcolor{comment}{// Make the pointers to the Data}
+00283   \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *O;
+00284   \hyperlink{_image_processing_8h_a6e6f0183cb53c76ef458d4fd34e07bcd}{CHAIN\_PROCESS}(chain, O, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar});
+00285   \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *P = \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.data;
+00286 
+00287   \textcolor{comment}{// Calculate the statics of the whole image}
+00288   \hyperlink{class_soil_math_1_1_stats}{ucharStat\_t} imgStats(O, \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.rows, \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.cols);
+00289   \textcolor{keywordtype}{float} sFact;
+00290   \textcolor{keywordflow}{if} (imgStats.\hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min} != imgStats.\hyperlink{class_soil_math_1_1_stats_ad49ee1f533564ec587cf98a094b8c564}{max}) \{
+00291     sFact = 255.0f / (imgStats.\hyperlink{class_soil_math_1_1_stats_ad49ee1f533564ec587cf98a094b8c564}{max} - imgStats.\hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min});
+00292   \} \textcolor{keywordflow}{else} \{
+00293     sFact = 1.0f;
+00294   \}
+00295 
+00296   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 256;
+00297   \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} LUT\_changeValue[256];
+00298   \textcolor{keywordflow}{while} (i-- > 0) \{
+00299     LUT\_changeValue[i] = (\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar})(((\textcolor{keywordtype}{float})(i)*sFact) + 0.5f);
+00300   \}
+00301 
+00302   O = \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.data;
+00303 
+00304   i = \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.cols * \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.rows + 1;
+00305   \textcolor{keywordflow}{while} (i-- > 0) \{
+00306     *P++ = LUT\_changeValue[*O++ - imgStats.\hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min}];
+00307   \}
+00308 \}
+00309 \}
+\end{DoxyCode}

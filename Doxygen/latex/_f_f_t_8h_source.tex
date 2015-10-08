@@ -1,0 +1,53 @@
+\hypertarget{_f_f_t_8h_source}{}\subsection{F\+F\+T.\+h}
+\label{_f_f_t_8h_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Math/\+F\+F\+T.\+h@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Math/\+F\+F\+T.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/* Copyright (C) Jelle Spijker - All Rights Reserved}
+00002 \textcolor{comment}{ * Unauthorized copying of this file, via any medium is strictly prohibited}
+00003 \textcolor{comment}{ * and only allowed with the written consent of the author (Jelle Spijker)}
+00004 \textcolor{comment}{ * This software is proprietary and confidential}
+00005 \textcolor{comment}{ * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015}
+00006 \textcolor{comment}{ */}
+00007 
+00008 \textcolor{preprocessor}{#pragma once}
+00009 
+00010 \textcolor{preprocessor}{#include <vector>}
+00011 \textcolor{preprocessor}{#include <complex>}
+00012 \textcolor{preprocessor}{#include <cmath>}
+00013 \textcolor{preprocessor}{#include <valarray>}
+00014 \textcolor{preprocessor}{#include <array>}
+00015 \textcolor{preprocessor}{#include <deque>}
+00016 \textcolor{preprocessor}{#include <queue>}
+00017 \textcolor{preprocessor}{#include <iterator>}
+00018 \textcolor{preprocessor}{#include <algorithm>}
+00019 \textcolor{preprocessor}{#include <stdint.h>}
+00020 \textcolor{preprocessor}{#include <opencv2/core.hpp>}
+00021 \textcolor{preprocessor}{#include "\hyperlink{_soil_math_types_8h}{SoilMathTypes.h}"}
+00022 \textcolor{preprocessor}{#include "\hyperlink{_math_exception_8h}{MathException.h}"}
+00023 
+00024 \textcolor{keyword}{namespace }\hyperlink{namespace_soil_math}{SoilMath} \{
+\hypertarget{_f_f_t_8h_source_l00031}{}\hyperlink{class_soil_math_1_1_f_f_t}{00031} \textcolor{keyword}{class }\hyperlink{class_soil_math_1_1_f_f_t}{FFT} \{
+00032 \textcolor{keyword}{public}:
+00036   \hyperlink{class_soil_math_1_1_f_f_t_a52638bf8f971d1448e46b2b6db5f5e8b}{FFT}();
+00037 
+00041   \hyperlink{class_soil_math_1_1_f_f_t_a279862b286d865ebc5aa707f94f19d73}{~FFT}();
+00042 
+00052   \hyperlink{_soil_math_types_8h_a7567e521c2b2c408dcb62dbff72390f7}{ComplexVect\_t} \hyperlink{class_soil_math_1_1_f_f_t_af5fb6f4804079ee184a314e2f0a0f2fc}{GetDescriptors}(\textcolor{keyword}{const} cv::Mat &img);
+00053 
+00054 \textcolor{keyword}{private}:
+00055   \hyperlink{_soil_math_types_8h_a7567e521c2b2c408dcb62dbff72390f7}{ComplexVect\_t}
+\hypertarget{_f_f_t_8h_source_l00056}{}\hyperlink{class_soil_math_1_1_f_f_t_a466b360529319d0e6e3220f446f703be}{00056}       \hyperlink{class_soil_math_1_1_f_f_t_a466b360529319d0e6e3220f446f703be}{fftDescriptors}; 
+00058   \hyperlink{_soil_math_types_8h_a7567e521c2b2c408dcb62dbff72390f7}{ComplexVect\_t}
+\hypertarget{_f_f_t_8h_source_l00059}{}\hyperlink{class_soil_math_1_1_f_f_t_a48141f0c777ca86f2e536f88b509b639}{00059}       \hyperlink{class_soil_math_1_1_f_f_t_a48141f0c777ca86f2e536f88b509b639}{complexcontour}; 
+\hypertarget{_f_f_t_8h_source_l00061}{}\hyperlink{class_soil_math_1_1_f_f_t_a2efda8f90cd255a2c18352636352044f}{00061}   cv::Mat \hyperlink{class_soil_math_1_1_f_f_t_a2efda8f90cd255a2c18352636352044f}{Img};        
+00079   \hyperlink{_soil_math_types_8h_a7567e521c2b2c408dcb62dbff72390f7}{ComplexVect\_t} \hyperlink{class_soil_math_1_1_f_f_t_a18a95490ea8e929584c2af6569dec3b6}{Contour2Complex}(\textcolor{keyword}{const} cv::Mat &img, \textcolor{keywordtype}{float} centerCol,
+00080                                 \textcolor{keywordtype}{float} centerRow);
+00090   \hyperlink{_soil_math_types_8h_a1ade796add2f13888dfa9e6bde0bdc37}{iContour\_t} \hyperlink{class_soil_math_1_1_f_f_t_a45b32ad009154112d2fc4e467fc7c5ac}{Neighbors}(\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *O, \textcolor{keywordtype}{int} pixel, \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} columns, 
+      \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} rows);
+00091 
+00101   \textcolor{keywordtype}{void} \hyperlink{class_soil_math_1_1_f_f_t_a48bc7ad948d820d6f87b3e353b6d1cd4}{fft}(\hyperlink{_soil_math_types_8h_a5118c9f6b02a06945c93a3893e51febe}{ComplexArray\_t} &CA);
+00102 
+00107   \textcolor{keywordtype}{void} \hyperlink{class_soil_math_1_1_f_f_t_a5b7f18d1cb2d728584414d8660d52586}{ifft}(\hyperlink{_soil_math_types_8h_a5118c9f6b02a06945c93a3893e51febe}{ComplexArray\_t} &CA);
+00108 \};
+00109 \}
+\end{DoxyCode}

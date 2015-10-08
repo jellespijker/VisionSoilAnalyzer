@@ -1,0 +1,580 @@
+\hypertarget{class_q_report_generator}{}\subsection{Q\+Report\+Generator Class Reference}
+\label{class_q_report_generator}\index{Q\+Report\+Generator@{Q\+Report\+Generator}}
+
+
+{\ttfamily \#include $<$qreportgenerator.\+h$>$}
+
+
+
+Inheritance diagram for Q\+Report\+Generator\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=239pt]{class_q_report_generator__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Q\+Report\+Generator\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_q_report_generator__coll__graph}
+\end{center}
+\end{figure}
+\subsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_q_report_generator_a3423584a1653cd7271a4d8526b2edf02}{Q\+Report\+Generator} (Q\+Widget $\ast$parent=0, \hyperlink{class_soil_analyzer_1_1_sample}{Soil\+Analyzer\+::\+Sample} $\ast$sample=nullptr, \hyperlink{class_soil_analyzer_1_1_soil_settings}{Soil\+Analyzer\+::\+Soil\+Settings} $\ast$settings=nullptr, Q\+Custom\+Plot $\ast$psd=nullptr, Q\+Custom\+Plot $\ast$roundness=nullptr, Q\+Custom\+Plot $\ast$angularity=nullptr)
+\item 
+\hyperlink{class_q_report_generator_a42ad110fb06f47767b6a94feb49f85c0}{$\sim$\+Q\+Report\+Generator} ()
+\end{DoxyCompactItemize}
+\subsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Q\+Text\+Document $\ast$ \hyperlink{class_q_report_generator_ab051048608bc51151bc0b1ffc217f292}{Report} = nullptr
+\item 
+\hyperlink{class_soil_analyzer_1_1_sample}{Soil\+Analyzer\+::\+Sample} $\ast$ \hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample} = nullptr
+\item 
+\hyperlink{class_soil_analyzer_1_1_soil_settings}{Soil\+Analyzer\+::\+Soil\+Settings} $\ast$ \hyperlink{class_q_report_generator_a5e75a3f9447c0c24b32cd198a00af21c}{Settings} = nullptr
+\item 
+Q\+Custom\+Plot $\ast$ \hyperlink{class_q_report_generator_a8363c2cf697c443a9d58b223efddde02}{P\+S\+D} = nullptr
+\item 
+Q\+Custom\+Plot $\ast$ \hyperlink{class_q_report_generator_ad0dd77389aea1b1fb2a58e363e5ff8a1}{Roundness} = nullptr
+\item 
+Q\+Custom\+Plot $\ast$ \hyperlink{class_q_report_generator_a8c2f9aee54d302f1330c6fd60d12bd13}{Angularity} = nullptr
+\end{DoxyCompactItemize}
+\subsubsection*{Private Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_q_report_generator_a15c7c37fe5a9f178ae29bc1484aeaad9}{on\+\_\+location\+Image\+Downloaded} (Q\+Network\+Reply $\ast$reply)
+\item 
+void \hyperlink{class_q_report_generator_a7f16a79d19c4ae53859febaae31950e7}{on\+\_\+action\+Save\+\_\+triggered} ()
+\item 
+void \hyperlink{class_q_report_generator_aa170226241deb861a964ac722c8e4564}{on\+\_\+action\+Export\+\_\+to\+\_\+\+P\+D\+F\+\_\+triggered} ()
+\end{DoxyCompactItemize}
+\subsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_q_report_generator_ad588cf415e3d3a571fbd2fa7f9f30612}{get\+Location\+Map} (double \&latitude, double \&longtitude)
+\item 
+void \hyperlink{class_q_report_generator_a828ae557a03162a08d13f94f2d1888f4}{Setup\+C\+I\+Elab\+P\+Lot} ()
+\end{DoxyCompactItemize}
+\subsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Ui\+::\+Q\+Report\+Generator $\ast$ \hyperlink{class_q_report_generator_a4584dd4f053586b84b4a9f883a3313d9}{ui}
+\item 
+Q\+Custom\+Plot $\ast$ \hyperlink{class_q_report_generator_a1a727308ea8cb98523a308d10da70b39}{C\+I\+Elab\+Plot} = nullptr
+\item 
+Q\+Image $\ast$ \hyperlink{class_q_report_generator_a1369081e13fce26f60a10eb846551515}{map\+Location} = nullptr
+\item 
+Q\+Text\+Cursor \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{r\+Curs}
+\item 
+Q\+Text\+Block\+Format \hyperlink{class_q_report_generator_a1c6eac3b9c26e7fb32de033879ae6e6e}{Title\+Format}
+\item 
+Q\+Text\+Block\+Format \hyperlink{class_q_report_generator_af2b45261507663b54e80f4053d25bc4b}{Header\+Format}
+\item 
+Q\+Text\+Block\+Format \hyperlink{class_q_report_generator_a9a18bc94ca92a730ae0f13d60a6b5e0a}{General\+Format}
+\item 
+Q\+Text\+Block\+Format \hyperlink{class_q_report_generator_a19451127788bb6c68907b312a0a8b750}{Image\+Graph\+Format}
+\item 
+Q\+Text\+Char\+Format \hyperlink{class_q_report_generator_a7eebc837740d933bf4767e584f1d486c}{Title\+Text\+Format}
+\item 
+Q\+Text\+Char\+Format \hyperlink{class_q_report_generator_a8be687c8a427e341fa1c7f9addc96e99}{Header\+Text\+Format}
+\item 
+Q\+Text\+Char\+Format \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{Gtxt\+Format}
+\item 
+Q\+Text\+Char\+Format \hyperlink{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{G\+Fieldtxt\+Format}
+\item 
+Q\+Text\+List\+Format \hyperlink{class_q_report_generator_a415a4b3a8995d02b724156b5e9c14486}{General\+Sample\+List}
+\item 
+Q\+Text\+Table\+Format \hyperlink{class_q_report_generator_afcb27e52bd15a286a1933c3b9cf01c92}{General\+Text\+Table\+Format}
+\item 
+Q\+Font \hyperlink{class_q_report_generator_a6ec92ac9d2ef36345c1f6089629c13a7}{Title\+Font}
+\item 
+Q\+Font \hyperlink{class_q_report_generator_ad23921b0c8d0e77db7cfc0b611d9e93c}{Header\+Font}
+\item 
+Q\+Font \hyperlink{class_q_report_generator_ab7022962a87365f93a5e168d946ebd85}{General\+Font}
+\item 
+Q\+Font \hyperlink{class_q_report_generator_ae23241660848e9015b6d3bf814d1b381}{Field\+Font}
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+
+
+Definition at line \hyperlink{qreportgenerator_8h_source_l00025}{25} of file \hyperlink{qreportgenerator_8h_source}{qreportgenerator.\+h}.
+
+
+
+\subsubsection{Constructor \& Destructor Documentation}
+\hypertarget{class_q_report_generator_a3423584a1653cd7271a4d8526b2edf02}{}\index{Q\+Report\+Generator@{Q\+Report\+Generator}!Q\+Report\+Generator@{Q\+Report\+Generator}}
+\index{Q\+Report\+Generator@{Q\+Report\+Generator}!Q\+Report\+Generator@{Q\+Report\+Generator}}
+\paragraph[{Q\+Report\+Generator}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Report\+Generator\+::\+Q\+Report\+Generator (
+\begin{DoxyParamCaption}
+\item[{Q\+Widget $\ast$}]{parent = {\ttfamily 0}, }
+\item[{{\bf Soil\+Analyzer\+::\+Sample} $\ast$}]{sample = {\ttfamily nullptr}, }
+\item[{{\bf Soil\+Analyzer\+::\+Soil\+Settings} $\ast$}]{settings = {\ttfamily nullptr}, }
+\item[{Q\+Custom\+Plot $\ast$}]{psd = {\ttfamily nullptr}, }
+\item[{Q\+Custom\+Plot $\ast$}]{roundness = {\ttfamily nullptr}, }
+\item[{Q\+Custom\+Plot $\ast$}]{angularity = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}\label{class_q_report_generator_a3423584a1653cd7271a4d8526b2edf02}
+
+
+Definition at line \hyperlink{qreportgenerator_8cpp_source_l00004}{4} of file \hyperlink{qreportgenerator_8cpp_source}{qreportgenerator.\+cpp}.
+
+
+
+References \hyperlink{qreportgenerator_8h_source_l00035}{Angularity}, \hyperlink{sample_8h_source_l00045}{Soil\+Analyzer\+::\+Sample\+::\+Angularity}, \hyperlink{_stats_8h_source_l00044}{Soil\+Math\+::\+Stats$<$ T1, T2, T3 $>$\+::bins}, \hyperlink{_stats_8h_source_l00045}{Soil\+Math\+::\+Stats$<$ T1, T2, T3 $>$\+::\+C\+F\+D}, \hyperlink{qreportgenerator_8h_source_l00049}{C\+I\+Elab\+Plot}, \hyperlink{sample_8h_source_l00037}{Soil\+Analyzer\+::\+Sample\+::\+Date}, \hyperlink{sample_8h_source_l00036}{Soil\+Analyzer\+::\+Sample\+::\+Depth}, \hyperlink{qreportgenerator_8h_source_l00076}{Field\+Font}, \hyperlink{qreportgenerator_8h_source_l00075}{General\+Font}, \hyperlink{qreportgenerator_8h_source_l00061}{General\+Format}, \hyperlink{qreportgenerator_8h_source_l00069}{General\+Sample\+List}, \hyperlink{qreportgenerator_8h_source_l00070}{General\+Text\+Table\+Format}, \hyperlink{qreportgenerator_8cpp_source_l00357}{get\+Location\+Map()}, \hyperlink{qreportgenerator_8h_source_l00067}{G\+Fieldtxt\+Format}, \hyperlink{qreportgenerator_8h_source_l00066}{Gtxt\+Format}, \hyperlink{qreportgenerator_8h_source_l00074}{Header\+Font}, \hyperlink{qreportgenerator_8h_source_l00060}{Header\+Format}, \hyperlink{qreportgenerator_8h_source_l00065}{Header\+Text\+Format}, \hyperlink{sample_8h_source_l00032}{Soil\+Analyzer\+::\+Sample\+::\+I\+D}, \hyperlink{qreportgenerator_8h_source_l00062}{Image\+Graph\+Format}, \hyperlink{sample_8h_source_l00035}{Soil\+Analyzer\+::\+Sample\+::\+Latitude}, \hyperlink{sample_8h_source_l00034}{Soil\+Analyzer\+::\+Sample\+::\+Longtitude}, \hyperlink{_stats_8h_source_l00052}{Soil\+Math\+::\+Stats$<$ T1, T2, T3 $>$\+::max}, \hyperlink{_stats_8h_source_l00047}{Soil\+Math\+::\+Stats$<$ T1, T2, T3 $>$\+::\+Mean}, \hyperlink{_stats_8h_source_l00051}{Soil\+Math\+::\+Stats$<$ T1, T2, T3 $>$\+::min}, \hyperlink{_stats_8h_source_l00048}{Soil\+Math\+::\+Stats$<$ T1, T2, T3 $>$\+::n}, \hyperlink{sample_8h_source_l00038}{Soil\+Analyzer\+::\+Sample\+::\+Name}, \hyperlink{sample_8h_source_l00043}{Soil\+Analyzer\+::\+Sample\+::\+P\+S\+D}, \hyperlink{_stats_8h_source_l00050}{Soil\+Math\+::\+Stats$<$ T1, T2, T3 $>$\+::\+Range}, \hyperlink{qreportgenerator_8h_source_l00056}{r\+Curs}, \hyperlink{qreportgenerator_8h_source_l00030}{Report}, \hyperlink{qreportgenerator_8h_source_l00034}{Roundness}, \hyperlink{sample_8h_source_l00044}{Soil\+Analyzer\+::\+Sample\+::\+Roundness}, \hyperlink{qreportgenerator_8h_source_l00031}{Sample}, \hyperlink{qreportgenerator_8h_source_l00032}{Settings}, \hyperlink{qreportgenerator_8cpp_source_l00431}{Setup\+C\+I\+Elab\+P\+Lot()}, \hyperlink{_stats_8h_source_l00056}{Soil\+Math\+::\+Stats$<$ T1, T2, T3 $>$\+::\+Std}, \hyperlink{qreportgenerator_8h_source_l00073}{Title\+Font}, \hyperlink{qreportgenerator_8h_source_l00059}{Title\+Format}, \hyperlink{qreportgenerator_8h_source_l00064}{Title\+Text\+Format}, and \hyperlink{qreportgenerator_8h_source_l00048}{ui}.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_report_generator_a3423584a1653cd7271a4d8526b2edf02_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_q_report_generator_a42ad110fb06f47767b6a94feb49f85c0}{}\index{Q\+Report\+Generator@{Q\+Report\+Generator}!````~Q\+Report\+Generator@{$\sim$\+Q\+Report\+Generator}}
+\index{````~Q\+Report\+Generator@{$\sim$\+Q\+Report\+Generator}!Q\+Report\+Generator@{Q\+Report\+Generator}}
+\paragraph[{$\sim$\+Q\+Report\+Generator}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Report\+Generator\+::$\sim$\+Q\+Report\+Generator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_q_report_generator_a42ad110fb06f47767b6a94feb49f85c0}
+
+
+Definition at line \hyperlink{qreportgenerator_8cpp_source_l00394}{394} of file \hyperlink{qreportgenerator_8cpp_source}{qreportgenerator.\+cpp}.
+
+
+
+References \hyperlink{qreportgenerator_8h_source_l00049}{C\+I\+Elab\+Plot}, \hyperlink{qreportgenerator_8h_source_l00054}{map\+Location}, and \hyperlink{qreportgenerator_8h_source_l00048}{ui}.
+
+
+
+\subsubsection{Member Function Documentation}
+\hypertarget{class_q_report_generator_ad588cf415e3d3a571fbd2fa7f9f30612}{}\index{Q\+Report\+Generator@{Q\+Report\+Generator}!get\+Location\+Map@{get\+Location\+Map}}
+\index{get\+Location\+Map@{get\+Location\+Map}!Q\+Report\+Generator@{Q\+Report\+Generator}}
+\paragraph[{get\+Location\+Map}]{\setlength{\rightskip}{0pt plus 5cm}void Q\+Report\+Generator\+::get\+Location\+Map (
+\begin{DoxyParamCaption}
+\item[{double \&}]{latitude, }
+\item[{double \&}]{longtitude}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_q_report_generator_ad588cf415e3d3a571fbd2fa7f9f30612}
+
+
+Definition at line \hyperlink{qreportgenerator_8cpp_source_l00357}{357} of file \hyperlink{qreportgenerator_8cpp_source}{qreportgenerator.\+cpp}.
+
+
+
+References \hyperlink{qreportgenerator_8cpp_source_l00376}{on\+\_\+location\+Image\+Downloaded()}.
+
+
+
+Referenced by \hyperlink{qreportgenerator_8cpp_source_l00004}{Q\+Report\+Generator()}.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_report_generator_ad588cf415e3d3a571fbd2fa7f9f30612_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_report_generator_ad588cf415e3d3a571fbd2fa7f9f30612_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_q_report_generator_aa170226241deb861a964ac722c8e4564}{}\index{Q\+Report\+Generator@{Q\+Report\+Generator}!on\+\_\+action\+Export\+\_\+to\+\_\+\+P\+D\+F\+\_\+triggered@{on\+\_\+action\+Export\+\_\+to\+\_\+\+P\+D\+F\+\_\+triggered}}
+\index{on\+\_\+action\+Export\+\_\+to\+\_\+\+P\+D\+F\+\_\+triggered@{on\+\_\+action\+Export\+\_\+to\+\_\+\+P\+D\+F\+\_\+triggered}!Q\+Report\+Generator@{Q\+Report\+Generator}}
+\paragraph[{on\+\_\+action\+Export\+\_\+to\+\_\+\+P\+D\+F\+\_\+triggered}]{\setlength{\rightskip}{0pt plus 5cm}void Q\+Report\+Generator\+::on\+\_\+action\+Export\+\_\+to\+\_\+\+P\+D\+F\+\_\+triggered (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\label{class_q_report_generator_aa170226241deb861a964ac722c8e4564}
+
+
+Definition at line \hyperlink{qreportgenerator_8cpp_source_l00416}{416} of file \hyperlink{qreportgenerator_8cpp_source}{qreportgenerator.\+cpp}.
+
+
+
+References \hyperlink{qreportgenerator_8h_source_l00030}{Report}, \hyperlink{soilsettings_8h_source_l00098}{Soil\+Analyzer\+::\+Soil\+Settings\+::\+Sample\+Folder}, and \hyperlink{qreportgenerator_8h_source_l00032}{Settings}.
+
+\hypertarget{class_q_report_generator_a7f16a79d19c4ae53859febaae31950e7}{}\index{Q\+Report\+Generator@{Q\+Report\+Generator}!on\+\_\+action\+Save\+\_\+triggered@{on\+\_\+action\+Save\+\_\+triggered}}
+\index{on\+\_\+action\+Save\+\_\+triggered@{on\+\_\+action\+Save\+\_\+triggered}!Q\+Report\+Generator@{Q\+Report\+Generator}}
+\paragraph[{on\+\_\+action\+Save\+\_\+triggered}]{\setlength{\rightskip}{0pt plus 5cm}void Q\+Report\+Generator\+::on\+\_\+action\+Save\+\_\+triggered (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\label{class_q_report_generator_a7f16a79d19c4ae53859febaae31950e7}
+
+
+Definition at line \hyperlink{qreportgenerator_8cpp_source_l00401}{401} of file \hyperlink{qreportgenerator_8cpp_source}{qreportgenerator.\+cpp}.
+
+
+
+References \hyperlink{qreportgenerator_8h_source_l00030}{Report}, \hyperlink{soilsettings_8h_source_l00098}{Soil\+Analyzer\+::\+Soil\+Settings\+::\+Sample\+Folder}, and \hyperlink{qreportgenerator_8h_source_l00032}{Settings}.
+
+\hypertarget{class_q_report_generator_a15c7c37fe5a9f178ae29bc1484aeaad9}{}\index{Q\+Report\+Generator@{Q\+Report\+Generator}!on\+\_\+location\+Image\+Downloaded@{on\+\_\+location\+Image\+Downloaded}}
+\index{on\+\_\+location\+Image\+Downloaded@{on\+\_\+location\+Image\+Downloaded}!Q\+Report\+Generator@{Q\+Report\+Generator}}
+\paragraph[{on\+\_\+location\+Image\+Downloaded}]{\setlength{\rightskip}{0pt plus 5cm}void Q\+Report\+Generator\+::on\+\_\+location\+Image\+Downloaded (
+\begin{DoxyParamCaption}
+\item[{Q\+Network\+Reply $\ast$}]{reply}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\label{class_q_report_generator_a15c7c37fe5a9f178ae29bc1484aeaad9}
+
+
+Definition at line \hyperlink{qreportgenerator_8cpp_source_l00376}{376} of file \hyperlink{qreportgenerator_8cpp_source}{qreportgenerator.\+cpp}.
+
+
+
+References \hyperlink{qreportgenerator_8h_source_l00062}{Image\+Graph\+Format}, \hyperlink{qreportgenerator_8h_source_l00054}{map\+Location}, and \hyperlink{qreportgenerator_8h_source_l00030}{Report}.
+
+
+
+Referenced by \hyperlink{qreportgenerator_8cpp_source_l00357}{get\+Location\+Map()}.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_report_generator_a15c7c37fe5a9f178ae29bc1484aeaad9_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_q_report_generator_a828ae557a03162a08d13f94f2d1888f4}{}\index{Q\+Report\+Generator@{Q\+Report\+Generator}!Setup\+C\+I\+Elab\+P\+Lot@{Setup\+C\+I\+Elab\+P\+Lot}}
+\index{Setup\+C\+I\+Elab\+P\+Lot@{Setup\+C\+I\+Elab\+P\+Lot}!Q\+Report\+Generator@{Q\+Report\+Generator}}
+\paragraph[{Setup\+C\+I\+Elab\+P\+Lot}]{\setlength{\rightskip}{0pt plus 5cm}void Q\+Report\+Generator\+::\+Setup\+C\+I\+Elab\+P\+Lot (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_q_report_generator_a828ae557a03162a08d13f94f2d1888f4}
+
+
+Definition at line \hyperlink{qreportgenerator_8cpp_source_l00431}{431} of file \hyperlink{qreportgenerator_8cpp_source}{qreportgenerator.\+cpp}.
+
+
+
+References \hyperlink{qreportgenerator_8h_source_l00049}{C\+I\+Elab\+Plot}, \hyperlink{sample_8cpp_source_l00094}{Soil\+Analyzer\+::\+Sample\+::\+Get\+C\+I\+E\+Lab\+\_\+a\+Vector()}, \hyperlink{sample_8cpp_source_l00104}{Soil\+Analyzer\+::\+Sample\+::\+Get\+C\+I\+E\+Lab\+\_\+b\+Vector()}, and \hyperlink{qreportgenerator_8h_source_l00031}{Sample}.
+
+
+
+Referenced by \hyperlink{qreportgenerator_8cpp_source_l00004}{Q\+Report\+Generator()}.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_report_generator_a828ae557a03162a08d13f94f2d1888f4_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_report_generator_a828ae557a03162a08d13f94f2d1888f4_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsubsection{Member Data Documentation}
+\hypertarget{class_q_report_generator_a8c2f9aee54d302f1330c6fd60d12bd13}{}\index{Q\+Report\+Generator@{Q\+Report\+Generator}!Angularity@{Angularity}}
+\index{Angularity@{Angularity}!Q\+Report\+Generator@{Q\+Report\+Generator}}
+\paragraph[{Angularity}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Custom\+Plot$\ast$ Q\+Report\+Generator\+::\+Angularity = nullptr}\label{class_q_report_generator_a8c2f9aee54d302f1330c6fd60d12bd13}
+
+
+Definition at line \hyperlink{qreportgenerator_8h_source_l00035}{35} of file \hyperlink{qreportgenerator_8h_source}{qreportgenerator.\+h}.
+
+
+
+Referenced by \hyperlink{qreportgenerator_8cpp_source_l00004}{Q\+Report\+Generator()}.
+
+\hypertarget{class_q_report_generator_a1a727308ea8cb98523a308d10da70b39}{}\index{Q\+Report\+Generator@{Q\+Report\+Generator}!C\+I\+Elab\+Plot@{C\+I\+Elab\+Plot}}
+\index{C\+I\+Elab\+Plot@{C\+I\+Elab\+Plot}!Q\+Report\+Generator@{Q\+Report\+Generator}}
+\paragraph[{C\+I\+Elab\+Plot}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Custom\+Plot$\ast$ Q\+Report\+Generator\+::\+C\+I\+Elab\+Plot = nullptr\hspace{0.3cm}{\ttfamily [private]}}\label{class_q_report_generator_a1a727308ea8cb98523a308d10da70b39}
+
+
+Definition at line \hyperlink{qreportgenerator_8h_source_l00049}{49} of file \hyperlink{qreportgenerator_8h_source}{qreportgenerator.\+h}.
+
+
+
+Referenced by \hyperlink{qreportgenerator_8cpp_source_l00004}{Q\+Report\+Generator()}, \hyperlink{qreportgenerator_8cpp_source_l00431}{Setup\+C\+I\+Elab\+P\+Lot()}, and \hyperlink{qreportgenerator_8cpp_source_l00394}{$\sim$\+Q\+Report\+Generator()}.
+
+\hypertarget{class_q_report_generator_ae23241660848e9015b6d3bf814d1b381}{}\index{Q\+Report\+Generator@{Q\+Report\+Generator}!Field\+Font@{Field\+Font}}
+\index{Field\+Font@{Field\+Font}!Q\+Report\+Generator@{Q\+Report\+Generator}}
+\paragraph[{Field\+Font}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Font Q\+Report\+Generator\+::\+Field\+Font\hspace{0.3cm}{\ttfamily [private]}}\label{class_q_report_generator_ae23241660848e9015b6d3bf814d1b381}
+
+
+Definition at line \hyperlink{qreportgenerator_8h_source_l00076}{76} of file \hyperlink{qreportgenerator_8h_source}{qreportgenerator.\+h}.
+
+
+
+Referenced by \hyperlink{qreportgenerator_8cpp_source_l00004}{Q\+Report\+Generator()}.
+
+\hypertarget{class_q_report_generator_ab7022962a87365f93a5e168d946ebd85}{}\index{Q\+Report\+Generator@{Q\+Report\+Generator}!General\+Font@{General\+Font}}
+\index{General\+Font@{General\+Font}!Q\+Report\+Generator@{Q\+Report\+Generator}}
+\paragraph[{General\+Font}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Font Q\+Report\+Generator\+::\+General\+Font\hspace{0.3cm}{\ttfamily [private]}}\label{class_q_report_generator_ab7022962a87365f93a5e168d946ebd85}
+
+
+Definition at line \hyperlink{qreportgenerator_8h_source_l00075}{75} of file \hyperlink{qreportgenerator_8h_source}{qreportgenerator.\+h}.
+
+
+
+Referenced by \hyperlink{qreportgenerator_8cpp_source_l00004}{Q\+Report\+Generator()}.
+
+\hypertarget{class_q_report_generator_a9a18bc94ca92a730ae0f13d60a6b5e0a}{}\index{Q\+Report\+Generator@{Q\+Report\+Generator}!General\+Format@{General\+Format}}
+\index{General\+Format@{General\+Format}!Q\+Report\+Generator@{Q\+Report\+Generator}}
+\paragraph[{General\+Format}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Text\+Block\+Format Q\+Report\+Generator\+::\+General\+Format\hspace{0.3cm}{\ttfamily [private]}}\label{class_q_report_generator_a9a18bc94ca92a730ae0f13d60a6b5e0a}
+
+
+Definition at line \hyperlink{qreportgenerator_8h_source_l00061}{61} of file \hyperlink{qreportgenerator_8h_source}{qreportgenerator.\+h}.
+
+
+
+Referenced by \hyperlink{qreportgenerator_8cpp_source_l00004}{Q\+Report\+Generator()}.
+
+\hypertarget{class_q_report_generator_a415a4b3a8995d02b724156b5e9c14486}{}\index{Q\+Report\+Generator@{Q\+Report\+Generator}!General\+Sample\+List@{General\+Sample\+List}}
+\index{General\+Sample\+List@{General\+Sample\+List}!Q\+Report\+Generator@{Q\+Report\+Generator}}
+\paragraph[{General\+Sample\+List}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Text\+List\+Format Q\+Report\+Generator\+::\+General\+Sample\+List\hspace{0.3cm}{\ttfamily [private]}}\label{class_q_report_generator_a415a4b3a8995d02b724156b5e9c14486}
+
+
+Definition at line \hyperlink{qreportgenerator_8h_source_l00069}{69} of file \hyperlink{qreportgenerator_8h_source}{qreportgenerator.\+h}.
+
+
+
+Referenced by \hyperlink{qreportgenerator_8cpp_source_l00004}{Q\+Report\+Generator()}.
+
+\hypertarget{class_q_report_generator_afcb27e52bd15a286a1933c3b9cf01c92}{}\index{Q\+Report\+Generator@{Q\+Report\+Generator}!General\+Text\+Table\+Format@{General\+Text\+Table\+Format}}
+\index{General\+Text\+Table\+Format@{General\+Text\+Table\+Format}!Q\+Report\+Generator@{Q\+Report\+Generator}}
+\paragraph[{General\+Text\+Table\+Format}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Text\+Table\+Format Q\+Report\+Generator\+::\+General\+Text\+Table\+Format\hspace{0.3cm}{\ttfamily [private]}}\label{class_q_report_generator_afcb27e52bd15a286a1933c3b9cf01c92}
+
+
+Definition at line \hyperlink{qreportgenerator_8h_source_l00070}{70} of file \hyperlink{qreportgenerator_8h_source}{qreportgenerator.\+h}.
+
+
+
+Referenced by \hyperlink{qreportgenerator_8cpp_source_l00004}{Q\+Report\+Generator()}.
+
+\hypertarget{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{}\index{Q\+Report\+Generator@{Q\+Report\+Generator}!G\+Fieldtxt\+Format@{G\+Fieldtxt\+Format}}
+\index{G\+Fieldtxt\+Format@{G\+Fieldtxt\+Format}!Q\+Report\+Generator@{Q\+Report\+Generator}}
+\paragraph[{G\+Fieldtxt\+Format}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Text\+Char\+Format Q\+Report\+Generator\+::\+G\+Fieldtxt\+Format\hspace{0.3cm}{\ttfamily [private]}}\label{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}
+
+
+Definition at line \hyperlink{qreportgenerator_8h_source_l00067}{67} of file \hyperlink{qreportgenerator_8h_source}{qreportgenerator.\+h}.
+
+
+
+Referenced by \hyperlink{qreportgenerator_8cpp_source_l00004}{Q\+Report\+Generator()}.
+
+\hypertarget{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{}\index{Q\+Report\+Generator@{Q\+Report\+Generator}!Gtxt\+Format@{Gtxt\+Format}}
+\index{Gtxt\+Format@{Gtxt\+Format}!Q\+Report\+Generator@{Q\+Report\+Generator}}
+\paragraph[{Gtxt\+Format}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Text\+Char\+Format Q\+Report\+Generator\+::\+Gtxt\+Format\hspace{0.3cm}{\ttfamily [private]}}\label{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}
+
+
+Definition at line \hyperlink{qreportgenerator_8h_source_l00066}{66} of file \hyperlink{qreportgenerator_8h_source}{qreportgenerator.\+h}.
+
+
+
+Referenced by \hyperlink{qreportgenerator_8cpp_source_l00004}{Q\+Report\+Generator()}.
+
+\hypertarget{class_q_report_generator_ad23921b0c8d0e77db7cfc0b611d9e93c}{}\index{Q\+Report\+Generator@{Q\+Report\+Generator}!Header\+Font@{Header\+Font}}
+\index{Header\+Font@{Header\+Font}!Q\+Report\+Generator@{Q\+Report\+Generator}}
+\paragraph[{Header\+Font}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Font Q\+Report\+Generator\+::\+Header\+Font\hspace{0.3cm}{\ttfamily [private]}}\label{class_q_report_generator_ad23921b0c8d0e77db7cfc0b611d9e93c}
+
+
+Definition at line \hyperlink{qreportgenerator_8h_source_l00074}{74} of file \hyperlink{qreportgenerator_8h_source}{qreportgenerator.\+h}.
+
+
+
+Referenced by \hyperlink{qreportgenerator_8cpp_source_l00004}{Q\+Report\+Generator()}.
+
+\hypertarget{class_q_report_generator_af2b45261507663b54e80f4053d25bc4b}{}\index{Q\+Report\+Generator@{Q\+Report\+Generator}!Header\+Format@{Header\+Format}}
+\index{Header\+Format@{Header\+Format}!Q\+Report\+Generator@{Q\+Report\+Generator}}
+\paragraph[{Header\+Format}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Text\+Block\+Format Q\+Report\+Generator\+::\+Header\+Format\hspace{0.3cm}{\ttfamily [private]}}\label{class_q_report_generator_af2b45261507663b54e80f4053d25bc4b}
+
+
+Definition at line \hyperlink{qreportgenerator_8h_source_l00060}{60} of file \hyperlink{qreportgenerator_8h_source}{qreportgenerator.\+h}.
+
+
+
+Referenced by \hyperlink{qreportgenerator_8cpp_source_l00004}{Q\+Report\+Generator()}.
+
+\hypertarget{class_q_report_generator_a8be687c8a427e341fa1c7f9addc96e99}{}\index{Q\+Report\+Generator@{Q\+Report\+Generator}!Header\+Text\+Format@{Header\+Text\+Format}}
+\index{Header\+Text\+Format@{Header\+Text\+Format}!Q\+Report\+Generator@{Q\+Report\+Generator}}
+\paragraph[{Header\+Text\+Format}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Text\+Char\+Format Q\+Report\+Generator\+::\+Header\+Text\+Format\hspace{0.3cm}{\ttfamily [private]}}\label{class_q_report_generator_a8be687c8a427e341fa1c7f9addc96e99}
+
+
+Definition at line \hyperlink{qreportgenerator_8h_source_l00065}{65} of file \hyperlink{qreportgenerator_8h_source}{qreportgenerator.\+h}.
+
+
+
+Referenced by \hyperlink{qreportgenerator_8cpp_source_l00004}{Q\+Report\+Generator()}.
+
+\hypertarget{class_q_report_generator_a19451127788bb6c68907b312a0a8b750}{}\index{Q\+Report\+Generator@{Q\+Report\+Generator}!Image\+Graph\+Format@{Image\+Graph\+Format}}
+\index{Image\+Graph\+Format@{Image\+Graph\+Format}!Q\+Report\+Generator@{Q\+Report\+Generator}}
+\paragraph[{Image\+Graph\+Format}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Text\+Block\+Format Q\+Report\+Generator\+::\+Image\+Graph\+Format\hspace{0.3cm}{\ttfamily [private]}}\label{class_q_report_generator_a19451127788bb6c68907b312a0a8b750}
+
+
+Definition at line \hyperlink{qreportgenerator_8h_source_l00062}{62} of file \hyperlink{qreportgenerator_8h_source}{qreportgenerator.\+h}.
+
+
+
+Referenced by \hyperlink{qreportgenerator_8cpp_source_l00376}{on\+\_\+location\+Image\+Downloaded()}, and \hyperlink{qreportgenerator_8cpp_source_l00004}{Q\+Report\+Generator()}.
+
+\hypertarget{class_q_report_generator_a1369081e13fce26f60a10eb846551515}{}\index{Q\+Report\+Generator@{Q\+Report\+Generator}!map\+Location@{map\+Location}}
+\index{map\+Location@{map\+Location}!Q\+Report\+Generator@{Q\+Report\+Generator}}
+\paragraph[{map\+Location}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Image$\ast$ Q\+Report\+Generator\+::map\+Location = nullptr\hspace{0.3cm}{\ttfamily [private]}}\label{class_q_report_generator_a1369081e13fce26f60a10eb846551515}
+
+
+Definition at line \hyperlink{qreportgenerator_8h_source_l00054}{54} of file \hyperlink{qreportgenerator_8h_source}{qreportgenerator.\+h}.
+
+
+
+Referenced by \hyperlink{qreportgenerator_8cpp_source_l00376}{on\+\_\+location\+Image\+Downloaded()}, and \hyperlink{qreportgenerator_8cpp_source_l00394}{$\sim$\+Q\+Report\+Generator()}.
+
+\hypertarget{class_q_report_generator_a8363c2cf697c443a9d58b223efddde02}{}\index{Q\+Report\+Generator@{Q\+Report\+Generator}!P\+S\+D@{P\+S\+D}}
+\index{P\+S\+D@{P\+S\+D}!Q\+Report\+Generator@{Q\+Report\+Generator}}
+\paragraph[{P\+S\+D}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Custom\+Plot$\ast$ Q\+Report\+Generator\+::\+P\+S\+D = nullptr}\label{class_q_report_generator_a8363c2cf697c443a9d58b223efddde02}
+
+
+Definition at line \hyperlink{qreportgenerator_8h_source_l00033}{33} of file \hyperlink{qreportgenerator_8h_source}{qreportgenerator.\+h}.
+
+\hypertarget{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{}\index{Q\+Report\+Generator@{Q\+Report\+Generator}!r\+Curs@{r\+Curs}}
+\index{r\+Curs@{r\+Curs}!Q\+Report\+Generator@{Q\+Report\+Generator}}
+\paragraph[{r\+Curs}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Text\+Cursor Q\+Report\+Generator\+::r\+Curs\hspace{0.3cm}{\ttfamily [private]}}\label{class_q_report_generator_af189d3779d26af513e311eea89a78a28}
+
+
+Definition at line \hyperlink{qreportgenerator_8h_source_l00056}{56} of file \hyperlink{qreportgenerator_8h_source}{qreportgenerator.\+h}.
+
+
+
+Referenced by \hyperlink{qreportgenerator_8cpp_source_l00004}{Q\+Report\+Generator()}.
+
+\hypertarget{class_q_report_generator_ab051048608bc51151bc0b1ffc217f292}{}\index{Q\+Report\+Generator@{Q\+Report\+Generator}!Report@{Report}}
+\index{Report@{Report}!Q\+Report\+Generator@{Q\+Report\+Generator}}
+\paragraph[{Report}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Text\+Document$\ast$ Q\+Report\+Generator\+::\+Report = nullptr}\label{class_q_report_generator_ab051048608bc51151bc0b1ffc217f292}
+
+
+Definition at line \hyperlink{qreportgenerator_8h_source_l00030}{30} of file \hyperlink{qreportgenerator_8h_source}{qreportgenerator.\+h}.
+
+
+
+Referenced by \hyperlink{qreportgenerator_8cpp_source_l00416}{on\+\_\+action\+Export\+\_\+to\+\_\+\+P\+D\+F\+\_\+triggered()}, \hyperlink{qreportgenerator_8cpp_source_l00401}{on\+\_\+action\+Save\+\_\+triggered()}, \hyperlink{qreportgenerator_8cpp_source_l00376}{on\+\_\+location\+Image\+Downloaded()}, and \hyperlink{qreportgenerator_8cpp_source_l00004}{Q\+Report\+Generator()}.
+
+\hypertarget{class_q_report_generator_ad0dd77389aea1b1fb2a58e363e5ff8a1}{}\index{Q\+Report\+Generator@{Q\+Report\+Generator}!Roundness@{Roundness}}
+\index{Roundness@{Roundness}!Q\+Report\+Generator@{Q\+Report\+Generator}}
+\paragraph[{Roundness}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Custom\+Plot$\ast$ Q\+Report\+Generator\+::\+Roundness = nullptr}\label{class_q_report_generator_ad0dd77389aea1b1fb2a58e363e5ff8a1}
+
+
+Definition at line \hyperlink{qreportgenerator_8h_source_l00034}{34} of file \hyperlink{qreportgenerator_8h_source}{qreportgenerator.\+h}.
+
+
+
+Referenced by \hyperlink{qreportgenerator_8cpp_source_l00004}{Q\+Report\+Generator()}.
+
+\hypertarget{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{}\index{Q\+Report\+Generator@{Q\+Report\+Generator}!Sample@{Sample}}
+\index{Sample@{Sample}!Q\+Report\+Generator@{Q\+Report\+Generator}}
+\paragraph[{Sample}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Soil\+Analyzer\+::\+Sample}$\ast$ Q\+Report\+Generator\+::\+Sample = nullptr}\label{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}
+
+
+Definition at line \hyperlink{qreportgenerator_8h_source_l00031}{31} of file \hyperlink{qreportgenerator_8h_source}{qreportgenerator.\+h}.
+
+
+
+Referenced by \hyperlink{qreportgenerator_8cpp_source_l00004}{Q\+Report\+Generator()}, and \hyperlink{qreportgenerator_8cpp_source_l00431}{Setup\+C\+I\+Elab\+P\+Lot()}.
+
+\hypertarget{class_q_report_generator_a5e75a3f9447c0c24b32cd198a00af21c}{}\index{Q\+Report\+Generator@{Q\+Report\+Generator}!Settings@{Settings}}
+\index{Settings@{Settings}!Q\+Report\+Generator@{Q\+Report\+Generator}}
+\paragraph[{Settings}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Soil\+Analyzer\+::\+Soil\+Settings}$\ast$ Q\+Report\+Generator\+::\+Settings = nullptr}\label{class_q_report_generator_a5e75a3f9447c0c24b32cd198a00af21c}
+
+
+Definition at line \hyperlink{qreportgenerator_8h_source_l00032}{32} of file \hyperlink{qreportgenerator_8h_source}{qreportgenerator.\+h}.
+
+
+
+Referenced by \hyperlink{qreportgenerator_8cpp_source_l00416}{on\+\_\+action\+Export\+\_\+to\+\_\+\+P\+D\+F\+\_\+triggered()}, \hyperlink{qreportgenerator_8cpp_source_l00401}{on\+\_\+action\+Save\+\_\+triggered()}, and \hyperlink{qreportgenerator_8cpp_source_l00004}{Q\+Report\+Generator()}.
+
+\hypertarget{class_q_report_generator_a6ec92ac9d2ef36345c1f6089629c13a7}{}\index{Q\+Report\+Generator@{Q\+Report\+Generator}!Title\+Font@{Title\+Font}}
+\index{Title\+Font@{Title\+Font}!Q\+Report\+Generator@{Q\+Report\+Generator}}
+\paragraph[{Title\+Font}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Font Q\+Report\+Generator\+::\+Title\+Font\hspace{0.3cm}{\ttfamily [private]}}\label{class_q_report_generator_a6ec92ac9d2ef36345c1f6089629c13a7}
+
+
+Definition at line \hyperlink{qreportgenerator_8h_source_l00073}{73} of file \hyperlink{qreportgenerator_8h_source}{qreportgenerator.\+h}.
+
+
+
+Referenced by \hyperlink{qreportgenerator_8cpp_source_l00004}{Q\+Report\+Generator()}.
+
+\hypertarget{class_q_report_generator_a1c6eac3b9c26e7fb32de033879ae6e6e}{}\index{Q\+Report\+Generator@{Q\+Report\+Generator}!Title\+Format@{Title\+Format}}
+\index{Title\+Format@{Title\+Format}!Q\+Report\+Generator@{Q\+Report\+Generator}}
+\paragraph[{Title\+Format}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Text\+Block\+Format Q\+Report\+Generator\+::\+Title\+Format\hspace{0.3cm}{\ttfamily [private]}}\label{class_q_report_generator_a1c6eac3b9c26e7fb32de033879ae6e6e}
+
+
+Definition at line \hyperlink{qreportgenerator_8h_source_l00059}{59} of file \hyperlink{qreportgenerator_8h_source}{qreportgenerator.\+h}.
+
+
+
+Referenced by \hyperlink{qreportgenerator_8cpp_source_l00004}{Q\+Report\+Generator()}.
+
+\hypertarget{class_q_report_generator_a7eebc837740d933bf4767e584f1d486c}{}\index{Q\+Report\+Generator@{Q\+Report\+Generator}!Title\+Text\+Format@{Title\+Text\+Format}}
+\index{Title\+Text\+Format@{Title\+Text\+Format}!Q\+Report\+Generator@{Q\+Report\+Generator}}
+\paragraph[{Title\+Text\+Format}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Text\+Char\+Format Q\+Report\+Generator\+::\+Title\+Text\+Format\hspace{0.3cm}{\ttfamily [private]}}\label{class_q_report_generator_a7eebc837740d933bf4767e584f1d486c}
+
+
+Definition at line \hyperlink{qreportgenerator_8h_source_l00064}{64} of file \hyperlink{qreportgenerator_8h_source}{qreportgenerator.\+h}.
+
+
+
+Referenced by \hyperlink{qreportgenerator_8cpp_source_l00004}{Q\+Report\+Generator()}.
+
+\hypertarget{class_q_report_generator_a4584dd4f053586b84b4a9f883a3313d9}{}\index{Q\+Report\+Generator@{Q\+Report\+Generator}!ui@{ui}}
+\index{ui@{ui}!Q\+Report\+Generator@{Q\+Report\+Generator}}
+\paragraph[{ui}]{\setlength{\rightskip}{0pt plus 5cm}Ui\+::\+Q\+Report\+Generator$\ast$ Q\+Report\+Generator\+::ui\hspace{0.3cm}{\ttfamily [private]}}\label{class_q_report_generator_a4584dd4f053586b84b4a9f883a3313d9}
+
+
+Definition at line \hyperlink{qreportgenerator_8h_source_l00048}{48} of file \hyperlink{qreportgenerator_8h_source}{qreportgenerator.\+h}.
+
+
+
+Referenced by \hyperlink{qreportgenerator_8cpp_source_l00004}{Q\+Report\+Generator()}, and \hyperlink{qreportgenerator_8cpp_source_l00394}{$\sim$\+Q\+Report\+Generator()}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Q\+Report\+Generator/\hyperlink{qreportgenerator_8h}{qreportgenerator.\+h}\item 
+/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Q\+Report\+Generator/\hyperlink{qreportgenerator_8cpp}{qreportgenerator.\+cpp}\end{DoxyCompactItemize}
