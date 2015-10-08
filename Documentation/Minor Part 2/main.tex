@@ -37,9 +37,9 @@
 \chapter*{Foreword}
 I can honestly say, that I have exceeded my own expectations. Before I started this minor, I had no knowledge of electrical devices, a limited know-how in programming languages, let alone any noteworthy C++ skills and to my shame I have never ever worked on a Linux computer.
 
-And what a change it has been; Now I'm reluctant to start up my windows computer because I'm more at home with my linux terminal, customizing and hacking a kernel, been there done that. Programming complex neural networks and Fast Fourier Transformation in C++ with pointers, euhhh whats new. Word, Excel who needs them, when you got \LaTeX\xspace and Matlab. I can honestly say I have transcended to a new level of nerdiness.
+And what a change it has been; Now I'm reluctant to start up my windows computer. I'm more at home with my linux terminal; Customizing and hacking a kernel, been there done that. Programming complex neural networks and Fast Fourier Transformation in C++ with pointers, euhhh whats new. Word, Excel who needs them, when you got \LaTeX\xspace and Matlab. I can honestly say I have transcended to a new level of nerdiness.
 
-But the best part is, that I saw people in my professional working sphere, whom seemed genuinely interested in this product. So much interested, that, although our main products are big boats and machinelike contraptions straight out of a horror flic, they are willing to give me a shot to further develop this product. Allowing me to creating a device by my own machinations and thus making sure that I have one item checked from my bucket list. For this opportunity I'm thankful. But I suspect my girlfriend doesn't share that gratitude.
+But the best part is, that I came across people in my professional working sphere, whom seemed genuinely interested in this product. So much interested, that, although our main products are big boats and machinelike contraptions straight out of a horror flic, they are willing to give me a shot to further develop this product. Allowing me to creating a device by my own machinations and thus making sure that I have one item checked from my bucket list. For this opportunity I'm thankful. But I suspect my girlfriend doesn't share that gratitude.
 \\
 \begin{center}
 	Annacarina stick in there, share me just a bit longer with my muse Vision Soil Analyzer. I still love you more then her!\\
@@ -47,23 +47,23 @@ But the best part is, that I saw people in my professional working sphere, whom 
 \end{center}
 
 \chapter*{Summary}
-This project finds its roots in the minor Embedded Vision Design (EVD) taught at the university of applied sciences HAN. During this minor a portable embedded device was developed which analyses soil samples using a microscope. This Vision Soil Analyzer hereafter referred to as VSA, analyses soil samples using the optical properties. It's main function is: Presenting quantifiable information to a user on the properties of soil: such as color, texture and structure.
+This project finds its roots in the minor Embedded Vision Design (EVD) taught at the university of applied sciences HAN. During this minor a portable embedded device was developed which analyses soil samples using a microscope. This Vision Soil Analyzer hereafter referred to as VSA, analyses soil samples using the optical properties.
 
-This product documentation describes the design and realization of a vision based soil analyzer. It does so by describing it functional design, which lies a the heart of the product and explains that the main function of the devices is:
+This product documentation describes the design and realization of a vision based soil analyzer. It does so by describing it functional design, which lies at the heart of the product and explains its main function:
 \begin{sBox}
 	To analyses a dried soil sample, consisting of particle in the range of $ 0.02 [mm] \leq P \leq 2.0 [mm] $ and present a user with information regarding color, texture and structure.
 \end{sBox}
 From here the requirements with regard to function and production are extrapolated. The functional requirements quantize the needed performance on color, texture and structure and give condition how to test this performance. While the technical requirements tells how the product is made. Giving constrains on dimension, programing language and electrical devices used.
 
-An important aspect of a vision based soil analyzer is its interaction with the user. This is illustrated with the user interface and the manuals describing the interaction protocols from an end-user and administrator perspective.
+An important aspect of a vision based soil analyzer is its interaction with a user. This is illustrated by a user interface and manuals describing its interaction protocols from an end-user and administrator perspective.
 
-The technical design dissects the structure into subsystems, such as microcontroller, light environment and sample plate. These and more are necessary to perform the main function. These subsystems have a high level of interaction with each other which are set out in the architecture. 
+The technical design dissects the structure into subsystems, such as microcontroller, light environment and sample plate. These and more are necessary to perform its main function. These subsystems have a high level of interaction with each other which are set out in the architecture of the device. 
 
-The vision based soil analyzer rest heavenly on vision algorithms, these follow a certain established lines, which are set out in the acquisition, enhancement, segmentation, feature extraction and classification steps.
+The vision based soil analyzer rest heavenly on vision algorithms, these follow certain established lines, which are set out in the acquisition, enhancement, segmentation, feature extraction and classification steps.
 
-All of the above serve as the basis for the realization of a vision based soil analyzer. In order to design and build a prototype te working environment is described. This is a dual booted Windows / Linux laptop, running QT designer, Matlab and Siemens NX. The project itself is hosted on Github and Upverter.
+All of the above serve as the basis for realization of a vision based soil analyzer. In order to design and build a prototype the working environment is described. This is a dual booted Windows / Linux laptop, running QT designer, Matlab and Siemens NX. The project itself is hosted on Github and Upverter.
 
-The technical aspects are described for the disciplines: software, mechanical and electronic engineering. Because the main focus lies on the vision aspects of the device, the previous determine route is set out in detail, describing the acquisition steps and various strategies which can be pursued. The enhancement from intensity to segmentation steps are described, such as blurring and adaptive contrast stretch. The follow up algorithm, transform an intensity picture to individual blobs. This is done by finding an optimal threshold between pixels which belong to a particle and background. 
+The technical aspects are described for the disciplines: software, mechanical and electronic engineering. Because the main focus lies on the vision aspects of the device, the previous determine route is set out in detail, describing the acquisition steps and various strategies which can be pursued. The enhancement from intensity to segmentation steps are described, such as blurring and adaptive contrast stretch. The follow up algorithms, transform an intensity picture to individual blobs. This is done by finding an optimal threshold between pixel values which belong to a particle or those that are the background. 
 
 Further transformation are performed to ensure each particle is identified. The shape of these are classified by describing the contour in the frequency domain, and feeding the complex numbers, obtained with a Fast Fourier Transform, in to a neural network. The resulting classification is one of angularity. Roundness is categorized with the Hu moments. The size of the particle is determined and used to describe the soil sample as a particle size distribution. All obtained information is presented to the user, through a multitude of means using the graphical user interface and a report generator. 
 
@@ -82,9 +82,9 @@ Finally the design is verified against the previous determined requirements and 
 \chapter{Introduction}
 This project finds its roots in the minor Embedded Vision Design taught at the university of applied sciences HAN, hereafter named EVD. During this minor an embedded device was developed which analyses soil samples using a microscope. This Vision Soil Analyzer or VSA for short, analyzes samples using the optical properties. It gives an user information on color, texture and structure.
 
-This device is developed in collaboration with Royal IHC and MTI Holland. Royal IHC is one of Holland major shipyard companies and specializes in dredging and offshore. MTI Holland BV is IHC knowledge center. They're worldwide leading center of expertise in the area of dredging, mining and deep-sea mining processes, this information is translated into the specification, design and application of equipment.
+This device is developed in collaboration with Royal IHC and MTI Holland. Royal IHC is one of Holland major shipyard companies and specializes in dredging and offshore. MTI Holland BV is IHC knowledge center. They're a worldwide leading center of expertise in the area of dredging, mining and deep-sea mining processes, their knowledge is translated into specification, design and application of equipment.
 
-Both companies have an interests in knowing the properties of soil, be it to advise their customers or to further facilitate their own research and services. Current methods, like the Particle Size Analysis using a sieve and hydrometer are time consuming and non portable. To facilitate quick, accurate and on location soil research an embedded device has been developed. This VSA analyzes soil samples using a microscope and gives the user acceptable and quick results on its visual properties.
+Both companies have an interests in knowing the properties of soil, be it to advise their customers or to further facilitate their own research and services. Current methods, like the particle size analysis using a sieve and hydrometer are time consuming and non portable. To facilitate quick, accurate and on location soil research an embedded device has been developed. This VSA analyzes soil samples using a microscope and gives the user acceptable and quick results on its visual properties.
 
 Quick and reliable results are a welcome addition into any laboratory, this combined with a device that is light and portable gives it's users an added benefit of shortened logistical operations for their soil samples. This results in some serious time benefits.
 
@@ -92,21 +92,24 @@ During the first period of the minor a basic prototype has been developed. This 
 
 The design and realization of this second prototype is set out in this report, the goal of this document is to:
 \begin{sBox}
-	Describe the design specifications for a vision based oil analyzer, in such away that it can be reproduced and improved, within a period of 10 weeks.
+	Describe the design specifications for a vision based oil analyzer, in such away that it can be reproduced, within a period of 10 weeks.
 \end{sBox}
-The project encompasses multiple disciplines (mechanical, electrical and software). The output of each of these disciplines are described, but the focus lies at the vision based algorithms and software that fulfills the main function; To analyses a soil sample using its optical properties. In performance of this main function it will give a user information regarding color, structure and texture.
+The project encompasses multiple disciplines (mechanical, electrical and software). The output of each of these disciplines are described, but the focus lies at the vision based algorithms and software that fulfills its main function:
+\begin{sBox}
+	To analyses a dried soil sample, consisting of particle in the range of $ 0.02 [mm] \leq P \leq 2.0 [mm] $ and present a user with information regarding color, texture and structure.
+\end{sBox}
 
-The color of a sample is presented to a user in the CIE Lab color-models. These color model show correlation between soil properties, such as color and organic carbon, related to the fertility of the soil. Conversion between different color-models are CPU intensive, because each pixel will be transformed using multiple algorithms. It's therefore paramount that calculations are done with an minimum of machine instructions and with acceptable errors.
+The color of a sample is presented to a user in the CIE Lab color-models. These color model show correlation between soil properties, such as color and organic carbon, related to fertility of soil. Conversion between different color-models are CPU intensive, because each pixel will be transformed using multiple algorithms. It's paramount that calculations are done with an minimum of machine instructions and with acceptable errors.
 
 Texture information is presented to a user via a particle size distribution, hereafter named PSD. This is a cumulative function representing the ratio of different particle sizes in the soil sample. Due to the nature of a two dimensional digital image numerous problems arise. These are overlap of smaller particles by bigger particles, this gives a distortion in the PSD results, because the smaller particle is registered as part of the bigger particle.
 
-Information about the structure of the soil is extrapolated from the individual particles shapes. These shapes are describes in the frequency domain, using a Fast Fourier Transform and are fed into a Neural Network which classifies these shapes into standard soil categories. These are time consuming operations and therefore should be done with a minimum of machine instructions and efficient programming.
+Information about the structure of the soil is extrapolated from its individual particles shapes. These are describes in the frequency domain, using a Fast Fourier Transform which are fed into a Neural Network which classifies these shapes into standard soil categories. These are time consuming operations and therefore should be done with a minimum of machine instructions and efficient programming.
 
 This document follows the following structure: In part \ref{part:Design} the design is laid out. In this part the following chapters describe basic design; Chapter \ref{chap:FunctionalDesiging} explores the function the device needs to fulfill and which specifications it has to have. While chapter \ref{chap:UserInterface} illustrate the user interaction and interface. This serves as input for chapter \ref{chap:manuals}, where the user interaction is described in the form of a manual. The technical design is illustrated in chapter \ref{chap:TecnicalDesign} and the vision design is outlined in chapter \ref{chap:VisionDesign}.
 
-Part \ref{part:Realization} tells how the design is transformed in to a working prototype and how it can be reproduced. This is achieved by first describing the development environment in \ref{chap:DevelopmentEnvironment}. In this chapter the setup for software, modeling and electronics engineering are described in detail. Armed with this setup the technical realization is described in chapter \ref{chap:TechnicalRealization}. Lastly the vision realization is recounted, this is the focal point of this documentation and can be found in chapter \ref{chap:VisionRealization}.
+Part \ref{part:Realization} tells how the design is transformed in to a working prototype and how it can be reproduced. This is achieved by first describing the development environment in chapter \ref{chap:DevelopmentEnvironment}. In this chapter the setup for software, modeling and electronics engineering are described in detail. Armed with this setup the technical realization is described in chapter \ref{chap:TechnicalRealization}. Lastly the vision realization is recounted, this is the focal point of this documentation and can be found in chapter \ref{chap:VisionRealization}.
 
-Verification of the design takes place in part \ref{part:Verification}. In chapter \ref{chap:CompareSpecification} is prototype verified against the previous determined specifications. Lastly the conclusion is set out in chapter \ref{chap:conclusion}. All addenda chapters, such as bibliography, index and appendices are to be found in part \ref{part:Addenda}. 
+Verification of the design takes place in part \ref{part:Verification}. In chapter \ref{chap:CompareSpecification} is the prototype verified against the previous determined specifications. Lastly the conclusion is set out in chapter \ref{chap:conclusion}. All addenda chapters, such as bibliography, index and appendices are to be found in part \ref{part:Addenda}. 
 
 \part{Design}\label{part:Design}
 
@@ -141,7 +144,7 @@ The main function of a vision based soil analyzer is evident from its name. The 
 
 
 \section{Specifications}\index{Specifications}\label{Specification}
-With the global input-process-output in mind the functional specifications can be written. This is done by identifying requirements\index{requirement} that lie at the hearth of it's main functionality. These are specification that define a product. It is important to note that there are two types of requirements: functional and  technical requirements; Each requirement can either be constant or a variable. The constant requirements are the baseline. If the product doesn't fulfills these, it can't be called a soil analyzer. Whilst variable requirement determine how well a product performs. 
+With the global input-process-output in mind the functional specifications can be written. This is done by identifying requirements\index{requirement} that lie at the hearth of it's main functionality. These are specification that define a product. It is important to note that there are two types of requirements: functional and  technical requirements; Each requirement can either be constant or a variable. The constant requirements are the baseline. If the product doesn't fulfills these, it can't be called a soil analyzer. Whilst variable requirement determine how well a product can perform. 
 
 \paragraph{Functional requirements}\index{Functional requirement}
 Functional requirements describe the purpose of the product.
@@ -202,7 +205,7 @@ Functional requirements describe the purpose of the product.
 
 \newpage
 \paragraph{Technical requirements}\index{Technical requirement}
-Technical requirements describe the functionality of the device with regards to its peripherals and its technical environment. They're described in such a way that they are either true or false.
+Technical requirements describe the functionality of the device with regards to its peripherals and its technical environment. They're described in such a way that they are either true or false. They act as constrains, providing a border with a know interface to the outside world.
 
 \begin{longtable}{|p{1cm}| p{10cm} p{1.5cm}|}
 \hline 
@@ -262,7 +265,7 @@ Technical requirements describe the functionality of the device with regards to 
 
 
 \chapter{User interface}\label{chap:UserInterface}\index{User interface}
-The User Interface is responsible for the interaction with a user. It does so by accepting user input, such as a soil sample and presents the user with human readable information. In order to guarantee accurate result, a certain work flow has to be followed. This work flow is worked in detail in the manuals, which are depicted in section \ref{chap:manuals}. In the follow sections the global work flow is illustrated as well as the graphical and hardware user interface.
+The User Interface is responsible for interaction with a user. It does so by accepting input, such as a soil sample and gives feedback in human interpretable information. In order to guarantee accurate result, a certain work flow has to be followed. This work flow is described in detail in the manuals, which are depicted in section \ref{chap:manuals}. In the follow sections the global work flow is illustrated as well as the graphical and hardware user interface.
 
 \section{Global work flow}
 The soil sample is dried and the user makes sure the particle don't bond together. A small portion of the sample is placed on a sample plate. Taking care to separate the individual particles as much as possible. The cover is closed and a microscopic camera is positions, in an environment where the light conditions are controlled.
@@ -299,7 +302,7 @@ Most information is conveyed through the graphical user interface or GUI for sho
 \end{figure}
 
 \chapter{Manuals}\label{chap:manuals}
-Interaction between user and the device is illustrated with the following basic manuals. These manuals differentiate between end-user and administrator. The end-user is the normal operator of the machine, the one who wants to know the properties of a specific soil sample, whilst the administrator has to maintain the device.
+Interaction between user and the device is illustrated with the following basic manuals. These manuals differentiate between end-user and administrator. The end-user is the normal operator of the machine, the one who wants to know the properties of a specific soil sample, whilst the administrator maintains the device.
 
 \section{User manual}\index{Manual:User manual}
 When a user wants to analyses a soil sample he first has to make sure, the device is connected to a power outlet with an adapter that provides a DC voltage of 5V with at least 2A. Any generic HDMI monitor which support 720p (HD-ready) can serve is its main user interface. It is optional that the device is hooked to a network using the UTP connection or directly to a x86 or x64 computer (running windows 7 or higher and Linux kernel 2.19 or higher) through USB connector. When communication with third parties is needed the network or gateway computer needs to be connected to a WAN\footnote{Wide Area Network}.
@@ -347,7 +350,7 @@ The user places a dried soil sample on the disc, as shown in figure \ref{fig:Sam
 
 \newpage
 \paragraph{Step 2: Placing the sample plate under the microscope}
-The disc is placed in the slot under the microscope. The slot only allows particle to be placed under the microscope  with a height of $ 2 [mm] $ or smaller. This step is shown in figure \ref{fig:PlacementSample}
+The disc is placed in a slot under the microscope. The slot only allows particle to be placed under the microscope  with a height of $ 2 [mm] $ or smaller. This step is shown in figure \ref{fig:PlacementSample}
 \begin{figure}[H]
 	\centering
 	\includegraphics[height=0.6\textheight]{PlaceSample.jpg}
@@ -355,7 +358,7 @@ The disc is placed in the slot under the microscope. The slot only allows partic
 \end{figure}
 
 \paragraph{Step 3: Creating a new sample}
-When a user presses the "New Sample" icon (figure: \ref{fig:Toolbar} button 1) on the toolbar the microscope takes a shot of the sample. When the sample needs to be rearranged for additional shots, a dialog will appear prompting a user to shake the disc. This is done by repeating step 1 and 2. Step 1 till 3 has to be performed for the amount of times specified by the administrator. This is usually 10 times.
+When a user presses the "New Sample" icon (figure: \ref{fig:Toolbar} button 1) on the toolbar the microscope takes a shot of the sample. When the sample needs to be rearranged for additional shots, a dialog will appear, prompting a user to shake the disc. This is done by repeating step 1 and 2. Step 1 till 3 has to be performed for the amount of times specified by the administrator. This is usually 10 times.
 
 \paragraph{Step 4: browsing through the sample}
 The segmented particles are shown in the particle browser, a user move through these individual particles by clicking on the left or right particle, or by moving the slider below the display. Below the particle browser is the suggested shape category depicted. If a user deems the particle wrongly categorized, he simply selects the new category. These new categories are used to further improve this classification process and serves a new learning datasets for the neural network.
@@ -364,7 +367,7 @@ The segmented particles are shown in the particle browser, a user move through t
 It is possible when using the current prototype, that it sees multiple connected particle as one. Because these connected particle distort the statistical analysis, a user has to delete these manually. He does so by clicking the "delete particle" button.
 
 \paragraph{Step 6: Comparing the sample against a know PSD}
-When pressing the right mouse button on the PSD graph a popup menu appears. Which allows csv\footnote{Comma Separated Values} files to be loaded as comparison.
+When pressing the right mouse button on the PSD graph a popup menu appears. Which allows CSV\footnote{Comma Separated Values} files to be loaded as comparison.
 
 \paragraph{Step 7: Saving or emailing the sample}
 Pressing the save button (figure \ref{fig:Toolbar}, button 2) allows a sample to be saved on local storage device. Depending on the size of the individual particles and the total amount, the file size various between 1 and 10 mb. The internal storage is 2gb of allocated space for storage. It is recommended to save the sample on an external device using the send email button (figure \ref{fig:Toolbar}, button 10). This button sends the opened sample to a previously selected email address of choice.
@@ -380,7 +383,7 @@ When the report generator is open the user can fill in additional information, r
 \end{figure}
  
 \section{Administrator manual}\index{Manual:Administrator manual}
-The VSA runs on an embedded Linux operating system, an administrator is expected to have prior knowledge of this operating system, such as working on the command prompt. Administration is performed through a dedicated network connection. It is expected that the ip address of the VSA is known.
+The VSA runs on an embedded Linux operating system, an administrator is expected to have prior knowledge of this operating system, such as working of the command prompt. Administration is performed through a dedicated network connection. It is expected that the ip address of the VSA is known.
 
 \subsection{Maintenance and upgrade process}\index{Manual:Maintenance und upgrade}
 Connect to a WAN is needed in order to upgrade the system. An administrator has the option to login through a console using the following credentials\index{credentials}:
@@ -418,10 +421,10 @@ The Neural Network can learn from previous analyzed samples, this is done on the
 
 When the button "Open Settings" is pressed the windows depicted in figure \ref{fig:NNsettings} is shown. In this window the user can select the preferred network configuration. 
 \paragraph{Setting up the neural net}
-The user configures the neural net by first specifying the number of input neurons, these describe are the amount Fast Fourier Descriptors used in describing the shape of particle, a number between 8 and 20 is usually more then enough. Here after the hidden neurons are to be specified. the maximum amount is 200. Finally the output neurons are to be specified. At the current time these are set in 18 categories and can't be changed.
+The user configures the neural net by first specifying the number of input neurons, these describe the amount Fast Fourier descriptors used in describing the shape of particle, a number between 8 and 20 is usually more then enough. Here after the hidden neurons are to be specified. the maximum amount is 200. Finally the output neurons are to be specified. At the current time these are set in 18 categories and can't be changed.
 
 \paragraph{Setting up the learning mode}
-The Genetic Algorithm allows the user to specify the learning variables. This is done by determining the maximum number of generations, or iterations. Secondly the population size has to be specified as well as the mutation rate. Thirdly the number of elite population member are to be set. These are population members that are guaranteed to be part of the next generation. Fourthly the acceptable end error has to be specified. As well as the minimum and maximum allowed weight. Lastly the user has the option to select the revolution mode. This mode can be useful when the error gets stuck on a certain level. It starts a fresh by killing the elite and mutate the rest of the population and ushers in a new era.
+The Genetic Algorithm allows the user to specify the learning variables. This is done by determining the maximum number of generations, or iterations. Secondly the population size has to be specified as well as the mutation rate. Thirdly the number of elite population member are to be set. These are population members that are guaranteed to be part of the next generation. Fourthly the acceptable end error has to be specified. As well as the minimum and maximum allowed weight. Lastly the user has the option to select the revolution mode. This mode can be useful when the error gets stuck on a certain level. It starts a fresh by killing the elite and mutate the rest of the population to ushers in a new era.
 
 \begin{figure}[h]
 	\includegraphics[width=\textwidth]{settingsNN.png}
@@ -677,11 +680,11 @@ Each led driver consists of three Philips LUXEON Rebel white leds. These  leds a
 The complete driver is controlled using a PWM\footnote{Pulse Width Modulation} pin on the Beaglebone Black.
 
 \subsection{Light level meter}
-The light level is measured in the light environmental room. This is done by using the 12-bit ADC chip of the Beaglebone black which uses 1.8[V]. It works on the principle of a simple voltage divider circuit Because hooking the LDR\footnote{Light Dependant Resistor} directly on the 1.8[V] power rail of the Beaglebone the circuit will draw current and acts as a variable load, which will in turn effect the voltage level and thus effect the measurement.
+The light level is measured in the light environmental room. This is done by using the 12-bit ADC chip of the Beaglebone black which uses 1.8[V]. It works on the principle of a simple voltage divider circuit Because hooking the LDR\footnote{Light Dependant Resistor} directly on the 1.8[V] power rail of the Beaglebone, the circuit will draw current and acts as a variable load, which will in turn effect the voltage level and thus effect the measurement.
 This problem is solved by building a small voltage follower circuit using an LM358P op-amp. This op-amp uses the 1.8[V] power-rail as reference and draws it current from the 5[V] power rail.
 
 \subsection{Global position unit}
-The global position unit has yet to be implemented.
+Due to a defective unit on arrival, the global position unit has yet to be implemented.
 \newpage
 
 \section{Case design}
@@ -708,7 +711,7 @@ This class is responsible for setting up the environment and providing user inte
 This library is used extensively by the other libraries and consists of the following classes: FFT (Fast Fourier Transform), GA (Genetic Algorithms), Stats (Statistics), PSD (particle size distribution), NN (Neural Network), Sort (quick sort routine) and common math operations, type and error handling.
 
 \paragraph{namespace SoilHardware}
-This library performs the hardware communication, it basically consist of two sections; Those are camera communication with the class Microscope and Beaglebone black specific classes, GPIO (General Pin Input and Output), ADC (Analogue Digital Convertor), eQEP (enhanced Quadrature Encoder Pulse) and PWM (Pulse Width Modulation). Although the Hardware class compiles on a x64 architecture the BeagleBone specific classes don't work there.
+This library performs the hardware communication, it basically consist of two sections; Those are camera communication with the class Microscope and Beaglebone black specific classes, GPIO\footnote{General Purpose Input and Output}, ADC\footnote{Analogue Digital Convertor}, eQEP\footnote{enhanced Quadrature Encoder Pulse} and PWM\footnote{Pulse Width Modulation}. Although the Hardware class compiles on a x64 architecture the BeagleBone specific classes don't work there.
 
 \paragraph{namespace SoilVision}
 This library performs all vision related operations and is explained in detail in section \ref{chap:VisionRealization}. It consist of the following classes: Conversion (color conversion), Enhance (Image enhancement), MorphologicalFilter, Segment and VisionDebug (Enables easy vision debugging operations). 
@@ -813,16 +816,15 @@ In order to get more control over the segmentation process, the normal Otsu's me
 \end{sBox}
 
 \paragraph{Labeled blobs}\index{Blob}\index{Labeled blobs}
-\begin{wrapfigure}{r}{0.50\textwidth}
-	\begin{center}
-		\includegraphics[width=0.495\textwidth]{nBors.png}
-	\end{center}
-	\caption{Neighboring elements Source: \cite{he_fast_2009}}
-	\label{fig:Neighboring_elements}
-\end{wrapfigure}
 If the threshold value\index{Threshold} was correctly ascertained then the binary image will consist of zeros and ones. Particles are represented by islands of connected elements with a designated value of one in an ocean of zeros. The individual particles, which are dubbed "blobs"\index{Blob} will be identified with a two-pass connected-component labeling algorithm. 
 
 This algorithm passes each element in a binary image in a consecutive manner. When the current element belongs to a particle, it will check if previously processed neighboring pixels belong to an earlier labeled blob. If this is not the case it will assign a new label value to the current element. If it finds that one of the neighbors belong to one or more blobs, it assigns the lowest value and writes the other value to a queue. To store the connected labels.
+\begin{figure}
+	\centering
+	\includegraphics[width=0.33\textwidth]{nBors.png}
+	\caption{Neighboring elements Source: \cite{he_fast_2009}}
+	\label{fig:Neighboring_elements}
+\end{figure}
 
 In order to determine the lowest value of the connected component\index{Connected component}, a graphs matrix\index{Graph matrix} is generated, see figure \ref{ConnQue}. Each branch on these trees are followed till the lowest value is ascertained. All the leafs on the tree are then set to this value. These values are placed in a Look-Up-Table\index{Look-Up-Table}. With the second loop through the previously labeled image each value is replaced by looking up the lowest value in LUT.  
 
@@ -1176,12 +1178,12 @@ The angularity is categorized using a neural network or NN for short. These cons
 \end{figure}
 
 \paragraph{Programming approach}
-Programming of a neural network can be approached in two different ways. Object oriented\index{Object oriented programming}, where the neurons and layers are classes or imperative oriented\index{Imperative oriented programming} where the state of the program chances. The latter approach is chosen for this project. Although the code will be less reusable it will have less overhead in machine instruction which are a result of (de-)construction of the objects.
+Programming of a neural network can be approached in two different ways. Object oriented\index{Object oriented programming}, where the neurons and layers are classes or imperative oriented\index{Imperative oriented programming} where the state of the program chances. The latter approach is chosen for this project. Although the code will be less reusable it will also have less overhead in machine instruction which are a result of (de-)construction of the objects.
 
 \paragraph{Neural Network architecture}\label{NNArchitecture}\index{Neural Network Architecture}
 The architecture of the Neural Network is setup according to figure \ref{fig:neuralnetwork}. It consists of a layer of input, hidden,and output neurons. The input neurons are fed the complex Fourier Descriptors obtained with algorithm \ref{pcode:FFT}. The absolute values are determined from these complex number, because the magnitude of chance is the only aspect that is of interest when the angularity is to be described.
 
-\citeauthor{Spijker14a} \cite{Spijker14a} describes that nine till twelve  descriptor are usually enough to describe a particle contour. Any higher and the discrete nature of the pixels will start to influence the Fourier descriptors. The number of input neurons need to resemble the amount of descriptors used. These input neurons fire feed the next hidden layers of neurons and are multiplied by a weight, which is to be determined when the network is being taught.
+\citeauthor{Spijker14a} \cite{Spijker14a} describes that nine till twelve  descriptor are usually enough to describe a particle contour. Any higher and the discrete nature of the pixels will start to influence the Fourier descriptors. The number of input neurons need to resemble the amount of descriptors used. These input neurons fire feed the next hidden layers of neurons and are multiplied by a weight, which are to be determined when the network is being taught.
 
 Each hidden neuron sums up its input and transforms it with the threshold function. These values are fired to the next layer of output neurons, which performs the same summation and transformation. The output neuron with the highest value is selected as the most probable category. There are as many output neurons as categories, which is eighteen for the Vision Soil Analyzer.
 
@@ -1326,16 +1328,18 @@ Genetic algorithm are described as random search approaches, which have the abil
 \end{figure}
 
 \paragraph{Viva la revolution!}\index{Revolution}
-When a genetic algorithm get stuck on what is to be presumed to be local optimum, and the error isn't changed over a given number of generations, it is time to usher in a new era, one where the surviving ruling class or elite population members are led to the guillotine and the general population undergoes great chances. Viva la revolution\footnote{As far as the knowledge of the author extends, the concept of moving away of a local minimum, by use of a revolution is a new concept. And because the author has been writing for 14 consecutive hours, he is willing to make some pun and call it a "revolution" in the field of Genetic Algorithms.} This spreads out the previous homogeneous population and allows it to move away from the local optimum.
+When a genetic algorithm get stuck on what is to be presumed to be local optimum, and the error isn't changed over a given number of generations, it is time to usher in a new era, one where the ruling class or elite population members are led to the guillotine and the general population undergoes great chances. Viva la revolution\footnote{As far as the knowledge of the author extends, the concept of moving away of a local minimum, by use of a revolution is a new concept. And because the author has been writing for 14 consecutive hours, he is willing to make some pun and call it a "revolution" in the field of Genetic Algorithms.} This spreads out the previous homogeneous population and allows it to move away from the local optimum.
 
 \part{Verification}\label{part:Verification}
-
 \chapterimage{sand_4_banner.jpg} % Chapter heading image
 
 \chapter{Comparing against specifications}\label{chap:CompareSpecification}
+It is important to measure how effective a prototype is. This is done by comparing it against the requirements that were set out at the start of this document. Not every aspect could be tested at this current stage, that is because the prototype is being finalized. Preliminary iterations of the prototype where all fitted with a simple generic webcam.
+
+The new DFK24UJ003 camera became available at a later stage in the project. Fitting this camera in the project, required rewriting the software driver for this device. This has just finished. But it came to late to perform the necessary test with regards to accuracy. The test that measure these effect will be performed at the start of the next iteration\footnote{This next iteration will be part of my thesis, where the focus will lie on quality and reproduction of the results.}.
 
 \paragraph{Functional requirements}\index{Functional requirement}
-Functional requirements describe the purpose of the product.
+The functional requirements describe the functions which the device has to fulfill. These requirements were tested if possible and these results are given below. It becomes clear that the measurements that matter most are the ones that haven't been tested yet. All others are fulfilled and checked. As soon as the prototype is operational additional test will be performed and added as an addenda to this report.
 
 \begin{longtable}{|p{1cm}| p{9cm} p{2.5cm}|}
 	\hline 
@@ -1393,7 +1397,8 @@ Functional requirements describe the purpose of the product.
 
 \newpage
 \paragraph{Technical requirements}\index{Technical requirement}
-Technical requirements describe the functionality of the device with regards to its peripherals and its technical environment. They're described in such a way that they are either true or false.
+The technical requirements describe the production constrains placed on the design and realization. These requirements where checked against the current prototype. It becomes clear that most of these were fulfilled. The light controller hasn't been implemented, although the actuator (LED driver) and the sensor (LDR) are in place. This controller can be build as a soft- or hardware PI(D)-controller. And it will be implemented in the next iteration.
+Due to defective GPS unit on arrival, the optional GPS unit isn't implemented. Although this unit is optional at this stage, it will become an integral part of the next iteration.
 
 \begin{longtable}{|p{1cm}| p{10cm} p{1.5cm}|}
 	\hline 
@@ -1452,7 +1457,30 @@ Technical requirements describe the functionality of the device with regards to 
 \end{longtable} 
 
 \chapter{Conclusion}\label{chap:conclusion}
+Many parties such as royal IHC and MTI holland have an interest in knowing the properties of soil, although these can be examined using conventional methods such as a particle size analysis using a mechanical sieve, these methods are often time consuming and cumbersome, consisting of bulky devices, which are none portable. Because it is useful to known the properties on site, a lightweight vision based soil analyzer was developed.
 
+This device analyzes soil samples using its optical characteristics and describing them in to human readable reports. Because this device is highly portable, it gives a user a benefit of shorten logistical operations which are usually necessary to analyze a soil sample. 
+
+This product report describe the design specifications for a vision based oil analyzer, in such away that it can be reproduced, within a period of 10 weeks. It does so by exploring the main function a device such as this has to fulfill and translate these into requirements. These requirements serve as input for the technical and vision-based designs. The focus of this document lies on the vision related algorithm and the software aspect.
+
+The designs are realized for the disciplines, mechanical, electrical and software engineering. In such away that the prototype can be reproduced within a period of ten weeks. The working environment and protocols are described as well as the expected output. This complete environment can be found at Github as a private repository.
+
+The prototype was tested against the previous determined requirements and fulfilled many of these. But because of a set back in implementation of a new camera, the most noteworthy requirements could not be properly tested. It is therefore still unknown how well the prototype performs in comparison with a conventional sieve test.
+
+Because this product will serve as the basis for the thesis of my major phase. Which will have a focus on a market ready quality device. These test will still be performed. They are after all to be used as a starting point for the next iteration. Although the current product still stands as good stepping stone, there are still many questions to be answered. Such as: Is there a market for this device? What does a customer expect? How well does it perform?
+
+These question and more will be addressed by my thesis. In other words:
+
+\begin{center}
+	To be continued.....
+\end{center}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.7\textheight]{FinalPrototype.jpg}	
+	\caption{The final prototype, with new camera}
+	\label{fig:FinalPrototype}
+\end{figure}
 
 \part{Addenda}\label{part:Addenda}
 \chapterimage{books_banner.jpg}
