@@ -1,0 +1,30 @@
+\hypertarget{_u_s_b_8cpp_source}{}\subsection{U\+S\+B.\+cpp}
+\label{_u_s_b_8cpp_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Hardware/\+U\+S\+B.\+cpp@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Hardware/\+U\+S\+B.\+cpp}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/* Copyright (C) Jelle Spijker - All Rights Reserved}
+00002 \textcolor{comment}{ * Unauthorized copying of this file, via any medium is strictly prohibited}
+00003 \textcolor{comment}{ * and only allowed with the written consent of the author (Jelle Spijker)}
+00004 \textcolor{comment}{ * This software is proprietary and confidential}
+00005 \textcolor{comment}{ * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015}
+00006 \textcolor{comment}{ */}
+00007 
+00008 \textcolor{preprocessor}{#include "\hyperlink{_u_s_b_8h}{USB.h}"}
+00009 
+00010 \textcolor{keyword}{namespace }\hyperlink{namespace_hardware}{Hardware} \{
+\hypertarget{_u_s_b_8cpp_source_l00011}{}\hyperlink{class_hardware_1_1_u_s_b_a225d2d24d36cc7c4e46f5c4d19f51fb8}{00011} \hyperlink{class_hardware_1_1_u_s_b_a225d2d24d36cc7c4e46f5c4d19f51fb8}{USB::USB}() \{\}
+00012 
+\hypertarget{_u_s_b_8cpp_source_l00013}{}\hyperlink{class_hardware_1_1_u_s_b_a808f13d66ce9bdf66a043fd02b4b8cf2}{00013} \hyperlink{class_hardware_1_1_u_s_b_a808f13d66ce9bdf66a043fd02b4b8cf2}{USB::~USB}() \{\}
+00014 
+\hypertarget{_u_s_b_8cpp_source_l00015}{}\hyperlink{class_hardware_1_1_u_s_b_af387867ec84f4c709b55e3605f9e313e}{00015} \textcolor{keywordtype}{void} \hyperlink{class_hardware_1_1_u_s_b_af387867ec84f4c709b55e3605f9e313e}{USB::ResetUSB}() \{
+00016   \textcolor{keywordtype}{int} fd, rc;
+00017 
+00018   fd = open(\textcolor{stringliteral}{"/dev/bus/usb/001/002"}, O\_WRONLY);
+00019   rc = ioctl(fd, USBDEVFS\_RESET, 0);
+00020   \textcolor{keywordflow}{if} (rc < 0) \{
+00021     \textcolor{keywordflow}{throw} - 1;
+00022   \}
+00023   close(fd);
+00024 \}
+00025 \}
+\end{DoxyCode}

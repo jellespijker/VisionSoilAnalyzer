@@ -1,0 +1,73 @@
+\hypertarget{_a_d_c_8h_source}{}\subsection{A\+D\+C.\+h}
+\label{_a_d_c_8h_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Hardware/\+A\+D\+C.\+h@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Hardware/\+A\+D\+C.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/* Copyright (C) Jelle Spijker - All Rights Reserved}
+00002 \textcolor{comment}{ * Unauthorized copying of this file, via any medium is strictly prohibited}
+00003 \textcolor{comment}{ * and only allowed with the written consent of the author (Jelle Spijker)}
+00004 \textcolor{comment}{ * This software is proprietary and confidential}
+00005 \textcolor{comment}{ * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015}
+00006 \textcolor{comment}{ */}
+00007 
+00012 \textcolor{preprocessor}{#pragma once}
+00013 
+00014 \textcolor{preprocessor}{#include "\hyperlink{_b_b_b_8h}{BBB.h}"}
+00015 \textcolor{preprocessor}{#include "\hyperlink{_a_d_c_read_exception_8h}{ADCReadException.h}"}
+00016 
+\hypertarget{_a_d_c_8h_source_l00017}{}\hyperlink{_a_d_c_8h_a597a5b4b81296d8d567bb8251f29e51c}{00017} \textcolor{preprocessor}{#define ADC0\_PATH                                                              \(\backslash\)}
+00018 \textcolor{preprocessor}{  "/sys/bus/iio/devices/iio:device0/in\_voltage0\_raw" }
+00020 \textcolor{preprocessor}{#define ADC1\_PATH                                                              \(\backslash\)}
+\hypertarget{_a_d_c_8h_source_l00021}{}\hyperlink{_a_d_c_8h_a042dc32b894680e50456be83ef44a281}{00021} \textcolor{preprocessor}{  "/sys/bus/iio/devices/iio:device0/in\_voltage1\_raw" }
+00023 \textcolor{preprocessor}{#define ADC2\_PATH                                                              \(\backslash\)}
+00024 \textcolor{preprocessor}{  "/sys/bus/iio/devices/iio:device0/in\_voltage2\_raw" }
+00026 \textcolor{preprocessor}{#define ADC3\_PATH                                                              \(\backslash\)}
+00027 \textcolor{preprocessor}{  "/sys/bus/iio/devices/iio:device0/in\_voltage3\_raw" }
+\hypertarget{_a_d_c_8h_source_l00029}{}\hyperlink{_a_d_c_8h_a97ea71f953cb0949dd23883f4193b454}{00029} \textcolor{preprocessor}{#define ADC4\_PATH                                                              \(\backslash\)}
+00030 \textcolor{preprocessor}{  "/sys/bus/iio/devices/iio:device0/in\_voltage4\_raw" }
+00032 \textcolor{preprocessor}{#define ADC5\_PATH                                                              \(\backslash\)}
+\hypertarget{_a_d_c_8h_source_l00033}{}\hyperlink{_a_d_c_8h_aa766e25698fd1ec953a05b82870c1bb9}{00033} \textcolor{preprocessor}{  "/sys/bus/iio/devices/iio:device0/in\_voltage5\_raw" }
+00035 \textcolor{preprocessor}{#define ADC6\_PATH                                                              \(\backslash\)}
+00036 \textcolor{preprocessor}{  "/sys/bus/iio/devices/iio:device0/in\_voltage6\_raw" }
+00038 \textcolor{preprocessor}{#define ADC7\_PATH                                                              \(\backslash\)}
+00039 \textcolor{preprocessor}{  "/sys/bus/iio/devices/iio:device0/in\_voltage7\_raw" }
+00042 \textcolor{preprocessor}{namespace Hardware \{}
+00043 \textcolor{keyword}{class }\hyperlink{class_a_d_c}{ADC} : \textcolor{keyword}{public} \hyperlink{class_b_b_b}{BBB} \{
+00044 \textcolor{keyword}{public}:
+00046   \textcolor{keyword}{enum} ADCPin \{
+00047     ADC0, 
+00048     ADC1, 
+00049     ADC2, 
+00050     ADC3, 
+\hypertarget{_a_d_c_8h_source_l00051}{}\hyperlink{class_hardware_1_1_a_d_c}{00051}     ADC4, 
+00052     ADC5, 
+00053     ADC6, 
+\hypertarget{_a_d_c_8h_source_l00054}{}\hyperlink{class_hardware_1_1_a_d_c_adb1507998c096cbdf7031527f6a690cf}{00054}     ADC7  
+\hypertarget{_a_d_c_8h_source_l00055}{}\hyperlink{class_hardware_1_1_a_d_c_adb1507998c096cbdf7031527f6a690cfaaad3628f17c4d36b8d16123e7017ad63}{00055}   \};
+\hypertarget{_a_d_c_8h_source_l00056}{}\hyperlink{class_hardware_1_1_a_d_c_adb1507998c096cbdf7031527f6a690cfa73b7008767a7fb434c949c821b5872dc}{00056} 
+\hypertarget{_a_d_c_8h_source_l00057}{}\hyperlink{class_hardware_1_1_a_d_c_adb1507998c096cbdf7031527f6a690cfac987eb1ee9899deeff5ac8408fc6de43}{00057}   \hyperlink{class_hardware_1_1_a_d_c_adb1507998c096cbdf7031527f6a690cf}{ADCPin} Pin; 
+\hypertarget{_a_d_c_8h_source_l00059}{}\hyperlink{class_hardware_1_1_a_d_c_adb1507998c096cbdf7031527f6a690cfa6c75e50b9369191173e49be9d5c72eeb}{00059}   \hyperlink{class_hardware_1_1_a_d_c}{ADC}(\hyperlink{class_hardware_1_1_a_d_c_adb1507998c096cbdf7031527f6a690cf}{ADCPin} pin);
+\hypertarget{_a_d_c_8h_source_l00060}{}\hyperlink{class_hardware_1_1_a_d_c_adb1507998c096cbdf7031527f6a690cfa0357d1e409dc31cb4300cfd2dcd4c32d}{00060}   ~\hyperlink{class_hardware_1_1_a_d_c}{ADC}();
+\hypertarget{_a_d_c_8h_source_l00061}{}\hyperlink{class_hardware_1_1_a_d_c_adb1507998c096cbdf7031527f6a690cfacf89c6b4add1847331f17eef47022bda}{00061} 
+\hypertarget{_a_d_c_8h_source_l00062}{}\hyperlink{class_hardware_1_1_a_d_c_adb1507998c096cbdf7031527f6a690cfa0ba8f0db648fb6c0bb85291f19b06946}{00062}   \textcolor{keywordtype}{int} GetCurrentValue();
+00063   \textcolor{keywordtype}{float} GetIntensity() \{ \textcolor{keywordflow}{return} Intensity; \}
+00064   \textcolor{keywordtype}{int} GetMinIntensity() \{ \textcolor{keywordflow}{return} MinIntensity; \}
+\hypertarget{_a_d_c_8h_source_l00065}{}\hyperlink{class_hardware_1_1_a_d_c_acb6d23369c7047296af402ca480bb2f5}{00065}   \textcolor{keywordtype}{int} GetMaxIntensity() \{ \textcolor{keywordflow}{return} MaxIntensity; \}
+00066 
+00067   \textcolor{keywordtype}{void} SetMinIntensity();
+00068   \textcolor{keywordtype}{void} SetMaxIntensity();
+00069 
+00070   \textcolor{keywordtype}{int} WaitForValueChange();
+\hypertarget{_a_d_c_8h_source_l00071}{}\hyperlink{class_hardware_1_1_a_d_c_ac38274c9155e3de74276e251286415ce}{00071}   \textcolor{keywordtype}{int} WaitForValueChange(\hyperlink{namespace_hardware_a5ba2e4bdfa2bbd8b551b1d5b2a0c61fd}{CallbackType} callback);
+\hypertarget{_a_d_c_8h_source_l00072}{}\hyperlink{class_hardware_1_1_a_d_c_ac571740345f53a3004c3a1c236f938d4}{00072}   \textcolor{keywordtype}{void} WaitForValueChangeCancel() \{ this->threadRunning = \textcolor{keyword}{false}; \}
+\hypertarget{_a_d_c_8h_source_l00073}{}\hyperlink{class_hardware_1_1_a_d_c_af03f3522f679e266b3a994e30468b5ca}{00073} 
+00074 \textcolor{keyword}{private}:
+00075   \textcolor{keywordtype}{string} adcpath;   
+00076   \textcolor{keywordtype}{float} Intensity;  
+00077   \textcolor{keywordtype}{int} MinIntensity; 
+00078   \textcolor{keywordtype}{int} MaxIntensity; 
+\hypertarget{_a_d_c_8h_source_l00080}{}\hyperlink{class_hardware_1_1_a_d_c_aec4d561199bb0f798a28ddd3c8c75543}{00080}   \textcolor{keyword}{friend} \textcolor{keywordtype}{void} *\hyperlink{namespace_hardware_a594324488333eeaa49790a5391626fad}{threadedPollADC}(\textcolor{keywordtype}{void} *value); 
+00081 \};
+00082 
+\hypertarget{_a_d_c_8h_source_l00083}{}\hyperlink{class_hardware_1_1_a_d_c_a820ce4f097a70b95246049f9ea01df21}{00083} \textcolor{keywordtype}{void} *\hyperlink{namespace_hardware_a594324488333eeaa49790a5391626fad}{threadedPollADC}(\textcolor{keywordtype}{void} *value);
+\hypertarget{_a_d_c_8h_source_l00084}{}\hyperlink{class_hardware_1_1_a_d_c_a38a0f00558a3de01b3bce567643dae4a}{00084} \}
+\end{DoxyCode}

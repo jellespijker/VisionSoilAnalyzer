@@ -1,0 +1,65 @@
+\hypertarget{_b_b_b_8h_source}{}\subsection{B\+B\+B.\+h}
+\label{_b_b_b_8h_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Hardware/\+B\+B\+B.\+h@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Hardware/\+B\+B\+B.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/* Copyright (C) Jelle Spijker - All Rights Reserved}
+00002 \textcolor{comment}{ * Unauthorized copying of this file, via any medium is strictly prohibited}
+00003 \textcolor{comment}{ * and only allowed with the written consent of the author (Jelle Spijker)}
+00004 \textcolor{comment}{ * This software is proprietary and confidential}
+00005 \textcolor{comment}{ * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015}
+00006 \textcolor{comment}{ */}
+00007 
+00014 \textcolor{preprocessor}{#pragma once}
+00015 
+\hypertarget{_b_b_b_8h_source_l00016}{}\hyperlink{_b_b_b_8h_a3de26a5dbd2276c1486afbba5fc8de59}{00016} \textcolor{preprocessor}{#define SLOTS                                                                  \(\backslash\)}
+00017 \textcolor{preprocessor}{  "/sys/devices/platform/bone\_capemgr/slots" }
+00019 \textcolor{preprocessor}{#include <fstream>}
+00020 \textcolor{preprocessor}{#include <sstream>}
+00021 \textcolor{preprocessor}{#include <string>}
+00022 \textcolor{preprocessor}{#include <sys/stat.h>}
+00023 \textcolor{preprocessor}{#include <pthread.h>}
+00024 \textcolor{preprocessor}{#include <unistd.h>}
+00025 \textcolor{preprocessor}{#include <sys/epoll.h>}
+00026 \textcolor{preprocessor}{#include <fcntl.h>}
+00027 \textcolor{preprocessor}{#include <regex>}
+00028 \textcolor{preprocessor}{#include <stdexcept>}
+00029 
+00030 \textcolor{preprocessor}{#include "\hyperlink{_g_p_i_o_read_exception_8h}{GPIOReadException.h}"}
+00031 \textcolor{preprocessor}{#include "\hyperlink{_failed_to_create_g_p_i_o_polling_thread_exception_8h}{FailedToCreateGPIOPollingThreadException.h}"}
+00032 \textcolor{preprocessor}{#include "\hyperlink{_value_out_of_bounds_exception_8h}{ValueOutOfBoundsException.h}"}
+00033 
+00034 \textcolor{keyword}{using namespace }\hyperlink{namespacestd}{std};
+00035 
+00036 \textcolor{keyword}{namespace }\hyperlink{namespace_hardware}{Hardware} \{
+\hypertarget{_b_b_b_8h_source_l00037}{}\hyperlink{namespace_hardware_a5ba2e4bdfa2bbd8b551b1d5b2a0c61fd}{00037} \textcolor{keyword}{typedef} int (*\hyperlink{namespace_hardware_a5ba2e4bdfa2bbd8b551b1d5b2a0c61fd}{CallbackType})(
+00038     int); 
+\hypertarget{_b_b_b_8h_source_l00040}{}\hyperlink{class_hardware_1_1_b_b_b}{00040} \textcolor{keyword}{class }\hyperlink{class_hardware_1_1_b_b_b}{BBB} \{
+00041 \textcolor{keyword}{public}:
+\hypertarget{_b_b_b_8h_source_l00042}{}\hyperlink{class_hardware_1_1_b_b_b_a353a2d7d4fbade337e5173b484b20b22}{00042}   \textcolor{keywordtype}{int} \hyperlink{class_hardware_1_1_b_b_b_a353a2d7d4fbade337e5173b484b20b22}{debounceTime}; 
+00044   \hyperlink{class_hardware_1_1_b_b_b}{BBB}();
+00045   ~\hyperlink{class_hardware_1_1_b_b_b}{BBB}();
+00046 
+00047 \textcolor{keyword}{protected}:
+\hypertarget{_b_b_b_8h_source_l00048}{}\hyperlink{class_hardware_1_1_b_b_b_a0d9d8c56afb37955e0d0c6baf0f418df}{00048}   \textcolor{keywordtype}{bool} \hyperlink{class_hardware_1_1_b_b_b_a0d9d8c56afb37955e0d0c6baf0f418df}{threadRunning};            
+\hypertarget{_b_b_b_8h_source_l00049}{}\hyperlink{class_hardware_1_1_b_b_b_a3ad3fe886705bfc242ef58dc5329166e}{00049}   pthread\_t \hyperlink{class_hardware_1_1_b_b_b_a3ad3fe886705bfc242ef58dc5329166e}{thread};              
+\hypertarget{_b_b_b_8h_source_l00050}{}\hyperlink{class_hardware_1_1_b_b_b_a66d583952f3949a732ee15eea81e80e5}{00050}   \hyperlink{namespace_hardware_a5ba2e4bdfa2bbd8b551b1d5b2a0c61fd}{CallbackType} \hyperlink{class_hardware_1_1_b_b_b_a66d583952f3949a732ee15eea81e80e5}{callbackFunction}; 
+00052   \textcolor{keywordtype}{bool} DirectoryExist(\textcolor{keyword}{const} \textcolor{keywordtype}{string} &path);
+00053   \textcolor{keywordtype}{bool} CapeLoaded(\textcolor{keyword}{const} \textcolor{keywordtype}{string} &shield);
+00054 
+00055   \textcolor{keywordtype}{string} Read(\textcolor{keyword}{const} \textcolor{keywordtype}{string} &path);
+00056   \textcolor{keywordtype}{void} Write(\textcolor{keyword}{const} \textcolor{keywordtype}{string} &path, \textcolor{keyword}{const} \textcolor{keywordtype}{string} &value);
+00057 
+\hypertarget{_b_b_b_8h_source_l00062}{}\hyperlink{class_hardware_1_1_b_b_b_ab2fc876590e3b9b482e3224ba617afba}{00062}   \textcolor{keyword}{template} <\textcolor{keyword}{typename} T> \textcolor{keywordtype}{string} \hyperlink{class_hardware_1_1_b_b_b_ab2fc876590e3b9b482e3224ba617afba}{NumberToString}(T Number) \{
+00063     ostringstream ss;
+00064     ss << Number;
+00065     \textcolor{keywordflow}{return} ss.str();
+00066   \};
+00067 
+\hypertarget{_b_b_b_8h_source_l00072}{}\hyperlink{class_hardware_1_1_b_b_b_a7484c095027594aa5bfde8b56b73be7b}{00072}   \textcolor{keyword}{template} <\textcolor{keyword}{typename} T> T \hyperlink{class_hardware_1_1_b_b_b_a7484c095027594aa5bfde8b56b73be7b}{StringToNumber}(\textcolor{keywordtype}{string} Text) \{
+00073     stringstream ss(Text);
+00074     T result;
+00075     \textcolor{keywordflow}{return} ss >> result ? result : 0;
+00076   \};
+00077 \};
+00078 \}
+\end{DoxyCode}

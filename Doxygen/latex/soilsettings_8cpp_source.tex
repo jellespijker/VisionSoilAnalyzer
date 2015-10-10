@@ -1,0 +1,29 @@
+\hypertarget{soilsettings_8cpp_source}{}\subsection{soilsettings.\+cpp}
+\label{soilsettings_8cpp_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Analyzer/soilsettings.\+cpp@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Analyzer/soilsettings.\+cpp}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/* Copyright (C) Jelle Spijker - All Rights Reserved}
+00002 \textcolor{comment}{ * Unauthorized copying of this file, via any medium is strictly prohibited}
+00003 \textcolor{comment}{ * and only allowed with the written consent of the author (Jelle Spijker)}
+00004 \textcolor{comment}{ * This software is proprietary and confidential}
+00005 \textcolor{comment}{ * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015}
+00006 \textcolor{comment}{ */}
+00007 
+00008 \textcolor{preprocessor}{#include "\hyperlink{soilsettings_8h}{soilsettings.h}"}
+00009 
+00010 \textcolor{keyword}{namespace }\hyperlink{namespace_soil_analyzer}{SoilAnalyzer} \{
+\hypertarget{soilsettings_8cpp_source_l00011}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_ab8359b9a5ea27e6296e79a82789c8719}{00011} \hyperlink{class_soil_analyzer_1_1_soil_settings_ab8359b9a5ea27e6296e79a82789c8719}{SoilSettings::SoilSettings}() \{\}
+00012 
+\hypertarget{soilsettings_8cpp_source_l00013}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_a438bf660eeb7a49a676eef5da129f8d5}{00013} \textcolor{keywordtype}{void} \hyperlink{class_soil_analyzer_1_1_soil_settings_a438bf660eeb7a49a676eef5da129f8d5}{SoilSettings::LoadSettings}(\textcolor{keywordtype}{string} filename) \{
+00014   std::ifstream ifs(filename.c\_str());
+00015   boost::archive::xml\_iarchive ia(ifs);
+00016   ia >> boost::serialization::make\_nvp(\textcolor{stringliteral}{"SoilSettings"}, *\textcolor{keyword}{this});
+00017 \}
+00018 
+\hypertarget{soilsettings_8cpp_source_l00019}{}\hyperlink{class_soil_analyzer_1_1_soil_settings_ab211c361df454e8e1e29a4bddedeba81}{00019} \textcolor{keywordtype}{void} \hyperlink{class_soil_analyzer_1_1_soil_settings_ab211c361df454e8e1e29a4bddedeba81}{SoilSettings::SaveSettings}(\textcolor{keywordtype}{string} filename) \{
+00020   std::ofstream ofs(filename.c\_str());
+00021   boost::archive::xml\_oarchive oa(ofs);
+00022   oa << boost::serialization::make\_nvp(\textcolor{stringliteral}{"SoilSettings"}, *\textcolor{keyword}{this});
+00023 \}
+00024 \}
+\end{DoxyCode}

@@ -1,0 +1,119 @@
+\hypertarget{_a_d_c_8cpp_source}{}\subsection{A\+D\+C.\+cpp}
+\label{_a_d_c_8cpp_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Hardware/\+A\+D\+C.\+cpp@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Hardware/\+A\+D\+C.\+cpp}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/* Copyright (C) Jelle Spijker - All Rights Reserved}
+00002 \textcolor{comment}{ * Unauthorized copying of this file, via any medium is strictly prohibited}
+00003 \textcolor{comment}{ * and only allowed with the written consent of the author (Jelle Spijker)}
+00004 \textcolor{comment}{ * This software is proprietary and confidential}
+00005 \textcolor{comment}{ * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015}
+00006 \textcolor{comment}{ */}
+00007 
+00008 \textcolor{preprocessor}{#include "\hyperlink{_a_d_c_8h}{ADC.h}"}
+00009 
+\hypertarget{_a_d_c_8cpp_source_l00010}{}\hyperlink{namespace_hardware}{00010} \textcolor{keyword}{namespace }\hyperlink{namespace_hardware}{Hardware} \{
+\hypertarget{_a_d_c_8cpp_source_l00014}{}\hyperlink{class_hardware_1_1_a_d_c_a33a1de0705c6dd6b549bf5f48b3ff86c}{00014} \hyperlink{class_hardware_1_1_a_d_c_a33a1de0705c6dd6b549bf5f48b3ff86c}{ADC::ADC}(\hyperlink{class_hardware_1_1_a_d_c_adb1507998c096cbdf7031527f6a690cf}{ADCPin} pin) \{
+00015   this->\hyperlink{class_hardware_1_1_a_d_c_acb6d23369c7047296af402ca480bb2f5}{Pin} = pin;
+00016   \textcolor{keywordflow}{switch} (pin) \{
+00017   \textcolor{keywordflow}{case} \hyperlink{class_hardware_1_1_a_d_c_adb1507998c096cbdf7031527f6a690cfaaad3628f17c4d36b8d16123e7017ad63}{Hardware::ADC::ADC0}:
+00018     \hyperlink{class_hardware_1_1_a_d_c_a820ce4f097a70b95246049f9ea01df21}{adcpath} = \hyperlink{_a_d_c_8h_a597a5b4b81296d8d567bb8251f29e51c}{ADC0\_PATH};
+00019     \textcolor{keywordflow}{break};
+00020   \textcolor{keywordflow}{case} \hyperlink{class_hardware_1_1_a_d_c_adb1507998c096cbdf7031527f6a690cfa73b7008767a7fb434c949c821b5872dc}{Hardware::ADC::ADC1}:
+00021     \hyperlink{class_hardware_1_1_a_d_c_a820ce4f097a70b95246049f9ea01df21}{adcpath} = \hyperlink{_a_d_c_8h_a042dc32b894680e50456be83ef44a281}{ADC1\_PATH};
+00022     \textcolor{keywordflow}{break};
+00023   \textcolor{keywordflow}{case} \hyperlink{class_hardware_1_1_a_d_c_adb1507998c096cbdf7031527f6a690cfac987eb1ee9899deeff5ac8408fc6de43}{Hardware::ADC::ADC2}:
+00024     \hyperlink{class_hardware_1_1_a_d_c_a820ce4f097a70b95246049f9ea01df21}{adcpath} = \hyperlink{_a_d_c_8h_aef98ab917652798392be4055763d53f1}{ADC2\_PATH};
+00025     \textcolor{keywordflow}{break};
+00026   \textcolor{keywordflow}{case} \hyperlink{class_hardware_1_1_a_d_c_adb1507998c096cbdf7031527f6a690cfad2fdc97805c79963cbf91e2dd130f02a}{Hardware::ADC::ADC3}:
+00027     \hyperlink{class_hardware_1_1_a_d_c_a820ce4f097a70b95246049f9ea01df21}{adcpath} = \hyperlink{_a_d_c_8h_a97ea71f953cb0949dd23883f4193b454}{ADC3\_PATH};
+00028     \textcolor{keywordflow}{break};
+00029   \textcolor{keywordflow}{case} \hyperlink{class_hardware_1_1_a_d_c_adb1507998c096cbdf7031527f6a690cfa6c75e50b9369191173e49be9d5c72eeb}{Hardware::ADC::ADC4}:
+00030     \hyperlink{class_hardware_1_1_a_d_c_a820ce4f097a70b95246049f9ea01df21}{adcpath} = \hyperlink{_a_d_c_8h_aa766e25698fd1ec953a05b82870c1bb9}{ADC4\_PATH};
+00031     \textcolor{keywordflow}{break};
+00032   \textcolor{keywordflow}{case} \hyperlink{class_hardware_1_1_a_d_c_adb1507998c096cbdf7031527f6a690cfa0357d1e409dc31cb4300cfd2dcd4c32d}{Hardware::ADC::ADC5}:
+00033     \hyperlink{class_hardware_1_1_a_d_c_a820ce4f097a70b95246049f9ea01df21}{adcpath} = \hyperlink{_a_d_c_8h_ae14c014b76a40cb9783325cd22a3ec48}{ADC5\_PATH};
+00034     \textcolor{keywordflow}{break};
+00035   \textcolor{keywordflow}{case} \hyperlink{class_hardware_1_1_a_d_c_adb1507998c096cbdf7031527f6a690cfacf89c6b4add1847331f17eef47022bda}{Hardware::ADC::ADC6}:
+00036     \hyperlink{class_hardware_1_1_a_d_c_a820ce4f097a70b95246049f9ea01df21}{adcpath} = \hyperlink{_a_d_c_8h_a360a8b1652606c5c063082769f6cece8}{ADC6\_PATH};
+00037     \textcolor{keywordflow}{break};
+00038   \textcolor{keywordflow}{case} \hyperlink{class_hardware_1_1_a_d_c_adb1507998c096cbdf7031527f6a690cfa0ba8f0db648fb6c0bb85291f19b06946}{Hardware::ADC::ADC7}:
+00039     \hyperlink{class_hardware_1_1_a_d_c_a820ce4f097a70b95246049f9ea01df21}{adcpath} = \hyperlink{_a_d_c_8h_a633625b77ebee1a7a2b19edf4baaed74}{ADC7\_PATH};
+00040     \textcolor{keywordflow}{break};
+00041   \}
+00042 
+00043   \hyperlink{class_hardware_1_1_a_d_c_af73224014dddfdd80f77b80e6ed82c13}{MinIntensity} = 0;
+00044   \hyperlink{class_hardware_1_1_a_d_c_a8fb4ac4b41ff54a44e57e9ce8bc5bd93}{MaxIntensity} = 4096;
+00045 \}
+00046 
+\hypertarget{_a_d_c_8cpp_source_l00048}{}\hyperlink{class_hardware_1_1_a_d_c_aefd878291d0c14aa524df99af5a63148}{00048} \hyperlink{class_hardware_1_1_a_d_c_aefd878291d0c14aa524df99af5a63148}{ADC::~ADC}() \{\}
+00049 
+\hypertarget{_a_d_c_8cpp_source_l00053}{}\hyperlink{class_hardware_1_1_a_d_c_a9725b2fe1346b17149fb74142e4a8315}{00053} \textcolor{keywordtype}{int} \hyperlink{class_hardware_1_1_a_d_c_a9725b2fe1346b17149fb74142e4a8315}{ADC::GetCurrentValue}() \{
+00054   \textcolor{keywordtype}{int} retVal = StringToNumber<int>(\hyperlink{class_hardware_1_1_b_b_b_a8b287ded7bcb2cfab361d1fca2b62e9f}{Read}(\hyperlink{class_hardware_1_1_a_d_c_a820ce4f097a70b95246049f9ea01df21}{adcpath}));
+00055   \hyperlink{class_hardware_1_1_a_d_c_a38a0f00558a3de01b3bce567643dae4a}{Intensity} = (float)(retVal - \hyperlink{class_hardware_1_1_a_d_c_af73224014dddfdd80f77b80e6ed82c13}{MinIntensity}) /
+00056               (4096 - (\hyperlink{class_hardware_1_1_a_d_c_af73224014dddfdd80f77b80e6ed82c13}{MinIntensity} + (4096 - \hyperlink{class_hardware_1_1_a_d_c_a8fb4ac4b41ff54a44e57e9ce8bc5bd93}{MaxIntensity})));
+00057   \textcolor{keywordflow}{return} retVal;
+00058 \}
+00059 
+\hypertarget{_a_d_c_8cpp_source_l00061}{}\hyperlink{class_hardware_1_1_a_d_c_a3703337f2df47ae09c52e6a105e739a3}{00061} \textcolor{keywordtype}{void} \hyperlink{class_hardware_1_1_a_d_c_a3703337f2df47ae09c52e6a105e739a3}{ADC::SetMinIntensity}() \{
+00062   \hyperlink{class_hardware_1_1_a_d_c_af73224014dddfdd80f77b80e6ed82c13}{MinIntensity} = StringToNumber<int>(\hyperlink{class_hardware_1_1_b_b_b_a8b287ded7bcb2cfab361d1fca2b62e9f}{Read}(\hyperlink{class_hardware_1_1_a_d_c_a820ce4f097a70b95246049f9ea01df21}{adcpath}));
+00063 \}
+00064 
+\hypertarget{_a_d_c_8cpp_source_l00065}{}\hyperlink{class_hardware_1_1_a_d_c_a998247eb9c5288249b6408312618857a}{00065} \textcolor{keywordtype}{void} \hyperlink{class_hardware_1_1_a_d_c_a998247eb9c5288249b6408312618857a}{ADC::SetMaxIntensity}() \{
+00066   \hyperlink{class_hardware_1_1_a_d_c_a8fb4ac4b41ff54a44e57e9ce8bc5bd93}{MaxIntensity} = StringToNumber<int>(\hyperlink{class_hardware_1_1_b_b_b_a8b287ded7bcb2cfab361d1fca2b62e9f}{Read}(\hyperlink{class_hardware_1_1_a_d_c_a820ce4f097a70b95246049f9ea01df21}{adcpath}));
+00067 \}
+00068 
+\hypertarget{_a_d_c_8cpp_source_l00074}{}\hyperlink{class_hardware_1_1_a_d_c_a9e1e40c8633ce7bffbfd9f30871290d4}{00074} \textcolor{keywordtype}{int} \hyperlink{class_hardware_1_1_a_d_c_a7ae87fbf53ba93e33ea6eed41509a1f7}{ADC::WaitForValueChange}(\hyperlink{namespace_hardware_a5ba2e4bdfa2bbd8b551b1d5b2a0c61fd}{CallbackType} callback) \{
+00075   \hyperlink{class_hardware_1_1_b_b_b_a0d9d8c56afb37955e0d0c6baf0f418df}{threadRunning} = \textcolor{keyword}{true};
+00076   \hyperlink{class_hardware_1_1_b_b_b_a66d583952f3949a732ee15eea81e80e5}{callbackFunction} = callback;
+00077   \textcolor{keywordflow}{if} (pthread\_create(&\hyperlink{class_hardware_1_1_b_b_b_a3ad3fe886705bfc242ef58dc5329166e}{thread}, NULL, &\hyperlink{class_hardware_1_1_a_d_c_a626f06adb6721fc5fe0aa7f76a770770}{threadedPollADC},
+00078                      static\_cast<void *>(\textcolor{keyword}{this}))) \{
+00079     \hyperlink{class_hardware_1_1_b_b_b_a0d9d8c56afb37955e0d0c6baf0f418df}{threadRunning} = \textcolor{keyword}{false};
+00080     \textcolor{keywordflow}{throw} \hyperlink{class_hardware_1_1_exception_1_1_failed_to_create_g_p_i_o_polling_thread_exception}{Exception::FailedToCreateGPIOPollingThreadException}
+      ();
+00081   \}
+00082   \textcolor{keywordflow}{return} 0;
+00083 \}
+00084 
+\hypertarget{_a_d_c_8cpp_source_l00088}{}\hyperlink{class_hardware_1_1_a_d_c_a7ae87fbf53ba93e33ea6eed41509a1f7}{00088} \textcolor{keywordtype}{int} \hyperlink{class_hardware_1_1_a_d_c_a7ae87fbf53ba93e33ea6eed41509a1f7}{ADC::WaitForValueChange}() \{
+00089   \textcolor{keywordtype}{int} fd, i, epollfd, count = 0;
+00090   \textcolor{keyword}{struct }epoll\_event ev;
+00091   epollfd = epoll\_create(1);
+00092   \textcolor{keywordflow}{if} (epollfd == -1) \{
+00093     \textcolor{keywordflow}{throw} \hyperlink{class_hardware_1_1_exception_1_1_failed_to_create_g_p_i_o_polling_thread_exception}{Exception::FailedToCreateGPIOPollingThreadException}
+      (
+00094         \textcolor{stringliteral}{"GPIO: Failed to create epollfd!"});
+00095   \}
+00096   \textcolor{keywordflow}{if} ((fd = open(\hyperlink{class_hardware_1_1_a_d_c_a820ce4f097a70b95246049f9ea01df21}{adcpath}.c\_str(), O\_RDONLY | O\_NONBLOCK)) == -1) \{
+00097     \textcolor{keywordflow}{throw} \hyperlink{class_hardware_1_1_exception_1_1_a_d_c_read_exception}{Exception::ADCReadException}();
+00098   \}
+00099   ev.events = EPOLLIN;
+00100   ev.data.fd = fd;
+00101 
+00102   \textcolor{keywordflow}{if} (epoll\_ctl(epollfd, EPOLL\_CTL\_ADD, fd, &ev) == -1) \{
+00103     \textcolor{keywordflow}{throw} \hyperlink{class_hardware_1_1_exception_1_1_failed_to_create_g_p_i_o_polling_thread_exception}{Exception::FailedToCreateGPIOPollingThreadException}
+      (
+00104         \textcolor{stringliteral}{"ADC: Failed to add control interface!"});
+00105   \}
+00106 
+00107   \textcolor{keywordflow}{while} (count <= 1) \{
+00108     i = epoll\_wait(epollfd, &ev, 1, -1);
+00109     \textcolor{keywordflow}{if} (i == -1) \{
+00110       close(fd);
+00111       \textcolor{keywordflow}{return} -1;
+00112     \} \textcolor{keywordflow}{else} \{
+00113       count++;
+00114     \}
+00115   \}
+00116   close(fd);
+00117   \textcolor{keywordflow}{return} StringToNumber<int>(\hyperlink{class_hardware_1_1_b_b_b_a8b287ded7bcb2cfab361d1fca2b62e9f}{Read}(\hyperlink{class_hardware_1_1_a_d_c_a820ce4f097a70b95246049f9ea01df21}{adcpath}));
+00118 \}
+00119 
+\hypertarget{_a_d_c_8cpp_source_l00121}{}\hyperlink{namespace_hardware_a594324488333eeaa49790a5391626fad}{00121} \textcolor{keywordtype}{void} *\hyperlink{namespace_hardware_a594324488333eeaa49790a5391626fad}{threadedPollADC}(\textcolor{keywordtype}{void} *value) \{
+00122   \hyperlink{class_hardware_1_1_a_d_c}{ADC} *adc = \textcolor{keyword}{static\_cast<}\hyperlink{class_hardware_1_1_a_d_c}{ADC} *\textcolor{keyword}{>}(value);
+00123   \textcolor{keywordflow}{while} (adc->\hyperlink{class_hardware_1_1_b_b_b_a0d9d8c56afb37955e0d0c6baf0f418df}{threadRunning}) \{
+00124     adc->\hyperlink{class_hardware_1_1_b_b_b_a66d583952f3949a732ee15eea81e80e5}{callbackFunction}(adc->\hyperlink{class_hardware_1_1_a_d_c_a7ae87fbf53ba93e33ea6eed41509a1f7}{WaitForValueChange}());
+00125     usleep(200000);
+00126   \}
+00127 \}
+00128 \}
+\end{DoxyCode}

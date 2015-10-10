@@ -1,0 +1,114 @@
+\hypertarget{_common_operations_8h_source}{}\subsection{Common\+Operations.\+h}
+\label{_common_operations_8h_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Math/\+Common\+Operations.\+h@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Math/\+Common\+Operations.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/* Copyright (C) Jelle Spijker - All Rights Reserved}
+00002 \textcolor{comment}{ * Unauthorized copying of this file, via any medium is strictly prohibited}
+00003 \textcolor{comment}{ * and only allowed with the written consent of the author (Jelle Spijker)}
+00004 \textcolor{comment}{ * This software is proprietary and confidential}
+00005 \textcolor{comment}{ * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015}
+00006 \textcolor{comment}{ */}
+00007 
+00008 \textcolor{preprocessor}{#pragma once}
+\hypertarget{_common_operations_8h_source_l00009}{}\hyperlink{_common_operations_8h_a2eaf90dc9ea1487911cc3005ae0b1bf3}{00009} \textcolor{preprocessor}{#define COMMONOPERATIONS\_VERSION 1}
+00010 
+00011 \textcolor{preprocessor}{#include <algorithm>}
+00012 \textcolor{preprocessor}{#include <stdint.h>}
+00013 \textcolor{preprocessor}{#include <math.h>}
+00014 \textcolor{preprocessor}{#include <vector>}
+00015 
+\hypertarget{_common_operations_8h_source_l00016}{}\hyperlink{namespace_soil_math}{00016} \textcolor{keyword}{namespace }\hyperlink{namespace_soil_math}{SoilMath} \{
+\hypertarget{_common_operations_8h_source_l00017}{}\hyperlink{namespace_soil_math_add4ac871cc7f2ece16e716a5cfa61847}{00017} \textcolor{keyword}{inline} uint16\_t \hyperlink{namespace_soil_math_add4ac871cc7f2ece16e716a5cfa61847}{MinNotZero}(uint16\_t a, uint16\_t b) \{
+00018   \textcolor{keywordflow}{if} (a != 0 && b != 0) \{
+00019     \textcolor{keywordflow}{return} (a < b) ? a : b;
+00020   \} \textcolor{keywordflow}{else} \{
+00021     \textcolor{keywordflow}{return} (a > b) ? a : b;
+00022   \}
+00023 \}
+00024 
+\hypertarget{_common_operations_8h_source_l00025}{}\hyperlink{namespace_soil_math_a9d385c44fb7e60a278a6eee8446f7b64}{00025} \textcolor{keyword}{inline} uint16\_t \hyperlink{namespace_soil_math_a9d385c44fb7e60a278a6eee8446f7b64}{Max}(uint16\_t a, uint16\_t b) \{ \textcolor{keywordflow}{return} (a > b) ? a : b; \}
+00026 
+\hypertarget{_common_operations_8h_source_l00027}{}\hyperlink{namespace_soil_math_a4b71f10349d360c1d7c6313bb01c988f}{00027} \textcolor{keyword}{inline} uint16\_t \hyperlink{namespace_soil_math_a9d385c44fb7e60a278a6eee8446f7b64}{Max}(uint16\_t a, uint16\_t b, uint16\_t c, uint16\_t d) \{
+00028   \textcolor{keywordflow}{return} (\hyperlink{namespace_soil_math_a9d385c44fb7e60a278a6eee8446f7b64}{Max}(a, b) > \hyperlink{namespace_soil_math_a9d385c44fb7e60a278a6eee8446f7b64}{Max}(c, d)) ? \hyperlink{namespace_soil_math_a9d385c44fb7e60a278a6eee8446f7b64}{Max}(a, b) : \hyperlink{namespace_soil_math_a9d385c44fb7e60a278a6eee8446f7b64}{Max}(c, d);
+00029 \}
+00030 
+\hypertarget{_common_operations_8h_source_l00031}{}\hyperlink{namespace_soil_math_ad458fb6889451aa72a4a7097d10490a5}{00031} \textcolor{keyword}{inline} uint16\_t \hyperlink{namespace_soil_math_ad458fb6889451aa72a4a7097d10490a5}{Min}(uint16\_t a, uint16\_t b) \{ \textcolor{keywordflow}{return} (a < b) ? a : b; \}
+00032 
+\hypertarget{_common_operations_8h_source_l00033}{}\hyperlink{namespace_soil_math_a80286ce6881c7adacfba832254a8c91b}{00033} \textcolor{keyword}{inline} uint16\_t \hyperlink{namespace_soil_math_ad458fb6889451aa72a4a7097d10490a5}{Min}(uint16\_t a, uint16\_t b, uint16\_t c, uint16\_t d) \{
+00034   \textcolor{keywordflow}{return} (\hyperlink{namespace_soil_math_ad458fb6889451aa72a4a7097d10490a5}{Min}(a, b) > \hyperlink{namespace_soil_math_ad458fb6889451aa72a4a7097d10490a5}{Min}(c, d)) ? \hyperlink{namespace_soil_math_ad458fb6889451aa72a4a7097d10490a5}{Min}(a, b) : \hyperlink{namespace_soil_math_ad458fb6889451aa72a4a7097d10490a5}{Min}(c, d);
+00035 \}
+00036 
+\hypertarget{_common_operations_8h_source_l00037}{}\hyperlink{namespace_soil_math_a1e4cf56fbcab8b4c623d6976868fbaf3}{00037} \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{double} \hyperlink{namespace_soil_math_a1e4cf56fbcab8b4c623d6976868fbaf3}{quick\_pow10}(\textcolor{keywordtype}{int} n) \{
+00038   \textcolor{keyword}{static} \textcolor{keywordtype}{double} pow10[19] = \{1, 10, 100, 1000, 10000, 100000, 1000000, 10000000,
+00039                              100000000, 1000000000, 10000000000, 100000000000,
+00040                              1000000000000, 10000000000000, 100000000000000,
+00041                              1000000000000000, 10000000000000000,
+00042                              100000000000000000, 1000000000000000000\};
+00043   \textcolor{keywordflow}{return} pow10[(n >= 0) ? n : -n];
+00044 \}
+00045 
+00046 
+00047 \textcolor{comment}{// Source:}
+00048 \textcolor{comment}{// http://martin.ankerl.com/2012/01/25/optimized-approximative-pow-in-c-and-cpp/}
+\hypertarget{_common_operations_8h_source_l00049}{}\hyperlink{namespace_soil_math_ab3886ae2a670a717bbe01f94543922a0}{00049} \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{double} \hyperlink{namespace_soil_math_ab3886ae2a670a717bbe01f94543922a0}{fastPow}(\textcolor{keywordtype}{double} a, \textcolor{keywordtype}{double} b) \{
+00050   \textcolor{keyword}{union }\{
+00051     \textcolor{keywordtype}{double} d;
+00052     \textcolor{keywordtype}{int} x[2];
+00053   \} u = \{a\};
+00054   u.x[1] = (int)(b * (u.x[1] - 1072632447) + 1072632447);
+00055   u.x[0] = 0;
+00056   \textcolor{keywordflow}{return} u.d;
+00057 \}
+00058 
+\hypertarget{_common_operations_8h_source_l00059}{}\hyperlink{namespace_soil_math_a69d186af0e164a5f98c42985aabec919}{00059} \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{double} \hyperlink{namespace_soil_math_a69d186af0e164a5f98c42985aabec919}{quick\_pow2}(\textcolor{keywordtype}{int} n) \{
+00060   \textcolor{keyword}{static} \textcolor{keywordtype}{double} pow2[256] = \{
+00061       0,     1,     4,     9,     16,    25,    36,    49,    64,    81,
+00062       100,   121,   144,   169,   196,   225,   256,   289,   324,   361,
+00063       400,   441,   484,   529,   576,   625,   676,   729,   784,   841,
+00064       900,   961,   1024,  1089,  1156,  1225,  1296,  1369,  1444,  1521,
+00065       1600,  1681,  1764,  1849,  1936,  2025,  2116,  2209,  2304,  2401,
+00066       2500,  2601,  2704,  2809,  2916,  3025,  3136,  3249,  3364,  3481,
+00067       3600,  3721,  3844,  3969,  4096,  4225,  4356,  4489,  4624,  4761,
+00068       4900,  5041,  5184,  5329,  5476,  5625,  5776,  5929,  6084,  6241,
+00069       6400,  6561,  6724,  6889,  7056,  7225,  7396,  7569,  7744,  7921,
+00070       8100,  8281,  8464,  8649,  8836,  9025,  9216,  9409,  9604,  9801,
+00071       10000, 10201, 10404, 10609, 10816, 11025, 11236, 11449, 11664, 11881,
+00072       12100, 12321, 12544, 12769, 12996, 13225, 13456, 13689, 13924, 14161,
+00073       14400, 14641, 14884, 15129, 15376, 15625, 15876, 16129, 16384, 16641,
+00074       16900, 17161, 17424, 17689, 17956, 18225, 18496, 18769, 19044, 19321,
+00075       19600, 19881, 20164, 20449, 20736, 21025, 21316, 21609, 21904, 22201,
+00076       22500, 22801, 23104, 23409, 23716, 24025, 24336, 24649, 24964, 25281,
+00077       25600, 25921, 26244, 26569, 26896, 27225, 27556, 27889, 28224, 28561,
+00078       28900, 29241, 29584, 29929, 30276, 30625, 30976, 31329, 31684, 32041,
+00079       32400, 32761, 33124, 33489, 33856, 34225, 34596, 34969, 35344, 35721,
+00080       36100, 36481, 36864, 37249, 37636, 38025, 38416, 38809, 39204, 39601,
+00081       40000, 40401, 40804, 41209, 41616, 42025, 42436, 42849, 43264, 43681,
+00082       44100, 44521, 44944, 45369, 45796, 46225, 46656, 47089, 47524, 47961,
+00083       48400, 48841, 49284, 49729, 50176, 50625, 51076, 51529, 51984, 52441,
+00084       52900, 53361, 53824, 54289, 54756, 55225, 55696, 56169, 56644, 57121,
+00085       57600, 58081, 58564, 59049, 59536, 60025, 60516, 61009, 61504, 62001,
+00086       62500, 63001, 63504, 64009, 64516, 65025\};
+00087   \textcolor{keywordflow}{return} pow2[(n >= 0) ? n : -n];
+00088 \}
+00089 
+\hypertarget{_common_operations_8h_source_l00090}{}\hyperlink{namespace_soil_math_a5b0b4bcf1fecd0f3eefc2520c624f9f4}{00090} \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{long} \hyperlink{namespace_soil_math_a5b0b4bcf1fecd0f3eefc2520c624f9f4}{float2intRound}(\textcolor{keywordtype}{double} d) \{
+00091   d += 6755399441055744.0;
+00092   \textcolor{keywordflow}{return} \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{int} &\textcolor{keyword}{>}(d);
+00093 \}
+00094 
+\hypertarget{_common_operations_8h_source_l00100}{}\hyperlink{namespace_soil_math_a9a50918db8a6d4eb2c1f720942b9d63c}{00100} \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} \hyperlink{namespace_soil_math_a9a50918db8a6d4eb2c1f720942b9d63c}{calcVolume}(\textcolor{keywordtype}{float} A) \{
+00101   \textcolor{keywordflow}{return} (pow(A, 1.5)) / 10.6347f;
+00102 \}
+00103 
+\hypertarget{_common_operations_8h_source_l00104}{}\hyperlink{namespace_soil_math_a210cca0b7bfd4ca8af3590a7fc5fadb5}{00104} \textcolor{keyword}{static} \textcolor{keyword}{inline} std::vector<float> \hyperlink{namespace_soil_math_a210cca0b7bfd4ca8af3590a7fc5fadb5}{makeOutput}(uint8\_t value, \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} noNeurons) \{
+00105   std::vector<float> retVal(noNeurons, -1);
+00106   retVal[value - 1] = 1;
+00107   \textcolor{keywordflow}{return} retVal;
+00108 \}
+00109 
+\hypertarget{_common_operations_8h_source_l00115}{}\hyperlink{namespace_soil_math_ae17c1f3bc0e6ed194ee3239cdd3a6486}{00115} \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} \hyperlink{namespace_soil_math_ae17c1f3bc0e6ed194ee3239cdd3a6486}{calcDiameter}(\textcolor{keywordtype}{float} A) \{
+00116   \textcolor{comment}{//return sqrt((4 * A) / M\_PI);}
+00117   \textcolor{keywordflow}{return} 1.1283791670955 * sqrt(A);
+00118 \}
+00119 \}
+\end{DoxyCode}

@@ -1,0 +1,44 @@
+\hypertarget{_morphological_filter_8h_source}{}\subsection{Morphological\+Filter.\+h}
+\label{_morphological_filter_8h_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Vision/\+Morphological\+Filter.\+h@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Vision/\+Morphological\+Filter.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/* Copyright (C) Jelle Spijker - All Rights Reserved}
+00002 \textcolor{comment}{ * Unauthorized copying of this file, via any medium is strictly prohibited}
+00003 \textcolor{comment}{ * and only allowed with the written consent of the author (Jelle Spijker)}
+00004 \textcolor{comment}{ * This software is proprietary and confidential}
+00005 \textcolor{comment}{ * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015}
+00006 \textcolor{comment}{ */}
+00007 
+00008 \textcolor{preprocessor}{#pragma once}
+\hypertarget{_morphological_filter_8h_source_l00009}{}\hyperlink{_morphological_filter_8h_ad5e6aaf9e97133c1801b6ed9c10046e7}{00009} \textcolor{preprocessor}{#define MORPHOLOGICALFILTER\_VERSION 1}
+00010 
+00011 \textcolor{preprocessor}{#include "\hyperlink{_image_processing_8h}{ImageProcessing.h}"}
+00012 
+00013 \textcolor{keyword}{namespace }\hyperlink{namespace_vision}{Vision} \{
+\hypertarget{_morphological_filter_8h_source_l00014}{}\hyperlink{class_vision_1_1_morphological_filter}{00014} \textcolor{keyword}{class }\hyperlink{class_vision_1_1_morphological_filter}{MorphologicalFilter} : \textcolor{keyword}{public} \hyperlink{class_vision_1_1_image_processing}{ImageProcessing} \{
+00015 \textcolor{keyword}{public}:
+\hypertarget{_morphological_filter_8h_source_l00016}{}\hyperlink{class_vision_1_1_morphological_filter_a1f19c9cb13f0d68778c77d6fd0370868afd436eed00afa15b23eeac4de3509303}{00016}   \textcolor{keyword}{enum} \hyperlink{class_vision_1_1_morphological_filter_a1f19c9cb13f0d68778c77d6fd0370868}{FilterType} \{ \hyperlink{class_vision_1_1_morphological_filter_a1f19c9cb13f0d68778c77d6fd0370868afd436eed00afa15b23eeac4de3509303}{OPEN}, \hyperlink{class_vision_1_1_morphological_filter_a1f19c9cb13f0d68778c77d6fd0370868a0e01d9ebb7d53eaa2ae98ea36cc810f6}{CLOSE}, \hyperlink{class_vision_1_1_morphological_filter_a1f19c9cb13f0d68778c77d6fd0370868a4ca3c81298a713b3d1f279c9233e7547}{ERODE}, \hyperlink{class_vision_1_1_morphological_filter_a1f19c9cb13f0d68778c77d6fd0370868afbd91b5e6d75b6bcfc8faca3f5da7c47}{DILATE}, 
+      \hyperlink{class_vision_1_1_morphological_filter_a1f19c9cb13f0d68778c77d6fd0370868a8bc137e512a8def100d5ce92af334438}{NONE} \};
+00017 
+00018   \hyperlink{class_vision_1_1_morphological_filter_a86da6e12018a61c610942cee292a5b16}{MorphologicalFilter}();
+00019   \hyperlink{class_vision_1_1_morphological_filter_a86da6e12018a61c610942cee292a5b16}{MorphologicalFilter}(\hyperlink{class_vision_1_1_morphological_filter_a1f19c9cb13f0d68778c77d6fd0370868}{FilterType} filtertype);
+00020   \hyperlink{class_vision_1_1_morphological_filter_a86da6e12018a61c610942cee292a5b16}{MorphologicalFilter}(\textcolor{keyword}{const} Mat &src, \hyperlink{class_vision_1_1_morphological_filter_a1f19c9cb13f0d68778c77d6fd0370868}{FilterType} filtertype = FilterType::NONE
+      );
+00021   \hyperlink{class_vision_1_1_morphological_filter_a86da6e12018a61c610942cee292a5b16}{MorphologicalFilter}(\textcolor{keyword}{const} \hyperlink{class_vision_1_1_morphological_filter}{MorphologicalFilter} &rhs);
+00022 
+00023   \hyperlink{class_vision_1_1_morphological_filter_aa5d02af08a53911fb24d60d1a842e7cb}{~MorphologicalFilter}();
+00024 
+00025   \hyperlink{class_vision_1_1_morphological_filter}{MorphologicalFilter} &\hyperlink{class_vision_1_1_morphological_filter_ac470002738b85326278c76538ba5a0b8}{operator=}(\hyperlink{class_vision_1_1_morphological_filter}{MorphologicalFilter} &rhs);
+00026 
+00027   \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_morphological_filter_abfba03324b8dd0280925463941345417}{Dilation}(\textcolor{keyword}{const} Mat &mask, \textcolor{keywordtype}{bool} chain = \textcolor{keyword}{false});
+00028   \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_morphological_filter_a62ad82519dc19be6367193a5d539c98b}{Erosion}(\textcolor{keyword}{const} Mat &mask, \textcolor{keywordtype}{bool} chain = \textcolor{keyword}{false});
+00029 
+00030   \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_morphological_filter_ad18de4b3b27d7cd0465cd7f8c3d0b52f}{Close}(\textcolor{keyword}{const} Mat &mask, \textcolor{keywordtype}{bool} chain = \textcolor{keyword}{false});
+00031   \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_morphological_filter_a5e57dd85a3c583242b62c5669deab9a0}{Open}(\textcolor{keyword}{const} Mat &mask, \textcolor{keywordtype}{bool} chain = \textcolor{keyword}{false});
+00032 
+00033 \textcolor{keyword}{private}:
+00034   \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_morphological_filter_ab743062372a8d0b26dabfd27451e72ed}{Filter}(\textcolor{keyword}{const} Mat &mask, \textcolor{keywordtype}{bool} chain, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} startVal, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} newVal,
+00035               \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} switchVal);
+00036 \};
+00037 \}
+\end{DoxyCode}

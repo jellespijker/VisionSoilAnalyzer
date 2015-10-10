@@ -1,0 +1,471 @@
+\hypertarget{class_dialog_n_n}{}\subsection{Dialog\+N\+N Class Reference}
+\label{class_dialog_n_n}\index{Dialog\+N\+N@{Dialog\+N\+N}}
+
+
+{\ttfamily \#include $<$dialognn.\+h$>$}
+
+
+
+Inheritance diagram for Dialog\+N\+N\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=239pt]{class_dialog_n_n__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Dialog\+N\+N\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_dialog_n_n__coll__graph}
+\end{center}
+\end{figure}
+\subsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_dialog_n_n_a53065cfe16eeaf3cf1b1e94058738c3f}{Dialog\+N\+N} (Q\+Widget $\ast$parent=0, \hyperlink{class_soil_math_1_1_n_n}{Soil\+Math\+::\+N\+N} $\ast$neuralnet=nullptr, \hyperlink{class_soil_analyzer_1_1_soil_settings}{Soil\+Analyzer\+::\+Soil\+Settings} $\ast$settings=nullptr, \hyperlink{class_dialog_settings}{Dialog\+Settings} $\ast$setting\+Window=nullptr)
+\item 
+\hyperlink{class_dialog_n_n_a128ab0c8ba3e7a140545eb2dd37f4aab}{$\sim$\+Dialog\+N\+N} ()
+\end{DoxyCompactItemize}
+\subsubsection*{Private Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_dialog_n_n_a4a203b679f42761eae157b445bcfc57d}{on\+\_\+push\+Button\+\_\+\+Settings\+\_\+clicked} ()
+\item 
+void \hyperlink{class_dialog_n_n_a24e8d08c95de8dd392e81409b9500ab6}{on\+\_\+learn\+Error\+Update} (double new\+Error)
+\item 
+void \hyperlink{class_dialog_n_n_a7394140277f980979c9285fa88bee382}{on\+\_\+push\+Button\+\_\+\+Select\+Samples\+\_\+clicked} ()
+\item 
+void \hyperlink{class_dialog_n_n_ac62a7698eca8514c5629f5ee1e08f3bd}{on\+\_\+push\+Button\+\_\+\+Learn\+\_\+clicked} ()
+\item 
+void \hyperlink{class_dialog_n_n_aaa6a74ab07099e65b19feceed3dda9f2}{on\+\_\+push\+Button\+\_\+\+Save\+N\+N\+\_\+clicked} ()
+\item 
+void \hyperlink{class_dialog_n_n_abd4b8adf422cc857506bb3e69066ff02}{on\+\_\+push\+Button\+\_\+\+Open\+N\+N\+\_\+clicked} ()
+\item 
+void \hyperlink{class_dialog_n_n_ac814ace2a51a7054e0f81a8f3963cd33}{on\+\_\+action\+Abort\+\_\+triggered} ()
+\end{DoxyCompactItemize}
+\subsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_dialog_n_n_ae3abaadf57d6614cddb1a9c244da721d}{setup\+Error\+Graph} ()
+\item 
+void \hyperlink{class_dialog_n_n_a832ef2838d6b6fd1e06b6c0d2a4783d4}{make\+Learn\+Vectors} (\hyperlink{_soil_math_types_8h_a45aa81992bf0ddf272907bd4fa0b96cf}{Input\+Learn\+Vector\+\_\+t} \&input, \hyperlink{_soil_math_types_8h_a2d8b5a261688166d724b68addd8561e6}{Output\+Learn\+Vector\+\_\+t} \&output)
+\end{DoxyCompactItemize}
+\subsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Ui\+::\+Dialog\+N\+N $\ast$ \hyperlink{class_dialog_n_n_affd6ce2909be5826c52fd862d1963eee}{ui}
+\item 
+\hyperlink{class_dialog_settings}{Dialog\+Settings} $\ast$ \hyperlink{class_dialog_n_n_aeaad085b1b2c7e4613228aa612d725f4}{Settings\+Window} = nullptr
+\item 
+\hyperlink{class_soil_math_1_1_n_n}{Soil\+Math\+::\+N\+N} $\ast$ \hyperlink{class_dialog_n_n_a1d38f96a8f11697068e805fdaa3267b2}{Neural\+Net} = nullptr
+\item 
+\hyperlink{class_soil_analyzer_1_1_soil_settings}{Soil\+Analyzer\+::\+Soil\+Settings} $\ast$ \hyperlink{class_dialog_n_n_afdf8c81b845ec58a3f495c2dd3423377}{Settings} = nullptr
+\item 
+Q\+Vector$<$ double $>$ \hyperlink{class_dialog_n_n_a4ef13ab4b2de7e544686065a41ef1b74}{current\+Error}
+\item 
+Q\+Vector$<$ double $>$ \hyperlink{class_dialog_n_n_af0eb5fbc415d948bedf5120bdd256e1c}{error\+Ticks}
+\item 
+double \hyperlink{class_dialog_n_n_a886cc6b16f26f822a3a39ed7812f26a5}{current\+Generation} = 0
+\item 
+Q\+String\+List \hyperlink{class_dialog_n_n_ac37477ba2781da043e5b2ce9495ea45f}{fn}
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+
+
+Definition at line \hyperlink{dialognn_8h_source_l00015}{15} of file \hyperlink{dialognn_8h_source}{dialognn.\+h}.
+
+
+
+\subsubsection{Constructor \& Destructor Documentation}
+\hypertarget{class_dialog_n_n_a53065cfe16eeaf3cf1b1e94058738c3f}{}\index{Dialog\+N\+N@{Dialog\+N\+N}!Dialog\+N\+N@{Dialog\+N\+N}}
+\index{Dialog\+N\+N@{Dialog\+N\+N}!Dialog\+N\+N@{Dialog\+N\+N}}
+\paragraph[{Dialog\+N\+N}]{\setlength{\rightskip}{0pt plus 5cm}Dialog\+N\+N\+::\+Dialog\+N\+N (
+\begin{DoxyParamCaption}
+\item[{Q\+Widget $\ast$}]{parent = {\ttfamily 0}, }
+\item[{{\bf Soil\+Math\+::\+N\+N} $\ast$}]{neuralnet = {\ttfamily nullptr}, }
+\item[{{\bf Soil\+Analyzer\+::\+Soil\+Settings} $\ast$}]{settings = {\ttfamily nullptr}, }
+\item[{{\bf Dialog\+Settings} $\ast$}]{setting\+Window = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}\label{class_dialog_n_n_a53065cfe16eeaf3cf1b1e94058738c3f}
+
+
+Definition at line \hyperlink{dialognn_8cpp_source_l00004}{4} of file \hyperlink{dialognn_8cpp_source}{dialognn.\+cpp}.
+
+
+
+References \hyperlink{dialognn_8h_source_l00042}{Neural\+Net}, \hyperlink{dialognn_8cpp_source_l00050}{on\+\_\+learn\+Error\+Update()}, \hyperlink{dialognn_8h_source_l00043}{Settings}, \hyperlink{dialognn_8h_source_l00041}{Settings\+Window}, \hyperlink{dialognn_8cpp_source_l00058}{setup\+Error\+Graph()}, and \hyperlink{dialognn_8h_source_l00040}{ui}.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_dialog_n_n_a53065cfe16eeaf3cf1b1e94058738c3f_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_dialog_n_n_a128ab0c8ba3e7a140545eb2dd37f4aab}{}\index{Dialog\+N\+N@{Dialog\+N\+N}!````~Dialog\+N\+N@{$\sim$\+Dialog\+N\+N}}
+\index{````~Dialog\+N\+N@{$\sim$\+Dialog\+N\+N}!Dialog\+N\+N@{Dialog\+N\+N}}
+\paragraph[{$\sim$\+Dialog\+N\+N}]{\setlength{\rightskip}{0pt plus 5cm}Dialog\+N\+N\+::$\sim$\+Dialog\+N\+N (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_dialog_n_n_a128ab0c8ba3e7a140545eb2dd37f4aab}
+
+
+Definition at line \hyperlink{dialognn_8cpp_source_l00042}{42} of file \hyperlink{dialognn_8cpp_source}{dialognn.\+cpp}.
+
+
+
+References \hyperlink{dialognn_8h_source_l00040}{ui}.
+
+
+
+\subsubsection{Member Function Documentation}
+\hypertarget{class_dialog_n_n_a832ef2838d6b6fd1e06b6c0d2a4783d4}{}\index{Dialog\+N\+N@{Dialog\+N\+N}!make\+Learn\+Vectors@{make\+Learn\+Vectors}}
+\index{make\+Learn\+Vectors@{make\+Learn\+Vectors}!Dialog\+N\+N@{Dialog\+N\+N}}
+\paragraph[{make\+Learn\+Vectors}]{\setlength{\rightskip}{0pt plus 5cm}void Dialog\+N\+N\+::make\+Learn\+Vectors (
+\begin{DoxyParamCaption}
+\item[{{\bf Input\+Learn\+Vector\+\_\+t} \&}]{input, }
+\item[{{\bf Output\+Learn\+Vector\+\_\+t} \&}]{output}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_dialog_n_n_a832ef2838d6b6fd1e06b6c0d2a4783d4}
+
+
+Definition at line \hyperlink{dialognn_8cpp_source_l00097}{97} of file \hyperlink{dialognn_8cpp_source}{dialognn.\+cpp}.
+
+
+
+References \hyperlink{dialognn_8h_source_l00051}{fn}, \hyperlink{_n_n_8h_source_l00140}{Soil\+Math\+::\+N\+N\+::\+Get\+Input\+Neurons()}, \hyperlink{_n_n_8h_source_l00146}{Soil\+Math\+::\+N\+N\+::\+Get\+Output\+Neurons()}, \hyperlink{sample_8cpp_source_l00042}{Soil\+Analyzer\+::\+Sample\+::\+Load()}, \hyperlink{_common_operations_8h_source_l00104}{Soil\+Math\+::make\+Output()}, \hyperlink{dialognn_8h_source_l00042}{Neural\+Net}, \hyperlink{_soil_math_types_8h_source_l00048}{Predict\+\_\+struct\+::\+Output\+Neurons}, and \hyperlink{sample_8h_source_l00041}{Soil\+Analyzer\+::\+Sample\+::\+Particle\+Population}.
+
+
+
+Referenced by \hyperlink{dialognn_8cpp_source_l00086}{on\+\_\+push\+Button\+\_\+\+Learn\+\_\+clicked()}.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_dialog_n_n_a832ef2838d6b6fd1e06b6c0d2a4783d4_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_dialog_n_n_a832ef2838d6b6fd1e06b6c0d2a4783d4_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_dialog_n_n_ac814ace2a51a7054e0f81a8f3963cd33}{}\index{Dialog\+N\+N@{Dialog\+N\+N}!on\+\_\+action\+Abort\+\_\+triggered@{on\+\_\+action\+Abort\+\_\+triggered}}
+\index{on\+\_\+action\+Abort\+\_\+triggered@{on\+\_\+action\+Abort\+\_\+triggered}!Dialog\+N\+N@{Dialog\+N\+N}}
+\paragraph[{on\+\_\+action\+Abort\+\_\+triggered}]{\setlength{\rightskip}{0pt plus 5cm}void Dialog\+N\+N\+::on\+\_\+action\+Abort\+\_\+triggered (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\label{class_dialog_n_n_ac814ace2a51a7054e0f81a8f3963cd33}
+
+
+Definition at line \hyperlink{dialognn_8cpp_source_l00147}{147} of file \hyperlink{dialognn_8cpp_source}{dialognn.\+cpp}.
+
+
+
+References \hyperlink{_n_n_8h_source_l00136}{Soil\+Math\+::\+N\+N\+::\+End\+Error\+Used\+By\+G\+A}, \hyperlink{dialognn_8h_source_l00042}{Neural\+Net}, and \hyperlink{dialognn_8h_source_l00040}{ui}.
+
+\hypertarget{class_dialog_n_n_a24e8d08c95de8dd392e81409b9500ab6}{}\index{Dialog\+N\+N@{Dialog\+N\+N}!on\+\_\+learn\+Error\+Update@{on\+\_\+learn\+Error\+Update}}
+\index{on\+\_\+learn\+Error\+Update@{on\+\_\+learn\+Error\+Update}!Dialog\+N\+N@{Dialog\+N\+N}}
+\paragraph[{on\+\_\+learn\+Error\+Update}]{\setlength{\rightskip}{0pt plus 5cm}void Dialog\+N\+N\+::on\+\_\+learn\+Error\+Update (
+\begin{DoxyParamCaption}
+\item[{double}]{new\+Error}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\label{class_dialog_n_n_a24e8d08c95de8dd392e81409b9500ab6}
+
+
+Definition at line \hyperlink{dialognn_8cpp_source_l00050}{50} of file \hyperlink{dialognn_8cpp_source}{dialognn.\+cpp}.
+
+
+
+References \hyperlink{dialognn_8h_source_l00050}{current\+Generation}, and \hyperlink{dialognn_8h_source_l00040}{ui}.
+
+
+
+Referenced by \hyperlink{dialognn_8cpp_source_l00004}{Dialog\+N\+N()}, and \hyperlink{dialognn_8cpp_source_l00130}{on\+\_\+push\+Button\+\_\+\+Open\+N\+N\+\_\+clicked()}.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_dialog_n_n_a24e8d08c95de8dd392e81409b9500ab6_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_dialog_n_n_ac62a7698eca8514c5629f5ee1e08f3bd}{}\index{Dialog\+N\+N@{Dialog\+N\+N}!on\+\_\+push\+Button\+\_\+\+Learn\+\_\+clicked@{on\+\_\+push\+Button\+\_\+\+Learn\+\_\+clicked}}
+\index{on\+\_\+push\+Button\+\_\+\+Learn\+\_\+clicked@{on\+\_\+push\+Button\+\_\+\+Learn\+\_\+clicked}!Dialog\+N\+N@{Dialog\+N\+N}}
+\paragraph[{on\+\_\+push\+Button\+\_\+\+Learn\+\_\+clicked}]{\setlength{\rightskip}{0pt plus 5cm}void Dialog\+N\+N\+::on\+\_\+push\+Button\+\_\+\+Learn\+\_\+clicked (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\label{class_dialog_n_n_ac62a7698eca8514c5629f5ee1e08f3bd}
+
+
+Definition at line \hyperlink{dialognn_8cpp_source_l00086}{86} of file \hyperlink{dialognn_8cpp_source}{dialognn.\+cpp}.
+
+
+
+References \hyperlink{dialognn_8h_source_l00051}{fn}, \hyperlink{_n_n_8h_source_l00140}{Soil\+Math\+::\+N\+N\+::\+Get\+Input\+Neurons()}, \hyperlink{_n_n_8cpp_source_l00113}{Soil\+Math\+::\+N\+N\+::\+Learn()}, \hyperlink{dialognn_8cpp_source_l00097}{make\+Learn\+Vectors()}, \hyperlink{dialognn_8h_source_l00042}{Neural\+Net}, and \hyperlink{dialognn_8cpp_source_l00058}{setup\+Error\+Graph()}.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_dialog_n_n_ac62a7698eca8514c5629f5ee1e08f3bd_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_dialog_n_n_abd4b8adf422cc857506bb3e69066ff02}{}\index{Dialog\+N\+N@{Dialog\+N\+N}!on\+\_\+push\+Button\+\_\+\+Open\+N\+N\+\_\+clicked@{on\+\_\+push\+Button\+\_\+\+Open\+N\+N\+\_\+clicked}}
+\index{on\+\_\+push\+Button\+\_\+\+Open\+N\+N\+\_\+clicked@{on\+\_\+push\+Button\+\_\+\+Open\+N\+N\+\_\+clicked}!Dialog\+N\+N@{Dialog\+N\+N}}
+\paragraph[{on\+\_\+push\+Button\+\_\+\+Open\+N\+N\+\_\+clicked}]{\setlength{\rightskip}{0pt plus 5cm}void Dialog\+N\+N\+::on\+\_\+push\+Button\+\_\+\+Open\+N\+N\+\_\+clicked (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\label{class_dialog_n_n_abd4b8adf422cc857506bb3e69066ff02}
+
+
+Definition at line \hyperlink{dialognn_8cpp_source_l00130}{130} of file \hyperlink{dialognn_8cpp_source}{dialognn.\+cpp}.
+
+
+
+References \hyperlink{dialognn_8h_source_l00051}{fn}, \hyperlink{_n_n_8cpp_source_l00034}{Soil\+Math\+::\+N\+N\+::\+Load\+State()}, \hyperlink{dialognn_8h_source_l00042}{Neural\+Net}, \hyperlink{dialognn_8cpp_source_l00050}{on\+\_\+learn\+Error\+Update()}, \hyperlink{soilsettings_8h_source_l00098}{Soil\+Analyzer\+::\+Soil\+Settings\+::\+Sample\+Folder}, and \hyperlink{dialognn_8h_source_l00043}{Settings}.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_dialog_n_n_abd4b8adf422cc857506bb3e69066ff02_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_dialog_n_n_aaa6a74ab07099e65b19feceed3dda9f2}{}\index{Dialog\+N\+N@{Dialog\+N\+N}!on\+\_\+push\+Button\+\_\+\+Save\+N\+N\+\_\+clicked@{on\+\_\+push\+Button\+\_\+\+Save\+N\+N\+\_\+clicked}}
+\index{on\+\_\+push\+Button\+\_\+\+Save\+N\+N\+\_\+clicked@{on\+\_\+push\+Button\+\_\+\+Save\+N\+N\+\_\+clicked}!Dialog\+N\+N@{Dialog\+N\+N}}
+\paragraph[{on\+\_\+push\+Button\+\_\+\+Save\+N\+N\+\_\+clicked}]{\setlength{\rightskip}{0pt plus 5cm}void Dialog\+N\+N\+::on\+\_\+push\+Button\+\_\+\+Save\+N\+N\+\_\+clicked (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\label{class_dialog_n_n_aaa6a74ab07099e65b19feceed3dda9f2}
+
+
+Definition at line \hyperlink{dialognn_8cpp_source_l00118}{118} of file \hyperlink{dialognn_8cpp_source}{dialognn.\+cpp}.
+
+
+
+References \hyperlink{dialognn_8h_source_l00051}{fn}, \hyperlink{dialognn_8h_source_l00042}{Neural\+Net}, \hyperlink{soilsettings_8h_source_l00100}{Soil\+Analyzer\+::\+Soil\+Settings\+::\+N\+N\+Folder}, \hyperlink{_n_n_8cpp_source_l00040}{Soil\+Math\+::\+N\+N\+::\+Save\+State()}, and \hyperlink{dialognn_8h_source_l00043}{Settings}.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_dialog_n_n_aaa6a74ab07099e65b19feceed3dda9f2_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_dialog_n_n_a7394140277f980979c9285fa88bee382}{}\index{Dialog\+N\+N@{Dialog\+N\+N}!on\+\_\+push\+Button\+\_\+\+Select\+Samples\+\_\+clicked@{on\+\_\+push\+Button\+\_\+\+Select\+Samples\+\_\+clicked}}
+\index{on\+\_\+push\+Button\+\_\+\+Select\+Samples\+\_\+clicked@{on\+\_\+push\+Button\+\_\+\+Select\+Samples\+\_\+clicked}!Dialog\+N\+N@{Dialog\+N\+N}}
+\paragraph[{on\+\_\+push\+Button\+\_\+\+Select\+Samples\+\_\+clicked}]{\setlength{\rightskip}{0pt plus 5cm}void Dialog\+N\+N\+::on\+\_\+push\+Button\+\_\+\+Select\+Samples\+\_\+clicked (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\label{class_dialog_n_n_a7394140277f980979c9285fa88bee382}
+
+
+Definition at line \hyperlink{dialognn_8cpp_source_l00075}{75} of file \hyperlink{dialognn_8cpp_source}{dialognn.\+cpp}.
+
+
+
+References \hyperlink{dialognn_8h_source_l00051}{fn}, \hyperlink{soilsettings_8h_source_l00098}{Soil\+Analyzer\+::\+Soil\+Settings\+::\+Sample\+Folder}, and \hyperlink{dialognn_8h_source_l00043}{Settings}.
+
+\hypertarget{class_dialog_n_n_a4a203b679f42761eae157b445bcfc57d}{}\index{Dialog\+N\+N@{Dialog\+N\+N}!on\+\_\+push\+Button\+\_\+\+Settings\+\_\+clicked@{on\+\_\+push\+Button\+\_\+\+Settings\+\_\+clicked}}
+\index{on\+\_\+push\+Button\+\_\+\+Settings\+\_\+clicked@{on\+\_\+push\+Button\+\_\+\+Settings\+\_\+clicked}!Dialog\+N\+N@{Dialog\+N\+N}}
+\paragraph[{on\+\_\+push\+Button\+\_\+\+Settings\+\_\+clicked}]{\setlength{\rightskip}{0pt plus 5cm}void Dialog\+N\+N\+::on\+\_\+push\+Button\+\_\+\+Settings\+\_\+clicked (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\label{class_dialog_n_n_a4a203b679f42761eae157b445bcfc57d}
+
+
+Definition at line \hyperlink{dialognn_8cpp_source_l00044}{44} of file \hyperlink{dialognn_8cpp_source}{dialognn.\+cpp}.
+
+
+
+References \hyperlink{dialogsettings_8cpp_source_l00190}{Dialog\+Settings\+::open\+Tab()}, \hyperlink{dialognn_8h_source_l00041}{Settings\+Window}, and \hyperlink{dialognn_8cpp_source_l00058}{setup\+Error\+Graph()}.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_dialog_n_n_a4a203b679f42761eae157b445bcfc57d_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_dialog_n_n_ae3abaadf57d6614cddb1a9c244da721d}{}\index{Dialog\+N\+N@{Dialog\+N\+N}!setup\+Error\+Graph@{setup\+Error\+Graph}}
+\index{setup\+Error\+Graph@{setup\+Error\+Graph}!Dialog\+N\+N@{Dialog\+N\+N}}
+\paragraph[{setup\+Error\+Graph}]{\setlength{\rightskip}{0pt plus 5cm}void Dialog\+N\+N\+::setup\+Error\+Graph (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_dialog_n_n_ae3abaadf57d6614cddb1a9c244da721d}
+
+
+Definition at line \hyperlink{dialognn_8cpp_source_l00058}{58} of file \hyperlink{dialognn_8cpp_source}{dialognn.\+cpp}.
+
+
+
+References \hyperlink{_n_n_8h_source_l00136}{Soil\+Math\+::\+N\+N\+::\+End\+Error\+Used\+By\+G\+A}, \hyperlink{dialognn_8h_source_l00049}{error\+Ticks}, \hyperlink{_n_n_8h_source_l00132}{Soil\+Math\+::\+N\+N\+::\+Max\+Gen\+Used\+By\+G\+A}, \hyperlink{dialognn_8h_source_l00042}{Neural\+Net}, and \hyperlink{dialognn_8h_source_l00040}{ui}.
+
+
+
+Referenced by \hyperlink{dialognn_8cpp_source_l00004}{Dialog\+N\+N()}, \hyperlink{dialognn_8cpp_source_l00086}{on\+\_\+push\+Button\+\_\+\+Learn\+\_\+clicked()}, and \hyperlink{dialognn_8cpp_source_l00044}{on\+\_\+push\+Button\+\_\+\+Settings\+\_\+clicked()}.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_dialog_n_n_ae3abaadf57d6614cddb1a9c244da721d_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsubsection{Member Data Documentation}
+\hypertarget{class_dialog_n_n_a4ef13ab4b2de7e544686065a41ef1b74}{}\index{Dialog\+N\+N@{Dialog\+N\+N}!current\+Error@{current\+Error}}
+\index{current\+Error@{current\+Error}!Dialog\+N\+N@{Dialog\+N\+N}}
+\paragraph[{current\+Error}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Vector$<$double$>$ Dialog\+N\+N\+::current\+Error\hspace{0.3cm}{\ttfamily [private]}}\label{class_dialog_n_n_a4ef13ab4b2de7e544686065a41ef1b74}
+
+
+Definition at line \hyperlink{dialognn_8h_source_l00048}{48} of file \hyperlink{dialognn_8h_source}{dialognn.\+h}.
+
+\hypertarget{class_dialog_n_n_a886cc6b16f26f822a3a39ed7812f26a5}{}\index{Dialog\+N\+N@{Dialog\+N\+N}!current\+Generation@{current\+Generation}}
+\index{current\+Generation@{current\+Generation}!Dialog\+N\+N@{Dialog\+N\+N}}
+\paragraph[{current\+Generation}]{\setlength{\rightskip}{0pt plus 5cm}double Dialog\+N\+N\+::current\+Generation = 0\hspace{0.3cm}{\ttfamily [private]}}\label{class_dialog_n_n_a886cc6b16f26f822a3a39ed7812f26a5}
+
+
+Definition at line \hyperlink{dialognn_8h_source_l00050}{50} of file \hyperlink{dialognn_8h_source}{dialognn.\+h}.
+
+
+
+Referenced by \hyperlink{dialognn_8cpp_source_l00050}{on\+\_\+learn\+Error\+Update()}.
+
+\hypertarget{class_dialog_n_n_af0eb5fbc415d948bedf5120bdd256e1c}{}\index{Dialog\+N\+N@{Dialog\+N\+N}!error\+Ticks@{error\+Ticks}}
+\index{error\+Ticks@{error\+Ticks}!Dialog\+N\+N@{Dialog\+N\+N}}
+\paragraph[{error\+Ticks}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Vector$<$double$>$ Dialog\+N\+N\+::error\+Ticks\hspace{0.3cm}{\ttfamily [private]}}\label{class_dialog_n_n_af0eb5fbc415d948bedf5120bdd256e1c}
+
+
+Definition at line \hyperlink{dialognn_8h_source_l00049}{49} of file \hyperlink{dialognn_8h_source}{dialognn.\+h}.
+
+
+
+Referenced by \hyperlink{dialognn_8cpp_source_l00058}{setup\+Error\+Graph()}.
+
+\hypertarget{class_dialog_n_n_ac37477ba2781da043e5b2ce9495ea45f}{}\index{Dialog\+N\+N@{Dialog\+N\+N}!fn@{fn}}
+\index{fn@{fn}!Dialog\+N\+N@{Dialog\+N\+N}}
+\paragraph[{fn}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String\+List Dialog\+N\+N\+::fn\hspace{0.3cm}{\ttfamily [private]}}\label{class_dialog_n_n_ac37477ba2781da043e5b2ce9495ea45f}
+
+
+Definition at line \hyperlink{dialognn_8h_source_l00051}{51} of file \hyperlink{dialognn_8h_source}{dialognn.\+h}.
+
+
+
+Referenced by \hyperlink{dialognn_8cpp_source_l00097}{make\+Learn\+Vectors()}, \hyperlink{dialognn_8cpp_source_l00086}{on\+\_\+push\+Button\+\_\+\+Learn\+\_\+clicked()}, \hyperlink{dialognn_8cpp_source_l00130}{on\+\_\+push\+Button\+\_\+\+Open\+N\+N\+\_\+clicked()}, \hyperlink{dialognn_8cpp_source_l00118}{on\+\_\+push\+Button\+\_\+\+Save\+N\+N\+\_\+clicked()}, and \hyperlink{dialognn_8cpp_source_l00075}{on\+\_\+push\+Button\+\_\+\+Select\+Samples\+\_\+clicked()}.
+
+\hypertarget{class_dialog_n_n_a1d38f96a8f11697068e805fdaa3267b2}{}\index{Dialog\+N\+N@{Dialog\+N\+N}!Neural\+Net@{Neural\+Net}}
+\index{Neural\+Net@{Neural\+Net}!Dialog\+N\+N@{Dialog\+N\+N}}
+\paragraph[{Neural\+Net}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Soil\+Math\+::\+N\+N}$\ast$ Dialog\+N\+N\+::\+Neural\+Net = nullptr\hspace{0.3cm}{\ttfamily [private]}}\label{class_dialog_n_n_a1d38f96a8f11697068e805fdaa3267b2}
+
+
+Definition at line \hyperlink{dialognn_8h_source_l00042}{42} of file \hyperlink{dialognn_8h_source}{dialognn.\+h}.
+
+
+
+Referenced by \hyperlink{dialognn_8cpp_source_l00004}{Dialog\+N\+N()}, \hyperlink{dialognn_8cpp_source_l00097}{make\+Learn\+Vectors()}, \hyperlink{dialognn_8cpp_source_l00147}{on\+\_\+action\+Abort\+\_\+triggered()}, \hyperlink{dialognn_8cpp_source_l00086}{on\+\_\+push\+Button\+\_\+\+Learn\+\_\+clicked()}, \hyperlink{dialognn_8cpp_source_l00130}{on\+\_\+push\+Button\+\_\+\+Open\+N\+N\+\_\+clicked()}, \hyperlink{dialognn_8cpp_source_l00118}{on\+\_\+push\+Button\+\_\+\+Save\+N\+N\+\_\+clicked()}, and \hyperlink{dialognn_8cpp_source_l00058}{setup\+Error\+Graph()}.
+
+\hypertarget{class_dialog_n_n_afdf8c81b845ec58a3f495c2dd3423377}{}\index{Dialog\+N\+N@{Dialog\+N\+N}!Settings@{Settings}}
+\index{Settings@{Settings}!Dialog\+N\+N@{Dialog\+N\+N}}
+\paragraph[{Settings}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Soil\+Analyzer\+::\+Soil\+Settings}$\ast$ Dialog\+N\+N\+::\+Settings = nullptr\hspace{0.3cm}{\ttfamily [private]}}\label{class_dialog_n_n_afdf8c81b845ec58a3f495c2dd3423377}
+
+
+Definition at line \hyperlink{dialognn_8h_source_l00043}{43} of file \hyperlink{dialognn_8h_source}{dialognn.\+h}.
+
+
+
+Referenced by \hyperlink{dialognn_8cpp_source_l00004}{Dialog\+N\+N()}, \hyperlink{dialognn_8cpp_source_l00130}{on\+\_\+push\+Button\+\_\+\+Open\+N\+N\+\_\+clicked()}, \hyperlink{dialognn_8cpp_source_l00118}{on\+\_\+push\+Button\+\_\+\+Save\+N\+N\+\_\+clicked()}, and \hyperlink{dialognn_8cpp_source_l00075}{on\+\_\+push\+Button\+\_\+\+Select\+Samples\+\_\+clicked()}.
+
+\hypertarget{class_dialog_n_n_aeaad085b1b2c7e4613228aa612d725f4}{}\index{Dialog\+N\+N@{Dialog\+N\+N}!Settings\+Window@{Settings\+Window}}
+\index{Settings\+Window@{Settings\+Window}!Dialog\+N\+N@{Dialog\+N\+N}}
+\paragraph[{Settings\+Window}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Dialog\+Settings}$\ast$ Dialog\+N\+N\+::\+Settings\+Window = nullptr\hspace{0.3cm}{\ttfamily [private]}}\label{class_dialog_n_n_aeaad085b1b2c7e4613228aa612d725f4}
+
+
+Definition at line \hyperlink{dialognn_8h_source_l00041}{41} of file \hyperlink{dialognn_8h_source}{dialognn.\+h}.
+
+
+
+Referenced by \hyperlink{dialognn_8cpp_source_l00004}{Dialog\+N\+N()}, and \hyperlink{dialognn_8cpp_source_l00044}{on\+\_\+push\+Button\+\_\+\+Settings\+\_\+clicked()}.
+
+\hypertarget{class_dialog_n_n_affd6ce2909be5826c52fd862d1963eee}{}\index{Dialog\+N\+N@{Dialog\+N\+N}!ui@{ui}}
+\index{ui@{ui}!Dialog\+N\+N@{Dialog\+N\+N}}
+\paragraph[{ui}]{\setlength{\rightskip}{0pt plus 5cm}Ui\+::\+Dialog\+N\+N$\ast$ Dialog\+N\+N\+::ui\hspace{0.3cm}{\ttfamily [private]}}\label{class_dialog_n_n_affd6ce2909be5826c52fd862d1963eee}
+
+
+Definition at line \hyperlink{dialognn_8h_source_l00040}{40} of file \hyperlink{dialognn_8h_source}{dialognn.\+h}.
+
+
+
+Referenced by \hyperlink{dialognn_8cpp_source_l00004}{Dialog\+N\+N()}, \hyperlink{dialognn_8cpp_source_l00147}{on\+\_\+action\+Abort\+\_\+triggered()}, \hyperlink{dialognn_8cpp_source_l00050}{on\+\_\+learn\+Error\+Update()}, \hyperlink{dialognn_8cpp_source_l00058}{setup\+Error\+Graph()}, and \hyperlink{dialognn_8cpp_source_l00042}{$\sim$\+Dialog\+N\+N()}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+V\+S\+A/\hyperlink{dialognn_8h}{dialognn.\+h}\item 
+/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+V\+S\+A/\hyperlink{dialognn_8cpp}{dialognn.\+cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,87 @@
+\hypertarget{qreportgenerator_8h_source}{}\subsection{qreportgenerator.\+h}
+\label{qreportgenerator_8h_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Q\+Report\+Generator/qreportgenerator.\+h@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Q\+Report\+Generator/qreportgenerator.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#ifndef QREPORTGENERATOR\_H}
+00002 \textcolor{preprocessor}{#define QREPORTGENERATOR\_H}
+00003 
+00004 \textcolor{preprocessor}{#include <QMainWindow>}
+00005 \textcolor{preprocessor}{#include <QTextDocument>}
+00006 \textcolor{preprocessor}{#include <QDebug>}
+00007 \textcolor{preprocessor}{#include <QTextBlockFormat>}
+00008 \textcolor{preprocessor}{#include <QTextCharFormat>}
+00009 \textcolor{preprocessor}{#include <QTextBlock>}
+00010 \textcolor{preprocessor}{#include <QNetworkAccessManager>}
+00011 \textcolor{preprocessor}{#include <QNetworkReply>}
+00012 \textcolor{preprocessor}{#include <QTextDocumentWriter>}
+00013 \textcolor{preprocessor}{#include <QPrinter>}
+00014 
+00015 \textcolor{preprocessor}{#include "\hyperlink{soilanalyzer_8h}{soilanalyzer.h}"}
+00016 \textcolor{preprocessor}{#include "\hyperlink{_soil_math_8h}{SoilMath.h}"}
+00017 
+00018 \textcolor{preprocessor}{#include <qcustomplot.h>}
+00019 \textcolor{preprocessor}{#include "../qcustomplot/examples/text-document-integration/qcpdocumentobject.h"}
+00020 
+00021 \textcolor{keyword}{namespace }\hyperlink{namespace_ui}{Ui} \{
+00022   \textcolor{keyword}{class }\hyperlink{class_q_report_generator}{QReportGenerator};
+00023 \}
+00024 
+\hypertarget{qreportgenerator_8h_source_l00025}{}\hyperlink{class_q_report_generator}{00025} \textcolor{keyword}{class }\hyperlink{class_q_report_generator}{QReportGenerator} : \textcolor{keyword}{public} QMainWindow
+00026 \{
+00027   Q\_OBJECT
+00028 
+00029 \textcolor{keyword}{public}:
+\hypertarget{qreportgenerator_8h_source_l00030}{}\hyperlink{class_q_report_generator_ab051048608bc51151bc0b1ffc217f292}{00030}   QTextDocument *\hyperlink{class_q_report_generator_ab051048608bc51151bc0b1ffc217f292}{Report} = \textcolor{keyword}{nullptr};
+\hypertarget{qreportgenerator_8h_source_l00031}{}\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{00031}   \hyperlink{class_soil_analyzer_1_1_sample}{SoilAnalyzer::Sample} *\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample} = \textcolor{keyword}{nullptr};
+\hypertarget{qreportgenerator_8h_source_l00032}{}\hyperlink{class_q_report_generator_a5e75a3f9447c0c24b32cd198a00af21c}{00032}   \hyperlink{class_soil_analyzer_1_1_soil_settings}{SoilAnalyzer::SoilSettings} *\hyperlink{class_q_report_generator_a5e75a3f9447c0c24b32cd198a00af21c}{Settings} = \textcolor{keyword}{nullptr};
+\hypertarget{qreportgenerator_8h_source_l00033}{}\hyperlink{class_q_report_generator_a8363c2cf697c443a9d58b223efddde02}{00033}   QCustomPlot *\hyperlink{class_soil_math_1_1_p_s_d}{PSD} = \textcolor{keyword}{nullptr};
+\hypertarget{qreportgenerator_8h_source_l00034}{}\hyperlink{class_q_report_generator_ad0dd77389aea1b1fb2a58e363e5ff8a1}{00034}   QCustomPlot *\hyperlink{class_q_report_generator_ad0dd77389aea1b1fb2a58e363e5ff8a1}{Roundness} = \textcolor{keyword}{nullptr};
+\hypertarget{qreportgenerator_8h_source_l00035}{}\hyperlink{class_q_report_generator_a8c2f9aee54d302f1330c6fd60d12bd13}{00035}   QCustomPlot *\hyperlink{class_q_report_generator_a8c2f9aee54d302f1330c6fd60d12bd13}{Angularity} = \textcolor{keyword}{nullptr};
+00036 
+00037   \textcolor{keyword}{explicit} \hyperlink{class_q_report_generator_a3423584a1653cd7271a4d8526b2edf02}{QReportGenerator}(QWidget *parent = 0, 
+      \hyperlink{class_soil_analyzer_1_1_sample}{SoilAnalyzer::Sample} *sample = \textcolor{keyword}{nullptr}, 
+      \hyperlink{class_soil_analyzer_1_1_soil_settings}{SoilAnalyzer::SoilSettings} *settings = \textcolor{keyword}{nullptr}, QCustomPlot *psd = \textcolor{keyword}{nullptr}, 
+      QCustomPlot *roundness = \textcolor{keyword}{nullptr}, QCustomPlot *angularity = \textcolor{keyword}{nullptr});
+00038   \hyperlink{class_q_report_generator_a42ad110fb06f47767b6a94feb49f85c0}{~QReportGenerator}();
+00039 
+00040 \textcolor{keyword}{private} slots:
+00041   \textcolor{keywordtype}{void} \hyperlink{class_q_report_generator_a15c7c37fe5a9f178ae29bc1484aeaad9}{on\_locationImageDownloaded}(QNetworkReply *reply);
+00042 
+00043   \textcolor{keywordtype}{void} \hyperlink{class_q_report_generator_a7f16a79d19c4ae53859febaae31950e7}{on\_actionSave\_triggered}();
+00044 
+00045   \textcolor{keywordtype}{void} \hyperlink{class_q_report_generator_aa170226241deb861a964ac722c8e4564}{on\_actionExport\_to\_PDF\_triggered}();
+00046 
+00047 \textcolor{keyword}{private}:
+\hypertarget{qreportgenerator_8h_source_l00048}{}\hyperlink{class_q_report_generator_a4584dd4f053586b84b4a9f883a3313d9}{00048}   Ui::QReportGenerator *\hyperlink{class_q_report_generator_a4584dd4f053586b84b4a9f883a3313d9}{ui};
+\hypertarget{qreportgenerator_8h_source_l00049}{}\hyperlink{class_q_report_generator_a1a727308ea8cb98523a308d10da70b39}{00049}   QCustomPlot *\hyperlink{class_q_report_generator_a1a727308ea8cb98523a308d10da70b39}{CIElabPlot} = \textcolor{keyword}{nullptr};
+00050 
+00051   \textcolor{keywordtype}{void} \hyperlink{class_q_report_generator_ad588cf415e3d3a571fbd2fa7f9f30612}{getLocationMap}(\textcolor{keywordtype}{double} &latitude, \textcolor{keywordtype}{double} &longtitude);
+00052   \textcolor{keywordtype}{void} \hyperlink{class_q_report_generator_a828ae557a03162a08d13f94f2d1888f4}{SetupCIElabPLot}();
+00053 
+\hypertarget{qreportgenerator_8h_source_l00054}{}\hyperlink{class_q_report_generator_a1369081e13fce26f60a10eb846551515}{00054}   QImage *\hyperlink{class_q_report_generator_a1369081e13fce26f60a10eb846551515}{mapLocation} = \textcolor{keyword}{nullptr};
+00055 
+\hypertarget{qreportgenerator_8h_source_l00056}{}\hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{00056}   QTextCursor \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs};
+00057 
+00058   \textcolor{comment}{// Layout formats}
+\hypertarget{qreportgenerator_8h_source_l00059}{}\hyperlink{class_q_report_generator_a1c6eac3b9c26e7fb32de033879ae6e6e}{00059}   QTextBlockFormat \hyperlink{class_q_report_generator_a1c6eac3b9c26e7fb32de033879ae6e6e}{TitleFormat};
+\hypertarget{qreportgenerator_8h_source_l00060}{}\hyperlink{class_q_report_generator_af2b45261507663b54e80f4053d25bc4b}{00060}   QTextBlockFormat \hyperlink{class_q_report_generator_af2b45261507663b54e80f4053d25bc4b}{HeaderFormat};
+\hypertarget{qreportgenerator_8h_source_l00061}{}\hyperlink{class_q_report_generator_a9a18bc94ca92a730ae0f13d60a6b5e0a}{00061}   QTextBlockFormat \hyperlink{class_q_report_generator_a9a18bc94ca92a730ae0f13d60a6b5e0a}{GeneralFormat};
+\hypertarget{qreportgenerator_8h_source_l00062}{}\hyperlink{class_q_report_generator_a19451127788bb6c68907b312a0a8b750}{00062}   QTextBlockFormat \hyperlink{class_q_report_generator_a19451127788bb6c68907b312a0a8b750}{ImageGraphFormat};
+00063 
+\hypertarget{qreportgenerator_8h_source_l00064}{}\hyperlink{class_q_report_generator_a7eebc837740d933bf4767e584f1d486c}{00064}   QTextCharFormat \hyperlink{class_q_report_generator_a7eebc837740d933bf4767e584f1d486c}{TitleTextFormat};
+\hypertarget{qreportgenerator_8h_source_l00065}{}\hyperlink{class_q_report_generator_a8be687c8a427e341fa1c7f9addc96e99}{00065}   QTextCharFormat \hyperlink{class_q_report_generator_a8be687c8a427e341fa1c7f9addc96e99}{HeaderTextFormat};
+\hypertarget{qreportgenerator_8h_source_l00066}{}\hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{00066}   QTextCharFormat \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat};
+\hypertarget{qreportgenerator_8h_source_l00067}{}\hyperlink{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{00067}   QTextCharFormat \hyperlink{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{GFieldtxtFormat};
+00068 
+\hypertarget{qreportgenerator_8h_source_l00069}{}\hyperlink{class_q_report_generator_a415a4b3a8995d02b724156b5e9c14486}{00069}   QTextListFormat \hyperlink{class_q_report_generator_a415a4b3a8995d02b724156b5e9c14486}{GeneralSampleList};
+\hypertarget{qreportgenerator_8h_source_l00070}{}\hyperlink{class_q_report_generator_afcb27e52bd15a286a1933c3b9cf01c92}{00070}   QTextTableFormat \hyperlink{class_q_report_generator_afcb27e52bd15a286a1933c3b9cf01c92}{GeneralTextTableFormat};
+00071 
+00072 
+\hypertarget{qreportgenerator_8h_source_l00073}{}\hyperlink{class_q_report_generator_a6ec92ac9d2ef36345c1f6089629c13a7}{00073}   QFont \hyperlink{class_q_report_generator_a6ec92ac9d2ef36345c1f6089629c13a7}{TitleFont};
+\hypertarget{qreportgenerator_8h_source_l00074}{}\hyperlink{class_q_report_generator_ad23921b0c8d0e77db7cfc0b611d9e93c}{00074}   QFont \hyperlink{class_q_report_generator_ad23921b0c8d0e77db7cfc0b611d9e93c}{HeaderFont};
+\hypertarget{qreportgenerator_8h_source_l00075}{}\hyperlink{class_q_report_generator_ab7022962a87365f93a5e168d946ebd85}{00075}   QFont \hyperlink{class_q_report_generator_ab7022962a87365f93a5e168d946ebd85}{GeneralFont};
+\hypertarget{qreportgenerator_8h_source_l00076}{}\hyperlink{class_q_report_generator_ae23241660848e9015b6d3bf814d1b381}{00076}   QFont \hyperlink{class_q_report_generator_ae23241660848e9015b6d3bf814d1b381}{FieldFont};
+00077 \};
+00078 
+00079 \textcolor{preprocessor}{#endif // QREPORTGENERATOR\_H}
+\end{DoxyCode}

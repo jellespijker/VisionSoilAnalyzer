@@ -1,0 +1,75 @@
+\hypertarget{_g_p_i_o_8h_source}{}\subsection{G\+P\+I\+O.\+h}
+\label{_g_p_i_o_8h_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Hardware/\+G\+P\+I\+O.\+h@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Hardware/\+G\+P\+I\+O.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/* Copyright (C) Jelle Spijker - All Rights Reserved}
+00002 \textcolor{comment}{ * Unauthorized copying of this file, via any medium is strictly prohibited}
+00003 \textcolor{comment}{ * and only allowed with the written consent of the author (Jelle Spijker)}
+00004 \textcolor{comment}{ * This software is proprietary and confidential}
+00005 \textcolor{comment}{ * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015}
+00006 \textcolor{comment}{ * This code is based upon:}
+00007 \textcolor{comment}{ * Derek Molloy, "Exploring BeagleBone: Tools and Techniques for Building}
+00008 \textcolor{comment}{ * with Embedded Linux", Wiley, 2014, ISBN:9781118935125.}
+00009 \textcolor{comment}{ * See: www.exploringbeaglebone.com}
+00010 \textcolor{comment}{ */}
+00011 
+00012 \textcolor{preprocessor}{#pragma once}
+00013 \textcolor{preprocessor}{#include "\hyperlink{_b_b_b_8h}{BBB.h}"}
+00014 
+\hypertarget{_g_p_i_o_8h_source_l00015}{}\hyperlink{_g_p_i_o_8h_a76065c2ed428f7d0b15d2cd8e494b857}{00015} \textcolor{preprocessor}{#define EXPORT\_PIN "/sys/class/gpio/export"}
+\hypertarget{_g_p_i_o_8h_source_l00016}{}\hyperlink{_g_p_i_o_8h_a57a9168261422a24cc4b062b0376449b}{00016} \textcolor{preprocessor}{#define UNEXPORT\_PIN "/sys/class/gpio/unexport"}
+\hypertarget{_g_p_i_o_8h_source_l00017}{}\hyperlink{_g_p_i_o_8h_ad3c9654be00e07ca084884963ae36830}{00017} \textcolor{preprocessor}{#define GPIOS "/sys/class/gpio/gpio"}
+\hypertarget{_g_p_i_o_8h_source_l00018}{}\hyperlink{_g_p_i_o_8h_a1d692daf1ffadae2243a5ab556589629}{00018} \textcolor{preprocessor}{#define DIRECTION "/direction"}
+\hypertarget{_g_p_i_o_8h_source_l00019}{}\hyperlink{_g_p_i_o_8h_aa0b03826c8f7cc324ac2db0ada2dce0a}{00019} \textcolor{preprocessor}{#define VALUE "/value"}
+\hypertarget{_g_p_i_o_8h_source_l00020}{}\hyperlink{_g_p_i_o_8h_ac243bfa96aa2c28014159ff098bd2324}{00020} \textcolor{preprocessor}{#define EDGE "/edge"}
+00021 
+00022 \textcolor{keyword}{using namespace }\hyperlink{namespacestd}{std};
+00023 
+00024 \textcolor{keyword}{namespace }\hyperlink{namespace_hardware}{Hardware} \{
+\hypertarget{_g_p_i_o_8h_source_l00025}{}\hyperlink{class_hardware_1_1_g_p_i_o}{00025} \textcolor{keyword}{class }\hyperlink{class_hardware_1_1_g_p_i_o}{GPIO} : \textcolor{keyword}{public} \hyperlink{class_hardware_1_1_b_b_b}{BBB} \{
+00026 \textcolor{keyword}{public}:
+\hypertarget{_g_p_i_o_8h_source_l00027}{}\hyperlink{class_hardware_1_1_g_p_i_o_a7507431d6341c146f22dcdb21b78ffd4a72432a9b39a6e45297b1158da8bb60eb}{00027}   \textcolor{keyword}{enum} \hyperlink{class_hardware_1_1_g_p_i_o_a7507431d6341c146f22dcdb21b78ffd4}{Direction} \{ Input, Output \};
+\hypertarget{_g_p_i_o_8h_source_l00028}{}\hyperlink{class_hardware_1_1_g_p_i_o_ad357201dc1ad13ad96ba1773108a5f6d}{00028}   \textcolor{keyword}{enum} \hyperlink{class_hardware_1_1_g_p_i_o_ad357201dc1ad13ad96ba1773108a5f6d}{Value} \{ Low = 0, High = 1 \};
+\hypertarget{_g_p_i_o_8h_source_l00029}{}\hyperlink{class_hardware_1_1_g_p_i_o_a9a7595aabdac9aec75f22e8b86342162afbb0aadc6c0311beb25d5a056c61ed46}{00029}   \textcolor{keyword}{enum} \hyperlink{class_hardware_1_1_g_p_i_o_a9a7595aabdac9aec75f22e8b86342162}{Edge} \{ None, \hyperlink{class_hardware_1_1_g_p_i_o_a9a7595aabdac9aec75f22e8b86342162afbb0aadc6c0311beb25d5a056c61ed46}{Rising}, Falling, Both \};
+00030 
+\hypertarget{_g_p_i_o_8h_source_l00031}{}\hyperlink{class_hardware_1_1_g_p_i_o_a1671a87bb70911b0a6a29019a068cf96}{00031}   \textcolor{keywordtype}{int} \hyperlink{class_hardware_1_1_g_p_i_o_a1671a87bb70911b0a6a29019a068cf96}{number}; \textcolor{comment}{// Number of the pin}
+00032 
+00033   \textcolor{keywordtype}{int} WaitForEdge();
+00034   \textcolor{keywordtype}{int} WaitForEdge(\hyperlink{namespace_hardware_a5ba2e4bdfa2bbd8b551b1d5b2a0c61fd}{CallbackType} callback);
+\hypertarget{_g_p_i_o_8h_source_l00035}{}\hyperlink{class_hardware_1_1_g_p_i_o_a9b16b6ac156b20d979e92244d0b05c63}{00035}   \textcolor{keywordtype}{void} \hyperlink{class_hardware_1_1_g_p_i_o_a9b16b6ac156b20d979e92244d0b05c63}{WaitForEdgeCancel}() \{ this->threadRunning = \textcolor{keyword}{false}; \}
+00036 
+00037   Value GetValue();
+00038   \textcolor{keywordtype}{void} SetValue(Value value);
+00039 
+00040   Direction GetDirection();
+00041   \textcolor{keywordtype}{void} SetDirection(Direction direction);
+00042 
+00043   Edge GetEdge();
+00044   \textcolor{keywordtype}{void} SetEdge(Edge edge);
+00045 
+00046   \hyperlink{class_hardware_1_1_g_p_i_o}{GPIO}(\textcolor{keywordtype}{int} number);
+00047   ~\hyperlink{class_hardware_1_1_g_p_i_o}{GPIO}();
+00048 
+00049 \textcolor{keyword}{private}:
+\hypertarget{_g_p_i_o_8h_source_l00050}{}\hyperlink{class_hardware_1_1_g_p_i_o_ac47062ed6aba52b9e8506e1575bf5061}{00050}   \textcolor{keywordtype}{string} \hyperlink{class_hardware_1_1_g_p_i_o_ac47062ed6aba52b9e8506e1575bf5061}{gpiopath};
+\hypertarget{_g_p_i_o_8h_source_l00051}{}\hyperlink{class_hardware_1_1_g_p_i_o_a77e93e4f6650507fdc4898d272d540e7}{00051}   \hyperlink{class_hardware_1_1_g_p_i_o_a7507431d6341c146f22dcdb21b78ffd4}{Direction} \hyperlink{class_hardware_1_1_g_p_i_o_a77e93e4f6650507fdc4898d272d540e7}{direction};
+\hypertarget{_g_p_i_o_8h_source_l00052}{}\hyperlink{class_hardware_1_1_g_p_i_o_adf15f74f053069029e99934e28c109e0}{00052}   \hyperlink{class_hardware_1_1_g_p_i_o_a9a7595aabdac9aec75f22e8b86342162}{Edge} \hyperlink{class_hardware_1_1_g_p_i_o_adf15f74f053069029e99934e28c109e0}{edge};
+00053   \textcolor{keyword}{friend} \textcolor{keywordtype}{void} *\hyperlink{namespace_hardware_af5f1bde915012872fc6b800981948aaa}{threadedPollGPIO}(\textcolor{keywordtype}{void} *value);
+00054 
+00055   \textcolor{keywordtype}{bool} isExported(\textcolor{keywordtype}{int} number, \hyperlink{class_hardware_1_1_g_p_i_o_a7507431d6341c146f22dcdb21b78ffd4}{Direction} &dir, \hyperlink{class_hardware_1_1_g_p_i_o_a9a7595aabdac9aec75f22e8b86342162}{Edge} &edge);
+00056   \textcolor{keywordtype}{bool} ExportPin(\textcolor{keywordtype}{int} number);
+00057   \textcolor{keywordtype}{bool} UnexportPin(\textcolor{keywordtype}{int} number);
+00058 
+00059   \hyperlink{class_hardware_1_1_g_p_i_o_a7507431d6341c146f22dcdb21b78ffd4}{Direction} ReadsDirection(\textcolor{keyword}{const} \textcolor{keywordtype}{string} &gpiopath);
+00060   \textcolor{keywordtype}{void} WritesDirection(\textcolor{keyword}{const} \textcolor{keywordtype}{string} &gpiopath, \hyperlink{class_hardware_1_1_g_p_i_o_a7507431d6341c146f22dcdb21b78ffd4}{Direction} direction);
+00061 
+00062   \hyperlink{class_hardware_1_1_g_p_i_o_a9a7595aabdac9aec75f22e8b86342162}{Edge} ReadsEdge(\textcolor{keyword}{const} \textcolor{keywordtype}{string} &gpiopath);
+00063   \textcolor{keywordtype}{void} WritesEdge(\textcolor{keyword}{const} \textcolor{keywordtype}{string} &gpiopath, \hyperlink{class_hardware_1_1_g_p_i_o_a9a7595aabdac9aec75f22e8b86342162}{Edge} edge);
+00064 
+00065   \hyperlink{class_hardware_1_1_g_p_i_o_ad357201dc1ad13ad96ba1773108a5f6d}{Value} ReadsValue(\textcolor{keyword}{const} \textcolor{keywordtype}{string} &gpiopath);
+00066   \textcolor{keywordtype}{void} WritesValue(\textcolor{keyword}{const} \textcolor{keywordtype}{string} &gpiopath, \hyperlink{class_hardware_1_1_g_p_i_o_ad357201dc1ad13ad96ba1773108a5f6d}{Value} value);
+00067 \};
+00068 
+00069 \textcolor{keywordtype}{void} *\hyperlink{namespace_hardware_af5f1bde915012872fc6b800981948aaa}{threadedPollGPIO}(\textcolor{keywordtype}{void} *value);
+00070 \}
+\end{DoxyCode}

@@ -1,0 +1,75 @@
+\hypertarget{_p_w_m_8h_source}{}\subsection{P\+W\+M.\+h}
+\label{_p_w_m_8h_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Hardware/\+P\+W\+M.\+h@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Hardware/\+P\+W\+M.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/* Copyright (C) Jelle Spijker - All Rights Reserved}
+00002 \textcolor{comment}{ * Unauthorized copying of this file, via any medium is strictly prohibited}
+00003 \textcolor{comment}{ * and only allowed with the written consent of the author (Jelle Spijker)}
+00004 \textcolor{comment}{ * This software is proprietary and confidential}
+00005 \textcolor{comment}{ * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015}
+00006 \textcolor{comment}{ */}
+00007 
+00008 \textcolor{preprocessor}{#pragma once}
+00009 \textcolor{preprocessor}{#include "\hyperlink{_b_b_b_8h}{BBB.h}"}
+00010 \textcolor{preprocessor}{#include <dirent.h>}
+00011 
+\hypertarget{_p_w_m_8h_source_l00012}{}\hyperlink{_p_w_m_8h_ac59f8e6888c0a1e33c63203c7b39126c}{00012} \textcolor{preprocessor}{#define OCP\_PATH "/sys/class/pwm/"}
+\hypertarget{_p_w_m_8h_source_l00013}{}\hyperlink{_p_w_m_8h_a107564a7febd186a238d8af86893ca9b}{00013} \textcolor{preprocessor}{#define PWM\_CAPE "Override Board Name,00A0,Override Manuf,cape-universaln"}
+00014 
+00015 \textcolor{keyword}{namespace }\hyperlink{namespace_hardware}{Hardware} \{
+\hypertarget{_p_w_m_8h_source_l00016}{}\hyperlink{class_hardware_1_1_p_w_m}{00016} \textcolor{keyword}{class }\hyperlink{class_hardware_1_1_p_w_m}{PWM} : \textcolor{keyword}{public} \hyperlink{class_hardware_1_1_b_b_b}{BBB} \{
+00017 \textcolor{keyword}{public}:
+\hypertarget{_p_w_m_8h_source_l00018}{}\hyperlink{class_hardware_1_1_p_w_m_a7cc6acf1c28f0eaef16246635dc0353a}{00018}   \textcolor{keyword}{enum} \hyperlink{class_hardware_1_1_p_w_m_a7cc6acf1c28f0eaef16246635dc0353a}{Pin} \textcolor{comment}{// Four possible PWM pins}
+\hypertarget{_p_w_m_8h_source_l00019}{}\hyperlink{class_hardware_1_1_p_w_m_a7cc6acf1c28f0eaef16246635dc0353aa234e15810d56fe4504c4919b13990253}{00019}   \{ \hyperlink{class_hardware_1_1_p_w_m_a7cc6acf1c28f0eaef16246635dc0353aa234e15810d56fe4504c4919b13990253}{P8\_13},
+\hypertarget{_p_w_m_8h_source_l00020}{}\hyperlink{class_hardware_1_1_p_w_m_a7cc6acf1c28f0eaef16246635dc0353aa98fe034e126bc72885936dec175841d2}{00020}     \hyperlink{class_hardware_1_1_p_w_m_a7cc6acf1c28f0eaef16246635dc0353aa98fe034e126bc72885936dec175841d2}{P8\_19},
+\hypertarget{_p_w_m_8h_source_l00021}{}\hyperlink{class_hardware_1_1_p_w_m_a7cc6acf1c28f0eaef16246635dc0353aa68cc50c029ae66d2fa7014839e40f771}{00021}     \hyperlink{class_hardware_1_1_p_w_m_a7cc6acf1c28f0eaef16246635dc0353aa68cc50c029ae66d2fa7014839e40f771}{P9\_14},
+\hypertarget{_p_w_m_8h_source_l00022}{}\hyperlink{class_hardware_1_1_p_w_m_a7cc6acf1c28f0eaef16246635dc0353aa83cddd77880b51c03468ed7890863fca}{00022}     \hyperlink{class_hardware_1_1_p_w_m_a7cc6acf1c28f0eaef16246635dc0353aa83cddd77880b51c03468ed7890863fca}{P9\_16} \};
+\hypertarget{_p_w_m_8h_source_l00023}{}\hyperlink{class_hardware_1_1_p_w_m_a6f1e614731154a3613c03a4238ddd107}{00023}   \textcolor{keyword}{enum} \hyperlink{class_hardware_1_1_p_w_m_a6f1e614731154a3613c03a4238ddd107}{Run} \textcolor{comment}{// Signal generating}
+\hypertarget{_p_w_m_8h_source_l00024}{}\hyperlink{class_hardware_1_1_p_w_m_a6f1e614731154a3613c03a4238ddd107ab5b402c129bba7a723c2263578c72f49}{00024}   \{ \hyperlink{class_hardware_1_1_p_w_m_a6f1e614731154a3613c03a4238ddd107ab5b402c129bba7a723c2263578c72f49}{On} = 1,
+\hypertarget{_p_w_m_8h_source_l00025}{}\hyperlink{class_hardware_1_1_p_w_m_a6f1e614731154a3613c03a4238ddd107a4bbbf1a41558634408e5ce890dc7c39c}{00025}     \hyperlink{class_hardware_1_1_p_w_m_a6f1e614731154a3613c03a4238ddd107a4bbbf1a41558634408e5ce890dc7c39c}{Off} = 0 \};
+\hypertarget{_p_w_m_8h_source_l00026}{}\hyperlink{class_hardware_1_1_p_w_m_a728111433109229b4da1efc953a107c1}{00026}   \textcolor{keyword}{enum} \hyperlink{class_hardware_1_1_p_w_m_a728111433109229b4da1efc953a107c1}{Polarity} \textcolor{comment}{// Inverse duty polarity}
+\hypertarget{_p_w_m_8h_source_l00027}{}\hyperlink{class_hardware_1_1_p_w_m_a728111433109229b4da1efc953a107c1a90676a804c624195f2b488a0a8fdc82e}{00027}   \{ \hyperlink{class_hardware_1_1_p_w_m_a728111433109229b4da1efc953a107c1a90676a804c624195f2b488a0a8fdc82e}{Normal} = 1,
+\hypertarget{_p_w_m_8h_source_l00028}{}\hyperlink{class_hardware_1_1_p_w_m_a728111433109229b4da1efc953a107c1ad2aaacda00b8599b9914ee158cb51298}{00028}     \hyperlink{class_hardware_1_1_p_w_m_a728111433109229b4da1efc953a107c1ad2aaacda00b8599b9914ee158cb51298}{Inverted} = 0 \};
+00029 
+\hypertarget{_p_w_m_8h_source_l00030}{}\hyperlink{class_hardware_1_1_p_w_m_a47a155962c7c376bf1fe27c15c1e1e1d}{00030}   \hyperlink{class_hardware_1_1_p_w_m_a7cc6acf1c28f0eaef16246635dc0353a}{Pin} \hyperlink{class_hardware_1_1_p_w_m_a47a155962c7c376bf1fe27c15c1e1e1d}{pin}; \textcolor{comment}{// Current pin}
+00031 
+\hypertarget{_p_w_m_8h_source_l00032}{}\hyperlink{class_hardware_1_1_p_w_m_a1eb3801b19831147129440bf35c29b7f}{00032}   uint8\_t \hyperlink{class_hardware_1_1_p_w_m_a1eb3801b19831147129440bf35c29b7f}{GetPixelValue}() \{ \textcolor{keywordflow}{return} \hyperlink{class_hardware_1_1_p_w_m_a27de0bd1068a57a970d21bbbe4fc0872}{pixelvalue}; \}
+00033   \textcolor{keywordtype}{void} \hyperlink{class_hardware_1_1_p_w_m_ad9b2d460ab02f958653ff29b4cb62a80}{SetPixelValue}(uint8\_t value);
+00034 
+\hypertarget{_p_w_m_8h_source_l00035}{}\hyperlink{class_hardware_1_1_p_w_m_a03b291fccd76436faf7d8efb415a4aa7}{00035}   \textcolor{keywordtype}{float} \hyperlink{class_hardware_1_1_p_w_m_a03b291fccd76436faf7d8efb415a4aa7}{GetIntensity}() \{ \textcolor{keywordflow}{return} \hyperlink{class_hardware_1_1_p_w_m_afcfc81ddeeb9c510ad4d00b215477d7a}{intensity}; \};
+00036   \textcolor{keywordtype}{void} \hyperlink{class_hardware_1_1_p_w_m_abf855c57004d264ec066fbd1a87fd5a8}{SetIntensity}(\textcolor{keywordtype}{float} value);
+00037 
+\hypertarget{_p_w_m_8h_source_l00038}{}\hyperlink{class_hardware_1_1_p_w_m_a61652657a00420607e184d7cf2627202}{00038}   \textcolor{keywordtype}{int} \hyperlink{class_hardware_1_1_p_w_m_a61652657a00420607e184d7cf2627202}{GetPeriod}() \{ \textcolor{keywordflow}{return} \hyperlink{class_hardware_1_1_p_w_m_a91323a511e37d396f46d08f4159ef761}{period}; \};
+00039   \textcolor{keywordtype}{void} \hyperlink{class_hardware_1_1_p_w_m_a205b979fa8b87d25b01ac8e8d0f06fb6}{SetPeriod}(\textcolor{keywordtype}{int} value);
+00040 
+\hypertarget{_p_w_m_8h_source_l00041}{}\hyperlink{class_hardware_1_1_p_w_m_abc213166a3e5f725fe8eb810bdf63085}{00041}   \textcolor{keywordtype}{int} \hyperlink{class_hardware_1_1_p_w_m_abc213166a3e5f725fe8eb810bdf63085}{GetDuty}() \{ \textcolor{keywordflow}{return} \hyperlink{class_hardware_1_1_p_w_m_a3309b2645c4c817384d91f33f0df5d64}{duty}; \};
+00042   \textcolor{keywordtype}{void} \hyperlink{class_hardware_1_1_p_w_m_a93ea3627da17bf143ac548cbd623d13d}{SetDuty}(\textcolor{keywordtype}{int} value);
+00043   \textcolor{keywordtype}{void} \hyperlink{class_hardware_1_1_p_w_m_abf855c57004d264ec066fbd1a87fd5a8}{SetIntensity}();
+00044 
+\hypertarget{_p_w_m_8h_source_l00045}{}\hyperlink{class_hardware_1_1_p_w_m_a74be17798a57dfa1e394444f1ce11a64}{00045}   \hyperlink{class_hardware_1_1_p_w_m_a6f1e614731154a3613c03a4238ddd107}{Run} \hyperlink{class_hardware_1_1_p_w_m_a74be17798a57dfa1e394444f1ce11a64}{GetRun}() \{ \textcolor{keywordflow}{return} \hyperlink{class_hardware_1_1_p_w_m_a04531646b41accced24d46046c4bc7de}{run}; \};
+00046   \textcolor{keywordtype}{void} \hyperlink{class_hardware_1_1_p_w_m_a73b5f0047d4eb62f93f72745124fca73}{SetRun}(\hyperlink{class_hardware_1_1_p_w_m_a6f1e614731154a3613c03a4238ddd107}{Run} value);
+00047 
+\hypertarget{_p_w_m_8h_source_l00048}{}\hyperlink{class_hardware_1_1_p_w_m_a938dbb560c1dd057193b39a4186bef9c}{00048}   \hyperlink{class_hardware_1_1_p_w_m_a728111433109229b4da1efc953a107c1}{Polarity} \hyperlink{class_hardware_1_1_p_w_m_a938dbb560c1dd057193b39a4186bef9c}{GetPolarity}() \{ \textcolor{keywordflow}{return} \hyperlink{class_hardware_1_1_p_w_m_ad346586d086f8462c3de6a4c19edb1d3}{polarity}; \};
+00049   \textcolor{keywordtype}{void} \hyperlink{class_hardware_1_1_p_w_m_a2fc3f25039bd180daf3af186912c3a29}{SetPolarity}(\hyperlink{class_hardware_1_1_p_w_m_a728111433109229b4da1efc953a107c1}{Polarity} value);
+00050 
+00051   \hyperlink{class_hardware_1_1_p_w_m_ac5608137ddc798aa26c505ec6edb8458}{PWM}(\hyperlink{class_hardware_1_1_p_w_m_a7cc6acf1c28f0eaef16246635dc0353a}{Pin} pin);
+00052   \hyperlink{class_hardware_1_1_p_w_m_a2867d5a260e3b6069926a3282e66ebba}{~PWM}();
+00053 
+00054 \textcolor{keyword}{private}:
+\hypertarget{_p_w_m_8h_source_l00055}{}\hyperlink{class_hardware_1_1_p_w_m_a91323a511e37d396f46d08f4159ef761}{00055}   \textcolor{keywordtype}{int} \hyperlink{class_hardware_1_1_p_w_m_a91323a511e37d396f46d08f4159ef761}{period};         \textcolor{comment}{// current period}
+\hypertarget{_p_w_m_8h_source_l00056}{}\hyperlink{class_hardware_1_1_p_w_m_a3309b2645c4c817384d91f33f0df5d64}{00056}   \textcolor{keywordtype}{int} \hyperlink{class_hardware_1_1_p_w_m_a3309b2645c4c817384d91f33f0df5d64}{duty};           \textcolor{comment}{// current duty}
+\hypertarget{_p_w_m_8h_source_l00057}{}\hyperlink{class_hardware_1_1_p_w_m_afcfc81ddeeb9c510ad4d00b215477d7a}{00057}   \textcolor{keywordtype}{float} \hyperlink{class_hardware_1_1_p_w_m_afcfc81ddeeb9c510ad4d00b215477d7a}{intensity};    \textcolor{comment}{// current intensity}
+\hypertarget{_p_w_m_8h_source_l00058}{}\hyperlink{class_hardware_1_1_p_w_m_a27de0bd1068a57a970d21bbbe4fc0872}{00058}   uint8\_t \hyperlink{class_hardware_1_1_p_w_m_a27de0bd1068a57a970d21bbbe4fc0872}{pixelvalue}; \textcolor{comment}{// current pixelvalue}
+\hypertarget{_p_w_m_8h_source_l00059}{}\hyperlink{class_hardware_1_1_p_w_m_a04531646b41accced24d46046c4bc7de}{00059}   \hyperlink{class_hardware_1_1_p_w_m_a6f1e614731154a3613c03a4238ddd107}{Run} \hyperlink{class_hardware_1_1_p_w_m_a04531646b41accced24d46046c4bc7de}{run};            \textcolor{comment}{// current run state}
+\hypertarget{_p_w_m_8h_source_l00060}{}\hyperlink{class_hardware_1_1_p_w_m_ad346586d086f8462c3de6a4c19edb1d3}{00060}   \hyperlink{class_hardware_1_1_p_w_m_a728111433109229b4da1efc953a107c1}{Polarity} \hyperlink{class_hardware_1_1_p_w_m_ad346586d086f8462c3de6a4c19edb1d3}{polarity};  \textcolor{comment}{// current polaity}
+00061 
+\hypertarget{_p_w_m_8h_source_l00062}{}\hyperlink{class_hardware_1_1_p_w_m_a344f82a0812dceb40aa48d4789d09c68}{00062}   \textcolor{keywordtype}{string} \hyperlink{class_hardware_1_1_p_w_m_a344f82a0812dceb40aa48d4789d09c68}{basepath};     \textcolor{comment}{// the basepath ocp}
+\hypertarget{_p_w_m_8h_source_l00063}{}\hyperlink{class_hardware_1_1_p_w_m_a53311e9df6960751465d5f0b81192226}{00063}   \textcolor{keywordtype}{string} \hyperlink{class_hardware_1_1_p_w_m_a53311e9df6960751465d5f0b81192226}{dutypath};     \textcolor{comment}{// base + duty path}
+\hypertarget{_p_w_m_8h_source_l00064}{}\hyperlink{class_hardware_1_1_p_w_m_a27e17a6c2e9720c571d5939f1a9ffb12}{00064}   \textcolor{keywordtype}{string} \hyperlink{class_hardware_1_1_p_w_m_a27e17a6c2e9720c571d5939f1a9ffb12}{periodpath};   \textcolor{comment}{// base + period path}
+\hypertarget{_p_w_m_8h_source_l00065}{}\hyperlink{class_hardware_1_1_p_w_m_ac1eb93467481ee2bd3565f1be47b8a01}{00065}   \textcolor{keywordtype}{string} \hyperlink{class_hardware_1_1_p_w_m_ac1eb93467481ee2bd3565f1be47b8a01}{runpath};      \textcolor{comment}{// base + run path}
+\hypertarget{_p_w_m_8h_source_l00066}{}\hyperlink{class_hardware_1_1_p_w_m_ace89c96484ffa9d6c9f3a8067848bf51}{00066}   \textcolor{keywordtype}{string} \hyperlink{class_hardware_1_1_p_w_m_ace89c96484ffa9d6c9f3a8067848bf51}{polaritypath}; \textcolor{comment}{// base + polarity path}
+00067 
+00068   \textcolor{keywordtype}{void} \hyperlink{class_hardware_1_1_p_w_m_a891abdbbd00aae4f0a4afdf0a9e3a160}{calcIntensity}();
+00069 \};
+00070 \}
+\end{DoxyCode}

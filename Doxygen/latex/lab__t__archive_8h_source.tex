@@ -1,0 +1,30 @@
+\hypertarget{lab__t__archive_8h_source}{}\subsection{lab\+\_\+t\+\_\+archive.\+h}
+\label{lab__t__archive_8h_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Analyzer/lab\+\_\+t\+\_\+archive.\+h@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Analyzer/lab\+\_\+t\+\_\+archive.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/* Copyright (C) Jelle Spijker - All Rights Reserved}
+00002 \textcolor{comment}{ * Unauthorized copying of this file, via any medium is strictly prohibited}
+00003 \textcolor{comment}{ * and only allowed with the written consent of the author (Jelle Spijker)}
+00004 \textcolor{comment}{ * This software is proprietary and confidential}
+00005 \textcolor{comment}{ * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015}
+00006 \textcolor{comment}{ */}
+00007 
+00008 \textcolor{preprocessor}{#pragma once}
+00009 
+00010 \textcolor{preprocessor}{#include <boost/archive/binary\_iarchive.hpp>}
+00011 \textcolor{preprocessor}{#include <boost/archive/binary\_oarchive.hpp>}
+00012 \textcolor{preprocessor}{#include <boost/serialization/access.hpp>}
+00013 \textcolor{preprocessor}{#include "\hyperlink{soilanalyzertypes_8h}{soilanalyzertypes.h}"}
+00014 
+00015 \textcolor{keyword}{namespace }\hyperlink{namespaceboost}{boost} \{
+00016 \textcolor{keyword}{namespace }serialization \{
+00020 \textcolor{keyword}{template} <\textcolor{keyword}{class} Archive>
+\hypertarget{lab__t__archive_8h_source_l00021}{}\hyperlink{namespaceboost_1_1serialization_aa5c14ec0d506df58739d30387cc0e6ec}{00021} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \hyperlink{namespaceboost_1_1serialization_acf3ecd0fdaa3726a2332e266a4ecfe47}{serialize}(Archive &ar, \hyperlink{struct_soil_analyzer_1_1_lab__t}{SoilAnalyzer::Lab\_t} &P, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} 
+      version \_\_attribute\_\_((unused))) \{
+00022   ar &P.\hyperlink{struct_soil_analyzer_1_1_lab__t_a95bd9662f683628a0ead6760bc194eaa}{L};
+00023   ar &P.\hyperlink{struct_soil_analyzer_1_1_lab__t_a2a956821f27c87aba8939183629f2782}{a};
+00024   ar &P.\hyperlink{struct_soil_analyzer_1_1_lab__t_ad703ecdb0a8024e21f8e2ae3c21d9ef2}{b};
+00025 \}
+00026 \}
+00027 \}
+\end{DoxyCode}

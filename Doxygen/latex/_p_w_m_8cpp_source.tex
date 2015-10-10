@@ -1,0 +1,130 @@
+\hypertarget{_p_w_m_8cpp_source}{}\subsection{P\+W\+M.\+cpp}
+\label{_p_w_m_8cpp_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Hardware/\+P\+W\+M.\+cpp@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Hardware/\+P\+W\+M.\+cpp}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/* Copyright (C) Jelle Spijker - All Rights Reserved}
+00002 \textcolor{comment}{ * Unauthorized copying of this file, via any medium is strictly prohibited}
+00003 \textcolor{comment}{ * and only allowed with the written consent of the author (Jelle Spijker)}
+00004 \textcolor{comment}{ * This software is proprietary and confidential}
+00005 \textcolor{comment}{ * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015}
+00006 \textcolor{comment}{ */}
+00007 
+00008 \textcolor{preprocessor}{#include "\hyperlink{_p_w_m_8h}{PWM.h}"}
+00009 
+00010 \textcolor{keyword}{namespace }\hyperlink{namespace_hardware}{Hardware} \{
+\hypertarget{_p_w_m_8cpp_source_l00015}{}\hyperlink{class_hardware_1_1_p_w_m_ac5608137ddc798aa26c505ec6edb8458}{00015} \hyperlink{class_hardware_1_1_p_w_m_ac5608137ddc798aa26c505ec6edb8458}{PWM::PWM}(\hyperlink{class_hardware_1_1_p_w_m_a7cc6acf1c28f0eaef16246635dc0353a}{Pin} pin) \{
+00016   this->pin = \hyperlink{class_hardware_1_1_p_w_m_a47a155962c7c376bf1fe27c15c1e1e1d}{pin};
+00017 
+00018   \textcolor{comment}{// Check if PWM cape is loaded, if not load it}
+00019   \textcolor{keywordflow}{if} (!\hyperlink{class_hardware_1_1_b_b_b_aaf2f732c771eac0b1ee984dbc0bca784}{CapeLoaded}(\hyperlink{_p_w_m_8h_a107564a7febd186a238d8af86893ca9b}{PWM\_CAPE})) \{
+00020     \hyperlink{class_hardware_1_1_b_b_b_a155cc06f76d82a6b690ce5ea08e7c68e}{Write}(\hyperlink{_b_b_b_8h_a3de26a5dbd2276c1486afbba5fc8de59}{SLOTS}, \hyperlink{_p_w_m_8h_a107564a7febd186a238d8af86893ca9b}{PWM\_CAPE});
+00021   \}
+00022 
+00023   \textcolor{comment}{// Init the pin}
+00024   \textcolor{keywordflow}{switch} (pin) \{
+00025   \textcolor{keywordflow}{case} \hyperlink{class_hardware_1_1_p_w_m_a7cc6acf1c28f0eaef16246635dc0353aa234e15810d56fe4504c4919b13990253}{Hardware::PWM::P8\_13}:
+00026     system(\textcolor{stringliteral}{"config-pin P8.13 pwm"});
+00027     \hyperlink{class_hardware_1_1_p_w_m_a344f82a0812dceb40aa48d4789d09c68}{basepath} = \hyperlink{_p_w_m_8h_ac59f8e6888c0a1e33c63203c7b39126c}{OCP\_PATH};
+00028     \hyperlink{class_hardware_1_1_p_w_m_a344f82a0812dceb40aa48d4789d09c68}{basepath}.append(\textcolor{stringliteral}{"pwmchip4/pwm1"});
+00029     \textcolor{keywordflow}{break};
+00030   \textcolor{keywordflow}{case} \hyperlink{class_hardware_1_1_p_w_m_a7cc6acf1c28f0eaef16246635dc0353aa98fe034e126bc72885936dec175841d2}{Hardware::PWM::P8\_19}:
+00031     system(\textcolor{stringliteral}{"config-pin P8.19 pwm"});
+00032     \hyperlink{class_hardware_1_1_p_w_m_a344f82a0812dceb40aa48d4789d09c68}{basepath} = \hyperlink{_p_w_m_8h_ac59f8e6888c0a1e33c63203c7b39126c}{OCP\_PATH};
+00033     \hyperlink{class_hardware_1_1_p_w_m_a344f82a0812dceb40aa48d4789d09c68}{basepath}.append(\textcolor{stringliteral}{"pwmchip4/pwm0"});
+00034     \textcolor{keywordflow}{break};
+00035   \textcolor{keywordflow}{case} \hyperlink{class_hardware_1_1_p_w_m_a7cc6acf1c28f0eaef16246635dc0353aa68cc50c029ae66d2fa7014839e40f771}{Hardware::PWM::P9\_14}:
+00036     system(\textcolor{stringliteral}{"config-pin P9.14 pwm"});
+00037     \hyperlink{class_hardware_1_1_p_w_m_a344f82a0812dceb40aa48d4789d09c68}{basepath} = \hyperlink{_p_w_m_8h_ac59f8e6888c0a1e33c63203c7b39126c}{OCP\_PATH};
+00038     \hyperlink{class_hardware_1_1_p_w_m_a344f82a0812dceb40aa48d4789d09c68}{basepath}.append(\textcolor{stringliteral}{"pwmchip2/pwm0"});
+00039     \textcolor{keywordflow}{break};
+00040   \textcolor{keywordflow}{case} \hyperlink{class_hardware_1_1_p_w_m_a7cc6acf1c28f0eaef16246635dc0353aa83cddd77880b51c03468ed7890863fca}{Hardware::PWM::P9\_16}:
+00041     system(\textcolor{stringliteral}{"config-pin P9.16 pwm"});
+00042     \hyperlink{class_hardware_1_1_p_w_m_a344f82a0812dceb40aa48d4789d09c68}{basepath}.append(\textcolor{stringliteral}{"pwmchip2/pwm1"});
+00043     \textcolor{keywordflow}{break};
+00044   \}
+00045 
+00046   \textcolor{comment}{// Get the working paths}
+00047   \hyperlink{class_hardware_1_1_p_w_m_a53311e9df6960751465d5f0b81192226}{dutypath} = \hyperlink{class_hardware_1_1_p_w_m_a344f82a0812dceb40aa48d4789d09c68}{basepath} + \textcolor{stringliteral}{"/duty\_cycle"};
+00048   \hyperlink{class_hardware_1_1_p_w_m_a27e17a6c2e9720c571d5939f1a9ffb12}{periodpath} = \hyperlink{class_hardware_1_1_p_w_m_a344f82a0812dceb40aa48d4789d09c68}{basepath} + \textcolor{stringliteral}{"/period"};
+00049   \hyperlink{class_hardware_1_1_p_w_m_ac1eb93467481ee2bd3565f1be47b8a01}{runpath} = \hyperlink{class_hardware_1_1_p_w_m_a344f82a0812dceb40aa48d4789d09c68}{basepath} + \textcolor{stringliteral}{"/run"};
+00050   \hyperlink{class_hardware_1_1_p_w_m_ace89c96484ffa9d6c9f3a8067848bf51}{polaritypath} = \hyperlink{class_hardware_1_1_p_w_m_a344f82a0812dceb40aa48d4789d09c68}{basepath} + \textcolor{stringliteral}{"/polarity"};
+00051 
+00052   \textcolor{comment}{// Give Linux time to setup directory structure;}
+00053   usleep(250000);
+00054 
+00055   \textcolor{comment}{// Read current values}
+00056   \hyperlink{class_hardware_1_1_p_w_m_a91323a511e37d396f46d08f4159ef761}{period} = StringToNumber<int>(\hyperlink{class_hardware_1_1_b_b_b_a8b287ded7bcb2cfab361d1fca2b62e9f}{Read}(\hyperlink{class_hardware_1_1_p_w_m_a27e17a6c2e9720c571d5939f1a9ffb12}{periodpath}));
+00057   \hyperlink{class_hardware_1_1_p_w_m_a3309b2645c4c817384d91f33f0df5d64}{duty} = StringToNumber<int>(\hyperlink{class_hardware_1_1_b_b_b_a8b287ded7bcb2cfab361d1fca2b62e9f}{Read}(\hyperlink{class_hardware_1_1_p_w_m_a53311e9df6960751465d5f0b81192226}{dutypath}));
+00058   \hyperlink{class_hardware_1_1_p_w_m_a04531646b41accced24d46046c4bc7de}{run} = \textcolor{keyword}{static\_cast<}\hyperlink{class_hardware_1_1_p_w_m_a6f1e614731154a3613c03a4238ddd107}{Run}\textcolor{keyword}{>}(StringToNumber<int>(\hyperlink{class_hardware_1_1_b_b_b_a8b287ded7bcb2cfab361d1fca2b62e9f}{Read}(\hyperlink{class_hardware_1_1_p_w_m_ac1eb93467481ee2bd3565f1be47b8a01}{runpath})));
+00059   \hyperlink{class_hardware_1_1_p_w_m_ad346586d086f8462c3de6a4c19edb1d3}{polarity} = \textcolor{keyword}{static\_cast<}\hyperlink{class_hardware_1_1_p_w_m_a728111433109229b4da1efc953a107c1}{Polarity}\textcolor{keyword}{>}(StringToNumber<int>(\hyperlink{class_hardware_1_1_b_b_b_a8b287ded7bcb2cfab361d1fca2b62e9f}{Read}(
+      \hyperlink{class_hardware_1_1_p_w_m_ace89c96484ffa9d6c9f3a8067848bf51}{polaritypath})));
+00060 
+00061   \textcolor{comment}{// calculate the current intensity}
+00062   \hyperlink{class_hardware_1_1_p_w_m_a891abdbbd00aae4f0a4afdf0a9e3a160}{calcIntensity}();
+00063 \}
+00064 
+\hypertarget{_p_w_m_8cpp_source_l00065}{}\hyperlink{class_hardware_1_1_p_w_m_a2867d5a260e3b6069926a3282e66ebba}{00065} \hyperlink{class_hardware_1_1_p_w_m_a2867d5a260e3b6069926a3282e66ebba}{PWM::~PWM}() \{\}
+00066 
+\hypertarget{_p_w_m_8cpp_source_l00070}{}\hyperlink{class_hardware_1_1_p_w_m_a891abdbbd00aae4f0a4afdf0a9e3a160}{00070} \textcolor{keywordtype}{void} \hyperlink{class_hardware_1_1_p_w_m_a891abdbbd00aae4f0a4afdf0a9e3a160}{PWM::calcIntensity}() \{
+00071   \textcolor{keywordflow}{if} (\hyperlink{class_hardware_1_1_p_w_m_ad346586d086f8462c3de6a4c19edb1d3}{polarity} == \hyperlink{class_hardware_1_1_p_w_m_a728111433109229b4da1efc953a107c1a90676a804c624195f2b488a0a8fdc82e}{Normal}) \{
+00072     \textcolor{keywordflow}{if} (\hyperlink{class_hardware_1_1_p_w_m_a3309b2645c4c817384d91f33f0df5d64}{duty} == 0) \{
+00073       \hyperlink{class_hardware_1_1_p_w_m_afcfc81ddeeb9c510ad4d00b215477d7a}{intensity} = 0.0f;
+00074     \} \textcolor{keywordflow}{else} \{
+00075       \hyperlink{class_hardware_1_1_p_w_m_afcfc81ddeeb9c510ad4d00b215477d7a}{intensity} = (float)\hyperlink{class_hardware_1_1_p_w_m_a91323a511e37d396f46d08f4159ef761}{period} / (\textcolor{keywordtype}{float})\hyperlink{class_hardware_1_1_p_w_m_a3309b2645c4c817384d91f33f0df5d64}{duty};
+00076     \}
+00077   \} \textcolor{keywordflow}{else} \{
+00078     \textcolor{keywordflow}{if} (\hyperlink{class_hardware_1_1_p_w_m_a91323a511e37d396f46d08f4159ef761}{period} == 0) \{
+00079       \hyperlink{class_hardware_1_1_p_w_m_afcfc81ddeeb9c510ad4d00b215477d7a}{intensity} = 0.0f;
+00080     \} \textcolor{keywordflow}{else} \{
+00081       \hyperlink{class_hardware_1_1_p_w_m_afcfc81ddeeb9c510ad4d00b215477d7a}{intensity} = (float)\hyperlink{class_hardware_1_1_p_w_m_a3309b2645c4c817384d91f33f0df5d64}{duty} / (\textcolor{keywordtype}{float})\hyperlink{class_hardware_1_1_p_w_m_a91323a511e37d396f46d08f4159ef761}{period};
+00082     \}
+00083   \}
+00084 \}
+00085 
+\hypertarget{_p_w_m_8cpp_source_l00090}{}\hyperlink{class_hardware_1_1_p_w_m_ad6c6bb44a237454c86c1c28330f76afe}{00090} \textcolor{keywordtype}{void} \hyperlink{class_hardware_1_1_p_w_m_abf855c57004d264ec066fbd1a87fd5a8}{PWM::SetIntensity}(\textcolor{keywordtype}{float} value) \{
+00091   \textcolor{keywordflow}{if} (\hyperlink{class_hardware_1_1_p_w_m_ad346586d086f8462c3de6a4c19edb1d3}{polarity} == \hyperlink{class_hardware_1_1_p_w_m_a728111433109229b4da1efc953a107c1a90676a804c624195f2b488a0a8fdc82e}{Normal}) \{
+00092     \hyperlink{class_hardware_1_1_p_w_m_a93ea3627da17bf143ac548cbd623d13d}{SetDuty}(static\_cast<int>((value * \hyperlink{class_hardware_1_1_p_w_m_a3309b2645c4c817384d91f33f0df5d64}{duty}) + 0.5));
+00093   \} \textcolor{keywordflow}{else} \{
+00094     \hyperlink{class_hardware_1_1_p_w_m_a205b979fa8b87d25b01ac8e8d0f06fb6}{SetPeriod}(static\_cast<int>((value * \hyperlink{class_hardware_1_1_p_w_m_a91323a511e37d396f46d08f4159ef761}{period}) + 0.5));
+00095   \}
+00096 \}
+00097 
+\hypertarget{_p_w_m_8cpp_source_l00102}{}\hyperlink{class_hardware_1_1_p_w_m_ad9b2d460ab02f958653ff29b4cb62a80}{00102} \textcolor{keywordtype}{void} \hyperlink{class_hardware_1_1_p_w_m_ad9b2d460ab02f958653ff29b4cb62a80}{PWM::SetPixelValue}(uint8\_t value) \{
+00103   \textcolor{keywordflow}{if} (\hyperlink{class_hardware_1_1_p_w_m_a91323a511e37d396f46d08f4159ef761}{period} != 255) \{
+00104     \hyperlink{class_hardware_1_1_p_w_m_a205b979fa8b87d25b01ac8e8d0f06fb6}{SetPeriod}(255);
+00105   \}
+00106   \hyperlink{class_hardware_1_1_p_w_m_a93ea3627da17bf143ac548cbd623d13d}{SetDuty}(255 - value);
+00107   \hyperlink{class_hardware_1_1_p_w_m_a27de0bd1068a57a970d21bbbe4fc0872}{pixelvalue} = value;
+00108 \}
+00109 
+\hypertarget{_p_w_m_8cpp_source_l00114}{}\hyperlink{class_hardware_1_1_p_w_m_a205b979fa8b87d25b01ac8e8d0f06fb6}{00114} \textcolor{keywordtype}{void} \hyperlink{class_hardware_1_1_p_w_m_a205b979fa8b87d25b01ac8e8d0f06fb6}{PWM::SetPeriod}(\textcolor{keywordtype}{int} value) \{
+00115   \textcolor{keywordtype}{string} valstr = NumberToString<int>(value);
+00116   \hyperlink{class_hardware_1_1_b_b_b_a155cc06f76d82a6b690ce5ea08e7c68e}{Write}(\hyperlink{class_hardware_1_1_p_w_m_a27e17a6c2e9720c571d5939f1a9ffb12}{periodpath}, valstr);
+00117   \hyperlink{class_hardware_1_1_p_w_m_a91323a511e37d396f46d08f4159ef761}{period} = value;
+00118 
+00119   \hyperlink{class_hardware_1_1_p_w_m_a891abdbbd00aae4f0a4afdf0a9e3a160}{calcIntensity}();
+00120 \}
+00121 
+\hypertarget{_p_w_m_8cpp_source_l00126}{}\hyperlink{class_hardware_1_1_p_w_m_a93ea3627da17bf143ac548cbd623d13d}{00126} \textcolor{keywordtype}{void} \hyperlink{class_hardware_1_1_p_w_m_a93ea3627da17bf143ac548cbd623d13d}{PWM::SetDuty}(\textcolor{keywordtype}{int} value) \{
+00127   \textcolor{keywordtype}{string} valstr = NumberToString<int>(value);
+00128   \hyperlink{class_hardware_1_1_b_b_b_a155cc06f76d82a6b690ce5ea08e7c68e}{Write}(\hyperlink{class_hardware_1_1_p_w_m_a53311e9df6960751465d5f0b81192226}{dutypath}, valstr);
+00129   \hyperlink{class_hardware_1_1_p_w_m_a3309b2645c4c817384d91f33f0df5d64}{duty} = value;
+00130 
+00131   \hyperlink{class_hardware_1_1_p_w_m_a891abdbbd00aae4f0a4afdf0a9e3a160}{calcIntensity}();
+00132 \}
+00133 
+\hypertarget{_p_w_m_8cpp_source_l00138}{}\hyperlink{class_hardware_1_1_p_w_m_a73b5f0047d4eb62f93f72745124fca73}{00138} \textcolor{keywordtype}{void} \hyperlink{class_hardware_1_1_p_w_m_a73b5f0047d4eb62f93f72745124fca73}{PWM::SetRun}(\hyperlink{class_hardware_1_1_p_w_m_a6f1e614731154a3613c03a4238ddd107}{Run} value) \{
+00139   \textcolor{keywordtype}{int} valInt = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(value);
+00140   \textcolor{keywordtype}{string} valstr = NumberToString<int>(valInt);
+00141   \hyperlink{class_hardware_1_1_b_b_b_a155cc06f76d82a6b690ce5ea08e7c68e}{Write}(\hyperlink{class_hardware_1_1_p_w_m_ac1eb93467481ee2bd3565f1be47b8a01}{runpath}, valstr);
+00142   \hyperlink{class_hardware_1_1_p_w_m_a04531646b41accced24d46046c4bc7de}{run} = value;
+00143 \}
+00144 
+\hypertarget{_p_w_m_8cpp_source_l00149}{}\hyperlink{class_hardware_1_1_p_w_m_a2fc3f25039bd180daf3af186912c3a29}{00149} \textcolor{keywordtype}{void} \hyperlink{class_hardware_1_1_p_w_m_a2fc3f25039bd180daf3af186912c3a29}{PWM::SetPolarity}(\hyperlink{class_hardware_1_1_p_w_m_a728111433109229b4da1efc953a107c1}{Polarity} value) \{
+00150   \textcolor{keywordtype}{int} valInt = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(value);
+00151   \textcolor{keywordtype}{string} valstr = NumberToString<int>(valInt);
+00152   \hyperlink{class_hardware_1_1_b_b_b_a155cc06f76d82a6b690ce5ea08e7c68e}{Write}(\hyperlink{class_hardware_1_1_p_w_m_ac1eb93467481ee2bd3565f1be47b8a01}{runpath}, valstr);
+00153   \hyperlink{class_hardware_1_1_p_w_m_ad346586d086f8462c3de6a4c19edb1d3}{polarity} = value;
+00154 \}
+00155 \}
+\end{DoxyCode}

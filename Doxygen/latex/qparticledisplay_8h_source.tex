@@ -1,0 +1,58 @@
+\hypertarget{qparticledisplay_8h_source}{}\subsection{qparticledisplay.\+h}
+\label{qparticledisplay_8h_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Q\+Particle\+Display/qparticledisplay.\+h@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Q\+Particle\+Display/qparticledisplay.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/* Copyright (C) Jelle Spijker - All Rights Reserved}
+00002 \textcolor{comment}{ * Unauthorized copying of this file, via any medium is strictly prohibited}
+00003 \textcolor{comment}{ * and only allowed with the written consent of the author (Jelle Spijker)}
+00004 \textcolor{comment}{ * This software is proprietary and confidential}
+00005 \textcolor{comment}{ * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015}
+00006 \textcolor{comment}{ */}
+00007 
+00008 \textcolor{preprocessor}{#pragma once}
+00009 \textcolor{preprocessor}{#include <QWidget>}
+00010 \textcolor{preprocessor}{#include <QImage>}
+00011 \textcolor{preprocessor}{#include <\hyperlink{qopencvqt_8h}{qopencvqt.h}>}
+00012 \textcolor{preprocessor}{#include <QColor>}
+00013 \textcolor{preprocessor}{#include <QWheelEvent>}
+00014 
+00015 \textcolor{preprocessor}{#include "\hyperlink{soilanalyzer_8h}{soilanalyzer.h}"}
+00016 
+00017 \textcolor{keyword}{namespace }\hyperlink{namespace_ui}{Ui} \{
+00018   \textcolor{keyword}{class }\hyperlink{class_q_particle_display}{QParticleDisplay};
+00019 \}
+00020 
+\hypertarget{qparticledisplay_8h_source_l00021}{}\hyperlink{class_q_particle_display}{00021} \textcolor{keyword}{class }\hyperlink{class_q_particle_display}{QParticleDisplay} : \textcolor{keyword}{public} QWidget
+00022 \{
+00023   Q\_OBJECT
+00024 
+00025 \textcolor{keyword}{public}:
+00026   \textcolor{keyword}{explicit} \hyperlink{class_q_particle_display_a552bc093c084d6212b6b4ace6f14c3d1}{QParticleDisplay}(QWidget *parent = 0);
+00027   \hyperlink{class_q_particle_display_af942373a3774f1fbe7f8465a263ff473}{~QParticleDisplay}();
+00028   \textcolor{keywordtype}{void} \hyperlink{class_q_particle_display_a31d8350736e4d39b9d2391ee8e6edc65}{SetSample}(\hyperlink{class_soil_analyzer_1_1_sample}{SoilAnalyzer::Sample} *sample);
+\hypertarget{qparticledisplay_8h_source_l00029}{}\hyperlink{class_q_particle_display_ab89d53c5fd63b606de0a3c2e4446d8c1}{00029}   \hyperlink{class_soil_analyzer_1_1_particle}{SoilAnalyzer::Particle} *\hyperlink{class_q_particle_display_ab89d53c5fd63b606de0a3c2e4446d8c1}{SelectedParticle};
+00030   \textcolor{keywordtype}{void} \hyperlink{class_q_particle_display_ac73da9c324d8cb6e4d8ce378a0394f50}{wheelEvent}( QWheelEvent * event );
+00031   \textcolor{keywordtype}{void} \hyperlink{class_q_particle_display_a9c0978636ba55d8986f60c2630b59e45}{next}();
+00032 
+00033 signals:
+00034   \textcolor{keywordtype}{void} \hyperlink{class_q_particle_display_a0418875b751dfe3e15771b994f4293ad}{particleChanged}(\textcolor{keywordtype}{int} newValue);
+00035   \textcolor{keywordtype}{void} \hyperlink{class_q_particle_display_a73adb2e0e1981fc6042d2e94a6e3be03}{shapeClassificationChanged}(\textcolor{keywordtype}{int} newValue);
+00036   \textcolor{keywordtype}{void} \hyperlink{class_q_particle_display_a5a3d6ec47c2b43e92d8279ba42c2a997}{particleDeleted}();
+00037 
+00038 \textcolor{keyword}{public} slots:
+00039   \textcolor{keywordtype}{void} \hyperlink{class_q_particle_display_a2b6454aa1ddef3eca338780f66b91654}{setSelectedParticle}(\textcolor{keywordtype}{int} newValue);
+00040 
+00041 \textcolor{keyword}{private} slots:
+00042   \textcolor{keywordtype}{void} \hyperlink{class_q_particle_display_aa19e1abd163291e87e8b4f2547e90155}{on\_selectedParticleChangedWidget}(\textcolor{keywordtype}{int} value);
+00043   \textcolor{keywordtype}{void} \hyperlink{class_q_particle_display_ae532d16adee8293f3ee5fb984b614bdf}{on\_selectedParticleChangedSlider}(\textcolor{keywordtype}{int} value);
+00044   \textcolor{keywordtype}{void} \hyperlink{class_q_particle_display_a234e7c98453cad1e0d63c12b7495003a}{on\_pushButton\_delete\_clicked}();
+00045 
+00046 \textcolor{keyword}{private}:
+\hypertarget{qparticledisplay_8h_source_l00047}{}\hyperlink{class_q_particle_display_ae4e6c27c6c2059b4e08358938044a18c}{00047}   Ui::QParticleDisplay *\hyperlink{class_q_particle_display_ae4e6c27c6c2059b4e08358938044a18c}{ui};
+\hypertarget{qparticledisplay_8h_source_l00048}{}\hyperlink{class_q_particle_display_a24a25733ffa557a66bf7d776b7af8536}{00048}   \hyperlink{class_soil_analyzer_1_1_sample}{SoilAnalyzer::Sample} *\hyperlink{class_q_particle_display_a24a25733ffa557a66bf7d776b7af8536}{Sample};
+\hypertarget{qparticledisplay_8h_source_l00049}{}\hyperlink{class_q_particle_display_a6b976ba18b8aac401d79c768c5b81ed4}{00049}   QVector<QImage> \hyperlink{class_q_particle_display_a6b976ba18b8aac401d79c768c5b81ed4}{images};
+00050   QImage \hyperlink{class_q_particle_display_a185ca2afdcd24fa6107bfd6ff630b5ec}{ConvertParticleToQImage}(\hyperlink{class_soil_analyzer_1_1_particle}{SoilAnalyzer::Particle} *
+      particle);
+\hypertarget{qparticledisplay_8h_source_l00051}{}\hyperlink{class_q_particle_display_a5ee3723fa6aa59107e808a0a45c03b74}{00051}   \textcolor{keywordtype}{bool} \hyperlink{class_q_particle_display_a5ee3723fa6aa59107e808a0a45c03b74}{dontDoIt} = \textcolor{keyword}{false};
+00052 \};
+\end{DoxyCode}

@@ -1,0 +1,32 @@
+\hypertarget{_vision_debug_8h_source}{}\subsection{Vision\+Debug.\+h}
+\label{_vision_debug_8h_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Vision/\+Vision\+Debug.\+h@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Vision/\+Vision\+Debug.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/* Copyright (C) Jelle Spijker - All Rights Reserved}
+00002 \textcolor{comment}{ * Unauthorized copying of this file, via any medium is strictly prohibited}
+00003 \textcolor{comment}{ * and only allowed with the written consent of the author (Jelle Spijker)}
+00004 \textcolor{comment}{ * This software is proprietary and confidential}
+00005 \textcolor{comment}{ * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015}
+00006 \textcolor{comment}{ */}
+00007 
+00008 \textcolor{preprocessor}{#pragma once}
+00009 \textcolor{comment}{// Debuging helper macros}
+00010 \textcolor{preprocessor}{#ifndef DEBUG}
+00011 \textcolor{comment}{//#define DEBUG}
+00012 \textcolor{preprocessor}{#endif}
+00013 
+00014 \textcolor{preprocessor}{#ifdef DEBUG}
+00015 \textcolor{preprocessor}{#include <limits>}
+00016 \textcolor{preprocessor}{#include <opencv2/highgui/highgui.hpp>}
+00017 \textcolor{preprocessor}{#include <vector>}
+00018 \textcolor{preprocessor}{#include "\hyperlink{_image_processing_8h}{ImageProcessing.h}"}
+00019 \textcolor{preprocessor}{#ifndef SHOW\_DEBUG\_IMG}
+00020 \textcolor{preprocessor}{#define SHOW\_DEBUG\_IMG(img, T1, maxVal, windowName, scale)                     \(\backslash\)}
+00021 \textcolor{preprocessor}{  Vision::ImageProcessing::ShowDebugImg<T1>(img, maxVal, windowName, scale)}
+00022 \textcolor{preprocessor}{#endif // !SHOW\_DEBUG\_IMG}
+00023 \textcolor{preprocessor}{#else}
+00024 \textcolor{preprocessor}{#ifndef SHOW\_DEBUG\_IMG}
+\hypertarget{_vision_debug_8h_source_l00025}{}\hyperlink{_vision_debug_8h_aae864fa4f990213a4184a209ff236202}{00025} \textcolor{preprocessor}{#define SHOW\_DEBUG\_IMG(img, T1, maxVal, windowName, scale)}
+00026 \textcolor{preprocessor}{#endif // !SHOW\_DEBUG\_IMG}
+00027 \textcolor{preprocessor}{#endif}
+\end{DoxyCode}

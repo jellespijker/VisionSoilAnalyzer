@@ -1,0 +1,47 @@
+\hypertarget{_math_exception_8h_source}{}\subsection{Math\+Exception.\+h}
+\label{_math_exception_8h_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Math/\+Math\+Exception.\+h@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Math/\+Math\+Exception.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/* Copyright (C) Jelle Spijker - All Rights Reserved}
+00002 \textcolor{comment}{ * Unauthorized copying of this file, via any medium is strictly prohibited}
+00003 \textcolor{comment}{ * and only allowed with the written consent of the author (Jelle Spijker)}
+00004 \textcolor{comment}{ * This software is proprietary and confidential}
+00005 \textcolor{comment}{ * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015}
+00006 \textcolor{comment}{ */}
+00007 
+\hypertarget{_math_exception_8h_source_l00008}{}\hyperlink{_math_exception_8h_a5c678225d975a600ef77313d82a247b0}{00008} \textcolor{preprocessor}{#define EXCEPTION\_MATH "Math Exception!"}
+\hypertarget{_math_exception_8h_source_l00009}{}\hyperlink{_math_exception_8h_a2ad831fc7963b41855b14ace07bbdf84}{00009} \textcolor{preprocessor}{#define EXCEPTION\_MATH\_NR 0}
+\hypertarget{_math_exception_8h_source_l00010}{}\hyperlink{_math_exception_8h_a39b49da54ac54198f948ea87cd429c1c}{00010} \textcolor{preprocessor}{#define EXCEPTION\_NO\_CONTOUR\_FOUND                                             \(\backslash\)}
+00011 \textcolor{preprocessor}{  "No continuous contour found, or less then 8 pixels long!"}
+\hypertarget{_math_exception_8h_source_l00012}{}\hyperlink{_math_exception_8h_a3c2849e602d9d4c0dba3f2d3301d9cbf}{00012} \textcolor{preprocessor}{#define EXCEPTION\_NO\_CONTOUR\_FOUND\_NR 1}
+\hypertarget{_math_exception_8h_source_l00013}{}\hyperlink{_math_exception_8h_ab0eb22f73fea0163f06029cbc3f05825}{00013} \textcolor{preprocessor}{#define EXCEPTION\_SIZE\_OF\_INPUT\_NEURONS                                        \(\backslash\)}
+00014 \textcolor{preprocessor}{  "Size of input unequal to input neurons exception!"}
+\hypertarget{_math_exception_8h_source_l00015}{}\hyperlink{_math_exception_8h_ad3576b2d374be2f14816abdf843432c7}{00015} \textcolor{preprocessor}{#define EXCEPTION\_SIZE\_OF\_INPUT\_NEURONS\_NR 2}
+\hypertarget{_math_exception_8h_source_l00016}{}\hyperlink{_math_exception_8h_ac412424987d9143f59b48a2cf9e0c21b}{00016} \textcolor{preprocessor}{#define EXCEPTION\_NEURAL\_NET\_NOT\_STUDIED "Neural net didn't study exception!"}
+\hypertarget{_math_exception_8h_source_l00017}{}\hyperlink{_math_exception_8h_a3afb80cde76bdd1c929d352c41efabc8}{00017} \textcolor{preprocessor}{#define EXCEPTION\_NEURAL\_NET\_NOT\_STUDIED\_NR 3}
+\hypertarget{_math_exception_8h_source_l00018}{}\hyperlink{_math_exception_8h_a17c65ecafe069371fe919795d9680138}{00018} \textcolor{preprocessor}{#define EXCEPTION\_TYPE\_NOT\_SUPPORTED                                           \(\backslash\)}
+00019 \textcolor{preprocessor}{  "Type not supported for operation exception!"}
+\hypertarget{_math_exception_8h_source_l00020}{}\hyperlink{_math_exception_8h_acb96f1baa08302e9497abb62d8959960}{00020} \textcolor{preprocessor}{#define EXCEPTION\_TYPE\_NOT\_SUPPORTED\_NR 4}
+00021 
+00022 \textcolor{preprocessor}{#pragma once}
+00023 \textcolor{preprocessor}{#include <exception>}
+00024 \textcolor{preprocessor}{#include <string>}
+00025 
+00026 \textcolor{keyword}{namespace }\hyperlink{namespace_soil_math}{SoilMath} \{
+\hypertarget{_math_exception_8h_source_l00027}{}\hyperlink{namespace_soil_math_1_1_exception}{00027} \textcolor{keyword}{namespace }Exception \{
+\hypertarget{_math_exception_8h_source_l00028}{}\hyperlink{class_soil_math_1_1_exception_1_1_math_exception}{00028} \textcolor{keyword}{class }\hyperlink{class_soil_math_1_1_exception_1_1_math_exception}{MathException} : \textcolor{keyword}{public} std::exception \{
+00029 \textcolor{keyword}{public}:
+\hypertarget{_math_exception_8h_source_l00030}{}\hyperlink{class_soil_math_1_1_exception_1_1_math_exception_a27eb82d0d823880fc774381245b58968}{00030}   \hyperlink{class_soil_math_1_1_exception_1_1_math_exception_a27eb82d0d823880fc774381245b58968}{MathException}(std::string m = \hyperlink{_math_exception_8h_a5c678225d975a600ef77313d82a247b0}{EXCEPTION\_MATH}, \textcolor{keywordtype}{int} n = 
+      \hyperlink{_math_exception_8h_a2ad831fc7963b41855b14ace07bbdf84}{EXCEPTION\_MATH\_NR})
+00031       : \hyperlink{class_soil_math_1_1_exception_1_1_math_exception_afa15e6f8ef6ac7ed599656b0ade760cc}{msg}(m), \hyperlink{class_soil_math_1_1_exception_1_1_math_exception_aa9a6f85505030c25c55f2eb6e9f0aea1}{nr}(n)\{\};
+\hypertarget{_math_exception_8h_source_l00032}{}\hyperlink{class_soil_math_1_1_exception_1_1_math_exception_ac0af07cbf4a152c7e5e6e372ff73ceb8}{00032}   \hyperlink{class_soil_math_1_1_exception_1_1_math_exception_ac0af07cbf4a152c7e5e6e372ff73ceb8}{~MathException}() \_GLIBCXX\_USE\_NOEXCEPT\{\};
+\hypertarget{_math_exception_8h_source_l00033}{}\hyperlink{class_soil_math_1_1_exception_1_1_math_exception_a1b94d5f7f10fe22caa2416c9ffcb1f38}{00033}   \textcolor{keyword}{const} \textcolor{keywordtype}{char} *\hyperlink{class_soil_math_1_1_exception_1_1_math_exception_a1b94d5f7f10fe22caa2416c9ffcb1f38}{what}() const \_GLIBCXX\_USE\_NOEXCEPT \{ \textcolor{keywordflow}{return} \hyperlink{class_soil_math_1_1_exception_1_1_math_exception_afa15e6f8ef6ac7ed599656b0ade760cc}{msg}.c\_str(); \};
+\hypertarget{_math_exception_8h_source_l00034}{}\hyperlink{class_soil_math_1_1_exception_1_1_math_exception_aa8666225e202dd62eca2af0f826908be}{00034}   \textcolor{keyword}{const} \textcolor{keywordtype}{int} *\hyperlink{class_soil_math_1_1_exception_1_1_math_exception_aa8666225e202dd62eca2af0f826908be}{id}() const \_GLIBCXX\_USE\_NOEXCEPT \{ \textcolor{keywordflow}{return} &\hyperlink{class_soil_math_1_1_exception_1_1_math_exception_aa9a6f85505030c25c55f2eb6e9f0aea1}{nr}; \}
+00035 
+00036 \textcolor{keyword}{private}:
+\hypertarget{_math_exception_8h_source_l00037}{}\hyperlink{class_soil_math_1_1_exception_1_1_math_exception_afa15e6f8ef6ac7ed599656b0ade760cc}{00037}   std::string \hyperlink{class_soil_math_1_1_exception_1_1_math_exception_afa15e6f8ef6ac7ed599656b0ade760cc}{msg};
+\hypertarget{_math_exception_8h_source_l00038}{}\hyperlink{class_soil_math_1_1_exception_1_1_math_exception_aa9a6f85505030c25c55f2eb6e9f0aea1}{00038}   \textcolor{keywordtype}{int} \hyperlink{class_soil_math_1_1_exception_1_1_math_exception_aa9a6f85505030c25c55f2eb6e9f0aea1}{nr};
+00039 \};
+00040 \}
+00041 \}
+\end{DoxyCode}

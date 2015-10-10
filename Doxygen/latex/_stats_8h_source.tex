@@ -1,0 +1,612 @@
+\hypertarget{_stats_8h_source}{}\subsection{Stats.\+h}
+\label{_stats_8h_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Math/\+Stats.\+h@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Math/\+Stats.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/* Copyright (C) Jelle Spijker - All Rights Reserved}
+00002 \textcolor{comment}{ * Unauthorized copying of this file, via any medium is strictly prohibited}
+00003 \textcolor{comment}{ * and only allowed with the written consent of the author (Jelle Spijker)}
+00004 \textcolor{comment}{ * This software is proprietary and confidential}
+00005 \textcolor{comment}{ * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015}
+00006 \textcolor{comment}{ */}
+00007 
+00008 \textcolor{preprocessor}{#pragma once}
+\hypertarget{_stats_8h_source_l00009}{}\hyperlink{_stats_8h_a3db36e4d6027332cc759a581cfc715e2}{00009} \textcolor{preprocessor}{#define MAX\_UINT8\_VALUE 256}
+\hypertarget{_stats_8h_source_l00010}{}\hyperlink{_stats_8h_a95ab35e4385bfca01b19afc5ca5c33e9}{00010} \textcolor{preprocessor}{#define VECTOR\_CALC 1}
+00011 
+00012 \textcolor{preprocessor}{#include <stdint.h>}
+00013 \textcolor{preprocessor}{#include <utility>}
+00014 \textcolor{preprocessor}{#include <vector>}
+00015 \textcolor{preprocessor}{#include <cstdlib>}
+00016 \textcolor{preprocessor}{#include <cmath>}
+00017 \textcolor{preprocessor}{#include <limits>}
+00018 \textcolor{preprocessor}{#include <typeinfo>}
+00019 \textcolor{preprocessor}{#include <string>}
+00020 
+00021 \textcolor{preprocessor}{#include <fstream>}
+00022 
+00023 \textcolor{preprocessor}{#include <boost/archive/binary\_iarchive.hpp>}
+00024 \textcolor{preprocessor}{#include <boost/archive/binary\_oarchive.hpp>}
+00025 \textcolor{preprocessor}{#include <boost/serialization/version.hpp>}
+00026 \textcolor{preprocessor}{#include <boost/math/distributions/students\_t.hpp>}
+00027 
+00028 \textcolor{preprocessor}{#include "\hyperlink{_math_exception_8h}{MathException.h}"}
+00029 \textcolor{preprocessor}{#include "\hyperlink{_soil_math_types_8h}{SoilMathTypes.h}"}
+00030 \textcolor{preprocessor}{#include "\hyperlink{_common_operations_8h}{CommonOperations.h}"}
+00031 
+00032 \textcolor{keyword}{namespace }\hyperlink{namespace_soil_math}{SoilMath} \{
+00033 
+\hypertarget{_stats_8h_source_l00039}{}\hyperlink{class_soil_math_1_1_stats}{00039} \textcolor{keyword}{template} <\textcolor{keyword}{typename} T1, \textcolor{keyword}{typename} T2, \textcolor{keyword}{typename} T3> \textcolor{keyword}{class }\hyperlink{class_soil_math_1_1_stats}{Stats} \{
+00040 \textcolor{keyword}{public}:
+\hypertarget{_stats_8h_source_l00041}{}\hyperlink{class_soil_math_1_1_stats_a2f54bbc8d815345b23ebbd4ba2b302bf}{00041}   \textcolor{keywordtype}{bool} \hyperlink{class_soil_math_1_1_stats_a2f54bbc8d815345b23ebbd4ba2b302bf}{isDiscrete} = \textcolor{keyword}{true}; 
+\hypertarget{_stats_8h_source_l00043}{}\hyperlink{class_soil_math_1_1_stats_affce366ceab8419a3f732e3c3a358f65}{00043}   T1 *\hyperlink{class_soil_math_1_1_stats_affce366ceab8419a3f732e3c3a358f65}{Data} = \textcolor{keyword}{nullptr};       
+\hypertarget{_stats_8h_source_l00044}{}\hyperlink{class_soil_math_1_1_stats_a00778b298b1ebb335eb0c4eed69e471c}{00044}   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} *\hyperlink{class_soil_math_1_1_stats_a00778b298b1ebb335eb0c4eed69e471c}{bins} = \textcolor{keyword}{nullptr}; 
+\hypertarget{_stats_8h_source_l00045}{}\hyperlink{class_soil_math_1_1_stats_a0d68c6fb52cb445c413aa187038bb1fe}{00045}   \textcolor{keywordtype}{double} *\hyperlink{class_soil_math_1_1_stats_a0d68c6fb52cb445c413aa187038bb1fe}{CFD} = \textcolor{keyword}{nullptr};    
+\hypertarget{_stats_8h_source_l00046}{}\hyperlink{class_soil_math_1_1_stats_a3d3cd491b829b2e30f6752fee38fe261}{00046}   \textcolor{keywordtype}{bool} \hyperlink{class_soil_math_1_1_stats_a3d3cd491b829b2e30f6752fee38fe261}{Calculated} = \textcolor{keyword}{false};  
+\hypertarget{_stats_8h_source_l00047}{}\hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{00047}   \textcolor{keywordtype}{float} \hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{Mean} = 0.0;         
+\hypertarget{_stats_8h_source_l00048}{}\hyperlink{class_soil_math_1_1_stats_a7bc57af334b68253832ebac17f85d091}{00048}   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} \hyperlink{class_soil_math_1_1_stats_a7bc57af334b68253832ebac17f85d091}{n} = 0;           
+\hypertarget{_stats_8h_source_l00049}{}\hyperlink{class_soil_math_1_1_stats_a4202c9085eacaff2e04eda84fc90e92b}{00049}   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} \hyperlink{class_soil_math_1_1_stats_a4202c9085eacaff2e04eda84fc90e92b}{noBins} = 0;      
+\hypertarget{_stats_8h_source_l00050}{}\hyperlink{class_soil_math_1_1_stats_a7154ac6c97dc2e83bdff7fef3cbdac5b}{00050}   T1 \hyperlink{class_soil_math_1_1_stats_a7154ac6c97dc2e83bdff7fef3cbdac5b}{Range} = 0;             
+\hypertarget{_stats_8h_source_l00051}{}\hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{00051}   T1 \hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min} = 0;               
+\hypertarget{_stats_8h_source_l00052}{}\hyperlink{class_soil_math_1_1_stats_ad49ee1f533564ec587cf98a094b8c564}{00052}   T1 \hyperlink{class_soil_math_1_1_stats_ad49ee1f533564ec587cf98a094b8c564}{max} = 0;               
+\hypertarget{_stats_8h_source_l00053}{}\hyperlink{class_soil_math_1_1_stats_acf54f4a105482109ebc884c8e56d0ba9}{00053}   T1 \hyperlink{class_soil_math_1_1_stats_acf54f4a105482109ebc884c8e56d0ba9}{Startbin} = 0;          
+\hypertarget{_stats_8h_source_l00054}{}\hyperlink{class_soil_math_1_1_stats_a0db07157ff238d0d40c4e1f4d67afd46}{00054}   T1 \hyperlink{class_soil_math_1_1_stats_a0db07157ff238d0d40c4e1f4d67afd46}{EndBin} = 0;            
+\hypertarget{_stats_8h_source_l00055}{}\hyperlink{class_soil_math_1_1_stats_a00be1d2a705a8aba532fbe726001bbb2}{00055}   T1 \hyperlink{class_soil_math_1_1_stats_a00be1d2a705a8aba532fbe726001bbb2}{binRange} = 0;          
+\hypertarget{_stats_8h_source_l00056}{}\hyperlink{class_soil_math_1_1_stats_a6af590b7d033d882d5428c0d7a1f5e59}{00056}   \textcolor{keywordtype}{float} \hyperlink{class_soil_math_1_1_stats_a6af590b7d033d882d5428c0d7a1f5e59}{Std} = 0.0;          
+\hypertarget{_stats_8h_source_l00057}{}\hyperlink{class_soil_math_1_1_stats_af326fa61048522fc146b799759e345f9}{00057}   T3 \hyperlink{class_soil_math_1_1_stats_af326fa61048522fc146b799759e345f9}{Sum} = 0;               
+\hypertarget{_stats_8h_source_l00058}{}\hyperlink{class_soil_math_1_1_stats_a0e462c013f12f02e31e9ae03334151c3}{00058}   uint16\_t \hyperlink{class_soil_math_1_1_stats_a0e462c013f12f02e31e9ae03334151c3}{Rows} = 0;        
+\hypertarget{_stats_8h_source_l00059}{}\hyperlink{class_soil_math_1_1_stats_a971f1ec23c32137805c4577f05454d83}{00059}   uint16\_t \hyperlink{class_soil_math_1_1_stats_a971f1ec23c32137805c4577f05454d83}{Cols} = 0;        
+\hypertarget{_stats_8h_source_l00060}{}\hyperlink{class_soil_math_1_1_stats_a06f5e8404c2a0fa303dbb18a58d6deb5}{00060}   \textcolor{keywordtype}{bool} \hyperlink{class_soil_math_1_1_stats_a06f5e8404c2a0fa303dbb18a58d6deb5}{StartAtZero} = \textcolor{keyword}{true};  
+\hypertarget{_stats_8h_source_l00062}{}\hyperlink{class_soil_math_1_1_stats_a0d452c96b6f499f054432bd3b52d1302}{00062}   \textcolor{keywordtype}{double} *\hyperlink{class_soil_math_1_1_stats_a0d452c96b6f499f054432bd3b52d1302}{BinRanges} = \textcolor{keyword}{nullptr};
+\hypertarget{_stats_8h_source_l00063}{}\hyperlink{class_soil_math_1_1_stats_a85da0692f7d25c9d5add1f8ffd67bdf2}{00063}   \textcolor{keywordtype}{double} \hyperlink{class_soil_math_1_1_stats_a85da0692f7d25c9d5add1f8ffd67bdf2}{HighestPDF} = 0.;
+00064 
+\hypertarget{_stats_8h_source_l00065}{}\hyperlink{class_soil_math_1_1_stats_ab4b0109ffb55f1d39acfad46bfd3bad5}{00065}   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} *\hyperlink{class_soil_math_1_1_stats_ab4b0109ffb55f1d39acfad46bfd3bad5}{begin}() \{ \textcolor{keywordflow}{return} &bins[0]; \}    
+\hypertarget{_stats_8h_source_l00066}{}\hyperlink{class_soil_math_1_1_stats_a9d60ce82a2786e0422c3683c301f34ae}{00066}   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} *\hyperlink{class_soil_math_1_1_stats_a9d60ce82a2786e0422c3683c301f34ae}{end}() \{ \textcolor{keywordflow}{return} &bins[\hyperlink{class_soil_math_1_1_stats_a4202c9085eacaff2e04eda84fc90e92b}{noBins}]; \} 
+\hypertarget{_stats_8h_source_l00075}{}\hyperlink{class_soil_math_1_1_stats_a45f110fe8f440a4e45ef2b4e6cd9863c}{00075}   \textcolor{keywordtype}{bool} \hyperlink{class_soil_math_1_1_stats_a45f110fe8f440a4e45ef2b4e6cd9863c}{WelchTest}(\hyperlink{class_soil_math_1_1_stats}{SoilMath::Stats<T1, T2, T3>} &statComp) \{
+00076     \textcolor{keywordtype}{double} alpha = 0.05;
+00077     \textcolor{comment}{// Degrees of freedom:}
+00078     \textcolor{keywordtype}{double} v = statComp.\hyperlink{class_soil_math_1_1_stats_a6af590b7d033d882d5428c0d7a1f5e59}{Std} * statComp.\hyperlink{class_soil_math_1_1_stats_a6af590b7d033d882d5428c0d7a1f5e59}{Std} / statComp.\hyperlink{class_soil_math_1_1_stats_a7bc57af334b68253832ebac17f85d091}{n} +
+00079                this->Std * this->Std / this->\hyperlink{class_soil_math_1_1_stats_a7bc57af334b68253832ebac17f85d091}{n};
+00080     v *= v;
+00081     \textcolor{keywordtype}{double} t1 = statComp.\hyperlink{class_soil_math_1_1_stats_a6af590b7d033d882d5428c0d7a1f5e59}{Std} * statComp.\hyperlink{class_soil_math_1_1_stats_a6af590b7d033d882d5428c0d7a1f5e59}{Std} / statComp.\hyperlink{class_soil_math_1_1_stats_a7bc57af334b68253832ebac17f85d091}{n};
+00082     t1 *= t1;
+00083     t1 /= (statComp.\hyperlink{class_soil_math_1_1_stats_a7bc57af334b68253832ebac17f85d091}{n} - 1);
+00084     \textcolor{keywordtype}{double} t2 = this->Std * this->Std / this->\hyperlink{class_soil_math_1_1_stats_a7bc57af334b68253832ebac17f85d091}{n};
+00085     t2 *= t2;
+00086     t2 /= (this->n - 1);
+00087     v /= (t1 + t2);
+00088     \textcolor{comment}{// t-statistic:}
+00089     \textcolor{keywordtype}{double} t\_stat = (statComp.\hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{Mean} - this->\hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{Mean}) /
+00090                     sqrt(statComp.\hyperlink{class_soil_math_1_1_stats_a6af590b7d033d882d5428c0d7a1f5e59}{Std} * statComp.\hyperlink{class_soil_math_1_1_stats_a6af590b7d033d882d5428c0d7a1f5e59}{Std} / statComp.\hyperlink{class_soil_math_1_1_stats_a7bc57af334b68253832ebac17f85d091}{n} +
+00091                          this->Std * this->Std / this->n);
+00092     \textcolor{comment}{//}
+00093     \textcolor{comment}{// Define our distribution, and get the probability:}
+00094     \textcolor{comment}{//}
+00095     boost::math::students\_t dist(v);
+00096     \textcolor{keywordtype}{double} q = cdf(complement(dist, fabs(t\_stat)));
+00097 
+00098     \textcolor{keywordtype}{bool} rejected = \textcolor{keyword}{false};
+00099     \textcolor{comment}{// Sample 1 Mean == Sample 2 Mean test the NULL hypothesis, the two means}
+00100     \textcolor{comment}{// are the same}
+00101     \textcolor{keywordflow}{if} (q < alpha / 2)
+00102       rejected = \textcolor{keyword}{false};
+00103     \textcolor{keywordflow}{else}
+00104       rejected = \textcolor{keyword}{true};
+00105     \textcolor{keywordflow}{return} rejected;
+00106   \}
+00107 
+\hypertarget{_stats_8h_source_l00112}{}\hyperlink{class_soil_math_1_1_stats_aa9727b7ea39b46f8a010a7b710b26d83}{00112}   \hyperlink{class_soil_math_1_1_stats_aa9727b7ea39b46f8a010a7b710b26d83}{Stats}(\textcolor{keyword}{const} \hyperlink{class_soil_math_1_1_stats}{Stats} &rhs)
+\hypertarget{_stats_8h_source_l00113}{}\hyperlink{class_soil_math_1_1_stats_a4c462b7b476263abc57d3f1faba1b2da}{00113}       : bins\{\textcolor{keyword}{new} \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t}[rhs.\hyperlink{class_soil_math_1_1_stats_a4202c9085eacaff2e04eda84fc90e92b}{noBins}]\{0\}\}, CFD\{\textcolor{keyword}{new} \textcolor{keywordtype}{double}[rhs.noBins]\{\}\},
+\hypertarget{_stats_8h_source_l00114}{}\hyperlink{class_soil_math_1_1_stats_a926290338b0325a457f65d562a328e07}{00114}         BinRanges\{\textcolor{keyword}{new} \textcolor{keywordtype}{double}[rhs.noBins]\{\}\} \{
+00115     this->binRange = rhs.binRange;
+00116     this->Calculated = rhs.Calculated;
+00117     this->Cols = rhs.Cols;
+00118     this->EndBin = rhs.EndBin;
+00119     this->isDiscrete = rhs.isDiscrete;
+00120     this->max = rhs.max;
+00121     this->Mean = rhs.Mean;
+00122     this->min = rhs.min;
+00123     this->n = rhs.n;
+00124     this->noBins = rhs.noBins;
+00125     this->n\_end = rhs.n\_end;
+00126     this->Range = rhs.Range;
+00127     this->Rows = rhs.Rows;
+00128     this->Startbin = rhs.Startbin;
+00129     this->Std = rhs.Std;
+00130     this->Sum = rhs.Sum;
+00131     std::copy(rhs.bins, rhs.bins + rhs.noBins, this->bins);
+00132     std::copy(rhs.CFD, rhs.CFD + rhs.noBins, this->CFD);
+00133     std::copy(rhs.BinRanges, rhs.BinRanges + rhs.noBins, this->BinRanges);
+00134     this->Data = rhs.Data;
+00135     this->StartAtZero = rhs.StartAtZero;
+00136     this->HighestPDF = rhs.HighestPDF;
+00137   \}
+00138 
+00144   \hyperlink{class_soil_math_1_1_stats_aa9727b7ea39b46f8a010a7b710b26d83}{Stats} &operator=(\hyperlink{class_soil_math_1_1_stats_aa9727b7ea39b46f8a010a7b710b26d83}{Stats} \textcolor{keyword}{const} &rhs) \{
+00145     \textcolor{keywordflow}{if} (&rhs != \textcolor{keyword}{this}) \{
+00146       Data = rhs.Data;
+00147 
+00148       \textcolor{keywordflow}{if} (bins != \textcolor{keyword}{nullptr}) \{
+00149         \textcolor{keyword}{delete}[] \hyperlink{class_soil_math_1_1_stats_a00778b298b1ebb335eb0c4eed69e471c}{bins};
+00150         bins = \textcolor{keyword}{nullptr};
+00151       \}
+00152       \textcolor{keywordflow}{if} (CFD != \textcolor{keyword}{nullptr}) \{
+00153         \textcolor{keyword}{delete}[] \hyperlink{class_soil_math_1_1_stats_a0d68c6fb52cb445c413aa187038bb1fe}{CFD};
+00154         CFD = \textcolor{keyword}{nullptr};
+00155       \}
+00156       \textcolor{keywordflow}{if} (BinRanges != \textcolor{keyword}{nullptr}) \{
+00157         \textcolor{keyword}{delete}[] \hyperlink{class_soil_math_1_1_stats_a0d452c96b6f499f054432bd3b52d1302}{BinRanges};
+00158         BinRanges = \textcolor{keyword}{nullptr};
+00159       \}
+00160 
+00161       bins = \textcolor{keyword}{new} \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t}[rhs.noBins];    \textcolor{comment}{// leak}
+00162       CFD = \textcolor{keyword}{new} \textcolor{keywordtype}{double}[rhs.noBins];       \textcolor{comment}{// leak}
+00163       BinRanges = \textcolor{keyword}{new} \textcolor{keywordtype}{double}[rhs.noBins]; \textcolor{comment}{// leak}
+00164       this->binRange = rhs.binRange;
+00165       this->Calculated = rhs.Calculated;
+00166       this->Cols = rhs.Cols;
+00167       this->EndBin = rhs.EndBin;
+00168       this->isDiscrete = rhs.isDiscrete;
+00169       this->max = rhs.max;
+00170       this->Mean = rhs.Mean;
+00171       this->min = rhs.min;
+00172       this->n = rhs.n;
+00173       this->noBins = rhs.noBins;
+00174       this->n\_end = rhs.n\_end;
+00175       this->Range = rhs.Range;
+00176       this->Rows = rhs.Rows;
+00177       this->Startbin = rhs.Startbin;
+00178       this->Std = rhs.Std;
+00179       this->Sum = rhs.Sum;
+00180       this->Data = &rhs.Data[0];
+00181       std::copy(rhs.bins, rhs.bins + rhs.noBins, this->bins);
+00182       std::copy(rhs.CFD, rhs.CFD + rhs.noBins, this->CFD);
+00183       std::copy(rhs.BinRanges, rhs.BinRanges + rhs.noBins, this->BinRanges);
+00184       this->StartAtZero = rhs.StartAtZero;
+00185       this->HighestPDF = rhs.HighestPDF;
+00186     \}
+00187     \textcolor{keywordflow}{return} *\textcolor{keyword}{this};
+00188   \}
+00189 
+00196   \hyperlink{class_soil_math_1_1_stats_aa9727b7ea39b46f8a010a7b710b26d83}{Stats}(\textcolor{keywordtype}{int} noBins = 256, T1 startBin = 0, T1 endBin = 255) \{
+00197     min = std::numeric\_limits<T1>::max();
+00198     max = std::numeric\_limits<T1>::min();
+00199     Range = std::numeric\_limits<T1>::max();
+00200     Startbin = startBin;
+00201     EndBin = endBin;
+00202     this->noBins = \hyperlink{class_soil_math_1_1_stats_a4202c9085eacaff2e04eda84fc90e92b}{noBins};
+00203     bins = \textcolor{keyword}{new} \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t}[\hyperlink{class_soil_math_1_1_stats_a4202c9085eacaff2e04eda84fc90e92b}{noBins}]\{0\};   \textcolor{comment}{// leak}
+00204     CFD = \textcolor{keyword}{new} \textcolor{keywordtype}{double}[\hyperlink{class_soil_math_1_1_stats_a4202c9085eacaff2e04eda84fc90e92b}{noBins}]\{\};       \textcolor{comment}{// leak}
+00205     BinRanges = \textcolor{keyword}{new} \textcolor{keywordtype}{double}[\hyperlink{class_soil_math_1_1_stats_a4202c9085eacaff2e04eda84fc90e92b}{noBins}]\{\}; \textcolor{comment}{// leak}
+00206 
+00207     \textcolor{keywordflow}{if} (\textcolor{keyword}{typeid}(T1) == \textcolor{keyword}{typeid}(\textcolor{keywordtype}{float}) || \textcolor{keyword}{typeid}(T1) == \textcolor{keyword}{typeid}(\textcolor{keywordtype}{double}) ||
+00208         \textcolor{keyword}{typeid}(T1) == \textcolor{keyword}{typeid}(\textcolor{keywordtype}{long} \textcolor{keywordtype}{double})) \{
+00209       isDiscrete = \textcolor{keyword}{false};
+00210       binRange = \textcolor{keyword}{static\_cast<}T1\textcolor{keyword}{>}((EndBin - \hyperlink{class_soil_math_1_1_stats_acf54f4a105482109ebc884c8e56d0ba9}{Startbin}) / noBins);
+00211     \} \textcolor{keywordflow}{else} \{
+00212       isDiscrete = \textcolor{keyword}{true};
+00213       binRange = \textcolor{keyword}{static\_cast<}T1\textcolor{keyword}{>}(round((EndBin - Startbin) / noBins));
+00214     \}
+00215   \}
+00216 
+00226   \hyperlink{class_soil_math_1_1_stats_aa9727b7ea39b46f8a010a7b710b26d83}{Stats}(T1 *data, uint16\_t rows, uint16\_t cols, \textcolor{keywordtype}{int} noBins = 256,
+00227         T1 startBin = 0, \textcolor{keywordtype}{bool} startatzero = \textcolor{keyword}{true}) \{
+00228     min = std::numeric\_limits<T1>::max();
+00229     max = std::numeric\_limits<T1>::min();
+00230     Range = max - \hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min};
+00231 
+00232     Startbin = startBin;
+00233     EndBin = startBin + \hyperlink{class_soil_math_1_1_stats_a4202c9085eacaff2e04eda84fc90e92b}{noBins};
+00234     StartAtZero = startatzero;
+00235 
+00236     \textcolor{keywordflow}{if} (\textcolor{keyword}{typeid}(T1) == \textcolor{keyword}{typeid}(\textcolor{keywordtype}{float}) || \textcolor{keyword}{typeid}(T1) == \textcolor{keyword}{typeid}(\textcolor{keywordtype}{double}) ||
+00237         \textcolor{keyword}{typeid}(T1) == \textcolor{keyword}{typeid}(\textcolor{keywordtype}{long} \textcolor{keywordtype}{double})) \{
+00238       isDiscrete = \textcolor{keyword}{false};
+00239     \} \textcolor{keywordflow}{else} \{
+00240       isDiscrete = \textcolor{keyword}{true};
+00241     \}
+00242 
+00243     Data = data;
+00244     Rows = rows;
+00245     Cols = cols;
+00246     bins = \textcolor{keyword}{new} \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t}[\hyperlink{class_soil_math_1_1_stats_a4202c9085eacaff2e04eda84fc90e92b}{noBins}]\{0\};
+00247     CFD = \textcolor{keyword}{new} \textcolor{keywordtype}{double}[\hyperlink{class_soil_math_1_1_stats_a4202c9085eacaff2e04eda84fc90e92b}{noBins}]\{\};
+00248     BinRanges = \textcolor{keyword}{new} \textcolor{keywordtype}{double}[\hyperlink{class_soil_math_1_1_stats_a4202c9085eacaff2e04eda84fc90e92b}{noBins}]\{\};
+00249     this->noBins = \hyperlink{class_soil_math_1_1_stats_a4202c9085eacaff2e04eda84fc90e92b}{noBins};
+00250     \textcolor{keywordflow}{if} (isDiscrete) \{
+00251       BasicCalculate();
+00252     \} \textcolor{keywordflow}{else} \{
+00253       BasicCalculateFloat();
+00254     \}
+00255   \}
+00256 
+00269   \hyperlink{class_soil_math_1_1_stats_aa9727b7ea39b46f8a010a7b710b26d83}{Stats}(T1 *data, uint16\_t rows, uint16\_t cols, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *mask, \textcolor{keywordtype}{int} noBins = 256,
+00270         T1 startBin = 0, \textcolor{keywordtype}{bool} startatzero = \textcolor{keyword}{true}) \{
+00271     min = std::numeric\_limits<T1>::max();
+00272     max = std::numeric\_limits<T1>::min();
+00273     Range = max - \hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min};
+00274 
+00275     Startbin = startBin;
+00276     EndBin = startBin + \hyperlink{class_soil_math_1_1_stats_a4202c9085eacaff2e04eda84fc90e92b}{noBins};
+00277     StartAtZero = startatzero;
+00278 
+00279     \textcolor{keywordflow}{if} (\textcolor{keyword}{typeid}(T1) == \textcolor{keyword}{typeid}(\textcolor{keywordtype}{float}) || \textcolor{keyword}{typeid}(T1) == \textcolor{keyword}{typeid}(\textcolor{keywordtype}{double}) ||
+00280         \textcolor{keyword}{typeid}(T1) == \textcolor{keyword}{typeid}(\textcolor{keywordtype}{long} \textcolor{keywordtype}{double})) \{
+00281       isDiscrete = \textcolor{keyword}{false};
+00282     \} \textcolor{keywordflow}{else} \{
+00283       isDiscrete = \textcolor{keyword}{true};
+00284     \}
+00285 
+00286     Data = data;
+00287     Rows = rows;
+00288     Cols = cols;
+00289     bins = \textcolor{keyword}{new} \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t}[\hyperlink{class_soil_math_1_1_stats_a4202c9085eacaff2e04eda84fc90e92b}{noBins}]\{0\};
+00290     CFD = \textcolor{keyword}{new} \textcolor{keywordtype}{double}[\hyperlink{class_soil_math_1_1_stats_a4202c9085eacaff2e04eda84fc90e92b}{noBins}]\{\};
+00291     BinRanges = \textcolor{keyword}{new} \textcolor{keywordtype}{double}[\hyperlink{class_soil_math_1_1_stats_a4202c9085eacaff2e04eda84fc90e92b}{noBins}]\{\};
+00292     this->noBins = \hyperlink{class_soil_math_1_1_stats_a4202c9085eacaff2e04eda84fc90e92b}{noBins};
+00293     \textcolor{keywordflow}{if} (isDiscrete) \{
+00294       BasicCalculate(mask);
+00295     \} \textcolor{keywordflow}{else} \{
+00296       BasicCalculateFloat(mask);
+00297     \}
+00298   \}
+00299 
+00306   \hyperlink{class_soil_math_1_1_stats_aa9727b7ea39b46f8a010a7b710b26d83}{Stats}(T2 *binData, uint16\_t startC, uint16\_t endC) \{
+00307     noBins = endC - startC;
+00308     Startbin = startC;
+00309     EndBin = endC;
+00310     \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = \hyperlink{class_soil_math_1_1_stats_a4202c9085eacaff2e04eda84fc90e92b}{noBins};
+00311 
+00312     \textcolor{keywordflow}{if} (\textcolor{keyword}{typeid}(T1) == \textcolor{keyword}{typeid}(\textcolor{keywordtype}{float}) || \textcolor{keyword}{typeid}(T1) == \textcolor{keyword}{typeid}(\textcolor{keywordtype}{double}) ||
+00313         \textcolor{keyword}{typeid}(T1) == \textcolor{keyword}{typeid}(\textcolor{keywordtype}{long} \textcolor{keywordtype}{double})) \{
+00314       isDiscrete = \textcolor{keyword}{false};
+00315       \textcolor{keywordflow}{throw} Exception::MathException(\hyperlink{_math_exception_8h_a17c65ecafe069371fe919795d9680138}{EXCEPTION\_TYPE\_NOT\_SUPPORTED},
+00316                                      \hyperlink{_math_exception_8h_acb96f1baa08302e9497abb62d8959960}{EXCEPTION\_TYPE\_NOT\_SUPPORTED\_NR});
+00317     \} \textcolor{keywordflow}{else} \{
+00318       isDiscrete = \textcolor{keyword}{true};
+00319     \}
+00320 
+00321     bins = \textcolor{keyword}{new} \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t}[\hyperlink{class_soil_math_1_1_stats_a4202c9085eacaff2e04eda84fc90e92b}{noBins}]\{0\};
+00322     CFD = \textcolor{keyword}{new} \textcolor{keywordtype}{double}[\hyperlink{class_soil_math_1_1_stats_a4202c9085eacaff2e04eda84fc90e92b}{noBins}]\{\};
+00323     BinRanges = \textcolor{keyword}{new} \textcolor{keywordtype}{double}[\hyperlink{class_soil_math_1_1_stats_a4202c9085eacaff2e04eda84fc90e92b}{noBins}]\{\};
+00324     \textcolor{keywordflow}{while} (i-- > 0) \{
+00325       bins[i] = binData[i];
+00326       n += binData[i];
+00327     \}
+00328     BinCalculations(startC, endC);
+00329   \}
+00330 
+00331   ~\hyperlink{class_soil_math_1_1_stats_aa9727b7ea39b46f8a010a7b710b26d83}{Stats}() \{
+00332     Data == \textcolor{keyword}{nullptr};
+00333     \textcolor{keywordflow}{if} (bins != \textcolor{keyword}{nullptr}) \{
+00334       \textcolor{keyword}{delete}[] \hyperlink{class_soil_math_1_1_stats_a00778b298b1ebb335eb0c4eed69e471c}{bins};
+00335       bins = \textcolor{keyword}{nullptr};
+00336     \}
+00337     \textcolor{keywordflow}{if} (CFD != \textcolor{keyword}{nullptr}) \{
+00338       \textcolor{keyword}{delete}[] \hyperlink{class_soil_math_1_1_stats_a0d68c6fb52cb445c413aa187038bb1fe}{CFD};
+00339       CFD = \textcolor{keyword}{nullptr};
+00340     \}
+00341     \textcolor{keywordflow}{if} (BinRanges != \textcolor{keyword}{nullptr}) \{
+00342       \textcolor{keyword}{delete}[] \hyperlink{class_soil_math_1_1_stats_a0d452c96b6f499f054432bd3b52d1302}{BinRanges};
+00343       BinRanges = \textcolor{keyword}{nullptr};
+00344     \}
+00345   \}
+00346 
+00350   \textcolor{keywordtype}{void} BasicCalculateFloat() \{
+00351     \textcolor{keywordtype}{float} sum\_dev = 0.0;
+00352     n = Rows * \hyperlink{class_soil_math_1_1_stats_a971f1ec23c32137805c4577f05454d83}{Cols};
+00353     \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i < \hyperlink{class_soil_math_1_1_stats_a7bc57af334b68253832ebac17f85d091}{n}; i++) \{
+00354       \textcolor{keywordflow}{if} (Data[i] > max) \{
+00355         max = Data[i];
+00356       \}
+00357       \textcolor{keywordflow}{if} (Data[i] < min) \{
+00358         min = Data[i];
+00359       \}
+00360       Sum += Data[i];
+00361     \}
+00362     binRange = (max - \hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min}) / noBins;
+00363     \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} index = 0;
+00364     Mean = Sum / (float)n;
+00365     Range = max - \hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min};
+00366 
+00367     \textcolor{keywordflow}{if} (StartAtZero) \{
+00368       \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i < \hyperlink{class_soil_math_1_1_stats_a7bc57af334b68253832ebac17f85d091}{n}; i++) \{
+00369         index = \textcolor{keyword}{static\_cast<}\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t}\textcolor{keyword}{>}(Data[i] / \hyperlink{class_soil_math_1_1_stats_a00be1d2a705a8aba532fbe726001bbb2}{binRange});
+00370         \textcolor{keywordflow}{if} (index == noBins) \{
+00371           index -= 1;
+00372         \}
+00373         bins[index]++;
+00374         sum\_dev += pow((Data[i] - Mean), 2);
+00375       \}
+00376     \} \textcolor{keywordflow}{else} \{
+00377       \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i < \hyperlink{class_soil_math_1_1_stats_a7bc57af334b68253832ebac17f85d091}{n}; i++) \{
+00378         index = \textcolor{keyword}{static\_cast<}\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t}\textcolor{keyword}{>}((Data[i] - \hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min}) / binRange);
+00379         \textcolor{keywordflow}{if} (index == noBins) \{
+00380           index -= 1;
+00381         \}
+00382         bins[index]++;
+00383         sum\_dev += pow((Data[i] - Mean), 2);
+00384       \}
+00385     \}
+00386     Std = sqrt((\textcolor{keywordtype}{float})(sum\_dev / n));
+00387     \hyperlink{class_soil_math_1_1_stats_a5508190fbea17bfec505ff8c47b1a45e}{getCFD}();
+00388     Calculated = \textcolor{keyword}{true};
+00389   \}
+00390 
+00396   \textcolor{keywordtype}{void} BasicCalculateFloat(\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *mask) \{
+00397     \textcolor{keywordtype}{float} sum\_dev = 0.0;
+00398     n = Rows * \hyperlink{class_soil_math_1_1_stats_a971f1ec23c32137805c4577f05454d83}{Cols};
+00399     \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} nmask = 0;
+00400     \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i < \hyperlink{class_soil_math_1_1_stats_a7bc57af334b68253832ebac17f85d091}{n}; i++) \{
+00401       \textcolor{keywordflow}{if} (mask[i] != 0) \{
+00402         \textcolor{keywordflow}{if} (Data[i] > max) \{
+00403           max = Data[i];
+00404         \}
+00405         \textcolor{keywordflow}{if} (Data[i] < min) \{
+00406           min = Data[i];
+00407         \}
+00408         Sum += Data[i];
+00409         nmask++;
+00410       \}
+00411     \}
+00412     binRange = (max - \hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min}) / noBins;
+00413     \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} index = 0;
+00414     Mean = Sum / (float)nmask;
+00415     Range = max - \hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min};
+00416     \textcolor{keywordflow}{if} (StartAtZero) \{
+00417       \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i < \hyperlink{class_soil_math_1_1_stats_a7bc57af334b68253832ebac17f85d091}{n}; i++) \{
+00418         \textcolor{keywordflow}{if} (mask[i] != 0) \{
+00419           index = \textcolor{keyword}{static\_cast<}\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t}\textcolor{keyword}{>}(Data[i] / \hyperlink{class_soil_math_1_1_stats_a00be1d2a705a8aba532fbe726001bbb2}{binRange});
+00420           \textcolor{keywordflow}{if} (index == noBins) \{
+00421             index -= 1;
+00422           \}
+00423           bins[index]++;
+00424           sum\_dev += pow((Data[i] - Mean), 2);
+00425         \}
+00426       \}
+00427     \} \textcolor{keywordflow}{else} \{
+00428       \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i < \hyperlink{class_soil_math_1_1_stats_a7bc57af334b68253832ebac17f85d091}{n}; i++) \{
+00429         \textcolor{keywordflow}{if} (mask[i] != 0) \{
+00430           index = \textcolor{keyword}{static\_cast<}\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t}\textcolor{keyword}{>}((Data[i] - \hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min}) / binRange);
+00431           \textcolor{keywordflow}{if} (index == noBins) \{
+00432             index -= 1;
+00433           \}
+00434           bins[index]++;
+00435           sum\_dev += pow((Data[i] - Mean), 2);
+00436         \}
+00437       \}
+00438     \}
+00439     Std = sqrt((\textcolor{keywordtype}{float})(sum\_dev / nmask));
+00440     \hyperlink{class_soil_math_1_1_stats_a5508190fbea17bfec505ff8c47b1a45e}{getCFD}();
+00441     Calculated = \textcolor{keyword}{true};
+00442   \}
+00443 
+00447   \textcolor{keywordtype}{void} BasicCalculate() \{
+00448     \textcolor{keywordtype}{double} sum\_dev = 0.0;
+00449     n = Rows * \hyperlink{class_soil_math_1_1_stats_a971f1ec23c32137805c4577f05454d83}{Cols};
+00450     \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i < \hyperlink{class_soil_math_1_1_stats_a7bc57af334b68253832ebac17f85d091}{n}; i++) \{
+00451       \textcolor{keywordflow}{if} (Data[i] > max) \{
+00452         max = Data[i];
+00453       \}
+00454       \textcolor{keywordflow}{if} (Data[i] < min) \{
+00455         min = Data[i];
+00456       \}
+00457       Sum += Data[i];
+00458     \}
+00459     binRange = \textcolor{keyword}{static\_cast<}T1\textcolor{keyword}{>}(ceil((max - min) / static\_cast<float>(noBins)));
+00460     \textcolor{keywordflow}{if} (binRange == 0) \{
+00461       binRange = 1;
+00462     \}
+00463     Mean = Sum / (float)n;
+00464     Range = max - \hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min};
+00465 
+00466     \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} index;
+00467     \textcolor{keywordflow}{if} (StartAtZero) \{
+00468       std::for\_each(Data, Data + n, [&](T1 &d) \{
+00469         index = \textcolor{keyword}{static\_cast<}\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t}\textcolor{keyword}{>}(d / \hyperlink{class_soil_math_1_1_stats_a00be1d2a705a8aba532fbe726001bbb2}{binRange});
+00470         \textcolor{keywordflow}{if} (index == noBins) \{
+00471           index -= 1;
+00472         \}
+00473         bins[index]++;
+00474         sum\_dev += pow((d - Mean), 2);
+00475       \});
+00476     \} \textcolor{keywordflow}{else} \{
+00477       std::for\_each(Data, Data + n, [&](T1 &d) \{
+00478         index = \textcolor{keyword}{static\_cast<}\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t}\textcolor{keyword}{>}((d - \hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min}) / binRange);
+00479         \textcolor{keywordflow}{if} (index == noBins) \{
+00480           index -= 1;
+00481         \}
+00482         bins[index]++;
+00483         sum\_dev += pow((d - Mean), 2);
+00484       \});
+00485     \}
+00486     Std = sqrt((\textcolor{keywordtype}{float})(sum\_dev / n));
+00487     \hyperlink{class_soil_math_1_1_stats_a5508190fbea17bfec505ff8c47b1a45e}{getCFD}();
+00488     Calculated = \textcolor{keyword}{true};
+00489   \}
+00490 
+00496   \textcolor{keywordtype}{void} BasicCalculate(\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *mask) \{
+00497     \textcolor{keywordtype}{double} sum\_dev = 0.0;
+00498     n = Rows * \hyperlink{class_soil_math_1_1_stats_a971f1ec23c32137805c4577f05454d83}{Cols};
+00499     \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} nmask = 0;
+00500     \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0;
+00501     std::for\_each(Data, Data + n, [&](T1 &d) \{
+00502       \textcolor{keywordflow}{if} (mask[i++] != 0) \{
+00503         \textcolor{keywordflow}{if} (d > max) \{
+00504           max = d;
+00505         \}
+00506         \textcolor{keywordflow}{if} (d < min) \{
+00507           min = d;
+00508         \}
+00509         Sum += d;
+00510         nmask++;
+00511       \}
+00512     \});
+00513     binRange = \textcolor{keyword}{static\_cast<}T1\textcolor{keyword}{>}(ceil((max - min) / static\_cast<float>(noBins)));
+00514     Mean = Sum / (float)nmask;
+00515     Range = max - \hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min};
+00516 
+00517     \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} index;
+00518     \textcolor{keywordflow}{if} (StartAtZero) \{
+00519       i = 0;
+00520       std::for\_each(Data, Data + n, [&](T1 &d) \{
+00521         \textcolor{keywordflow}{if} (mask[i++] != 0) \{
+00522           index = \textcolor{keyword}{static\_cast<}\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t}\textcolor{keyword}{>}(d / \hyperlink{class_soil_math_1_1_stats_a00be1d2a705a8aba532fbe726001bbb2}{binRange});
+00523           \textcolor{keywordflow}{if} (index == noBins) \{
+00524             index -= 1;
+00525           \}
+00526           bins[index]++;
+00527           sum\_dev += pow((d - Mean), 2);
+00528         \}
+00529       \});
+00530     \} \textcolor{keywordflow}{else} \{
+00531       i = 0;
+00532       std::for\_each(Data, Data + n, [&](T1 &d) \{
+00533         \textcolor{keywordflow}{if} (mask[i++] != 0) \{
+00534           index = \textcolor{keyword}{static\_cast<}\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t}\textcolor{keyword}{>}((d - \hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min}) / binRange);
+00535           \textcolor{keywordflow}{if} (index == noBins) \{
+00536             index -= 1;
+00537           \}
+00538           bins[index]++;
+00539           sum\_dev += pow((d - Mean), 2);
+00540         \}
+00541       \});
+00542     \}
+00543     Std = sqrt((\textcolor{keywordtype}{float})(sum\_dev / nmask));
+00544     \hyperlink{class_soil_math_1_1_stats_a5508190fbea17bfec505ff8c47b1a45e}{getCFD}();
+00545     Calculated = \textcolor{keyword}{true};
+00546   \}
+00547 
+00553   \textcolor{keywordtype}{void} BinCalculations(uint16\_t startC, uint16\_t endC \_\_attribute\_\_((unused))) \{
+00554     \textcolor{keywordtype}{float} sum\_dev = 0.0;
+00555     \textcolor{comment}{// Get the Sum}
+00556     \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0;
+00557     for\_each(\hyperlink{class_soil_math_1_1_stats_ab4b0109ffb55f1d39acfad46bfd3bad5}{begin}(), \hyperlink{class_soil_math_1_1_stats_a9d60ce82a2786e0422c3683c301f34ae}{end}(), [&](\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} &b) \{ Sum += b * (startC + i++); \});
+00558 
+00559     \textcolor{comment}{// Get Mean}
+00560     Mean = Sum / (float)n;
+00561 
+00562     \textcolor{comment}{// Get max}
+00563     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = noBins - 1; i >= 0; i--) \{
+00564       \textcolor{keywordflow}{if} (bins[i] != 0) \{
+00565         max = i + startC;
+00566         \textcolor{keywordflow}{break};
+00567       \}
+00568     \}
+00569 
+00570     \textcolor{comment}{// Get min}
+00571     \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i < \hyperlink{class_soil_math_1_1_stats_a4202c9085eacaff2e04eda84fc90e92b}{noBins}; i++) \{
+00572       \textcolor{keywordflow}{if} (bins[i] != 0) \{
+00573         min = i + startC;
+00574         \textcolor{keywordflow}{break};
+00575       \}
+00576     \}
+00577 
+00578     \textcolor{comment}{// Get Range;}
+00579     Range = max - \hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min};
+00580 
+00581     \textcolor{comment}{// Calculate Standard Deviation}
+00582     i = 0;
+00583     for\_each(\hyperlink{class_soil_math_1_1_stats_ab4b0109ffb55f1d39acfad46bfd3bad5}{begin}(), \hyperlink{class_soil_math_1_1_stats_a9d60ce82a2786e0422c3683c301f34ae}{end}(), [&](\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} &b) \{
+00584       sum\_dev += b * pow(((i++ + startC) - Mean), 2);
+00585     \});
+00586     Std = sqrt((\textcolor{keywordtype}{float})(sum\_dev / n));
+00587     \hyperlink{class_soil_math_1_1_stats_a5508190fbea17bfec505ff8c47b1a45e}{getCFD}();
+00588     Calculated = \textcolor{keyword}{true};
+00589   \}
+00590 
+00591   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} HighestFrequency() \{
+00592     \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} freq = 0;
+00593     std::for\_each(\hyperlink{class_soil_math_1_1_stats_ab4b0109ffb55f1d39acfad46bfd3bad5}{begin}(), \hyperlink{class_soil_math_1_1_stats_a9d60ce82a2786e0422c3683c301f34ae}{end}(), [&](\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} &B) \{
+00594       \textcolor{keywordflow}{if} (B > freq) \{
+00595         freq = B;
+00596       \}
+00597     \});
+00598     \textcolor{keywordflow}{return} freq;
+00599   \}
+00600 
+00601   \textcolor{keywordtype}{void} GetPDFfunction(std::vector<double> &xAxis, std::vector<double> &yAxis,
+00602                       \textcolor{keywordtype}{double} Step, \textcolor{keywordtype}{double} start = 0, \textcolor{keywordtype}{double} stop = 7) \{
+00603     \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} resolution;
+00604     resolution = \textcolor{keyword}{static\_cast<}\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t}\textcolor{keyword}{>}(((stop - start) / Step) + 0.5);
+00605 
+00606     xAxis.push\_back(start);
+00607     \textcolor{keywordtype}{double} yVal0 = (1 / (Std * 2.506628274631)) *
+00608                    exp(-(pow((start - Mean), 2) / (2 * pow(Std, 2))));
+00609     yAxis.push\_back(yVal0);
+00610     HighestPDF = yVal0;
+00611     \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 1; i < resolution; i++) \{
+00612       \textcolor{keywordtype}{double} xVal = xAxis[xAxis.size() - 1] + Step;
+00613       xAxis.push\_back(xVal);
+00614       \textcolor{keywordtype}{double} yVal = (1 / (Std * 2.506628274631)) *
+00615                     exp(-(pow((xVal - Mean), 2) / (2 * pow(Std, 2))));
+00616       yAxis.push\_back(yVal);
+00617       \textcolor{keywordflow}{if} (yVal > HighestPDF) \{
+00618         HighestPDF = yVal;
+00619       \}
+00620     \}
+00621   \}
+00622 
+00623 \textcolor{keyword}{protected}:
+00624   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} n\_end = 0; 
+\hypertarget{_stats_8h_source_l00629}{}\hyperlink{class_soil_math_1_1_stats_a5508190fbea17bfec505ff8c47b1a45e}{00629}   \textcolor{keywordtype}{void} \hyperlink{class_soil_math_1_1_stats_a5508190fbea17bfec505ff8c47b1a45e}{getCFD}() \{
+00630     \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} *sumBin = \textcolor{keyword}{new} \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t}[\hyperlink{class_soil_math_1_1_stats_a4202c9085eacaff2e04eda84fc90e92b}{noBins}];
+00631     sumBin[0] = bins[0];
+00632     CFD[0] = (\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(sumBin[0]) / static\_cast<double>(n)) * 100.;
+00633     \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 1; i < \hyperlink{class_soil_math_1_1_stats_a4202c9085eacaff2e04eda84fc90e92b}{noBins}; i++) \{
+00634       sumBin[i] = (sumBin[i - 1] + bins[i]);
+00635       CFD[i] = (\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(sumBin[i]) / static\_cast<double>(n)) * 100.;
+00636       \textcolor{keywordflow}{if} (CFD[i] > HighestPDF) \{
+00637         HighestPDF = CFD[i];
+00638       \}
+00639     \}
+00640     \textcolor{keyword}{delete}[] sumBin;
+00641   \}
+00642 
+\hypertarget{_stats_8h_source_l00643}{}\hyperlink{class_soil_math_1_1_stats_ac98d07dd8f7b70e16ccb9a01abf56b9c}{00643}   \textcolor{keyword}{friend} \textcolor{keyword}{class }boost::serialization::access; 
+00650   \textcolor{keyword}{template} <\textcolor{keyword}{class} Archive>
+\hypertarget{_stats_8h_source_l00651}{}\hyperlink{class_soil_math_1_1_stats_a708500880cf0fccd205fb59787f8899f}{00651}   \textcolor{keywordtype}{void} \hyperlink{class_soil_math_1_1_stats_a708500880cf0fccd205fb59787f8899f}{serialize}(Archive &ar, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} version) \{
+00652     \textcolor{keywordflow}{if} (version == 0) \{
+00653       ar &\hyperlink{class_soil_math_1_1_stats_a2f54bbc8d815345b23ebbd4ba2b302bf}{isDiscrete};
+00654       ar &\hyperlink{class_soil_math_1_1_stats_a7bc57af334b68253832ebac17f85d091}{n};
+00655       ar &\hyperlink{class_soil_math_1_1_stats_a4202c9085eacaff2e04eda84fc90e92b}{noBins};
+00656       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} dc = 0; dc < \hyperlink{class_soil_math_1_1_stats_a4202c9085eacaff2e04eda84fc90e92b}{noBins}; dc++) \{
+00657         ar &bins[dc];
+00658       \}
+00659       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} dc = 0; dc < \hyperlink{class_soil_math_1_1_stats_a4202c9085eacaff2e04eda84fc90e92b}{noBins}; dc++) \{
+00660         ar &CFD[dc];
+00661       \}
+00662       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} dc = 0; dc < \hyperlink{class_soil_math_1_1_stats_a4202c9085eacaff2e04eda84fc90e92b}{noBins}; dc++) \{
+00663         ar &BinRanges[dc];
+00664       \}
+00665       ar &\hyperlink{class_soil_math_1_1_stats_a3d3cd491b829b2e30f6752fee38fe261}{Calculated};
+00666       ar &\hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{Mean};
+00667       ar &\hyperlink{class_soil_math_1_1_stats_a7154ac6c97dc2e83bdff7fef3cbdac5b}{Range};
+00668       ar &\hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min};
+00669       ar &\hyperlink{class_soil_math_1_1_stats_ad49ee1f533564ec587cf98a094b8c564}{max};
+00670       ar &\hyperlink{class_soil_math_1_1_stats_acf54f4a105482109ebc884c8e56d0ba9}{Startbin};
+00671       ar &\hyperlink{class_soil_math_1_1_stats_a0db07157ff238d0d40c4e1f4d67afd46}{EndBin};
+00672       ar &\hyperlink{class_soil_math_1_1_stats_a00be1d2a705a8aba532fbe726001bbb2}{binRange};
+00673       ar &\hyperlink{class_soil_math_1_1_stats_a6af590b7d033d882d5428c0d7a1f5e59}{Std};
+00674       ar &\hyperlink{class_soil_math_1_1_stats_af326fa61048522fc146b799759e345f9}{Sum};
+00675       ar &\hyperlink{class_soil_math_1_1_stats_a0e462c013f12f02e31e9ae03334151c3}{Rows};
+00676       ar &\hyperlink{class_soil_math_1_1_stats_a971f1ec23c32137805c4577f05454d83}{Cols};
+00677       ar &\hyperlink{class_soil_math_1_1_stats_a06f5e8404c2a0fa303dbb18a58d6deb5}{StartAtZero};
+00678       ar &\hyperlink{class_soil_math_1_1_stats_a85da0692f7d25c9d5add1f8ffd67bdf2}{HighestPDF};
+00679     \}
+00680   \}
+00681 \};
+00682 \}
+00683 
+00684 \textcolor{keyword}{typedef} \hyperlink{class_soil_math_1_1_stats}{SoilMath::Stats<float, double, long double>}
+\hypertarget{_stats_8h_source_l00685}{}\hyperlink{_stats_8h_a5f9676504b14f796e82c229b4dddc50b}{00685}     \hyperlink{_stats_8h_a5f9676504b14f796e82c229b4dddc50b}{floatStat\_t}; 
+00686 \textcolor{keyword}{typedef} \hyperlink{class_soil_math_1_1_stats}{SoilMath::Stats<uchar, uint32\_t, uint64\_t>}
+\hypertarget{_stats_8h_source_l00687}{}\hyperlink{_stats_8h_a5b876b087ada3df30b8dd6309fc25191}{00687}     \hyperlink{_stats_8h_a5b876b087ada3df30b8dd6309fc25191}{ucharStat\_t}; 
+00688 \textcolor{keyword}{typedef} \hyperlink{class_soil_math_1_1_stats}{SoilMath::Stats<uint16\_t, uint32\_t, uint64\_t>}
+\hypertarget{_stats_8h_source_l00689}{}\hyperlink{_stats_8h_a78f1b1fd7cec859f1d5597f89b27df68}{00689}     \hyperlink{_stats_8h_a78f1b1fd7cec859f1d5597f89b27df68}{uint16Stat\_t}; 
+00690 \textcolor{keyword}{typedef} \hyperlink{class_soil_math_1_1_stats}{SoilMath::Stats<uint32\_t, uint32\_t, uint64\_t>}
+\hypertarget{_stats_8h_source_l00691}{}\hyperlink{_stats_8h_a7c49bb4faf7ca4792e46c1b756c07b20}{00691}     \hyperlink{_stats_8h_a7c49bb4faf7ca4792e46c1b756c07b20}{uint32Stat\_t}; 
+00692 BOOST\_CLASS\_VERSION(\hyperlink{class_soil_math_1_1_stats}{floatStat\_t}, 0)
+00693 BOOST\_CLASS\_VERSION(\hyperlink{class_soil_math_1_1_stats}{ucharStat\_t}, 0)
+00694 BOOST\_CLASS\_VERSION(\hyperlink{class_soil_math_1_1_stats}{uint16Stat\_t}, 0)
+00695 BOOST\_CLASS\_VERSION(\hyperlink{class_soil_math_1_1_stats}{uint32Stat\_t}, 0)
+\end{DoxyCode}

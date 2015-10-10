@@ -1,0 +1,87 @@
+\hypertarget{_sort_8h_source}{}\subsection{Sort.\+h}
+\label{_sort_8h_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Math/\+Sort.\+h@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Math/\+Sort.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/* Copyright (C) Jelle Spijker - All Rights Reserved}
+00002 \textcolor{comment}{ * Unauthorized copying of this file, via any medium is strictly prohibited}
+00003 \textcolor{comment}{ * and only allowed with the written consent of the author (Jelle Spijker)}
+00004 \textcolor{comment}{ * This software is proprietary and confidential}
+00005 \textcolor{comment}{ * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015}
+00006 \textcolor{comment}{ */}
+00007 
+00008 \textcolor{preprocessor}{#pragma once}
+00009 \textcolor{preprocessor}{#include <stdint.h>}
+00010 
+00011 \textcolor{keyword}{namespace }\hyperlink{namespace_soil_math}{SoilMath} \{
+\hypertarget{_sort_8h_source_l00015}{}\hyperlink{class_soil_math_1_1_sort}{00015} \textcolor{keyword}{class }\hyperlink{class_soil_math_1_1_sort}{Sort} \{
+00016 \textcolor{keyword}{public}:
+\hypertarget{_sort_8h_source_l00017}{}\hyperlink{class_soil_math_1_1_sort_ac5553af8753454e71e6d621690fdab3f}{00017}   \hyperlink{class_soil_math_1_1_sort_ac5553af8753454e71e6d621690fdab3f}{Sort}() \{\}
+\hypertarget{_sort_8h_source_l00018}{}\hyperlink{class_soil_math_1_1_sort_a62273dbd3620f999201abacdff5e2557}{00018}   \hyperlink{class_soil_math_1_1_sort_a62273dbd3620f999201abacdff5e2557}{~Sort}() \{\}
+00019 
+\hypertarget{_sort_8h_source_l00026}{}\hyperlink{class_soil_math_1_1_sort_adca7b48be7482f89767b806ad2016d67}{00026}   \textcolor{keyword}{template} <\textcolor{keyword}{typename} T> \textcolor{keyword}{static} \textcolor{keywordtype}{void} \hyperlink{class_soil_math_1_1_sort_adca7b48be7482f89767b806ad2016d67}{QuickSort}(T *arr, \textcolor{keywordtype}{int} i) \{
+00027     \textcolor{keywordflow}{if} (i < 2)
+00028       \textcolor{keywordflow}{return};
+00029 
+00030     T p = arr[i / 2];
+00031     T *l = arr;
+00032     T *r = arr + i - 1;
+00033     \textcolor{keywordflow}{while} (l <= r) \{
+00034       \textcolor{keywordflow}{if} (*l < p) \{
+00035         l++;
+00036       \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (*r > p) \{
+00037         r--;
+00038       \} \textcolor{keywordflow}{else} \{
+00039         T t = *l;
+00040         *l = *r;
+00041         *r = t;
+00042         l++;
+00043         r--;
+00044       \}
+00045     \}
+00046     Sort::QuickSort<T>(arr, r - arr + 1);
+00047     Sort::QuickSort<T>(l, arr + i - l);
+00048   \}
+00049 
+\hypertarget{_sort_8h_source_l00058}{}\hyperlink{class_soil_math_1_1_sort_ae30ea06713b1cff25f22498724d6f74c}{00058}   \textcolor{keyword}{template} <\textcolor{keyword}{typename} T> \textcolor{keyword}{static} \textcolor{keywordtype}{void} \hyperlink{class_soil_math_1_1_sort_ae30ea06713b1cff25f22498724d6f74c}{QuickSort}(T *arr, T *key, \textcolor{keywordtype}{int} i) \{
+00059     \textcolor{keywordflow}{if} (i < 2)
+00060       \textcolor{keywordflow}{return};
+00061 
+00062     T p = arr[i / 2];
+00063 
+00064     T *l = arr;
+00065     T *r = arr + i - 1;
+00066 
+00067     T *lkey = key;
+00068     T *rkey = key + i - 1;
+00069 
+00070     \textcolor{keywordflow}{while} (l <= r) \{
+00071       \textcolor{keywordflow}{if} (*l < p) \{
+00072         l++;
+00073         lkey++;
+00074       \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (*r > p) \{
+00075         r--;
+00076         rkey--;
+00077       \} \textcolor{keywordflow}{else} \{
+00078        \textcolor{keywordflow}{if} (*l != *r) \{
+00079           T t = *l;
+00080           *l = *r;
+00081           *r = t;
+00082 
+00083           T tkey = *lkey;
+00084           *lkey = *rkey;
+00085           *rkey = tkey;
+00086         \}
+00087 
+00088         l++;
+00089         r--;
+00090 
+00091         lkey++;
+00092         rkey--;
+00093       \}
+00094     \}
+00095     Sort::QuickSort<T>(arr, key, r - arr + 1);
+00096     Sort::QuickSort<T>(l, lkey, arr + i - l);
+00097   \}
+00098 \};
+00099 \}
+\end{DoxyCode}

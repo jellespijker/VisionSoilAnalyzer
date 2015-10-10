@@ -1,0 +1,176 @@
+\hypertarget{_morphological_filter_8cpp_source}{}\subsection{Morphological\+Filter.\+cpp}
+\label{_morphological_filter_8cpp_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Vision/\+Morphological\+Filter.\+cpp@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Vision/\+Morphological\+Filter.\+cpp}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/* Copyright (C) Jelle Spijker - All Rights Reserved}
+00002 \textcolor{comment}{ * Unauthorized copying of this file, via any medium is strictly prohibited}
+00003 \textcolor{comment}{ * and only allowed with the written consent of the author (Jelle Spijker)}
+00004 \textcolor{comment}{ * This software is proprietary and confidential}
+00005 \textcolor{comment}{ * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015}
+00006 \textcolor{comment}{ */}
+00007 
+00008 \textcolor{preprocessor}{#include "\hyperlink{_morphological_filter_8h}{MorphologicalFilter.h}"}
+00009 
+00010 \textcolor{keyword}{namespace }\hyperlink{namespace_vision}{Vision} \{
+\hypertarget{_morphological_filter_8cpp_source_l00011}{}\hyperlink{class_vision_1_1_morphological_filter_a86da6e12018a61c610942cee292a5b16}{00011} \hyperlink{class_vision_1_1_morphological_filter_a86da6e12018a61c610942cee292a5b16}{MorphologicalFilter::MorphologicalFilter}() \{\}
+00012 
+\hypertarget{_morphological_filter_8cpp_source_l00013}{}\hyperlink{class_vision_1_1_morphological_filter_adee61b49563bbab5c62699ce3b66f61d}{00013} \hyperlink{class_vision_1_1_morphological_filter_a86da6e12018a61c610942cee292a5b16}{MorphologicalFilter::MorphologicalFilter}(
+      \hyperlink{class_vision_1_1_morphological_filter_a1f19c9cb13f0d68778c77d6fd0370868}{FilterType} filtertype) \{
+00014   \textcolor{keywordflow}{switch} (filtertype) \{
+00015   \textcolor{keywordflow}{case} FilterType::OPEN:
+00016     \hyperlink{class_vision_1_1_morphological_filter_a5e57dd85a3c583242b62c5669deab9a0}{Open}(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg});
+00017     \textcolor{keywordflow}{break};
+00018   \textcolor{keywordflow}{case} FilterType::CLOSE:
+00019     \hyperlink{class_vision_1_1_morphological_filter_ad18de4b3b27d7cd0465cd7f8c3d0b52f}{Close}(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg});
+00020     \textcolor{keywordflow}{break};
+00021   \textcolor{keywordflow}{case} FilterType::ERODE:
+00022     \hyperlink{class_vision_1_1_morphological_filter_a62ad82519dc19be6367193a5d539c98b}{Erosion}(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg});
+00023     \textcolor{keywordflow}{break};
+00024   \textcolor{keywordflow}{case} FilterType::DILATE:
+00025     \hyperlink{class_vision_1_1_morphological_filter_abfba03324b8dd0280925463941345417}{Dilation}(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg});
+00026     \textcolor{keywordflow}{break};
+00027   \textcolor{keywordflow}{case} FilterType::NONE:
+00028     \textcolor{keywordflow}{break};
+00029   \}
+00030 \}
+00031 
+\hypertarget{_morphological_filter_8cpp_source_l00032}{}\hyperlink{class_vision_1_1_morphological_filter_a629a6d6a08e47bad397dea88506ee18a}{00032} \hyperlink{class_vision_1_1_morphological_filter_a86da6e12018a61c610942cee292a5b16}{MorphologicalFilter::MorphologicalFilter}(\textcolor{keyword}{const} Mat &src,
+00033                                          \hyperlink{class_vision_1_1_morphological_filter_a1f19c9cb13f0d68778c77d6fd0370868}{FilterType} filtertype) \{
+00034   \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg} = src;
+00035   \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.create(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.size(), CV\_8UC1);
+00036   \textcolor{keywordflow}{switch} (filtertype) \{
+00037   \textcolor{keywordflow}{case} FilterType::OPEN:
+00038     \hyperlink{class_vision_1_1_morphological_filter_a5e57dd85a3c583242b62c5669deab9a0}{Open}(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg});
+00039     \textcolor{keywordflow}{break};
+00040   \textcolor{keywordflow}{case} FilterType::CLOSE:
+00041     \hyperlink{class_vision_1_1_morphological_filter_ad18de4b3b27d7cd0465cd7f8c3d0b52f}{Close}(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg});
+00042     \textcolor{keywordflow}{break};
+00043   \textcolor{keywordflow}{case} FilterType::ERODE:
+00044     \hyperlink{class_vision_1_1_morphological_filter_a62ad82519dc19be6367193a5d539c98b}{Erosion}(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg});
+00045     \textcolor{keywordflow}{break};
+00046   \textcolor{keywordflow}{case} FilterType::DILATE:
+00047     \hyperlink{class_vision_1_1_morphological_filter_abfba03324b8dd0280925463941345417}{Dilation}(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg});
+00048     \textcolor{keywordflow}{break};
+00049   \textcolor{keywordflow}{case} FilterType::NONE:
+00050     \textcolor{keywordflow}{break};
+00051   \}
+00052 \}
+00053 
+\hypertarget{_morphological_filter_8cpp_source_l00054}{}\hyperlink{class_vision_1_1_morphological_filter_a097b3c98f3ae5d18caece09e76e4d466}{00054} \hyperlink{class_vision_1_1_morphological_filter_a86da6e12018a61c610942cee292a5b16}{MorphologicalFilter::MorphologicalFilter}(\textcolor{keyword}{const} 
+      \hyperlink{class_vision_1_1_morphological_filter}{MorphologicalFilter} &rhs) \{
+00055   this->\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg} = rhs.\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg};
+00056   this->\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg} = rhs.\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg};
+00057   this->\hyperlink{class_vision_1_1_image_processing_a5371ad8d6f7aac9d43ee5c902ade7435}{TempImg} = rhs.\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg};
+00058 \}
+00059 
+\hypertarget{_morphological_filter_8cpp_source_l00060}{}\hyperlink{class_vision_1_1_morphological_filter_aa5d02af08a53911fb24d60d1a842e7cb}{00060} \hyperlink{class_vision_1_1_morphological_filter_aa5d02af08a53911fb24d60d1a842e7cb}{MorphologicalFilter::~MorphologicalFilter}() \{\}
+00061 
+\hypertarget{_morphological_filter_8cpp_source_l00062}{}\hyperlink{class_vision_1_1_morphological_filter_ac470002738b85326278c76538ba5a0b8}{00062} \hyperlink{class_vision_1_1_morphological_filter}{MorphologicalFilter} &\hyperlink{class_vision_1_1_morphological_filter_ac470002738b85326278c76538ba5a0b8}{MorphologicalFilter::operator=}(
+      \hyperlink{class_vision_1_1_morphological_filter}{MorphologicalFilter} &rhs) \{
+00063   \textcolor{keywordflow}{if} (&rhs != \textcolor{keyword}{this}) \{
+00064     this->\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg} = rhs.\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg};
+00065     this->\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg} = rhs.\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg};
+00066     this->\hyperlink{class_vision_1_1_image_processing_a5371ad8d6f7aac9d43ee5c902ade7435}{TempImg} = rhs.\hyperlink{class_vision_1_1_image_processing_a5371ad8d6f7aac9d43ee5c902ade7435}{TempImg};
+00067   \}
+00068   \textcolor{keywordflow}{return} *\textcolor{keyword}{this};
+00069 \}
+00070 
+\hypertarget{_morphological_filter_8cpp_source_l00071}{}\hyperlink{class_vision_1_1_morphological_filter_a5e57dd85a3c583242b62c5669deab9a0}{00071} \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_morphological_filter_a5e57dd85a3c583242b62c5669deab9a0}{MorphologicalFilter::Open}(\textcolor{keyword}{const} Mat &mask, \textcolor{keywordtype}{bool} chain) \{
+00072   \hyperlink{class_vision_1_1_morphological_filter_a62ad82519dc19be6367193a5d539c98b}{Erosion}(mask, chain);
+00073   \hyperlink{class_vision_1_1_morphological_filter_abfba03324b8dd0280925463941345417}{Dilation}(mask, \textcolor{keyword}{true});
+00074 \}
+00075 
+\hypertarget{_morphological_filter_8cpp_source_l00076}{}\hyperlink{class_vision_1_1_morphological_filter_ad18de4b3b27d7cd0465cd7f8c3d0b52f}{00076} \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_morphological_filter_ad18de4b3b27d7cd0465cd7f8c3d0b52f}{MorphologicalFilter::Close}(\textcolor{keyword}{const} Mat &mask, \textcolor{keywordtype}{bool} chain) \{
+00077   \hyperlink{class_vision_1_1_morphological_filter_abfba03324b8dd0280925463941345417}{Dilation}(mask, chain);
+00078   \hyperlink{class_vision_1_1_morphological_filter_a62ad82519dc19be6367193a5d539c98b}{Erosion}(mask, \textcolor{keyword}{true});
+00079 \}
+00080 
+\hypertarget{_morphological_filter_8cpp_source_l00081}{}\hyperlink{class_vision_1_1_morphological_filter_abfba03324b8dd0280925463941345417}{00081} \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_morphological_filter_abfba03324b8dd0280925463941345417}{MorphologicalFilter::Dilation}(\textcolor{keyword}{const} Mat &mask, \textcolor{keywordtype}{bool} chain) \{
+00082   \hyperlink{class_vision_1_1_morphological_filter_ab743062372a8d0b26dabfd27451e72ed}{Filter}(mask, chain, 0, 1, 1);
+00083 \}
+00084 
+\hypertarget{_morphological_filter_8cpp_source_l00085}{}\hyperlink{class_vision_1_1_morphological_filter_a62ad82519dc19be6367193a5d539c98b}{00085} \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_morphological_filter_a62ad82519dc19be6367193a5d539c98b}{MorphologicalFilter::Erosion}(\textcolor{keyword}{const} Mat &mask, \textcolor{keywordtype}{bool} chain) \{
+00086   \hyperlink{class_vision_1_1_morphological_filter_ab743062372a8d0b26dabfd27451e72ed}{Filter}(mask, chain, 1, 0, 0);
+00087 \}
+00088 
+\hypertarget{_morphological_filter_8cpp_source_l00089}{}\hyperlink{class_vision_1_1_morphological_filter_ab743062372a8d0b26dabfd27451e72ed}{00089} \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_morphological_filter_ab743062372a8d0b26dabfd27451e72ed}{MorphologicalFilter::Filter}(\textcolor{keyword}{const} Mat &mask, \textcolor{keywordtype}{bool} chain, 
+      \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} startVal,
+00090                                  \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} newVal, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} switchVal) \{
+00091   \textcolor{comment}{// Exception handling}
+00092   CV\_Assert(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.depth() != \textcolor{keyword}{sizeof}(\hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}));
+00093   \hyperlink{_image_processing_8h_a27c4e53b88a0f9f2c097add555131056}{EMPTY\_CHECK}(\hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg});
+00094   \textcolor{keywordflow}{if} (mask.cols % 2 == 0 || mask.cols < 3) \{
+00095     \textcolor{keywordflow}{throw} \hyperlink{class_vision_1_1_exception_1_1_wrong_kernel_size_exception}{Exception::WrongKernelSizeException}(\textcolor{stringliteral}{"Wrong Kernelsize columns!
+      "});
+00096   \}
+00097   \textcolor{keywordflow}{if} (mask.rows % 2 == 0 || mask.rows < 3) \{
+00098     \textcolor{keywordflow}{throw} \hyperlink{class_vision_1_1_exception_1_1_wrong_kernel_size_exception}{Exception::WrongKernelSizeException}(\textcolor{stringliteral}{"Wrong Kernelsize rows!"});
+00099   \}
+00100 
+00101   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} hKsizeCol = (mask.cols / 2);
+00102   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} hKsizeRow = (mask.rows / 2);
+00103 
+00104   \textcolor{comment}{// make Pointers}
+00105   Mat workOrigImg(\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.rows + mask.rows, \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.cols + mask.cols,
+00106                   CV\_8UC1);
+00107   workOrigImg.setTo(0);
+00108   \textcolor{keywordflow}{if} (chain) \{
+00109     \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.copyTo(workOrigImg(
+00110         cv::Rect(hKsizeCol, hKsizeRow, \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.cols, 
+      \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.rows)));
+00111     \textcolor{comment}{// workOrigImg(cv::Rect(hKsizeCol, hKsizeRow, ProcessedImg.cols,}
+00112     \textcolor{comment}{// ProcessedImg.rows)) = ProcessedImg.clone();}
+00113   \} \textcolor{keywordflow}{else} \{
+00114     \hyperlink{class_vision_1_1_image_processing_a77c370dab270158a4e9c634e2d3f48e7}{OriginalImg}.copyTo(workOrigImg(
+00115         cv::Rect(hKsizeCol, hKsizeRow, \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.cols, 
+      \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.rows)));
+00116     \textcolor{comment}{// workOrigImg(cv::Rect(hKsizeCol, hKsizeRow, ProcessedImg.cols,}
+00117     \textcolor{comment}{// ProcessedImg.rows)) = OriginalImg.clone();}
+00118   \}
+00119   \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *O = workOrigImg.data;
+00120 
+00121   Mat workProcImg(\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.rows + mask.rows, \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.cols + mask.cols,
+00122                   CV\_8UC1);
+00123   \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *P = workProcImg.data;
+00124 
+00125   \textcolor{comment}{// Init the relevant data}
+00126   \textcolor{comment}{//uint32\_t nData = OriginalImg.cols * OriginalImg.rows;}
+00127   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} nWData = workProcImg.cols * workProcImg.rows;
+00128   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} nWStart = (hKsizeRow * workProcImg.cols) + hKsizeRow;
+00129   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} nWEnd = nWData - hKsizeCol - hKsizeRow * workProcImg.cols - 1;
+00130   \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *nRow = \hyperlink{class_vision_1_1_image_processing_a56e17515a15eb7d246985e550fc89610}{GetNRow}(nWData, hKsizeCol, workProcImg.cols, workProcImg.rows);
+00131   \textcolor{keywordtype}{int} MaskPixel = 0, OPixel = 0;
+00132 
+00133   workProcImg.setTo(0);
+00134   \textcolor{keywordflow}{if} (startVal != 0) \{
+00135     workProcImg(cv::Rect(hKsizeCol, hKsizeRow, \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.cols,
+00136                          \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.rows)).setTo(startVal);
+00137   \}
+00138   \hyperlink{_vision_debug_8h_aae864fa4f990213a4184a209ff236202}{SHOW\_DEBUG\_IMG}(workOrigImg, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}, 255, \textcolor{stringliteral}{"workOrigImg Filter!"}, \textcolor{keyword}{false});
+00139   \hyperlink{_vision_debug_8h_aae864fa4f990213a4184a209ff236202}{SHOW\_DEBUG\_IMG}(mask, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}, 255, \textcolor{stringliteral}{"Filter mask"}, \textcolor{keyword}{true});
+00140 
+00141   \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = nWStart; i < nWEnd; i++) \{
+00142     \textcolor{comment}{// Checks if pixel isn't a border pixel and progresses to the new row}
+00143     \textcolor{keywordflow}{if} (nRow[i] == 1) \{
+00144       i += mask.cols;
+00145     \}
+00146     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} r = 0; r < mask.rows; r++) \{
+00147       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} c = 0; c < mask.cols; c++) \{
+00148         MaskPixel = c + r * mask.cols;
+00149         OPixel = i - hKsizeCol + c + (r - hKsizeRow) * workProcImg.cols;
+00150         if (mask.data[MaskPixel] == 1 && O[OPixel] == switchVal) \{
+00151           P[i] = newVal;
+00152           c = mask.cols;
+00153           r = mask.rows;
+00154         \}
+00155       \}
+00156     \}
+00157   \}
+00158   \textcolor{keyword}{delete}[] nRow;
+00159   \hyperlink{_vision_debug_8h_aae864fa4f990213a4184a209ff236202}{SHOW\_DEBUG\_IMG}(workProcImg, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}, 255, \textcolor{stringliteral}{"workProcImg Filter!"}, \textcolor{keyword}{true});
+00160   \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg} = workProcImg(Rect(hKsizeCol, hKsizeRow, \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.cols,
+00161                                   \hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}.rows)).clone();
+00162   \hyperlink{_vision_debug_8h_aae864fa4f990213a4184a209ff236202}{SHOW\_DEBUG\_IMG}(\hyperlink{class_vision_1_1_image_processing_aa7d65742882cd1b2a1e4e9cb68809211}{ProcessedImg}, \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}, 255, \textcolor{stringliteral}{"Processed Image Filter!"}, \textcolor{keyword}{true});
+00163 \}
+00164 \}
+\end{DoxyCode}

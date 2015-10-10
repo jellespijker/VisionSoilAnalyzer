@@ -1,0 +1,125 @@
+\hypertarget{_image_processing_8cpp_source}{}\subsection{Image\+Processing.\+cpp}
+\label{_image_processing_8cpp_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Vision/\+Image\+Processing.\+cpp@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Vision/\+Image\+Processing.\+cpp}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/* Copyright (C) Jelle Spijker - All Rights Reserved}
+00002 \textcolor{comment}{ * Unauthorized copying of this file, via any medium is strictly prohibited}
+00003 \textcolor{comment}{ * and only allowed with the written consent of the author (Jelle Spijker)}
+00004 \textcolor{comment}{ * This software is proprietary and confidential}
+00005 \textcolor{comment}{ * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015}
+00006 \textcolor{comment}{ */}
+00007 
+00013 \textcolor{preprocessor}{#include "\hyperlink{_image_processing_8h}{ImageProcessing.h}"}
+00014 
+00015 \textcolor{keyword}{namespace }\hyperlink{namespace_vision}{Vision} \{
+\hypertarget{_image_processing_8cpp_source_l00017}{}\hyperlink{class_vision_1_1_image_processing_a0090ffe36a912d6df5d7a1f507f6252e}{00017} \hyperlink{class_vision_1_1_image_processing_a0090ffe36a912d6df5d7a1f507f6252e}{ImageProcessing::ImageProcessing}() \{\}
+00018 
+\hypertarget{_image_processing_8cpp_source_l00020}{}\hyperlink{class_vision_1_1_image_processing_a1d4bd00ec1862112552c663034cebabc}{00020} \hyperlink{class_vision_1_1_image_processing_a1d4bd00ec1862112552c663034cebabc}{ImageProcessing::~ImageProcessing}() \{\}
+00021 
+\hypertarget{_image_processing_8cpp_source_l00030}{}\hyperlink{class_vision_1_1_image_processing_a56e17515a15eb7d246985e550fc89610}{00030} \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *\hyperlink{class_vision_1_1_image_processing_a56e17515a15eb7d246985e550fc89610}{ImageProcessing::GetNRow}(\textcolor{keywordtype}{int} nData, \textcolor{keywordtype}{int} hKsize, \textcolor{keywordtype}{int} nCols,
+00031                                 \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} totalRows) \{
+00032   \textcolor{comment}{// Create LUT to determine when there is an new row}
+00033   \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *nRow = \textcolor{keyword}{new} \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar}[nData + 1]\{\};
+00034   \textcolor{comment}{// int i = 0;}
+00035   \textcolor{keywordtype}{int} shift = nCols - hKsize - 1;
+00036   \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i < totalRows; i++) \{
+00037     nRow[(i * nCols) + shift] = 1;
+00038   \}
+00039   \textcolor{keywordflow}{return} nRow;
+00040 \}
+00041 
+\hypertarget{_image_processing_8cpp_source_l00042}{}\hyperlink{class_vision_1_1_image_processing_ad5fa51caaabb8cb0fc2c15f645695a3c}{00042} std::vector<Mat> \hyperlink{class_vision_1_1_image_processing_ad5fa51caaabb8cb0fc2c15f645695a3c}{ImageProcessing::extractChannel}(\textcolor{keyword}{const} Mat &src) \{
+00043   vector<Mat> chans;
+00044   split(src, chans);
+00045   \textcolor{keywordflow}{return} chans;
+00046 \}
+00047 
+\hypertarget{_image_processing_8cpp_source_l00048}{}\hyperlink{class_vision_1_1_image_processing_a052aaae527703c3991310b9b1e704576}{00048} \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_image_processing_a052aaae527703c3991310b9b1e704576}{ImageProcessing::getOrientented}(cv::Mat &BW, cv::Point\_<double> &
+      centroid,
+00049                                      \textcolor{keywordtype}{double} &theta, \textcolor{keywordtype}{double} &eccentricty) \{
+00050   cv::Moments Mu = cv::moments(BW, \textcolor{keyword}{true});
+00051 
+00052   centroid.x = Mu.m10 / Mu.m00;
+00053   centroid.y = Mu.m01 / Mu.m00;
+00054 
+00055   theta = 0;
+00056   \textcolor{keywordtype}{double} muPrime20 = (Mu.m20 / Mu.m00) - pow(centroid.x, 2);
+00057   \textcolor{keywordtype}{double} muPrime02 = (Mu.m02 / Mu.m00) - pow(centroid.y, 2);
+00058   \textcolor{keywordtype}{double} diffmuprime2 = muPrime20 - muPrime02;
+00059   \textcolor{keywordtype}{double} muPrime11 = (Mu.m11 / Mu.m00) - (centroid.x * centroid.y);
+00060 
+00061   \textcolor{keywordflow}{if} (diffmuprime2 != 0) \{
+00062     theta = 0.5 * atan((2 * muPrime11) / diffmuprime2);
+00063   \}
+00064 
+00065   \textcolor{keywordtype}{double} term1 = (muPrime20 + muPrime02) /2;
+00066   \textcolor{keywordtype}{double} term2 = sqrt(4 * pow(muPrime11, 2) + pow(diffmuprime2, 2)) / 2;
+00067   eccentricty = sqrt(1-(term1 - term2)/ (term1 + term2));
+00068 \}
+00069 
+\hypertarget{_image_processing_8cpp_source_l00070}{}\hyperlink{class_vision_1_1_image_processing_a2cbae1b5d9542edab2e59da8e3e23d2a}{00070} \textcolor{keywordtype}{void} \hyperlink{class_vision_1_1_image_processing_a2cbae1b5d9542edab2e59da8e3e23d2a}{ImageProcessing::RotateImg}(Mat &src, Mat &dst, \textcolor{keywordtype}{double} &theta,
+00071                                 cv::Point\_<double> &Centroid, cv::Rect &ROI) \{
+00072   cv::Mat temp;
+00073   temp.setTo(0);
+00074   \textcolor{keywordtype}{double} alpha = cos(theta);
+00075   \textcolor{keywordtype}{double} beta = sin(theta);
+00076   \textcolor{keywordtype}{double} cx = src.cols / 2;
+00077   \textcolor{keywordtype}{double} cy = src.rows / 2;
+00078   \textcolor{keywordtype}{double} dx = cx - Centroid.x;
+00079   \textcolor{keywordtype}{double} dy = cy - Centroid.y;
+00080   \textcolor{keywordtype}{double} rotData[2][3]\{\{alpha, beta, alpha * dx + beta * dy + Centroid.x\},
+00081                        \{-beta, alpha, alpha * dy + beta * dx + Centroid.y\}\};
+00082   cv::Mat totalrot(2, 3, CV\_64FC1, rotData);
+00083 
+00084   cv::warpAffine(src, temp, totalrot, cv::Size(src.rows * 2.5, src.cols * 2.5),
+00085                  INTER\_LINEAR);
+00086   \textcolor{comment}{// determine the actual ROI}
+00087   cv::Point minP(0, 0);
+00088   \textcolor{keywordflow}{if} (src.channels() == 1) \{
+00089     \hyperlink{_soil_math_types_8h_a65f85814a8290f9797005d3b28e7e5fc}{uchar} *O = temp.data;
+00090     \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} nData = temp.rows * temp.cols;
+00091     minP.x = temp.rows;
+00092     minP.y = temp.cols;
+00093     cv::Point maxP(0, 0);
+00094     \textcolor{keywordtype}{int} X, Y;
+00095     \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i < nData; i++) \{
+00096       \textcolor{keywordflow}{if} (O[i] != 0) \{
+00097         Y = floor(i / temp.cols);
+00098         X = (i % temp.cols);
+00099         \textcolor{keywordflow}{if} (X < minP.x) \{
+00100           minP.x = X;
+00101         \}
+00102         \textcolor{keywordflow}{if} (Y < minP.y) \{
+00103           minP.y = Y;
+00104         \}
+00105         \textcolor{keywordflow}{if} (X > maxP.x) \{
+00106           maxP.x = X;
+00107         \}
+00108         \textcolor{keywordflow}{if} (Y > maxP.y) \{
+00109           maxP.y = Y;
+00110         \}
+00111       \}
+00112     \}
+00113     ROI = cv::Rect(minP, maxP);
+00114   \}
+00115 
+00116   \textcolor{keywordflow}{if} (src.channels() > 1) \{
+00117     Centroid.x -= cx;
+00118     Centroid.y -= cy;
+00119 
+00120     \textcolor{keywordtype}{double} xnew = Centroid.x * alpha - Centroid.y * beta;
+00121     \textcolor{keywordtype}{double} ynew = Centroid.x * beta - Centroid.y * alpha;
+00122 
+00123     Centroid.x = xnew + cx + minP.x;
+00124     Centroid.y = ynew + cy + minP.y;
+00125   \}
+00126   dst = temp(ROI).clone();
+00127 \}
+00128 
+00129 boost::signals2::connection
+\hypertarget{_image_processing_8cpp_source_l00130}{}\hyperlink{class_vision_1_1_image_processing_a013b9623c6a2933ec5f78b13a450994d}{00130} \hyperlink{class_vision_1_1_image_processing_a013b9623c6a2933ec5f78b13a450994d}{ImageProcessing::connect\_Progress}(\textcolor{keyword}{const} Progress\_t::slot\_type &subscriber)
+       \{
+00131   \textcolor{keywordflow}{return} \hyperlink{class_vision_1_1_image_processing_ac0c168e16365ff5941791f67ec895663}{prog\_sig}.connect(subscriber);
+00132 \}
+00133 \}
+\end{DoxyCode}

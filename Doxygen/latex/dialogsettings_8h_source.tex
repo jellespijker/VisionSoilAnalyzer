@@ -1,0 +1,154 @@
+\hypertarget{dialogsettings_8h_source}{}\subsection{dialogsettings.\+h}
+\label{dialogsettings_8h_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+V\+S\+A/dialogsettings.\+h@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+V\+S\+A/dialogsettings.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#ifndef DIALOGSETTINGS\_H}
+00002 \textcolor{preprocessor}{#define DIALOGSETTINGS\_H}
+00003 
+00004 \textcolor{preprocessor}{#include <QDialog>}
+00005 \textcolor{preprocessor}{#include <\hyperlink{soilsettings_8h}{soilsettings.h}>}
+00006 \textcolor{preprocessor}{#include <QFileDialog>}
+00007 \textcolor{preprocessor}{#include <QString>}
+00008 \textcolor{preprocessor}{#include <QDir>}
+00009 \textcolor{preprocessor}{#include <QSlider>}
+00010 \textcolor{preprocessor}{#include "\hyperlink{_hardware_8h}{Hardware.h}"}
+00011 
+00012 \textcolor{keyword}{namespace }\hyperlink{namespace_ui}{Ui} \{
+00013 \textcolor{keyword}{class }\hyperlink{class_dialog_settings}{DialogSettings};
+00014 \}
+00015 
+\hypertarget{dialogsettings_8h_source_l00016}{}\hyperlink{class_dialog_settings}{00016} \textcolor{keyword}{class }\hyperlink{class_dialog_settings}{DialogSettings} : \textcolor{keyword}{public} QDialog \{
+00017   Q\_OBJECT
+00018 
+00019 \textcolor{keyword}{public}:
+\hypertarget{dialogsettings_8h_source_l00020}{}\hyperlink{class_dialog_settings_ae6b9e42f9108f93c4964be28a7171648}{00020}   \hyperlink{class_soil_analyzer_1_1_soil_settings}{SoilAnalyzer::SoilSettings} *\hyperlink{class_dialog_settings_ae6b9e42f9108f93c4964be28a7171648}{Settings} = \textcolor{keyword}{nullptr};
+00021   \textcolor{keyword}{explicit} \hyperlink{class_dialog_settings_a891cd177b754ee9249567759998ff47a}{DialogSettings}(QWidget *parent = 0,
+00022                           \hyperlink{class_soil_analyzer_1_1_soil_settings}{SoilAnalyzer::SoilSettings} *settings = \textcolor{keyword}{nullptr},
+00023                           \hyperlink{class_hardware_1_1_microscope}{Hardware::Microscope} *microscope = \textcolor{keyword}{nullptr},
+00024                           \hyperlink{class_soil_math_1_1_n_n}{SoilMath::NN} *nn = \textcolor{keyword}{nullptr}, \textcolor{keywordtype}{bool} openNN = \textcolor{keyword}{false});
+00025   \hyperlink{class_dialog_settings_a10e028cc22f2ab2367f582242fd8115e}{~DialogSettings}();
+00026 
+00027   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_ac22fca3a8ea77953fb667c0118860221}{openTab}(\textcolor{keywordtype}{int} newValue);
+00028 \textcolor{keyword}{private} slots:
+00029 
+00030   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_aae514236719c387d1922402298733660}{on\_pushButton\_RestoreDefault\_clicked}();
+00031 
+00032   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_a46d3655796593684cd5949aeae57c6d5}{on\_pushButton\_Open\_clicked}();
+00033 
+00034   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_a2f04e1b1d30db8197db4de03bea63a87}{on\_pushButton\_Save\_clicked}();
+00035 
+00036   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_a32f4763290f97febfa34bcdcd2dc9432}{on\_checkBox\_Backlight\_clicked}(\textcolor{keywordtype}{bool} checked);
+00037 
+00038   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_adeb3fcea2cf71899e5f9dd184421c131}{on\_comboBox\_Microscopes\_currentIndexChanged}(\textcolor{keyword}{const} QString
+       &arg1);
+00039 
+00040   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_a523a72d25bd4c7623cf8164cb73736d5}{on\_comboBox\_Resolution\_currentIndexChanged}(\textcolor{keywordtype}{int} index);
+00041 
+00042   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_ae1c807192ce7c417cb7c742d7aa2a4c7}{on\_checkBox\_useHDR\_clicked}(\textcolor{keywordtype}{bool} checked);
+00043 
+00044   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_ada2cc4ec4579282cd5045e3f77e99aeb}{on\_spinBox\_NoFrames\_editingFinished}();
+00045 
+00046   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_a761f7eced4cbb72a9585dd2bc344a767}{on\_doubleSpinBox\_LightLevel\_editingFinished}();
+00047 
+00048   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_a44848ea27b02c9c948e9a51beddd28a4}{on\_checkBox\_useRainbow\_clicked}(\textcolor{keywordtype}{bool} checked);
+00049 
+00050   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_a77049e8a045e88d549648bf8a52d18b1}{on\_checkBox\_InvertEncoder\_clicked}(\textcolor{keywordtype}{bool} checked);
+00051 
+00052   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_a621bee1594767554a084f331beff483a}{on\_checkBox\_useCUDA\_clicked}(\textcolor{keywordtype}{bool} checked);
+00053 
+00054   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_af24b06407f4dc58ebe93979c91bedcbb}{on\_horizontalSlider\_BrightFront\_valueChanged}(\textcolor{keywordtype}{int} value);
+00055 
+00056   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_a5932a6370c7314c3beeb37fb47292875}{on\_horizontalSlider\_ContrastFront\_valueChanged}(\textcolor{keywordtype}{int} 
+      value);
+00057 
+00058   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_a7d58b34cefab1de3cda64b0cc83f40a4}{on\_horizontalSlider\_SaturationFront\_valueChanged}(\textcolor{keywordtype}{int}
+       value);
+00059 
+00060   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_ad058e3bb68bde789b767cd1a9d7a59d3}{on\_horizontalSlider\_HueFront\_valueChanged}(\textcolor{keywordtype}{int} value);
+00061 
+00062   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_adf1f4d3c4ff223c4c183ae271819fc8c}{on\_horizontalSlider\_SharpnessFront\_valueChanged}(\textcolor{keywordtype}{int} 
+      value);
+00063 
+00064   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_ade5e4c2418d4356e0776fbb000757c80}{on\_horizontalSlider\_BrightProj\_valueChanged}(\textcolor{keywordtype}{int} value);
+00065 
+00066   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_a2f1a2b46e08ed3e6a99b6e3108879002}{on\_horizontalSlider\_ContrastProj\_valueChanged}(\textcolor{keywordtype}{int} value
+      );
+00067 
+00068   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_ac3d7c7b3ea9f5a0e3c39b924556f5ea2}{on\_horizontalSlider\_SaturationProj\_valueChanged}(\textcolor{keywordtype}{int} 
+      value);
+00069 
+00070   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_a14f0a0e04c6eac16c0964b0799bad307}{on\_horizontalSlider\_HueProj\_valueChanged}(\textcolor{keywordtype}{int} value);
+00071 
+00072   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_ac1eb97de9fde47bdb9841b52724663a7}{on\_horizontalSlider\_SharpnessProj\_valueChanged}(\textcolor{keywordtype}{int} 
+      value);
+00073 
+00074   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_a245bc00aa16dfc97577fe2db8c1e1036}{on\_cb\_use\_adaptContrast\_3\_clicked}(\textcolor{keywordtype}{bool} checked);
+00075 
+00076   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_a71f71044299e80f1c520e529fd67df43}{on\_cb\_useBlur\_3\_clicked}(\textcolor{keywordtype}{bool} checked);
+00077 
+00078   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_af1577c6b225da64f565ad23528e538bf}{on\_rb\_useDark\_3\_toggled}(\textcolor{keywordtype}{bool} checked);
+00079 
+00080   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_a2f1a496fde19c1728e0cc9eec30c304d}{on\_cb\_ignoreBorder\_3\_clicked}(\textcolor{keywordtype}{bool} checked);
+00081 
+00082   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_a020f004b906e659d4ba2920281112afa}{on\_cb\_fillHoles\_3\_clicked}(\textcolor{keywordtype}{bool} checked);
+00083 
+00084   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_a1a907ca905e313fe606b84b80829f80b}{on\_sb\_sigmaFactor\_3\_editingFinished}();
+00085 
+00086   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_af9143e7adfb0e07b94d6c3dcfd851178}{on\_rb\_useOpen\_3\_clicked}(\textcolor{keywordtype}{bool} checked);
+00087 
+00088   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_a30b98652c0e2e76bedf94194eba32212}{on\_rb\_useClose\_3\_clicked}(\textcolor{keywordtype}{bool} checked);
+00089 
+00090   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_ac26a73f5f28eadc10b77fd7fe58a5a43}{on\_rb\_useErode\_3\_clicked}(\textcolor{keywordtype}{bool} checked);
+00091 
+00092   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_a02cf8145814a1a2d012001ecb95febfd}{on\_rb\_useDilate\_3\_clicked}(\textcolor{keywordtype}{bool} checked);
+00093 
+00094   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_a23694b9ccf8039028fd2ab6be697a1a3}{on\_sb\_morphMask\_3\_editingFinished}();
+00095 
+00096   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_ac243e39cfe6dea2e101e92916bd96a07}{on\_spinBox\_MaxGen\_editingFinished}();
+00097 
+00098   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_a86f5de4b60bc75e7328bb4103b0b17bf}{on\_spinBox\_PopSize\_editingFinished}();
+00099 
+00100   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_aca1680d915f5237c05259cb6f5a8da59}{on\_doubleSpinBox\_MutationRate\_editingFinished}();
+00101 
+00102   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_aef0a13201f0159b7f4972b1048caf46e}{on\_spinBox\_Elitisme\_editingFinished}();
+00103 
+00104   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_ac8c3a2a0b37eef330f59240d6d88aa31}{on\_doubleSpinBox\_endError\_editingFinished}();
+00105 
+00106   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_a8f26d4080f8c07e11210f927b8a532b2}{on\_doubleSpinBox\_maxWeight\_editingFinished}();
+00107 
+00108   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_aeef94f22e69a58b76b0c81447d2b8fe0}{on\_doubleSpinBox\_MinWeight\_editingFinished}();
+00109 
+00110   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_aaac9a0c84d1461fa0753b67466239ee3}{on\_doubleSpinBox\_Beta\_editingFinished}();
+00111 
+00112   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_a5c7f94065123d8302ece6261d80c630d}{on\_spinBox\_InputNeurons\_editingFinished}();
+00113 
+00114   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_a149a62295a8a2f197194879d9a1bd2aa}{on\_spinBox\_HiddenNeurons\_editingFinished}();
+00115 
+00116   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_a85c6fccd4ff1e7e2f18b2626ca32f57f}{on\_spinBox\_OutputNeurons\_editingFinished}();
+00117 
+00118   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_a8764ca0717402929cf56c717fba7f72d}{on\_pushButton\_selectSampleFolder\_clicked}();
+00119 
+00120   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_a1df15a887dc7ab9d9ab3e1914d9db48f}{on\_pushButton\_SelectSettingFolder\_clicked}();
+00121 
+00122   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_af649aa10d4fa099e855836f93ba7e6ba}{on\_pushButton\_SelectNNFolder\_clicked}();
+00123 
+00124   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_a33d503cc3fe214f248ea18daeceb9100}{on\_pushButton\_SelectNN\_clicked}();
+00125 
+00126   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_afc76ede70f3cdde0846623596aeadb22}{on\_spinBox\_NoShots\_editingFinished}();
+00127 
+00128   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_a2481a5044640ba6f5cbbc325ddde9c0b}{on\_checkBox\_PredictShape\_clicked}(\textcolor{keywordtype}{bool} checked);
+00129 
+00130   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_abe2d819e7af01522a7b2f8927dbf4049}{on\_checkBox\_revolt\_clicked}(\textcolor{keywordtype}{bool} checked);
+00131 
+00132 \textcolor{keyword}{private}:
+\hypertarget{dialogsettings_8h_source_l00133}{}\hyperlink{class_dialog_settings_a5b53d91a27cdf68f77e4bdd10b6a9bba}{00133}   Ui::DialogSettings *\hyperlink{class_dialog_settings_a5b53d91a27cdf68f77e4bdd10b6a9bba}{ui};
+\hypertarget{dialogsettings_8h_source_l00134}{}\hyperlink{class_dialog_settings_a0aca616bb0f9b57776d49bc5bb8eeeae}{00134}   \hyperlink{class_hardware_1_1_microscope}{Hardware::Microscope} *\hyperlink{class_dialog_settings_a0aca616bb0f9b57776d49bc5bb8eeeae}{Microscope};
+\hypertarget{dialogsettings_8h_source_l00135}{}\hyperlink{class_dialog_settings_a7a2bdfd8a1a5812d89d7019ae8b909c2}{00135}   \hyperlink{class_soil_math_1_1_n_n}{SoilMath::NN} *\hyperlink{class_dialog_settings_a7a2bdfd8a1a5812d89d7019ae8b909c2}{NN};
+\hypertarget{dialogsettings_8h_source_l00136}{}\hyperlink{class_dialog_settings_aeff07458ed6d4469cc16f90971bc5083}{00136}   \textcolor{keywordtype}{bool} \hyperlink{class_dialog_settings_aeff07458ed6d4469cc16f90971bc5083}{initfase} = \textcolor{keyword}{true};
+00137   \textcolor{keywordtype}{void} \hyperlink{class_dialog_settings_a0ee5b471d5007d534e3ed558064d12be}{SetCamControl}(\hyperlink{struct_hardware_1_1_microscope_1_1_cam__t}{Hardware::Microscope::Cam\_t} *selectedCam,
+00138                      QSlider *Brightness, QSlider *Contrast,
+00139                      QSlider *Saturation, QSlider *Hue, QSlider *Sharpness);
+00140 \};
+00141 
+00142 \textcolor{preprocessor}{#endif // DIALOGSETTINGS\_H}
+\end{DoxyCode}

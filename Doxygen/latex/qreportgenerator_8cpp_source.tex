@@ -1,0 +1,529 @@
+\hypertarget{qreportgenerator_8cpp_source}{}\subsection{qreportgenerator.\+cpp}
+\label{qreportgenerator_8cpp_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Q\+Report\+Generator/qreportgenerator.\+cpp@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Q\+Report\+Generator/qreportgenerator.\+cpp}}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#include "\hyperlink{qreportgenerator_8h}{qreportgenerator.h}"}
+00002 \textcolor{preprocessor}{#include "ui\_qreportgenerator.h"}
+00003 
+\hypertarget{qreportgenerator_8cpp_source_l00004}{}\hyperlink{class_q_report_generator_a3423584a1653cd7271a4d8526b2edf02}{00004} \hyperlink{class_q_report_generator_a3423584a1653cd7271a4d8526b2edf02}{QReportGenerator::QReportGenerator}(QWidget *parent,
+00005                                    \hyperlink{class_soil_analyzer_1_1_sample}{SoilAnalyzer::Sample} *sample,
+00006                                    \hyperlink{class_soil_analyzer_1_1_soil_settings}{SoilAnalyzer::SoilSettings} *settings,
+00007                                    QCustomPlot *psd, QCustomPlot *roundness,
+00008                                    QCustomPlot *angularity)
+00009     : QMainWindow(parent), ui(new \hyperlink{namespace_ui}{Ui}::\hyperlink{class_q_report_generator}{QReportGenerator}) \{
+00010   \hyperlink{class_q_report_generator_a4584dd4f053586b84b4a9f883a3313d9}{ui}->setupUi(\textcolor{keyword}{this});
+00011   \textcolor{keywordflow}{if} (settings == \textcolor{keyword}{nullptr}) \{
+00012     settings = \textcolor{keyword}{new} \hyperlink{class_soil_analyzer_1_1_soil_settings}{SoilAnalyzer::SoilSettings};
+00013   \}
+00014   this->\hyperlink{class_q_report_generator_a5e75a3f9447c0c24b32cd198a00af21c}{Settings} = settings;
+00015   \textcolor{keywordflow}{if} (sample == \textcolor{keyword}{nullptr}) \{
+00016     sample = \textcolor{keyword}{new} \hyperlink{class_soil_analyzer_1_1_sample}{SoilAnalyzer::Sample};
+00017   \}
+00018   this->\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample} = sample;
+00019 
+00020   \textcolor{keywordflow}{if} (psd == \textcolor{keyword}{nullptr}) \{
+00021     psd = \textcolor{keyword}{new} QCustomPlot;
+00022   \}
+00023   this->\hyperlink{class_soil_math_1_1_p_s_d}{PSD} = psd;
+00024 
+00025   \textcolor{keywordflow}{if} (roundness == \textcolor{keyword}{nullptr}) \{
+00026     roundness = \textcolor{keyword}{new} QCustomPlot;
+00027   \}
+00028   this->\hyperlink{class_q_report_generator_ad0dd77389aea1b1fb2a58e363e5ff8a1}{Roundness} = roundness;
+00029 
+00030   \textcolor{keywordflow}{if} (angularity == \textcolor{keyword}{nullptr}) \{
+00031     angularity = \textcolor{keyword}{new} QCustomPlot;
+00032   \}
+00033   this->\hyperlink{class_q_report_generator_a8c2f9aee54d302f1330c6fd60d12bd13}{Angularity} = angularity;
+00034 
+00035   \hyperlink{class_q_report_generator_ab051048608bc51151bc0b1ffc217f292}{Report} = \textcolor{keyword}{new} QTextDocument(\hyperlink{class_q_report_generator_a4584dd4f053586b84b4a9f883a3313d9}{ui}->textEdit);
+00036   \hyperlink{class_q_report_generator_a4584dd4f053586b84b4a9f883a3313d9}{ui}->textEdit->setDocument(\hyperlink{class_q_report_generator_ab051048608bc51151bc0b1ffc217f292}{Report});
+00037   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs} = QTextCursor(\hyperlink{class_q_report_generator_ab051048608bc51151bc0b1ffc217f292}{Report});
+00038 
+00039   \textcolor{comment}{// Setup the layout}
+00040   \hyperlink{class_q_report_generator_a1c6eac3b9c26e7fb32de033879ae6e6e}{TitleFormat}.setAlignment(Qt::AlignCenter);
+00041   \hyperlink{class_q_report_generator_a6ec92ac9d2ef36345c1f6089629c13a7}{TitleFont}.setBold(\textcolor{keyword}{true});
+00042   \hyperlink{class_q_report_generator_a6ec92ac9d2ef36345c1f6089629c13a7}{TitleFont}.setPointSize(36);
+00043   \hyperlink{class_q_report_generator_a7eebc837740d933bf4767e584f1d486c}{TitleTextFormat}.setFont(\hyperlink{class_q_report_generator_a6ec92ac9d2ef36345c1f6089629c13a7}{TitleFont});
+00044 
+00045   \hyperlink{class_q_report_generator_af2b45261507663b54e80f4053d25bc4b}{HeaderFormat}.setAlignment(Qt::AlignCenter);
+00046   \hyperlink{class_q_report_generator_af2b45261507663b54e80f4053d25bc4b}{HeaderFormat}.setPageBreakPolicy(QTextFormat::PageBreak\_AlwaysBefore);
+00047   \hyperlink{class_q_report_generator_af2b45261507663b54e80f4053d25bc4b}{HeaderFormat}.setTopMargin(40);
+00048   \hyperlink{class_q_report_generator_af2b45261507663b54e80f4053d25bc4b}{HeaderFormat}.setBottomMargin(10);
+00049   \hyperlink{class_q_report_generator_ad23921b0c8d0e77db7cfc0b611d9e93c}{HeaderFont}.setBold(\textcolor{keyword}{true});
+00050   \hyperlink{class_q_report_generator_ad23921b0c8d0e77db7cfc0b611d9e93c}{HeaderFont}.setPointSize(18);
+00051   \hyperlink{class_q_report_generator_a8be687c8a427e341fa1c7f9addc96e99}{HeaderTextFormat}.setFont(\hyperlink{class_q_report_generator_ad23921b0c8d0e77db7cfc0b611d9e93c}{HeaderFont});
+00052 
+00053   \hyperlink{class_q_report_generator_a19451127788bb6c68907b312a0a8b750}{ImageGraphFormat}.setAlignment(Qt::AlignCenter);
+00054   \hyperlink{class_q_report_generator_a19451127788bb6c68907b312a0a8b750}{ImageGraphFormat}.setTopMargin(10);
+00055   \hyperlink{class_q_report_generator_a19451127788bb6c68907b312a0a8b750}{ImageGraphFormat}.setBottomMargin(10);
+00056 
+00057   \hyperlink{class_q_report_generator_a9a18bc94ca92a730ae0f13d60a6b5e0a}{GeneralFormat}.setAlignment(Qt::AlignLeft);
+00058 
+00059   \hyperlink{class_q_report_generator_ab7022962a87365f93a5e168d946ebd85}{GeneralFont}.setPointSize(12);
+00060   \hyperlink{class_q_report_generator_ab7022962a87365f93a5e168d946ebd85}{GeneralFont}.setBold(\textcolor{keyword}{false});
+00061   \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat}.setFont(\hyperlink{class_q_report_generator_ab7022962a87365f93a5e168d946ebd85}{GeneralFont});
+00062 
+00063   \hyperlink{class_q_report_generator_ae23241660848e9015b6d3bf814d1b381}{FieldFont}.setBold(\textcolor{keyword}{true});
+00064   \hyperlink{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{GFieldtxtFormat}.setFont(\hyperlink{class_q_report_generator_ae23241660848e9015b6d3bf814d1b381}{FieldFont});
+00065 
+00066   \hyperlink{class_q_report_generator_a415a4b3a8995d02b724156b5e9c14486}{GeneralSampleList}.setStyle(QTextListFormat::ListDisc);
+00067 
+00068   \hyperlink{class_q_report_generator_afcb27e52bd15a286a1933c3b9cf01c92}{GeneralTextTableFormat}.setHeaderRowCount(1);
+00069   \hyperlink{class_q_report_generator_afcb27e52bd15a286a1933c3b9cf01c92}{GeneralTextTableFormat}.setBorderStyle(QTextFrameFormat::BorderStyle\_None);
+00070   \hyperlink{class_q_report_generator_afcb27e52bd15a286a1933c3b9cf01c92}{GeneralTextTableFormat}.setWidth(
+00071       QTextLength(QTextLength::PercentageLength, 90));
+00072   \hyperlink{class_q_report_generator_afcb27e52bd15a286a1933c3b9cf01c92}{GeneralTextTableFormat}.setAlignment(Qt::AlignCenter);
+00073 
+00074   \textcolor{comment}{// Setup the Title}
+00075   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.setBlockFormat(\hyperlink{class_q_report_generator_a1c6eac3b9c26e7fb32de033879ae6e6e}{TitleFormat});
+00076   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"Soil Report"}, \hyperlink{class_q_report_generator_a7eebc837740d933bf4767e584f1d486c}{TitleTextFormat});
+00077   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertBlock();
+00078 
+00079   \textcolor{comment}{// Setup the general Text}
+00080   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertBlock(\hyperlink{class_q_report_generator_a19451127788bb6c68907b312a0a8b750}{ImageGraphFormat});
+00081   QTextTable *mainTable = \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertTable(5, 2, \hyperlink{class_q_report_generator_afcb27e52bd15a286a1933c3b9cf01c92}{GeneralTextTableFormat});
+00082   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs} = mainTable->cellAt(0, 0).firstCursorPosition();
+00083   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"Sample name:"}, \hyperlink{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{GFieldtxtFormat});
+00084   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00085   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::fromStdString(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a94a2895e7885f5195ef7d050f37ee233}{Name}), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00086   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00087 
+00088   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"Sample ID:"}, \hyperlink{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{GFieldtxtFormat});
+00089   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00090   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a5eab03e759ae5754000ad10c30e75d15}{ID}), \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00091   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00092 
+00093   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"Date:"}, \hyperlink{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{GFieldtxtFormat});
+00094   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00095   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::fromStdString(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a9d97841637bbbba5b50b62d51b1b1b81}{Date}), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00096   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00097 
+00098   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"Location:"}, \hyperlink{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{GFieldtxtFormat});
+00099   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00100   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_aab622a2839ed86ab87f85ad2d1359ff8}{Latitude}), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00101   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{", "}, \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00102   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a7fc9f7ac8ea1f8fa87450bea41c33683}{Longtitude}), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00103   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00104 
+00105   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"Sample depth:"}, \hyperlink{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{GFieldtxtFormat});
+00106   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00107   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a61d5788ae61e9fd62f8bff35bd0bc068}{Depth}), \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00108   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{" [m]"}, \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00109   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextBlock);
+00110   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertBlock();
+00111 
+00112   \textcolor{comment}{// Insert the Google map}
+00113   \hyperlink{class_q_report_generator_ad588cf415e3d3a571fbd2fa7f9f30612}{getLocationMap}(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_aab622a2839ed86ab87f85ad2d1359ff8}{Latitude}, \hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->
+      \hyperlink{class_soil_analyzer_1_1_sample_a7fc9f7ac8ea1f8fa87450bea41c33683}{Longtitude});
+00114 
+00115   \textcolor{comment}{// Setup the QCustomplot handler}
+00116   QCPDocumentObject *plotObjectHandler = \textcolor{keyword}{new} QCPDocumentObject(\textcolor{keyword}{this});
+00117   \hyperlink{class_q_report_generator_a4584dd4f053586b84b4a9f883a3313d9}{ui}->textEdit->document()->documentLayout()->registerHandler(
+00118       QCPDocumentObject::PlotTextFormat, plotObjectHandler);
+00119 
+00120   \textcolor{comment}{// Setup the Textdata for the PSD}
+00121   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertBlock(\hyperlink{class_q_report_generator_af2b45261507663b54e80f4053d25bc4b}{HeaderFormat}, \hyperlink{class_q_report_generator_a8be687c8a427e341fa1c7f9addc96e99}{HeaderTextFormat});
+00122   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"Particle Size Distribution"});
+00123 
+00124   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertBlock(\hyperlink{class_q_report_generator_a19451127788bb6c68907b312a0a8b750}{ImageGraphFormat});
+00125   QTextTable *PSDdescr = \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertTable(6, 2, \hyperlink{class_q_report_generator_afcb27e52bd15a286a1933c3b9cf01c92}{GeneralTextTableFormat});
+00126   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs} = PSDdescr->cellAt(0, 0).firstCursorPosition();
+00127   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"No of particles:"}, \hyperlink{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{GFieldtxtFormat});
+00128   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00129   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a3a2cd7007e7867a6b3fb346f51b2ba60}{PSD}.\hyperlink{class_soil_math_1_1_stats_a7bc57af334b68253832ebac17f85d091}{n}), \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00130   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00131 
+00132   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"Mean: "}, \hyperlink{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{GFieldtxtFormat});
+00133   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00134   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a3a2cd7007e7867a6b3fb346f51b2ba60}{PSD}.\hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{Mean}), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00135   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00136 
+00137   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"Minimum: "}, \hyperlink{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{GFieldtxtFormat});
+00138   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00139   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a3a2cd7007e7867a6b3fb346f51b2ba60}{PSD}.\hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min}), \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00140   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00141 
+00142   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"Maximum: "}, \hyperlink{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{GFieldtxtFormat});
+00143   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00144   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a3a2cd7007e7867a6b3fb346f51b2ba60}{PSD}.\hyperlink{class_soil_math_1_1_stats_ad49ee1f533564ec587cf98a094b8c564}{max}), \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00145   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00146 
+00147   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"Range: "}, \hyperlink{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{GFieldtxtFormat});
+00148   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00149   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a3a2cd7007e7867a6b3fb346f51b2ba60}{PSD}.\hyperlink{class_soil_math_1_1_stats_a7154ac6c97dc2e83bdff7fef3cbdac5b}{Range}), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00150   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00151 
+00152   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"Standard deviation: "}, \hyperlink{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{GFieldtxtFormat});
+00153   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00154   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a3a2cd7007e7867a6b3fb346f51b2ba60}{PSD}.\hyperlink{class_soil_math_1_1_stats_a6af590b7d033d882d5428c0d7a1f5e59}{Std}), \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00155   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextBlock);
+00156 
+00157   \textcolor{comment}{// Setup the PSD}
+00158   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertBlock(\hyperlink{class_q_report_generator_a19451127788bb6c68907b312a0a8b750}{ImageGraphFormat});
+00159   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString(QChar::ObjectReplacementCharacter),
+00160                    QCPDocumentObject::generatePlotFormat(\hyperlink{class_soil_math_1_1_p_s_d}{PSD}, 600, 350));
+00161 
+00162   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertBlock(\hyperlink{class_q_report_generator_a19451127788bb6c68907b312a0a8b750}{ImageGraphFormat});
+00163   QTextTable *PSDdata = \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertTable(16, 3, \hyperlink{class_q_report_generator_afcb27e52bd15a286a1933c3b9cf01c92}{GeneralTextTableFormat});
+00164   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"Mesh Size [mm]"}, \hyperlink{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{GFieldtxtFormat});
+00165   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00166   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"Cummulatief [%]"}, \hyperlink{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{GFieldtxtFormat});
+00167   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00168   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"Retained [-]"}, \hyperlink{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{GFieldtxtFormat});
+00169   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00170   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"2"}, \hyperlink{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{GFieldtxtFormat});
+00171   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00172   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a3a2cd7007e7867a6b3fb346f51b2ba60}{PSD}.\hyperlink{class_soil_math_1_1_stats_a0d68c6fb52cb445c413aa187038bb1fe}{CFD}[14]), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00173   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00174   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a3a2cd7007e7867a6b3fb346f51b2ba60}{PSD}.\hyperlink{class_soil_math_1_1_stats_a00778b298b1ebb335eb0c4eed69e471c}{bins}[14]), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00175   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00176   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"1.4"}, \hyperlink{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{GFieldtxtFormat});
+00177   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00178   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a3a2cd7007e7867a6b3fb346f51b2ba60}{PSD}.\hyperlink{class_soil_math_1_1_stats_a0d68c6fb52cb445c413aa187038bb1fe}{CFD}[13]), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00179   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00180   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a3a2cd7007e7867a6b3fb346f51b2ba60}{PSD}.\hyperlink{class_soil_math_1_1_stats_a00778b298b1ebb335eb0c4eed69e471c}{bins}[13]), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00181   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00182   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"1"}, \hyperlink{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{GFieldtxtFormat});
+00183   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00184   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a3a2cd7007e7867a6b3fb346f51b2ba60}{PSD}.\hyperlink{class_soil_math_1_1_stats_a0d68c6fb52cb445c413aa187038bb1fe}{CFD}[12]), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00185   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00186   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a3a2cd7007e7867a6b3fb346f51b2ba60}{PSD}.\hyperlink{class_soil_math_1_1_stats_a00778b298b1ebb335eb0c4eed69e471c}{bins}[12]), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00187   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00188   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"0.71"}, \hyperlink{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{GFieldtxtFormat});
+00189   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00190   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a3a2cd7007e7867a6b3fb346f51b2ba60}{PSD}.\hyperlink{class_soil_math_1_1_stats_a0d68c6fb52cb445c413aa187038bb1fe}{CFD}[11]), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00191   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00192   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a3a2cd7007e7867a6b3fb346f51b2ba60}{PSD}.\hyperlink{class_soil_math_1_1_stats_a00778b298b1ebb335eb0c4eed69e471c}{bins}[11]), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00193   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00194   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"0.5"}, \hyperlink{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{GFieldtxtFormat});
+00195   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00196   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a3a2cd7007e7867a6b3fb346f51b2ba60}{PSD}.\hyperlink{class_soil_math_1_1_stats_a0d68c6fb52cb445c413aa187038bb1fe}{CFD}[10]), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00197   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00198   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a3a2cd7007e7867a6b3fb346f51b2ba60}{PSD}.\hyperlink{class_soil_math_1_1_stats_a00778b298b1ebb335eb0c4eed69e471c}{bins}[10]), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00199   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00200   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"0.355"}, \hyperlink{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{GFieldtxtFormat});
+00201   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00202   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a3a2cd7007e7867a6b3fb346f51b2ba60}{PSD}.\hyperlink{class_soil_math_1_1_stats_a0d68c6fb52cb445c413aa187038bb1fe}{CFD}[9]), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00203   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00204   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a3a2cd7007e7867a6b3fb346f51b2ba60}{PSD}.\hyperlink{class_soil_math_1_1_stats_a00778b298b1ebb335eb0c4eed69e471c}{bins}[9]), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00205   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00206   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"0.25"}, \hyperlink{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{GFieldtxtFormat});
+00207   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00208   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a3a2cd7007e7867a6b3fb346f51b2ba60}{PSD}.\hyperlink{class_soil_math_1_1_stats_a0d68c6fb52cb445c413aa187038bb1fe}{CFD}[8]), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00209   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00210   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a3a2cd7007e7867a6b3fb346f51b2ba60}{PSD}.\hyperlink{class_soil_math_1_1_stats_a00778b298b1ebb335eb0c4eed69e471c}{bins}[8]), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00211   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00212   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"0.18"}, \hyperlink{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{GFieldtxtFormat});
+00213   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00214   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a3a2cd7007e7867a6b3fb346f51b2ba60}{PSD}.\hyperlink{class_soil_math_1_1_stats_a0d68c6fb52cb445c413aa187038bb1fe}{CFD}[7]), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00215   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00216   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a3a2cd7007e7867a6b3fb346f51b2ba60}{PSD}.\hyperlink{class_soil_math_1_1_stats_a00778b298b1ebb335eb0c4eed69e471c}{bins}[7]), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00217   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00218   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"0.125"}, \hyperlink{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{GFieldtxtFormat});
+00219   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00220   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a3a2cd7007e7867a6b3fb346f51b2ba60}{PSD}.\hyperlink{class_soil_math_1_1_stats_a0d68c6fb52cb445c413aa187038bb1fe}{CFD}[6]), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00221   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00222   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a3a2cd7007e7867a6b3fb346f51b2ba60}{PSD}.\hyperlink{class_soil_math_1_1_stats_a00778b298b1ebb335eb0c4eed69e471c}{bins}[6]), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00223   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00224   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"0.09"}, \hyperlink{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{GFieldtxtFormat});
+00225   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00226   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a3a2cd7007e7867a6b3fb346f51b2ba60}{PSD}.\hyperlink{class_soil_math_1_1_stats_a0d68c6fb52cb445c413aa187038bb1fe}{CFD}[5]), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00227   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00228   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a3a2cd7007e7867a6b3fb346f51b2ba60}{PSD}.\hyperlink{class_soil_math_1_1_stats_a00778b298b1ebb335eb0c4eed69e471c}{bins}[5]), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00229   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00230   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"0.075"}, \hyperlink{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{GFieldtxtFormat});
+00231   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00232   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a3a2cd7007e7867a6b3fb346f51b2ba60}{PSD}.\hyperlink{class_soil_math_1_1_stats_a0d68c6fb52cb445c413aa187038bb1fe}{CFD}[4]), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00233   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00234   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a3a2cd7007e7867a6b3fb346f51b2ba60}{PSD}.\hyperlink{class_soil_math_1_1_stats_a00778b298b1ebb335eb0c4eed69e471c}{bins}[4]), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00235   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00236   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"0.063"}, \hyperlink{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{GFieldtxtFormat});
+00237   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00238   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a3a2cd7007e7867a6b3fb346f51b2ba60}{PSD}.\hyperlink{class_soil_math_1_1_stats_a0d68c6fb52cb445c413aa187038bb1fe}{CFD}[3]), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00239   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00240   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a3a2cd7007e7867a6b3fb346f51b2ba60}{PSD}.\hyperlink{class_soil_math_1_1_stats_a00778b298b1ebb335eb0c4eed69e471c}{bins}[3]), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00241   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00242   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"0.045"}, \hyperlink{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{GFieldtxtFormat});
+00243   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00244   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a3a2cd7007e7867a6b3fb346f51b2ba60}{PSD}.\hyperlink{class_soil_math_1_1_stats_a0d68c6fb52cb445c413aa187038bb1fe}{CFD}[2]), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00245   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00246   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a3a2cd7007e7867a6b3fb346f51b2ba60}{PSD}.\hyperlink{class_soil_math_1_1_stats_a00778b298b1ebb335eb0c4eed69e471c}{bins}[2]), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00247   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00248   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"0.038"}, \hyperlink{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{GFieldtxtFormat});
+00249   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00250   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a3a2cd7007e7867a6b3fb346f51b2ba60}{PSD}.\hyperlink{class_soil_math_1_1_stats_a0d68c6fb52cb445c413aa187038bb1fe}{CFD}[1]), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00251   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00252   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a3a2cd7007e7867a6b3fb346f51b2ba60}{PSD}.\hyperlink{class_soil_math_1_1_stats_a00778b298b1ebb335eb0c4eed69e471c}{bins}[1]), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00253   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00254   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"0"}, \hyperlink{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{GFieldtxtFormat});
+00255   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00256   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a3a2cd7007e7867a6b3fb346f51b2ba60}{PSD}.\hyperlink{class_soil_math_1_1_stats_a0d68c6fb52cb445c413aa187038bb1fe}{CFD}[0]), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00257   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00258   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a3a2cd7007e7867a6b3fb346f51b2ba60}{PSD}.\hyperlink{class_soil_math_1_1_stats_a00778b298b1ebb335eb0c4eed69e471c}{bins}[0]), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00259   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextBlock);
+00260 
+00261   \textcolor{comment}{// Setup the Textdata for the Roundness}
+00262   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertBlock(\hyperlink{class_q_report_generator_af2b45261507663b54e80f4053d25bc4b}{HeaderFormat}, \hyperlink{class_q_report_generator_a8be687c8a427e341fa1c7f9addc96e99}{HeaderTextFormat});
+00263   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"Sphericity Classification"});
+00264 
+00265   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertBlock(\hyperlink{class_q_report_generator_a19451127788bb6c68907b312a0a8b750}{ImageGraphFormat});
+00266   QTextTable *Rounddescr = \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertTable(6, 2, \hyperlink{class_q_report_generator_afcb27e52bd15a286a1933c3b9cf01c92}{GeneralTextTableFormat});
+00267   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs} = Rounddescr->cellAt(0, 0).firstCursorPosition();
+00268   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"No of particles:"}, \hyperlink{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{GFieldtxtFormat});
+00269   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00270   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a36b7e98ebd5d162fa0cda77fa4c7f0be}{Roundness}.\hyperlink{class_soil_math_1_1_stats_a7bc57af334b68253832ebac17f85d091}{n}), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00271   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00272 
+00273   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"Mean: "}, \hyperlink{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{GFieldtxtFormat});
+00274   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00275   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a36b7e98ebd5d162fa0cda77fa4c7f0be}{Roundness}.\hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{Mean}), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00276   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00277 
+00278   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"Minimum: "}, \hyperlink{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{GFieldtxtFormat});
+00279   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00280   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a36b7e98ebd5d162fa0cda77fa4c7f0be}{Roundness}.\hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min}), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00281   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00282 
+00283   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"Maximum: "}, \hyperlink{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{GFieldtxtFormat});
+00284   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00285   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a36b7e98ebd5d162fa0cda77fa4c7f0be}{Roundness}.\hyperlink{class_soil_math_1_1_stats_ad49ee1f533564ec587cf98a094b8c564}{max}), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00286   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00287 
+00288   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"Range: "}, \hyperlink{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{GFieldtxtFormat});
+00289   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00290   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a36b7e98ebd5d162fa0cda77fa4c7f0be}{Roundness}.\hyperlink{class_soil_math_1_1_stats_a7154ac6c97dc2e83bdff7fef3cbdac5b}{Range}), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00291   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00292 
+00293   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"Standard deviation: "}, \hyperlink{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{GFieldtxtFormat});
+00294   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00295   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a36b7e98ebd5d162fa0cda77fa4c7f0be}{Roundness}.\hyperlink{class_soil_math_1_1_stats_a6af590b7d033d882d5428c0d7a1f5e59}{Std}), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00296   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextBlock);
+00297 
+00298   \textcolor{comment}{// Setup the Roundness Graph}
+00299   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertBlock(\hyperlink{class_q_report_generator_a19451127788bb6c68907b312a0a8b750}{ImageGraphFormat});
+00300   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString(QChar::ObjectReplacementCharacter),
+00301                    QCPDocumentObject::generatePlotFormat(\hyperlink{class_q_report_generator_ad0dd77389aea1b1fb2a58e363e5ff8a1}{Roundness}, 600, 400));
+00302 
+00303   \textcolor{comment}{// Setup the Textdata for the Roundness}
+00304   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertBlock(\hyperlink{class_q_report_generator_af2b45261507663b54e80f4053d25bc4b}{HeaderFormat}, \hyperlink{class_q_report_generator_a8be687c8a427e341fa1c7f9addc96e99}{HeaderTextFormat});
+00305   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"Angularity Classification"});
+00306 
+00307   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertBlock(\hyperlink{class_q_report_generator_a19451127788bb6c68907b312a0a8b750}{ImageGraphFormat});
+00308   QTextTable *Angularitydescr = \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertTable(6, 2, 
+      \hyperlink{class_q_report_generator_afcb27e52bd15a286a1933c3b9cf01c92}{GeneralTextTableFormat});
+00309   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs} = Angularitydescr->cellAt(0, 0).firstCursorPosition();
+00310   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"No of particles:"}, \hyperlink{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{GFieldtxtFormat});
+00311   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00312   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_aac706ea1206fea6b708227c88481081d}{Angularity}.\hyperlink{class_soil_math_1_1_stats_a7bc57af334b68253832ebac17f85d091}{n}), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00313   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00314 
+00315   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"Mean: "}, \hyperlink{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{GFieldtxtFormat});
+00316   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00317   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_aac706ea1206fea6b708227c88481081d}{Angularity}.\hyperlink{class_soil_math_1_1_stats_a6f53982d52cf492ddd4df9b56bd014e7}{Mean}), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00318   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00319 
+00320   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"Minimum: "}, \hyperlink{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{GFieldtxtFormat});
+00321   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00322   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_aac706ea1206fea6b708227c88481081d}{Angularity}.\hyperlink{class_soil_math_1_1_stats_aa44c07a23b1c2ce0f0407e7cee4f39a9}{min}), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00323   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00324 
+00325   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"Maximum: "}, \hyperlink{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{GFieldtxtFormat});
+00326   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00327   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_aac706ea1206fea6b708227c88481081d}{Angularity}.\hyperlink{class_soil_math_1_1_stats_ad49ee1f533564ec587cf98a094b8c564}{max}), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00328   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00329 
+00330   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"Range: "}, \hyperlink{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{GFieldtxtFormat});
+00331   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00332   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_aac706ea1206fea6b708227c88481081d}{Angularity}.\hyperlink{class_soil_math_1_1_stats_a7154ac6c97dc2e83bdff7fef3cbdac5b}{Range}), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00333   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00334 
+00335   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"Standard deviation: "}, \hyperlink{class_q_report_generator_afa9431684b9e2612f1d508f7e837aec5}{GFieldtxtFormat});
+00336   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextCell);
+00337   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString::number(\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_aac706ea1206fea6b708227c88481081d}{Angularity}.\hyperlink{class_soil_math_1_1_stats_a6af590b7d033d882d5428c0d7a1f5e59}{Std}), 
+      \hyperlink{class_q_report_generator_ad78e127d228dd0c11c438d4681a20379}{GtxtFormat});
+00338   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.movePosition(QTextCursor::NextBlock);
+00339 
+00340   \textcolor{comment}{// Setup the Roundness Graph}
+00341   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertBlock(\hyperlink{class_q_report_generator_a19451127788bb6c68907b312a0a8b750}{ImageGraphFormat});
+00342   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString(QChar::ObjectReplacementCharacter),
+00343                    QCPDocumentObject::generatePlotFormat(\hyperlink{class_q_report_generator_a8c2f9aee54d302f1330c6fd60d12bd13}{Angularity}, 600, 400));
+00344 
+00345   \textcolor{comment}{// Setup the CIE La*b* graph}
+00346   \textcolor{comment}{// Setup the Textdata for the Roundness}
+00347   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertBlock(\hyperlink{class_q_report_generator_af2b45261507663b54e80f4053d25bc4b}{HeaderFormat}, \hyperlink{class_q_report_generator_a8be687c8a427e341fa1c7f9addc96e99}{HeaderTextFormat});
+00348   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(\textcolor{stringliteral}{"CIE La*b*"});
+00349 
+00350   \hyperlink{class_q_report_generator_a828ae557a03162a08d13f94f2d1888f4}{SetupCIElabPLot}();
+00351   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertBlock(\hyperlink{class_q_report_generator_a19451127788bb6c68907b312a0a8b750}{ImageGraphFormat});
+00352   \hyperlink{class_q_report_generator_af189d3779d26af513e311eea89a78a28}{rCurs}.insertText(QString(QChar::ObjectReplacementCharacter),
+00353                    QCPDocumentObject::generatePlotFormat(\hyperlink{class_q_report_generator_a1a727308ea8cb98523a308d10da70b39}{CIElabPlot}, 600, 400));
+00354 
+00355 \}
+00356 
+\hypertarget{qreportgenerator_8cpp_source_l00357}{}\hyperlink{class_q_report_generator_ad588cf415e3d3a571fbd2fa7f9f30612}{00357} \textcolor{keywordtype}{void} \hyperlink{class_q_report_generator_ad588cf415e3d3a571fbd2fa7f9f30612}{QReportGenerator::getLocationMap}(\textcolor{keywordtype}{double} &latitude, \textcolor{keywordtype}{double} &longtitude)
+       \{
+00358   QNetworkAccessManager *manager = \textcolor{keyword}{new} QNetworkAccessManager;
+00359   connect(manager, SIGNAL(finished(QNetworkReply *)), \textcolor{keyword}{this},
+00360           SLOT(\hyperlink{class_q_report_generator_a15c7c37fe5a9f178ae29bc1484aeaad9}{on\_locationImageDownloaded}(QNetworkReply *)));
+00361   QString locationURL(\textcolor{stringliteral}{"http://maps.googleapis.com/maps/api/staticmap?center="});
+00362   locationURL.append(QString::number(latitude));
+00363   locationURL.append(\textcolor{stringliteral}{","});
+00364   locationURL.append(QString::number(longtitude));
+00365   locationURL.append(\textcolor{stringliteral}{"&zoom=17&size=600x750&maptype=hybrid&&format=png&visual\_"}
+00366                      \textcolor{stringliteral}{"refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:S%"}
+00367                      \textcolor{stringliteral}{"7C"});
+00368   locationURL.append(QString::number(latitude));
+00369   locationURL.append(\textcolor{stringliteral}{","});
+00370   locationURL.append(QString::number(longtitude));
+00371   qDebug() << locationURL;
+00372   QUrl googleStaticMapUrl(locationURL);
+00373   manager->get(QNetworkRequest(googleStaticMapUrl));
+00374 \}
+00375 
+\hypertarget{qreportgenerator_8cpp_source_l00376}{}\hyperlink{class_q_report_generator_a15c7c37fe5a9f178ae29bc1484aeaad9}{00376} \textcolor{keywordtype}{void} \hyperlink{class_q_report_generator_a15c7c37fe5a9f178ae29bc1484aeaad9}{QReportGenerator::on\_locationImageDownloaded}(QNetworkReply
+       *reply) \{
+00377   \textcolor{keywordflow}{if} (\hyperlink{class_q_report_generator_a1369081e13fce26f60a10eb846551515}{mapLocation} == \textcolor{keyword}{nullptr}) \{
+00378     \hyperlink{class_q_report_generator_a1369081e13fce26f60a10eb846551515}{mapLocation} = \textcolor{keyword}{new} QImage;
+00379   \}
+00380   \hyperlink{class_q_report_generator_a1369081e13fce26f60a10eb846551515}{mapLocation}->loadFromData(reply->readAll());
+00381 
+00382   \textcolor{keywordflow}{if} (\hyperlink{class_q_report_generator_a1369081e13fce26f60a10eb846551515}{mapLocation}->isNull()) \{
+00383     \hyperlink{class_q_report_generator_a1369081e13fce26f60a10eb846551515}{mapLocation}->load(\textcolor{stringliteral}{"Maps/SampleLocation.png"});
+00384   \}
+00385 
+00386   QTextBlock location = \hyperlink{class_q_report_generator_ab051048608bc51151bc0b1ffc217f292}{Report}->findBlockByNumber(15);
+00387   QTextCursor insertMap(location);
+00388   insertMap.setBlockFormat(\hyperlink{class_q_report_generator_a19451127788bb6c68907b312a0a8b750}{ImageGraphFormat});
+00389   insertMap.insertImage(*\hyperlink{class_q_report_generator_a1369081e13fce26f60a10eb846551515}{mapLocation});
+00390   insertMap.insertBlock();
+00391   insertMap.insertHtml(\textcolor{stringliteral}{"<br>"});
+00392 \}
+00393 
+\hypertarget{qreportgenerator_8cpp_source_l00394}{}\hyperlink{class_q_report_generator_a42ad110fb06f47767b6a94feb49f85c0}{00394} \hyperlink{class_q_report_generator_a42ad110fb06f47767b6a94feb49f85c0}{QReportGenerator::~QReportGenerator}()
+00395 \{
+00396   \textcolor{keyword}{delete} \hyperlink{class_q_report_generator_a1a727308ea8cb98523a308d10da70b39}{CIElabPlot};
+00397   \textcolor{keyword}{delete} \hyperlink{class_q_report_generator_a1369081e13fce26f60a10eb846551515}{mapLocation};
+00398   \textcolor{keyword}{delete} \hyperlink{class_q_report_generator_a4584dd4f053586b84b4a9f883a3313d9}{ui};
+00399 \}
+00400 
+\hypertarget{qreportgenerator_8cpp_source_l00401}{}\hyperlink{class_q_report_generator_a7f16a79d19c4ae53859febaae31950e7}{00401} \textcolor{keywordtype}{void} \hyperlink{class_q_report_generator_a7f16a79d19c4ae53859febaae31950e7}{QReportGenerator::on\_actionSave\_triggered}() \{
+00402   QString fn = QFileDialog::getSaveFileName(
+00403       \textcolor{keyword}{this}, tr(\textcolor{stringliteral}{"Save Report"}), QString::fromStdString(\hyperlink{class_q_report_generator_a5e75a3f9447c0c24b32cd198a00af21c}{Settings}->
+      \hyperlink{class_soil_analyzer_1_1_soil_settings_adfd46a349d927988c955fa064fc7bf1a}{SampleFolder}),
+00404       tr(\textcolor{stringliteral}{"Report (*.odf)"}));
+00405   \textcolor{keywordflow}{if} (!fn.isEmpty()) \{
+00406     \textcolor{keywordflow}{if} (!fn.contains(tr(\textcolor{stringliteral}{".odf"}))) \{
+00407       fn.append(tr(\textcolor{stringliteral}{".odf"}));
+00408     \}
+00409     QTextDocumentWriter m\_write;
+00410     m\_write.setFileName(fn);
+00411     m\_write.setFormat(\textcolor{stringliteral}{"odf"});
+00412     m\_write.write(\hyperlink{class_q_report_generator_ab051048608bc51151bc0b1ffc217f292}{Report});
+00413   \}
+00414 \}
+00415 
+\hypertarget{qreportgenerator_8cpp_source_l00416}{}\hyperlink{class_q_report_generator_aa170226241deb861a964ac722c8e4564}{00416} \textcolor{keywordtype}{void} \hyperlink{class_q_report_generator_aa170226241deb861a964ac722c8e4564}{QReportGenerator::on\_actionExport\_to\_PDF\_triggered}()
+       \{
+00417   QString fn = QFileDialog::getSaveFileName(
+00418       \textcolor{keyword}{this}, tr(\textcolor{stringliteral}{"Save Report"}), QString::fromStdString(\hyperlink{class_q_report_generator_a5e75a3f9447c0c24b32cd198a00af21c}{Settings}->
+      \hyperlink{class_soil_analyzer_1_1_soil_settings_adfd46a349d927988c955fa064fc7bf1a}{SampleFolder}),
+00419       tr(\textcolor{stringliteral}{"Report (*.pdf)"}));
+00420   \textcolor{keywordflow}{if} (!fn.isEmpty()) \{
+00421     \textcolor{keywordflow}{if} (!fn.contains(tr(\textcolor{stringliteral}{".pdf"}))) \{
+00422       fn.append(tr(\textcolor{stringliteral}{".pdf"}));
+00423     \}
+00424     QPrinter printer;
+00425     printer.setOutputFormat(QPrinter::PdfFormat);
+00426     printer.setOutputFileName(fn);
+00427     \hyperlink{class_q_report_generator_ab051048608bc51151bc0b1ffc217f292}{Report}->print(&printer);
+00428   \}
+00429 \}
+00430 
+\hypertarget{qreportgenerator_8cpp_source_l00431}{}\hyperlink{class_q_report_generator_a828ae557a03162a08d13f94f2d1888f4}{00431} \textcolor{keywordtype}{void} \hyperlink{class_q_report_generator_a828ae557a03162a08d13f94f2d1888f4}{QReportGenerator::SetupCIElabPLot}() \{
+00432   \textcolor{keywordflow}{if} (\hyperlink{class_q_report_generator_a1a727308ea8cb98523a308d10da70b39}{CIElabPlot} == \textcolor{keyword}{nullptr}) \{
+00433       \hyperlink{class_q_report_generator_a1a727308ea8cb98523a308d10da70b39}{CIElabPlot} = \textcolor{keyword}{new} QCustomPlot();
+00434     \}
+00435 
+00436   QPen binPen;
+00437   binPen.setColor((QColor(\textcolor{stringliteral}{"blue"})));
+00438   binPen.setStyle(Qt::SolidLine);
+00439   binPen.setWidthF(1);
+00440 
+00441   \textcolor{comment}{// Setup the CIElabplot plot}
+00442   QCPPlotTitle *CIEtitle = \textcolor{keyword}{new} QCPPlotTitle(\hyperlink{class_q_report_generator_a1a727308ea8cb98523a308d10da70b39}{CIElabPlot});
+00443   CIEtitle->setText(\textcolor{stringliteral}{"mean CIE Lab - a* vs. b*"});
+00444   CIEtitle->setFont(QFont(\textcolor{stringliteral}{"sans"}, 8, QFont::Bold));
+00445   \hyperlink{class_q_report_generator_a1a727308ea8cb98523a308d10da70b39}{CIElabPlot}->plotLayout()->insertRow(0);
+00446   \hyperlink{class_q_report_generator_a1a727308ea8cb98523a308d10da70b39}{CIElabPlot}->plotLayout()->addElement(0, 0, CIEtitle);
+00447 
+00448   \hyperlink{class_q_report_generator_a1a727308ea8cb98523a308d10da70b39}{CIElabPlot}->addGraph(\hyperlink{class_q_report_generator_a1a727308ea8cb98523a308d10da70b39}{CIElabPlot}->xAxis, \hyperlink{class_q_report_generator_a1a727308ea8cb98523a308d10da70b39}{CIElabPlot}->yAxis);
+00449   \hyperlink{class_q_report_generator_a1a727308ea8cb98523a308d10da70b39}{CIElabPlot}->graph(0)
+00450       ->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, 8));
+00451   \hyperlink{class_q_report_generator_a1a727308ea8cb98523a308d10da70b39}{CIElabPlot}->graph(0)->setPen(binPen);
+00452   \hyperlink{class_q_report_generator_a1a727308ea8cb98523a308d10da70b39}{CIElabPlot}->graph(0)->setName(\textcolor{stringliteral}{"a* vs. b*"});
+00453   \hyperlink{class_q_report_generator_a1a727308ea8cb98523a308d10da70b39}{CIElabPlot}->graph(0)->setData(*\hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_adee51a3ce8bafdab4188721736b7761a}{GetCIELab\_bVector}(), *
+      \hyperlink{class_q_report_generator_a779d8c539bb762daccaf61189cedcae5}{Sample}->\hyperlink{class_soil_analyzer_1_1_sample_a3e33c17769503a88ccca6fb5fba05e55}{GetCIELab\_aVector}());
+00454   \hyperlink{class_q_report_generator_a1a727308ea8cb98523a308d10da70b39}{CIElabPlot}->graph(0)->setScatterStyle(QCPScatterStyle::ssCross);
+00455   \hyperlink{class_q_report_generator_a1a727308ea8cb98523a308d10da70b39}{CIElabPlot}->graph(0)->setLineStyle(QCPGraph::lsNone);
+00456 
+00457   \hyperlink{class_q_report_generator_a1a727308ea8cb98523a308d10da70b39}{CIElabPlot}->xAxis->setLabel(\textcolor{stringliteral}{"mean chromatic b*"});
+00458   \hyperlink{class_q_report_generator_a1a727308ea8cb98523a308d10da70b39}{CIElabPlot}->xAxis->setTickLabelFont(QFont(\textcolor{stringliteral}{"sans"}, 8, QFont::Normal));
+00459   \hyperlink{class_q_report_generator_a1a727308ea8cb98523a308d10da70b39}{CIElabPlot}->xAxis->setScaleType(QCPAxis::stLinear);
+00460   \hyperlink{class_q_report_generator_a1a727308ea8cb98523a308d10da70b39}{CIElabPlot}->xAxis->setRange(-128,128);
+00461 
+00462   \hyperlink{class_q_report_generator_a1a727308ea8cb98523a308d10da70b39}{CIElabPlot}->yAxis->setLabel(\textcolor{stringliteral}{"mean chromatic a*"});
+00463   \hyperlink{class_q_report_generator_a1a727308ea8cb98523a308d10da70b39}{CIElabPlot}->yAxis->setTickLabelFont(QFont(\textcolor{stringliteral}{"sans"}, 8, QFont::Normal));
+00464   \hyperlink{class_q_report_generator_a1a727308ea8cb98523a308d10da70b39}{CIElabPlot}->yAxis->setScaleType(QCPAxis::stLinear);
+00465   \hyperlink{class_q_report_generator_a1a727308ea8cb98523a308d10da70b39}{CIElabPlot}->yAxis->setRange(-128,128);
+00466   \hyperlink{class_q_report_generator_a1a727308ea8cb98523a308d10da70b39}{CIElabPlot}->replot();
+00467 
+00468 \}
+\end{DoxyCode}

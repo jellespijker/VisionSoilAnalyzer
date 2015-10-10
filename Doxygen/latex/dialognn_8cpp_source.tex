@@ -1,0 +1,162 @@
+\hypertarget{dialognn_8cpp_source}{}\subsection{dialognn.\+cpp}
+\label{dialognn_8cpp_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+V\+S\+A/dialognn.\+cpp@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+V\+S\+A/dialognn.\+cpp}}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#include "\hyperlink{dialognn_8h}{dialognn.h}"}
+00002 \textcolor{preprocessor}{#include "ui\_dialognn.h"}
+00003 
+\hypertarget{dialognn_8cpp_source_l00004}{}\hyperlink{class_dialog_n_n_a53065cfe16eeaf3cf1b1e94058738c3f}{00004} \hyperlink{class_dialog_n_n_a53065cfe16eeaf3cf1b1e94058738c3f}{DialogNN::DialogNN}(QWidget *parent, \hyperlink{class_soil_math_1_1_n_n}{SoilMath::NN} *neuralnet,
+00005                    \hyperlink{class_soil_analyzer_1_1_soil_settings}{SoilAnalyzer::SoilSettings} *settings,
+00006                    \hyperlink{class_dialog_settings}{DialogSettings} *settingsWindow)
+00007     : QDialog(parent), ui(new \hyperlink{namespace_ui}{Ui}::\hyperlink{class_dialog_n_n}{DialogNN}) \{
+00008   \hyperlink{class_dialog_n_n_affd6ce2909be5826c52fd862d1963eee}{ui}->setupUi(\textcolor{keyword}{this});
+00009 
+00010   \textcolor{keywordflow}{if} (neuralnet == \textcolor{keyword}{nullptr}) \{
+00011     neuralnet = \textcolor{keyword}{new} \hyperlink{class_soil_math_1_1_n_n}{SoilMath::NN};
+00012   \}
+00013   \hyperlink{class_dialog_n_n_a1d38f96a8f11697068e805fdaa3267b2}{NeuralNet} = neuralnet;
+00014   \textcolor{keywordflow}{if} (settings == \textcolor{keyword}{nullptr}) \{
+00015     settings = \textcolor{keyword}{new} \hyperlink{class_soil_analyzer_1_1_soil_settings}{SoilAnalyzer::SoilSettings};
+00016   \}
+00017   \hyperlink{class_dialog_n_n_afdf8c81b845ec58a3f495c2dd3423377}{Settings} = settings;
+00018   \textcolor{keywordflow}{if} (settingsWindow == \textcolor{keyword}{nullptr}) \{
+00019     settingsWindow = \textcolor{keyword}{new} \hyperlink{class_dialog_settings}{DialogSettings};
+00020   \}
+00021   \hyperlink{class_dialog_n_n_aeaad085b1b2c7e4613228aa612d725f4}{SettingsWindow} = settingsWindow;
+00022 
+00023   \textcolor{comment}{// Setup the Qplots}
+00024   \hyperlink{class_dialog_n_n_affd6ce2909be5826c52fd862d1963eee}{ui}->widget\_NNError->addGraph();
+00025   \hyperlink{class_dialog_n_n_affd6ce2909be5826c52fd862d1963eee}{ui}->widget\_NNError->addGraph();
+00026 
+00027   \hyperlink{class_dialog_n_n_affd6ce2909be5826c52fd862d1963eee}{ui}->widget\_NNError->xAxis->setLabel(\textcolor{stringliteral}{"Generation [-]"});
+00028   \hyperlink{class_dialog_n_n_affd6ce2909be5826c52fd862d1963eee}{ui}->widget\_NNError->yAxis->setLabel(\textcolor{stringliteral}{"Error [%]"});
+00029   QCPPlotTitle *widget\_NNErrorTitle = \textcolor{keyword}{new} QCPPlotTitle(\hyperlink{class_dialog_n_n_affd6ce2909be5826c52fd862d1963eee}{ui}->widget\_NNError);
+00030   widget\_NNErrorTitle->setText(\textcolor{stringliteral}{"Learning error"});
+00031   widget\_NNErrorTitle->setFont(QFont(\textcolor{stringliteral}{"sans"}, 10, QFont::Bold));
+00032   \hyperlink{class_dialog_n_n_affd6ce2909be5826c52fd862d1963eee}{ui}->widget\_NNError->plotLayout()->insertRow(0);
+00033   \hyperlink{class_dialog_n_n_affd6ce2909be5826c52fd862d1963eee}{ui}->widget\_NNError->plotLayout()->addElement(0, 0, widget\_NNErrorTitle);
+00034 
+00035   \hyperlink{class_dialog_n_n_ae3abaadf57d6614cddb1a9c244da721d}{setupErrorGraph}();
+00036 
+00037   \textcolor{comment}{// Connect the NN learn error}
+00038   connect(\hyperlink{class_dialog_n_n_a1d38f96a8f11697068e805fdaa3267b2}{NeuralNet}, SIGNAL(learnErrorUpdate(\textcolor{keywordtype}{double})), \textcolor{keyword}{this},
+00039           SLOT(\hyperlink{class_dialog_n_n_a24e8d08c95de8dd392e81409b9500ab6}{on\_learnErrorUpdate}(\textcolor{keywordtype}{double})));
+00040 \}
+00041 
+\hypertarget{dialognn_8cpp_source_l00042}{}\hyperlink{class_dialog_n_n_a128ab0c8ba3e7a140545eb2dd37f4aab}{00042} \hyperlink{class_dialog_n_n_a128ab0c8ba3e7a140545eb2dd37f4aab}{DialogNN::~DialogNN}() \{ \textcolor{keyword}{delete} \hyperlink{class_dialog_n_n_affd6ce2909be5826c52fd862d1963eee}{ui}; \}
+00043 
+\hypertarget{dialognn_8cpp_source_l00044}{}\hyperlink{class_dialog_n_n_a4a203b679f42761eae157b445bcfc57d}{00044} \textcolor{keywordtype}{void} \hyperlink{class_dialog_n_n_a4a203b679f42761eae157b445bcfc57d}{DialogNN::on\_pushButton\_Settings\_clicked}() \{
+00045   \hyperlink{class_dialog_n_n_aeaad085b1b2c7e4613228aa612d725f4}{SettingsWindow}->\hyperlink{class_dialog_settings_ac22fca3a8ea77953fb667c0118860221}{openTab}(2);
+00046   \hyperlink{class_dialog_n_n_aeaad085b1b2c7e4613228aa612d725f4}{SettingsWindow}->show();
+00047   \hyperlink{class_dialog_n_n_ae3abaadf57d6614cddb1a9c244da721d}{setupErrorGraph}();
+00048 \}
+00049 
+\hypertarget{dialognn_8cpp_source_l00050}{}\hyperlink{class_dialog_n_n_a24e8d08c95de8dd392e81409b9500ab6}{00050} \textcolor{keywordtype}{void} \hyperlink{class_dialog_n_n_a24e8d08c95de8dd392e81409b9500ab6}{DialogNN::on\_learnErrorUpdate}(\textcolor{keywordtype}{double} newError) \{
+00051   \hyperlink{class_dialog_n_n_affd6ce2909be5826c52fd862d1963eee}{ui}->widget\_NNError->graph(0)->addData(\hyperlink{class_dialog_n_n_a886cc6b16f26f822a3a39ed7812f26a5}{currentGeneration}, newError);
+00052   \hyperlink{class_dialog_n_n_a886cc6b16f26f822a3a39ed7812f26a5}{currentGeneration} += 1;
+00053   \hyperlink{class_dialog_n_n_affd6ce2909be5826c52fd862d1963eee}{ui}->widget\_NNError->yAxis->rescale();
+00054   \textcolor{comment}{//ui->widget\_NNError->yAxis->setRange(0, 20);}
+00055   \hyperlink{class_dialog_n_n_affd6ce2909be5826c52fd862d1963eee}{ui}->widget\_NNError->replot();
+00056 \}
+00057 
+\hypertarget{dialognn_8cpp_source_l00058}{}\hyperlink{class_dialog_n_n_ae3abaadf57d6614cddb1a9c244da721d}{00058} \textcolor{keywordtype}{void} \hyperlink{class_dialog_n_n_ae3abaadf57d6614cddb1a9c244da721d}{DialogNN::setupErrorGraph}() \{
+00059   \hyperlink{class_dialog_n_n_af0eb5fbc415d948bedf5120bdd256e1c}{errorTicks}.clear();
+00060   \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i < \hyperlink{class_dialog_n_n_a1d38f96a8f11697068e805fdaa3267b2}{NeuralNet}->\hyperlink{class_soil_math_1_1_n_n_a360b26e66639b4eed186a62cdbac37e0}{MaxGenUsedByGA}; i++) \{
+00061     \hyperlink{class_dialog_n_n_af0eb5fbc415d948bedf5120bdd256e1c}{errorTicks}.push\_back(i);
+00062   \}
+00063   \hyperlink{class_dialog_n_n_affd6ce2909be5826c52fd862d1963eee}{ui}->widget\_NNError->xAxis->setRange(0, \hyperlink{class_dialog_n_n_a1d38f96a8f11697068e805fdaa3267b2}{NeuralNet}->\hyperlink{class_soil_math_1_1_n_n_a360b26e66639b4eed186a62cdbac37e0}{MaxGenUsedByGA});
+00064   QVector<double> endErrorValue(2, \hyperlink{class_dialog_n_n_a1d38f96a8f11697068e805fdaa3267b2}{NeuralNet}->\hyperlink{class_soil_math_1_1_n_n_aa29b48e0711848633d5cdbb22055910d}{EndErrorUsedByGA});
+00065   QVector<double> endErrorKey(2, 0);
+00066   endErrorKey[1] = \hyperlink{class_dialog_n_n_a1d38f96a8f11697068e805fdaa3267b2}{NeuralNet}->\hyperlink{class_soil_math_1_1_n_n_a360b26e66639b4eed186a62cdbac37e0}{MaxGenUsedByGA};
+00067   \hyperlink{class_dialog_n_n_affd6ce2909be5826c52fd862d1963eee}{ui}->widget\_NNError->graph(1)->setData(endErrorKey, endErrorValue);
+00068   \hyperlink{class_dialog_n_n_affd6ce2909be5826c52fd862d1963eee}{ui}->widget\_NNError->xAxis->setAutoTicks(\textcolor{keyword}{false});
+00069   \hyperlink{class_dialog_n_n_affd6ce2909be5826c52fd862d1963eee}{ui}->widget\_NNError->xAxis->setTickVector(\hyperlink{class_dialog_n_n_af0eb5fbc415d948bedf5120bdd256e1c}{errorTicks});
+00070   \hyperlink{class_dialog_n_n_affd6ce2909be5826c52fd862d1963eee}{ui}->widget\_NNError->xAxis->setTickLabels(\textcolor{keyword}{false});
+00071   \textcolor{comment}{//ui->widget\_NNError->yAxis->setScaleType(QCPAxis::stLogarithmic);}
+00072   \hyperlink{class_dialog_n_n_affd6ce2909be5826c52fd862d1963eee}{ui}->widget\_NNError->replot();
+00073 \}
+00074 
+\hypertarget{dialognn_8cpp_source_l00075}{}\hyperlink{class_dialog_n_n_a7394140277f980979c9285fa88bee382}{00075} \textcolor{keywordtype}{void} \hyperlink{class_dialog_n_n_a7394140277f980979c9285fa88bee382}{DialogNN::on\_pushButton\_SelectSamples\_clicked}() \{
+00076   \hyperlink{class_dialog_n_n_ac37477ba2781da043e5b2ce9495ea45f}{fn} = QFileDialog::getOpenFileNames(
+00077       \textcolor{keyword}{this}, tr(\textcolor{stringliteral}{"Open Samples"}), QString::fromStdString(\hyperlink{class_dialog_n_n_afdf8c81b845ec58a3f495c2dd3423377}{Settings}->
+      \hyperlink{class_soil_analyzer_1_1_soil_settings_adfd46a349d927988c955fa064fc7bf1a}{SampleFolder}),
+00078       tr(\textcolor{stringliteral}{"Samples (*.VSA)"}));
+00079   for\_each(\hyperlink{class_dialog_n_n_ac37477ba2781da043e5b2ce9495ea45f}{fn}.begin(), \hyperlink{class_dialog_n_n_ac37477ba2781da043e5b2ce9495ea45f}{fn}.end(), [](QString &f) \{
+00080     \textcolor{keywordflow}{if} (!f.contains(tr(\textcolor{stringliteral}{".VSA"}))) \{
+00081       f.append(tr(\textcolor{stringliteral}{".VSA"}));
+00082     \}
+00083   \});
+00084 \}
+00085 
+\hypertarget{dialognn_8cpp_source_l00086}{}\hyperlink{class_dialog_n_n_ac62a7698eca8514c5629f5ee1e08f3bd}{00086} \textcolor{keywordtype}{void} \hyperlink{class_dialog_n_n_ac62a7698eca8514c5629f5ee1e08f3bd}{DialogNN::on\_pushButton\_Learn\_clicked}() \{
+00087   \textcolor{keywordflow}{if} (\hyperlink{class_dialog_n_n_ac37477ba2781da043e5b2ce9495ea45f}{fn}.size() < 1) \{
+00088     \textcolor{keywordflow}{return};
+00089   \}
+00090   \hyperlink{_soil_math_types_8h_a45aa81992bf0ddf272907bd4fa0b96cf}{InputLearnVector\_t} InputVec;
+00091   \hyperlink{_soil_math_types_8h_a2d8b5a261688166d724b68addd8561e6}{OutputLearnVector\_t} OutputVec;
+00092   \hyperlink{class_dialog_n_n_a832ef2838d6b6fd1e06b6c0d2a4783d4}{makeLearnVectors}(InputVec, OutputVec);
+00093   \hyperlink{class_dialog_n_n_a1d38f96a8f11697068e805fdaa3267b2}{NeuralNet}->\hyperlink{class_soil_math_1_1_n_n_a8550b524ed096712bb2fad9fa57b8c8d}{Learn}(InputVec, OutputVec, \hyperlink{class_dialog_n_n_a1d38f96a8f11697068e805fdaa3267b2}{NeuralNet}->
+      \hyperlink{class_soil_math_1_1_n_n_a747371e8a53d1dd498e3f56c2ecece15}{GetInputNeurons}());
+00094   \hyperlink{class_dialog_n_n_ae3abaadf57d6614cddb1a9c244da721d}{setupErrorGraph}();
+00095 \}
+00096 
+\hypertarget{dialognn_8cpp_source_l00097}{}\hyperlink{class_dialog_n_n_a832ef2838d6b6fd1e06b6c0d2a4783d4}{00097} \textcolor{keywordtype}{void} \hyperlink{class_dialog_n_n_a832ef2838d6b6fd1e06b6c0d2a4783d4}{DialogNN::makeLearnVectors}(\hyperlink{_soil_math_types_8h_a45aa81992bf0ddf272907bd4fa0b96cf}{InputLearnVector\_t} &input,
+00098                                 \hyperlink{_soil_math_types_8h_a2d8b5a261688166d724b68addd8561e6}{OutputLearnVector\_t} &output) \{
+00099   \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i < \hyperlink{class_dialog_n_n_ac37477ba2781da043e5b2ce9495ea45f}{fn}.size(); i++) \{
+00100     \hyperlink{class_soil_analyzer_1_1_sample}{SoilAnalyzer::Sample} sample;
+00101     sample.\hyperlink{class_soil_analyzer_1_1_sample_afbb2db434d2e0a317c5b056371bf43fe}{Load}(\hyperlink{class_dialog_n_n_ac37477ba2781da043e5b2ce9495ea45f}{fn}[i].toStdString());
+00102     for\_each(sample.\hyperlink{class_soil_analyzer_1_1_sample_a877bf12069fe09d2c8f9636f19ed5335}{ParticlePopulation}.begin(), sample.
+      \hyperlink{class_soil_analyzer_1_1_sample_a877bf12069fe09d2c8f9636f19ed5335}{ParticlePopulation}.end(),
+00103              [&](\hyperlink{class_soil_analyzer_1_1_particle}{SoilAnalyzer::Particle} &P) \{
+00104                \textcolor{keywordflow}{if} (P.FFDescriptors.size() >= \hyperlink{class_dialog_n_n_a1d38f96a8f11697068e805fdaa3267b2}{NeuralNet}->\hyperlink{class_soil_math_1_1_n_n_a747371e8a53d1dd498e3f56c2ecece15}{GetInputNeurons}()) \{
+00105                  \hyperlink{_soil_math_types_8h_a7567e521c2b2c408dcb62dbff72390f7}{ComplexVect\_t} ffdesc;
+00106                  \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} j = 0; j < \hyperlink{class_dialog_n_n_a1d38f96a8f11697068e805fdaa3267b2}{NeuralNet}->
+      \hyperlink{class_soil_math_1_1_n_n_a747371e8a53d1dd498e3f56c2ecece15}{GetInputNeurons}(); j++) \{
+00107                    ffdesc.push\_back(P.FFDescriptors[j]);
+00108                  \}
+00109                  input.push\_back(ffdesc);
+00110                  \hyperlink{struct_predict__struct}{Predict\_t} predict = P.Classification;
+00111                  predict.\hyperlink{struct_predict__struct_aa0708cae93baa061f21452537e86d3bd}{OutputNeurons} = \hyperlink{namespace_soil_math_a210cca0b7bfd4ca8af3590a7fc5fadb5}{SoilMath::makeOutput}(P.
+      GetAngularity(), \hyperlink{class_dialog_n_n_a1d38f96a8f11697068e805fdaa3267b2}{NeuralNet}->\hyperlink{class_soil_math_1_1_n_n_ad993359d249d3a2a91d998df3cd7d85a}{GetOutputNeurons}());
+00112                  output.push\_back(predict);
+00113                \}
+00114              \});
+00115   \}
+00116 \}
+00117 
+\hypertarget{dialognn_8cpp_source_l00118}{}\hyperlink{class_dialog_n_n_aaa6a74ab07099e65b19feceed3dda9f2}{00118} \textcolor{keywordtype}{void} \hyperlink{class_dialog_n_n_aaa6a74ab07099e65b19feceed3dda9f2}{DialogNN::on\_pushButton\_SaveNN\_clicked}() \{
+00119   QString \hyperlink{class_dialog_n_n_ac37477ba2781da043e5b2ce9495ea45f}{fn} = QFileDialog::getSaveFileName(
+00120       \textcolor{keyword}{this}, tr(\textcolor{stringliteral}{"Save NeuralNet"}), QString::fromStdString(\hyperlink{class_dialog_n_n_afdf8c81b845ec58a3f495c2dd3423377}{Settings}->
+      \hyperlink{class_soil_analyzer_1_1_soil_settings_a3c10433119931ebd347fb830c3020f39}{NNFolder}),
+00121       tr(\textcolor{stringliteral}{"NeuralNet (*.NN)"}));
+00122   \textcolor{keywordflow}{if} (!fn.isEmpty()) \{
+00123     \textcolor{keywordflow}{if} (!fn.contains(tr(\textcolor{stringliteral}{".NN"}))) \{
+00124       fn.append(tr(\textcolor{stringliteral}{".NN"}));
+00125     \}
+00126     \hyperlink{class_dialog_n_n_a1d38f96a8f11697068e805fdaa3267b2}{NeuralNet}->\hyperlink{class_soil_math_1_1_n_n_a970fda7e79dd4c34f2c3be69afaf4742}{SaveState}(fn.toStdString());
+00127   \}
+00128 \}
+00129 
+\hypertarget{dialognn_8cpp_source_l00130}{}\hyperlink{class_dialog_n_n_abd4b8adf422cc857506bb3e69066ff02}{00130} \textcolor{keywordtype}{void} \hyperlink{class_dialog_n_n_abd4b8adf422cc857506bb3e69066ff02}{DialogNN::on\_pushButton\_OpenNN\_clicked}() \{
+00131   QString \hyperlink{class_dialog_n_n_ac37477ba2781da043e5b2ce9495ea45f}{fn} = QFileDialog::getOpenFileName(
+00132       \textcolor{keyword}{this}, tr(\textcolor{stringliteral}{"Open NeuralNet"}),
+00133       QString::fromStdString(\hyperlink{class_dialog_n_n_afdf8c81b845ec58a3f495c2dd3423377}{Settings}->\hyperlink{class_soil_analyzer_1_1_soil_settings_adfd46a349d927988c955fa064fc7bf1a}{SampleFolder}), tr(\textcolor{stringliteral}{"NeuralNet (*.NN)"}));
+00134   \textcolor{keywordflow}{if} (!fn.isEmpty()) \{
+00135     \textcolor{keywordflow}{if} (!fn.contains(tr(\textcolor{stringliteral}{".NN"}))) \{
+00136       fn.append(tr(\textcolor{stringliteral}{".NN"}));
+00137     \}
+00138     \textcolor{keywordflow}{if} (\hyperlink{class_dialog_n_n_a1d38f96a8f11697068e805fdaa3267b2}{NeuralNet} != \textcolor{keyword}{nullptr}) \{
+00139       \textcolor{keyword}{delete} \hyperlink{class_dialog_n_n_a1d38f96a8f11697068e805fdaa3267b2}{NeuralNet};
+00140     \}
+00141     \hyperlink{class_dialog_n_n_a1d38f96a8f11697068e805fdaa3267b2}{NeuralNet}->\hyperlink{class_soil_math_1_1_n_n_aaa63195dc11ca8c02f3ce044a5d086b5}{LoadState}(fn.toStdString());
+00142     connect(\hyperlink{class_dialog_n_n_a1d38f96a8f11697068e805fdaa3267b2}{NeuralNet}, SIGNAL(learnErrorUpdate(\textcolor{keywordtype}{double})), \textcolor{keyword}{this},
+00143             SLOT(\hyperlink{class_dialog_n_n_a24e8d08c95de8dd392e81409b9500ab6}{on\_learnErrorUpdate}(\textcolor{keywordtype}{double})));
+00144   \}
+00145 \}
+00146 
+\hypertarget{dialognn_8cpp_source_l00147}{}\hyperlink{class_dialog_n_n_ac814ace2a51a7054e0f81a8f3963cd33}{00147} \textcolor{keywordtype}{void} \hyperlink{class_dialog_n_n_ac814ace2a51a7054e0f81a8f3963cd33}{DialogNN::on\_actionAbort\_triggered}()
+00148 \{
+00149     \hyperlink{class_dialog_n_n_a1d38f96a8f11697068e805fdaa3267b2}{NeuralNet}->\hyperlink{class_soil_math_1_1_n_n_aa29b48e0711848633d5cdbb22055910d}{EndErrorUsedByGA} = \hyperlink{class_dialog_n_n_affd6ce2909be5826c52fd862d1963eee}{ui}->widget\_NNError->graph(0)->data()->lastKey(
+      );
+00150 \}
+\end{DoxyCode}

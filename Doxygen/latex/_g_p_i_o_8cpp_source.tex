@@ -1,0 +1,287 @@
+\hypertarget{_g_p_i_o_8cpp_source}{}\subsection{G\+P\+I\+O.\+cpp}
+\label{_g_p_i_o_8cpp_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Hardware/\+G\+P\+I\+O.\+cpp@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Hardware/\+G\+P\+I\+O.\+cpp}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/* Copyright (C) Jelle Spijker - All Rights Reserved}
+00002 \textcolor{comment}{ * Unauthorized copying of this file, via any medium is strictly prohibited}
+00003 \textcolor{comment}{ * and only allowed with the written consent of the author (Jelle Spijker)}
+00004 \textcolor{comment}{ * This software is proprietary and confidential}
+00005 \textcolor{comment}{ * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015}
+00006 \textcolor{comment}{ */}
+00007 
+00008 \textcolor{preprocessor}{#include "\hyperlink{_g_p_i_o_8h}{GPIO.h}"}
+00009 
+00010 \textcolor{keyword}{namespace }\hyperlink{namespace_hardware}{Hardware} \{
+\hypertarget{_g_p_i_o_8cpp_source_l00011}{}\hyperlink{class_hardware_1_1_g_p_i_o_afa29c38f1b07c2db68572ac0c60ed787}{00011} \hyperlink{class_hardware_1_1_g_p_i_o_afa29c38f1b07c2db68572ac0c60ed787}{GPIO::GPIO}(\textcolor{keywordtype}{int} number) \{
+00012 
+00013   this->number = \hyperlink{class_hardware_1_1_g_p_i_o_a1671a87bb70911b0a6a29019a068cf96}{number};
+00014   \hyperlink{class_hardware_1_1_g_p_i_o_ac47062ed6aba52b9e8506e1575bf5061}{gpiopath} = \hyperlink{_g_p_i_o_8h_ad3c9654be00e07ca084884963ae36830}{GPIOS} + NumberToString<int>(\hyperlink{class_hardware_1_1_g_p_i_o_a1671a87bb70911b0a6a29019a068cf96}{number});
+00015 
+00016   \textcolor{keywordflow}{if} (!\hyperlink{class_hardware_1_1_g_p_i_o_a423f9ac92259cacdca0c82c3ee9b1cdd}{isExported}(number, \hyperlink{class_hardware_1_1_g_p_i_o_a77e93e4f6650507fdc4898d272d540e7}{direction}, \hyperlink{class_hardware_1_1_g_p_i_o_adf15f74f053069029e99934e28c109e0}{edge})) \{
+00017     \hyperlink{class_hardware_1_1_g_p_i_o_a1a880bee633c9c5227cb36d2d6c63a52}{ExportPin}(number);
+00018     \hyperlink{class_hardware_1_1_g_p_i_o_a77e93e4f6650507fdc4898d272d540e7}{direction} = \hyperlink{class_hardware_1_1_g_p_i_o_a875d4f95ff3e6a70196660faa0477cf5}{ReadsDirection}(\hyperlink{class_hardware_1_1_g_p_i_o_ac47062ed6aba52b9e8506e1575bf5061}{gpiopath});
+00019     \hyperlink{class_hardware_1_1_g_p_i_o_adf15f74f053069029e99934e28c109e0}{edge} = \hyperlink{class_hardware_1_1_g_p_i_o_ac5a3c6d1a0ce58a0b2ee0752623810e4}{ReadsEdge}(\hyperlink{class_hardware_1_1_g_p_i_o_ac47062ed6aba52b9e8506e1575bf5061}{gpiopath});
+00020   \}
+00021   usleep(250000);
+00022 \}
+00023 
+\hypertarget{_g_p_i_o_8cpp_source_l00024}{}\hyperlink{class_hardware_1_1_g_p_i_o_a4a32391de40411d1aa5c49206cacc06d}{00024} \hyperlink{class_hardware_1_1_g_p_i_o_a4a32391de40411d1aa5c49206cacc06d}{GPIO::~GPIO}() \{ \hyperlink{class_hardware_1_1_g_p_i_o_ad56e9d73869a8dacc3245e33df4f5d24}{UnexportPin}(\hyperlink{class_hardware_1_1_g_p_i_o_a1671a87bb70911b0a6a29019a068cf96}{number}); \}
+00025 
+\hypertarget{_g_p_i_o_8cpp_source_l00026}{}\hyperlink{class_hardware_1_1_g_p_i_o_a68cce8d2f123100a2806b32958f6b719}{00026} \textcolor{keywordtype}{int} \hyperlink{class_hardware_1_1_g_p_i_o_afd1340f1a1907168e7dc4ad24027b96a}{GPIO::WaitForEdge}(\hyperlink{namespace_hardware_a5ba2e4bdfa2bbd8b551b1d5b2a0c61fd}{CallbackType} callback) \{
+00027   \hyperlink{class_hardware_1_1_b_b_b_a0d9d8c56afb37955e0d0c6baf0f418df}{threadRunning} = \textcolor{keyword}{true};
+00028   \hyperlink{class_hardware_1_1_b_b_b_a66d583952f3949a732ee15eea81e80e5}{callbackFunction} = callback;
+00029   \textcolor{keywordflow}{if} (pthread\_create(&this->\hyperlink{class_hardware_1_1_b_b_b_a3ad3fe886705bfc242ef58dc5329166e}{thread}, NULL, &\hyperlink{class_hardware_1_1_g_p_i_o_aac791b3d71615b988c52d994896fdbec}{threadedPollGPIO},
+00030                      static\_cast<void *>(\textcolor{keyword}{this}))) \{
+00031     \hyperlink{class_hardware_1_1_b_b_b_a0d9d8c56afb37955e0d0c6baf0f418df}{threadRunning} = \textcolor{keyword}{false};
+00032     \textcolor{keywordflow}{throw} \hyperlink{class_hardware_1_1_exception_1_1_failed_to_create_g_p_i_o_polling_thread_exception}{Exception::FailedToCreateGPIOPollingThreadException}
+      ();
+00033   \}
+00034   \textcolor{keywordflow}{return} 0;
+00035 \}
+00036 
+\hypertarget{_g_p_i_o_8cpp_source_l00037}{}\hyperlink{class_hardware_1_1_g_p_i_o_afd1340f1a1907168e7dc4ad24027b96a}{00037} \textcolor{keywordtype}{int} \hyperlink{class_hardware_1_1_g_p_i_o_afd1340f1a1907168e7dc4ad24027b96a}{GPIO::WaitForEdge}() \{
+00038   \textcolor{keywordflow}{if} (\hyperlink{class_hardware_1_1_g_p_i_o_a77e93e4f6650507fdc4898d272d540e7}{direction} == \hyperlink{class_hardware_1_1_g_p_i_o_a7507431d6341c146f22dcdb21b78ffd4a72432a9b39a6e45297b1158da8bb60eb}{Output}) \{
+00039     \hyperlink{class_hardware_1_1_g_p_i_o_a4a9fc2f7be304a6b23c2a2876b4c6bf9}{SetDirection}(\hyperlink{class_hardware_1_1_g_p_i_o_a7507431d6341c146f22dcdb21b78ffd4a5614339496b61db558bd9a26a327088e}{Input});
+00040   \}
+00041   \textcolor{keywordtype}{int} fd, i, epollfd, count = 0;
+00042   \textcolor{keyword}{struct }epoll\_event ev;
+00043   epollfd = epoll\_create(1);
+00044   \textcolor{keywordflow}{if} (epollfd == -1) \{
+00045     \textcolor{keywordflow}{throw} \hyperlink{class_hardware_1_1_exception_1_1_failed_to_create_g_p_i_o_polling_thread_exception}{Exception::FailedToCreateGPIOPollingThreadException}
+      (
+00046         \textcolor{stringliteral}{"GPIO: Failed to create epollfd!"});
+00047   \}
+00048   \textcolor{keywordflow}{if} ((fd = open((\hyperlink{class_hardware_1_1_g_p_i_o_ac47062ed6aba52b9e8506e1575bf5061}{gpiopath} + \hyperlink{_g_p_i_o_8h_aa0b03826c8f7cc324ac2db0ada2dce0a}{VALUE}).c\_str(), O\_RDONLY | O\_NONBLOCK)) == -1) \{
+00049     \textcolor{keywordflow}{throw} \hyperlink{class_hardware_1_1_exception_1_1_g_p_i_o_read_exception}{Exception::GPIOReadException}();
+00050   \}
+00051 
+00052   \textcolor{comment}{// read operation | edge triggered | urgent data}
+00053   ev.events = EPOLLIN | EPOLLET | EPOLLPRI;
+00054   ev.data.fd = fd;
+00055 
+00056   \textcolor{keywordflow}{if} (epoll\_ctl(epollfd, EPOLL\_CTL\_ADD, fd, &ev) == -1) \{
+00057     \textcolor{keywordflow}{throw} \hyperlink{class_hardware_1_1_exception_1_1_failed_to_create_g_p_i_o_polling_thread_exception}{Exception::FailedToCreateGPIOPollingThreadException}
+      (
+00058         \textcolor{stringliteral}{"GPIO: Failed to add control interface!"});
+00059   \}
+00060 
+00061   \textcolor{keywordflow}{while} (count <= 1) \{
+00062     i = epoll\_wait(epollfd, &ev, 1, -1);
+00063     \textcolor{keywordflow}{if} (i == -1) \{
+00064       close(fd);
+00065       \textcolor{keywordflow}{return} -1;
+00066     \} \textcolor{keywordflow}{else} \{
+00067       count++;
+00068     \}
+00069   \}
+00070   close(fd);
+00071   \textcolor{keywordflow}{return} 0;
+00072 \}
+00073 
+\hypertarget{_g_p_i_o_8cpp_source_l00074}{}\hyperlink{class_hardware_1_1_g_p_i_o_a7bb00a19893d4cc5432d81fc306223ac}{00074} \hyperlink{class_hardware_1_1_g_p_i_o_ad357201dc1ad13ad96ba1773108a5f6d}{GPIO::Value} \hyperlink{class_hardware_1_1_g_p_i_o_a7bb00a19893d4cc5432d81fc306223ac}{GPIO::GetValue}() \{ \textcolor{keywordflow}{return} \hyperlink{class_hardware_1_1_g_p_i_o_a2af76b35edfeae57ee5393f8455e2522}{ReadsValue}(
+      \hyperlink{class_hardware_1_1_g_p_i_o_ac47062ed6aba52b9e8506e1575bf5061}{gpiopath}); \}
+\hypertarget{_g_p_i_o_8cpp_source_l00075}{}\hyperlink{class_hardware_1_1_g_p_i_o_a2564893797de6a2dab596c4fc990b919}{00075} \textcolor{keywordtype}{void} \hyperlink{class_hardware_1_1_g_p_i_o_a2564893797de6a2dab596c4fc990b919}{GPIO::SetValue}(\hyperlink{class_hardware_1_1_g_p_i_o_ad357201dc1ad13ad96ba1773108a5f6d}{GPIO::Value} value) \{ \hyperlink{class_hardware_1_1_g_p_i_o_a143da5d0e47450cd4080754d81026dc9}{WritesValue}(
+      \hyperlink{class_hardware_1_1_g_p_i_o_ac47062ed6aba52b9e8506e1575bf5061}{gpiopath}, value); \}
+00076 
+\hypertarget{_g_p_i_o_8cpp_source_l00077}{}\hyperlink{class_hardware_1_1_g_p_i_o_a410f58faf97368fc9a1d76f3b44afbcb}{00077} \hyperlink{class_hardware_1_1_g_p_i_o_a7507431d6341c146f22dcdb21b78ffd4}{GPIO::Direction} \hyperlink{class_hardware_1_1_g_p_i_o_a410f58faf97368fc9a1d76f3b44afbcb}{GPIO::GetDirection}() \{ \textcolor{keywordflow}{return} 
+      \hyperlink{class_hardware_1_1_g_p_i_o_a77e93e4f6650507fdc4898d272d540e7}{direction}; \}
+\hypertarget{_g_p_i_o_8cpp_source_l00078}{}\hyperlink{class_hardware_1_1_g_p_i_o_a4a9fc2f7be304a6b23c2a2876b4c6bf9}{00078} \textcolor{keywordtype}{void} \hyperlink{class_hardware_1_1_g_p_i_o_a4a9fc2f7be304a6b23c2a2876b4c6bf9}{GPIO::SetDirection}(\hyperlink{class_hardware_1_1_g_p_i_o_a7507431d6341c146f22dcdb21b78ffd4}{Direction} direction) \{
+00079   this->direction = \hyperlink{class_hardware_1_1_g_p_i_o_a77e93e4f6650507fdc4898d272d540e7}{direction};
+00080   \hyperlink{class_hardware_1_1_g_p_i_o_a73426139a22b7e489a9c402678a477e4}{WritesDirection}(\hyperlink{class_hardware_1_1_g_p_i_o_ac47062ed6aba52b9e8506e1575bf5061}{gpiopath}, direction);
+00081 \}
+00082 
+\hypertarget{_g_p_i_o_8cpp_source_l00083}{}\hyperlink{class_hardware_1_1_g_p_i_o_a081393bd50e4b1a7830764e0772c4cba}{00083} \hyperlink{class_hardware_1_1_g_p_i_o_a9a7595aabdac9aec75f22e8b86342162}{GPIO::Edge} \hyperlink{class_hardware_1_1_g_p_i_o_a081393bd50e4b1a7830764e0772c4cba}{GPIO::GetEdge}() \{ \textcolor{keywordflow}{return} \hyperlink{class_hardware_1_1_g_p_i_o_adf15f74f053069029e99934e28c109e0}{edge}; \}
+\hypertarget{_g_p_i_o_8cpp_source_l00084}{}\hyperlink{class_hardware_1_1_g_p_i_o_a4d4ab3b0f1ee53590a300bfbcccae895}{00084} \textcolor{keywordtype}{void} \hyperlink{class_hardware_1_1_g_p_i_o_a4d4ab3b0f1ee53590a300bfbcccae895}{GPIO::SetEdge}(\hyperlink{class_hardware_1_1_g_p_i_o_a9a7595aabdac9aec75f22e8b86342162}{Edge} edge) \{
+00085   this->edge = \hyperlink{class_hardware_1_1_g_p_i_o_adf15f74f053069029e99934e28c109e0}{edge};
+00086   \hyperlink{class_hardware_1_1_g_p_i_o_a99e41223fcd93f47f3acf4851fc32de2}{WritesEdge}(\hyperlink{class_hardware_1_1_g_p_i_o_ac47062ed6aba52b9e8506e1575bf5061}{gpiopath}, edge);
+00087 \}
+00088 
+\hypertarget{_g_p_i_o_8cpp_source_l00089}{}\hyperlink{class_hardware_1_1_g_p_i_o_a423f9ac92259cacdca0c82c3ee9b1cdd}{00089} \textcolor{keywordtype}{bool} \hyperlink{class_hardware_1_1_g_p_i_o_a423f9ac92259cacdca0c82c3ee9b1cdd}{GPIO::isExported}(\textcolor{keywordtype}{int} number \_\_attribute\_\_((unused)), 
+      \hyperlink{class_hardware_1_1_g_p_i_o_a7507431d6341c146f22dcdb21b78ffd4}{Direction} &dir,
+00090                       \hyperlink{class_hardware_1_1_g_p_i_o_a9a7595aabdac9aec75f22e8b86342162}{Edge} &edge) \{
+00091   \textcolor{comment}{// Checks if directory exist and therefore is exported}
+00092   \textcolor{keywordflow}{if} (!\hyperlink{class_hardware_1_1_b_b_b_adf431d8e0e8899f7aa16c350a2270e79}{DirectoryExist}(\hyperlink{class_hardware_1_1_g_p_i_o_ac47062ed6aba52b9e8506e1575bf5061}{gpiopath})) \{
+00093     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00094   \}
+00095 
+00096   \textcolor{comment}{// Reads the data associated with the pin}
+00097   dir = \hyperlink{class_hardware_1_1_g_p_i_o_a875d4f95ff3e6a70196660faa0477cf5}{ReadsDirection}(\hyperlink{class_hardware_1_1_g_p_i_o_ac47062ed6aba52b9e8506e1575bf5061}{gpiopath});
+00098   edge = \hyperlink{class_hardware_1_1_g_p_i_o_ac5a3c6d1a0ce58a0b2ee0752623810e4}{ReadsEdge}(\hyperlink{class_hardware_1_1_g_p_i_o_ac47062ed6aba52b9e8506e1575bf5061}{gpiopath});
+00099   \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+00100 \}
+00101 
+\hypertarget{_g_p_i_o_8cpp_source_l00102}{}\hyperlink{class_hardware_1_1_g_p_i_o_a1a880bee633c9c5227cb36d2d6c63a52}{00102} \textcolor{keywordtype}{bool} \hyperlink{class_hardware_1_1_g_p_i_o_a1a880bee633c9c5227cb36d2d6c63a52}{GPIO::ExportPin}(\textcolor{keywordtype}{int} number) \{
+00103   \textcolor{keywordflow}{switch} (number) \{
+00104   \textcolor{keywordflow}{case} 7:
+00105     system(\textcolor{stringliteral}{"config-pin P9.42 gpio"});
+00106     \textcolor{keywordflow}{break};
+00107   \textcolor{keywordflow}{case} 116:
+00108     system(\textcolor{stringliteral}{"config-pin P9.91 gpio"});
+00109     \textcolor{keywordflow}{break};
+00110   \textcolor{keywordflow}{case} 112:
+00111     system(\textcolor{stringliteral}{"config-pin P9.30 gpio"});
+00112     \textcolor{keywordflow}{break};
+00113   \textcolor{keywordflow}{case} 115:
+00114     system(\textcolor{stringliteral}{"config-pin P9.27 gpio"});
+00115     \textcolor{keywordflow}{break};
+00116   \textcolor{keywordflow}{case} 14:
+00117     system(\textcolor{stringliteral}{"config-pin P9.26 gpio"});
+00118     \textcolor{keywordflow}{break};
+00119   \textcolor{keywordflow}{case} 15:
+00120     system(\textcolor{stringliteral}{"config-pin P9.24 gpio"});
+00121     \textcolor{keywordflow}{break};
+00122   \textcolor{keywordflow}{case} 49:
+00123     system(\textcolor{stringliteral}{"config-pin P9.23 gpio"});
+00124     \textcolor{keywordflow}{break};
+00125   \textcolor{keywordflow}{case} 2:
+00126     system(\textcolor{stringliteral}{"config-pin P9.22 gpio"});
+00127     \textcolor{keywordflow}{break};
+00128   \textcolor{keywordflow}{case} 3:
+00129     system(\textcolor{stringliteral}{"config-pin P9.21 gpio"});
+00130     \textcolor{keywordflow}{break};
+00131   \textcolor{keywordflow}{case} 4:
+00132     system(\textcolor{stringliteral}{"config-pin P9.18 gpio"});
+00133     \textcolor{keywordflow}{break};
+00134   \textcolor{keywordflow}{case} 5:
+00135     system(\textcolor{stringliteral}{"config-pin P9.17 gpio"});
+00136     \textcolor{keywordflow}{break};
+00137   \textcolor{keywordflow}{case} 51:
+00138     system(\textcolor{stringliteral}{"config-pin P9.16 gpio"});
+00139     \textcolor{keywordflow}{break};
+00140   \textcolor{keywordflow}{case} 48:
+00141     system(\textcolor{stringliteral}{"config-pin P9.15 gpio"});
+00142     \textcolor{keywordflow}{break};
+00143   \textcolor{keywordflow}{case} 50:
+00144     system(\textcolor{stringliteral}{"config-pin P9.14 gpio"});
+00145     \textcolor{keywordflow}{break};
+00146   \textcolor{keywordflow}{case} 31:
+00147     system(\textcolor{stringliteral}{"config-pin P9.13 gpio"});
+00148     \textcolor{keywordflow}{break};
+00149   \textcolor{keywordflow}{case} 60:
+00150     system(\textcolor{stringliteral}{"config-pin P9.12 gpio"});
+00151     \textcolor{keywordflow}{break};
+00152   \textcolor{keywordflow}{case} 30:
+00153     system(\textcolor{stringliteral}{"config-pin P9.11 gpio"});
+00154     \textcolor{keywordflow}{break};
+00155   \textcolor{keywordflow}{case} 61:
+00156     system(\textcolor{stringliteral}{"config-pin P8.26 gpio"});
+00157     \textcolor{keywordflow}{break};
+00158   \textcolor{keywordflow}{case} 22:
+00159     system(\textcolor{stringliteral}{"config-pin P8.19 gpio"});
+00160     \textcolor{keywordflow}{break};
+00161   \textcolor{keywordflow}{case} 65:
+00162     system(\textcolor{stringliteral}{"config-pin P8.18 gpio"});
+00163     \textcolor{keywordflow}{break};
+00164   \textcolor{keywordflow}{case} 27:
+00165     system(\textcolor{stringliteral}{"config-pin P8.17 gpio"});
+00166     \textcolor{keywordflow}{break};
+00167   \textcolor{keywordflow}{case} 46:
+00168     system(\textcolor{stringliteral}{"config-pin P8.16 gpio"});
+00169     \textcolor{keywordflow}{break};
+00170   \textcolor{keywordflow}{case} 47:
+00171     system(\textcolor{stringliteral}{"config-pin P8.15 gpio"});
+00172     \textcolor{keywordflow}{break};
+00173   \textcolor{keywordflow}{case} 26:
+00174     system(\textcolor{stringliteral}{"config-pin P8.14 gpio"});
+00175     \textcolor{keywordflow}{break};
+00176   \textcolor{keywordflow}{case} 23:
+00177     system(\textcolor{stringliteral}{"config-pin P8.13 gpio"});
+00178     \textcolor{keywordflow}{break};
+00179   \textcolor{keywordflow}{case} 44:
+00180     system(\textcolor{stringliteral}{"config-pin P8.12 gpio"});
+00181     \textcolor{keywordflow}{break};
+00182   \textcolor{keywordflow}{case} 45:
+00183     system(\textcolor{stringliteral}{"config-pin P8.11 gpio"});
+00184     \textcolor{keywordflow}{break};
+00185   \textcolor{keywordflow}{case} 68:
+00186     system(\textcolor{stringliteral}{"config-pin P8.10 gpio"});
+00187     \textcolor{keywordflow}{break};
+00188   \textcolor{keywordflow}{case} 69:
+00189     system(\textcolor{stringliteral}{"config-pin P8.09 gpio"});
+00190     \textcolor{keywordflow}{break};
+00191   \textcolor{keywordflow}{case} 67:
+00192     system(\textcolor{stringliteral}{"config-pin P8.08 gpio"});
+00193     \textcolor{keywordflow}{break};
+00194   \textcolor{keywordflow}{case} 66:
+00195     system(\textcolor{stringliteral}{"config-pin P8.07 gpio"});
+00196     \textcolor{keywordflow}{break};
+00197   \}
+00198   usleep(250000);
+00199 \}
+00200 
+\hypertarget{_g_p_i_o_8cpp_source_l00201}{}\hyperlink{class_hardware_1_1_g_p_i_o_ad56e9d73869a8dacc3245e33df4f5d24}{00201} \textcolor{keywordtype}{bool} \hyperlink{class_hardware_1_1_g_p_i_o_ad56e9d73869a8dacc3245e33df4f5d24}{GPIO::UnexportPin}(\textcolor{keywordtype}{int} number) \{
+00202   \textcolor{comment}{//Write(UNEXPORT\_PIN, NumberToString<int>(number));}
+00203 \}
+00204 
+\hypertarget{_g_p_i_o_8cpp_source_l00205}{}\hyperlink{class_hardware_1_1_g_p_i_o_a875d4f95ff3e6a70196660faa0477cf5}{00205} \hyperlink{class_hardware_1_1_g_p_i_o_a7507431d6341c146f22dcdb21b78ffd4}{GPIO::Direction} \hyperlink{class_hardware_1_1_g_p_i_o_a875d4f95ff3e6a70196660faa0477cf5}{GPIO::ReadsDirection}(\textcolor{keyword}{const} \textcolor{keywordtype}{string} &gpiopath) \{
+00206   \textcolor{keywordflow}{if} (\hyperlink{class_hardware_1_1_b_b_b_a8b287ded7bcb2cfab361d1fca2b62e9f}{Read}(gpiopath + \hyperlink{_g_p_i_o_8h_a1d692daf1ffadae2243a5ab556589629}{DIRECTION}) == \textcolor{stringliteral}{"in"}) \{
+00207     \textcolor{keywordflow}{return} \hyperlink{class_hardware_1_1_g_p_i_o_a7507431d6341c146f22dcdb21b78ffd4a5614339496b61db558bd9a26a327088e}{Input};
+00208   \} \textcolor{keywordflow}{else} \{
+00209     \textcolor{keywordflow}{return} \hyperlink{class_hardware_1_1_g_p_i_o_a7507431d6341c146f22dcdb21b78ffd4a72432a9b39a6e45297b1158da8bb60eb}{Output};
+00210   \}
+00211 \}
+00212 
+\hypertarget{_g_p_i_o_8cpp_source_l00213}{}\hyperlink{class_hardware_1_1_g_p_i_o_a73426139a22b7e489a9c402678a477e4}{00213} \textcolor{keywordtype}{void} \hyperlink{class_hardware_1_1_g_p_i_o_a73426139a22b7e489a9c402678a477e4}{GPIO::WritesDirection}(\textcolor{keyword}{const} \textcolor{keywordtype}{string} &gpiopath, 
+      \hyperlink{class_hardware_1_1_g_p_i_o_a7507431d6341c146f22dcdb21b78ffd4}{Direction} direction) \{
+00214   \textcolor{keywordflow}{switch} (direction) \{
+00215   \textcolor{keywordflow}{case} \hyperlink{class_hardware_1_1_g_p_i_o_a7507431d6341c146f22dcdb21b78ffd4a5614339496b61db558bd9a26a327088e}{Hardware::GPIO::Input}:
+00216     \hyperlink{class_hardware_1_1_b_b_b_a155cc06f76d82a6b690ce5ea08e7c68e}{Write}((gpiopath + \hyperlink{_g_p_i_o_8h_a1d692daf1ffadae2243a5ab556589629}{DIRECTION}), \textcolor{stringliteral}{"in"});
+00217     \textcolor{keywordflow}{break};
+00218   \textcolor{keywordflow}{case} \hyperlink{class_hardware_1_1_g_p_i_o_a7507431d6341c146f22dcdb21b78ffd4a72432a9b39a6e45297b1158da8bb60eb}{Hardware::GPIO::Output}:
+00219     \hyperlink{class_hardware_1_1_b_b_b_a155cc06f76d82a6b690ce5ea08e7c68e}{Write}((gpiopath + \hyperlink{_g_p_i_o_8h_a1d692daf1ffadae2243a5ab556589629}{DIRECTION}), \textcolor{stringliteral}{"out"});
+00220     \textcolor{keywordflow}{break};
+00221   \}
+00222 \}
+00223 
+\hypertarget{_g_p_i_o_8cpp_source_l00224}{}\hyperlink{class_hardware_1_1_g_p_i_o_ac5a3c6d1a0ce58a0b2ee0752623810e4}{00224} \hyperlink{class_hardware_1_1_g_p_i_o_a9a7595aabdac9aec75f22e8b86342162}{GPIO::Edge} \hyperlink{class_hardware_1_1_g_p_i_o_ac5a3c6d1a0ce58a0b2ee0752623810e4}{GPIO::ReadsEdge}(\textcolor{keyword}{const} \textcolor{keywordtype}{string} &gpiopath) \{
+00225   \textcolor{keywordtype}{string} reader = \hyperlink{class_hardware_1_1_b_b_b_a8b287ded7bcb2cfab361d1fca2b62e9f}{Read}(gpiopath + \hyperlink{_g_p_i_o_8h_ac243bfa96aa2c28014159ff098bd2324}{EDGE});
+00226   \textcolor{keywordflow}{if} (reader == \textcolor{stringliteral}{"none"}) \{
+00227     \textcolor{keywordflow}{return} \hyperlink{class_hardware_1_1_g_p_i_o_a9a7595aabdac9aec75f22e8b86342162aa49ebde2bcdeefb0e7be23fd0fbbdee6}{None};
+00228   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (reader == \textcolor{stringliteral}{"rising"}) \{
+00229     \textcolor{keywordflow}{return} \hyperlink{class_hardware_1_1_g_p_i_o_a9a7595aabdac9aec75f22e8b86342162afbb0aadc6c0311beb25d5a056c61ed46}{Rising};
+00230   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (reader == \textcolor{stringliteral}{"falling"}) \{
+00231     \textcolor{keywordflow}{return} \hyperlink{class_hardware_1_1_g_p_i_o_a9a7595aabdac9aec75f22e8b86342162a0db6d4392aec905f4fd0576c2cba9279}{Falling};
+00232   \} \textcolor{keywordflow}{else} \{
+00233     \textcolor{keywordflow}{return} \hyperlink{class_hardware_1_1_g_p_i_o_a9a7595aabdac9aec75f22e8b86342162aa6f3d9102e894c4bf553a679ad2148c3}{Both};
+00234   \}
+00235 \}
+00236 
+\hypertarget{_g_p_i_o_8cpp_source_l00237}{}\hyperlink{class_hardware_1_1_g_p_i_o_a99e41223fcd93f47f3acf4851fc32de2}{00237} \textcolor{keywordtype}{void} \hyperlink{class_hardware_1_1_g_p_i_o_a99e41223fcd93f47f3acf4851fc32de2}{GPIO::WritesEdge}(\textcolor{keyword}{const} \textcolor{keywordtype}{string} &gpiopath, \hyperlink{class_hardware_1_1_g_p_i_o_a9a7595aabdac9aec75f22e8b86342162}{Edge} edge) \{
+00238   \textcolor{keywordflow}{switch} (edge) \{
+00239   \textcolor{keywordflow}{case} \hyperlink{class_hardware_1_1_g_p_i_o_a9a7595aabdac9aec75f22e8b86342162aa49ebde2bcdeefb0e7be23fd0fbbdee6}{Hardware::GPIO::None}:
+00240     \hyperlink{class_hardware_1_1_b_b_b_a155cc06f76d82a6b690ce5ea08e7c68e}{Write}((gpiopath + \hyperlink{_g_p_i_o_8h_ac243bfa96aa2c28014159ff098bd2324}{EDGE}), \textcolor{stringliteral}{"none"});
+00241     \textcolor{keywordflow}{break};
+00242   \textcolor{keywordflow}{case} \hyperlink{class_hardware_1_1_g_p_i_o_a9a7595aabdac9aec75f22e8b86342162afbb0aadc6c0311beb25d5a056c61ed46}{Hardware::GPIO::Rising}:
+00243     \hyperlink{class_hardware_1_1_b_b_b_a155cc06f76d82a6b690ce5ea08e7c68e}{Write}((gpiopath + \hyperlink{_g_p_i_o_8h_ac243bfa96aa2c28014159ff098bd2324}{EDGE}), \textcolor{stringliteral}{"rising"});
+00244     \textcolor{keywordflow}{break};
+00245   \textcolor{keywordflow}{case} \hyperlink{class_hardware_1_1_g_p_i_o_a9a7595aabdac9aec75f22e8b86342162a0db6d4392aec905f4fd0576c2cba9279}{Hardware::GPIO::Falling}:
+00246     \hyperlink{class_hardware_1_1_b_b_b_a155cc06f76d82a6b690ce5ea08e7c68e}{Write}((gpiopath + \hyperlink{_g_p_i_o_8h_ac243bfa96aa2c28014159ff098bd2324}{EDGE}), \textcolor{stringliteral}{"falling"});
+00247     \textcolor{keywordflow}{break};
+00248   \textcolor{keywordflow}{case} \hyperlink{class_hardware_1_1_g_p_i_o_a9a7595aabdac9aec75f22e8b86342162aa6f3d9102e894c4bf553a679ad2148c3}{Hardware::GPIO::Both}:
+00249     \hyperlink{class_hardware_1_1_b_b_b_a155cc06f76d82a6b690ce5ea08e7c68e}{Write}((gpiopath + \hyperlink{_g_p_i_o_8h_ac243bfa96aa2c28014159ff098bd2324}{EDGE}), \textcolor{stringliteral}{"both"});
+00250     \textcolor{keywordflow}{break};
+00251   \textcolor{keywordflow}{default}:
+00252     \textcolor{keywordflow}{break};
+00253   \}
+00254 \}
+00255 
+\hypertarget{_g_p_i_o_8cpp_source_l00256}{}\hyperlink{class_hardware_1_1_g_p_i_o_a2af76b35edfeae57ee5393f8455e2522}{00256} \hyperlink{class_hardware_1_1_g_p_i_o_ad357201dc1ad13ad96ba1773108a5f6d}{GPIO::Value} \hyperlink{class_hardware_1_1_g_p_i_o_a2af76b35edfeae57ee5393f8455e2522}{GPIO::ReadsValue}(\textcolor{keyword}{const} \textcolor{keywordtype}{string} &gpiopath) \{
+00257   \textcolor{keywordtype}{string} path(gpiopath + \hyperlink{_g_p_i_o_8h_aa0b03826c8f7cc324ac2db0ada2dce0a}{VALUE});
+00258   \textcolor{keywordtype}{int} res = StringToNumber<int>(\hyperlink{class_hardware_1_1_b_b_b_a8b287ded7bcb2cfab361d1fca2b62e9f}{Read}(path));
+00259   \textcolor{keywordflow}{return} (\hyperlink{class_hardware_1_1_g_p_i_o_ad357201dc1ad13ad96ba1773108a5f6d}{Value})res;
+00260 \}
+00261 
+\hypertarget{_g_p_i_o_8cpp_source_l00262}{}\hyperlink{class_hardware_1_1_g_p_i_o_a143da5d0e47450cd4080754d81026dc9}{00262} \textcolor{keywordtype}{void} \hyperlink{class_hardware_1_1_g_p_i_o_a143da5d0e47450cd4080754d81026dc9}{GPIO::WritesValue}(\textcolor{keyword}{const} \textcolor{keywordtype}{string} &gpiopath, \hyperlink{class_hardware_1_1_g_p_i_o_ad357201dc1ad13ad96ba1773108a5f6d}{Value} value) \{
+00263   \hyperlink{class_hardware_1_1_b_b_b_a155cc06f76d82a6b690ce5ea08e7c68e}{Write}(gpiopath + \hyperlink{_g_p_i_o_8h_aa0b03826c8f7cc324ac2db0ada2dce0a}{VALUE}, NumberToString<int>(value));
+00264 \}
+00265 
+\hypertarget{_g_p_i_o_8cpp_source_l00266}{}\hyperlink{namespace_hardware_af5f1bde915012872fc6b800981948aaa}{00266} \textcolor{keywordtype}{void} *\hyperlink{namespace_hardware_af5f1bde915012872fc6b800981948aaa}{threadedPollGPIO}(\textcolor{keywordtype}{void} *value) \{
+00267   \hyperlink{class_hardware_1_1_g_p_i_o}{GPIO} *gpio = \textcolor{keyword}{static\_cast<}\hyperlink{class_hardware_1_1_g_p_i_o}{GPIO} *\textcolor{keyword}{>}(value);
+00268   \textcolor{keywordflow}{while} (gpio->\hyperlink{class_hardware_1_1_b_b_b_a0d9d8c56afb37955e0d0c6baf0f418df}{threadRunning}) \{
+00269     gpio->\hyperlink{class_hardware_1_1_b_b_b_a66d583952f3949a732ee15eea81e80e5}{callbackFunction}(gpio->\hyperlink{class_hardware_1_1_g_p_i_o_afd1340f1a1907168e7dc4ad24027b96a}{WaitForEdge}());
+00270     usleep(gpio->\hyperlink{class_hardware_1_1_b_b_b_a353a2d7d4fbade337e5173b484b20b22}{debounceTime} * 1000);
+00271   \}
+00272   \textcolor{keywordflow}{return} 0;
+00273 \}
+00274 \}
+\end{DoxyCode}

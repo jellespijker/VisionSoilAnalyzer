@@ -1,0 +1,34 @@
+\hypertarget{_channel_mismatch_exception_8h_source}{}\subsection{Channel\+Mismatch\+Exception.\+h}
+\label{_channel_mismatch_exception_8h_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Vision/\+Channel\+Mismatch\+Exception.\+h@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Vision/\+Channel\+Mismatch\+Exception.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/* Copyright (C) Jelle Spijker - All Rights Reserved}
+00002 \textcolor{comment}{ * Unauthorized copying of this file, via any medium is strictly prohibited}
+00003 \textcolor{comment}{ * and only allowed with the written consent of the author (Jelle Spijker)}
+00004 \textcolor{comment}{ * This software is proprietary and confidential}
+00005 \textcolor{comment}{ * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015}
+00006 \textcolor{comment}{ */}
+00007 
+00012 \textcolor{preprocessor}{#pragma once}
+00013 
+00014 \textcolor{preprocessor}{#include <exception>}
+00015 \textcolor{preprocessor}{#include <string>}
+00016 
+00017 \textcolor{keyword}{using namespace }\hyperlink{namespacestd}{std};
+00018 
+\hypertarget{_channel_mismatch_exception_8h_source_l00019}{}\hyperlink{namespace_vision}{00019} \textcolor{keyword}{namespace }\hyperlink{namespace_vision}{Vision} \{
+\hypertarget{_channel_mismatch_exception_8h_source_l00020}{}\hyperlink{namespace_vision_1_1_exception}{00020} \textcolor{keyword}{namespace }Exception \{
+\hypertarget{_channel_mismatch_exception_8h_source_l00021}{}\hyperlink{class_vision_1_1_exception_1_1_channel_mismatch_exception}{00021} \textcolor{keyword}{class }\hyperlink{class_vision_1_1_exception_1_1_channel_mismatch_exception}{ChannelMismatchException} : \textcolor{keyword}{public} std::exception \{
+00022 \textcolor{keyword}{public}:
+\hypertarget{_channel_mismatch_exception_8h_source_l00023}{}\hyperlink{class_vision_1_1_exception_1_1_channel_mismatch_exception_a6fcbebd5e804c5b76b24506fe558d656}{00023}   \hyperlink{class_vision_1_1_exception_1_1_channel_mismatch_exception_a6fcbebd5e804c5b76b24506fe558d656}{ChannelMismatchException}(
+00024       \textcolor{keywordtype}{string} m = \textcolor{stringliteral}{"Extracted channel out of bounds exception!"})
+00025       : msg(m)\{\};
+\hypertarget{_channel_mismatch_exception_8h_source_l00026}{}\hyperlink{class_vision_1_1_exception_1_1_channel_mismatch_exception_abef15b64f935832cc516696b68f6a012}{00026}   \hyperlink{class_vision_1_1_exception_1_1_channel_mismatch_exception_abef15b64f935832cc516696b68f6a012}{~ChannelMismatchException}() \_GLIBCXX\_USE\_NOEXCEPT\{\};
+\hypertarget{_channel_mismatch_exception_8h_source_l00027}{}\hyperlink{class_vision_1_1_exception_1_1_channel_mismatch_exception_acd5341496b3b5f49bba41c238a398a70}{00027}   \textcolor{keyword}{const} \textcolor{keywordtype}{char} *\hyperlink{class_vision_1_1_exception_1_1_channel_mismatch_exception_acd5341496b3b5f49bba41c238a398a70}{what}() const \_GLIBCXX\_USE\_NOEXCEPT \{ \textcolor{keywordflow}{return} msg.c\_str(); \};
+00028 
+00029 \textcolor{keyword}{private}:
+00030   \textcolor{keywordtype}{string} msg;
+00031 \};
+00032 \}
+00033 \}
+\end{DoxyCode}

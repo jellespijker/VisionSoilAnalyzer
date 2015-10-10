@@ -1,0 +1,269 @@
+\hypertarget{_g_a_8cpp_source}{}\subsection{G\+A.\+cpp}
+\label{_g_a_8cpp_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Math/\+G\+A.\+cpp@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Math/\+G\+A.\+cpp}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/* Copyright (C) Jelle Spijker - All Rights Reserved}
+00002 \textcolor{comment}{ * Unauthorized copying of this file, via any medium is strictly prohibited}
+00003 \textcolor{comment}{ * and only allowed with the written consent of the author (Jelle Spijker)}
+00004 \textcolor{comment}{ * This software is proprietary and confidential}
+00005 \textcolor{comment}{ * Written by Jelle Spijker <spijker.jelle@gmail.com>, 2015}
+00006 \textcolor{comment}{ */}
+00007 
+00008 \textcolor{preprocessor}{#include "\hyperlink{_g_a_8h}{GA.h}"}
+00009 
+00010 \textcolor{keyword}{namespace }\hyperlink{namespace_soil_math}{SoilMath} \{
+\hypertarget{_g_a_8cpp_source_l00011}{}\hyperlink{class_soil_math_1_1_g_a_a759b77fbe44fa1d5df5bcbdee9d97c4e}{00011} \hyperlink{class_soil_math_1_1_g_a_a759b77fbe44fa1d5df5bcbdee9d97c4e}{GA::GA}() \{\}
+00012 
+\hypertarget{_g_a_8cpp_source_l00013}{}\hyperlink{class_soil_math_1_1_g_a_a6fed498b99290a5218cc3ecd9537fc74}{00013} \hyperlink{class_soil_math_1_1_g_a_a759b77fbe44fa1d5df5bcbdee9d97c4e}{GA::GA}(\hyperlink{_soil_math_types_8h_a7791f1b8f92a964847637c5d657c1b10}{NNfunctionType} nnfunction, \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} inputneurons, 
+      \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} hiddenneurons,
+00014        \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} outputneurons) \{
+00015   this->\hyperlink{class_soil_math_1_1_g_a_a9b690048c89c32e3153457378b5e1c31}{NNfuction} = nnfunction;
+00016   this->inputneurons = \hyperlink{class_soil_math_1_1_g_a_ac32591e30dde5ac854ae57a7b9e33298}{inputneurons};
+00017   this->hiddenneurons = \hyperlink{class_soil_math_1_1_g_a_a3f1eee7492f68a05b9b06ee8afb2ec20}{hiddenneurons};
+00018   this->outputneurons = \hyperlink{class_soil_math_1_1_g_a_ab454f9968d5ce2a294b89f85c9d3a74f}{outputneurons};
+00019 \}
+00020 
+\hypertarget{_g_a_8cpp_source_l00021}{}\hyperlink{class_soil_math_1_1_g_a_a7a7087b2c5a268a1a9bccc04600537f6}{00021} \hyperlink{class_soil_math_1_1_g_a_a7a7087b2c5a268a1a9bccc04600537f6}{GA::~GA}() \{\}
+00022 
+\hypertarget{_g_a_8cpp_source_l00023}{}\hyperlink{class_soil_math_1_1_g_a_aca448f36c1f98b4906d0754cf354cccf}{00023} \textcolor{keywordtype}{void} \hyperlink{class_soil_math_1_1_g_a_aca448f36c1f98b4906d0754cf354cccf}{GA::Evolve}(\textcolor{keyword}{const} \hyperlink{_soil_math_types_8h_a45aa81992bf0ddf272907bd4fa0b96cf}{InputLearnVector\_t} &inputValues, 
+      \hyperlink{_soil_math_types_8h_ac56ad2b88186620fd0de0d213aa715dd}{Weight\_t} &weights,
+00024                 \hyperlink{_soil_math_types_8h_aaa919636507bcd52b19efa301aa80b9a}{MinMaxWeight\_t} rangeweights, \hyperlink{_soil_math_types_8h_a2d8b5a261688166d724b68addd8561e6}{OutputLearnVector\_t} &goal,
+00025                 \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} maxGenerations, \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} popSize) \{
+00026   \hyperlink{class_soil_math_1_1_g_a_af8fab109094e0730304ba1c462b4e2bf}{minOptim} = goal[0].OutputNeurons.size();
+00027   \hyperlink{class_soil_math_1_1_g_a_af8fab109094e0730304ba1c462b4e2bf}{minOptim} = -\hyperlink{class_soil_math_1_1_g_a_af8fab109094e0730304ba1c462b4e2bf}{minOptim};
+00028   \hyperlink{class_soil_math_1_1_g_a_a99565a1789513769c2cf0e6971854ef6}{maxOptim} = 2 * goal[0].OutputNeurons.size();
+00029   \hyperlink{class_soil_math_1_1_g_a_a9ee328c3a2d3f43b8fccabb06e5ebb18}{oldElit} = \hyperlink{class_soil_math_1_1_g_a_a381e62f146aacfa86fec6e0dc40053ab}{Elitisme};
+00030   \hyperlink{class_soil_math_1_1_g_a_a437db38d6fdb7953a5d83f120b020130}{oldMutation} = \hyperlink{class_soil_math_1_1_g_a_a82996d544a2f25b5a75ae8ba1e82d661}{MutationRate};
+00031   this->inputValues = \hyperlink{class_soil_math_1_1_g_a_a99276ad62b9616d0f18becc4fbb22980}{inputValues};
+00032   this->rangeweights = \hyperlink{class_soil_math_1_1_g_a_a7613e87f93e42724d03008e3603cf21b}{rangeweights};
+00033   this->goal = \hyperlink{class_soil_math_1_1_g_a_a4366c8f0852e8ec2bf37b3d5324b57cb}{goal};
+00034 
+00035   \textcolor{comment}{// Create the population}
+00036   \hyperlink{_soil_math_types_8h_a8d2d4c736cf817d048a2d66dec8b12ec}{Population\_t} pop = \hyperlink{class_soil_math_1_1_g_a_a141afd2573d2323f67915e6cea4f1a9f}{Genesis}(weights, popSize);
+00037   \textcolor{keywordtype}{float} totalFitness = 0.0;
+00038   \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i < maxGenerations; i++) \{
+00039     \hyperlink{class_soil_math_1_1_g_a_abf408d603b2afb188a6d265eb6309b69}{CrossOver}(pop);
+00040     \hyperlink{class_soil_math_1_1_g_a_a489f2afd54086c14f45b654aeec0fe3c}{Mutate}(pop);
+00041     totalFitness = 0.0;
+00042     \hyperlink{class_soil_math_1_1_g_a_a7b84b10bfb6069fe44bbd137e3a9dbb0}{GrowToAdulthood}(pop, totalFitness);
+00043     \textcolor{keywordflow}{if} (\hyperlink{class_soil_math_1_1_g_a_ac2c10631815408d044738f678c67e98b}{SurvivalOfTheFittest}(pop, totalFitness)) \{
+00044       \textcolor{keywordflow}{break};
+00045     \}
+00046   \}
+00047   weights = pop[0].weights;
+00048 \}
+00049 
+\hypertarget{_g_a_8cpp_source_l00050}{}\hyperlink{class_soil_math_1_1_g_a_a141afd2573d2323f67915e6cea4f1a9f}{00050} \hyperlink{_soil_math_types_8h_a8d2d4c736cf817d048a2d66dec8b12ec}{Population\_t} \hyperlink{class_soil_math_1_1_g_a_a141afd2573d2323f67915e6cea4f1a9f}{GA::Genesis}(\textcolor{keyword}{const} \hyperlink{_soil_math_types_8h_ac56ad2b88186620fd0de0d213aa715dd}{Weight\_t} &weights, 
+      \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} popSize) \{
+00051   \textcolor{keywordflow}{if} (popSize < 1)
+00052     \textcolor{keywordflow}{return} \hyperlink{_soil_math_types_8h_a8d2d4c736cf817d048a2d66dec8b12ec}{Population\_t}();
+00053 
+00054   \hyperlink{_soil_math_types_8h_a8d2d4c736cf817d048a2d66dec8b12ec}{Population\_t} pop;
+00055   \textcolor{keywordtype}{unsigned} seed = std::chrono::system\_clock::now().time\_since\_epoch().count();
+00056   std::default\_random\_engine gen(seed);
+00057   std::uniform\_real\_distribution<float> dis(\hyperlink{class_soil_math_1_1_g_a_a7613e87f93e42724d03008e3603cf21b}{rangeweights}.first,
+00058                                             \hyperlink{class_soil_math_1_1_g_a_a7613e87f93e42724d03008e3603cf21b}{rangeweights}.second);
+00059 
+00060   \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i < popSize; i++) \{
+00061     \hyperlink{struct_pop_member_struct}{PopMember\_t} I;
+00062     \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} j = 0; j < weights.size(); j++) \{
+00063       I.\hyperlink{struct_pop_member_struct_aeba960170ef60a906c730cc24cd90367}{weights}.push\_back(dis(gen));
+00064       I.\hyperlink{struct_pop_member_struct_a072fadb4863e0cf77b55ad3b46b62522}{weightsGen}.push\_back(
+00065           ConvertToGenome<float>(I.\hyperlink{struct_pop_member_struct_aeba960170ef60a906c730cc24cd90367}{weights}[j], \hyperlink{class_soil_math_1_1_g_a_a7613e87f93e42724d03008e3603cf21b}{rangeweights}));
+00066     \}
+00067     pop.push\_back(I);
+00068   \}
+00069   \textcolor{keywordflow}{return} pop;
+00070 \}
+00071 
+\hypertarget{_g_a_8cpp_source_l00072}{}\hyperlink{class_soil_math_1_1_g_a_abf408d603b2afb188a6d265eb6309b69}{00072} \textcolor{keywordtype}{void} \hyperlink{class_soil_math_1_1_g_a_abf408d603b2afb188a6d265eb6309b69}{GA::CrossOver}(\hyperlink{_soil_math_types_8h_a8d2d4c736cf817d048a2d66dec8b12ec}{Population\_t} &pop) \{
+00073   \hyperlink{_soil_math_types_8h_a8d2d4c736cf817d048a2d66dec8b12ec}{Population\_t} newPop; \textcolor{comment}{// create a new population}
+00074   \hyperlink{struct_pop_member_struct}{PopMember\_t} newPopMembers[2];
+00075   \hyperlink{_soil_math_types_8h_a44bbe64bbeb237fd8918433d5f6f85b7}{SplitGenome\_t} Split[2];
+00076 
+00077   \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i < pop.size(); i += 2) \{
+00078 
+00079     \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} j = 0; j < pop[i].weights.size(); j++) \{
+00080       \textcolor{comment}{// Split A}
+00081       Split[0].first = std::bitset<CROSSOVER>(
+00082           pop[i].weightsGen[j].to\_string().substr(0, \hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER}));
+00083       Split[0].second = std::bitset<\hyperlink{_soil_math_types_8h_aa5e1eb1a998e5ed69af2076cf318df4b}{GENE\_MAX} - \hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER}>(
+00084           pop[i].weightsGen[j].to\_string().substr(\hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER},
+00085                                                   \hyperlink{_soil_math_types_8h_aa5e1eb1a998e5ed69af2076cf318df4b}{GENE\_MAX} - \hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER}));
+00086 
+00087       \textcolor{comment}{// Split B}
+00088       Split[1].first = std::bitset<CROSSOVER>(
+00089           pop[i + 1].weightsGen[j].to\_string().substr(0, \hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER}));
+00090       Split[1].second = std::bitset<\hyperlink{_soil_math_types_8h_aa5e1eb1a998e5ed69af2076cf318df4b}{GENE\_MAX} - \hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER}>(
+00091           pop[i + 1].weightsGen[j].to\_string().substr(\hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER},
+00092                                                       \hyperlink{_soil_math_types_8h_aa5e1eb1a998e5ed69af2076cf318df4b}{GENE\_MAX} - 
+      \hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER}));
+00093 
+00094       \textcolor{comment}{// Mate A and B to AB and BA}
+00095       newPopMembers[0].\hyperlink{struct_pop_member_struct_a072fadb4863e0cf77b55ad3b46b62522}{weightsGen}.push\_back(
+00096           \hyperlink{_soil_math_types_8h_a58f6ab36d2cb0527a73caec36d14a0e0}{Genome\_t}(Split[0].first.to\_string() + Split[1].second.to\_string()));
+00097       newPopMembers[1].\hyperlink{struct_pop_member_struct_a072fadb4863e0cf77b55ad3b46b62522}{weightsGen}.push\_back(
+00098           \hyperlink{_soil_math_types_8h_a58f6ab36d2cb0527a73caec36d14a0e0}{Genome\_t}(Split[1].first.to\_string() + Split[0].second.to\_string()));
+00099     \}
+00100     newPop.push\_back(newPopMembers[0]);
+00101     newPop.push\_back(newPopMembers[1]);
+00102     newPopMembers[0].\hyperlink{struct_pop_member_struct_a072fadb4863e0cf77b55ad3b46b62522}{weightsGen}.clear();
+00103     newPopMembers[1].\hyperlink{struct_pop_member_struct_a072fadb4863e0cf77b55ad3b46b62522}{weightsGen}.clear();
+00104   \}
+00105 
+00106   \textcolor{comment}{// Allow the top tiers population partners to mate again}
+00107   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} halfN = pop.size() / 2;
+00108   \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = 0; i < halfN; i++) \{
+00109     \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} j = 0; j < pop[i].weights.size(); j++) \{
+00110       Split[0].first = std::bitset<CROSSOVER>(
+00111           pop[i].weightsGen[j].to\_string().substr(0, \hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER}));
+00112       Split[0].second = std::bitset<\hyperlink{_soil_math_types_8h_aa5e1eb1a998e5ed69af2076cf318df4b}{GENE\_MAX} - \hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER}>(
+00113           pop[i].weightsGen[j].to\_string().substr(\hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER},
+00114                                                   \hyperlink{_soil_math_types_8h_aa5e1eb1a998e5ed69af2076cf318df4b}{GENE\_MAX} - \hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER}));
+00115 
+00116       Split[1].first = std::bitset<CROSSOVER>(
+00117           pop[i + 2].weightsGen[j].to\_string().substr(0, \hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER}));
+00118       Split[1].second = std::bitset<\hyperlink{_soil_math_types_8h_aa5e1eb1a998e5ed69af2076cf318df4b}{GENE\_MAX} - \hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER}>(
+00119           pop[i + 2].weightsGen[j].to\_string().substr(\hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER},
+00120                                                       \hyperlink{_soil_math_types_8h_aa5e1eb1a998e5ed69af2076cf318df4b}{GENE\_MAX} - 
+      \hyperlink{_soil_math_types_8h_ae84e527452fcf9dfc8ef8fd0dd5cd598}{CROSSOVER}));
+00121 
+00122       newPopMembers[0].\hyperlink{struct_pop_member_struct_a072fadb4863e0cf77b55ad3b46b62522}{weightsGen}.push\_back(
+00123           \hyperlink{_soil_math_types_8h_a58f6ab36d2cb0527a73caec36d14a0e0}{Genome\_t}(Split[0].first.to\_string() + Split[1].second.to\_string()));
+00124       newPopMembers[1].\hyperlink{struct_pop_member_struct_a072fadb4863e0cf77b55ad3b46b62522}{weightsGen}.push\_back(
+00125           \hyperlink{_soil_math_types_8h_a58f6ab36d2cb0527a73caec36d14a0e0}{Genome\_t}(Split[1].first.to\_string() + Split[0].second.to\_string()));
+00126     \}
+00127     newPop.push\_back(newPopMembers[0]);
+00128     newPop.push\_back(newPopMembers[1]);
+00129     newPopMembers[0].\hyperlink{struct_pop_member_struct_a072fadb4863e0cf77b55ad3b46b62522}{weightsGen}.clear();
+00130     newPopMembers[1].\hyperlink{struct_pop_member_struct_a072fadb4863e0cf77b55ad3b46b62522}{weightsGen}.clear();
+00131   \}
+00132   pop = newPop;
+00133 \}
+00134 
+\hypertarget{_g_a_8cpp_source_l00135}{}\hyperlink{class_soil_math_1_1_g_a_a489f2afd54086c14f45b654aeec0fe3c}{00135} \textcolor{keywordtype}{void} \hyperlink{class_soil_math_1_1_g_a_a489f2afd54086c14f45b654aeec0fe3c}{GA::Mutate}(\hyperlink{_soil_math_types_8h_a8d2d4c736cf817d048a2d66dec8b12ec}{Population\_t} &pop) \{
+00136   \textcolor{keywordtype}{unsigned} seed = std::chrono::system\_clock::now().time\_since\_epoch().count();
+00137   std::default\_random\_engine gen(seed);
+00138   std::uniform\_real\_distribution<float> dis(0, 1);
+00139 
+00140   std::default\_random\_engine genGen(seed);
+00141   std::uniform\_int\_distribution<int> disGen(0, (\hyperlink{_soil_math_types_8h_aa5e1eb1a998e5ed69af2076cf318df4b}{GENE\_MAX} - 1));
+00142 
+00143   QtConcurrent::blockingMap<Population\_t>(pop, [&](\hyperlink{struct_pop_member_struct}{PopMember\_t} &P) \{
+00144     \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} j = 0; j < P.weightsGen.size(); j++) \{
+00145       \textcolor{keywordflow}{if} (dis(gen) < \hyperlink{class_soil_math_1_1_g_a_a82996d544a2f25b5a75ae8ba1e82d661}{MutationRate}) \{
+00146         P.weightsGen[j][disGen(genGen)].flip();
+00147       \}
+00148     \}
+00149   \});
+00150 \}
+00151 
+\hypertarget{_g_a_8cpp_source_l00152}{}\hyperlink{class_soil_math_1_1_g_a_a7b84b10bfb6069fe44bbd137e3a9dbb0}{00152} \textcolor{keywordtype}{void} \hyperlink{class_soil_math_1_1_g_a_a7b84b10bfb6069fe44bbd137e3a9dbb0}{GA::GrowToAdulthood}(\hyperlink{_soil_math_types_8h_a8d2d4c736cf817d048a2d66dec8b12ec}{Population\_t} &pop, \textcolor{keywordtype}{float} &totalFitness) \{
+00153 
+00154   QtConcurrent::blockingMap<Population\_t>(pop, [&](\hyperlink{struct_pop_member_struct}{PopMember\_t} &P) \{
+00155     \textcolor{comment}{// std::for\_each(pop.begin(), pop.end(), [&](PopMember\_t &P) \{}
+00156     \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} j = 0; j < P.weightsGen.size(); j++) \{
+00157       P.weights.push\_back(ConvertToValue<float>(P.weightsGen[j], \hyperlink{class_soil_math_1_1_g_a_a7613e87f93e42724d03008e3603cf21b}{rangeweights}));
+00158     \}
+00159     \hyperlink{_soil_math_types_8h_ac56ad2b88186620fd0de0d213aa715dd}{Weight\_t} iWeight(P.weights.begin(),
+00160                      P.weights.begin() + ((\hyperlink{class_soil_math_1_1_g_a_ac32591e30dde5ac854ae57a7b9e33298}{inputneurons} + 1) * 
+      \hyperlink{class_soil_math_1_1_g_a_a3f1eee7492f68a05b9b06ee8afb2ec20}{hiddenneurons}));
+00161     \hyperlink{_soil_math_types_8h_ac56ad2b88186620fd0de0d213aa715dd}{Weight\_t} hWeight(P.weights.begin() + ((\hyperlink{class_soil_math_1_1_g_a_ac32591e30dde5ac854ae57a7b9e33298}{inputneurons} + 1) * 
+      \hyperlink{class_soil_math_1_1_g_a_a3f1eee7492f68a05b9b06ee8afb2ec20}{hiddenneurons}),
+00162                      P.weights.end());
+00163 
+00164     \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} j = 0; j < \hyperlink{class_soil_math_1_1_g_a_a99276ad62b9616d0f18becc4fbb22980}{inputValues}.size(); j++) \{
+00165       \hyperlink{struct_predict__struct}{Predict\_t} results = \hyperlink{class_soil_math_1_1_g_a_a9b690048c89c32e3153457378b5e1c31}{NNfuction}(\hyperlink{class_soil_math_1_1_g_a_a99276ad62b9616d0f18becc4fbb22980}{inputValues}[j], iWeight, hWeight,
+00166                                     \hyperlink{class_soil_math_1_1_g_a_ac32591e30dde5ac854ae57a7b9e33298}{inputneurons}, \hyperlink{class_soil_math_1_1_g_a_a3f1eee7492f68a05b9b06ee8afb2ec20}{hiddenneurons}, 
+      \hyperlink{class_soil_math_1_1_g_a_ab454f9968d5ce2a294b89f85c9d3a74f}{outputneurons});
+00167       \textcolor{comment}{// See issue #85}
+00168       \textcolor{keywordtype}{bool} allGood = \textcolor{keyword}{true};
+00169       \textcolor{keywordtype}{float} fitness = 0.0;
+00170       \textcolor{keywordflow}{for} (\hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} k = 0; k < results.\hyperlink{struct_predict__struct_aa0708cae93baa061f21452537e86d3bd}{OutputNeurons}.size(); k++) \{
+00171         \textcolor{keywordtype}{bool} resultSign = std::signbit(results.\hyperlink{struct_predict__struct_aa0708cae93baa061f21452537e86d3bd}{OutputNeurons}[k]);
+00172         \textcolor{keywordtype}{bool} goalSign = std::signbit(\hyperlink{class_soil_math_1_1_g_a_a4366c8f0852e8ec2bf37b3d5324b57cb}{goal}[j].OutputNeurons[k]);
+00173         fitness += results.\hyperlink{struct_predict__struct_aa0708cae93baa061f21452537e86d3bd}{OutputNeurons}[k] / \hyperlink{class_soil_math_1_1_g_a_a4366c8f0852e8ec2bf37b3d5324b57cb}{goal}[j].OutputNeurons[k];
+00174         \textcolor{keywordflow}{if} (resultSign != goalSign) \{
+00175           allGood = \textcolor{keyword}{false};
+00176         \}
+00177       \}
+00178       fitness += (allGood) ? results.\hyperlink{struct_predict__struct_aa0708cae93baa061f21452537e86d3bd}{OutputNeurons}.size() : 0;
+00179       P.Fitness += fitness;
+00180     \}
+00181   \});
+00182 
+00183   for\_each(pop.begin(), pop.end(), [&](\hyperlink{struct_pop_member_struct}{PopMember\_t} &P) \{
+00184     P.Fitness /= \hyperlink{class_soil_math_1_1_g_a_a99276ad62b9616d0f18becc4fbb22980}{inputValues}.size();
+00185     totalFitness += P.Fitness;
+00186   \});
+00187 \}
+00188 
+\hypertarget{_g_a_8cpp_source_l00189}{}\hyperlink{class_soil_math_1_1_g_a_ac2c10631815408d044738f678c67e98b}{00189} \textcolor{keywordtype}{bool} \hyperlink{class_soil_math_1_1_g_a_ac2c10631815408d044738f678c67e98b}{GA::SurvivalOfTheFittest}(\hyperlink{_soil_math_types_8h_a8d2d4c736cf817d048a2d66dec8b12ec}{Population\_t} &pop, \textcolor{keywordtype}{float} &totalFitness) \{
+00190   \textcolor{keywordtype}{bool} retVal = \textcolor{keyword}{false};
+00191   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} decimationCount = pop.size() / 2;
+00192 
+00193   \textcolor{keywordtype}{unsigned} seed = std::chrono::system\_clock::now().time\_since\_epoch().count();
+00194   std::default\_random\_engine gen(seed);
+00195 
+00196   std::sort(pop.begin(), pop.end(),
+00197             [](\textcolor{keyword}{const} \hyperlink{struct_pop_member_struct}{PopMember\_t} &L, \textcolor{keyword}{const} \hyperlink{struct_pop_member_struct}{PopMember\_t} &R) \{
+00198               \textcolor{keywordflow}{return} L.\hyperlink{struct_pop_member_struct_a750ec8010731e3e2a876051475c31b14}{Fitness} < R.Fitness;
+00199             \});
+00200 
+00201   \textcolor{keywordtype}{float} maxFitness = pop[pop.size() - 1].Fitness * pop.size();
+00202   \hyperlink{_soil_math_types_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t} i = \hyperlink{class_soil_math_1_1_g_a_a381e62f146aacfa86fec6e0dc40053ab}{Elitisme};
+00203   \textcolor{keywordflow}{while} (pop.size() > decimationCount) \{
+00204     \textcolor{keywordflow}{if} (i == pop.size()) \{
+00205       i = \hyperlink{class_soil_math_1_1_g_a_a381e62f146aacfa86fec6e0dc40053ab}{Elitisme};
+00206     \}
+00207     std::uniform\_real\_distribution<float> dis(0, maxFitness);
+00208     \textcolor{keywordflow}{if} (dis(gen) > pop[i].Fitness) \{
+00209       totalFitness -= pop[i].Fitness;
+00210       pop.erase(pop.begin() + i);
+00211     \}
+00212     i++;
+00213   \}
+00214 
+00215   std::sort(pop.begin(), pop.end(),
+00216             [](\textcolor{keyword}{const} \hyperlink{struct_pop_member_struct}{PopMember\_t} &L, \textcolor{keyword}{const} \hyperlink{struct_pop_member_struct}{PopMember\_t} &R) \{
+00217               \textcolor{keywordflow}{return} L.\hyperlink{struct_pop_member_struct_a750ec8010731e3e2a876051475c31b14}{Fitness} > R.Fitness;
+00218             \});
+00219 
+00220   \textcolor{keywordtype}{float} learnError = 1 - ((pop[0].Fitness - \hyperlink{class_soil_math_1_1_g_a_af8fab109094e0730304ba1c462b4e2bf}{minOptim}) / (\hyperlink{class_soil_math_1_1_g_a_a99565a1789513769c2cf0e6971854ef6}{maxOptim} - 
+      \hyperlink{class_soil_math_1_1_g_a_af8fab109094e0730304ba1c462b4e2bf}{minOptim}));
+00221 
+00222   \textcolor{comment}{// Viva la Revolution}
+00223   \textcolor{keywordflow}{if} (\hyperlink{class_soil_math_1_1_g_a_ad1d08c52d5160714a997bcd30de028e3}{currentGeneration} > 9) \{
+00224     \textcolor{keywordtype}{double} avg = 0;
+00225     for\_each(\hyperlink{class_soil_math_1_1_g_a_a1e78adf31886d887ae192537e68aa236}{last10Gen}.begin(), \hyperlink{class_soil_math_1_1_g_a_a1e78adf31886d887ae192537e68aa236}{last10Gen}.end(), [&](\textcolor{keywordtype}{double} &G) \{ avg += G; \});
+00226     avg /= 10;
+00227     \textcolor{keywordtype}{double} minMax[2] = \{avg * 0.98, avg * 1.02\};
+00228     \textcolor{keywordflow}{if} (learnError > minMax[0] && learnError < minMax[1]) \{
+00229       \textcolor{keywordflow}{if} (!\hyperlink{class_soil_math_1_1_g_a_a8883b6114388bb8a992b7f057ec565a8}{revolutionOngoing}) \{
+00230         qDebug() << \textcolor{stringliteral}{"Viva la revolution!"};
+00231         \hyperlink{class_soil_math_1_1_g_a_a9ee328c3a2d3f43b8fccabb06e5ebb18}{oldElit} = \hyperlink{class_soil_math_1_1_g_a_a381e62f146aacfa86fec6e0dc40053ab}{Elitisme};
+00232         \hyperlink{class_soil_math_1_1_g_a_a381e62f146aacfa86fec6e0dc40053ab}{Elitisme} = 0;
+00233         \hyperlink{class_soil_math_1_1_g_a_a437db38d6fdb7953a5d83f120b020130}{oldMutation} = \hyperlink{class_soil_math_1_1_g_a_a82996d544a2f25b5a75ae8ba1e82d661}{MutationRate};
+00234         \hyperlink{class_soil_math_1_1_g_a_a82996d544a2f25b5a75ae8ba1e82d661}{MutationRate} = 0.25;
+00235         \hyperlink{class_soil_math_1_1_g_a_a8883b6114388bb8a992b7f057ec565a8}{revolutionOngoing} = \textcolor{keyword}{true};
+00236       \}
+00237     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\hyperlink{class_soil_math_1_1_g_a_a8883b6114388bb8a992b7f057ec565a8}{revolutionOngoing}) \{
+00238       qDebug() << \textcolor{stringliteral}{"Peace has been restort"};
+00239       \hyperlink{class_soil_math_1_1_g_a_a381e62f146aacfa86fec6e0dc40053ab}{Elitisme} = \hyperlink{class_soil_math_1_1_g_a_a9ee328c3a2d3f43b8fccabb06e5ebb18}{oldElit};
+00240       \hyperlink{class_soil_math_1_1_g_a_a82996d544a2f25b5a75ae8ba1e82d661}{MutationRate} = \hyperlink{class_soil_math_1_1_g_a_a437db38d6fdb7953a5d83f120b020130}{oldMutation};
+00241       \hyperlink{class_soil_math_1_1_g_a_a8883b6114388bb8a992b7f057ec565a8}{revolutionOngoing} = \textcolor{keyword}{false};
+00242     \}
+00243     \hyperlink{class_soil_math_1_1_g_a_a1e78adf31886d887ae192537e68aa236}{last10Gen}.pop\_front();
+00244     \hyperlink{class_soil_math_1_1_g_a_a1e78adf31886d887ae192537e68aa236}{last10Gen}.push\_back(learnError);
+00245   \} \textcolor{keywordflow}{else} \{
+00246     \hyperlink{class_soil_math_1_1_g_a_a1e78adf31886d887ae192537e68aa236}{last10Gen}.push\_back(learnError);
+00247   \}
+00248   \hyperlink{class_soil_math_1_1_g_a_ad1d08c52d5160714a997bcd30de028e3}{currentGeneration}++;
+00249   emit \hyperlink{class_soil_math_1_1_g_a_a3b7d8649411ccebc8cb6f44ed1ba2365}{learnErrorUpdate}(static\_cast<double>(learnError));
+00250   \textcolor{keywordflow}{if} (learnError < \hyperlink{class_soil_math_1_1_g_a_ad5d1226dba5df72a3419e9af62f4e9d9}{EndError}) \{
+00251     retVal = \textcolor{keyword}{true};
+00252   \}
+00253   \textcolor{keywordflow}{return} retVal;
+00254 \}
+00255 \}
+\end{DoxyCode}

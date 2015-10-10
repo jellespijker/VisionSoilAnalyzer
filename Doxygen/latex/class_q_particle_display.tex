@@ -1,0 +1,499 @@
+\hypertarget{class_q_particle_display}{}\subsection{Q\+Particle\+Display Class Reference}
+\label{class_q_particle_display}\index{Q\+Particle\+Display@{Q\+Particle\+Display}}
+
+
+{\ttfamily \#include $<$qparticledisplay.\+h$>$}
+
+
+
+Inheritance diagram for Q\+Particle\+Display\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=227pt]{class_q_particle_display__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Q\+Particle\+Display\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_q_particle_display__coll__graph}
+\end{center}
+\end{figure}
+\subsubsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_q_particle_display_a2b6454aa1ddef3eca338780f66b91654}{set\+Selected\+Particle} (int new\+Value)
+\end{DoxyCompactItemize}
+\subsubsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_q_particle_display_a0418875b751dfe3e15771b994f4293ad}{particle\+Changed} (int new\+Value)
+\item 
+void \hyperlink{class_q_particle_display_a73adb2e0e1981fc6042d2e94a6e3be03}{shape\+Classification\+Changed} (int new\+Value)
+\item 
+void \hyperlink{class_q_particle_display_a5a3d6ec47c2b43e92d8279ba42c2a997}{particle\+Deleted} ()
+\end{DoxyCompactItemize}
+\subsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_q_particle_display_a552bc093c084d6212b6b4ace6f14c3d1}{Q\+Particle\+Display} (Q\+Widget $\ast$parent=0)
+\item 
+\hyperlink{class_q_particle_display_af942373a3774f1fbe7f8465a263ff473}{$\sim$\+Q\+Particle\+Display} ()
+\item 
+void \hyperlink{class_q_particle_display_a31d8350736e4d39b9d2391ee8e6edc65}{Set\+Sample} (\hyperlink{class_soil_analyzer_1_1_sample}{Soil\+Analyzer\+::\+Sample} $\ast$sample)
+\item 
+void \hyperlink{class_q_particle_display_ac73da9c324d8cb6e4d8ce378a0394f50}{wheel\+Event} (Q\+Wheel\+Event $\ast$event)
+\item 
+void \hyperlink{class_q_particle_display_a9c0978636ba55d8986f60c2630b59e45}{next} ()
+\end{DoxyCompactItemize}
+\subsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_soil_analyzer_1_1_particle}{Soil\+Analyzer\+::\+Particle} $\ast$ \hyperlink{class_q_particle_display_ab89d53c5fd63b606de0a3c2e4446d8c1}{Selected\+Particle}
+\end{DoxyCompactItemize}
+\subsubsection*{Private Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_q_particle_display_aa19e1abd163291e87e8b4f2547e90155}{on\+\_\+selected\+Particle\+Changed\+Widget} (int value)
+\item 
+void \hyperlink{class_q_particle_display_ae532d16adee8293f3ee5fb984b614bdf}{on\+\_\+selected\+Particle\+Changed\+Slider} (int value)
+\item 
+void \hyperlink{class_q_particle_display_a234e7c98453cad1e0d63c12b7495003a}{on\+\_\+push\+Button\+\_\+delete\+\_\+clicked} ()
+\end{DoxyCompactItemize}
+\subsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Q\+Image \hyperlink{class_q_particle_display_a185ca2afdcd24fa6107bfd6ff630b5ec}{Convert\+Particle\+To\+Q\+Image} (\hyperlink{class_soil_analyzer_1_1_particle}{Soil\+Analyzer\+::\+Particle} $\ast$particle)
+\end{DoxyCompactItemize}
+\subsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Ui\+::\+Q\+Particle\+Display $\ast$ \hyperlink{class_q_particle_display_ae4e6c27c6c2059b4e08358938044a18c}{ui}
+\item 
+\hyperlink{class_soil_analyzer_1_1_sample}{Soil\+Analyzer\+::\+Sample} $\ast$ \hyperlink{class_q_particle_display_a24a25733ffa557a66bf7d776b7af8536}{Sample}
+\item 
+Q\+Vector$<$ Q\+Image $>$ \hyperlink{class_q_particle_display_a6b976ba18b8aac401d79c768c5b81ed4}{images}
+\item 
+bool \hyperlink{class_q_particle_display_a5ee3723fa6aa59107e808a0a45c03b74}{dont\+Do\+It} = false
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+
+
+Definition at line \hyperlink{qparticledisplay_8h_source_l00021}{21} of file \hyperlink{qparticledisplay_8h_source}{qparticledisplay.\+h}.
+
+
+
+\subsubsection{Constructor \& Destructor Documentation}
+\hypertarget{class_q_particle_display_a552bc093c084d6212b6b4ace6f14c3d1}{}\index{Q\+Particle\+Display@{Q\+Particle\+Display}!Q\+Particle\+Display@{Q\+Particle\+Display}}
+\index{Q\+Particle\+Display@{Q\+Particle\+Display}!Q\+Particle\+Display@{Q\+Particle\+Display}}
+\paragraph[{Q\+Particle\+Display}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Particle\+Display\+::\+Q\+Particle\+Display (
+\begin{DoxyParamCaption}
+\item[{Q\+Widget $\ast$}]{parent = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}\label{class_q_particle_display_a552bc093c084d6212b6b4ace6f14c3d1}
+
+
+Definition at line \hyperlink{qparticledisplay_8cpp_source_l00011}{11} of file \hyperlink{qparticledisplay_8cpp_source}{qparticledisplay.\+cpp}.
+
+
+
+References \hyperlink{qparticledisplay_8cpp_source_l00124}{on\+\_\+selected\+Particle\+Changed\+Slider()}, \hyperlink{qparticledisplay_8cpp_source_l00110}{on\+\_\+selected\+Particle\+Changed\+Widget()}, and \hyperlink{qparticledisplay_8h_source_l00047}{ui}.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_particle_display_a552bc093c084d6212b6b4ace6f14c3d1_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_q_particle_display_af942373a3774f1fbe7f8465a263ff473}{}\index{Q\+Particle\+Display@{Q\+Particle\+Display}!````~Q\+Particle\+Display@{$\sim$\+Q\+Particle\+Display}}
+\index{````~Q\+Particle\+Display@{$\sim$\+Q\+Particle\+Display}!Q\+Particle\+Display@{Q\+Particle\+Display}}
+\paragraph[{$\sim$\+Q\+Particle\+Display}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Particle\+Display\+::$\sim$\+Q\+Particle\+Display (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_q_particle_display_af942373a3774f1fbe7f8465a263ff473}
+
+
+Definition at line \hyperlink{qparticledisplay_8cpp_source_l00022}{22} of file \hyperlink{qparticledisplay_8cpp_source}{qparticledisplay.\+cpp}.
+
+
+
+References \hyperlink{qparticledisplay_8h_source_l00047}{ui}.
+
+
+
+\subsubsection{Member Function Documentation}
+\hypertarget{class_q_particle_display_a185ca2afdcd24fa6107bfd6ff630b5ec}{}\index{Q\+Particle\+Display@{Q\+Particle\+Display}!Convert\+Particle\+To\+Q\+Image@{Convert\+Particle\+To\+Q\+Image}}
+\index{Convert\+Particle\+To\+Q\+Image@{Convert\+Particle\+To\+Q\+Image}!Q\+Particle\+Display@{Q\+Particle\+Display}}
+\paragraph[{Convert\+Particle\+To\+Q\+Image}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Image Q\+Particle\+Display\+::\+Convert\+Particle\+To\+Q\+Image (
+\begin{DoxyParamCaption}
+\item[{{\bf Soil\+Analyzer\+::\+Particle} $\ast$}]{particle}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_q_particle_display_a185ca2afdcd24fa6107bfd6ff630b5ec}
+
+
+Definition at line \hyperlink{qparticledisplay_8cpp_source_l00050}{50} of file \hyperlink{qparticledisplay_8cpp_source}{qparticledisplay.\+cpp}.
+
+
+
+References \hyperlink{particle_8h_source_l00042}{Soil\+Analyzer\+::\+Particle\+::\+B\+W}, and \hyperlink{particle_8h_source_l00044}{Soil\+Analyzer\+::\+Particle\+::\+R\+G\+B}.
+
+
+
+Referenced by \hyperlink{qparticledisplay_8cpp_source_l00035}{Set\+Sample()}.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_particle_display_a185ca2afdcd24fa6107bfd6ff630b5ec_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_q_particle_display_a9c0978636ba55d8986f60c2630b59e45}{}\index{Q\+Particle\+Display@{Q\+Particle\+Display}!next@{next}}
+\index{next@{next}!Q\+Particle\+Display@{Q\+Particle\+Display}}
+\paragraph[{next}]{\setlength{\rightskip}{0pt plus 5cm}void Q\+Particle\+Display\+::next (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_q_particle_display_a9c0978636ba55d8986f60c2630b59e45}
+
+
+Definition at line \hyperlink{qparticledisplay_8cpp_source_l00150}{150} of file \hyperlink{qparticledisplay_8cpp_source}{qparticledisplay.\+cpp}.
+
+
+
+References \hyperlink{qparticledisplay_8cpp_source_l00110}{on\+\_\+selected\+Particle\+Changed\+Widget()}, and \hyperlink{qparticledisplay_8h_source_l00047}{ui}.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_particle_display_a9c0978636ba55d8986f60c2630b59e45_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_q_particle_display_a234e7c98453cad1e0d63c12b7495003a}{}\index{Q\+Particle\+Display@{Q\+Particle\+Display}!on\+\_\+push\+Button\+\_\+delete\+\_\+clicked@{on\+\_\+push\+Button\+\_\+delete\+\_\+clicked}}
+\index{on\+\_\+push\+Button\+\_\+delete\+\_\+clicked@{on\+\_\+push\+Button\+\_\+delete\+\_\+clicked}!Q\+Particle\+Display@{Q\+Particle\+Display}}
+\paragraph[{on\+\_\+push\+Button\+\_\+delete\+\_\+clicked}]{\setlength{\rightskip}{0pt plus 5cm}void Q\+Particle\+Display\+::on\+\_\+push\+Button\+\_\+delete\+\_\+clicked (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\label{class_q_particle_display_a234e7c98453cad1e0d63c12b7495003a}
+
+
+Definition at line \hyperlink{qparticledisplay_8cpp_source_l00096}{96} of file \hyperlink{qparticledisplay_8cpp_source}{qparticledisplay.\+cpp}.
+
+
+
+References \hyperlink{sample_8h_source_l00062}{Soil\+Analyzer\+::\+Sample\+::\+Changes\+Since\+Last\+Save}, \hyperlink{sample_8h_source_l00067}{Soil\+Analyzer\+::\+Sample\+::\+Color\+Change}, \hyperlink{sample_8h_source_l00066}{Soil\+Analyzer\+::\+Sample\+::\+Particle\+Changed\+State\+Angularity}, \hyperlink{sample_8h_source_l00063}{Soil\+Analyzer\+::\+Sample\+::\+Particle\+Changed\+State\+P\+S\+D}, \hyperlink{sample_8h_source_l00065}{Soil\+Analyzer\+::\+Sample\+::\+Particle\+Changed\+State\+Roundness}, \hyperlink{class_q_particle_display_a5a3d6ec47c2b43e92d8279ba42c2a997}{particle\+Deleted()}, \hyperlink{sample_8h_source_l00041}{Soil\+Analyzer\+::\+Sample\+::\+Particle\+Population}, \hyperlink{qparticledisplay_8h_source_l00048}{Sample}, \hyperlink{qparticledisplay_8h_source_l00029}{Selected\+Particle}, and \hyperlink{qparticledisplay_8h_source_l00047}{ui}.
+
+\hypertarget{class_q_particle_display_ae532d16adee8293f3ee5fb984b614bdf}{}\index{Q\+Particle\+Display@{Q\+Particle\+Display}!on\+\_\+selected\+Particle\+Changed\+Slider@{on\+\_\+selected\+Particle\+Changed\+Slider}}
+\index{on\+\_\+selected\+Particle\+Changed\+Slider@{on\+\_\+selected\+Particle\+Changed\+Slider}!Q\+Particle\+Display@{Q\+Particle\+Display}}
+\paragraph[{on\+\_\+selected\+Particle\+Changed\+Slider}]{\setlength{\rightskip}{0pt plus 5cm}void Q\+Particle\+Display\+::on\+\_\+selected\+Particle\+Changed\+Slider (
+\begin{DoxyParamCaption}
+\item[{int}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\label{class_q_particle_display_ae532d16adee8293f3ee5fb984b614bdf}
+
+
+Definition at line \hyperlink{qparticledisplay_8cpp_source_l00124}{124} of file \hyperlink{qparticledisplay_8cpp_source}{qparticledisplay.\+cpp}.
+
+
+
+References \hyperlink{_soil_math_types_8h_source_l00044}{Predict\+\_\+struct\+::\+Category}, \hyperlink{particle_8h_source_l00050}{Soil\+Analyzer\+::\+Particle\+::\+Classification}, \hyperlink{qparticledisplay_8h_source_l00051}{dont\+Do\+It}, \hyperlink{particle_8cpp_source_l00068}{Soil\+Analyzer\+::\+Particle\+::\+Get\+Si\+Diameter()}, \hyperlink{class_q_particle_display_a0418875b751dfe3e15771b994f4293ad}{particle\+Changed()}, \hyperlink{sample_8h_source_l00041}{Soil\+Analyzer\+::\+Sample\+::\+Particle\+Population}, \hyperlink{qparticledisplay_8h_source_l00048}{Sample}, \hyperlink{qparticledisplay_8h_source_l00029}{Selected\+Particle}, \hyperlink{class_q_particle_display_a73adb2e0e1981fc6042d2e94a6e3be03}{shape\+Classification\+Changed()}, and \hyperlink{qparticledisplay_8h_source_l00047}{ui}.
+
+
+
+Referenced by \hyperlink{qparticledisplay_8cpp_source_l00011}{Q\+Particle\+Display()}, and \hyperlink{qparticledisplay_8cpp_source_l00035}{Set\+Sample()}.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_particle_display_ae532d16adee8293f3ee5fb984b614bdf_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_particle_display_ae532d16adee8293f3ee5fb984b614bdf_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_q_particle_display_aa19e1abd163291e87e8b4f2547e90155}{}\index{Q\+Particle\+Display@{Q\+Particle\+Display}!on\+\_\+selected\+Particle\+Changed\+Widget@{on\+\_\+selected\+Particle\+Changed\+Widget}}
+\index{on\+\_\+selected\+Particle\+Changed\+Widget@{on\+\_\+selected\+Particle\+Changed\+Widget}!Q\+Particle\+Display@{Q\+Particle\+Display}}
+\paragraph[{on\+\_\+selected\+Particle\+Changed\+Widget}]{\setlength{\rightskip}{0pt plus 5cm}void Q\+Particle\+Display\+::on\+\_\+selected\+Particle\+Changed\+Widget (
+\begin{DoxyParamCaption}
+\item[{int}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\label{class_q_particle_display_aa19e1abd163291e87e8b4f2547e90155}
+
+
+Definition at line \hyperlink{qparticledisplay_8cpp_source_l00110}{110} of file \hyperlink{qparticledisplay_8cpp_source}{qparticledisplay.\+cpp}.
+
+
+
+References \hyperlink{_soil_math_types_8h_source_l00044}{Predict\+\_\+struct\+::\+Category}, \hyperlink{particle_8h_source_l00050}{Soil\+Analyzer\+::\+Particle\+::\+Classification}, \hyperlink{qparticledisplay_8h_source_l00051}{dont\+Do\+It}, \hyperlink{particle_8cpp_source_l00068}{Soil\+Analyzer\+::\+Particle\+::\+Get\+Si\+Diameter()}, \hyperlink{class_q_particle_display_a0418875b751dfe3e15771b994f4293ad}{particle\+Changed()}, \hyperlink{sample_8h_source_l00041}{Soil\+Analyzer\+::\+Sample\+::\+Particle\+Population}, \hyperlink{qparticledisplay_8h_source_l00048}{Sample}, \hyperlink{qparticledisplay_8h_source_l00029}{Selected\+Particle}, \hyperlink{class_q_particle_display_a73adb2e0e1981fc6042d2e94a6e3be03}{shape\+Classification\+Changed()}, and \hyperlink{qparticledisplay_8h_source_l00047}{ui}.
+
+
+
+Referenced by \hyperlink{qparticledisplay_8cpp_source_l00150}{next()}, \hyperlink{qparticledisplay_8cpp_source_l00011}{Q\+Particle\+Display()}, and \hyperlink{qparticledisplay_8cpp_source_l00138}{wheel\+Event()}.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_particle_display_aa19e1abd163291e87e8b4f2547e90155_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_particle_display_aa19e1abd163291e87e8b4f2547e90155_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_q_particle_display_a0418875b751dfe3e15771b994f4293ad}{}\index{Q\+Particle\+Display@{Q\+Particle\+Display}!particle\+Changed@{particle\+Changed}}
+\index{particle\+Changed@{particle\+Changed}!Q\+Particle\+Display@{Q\+Particle\+Display}}
+\paragraph[{particle\+Changed}]{\setlength{\rightskip}{0pt plus 5cm}void Q\+Particle\+Display\+::particle\+Changed (
+\begin{DoxyParamCaption}
+\item[{int}]{new\+Value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}\label{class_q_particle_display_a0418875b751dfe3e15771b994f4293ad}
+
+
+Referenced by \hyperlink{qparticledisplay_8cpp_source_l00124}{on\+\_\+selected\+Particle\+Changed\+Slider()}, and \hyperlink{qparticledisplay_8cpp_source_l00110}{on\+\_\+selected\+Particle\+Changed\+Widget()}.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_particle_display_a0418875b751dfe3e15771b994f4293ad_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_q_particle_display_a5a3d6ec47c2b43e92d8279ba42c2a997}{}\index{Q\+Particle\+Display@{Q\+Particle\+Display}!particle\+Deleted@{particle\+Deleted}}
+\index{particle\+Deleted@{particle\+Deleted}!Q\+Particle\+Display@{Q\+Particle\+Display}}
+\paragraph[{particle\+Deleted}]{\setlength{\rightskip}{0pt plus 5cm}void Q\+Particle\+Display\+::particle\+Deleted (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}\label{class_q_particle_display_a5a3d6ec47c2b43e92d8279ba42c2a997}
+
+
+Referenced by \hyperlink{qparticledisplay_8cpp_source_l00096}{on\+\_\+push\+Button\+\_\+delete\+\_\+clicked()}.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_particle_display_a5a3d6ec47c2b43e92d8279ba42c2a997_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_q_particle_display_a31d8350736e4d39b9d2391ee8e6edc65}{}\index{Q\+Particle\+Display@{Q\+Particle\+Display}!Set\+Sample@{Set\+Sample}}
+\index{Set\+Sample@{Set\+Sample}!Q\+Particle\+Display@{Q\+Particle\+Display}}
+\paragraph[{Set\+Sample}]{\setlength{\rightskip}{0pt plus 5cm}void Q\+Particle\+Display\+::\+Set\+Sample (
+\begin{DoxyParamCaption}
+\item[{{\bf Soil\+Analyzer\+::\+Sample} $\ast$}]{sample}
+\end{DoxyParamCaption}
+)}\label{class_q_particle_display_a31d8350736e4d39b9d2391ee8e6edc65}
+
+
+Definition at line \hyperlink{qparticledisplay_8cpp_source_l00035}{35} of file \hyperlink{qparticledisplay_8cpp_source}{qparticledisplay.\+cpp}.
+
+
+
+References \hyperlink{qparticledisplay_8cpp_source_l00050}{Convert\+Particle\+To\+Q\+Image()}, \hyperlink{qparticledisplay_8h_source_l00049}{images}, \hyperlink{qparticledisplay_8cpp_source_l00124}{on\+\_\+selected\+Particle\+Changed\+Slider()}, \hyperlink{sample_8h_source_l00041}{Soil\+Analyzer\+::\+Sample\+::\+Particle\+Population}, \hyperlink{qparticledisplay_8h_source_l00048}{Sample}, \hyperlink{qparticledisplay_8h_source_l00029}{Selected\+Particle}, and \hyperlink{qparticledisplay_8h_source_l00047}{ui}.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_particle_display_a31d8350736e4d39b9d2391ee8e6edc65_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_q_particle_display_a2b6454aa1ddef3eca338780f66b91654}{}\index{Q\+Particle\+Display@{Q\+Particle\+Display}!set\+Selected\+Particle@{set\+Selected\+Particle}}
+\index{set\+Selected\+Particle@{set\+Selected\+Particle}!Q\+Particle\+Display@{Q\+Particle\+Display}}
+\paragraph[{set\+Selected\+Particle}]{\setlength{\rightskip}{0pt plus 5cm}void Q\+Particle\+Display\+::set\+Selected\+Particle (
+\begin{DoxyParamCaption}
+\item[{int}]{new\+Value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\label{class_q_particle_display_a2b6454aa1ddef3eca338780f66b91654}
+
+
+Definition at line \hyperlink{qparticledisplay_8cpp_source_l00030}{30} of file \hyperlink{qparticledisplay_8cpp_source}{qparticledisplay.\+cpp}.
+
+
+
+References \hyperlink{qparticledisplay_8h_source_l00047}{ui}.
+
+\hypertarget{class_q_particle_display_a73adb2e0e1981fc6042d2e94a6e3be03}{}\index{Q\+Particle\+Display@{Q\+Particle\+Display}!shape\+Classification\+Changed@{shape\+Classification\+Changed}}
+\index{shape\+Classification\+Changed@{shape\+Classification\+Changed}!Q\+Particle\+Display@{Q\+Particle\+Display}}
+\paragraph[{shape\+Classification\+Changed}]{\setlength{\rightskip}{0pt plus 5cm}void Q\+Particle\+Display\+::shape\+Classification\+Changed (
+\begin{DoxyParamCaption}
+\item[{int}]{new\+Value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}\label{class_q_particle_display_a73adb2e0e1981fc6042d2e94a6e3be03}
+
+
+Referenced by \hyperlink{qparticledisplay_8cpp_source_l00124}{on\+\_\+selected\+Particle\+Changed\+Slider()}, and \hyperlink{qparticledisplay_8cpp_source_l00110}{on\+\_\+selected\+Particle\+Changed\+Widget()}.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_particle_display_a73adb2e0e1981fc6042d2e94a6e3be03_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_q_particle_display_ac73da9c324d8cb6e4d8ce378a0394f50}{}\index{Q\+Particle\+Display@{Q\+Particle\+Display}!wheel\+Event@{wheel\+Event}}
+\index{wheel\+Event@{wheel\+Event}!Q\+Particle\+Display@{Q\+Particle\+Display}}
+\paragraph[{wheel\+Event}]{\setlength{\rightskip}{0pt plus 5cm}void Q\+Particle\+Display\+::wheel\+Event (
+\begin{DoxyParamCaption}
+\item[{Q\+Wheel\+Event $\ast$}]{event}
+\end{DoxyParamCaption}
+)}\label{class_q_particle_display_ac73da9c324d8cb6e4d8ce378a0394f50}
+
+
+Definition at line \hyperlink{qparticledisplay_8cpp_source_l00138}{138} of file \hyperlink{qparticledisplay_8cpp_source}{qparticledisplay.\+cpp}.
+
+
+
+References \hyperlink{qparticledisplay_8cpp_source_l00110}{on\+\_\+selected\+Particle\+Changed\+Widget()}, and \hyperlink{qparticledisplay_8h_source_l00047}{ui}.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_particle_display_ac73da9c324d8cb6e4d8ce378a0394f50_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsubsection{Member Data Documentation}
+\hypertarget{class_q_particle_display_a5ee3723fa6aa59107e808a0a45c03b74}{}\index{Q\+Particle\+Display@{Q\+Particle\+Display}!dont\+Do\+It@{dont\+Do\+It}}
+\index{dont\+Do\+It@{dont\+Do\+It}!Q\+Particle\+Display@{Q\+Particle\+Display}}
+\paragraph[{dont\+Do\+It}]{\setlength{\rightskip}{0pt plus 5cm}bool Q\+Particle\+Display\+::dont\+Do\+It = false\hspace{0.3cm}{\ttfamily [private]}}\label{class_q_particle_display_a5ee3723fa6aa59107e808a0a45c03b74}
+
+
+Definition at line \hyperlink{qparticledisplay_8h_source_l00051}{51} of file \hyperlink{qparticledisplay_8h_source}{qparticledisplay.\+h}.
+
+
+
+Referenced by \hyperlink{qparticledisplay_8cpp_source_l00124}{on\+\_\+selected\+Particle\+Changed\+Slider()}, and \hyperlink{qparticledisplay_8cpp_source_l00110}{on\+\_\+selected\+Particle\+Changed\+Widget()}.
+
+\hypertarget{class_q_particle_display_a6b976ba18b8aac401d79c768c5b81ed4}{}\index{Q\+Particle\+Display@{Q\+Particle\+Display}!images@{images}}
+\index{images@{images}!Q\+Particle\+Display@{Q\+Particle\+Display}}
+\paragraph[{images}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Vector$<$Q\+Image$>$ Q\+Particle\+Display\+::images\hspace{0.3cm}{\ttfamily [private]}}\label{class_q_particle_display_a6b976ba18b8aac401d79c768c5b81ed4}
+
+
+Definition at line \hyperlink{qparticledisplay_8h_source_l00049}{49} of file \hyperlink{qparticledisplay_8h_source}{qparticledisplay.\+h}.
+
+
+
+Referenced by \hyperlink{qparticledisplay_8cpp_source_l00035}{Set\+Sample()}.
+
+\hypertarget{class_q_particle_display_a24a25733ffa557a66bf7d776b7af8536}{}\index{Q\+Particle\+Display@{Q\+Particle\+Display}!Sample@{Sample}}
+\index{Sample@{Sample}!Q\+Particle\+Display@{Q\+Particle\+Display}}
+\paragraph[{Sample}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Soil\+Analyzer\+::\+Sample}$\ast$ Q\+Particle\+Display\+::\+Sample\hspace{0.3cm}{\ttfamily [private]}}\label{class_q_particle_display_a24a25733ffa557a66bf7d776b7af8536}
+
+
+Definition at line \hyperlink{qparticledisplay_8h_source_l00048}{48} of file \hyperlink{qparticledisplay_8h_source}{qparticledisplay.\+h}.
+
+
+
+Referenced by \hyperlink{qparticledisplay_8cpp_source_l00096}{on\+\_\+push\+Button\+\_\+delete\+\_\+clicked()}, \hyperlink{qparticledisplay_8cpp_source_l00124}{on\+\_\+selected\+Particle\+Changed\+Slider()}, \hyperlink{qparticledisplay_8cpp_source_l00110}{on\+\_\+selected\+Particle\+Changed\+Widget()}, and \hyperlink{qparticledisplay_8cpp_source_l00035}{Set\+Sample()}.
+
+\hypertarget{class_q_particle_display_ab89d53c5fd63b606de0a3c2e4446d8c1}{}\index{Q\+Particle\+Display@{Q\+Particle\+Display}!Selected\+Particle@{Selected\+Particle}}
+\index{Selected\+Particle@{Selected\+Particle}!Q\+Particle\+Display@{Q\+Particle\+Display}}
+\paragraph[{Selected\+Particle}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Soil\+Analyzer\+::\+Particle}$\ast$ Q\+Particle\+Display\+::\+Selected\+Particle}\label{class_q_particle_display_ab89d53c5fd63b606de0a3c2e4446d8c1}
+
+
+Definition at line \hyperlink{qparticledisplay_8h_source_l00029}{29} of file \hyperlink{qparticledisplay_8h_source}{qparticledisplay.\+h}.
+
+
+
+Referenced by \hyperlink{qparticledisplay_8cpp_source_l00096}{on\+\_\+push\+Button\+\_\+delete\+\_\+clicked()}, \hyperlink{qparticledisplay_8cpp_source_l00124}{on\+\_\+selected\+Particle\+Changed\+Slider()}, \hyperlink{qparticledisplay_8cpp_source_l00110}{on\+\_\+selected\+Particle\+Changed\+Widget()}, and \hyperlink{qparticledisplay_8cpp_source_l00035}{Set\+Sample()}.
+
+\hypertarget{class_q_particle_display_ae4e6c27c6c2059b4e08358938044a18c}{}\index{Q\+Particle\+Display@{Q\+Particle\+Display}!ui@{ui}}
+\index{ui@{ui}!Q\+Particle\+Display@{Q\+Particle\+Display}}
+\paragraph[{ui}]{\setlength{\rightskip}{0pt plus 5cm}Ui\+::\+Q\+Particle\+Display$\ast$ Q\+Particle\+Display\+::ui\hspace{0.3cm}{\ttfamily [private]}}\label{class_q_particle_display_ae4e6c27c6c2059b4e08358938044a18c}
+
+
+Definition at line \hyperlink{qparticledisplay_8h_source_l00047}{47} of file \hyperlink{qparticledisplay_8h_source}{qparticledisplay.\+h}.
+
+
+
+Referenced by \hyperlink{qparticledisplay_8cpp_source_l00150}{next()}, \hyperlink{qparticledisplay_8cpp_source_l00096}{on\+\_\+push\+Button\+\_\+delete\+\_\+clicked()}, \hyperlink{qparticledisplay_8cpp_source_l00124}{on\+\_\+selected\+Particle\+Changed\+Slider()}, \hyperlink{qparticledisplay_8cpp_source_l00110}{on\+\_\+selected\+Particle\+Changed\+Widget()}, \hyperlink{qparticledisplay_8cpp_source_l00011}{Q\+Particle\+Display()}, \hyperlink{qparticledisplay_8cpp_source_l00035}{Set\+Sample()}, \hyperlink{qparticledisplay_8cpp_source_l00030}{set\+Selected\+Particle()}, \hyperlink{qparticledisplay_8cpp_source_l00138}{wheel\+Event()}, and \hyperlink{qparticledisplay_8cpp_source_l00022}{$\sim$\+Q\+Particle\+Display()}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Q\+Particle\+Display/\hyperlink{qparticledisplay_8h}{qparticledisplay.\+h}\item 
+/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Q\+Particle\+Display/\hyperlink{qparticledisplay_8cpp}{qparticledisplay.\+cpp}\end{DoxyCompactItemize}

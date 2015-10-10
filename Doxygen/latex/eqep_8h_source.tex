@@ -1,0 +1,93 @@
+\hypertarget{eqep_8h_source}{}\subsection{eqep.\+h}
+\label{eqep_8h_source}\index{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Hardware/eqep.\+h@{/home/peer23peer/programmingspace/\+V\+S\+A/\+Vision\+Soil\+Analyzer/src/\+Soil\+Hardware/eqep.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/*}
+00002 \textcolor{comment}{* TI eQEP driver interface API}
+00003 \textcolor{comment}{*}
+00004 \textcolor{comment}{* Copyright (C) 2013 Nathaniel R. Lewis - http://nathanielrlewis.com/}
+00005 \textcolor{comment}{*}
+00006 \textcolor{comment}{* This program is free software; you can redistribute it and/or modify}
+00007 \textcolor{comment}{* it under the terms of the GNU General Public License as published by}
+00008 \textcolor{comment}{* the Free Software Foundation; either version 2 of the License, or}
+00009 \textcolor{comment}{* (at your option) any later version.}
+00010 \textcolor{comment}{*}
+00011 \textcolor{comment}{* This program is distributed in the hope that it will be useful,}
+00012 \textcolor{comment}{* but WITHOUT ANY WARRANTY; without even the implied warranty of}
+00013 \textcolor{comment}{* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the}
+00014 \textcolor{comment}{* GNU General Public License for more details.}
+00015 \textcolor{comment}{*}
+00016 \textcolor{comment}{* You should have received a copy of the GNU General Public License}
+00017 \textcolor{comment}{* along with this program; if not, write to the Free Software}
+00018 \textcolor{comment}{* Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.}
+00019 \textcolor{comment}{*}
+00020 \textcolor{comment}{*}
+00021 \textcolor{comment}{* This code is changed by Jelle Spijker (C) 2014.}
+00022 \textcolor{comment}{* Introducing polling with threading.}
+00023 \textcolor{comment}{*}
+00024 \textcolor{comment}{*/}
+00025 
+00026 \textcolor{preprocessor}{#pragma once}
+00027 
+00028 \textcolor{preprocessor}{#include <iostream>}
+00029 \textcolor{preprocessor}{#include <stdint.h>}
+00030 \textcolor{preprocessor}{#include <string>}
+00031 \textcolor{preprocessor}{#include "\hyperlink{_b_b_b_8h}{BBB.h}"}
+00032 
+\hypertarget{eqep_8h_source_l00033}{}\hyperlink{eqep_8h_a6b7cf82bbc86508b5df1d751c202e601}{00033} \textcolor{preprocessor}{#define eQEP0 "/sys/devices/ocp.3/48300000.epwmss/48300180.eqep"}
+\hypertarget{eqep_8h_source_l00034}{}\hyperlink{eqep_8h_a490269705de1a8a0cc6d52c6cdbaa422}{00034} \textcolor{preprocessor}{#define eQEP1 "/sys/devices/ocp.3/48302000.epwmss/48302180.eqep"}
+\hypertarget{eqep_8h_source_l00035}{}\hyperlink{eqep_8h_a2dfbafc696aef9c14226ce25fb77c5f1}{00035} \textcolor{preprocessor}{#define eQEP2 "/sys/devices/ocp.3/48304000.epwmss/48304180.eqep"}
+00036 
+00037 \textcolor{keyword}{namespace }\hyperlink{namespace_hardware}{Hardware} \{
+00038 \textcolor{comment}{// Class which defines an interface to my eQEP driver}
+\hypertarget{eqep_8h_source_l00039}{}\hyperlink{class_hardware_1_1e_q_e_p}{00039} \textcolor{keyword}{class }\hyperlink{class_hardware_1_1e_q_e_p}{eQEP} : \textcolor{keyword}{public} \hyperlink{class_hardware_1_1_b_b_b}{BBB} \{
+00040   \textcolor{comment}{// Base path for the eQEP unit}
+\hypertarget{eqep_8h_source_l00041}{}\hyperlink{class_hardware_1_1e_q_e_p_a82718bc8478cde37f28fc685a859525e}{00041}   std::string \hyperlink{class_hardware_1_1e_q_e_p_a82718bc8478cde37f28fc685a859525e}{path};
+00042 
+00043 \textcolor{keyword}{public}:
+00044   \textcolor{comment}{// Modes of operation for the eQEP hardware}
+\hypertarget{eqep_8h_source_l00045}{}\hyperlink{class_hardware_1_1e_q_e_p_a3f97f26c64d49d6f2643a257b7249070}{00045}   \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \{
+00046     \textcolor{comment}{// Absolute positioning mode}
+\hypertarget{eqep_8h_source_l00047}{}\hyperlink{class_hardware_1_1e_q_e_p_a3f97f26c64d49d6f2643a257b7249070a5e916ce9f21af5bd9c5c63609630df7e}{00047}     \hyperlink{class_hardware_1_1e_q_e_p_a3f97f26c64d49d6f2643a257b7249070a5e916ce9f21af5bd9c5c63609630df7e}{eQEP\_Mode\_Absolute} = 0,
+00048 
+00049     \textcolor{comment}{// Relative positioning mode}
+\hypertarget{eqep_8h_source_l00050}{}\hyperlink{class_hardware_1_1e_q_e_p_a3f97f26c64d49d6f2643a257b7249070a66e4b97a79f9c26d25f2adb99638257e}{00050}     \hyperlink{class_hardware_1_1e_q_e_p_a3f97f26c64d49d6f2643a257b7249070a66e4b97a79f9c26d25f2adb99638257e}{eQEP\_Mode\_Relative} = 1,
+00051 
+00052     \textcolor{comment}{// Error flag}
+\hypertarget{eqep_8h_source_l00053}{}\hyperlink{class_hardware_1_1e_q_e_p_a3f97f26c64d49d6f2643a257b7249070a7456c9de6f190e0267c8e176ed739fad}{00053}     \hyperlink{class_hardware_1_1e_q_e_p_a3f97f26c64d49d6f2643a257b7249070a7456c9de6f190e0267c8e176ed739fad}{eQEP\_Mode\_Error} = 2,
+00054   \} \hyperlink{class_hardware_1_1e_q_e_p_a3f97f26c64d49d6f2643a257b7249070}{eQEP\_Mode};
+00055 
+00056   \textcolor{comment}{// Default constructor for the eQEP interface driver}
+00057   \hyperlink{class_hardware_1_1e_q_e_p_adc9ce642c8927e217afc3600a63002e5}{eQEP}(std::string \_path, \hyperlink{class_hardware_1_1e_q_e_p_a3f97f26c64d49d6f2643a257b7249070}{eQEP\_Mode} \_mode);
+00058 
+00059   \textcolor{comment}{// Reset the value of the encoder}
+00060   \textcolor{keywordtype}{void} \hyperlink{class_hardware_1_1e_q_e_p_aa55fc881377f4fc3396895de65ed9161}{set\_position}(int32\_t position);
+00061 
+00062   \textcolor{comment}{// Get the position of the encoder, pass poll as true to poll the pin, whereas}
+00063   \textcolor{comment}{// passing false reads the immediate value}
+00064   int32\_t \hyperlink{class_hardware_1_1e_q_e_p_a3b06e47e9bb9a559e81427fe3e4f7cf9}{get\_position}(\textcolor{keywordtype}{bool} \_poll = \textcolor{keyword}{true});
+00065 
+00066   \textcolor{comment}{// Thread of the poll}
+00067   \textcolor{keywordtype}{int} \hyperlink{class_hardware_1_1e_q_e_p_a529f04118a9be4768c117c552ba34bd0}{WaitForPositionChange}(\hyperlink{namespace_hardware_a5ba2e4bdfa2bbd8b551b1d5b2a0c61fd}{CallbackType} callback);
+\hypertarget{eqep_8h_source_l00068}{}\hyperlink{class_hardware_1_1e_q_e_p_aae8e9f7ac543384dac031fb81f092574}{00068}   \textcolor{keywordtype}{void} \hyperlink{class_hardware_1_1e_q_e_p_aae8e9f7ac543384dac031fb81f092574}{WaitForPositionChangeCancel}() \{ this->
+      \hyperlink{class_hardware_1_1_b_b_b_a0d9d8c56afb37955e0d0c6baf0f418df}{threadRunning} = \textcolor{keyword}{false}; \}
+00069 
+00070   \textcolor{comment}{// Set the polling period}
+00071   \textcolor{keywordtype}{void} \hyperlink{class_hardware_1_1e_q_e_p_ab8b1babd8dc96f5052be96ed6e65e111}{set\_period}(\textcolor{keywordtype}{long} \textcolor{keywordtype}{long} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} period);
+00072 
+00073   \textcolor{comment}{// Get the polling period of the encoder}
+00074   uint64\_t \hyperlink{class_hardware_1_1e_q_e_p_a9ef725e955086baf06b9d8363318d5b3}{get\_period}();
+00075 
+00076   \textcolor{comment}{// Set the mode of the eQEP hardware}
+00077   \textcolor{keywordtype}{void} \hyperlink{class_hardware_1_1e_q_e_p_a137d1fb0b0e5772487ece48254342294}{set\_mode}(\hyperlink{class_hardware_1_1e_q_e_p_a3f97f26c64d49d6f2643a257b7249070}{eQEP\_Mode} mode);
+00078 
+00079   \textcolor{comment}{// Get the mode of the eQEP hardware}
+00080   \hyperlink{class_hardware_1_1e_q_e_p_a3f97f26c64d49d6f2643a257b7249070}{eQEP\_Mode} \hyperlink{class_hardware_1_1e_q_e_p_a83f60cc0b6199828a629f54c0849ab16}{get\_mode}();
+00081 
+00082 \textcolor{keyword}{private}:
+00083   \textcolor{keyword}{friend} \textcolor{keywordtype}{void} *\hyperlink{class_hardware_1_1e_q_e_p_a0dd4c4778480f930ef697f898f2d4668}{threadedPolleqep}(\textcolor{keywordtype}{void} *value);
+00084 \};
+00085 
+00086 \textcolor{keywordtype}{void} *\hyperlink{namespace_hardware_abb5f0943d53124cfc6df04c91ffcb21b}{threadedPolleqep}(\textcolor{keywordtype}{void} *value);
+00087 \}
+\end{DoxyCode}
