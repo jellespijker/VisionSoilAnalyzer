@@ -1,6 +1,6 @@
 
-\documentclass[11pt,fleqn,,a4paper,twoside,openright]{book} 
-\input{structure} 
+\documentclass[11pt,fleqn,,a4paper,twoside,openright]{book}
+\input{structure}
 
 \begin{document}
 \begingroup
@@ -57,15 +57,15 @@ From here the requirements with regard to function and production are extrapolat
 
 An important aspect of a vision based soil analyzer is its interaction with a user. This is illustrated by a user interface and manuals describing its interaction protocols from an end-user and administrator perspective.
 
-The technical design dissects the structure into subsystems, such as microcontroller, light environment and sample plate. These and more are necessary to perform its main function. These subsystems have a high level of interaction with each other which are set out in the architecture of the device. 
+The technical design dissects the structure into subsystems, such as microcontroller, light environment and sample plate. These and more are necessary to perform its main function. These subsystems have a high level of interaction with each other which are set out in the architecture of the device.
 
 The vision based soil analyzer rest heavenly on vision algorithms, these follow certain established lines, which are set out in the acquisition, enhancement, segmentation, feature extraction and classification steps.
 
 All of the above serve as the basis for realization of a vision based soil analyzer. In order to design and build a prototype the working environment is described. This is a dual booted Windows / Linux laptop, running QT designer, Matlab and Siemens NX. The project itself is hosted on Github and Upverter.
 
-The technical aspects are described for the disciplines: software, mechanical and electronic engineering. Because the main focus lies on the vision aspects of the device, the previous determine route is set out in detail, describing the acquisition steps and various strategies which can be pursued. The enhancement from intensity to segmentation steps are described, such as blurring and adaptive contrast stretch. The follow up algorithms, transform an intensity picture to individual blobs. This is done by finding an optimal threshold between pixel values which belong to a particle or those that are the background. 
+The technical aspects are described for the disciplines: software, mechanical and electronic engineering. Because the main focus lies on the vision aspects of the device, the previous determine route is set out in detail, describing the acquisition steps and various strategies which can be pursued. The enhancement from intensity to segmentation steps are described, such as blurring and adaptive contrast stretch. The follow up algorithms, transform an intensity picture to individual blobs. This is done by finding an optimal threshold between pixel values which belong to a particle or those that are the background.
 
-Further transformation are performed to ensure each particle is identified. The shape of these are classified by describing the contour in the frequency domain, and feeding the complex numbers, obtained with a Fast Fourier Transform, in to a neural network. The resulting classification is one of angularity. Roundness is categorized with the Hu moments. The size of the particle is determined and used to describe the soil sample as a particle size distribution. All obtained information is presented to the user, through a multitude of means using the graphical user interface and a report generator. 
+Further transformation are performed to ensure each particle is identified. The shape of these are classified by describing the contour in the frequency domain, and feeding the complex numbers, obtained with a Fast Fourier Transform, in to a neural network. The resulting classification is one of angularity. Roundness is categorized with the Hu moments. The size of the particle is determined and used to describe the soil sample as a particle size distribution. All obtained information is presented to the user, through a multitude of means using the graphical user interface and a report generator.
 
 Finally the design is verified against the previous determined requirements and a conclusion is drawn. Throwing a fare-sight into the project to come.
 
@@ -109,7 +109,7 @@ This document follows the following structure: In part \ref{part:Design} the des
 
 Part \ref{part:Realization} tells how the design is transformed in to a working prototype and how it can be reproduced. This is achieved by first describing the development environment in chapter \ref{chap:DevelopmentEnvironment}. In this chapter the setup for software, modeling and electronics engineering are described in detail. Armed with this setup the technical realization is described in chapter \ref{chap:TechnicalRealization}. Lastly the vision realization is recounted, this is the focal point of this documentation and can be found in chapter \ref{chap:VisionRealization}.
 
-Verification of the design takes place in part \ref{part:Verification}. In chapter \ref{chap:CompareSpecification} is the prototype verified against the previous determined specifications. Lastly the conclusion is set out in chapter \ref{chap:conclusion}. All addenda chapters, such as bibliography, index and appendices are to be found in part \ref{part:Addenda}. 
+Verification of the design takes place in part \ref{part:Verification}. In chapter \ref{chap:CompareSpecification} is the prototype verified against the previous determined specifications. Lastly the conclusion is set out in chapter \ref{chap:conclusion}. All addenda chapters, such as bibliography, index and appendices are to be found in part \ref{part:Addenda}.
 
 \part{Design}\label{part:Design}
 
@@ -118,7 +118,7 @@ Verification of the design takes place in part \ref{part:Verification}. In chapt
 A functional design lays at the heart of a product. It is an abstract representation of a device and it illustrates its main function. In this chapter the workings of a vision based soil analyzer is laid out. It explains which role a vision based soil analyzer needs to fulfills in order to satisfy a user generated need. This main functionality and its output is visualized in an Input-Process-Output (IPO) diagram. This diagram aids in deciding the specification and setting up a user interface. These in turn dictate the interaction with the outside world.
 
 \section{Global input-process-output}\index{Input-process-output}\index{IPO}
-The main function of a vision based soil analyzer is evident from its name. The user can expect a device which performs an analysis of a soil sample. It does so by capturing and digitizing reflected light of the individual soil particles. This function is illustrated below in an Input-Process-Output\index{Input-Process-Output} (IPO) diagram, see figure \ref{mainIPO}. This is a so called black box approach. It shows an input, an output and a process, where the inner workings are not yet known and relevant.   
+The main function of a vision based soil analyzer is evident from its name. The user can expect a device which performs an analysis of a soil sample. It does so by capturing and digitizing reflected light of the individual soil particles. This function is illustrated below in an Input-Process-Output\index{Input-Process-Output} (IPO) diagram, see figure \ref{mainIPO}. This is a so called black box approach. It shows an input, an output and a process, where the inner workings are not yet known and relevant.
 \paragraph{Technical system}\index{Technical system}
 \begin{sBox}
 	Prototype of an intelligent soil microscope
@@ -135,7 +135,7 @@ The main function of a vision based soil analyzer is evident from its name. The 
 	\node [input, name=input] {};
 	\node [block, right of=input, minimum height=1cm] (process) {Process};
 	\node [output, right of=process] (output) {};
-	
+
 	\draw [draw,->] (input) -- node {Soil sample} (process);
 	\draw [->] (process) -- node {Analysis results} (output);
 	\end{tikzpicture}
@@ -144,124 +144,124 @@ The main function of a vision based soil analyzer is evident from its name. The 
 
 
 \section{Specifications}\index{Specifications}\label{Specification}
-With the global input-process-output in mind the functional specifications can be written. This is done by identifying requirements\index{requirement} that lie at the hearth of it's main functionality. These are specification that define a product. It is important to note that there are two types of requirements: functional and  technical requirements; Each requirement can either be constant or a variable. The constant requirements are the baseline. If the product doesn't fulfills these, it can't be called a soil analyzer. Whilst variable requirement determine how well a product can perform. 
+With the global input-process-output in mind the functional specifications can be written. This is done by identifying requirements\index{requirement} that lie at the hearth of it's main functionality. These are specification that define a product. It is important to note that there are two types of requirements: functional and  technical requirements; Each requirement can either be constant or a variable. The constant requirements are the baseline. If the product doesn't fulfills these, it can't be called a soil analyzer. Whilst variable requirement determine how well a product can perform.
 
 \paragraph{Functional requirements}\index{Functional requirement}
 Functional requirements describe the purpose of the product.
 
 \begin{longtable}{|p{1cm}| p{10cm} p{1.5cm}|}
-\hline 
+\hline
 \textbf{ID} & \textbf{Description} & \textbf{Type} \\
 \endhead
 \hline
-\textbf{F1}\label{F1} & \textbf{Quantify color} &  \\ 
-\hline 
-\textbf{F1.1}\label{F1.1} & Determine the color in a RGB color model, from all visually (by human eye) discernible particles & Const. \\ 
+\textbf{F1}\label{F1} & \textbf{Quantify color} &  \\
 \hline
-\textbf{F1.2}\label{F1.2} & Chromatic a* values must lie within $3 \sigma$ & Const. \\ 
-\hline 
-\textbf{F1.3}\label{F1.3} & Chromatic b* values must lie within $3 \sigma$ & Const. \\ 
-\hline 
-\textbf{F2}\label{F2} & \textbf{Quantify texture} &  \\ 
-\hline 
-\textbf{F2.1}\label{F2.1} & The result of an analyzed sample should fall within a probability of at least $P = 0.95$ \% when compared against the result of the same sample, but obtained using the established sieve method. These results are to be compared by Welch's t-test  &  Const. \\ 
-\hline 
+\textbf{F1.1}\label{F1.1} & Determine the color in a RGB color model, from all visually (by human eye) discernible particles & Const. \\
+\hline
+\textbf{F1.2}\label{F1.2} & Chromatic a* values must lie within $3 \sigma$ & Const. \\
+\hline
+\textbf{F1.3}\label{F1.3} & Chromatic b* values must lie within $3 \sigma$ & Const. \\
+\hline
+\textbf{F2}\label{F2} & \textbf{Quantify texture} &  \\
+\hline
+\textbf{F2.1}\label{F2.1} & The result of an analyzed sample should fall within a probability of at least $P = 0.95$ \% when compared against the result of the same sample, but obtained using the established sieve method. These results are to be compared by Welch's t-test  &  Const. \\
+\hline
 \textbf{F2.2}\label{F2.2} & PSD bins should have the same range as the fractions used in the sieving method & Const. \\
-\hline 
-\textbf{F3}\label{F3} & \textbf{Quantify structure}  &  \\ 
-\hline 
-\textbf{F3.1}\label{F3.1} & Roundness should be assigned in three categories  & Const. \\ 
-\hline 
-\textbf{F3.2}\label{F3.2} & Angularity should be assigned in six categories  & Const. \\ 
-\hline 
-\textbf{F3.3}\label{F3.3} & Predicted values should have at least a linear regression value of $ R \geq 0.9 $ when compared to expertly classified particles & Const.  \\ 
-\hline 
-\textbf{F4}\label{F4} & \textbf{General specifications} &  \\ 
-\hline 
-\textbf{F4.1}\label{F4.1} & Analyze particle with sizes within the range $ 200 \mu m\ \leq P_{size} \leq 2 mm $& Const. \\ 
-\hline 
-\textbf{F4.2}\label{F4.2} & No more then 2\% of the extracted blobs may be connected particles & Const. \\ 
-\hline 
+\hline
+\textbf{F3}\label{F3} & \textbf{Quantify structure}  &  \\
+\hline
+\textbf{F3.1}\label{F3.1} & Roundness should be assigned in three categories  & Const. \\
+\hline
+\textbf{F3.2}\label{F3.2} & Angularity should be assigned in six categories  & Const. \\
+\hline
+\textbf{F3.3}\label{F3.3} & Predicted values should have at least a linear regression value of $ R \geq 0.9 $ when compared to expertly classified particles & Const.  \\
+\hline
+\textbf{F4}\label{F4} & \textbf{General specifications} &  \\
+\hline
+\textbf{F4.1}\label{F4.1} & Analyze particle with sizes within the range $ 200 \mu m\ \leq P_{size} \leq 2 mm $& Const. \\
+\hline
+\textbf{F4.2}\label{F4.2} & No more then 2\% of the extracted blobs may be connected particles & Const. \\
+\hline
 \textbf{F4.3}\label{F4.3} & Analyzing a sample should take no longer then $ 1 min$ (rearanging of sample between shot disregarded) & Const. \\
-\hline 
-\textbf{F5}\label{F5} & \textbf{Interaction} &  \\ 
-\hline 
-\textbf{F5.1}\label{F5.1} & Show individual particles  & Const. \\ 
-\hline 
-\textbf{F5.2}\label{F5.2} & Show PSD graph with particle size in logarithmic scale  & Const.  \\ 
-\hline 
-\textbf{F5.3}\label{F5.3} & Show Angularity in histogram  & Const. \\ 
-\hline 
-\textbf{F5.4}\label{F5.4} & Show Roundness in histogram & Const. \\ 
-\hline 
-\textbf{F5.5}\label{F5.5} & Show probability distribution function in the histogram &  \\ 
-\hline 
+\hline
+\textbf{F5}\label{F5} & \textbf{Interaction} &  \\
+\hline
+\textbf{F5.1}\label{F5.1} & Show individual particles  & Const. \\
+\hline
+\textbf{F5.2}\label{F5.2} & Show PSD graph with particle size in logarithmic scale  & Const.  \\
+\hline
+\textbf{F5.3}\label{F5.3} & Show Angularity in histogram  & Const. \\
+\hline
+\textbf{F5.4}\label{F5.4} & Show Roundness in histogram & Const. \\
+\hline
+\textbf{F5.5}\label{F5.5} & Show probability distribution function in the histogram &  \\
+\hline
 \textbf{F5.6}\label{F5.6} & Information can be shown on a screen & Const. \\
-\hline 
+\hline
 \textbf{F5.7}\label{F5.7} & Exporting to pdf file & Const. \\
-\hline 
+\hline
 \caption{Functional requirements}\label{tab:FuncReq}
-\end{longtable} 
+\end{longtable}
 
 \newpage
 \paragraph{Technical requirements}\index{Technical requirement}
 Technical requirements describe the functionality of the device with regards to its peripherals and its technical environment. They're described in such a way that they are either true or false. They act as constrains, providing a border with a know interface to the outside world.
 
 \begin{longtable}{|p{1cm}| p{10cm} p{1.5cm}|}
-\hline 
-\textbf{ID} & \textbf{Description} & \textbf{Type} \\ 
+\hline
+\textbf{ID} & \textbf{Description} & \textbf{Type} \\
 \endhead
-\hline 
-\textbf{T1}\label{T1} & \textbf{Software environment} &  \\ 
-\hline 
-\textbf{T1.1}\label{T1.1} & The software should run on an Linux device & Const. \\ 
-\hline 
-\textbf{T1.2}\label{T1.2} & The software should be written in C++ & Const. \\ 
-\hline 
-\textbf{T1.3}\label{T1.3} & The software should be written as OOP and be reusable & Const. \\ 
-\hline 
+\hline
+\textbf{T1}\label{T1} & \textbf{Software environment} &  \\
+\hline
+\textbf{T1.1}\label{T1.1} & The software should run on an Linux device & Const. \\
+\hline
+\textbf{T1.2}\label{T1.2} & The software should be written in C++ & Const. \\
+\hline
+\textbf{T1.3}\label{T1.3} & The software should be written as OOP and be reusable & Const. \\
+\hline
 \textbf{T1.4}\label{T1.4} & The software should be written with revision control & Const. \\
-\hline 
+\hline
 \textbf{T1.5}\label{T1.5} & Easily portable to Windows environment & Const. \\
-\hline 
+\hline
 \textbf{T1.6}\label{T1.6} & Easily portable to Android environment & Const. \\
-\hline 
-\textbf{T2}\label{T2} & \textbf{Hardware environment} &  \\ 
-\hline 
-\textbf{T2.1}\label{T2.1} & Should run on an ARMv7 or higher device &  Const. \\ 
-\hline 
+\hline
+\textbf{T2}\label{T2} & \textbf{Hardware environment} &  \\
+\hline
+\textbf{T2.1}\label{T2.1} & Should run on an ARMv7 or higher device &  Const. \\
+\hline
 \textbf{T2.2}\label{T2.2} & Should run on a x86 or x64 device & Const. \\
-\hline 
+\hline
 \textbf{T2.3}\label{T2.3} & At least $1 GHz$ processing power & Const. \\
-\hline 
+\hline
 \textbf{T2.4}\label{T2.4} & At least $128 MB$ memory & Const. \\
-\hline 
+\hline
 \textbf{T2.5}\label{T2.5} & At least $2 GB$ storage & Const. \\
-\hline 
-\textbf{T3}\label{T3} & \textbf{Peripherals}  &  \\ 
-\hline 
-\textbf{T3.1}\label{T3.1} & USB connection  & Const. \\ 
-\hline 
-\textbf{T3.2}\label{T3.2} & Ethernet LAN and/or WAN connection  & Const. \\ 
-\hline 
-\textbf{T3.3}\label{T3.3} & GPS unit & Optional  \\ 
-\hline 
+\hline
+\textbf{T3}\label{T3} & \textbf{Peripherals}  &  \\
+\hline
+\textbf{T3.1}\label{T3.1} & USB connection  & Const. \\
+\hline
+\textbf{T3.2}\label{T3.2} & Ethernet LAN and/or WAN connection  & Const. \\
+\hline
+\textbf{T3.3}\label{T3.3} & GPS unit & Optional  \\
+\hline
 \textbf{T3.4}\label{T3.4} & Light controller & Const. \\
-\hline 
-\textbf{T4}\label{T4} & \textbf{General specifications} &  \\ 
-\hline 
+\hline
+\textbf{T4}\label{T4} & \textbf{General specifications} &  \\
+\hline
 \textbf{T4.1}\label{T4.1} & Sample file size should not exceed $ 10 mb $ & Const. \\
-\hline 
+\hline
 \textbf{T4.2}\label{T4.2} & Guard the maximum size of particles to $ 2 mm $ & Const. \\
-\hline 
-\textbf{T5}\label{T5} & \textbf{Prototype specifications} &  \\ 
-\hline 
+\hline
+\textbf{T5}\label{T5} & \textbf{Prototype specifications} &  \\
+\hline
 \textbf{T5.1}\label{T5.1} & Dimensions should not exceed $ 400[mm] \times 200[mm] \times 200[mm] $ & Const. \\
-\hline 
+\hline
 \textbf{T5.2}\label{T5.2} & The total weight may not exceed $ 5[kg] $ & Const. \\
-\hline 
-\caption{Technical requirements}\label{tab:TechReq}	
-\end{longtable} 
+\hline
+\caption{Technical requirements}\label{tab:TechReq}
+\end{longtable}
 
 
 \chapter{User interface}\label{chap:UserInterface}\index{User interface}
@@ -297,7 +297,7 @@ Most information is conveyed through the graphical user interface or GUI for sho
 		\node[Counter] at (6,6) {5};
 		\node[Counter] at (8,4) {6};
 		\node[Counter] at (8,7.3) {7};
-	\end{tikzpicture}	
+	\end{tikzpicture}
 	\caption{Main Graphical User Interface}\label{fig:GUI}
 \end{figure}
 
@@ -330,18 +330,18 @@ Most of the user interactions in the steps below have to be initiated through th
 	\node[Counter] at (6.8,0.5) {8};
 	\node[Counter] at (7.6,0.5) {9};
 	\node[Counter] at (8.5,0.5) {10};
-	\node[Counter] at (9.4,0.5) {11};	
+	\node[Counter] at (9.4,0.5) {11};
 	\node[Counter] at (10.3,0.5) {12};
 	\node[Counter] at (11.2,0.5) {13};
 	\node[Counter] at (12.1,0.5) {14};
 	\node[Counter] at (13,0.5) {15};
-	\end{tikzpicture}	
+	\end{tikzpicture}
 
 	\caption{The toolbar}\label{fig:Toolbar}
 \end{figure}
 
 \paragraph{Step 1: Filling the sample plate}
-The user places a dried soil sample on the disc, as shown in figure \ref{fig:SampleDish}, he make sure it is evenly placed. Making use of the complete area of the disc. 
+The user places a dried soil sample on the disc, as shown in figure \ref{fig:SampleDish}, he make sure it is evenly placed. Making use of the complete area of the disc.
 \begin{figure}[H]
 	\centering
 	\includegraphics[height=0.6\textheight]{SampleDish.jpg}
@@ -381,7 +381,7 @@ When the report generator is open the user can fill in additional information, r
 	\includegraphics[height=0.3\textheight]{reportGenerator.png}
 	\caption{Report generator}\label{fig:Repgen}
 \end{figure}
- 
+
 \section{Administrator manual}\index{Manual:Administrator manual}
 The VSA runs on an embedded Linux operating system, an administrator is expected to have prior knowledge of this operating system, such as working of the command prompt. Administration is performed through a dedicated network connection. It is expected that the ip address of the VSA is known.
 
@@ -419,7 +419,7 @@ Afterwards you can logout.
 \subsection{Teaching the Neural Network}\index{Neural Network}\index{Manual:Teaching a neural Network}
 The Neural Network can learn from previous analyzed samples, this is done on the VSA itself. By pushing the Neural Network button, a new dialog window appears, as shown in figure \ref{fig:NNlearn} which can be found in appendix \ref{app:GUI}.  In this dialog the user can select a set of previous analyzed samples which serve as a learning data set.
 
-When the button "Open Settings" is pressed the windows depicted in figure \ref{fig:NNsettings} is shown. In this window the user can select the preferred network configuration. 
+When the button "Open Settings" is pressed the windows depicted in figure \ref{fig:NNsettings} is shown. In this window the user can select the preferred network configuration.
 \paragraph{Setting up the neural net}
 The user configures the neural net by first specifying the number of input neurons, these describe the amount Fast Fourier descriptors used in describing the shape of particle, a number between 8 and 20 is usually more then enough. Here after the hidden neurons are to be specified. the maximum amount is 200. Finally the output neurons are to be specified. At the current time these are set in 18 categories and can't be changed.
 
@@ -435,21 +435,21 @@ The Genetic Algorithm allows the user to specify the learning variables. This is
 The technical design describes the sub-systems and their interaction. These are set out in a hierarchical structure, identifying the individual sub-systems. Where their underlying interactions are described in the architecture. The picture which is illustrated with the hierarchical structure and the architecture serves as the basis for a detailed IPO.
 
 \section{Hierarchical structure} \index{Hierachical structure}\label{Hierarchicaldesign}
-The system can be divided in the subsystems depicted in figure \ref{fig:Hierarchicaldiagram}. These sub-systems have a high level of interaction and are in a whole responsible for the fulfillment of the VSA main function. 
+The system can be divided in the subsystems depicted in figure \ref{fig:Hierarchicaldiagram}. These sub-systems have a high level of interaction and are in a whole responsible for the fulfillment of the VSA main function.
 \begin{figure}[h]
 	\centering
 	\begin{tikzpicture}[font=\tiny, grow=right, text width=2cm, align=flush center,
 	level 1/.style={sibling distance=2cm},
-	level 2/.style={sibling distance=1.5cm}, 
+	level 2/.style={sibling distance=1.5cm},
 	level 2/.style={sibling distance=0.5cm},
 	level distance =3cm, Assembly/.style={rectangle,draw=ocre!50,fill=ocre!20,thick,inner sep=1pt, minimum size=0.125cm, rounded corners=2.5pt},Main/.style={rectangle,draw=ocre!70,fill=ocre!50,thick,inner sep=1pt, minimum size=0.125cm, rounded corners=2.5pt},Part/.style={rectangle,draw=ocre!20,fill=ocre!10,inner sep=1pt, minimum size=0.125cm, rounded corners=2.5pt}]
-	
+
 	\node[Main,font=\bfseries] {Vision Soil Analyzer} % root
 	child { node[Assembly] {Construction}
 		child { node[Part] {Bottom case} }
 		child { node[Assembly] {Pilar}
 			child { node[Part] { Pipe } }
-			child { node[Part] { cable } } } 
+			child { node[Part] { cable } } }
 		child { node[Part] {Arm} }
 	}
 	child { node[Assembly] {Light environment}
@@ -464,7 +464,7 @@ The system can be divided in the subsystems depicted in figure \ref{fig:Hierarch
 	child { node[Assembly] {Controller}
 		child { node[Part] {Beaglebone} }
 		child { node[Part] {LED driver} }
-		child { node[Part] {ADC} } 
+		child { node[Part] {ADC} }
 	}
 	child { node[Assembly] {Microscope}
 		child { node[Part] {Webcam} }
@@ -492,15 +492,15 @@ The main detailed IPO is illustrated below:
 	\node (infe) at (-1,1.5) {};
 	\node [align=center](outf) at (1, 3) {Preview};
 	\node (outfe) at (1, 1.5) {};
-	
+
 	\node [align=right](in1) at (-6,1) {};
 	\node [align=right](in2) at (-6,0) {};
 	\node [align=right](in3) at (-6,-1) {};
-	
+
 	\node [align=left](out1) at (6,1) {};
 	\node [align=left](out2) at (6,0) {};
 	\node [align=left](out3) at (6,-1) {};
-	
+
 	\draw[-{Latex[scale=1.2]},dashed,draw=ocre!70] (inf) to (infe);
 	\draw[-{Latex[scale=1.2]},dashed,draw=ocre!70] (outfe) to (outf);
 	\draw[-{Latex[scale=1.2]},solid,draw=ocre!70] (in1) to node {Soil sample} (-1.75,1);
@@ -512,7 +512,7 @@ The main detailed IPO is illustrated below:
 	\end{tikzpicture}
 	\caption{Main detailed Input-Process-Output diagram}\index{IPO}\index{Input-Process-Output}\label{mainDetailedIPO}
 \end{figure}
- 
+
 \chapter{Vision design}\label{chap:VisionDesign}
 The main focus of a vision based soil analyzer lies on the vision algorithms. These lie at the heart of the device. Are to be described in detail in this document. The design and connectedness between these algorithms is described below and depicted in the flow diagram (figure \ref{fig:Visionflow}).
 
@@ -534,14 +534,14 @@ The structure of an individual particle is determined by getting the edge of the
 \chapter{Development Environment}\label{chap:DevelopmentEnvironment}
 The project is developed using three major disciplines; These are mechanical, electrical and software engineering. Each of these disciplines require their own setup and tools. All three are described in their own section below. As indicated in previous chapters the current focus lies on the software development stage, electrical en mechanical systems are described, but with less detail.
 
-At the basis of all three development environments lies the hardware. The specifications given below, describe the current development computer. It is guaranteed that the project can be recreated with a similar computer. 
+At the basis of all three development environments lies the hardware. The specifications given below, describe the current development computer. It is guaranteed that the project can be recreated with a similar computer.
 \begin{itemize}
 	\item Intel(R) Core(TM) i5-4210U CPU @ 1.70GHz
 	\item 8gb memory
 	\item Nvidia 820M
 	\item SSD 128 gb
 	\item HDD 500 gb
-	\item Dual boot Ubuntu 15.04 / Windows 10	
+	\item Dual boot Ubuntu 15.04 / Windows 10
 \end{itemize}
 
 \subsection{Code naming conventions}
@@ -562,7 +562,7 @@ The release are named after anime or manga characters in alphabetical follow up.
 \subsection{Software development environment}
 The software for the VSA runs on an embedded Linux device. This environment is described in chapter \ref{RunEnvironment}. It is highly recommended that the software development environment mirrors this configuration. From the kernel and the operating system towards the package and libraries.
 
-When development takes place in a Linux environment, a tight integration with the prototype is ensured. Eliminating the need to setup the environmental settings and script for multiple operating systems. This also adds the option to debug the software on the development computer. 
+When development takes place in a Linux environment, a tight integration with the prototype is ensured. Eliminating the need to setup the environmental settings and script for multiple operating systems. This also adds the option to debug the software on the development computer.
 
 \paragraph{Programming language}
 The software for the VSA is written in C++. This language was chosen because of its efficiency and high level of abstraction. Most image processing algorithms look at each individual pixel. Since the image obtained with the VSA microscope are in the order of $ 10 \times 10^6 [Pixels]$ a lot of machine instructions can be eliminated by programming in C++. One of its main strength is, that it allows for direct memory access without type checking and error checking. As Bjarne Stroustrup, the creator of C++, puts it \citeauthor{_c++_2013} \cite{_c++_2013} : \begin{quote}
@@ -599,9 +599,9 @@ The basic list of installed packages is given below. The complete list of packag
 		\item GStreamer
 	\end{itemize}
 \end{itemize}
- 
+
  \begin{remark}
- 	It is a fact that computers and their environment evolve. New settings, packages and development changes are described in the project wiki. Which is actively maintained during the complete development phase. This wiki can be found at \url{https://github.com/peer23peer/VisionSoilAnalyzer/wiki} 
+ 	It is a fact that computers and their environment evolve. New settings, packages and development changes are described in the project wiki. Which is actively maintained during the complete development phase. This wiki can be found at \url{https://github.com/peer23peer/VisionSoilAnalyzer/wiki}
  \end{remark}
 
 \paragraph{Object Orientated}\index{Object oriented programming}
@@ -705,7 +705,7 @@ The GUI is loaded from the command prompt with the following syntax:
 The GUI is load through the \textbf{VSAMainwindow} class. This class is the main executable. figure \ref{fig:CollDiagramVSA} depicts the collaboration diagram for this class in its libraries. The structure depicted in the following paragraphs is a simplified rendition of the program structure. The complete reference file including documentation for all the namespaces and classes including inheritance and collaboration diagrams can be found in appendix \ref{app:refManual} at \pageref{app:refManual}.
 
 \paragraph{VSAMainwindow}
-This class is responsible for setting up the environment and providing user interaction. It start by loading the user setting in to memory this class is called \textbf{SoilSettings}. It then starts up communication with the microscope, taking in to a account error handling. It handles user interruptions, menu and toolbar actions and signals from other classes, such as progress updates. 
+This class is responsible for setting up the environment and providing user interaction. It start by loading the user setting in to memory this class is called \textbf{SoilSettings}. It then starts up communication with the microscope, taking in to a account error handling. It handles user interruptions, menu and toolbar actions and signals from other classes, such as progress updates.
 
 \paragraph{namespace SoilMath}
 This library is used extensively by the other libraries and consists of the following classes: FFT (Fast Fourier Transform), GA (Genetic Algorithms), Stats (Statistics), PSD (particle size distribution), NN (Neural Network), Sort (quick sort routine) and common math operations, type and error handling.
@@ -714,7 +714,7 @@ This library is used extensively by the other libraries and consists of the foll
 This library performs the hardware communication, it basically consist of two sections; Those are camera communication with the class Microscope and Beaglebone black specific classes, GPIO\footnote{General Purpose Input and Output}, ADC\footnote{Analogue Digital Convertor}, eQEP\footnote{enhanced Quadrature Encoder Pulse} and PWM\footnote{Pulse Width Modulation}. Although the Hardware class compiles on a x64 architecture the BeagleBone specific classes don't work there.
 
 \paragraph{namespace SoilVision}
-This library performs all vision related operations and is explained in detail in section \ref{chap:VisionRealization}. It consist of the following classes: Conversion (color conversion), Enhance (Image enhancement), MorphologicalFilter, Segment and VisionDebug (Enables easy vision debugging operations). 
+This library performs all vision related operations and is explained in detail in section \ref{chap:VisionRealization}. It consist of the following classes: Conversion (color conversion), Enhance (Image enhancement), MorphologicalFilter, Segment and VisionDebug (Enables easy vision debugging operations).
 
 \paragraph{namespace SoilAnalyzer}
 The SoilAnalyzer combines all the above classes in such away that the particles are segmented from the background and analyzed. It consist of the following classes: Analyzer (the actual analyzer engine), Sample (The storage container for the complete soilsample), Particle ( A storage container for a single particle) and the SoilSettings (A storage class the allow easy setting movement between classes).
@@ -734,9 +734,9 @@ The following QWidgets and Qdialog classes are there to present user readable in
 This chapter describes the used vision processing techniques. The current prototype and work flow is developed to allow for different routines. The user has multiple options and strategies available to achieve optimum results. Each of these are explained in the sequential subsection below. It begins with the acquisition of image(s), which are then enhanced to allow for optimal segmentation of pixels related to sand particles. These pixels are used to determine the features of each particle, which serve as input for the classification algorithms.
 
 \section{Image acquisition}\index{Acquisition}
-A thorough review of the current literature \cite{Spijker14a} identified three properties that can be used in vision based analyzing. These properties are structure \index{Structure} (shape), color and texture \index{Texture} (size). When looking closely at sand sample, you notice a multitude of shapes, colors and sizes, each particle is unique and differs from its neighbor. This diversity brings it own challenges. The shape of a particle determines how it will rest on the sample plate. The color and the translucency of the particle, determines how easily it can be segmented or identified from the background. Whilst the size determines the needed focus depth of the microscope. 
+A thorough review of the current literature \cite{Spijker14a} identified three properties that can be used in vision based analyzing. These properties are structure \index{Structure} (shape), color and texture \index{Texture} (size). When looking closely at sand sample, you notice a multitude of shapes, colors and sizes, each particle is unique and differs from its neighbor. This diversity brings it own challenges. The shape of a particle determines how it will rest on the sample plate. The color and the translucency of the particle, determines how easily it can be segmented or identified from the background. Whilst the size determines the needed focus depth of the microscope.
 \begin{remark}
-	In samples, where the particles show a huge spread in size, compared to the mean size, there will be a noticeable difference in focus, between big and small particles. 
+	In samples, where the particles show a huge spread in size, compared to the mean size, there will be a noticeable difference in focus, between big and small particles.
 \end{remark}
 
 \paragraph{Acquisition strategies}The first prototype is developed in such a way that multiple acquisition strategies\index{Acquisition strategies} can be implemented. Each of these tackle different challenges. The quality of the acquired image is the biggest factor in the successful extraction of a particle, but in order to make any valid claim about the sample, a certain amount of particles have to examined. To determine the minimum sample size \index{Minimum sample size}, the following equation can be derived:
@@ -753,12 +753,12 @@ This brings the minimum amount of particles to $384$. With the predefined range 
 
 \paragraph{Acquisition} \index{Acquisition}\label{Acquistion} Each sample is placed in a light condition room, and laid out on a semitransparent white acrylate plate. The sample can be illuminated with a bright field light source, where the light is aimed directly at an object or the particle can be lit with back lighting. See the course notes \cite{ypma_course_2014} for a more in-depth description. The choice for back lighting can be made because translucent particle are harder to segment in a bright field light. The trade off is extra processing time.
 
-After the sample is placed in the light condition room, the microscope takes a image with bright field illumination \index{Bright field illumination} and, if the option is selected, another one with back lighting. \index{Back lighting} Hereafter the sample is rearranged, this is a manual procedure. Once the sample is rearranged a new set of shots is taken. Each image that is acquired from the microscope is defined by a matrix were the values are triples for the RGB \index{RGB} (red, green and blue) values and these are defined by an unsigned byte. 
+After the sample is placed in the light condition room, the microscope takes a image with bright field illumination \index{Bright field illumination} and, if the option is selected, another one with back lighting. \index{Back lighting} Hereafter the sample is rearranged, this is a manual procedure. Once the sample is rearranged a new set of shots is taken. Each image that is acquired from the microscope is defined by a matrix were the values are triples for the RGB \index{RGB} (red, green and blue) values and these are defined by an unsigned byte.
 
 Each image is stored in a vector using a custom container. This container consists of a bright field image, back light image and a SI-conversion factor \index{SI-conversion factor}. Each time the height is changed, the microscope has to be calibrated so that the relation between pixel and [mm] can be determined. This is done by taking a shot of a disc with known dimensions. A single euro cent can serve for this purpose.
 
 \begin{remark}
-	The image is stored in the OpenCV matrix (cv::Mat) container. This container is  designed to handle image processing data and routines. It makes use of memory management and smart pointers to handle the data effectively. 
+	The image is stored in the OpenCV matrix (cv::Mat) container. This container is  designed to handle image processing data and routines. It makes use of memory management and smart pointers to handle the data effectively.
 \end{remark}
 
 \section{Image enhancement}\index{Enhancement}
@@ -796,7 +796,7 @@ The images are segmented by calculating a threshold value\index{Threshold}. This
 
 In order to get more control over the segmentation process, the normal Otsu's method\index{Otsu's method}, as shown above is altered. A user now has the option to choose whether bright or dark object are segmented and how much the intensity values may deviation from the mean value. The mean value obtained from equation \ref{OtsuMethodEq} is modified with a scaling factor and the standard deviation, as shown in equation \ref{darkObjEq} and \ref{brightObjEq}.
 \begin{sBox}
-	Let $ t_o \subset \mathbb{Z}^n \rightarrow \{0\leq t \leq 255\}$ be the threshold value obtained with the iteration algorithm used to solve equation \ref{OtsuMethodEq}, $ \alpha $ be the a multiplication factor given by the user and let $\vec{h} \subset \mathbb{Z}^n$ be a vector of dimension $256$ which represent a count of values in the enhanced intensity matrix $\mat{I} \subset \mathbb{Z}^n \rightarrow \{0, 255\}$ with dimensions $m \times n$\\	
+	Let $ t_o \subset \mathbb{Z}^n \rightarrow \{0\leq t \leq 255\}$ be the threshold value obtained with the iteration algorithm used to solve equation \ref{OtsuMethodEq}, $ \alpha $ be the a multiplication factor given by the user and let $\vec{h} \subset \mathbb{Z}^n$ be a vector of dimension $256$ which represent a count of values in the enhanced intensity matrix $\mat{I} \subset \mathbb{Z}^n \rightarrow \{0, 255\}$ with dimensions $m \times n$\\
 	If dark objects are to be obtained
 	\begin{equation}\label{darkObjEq}
 	t = \frac{1}{t_o}\mu + \frac{1}{2}\alpha\sigma {\rm \ \ where\ \ }\sigma = \sqrt{\frac{1}{t_o} \sum\limits_{i=1}^t (\vec{h}_i - \mu)^2}, {\rm \ \ and\ \ } \mu = \frac{1}{t_o} \sum\limits_{i=1}^t \vec{h}_i
@@ -804,7 +804,7 @@ In order to get more control over the segmentation process, the normal Otsu's me
 	else
 	\begin{equation}\label{brightObjEq}
 	t = \frac{1}{t_o}\mu - \frac{1}{2}\alpha\sigma {\rm \ \ where\ \ }\sigma = \sqrt{\frac{1}{256 - t_o} \sum\limits_{i=t}^{256} (\vec{h}_i - \mu)^2}, {\rm \ \ and\ \ } \mu = \frac{1}{256 - t_o} \sum\limits_{i=t}^{256} \vec{h}_i
-	\end{equation} 
+	\end{equation}
 \end{sBox}
 
 \paragraph{Binary Image}\index{Binary Image}\index{BW}\label{binaryImage} The binary image is calculated by using the previous obtained threshold value as illustrated in equation \ref{BWeq}.
@@ -816,7 +816,7 @@ In order to get more control over the segmentation process, the normal Otsu's me
 \end{sBox}
 
 \paragraph{Labeled blobs}\index{Blob}\index{Labeled blobs}
-If the threshold value\index{Threshold} was correctly ascertained then the binary image will consist of zeros and ones. Particles are represented by islands of connected elements with a designated value of one in an ocean of zeros. The individual particles, which are dubbed "blobs"\index{Blob} will be identified with a two-pass connected-component labeling algorithm. 
+If the threshold value\index{Threshold} was correctly ascertained then the binary image will consist of zeros and ones. Particles are represented by islands of connected elements with a designated value of one in an ocean of zeros. The individual particles, which are dubbed "blobs"\index{Blob} will be identified with a two-pass connected-component labeling algorithm.
 
 This algorithm passes each element in a binary image in a consecutive manner. When the current element belongs to a particle, it will check if previously processed neighboring pixels belong to an earlier labeled blob. If this is not the case it will assign a new label value to the current element. If it finds that one of the neighbors belong to one or more blobs, it assigns the lowest value and writes the other value to a queue. To store the connected labels.
 \begin{figure}
@@ -826,7 +826,7 @@ This algorithm passes each element in a binary image in a consecutive manner. Wh
 	\label{fig:Neighboring_elements}
 \end{figure}
 
-In order to determine the lowest value of the connected component\index{Connected component}, a graphs matrix\index{Graph matrix} is generated, see figure \ref{ConnQue}. Each branch on these trees are followed till the lowest value is ascertained. All the leafs on the tree are then set to this value. These values are placed in a Look-Up-Table\index{Look-Up-Table}. With the second loop through the previously labeled image each value is replaced by looking up the lowest value in LUT.  
+In order to determine the lowest value of the connected component\index{Connected component}, a graphs matrix\index{Graph matrix} is generated, see figure \ref{ConnQue}. Each branch on these trees are followed till the lowest value is ascertained. All the leafs on the tree are then set to this value. These values are placed in a Look-Up-Table\index{Look-Up-Table}. With the second loop through the previously labeled image each value is replaced by looking up the lowest value in LUT.
 
 \begin{figure}[h]
 	\centering
@@ -839,8 +839,8 @@ In order to determine the lowest value of the connected component\index{Connecte
 	\node[main node] (6) [right of=5] {9};
 	\node[main node] (7) [below of=5] {10};
 	\node[main node] (8) [below of=7] {12};
-	
-	
+
+
 	\path[-]
 	(1) edge node {} (2)
 	(2) edge node {} (5)
@@ -855,10 +855,10 @@ In order to determine the lowest value of the connected component\index{Connecte
 \end{figure}
 
 \begin{remark}
-	A Look-Up-Table (LUT)\index{Look-Up-Table} is an array where a new value can be obtained with a simple array indexing operation. This is a very effective operation since looking up a value in memory cost less machine instructions then perform computation on each matrix element. A LUT consist of 256 elements for a unsigned byte, while a image matrix has roughly 5 million elements. 
+	A Look-Up-Table (LUT)\index{Look-Up-Table} is an array where a new value can be obtained with a simple array indexing operation. This is a very effective operation since looking up a value in memory cost less machine instructions then perform computation on each matrix element. A LUT consist of 256 elements for a unsigned byte, while a image matrix has roughly 5 million elements.
 \end{remark}
 
-The numbering of the labels are made consecutive using an adapted quick sorting algorithm. These numbers are used to identify the individual particles in a sample. For each unique particle a type is created. This type is stored in vector and represent the sample. 
+The numbering of the labels are made consecutive using an adapted quick sorting algorithm. These numbers are used to identify the individual particles in a sample. For each unique particle a type is created. This type is stored in vector and represent the sample.
 
 For each particle a region of interest\index{Region of Index} or ROI is obtained looking for the minimum and maximum value of the labeled blob within the labeled image\index{Labeled image}. This ROI, is used to extract the same blob from the bright field RGB image.
 
@@ -897,17 +897,17 @@ Using the binary image from the individual particle an edge is obtained. This is
 	\end{equation}
 \end{sBox}
 
-The previous obtained ROI is used to extract the edges from the individual particles. This edge is used in the Fast Fourier Transformation. In order to obtained a continuous function from the edge, a depth-first searching algorithm is applied. 
+The previous obtained ROI is used to extract the edges from the individual particles. This edge is used in the Fast Fourier Transformation. In order to obtained a continuous function from the edge, a depth-first searching algorithm is applied.
 
 \paragraph{Depth-first search}\label{Depth-first search}\index{Depth-first search}
 This starts at the top-left edge pixels and looks at its neighboring pixels. If it finds more then two neighboring pixels it stores the additional values in a queue and it moves to the first pixel new pixel. Here it performs the above decision process again. If it doesn't it only finds one neighboring pixel it know it's at a dead end. The algorithm will backtrack and start at the first branch in the queue. Subsequently storing the previously walked path, so it doesn't traverses again down this branch. This process is repeated until it find the starting pixel. Each individual branch that is processed in this way is stored in a vector of coordinates.
 
 \paragraph{Complex contour}\index{Complex contour}\label{Complex contour}
 These coordinate are stored as complex numbers where the real part is the row and the imaginary part is the column. Both are taken with respect to the center of gravity, which is obtained with the first order of the Hu moments, see earlier paragraph.
-The shortest vector of connected coordinates that form a loop is determined to represent the edge of the particle. 
+The shortest vector of connected coordinates that form a loop is determined to represent the edge of the particle.
 
 \begin{remark}
-	By choosing the shortest path of neighboring edge pixels as a complex contour. The roughness of the edge is represented slightly less rough then the pixel suggest that is. This effect is negated, because of the discrete nature of the digital representative of a particle compared with continuous real curve of actual particle.	
+	By choosing the shortest path of neighboring edge pixels as a complex contour. The roughness of the edge is represented slightly less rough then the pixel suggest that is. This effect is negated, because of the discrete nature of the digital representative of a particle compared with continuous real curve of actual particle.
 \end{remark}
 
 \subsection{CIE La*b* extraction}\index{CIE La*b*}\label{CIELab}
@@ -923,23 +923,23 @@ The relation diagram below show that there has to be a conversion from RGB to CI
 \end{figure}
 
 \begin{sBox}
-	Let $\mat{XYZ} \subset \mathbb{R}^n \rightarrow \{0 \leq \mat{XYZ}_{m,n} \leq 1\} $ and $\mat{RGB} \subset \mathbb{Z}^n \rightarrow \{1 \leq \mat{RGB}_{m,n} \leq 256\} $ both with dimension $ m \times n $ The following transformation takes place for each pixel that belongs to a particle. 
+	Let $\mat{XYZ} \subset \mathbb{R}^n \rightarrow \{0 \leq \mat{XYZ}_{m,n} \leq 1\} $ and $\mat{RGB} \subset \mathbb{Z}^n \rightarrow \{1 \leq \mat{RGB}_{m,n} \leq 256\} $ both with dimension $ m \times n $ The following transformation takes place for each pixel that belongs to a particle.
 	\begin{equation}
 		\begin{bmatrix}
 		\mat{XYZ}_{i,j,1} \\
 		\mat{XYZ}_{i,j,2} \\
-		\mat{XYZ}_{i,j,3} 
+		\mat{XYZ}_{i,j,3}
 		\end{bmatrix}
 		= \begin{bmatrix}
 		0.412453 & 0.357580 & 0.180423 \\
 		0.212671 & 0.715160 & 0.072169 \\
 		0.019334 & 0.119194 & 0.950227
 		\end{bmatrix}
-		\cdot 
+		\cdot
 		\begin{bmatrix}
 			\mat{RGB}_{i,j, 1} \\
 			\mat{RGB}_{i,j, 2} \\
-			\mat{RGB}_{i,j, 3} 
+			\mat{RGB}_{i,j, 3}
 		\end{bmatrix}
 	\end{equation}
 \end{sBox}
@@ -952,11 +952,11 @@ After the conversion to the CIE XYZ color model the particle pixels are converte
 		\mat{LAB}_{i,j,1} = \left\{
 		\begin{array}{ll}
 		116(\frac{\mat{XYZ}_{i,j,1}}{100})^{\frac{1}{3}} & ,\frac{\mat{XYZ}_{i,j,1}}{100} > 0.008856 \\[0.3cm]
-		903.3(\frac{\mat{XYZ}_{i,j,1}}{100})^{\frac{1}{3}} & ,\frac{\mat{XYZ}_{i,j,1}}{100} \geq 0.008856 
-		\end{array} 
+		903.3(\frac{\mat{XYZ}_{i,j,1}}{100})^{\frac{1}{3}} & ,\frac{\mat{XYZ}_{i,j,1}}{100} \geq 0.008856
+		\end{array}
 		\right. \\[0.5cm]
 	    \mat{LAB}_{i,j,2} = \left[\left(\frac{\mat{XYZ}_{i,j,1}}{95.047}\right)^{1/_3} - \left(\frac{\mat{XYZ}_{i,j,2}}{100}\right)^{1/_3}\right] \\[0.5cm]
- 	    \mat{LAB}_{i,j,3} = \left[\left(\frac{\mat{XYZ}_{i,j,2}}{100}\right)^{1/_3} - \left(\frac{\mat{XYZ}_{i,j,3}}{108.883}\right)^{1/_3}\right]  	    
+ 	    \mat{LAB}_{i,j,3} = \left[\left(\frac{\mat{XYZ}_{i,j,2}}{100}\right)^{1/_3} - \left(\frac{\mat{XYZ}_{i,j,3}}{108.883}\right)^{1/_3}\right]
 	\end{array}
 	\end{equation}
 \end{sBox}
@@ -970,10 +970,10 @@ Fourier descriptor provide away to describe a shape of a two-dimensional object 
 	NNThold/.style={rectangle,draw=ocre!50,fill=ocre!20,thick,inner sep=0pt, minimum size=1cm,rounded corners=5pt}]
 	\node (node1) at (0,0) [fftnode,label=left:$ f(1) $] {};
 	\node (node2) at (0,2) [fftnode,label=left:$ f(0) $] {};
-	
+
 	\node (node3) at (2.5,0) [fftnode,label=above:+,label=below:-,label=right:$ F(1) $] {};
 	\node (node4) at (2.5,2) [fftnode,label=above:+,label=below:+,label=right:$ F(0) $] {};
-	
+
 	\path[->] (node1) edge[thick] (node3)
 					  edge        (node4)
 			  (node2) edge[thick] (node4)
@@ -988,18 +988,18 @@ The Fast Fourier Transform is obtained, with an divide and conquer technique and
 \begin{figure}[h]
 	\centering
 	\begin{sBox}
-		\includegraphics[width=1\textwidth]{DFT.png}	
+		\includegraphics[width=1\textwidth]{DFT.png}
 	\end{sBox}
 	\caption{Decimation of a $ m = 8 $ DFT (Source: \citeauthor{canale2014numerical})}
 	\label{fig:DecimationDFT}
 \end{figure}
 The decimation takes place in the frequency domain and is sliced between even and odd steps. The only constrained that is placed on the computations is that $ N = 2^m $ where $ m $ is the number of complex coordinates describing the contour. This complex contour first has to be validate with this constrained. This can be tested with equation \ref{mTest}, if  it holds false, then the complex vector is appended with $ 0 + i 0 $.
 \begin{sBox}
-	This condition can be tested with the equation below 
+	This condition can be tested with the equation below
 	\begin{equation}\label{mTest}
 		\floor*{\frac{\log_{10} m}{\log_{10} 2.0}} = \frac{\log_{10} m}{\log_{10} 2.0}
 	\end{equation}
-\end{sBox} 
+\end{sBox}
 
 The flow diagram depicted in figure \ref{fig:DecimationDFT} is implemented as algorithm \ref{pcode:FFT}. When this pseudo code\index{Pseudo code} is translated to a C++ object the code in appendix \ref{app:FFTclass} at page \pageref{app:FFTclass} is the result. \\
 \begin{sBox}
@@ -1016,17 +1016,17 @@ The flow diagram depicted in figure \ref{fig:DecimationDFT} is implemented as al
 		\ELSE \vec{o}_{\floor{i/2}} \GETS \vec{c}_i \\
 		i \GETS {i + 1}\\
 	\END \\
-	
+
 	\CALL{FFT}{\vec{e}} \\
 	\CALL{FFT}{\vec{o}} \\
-	
+
 	\FOR k \GETS 0 \TO \frac{N}{2} \DO
 	\BEGIN
 		\vec{t} \GETS {\CALL{std::polar}{1, \frac{-2 \cdot \pi \cdot k}{N}} \cdot \vec{o}_k} \\
 		\vec{c}_k = \vec{a}_{k} + \vec{t} \\
 		\vec{c}_{k + N/2} = \vec{k} - \vec{t} \\
 	\END
-	
+
 	\end{pseudocode}
 \end{sBox}
 
@@ -1041,7 +1041,7 @@ The size of each individual particle can be obtained by counting the pixels that
 \begin{sBox}
 	Let $\mat{B} \subset \mathbb{Z}^n \rightarrow \{0, 1\}$ with dimensions $ m \times n $ be a matrix with a single connected particle, where pixels belonging to that particle are assigned the value 1 and background pixels 0. And let $ \alpha \subset \mathbb{R}^n \rightarrow \{0, 1\} $ as a conversion factor between pixel and millimeter. Let $ \sigma \subset \mathbb{R}^n \rightarrow \{0, 1\} $ be defined as the sphericity obtained using equation \ref{eq:sphericity}, see section\ref{HuMoments}
 	\begin{equation}\label{eq:EquivelentDiameter}
-	\frac{2 \alpha \sigma}{\pi} \sqrt{ \sum\limits_{i=1}^{m}\sum\limits_{j=1}^{n}\mat{B}_{m,n}} 
+	\frac{2 \alpha \sigma}{\pi} \sqrt{ \sum\limits_{i=1}^{m}\sum\limits_{j=1}^{n}\mat{B}_{m,n}}
 	\end{equation}
 \end{sBox}
 \textsl{}
@@ -1064,43 +1064,43 @@ The size of each individual particle can be obtained by counting the pixels that
 	\draw[-{Latex[scale=1.2]},solid,draw=black!70] (text) to (mesh);
 	\node at (1.1, 1) {$ P_1 $};
 	\node at (4, 1) {$ P_2 $};
-	\end{tikzpicture}	
+	\end{tikzpicture}
 	\caption{Sieving motion}
 \end{figure}
 
 \begin{theorem}[Correlation between sphericity and equivalent particle diameter (obtained by sieving)]\label{theo:CorrBetweensphereandpart}
-	The equivalent diameter of a arbitrary area $ A $ needs to be decreased with a factor when the ratio between the two axes describing that particle decreases.  
-	
+	The equivalent diameter of a arbitrary area $ A $ needs to be decreased with a factor when the ratio between the two axes describing that particle decreases.
+
 	\begin{proof}
-			The sieve mesh size can be perceived as a cross-section of a particle. A particle that passes a certain mesh size must have a smaller cross-section then the opening in the mesh itself. When cross-sections of particles are assumed as being elliptical in shape. It consist of two axis that describe it $ a $ and $ b $. If both axes are equal it is a circle. 
-			
+			The sieve mesh size can be perceived as a cross-section of a particle. A particle that passes a certain mesh size must have a smaller cross-section then the opening in the mesh itself. When cross-sections of particles are assumed as being elliptical in shape. It consist of two axis that describe it $ a $ and $ b $. If both axes are equal it is a circle.
+
 			The orientation of a particle is relevant when it passing through the openings in a sieve. The shaking motion, introduced by the sieve analysis method, allows elliptical shaped particle to stand upright when passing the cross-section of a sieve. Once the tip of an elliptical particle is caught in the mesh cross-section, the momentum of that same particle and the constrained of the mesh wires allows it to orient itself upright. Thus passing the mesh by it smallest cross-section. This is illustrated in figure \ref{fig:sievemotion}.
-			
+
 			Since both particles $ P_1 $ and $ P_2 $ have the same area but $ P_2 $ is allowed to pass to a lower sieve or bin. It can be stated that when the sphericity decreases, lower valued bins will be favored in statistical calculations.
-			
-			Because the largest ellipse that fits within a square is the inscribed circle, as proven in theorem \ref{theo:ellipcircle}. An equivalent diameter will need to be corrected with a factor. This factor can be determined with the roundness value obtained by the Hu moment ascertained in section \ref{Hu moments}. 
+
+			Because the largest ellipse that fits within a square is the inscribed circle, as proven in theorem \ref{theo:ellipcircle}. An equivalent diameter will need to be corrected with a factor. This factor can be determined with the roundness value obtained by the Hu moment ascertained in section \ref{Hu moments}.
 	\end{proof}
 
 \end{theorem}
 
 \begin{theorem}[The largest ellipse that fits within a square is the inscribed circle]\index{Ellipse}
 	\label{theo:ellipcircle}
-	The largest ellipse that fits within a square is the inscribed circle. 
-	
+	The largest ellipse that fits within a square is the inscribed circle.
+
 	\begin{proof}
 		It's clear that the largest ellipse touches all four sides of a square. If this isn't the case the ellipse has to be scaled in the direction where there is a gap between ellipse and square side. This will increase the area of the ellipse as well.
-		
+
 		Its axes must lie on the square's diagonals, when the largest ellipse touches the sides. Because of the symmetric properties, . The coordinate system can in which the square is positioned can be chosen, such the corners lie on $ (0,\pm1) $ and $ (\pm1, 0) $; The ellipse will then have the equation $ ax^2 + by^2 = 1 $ for some $ a $ and $ b $.
-		
+
 		The relation between $ a $ and $ b $ can be found because the line $ y = 1 - x $ must be tangent to the ellipse. Therefore the discriminant of the equation $ ax^2 + b(1 - x)^2 = 1 $ must be 0. This can be reworked to $ b = \frac{a}{a-1}$
-		
+
 		The area of the ellipse is $ \frac{\pi}{4ab} $. In order to maximize this area $ ab = \frac{a^2}{a - 1} $ must be minimized. This is done by solving $ \frac{\dif}{\dif a}\left(\frac{a^2}{a - 1}\right) = 0 $ where $ a = 2 \vee a = 0 $. Therefore $ b = \frac{2}{2 - 1} = 2 $ and thus $ a = b $. Which describes a circle.
 	\end{proof}
-	
+
 \end{theorem}
 
 \paragraph{Calculating the statistics}
-When each particle equivalent diameter is obtained with equation \ref{eq:EquivelentDiameter}. Various statistical\index{Statistics} algorithms are performed. These are written in a generic template class, which allows the class to work on many different data types without being rewritten for any one. 
+When each particle equivalent diameter is obtained with equation \ref{eq:EquivelentDiameter}. Various statistical\index{Statistics} algorithms are performed. These are written in a generic template class, which allows the class to work on many different data types without being rewritten for any one.
 
 Because a particle size distribution doesn't follow an evenly spaced bin range. The PSD class is introduced this class inherits from the statistic class. This class uses the following bin range steps: \\ $ [0, 0.038, 0.045, 0.063, 0.075, 0.09, 0.125, 0.18, 0.25, 0.355, 0.5, 0.71, 1, 1.4, 2] $. It gives information with regard to the number of particles, the mean\index{Mean}, minimum\index{Minimum} and maximum\index{Maximum} particle size and the standard deviation\index{Standard deviation}.
 
@@ -1145,9 +1145,9 @@ The angularity is categorized using a neural network or NN for short. These cons
 \begin{sBox}
 	Both $ g(k) \subset \mathbb{R}^n \rightarrow \{0, 1\} $ and $ k \subset \mathbb{R}^n \rightarrow \{0, 1\} $ are real numbered values. $ g(k) $ is the sigmoid function and $ k $ determines the steepness of the threshold.
 	\begin{equation}\label{eq:NNSigmoid}
-		g(k) = \frac{1}{1 + e^{-k}} 
+		g(k) = \frac{1}{1 + e^{-k}}
 	\end{equation}
-\end{sBox} 
+\end{sBox}
 
 \begin{figure}[h]
 	\centering
@@ -1156,7 +1156,7 @@ The angularity is categorized using a neural network or NN for short. These cons
 	\draw[ocre!50,fill=ocre!10,thick, rounded corners=5pt, dashed] (-1.25, 1) rectangle (1.75, 3);
 	\node (sum) at (-0.5,2) [NNSum] {\LARGE{$ \Sigma $}};
 	\node (thold) at (1,2) [NNThold] {\begin{tikzpicture}
-		\draw[thick](0.1,0) -- (0.5,0) -- (0.5,0.5) -- (0.9,0.5); 		
+		\draw[thick](0.1,0) -- (0.5,0) -- (0.5,0.5) -- (0.9,0.5);
 		\end{tikzpicture}
 	};
 	\node (output) at (3,2) {$ out $};
@@ -1165,7 +1165,7 @@ The angularity is categorized using a neural network or NN for short. These cons
 	\node (in3) at (-3,2) {$ in_2 $};
 	\node (in2) at (-3,3) {$ in_1 $};
 	\node (in1) at (-3,4) {$ in_0 $};
-	
+
 	\path[-{Latex[scale=1.2]},solid,draw=ocre!70,fill=ocre!40] (in5) edge[below] node{$ \omega_n $} (sum)
 	(in3) edge[below] node{$ \omega_2 $} (sum)
 	(in2) edge[below] node{$ \omega_1 $} (sum)
@@ -1200,7 +1200,7 @@ Each hidden neuron sums up its input and transforms it with the threshold functi
 		\node (in4) at (0,2) {$ \vdots $};
 		\node (in5) at (0,0) [Neuron] {$ |I_n| $};
 		\node (input) at (0,-2) {Input layer};
- 	
+
 		\node (bias2) at (4,10) [Neuron,label=above:bias] {$ 1 $};
 		\node (hidden1) at (4,8) [Neuron] {$ H_1 $};
 		\node (hidden2) at (4,6) [Neuron] {$ H_2 $};
@@ -1215,7 +1215,7 @@ Each hidden neuron sums up its input and transforms it with the threshold functi
 		\node (out4) at (8,2) {$ \vdots $};
 		\node (out5) at (8,0) [Neuron] {$ O_n $};
 		\node (output) at (8,-2) {Output layer};
-		
+
 		\path[-{Latex[scale=1.2]},solid,draw=ocre!70,fill=ocre!40] (bias1) edge (hidden1)
 						  edge (hidden2)
 						  edge (hidden3)
@@ -1262,7 +1262,7 @@ Each hidden neuron sums up its input and transforms it with the threshold functi
 \end{figure}
 
 \paragraph{Teaching the neural net}
-In order to determine the weights of the neural network it has to be taught. The network is optimized by feeding it input calculating the output and comparing it against the expected result. There are numerous algorithms and approaches to teach a neural net, the current approach is using a genetic algorithm. 
+In order to determine the weights of the neural network it has to be taught. The network is optimized by feeding it input calculating the output and comparing it against the expected result. There are numerous algorithms and approaches to teach a neural net, the current approach is using a genetic algorithm.
 
 \subsection{Genetic Algorithm}\index{Genetic Algorithm}
 Genetic algorithm are described as random search approaches, which have the ability to convergence to a global optimum. These algorithms are based on the theory of evolution, where each sequentiality population is better adapted to its environment. The flow of the algorithm is shown in figure \ref{fig:GeneticAlgorithm}. This flow deviates slightly from the standard algorithm and introduces a new concept named "revolution".
@@ -1280,12 +1280,12 @@ Genetic algorithm are described as random search approaches, which have the abil
 		\node[action] (flip2) [below right=of revolution] {Normal mutation rate};
 		\node (centerflip) [below=of revolution] {};
 		\node[combine] (end) [below=of centerflip] {};
-		
+
 		\draw[-{Latex[scale=1.2]},solid,draw=ocre!70] (start) to (revolution);
 		\draw[-{Latex[scale=1.2]},solid,draw=ocre!70] (revolution) -| (flip1);
 		\draw[-{Latex[scale=1.2]},solid,draw=ocre!70] (revolution) -| (flip2);
 		\draw[-{Latex[scale=1.2]},solid,draw=ocre!70] (flip1) |- (end);
-		\draw[-{Latex[scale=1.2]},solid,draw=ocre!70] (flip2) |- (end);	
+		\draw[-{Latex[scale=1.2]},solid,draw=ocre!70] (flip2) |- (end);
 		\end{tikzpicture}
 		};
 	\node[action] (growtoadult) [below=of mutate] {Grow to adulthood};
@@ -1297,19 +1297,19 @@ Genetic algorithm are described as random search approaches, which have the abil
 		\node (flip2) [below right=of revolution] {};
 		\node (centerflip) [below=of revolution] {};
 		\node[combine] (end) [below=of centerflip] {};
-		
+
 		\draw[-{Latex[scale=1.2]},solid,draw=ocre!70] (start) to (revolution);
 		\draw[-{Latex[scale=1.2]},solid,draw=ocre!70] (revolution) to (end);
 		\draw[-{Latex[scale=1.2]},solid,draw=ocre!70] (revolution.west) -| (flip1.north);
 		\draw[-{Latex[scale=1.2]},solid,draw=ocre!70] (flip1) |- (end);
 		\end{tikzpicture}
-		
+
 	};
 	\node[embeddedaction] (retEvent) [left=of survival] {Fire update event};
 	\node[choice,label=10:$ \epsilon > \epsilon_{ok} $, label=-80:$ \epsilon \leq \epsilon_{ok} $] (errortest) [below=of survival] {Error};
 	\node[action] (return) [below=of errortest] {Return weights};
 	\node (backagain) [right=of mutate] {};
-	
+
 	\draw[-{Latex[scale=1.2]},solid,draw=ocre!50] (genesis) to (evolveloop);
 	\draw[-{Latex[scale=1.2]},solid,draw=ocre!50] (evolveloop) to (crossover);
 	\draw[-{Latex[scale=1.2]},solid,draw=ocre!50] (crossover) to (mutate);
@@ -1342,58 +1342,58 @@ The new DFK24UJ003 camera became available at a later stage in the project. Fitt
 The functional requirements describe the functions which the device has to fulfill. These requirements were tested if possible and these results are given below. It becomes clear that the measurements that matter most are the ones that haven't been tested yet. All others are fulfilled and checked. As soon as the prototype is operational additional test will be performed and added as an addenda to this report.
 
 \begin{longtable}{|p{1cm}| p{9cm} p{2.5cm}|}
-	\hline 
+	\hline
 	\textbf{ID} & \textbf{Description} & \textbf{Achieved} \\
 	\endhead
 	\hline
-	\textbf{F1}\label{F1} & \textbf{Quantify color} &  \\ 
-	\hline 
-	\textbf{F1.1}\label{F1.1} & Determine the color in a RGB color model, from all visually (by human eye) discernible particles & Not yet tested \\ 
+	\textbf{F1}\label{F1} & \textbf{Quantify color} &  \\
 	\hline
-	\textbf{F1.2}\label{F1.2} & Chromatic a* values must lie within $3 \sigma$ & Not yet tested \\ 
-	\hline 
-	\textbf{F1.3}\label{F1.3} & Chromatic b* values must lie within $3 \sigma$ & Not yet tested \\ 
-	\hline 
-	\textbf{F2}\label{F2} & \textbf{Quantify texture} &  \\ 
-	\hline 
-	\textbf{F2.1}\label{F2.1} & The result of an analyzed sample should fall within a probability of at least $P = 0.95$ \% when compared against the result of the same sample, but obtained using the established sieve method. These results are to be compared by Welch's t-test  &  Not yet tested \\ 
-	\hline 
+	\textbf{F1.1}\label{F1.1} & Determine the color in a RGB color model, from all visually (by human eye) discernible particles & Not yet tested \\
+	\hline
+	\textbf{F1.2}\label{F1.2} & Chromatic a* values must lie within $3 \sigma$ & Not yet tested \\
+	\hline
+	\textbf{F1.3}\label{F1.3} & Chromatic b* values must lie within $3 \sigma$ & Not yet tested \\
+	\hline
+	\textbf{F2}\label{F2} & \textbf{Quantify texture} &  \\
+	\hline
+	\textbf{F2.1}\label{F2.1} & The result of an analyzed sample should fall within a probability of at least $P = 0.95$ \% when compared against the result of the same sample, but obtained using the established sieve method. These results are to be compared by Welch's t-test  &  Not yet tested \\
+	\hline
 	\textbf{F2.2}\label{F2.2} & PSD bins should have the same range as the fractions used in the sieving method & Yes \\
-	\hline 
-	\textbf{F3}\label{F3} & \textbf{Quantify structure}  &  \\ 
-	\hline 
-	\textbf{F3.1}\label{F3.1} & Roundness should be assigned in three categories  & Yes \\ 
-	\hline 
-	\textbf{F3.2}\label{F3.2} & Angularity should be assigned in six categories  & Yes \\ 
-	\hline 
-	\textbf{F3.3}\label{F3.3} & Predicted values should have at least a linear regression value of $ R \geq 0.9 $ when compared to expertly classified particles & Not yet tested  \\ 
-	\hline 
-	\textbf{F4}\label{F4} & \textbf{General specifications} &  \\ 
-	\hline 
-	\textbf{F4.1}\label{F4.1} & Analyze particle with sizes within the range $ 200 \mu m\ \leq P_{size} \leq 2 mm $& Yes \\ 
-	\hline 
-	\textbf{F4.2}\label{F4.2} & No more then 2\% of the extracted blobs may be connected particles & Not yet tested \\ 
-	\hline 
+	\hline
+	\textbf{F3}\label{F3} & \textbf{Quantify structure}  &  \\
+	\hline
+	\textbf{F3.1}\label{F3.1} & Roundness should be assigned in three categories  & Yes \\
+	\hline
+	\textbf{F3.2}\label{F3.2} & Angularity should be assigned in six categories  & Yes \\
+	\hline
+	\textbf{F3.3}\label{F3.3} & Predicted values should have at least a linear regression value of $ R \geq 0.9 $ when compared to expertly classified particles & Not yet tested  \\
+	\hline
+	\textbf{F4}\label{F4} & \textbf{General specifications} &  \\
+	\hline
+	\textbf{F4.1}\label{F4.1} & Analyze particle with sizes within the range $ 200 \mu m\ \leq P_{size} \leq 2 mm $& Yes \\
+	\hline
+	\textbf{F4.2}\label{F4.2} & No more then 2\% of the extracted blobs may be connected particles & Not yet tested \\
+	\hline
 	\textbf{F4.3}\label{F4.3} & Analyzing a sample should take no longer then $ 1 min$ (rearranging of sample between shot disregarded) & Yes\\
-	\hline 
-	\textbf{F5}\label{F5} & \textbf{Interaction} &  \\ 
-	\hline 
-	\textbf{F5.1}\label{F5.1} & Show individual particles  & Yes \\ 
-	\hline 
-	\textbf{F5.2}\label{F5.2} & Show PSD graph with particle size in logarithmic scale  & Yes  \\ 
-	\hline 
-	\textbf{F5.3}\label{F5.3} & Show Angularity in histogram  & Yes \\ 
-	\hline 
-	\textbf{F5.4}\label{F5.4} & Show Roundness in histogram & Yes \\ 
-	\hline 
-	\textbf{F5.5}\label{F5.5} & Show probability distribution function in the histogram & Yes \\ 
-	\hline 
+	\hline
+	\textbf{F5}\label{F5} & \textbf{Interaction} &  \\
+	\hline
+	\textbf{F5.1}\label{F5.1} & Show individual particles  & Yes \\
+	\hline
+	\textbf{F5.2}\label{F5.2} & Show PSD graph with particle size in logarithmic scale  & Yes  \\
+	\hline
+	\textbf{F5.3}\label{F5.3} & Show Angularity in histogram  & Yes \\
+	\hline
+	\textbf{F5.4}\label{F5.4} & Show Roundness in histogram & Yes \\
+	\hline
+	\textbf{F5.5}\label{F5.5} & Show probability distribution function in the histogram & Yes \\
+	\hline
 	\textbf{F5.6}\label{F5.6} & Information can be shown on a screen & Yes \\
-	\hline 
+	\hline
 	\textbf{F5.7}\label{F5.7} & Exporting to pdf file & Yes \\
-	\hline 
+	\hline
 	\caption{The functional requirements compared against the product}\label{tab:FuncReqCompaire}
-\end{longtable} 
+\end{longtable}
 
 \newpage
 \paragraph{Technical requirements}\index{Technical requirement}
@@ -1401,65 +1401,65 @@ The technical requirements describe the production constrains placed on the desi
 Due to defective GPS unit on arrival, the optional GPS unit isn't implemented. Although this unit is optional at this stage, it will become an integral part of the next iteration.
 
 \begin{longtable}{|p{1cm}| p{10cm} p{1.5cm}|}
-	\hline 
-	\textbf{ID} & \textbf{Description} & \textbf{Achieved} \\ 
+	\hline
+	\textbf{ID} & \textbf{Description} & \textbf{Achieved} \\
 	\endhead
-	\hline 
-	\textbf{T1}\label{T1} & \textbf{Software environment} &  \\ 
-	\hline 
-	\textbf{T1.1}\label{T1.1} & The software should run on an Linux device & Yes \\ 
-	\hline 
-	\textbf{T1.2}\label{T1.2} & The software should be written in C++ & Yes \\ 
-	\hline 
-	\textbf{T1.3}\label{T1.3} & The software should be written as OOP and be reusable & Yes \\ 
-	\hline 
+	\hline
+	\textbf{T1}\label{T1} & \textbf{Software environment} &  \\
+	\hline
+	\textbf{T1.1}\label{T1.1} & The software should run on an Linux device & Yes \\
+	\hline
+	\textbf{T1.2}\label{T1.2} & The software should be written in C++ & Yes \\
+	\hline
+	\textbf{T1.3}\label{T1.3} & The software should be written as OOP and be reusable & Yes \\
+	\hline
 	\textbf{T1.4}\label{T1.4} & The software should be written with revision control & Yes \\
-	\hline 
+	\hline
 	\textbf{T1.5}\label{T1.5} & Easily portable to Windows environment & Yes \\
-	\hline 
+	\hline
 	\textbf{T1.6}\label{T1.6} & Easily portable to Android environment & Unknown \\
-	\hline 
-	\textbf{T2}\label{T2} & \textbf{Hardware environment} &  \\ 
-	\hline 
-	\textbf{T2.1}\label{T2.1} & Should run on an ARMv7 or higher device &  Yes \\ 
-	\hline 
+	\hline
+	\textbf{T2}\label{T2} & \textbf{Hardware environment} &  \\
+	\hline
+	\textbf{T2.1}\label{T2.1} & Should run on an ARMv7 or higher device &  Yes \\
+	\hline
 	\textbf{T2.2}\label{T2.2} & Should run on a x86 or x64 device & Yes \\
-	\hline 
+	\hline
 	\textbf{T2.3}\label{T2.3} & At least $1 GHz$ processing power & Yes \\
-	\hline 
+	\hline
 	\textbf{T2.4}\label{T2.4} & At least $128 MB$ memory & Yes \\
-	\hline 
+	\hline
 	\textbf{T2.5}\label{T2.5} & At least $2 GB$ storage & Yes \\
-	\hline 
-	\textbf{T3}\label{T3} & \textbf{Peripherals}  &  \\ 
-	\hline 
-	\textbf{T3.1}\label{T3.1} & USB connection  & Yes \\ 
-	\hline 
-	\textbf{T3.2}\label{T3.2} & Ethernet LAN and/or WAN connection  & Yes \\ 
-	\hline 
-	\textbf{T3.3}\label{T3.3} & GPS unit & No  \\ 
-	\hline 
+	\hline
+	\textbf{T3}\label{T3} & \textbf{Peripherals}  &  \\
+	\hline
+	\textbf{T3.1}\label{T3.1} & USB connection  & Yes \\
+	\hline
+	\textbf{T3.2}\label{T3.2} & Ethernet LAN and/or WAN connection  & Yes \\
+	\hline
+	\textbf{T3.3}\label{T3.3} & GPS unit & No  \\
+	\hline
 	\textbf{T3.4}\label{T3.4} & Light controller & No \\
-	\hline 
-	\textbf{T4}\label{T4} & \textbf{General specifications} &  \\ 
-	\hline 
+	\hline
+	\textbf{T4}\label{T4} & \textbf{General specifications} &  \\
+	\hline
 	\textbf{T4.1}\label{T4.1} & Sample file size should not exceed $ 10 mb $ & Yes \\
-	\hline 
+	\hline
 	\textbf{T4.2}\label{T4.2} & Guard the maximum size of particles to $ 2 mm $ & Yes \\
-	\hline 
-	\textbf{T5}\label{T5} & \textbf{Prototype specifications} &  \\ 
-	\hline 
+	\hline
+	\textbf{T5}\label{T5} & \textbf{Prototype specifications} &  \\
+	\hline
 	\textbf{T5.1}\label{T5.1} & Dimensions should not exceed $ 400[mm] \times 200[mm] \times 200[mm] $ & Yes \\
-	\hline 
+	\hline
 	\textbf{T5.2}\label{T5.2} & The total weight may not exceed $ 5[kg] $ & Yes \\
-	\hline 
-	\caption{Comparing technical requirements against the product}\label{tab:TechReqComp}	
-\end{longtable} 
+	\hline
+	\caption{Comparing technical requirements against the product}\label{tab:TechReqComp}
+\end{longtable}
 
 \chapter{Conclusion}\label{chap:conclusion}
 Many parties such as royal IHC and MTI holland have an interest in knowing the properties of soil, although these can be examined using conventional methods such as a particle size analysis using a mechanical sieve, these methods are often time consuming and cumbersome, consisting of bulky devices, which are none portable. Because it is useful to known the properties on site, a lightweight vision based soil analyzer was developed.
 
-This device analyzes soil samples using its optical characteristics and describing them in to human readable reports. Because this device is highly portable, it gives a user a benefit of shorten logistical operations which are usually necessary to analyze a soil sample. 
+This device analyzes soil samples using its optical characteristics and describing them in to human readable reports. Because this device is highly portable, it gives a user a benefit of shorten logistical operations which are usually necessary to analyze a soil sample.
 
 This product report describe the design specifications for a vision based oil analyzer, in such away that it can be reproduced, within a period of 10 weeks. It does so by exploring the main function a device such as this has to fulfill and translate these into requirements. These requirements serve as input for the technical and vision-based designs. The focus of this document lies on the vision related algorithm and the software aspect.
 
@@ -1477,7 +1477,7 @@ These question and more will be addressed by my thesis. In other words:
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[height=0.7\textheight]{FinalPrototype.jpg}	
+	\includegraphics[height=0.7\textheight]{FinalPrototype.jpg}
 	\caption{The final prototype, with new camera}
 	\label{fig:FinalPrototype}
 \end{figure}
