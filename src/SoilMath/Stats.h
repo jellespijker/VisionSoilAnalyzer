@@ -329,7 +329,7 @@ public:
   }
 
   ~Stats() {
-    Data == nullptr;
+    Data = nullptr;
     if (bins != nullptr) {
       delete[] bins;
       bins = nullptr;
