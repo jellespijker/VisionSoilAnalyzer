@@ -48,7 +48,7 @@
 
 % Set the Paper Size and margins
 \RequirePackage{geometry}
-\geometry{margin=1.0in}
+\geometry{margin=2.0cm}
 
 % Create the Letterhead and To/From Block
 
@@ -58,9 +58,9 @@
 	{ % Create With Logo
 	\begin{minipage}[t]{1\columnwidth}%
 		\begin{flushright}
-			\vspace{-0.6in}
+			\vspace{-0.6cm}
 			\@memologo
-			\vspace{0.5in}
+			\vspace{0.5cm}
 		\par\end{flushright}%
 	\end{minipage}
 	}
@@ -76,5 +76,5 @@
 		\ifthenelse{\equal{\@memosubject}{\relax}}{}{\item [{Subject:}] \@memosubject}
 		\ifthenelse{\equal{\@memodate}{\relax}}{}{\item [{Date:}] \@memodate}
 	\end{description}
-	\decorativeline\bigskip{}
+	\decorativeline\smallskip{}
 }
