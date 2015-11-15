@@ -20,6 +20,8 @@
 \usepackage{parskip} % Adds spacing between paragraphs
 \setlength{\parindent}{15pt} % Indent paragraphs
 
+\usepackage[dutch]{babel}
+
 %----------------------------------------------------------------------------------------
 %	MEMO INFORMATION
 %----------------------------------------------------------------------------------------
@@ -30,11 +32,11 @@
 
 \memofrom{Jelle Spijker} % Sender(s)
 
-\memosubject{Conceptueel ontwerp van een draagbare gronddroger } % Memo subject
+\memosubject{Machinaal scheiden van nat zand voor vision based verwerking } % Memo subject
 
 \memodate{\today} % Date, set to \today for automatically printing todays date
 
-\logo{\includegraphics[width=0.3\textwidth]{../Pictures/MTI_logo.png}} % Institution logo at the top right of the memo, comment out this line for no logo
+\logo{\includegraphics[width=0.2\textwidth]{../Pictures/MTI_logo.png}} % Institution logo at the top right of the memo, comment out this line for no logo
 
 %----------------------------------------------------------------------------------------
 
@@ -46,15 +48,17 @@
 %	MEMO CONTENT
 %----------------------------------------------------------------------------------------
 \paragraph{Achtergrond}\mbox{} \\
-Tijdens de minor embedded vision design (EVD) is een grond analyseer apparaat ontwikkeld. Deze analyseert gedroogde grondmonsters met behulp van een digitale camera en doet een uitspraak over kleur, structuur en textuur. Deze vision based soil analyzer (VSA) onderscheid zichzelf doordat hij handzaam en draagbaar is. hierdoor kan op locatie een grondmonster geanalyseerd worden. De meeste apparaten welke grond analyseren zijn log, groot, zwaar en staan in laboratoria.
+Tijdens de minor embedded vision design (EVD) is een grond analyseer apparaat ontwikkeld. Deze analyseert gedroogde grondmonsters met behulp van een digitale camera en doet een uitspraak over kleur, structuur en textuur. Deze vision based sand analyzer (VSA) onderscheid zichzelf doordat hij handzaam en draagbaar is. hierdoor kan op locatie een grondmonster geanalyseerd worden. De meeste apparaten welke grond analyseren zijn log, groot, zwaar en staan daardoor in laboratoria.
 
-Het product wordt verder ontwikkeld tijdens een werktuigbouwkundige afstudeeropdracht in opdracht van IHC MTI B.V.. Een van de ge\"identificeerde deel-problemen van deze opdracht is het drogen van een grondmonster op locatie. Grond bestaat uit korrels welke vari\"eren in grote van $ 2 [\mu m] $ tot $ 2 [m] $ en bestaan uit organische en anorganische deeltjes. Volgens het huidige proced\'e wordt een dergelijk grondmonster gedurende een periode van $ 24 [hr] $ bij $ 80 [ ^{\circ} C] $ gedroogd in een oven. Deze methode leent zich niet voor veld analyses. Het is daarom van belang om een methode of apparaat te ontwikkelen welke op locatie snel een grondmonster kan drogen.
+Computer vision werkt met behulp van diverse algoritmes, deze identificeren interessante objecten in digitale beelden. Doordat de intensiteit van een pixel welke tot een object behoort afwijkt van achtergrond pixels kan een computer relevante objecten herkennen en segmenteren ten opzichte van de achtergrond. Hier worden additionele wiskundige operaties op uitgevoerd, zoals het bepalen van het oppervlak, omschrijven van kleur en classificeren van vorm. Resultaten van deze analyses zijn sterk afhankelijk van de kwaliteit van segmentatie proces.
+
+De VSA wordt verder ontwikkeld tijdens een werktuigbouwkundige afstudeeropdracht in opdracht van IHC MTI B.V.. Een van de ge\"identificeerde deelproblemen van deze opdracht is het analyseren van nat zand. Het is de bedoeling dat het apparaat direct in het veld gebruikt kan worden. Dit houdt in dat er met nat zand gewerkt kan en zal worden. Deze heeft als eigenschap dat korrels samen klonteren. Het water heeft namelijk een adhesive werking tussen korrels door van der Waals krachten. Deze samen geklonterde korrels worden door een digitale camera als een enkele korrel geregistreerd. Dit geeft een verstoring van statistische analyses
 
 \paragraph{Opdracht}\mbox{} \\
-Ontwikkel een concept oplossing waarmee het vochtgehalte van een grondmonster op locatie met een maximaal gewicht van $ 50 [gr] $ en bestaat uit korrels vari\"erend in grote tussen $ 200 [\mu m] $ tot $ 2 [mm] $, binnen een periode van $ 10 [min] $, verlaagt kan worden tot een vochtgehalte welke gelijk is aan de omgevingslucht.
+Ontwikkel een oplossing waarmee $ \pm 500 $ natte grondkorrels vari\"erend in grote van $ 63 [\mu m] $ tot $ 2 [mmm] $ en welke bestaan uit organische en anorganische deeltjes, door middel van een mechanische actie gelijkmatig en in hoge mate gescheiden gepositioneerd worden onder een camera met een belichtingstijd van $ ^1/_{60} [s] $ en een gezichtsveld $ r = 10[mm] $.
 
 \paragraph{Bedrijfsprofiel}\mbox{} \\
-IHC MTI B.V. heeft als basis het Delftechpark in Delft. Zij zijn wereldwijd het kenniscentrum voor het ontwikkelen van bagger, mijnbouw en diepzee mijnbouw specificaties, ontwerpen en ontwikkelingen van apparaten. MTI is een dochter onderneming van de Koninklijke IHC een wereldleider in de bouw van bagger- en marine \& offshore schepen.
+IHC MTI B.V. heeft als basis Delftech park in Delft. Zij zijn wereldwijd het kenniscentrum voor het ontwikkelen van bagger, mijnbouw en diepzee mijnbouw specificaties, ontwerpen en ontwikkelingen van apparaten. MTI is een dochter onderneming van de Koninklijke IHC een wereldleider in de bouw van bagger- en marine \& offshore schepen.
 
 MTI heeft ongeveer 60 man in dienst waaronder ervaren ingenieurs in de disciplines, dredging engineering, mining engineering, process engineering, mechanical engineering, fluid dynamic engineering, geophysics, geology, ship dynamics and design and multi-phase dynamics. 15\% bezit een doctorsgraad.
 
