@@ -18,7 +18,7 @@ unix:!macx: QMAKE_RPATHDIR += $$PWD/../../../build/install/
 TARGET = QReportGenerator
 TEMPLATE = lib
 CONFIG += shared
-VERSION = 0.1.00
+VERSION = 0.1.0
 
 SOURCES += \
     qreportgenerator.cpp \
@@ -35,6 +35,13 @@ FORMS    += \
 unix {
     target.path = $PWD/../../../build/install
     INSTALLS += target
+}
+
+contains(QT_ARCH, x86_64) {
+    LIBS += -L/usr/lib/x86_64-linux-gnu/ -lQt5Multimedia
+}
+contains(QT_ARCH, arm) {
+    LIBS += -L/usr/lib/arm-linux-gnueabihf/ -lQt5Multimedia
 }
 
 unix:!macx: LIBS += -L$$PWD/../../build/install/ -lSoilMath
