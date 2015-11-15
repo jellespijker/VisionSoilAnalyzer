@@ -38,6 +38,7 @@ unix {
 }
 
 unix:!macx: LIBS += -L$$PWD/../../build/install/ -lSoilMath
+
 INCLUDEPATH += $$PWD/../SoilMath
 DEPENDPATH += $$PWD/../SoilMath
 

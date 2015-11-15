@@ -10,7 +10,7 @@ QMAKE_CXXFLAGS += -std=c++11
 
 TARGET = SoilVision
 TEMPLATE = lib
-VERSION = 0.9.2
+VERSION = 0.9.3
 
 DEFINES += SOILVISION_LIBRARY
 unix:!macx: QMAKE_RPATHDIR += $$PWD/../../../build/install/
@@ -49,6 +49,12 @@ INCLUDEPATH += /usr/local/include
 #boost
 DEFINES += BOOST_ALL_DYN_LINK
 INCLUDEPATH += /usr/include/boost
+contains(QT_ARCH, x86_64) {
+    LIBS += -L/usr/lib/x86_64-linux-gnu/ -lboost_serialization -lboost_iostreams
+}
+contains(QT_ARCH, arm) {
+    LIBS += -L/usr/lib/arm-linux-gnueabihf/ -lboost_serialization -lboost_iostreams
+}
 
 unix:!macx: LIBS += -L$$PWD/../../build/install/ -lSoilMath
 

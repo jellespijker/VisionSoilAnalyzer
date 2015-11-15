@@ -12,7 +12,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport multimedia multimed
 
 TARGET = VSA
 TEMPLATE = app
-VERSION = 0.9.7
+VERSION = 1.0.1
 
 unix:!macx: QMAKE_RPATHDIR += $$PWD/../../../build/install/
 
@@ -42,16 +42,29 @@ INCLUDEPATH += /usr/local/include
 DEFINES += BOOST_ALL_DYN_LINK
 INCLUDEPATH += /usr/include/boost
 LIBS += -L/usr/lib/x86_64-linux-gnu/ -lboost_filesystem -lboost_serialization -lboost_system -lboost_iostreams
+contains(QT_ARCH, x86_64) {
+    LIBS += -L/usr/lib/x86_64-linux-gnu/ -lboost_filesystem -lboost_serialization -lboost_system -lboost_iostreams
+}
+contains(QT_ARCH, arm) {
+    LIBS += -L/usr/lib/arm-linux-gnueabihf/ -lboost_filesystem -lboost_serialization -lboost_system -lboost_iostreams
+}
 
 #Gstreamer
 INCLUDEPATH += /usr/include/gstreamer-0.10
 INCLUDEPATH += /usr/include/glib-2.0/
-INCLUDEPATH += /usr/lib/x86_64-linux-gnu/glib-2.0/include/
+contains(QT_ARCH, x86_64) {
+    INCLUDEPATH += /usr/lib/x86_64-linux-gnu/glib-2.0/include/
+}
+contains(QT_ARCH, arm) {
+    INCLUDEPATH += /usr/lib/arm-linux-gnueabihf/glib-2.0/include
+}
+
 INCLUDEPATH += /usr/include/libxml2/
 LIBS += `pkg-config --cflags --libs gstreamer-0.10`
 
 #SoilMath lib
 unix:!macx: LIBS += -L$$PWD/../../build/install/ -lSoilMath
+
 INCLUDEPATH += $$PWD/../SoilMath
 DEPENDPATH += $$PWD/../SoilMath
 

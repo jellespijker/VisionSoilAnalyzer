@@ -14,7 +14,7 @@ CONFIG(release, debug|release):DEFINES += QT_NO_DEBUG_OUTPUT
 
 TARGET = SoilAnalyzer
 TEMPLATE = lib
-VERSION = 0.9.96
+VERSION = 1.0.0
 
 DEFINES += SOILANALYZER_LIBRARY
 
@@ -42,13 +42,20 @@ INCLUDEPATH += /usr/local/include
 #boost
 DEFINES += BOOST_ALL_DYN_LINK
 INCLUDEPATH += /usr/include/boost
-LIBS += -L/usr/lib/x86_64-linux-gnu/ -lboost_serialization -lboost_iostreams
+
+contains(QT_ARCH, x86_64) {
+    LIBS += -L/usr/lib/x86_64-linux-gnu/ -lboost_serialization -lboost_iostreams
+}
+contains(QT_ARCH, arm) {
+    LIBS += -L/usr/lib/arm-linux-gnueabihf/ -lboost_serialization -lboost_iostreams
+}
 
 #Zlib
 LIBS += -L/usr/local/lib -lz
 INCLUDEPATH += /usr/local/include
 
 unix:!macx: LIBS += -L$$PWD/../../build/install/ -lSoilMath
+
 INCLUDEPATH += $$PWD/../SoilMath
 DEPENDPATH += $$PWD/../SoilMath
 

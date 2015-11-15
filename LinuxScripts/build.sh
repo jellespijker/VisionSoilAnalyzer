@@ -2,39 +2,37 @@
 #script to build Vision Soil Analyzer
 
 START=$(date +%s)
-
-config = $1
+CONFIG_DEB_REL=$1
 
 echo "Building Vision Soil Analyzer"
 ./setupbuilddir.sh
-
-cd ../build/$config/SoilMath/
+cd ../build/$CONFIG_DEB_REL/SoilMath/
 rm *
-qmake ../../../src/SoilMath/SoilMath.pro -r -spec linux-g++ CONFIG+=$config
+qmake ../../../src/SoilMath/SoilMath.pro -r -spec linux-g++ CONFIG+=$CONFIG_DEB_REL
 make
 make install
 
 cd ../SoilHardware/
 rm *
-qmake ../../../src/SoilHardware/SoilHardw.pro -r -spec linux-g++ CONFIG+=$config
+qmake ../../../src/SoilHardware/SoilHardware.pro -r -spec linux-g++ CONFIG+=$CONFIG_DEB_REL
 make
 make install
 
 cd ../SoilVision/
 rm *
-qmake ../../../src/SoilVision/SoilVision.pro -r -spec linux-g++ CONFIG+=$config
+qmake ../../../src/SoilVision/SoilVision.pro -r -spec linux-g++ CONFIG+=$CONFIG_DEB_REL
 make
 make install
 
 cd ../SoilAnalyzer/
 rm *
-qmake ../../../src/SoilAnalyzer/SoilAnalyzer.pro -r -spec linux-g++ CONFIG+=$config
+qmake ../../../src/SoilAnalyzer/SoilAnalyzer.pro -r -spec linux-g++ CONFIG+=$CONFIG_DEB_REL
 make
 make install
 
 cd ../../release/pictureflow-qt/
 rm *
-qmake ../../../src/pictureflow/lib.pro -r -spec linux-g++
+qmake ../../../src/pictureflow-qt/pictureflow-qt.pro -r -spec linux-g++
 make
 make install
 
@@ -44,33 +42,33 @@ qmake ../../../src/qcustomplot/qcustomplot.pro -r -spec linux-g++
 make
 make install
 
-cd ../../$config/QOpenCVQT/
+cd ../../$CONFIG_DEB_REL/QOpenCVQT/
 rm *
-qmake ../../../src/QOpenCVQT/QOPEnCVQT.pro -r -spec linux-g++ CONFIG+=$config
+qmake ../../../src/QOpenCVQT/QOpenCVQT.pro -r -spec linux-g++ CONFIG+=$CONFIG_DEB_REL
 make
 make install
 
 cd ../QParticleDisplay/
 rm *
-qmake ../../../src/QParticleDisplay/QParticleDisplay.pro -r -spec linux-g++ CONFIG+=$config
+qmake ../../../src/QParticleDisplay/QParticleDisplay.pro -r -spec linux-g++ CONFIG+=$CONFIG_DEB_REL
 make
 make install
 
 cd ../QParticleSelector/
 rm *
-qmake ../../../src/QParticleSelector/QParticleSelector.pro -r -spec linux-g++ CONFIG+=$config
+qmake ../../../src/QParticleSelector/QParticleSelector.pro -r -spec linux-g++ CONFIG+=$CONFIG_DEB_REL
 make
 make install
 
 cd ../QReportGenerator
 rm *
-qmake ../../../src/QReportGenerator/QReportGenerator.pro -r -spec linux-g++ CONFIG+=$config
+qmake ../../../src/QReportGenerator/QReportGenerator.pro -r -spec linux-g++ CONFIG+=$CONFIG_DEB_REL
 make
 make install
 
 cd ../VSA
 rm *
-qmake ../../../src/VSA/VSA.pro -r -spec linux-g++ CONFIG+=$config
+qmake ../../../src/VSA/VSA.pro -r -spec linux-g++ CONFIG+=$CONFIG_DEB_REL
 make
 make install
 
