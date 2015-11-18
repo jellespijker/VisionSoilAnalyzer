@@ -37,12 +37,7 @@ unix {
     INSTALLS += target
 }
 
-contains(QT_ARCH, x86_64) {
-    LIBS += -L/usr/lib/x86_64-linux-gnu/ -lQt5Multimedia
-}
-contains(QT_ARCH, arm) {
-    LIBS += -L/usr/lib/arm-linux-gnueabihf/ -lQt5Multimedia
-}
+LIBS+=`pkg-config --libs --cflags Qt5Multimedia`
 
 unix:!macx: LIBS += -L$$PWD/../../build/install/ -lSoilMath
 
