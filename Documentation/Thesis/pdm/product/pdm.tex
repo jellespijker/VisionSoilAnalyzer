@@ -14,7 +14,22 @@
 \usepackage{lipsum} % Required to insert dummy text. To be removed otherwise
 \usepackage{animate}
 \usepackage[style=numeric,citestyle=numeric,sorting=nyt,sortcites=true,autopunct=true,babel=hyphen,hyperref=true,abbreviate=false,backref=true,backend=bibtex]{biblatex}
-\addbibresource{../bib/bib.bib} % BibTeX bibliography file
+\addbibresource{../bib.bib} % BibTeX bibliography file
+%----------------------------------------------------------------------------------------
+%	COLORS
+%----------------------------------------------------------------------------------------
+
+\definecolor{color1}{RGB}{0,0,90} % Color of the article title and sections
+\definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
+\usepackage{xcolor}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes,positioning,shadows,trees}
+\tikzset{
+	basic/.style = {draw, text width=2cm, drop shadow, font=\sffamily, rectangle},root/.style = {basic, rounded corners=2pt, thin, align=center, fill=color2!30},
+	level 2/.style = {basic, rounded corners=6pt, thin,align=center, fill=color1!60, text width=9em},
+	level 3/.style = {basic, thin, align=left, fill=pink!60, text width=7em}
+}
 %----------------------------------------------------------------------------------------
 %	HAN Variable
 %----------------------------------------------------------------------------------------
@@ -28,19 +43,11 @@
 \setlength{\fboxrule}{0.75pt} % Width of the border around the abstract
 
 %----------------------------------------------------------------------------------------
-%	COLORS
-%----------------------------------------------------------------------------------------
-
-\definecolor{color1}{RGB}{0,0,90} % Color of the article title and sections
-\definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
-
-%----------------------------------------------------------------------------------------
 %	HYPERLINKS
 %----------------------------------------------------------------------------------------
 
 \usepackage{hyperref} % Required for hyperlinks
 \hypersetup{hidelinks,colorlinks,breaklinks=true,urlcolor=color2,citecolor=color1,linkcolor=color1,bookmarksopen=false,pdftitle={Title},pdfauthor={Author}}
-
 %----------------------------------------------------------------------------------------
 %	ARTICLE INFORMATION
 %----------------------------------------------------------------------------------------
@@ -52,7 +59,7 @@
 
 \Authors{Jelle Spijker\textsuperscript{1}* \studentnr} % Authors
 \affiliation{\textsuperscript{1}\textit{Department of Engineering, HAN University of Applied Sciences, Arnhem, the Netherlands}} % Author affiliation
-\affiliation{*\textbf{Corresponding author}: \href{mailto:spijker.jelle@gmail.com}{spijker.jelle@gmail.com}} % Corresponding author
+\affiliation{*\textbf{Corresponding author}: \href{mailto:spijker.jelle@gmail.com}{\color{color1}spijker.jelle@gmail.com}} % Corresponding author
 
 \Keywords{Product Data Management --- Vision Soil Analyzer --- Github} % Keywords - if you don't want any simply remove all the text between the curly brackets
 \newcommand{\keywordname}{Keywords} % Defines the keywords heading name
@@ -90,36 +97,160 @@ The concept and initial design of this product finds it origin at the minor \evd
 
 It is therefore proposed to make use of Github as an PDM environment. Github is a web-based Git\footnote{version control system for software development designed and developed by Linus Torvalds and used for the Linux Kernels} repository, used in the development of software and build upon the principles of collaboration. Due to the origins in software development this environment is largely unknown in the mechanical engineering branch. But it is gaining traction as an PDM environment according \citeauthor{oleg_github_2013}\cite{oleg_github_2013}. 
 
-Because Github is strongly rooted in software development there is an excellent revision control
+Github is strongly rooted in software development, it therefore has a strong toolbox supporting it. This article clarifies the protocols and processes which will ensure support for the none native disciplines: electrical and mechanical. Thus ensuring a fully fledge PDM environment. These protocols will also put safeguards in-place to ensure protection of IP\footnote{Intellectual Property} but still allows multiple users/parties to work on sub-projects. It does so by defining different user roles and set restrictions to sub projects.
+
+This document will illustrate how to use Github as a PDM tool during the development of a \vsa . It does so by describing the regular workflow employed by Github. It will then describe the current product and give a foresight in to certain possible future developments. Afterwards it describes which adjustments need to be made with respect to the normal workflow in order to support the whole VSA project.
+
+This article has the following document structure: In section \ref{sec:Vision based Sand Analyzer} the main product is described using a product breakdown structure at such a level that it
+
+\section{Github}\label{sec:Github}
+\href{https://github.com/}{\color{color1}Github} is a web-based Git repository hosting service with SCM\footnote{Source Code Management} and distributed revision control capabilities. It also provides access control and multiple collaboration features, such as bug tracking, feature request, task management and wikis. Github has a strong influence in the open-source community. This is because standard "free" services don't allow for private repositories. They're accessible by all and thus allow everyone to view, copy and use them. A lot of company, governments and institutions such as NASA, CERN, Google and Netflix do so under the credo; Dare to share. 
+For those whom want to protect their intellect property they offer paid accounts which allow for private repositories. It is also possible to host your own service using \href{https://about.gitlab.com/}{\color{color1}GitLab} 
+
+Recent developments show a move from strictly software support to other disciplines, to cite \citeauthor{peter_bell_introducing_2015} \cite{peter_bell_introducing_2015} While GitHub is still primarily used to collaborate on the development of software, it’s also a great way for a team to collaborate on a wide range of projects. From the authoring of books and the distribution of models for 3D printing to the crafting of legislation, whenever you have a team of people collaborating on a collection of documents, you should consider using Github to manage the process.
+
+Github is based on the Git workflow, which was developed by Linus Torvald to help with the development of the Linux kernels. Git is a strict command-line tool which emphasizes on speed and data integrity, it allows for a distributed, non-linear workflow. This workflow is explained in the next section.
+
+\subsection{The normal Github workflow}
+As mentioned in the previous sections, Github is Git-based and works with repository which can roughly be described as a directory structure with revision control. This workflow is depicted in figure \ref{fig:gitworkflow} and can be described as follows: A new repository is created on the remote server, which is then pulled to a local host. A user can make changes in this directory by adding, deleting or modifying files and directories. Each alteration such as the addition of a few lines of code, which represent a new function are added to the staging area. These alterations are then committed to the current branch, which will be discussed further on. These commits are then pushed to the remote server, where they're stored with meta-data such as comment, blame (who applied the change), and a date. Each commit only stores the change in the file and allows a user to review against previous commits (versions). 
+
+If another developer has committed new work, the developer first has to pull these changes to his local host before he is allowed to push his own changes. Git will automatically detect any conflicts and show them to the developer. He will then be allowed to solve these conflicts if needed.
+
+\begin{figure}[t]
+	\includegraphics[width=\textwidth/2]{../images/githubworkflow1.png}
+	\caption{Git workflow. Source: \citeauthor{_git_2015} \cite{_git_2015}}\label{fig:gitworkflow}
+\end{figure}
+
+As mentioned before the commits are first stored in a branch. These branches allow for distributive workflow. They do so be running parallel with the master branch. If a new feature is being developed, it is common practice to create a new branch, implement the new features, which probably consist of multiple commits and pushes to the remote server. Which allow other developers to work on the same feature as needed. All the while changes ar still allowed on the master or any other branch. Once the feature is ready to be added to the master or an other branch, a pull request is made to the community.
+
+This will compare the current branch against the other branch and allow for other developers to discus and review the code. If they find it satisfactory and they don't foresee any major problems the pull request is granted and the branch is merged. This process is shown in figure \ref{fig:branchworkflow}.
+
+\begin{figure}[ht]\centering
+	\includegraphics[width=\textwidth/2]{../images/stepup.png}
+	\caption{Distributive workflow with branches. Source: \citeauthor{backlog_branching_2015}\cite{backlog_branching_2015} }\label{fig:branchworkflow}
+\end{figure}
+
+The figure \ref{fig:branchworkflow} also shows the use of tags. It is possible for a developer to tag a certain commit, in essence freezing the state of the project. This is mostly done when versions are released to the public or classification agencies. These tags allow the  state of the project to be recalled at that time.
+
+\subsection{Issues and waffle}
+Further active collaboration is supported and encouraged using Issues. These a generic items which could be idea's, task, bug reports or questions for instance, which can be submitted by a developer. An issue is created by describing it, illustrating it with images, links or examples. Assigning a label to it such as ToDo, bug, feature enhancement. Other developers can comment on these issues so as to give it direction. Such an issue and discussion is shown in figure \ref{fig:issue}. These issues can be assigned to individual developers and be assigned to milestones. Which allows them to focus on further goals.
+
+In order to distribute the workload it is possible to use the third party service \href{https://waffle.io}{\color{color1}Waffle}, which integrates completely with Github. It shows the status of all issue, and present four column, namely: Backlog, Ready, In Progress and Done. All open issue start in the Backlog, when preparations are made to start working on them to can be moved to the Ready column. As soon as work is commenced the move to the In Progress column, when they're finished the move towards the Done column. The throughput of the project can be monitored closely allowing to actively steer on optimal team performance. 
+
+\begin{figure}[h]
+	\includegraphics[width=\textwidth/2]{../images/issue.png}
+	\caption{Issues used with Github}\label{fig:issue}
+\end{figure}
+
+\subsection{Project wiki}
+Each project has its own wiki\footnote{A wiki is a website which allow collaborative modifications} It's expected from the developers to maintain an active wiki. All knowledge regarding the project can be gathered here, shared and improved
+
+\section{Vision based Sand Analyzer}\label{sec:Vision based Sand Analyzer}
+The \vsa is a product that analyzes sand sample using a digital camera sensor. It does so by taking a snapshot of a magnified soil sample and applying multiple software algorithms on an obtained digital image. A detailed and full description of the first two prototypes are described in the product documentations of the previous build prototypes \cite{jelle_spijker_vision_2015} and \cite{spijker_product_2014}, where the last iteration serves as the basis for the product breakdown structure depicted in the next subsection.
+
+\subsection{Product breakdown structure VSA}
+The product breakdown structure, depicted in figure \ref{fig:PBSVSA} differentiates between three structures: hardware, software and the casing. This demarcation is made to better serve the different disciplines. This breakdown is purely done on individual parts, where each part serves a function. The intricate web of interfaces and connections are set out in section \ref{sec:Interfaces}.
+
+Due to the scope of this document these functions are not specified. The software functionality is covered in detail in the \href{http://peer23peer.github.io/VisionSoilAnalyzer/Doxygen/html/index.html}{\color{color1}Doxygen documentation}. It is important to note that the software is developed with the object orientated language C++ and is divided in different namespaces. Which are depicted in figure \ref{fig:PBSVSA}. Each of these namespaces is a bundle of object each serving its own function and by inheritance it's possible to create complex objects. Integration of the software development environment in Github is seamless.
+
+Whilst function which are fulfilled by the casing and hardware are describes in the product documentations \cite{jelle_spijker_vision_2015}. The individual parts serve as actuators, sensors and interfaces with the outside world.
+
+\begin{figure}[h]
+	\includegraphics[width=\textwidth/2]{../images/FinalPrototype.jpg}
+	\caption{Prototype VSA v1.0 "Gaara"}\label{fig:VSA Prototype}
+\end{figure}
+
+\begin{figure*}[t]\centering
+	\begin{tikzpicture}[level 1/.style={sibling distance=50mm}, edge from parent/.style={->,draw},>=latex]
+	\node[root] {VSA}
+	child {node[level 2] (c1) {Hardware}}
+	child {node[level 2] (c2) {Software}}
+	child {node[level 2] (c3) {Casing}};
+	
+	\begin{scope}[every node/.style={level 3}, node distance=12mm]
+		\node[below of = c1, xshift=15pt] (c11) {Micsocope lens};
+		\node[below of = c11] (c12) {Camera};
+		\node[below of = c12] (c13) {Microcontroller};
+		\node[below of = c13] (c14) {SD-Card};
+		\node[below of = c14] (c15) {GPS-unit};
+		\node[below of = c15] (c16) {LED PI-controller};
+		\node[below of = c16] (c17) {Photoresistor};
+		\node[below of = c17] (c18) {LED 10k white};
+		\node[below of = c18] (c19) {USB cable};
+		\node[below of = c19] (c110) {PCB shield};
+		
+		\node[below of = c2, xshift=15pt] (c21) {VSA GUI};
+		\node[below of = c21] (c22) {Analyzer lib};
+		\node[below of = c22] (c23) {Vision lib};
+		\node[below of = c23] (c24) {SoilMath lib};
+		\node[below of = c24] (c25) {Hardware lib};
+		\node[below of = c25] (c26) {QOpenCVQT lib};
+		\node[below of = c26] (c27) {QParticle Display lib};
+		\node[below of = c27] (c28) {QReport Generator lib};
+		
+		\node[below of = c3, xshift=15pt] (c31) {Bottom case};
+		\node[below of = c31] (c32) {bottom case lid};
+		\node[below of = c32] (c33) {Sample plate};
+		\node[below of = c33] (c34) {Sample plate lid};
+		\node[below of = c34] (c35) {Light room tube};
+		\node[below of = c35] (c36) {Light room lid};
+		\node[below of = c36] (c37) {Pilar};
+		\node[below of = c37] (c38) {Arm};		
+	\end{scope}
+	
+	\foreach \value in {1,...,10}
+	\draw[->] (c1.175) |- (c1\value.west);
+	
+	\foreach \value in {1,...,8}
+	\draw[->] (c2.175) |- (c2\value.west);
+
+	\foreach \value in {1,...,8}
+	\draw[->] (c3.175) |- (c3\value.west);
+
+	\end{tikzpicture}
+	\caption{Product breakdown structure of VSA v1.0}\label{fig:PBSVSA}
+\end{figure*}
+
+\subsection{The toolboxes}\label{sec:Toolboxes}
+Each discipline uses it's own type of tools, it is therefore relevant to asses all used tools and make sure the are compatible with each other. Each of the tools below are stand-alone versions which run on a operating system, they store their data in files, which in turn can be seen as the output. At the basis of all three development environments lies the hardware. The specifications given below, describe the current development computer. It is guaranteed that the project can be recreated with a similar computer.
+\begin{itemize}
+	\itemsep0em
+	\item Intel(R) Core(TM) i5-4210U CPU @ 1.70GHz
+	\item 8gb memory
+	\item Nvidia 820M
+	\item SSD 128 gb
+	\item HDD 500 gb
+	\item Dual boot with Kubuntu 15.10 / Windows 10
+\end{itemize}
+
+\paragraph{Software engineering}
+The VSA currently runs on an embedded Linux environment and is programmed in C++. The choice for C++ was made due to the fact that it's easily portable to other operating systems and environments. The IDE\footnote{Integrated Development Environment} consist of a Linux Debian environment running on 
+
+\paragraph{Electrical engineering}
+
+\paragraph{Mechanical engineering}
+
+\paragraph{Documentation}
+\LaTeX 
 
 
-%------------------------------------------------
+\subsection{Interfaces}\label{sec:Interfaces}
 
-\section{Vision based Sand Analyzer}
 
-\subsection{Product breakdown}
-
-\subsection{The toolboxes}
-
-\subsubsection{Software engineering}
-
-\subsubsection{Electrical engineering}
-
-\subsubsection{Mechanical engineering}
 
 \section{Github}
 
 \subsection{Workflow}
 
-\subsubsection{Software disciplines}
+\paragraph{Software disciplines}
 
-\subsubsection{Electrical engineering}
+\paragraph{Electrical engineering}
 
-\subsubsection{Mechanical engineering}
+\paragraph{Mechanical engineering}
 
 \begin{figure*}[ht]\centering % Using \begin{figure*} makes the figure take up the entire width of the page
 %\includegraphics[width=\linewidth]{view}
-\animategraphics[loop,autoplay]{12}{../images/githubframe-}{0}{34}
+\animategraphics[loop,autoplay,width=\textwidth]{12}{../images/githubframe-}{0}{34}
 \caption{Revision control of 3D models, source: \citeauthor{skalnik_3d_2013}\cite{skalnik_3d_2013}}
 \label{fig:view}
 \end{figure*}

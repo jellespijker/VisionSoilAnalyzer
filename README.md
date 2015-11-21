@@ -14,3 +14,5 @@ The analyse is performed on a Beaglebone Black rev C. with the following image L
 The soil is analyzed using it optical properties. This is done with a 5MP USB webcam with a maximum magnification of 300x. It has a custom cape with which the user can control the device.
 
 Although it uses openCV most Vision algorithms are custom written (part of my Minor demand). openCV is used for camera aquisition and picture storage mostly. This project make use of custom vision, object detection and classification algorithmes.
+
+test
