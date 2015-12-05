@@ -227,6 +227,7 @@ bool Microscope::openCam(Cam_t *cam) {
             "video/x-raw-rgb", "width", G_TYPE_INT,
             SelectedCam->SelectedResolution->Width, "height", G_TYPE_INT,
             SelectedCam->SelectedResolution->Height, NULL);
+          break;
       case PixelFormat::GREY:
         SelectedCam->Pipe.caps = gst_caps_new_simple(
             "video/x-raw-gray", "width", G_TYPE_INT,
@@ -320,6 +321,7 @@ void Microscope::GetFrame(cv::Mat &dst) {
   if (!IsOpened()) {
       openCam(SelectedCam);
     }
+
   QEventLoop loop;
   loop.connect(this, SIGNAL(imageretrieved()), SLOT(quit()));
   gst_element_set_state(SelectedCam->Pipe.pipeline, GST_STATE_PLAYING);
