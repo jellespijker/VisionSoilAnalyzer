@@ -203,9 +203,14 @@ bool Microscope::openCam(Cam_t *cam) {
       if (SelectedCam->Name.compare("DFK 24UJ003") == 0) {
         SelectedCam->Pipe.tisvideobuffer = gst_element_factory_make(
             "tisvideobufferfilter", "tisvidebufferfilter");
+        SelectedCam->Pipe.tisautoexposure = gst_element_factory_make(
+            "tis_auto_exposure", "tis_auto_exposure");
         SelectedCam->Pipe.tiscolorize =
             gst_element_factory_make("tiscolorize", "tiscolorize");
         SelectedCam->Pipe.queue = gst_element_factory_make("queue", "queue");
+        SelectedCam->Pipe.tiswhitebalance = gst_element_factory_make(
+             "tiswhitebalance", "tiswhitebalance");
+        SelectedCam->Pipe.queue2 = gst_element_factory_make("queue", "queue2");
         SelectedCam->Pipe.bayer =
             gst_element_factory_make("bayer2rgb", "bayer");
         if (!SelectedCam->Pipe.tisvideobuffer ||
@@ -261,8 +266,13 @@ bool Microscope::openCam(Cam_t *cam) {
         gst_bin_add_many(GST_BIN(SelectedCam->Pipe.pipeline),
                          SelectedCam->Pipe.source, SelectedCam->Pipe.capsfilter,
                          SelectedCam->Pipe.tisvideobuffer,
-                         SelectedCam->Pipe.tiscolorize, SelectedCam->Pipe.queue,
-                         SelectedCam->Pipe.bayer, SelectedCam->Pipe.sink, NULL);
+                         SelectedCam->Pipe.tisautoexposure,
+                         SelectedCam->Pipe.tiscolorize,
+                         SelectedCam->Pipe.queue,
+                         SelectedCam->Pipe.tiswhitebalance,
+                         SelectedCam->Pipe.queue2,
+                         SelectedCam->Pipe.bayer,
+                         SelectedCam->Pipe.sink, NULL);
         gst_element_link_many(
             SelectedCam->Pipe.source, SelectedCam->Pipe.capsfilter,
             SelectedCam->Pipe.tisvideobuffer, SelectedCam->Pipe.tiscolorize,

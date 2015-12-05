@@ -114,6 +114,9 @@ public:
   GstElement *colorspace;
   GstElement *convert;
   GstElement *sink;
+  GstElement *tisautoexposure;
+  GstElement *tiswhitebalance;
+  GstElement *queue2;
   GstBus *bus;
   GstCaps *caps;
   Hardware::Microscope *currentMicroscope;
