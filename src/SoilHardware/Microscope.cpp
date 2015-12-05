@@ -102,9 +102,10 @@ std::vector<Microscope::Cam_t> Microscope::GetAvailableCams() {
         }
       }
 
-      getResolutions(currentCam, V4L2_PIX_FMT_YUYV);
-      getResolutions(currentCam, V4L2_PIX_FMT_MJPEG);
-      getResolutions(currentCam, V4L2_PIX_FMT_GREY);
+      uint32_t ResolutionID = 0;
+      getResolutions(currentCam, V4L2_PIX_FMT_YUYV, ResolutionID);
+      getResolutions(currentCam, V4L2_PIX_FMT_MJPEG, ResolutionID);
+      getResolutions(currentCam, V4L2_PIX_FMT_GREY, ResolutionID);
       close(currentCam.fd);
       retVal.push_back(currentCam);
     }
@@ -120,7 +121,7 @@ std::vector<Microscope::Cam_t> Microscope::GetAvailableCams() {
   return retVal;
 }
 
-void Microscope::getResolutions(Cam_t &currentCam, int FormatType) {
+void Microscope::getResolutions(Cam_t &currentCam, int FormatType, uint32_t &ResolutionID) {
   // Get image formats
   struct v4l2_format format;
   memset(&format, 0, sizeof(format));
@@ -129,8 +130,6 @@ void Microscope::getResolutions(Cam_t &currentCam, int FormatType) {
                         1600, 2048, 2560, 3840, 3872};
   uint32_t height[10] = {480,  600,  720,  960,  1080,
                          1200, 1536, 1440, 2160, 2764};
-
-  uint32_t ResolutionID = 0;
 
   for (uint32_t i = 0; i < 10; i++) {
     format.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;

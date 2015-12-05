@@ -184,7 +184,7 @@ signals:
 
 private:
   static void new_buffer(GstElement *sink, CustomData *data);
-  void getResolutions(Cam_t &currentCam, int FormatType);
+  void getResolutions(Cam_t &currentCam, int FormatType, uint32_t &ResolutionID);
   bool openedUptheCam = false;
   cv::VideoCapture *cap = nullptr;
 
