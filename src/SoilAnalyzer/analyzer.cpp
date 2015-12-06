@@ -148,7 +148,7 @@ void Analyzer::CalcMaxProgressAnalyze() {
 void Analyzer::GetEnhancedInt(Images_t *snapshots,
                               std::vector<Mat> &intensityVector) {
   if (Settings->useBacklightProjection) {
-   for_each(snapshots->begin(), snapshots->end(), [&](Image_t &I) {
+    for_each(snapshots->begin(), snapshots->end(), [&](Image_t &I) {
       cv::Mat intensity;
       GetEnhancedInt(I.BackLight, intensity);
       intensityVector.push_back(intensity);
@@ -181,9 +181,10 @@ void Analyzer::GetEnhancedInt(Mat &img, Mat &intensity) {
     uint32_t BK = Settings->blurKernelSize - 1;
     if (Settings->useAdaptiveContrast) {
       Vision::Enhance IntAdaptContrast(
-          IntBlur.ProcessedImg(
-                      cv::Rect(HBK, HBK, IntBlur.ProcessedImg.cols - BK,
-                               IntBlur.ProcessedImg.rows - BK)).clone());
+          IntBlur.ProcessedImg(cv::Rect(HBK, HBK,
+                                        IntBlur.ProcessedImg.cols - BK,
+                                        IntBlur.ProcessedImg.rows - BK))
+              .clone());
       IntAdaptContrast.AdaptiveContrastStretch(
           Settings->adaptContrastKernelSize,
           Settings->adaptContrastKernelFactor);
@@ -329,7 +330,8 @@ void Analyzer::GetParticlesFromBlobList(
     Vision::Segment::getOrientented(B.Img, B.Centroid, B.Theta,
                                     part.Eccentricty);
     cv::Mat RGB = Vision::Segment::CopyMat<uchar>(snapshot->FrontLight(B.ROI),
-                                                  B.Img, CV_8UC3).clone();
+                                                  B.Img, CV_8UC3)
+                      .clone();
     cv::Rect ROI;
     Vision::Segment::RotateImg(B.Img, part.BW, B.Theta, B.Centroid, ROI);
     Vision::Segment::RotateImg(RGB, part.RGB, B.Theta, B.Centroid, ROI);
@@ -348,7 +350,8 @@ void Analyzer::GetParticlesFromBlobList(
  * \param particalPopulation
  */
 void Analyzer::GetFFD(Particle::ParticleVector_t &particalPopulation) {
-  //for_each(particalPopulation.begin(), particalPopulation.end(),  [&](Particle &P) {
+  // for_each(particalPopulation.begin(), particalPopulation.end(),
+  // [&](Particle &P) {
   QtConcurrent::blockingMap<Particle::ParticleVector_t>(
       particalPopulation, [&](Particle &P) {
         if (!P.isPreparedForAnalysis) {
@@ -405,5 +408,22 @@ float Analyzer::CalibrateSI(float SI, Mat &img) {
   CurrentSIfactor = SI / maxCircle;
   qDebug() << "Current SI factor : " << CurrentSIfactor;
   return CurrentSIfactor;
+}
+
+Analyzer::ExportParticles_t Analyzer::Export() {
+  ExportParticles_t retVal;
+  if (!Results->isAnalysed) {
+    return retVal;
+  }
+  for_each(Results->ParticlePopulation.begin(),
+           Results->ParticlePopulation.end(), [&](Particle &P) {
+             ExportData_t particle;
+             particle.Area = P.PixelArea;
+             particle.Radius = P.GetSiDiameter();
+             particle.SIfactor = P.SIPixelFactor;
+             particle.Sphericity = P.Eccentricty;
+             retVal.push_back(particle);
+           });
+  return retVal;
 }
 }
