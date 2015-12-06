@@ -100,6 +100,7 @@ private:
   void setAngularityHistogram();
   void setAmpgraph();
   void TakeSnapShots();
+  void ShowShaker(int i);
 };
 
 #endif // VSAMAINWINDOW_H

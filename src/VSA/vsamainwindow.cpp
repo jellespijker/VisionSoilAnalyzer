@@ -406,12 +406,7 @@ void VSAMainWindow::TakeSnapShots() {
       BacklightMessage->exec();
       Microscope->GetFrame(newShot.BackLight);
       Images->push_back(newShot);
-      QString ShakeMsg = "Shake it baby! ";
-      int number = Settings->StandardNumberOfShots - i;
-      ShakeMsg.append(QString::number(number));
-      ShakeMsg.append(" to go!");
-      ShakeItBabyMessage->setText(ShakeMsg);
-      ShakeItBabyMessage->exec();
+      ShowShaker(i);
     }
   } else if (Settings->useBacklightProjection && Settings->useHDR) {
     for (uint32_t i = 0; i < Settings->StandardNumberOfShots; i++) {
@@ -421,12 +416,7 @@ void VSAMainWindow::TakeSnapShots() {
       BacklightMessage->exec();
       Microscope->GetFrame(newShot.BackLight);
       Images->push_back(newShot);
-      QString ShakeMsg = "Shake it baby! ";
-      int number = Settings->StandardNumberOfShots - i - 1;
-      ShakeMsg.append(QString::number(number));
-      ShakeMsg.append(" to go!");
-      ShakeItBabyMessage->setText(ShakeMsg);
-      ShakeItBabyMessage->exec();
+      ShowShaker(i);
     }
   } else if (!Settings->useBacklightProjection && Settings->useHDR) {
     for (uint32_t i = 0; i < Settings->StandardNumberOfShots; i++) {
@@ -434,12 +424,7 @@ void VSAMainWindow::TakeSnapShots() {
       newShot.SIPixelFactor = Analyzer->CurrentSIfactor;
       Microscope->GetHDRFrame(newShot.FrontLight, Settings->HDRframes);
       Images->push_back(newShot);
-      QString ShakeMsg = "Shake it baby! ";
-      int number = Settings->StandardNumberOfShots - i - 1;
-      ShakeMsg.append(QString::number(number));
-      ShakeMsg.append(" to go!");
-      ShakeItBabyMessage->setText(ShakeMsg);
-      ShakeItBabyMessage->exec();
+      ShowShaker(i);
     }
   } else if (!Settings->useBacklightProjection && !Settings->useHDR) {
     for (uint32_t i = 0; i < Settings->StandardNumberOfShots; i++) {
@@ -447,14 +432,20 @@ void VSAMainWindow::TakeSnapShots() {
       newShot.SIPixelFactor = Analyzer->CurrentSIfactor;
       Microscope->GetFrame(newShot.FrontLight);
       Images->push_back(newShot);
-      QString ShakeMsg = "Shake it baby! ";
-      int number = Settings->StandardNumberOfShots - i - 1;
-      ShakeMsg.append(QString::number(number));
-      ShakeMsg.append(" to go!");
-      ShakeItBabyMessage->setText(ShakeMsg);
-      ShakeItBabyMessage->exec();
+      ShowShaker(i);
     }
   }
+}
+
+void VSAMainWindow::ShowShaker(int i) {
+    int number = Settings->StandardNumberOfShots - i - 1;
+    if (number != 0) {
+        QString ShakeMsg = "Shake it baby! ";
+        ShakeMsg.append(QString::number(number));
+        ShakeMsg.append(" to go!");
+        ShakeItBabyMessage->setText(ShakeMsg);
+        ShakeItBabyMessage->exec();
+    }
 }
 
 void VSAMainWindow::on_actionSaveSample_triggered() {
