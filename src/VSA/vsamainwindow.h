@@ -66,6 +66,8 @@ private slots:
 
   void on_restore_PSD();
 
+  void on_actionExport_triggered();
+
 private:
   Ui::VSAMainWindow *ui;
   DialogSettings *settingsWindow = nullptr;

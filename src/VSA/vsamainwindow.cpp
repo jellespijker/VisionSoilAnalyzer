@@ -623,3 +623,8 @@ void VSAMainWindow::on_restore_PSD() {
   }
   on_reset_graph(nullptr);
 }
+
+void VSAMainWindow::on_actionExport_triggered()
+{
+
+}
