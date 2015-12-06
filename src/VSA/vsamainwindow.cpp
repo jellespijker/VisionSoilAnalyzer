@@ -232,7 +232,7 @@ VSAMainWindow::VSAMainWindow(QWidget *parent)
   ui->QPlot_Amp->yAxis->setScaleType(QCPAxis::stLogarithmic);
   ui->QPlot_Amp->graph()->setPen(binPen);
   ui->QPlot_Amp->graph()->setLineStyle(QCPGraph::lsLine);
-  ui->QPlot_Amp->graph()->setBrush(QBrush(QColor(50,50,200,40)));
+  ui->QPlot_Amp->graph()->setBrush(QBrush(QColor(50, 50, 200, 40)));
 
   // Connect the Particle display and Selector
   connect(ui->widget_ParticleSelector, SIGNAL(valueChanged(int)), this,
@@ -380,6 +380,7 @@ void VSAMainWindow::on_actionNewSample_triggered() {
       return;
     }
   }
+  Sample->isAnalysed = true;
   Sample->ChangesSinceLastSave = true;
   if (Sample->ParticlePopulation.size() > 0) {
     ui->widget_ParticleSelector->setDisabled(
@@ -438,14 +439,14 @@ void VSAMainWindow::TakeSnapShots() {
 }
 
 void VSAMainWindow::ShowShaker(int i) {
-    int number = Settings->StandardNumberOfShots - i - 1;
-    if (number != 0) {
-        QString ShakeMsg = "Shake it baby! ";
-        ShakeMsg.append(QString::number(number));
-        ShakeMsg.append(" to go!");
-        ShakeItBabyMessage->setText(ShakeMsg);
-        ShakeItBabyMessage->exec();
-    }
+  int number = Settings->StandardNumberOfShots - i - 1;
+  if (number != 0) {
+    QString ShakeMsg = "Shake it baby! ";
+    ShakeMsg.append(QString::number(number));
+    ShakeMsg.append(" to go!");
+    ShakeItBabyMessage->setText(ShakeMsg);
+    ShakeItBabyMessage->exec();
+  }
 }
 
 void VSAMainWindow::on_actionSaveSample_triggered() {
@@ -622,4 +623,27 @@ void VSAMainWindow::on_restore_PSD() {
     ui->Qplot_PSD->removeGraph(1);
   }
   on_reset_graph(nullptr);
+}
+
+void VSAMainWindow::on_actionExport_triggered() {
+  QString fn = QFileDialog::getSaveFileName(
+      this, tr("Save CSV"), QString::fromStdString(Settings->SampleFolder),
+      tr("Export file (*.csv)"));
+  if (!fn.isEmpty() && Sample->isAnalysed) {
+    if (!fn.contains(tr(".csv"))) {
+      fn.append(tr(".csv"));
+      
+      SoilAnalyzer::Analyzer::ExportParticles_t particles = Analyzer->Export();
+      
+      QFile f(fn);
+      if(f.open(QFile::WriteOnly|QFile::Truncate)) {
+          QTextStream stream(&f);
+          stream << "Radius\tArea\tSIfactor\tSphericity\n";
+          std::for_each(particles.begin(), particles.end(),[&](SoilAnalyzer::Analyzer::ExportData_t &E){
+              stream << E.Radius << "\t" << E.Area << "\t" << E.SIfactor << "\t" << E.Sphericity << "\n";
+          });
+          f.close();
+        }
+    }
+  }
 }

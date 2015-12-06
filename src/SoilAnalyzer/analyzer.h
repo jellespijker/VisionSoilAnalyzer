@@ -33,6 +33,14 @@ class Analyzer : public QObject {
   Q_OBJECT
 
 public:
+  struct ExportData_t {
+    float Radius;
+    int Area;
+    float Sphericity;
+    float SIfactor;
+  };
+  typedef std::vector<ExportData_t> ExportParticles_t;
+
   bool PredictShape = true;
   float CurrentSIfactor = 0.003357;
   bool SIfactorDet = false;
@@ -52,6 +60,8 @@ public:
 
   void Analyse();
   void Analyse(Images_t *snapshots, Sample *results, SoilSettings *settings);
+  ExportParticles_t Export();
+
   float CalibrateSI(float SI, cv::Mat &img);
 
   uint32_t MaxProgress = STARTING_ESTIMATE_PROGRESS; /*!< */
@@ -67,7 +77,7 @@ private:
   uint32_t currentProgress = 0;   /*!< */
   uint32_t currentParticleID = 0; /*!< */
   double BinRanges[15]{0.0,  0.038, 0.045, 0.063, 0.075, 0.09, 0.125, 0.18,
-                      0.25, 0.355, 0.5,   0.71,  1.0,   1.4,  2.0};
+                       0.25, 0.355, 0.5,   0.71,  1.0,   1.4,  2.0};
 
   SoilMath::FFT fft; /*!< */
 
@@ -82,7 +92,7 @@ private:
   void GetEnhancedInt(cv::Mat &img, cv::Mat &intensity);
 
   void GetParticles(std::vector<cv::Mat> &BW, Images_t *snapshots,
-                      Particle::ParticleVector_t &partPopulation);
+                    Particle::ParticleVector_t &partPopulation);
   void GetParticlesFromBlobList(Vision::Segment::BlobList_t &bloblist,
                                 Image_t *snapshot,
                                 Particle::ParticleVector_t &partPopulation);

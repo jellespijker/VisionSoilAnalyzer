@@ -19,6 +19,7 @@
 #include "dialogsettings.h"
 #include "qparticleselector.h"
 #include "qreportgenerator.h"
+#include <algorithm>
 
 namespace Ui {
 class VSAMainWindow;
@@ -65,6 +66,8 @@ private slots:
   void on_compare_against();
 
   void on_restore_PSD();
+
+  void on_actionExport_triggered();
 
 private:
   Ui::VSAMainWindow *ui;

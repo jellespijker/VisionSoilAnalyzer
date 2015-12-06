@@ -12,7 +12,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport multimedia multimed
 
 TARGET = VSA
 TEMPLATE = app
-VERSION = 1.0.1
+VERSION = 1.0.2
 
 unix:!macx: QMAKE_RPATHDIR += $$PWD/../../../build/install/
 
