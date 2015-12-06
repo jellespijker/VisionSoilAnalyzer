@@ -19,6 +19,7 @@
 #include "dialogsettings.h"
 #include "qparticleselector.h"
 #include "qreportgenerator.h"
+#include <algorithm>
 
 namespace Ui {
 class VSAMainWindow;
