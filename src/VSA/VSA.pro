@@ -143,10 +143,10 @@ INSTALLS += bImgtarget
 
 #TestedSample
 TestedSamplesTarget.path += $${OUT_PWD}/TestedSamples
-TestedSamplesTarget.files += $${PWD}/TestedSamples/*
+TestedSamplesTarget.files += $${PWD}/TestedSamples/*.csv
 INSTALLS += Imgtarget
 bTestedSamplesTarget.path += $${PWD}/../../build/install/TestedSamples
-bTestedSamplesTarget.files += $${PWD}/TestedSamples/*
+bTestedSamplesTarget.files += $${PWD}/TestedSamples/*.csv
 INSTALLS += bImgtarget
 
 RESOURCES += \

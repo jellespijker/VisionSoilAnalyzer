@@ -8,7 +8,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = SoilHardware
 TEMPLATE = lib
-VERSION = 0.9.3
+VERSION = 0.9.4
 
 DEFINES += SOILHARDWARE_LIBRARY
 QMAKE_CXXFLAGS += -std=c++11 -pthread

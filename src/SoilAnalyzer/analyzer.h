@@ -34,12 +34,12 @@ class Analyzer : public QObject {
 
 public:
   bool PredictShape = true;
-  float CurrentSIfactor = 0.0111915;
+  float CurrentSIfactor = 0.003357;
   bool SIfactorDet = false;
   struct Image_t {
     cv::Mat FrontLight;
     cv::Mat BackLight;
-    float SIPixelFactor = 0.0111915;
+    float SIPixelFactor = 0.003357;
   }; /*!< */
 
   typedef std::vector<Image_t> Images_t; /*!< */
