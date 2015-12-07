@@ -322,6 +322,7 @@ bool Microscope::closeCam(Cam_t *cam) {
     gst_element_set_state(cam->Pipe.pipeline, GST_STATE_NULL);
     gst_object_unref(GST_OBJECT(cam->Pipe.pipeline));
     openedUptheCam = false;
+    lastFrame = cv::Mat();
   }
 }
 
