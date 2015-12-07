@@ -38,17 +38,12 @@ VSAMainWindow::VSAMainWindow(QWidget *parent)
     }
   } catch (Hardware::Exception::MicroscopeException &e) {
     if (*e.id() == EXCEPTION_OPENCAM_NR) {
-      try {
-        int defaultCam = 0;
-        Microscope->openCam(defaultCam);
-        Settings->defaultWebcam = Microscope->SelectedCam->Name;
-      } catch (Hardware::Exception::MicroscopeException &e) {
-        if (*e.id() == EXCEPTION_NOCAMS_NR) {
-          CamError->showMessage(
-              tr("No cams found! Connect the cam and set the default"));
-          settingsWindow = new DialogSettings(this, Settings, Microscope);
-        }
-      }
+        CamError->showMessage(
+            tr("No cams found! Connect the cam and set the default"));
+        Settings->defaultWebcam = Microscope->AvailableCams[0].Name;
+        Settings->selectedResolution = 0;
+        Microscope->SelectedCam = &Microscope->AvailableCams[0];
+        settingsWindow = new DialogSettings(this, Settings, Microscope);
     }
   }
 
@@ -632,18 +627,20 @@ void VSAMainWindow::on_actionExport_triggered() {
   if (!fn.isEmpty() && Sample->isAnalysed) {
     if (!fn.contains(tr(".csv"))) {
       fn.append(tr(".csv"));
-      
+
       SoilAnalyzer::Analyzer::ExportParticles_t particles = Analyzer->Export();
-      
+
       QFile f(fn);
-      if(f.open(QFile::WriteOnly|QFile::Truncate)) {
-          QTextStream stream(&f);
-          stream << "Radius\tArea\tSIfactor\tSphericity\n";
-          std::for_each(particles.begin(), particles.end(),[&](SoilAnalyzer::Analyzer::ExportData_t &E){
-              stream << E.Radius << "\t" << E.Area << "\t" << E.SIfactor << "\t" << E.Sphericity << "\n";
-          });
-          f.close();
-        }
+      if (f.open(QFile::WriteOnly | QFile::Truncate)) {
+        QTextStream stream(&f);
+        stream << "Radius\tArea\tSIfactor\tSphericity\n";
+        std::for_each(particles.begin(), particles.end(),
+                      [&](SoilAnalyzer::Analyzer::ExportData_t &E) {
+                        stream << E.Radius << "\t" << E.Area << "\t"
+                               << E.SIfactor << "\t" << E.Sphericity << "\n";
+                      });
+        f.close();
+      }
     }
   }
 }
