@@ -12,7 +12,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = QParticleDisplay
 TEMPLATE = lib
 CONFIG += shared
-VERSION = 1.3.3
+VERSION = 1.3.4
 
 SOURCES += qparticledisplay.cpp
 
@@ -49,3 +49,8 @@ DEPENDPATH += $$PWD/../QOpenCVQT
 unix:!macx: LIBS += -L$$PWD/../../build/install/ -lSoilVision
 INCLUDEPATH += $$PWD/../SoilVision
 DEPENDPATH += $$PWD/../SoilVision
+
+#opencv
+LIBS += -L/usr/local/lib -lopencv_core -lopencv_highgui -lopencv_imgcodecs -lopencv_imgproc
+INCLUDEPATH += /usr/local/include/opencv
+INCLUDEPATH += /usr/local/include

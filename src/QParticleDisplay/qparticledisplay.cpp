@@ -48,47 +48,47 @@ void QParticleDisplay::SetSample(SoilAnalyzer::Sample *sample) {
 
 QImage
 QParticleDisplay::ConvertParticleToQImage(SoilAnalyzer::Particle *particle) {
-  QImage dst(particle->BW.cols + 10, particle->BW.rows + 10,
-             QImage::Format_RGB32);
-  uint32_t nData = particle->BW.cols * particle->BW.rows;
-  uint32_t sData = ((dst.width() - 1) * 5) + 5;
-  uchar *QDst = dst.bits();
-  uchar *CVBW = particle->BW.data;
-  uchar *CVRGB = particle->RGB.data;
-  for (uint32_t i = 0; i < sData; i++) {
-    *(QDst++) = 255;
-    *(QDst++) = 255;
-    *(QDst++) = 255;
-    *(QDst++) = 0;
-  }
-  for (uint32_t i = 0; i < nData; i++) {
-    if ((i % particle->BW.cols) == 0) {
-      for (uint32_t j = 0; j < 10; j++) {
-        *(QDst++) = 255;
-        *(QDst++) = 255;
-        *(QDst++) = 255;
-        *(QDst++) = 0;
-      }
+
+  cv::Mat srcBorderBW;
+  cv::Mat srcBorderRGB;
+
+  int max = particle->BW.cols > particle->BW.rows ? particle->BW.cols : particle->BW.rows;
+  int min = particle->BW.cols < particle->BW.rows ? particle->BW.cols : particle->BW.rows;
+  max += 10;
+
+  int diff = max - min;
+  int rowPadding, colPadding;
+
+  if (particle->BW.cols > particle->BW.rows) {
+      rowPadding = (diff + 10) / 2;
+      colPadding = 5;
+    } else {
+      colPadding = (diff + 1) / 2;
+      rowPadding = 5;
     }
+
+  cv::copyMakeBorder(particle->BW, srcBorderBW, rowPadding, rowPadding, colPadding, colPadding, BORDER_CONSTANT, 0);
+  cv::copyMakeBorder(particle->RGB, srcBorderRGB, rowPadding, rowPadding, colPadding, colPadding, BORDER_CONSTANT, 0);
+
+  QImage dst(srcBorderBW.cols, srcBorderBW.rows, QImage::Format_RGB32);
+
+  uint32_t nData = srcBorderBW.cols * srcBorderBW.rows;
+  uchar *QDst = dst.bits();
+  uchar *CVBW = srcBorderBW.data;
+  uchar *CVRGB = srcBorderRGB.data;
+
+  for (uint32_t i = 0; i < nData; i++) {
     if (CVBW[i]) {
       *(QDst++) = *(CVRGB);
       *(QDst++) = *(CVRGB + 1);
       *(QDst++) = *(CVRGB + 2);
-      *(QDst++) = 0;
-      CVRGB += 3;
     } else {
       *(QDst++) = 255;
       *(QDst++) = 255;
       *(QDst++) = 255;
-      *(QDst++) = 0;
-      CVRGB += 3;
     }
-  }
-  for (uint32_t i = 0; i < sData; i++) {
-    *(QDst++) = 255;
-    *(QDst++) = 255;
-    *(QDst++) = 255;
     *(QDst++) = 0;
+    CVRGB += 3;
   }
   return dst;
 }
