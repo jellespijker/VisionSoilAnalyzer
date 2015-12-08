@@ -329,12 +329,10 @@ void Analyzer::GetParticlesFromBlobList(
     part.PixelArea = B.Area;
     Vision::Segment::getOrientented(B.Img, B.Centroid, B.Theta,
                                     part.Eccentricty);
-    cv::Mat RGB = Vision::Segment::CopyMat<uchar>(snapshot->FrontLight(B.ROI),
+    part.RGB = Vision::Segment::CopyMat<uchar>(snapshot->FrontLight(B.ROI),
                                                   B.Img, CV_8UC3)
                       .clone();
-    cv::Rect ROI;
-    Vision::Segment::RotateImg(B.Img, part.BW, B.Theta, B.Centroid, ROI);
-    Vision::Segment::RotateImg(RGB, part.RGB, B.Theta, B.Centroid, ROI);
+    part.BW = B.Img.clone();
     Vision::Segment edgeSeg(part.BW);
     edgeSeg.GetEdgesEroding();
     part.Edge = edgeSeg.ProcessedImg.clone();
