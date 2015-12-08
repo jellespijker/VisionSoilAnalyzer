@@ -48,7 +48,7 @@ public:
                                            describing the contour in the
                                            Frequency domain*/
   Predict_t Classification;             /*!< The classification prediction*/
-  double SIPixelFactor = 0.003357; /*!< The conversion factor from pixel to SI*/
+  double SIPixelFactor = 0.003; /*!< The conversion factor from pixel to SI*/
   uint32_t PixelArea = 0;          /*!< The total area of the binary image*/
   double Eccentricty = 1;
 

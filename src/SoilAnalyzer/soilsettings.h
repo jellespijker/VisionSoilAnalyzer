@@ -103,6 +103,7 @@ public:
   uint32_t StandardNumberOfShots = 10;
   bool PredictTheShape = true;
   bool Revolution = true;
+  uint32_t noOfShots = 1;
 private:
   friend class boost::serialization::access;
   template <class Archive>
@@ -154,6 +155,7 @@ private:
       ar &BOOST_SERIALIZATION_NVP(StandardNumberOfShots);
       ar &BOOST_SERIALIZATION_NVP(PredictTheShape);
       ar &BOOST_SERIALIZATION_NVP(Revolution);
+      ar &BOOST_SERIALIZATION_NVP(noOfShots);
     }
   }
 };

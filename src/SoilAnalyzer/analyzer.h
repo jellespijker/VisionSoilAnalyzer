@@ -42,12 +42,12 @@ public:
   typedef std::vector<ExportData_t> ExportParticles_t;
 
   bool PredictShape = true;
-  float CurrentSIfactor = 0.003357;
+  float CurrentSIfactor = 0.003;
   bool SIfactorDet = false;
   struct Image_t {
     cv::Mat FrontLight;
     cv::Mat BackLight;
-    float SIPixelFactor = 0.003357;
+    float SIPixelFactor = 0.003;
   }; /*!< */
 
   typedef std::vector<Image_t> Images_t; /*!< */

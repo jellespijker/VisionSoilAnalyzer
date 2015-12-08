@@ -148,6 +148,8 @@ public:
     }
   };
 
+  uint32_t noOfshots = 1;
+
   std::vector<Cam_t> AvailableCams;
   Cam_t *SelectedCam = nullptr;
   Arch RunEnv;
@@ -186,6 +188,7 @@ signals:
   void imageretrieved();
 
 private:
+  uint32_t snapshotcounter = 0;
   static void new_buffer(GstElement *sink, CustomData *data);
   void getResolutions(Cam_t &currentCam, int FormatType, uint32_t &ResolutionID);
   bool openedUptheCam = false;

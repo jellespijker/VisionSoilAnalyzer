@@ -121,7 +121,8 @@ std::vector<Microscope::Cam_t> Microscope::GetAvailableCams() {
   return retVal;
 }
 
-void Microscope::getResolutions(Cam_t &currentCam, int FormatType, uint32_t &ResolutionID) {
+void Microscope::getResolutions(Cam_t &currentCam, int FormatType,
+                                uint32_t &ResolutionID) {
   // Get image formats
   struct v4l2_format format;
   memset(&format, 0, sizeof(format));
@@ -203,13 +204,13 @@ bool Microscope::openCam(Cam_t *cam) {
       if (SelectedCam->Name.compare("DFK 24UJ003") == 0) {
         SelectedCam->Pipe.tisvideobuffer = gst_element_factory_make(
             "tisvideobufferfilter", "tisvidebufferfilter");
-        SelectedCam->Pipe.tisautoexposure = gst_element_factory_make(
-            "tis_auto_exposure", "tis_auto_exposure");
+        SelectedCam->Pipe.tisautoexposure =
+            gst_element_factory_make("tis_auto_exposure", "tis_auto_exposure");
         SelectedCam->Pipe.tiscolorize =
             gst_element_factory_make("tiscolorize", "tiscolorize");
         SelectedCam->Pipe.queue = gst_element_factory_make("queue", "queue");
-        SelectedCam->Pipe.tiswhitebalance = gst_element_factory_make(
-             "tiswhitebalance", "tiswhitebalance");
+        SelectedCam->Pipe.tiswhitebalance =
+            gst_element_factory_make("tiswhitebalance", "tiswhitebalance");
         SelectedCam->Pipe.queue2 = gst_element_factory_make("queue", "queue2");
         SelectedCam->Pipe.bayer =
             gst_element_factory_make("bayer2rgb", "bayer");
@@ -231,7 +232,7 @@ bool Microscope::openCam(Cam_t *cam) {
             "video/x-raw-rgb", "width", G_TYPE_INT,
             SelectedCam->SelectedResolution->Width, "height", G_TYPE_INT,
             SelectedCam->SelectedResolution->Height, NULL);
-          break;
+        break;
       case PixelFormat::GREY:
         SelectedCam->Pipe.caps = gst_caps_new_simple(
             "video/x-raw-gray", "width", G_TYPE_INT,
@@ -263,16 +264,13 @@ bool Microscope::openCam(Cam_t *cam) {
                        G_CALLBACK(new_buffer), &SelectedCam->Pipe);
 
       if (SelectedCam->Name.compare("DFK 24UJ003") == 0) {
-        gst_bin_add_many(GST_BIN(SelectedCam->Pipe.pipeline),
-                         SelectedCam->Pipe.source, SelectedCam->Pipe.capsfilter,
-                         SelectedCam->Pipe.tisvideobuffer,
-                         SelectedCam->Pipe.tisautoexposure,
-                         SelectedCam->Pipe.tiscolorize,
-                         SelectedCam->Pipe.queue,
-                         SelectedCam->Pipe.tiswhitebalance,
-                         SelectedCam->Pipe.queue2,
-                         SelectedCam->Pipe.bayer,
-                         SelectedCam->Pipe.sink, NULL);
+        gst_bin_add_many(
+            GST_BIN(SelectedCam->Pipe.pipeline), SelectedCam->Pipe.source,
+            SelectedCam->Pipe.capsfilter, SelectedCam->Pipe.tisvideobuffer,
+            SelectedCam->Pipe.tisautoexposure, SelectedCam->Pipe.tiscolorize,
+            SelectedCam->Pipe.queue, SelectedCam->Pipe.tiswhitebalance,
+            SelectedCam->Pipe.queue2, SelectedCam->Pipe.bayer,
+            SelectedCam->Pipe.sink, NULL);
         gst_element_link_many(
             SelectedCam->Pipe.source, SelectedCam->Pipe.capsfilter,
             SelectedCam->Pipe.tisvideobuffer, SelectedCam->Pipe.tiscolorize,
@@ -315,6 +313,7 @@ Microscope::Cam_t *Microscope::FindCam(string cam) {
       return &AvailableCams[i];
     }
   }
+  throw Exception::MicroscopeException(EXCEPTION_OPENCAM, EXCEPTION_OPENCAM_NR);
   return nullptr;
 }
 
@@ -323,13 +322,14 @@ bool Microscope::closeCam(Cam_t *cam) {
     gst_element_set_state(cam->Pipe.pipeline, GST_STATE_NULL);
     gst_object_unref(GST_OBJECT(cam->Pipe.pipeline));
     openedUptheCam = false;
+    lastFrame = cv::Mat();
   }
 }
 
 void Microscope::GetFrame(cv::Mat &dst) {
   if (!IsOpened()) {
-      openCam(SelectedCam);
-    }
+    openCam(SelectedCam);
+  }
 
   QEventLoop loop;
   loop.connect(this, SIGNAL(imageretrieved()), SLOT(quit()));
@@ -419,7 +419,12 @@ void Microscope::SetControl(Control_t *control) {
   close(SelectedCam->fd);
 }
 
-void Microscope::SendImageRetrieved() { emit imageretrieved(); }
+void Microscope::SendImageRetrieved()
+{
+  if (++snapshotcounter == noOfshots) {
+    emit imageretrieved();
+    }
+}
 
 void Microscope::new_buffer(GstElement *sink, CustomData *data) {
   GstBuffer *buffer;
@@ -433,13 +438,8 @@ void Microscope::new_buffer(GstElement *sink, CustomData *data) {
     cv::split(bufferMat, chans);
     chans.erase(chans.begin() + 4);
     cv::merge(chans, data->currentMicroscope->lastFrame);
-   // cv::namedWindow("test");
-   // cv::imshow("test", data->currentMicroscope->lastFrame);
-   // cv::waitKey(0);
 
     data->currentMicroscope->SendImageRetrieved();
-    //      gst_element_set_state(data->currentMicroscope->SelectedCam->Pipe.pipeline,
-    //                          GST_STATE_PAUSED);
     gst_buffer_unref(buffer);
   }
 }
