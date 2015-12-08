@@ -418,10 +418,12 @@ Analyzer::ExportParticles_t Analyzer::Export() {
   for_each(Results->ParticlePopulation.begin(),
            Results->ParticlePopulation.end(), [&](Particle &P) {
              ExportData_t particle;
+             particle.ID = P.ID;
              particle.Area = P.PixelArea;
              particle.Radius = P.GetSiDiameter();
              particle.SIfactor = P.SIPixelFactor;
              particle.Sphericity = P.Eccentricty;
+             particle.Img = P.RGB;
              retVal.push_back(particle);
            });
   return retVal;

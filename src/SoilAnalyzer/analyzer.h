@@ -34,10 +34,12 @@ class Analyzer : public QObject {
 
 public:
   struct ExportData_t {
+    int ID;
     float Radius;
     int Area;
     float Sphericity;
     float SIfactor;
+    cv::Mat Img;
   };
   typedef std::vector<ExportData_t> ExportParticles_t;
 

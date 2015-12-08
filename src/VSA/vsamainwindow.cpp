@@ -634,12 +634,15 @@ void VSAMainWindow::on_actionExport_triggered() {
       QFile f(fn);
       if (f.open(QFile::WriteOnly | QFile::Truncate)) {
         QTextStream stream(&f);
-        stream << "Radius\tArea\tSIfactor\tSphericity\n";
-        std::for_each(particles.begin(), particles.end(),
-                      [&](SoilAnalyzer::Analyzer::ExportData_t &E) {
-                        stream << E.Radius << "\t" << E.Area << "\t"
-                               << E.SIfactor << "\t" << E.Sphericity << "\n";
-                      });
+        std::string imgloc = fn.toStdString().substr(0,fn.toStdString().length() - 4);
+        stream << "ID\tRadius\tArea\tSIfactor\tSphericity\n";
+        for (int i = 0; i < particles.size(); i++) {
+            stream << particles[i].ID << "\t" << particles[i].Radius << "\t" << particles[i].Area << "\t"
+                   << particles[i].SIfactor << "\t" << particles[i].Sphericity << "\n";
+            std::stringstream ss;
+            ss << imgloc << "-" << particles[i].ID << ".png";
+            cv::imwrite(ss.str().c_str(), particles[i].Img);
+          }
         f.close();
       }
     }
