@@ -52,8 +52,23 @@ QParticleDisplay::ConvertParticleToQImage(SoilAnalyzer::Particle *particle) {
   cv::Mat srcBorderBW;
   cv::Mat srcBorderRGB;
 
-  cv::copyMakeBorder(particle->BW, srcBorderBW, 5, 5, 5, 5, BORDER_CONSTANT, 0);
-  cv::copyMakeBorder(particle->RGB, srcBorderRGB, 5, 5, 5, 5, BORDER_CONSTANT, 0);
+  int max = particle->BW.cols > particle->BW.rows ? particle->BW.cols : particle->BW.rows;
+  int min = particle->BW.cols < particle->BW.rows ? particle->BW.cols : particle->BW.rows;
+  max += 10;
+
+  int diff = max - min;
+  int rowPadding, colPadding;
+
+  if (particle->BW.cols > particle->BW.rows) {
+      rowPadding = (diff + 10) / 2;
+      colPadding = 5;
+    } else {
+      colPadding = (diff + 1) / 2;
+      rowPadding = 5;
+    }
+
+  cv::copyMakeBorder(particle->BW, srcBorderBW, rowPadding, rowPadding, colPadding, colPadding, BORDER_CONSTANT, 0);
+  cv::copyMakeBorder(particle->RGB, srcBorderRGB, rowPadding, rowPadding, colPadding, colPadding, BORDER_CONSTANT, 0);
 
   QImage dst(srcBorderBW.cols, srcBorderBW.rows, QImage::Format_RGB32);
 
