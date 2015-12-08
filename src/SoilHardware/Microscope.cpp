@@ -423,6 +423,7 @@ void Microscope::SendImageRetrieved()
 {
   if (++snapshotcounter == noOfshots) {
     emit imageretrieved();
+    snapshotcounter = 0;
     }
 }
 
