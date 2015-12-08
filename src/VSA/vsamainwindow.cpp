@@ -22,6 +22,7 @@ VSAMainWindow::VSAMainWindow(QWidget *parent)
 
   // Load the Microscope
   Microscope = new Hardware::Microscope;
+  Microscope->noOfshots = Settings->noOfShots;
   try {
     Microscope->FindCam(Settings->defaultWebcam)->SelectedResolution =
         &Microscope->FindCam(Settings->defaultWebcam)

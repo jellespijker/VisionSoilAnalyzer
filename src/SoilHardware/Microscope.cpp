@@ -419,7 +419,12 @@ void Microscope::SetControl(Control_t *control) {
   close(SelectedCam->fd);
 }
 
-void Microscope::SendImageRetrieved() { emit imageretrieved(); }
+void Microscope::SendImageRetrieved()
+{
+  if (++snapshotcounter == noOfshots) {
+    emit imageretrieved();
+    }
+}
 
 void Microscope::new_buffer(GstElement *sink, CustomData *data) {
   GstBuffer *buffer;
@@ -433,13 +438,8 @@ void Microscope::new_buffer(GstElement *sink, CustomData *data) {
     cv::split(bufferMat, chans);
     chans.erase(chans.begin() + 4);
     cv::merge(chans, data->currentMicroscope->lastFrame);
-    // cv::namedWindow("test");
-    // cv::imshow("test", data->currentMicroscope->lastFrame);
-    // cv::waitKey(0);
 
     data->currentMicroscope->SendImageRetrieved();
-    //      gst_element_set_state(data->currentMicroscope->SelectedCam->Pipe.pipeline,
-    //                          GST_STATE_PAUSED);
     gst_buffer_unref(buffer);
   }
 }
