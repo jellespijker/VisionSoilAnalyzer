@@ -1,0 +1,11 @@
+[Unit]
+Description=TMSU VSA Start and Shutdown
+
+[Service]
+Type=oneshot
+ExecStart=/home/peer23peer/ihc/VisionSoilAnalyzer/Linuxscripts/mountmeta.sh
+ExecStop=/home/peer23peer/ihc/VisionSoilAnalyzer/Linuxscripts/unmountmeta.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
