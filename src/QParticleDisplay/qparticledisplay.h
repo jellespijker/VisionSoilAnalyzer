@@ -17,6 +17,7 @@
 #include <opencv2/core.hpp>
 
 #include "soilanalyzer.h"
+#include <algorithm>
 
 namespace Ui {
   class QParticleDisplay;
@@ -46,6 +47,7 @@ private slots:
   void on_selectedParticleChangedWidget(int value);
   void on_selectedParticleChangedSlider(int value);
   void on_pushButton_delete_clicked();
+  void on_filterChanged(int index);
 
 private:
   Ui::QParticleDisplay *ui;
