@@ -9,6 +9,7 @@
 #include <QBrush>
 
 #include <stdint.h>
+#include <stdlib.h>
 
 #include <qcustomplot.h>
 

@@ -1,5 +1,6 @@
 #include "vsamainwindow.h"
 #include "ui_vsamainwindow.h"
+#define CALIB_DISK_DIA 9
 
 VSAMainWindow::VSAMainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::VSAMainWindow) {
@@ -39,12 +40,12 @@ VSAMainWindow::VSAMainWindow(QWidget *parent)
     }
   } catch (Hardware::Exception::MicroscopeException &e) {
     if (*e.id() == EXCEPTION_OPENCAM_NR) {
-        CamError->showMessage(
-            tr("No cams found! Connect the cam and set the default"));
-        Settings->defaultWebcam = Microscope->AvailableCams[0].Name;
-        Settings->selectedResolution = 0;
-        Microscope->SelectedCam = &Microscope->AvailableCams[0];
-        settingsWindow = new DialogSettings(this, Settings, Microscope);
+      CamError->showMessage(
+          tr("No cams found! Connect the cam and set the default"));
+      Settings->defaultWebcam = Microscope->AvailableCams[0].Name;
+      Settings->selectedResolution = 0;
+      Microscope->SelectedCam = &Microscope->AvailableCams[0];
+      settingsWindow = new DialogSettings(this, Settings, Microscope);
     }
   }
 
@@ -386,7 +387,6 @@ void VSAMainWindow::on_actionNewSample_triggered() {
 }
 
 void VSAMainWindow::TakeSnapShots() {
-  Analyzer->SIfactorDet = true; // remeber to remove
   if (!Analyzer->SIfactorDet) {
     QMessageBox *DetSIFactor = new QMessageBox(this);
     DetSIFactor->setText("Put calibration Disc under the microscope");
@@ -502,9 +502,13 @@ void VSAMainWindow::on_actionUseLearning_toggled(bool arg1) {
 }
 
 void VSAMainWindow::on_actionCalibrate_triggered() {
+  std::system("gst-launch-0.10 v4l2src ! video/x-raw-gray ! "
+              "tisvideobufferfilter ! tis_auto_exposure ! tiscolorize ! queue "
+              "! tiswhitebalance ! queue ! bayer2rgb ! queue ! "
+              "ffmpegcolorspace ! autovideosink");
   cv::Mat calib;
   Microscope->GetFrame(calib);
-  Analyzer->CalibrateSI(16.25, calib);
+  Analyzer->CalibrateSI(CALIB_DISK_DIA, calib);
 }
 
 void VSAMainWindow::on_Classification_changed(int newValue) {
@@ -634,15 +638,17 @@ void VSAMainWindow::on_actionExport_triggered() {
       QFile f(fn);
       if (f.open(QFile::WriteOnly | QFile::Truncate)) {
         QTextStream stream(&f);
-        std::string imgloc = fn.toStdString().substr(0,fn.toStdString().length() - 4);
+        std::string imgloc =
+            fn.toStdString().substr(0, fn.toStdString().length() - 4);
         stream << "ID\tRadius\tArea\tSIfactor\tSphericity\n";
         for (int i = 0; i < particles.size(); i++) {
-            stream << particles[i].ID << "\t" << particles[i].Radius << "\t" << particles[i].Area << "\t"
-                   << particles[i].SIfactor << "\t" << particles[i].Sphericity << "\n";
-            std::stringstream ss;
-            ss << imgloc << "-" << particles[i].ID << ".png";
-            cv::imwrite(ss.str().c_str(), particles[i].Img);
-          }
+          stream << particles[i].ID << "\t" << particles[i].Radius << "\t"
+                 << particles[i].Area << "\t" << particles[i].SIfactor << "\t"
+                 << particles[i].Sphericity << "\n";
+          std::stringstream ss;
+          ss << imgloc << "-" << particles[i].ID << ".png";
+          cv::imwrite(ss.str().c_str(), particles[i].Img);
+        }
         f.close();
       }
     }
