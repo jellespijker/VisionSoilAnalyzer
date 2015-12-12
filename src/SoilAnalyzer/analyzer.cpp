@@ -407,6 +407,7 @@ float Analyzer::CalibrateSI(float SI, Mat &img) {
   qDebug() << "Maximum circle in pixels: " << maxCircle;
   CurrentSIfactor = SI / maxCircle;
   qDebug() << "Current SI factor : " << CurrentSIfactor;
+  SIfactorDet = true;
   return CurrentSIfactor;
 }
 
