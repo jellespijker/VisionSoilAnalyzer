@@ -17,6 +17,14 @@ QParticleDisplay::QParticleDisplay(QWidget *parent)
           SLOT(on_selectedParticleChangedWidget(int)));
   connect(ui->horizontalSlider, SIGNAL(valueChanged(int)), this,
           SLOT(on_selectedParticleChangedSlider(int)));
+  connect(ui->comboBoxFilter, SIGNAL(currentIndexChanged(int)), this,
+          SLOT(on_filterChanged(ind)));
+
+  // Set filtercombobox;
+  ui->comboBoxFilter->addItem(tr("All"));
+  ui->comboBoxFilter->addItem(tr("1.4 - 2"));
+  ui->comboBoxFilter->addItem(tr("1 - 1.4"));
+  ui->comboBoxFilter->addItem(tr("0.71 - 1"));
 }
 
 QParticleDisplay::~QParticleDisplay() {
@@ -52,23 +60,27 @@ QParticleDisplay::ConvertParticleToQImage(SoilAnalyzer::Particle *particle) {
   cv::Mat srcBorderBW;
   cv::Mat srcBorderRGB;
 
-  int max = particle->BW.cols > particle->BW.rows ? particle->BW.cols : particle->BW.rows;
-  int min = particle->BW.cols < particle->BW.rows ? particle->BW.cols : particle->BW.rows;
+  int max = particle->BW.cols > particle->BW.rows ? particle->BW.cols
+                                                  : particle->BW.rows;
+  int min = particle->BW.cols < particle->BW.rows ? particle->BW.cols
+                                                  : particle->BW.rows;
   max += 10;
 
   int diff = max - min;
   int rowPadding, colPadding;
 
   if (particle->BW.cols > particle->BW.rows) {
-      rowPadding = (diff + 10) / 2;
-      colPadding = 5;
-    } else {
-      colPadding = (diff + 1) / 2;
-      rowPadding = 5;
-    }
+    rowPadding = (diff + 10) / 2;
+    colPadding = 5;
+  } else {
+    colPadding = (diff + 1) / 2;
+    rowPadding = 5;
+  }
 
-  cv::copyMakeBorder(particle->BW, srcBorderBW, rowPadding, rowPadding, colPadding, colPadding, BORDER_CONSTANT, 0);
-  cv::copyMakeBorder(particle->RGB, srcBorderRGB, rowPadding, rowPadding, colPadding, colPadding, BORDER_CONSTANT, 0);
+  cv::copyMakeBorder(particle->BW, srcBorderBW, rowPadding, rowPadding,
+                     colPadding, colPadding, BORDER_CONSTANT, 0);
+  cv::copyMakeBorder(particle->RGB, srcBorderRGB, rowPadding, rowPadding,
+                     colPadding, colPadding, BORDER_CONSTANT, 0);
 
   QImage dst(srcBorderBW.cols, srcBorderBW.rows, QImage::Format_RGB32);
 
@@ -113,7 +125,7 @@ void QParticleDisplay::on_selectedParticleChangedWidget(int value) {
     ui->horizontalSlider->setValue(value);
     SelectedParticle = &Sample->ParticlePopulation[ui->widget->centerIndex()];
     QString volume;
-    volume.sprintf("%+06.2f", SelectedParticle->GetSiDiameter());
+    volume.sprintf("%6.2f", SelectedParticle->GetSiDiameter());
     ui->label_Volume->setText(volume);
     emit particleChanged(value);
     emit shapeClassificationChanged(SelectedParticle->Classification.Category);
@@ -127,7 +139,7 @@ void QParticleDisplay::on_selectedParticleChangedSlider(int value) {
     ui->widget->setCenterIndex(value);
     SelectedParticle = &Sample->ParticlePopulation[ui->widget->centerIndex()];
     QString volume;
-    volume.sprintf("%+06.2f", SelectedParticle->GetSiDiameter());
+    volume.sprintf("%6.2f", SelectedParticle->GetSiDiameter());
     ui->label_Volume->setText(volume);
     emit particleChanged(value);
     emit shapeClassificationChanged(SelectedParticle->Classification.Category);
@@ -158,3 +170,5 @@ void QParticleDisplay::next() {
   ui->widget->setCenterIndex(i);
   on_selectedParticleChangedWidget(i);
 }
+
+void QParticleDisplay::on_filterChanged(int index) {}

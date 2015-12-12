@@ -7,6 +7,7 @@
 
 #pragma once
 #define STARTING_ESTIMATE_PROGRESS 300
+#define SMALLEST_PARTICLE_TO_ANALYZE 0.125
 #ifndef DEBUG
 //#define DEBUG
 #endif

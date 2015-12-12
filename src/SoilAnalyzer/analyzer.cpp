@@ -327,19 +327,21 @@ void Analyzer::GetParticlesFromBlobList(
     Particle part;
     part.ID = currentParticleID++;
     part.PixelArea = B.Area;
-    Vision::Segment::getOrientented(B.Img, B.Centroid, B.Theta,
-                                    part.Eccentricty);
-    part.RGB = Vision::Segment::CopyMat<uchar>(snapshot->FrontLight(B.ROI),
-                                                  B.Img, CV_8UC3)
-                      .clone();
-    part.BW = B.Img.clone();
-    Vision::Segment edgeSeg(part.BW);
-    edgeSeg.GetEdgesEroding();
-    part.Edge = edgeSeg.ProcessedImg.clone();
-    part.SIPixelFactor = snapshot->SIPixelFactor;
-    part.isPreparedForAnalysis = false;
-    part.SetRoundness();
-    partPopulation.push_back(part);
+    if (part.GetSiDiameter() >= SMALLEST_PARTICLE_TO_ANALYZE) {
+      Vision::Segment::getOrientented(B.Img, B.Centroid, B.Theta,
+                                      part.Eccentricty);
+      part.RGB = Vision::Segment::CopyMat<uchar>(snapshot->FrontLight(B.ROI),
+                                                    B.Img, CV_8UC3)
+                        .clone();
+      part.BW = B.Img.clone();
+      Vision::Segment edgeSeg(part.BW);
+      edgeSeg.GetEdgesEroding();
+      part.Edge = edgeSeg.ProcessedImg.clone();
+      part.SIPixelFactor = snapshot->SIPixelFactor;
+      part.isPreparedForAnalysis = false;
+      part.SetRoundness();
+      partPopulation.push_back(part);
+      }
   });
 }
 
