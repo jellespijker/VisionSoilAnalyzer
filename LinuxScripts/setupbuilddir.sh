@@ -7,9 +7,10 @@ RELEASE="release"
 TESTS="Tests"
 
 cd ..
+mkdir -p meta
 mkdir -p build
 cd build
-mkdir -p $DEBUG $INSTALL $RELEASE $TESTS $INSTALL/Images $INSTALL/NeuralNet $INSTALL/Settings $INSTALL/Maps $INSTALL/SoilSamples $INSTALL/TestedSamples
+mkdir -p $DEBUG $INSTALL $RELEASE $TESTS $INSTALL/Images $INSTALL/NeuralNet $INSTALL/Settings $INSTALL/Maps $INSTALL/SoilSamples $INSTALL/TestedSamples 
 
 current_dir=$(pwd)
 echo "$current_dir/$INSTALL" >> VSAGUI.conf
