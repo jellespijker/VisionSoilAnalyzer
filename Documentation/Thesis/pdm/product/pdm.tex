@@ -102,7 +102,7 @@
 %	ABSTRACT
 %----------------------------------------------------------------------------------------
 
-\Abstract{During the development of a \vsa \ or any other startup like product, it's important to manage the flow of information, such that redundancy is limited and continuity of the product(range) is guarded. This is normally done within a product data management environment (PDM). These environments normally consists of dedicated and expensive software which is supported with complex network architecture. In this article Github is explored as a free alternative for such an environment. Github is an web-based git repository service mostly used during software development. It is found that this service can be used as a full fledge free alternative PDM environment, with the use of free opensource utilities. Thus }
+\Abstract{During the development of a \vsa \ or any other startup like product, it's important to manage the flow of information, in such a way that redundancy is limited and continuity of the product(range) is guarded. This is normally done within a product data management environment (PDM). These environments normally consists of dedicated and expensive software which is supported with complex network architecture. In this article Github is explored as a free alternative for such an environment. Github is an web-based git repository service mostly used during software development. It is found that this service can be used as a full fledge free alternative PDM environment, with the use of free opensource utilities. Thus allowing start up companies to implement PDM like options.}
 
 %----------------------------------------------------------------------------------------
 
@@ -126,16 +126,16 @@ This article proposes a setup for a PDM\footnote{Product Data Management} enviro
 
 The concept and initial design of this product finds it origin at the minor \evd and is developed further during the graduation phase \wtb, both taught at the \href{http://www.han.nl/international/english/}{\color{color1}\instutionname}. Design and production of this product leans on the following three disciplines: mechanical, electrical and software engineering. Due to its multidisciplinary properties it is relevant to implement a PDM environment which acts as a solid basis for all disciplines and allows for interaction and flexibility. 
 
-The initial focus of this product where the vision algorithms written in C++, it therefore started as a software repository on \href{https://github.com/}{\color{color1}Github}, which is a web-based Git\footnote{version control system for software development designed and developed by Linus Torvalds and used for the development of the Linux Kernels} repository. Due to the changing and growing demands of this project, the focus shifted towards other engineering disciplines like electrical and mechanical. Because Git is mostly used in the development of software it is largely unknown in the mechanical engineering branch. But it is gaining traction as an PDM environment according \citeauthor{oleg_github_2013}\cite{oleg_github_2013}. 
+The initial focus of this product were vision algorithms written in C++, it therefore started as a software repository on \href{https://github.com/}{\color{color1}Github}, which is a web-based Git\footnote{version control system for software development designed and developed by Linus Torvalds and used for the development of the Linux Kernels} repository. Due to the changing and growing demands of this project, the focus shifted towards other engineering disciplines like electrical and mechanical. Because Git is mostly used in the development of software it is largely unknown in the mechanical engineering branch. But it is gaining traction as an PDM environment according \citeauthor{oleg_github_2013}\cite{oleg_github_2013}. 
 
-Github is strongly rooted in software development, it therefore has a strong toolbox supporting it. This article examines the use of third party opensource software and a workflow which will ensure support for the none native disciplines: electrical and mechanical. Thus ensuring a fully fledge PDM environment. This environment will also put safeguards in-place to ensure protection of IP\footnote{Intellectual Property} but still allows multiple users/parties to work on sub-projects. It does so by defining different user roles and set restrictions to sub projects.
+Github is strongly rooted in software development, it therefore has a strong toolbox supporting it. This article examines the use of third party opensource software and a supporting workflow which will ensure PDM like support for the none native disciplines: electrical and mechanical. This environment will also put safeguards in-place to ensure protection of IP\footnote{Intellectual Property} but still allows multiple users/parties to work on sub-projects. It does so by defining different user roles and set restrictions to sub projects.
 
-This article illustrate how to use Github as a PDM tool during the development of a \vsa or any startup like product. It does so by describing the normal workflow employed by Github. It will then describe the current product and give a foresight in to certain possible future developments. Afterwards it sets out the needed adjustments with respect to the normal workflow in order to support a whole startup like project such as a \vsa.
+This article illustrate how to use Github as a PDM tool during the development of a \vsa \ or any startup like product. It does so by describing the normal workflow employed by Github. It will then describe the current product and give a foresight in to certain possible future developments. Afterwards it sets out the needed adjustments with respect to the normal workflow in order to support a whole startup like project.
 
-This article has the following document structure: In section \ref{sec:Vision based Sand Analyzer} the main product is described using a product breakdown structure at such a level that it
+This article has the following document structure: Github is described in section \ref{sec:Github} following with a product breakdown of the \vsa \ in section \ref{sec:Vision based Sand Analyzer}. Section \ref{sec:PDM} describes a normal PDM environment, this is used as matrix against the current Github environment. Hereafter, in section \ref{sec:github as PDM} a model is given how to make the translation to a full fledge PDM environment. Lastly in section \ref{sec:discussion} the pros and cons are discussed.
 
 \section{Github}\label{sec:Github}
-\href{https://github.com/}{\color{color1}Github} is a web-based Git repository hosting service with SCM\footnote{Source Code Management} and distributed revision control capabilities. It also provides access control and multiple collaboration features, such as bug tracking, feature request, task management and wikis. Github has a strong influence in the open-source community. This is because standard "free" services don't allow for private repositories. They're accessible by all and thus allow everyone to view, copy and use them. A lot of company, governments and institutions such as NASA, CERN, Google and Netflix do so under the credo; Dare to share. 
+\href{https://github.com/}{\color{color1}Github} is a web-based Git repository hosting service with SCM\footnote{Source Code Management} and distributed revision control capabilities. It also provides access control and multiple collaboration features, such as bug tracking, feature request, task management and wikis. Github has a strong influence in the open-source community. This is because standard "free" services doesn't allow for private repositories. They're accessible by anyone and allow everyone to view, copy and use them. A lot of company, governments and institutions such as NASA, CERN, Google and Netflix do so under the credo; Dare to share. 
 For those whom want to protect their intellect property they offer paid accounts which allow for private repositories. It is also possible to host your own service using \href{https://about.gitlab.com/}{\color{color1}GitLab} 
 
 Recent developments show a move from strictly software support to other disciplines, to cite \citeauthor{peter_bell_introducing_2015} \cite{peter_bell_introducing_2015} While GitHub is still primarily used to collaborate on the development of software, it’s also a great way for a team to collaborate on a wide range of projects. From the authoring of books and the distribution of models for 3D printing to the crafting of legislation, whenever you have a team of people collaborating on a collection of documents, you should consider using Github to manage the process.
@@ -143,7 +143,9 @@ Recent developments show a move from strictly software support to other discipli
 Github is based on the Git workflow, which was developed by Linus Torvald to help with the development of the Linux kernels. Git is a strict command-line tool which emphasizes on speed and data integrity, it allows for a distributed, non-linear workflow. This workflow is explained in the next section.
 
 \subsection{The normal Github workflow}\label{sec:nomal github workflow}
-As mentioned in the previous sections, Github is Git-based and works with repository which can roughly be described as a directory structure with revision control. This workflow is depicted in figure \ref{fig:gitworkflow} and can be described as follows: A new repository is created on the remote server, which is then pulled to a local host. A user can make changes in this directory by adding, deleting or modifying files and directories. Each alteration such as the addition of a few lines of code, which represent a new function are added to the staging area. These alterations are then committed to the current branch, which will be discussed further on. These commits are then pushed to the remote server, where they're stored with meta-data such as comment, blame (who applied the change), and a date. Each commit only stores the change in the file and allows a user to review against previous commits (versions). 
+As mentioned in the previous sections Github is Git-based and works with repository. These can roughly be described as directory structures with revision control. This workflow is depicted in figure \ref{fig:gitworkflow} and can be described as follows: A new repository is created on the remote server, which is then pulled to a local host. 
+
+A user can make changes in this directory by adding, deleting or modifying files and directories. Each alteration such as the addition of a few lines of code, which represent a new function are added to the staging area. These alterations are then committed to the current branch, which will be discussed further on. These commits are then pushed to the remote server, where they're stored with meta-data such as comment, blame (who applied the change), and a date. Each commit only stores the change in the file and allows a user to review against previous commits (versions). 
 
 If another developer has committed new work, the developer first has to pull these changes to his local host before he is allowed to push his own changes. Git will automatically detect any conflicts and show them to the developer. He will then be allowed to solve these conflicts if needed.
 
@@ -164,18 +166,18 @@ This will compare the current branch against the other branch and allow for othe
 The figure \ref{fig:branchworkflow} also shows the use of tags. It is possible for a developer to tag a certain commit, in essence freezing the state of the project. This is mostly done when versions are released to the public or classification agencies. These tags allow the  state of the project to be recalled at that time.
 
 \subsection{Issues}
-Further active collaboration is supported and encouraged using Issues. These a generic items which could be idea's, task, bug reports or questions for instance, which can be submitted by a developer. An issue is created by describing it, illustrating it with images, links or examples. Assigning a label to it such as ToDo, bug, feature enhancement. Other developers can comment on these issues so as to give it direction. Such an issue and discussion is shown in figure \ref{fig:issue}. These issues can be assigned to individual developers and be assigned to milestones. Which allows them to focus on further goals.
+Further active collaboration is supported and encouraged using Issues. These are generic items which could be idea's, task, bug reports or questions for instance, which can be submitted by a developer. An issue is created by describing it, illustrating it with images, links or examples. Assigning a label to it such as ToDo, bug, feature enhancement. Other developers can comment on these issues so as to give it direction. These issues can be assigned to individual developers and milestones. Which allows them to focus on further goals.
 
 \subsection{Project wiki}
-Each project has its own wiki\footnote{A wiki is a website which allow sharing of knowledge by collaborative modifications} It's expected from the developers to maintain an active wiki. All knowledge regarding the project can be gathered here, shared and improved
+Each project has its own wiki\footnote{A wiki is a website which allow sharing of knowledge by collaborative modifications} It's expected from the developers to maintain an active wiki. All knowledge regarding the project can be gathered here, shared and improved.
 
 \section{Vision based Sand Analyzer}\label{sec:Vision based Sand Analyzer}
-The \vsa is a product that analyzes sand sample using a digital camera sensor. It does so by taking a snapshot of a magnified soil sample and applying multiple software algorithms on an obtained digital image. A detailed and full description of the first two prototypes are described in the product documentations of the previous build prototypes \cite{jelle_spijker_vision_2015} and \cite{spijker_product_2014}, where the last iteration serves as the basis for the product breakdown structure depicted in the next subsection.
+The \vsa \ is a product that analyzes sand sample using a digital camera sensor. It does so by taking a snapshot of a magnified soil sample and applying multiple software algorithms on an obtained digital image. A detailed and full description of the first two prototypes are described in the product documentations of the previous build prototypes \cite{jelle_spijker_vision_2015} and \cite{spijker_product_2014}, where the last iteration serves as the basis for the product breakdown structure depicted in the next subsection.
 
 \subsection{Product breakdown structure VSA}
-The product breakdown structure, depicted in figure \ref{fig:PBSVSA} differentiates between three structures: hardware, software and the casing. This demarcation is made to better serve the different disciplines. This breakdown is purely done on individual parts, where each part serves a function. The intricate web of interfaces and connections are set out in section \ref{sec:Interfaces}.
+The product breakdown structure, depicted in figure \ref{fig:PBSVSA} differentiates between three structures: hardware, software and a casing. This demarcation is made to better serve the different disciplines. This breakdown is purely done on individual parts, where each part serves a function.
 
-Due to the scope of this document these functions are not specified. The software functionality is covered in detail in the \href{http://peer23peer.github.io/VisionSoilAnalyzer/Doxygen/html/index.html}{\color{color1}Doxygen documentation}. It is important to note that the software is developed with the object orientated language C++ and is divided in different namespaces. Which are depicted in figure \ref{fig:PBSVSA}. Each of these namespaces is a bundle of object each serving its own function and by inheritance it's possible to create complex objects. Integration of the software development environment in Github is seamless.
+Due to the scope of this document these functions are not specified. The software functionality is covered in detail in the \href{http://peer23peer.github.io/VisionSoilAnalyzer/Doxygen/html/index.html}{\color{color1}Doxygen documentation}. It is important to note that the software is developed with object orientated language C++ and is divided in different namespaces. Which are depicted in figure \ref{fig:PBSVSA}. Each of these namespaces is a bundle of object each serving its own function and by inheritance it's possible to create complex objects. Integration of the software development environment in Github is seamless.
 
 Whilst function which are fulfilled by the casing and hardware are describes in the product documentations \cite{jelle_spijker_vision_2015}. The individual parts serve as actuators, sensors and interfaces with the outside world.  
 
@@ -254,7 +256,7 @@ The basic list of used libraries is given below.
 	\item GStreamer
 \end{itemize}
 
-All these packages are chosen such that the can easily be ported to other operating systems, such as Windows, Android or iOS. Although current prototypes are dedicated embedded devices, the ultimate goal is to create a cheap and portable device. In order to achieve that goal, it is important to make use of existing and readily available architecture such as phones and laptop. Software development has to be done with this foresight; Currently all these tools allow for this strategy.
+All these packages are chosen such that the can easily be ported to other operating systems, such as Windows, Android or iOS. Although current prototypes are dedicated embedded devices, the ultimate goal is to create a cheap and portable device. In order to achieve that, it is important to make use of existing and readily available architecture such as phones and laptop. Software development has to be done with this foresight; Currently all these tools allow for this strategy.
 
 The output of the software engineering toolbox will be mostly source code and binary files. The source code files are plain text format, which can be read and edited from most devices. While the binary files will consist of images and other additional resources needed by the program. This actual program needs to be compiled for each individual target system. This is done with each release and the files are bundled with the version tag.
 
@@ -332,7 +334,7 @@ Each part in the project has a fully defined interface. Due to the limited scope
 	\caption{Interface of a Luxeon Rebel 10k LED}\label{fig:interfaces}
 \end{figure*}
 
-\section{What is a PDM environment}
+\section{What is a PDM environment}\label{sec:PDM}
 In order to truly understand a PDM environment, one has to start with the main definition, which is according to \citeauthor{la_product_2009} \cite{la_product_2009} a strategy which puts the right product and process related information in the right hands at the right time in a product life cycle. It also allows for the creation of processes which guard those data en allows other to use it. All the while generating en secure environment, at which all relevant information, and previous iterations is stored without redundancy.
 
 Github is without a doubt a great tool when used as revision control it save all relevant information and stores it in a secure environment without redundancy. It has potential to be used as a full fledge PDM environment. But in order to maximize Github for this setup it is relevant to look at the mechanics of such an environment a little closer, so that it becomes clear what should be added or changed.
@@ -361,7 +363,7 @@ During the design process it is paramount that certain choices, comments and agr
 \paragraph{Data visualization}
 Not every user has all development programs accessible, but it could be possible that he needs information 
  
-\section{Implement Github as PDM environment}
+\section{Implement Github as PDM environment}\label{sec:github as PDM}
 When the traditional services of Github are set against the requirements for a PDM environment, certain deviations become apparent. This missing functionality can be implemented using free third-party opensource solutions such as \href{http://tmsu.org/}{\color{color1}TMSU}. A utility which allows files to be tagged with meta data.
 
 \subsection{Meta tagging with TMSU}
@@ -408,8 +410,20 @@ The use of issues and milestones enable a fluent project planning which is up-to
 	\includegraphics[width=\textwidth*\real{0.5}]{../images/waffle.png}
 	\caption{Waffle project planning}\label{fig:waffle}
 \end{figure}
-\section{Results and Discussion}
-\lipsum[5-8]
+
+\subsection{Protection of intellectual property}
+Information is a power unto itself, each piece needs to be assessed; What impact it has when not solely in our control -- different parties have other interests -- not always aligned with the interest of the original creator. It is therefore necessary to control information access. 
+
+Normally each developer, with access to a repository, can work on all files. When it's needed to have different access levels in a PDM environment it's advised to work with embedded repositories. Each repository can have it's own developers, only these can work on the files herein. These separate repositories are integrated in the whole project, whilst compartmentalizing the information. This setup is handy when third-parties need to work on parts of the project, but these parties are not part of the company. 
+
+\section{Results and Discussion} \label{sec:discussion}
+This article explorers the possibility to use Github as a full fledge PDM environment. It does so by first describing a normal Github workflow, following with the expected out come -- the description of an traditional PDM environment. These are set against each other and a workflow with additional tools is proposed to alleviate the difference.
+
+It is found that Github can serve as a free alternative PDM environment; But it should be recognized that it is not a natural transition. Github is original a software development environment, it excels at handling plain text files, revision control and parallel feature implementation. This allows an efficient workflow. But it is still lacks a lot of features when handling binary files. 
+
+These limitations are alleviated with the use of third party opensource software such as TMSU and waffle. Which allow for project planning, meta tagging, search functionality and change management.
+
+Although it is possible to mimic a PDM environment with Github it is important to note that it takes a certain type of users that can work comfortably in this environment; These users should feel at home working from the Linux command line. In other words, it requires nerds. 
 
 %----------------------------------------------------------------------------------------
 %	REFERENCE LIST
