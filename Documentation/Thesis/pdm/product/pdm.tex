@@ -37,13 +37,33 @@
 \definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
 \usepackage{xcolor}
 
+%----------------------------------------------------------------------------------------
+%	TIKZ Diagrams and figures
+%----------------------------------------------------------------------------------------
 \usepackage{tikz}
-\usetikzlibrary{arrows,shapes,positioning,shadows,trees}
+\usetikzlibrary{arrows,shapes,positioning,shadows,trees, mindmap, matrix, calc}
 \tikzset{
 	basic/.style = {draw, text width=2cm, drop shadow, font=\sffamily, rectangle},root/.style = {basic, rounded corners=2pt, thin, align=center, fill=color2!30},
 	level 2/.style = {basic, rounded corners=6pt, thin,align=center, fill=color1!60, text width=9em},
-	level 3/.style = {basic, thin, align=left, fill=pink!60, text width=7em}
+	level 3/.style = {basic, thin, align=left, fill=color1!8, text width=7em}
 }
+\tikzstyle{part} = [draw, fill=color1!20, text width=5em, text centered, minimum height= 2cm, rounded corners=12pt]
+\tikzstyle{domain} = [draw, fill=color2!5, minimum height=2cm, rounded corners=12pt]
+\tikzset{
+	treenode/.style = {shape=rectangle, rounded corners=4pt,
+		draw, anchor=center,
+		text width=10em, align=center,
+		color=color1!70,
+		inner sep=1ex},
+	decision/.style = {treenode, fill=color2!10,font=\small, diamond, inner sep=0pt, scale=0.8},
+	root/.style     = {treenode, fill=color1!15},
+	env/.style      = {treenode, fill=color2!5, font=\small },
+	finish/.style   = {root, fill=color1!15},
+	dummy/.style    = {circle,draw}
+}
+\newcommand{\yes}{edge node [above] {yes}}
+\newcommand{\no}{edge  node [left]  {no}}
+
 %----------------------------------------------------------------------------------------
 %	HAN Variable
 %----------------------------------------------------------------------------------------
@@ -82,7 +102,7 @@
 %	ABSTRACT
 %----------------------------------------------------------------------------------------
 
-\Abstract{\lipsum[1]~}
+\Abstract{During the development of a \vsa \ or any other startup like product, it's important to manage the flow of information, such that redundancy is limited and continuity of the product(range) is guarded. This is normally done within a product data management environment (PDM). These environments normally consists of dedicated and expensive software which is supported with complex network architecture. In this article Github is explored as a free alternative for such an environment. Github is an web-based git repository service mostly used during software development. It is found that this service can be used as a full fledge free alternative PDM environment, with the use of free opensource utilities. Thus }
 
 %----------------------------------------------------------------------------------------
 
@@ -101,19 +121,16 @@
 %----------------------------------------------------------------------------------------
 
 \section*{Introduction} % The \section*{} command stops section numbering
-
 \addcontentsline{toc}{section}{Introduction} % Adds this section to the table of contents
-This article proposes a setup for a PDM\footnote{Product Data Management} environment used during developed of a \vsa\footnote{Working title VSA}. This new line of product(s) is currently being developed at \mti and has the ability to analyze sand by its optical characteristics. 
+This article proposes a setup for a PDM\footnote{Product Data Management} environment used during developed of a \vsa\footnote{Working title VSA} which analyzes sand by its optical characteristics. This new line of product(s) is currently being developed at \href{http://www.mtiholland.com/}{\color{color1}\mti} which is a R\&D based company and subsidiary of \href{http://www.ihcmerwede.com/}{\color{color1}\ihc}
 
-The concept and initial design of this product finds it origin at the minor \evd and will be further developed during the graduation phase \wtb at the HAN. Design and production of this product leans on the following three disciplines: mechanical, electrical and software engineering. Due to its multidisciplinary properties it is relevant to implement a PDM environment which acts as a solid basis for all disciplines and allows for interaction and flexibility.
+The concept and initial design of this product finds it origin at the minor \evd and is developed further during the graduation phase \wtb, both taught at the \href{http://www.han.nl/international/english/}{\color{color1}\instutionname}. Design and production of this product leans on the following three disciplines: mechanical, electrical and software engineering. Due to its multidisciplinary properties it is relevant to implement a PDM environment which acts as a solid basis for all disciplines and allows for interaction and flexibility. 
 
-\mti is a R\&D based company and subsidiary of \ihc. Although \ihc is currently in the process of implementing a new PDM and ERP\footnote{Enterprise Resource Planning} environment named IHC ONE, linking all wharfs, departments and subsidiary companies using Siemens Teamcenter and IFS. Current data systems are all still folder and DMS\footnote{Document Management System} based. This setup doesn't allow for the necessary flexibility and revision controlled, that is needed for the VSA project.
+The initial focus of this product where the vision algorithms written in C++, it therefore started as a software repository on \href{https://github.com/}{\color{color1}Github}, which is a web-based Git\footnote{version control system for software development designed and developed by Linus Torvalds and used for the development of the Linux Kernels} repository. Due to the changing and growing demands of this project, the focus shifted towards other engineering disciplines like electrical and mechanical. Because Git is mostly used in the development of software it is largely unknown in the mechanical engineering branch. But it is gaining traction as an PDM environment according \citeauthor{oleg_github_2013}\cite{oleg_github_2013}. 
 
-It is therefore proposed to make use of Github as an PDM environment. Github is a web-based Git\footnote{version control system for software development designed and developed by Linus Torvalds and used for the Linux Kernels} repository, used in the development of software and build upon the principles of collaboration. Due to the origins in software development this environment is largely unknown in the mechanical engineering branch. But it is gaining traction as an PDM environment according \citeauthor{oleg_github_2013}\cite{oleg_github_2013}. 
+Github is strongly rooted in software development, it therefore has a strong toolbox supporting it. This article examines the use of third party opensource software and a workflow which will ensure support for the none native disciplines: electrical and mechanical. Thus ensuring a fully fledge PDM environment. This environment will also put safeguards in-place to ensure protection of IP\footnote{Intellectual Property} but still allows multiple users/parties to work on sub-projects. It does so by defining different user roles and set restrictions to sub projects.
 
-Github is strongly rooted in software development, it therefore has a strong toolbox supporting it. This article clarifies the protocols and processes which will ensure support for the none native disciplines: electrical and mechanical. Thus ensuring a fully fledge PDM environment. These protocols will also put safeguards in-place to ensure protection of IP\footnote{Intellectual Property} but still allows multiple users/parties to work on sub-projects. It does so by defining different user roles and set restrictions to sub projects.
-
-This document will illustrate how to use Github as a PDM tool during the development of a \vsa . It does so by describing the regular workflow employed by Github. It will then describe the current product and give a foresight in to certain possible future developments. Afterwards it describes which adjustments need to be made with respect to the normal workflow in order to support the whole VSA project.
+This article illustrate how to use Github as a PDM tool during the development of a \vsa or any startup like product. It does so by describing the normal workflow employed by Github. It will then describe the current product and give a foresight in to certain possible future developments. Afterwards it sets out the needed adjustments with respect to the normal workflow in order to support a whole startup like project such as a \vsa.
 
 This article has the following document structure: In section \ref{sec:Vision based Sand Analyzer} the main product is described using a product breakdown structure at such a level that it
 
@@ -125,7 +142,7 @@ Recent developments show a move from strictly software support to other discipli
 
 Github is based on the Git workflow, which was developed by Linus Torvald to help with the development of the Linux kernels. Git is a strict command-line tool which emphasizes on speed and data integrity, it allows for a distributed, non-linear workflow. This workflow is explained in the next section.
 
-\subsection{The normal Github workflow}
+\subsection{The normal Github workflow}\label{sec:nomal github workflow}
 As mentioned in the previous sections, Github is Git-based and works with repository which can roughly be described as a directory structure with revision control. This workflow is depicted in figure \ref{fig:gitworkflow} and can be described as follows: A new repository is created on the remote server, which is then pulled to a local host. A user can make changes in this directory by adding, deleting or modifying files and directories. Each alteration such as the addition of a few lines of code, which represent a new function are added to the staging area. These alterations are then committed to the current branch, which will be discussed further on. These commits are then pushed to the remote server, where they're stored with meta-data such as comment, blame (who applied the change), and a date. Each commit only stores the change in the file and allows a user to review against previous commits (versions). 
 
 If another developer has committed new work, the developer first has to pull these changes to his local host before he is allowed to push his own changes. Git will automatically detect any conflicts and show them to the developer. He will then be allowed to solve these conflicts if needed.
@@ -146,18 +163,11 @@ This will compare the current branch against the other branch and allow for othe
 
 The figure \ref{fig:branchworkflow} also shows the use of tags. It is possible for a developer to tag a certain commit, in essence freezing the state of the project. This is mostly done when versions are released to the public or classification agencies. These tags allow the  state of the project to be recalled at that time.
 
-\subsection{Issues and waffle}
+\subsection{Issues}
 Further active collaboration is supported and encouraged using Issues. These a generic items which could be idea's, task, bug reports or questions for instance, which can be submitted by a developer. An issue is created by describing it, illustrating it with images, links or examples. Assigning a label to it such as ToDo, bug, feature enhancement. Other developers can comment on these issues so as to give it direction. Such an issue and discussion is shown in figure \ref{fig:issue}. These issues can be assigned to individual developers and be assigned to milestones. Which allows them to focus on further goals.
 
-In order to distribute the workload it is possible to use the third party service \href{https://waffle.io}{\color{color1}Waffle}, which integrates completely with Github. It shows the status of all issue, and present four column, namely: Backlog, Ready, In Progress and Done. All open issue start in the Backlog, when preparations are made to start working on them to can be moved to the Ready column. As soon as work is commenced the move to the In Progress column, when they're finished the move towards the Done column. The throughput of the project can be monitored closely allowing to actively steer on optimal team performance. 
-
-\begin{figure}[ht]
-	\includegraphics[width=\textwidth/2]{../images/issue.png}
-	\caption{Issues used with Github}\label{fig:issue}
-\end{figure}
-
 \subsection{Project wiki}
-Each project has its own wiki\footnote{A wiki is a website which allow collaborative modifications} It's expected from the developers to maintain an active wiki. All knowledge regarding the project can be gathered here, shared and improved
+Each project has its own wiki\footnote{A wiki is a website which allow sharing of knowledge by collaborative modifications} It's expected from the developers to maintain an active wiki. All knowledge regarding the project can be gathered here, shared and improved
 
 \section{Vision based Sand Analyzer}\label{sec:Vision based Sand Analyzer}
 The \vsa is a product that analyzes sand sample using a digital camera sensor. It does so by taking a snapshot of a magnified soil sample and applying multiple software algorithms on an obtained digital image. A detailed and full description of the first two prototypes are described in the product documentations of the previous build prototypes \cite{jelle_spijker_vision_2015} and \cite{spijker_product_2014}, where the last iteration serves as the basis for the product breakdown structure depicted in the next subsection.
@@ -275,14 +285,55 @@ Simulations and calculations are done with \href{http://nl.mathworks.com/product
 \end{lstlisting}
 
 \paragraph{Documentation}
-\LaTeX 
-
+All documentation is written with \LaTeX, which is a word processor and a mark-up language. Documents are written in plain text files with macro command in between, which -- when compiled with the \LaTeX compiler generate typeset documents. These output documents are stored as \textit{*.pdf} files. This document is an example of such an output file.
 
 \subsection{Interfaces}\label{sec:Interfaces}
+Each part has an interfaces, which describe how it interacts with other parts. This project defines interfaces in four domains; These are: mechanical, electrical, software and corporate. The last one represent the interface with (after-)sales and supply chain.  Not all domains are represented for each part, but a part should have at least one interface, otherwise it is redundant.
 
+Each part in the project has a fully defined interface. Due to the limited scope of this article only the interface used with the \href{http://www.lumileds.com/products/high-power-leds/luxeon-rebel}{\color{color1}LED Luxeon Rebel} is used as an example. This is shown in figure \ref{fig:interfaces}.
+
+\begin{figure*}[!ht]\centering
+	\begin{tikzpicture}
+		\path[mindmap,concept color=color2!50, text=white]
+		node[concept] {LED \\ Luxeon Rebel \\ White 10k}
+		[clockwise from=0]
+		child[concept color=color2!5!color1!5, text=black] {
+			node[concept] { Mechanical }
+			[clockwise from=100]
+			child { node[concept] { Dimensions } }
+			child { node[concept] { Material } }
+			child { node[concept] { Weight } }
+			child { node[concept] { Luminosity } }
+			child { node[concept] { Thermal } }
+			}
+		child[concept color=color2!5!color1!10, text=black] {
+			node[concept] { Electrical }
+			[clockwise from=-60]
+			child { node[concept] { Ground } }
+			child { node[concept] { Current } }
+			child { node[concept] { Thermal pad } }
+			}
+		child[concept color=color2!5!color1!10, text=black] {
+			node[concept] { Software }
+			[clockwise from=-60]
+			child { node[concept] { Enable } }
+			child { node[concept] { Mode } }
+			child { node[concept] { Pin } }
+			child { node[concept] { State } }
+			}
+		child[concept color=color2!5!color1!10, text=black] {
+			node[concept] { Corporate }
+			[clockwise from=-120]
+			child { node[concept] { Cost } }
+			child { node[concept] { Supplier } }
+			child { node[concept] { Part Relations } }
+			};
+	\end{tikzpicture}
+	\caption{Interface of a Luxeon Rebel 10k LED}\label{fig:interfaces}
+\end{figure*}
 
 \section{What is a PDM environment}
-In order to truly understanding the function of a PDM environment, one has to start with the main definition, which is according to \citeauthor{la_product_2009} \cite{la_product_2009} a strategy which puts the right product and process related information in the right hands at the right time in a product life cycle. It also allows for the creation of processes which guard those data en allows other to use it. All the while generating en secure environment, at which all relevant information, and previous iterations is stored without redundancy.
+In order to truly understand a PDM environment, one has to start with the main definition, which is according to \citeauthor{la_product_2009} \cite{la_product_2009} a strategy which puts the right product and process related information in the right hands at the right time in a product life cycle. It also allows for the creation of processes which guard those data en allows other to use it. All the while generating en secure environment, at which all relevant information, and previous iterations is stored without redundancy.
 
 Github is without a doubt a great tool when used as revision control it save all relevant information and stores it in a secure environment without redundancy. It has potential to be used as a full fledge PDM environment. But in order to maximize Github for this setup it is relevant to look at the mechanics of such an environment a little closer, so that it becomes clear what should be added or changed.
 
@@ -311,31 +362,59 @@ During the design process it is paramount that certain choices, comments and agr
 Not every user has all development programs accessible, but it could be possible that he needs information 
  
 \section{Implement Github as PDM environment}
+When the traditional services of Github are set against the requirements for a PDM environment, certain deviations become apparent. This missing functionality can be implemented using free third-party opensource solutions such as \href{http://tmsu.org/}{\color{color1}TMSU}. A utility which allows files to be tagged with meta data.
 
-\paragraph{Meta-tag all files}
+\subsection{Meta tagging with TMSU}
+The tagged files can be accessed through a virtual mounted file system. Which allows the use of queries and lets them browse through the obtained results as if it where directories. This allows maximum compatibility with other software. TMSU also has the option to assign a value to meta tag. It's therefore possible to create a tag "Length" with a value for that a specific part. This allows for configuration management, such as the bash\footnote{linux console output} print out below illustrates. TMSU is at is core a Linux program and runs on Debian based distributions. It can be compiled for Windows but without the option of a virtual mounted file system.
 
-\href{https://www.tagsistant.net/}{\color{color1}Tagsistant}
+The use of TMSU tags and queries is illustrated below. In this example all metric $ 8[mm] $ parts are shown. With the first command all parts are shown, but the second query only shows the part that tests true for all values. The workings of TMSU are further illustrated in a \href{https://youtu.be/bvwW0buxSD4}{\color{color1}screencast}.
 
-\paragraph{Pull out items from other branches}
-\begin{lstlisting}{bash}
-	git checkout master
-	git checkout exp1 path/to/file\_a
-	git checkout exp2 path/to/file\_b
+\begin{figure}[!hb]
+	\begin{lstlisting}{bash}
+	$ tmsu files "m=8"
+	./3Dmodel/parts_pdm/bolt_m8_50_316L
+	./3Dmodel/parts_pdm/bolt_m8_50_s235jr
+	./3Dmodel/parts_pdm/bolt_m8_60_316L
+	./3Dmodel/parts_pdm/bolt_m8_60_s235jr
+	./3Dmodel/parts_pdm/bolt_m8_70_316L
+	./3Dmodel/parts_pdm/bolt_m8_70_s235jr
+	./3Dmodel/parts_pdm/washer_m8_316L
+	./3Dmodel/parts_pdm/washer_m8_s235jr
+	./3Dmodel/parts_pdm/nut_m8_316L
+	./3Dmodel/parts_pdm/nut_m8_316L
 	
-	\# save these files as a stash
-	git stash
-	\# merge stash with master
-	git merge stash
-\end{lstlisting}
+	$ tmsu files "m=8 and material=s235jr and length=50"
+	./3Dmodel/parts_pdm/bolt_m8_50_s235jr
+	\end{lstlisting}
+	\caption{TMSU query on the command line}
+\end{figure}
 
 
+Best practice is to define all four domain interfaces (mechanical, electrical, software and corporate) as valued meta tags. This way all relevant interfaces can be found with a simple query. Each defined value in a domain interface, illustrates a meta tag in its own right. This assures compatibility with other parts. Since the structure for each file is defined. This will ensures easy linking and matching of individual parts.
+
+By extending Github with TMSU it is possible to use classification, create a bill of materials, use configuration management and define inter-parts relations. Thus it becomes a full fledge PDM. But it's a fragile connection. Much depends on the naming of meta tags and the users work flow. The following workflow has proven to work.
+
+\subsection{Binary workflow new feature}
+In order to minimize the disturbance of the main product, new features are added with branches. As explained before in section \ref{sec:nomal github workflow} a branch is just branch; It is a offshoot of the master branch at a certain point such that modifications and changes are implemented. This branch can be merged at a later point with the master branch. 
+
+Although Github is steadily implementing certain features for binary files, such as \textit{*.stl} support it's still best to work with a different workflow, when working with binary files. This is because the difference can't be ascertained by Github. These need to manually determined by the developers. This process is shown in appendix \ref{fig:workflow new feauture}.
+
+This is when the corporate interface domain comes in handy. Each file that is connected  to another needs to be linked in the relations interface. This meta tag needs to be updated by the developer. That way a simple query can show the impact certain changes have on the whole design and which developers need to be notified in the suggested change. By opening up an issue, and assigning the work to the responsible developers. The dialog between them ensures an compatible new feature. 
+
+\subsection{Project planning}
+The use of issues and milestones enable a fluent project planning which is up-to-date with the latest workload. In order to distribute this load it is possible to use the third party service \href{https://waffle.io}{\color{color1}Waffle}, which integrates completely with Github. It shows the status of all issue, and present four column, namely: Backlog, Ready, In Progress and Done. All open issue start in the Backlog, when preparations are made to start working on them to can be moved to the Ready column. As soon as work is commenced the move to the In Progress column, when they're finished the move towards the Done column. The throughput of the project can be monitored closely allowing to actively steer on optimal team performance. 
+\begin{figure}[!hpt]
+	\centering
+	\includegraphics[width=\textwidth*\real{0.5}]{../images/waffle.png}
+	\caption{Waffle project planning}\label{fig:waffle}
+\end{figure}
 \section{Results and Discussion}
-
-\lipsum[3] % Dummy text
+\lipsum[5-8]
 
 %----------------------------------------------------------------------------------------
 %	REFERENCE LIST
 %----------------------------------------------------------------------------------------
+%\clearpage
 \phantomsection
 \printbibliography
 
@@ -348,7 +427,57 @@ Not every user has all development programs accessible, but it could be possible
 \section*{Appendices}
 \addcontentsline{toc}{section}{Appendices}
 \renewcommand{\thesubsection}{\Alph{subsection}}
-\subsection{Latest prototype}
+\subsection{Workflow add binary feature}
 \centering
-\includegraphics[height=\textheight*\real{0.92}]{../images/FinalPrototype.jpg}\label{fig:VSA Prototype}
+\begin{tikzpicture}[-latex]
+\matrix(chart)
+[
+matrix of nodes,
+column sep = 3em,
+row sep = 2ex
+]
+{
+	|[root]| Create branch 	& \\
+	|[env]| Create file 		& \\
+	|[env]| Modify file 		& \\
+	|[env]| Modify tag		& \\ 
+	|[env]| Query impact 		& \\
+	|[decision]| Has impact 	& |[env]| Query developers \\
+	& |[env]| Open issue \\
+	|[env]| Commit change	    & |[env]| Discuss issue \\
+	|[env]| Push commit(s)	& \\
+	|[env]| Review commit(s)	& \\
+	|[decision]| Feature ok & \\
+	|[env]| Pull request & \\
+	|[env]| Review feature & \\
+	|[decision]| Needs modification & \\
+	|[finish]| Merge branch & \\	
+	};
+	\draw
+	(chart-1-1) edge (chart-2-1)
+	(chart-2-1) edge (chart-3-1)
+	(chart-3-1) edge (chart-4-1)
+	(chart-4-1) edge (chart-5-1)
+	(chart-5-1) edge (chart-6-1)
+	(chart-6-1) edge (chart-8-1)
+	(chart-6-1) edge (chart-6-2)
+	(chart-6-2) edge (chart-7-2)
+	(chart-7-2) edge (chart-8-2)
+	(chart-8-2) edge (chart-8-1)
+	(chart-8-1) edge (chart-9-1)
+	(chart-9-1) edge (chart-10-1)
+	(chart-10-1) edge (chart-11-1)
+	(chart-11-1) edge (chart-12-1)
+	(chart-12-1) edge (chart-13-1)
+	(chart-13-1) edge (chart-14-1)
+	(chart-14-1) edge (chart-15-1);
+	\draw
+	(chart-11-1) -- +(-4,0) |- (chart-3-1)
+	node[near start, sloped, above] {yes};
+	\draw
+	(chart-14-1) -- +(-5,0) |- (chart-3-1)
+	node[near start, sloped, above] {yes};
+	
+	\end{tikzpicture}
+	\label{fig:workflow new feauture}
 \end{document}
